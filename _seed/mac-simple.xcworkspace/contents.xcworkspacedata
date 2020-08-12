@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../../third/_group/group_third.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/_group/group_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-simple/_group/group_simple.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/app/app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/application/application.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/box/box.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/drawing/drawing.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/form/form.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/notify_drawing/notify_drawing.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/os_drag_and_drop/os_drag_and_drop.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-simple/shader/shader.xcodeproj">
+   </FileRef>
+</Workspace>

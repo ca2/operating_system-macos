@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:../../third/_group/group_third.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/_group/group_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/_group/group_arcade.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/game_of_life/game_of_life.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/tictactoe/tictactoe.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/tetris/tetris.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/arkanoid/arkanoid.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/sokoban/sokoban.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/pacman/pacman.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-cidadedecuritiba/alphaclock/app_cidadedecuritiba_alphaclock.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/clockverse/app_core_clockverse.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/flag/app_core_flag.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/hellomultiverse/app_core_hellomultiverse.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/projection/app_core_projection.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/rdpclient/app_core_rdpclient.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/asciimedia/app_veriwell_asciimedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/waven/app_veriwell_waven.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/audio/audio.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/audio_decode_libmpg123/audio_decode_libmpg123.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/audio_decode_wave/audio_decode_wave.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/audio_decode_spotify/audio_decode_spotify.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/aura/aura.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/rdpclient/axisrdpclient.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/draw2d_quartz2d/draw2d_quartz2d.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/experience_core/experience_core.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/estamira/estamira.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/arkanoid/game_arkanoid.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/game_of_life/game_game_of_life.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/pacman/game_pacman.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/sokoban/game_sokoban.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/tetris/game_tetris.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../game/tictactoe/game_tictactoe.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/gcom/gcom.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/multimedia/multimedia.xcodeproj">
+   </FileRef>
+</Workspace>

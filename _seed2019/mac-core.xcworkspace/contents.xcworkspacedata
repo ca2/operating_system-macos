@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:../../third/_group/group_third.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/_group/group_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/_group/group_core.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/_group/group_multimedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/_group/group_resident.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/commander/commander.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/commander-browser-bot/commander-browser-bot.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/commander-browser-def/commander-browser-def.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/verifile/verifile.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/weather/weather.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/desk/desk.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/todo/todo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/auraclick/auraclick.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/auratype/auratype.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/clockverse/clockverse.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/chronometer/chronometer.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/timer/timer.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/resident_desktop/resident_desktop.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/waven/waven.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/announcecom/announcecom.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-cidadedecuritiba/alphaclock/app_cidadedecuritiba_alphaclock.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/auraclick/app_core_auraclick.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/auratype/app_core_auratype.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/clockverse/app_core_clockverse.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/commander/app_core_commander.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/desk/app_core_desk.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/flag/app_core_flag.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/hellomultiverse/app_core_hellomultiverse.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/resident_client/app_core_resident_client.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/resident_desktop/app_core_resident_desktop.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/chronometer/app_core_chronometer.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/timer/app_core_timer.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/todo/app_core_todo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/verifile/app_core_verifile.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/weather/app_core_weather.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/asciimedia/app_veriwell_asciimedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/waven/app_veriwell_waven.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/audio_core_audio/audio_core_audio.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/audio_decode_libmpg123/audio_decode_libmpg123.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/audio_decode_wave/audio_decode_wave.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/audio_decode_youtube_player_api_for_iframe/audio_decode_youtube_player_api_for_iframe.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/aura/aura.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/draw2d_quartz2d/draw2d_quartz2d.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/experience_anthill/experience_anthill.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/experience_core/experience_core.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/experience_tranquillum/experience_tranquillum.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/gcom/gcom.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/irc/irc.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/mixercom/mixercom.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/multimedia/multimedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/music_midi_core_midi/music_midi_core_midi.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/resident/resident.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/resident_mixercom/resident_mixercom.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/resident_twitchtv/resident_twitchtv.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/resident_youtube/resident_youtube.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../third/strophe/strophe.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/userdatetime/userdatetime.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/veriwell/veriwell.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/multimedia/veriwell_multimedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/xmpp/xmpp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/youtube/youtube.xcodeproj">
+   </FileRef>
+</Workspace>

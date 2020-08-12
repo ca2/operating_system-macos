@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../../third/_group/group_third.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/_group/group_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../game/_group/group_estamira.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../game/_group/group_core_games.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../game/coincube/coincube.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../game/arch001/arch001.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/ace/ace.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/audio_decode_wave/audio_decode_wave.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../audio_mixer_core_audio/audio_mixer_core_audio.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/aura/aura.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/axis/axis.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/base/base.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/id3lib/baseid3lib.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/core/core.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/draw2d_quartz2d/draw2d_quartz2d.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../game/estamira/estamira.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../game/coincube/game_coincube.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../game/arch001/game_arch001.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/gcom/gcom.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/multimedia/multimedia.xcodeproj">
+   </FileRef>
+</Workspace>

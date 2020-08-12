@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../../third/_group/group_third.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/_group/group_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/_group/group_store.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/store/store.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/ace/ace.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/announcecom/announcecom.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/store/app_core_store.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../third/aqua/aqua.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/aura/aura.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/axis/axis.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/base/base.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/core/core.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/draw2d_quartz2d/draw2d_quartz2d.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/experience_tranquillum/experience_tranquillum.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/library/library.xcodeproj">
+   </FileRef>
+</Workspace>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:../../third/_group/group_third.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/_group/group_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/_group/group_multimedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/waven/waven.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/verisimplevideo/verisimplevideo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/musical_player_lite/musical_player_lite.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/musical_player/musical_player.xcodeproj">
+   </FileRef>
+</Workspace>

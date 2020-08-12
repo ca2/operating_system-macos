@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:../../third/_group/group_third.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/_group/group_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/_group/group_basic.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/hellomultiverse/hellomultiverse.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/flag/flag.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-cidadedecuritiba/alphaclock/alphaclock.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/clockverse/clockverse no audio.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/projection/projection.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/desk/desk.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/weather/weather.xcodeproj">
+   </FileRef>
+</Workspace>

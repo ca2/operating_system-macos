@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:../../third/_group/group_third.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/_group/group_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/_group/group_simple.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/app/app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/application/application.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/box/box.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/drawing/drawing.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/form/form.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/notify_drawing/notify_drawing.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/os_drag_and_drop/os_drag_and_drop.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/app/app_simple_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/application/app_simple_application.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/box/app_simple_box.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/drawing/app_simple_drawing.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/form/app_simple_form.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/notify_drawing/app_simple_notify_drawing.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-simple/os_drag_and_drop/app_simple_os_drag_and_drop.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/aura/aura.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/coreimage_imaging/coreimage_imaging.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/draw2d_quartz2d/draw2d_quartz2d.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/experience_core/experience_core.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/experience_tranquillum/experience_tranquillum.xcodeproj">
+   </FileRef>
+</Workspace>

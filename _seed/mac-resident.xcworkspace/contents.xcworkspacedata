@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../../app-core/resident/resident.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/ace/ace.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/irc_bot/app_core_irc_bot.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/irc_client/app_core_irc_client.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/irc_resident/app_core_irc_resident.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/resident/app_core_resident.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/xmpp_bot/app_core_xmpp_bot.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/xmpp_client/app_core_xmpp_client.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/xmpp_resident/app_core_xmpp_resident.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/atom/iconv/atomiconv.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../audio_core_audio/audio_core_audio.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/audio_decode_libmpg123/audio_decode_libmpg123.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/audio_decode_wave/audio_decode_wave.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../audio_mixer_core_audio/audio_mixer_core_audio.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/aura/aura.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/aura/charguess/auracharguess.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/aura/expat/auraexpat.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/aura/pcre/aurapcre.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/aura/sqlite/aurasqlite.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/axis/axis.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/axis/bzip2/axisbzip2.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/axis/crypto/axiscrypto.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/axis/freeimage/axisfreeimage.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/axis/freetype/axisfreetype.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/axis/idn/axisidn.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/axis/image_jpeg/axis_image_jpeg.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/axis/image_png/axis_image_png.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/axis/mysql/axismysql.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/axis/openssl/axisopenssl.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/axis/winpr/axiswinpr.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/axis/zlib/axiszlib.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/base/base.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/id3lib/baseid3lib.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/libmpg123/basempg123.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/core/core.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/draw2d_quartz2d/draw2d_quartz2d.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/irc/irc.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/multimedia/multimedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/pcre/pcre.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/programming/programming.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/strophe/strophe.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/vericard/vericard.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/wndfrm_core/wndfrm_core.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-core/xmpp/xmpp.xcodeproj">
+   </FileRef>
+</Workspace>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../../third/_group/basis_group_third.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app/_group/basis_group_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../app-ca2/quasar_science_update_utility/Quasar Science Update Utility.xcodeproj">
+   </FileRef>
+</Workspace>

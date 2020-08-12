@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:../../third/_group/group_third.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/_group/group_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/_group/group_multimedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/waven/waven.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/verisimplevideo/verisimplevideo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/musical_player_lite/musical_player_lite.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/musical_player/musical_player.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/asciimedia/app_veriwell_asciimedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/verisimplevideo/app_veriwell_verisimplevideo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/musical_player/app_veriwell_musical_player.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/musical_player_lite/app_veriwell_musical_player_lite.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/waven/app_veriwell_waven.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/audio/audio.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/audio_core_audio/audio_core_audio.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/audio_decode_libmpg123/audio_decode_libmpg123.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/audio_decode_wave/audio_decode_wave.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/aura/aura.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/draw2d_quartz2d/draw2d_quartz2d.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/experience_core/experience_core.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/gcom/gcom.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-core/multimedia/multimedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app/music_midi_core_midi/music_midi_core_midi.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/multimedia/veriwell_multimedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:../../app-veriwell/video_decode_ffmpeg/video_decode_ffmpeg.xcodeproj">
+   </FileRef>
+</Workspace>
