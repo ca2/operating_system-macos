@@ -11,9 +11,6 @@
       location = "group:../../app-simple/_group/group_simple.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:../../app-simple/app/app.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "container:../../app-simple/application/application.xcodeproj">
    </FileRef>
    <FileRef
