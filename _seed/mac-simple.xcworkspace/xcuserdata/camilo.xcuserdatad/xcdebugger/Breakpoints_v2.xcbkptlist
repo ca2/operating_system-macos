@@ -3,4 +3,69 @@
    uuid = "A90BE011-05AB-4FD6-957D-3B5FD0B13DED"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AABEF56D-6033-4731-AB5F-A66787E9AE7F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../app/aura/inline/application/macos.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "main(argc, argv)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "AABEF56D-6033-4731-AB5F-A66787E9AE7F - 8b771c936e7957b9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "app_simple_notify_drawing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/__archive/basis/app/aura/inline/application/macos.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "AABEF56D-6033-4731-AB5F-A66787E9AE7F - 4df4a4e9aec24217"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "libapp_simple_notify_drawing.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/__archive/basis/app/aura/inline/application/macos.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "AABEF56D-6033-4731-AB5F-A66787E9AE7F - 3ed18be943547336"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "libapp_simple_drawing.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/__archive/basis/app/aura/inline/application/macos.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
