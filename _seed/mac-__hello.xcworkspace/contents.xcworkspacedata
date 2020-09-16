@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../../app/_group/group___hello.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../console/helloearth/helloearth.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../console/hellosolarsystem/hellosolarsystem.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../console/readlines/readlines.xcodeproj">
+   </FileRef>
+</Workspace>
