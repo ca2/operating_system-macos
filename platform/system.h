@@ -28,8 +28,6 @@
 #endif
 
 
-
-
 struct device_context;
 struct gdi_object;
 
@@ -41,7 +39,6 @@ typedef struct gdi_object * HGDIOBJ;
 #define DECL_SPEC_ANY
 
 
-
 #ifdef DEBUG
 #undef DEBUG
 #define DEBUG 1
@@ -49,14 +46,19 @@ typedef struct gdi_object * HGDIOBJ;
 #define DEBUG 0
 #endif
 
+
 #if defined(__MM) || defined(__M)
+
 
 #include <Foundation/Foundation.h>
 #include <Cocoa/Cocoa.h>
 
+
 #endif
 
+
 #include <Carbon/Carbon.h>
+
 
 #if DEBUG
 #undef DEBUG
