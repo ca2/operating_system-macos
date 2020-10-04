@@ -104,7 +104,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9EFD37E5-7474-4CA2-A5B1-BEA49A9269D9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../app-core/audioaura/application.cpp"
@@ -260,7 +260,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "FF53416B-A9FA-4A5D-B26A-A87A6F52FD14"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../app-core/audioaura/view.cpp"
@@ -270,13 +270,45 @@
             endingLineNumber = "14"
             landmarkName = "view::view()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FF53416B-A9FA-4A5D-B26A-A87A6F52FD14 - 2389329001026186"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "audioaura::view::view()"
+                  moduleName = "libapp_core_audioaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/__archive/basis/app-core/audioaura/view.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "341">
+               </Location>
+               <Location
+                  uuid = "FF53416B-A9FA-4A5D-B26A-A87A6F52FD14 - 2389329001026186"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "audioaura::view::view()"
+                  moduleName = "libapp_core_audioaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/__archive/basis/app-core/audioaura/view.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "705">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "F4C70E83-9389-4240-A9F0-EA0920302AA0"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../app-core/audioaura/pane_view.cpp"
@@ -292,7 +324,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "668B7FDC-5B10-433B-A770-32DCF7378C6E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../app-core/audioaura/pane_view.cpp"
@@ -308,7 +340,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3CA09486-91A8-4AD6-A912-B1A3B927825C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../app-core/audioaura/pane_view.cpp"
@@ -318,6 +350,38 @@
             endingLineNumber = "11"
             landmarkName = "pane_view::pane_view()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3CA09486-91A8-4AD6-A912-B1A3B927825C - 4e2c6f011c40ac44"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "audioaura::pane_view::pane_view()"
+                  moduleName = "libapp_core_audioaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/__archive/basis/app-core/audioaura/pane_view.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "3CA09486-91A8-4AD6-A912-B1A3B927825C - 4e2c6f011c40ac44"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "audioaura::pane_view::pane_view()"
+                  moduleName = "libapp_core_audioaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/__archive/basis/app-core/audioaura/pane_view.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "25">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -445,6 +509,38 @@
             startingLineNumber = "952"
             endingLineNumber = "952"
             landmarkName = "frame_window::OnCreateHelper(pcs, pcreate)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D97EB803-8BCF-4EC1-95D3-71A93E5BE029"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../app-core/audioaura/application.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "application::start_audio(iView)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "352F4376-6767-4219-BB2E-0258A2F8E46A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../app-core/audioaura/application.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "application::start_audio(iView)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
