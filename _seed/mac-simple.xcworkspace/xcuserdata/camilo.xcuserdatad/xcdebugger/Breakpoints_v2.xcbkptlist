@@ -7,364 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AABEF56D-6033-4731-AB5F-A66787E9AE7F"
+            uuid = "04470467-7335-4852-9C92-D9F1683BA940"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../app/aura/inline/application/macos.h"
+            filePath = "../../app/apex/platform/application.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "main(argc, argv)"
-            landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "AABEF56D-6033-4731-AB5F-A66787E9AE7F - 8b771c936e7957b9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "app_simple_notify_drawing"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/camilo/__archive/basis/app/aura/inline/application/macos.h"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "26">
-               </Location>
-               <Location
-                  uuid = "AABEF56D-6033-4731-AB5F-A66787E9AE7F - 4df4a4e9aec24217"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "libapp_simple_notify_drawing.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/camilo/__archive/basis/app/aura/inline/application/macos.h"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "26">
-               </Location>
-               <Location
-                  uuid = "AABEF56D-6033-4731-AB5F-A66787E9AE7F - 3ed18be943547336"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "libapp_simple_drawing.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/camilo/__archive/basis/app/aura/inline/application/macos.h"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "26">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E4B184B4-496E-4382-BD5A-9967E469E403"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/aura/user/frame.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5"
-            endingLineNumber = "5"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  uuid = "E4B184B4-496E-4382-BD5A-9967E469E403 - 65150d8828a76547"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "user::frame::frame()"
-                  moduleName = "libaura.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/camilo/__archive/basis/app/aura/user/frame.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "228">
-               </Location>
-               <Location
-                  uuid = "E4B184B4-496E-4382-BD5A-9967E469E403 - 65150d8828a76547"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "user::frame::frame()"
-                  moduleName = "libaura.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/camilo/__archive/basis/app/aura/user/frame.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "26">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B0F7E459-0C3F-49F3-802C-BF5AA35CAFED"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/aura/user/interaction.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2694"
-            endingLineNumber = "2694"
-            landmarkName = "interaction::_001PrintBuffer(pgraphics)"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "application::initialize(pobjectContext)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1E254BB9-B776-49F6-9123-5AC7711DE71D"
+            uuid = "B8D4AC19-FFA8-4F1A-86BA-42ABDC0DA308"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../app/aura/user/interaction.cpp"
+            filePath = "../../app/apex/platform/application.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2711"
-            endingLineNumber = "2711"
-            landmarkName = "interaction::_001PrintBuffer(pgraphics)"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
+            landmarkName = "application::initialize(pobjectContext)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9B18D68E-6726-4F6C-AEAC-20254A762BA5"
-            shouldBeEnabled = "No"
+            uuid = "D34932A2-D144-4941-9BC0-94543EDB63C8"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../app/base/user/user/frame_window.cpp"
+            filePath = "../../app/base/user/user/impact_system.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "frame_window::defer_synch_layered()"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "impact_system::create_new_document(pcreate)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "36D728C2-AE63-4FDC-BB5E-6F098B0DEE6B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/experience_core/button.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "button::_001OnClip(pgraphics)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0637991F-71BB-4057-A673-5FF8726B2C5F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/aura/os/macos/mm_base_user.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "size_nswindow(hwnd, cx, cy)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EF09CBF5-6140-4978-8245-1FC0B956CD18"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/aura/node/macos/interaction_impl.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1219"
-            endingLineNumber = "1219"
-            landmarkName = "interaction_impl::message_handler(pbase)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0A2F2422-1536-4D53-8DB6-8CE595EA3052"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/aura/node/macos/interaction_impl.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4549"
-            endingLineNumber = "4549"
-            landmarkName = "interaction_impl::round_window_mouse_down(iButton, x, y)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "70ED764E-CC2D-451D-A93C-3B07178C542F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/aura/node/macos/interaction_impl.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1082"
-            endingLineNumber = "1082"
-            landmarkName = "interaction_impl::message_handler(pbase)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4544C460-445D-47A9-8C59-23BB1191B164"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/aura/user/interaction_impl.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2297"
-            endingLineNumber = "2297"
-            landmarkName = "interaction_impl::send_message(message, wparam, lparam)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
-         <BreakpointContent
-            uuid = "24F701D3-9327-41B7-91FF-146204094BAE"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            breakpointStackSelectionBehavior = "1"
-            scope = "0"
-            stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "69BA805F-38C6-45BF-8AEF-144D0ECFA1CA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/aura/user/interaction_thread.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "449"
-            endingLineNumber = "449"
-            landmarkName = "thread::process_base_message(pbase)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CA76BECC-B756-4FD5-BE07-B80538C72037"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/apex/multithreading/thread.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3790"
-            endingLineNumber = "3790"
-            landmarkName = "thread::process_message()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5E46C799-06CC-4ED4-96BC-870C69C8193E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/apex/multithreading/thread.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3793"
-            endingLineNumber = "3793"
-            landmarkName = "thread::process_message()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F15AF200-377E-41E8-8CC3-FA74A0D7D642"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/core/platform/session.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "session::session()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F15AF200-377E-41E8-8CC3-FA74A0D7D642 - eafb6f68116e1086"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "core::session::session()"
-                  moduleName = "libcore.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/camilo/__archive/basis/app/core/platform/session.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "326">
-               </Location>
-               <Location
-                  uuid = "F15AF200-377E-41E8-8CC3-FA74A0D7D642 - eafb6f68116e1086"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "core::session::session()"
-                  moduleName = "libcore.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/camilo/__archive/basis/app/core/platform/session.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "847">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
