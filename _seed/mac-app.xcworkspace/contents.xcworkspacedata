@@ -2,15 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../third/_group/group_third.xcodeproj">
+      location = "group:../../../source/third/_group/group_third.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app/_group/group_aura.xcodeproj">
+      location = "group:../../../source/app/_group/group_aura.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app/app/app_app.xcodeproj">
+      location = "group:../../../source/app/app/app_app.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app/shader/app_shader.xcodeproj">
+      location = "group:../../../source/app/shader/app_shader.xcodeproj">
    </FileRef>
 </Workspace>
