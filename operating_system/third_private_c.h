@@ -4,7 +4,7 @@
 #define THIRD_PRIVATE_C_H
 
 
-#include "platform/platform/_.h"
+#include "_.h"
 
 
 #undef IN

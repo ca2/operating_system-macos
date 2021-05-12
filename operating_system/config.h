@@ -8,6 +8,8 @@
 #pragma once
 
 
+#define PARALLELIZATION_PTHREAD
+
 //#define _POSIX_C_SOURCE 200809L
 #define index __ancient_posix_c_source_index
 
@@ -19,6 +21,9 @@
 #define DEBUG 1
 #endif
 
+
+#define PLATFORM_NAME "macos"
+#define PLATFORM_NAMESPACE macos
 
 //#ifdef __cplusplus
 //typedef wchar_t unichar;

@@ -8,6 +8,13 @@
 
 #define __ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES 0
 
+#ifndef MAX_PATH
+#define MAX_PATH 260
+#endif
+
+#ifndef _MAX_PATH
+#define _MAX_PATH MAX_PATH
+#endif
 
 #include <stdlib.h>
 #include <stdio.h>
