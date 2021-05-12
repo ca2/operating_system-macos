@@ -22,6 +22,9 @@
 #endif
 
 
+#define HAVE_TERMIOS_H 1
+
+
 #define PLATFORM_NAME "macos"
 #define PLATFORM_NAMESPACE macos
 

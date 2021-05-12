@@ -26,6 +26,9 @@
 #include <xlocale.h>
 
 
+#define platform_char char
+
+
 #define DEBUG_BREAK __builtin_debugtrap()
 
 #ifdef __cplusplus
