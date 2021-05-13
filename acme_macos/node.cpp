@@ -17,7 +17,7 @@ namespace acme
 {
 
 
-   namespace posix
+   namespace macos
    {
 
 
@@ -601,8 +601,47 @@ namespace acme
 
       }
 
+   
+   ::e_status node::_launch_macos_app(const char * pszAppFolder)
+   {
+      
+      if (!pszAppFolder)
+      {
+         
+         return false;
+         
+      }
+      
+      string strCommand;
+      
+      strCommand.Format("open \"%s\"", pszAppFolder);
+      
+      return ::launch_command(strCommand);
+      
+   }
 
-   } // namespace posix
+
+   bool node::_launch_macos_app_args(const char * pszAppFolder, const char * pszArgs)
+   {
+      
+      if (!pszAppFolder)
+      {
+         
+         return false;
+         
+      }
+      
+      string strCommand;
+      
+      strCommand.Format("open \"%s\" --args %s", pszAppFolder, pszArgs);
+      
+      return ::launch_command(strCommand);
+      
+   }
+
+
+
+   } // namespace macos
 
 
 

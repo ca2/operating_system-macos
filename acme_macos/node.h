@@ -87,7 +87,10 @@ namespace acme
 
          virtual ::e_status install_sigchld_handler() override;
 
+         ::e_status _launch_macos_app(const char * pszAppFolder) override;
 
+         ::e_status _launch_macos_app_args(const char * pszAppFolder, const char * pszArgs) override;
+         
 
       };
 

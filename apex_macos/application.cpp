@@ -308,44 +308,44 @@ namespace apex
 //   }
 
 
-   bool application::os_on_start_application()
-   {
-
-      ::file::path path = pcontext->m_papexcontext->file().module();
-
-      path -= 3;
-      
-      if(::dir::is(path))
-      {
-
-         ::file::path path2 = pacmedir->localconfig() / "monitor-0/desk/2desk" / path.name();
-         
-         if(::file_exists(path2))
-         {
-
-            ::unlink(path2);
-            
-         }
-         
-         auto pathFolder2 = path2.folder();
-         
-         ::dir::mk(pathFolder2);
-         
-         bool bFilePathIsLink = file_path_is_link(path2);
-         
-         if(!bFilePathIsLink && ::dir::is(pathFolder2))
-         {
-
-            ::system("ln -s \"" + path + "\"" + " \"" + path2 + "\"");
-            
-         }
-         
-      }
-
-      return true;
-
-   }
-
+//   bool application::os_on_start_application()
+//   {
+//
+//      ::file::path path = pcontext->m_papexcontext->file().module();
+//
+//      path -= 3;
+//      
+//      if(::dir::is(path))
+//      {
+//
+//         ::file::path path2 = pacmedir->localconfig() / "monitor-0/desk/2desk" / path.name();
+//         
+//         if(::file_exists(path2))
+//         {
+//
+//            ::unlink(path2);
+//            
+//         }
+//         
+//         auto pathFolder2 = path2.folder();
+//         
+//         ::dir::mk(pathFolder2);
+//         
+//         bool bFilePathIsLink = file_path_is_link(path2);
+//         
+//         if(!bFilePathIsLink && ::dir::is(pathFolder2))
+//         {
+//
+//            ::system("ln -s \"" + path + "\"" + " \"" + path2 + "\"");
+//            
+//         }
+//         
+//      }
+//
+//      return true;
+//
+//   }
+//
 
 //   bool application::os_on_start_application()
 //   {

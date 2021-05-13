@@ -27,10 +27,7 @@
 		9A15A630264B56770080670E /* application.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A61E264B56770080670E /* application.h */; };
 		9A15A631264B56770080670E /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A61F264B56770080670E /* util.cpp */; };
 		9A15A632264B56770080670E /* file.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A620264B56770080670E /* file.h */; };
-		9A787BE7264BD7AF003DF8A0 /* exception_engine.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787BE1264BD7AE003DF8A0 /* exception_engine.h */; };
 		9A787BE8264BD7AF003DF8A0 /* mmos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787BE4264BD7AE003DF8A0 /* mmos.mm */; };
-		9A787BE9264BD7AF003DF8A0 /* exception_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787BE5264BD7AF003DF8A0 /* exception_engine.cpp */; };
-		9A787BEA264BD7AF003DF8A0 /* process.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787BE6264BD7AF003DF8A0 /* process.cpp */; };
 		9A787C66264BD87E003DF8A0 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787C63264BD87E003DF8A0 /* node.cpp */; };
 		9A787C67264BD87E003DF8A0 /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787C64264BD87E003DF8A0 /* node.h */; };
 		9A787C68264BD87E003DF8A0 /* mmos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787C65264BD87E003DF8A0 /* mmos.h */; };
@@ -106,10 +103,7 @@
 		9A15A61E264B56770080670E /* application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = application.h; sourceTree = "<group>"; };
 		9A15A61F264B56770080670E /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
 		9A15A620264B56770080670E /* file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file.h; sourceTree = "<group>"; };
-		9A787BE1264BD7AE003DF8A0 /* exception_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exception_engine.h; sourceTree = "<group>"; };
 		9A787BE4264BD7AE003DF8A0 /* mmos.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mmos.mm; sourceTree = "<group>"; };
-		9A787BE5264BD7AF003DF8A0 /* exception_engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = exception_engine.cpp; sourceTree = "<group>"; };
-		9A787BE6264BD7AF003DF8A0 /* process.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = process.cpp; sourceTree = "<group>"; };
 		9A787C63264BD87E003DF8A0 /* node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		9A787C64264BD87E003DF8A0 /* node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
 		9A787C65264BD87E003DF8A0 /* mmos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mmos.h; sourceTree = "<group>"; };
@@ -156,8 +150,6 @@
 				9A15A60F264B56740080670E /* aaa_frame_window.cpp */,
 				9A15A61B264B56760080670E /* application.cpp */,
 				9A15A61E264B56770080670E /* application.h */,
-				9A787BE5264BD7AF003DF8A0 /* exception_engine.cpp */,
-				9A787BE1264BD7AE003DF8A0 /* exception_engine.h */,
 				9A15A612264B56750080670E /* factory_exchange.cpp */,
 				9A15A618264B56750080670E /* factory_exchange.h */,
 				9A15A61C264B56760080670E /* file.cpp */,
@@ -169,7 +161,6 @@
 				9A787BE4264BD7AE003DF8A0 /* mmos.mm */,
 				9A787C63264BD87E003DF8A0 /* node.cpp */,
 				9A787C64264BD87E003DF8A0 /* node.h */,
-				9A787BE6264BD7AF003DF8A0 /* process.cpp */,
 				9A15A614264B56750080670E /* stdio_file.cpp */,
 				9A15A615264B56750080670E /* stdio_file.h */,
 				9A15A61A264B56760080670E /* thread.cpp */,
@@ -218,7 +209,6 @@
 				9A15A625264B56770080670E /* _.h in Headers */,
 				9A15A62A264B56770080670E /* factory_exchange.h in Headers */,
 				9A15A623264B56770080670E /* thread.h in Headers */,
-				9A787BE7264BD7AF003DF8A0 /* exception_engine.h in Headers */,
 				9A15A622264B56770080670E /* _macos.h in Headers */,
 				9A787C67264BD87E003DF8A0 /* node.h in Headers */,
 				9A15A62B264B56770080670E /* _mm.h in Headers */,
@@ -333,14 +323,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A0C178F264A2F4200B5CC33 /* framework.cpp in Sources */,
-				9A787BE9264BD7AF003DF8A0 /* exception_engine.cpp in Sources */,
 				9A787BE8264BD7AF003DF8A0 /* mmos.mm in Sources */,
 				9A15A62E264B56770080670E /* file.cpp in Sources */,
 				9A15A62F264B56770080670E /* main.cpp in Sources */,
 				9A15A631264B56770080670E /* util.cpp in Sources */,
 				9A15A62C264B56770080670E /* thread.cpp in Sources */,
 				9A15A626264B56770080670E /* stdio_file.cpp in Sources */,
-				9A787BEA264BD7AF003DF8A0 /* process.cpp in Sources */,
 				9A15A629264B56770080670E /* trace.cpp in Sources */,
 				9A15A624264B56770080670E /* factory_exchange.cpp in Sources */,
 				9A787C66264BD87E003DF8A0 /* node.cpp in Sources */,
@@ -416,11 +404,37 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(WorkspaceDir)/archive",
+					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/storage-$(PLATFORM_MODIFIER)/library/$(CONFIGURATION)",
+					"$(WorkspaceDir)/archive",
+					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/storage-$(PLATFORM_MODIFIER)/third/library/$(CONFIGURATION)",
+					"$(WorkspaceDir)/time/$(PLATFORM_MODIFIER)",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = (
+					.,
+					"$(WorkspaceDir)/source",
+					"$(WorkspaceDir)/source/include",
+					"$(WorkspaceDir)/source/app",
+					"$(WorkspaceDir)/source/app/_include",
+					"$(WorkspaceDir)/archive",
+					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)",
+					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/_include",
+					"$(WorkspaceDir)/source/third/include",
+					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include/include",
+					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include",
+					"$(PROJECT_DIR)",
+					"$(HOME)/sensitive/sensitive/include",
+				);
+				USE_HEADERMAP = NO;
+				WorkspaceDir = "$(SRCROOT)/../../..";
 			};
 			name = Debug;
 		};
@@ -469,10 +483,36 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(WorkspaceDir)/archive",
+					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/storage-$(PLATFORM_MODIFIER)/library/$(CONFIGURATION)",
+					"$(WorkspaceDir)/archive",
+					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/storage-$(PLATFORM_MODIFIER)/third/library/$(CONFIGURATION)",
+					"$(WorkspaceDir)/time/$(PLATFORM_MODIFIER)",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = (
+					.,
+					"$(WorkspaceDir)/source",
+					"$(WorkspaceDir)/source/include",
+					"$(WorkspaceDir)/source/app",
+					"$(WorkspaceDir)/source/app/_include",
+					"$(WorkspaceDir)/archive",
+					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)",
+					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/_include",
+					"$(WorkspaceDir)/source/third/include",
+					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include/include",
+					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include",
+					"$(PROJECT_DIR)",
+					"$(HOME)/sensitive/sensitive/include",
+				);
+				USE_HEADERMAP = NO;
+				WorkspaceDir = "$(SRCROOT)/../../..";
 			};
 			name = Release;
 		};
@@ -483,6 +523,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				PLATFORM_MODIFIER = macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -495,6 +536,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				PLATFORM_MODIFIER = macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
