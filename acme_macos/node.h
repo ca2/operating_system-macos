@@ -12,12 +12,12 @@ namespace acme
 {
 
 
-   namespace posix
+   namespace macos
    {
 
 
       class CLASS_DECL_ACME node :
-         virtual public ::acme::node
+         virtual public ::acme::apple::node
       {
       public:
 
@@ -90,12 +90,40 @@ namespace acme
          ::e_status _launch_macos_app(const char * pszAppFolder) override;
 
          ::e_status _launch_macos_app_args(const char * pszAppFolder, const char * pszArgs) override;
+
+         void ns_launch_app(const char * psz, const char ** argv, int iFlags) override;
          
+         bool process_modules(string_array& stra, u32 processID) override;
+
+         bool load_modules_diff(string_array& straOld, string_array& straNew, const char* pszExceptDir) override;
+
+         id_array get_pids() override;
+         
+         id_array module_path_get_pid(const char* pszModulePath, bool bModuleNameIsPropertyFormatted = false) override;
+         
+         string module_path_from_pid(u32 pid) override;
+         
+         string command_line_from_pid(u32 pid) override;
+
+         bool is_shared_library_busy(u32 processid, const string_array& stra) override;
+
+         bool is_shared_library_busy(const string_array& stra) override;
+         
+         bool process_contains_module(string& strImage, ::u32 processID, const char* pszLibrary) override;
+
+         void shared_library_process(dword_array& dwa, string_array& straProcesses, const char* pszLibrary) override;
+
+         int_bool is_process_running(::u32 pid) override;
+         
+         string get_environment_variable(const char* pszEnvironmentVariable) override;
+         
+         string expand_env(string str) override;
+
 
       };
 
 
-   } // namespace posix
+   } // namespace apple
 
 
 } // namespace acme

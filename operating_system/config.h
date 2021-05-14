@@ -13,6 +13,8 @@
 //#define _POSIX_C_SOURCE 200809L
 #define index __ancient_posix_c_source_index
 
+#define CDECL
+
 #define WCHAR_T_SIZE 32
 
 #define PLATFORM_NAMESPACE macos

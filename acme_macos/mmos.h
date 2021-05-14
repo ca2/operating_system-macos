@@ -20,10 +20,12 @@
    @public   int m_iScanIcon;
    @public  const char * m_pszIcon;
    @public NSRecursiveLock *theLock;
+   @public void * m_pSystem;
+
    
 }
 
-+ (id)get;
+- (id)get;
 
 - (void)get_user_wallpaper:(void **)charpp forScreen:(NSScreen *) s;
 

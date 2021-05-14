@@ -1,10 +1,51 @@
 #include "_mm.h"
 #include "acme/id.h"
 
-void int_system_call_update(int iUpdate, int iArg);
+::e_status __call(::matter * pmatter);
+void millis_sleep(::u64 uMillis);
+
+void int_system_call_update(void * pSystem, int iUpdate, int iArg);
 //void system_call_update_wallpaper_changed();
 
 bool mm2_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const char * psz);
+
+void * get_system_mmos(void * pSystem);
+void set_system_mmos(void * pSystem, void * pmmos);
+
+
+void init_mmos(void * pSystem)
+{
+
+   auto pmmos = ([[mmos alloc] init]);
+
+   set_system_mmos(pSystem, (__bridge_retained void *) pmmos);
+
+   pmmos->m_pSystem = pSystem;
+   
+   pmmos->theLock = [[NSRecursiveLock alloc] init];
+   
+   pmmos->m_ppszWallpaper = NULL;
+   
+   pmmos->m_llWallpaper = 0;
+   
+   pmmos->m_iIcon = 0;
+   
+   [pmmos monitorWallpaper];
+   
+   [pmmos monitorIconForFile];
+   
+   [[pmmos dd_invokeOnMainThreadAndWaitUntilDone: TRUE] deferWallpaper:NULL];
+   
+}
+
+void term_mmos(void * pSystem)
+{
+   
+   auto pmmos = (__bridge_transfer mmos *) get_system_mmos(pSystem);
+   
+   [pmmos dd_fake];
+   
+}
 
 //
 //void ns_main_async(dispatch_block_t block)
@@ -108,33 +149,33 @@ bool mm2_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const cha
 }
 
 
-+ (id)get
+- (id)get
 {
    
-   static mmos * s_mmos = NULL;
+//   static mmos * s_mmos = NULL;
+//
+//   if(s_mmos == NULL)
+//   {
+//
+//      s_mmos = ([[self alloc] init]);
+//
+//      s_mmos->theLock = [[NSRecursiveLock alloc] init];
+//
+//      s_mmos->m_ppszWallpaper = NULL;
+//
+//      s_mmos->m_llWallpaper = 0;
+//
+//      s_mmos->m_iIcon = 0;
+//
+//      [s_mmos monitorWallpaper];
+//
+//      [s_mmos monitorIconForFile];
+//
+//      [[s_mmos dd_invokeOnMainThreadAndWaitUntilDone: TRUE] deferWallpaper:NULL];
+//
+//   }
    
-   if(s_mmos == NULL)
-   {
-      
-      s_mmos = ([[self alloc] init]);
-      
-      s_mmos->theLock = [[NSRecursiveLock alloc] init];
-      
-      s_mmos->m_ppszWallpaper = NULL;
-      
-      s_mmos->m_llWallpaper = 0;
-      
-      s_mmos->m_iIcon = 0;
-      
-      [s_mmos monitorWallpaper];
-      
-      [s_mmos monitorIconForFile];
-      
-      [[s_mmos dd_invokeOnMainThreadAndWaitUntilDone: TRUE] deferWallpaper:NULL];
-      
-   }
-   
-   return s_mmos;
+   return (__bridge mmos *) get_system_mmos(m_pSystem);
    
 }
 
@@ -192,7 +233,7 @@ bool mm2_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const cha
 - (void)desktopImageChanged:(NSNotification *)notification
 {
 
-   int_system_call_update(id_wallpaper_changed, 0);
+   int_system_call_update(m_pSystem, id_wallpaper_changed, 0);
 
 }
 
@@ -205,7 +246,7 @@ bool mm2_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const cha
    if([app.localizedName isEqualToString:@"ScreenSaverEngine"])
    {
       
-      int_system_call_update(id_wallpaper_changed, 0);
+      int_system_call_update(m_pSystem, id_wallpaper_changed, 0);
       
    }
    
@@ -245,7 +286,7 @@ bool mm2_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const cha
 -(void)runRunnable:(matter *)prunnable
 {
    
-   prunnable->call();
+   __call(prunnable);
    
 }
 
@@ -337,27 +378,27 @@ bool mm2_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const cha
 @end
 
 
-bool mm1a_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const char * psz)
+bool mm1a_get_file_image(void * pSystem, unsigned int * pcr, int cx, int cy, int iScan, const char * psz)
 {
    
-   mmos * os = [mmos get];
+   auto pmmos = (__bridge mmos *) get_system_mmos(pSystem);
    
-   if(os->m_iIcon == 0)
+   if(pmmos->m_iIcon == 0)
    {
 
-      os->m_pszIcon = psz;
+      pmmos->m_pszIcon = psz;
 
-      os->m_picon = pcr;
+      pmmos->m_picon = pcr;
 
-      os->m_cxIcon = cx;
+      pmmos->m_cxIcon = cx;
 
-      os->m_cyIcon = cy;
+      pmmos->m_cyIcon = cy;
 
-      os->m_iScanIcon = iScan;
+      pmmos->m_iScanIcon = iScan;
 
-      os->m_iIcon = 1;
+      pmmos->m_iIcon = 1;
 
-      while(os->m_iIcon != 0)
+      while(pmmos->m_iIcon != 0)
       {
          
          millis_sleep(5);

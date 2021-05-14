@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		9A0C178F264A2F4200B5CC33 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C178E264A2F4200B5CC33 /* framework.cpp */; };
 		9A0C1791264A2F5000B5CC33 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A0C1790264A2F5000B5CC33 /* framework.h */; };
-		9A15A621264B56770080670E /* aaa_frame_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A60F264B56740080670E /* aaa_frame_window.cpp */; };
-		9A15A622264B56770080670E /* _macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A610264B56740080670E /* _macos.h */; };
+		9A15A622264B56770080670E /* _acme_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A610264B56740080670E /* _acme_macos.h */; };
 		9A15A623264B56770080670E /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A611264B56740080670E /* thread.h */; };
 		9A15A624264B56770080670E /* factory_exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A612264B56750080670E /* factory_exchange.cpp */; };
 		9A15A625264B56770080670E /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A613264B56750080670E /* _.h */; };
@@ -31,6 +30,14 @@
 		9A787C66264BD87E003DF8A0 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787C63264BD87E003DF8A0 /* node.cpp */; };
 		9A787C67264BD87E003DF8A0 /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787C64264BD87E003DF8A0 /* node.h */; };
 		9A787C68264BD87E003DF8A0 /* mmos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787C65264BD87E003DF8A0 /* mmos.h */; };
+		9A787E39264DC3B5003DF8A0 /* process_pid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787E36264DC3B5003DF8A0 /* process_pid.cpp */; };
+		9A787E79264E8919003DF8A0 /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17A9264A319300B5CC33 /* libacme.dylib */; };
+		9A787E7A264E8919003DF8A0 /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5DC264B54CB0080670E /* libacme_apple.dylib */; };
+		9A787E7B264E8919003DF8A0 /* libacme_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17A2264A318600B5CC33 /* libacme_posix.dylib */; };
+		9A787E88264E8D02003DF8A0 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A787E87264E8D02003DF8A0 /* CoreServices.framework */; };
+		9A787E8C264E8DC5003DF8A0 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A787E8B264E8DC5003DF8A0 /* AppKit.framework */; };
+		9A787E8E264E901E003DF8A0 /* mm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787E8D264E901E003DF8A0 /* mm.mm */; };
+		9A787E91264E9276003DF8A0 /* process.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787E90264E9276003DF8A0 /* process.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +83,13 @@
 			remoteGlobalIDString = 9A15A582264B536C0080670E;
 			remoteInfo = acme_apple;
 		};
+		9A787E71264E23AD003DF8A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A15A5D6264B54CA0080670E /* acme_apple.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A15A581264B536C0080670E;
+			remoteInfo = acme_apple;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -85,8 +99,7 @@
 		9A0C179D264A318600B5CC33 /* acme_posix.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_posix.xcodeproj; path = "../../platform-posix/acme_posix/acme_posix.xcodeproj"; sourceTree = "<group>"; };
 		9A0C17A3264A319300B5CC33 /* acme.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme.xcodeproj; path = ../../../source/app/acme/acme.xcodeproj; sourceTree = "<group>"; };
 		9A15A5D6264B54CA0080670E /* acme_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_apple.xcodeproj; path = "../../platform-apple/acme_apple/acme_apple.xcodeproj"; sourceTree = "<group>"; };
-		9A15A60F264B56740080670E /* aaa_frame_window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aaa_frame_window.cpp; sourceTree = "<group>"; };
-		9A15A610264B56740080670E /* _macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _macos.h; sourceTree = "<group>"; };
+		9A15A610264B56740080670E /* _acme_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _acme_macos.h; sourceTree = "<group>"; };
 		9A15A611264B56740080670E /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread.h; sourceTree = "<group>"; };
 		9A15A612264B56750080670E /* factory_exchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = factory_exchange.cpp; sourceTree = "<group>"; };
 		9A15A613264B56750080670E /* _.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
@@ -107,6 +120,13 @@
 		9A787C63264BD87E003DF8A0 /* node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		9A787C64264BD87E003DF8A0 /* node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
 		9A787C65264BD87E003DF8A0 /* mmos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mmos.h; sourceTree = "<group>"; };
+		9A787E36264DC3B5003DF8A0 /* process_pid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = process_pid.cpp; sourceTree = "<group>"; };
+		9A787E83264E8C7D003DF8A0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		9A787E85264E8C97003DF8A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9A787E87264E8D02003DF8A0 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		9A787E8B264E8DC5003DF8A0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9A787E8D264E901E003DF8A0 /* mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mm.mm; sourceTree = "<group>"; };
+		9A787E90264E9276003DF8A0 /* process.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = process.cpp; sourceTree = "<group>"; };
 		9AB5F929264B020100C4F2A3 /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +135,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A787E8C264E8DC5003DF8A0 /* AppKit.framework in Frameworks */,
+				9A787E88264E8D02003DF8A0 /* CoreServices.framework in Frameworks */,
+				9A787E79264E8919003DF8A0 /* libacme.dylib in Frameworks */,
+				9A787E7A264E8919003DF8A0 /* libacme_apple.dylib in Frameworks */,
+				9A787E7B264E8919003DF8A0 /* libacme_posix.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +154,7 @@
 				9A15A5D6264B54CA0080670E /* acme_apple.xcodeproj */,
 				9A0C16D6264A2CE900B5CC33 /* acme_macos */,
 				9A0C1660264A290E00B5CC33 /* Products */,
+				9A787E78264E8919003DF8A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,10 +170,9 @@
 			isa = PBXGroup;
 			children = (
 				9A15A613264B56750080670E /* _.h */,
+				9A15A610264B56740080670E /* _acme_macos.h */,
 				9AB5F929264B020100C4F2A3 /* _c_mm.h */,
-				9A15A610264B56740080670E /* _macos.h */,
 				9A15A619264B56760080670E /* _mm.h */,
-				9A15A60F264B56740080670E /* aaa_frame_window.cpp */,
 				9A15A61B264B56760080670E /* application.cpp */,
 				9A15A61E264B56770080670E /* application.h */,
 				9A15A612264B56750080670E /* factory_exchange.cpp */,
@@ -157,10 +182,13 @@
 				9A0C178E264A2F4200B5CC33 /* framework.cpp */,
 				9A0C1790264A2F5000B5CC33 /* framework.h */,
 				9A15A61D264B56760080670E /* main.cpp */,
+				9A787E8D264E901E003DF8A0 /* mm.mm */,
 				9A787C65264BD87E003DF8A0 /* mmos.h */,
 				9A787BE4264BD7AE003DF8A0 /* mmos.mm */,
 				9A787C63264BD87E003DF8A0 /* node.cpp */,
 				9A787C64264BD87E003DF8A0 /* node.h */,
+				9A787E36264DC3B5003DF8A0 /* process_pid.cpp */,
+				9A787E90264E9276003DF8A0 /* process.cpp */,
 				9A15A614264B56750080670E /* stdio_file.cpp */,
 				9A15A615264B56750080670E /* stdio_file.h */,
 				9A15A61A264B56760080670E /* thread.cpp */,
@@ -197,6 +225,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9A787E78264E8919003DF8A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A787E8B264E8DC5003DF8A0 /* AppKit.framework */,
+				9A787E87264E8D02003DF8A0 /* CoreServices.framework */,
+				9A787E85264E8C97003DF8A0 /* Foundation.framework */,
+				9A787E83264E8C7D003DF8A0 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -209,7 +248,7 @@
 				9A15A625264B56770080670E /* _.h in Headers */,
 				9A15A62A264B56770080670E /* factory_exchange.h in Headers */,
 				9A15A623264B56770080670E /* thread.h in Headers */,
-				9A15A622264B56770080670E /* _macos.h in Headers */,
+				9A15A622264B56770080670E /* _acme_macos.h in Headers */,
 				9A787C67264BD87E003DF8A0 /* node.h in Headers */,
 				9A15A62B264B56770080670E /* _mm.h in Headers */,
 				9A15A628264B56770080670E /* user.h in Headers */,
@@ -233,6 +272,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9A787E72264E23AD003DF8A0 /* PBXTargetDependency */,
 				9A0C17AF264A31AE00B5CC33 /* PBXTargetDependency */,
 				9A0C17AD264A31A100B5CC33 /* PBXTargetDependency */,
 			);
@@ -323,9 +363,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A0C178F264A2F4200B5CC33 /* framework.cpp in Sources */,
+				9A787E39264DC3B5003DF8A0 /* process_pid.cpp in Sources */,
 				9A787BE8264BD7AF003DF8A0 /* mmos.mm in Sources */,
+				9A787E91264E9276003DF8A0 /* process.cpp in Sources */,
 				9A15A62E264B56770080670E /* file.cpp in Sources */,
 				9A15A62F264B56770080670E /* main.cpp in Sources */,
+				9A787E8E264E901E003DF8A0 /* mm.mm in Sources */,
 				9A15A631264B56770080670E /* util.cpp in Sources */,
 				9A15A62C264B56770080670E /* thread.cpp in Sources */,
 				9A15A626264B56770080670E /* stdio_file.cpp in Sources */,
@@ -333,7 +376,6 @@
 				9A15A624264B56770080670E /* factory_exchange.cpp in Sources */,
 				9A787C66264BD87E003DF8A0 /* node.cpp in Sources */,
 				9A15A62D264B56770080670E /* application.cpp in Sources */,
-				9A15A621264B56770080670E /* aaa_frame_window.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +391,11 @@
 			isa = PBXTargetDependency;
 			name = acme_posix;
 			targetProxy = 9A0C17AE264A31AE00B5CC33 /* PBXContainerItemProxy */;
+		};
+		9A787E72264E23AD003DF8A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = acme_apple;
+			targetProxy = 9A787E71264E23AD003DF8A0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -427,6 +474,8 @@
 					"$(WorkspaceDir)/archive",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/_include",
+					"$(WorkspaceDir)/archive/platform-apple",
+					"$(WorkspaceDir)/archive/platform-posix",
 					"$(WorkspaceDir)/source/third/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include",
@@ -505,6 +554,8 @@
 					"$(WorkspaceDir)/archive",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/_include",
+					"$(WorkspaceDir)/archive/platform-apple",
+					"$(WorkspaceDir)/archive/platform-posix",
 					"$(WorkspaceDir)/source/third/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include",

@@ -7,7 +7,16 @@
 #pragma once
 
 
-//#include "shell.h"
-//#include "shell_macos.h"
+#include "acme_apple/_acme_apple.h"
+
+
+#include "file.h"
+
+
+#include "stdio_file.h"
+
+
+#include "node.h"
+
 
 

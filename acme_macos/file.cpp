@@ -9,17 +9,17 @@
 #include <sys/stat.h>
 
 
-int translate_unix_error(int error)
+::e_status translate_unix_error(int error)
 {
 
    switch(error)
    {
    case 0:
-      return 0;
+      return ::success;
    case ENOENT:
-      return ERROR_FILE_NOT_FOUND;
+      return error_file_not_found;
    default:
-      return -1;
+      return error_failed;
    }
 
 }
@@ -105,7 +105,7 @@ namespace macos
       
       ASSERT(__is_valid_string(lpszFileName));
 
-      eopen &= ~::file::e_open_binary;
+      eopen -= ::file::e_open_binary;
 
       if ((eopen & ::file::e_open_defer_create_directory) && (eopen & ::file::e_open_write))
       {
@@ -120,7 +120,6 @@ namespace macos
 
       m_strFileName     = lpszFileName;
 
-      ASSERT(sizeof(HANDLE) == sizeof(uptr));
       ASSERT(::file::e_open_share_compat == 0);
 
       // ::collection::map read/write mode
@@ -186,9 +185,9 @@ namespace macos
       if(hFile == hFileNull)
       {
 
-         ::u32 dwLastError = translate_unix_error(errno);
+         auto estatus = translate_unix_error(errno);
 
-         if(dwLastError != ERROR_FILE_NOT_FOUND && dwLastError != ERROR_PATH_NOT_FOUND)
+         if(estatus != error_file_not_found && estatus != error_path_not_found)
          {
 
             return ::error_io;
@@ -198,9 +197,9 @@ namespace macos
          if (hFile == -1)
          {
 
-            ::u32 dwLastError = ::get_last_error();
+            estatus = ::get_last_status();
 
-            return ::error_io;
+            return estatus;
 
          }
 
@@ -242,9 +241,9 @@ namespace macos
 
          readNow = (size_t) minimum(0x7fffffff, nCount);
 
-         size_t iRead = ::read(m_iFile, &((byte *)lpBuf)[pos], readNow);
+         auto iRead = ::read(m_iFile, &((byte *)lpBuf)[pos], readNow);
 
-         if(iRead == ::numeric_info<size_t>::get_allset_value ())
+         if(iRead < 0)
          {
 
             i32 iError = errno;
@@ -311,9 +310,9 @@ namespace macos
       while(nCount > 0)
       {
          
-         size_t iWrite = ::write(m_iFile, &((const byte *)lpBuf)[pos], (size_t) minimum(0x7fffffff, nCount));
+         auto iWrite = ::write(m_iFile, &((const byte *)lpBuf)[pos], (size_t) minimum(0x7fffffff, nCount));
          
-         if(iWrite == ::numeric_info<size_t>::get_allset_value ())
+         if(iWrite < 0)
          {
             
             ::file::throw_errno(errno, m_strFileName);
@@ -476,7 +475,7 @@ namespace macos
       if(dwCur != (u64)pFile->seek((filesize) dwCur, ::file::seek_begin))
       {
 
-         __throw(io_exception("failed to seek back to the original position on get_length"));
+         __throw(error_io, "failed to seek back to the original position on get_length");
 
       }
 
@@ -627,12 +626,12 @@ bool CLASS_DECL_ACME vfxFullPath(wstring & wstrFullPath, const wstring & wstrPat
 }
 
 
-CLASS_DECL_ACME void vfxGetModuleShortFileName(HINSTANCE hInst, string& strShortName)
-{
-
-   __throw(todo);
-
-}
+//CLASS_DECL_ACME void vfxGetModuleShortFileName(HINSTANCE hInst, string& strShortName)
+//{
+//
+//   __throw(todo);
+//
+//}
 
 
 CLASS_DECL_ACME bool vfxResolveShortcut(string & strTarget, const char * pszSource, ::user::primitive * puiMessageParentOptional)

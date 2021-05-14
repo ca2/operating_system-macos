@@ -12,18 +12,18 @@ void CLASS_DECL_ACME __cdecl _ca2_purecall()
    __throw(::exception::exception());
 }
 
-
-void __cdecl _null_se_translator(u32 uiCode, EXCEPTION_POINTERS * ppointers);
-
-
-
+//
+//void __cdecl _null_se_translator(u32 uiCode, EXCEPTION_POINTERS * ppointers);
+//
 
 
-void __cdecl _null_se_translator(u32 uiCode, EXCEPTION_POINTERS * ppointers)
-{
-   UNREFERENCED_PARAMETER(uiCode);
-   UNREFERENCED_PARAMETER(ppointers);
-}
+//
+//
+//void __cdecl _null_se_translator(u32 uiCode, EXCEPTION_POINTERS * ppointers)
+//{
+//   UNREFERENCED_PARAMETER(uiCode);
+//   UNREFERENCED_PARAMETER(ppointers);
+//}
 
 
 

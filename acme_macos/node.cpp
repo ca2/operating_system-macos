@@ -7,6 +7,9 @@
 void os_post_quit();
 
 
+void ns_launch_app(const char * psz, const char ** argv, int iFlags);
+
+
 void ansios_sigchld_handler(int sig);
 
 
@@ -616,12 +619,12 @@ namespace acme
       
       strCommand.Format("open \"%s\"", pszAppFolder);
       
-      return ::launch_command(strCommand);
+      return ::launch_command(m_psystem, strCommand);
       
    }
 
 
-   bool node::_launch_macos_app_args(const char * pszAppFolder, const char * pszArgs)
+   ::e_status node::_launch_macos_app_args(const char * pszAppFolder, const char * pszArgs)
    {
       
       if (!pszAppFolder)
@@ -635,10 +638,125 @@ namespace acme
       
       strCommand.Format("open \"%s\" --args %s", pszAppFolder, pszArgs);
       
-      return ::launch_command(strCommand);
+      return ::launch_command(m_psystem, strCommand);
+      
+   }
+   
+
+   void node::ns_launch_app(const char * psz, const char ** argv, int iFlags)
+   {
+      
+      ::ns_launch_app(psz, argv, iFlags);
       
    }
 
+
+   bool node::process_modules(string_array& stra, u32 processID)
+   {
+
+      __throw(error_interface_only);
+
+      return false;
+
+   }
+
+
+   bool node::load_modules_diff(string_array& straOld, string_array& straNew, const char* pszExceptDir)
+   {
+
+      __throw(error_interface_only);
+
+      return false;
+
+   }
+
+
+//   id_array node::get_pids()
+//   {
+//
+//      return ::get_pids();
+//
+//   }
+
+
+//   id_array node::module_path_get_pid(const char* pszModulePath, bool bModuleNameIsPropertyFormatted)
+//   {
+//
+//      return ::module_path_get_pid(pszModulePath, bModuleNameisPropertyFormatted);
+//
+//   }
+
+
+   string node::module_path_from_pid(u32 pid)
+   {
+
+      return "";
+
+   }
+
+
+   bool node::is_shared_library_busy(u32 processid, const string_array& stra)
+   {
+
+      __throw(error_interface_only);
+
+      return false;
+
+   }
+
+
+   bool node::is_shared_library_busy(const string_array& stra)
+   {
+
+      __throw(error_interface_only);
+
+      return false;
+
+   }
+
+
+   bool node::process_contains_module(string& strImage, ::u32 processID, const char* pszLibrary)
+   {
+
+      __throw(error_interface_only);
+
+      return false;
+
+   }
+
+
+   void node::shared_library_process(dword_array& dwa, string_array& straProcesses, const char* pszLibrary)
+   {
+
+      __throw(error_interface_only);
+
+   }
+
+
+   int_bool node::is_process_running(::u32 pid)
+   {
+
+      __throw(error_interface_only);
+
+      return false;
+
+   }
+
+
+   string node::get_environment_variable(const char* pszEnvironmentVariable)
+   {
+
+      return "";
+
+   }
+
+
+   string node::expand_env(string str)
+   {
+
+      return "";
+
+   }
 
 
    } // namespace macos
@@ -649,3 +767,20 @@ namespace acme
 
 
 
+void * get_system_mmos(void * pSystem)
+{
+   
+   auto psystem = (class ::system *) pSystem;
+   
+   return psystem->m_pmmos;
+   
+}
+
+void set_system_mmos(void * pSystem, void * pmmos)
+{
+   
+   auto psystem = (class ::system *) pSystem;
+   
+   psystem->m_pmmos = pmmos;
+   
+}

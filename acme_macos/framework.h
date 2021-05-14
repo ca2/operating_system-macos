@@ -3,4 +3,28 @@
 #endif
 
 
-#include "music_midi_core_audio.h"
+#include "acme/_start.h"
+
+
+#ifdef __OBJC__
+
+
+#include "acme/include/objcpp.h"
+
+
+#else
+
+
+#include "_.h"
+
+
+#include "_acme_macos.h"
+
+
+#include "acme/_defer.h"
+
+
+#endif
+
+
+
