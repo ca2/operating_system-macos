@@ -1,10 +1,10 @@
 #include "framework.h"
-#include "apex/os/_.h"
-#include "apex/os/_os.h"
+//#include "apex/os/_.h"
+//#include "apex/os/_os.h"
 //#include "apex/xml/_.h"
 #include "acme/id.h"
 
-#include "_.h"
+//#include "_.h"
 
 char * ns_user_local_desktop_folder();
 char * ns_user_local_documents_folder();
@@ -44,7 +44,9 @@ namespace macos
          
       }
       
-      estatus = __refer(m_pdirsystem, ::apex::get_system()->m_pdirsystem);
+      auto psystem = m_psystem->m_papexsystem;
+      
+      estatus = __refer(m_pdirsystem, psystem->m_pdirsystem);
       
       if(!estatus)
       {
@@ -53,7 +55,7 @@ namespace macos
          
       }
       
-      estatus = __refer(m_pfilesystem, ::apex::get_system()->m_pfilesystem);
+      estatus = __refer(m_pfilesystem, psystem->m_pfilesystem);
       
       if(!estatus)
       {

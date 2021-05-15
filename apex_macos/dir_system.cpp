@@ -6,11 +6,10 @@
 //
 
 #include "framework.h"
-#include "apex/os/_.h"
-#include "apex/os/_os.h"
+//#include "apex/os/_.h"
+//#include "apex/os/_os.h"
 //#include "apex/xml/_.h"
-
-#include "_.h"
+//#include "_.h"
 
 char * ns_user_local_desktop_folder();
 char * ns_user_local_documents_folder();
@@ -62,7 +61,9 @@ namespace macos
          
       }
       
-      ::file::path pathCa2Module = ::apex::get_system()->m_pfilesystem->m_pathCa2Module;
+      auto psystem= m_psystem->m_papexsystem;
+      
+      ::file::path pathCa2Module = psystem->m_pfilesystem->m_pathCa2Module;
       
       m_pathHome = getenv("HOME");
       

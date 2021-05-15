@@ -7,8 +7,8 @@
 
 #include "framework.h"
 //#include "macos.h"
-#include "apex/os/_.h"
-#include "apex/os/_os.h"
+//#include "apex/os/_.h"
+//#include "apex/os/_os.h"
 
 
 #include <sys/stat.h>
@@ -70,8 +70,10 @@ namespace macos
          return estatus;
          
       }
+      
+      auto psystem = m_psystem->m_papexsystem;
 
-      estatus = __refer(m_pdirsystem, ::apex::get_system()->m_pdirsystem);
+      estatus = __refer(m_pdirsystem, psystem->m_pdirsystem);
       
       if(!estatus)
       {
@@ -80,7 +82,7 @@ namespace macos
          
       }
       
-      estatus = __refer(m_pfilesystem, ::apex::get_system()->m_pfilesystem);
+      estatus = __refer(m_pfilesystem, psystem->m_pfilesystem);
       
       if(!estatus)
       {
@@ -88,7 +90,6 @@ namespace macos
          return estatus;
          
       }
-      
       
 //      string str = getenv("HOME");
 //

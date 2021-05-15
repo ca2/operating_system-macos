@@ -9,6 +9,50 @@
 /* Begin PBXBuildFile section */
 		9A0C1779264A2DFA00B5CC33 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C1755264A2DFA00B5CC33 /* framework.cpp */; };
 		9A0C1785264A2DFA00B5CC33 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A0C1766264A2DFA00B5CC33 /* framework.h */; };
+		9A787E9C264ED595003DF8A0 /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787E92264ED593003DF8A0 /* _.h */; };
+		9A787E9F264ED5BB003DF8A0 /* _apex_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787E9D264ED5BA003DF8A0 /* _apex_macos.h */; };
+		9A787EA0264ED5BB003DF8A0 /* factory_exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787E9E264ED5BA003DF8A0 /* factory_exchange.cpp */; };
+		9A787ED9264EE773003DF8A0 /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17CE264A320600B5CC33 /* libacme.dylib */; };
+		9A787EDA264EE773003DF8A0 /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5E4264B54E00080670E /* libacme_apple.dylib */; };
+		9A787EDB264EE773003DF8A0 /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17EB264A325700B5CC33 /* libacme_macos.dylib */; };
+		9A787EDC264EE773003DF8A0 /* libacme_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17DF264A322200B5CC33 /* libacme_posix.dylib */; };
+		9A787EDD264EE773003DF8A0 /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17D7264A321600B5CC33 /* libapex.dylib */; };
+		9A787EDE264EE773003DF8A0 /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5EF264B54EE0080670E /* libapex_apple.dylib */; };
+		9A787EDF264EE773003DF8A0 /* libapex_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17F1264A327000B5CC33 /* libapex_posix.dylib */; };
+		9A787EE2264EE881003DF8A0 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787EE0264EE881003DF8A0 /* node.cpp */; };
+		9A787EE3264EE881003DF8A0 /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787EE1264EE881003DF8A0 /* node.h */; };
+		9A787F87264EF105003DF8A0 /* application.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F63264EF103003DF8A0 /* application.h */; };
+		9A787F88264EF105003DF8A0 /* keyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F64264EF103003DF8A0 /* keyboard.h */; };
+		9A787F8A264EF105003DF8A0 /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F66264EF103003DF8A0 /* thread.h */; };
+		9A787F8B264EF105003DF8A0 /* file_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F67264EF103003DF8A0 /* file_context.cpp */; };
+		9A787F8C264EF105003DF8A0 /* dir_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F68264EF103003DF8A0 /* dir_system.h */; };
+		9A787F8D264EF105003DF8A0 /* launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F69264EF103003DF8A0 /* launcher.cpp */; };
+		9A787F8E264EF105003DF8A0 /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6A264EF103003DF8A0 /* application.cpp */; };
+		9A787F90264EF105003DF8A0 /* trace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6C264EF103003DF8A0 /* trace.cpp */; };
+		9A787F91264EF105003DF8A0 /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F6D264EF103003DF8A0 /* _mm.h */; };
+		9A787F92264EF105003DF8A0 /* interprocess_communication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6E264EF103003DF8A0 /* interprocess_communication.cpp */; };
+		9A787F93264EF105003DF8A0 /* file_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6F264EF103003DF8A0 /* file_system.cpp */; };
+		9A787F95264EF105003DF8A0 /* user.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F71264EF104003DF8A0 /* user.h */; };
+		9A787F96264EF105003DF8A0 /* app.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F72264EF104003DF8A0 /* app.mm */; };
+		9A787F98264EF105003DF8A0 /* file_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F74264EF104003DF8A0 /* file_context.h */; };
+		9A787F9B264EF105003DF8A0 /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F77264EF104003DF8A0 /* keyboard.cpp */; };
+		9A787F9C264EF105003DF8A0 /* os_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F78264EF104003DF8A0 /* os_context.h */; };
+		9A787F9D264EF105003DF8A0 /* thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F79264EF104003DF8A0 /* thread.cpp */; };
+		9A787F9E264EF105003DF8A0 /* dir_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7A264EF104003DF8A0 /* dir_context.cpp */; };
+		9A787F9F264EF105003DF8A0 /* dir_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7B264EF104003DF8A0 /* dir_system.cpp */; };
+		9A787FA0264EF105003DF8A0 /* file.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7C264EF104003DF8A0 /* file.mm */; };
+		9A787FA2264EF105003DF8A0 /* os_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7E264EF105003DF8A0 /* os_context.cpp */; };
+		9A787FA4264EF105003DF8A0 /* file_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F80264EF105003DF8A0 /* file_system.h */; };
+		9A787FA6264EF105003DF8A0 /* keyboard_mm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F82264EF105003DF8A0 /* keyboard_mm.mm */; };
+		9A787FA7264EF105003DF8A0 /* shell_macos_mm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F83264EF105003DF8A0 /* shell_macos_mm.mm */; };
+		9A787FA8264EF105003DF8A0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F84264EF105003DF8A0 /* main.cpp */; };
+		9A787FA9264EF105003DF8A0 /* dir_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F85264EF105003DF8A0 /* dir_context.h */; };
+		9A787FAA264EF105003DF8A0 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F86264EF105003DF8A0 /* util.cpp */; };
+		9A787FAC264EF342003DF8A0 /* interprocess_communication.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787FAB264EF342003DF8A0 /* interprocess_communication.h */; };
+		9A787FAE264F0F3B003DF8A0 /* launcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787FAD264F0F3B003DF8A0 /* launcher.h */; };
+		9A788033264F1130003DF8A0 /* shell_launcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788032264F1130003DF8A0 /* shell_launcher.h */; };
+		9A788037264F1ECA003DF8A0 /* watcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788035264F1ECA003DF8A0 /* watcher.h */; };
+		9A788038264F1ECA003DF8A0 /* watcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A788036264F1ECA003DF8A0 /* watcher.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +119,55 @@
 			remoteGlobalIDString = 9A15A597264B53DC0080670E;
 			remoteInfo = apex_apple;
 		};
+		9A787ECA264EE753003DF8A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A0C17C8264A320500B5CC33 /* acme.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A68A41325114352008DABD2;
+			remoteInfo = acme;
+		};
+		9A787ECC264EE753003DF8A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A0C17DA264A322200B5CC33 /* acme_posix.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A0C1637264A281D00B5CC33;
+			remoteInfo = acme_posix;
+		};
+		9A787ECE264EE753003DF8A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A0C17EC264A327000B5CC33 /* apex_posix.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A0C167F264A29B800B5CC33;
+			remoteInfo = apex_posix;
+		};
+		9A787ED0264EE753003DF8A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A0C17D1264A321600B5CC33 /* apex.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A68A445251143F8008DABD2;
+			remoteInfo = apex;
+		};
+		9A787ED2264EE753003DF8A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A15A5DD264B54E00080670E /* acme_apple.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A15A581264B536C0080670E;
+			remoteInfo = acme_apple;
+		};
+		9A787ED4264EE753003DF8A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A0C17E6264A325700B5CC33 /* acme_macos.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A0C165E264A290E00B5CC33;
+			remoteInfo = acme_macos;
+		};
+		9A787ED6264EE75E003DF8A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A15A5EA264B54EE0080670E /* apex_apple.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A15A596264B53DC0080670E;
+			remoteInfo = apex_apple;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +181,45 @@
 		9A0C17EC264A327000B5CC33 /* apex_posix.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = apex_posix.xcodeproj; path = "../../platform-posix/apex_posix/apex_posix.xcodeproj"; sourceTree = "<group>"; };
 		9A15A5DD264B54E00080670E /* acme_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_apple.xcodeproj; path = "../../platform-apple/acme_apple/acme_apple.xcodeproj"; sourceTree = "<group>"; };
 		9A15A5EA264B54EE0080670E /* apex_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = apex_apple.xcodeproj; path = "../../platform-apple/apex_apple/apex_apple.xcodeproj"; sourceTree = "<group>"; };
+		9A787E92264ED593003DF8A0 /* _.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
+		9A787E9D264ED5BA003DF8A0 /* _apex_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _apex_macos.h; sourceTree = "<group>"; };
+		9A787E9E264ED5BA003DF8A0 /* factory_exchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = factory_exchange.cpp; sourceTree = "<group>"; };
+		9A787EE0264EE881003DF8A0 /* node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
+		9A787EE1264EE881003DF8A0 /* node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
+		9A787F63264EF103003DF8A0 /* application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = application.h; sourceTree = "<group>"; };
+		9A787F64264EF103003DF8A0 /* keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keyboard.h; sourceTree = "<group>"; };
+		9A787F66264EF103003DF8A0 /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread.h; sourceTree = "<group>"; };
+		9A787F67264EF103003DF8A0 /* file_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_context.cpp; sourceTree = "<group>"; };
+		9A787F68264EF103003DF8A0 /* dir_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dir_system.h; sourceTree = "<group>"; };
+		9A787F69264EF103003DF8A0 /* launcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = launcher.cpp; sourceTree = "<group>"; };
+		9A787F6A264EF103003DF8A0 /* application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = application.cpp; sourceTree = "<group>"; };
+		9A787F6C264EF103003DF8A0 /* trace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = trace.cpp; sourceTree = "<group>"; };
+		9A787F6D264EF103003DF8A0 /* _mm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
+		9A787F6E264EF103003DF8A0 /* interprocess_communication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interprocess_communication.cpp; sourceTree = "<group>"; };
+		9A787F6F264EF103003DF8A0 /* file_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_system.cpp; sourceTree = "<group>"; };
+		9A787F71264EF104003DF8A0 /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
+		9A787F72264EF104003DF8A0 /* app.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = app.mm; sourceTree = "<group>"; };
+		9A787F74264EF104003DF8A0 /* file_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_context.h; sourceTree = "<group>"; };
+		9A787F76264EF104003DF8A0 /* keyboard copy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "keyboard copy.cpp"; sourceTree = "<group>"; };
+		9A787F77264EF104003DF8A0 /* keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keyboard.cpp; sourceTree = "<group>"; };
+		9A787F78264EF104003DF8A0 /* os_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_context.h; sourceTree = "<group>"; };
+		9A787F79264EF104003DF8A0 /* thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread.cpp; sourceTree = "<group>"; };
+		9A787F7A264EF104003DF8A0 /* dir_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dir_context.cpp; sourceTree = "<group>"; };
+		9A787F7B264EF104003DF8A0 /* dir_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dir_system.cpp; sourceTree = "<group>"; };
+		9A787F7C264EF104003DF8A0 /* file.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = file.mm; sourceTree = "<group>"; };
+		9A787F7E264EF105003DF8A0 /* os_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = os_context.cpp; sourceTree = "<group>"; };
+		9A787F7F264EF105003DF8A0 /* shell_launcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shell_launcher.cpp; sourceTree = "<group>"; };
+		9A787F80264EF105003DF8A0 /* file_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_system.h; sourceTree = "<group>"; };
+		9A787F82264EF105003DF8A0 /* keyboard_mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = keyboard_mm.mm; sourceTree = "<group>"; };
+		9A787F83264EF105003DF8A0 /* shell_macos_mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = shell_macos_mm.mm; sourceTree = "<group>"; };
+		9A787F84264EF105003DF8A0 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		9A787F85264EF105003DF8A0 /* dir_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dir_context.h; sourceTree = "<group>"; };
+		9A787F86264EF105003DF8A0 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
+		9A787FAB264EF342003DF8A0 /* interprocess_communication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interprocess_communication.h; sourceTree = "<group>"; };
+		9A787FAD264F0F3B003DF8A0 /* launcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = launcher.h; sourceTree = "<group>"; };
+		9A788032264F1130003DF8A0 /* shell_launcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shell_launcher.h; sourceTree = "<group>"; };
+		9A788035264F1ECA003DF8A0 /* watcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = watcher.h; sourceTree = "<group>"; };
+		9A788036264F1ECA003DF8A0 /* watcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = watcher.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +227,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A787ED9264EE773003DF8A0 /* libacme.dylib in Frameworks */,
+				9A787EDA264EE773003DF8A0 /* libacme_apple.dylib in Frameworks */,
+				9A787EDB264EE773003DF8A0 /* libacme_macos.dylib in Frameworks */,
+				9A787EDC264EE773003DF8A0 /* libacme_posix.dylib in Frameworks */,
+				9A787EDD264EE773003DF8A0 /* libapex.dylib in Frameworks */,
+				9A787EDE264EE773003DF8A0 /* libapex_apple.dylib in Frameworks */,
+				9A787EDF264EE773003DF8A0 /* libapex_posix.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +252,7 @@
 				9A15A5EA264B54EE0080670E /* apex_apple.xcodeproj */,
 				9A0C1749264A2DFA00B5CC33 /* apex_macos */,
 				9A0C1696264A2AA700B5CC33 /* Products */,
+				9A787ED8264EE773003DF8A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,8 +267,46 @@
 		9A0C1749264A2DFA00B5CC33 /* apex_macos */ = {
 			isa = PBXGroup;
 			children = (
+				9A788034264F1ECA003DF8A0 /* FileSystemEvents */,
+				9A787E92264ED593003DF8A0 /* _.h */,
+				9A787E9D264ED5BA003DF8A0 /* _apex_macos.h */,
+				9A787F6D264EF103003DF8A0 /* _mm.h */,
+				9A787F72264EF104003DF8A0 /* app.mm */,
+				9A787F6A264EF103003DF8A0 /* application.cpp */,
+				9A787F63264EF103003DF8A0 /* application.h */,
+				9A787F7A264EF104003DF8A0 /* dir_context.cpp */,
+				9A787F85264EF105003DF8A0 /* dir_context.h */,
+				9A787F7B264EF104003DF8A0 /* dir_system.cpp */,
+				9A787F68264EF103003DF8A0 /* dir_system.h */,
+				9A787E9E264ED5BA003DF8A0 /* factory_exchange.cpp */,
+				9A787F67264EF103003DF8A0 /* file_context.cpp */,
+				9A787F74264EF104003DF8A0 /* file_context.h */,
+				9A787F6F264EF103003DF8A0 /* file_system.cpp */,
+				9A787F80264EF105003DF8A0 /* file_system.h */,
+				9A787F7C264EF104003DF8A0 /* file.mm */,
 				9A0C1755264A2DFA00B5CC33 /* framework.cpp */,
 				9A0C1766264A2DFA00B5CC33 /* framework.h */,
+				9A787F6E264EF103003DF8A0 /* interprocess_communication.cpp */,
+				9A787FAB264EF342003DF8A0 /* interprocess_communication.h */,
+				9A787F76264EF104003DF8A0 /* keyboard copy.cpp */,
+				9A787F82264EF105003DF8A0 /* keyboard_mm.mm */,
+				9A787F77264EF104003DF8A0 /* keyboard.cpp */,
+				9A787F64264EF103003DF8A0 /* keyboard.h */,
+				9A787F69264EF103003DF8A0 /* launcher.cpp */,
+				9A787FAD264F0F3B003DF8A0 /* launcher.h */,
+				9A787F84264EF105003DF8A0 /* main.cpp */,
+				9A787EE0264EE881003DF8A0 /* node.cpp */,
+				9A787EE1264EE881003DF8A0 /* node.h */,
+				9A787F7E264EF105003DF8A0 /* os_context.cpp */,
+				9A787F78264EF104003DF8A0 /* os_context.h */,
+				9A787F7F264EF105003DF8A0 /* shell_launcher.cpp */,
+				9A788032264F1130003DF8A0 /* shell_launcher.h */,
+				9A787F83264EF105003DF8A0 /* shell_macos_mm.mm */,
+				9A787F79264EF104003DF8A0 /* thread.cpp */,
+				9A787F66264EF103003DF8A0 /* thread.h */,
+				9A787F6C264EF103003DF8A0 /* trace.cpp */,
+				9A787F71264EF104003DF8A0 /* user.h */,
+				9A787F86264EF105003DF8A0 /* util.cpp */,
 			);
 			name = apex_macos;
 			sourceTree = "<group>";
@@ -191,6 +369,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9A787ED8264EE773003DF8A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A788034264F1ECA003DF8A0 /* FileSystemEvents */ = {
+			isa = PBXGroup;
+			children = (
+				9A788035264F1ECA003DF8A0 /* watcher.h */,
+				9A788036264F1ECA003DF8A0 /* watcher.cpp */,
+			);
+			path = FileSystemEvents;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -198,7 +392,24 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A787E9C264ED595003DF8A0 /* _.h in Headers */,
+				9A787F98264EF105003DF8A0 /* file_context.h in Headers */,
+				9A787F8C264EF105003DF8A0 /* dir_system.h in Headers */,
+				9A787F9C264EF105003DF8A0 /* os_context.h in Headers */,
+				9A787F95264EF105003DF8A0 /* user.h in Headers */,
+				9A787FA9264EF105003DF8A0 /* dir_context.h in Headers */,
+				9A787FA4264EF105003DF8A0 /* file_system.h in Headers */,
+				9A787F91264EF105003DF8A0 /* _mm.h in Headers */,
 				9A0C1785264A2DFA00B5CC33 /* framework.h in Headers */,
+				9A788033264F1130003DF8A0 /* shell_launcher.h in Headers */,
+				9A787EE3264EE881003DF8A0 /* node.h in Headers */,
+				9A787FAE264F0F3B003DF8A0 /* launcher.h in Headers */,
+				9A787FAC264EF342003DF8A0 /* interprocess_communication.h in Headers */,
+				9A787F88264EF105003DF8A0 /* keyboard.h in Headers */,
+				9A787E9F264ED5BB003DF8A0 /* _apex_macos.h in Headers */,
+				9A788037264F1ECA003DF8A0 /* watcher.h in Headers */,
+				9A787F8A264EF105003DF8A0 /* thread.h in Headers */,
+				9A787F87264EF105003DF8A0 /* application.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +427,13 @@
 			buildRules = (
 			);
 			dependencies = (
+				9A787ED7264EE75E003DF8A0 /* PBXTargetDependency */,
+				9A787ECB264EE753003DF8A0 /* PBXTargetDependency */,
+				9A787ECD264EE753003DF8A0 /* PBXTargetDependency */,
+				9A787ECF264EE753003DF8A0 /* PBXTargetDependency */,
+				9A787ED1264EE753003DF8A0 /* PBXTargetDependency */,
+				9A787ED3264EE753003DF8A0 /* PBXTargetDependency */,
+				9A787ED5264EE753003DF8A0 /* PBXTargetDependency */,
 			);
 			name = apex_macos;
 			productName = apex_macos;
@@ -354,11 +572,69 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A787F9F264EF105003DF8A0 /* dir_system.cpp in Sources */,
+				9A787FA7264EF105003DF8A0 /* shell_macos_mm.mm in Sources */,
+				9A787FA0264EF105003DF8A0 /* file.mm in Sources */,
+				9A787F8D264EF105003DF8A0 /* launcher.cpp in Sources */,
+				9A787F92264EF105003DF8A0 /* interprocess_communication.cpp in Sources */,
+				9A787F9E264EF105003DF8A0 /* dir_context.cpp in Sources */,
+				9A787F90264EF105003DF8A0 /* trace.cpp in Sources */,
+				9A787F9D264EF105003DF8A0 /* thread.cpp in Sources */,
+				9A787FA2264EF105003DF8A0 /* os_context.cpp in Sources */,
+				9A787F9B264EF105003DF8A0 /* keyboard.cpp in Sources */,
+				9A787F96264EF105003DF8A0 /* app.mm in Sources */,
+				9A787FA8264EF105003DF8A0 /* main.cpp in Sources */,
 				9A0C1779264A2DFA00B5CC33 /* framework.cpp in Sources */,
+				9A787F93264EF105003DF8A0 /* file_system.cpp in Sources */,
+				9A788038264F1ECA003DF8A0 /* watcher.cpp in Sources */,
+				9A787F8E264EF105003DF8A0 /* application.cpp in Sources */,
+				9A787F8B264EF105003DF8A0 /* file_context.cpp in Sources */,
+				9A787EA0264ED5BB003DF8A0 /* factory_exchange.cpp in Sources */,
+				9A787FA6264EF105003DF8A0 /* keyboard_mm.mm in Sources */,
+				9A787FAA264EF105003DF8A0 /* util.cpp in Sources */,
+				9A787EE2264EE881003DF8A0 /* node.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9A787ECB264EE753003DF8A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = acme;
+			targetProxy = 9A787ECA264EE753003DF8A0 /* PBXContainerItemProxy */;
+		};
+		9A787ECD264EE753003DF8A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = acme_posix;
+			targetProxy = 9A787ECC264EE753003DF8A0 /* PBXContainerItemProxy */;
+		};
+		9A787ECF264EE753003DF8A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = apex_posix;
+			targetProxy = 9A787ECE264EE753003DF8A0 /* PBXContainerItemProxy */;
+		};
+		9A787ED1264EE753003DF8A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = apex;
+			targetProxy = 9A787ED0264EE753003DF8A0 /* PBXContainerItemProxy */;
+		};
+		9A787ED3264EE753003DF8A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = acme_apple;
+			targetProxy = 9A787ED2264EE753003DF8A0 /* PBXContainerItemProxy */;
+		};
+		9A787ED5264EE753003DF8A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = acme_macos;
+			targetProxy = 9A787ED4264EE753003DF8A0 /* PBXContainerItemProxy */;
+		};
+		9A787ED7264EE75E003DF8A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = apex_apple;
+			targetProxy = 9A787ED6264EE75E003DF8A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9A0C169C264A2AA700B5CC33 /* Debug */ = {
@@ -435,6 +711,8 @@
 					"$(WorkspaceDir)/archive",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/_include",
+					"$(WorkspaceDir)/archive/platform-apple",
+					"$(WorkspaceDir)/archive/platform-posix",
 					"$(WorkspaceDir)/source/third/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include",
@@ -513,6 +791,8 @@
 					"$(WorkspaceDir)/archive",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/_include",
+					"$(WorkspaceDir)/archive/platform-apple",
+					"$(WorkspaceDir)/archive/platform-posix",
 					"$(WorkspaceDir)/source/third/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include",

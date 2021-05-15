@@ -1,32 +1,48 @@
 #include "framework.h"
+#include "apex/platform/launcher.h"
+#include "launcher.h"
 #undef USE_MISC
 
 
-
-bool launcher::start()
+namespace macos
 {
 
-   if(!ensure_executable())
-      return false;
 
-   string strPath(get_executable_path());
-   string strDir(dir::name(strPath));
-    
+   ::e_status launcher::start()
+   {
 
-    /*vsstring strPath
+      auto estatus = ensure_executable();
+      
+      if(!estatus)
+      {
+         
+         return estatus;
+         
+      }
 
-   SHELLEXECUTEINFOA infoa;
+      string strPath(get_executable_path());
+      string strDir(dir::name(strPath));
+       
 
-   __memset(&infoa, 0, sizeof(infoa));
+       /*vsstring strPath
 
-   infoa.cbSize         = sizeof(infoa);
-   infoa.pFile         = strPath;
+      SHELLEXECUTEINFOA infoa;
 
-   infoa.pDirectory    = strDir;*/
+      __memset(&infoa, 0, sizeof(infoa));
+
+      infoa.cbSize         = sizeof(infoa);
+      infoa.pFile         = strPath;
+
+      infoa.pDirectory    = strDir;*/
+
+      execlp(strPath, strPath, (char *) 0);
+
+      return estatus;
+
+   }
 
 
-    execlp(strPath, strPath, (char *) 0);
+} // namespace macos
 
-   return true;
 
-}
+

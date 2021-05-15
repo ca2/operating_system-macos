@@ -2,7 +2,7 @@
 //  _macos.h
 //  acme
 //
-//  Created by Camilo Sasuke Tsumanuma on 29/02/20.
+//  Created by Camilo Sasuke Tsumanuma on 2021-05-14 14:04 BRT <3ThomasBorregaardSørensen!!
 //
 #pragma once
 

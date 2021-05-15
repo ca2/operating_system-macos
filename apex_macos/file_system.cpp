@@ -1,17 +1,20 @@
 #include "framework.h"
-//#include "macos.h"
-#include "apex/os/_.h"
-#include "apex/os/_os.h"
+#include "acme/filesystem/filesystem/acme_dir.h"
 
 
 #include <sys/stat.h>
 #include <ctype.h>
 #include <mach-o/dyld.h>
 
+
 struct PROCESS_INFO_t
 {
+   
+   
    string csProcess;
    u32 dwImageListIndex;
+   
+   
 };
 
 
@@ -44,8 +47,12 @@ namespace macos
       }
       
       string str = getenv("HOME");
+      
+      auto psystem = m_psystem;
+      
+      auto pacmedir = psystem->m_pacmedir;
 
-      ::file::path strRelative = ::dir::install();
+      ::file::path strRelative = pacmedir->install();
 
       string strUserFolderShift;
 

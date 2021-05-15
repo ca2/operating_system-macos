@@ -28,9 +28,15 @@
 //} // namespace macos
 
 
+extern "C"
+void acme_apple_factory_exchange(::factory_map * pfactorymap);
 
-void __node_acme_factory_exchange(::factory_map * pfactorymap)
+
+extern "C"
+void acme_macos_factory_exchange(::factory_map * pfactorymap)
 {
+   
+   acme_apple_factory_exchange(pfactorymap);
 
    create_factory < ::macos::stdio_file         , ::file::text_file  > ();
    create_factory < ::macos::file               , ::file::file       > ();

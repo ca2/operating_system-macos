@@ -1,6 +1,6 @@
 #include "framework.h"
-#include "_.h"
-#include "apex/os/_.h"
+//#include "_.h"
+//#include "apex/os/_.h"
 #include <mach-o/dyld.h>
 #include <sys/time.h>
 
@@ -37,13 +37,13 @@ namespace apex
 //      return nullptr;
 //   }
 
-   void application::_001EnableShellOpen()
-   {
-      // xxx       ASSERT(m_atomApp == nullptr && m_atomSystemTopic == nullptr); // do once
-
-      // xxx       m_atomApp            = ::GlobalAddAtomW(::str::international::utf8_to_unicode(m_strAppName));
-      // xxx       m_atomSystemTopic    = ::GlobalAddAtomW(L"system");
-   }
+//   void application::_001EnableShellOpen()
+//   {
+//      // xxx       ASSERT(m_atomApp == nullptr && m_atomSystemTopic == nullptr); // do once
+//
+//      // xxx       m_atomApp            = ::GlobalAddAtomW(::str::international::utf8_to_unicode(m_strAppName));
+//      // xxx       m_atomSystemTopic    = ::GlobalAddAtomW(L"system");
+//   }
 
 //   bool application::_001OnDDECommand(const char * pcsz)
 //   {
@@ -212,13 +212,13 @@ namespace apex
 //   }
 
 
-
-    void application::get_time(struct timeval *p)
-    {
-
-       gettimeofday(p, nullptr);
-
-    }
+//
+//    void application::get_time(struct timeval *p)
+//    {
+//
+//       gettimeofday(p, nullptr);
+//
+//    }
 
 //   void application::set_env_var(const string & payload,const string & value)
 //   {
@@ -279,25 +279,25 @@ namespace apex
 //
 //   }
 
-   string application::multimedia_audio_get_default_library_name()
-   {
-
-      return "audio_core_audio";
-
-   }
-
-   string application::multimedia_audio_mixer_get_default_library_name()
-   {
-
-      return "audio_mixer_core_audio";
-
-   }
-   string application::veriwell_multimedia_music_midi_get_default_library_name()
-   {
-
-      return "music_midi_core_midi";
-
-   }
+//   string application::multimedia_audio_get_default_library_name()
+//   {
+//
+//      return "audio_core_audio";
+//
+//   }
+//
+//   string application::multimedia_audio_mixer_get_default_library_name()
+//   {
+//
+//      return "audio_mixer_core_audio";
+//
+//   }
+//   string application::veriwell_multimedia_music_midi_get_default_library_name()
+//   {
+//
+//      return "music_midi_core_midi";
+//
+//   }
 
 
 //   void application::show_wait_cursor(bool bShow)
@@ -362,8 +362,8 @@ namespace apex
 
 
 
-
-bool on_application_menu_action(const char * pszCommand)
-{
-   ::apex::get_system()->on_application_menu_action(pszCommand);
-}
+//
+//bool on_application_menu_action(const char * pszCommand)
+//{
+//   ::apex::get_system()->on_application_menu_action(pszCommand);
+//}

@@ -686,13 +686,13 @@ namespace acme
 //
 //   }
 
-
-   string node::module_path_from_pid(u32 pid)
-   {
-
-      return "";
-
-   }
+//
+//   string node::module_path_from_pid(u32 pid)
+//   {
+//
+//      return "";
+//
+//   }
 
 
    bool node::is_shared_library_busy(u32 processid, const string_array& stra)

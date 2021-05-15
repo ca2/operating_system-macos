@@ -54,13 +54,13 @@ namespace macos
 
       virtual bool open_in_ie(const char * pcsz);
 
-      virtual ::e_status create_service() override;
+      ::e_status enable_service() override;
 
-      virtual ::e_status erase_service() override;
+      ::e_status disable_service() override;
 
-      virtual ::e_status start_service() override;
+      ::e_status start_service() override;
 
-      virtual ::e_status stop_service() override;
+      ::e_status stop_service() override;
 
       virtual bool resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder = nullptr, string * pstrParams = nullptr) override;
 
@@ -68,7 +68,7 @@ namespace macos
 
       virtual bool is_remote_session() override;
 
-      virtual void post_to_all_threads(const ::id & id, WPARAM wParam, LPARAM lParam);
+      //virtual void post_to_all_threads(const ::id & id, WPARAM wParam, LPARAM lParam);
 
       virtual int get_pid() override;
 

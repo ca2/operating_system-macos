@@ -7,33 +7,35 @@
 
 
 
-namespace interprocess_communication
+namespace macos
 {
 
 
-   base::base()
+   interprocess_communication_base::interprocess_communication_base()
    {
+      
       m_port = nullptr;
+      
    }
 
-   base::~base()
+interprocess_communication_base::~interprocess_communication_base()
    {
    }
 
 
-   tx::tx()
-   {
-
-   }
-
-
-   tx::~tx()
+interprocess_communication_tx::interprocess_communication_tx()
    {
 
    }
 
 
-   bool tx::open(const char * pszChannel,launcher * plauncher)
+interprocess_communication_tx::~interprocess_communication_tx()
+   {
+
+   }
+
+
+   bool interprocess_communication_tx::open(const char * pszChannel,launcher * plauncher)
    {
 
       CFDataRef data;
@@ -53,7 +55,7 @@ namespace interprocess_communication
    }
 
 
-   bool tx::close()
+   bool interprocess_communication_tx::close()
    {
 
       if(m_port == nullptr)
@@ -72,7 +74,7 @@ namespace interprocess_communication
    }
 
 
-   bool tx::send(const char * pszMessage,::duration durationTimeout)
+   bool interprocess_communication_tx::send(const char * pszMessage,::duration durationTimeout)
    {
 
       if(m_port == nullptr)
@@ -88,9 +90,9 @@ namespace interprocess_communication
 
       CFDataRef data = m.get_os_cf_data();
 
-      CFTimeInterval sendTimeout = (double) durationTimeout.get_total_milliseconds() / 1000.0;
+      CFTimeInterval sendTimeout = durationTimeout.seconds();
 
-      CFTimeInterval rcvimeout = (double) durationTimeout.get_total_milliseconds() / 1000.0;
+      CFTimeInterval rcvimeout = durationTimeout.seconds();
 
       SInt32 status =
       CFMessagePortSendRequest(m_port,
@@ -119,7 +121,7 @@ namespace interprocess_communication
    }
 
 
-   bool tx::send(int message,void * pdata,int len,duration durationTimeout)
+   bool interprocess_communication_tx::send(int message,void * pdata,int len,duration durationTimeout)
    {
 
       if(message == 0x80000000)
@@ -140,8 +142,8 @@ namespace interprocess_communication
       CFMessagePortSendRequest(m_port,
                                message,
                                m.get_os_cf_data(),
-                               (double) durationTimeout.get_total_milliseconds() / 1000.0,
-                               (double) durationTimeout.get_total_milliseconds() / 1000.0,
+                               (double) durationTimeout.seconds(),
+                               (double) durationTimeout.seconds(),
                                nullptr,
                                nullptr);
       if (status == kCFMessagePortSuccess)
@@ -154,7 +156,7 @@ namespace interprocess_communication
 
 
 
-   bool tx::is_tx_ok()
+   bool interprocess_communication_tx::is_tx_ok()
    {
 
       return m_port != nullptr;
@@ -164,17 +166,19 @@ namespace interprocess_communication
 
 
 
-   rx::rx()
+interprocess_communication_rx::interprocess_communication_rx()
    {
 
       m_id = "::interprocess_communication::rx";
+   
+      m_runloop = nullptr;
 
       m_preceiver    = nullptr;
 
    }
 
 
-   rx::~rx()
+interprocess_communication_rx::~interprocess_communication_rx()
    {
 
    }
@@ -186,7 +190,7 @@ namespace interprocess_communication
                       void *info)
    {
       
-      rx * prx = (rx*) info;
+      interprocess_communication_rx * prx = (interprocess_communication_rx*) info;
 
       if(messageID == 0x80000000)
       {
@@ -195,7 +199,7 @@ namespace interprocess_communication
 
          m.set_os_cf_data(data);
 
-         prx->on_ipc_receive(prx, __str(m));
+         prx->on_interprocess_receive(prx, __str(m));
 
       }
       else
@@ -205,7 +209,7 @@ namespace interprocess_communication
 
          m.set_os_cf_data(data);
 
-         prx->on_ipc_receive(prx, messageID, m.get_data(), (int)m.get_size());
+         prx->on_interprocess_receive(prx, messageID, m.get_data(), (int)m.get_size());
 
       }
       
@@ -214,7 +218,7 @@ namespace interprocess_communication
    }
    
 
-   bool rx::create(const char * pszChannel)
+   bool interprocess_communication_rx::create(const char * pszChannel)
    {
 
       CFMessagePortContext c = {};
@@ -234,7 +238,7 @@ namespace interprocess_communication
    }
 
 
-   bool rx::destroy()
+   bool interprocess_communication_rx::destroy()
    {
 
       if(m_port == nullptr)
@@ -248,7 +252,8 @@ namespace interprocess_communication
 
    }
 
-   bool rx::start_receiving()
+
+   bool interprocess_communication_rx::start_receiving()
    {
 
       m_bRunning = true;
@@ -282,7 +287,7 @@ namespace interprocess_communication
 
 
 
-   void * rx::on_ipc_receive(rx * prx,const char * pszMessage)
+   void * interprocess_communication_rx::on_interprocess_receive(::interprocess_communication::rx * prx,const char * pszMessage)
    {
 
       if(m_preceiver != nullptr)
@@ -306,7 +311,7 @@ namespace interprocess_communication
    }
    
 
-   void * rx::on_ipc_receive(rx * prx,int message,void * pdata,memsize len)
+   void * interprocess_communication_rx::on_interprocess_receive(::interprocess_communication::rx * prx,int message,void * pdata,memsize len)
    {
 
       if(m_preceiver != nullptr)
@@ -323,7 +328,7 @@ namespace interprocess_communication
    }
 
 
-   void * rx::on_ipc_post(rx * prx,i64 a,i64 b)
+   void * interprocess_communication_rx::on_interprocess_post(::interprocess_communication::rx * prx,i64 a,i64 b)
    {
 
       if(m_preceiver != nullptr)
@@ -341,7 +346,7 @@ namespace interprocess_communication
 
 
 
-   bool rx::on_idle()
+   bool interprocess_communication_rx::on_idle()
    {
 
       return false;
@@ -349,7 +354,7 @@ namespace interprocess_communication
    }
 
 
-   bool rx::is_rx_ok()
+   bool interprocess_communication_rx::is_rx_ok()
    {
 
       return m_port != nullptr;
@@ -357,7 +362,7 @@ namespace interprocess_communication
 
 
 
-   void * rx::receive()
+   void * interprocess_communication_rx::receive()
    {
 
       if(m_port == nullptr)
@@ -369,7 +374,7 @@ namespace interprocess_communication
 
       CFRunLoopRef runloop = CFRunLoopGetCurrent();
 
-      ::get_task()->m_runloop = runloop;
+      m_runloop = runloop;
 
       CFRunLoopAddSource(CFRunLoopGetCurrent(),
                          runLoopSource,
@@ -465,81 +470,81 @@ namespace interprocess_communication
       return nullptr;
 
    }
-
-
-   interprocess_communication::interprocess_communication()
-   {
-
-      m_millisTimeout = (5000) * 11;
-
-   }
-
-
-   interprocess_communication::~interprocess_communication()
-   {
-
-
-   }
-
-
-
-   bool interprocess_communication::open_ab(const char * pszChannel,launcher * plauncher)
-   {
-
-      m_strChannel = pszChannel;
-
-      m_rx.m_preceiver = this;
-
-      string strChannelRx = m_strChannel + "-a";
-      string strChannelTx = m_strChannel + "-b";
-
-
-      if(!m_rx.create(strChannelRx))
-      {
-         return false;
-      }
-
-      if(!tx::open(strChannelTx,plauncher))
-      {
-         return false;
-      }
-
-      return true;
-
-   }
-
-   bool interprocess_communication::open_ba(const char * pszChannel,launcher * plauncher)
-   {
-
-      m_strChannel = pszChannel;
-
-      m_rx.m_preceiver = this;
-
-      string strChannelRx = m_strChannel + "-b";
-      string strChannelTx = m_strChannel + "-a";
-
-
-      if(!m_rx.create(strChannelRx))
-      {
-         return false;
-      }
-
-      if(!tx::open(strChannelTx,plauncher))
-      {
-         return false;
-      }
-
-      return true;
-
-   }
-
-
-   bool interprocess_communication::is_rx_tx_ok()
-   {
-
-      return m_rx.is_rx_ok() && is_tx_ok();
-
-   }
+//
+//
+//   interprocess_communication::interprocess_communication()
+//   {
+//
+//      m_millisTimeout = (5000) * 11;
+//
+//   }
+//
+//
+//   interprocess_communication::~interprocess_communication()
+//   {
+//
+//
+//   }
+//
+//
+//
+//   bool interprocess_communication::open_ab(const char * pszChannel,launcher * plauncher)
+//   {
+//
+//      m_strChannel = pszChannel;
+//
+//      m_rx.m_preceiver = this;
+//
+//      string strChannelRx = m_strChannel + "-a";
+//      string strChannelTx = m_strChannel + "-b";
+//
+//
+//      if(!m_rx.create(strChannelRx))
+//      {
+//         return false;
+//      }
+//
+//      if(!tx::open(strChannelTx,plauncher))
+//      {
+//         return false;
+//      }
+//
+//      return true;
+//
+//   }
+//
+//   bool interprocess_communication::open_ba(const char * pszChannel,launcher * plauncher)
+//   {
+//
+//      m_strChannel = pszChannel;
+//
+//      m_rx.m_preceiver = this;
+//
+//      string strChannelRx = m_strChannel + "-b";
+//      string strChannelTx = m_strChannel + "-a";
+//
+//
+//      if(!m_rx.create(strChannelRx))
+//      {
+//         return false;
+//      }
+//
+//      if(!tx::open(strChannelTx,plauncher))
+//      {
+//         return false;
+//      }
+//
+//      return true;
+//
+//   }
+//
+//
+//   bool interprocess_communication::is_rx_tx_ok()
+//   {
+//
+//      return m_rx.is_rx_ok() && is_tx_ok();
+//
+//   }
 
 
 } // namespace interprocess_communication

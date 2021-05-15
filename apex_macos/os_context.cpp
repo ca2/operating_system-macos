@@ -1,7 +1,7 @@
 #include "framework.h"
-#include "_.h"
-#include "apex/os/_.h"
-#include "apex/os/_os.h"
+//#include "_.h"
+//#include "apex/os/_.h"
+//#include "apex/os/_os.h"
 #if defined(MACOS)
 #include <sys/stat.h>
 #endif
@@ -55,8 +55,10 @@ namespace macos
 
    string os_context::get_command_line()
    {
+      
+      auto psystem = m_psystem->m_papexsystem;
 
-      return ::apex::get_system()->get_command_line();
+      return psystem->get_command_line();
 
    }
 
