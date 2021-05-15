@@ -1,12 +1,12 @@
 #pragma once
 
 
-namespace file
+namespace FileSystemEvents
 {
    
    
-   class CLASS_DECL_APEX os_watch :
-      virtual public watch
+   class CLASS_DECL_APEX watch :
+      virtual public ::file::watch
    {
    public:
 
@@ -14,8 +14,8 @@ namespace file
       FSEventStreamRef m_stream;
 
 
-      os_watch();
-      virtual ~os_watch();
+      watch();
+      virtual ~watch();
 
 
       virtual bool open(const ::file::path & pathFolder, bool bRecursive) override;
@@ -30,22 +30,24 @@ namespace file
       void *eventPaths,
       const FSEventStreamEventFlags eventFlags[],
       const FSEventStreamEventId eventIds[]);
+      
       void addAll();
       void eraseAll();
 
-      ::e_status step()override;
+      ::e_status step() override;
+      
 
    };
    
 
-   class CLASS_DECL_APEX os_watcher :
-   virtual public watcher
+   class CLASS_DECL_APEX watcher :
+      virtual public ::file::watcher
    {
    public:
 
 
-      os_watcher();
-      virtual ~os_watcher();
+      watcher();
+      virtual ~watcher();
 
       
       ::e_status step() override;
@@ -54,7 +56,7 @@ namespace file
    };
 
 
-} // namespace file_watcher
+} // namespace FileSystemEvents
 
 
 

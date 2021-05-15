@@ -1,19 +1,18 @@
 #include "framework.h"
-#include "file_os_watcher.h"
+#include "watcher.h"
 
 
-
-namespace file
+namespace FileSystemEvents
 {
 
 
-   os_watch::os_watch()
+   watch::watch()
    {
       
    }
 
    
-   os_watch::~os_watch()
+   watch::~watch()
    {
       
       eraseAll();
@@ -21,12 +20,14 @@ namespace file
    }
 
 
-   bool os_watch::open(const ::file::path & pathFolder, bool bRecursive)
+   bool watch::open(const ::file::path & pathFolder, bool bRecursive)
    {
       
       m_stream = nullptr;
       
-      m_pwatcher->m_pthread->send_predicate([&]()
+      auto pwatcher = (watcher *) m_pwatcher->m_pThis;
+      
+      pwatcher->m_ptask->m_ptask =__routine([&]()
       {
 
          CFStringRef mypath = CFStringCreateWithCString(kCFAllocatorDefault, pathFolder, kCFStringEncodingUTF8);
@@ -68,7 +69,7 @@ namespace file
          
          CFRelease(pathsToWatch);
          
-      });
+      };
       
       if(!m_stream)
       {
@@ -89,15 +90,15 @@ namespace file
    }
    
    
-   bool os_watch::step()
+   ::e_status watch::step()
    {
       
-      return true;
+      return ::success;
       
    }
 
 
-   void os_watch::myCallbackFunction(
+   void watch::myCallbackFunction(
    ConstFSEventStreamRef streamRef,
    void *clientCallBackInfo,
    size_t numEvents,
@@ -110,15 +111,15 @@ namespace file
 
       char **paths = (char **) eventPaths;
 
-      auto pwatch = (os_watch *) clientCallBackInfo;
+      auto pwatch = (watch *) clientCallBackInfo;
 
       ::file::action action;
 
-      psubject->m_pwatch = pwatch;
+      action.m_pwatch = pwatch;
 
-      psubject->m_id = pwatch->m_id;
+      action.m_id = pwatch->m_id;
 
-      psubject->m_pathFolder = pwatch->m_pathFolder;
+      action.m_pathFolder = pwatch->m_pathFolder;
 
       for (i = 0; i < numEvents; i++)
       {
@@ -128,7 +129,7 @@ namespace file
          if(!pwatch->m_bRecursive)
          {
 
-            if(path.folder().get_length() > psubject->m_pathFolder.get_length())
+            if(path.folder().get_length() > action.m_pathFolder.get_length())
             {
 
                continue;
@@ -137,35 +138,34 @@ namespace file
 
          }
 
-         ::str::begins_eat(path, psubject->m_pathFolder);
+         ::str::begins_eat(path, action.m_pathFolder);
 
-         psubject->m_pathFile = path;
+         action.m_pathFile = path;
 
          if(eventFlags[i] & kFSEventStreamEventFlagItemRemoved)
          {
 
-            psubject->m_eaction = ::file::action_delete;
+            action.m_eaction = ::file::action_delete;
 
          }
 
          if(eventFlags[i] & kFSEventStreamEventFlagItemRenamed)
          {
 
-            psubject->m_eaction = ::file::action_modify;
-
+            action.m_eaction = ::file::action_modify;
          }
 
          if(eventFlags[i] & kFSEventStreamEventFlagItemModified)
          {
 
-            psubject->m_eaction = ::file::action_modify;
+            action.m_eaction = ::file::action_modify;
 
          }
 
          if(eventFlags[i] & kFSEventStreamEventFlagItemCreated)
          {
 
-            psubject->m_eaction = ::file::action_add;
+            action.m_eaction = ::file::action_add;
 
          }
 
@@ -176,8 +176,7 @@ namespace file
    }
 
 
-
-   void os_watch::eraseAll()
+   void watch::eraseAll()
    {
 
       FSEventStreamStop(m_stream);
@@ -191,7 +190,7 @@ namespace file
    }
    
 
-   bool os_watcher::step()
+   ::e_status watcher::step()
    {
       
       bool done = false;
@@ -219,31 +218,35 @@ namespace file
          
       //}
       
-      if(!watcher::step())
+      auto estatus = ::file::watcher::step();
+      
+      if(!estatus)
       {
        
-         return false;
+         return estatus;
          
       }
       
-      return true;
+      return estatus;
 
    }
    
 
-   os_watcher::os_watcher()
+   watcher::watcher()
+   {
+
+      m_pThis = this;
+      
+   }
+
+
+   watcher::~watcher()
    {
 
    }
 
 
-   os_watcher::~os_watcher()
-   {
-
-   }
-
-
-} // namespace file_watcher
+} // namespace FileSystemWatcher
 
 
 
