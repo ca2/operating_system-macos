@@ -2,13 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../source/third/_group/group_third.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../../source/app/_group/group_aura.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:../../../source/app/app/app_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app/message_box/app_message_box.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../../source/app/shader/app_shader.xcodeproj">

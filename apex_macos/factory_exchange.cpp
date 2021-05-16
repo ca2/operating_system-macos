@@ -25,6 +25,15 @@ void apex_macos_factory_exchange(::factory_map * pfactorymap)
 
    pfactorymap->create_factory < ::FileSystemEvents::watcher, ::file::watcher > ();
 
+   pfactorymap->create_factory < ::FileSystemEvents::watch, ::file::watch > ();
+
+   pfactorymap->create_factory < ::macos::file_context, ::file_context > ();
+   pfactorymap->create_factory < ::macos::dir_context, ::dir_context > ();
+   pfactorymap->create_factory < ::macos::file_system, ::file_system > ();
+   pfactorymap->create_factory < ::macos::dir_system, ::dir_system > ();
+
+   pfactorymap->create_factory < ::macos::os_context, ::os_context > ();
+
 
 }
 

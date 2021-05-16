@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "acme/filesystem/filesystem/acme_dir.h"
 //#include "_.h"
 //#include "apex/os/_.h"
 //#include "apex/os/_os.h"
@@ -8,11 +9,14 @@
 
 #undef USERNAME_LENGTH // mysql one
 
+bool ns_open_file(const char * );
+void ns_main_async(dispatch_block_t block);
+void ns_create_alias(const char * pszTarget, const char * pszSource);
 char * ns_get_default_browser_path();
 void ns_set_this_process_binary_default_browser();
 
-string apple_browse_folder(const char * pszStartDir, bool bCanCreateDirectories);
-string_array apple_browse_file_open(const char ** pszStartDir, bool bAllowsMultipleSelection);
+string apple_browse_folder(class ::system * psystem, const char * pszStartDir, bool bCanCreateDirectories);
+string_array apple_browse_file_open(class ::system * psystem, const char ** pszStartDir, bool bAllowsMultipleSelection);
 
 
 bool ns_open_url(const char * psz);
@@ -596,7 +600,7 @@ namespace macos
    }
 
 
-   ::e_status os_context::create_service()
+   ::e_status os_context::enable_service()
    {
 
       //    __throw(error_not_implemented);
@@ -649,7 +653,7 @@ namespace macos
    }
 
 
-   ::e_status os_context::erase_service()
+   ::e_status os_context::disable_service()
    {
       //   __throw(error_not_implemented);
       return false;
@@ -782,12 +786,14 @@ namespace macos
 
    bool os_context::resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder, string * pstrParams)
    {
+      
+      auto pcontext = m_pcontext->m_papexcontext;
 
-      pathTarget = get_context()->defer_process_path(strSource);
+      pathTarget = pcontext->defer_process_path(strSource);
 
       pathTarget = node_full_file_path(pathTarget);
 
-      while(get_context()->os_resolve_alias(pathTarget, pathTarget))
+      while(pcontext->os_resolve_alias(pathTarget, pathTarget))
       {
 
          pathTarget = node_full_file_path(pathTarget);
@@ -828,13 +834,13 @@ namespace macos
 
 
 
-   void os_context::post_to_all_threads(const ::id & id, wparam wparam, lparam lparam)
-   {
-
-//      __throw(error_not_implemented);
-      return;
-
-   }
+//   void os_context::post_to_all_threads(const ::id & id, wparam wparam, lparam lparam)
+//   {
+//
+////      __throw(error_not_implemented);
+//      return;
+//
+//   }
 
 
    bool os_context::initialize_wallpaper_fileset(::file::set * pfileset, bool bAddSearch)
@@ -942,6 +948,8 @@ namespace macos
          strAppReturn += ".app";
 
       }
+      
+      auto pcontext = m_pcontext;
 
       if(pcontext->m_papexcontext->dir().is(strAppReturn))
       {
@@ -975,6 +983,10 @@ namespace macos
       {
 
          ::file::path p;
+         
+         auto psystem = m_psystem;
+         
+         auto pacmedir = psystem->m_pacmedir;
 
          p = pacmedir->ca2roaming();
 
@@ -1129,8 +1141,10 @@ namespace macos
 
    bool os_context::file_open(::file::path path, string strParams, string strFolder)
    {
+      
+      auto pcontext = m_pcontext;
 
-      path = get_context()->defer_process_path(path);
+      path = pcontext->m_papexcontext->defer_process_path(path);
 
       ns_main_async(^
       {
@@ -1174,8 +1188,10 @@ namespace macos
          pszStartDir = strStartDir;
 
       }
+      
+      auto psystem = m_psystem;
 
-      string strFolder =apple_browse_folder(pszStartDir, true);
+      string strFolder = apple_browse_folder(psystem, pszStartDir, true);
 
       if(strFolder.is_empty())
       {
@@ -1208,8 +1224,10 @@ namespace macos
       }
 
       bool bMulti = set["allow_multi_select"];
+      
+      auto psystem = m_psystem;
 
-      string_array straFileName = apple_browse_file_open(&pszStartDir, bMulti);
+      string_array straFileName = apple_browse_file_open(psystem, &pszStartDir, bMulti);
 
       if(pszStartDir != nullptr && pszStartDir != strStartDir.c_str())
       {

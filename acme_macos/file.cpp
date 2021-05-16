@@ -504,30 +504,30 @@ namespace macos
    }
 
 
-   static const char * rgszFileExceptionCause[] =
-   {
-      
-      "none",
-      "matter",
-      "fileNotFound",
-      "badPath",
-      "tooManyOpenFiles",
-      "accessDenied",
-      "invalidFile",
-      "eraseCurrentDir",
-      "directoryFull",
-      "badSeek",
-      "hardIO",
-      "sharingViolation",
-      "lockViolation",
-      "diskFull",
-      "endOfFile",
-      
-   };
-
-
-   static const char szUnknown[] = "unknown";
-
+//   static const char * rgszFileExceptionCause[] =
+//   {
+//      
+//      "none",
+//      "matter",
+//      "fileNotFound",
+//      "badPath",
+//      "tooManyOpenFiles",
+//      "accessDenied",
+//      "invalidFile",
+//      "eraseCurrentDir",
+//      "directoryFull",
+//      "badSeek",
+//      "hardIO",
+//      "sharingViolation",
+//      "lockViolation",
+//      "diskFull",
+//      "endOfFile",
+//      
+//   };
+//
+//
+//   static const char szUnknown[] = "unknown";
+//
 
    ::file::path file::get_file_path() const
    {

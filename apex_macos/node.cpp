@@ -16,7 +16,7 @@ void ansios_sigchld_handler(int sig);
 void apex_application_run(const char * pszAppName, const char * pszProgName);
 
 
-namespace acme
+namespace apex
 {
 
 
@@ -41,27 +41,27 @@ namespace acme
    } // namespace macos
 
 
-} // namespace acme
+} // namespace apex
 
-
-void * get_system_mmos(void * pSystem)
-{
-   
-   auto psystem = (class ::system *) pSystem;
-   
-   return psystem->m_pmmos;
-   
-}
-
-
-void set_system_mmos(void * pSystem, void * pmmos)
-{
-   
-   auto psystem = (class ::system *) pSystem;
-   
-   psystem->m_pmmos = pmmos;
-   
-}
-
-
-
+//
+//void * get_system_mmos(void * pSystem)
+//{
+//   
+//   auto psystem = (class ::system *) pSystem;
+//   
+//   return psystem->m_pmmos;
+//   
+//}
+//
+//
+//void set_system_mmos(void * pSystem, void * pmmos)
+//{
+//   
+//   auto psystem = (class ::system *) pSystem;
+//   
+//   psystem->m_pmmos = pmmos;
+//   
+//}
+//
+//
+//

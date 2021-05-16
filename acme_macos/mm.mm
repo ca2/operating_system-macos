@@ -76,7 +76,9 @@ bool ns_open_file(const char * psz)
       
    }
    
-   if(![[NSWorkspace sharedWorkspace] openFile: path])
+   NSURL * url = [[NSURL alloc] initWithString:path];
+   
+   if(![[NSWorkspace sharedWorkspace] openURL: url])
    {
       
       return false;
@@ -91,7 +93,7 @@ void ns_launch_app_at_url(NSURL * url, const char ** argv, int iFlags)
 {
    
    NSWorkspace * workspace = [NSWorkspace sharedWorkspace];
-   
+
    NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
    
    if(argv != NULL)
@@ -117,8 +119,35 @@ void ns_launch_app_at_url(NSURL * url, const char ** argv, int iFlags)
    //NSWorkspaceLaunchDefault
    
    [workspace launchApplicationAtURL:url options: iFlags configuration:dict error:nil];
-   
 
+  /* 
+   NSWorkspaceOpenConfiguration * configuration = [[NSWorkspaceOpenConfiguration alloc] init];
+   
+   if(argv != NULL)
+   {
+   
+      NSMutableArray * array = [[NSMutableArray alloc] init];
+   
+      while(*argv != NULL)
+      {
+      
+         [array addObject: [[NSString alloc] initWithUTF8String: *argv]];
+         
+         argv++;
+         
+      }
+
+      [configuration setArguments: array];
+      
+   }
+   
+   //NSWorkspaceLaunchWithoutActivation
+   //NSWorkspaceLaunchNewInstance
+   //NSWorkspaceLaunchDefault
+   
+   [workspace openApplicationAtURL:url configuration:configuration completionHandler:nil ];
+   
+*/
 }
 
 void ns_launch_app(const char * psz, const char ** argv, int iFlags)
@@ -264,6 +293,8 @@ void ns_Sleep(unsigned int uiMillis)
 void library_launch(const char *psz)
 {
    NSString *path =  [NSString stringWithUTF8String:psz];
+
+
    NSWorkspace *ws=[NSWorkspace sharedWorkspace];
    NSURL* url = [NSURL fileURLWithPath:path isDirectory:YES];
    
@@ -272,6 +303,18 @@ void library_launch(const char *psz)
                       options:NSWorkspaceLaunchDefault
                 configuration:dict
                         error:nil];
+
+/*
+
+   NSWorkspace *workspace=[NSWorkspace sharedWorkspace];
+   NSURL* url = [NSURL fileURLWithPath:path isDirectory:YES];
    
+   NSWorkspaceOpenConfiguration * configuration =
+   [[NSWorkspaceOpenConfiguration alloc] init];
+   
+   [workspace openApplicationAtURL:url
+                      configuration:configuration
+                completionHandler:nil];
+  */
    
 }

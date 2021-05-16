@@ -1,5 +1,8 @@
 #include "framework.h"
-#include "_.h"
+#include "acme/filesystem/filesystem/acme_dir.h"
+#include "acme_dir.h"
+#include "acme/filesystem/filesystem/acme_path.h"
+#include "acme_path.h"
 //#include "copydesk.h"
 //#include "file_os_watcher.h"
 //#include "acme/node/posix/pipe.h"
@@ -38,9 +41,12 @@ void acme_macos_factory_exchange(::factory_map * pfactorymap)
    
    acme_apple_factory_exchange(pfactorymap);
 
-   create_factory < ::macos::stdio_file         , ::file::text_file  > ();
-   create_factory < ::macos::file               , ::file::file       > ();
+   pfactorymap->create_factory < ::macos::stdio_file, ::file::text_file > ();
+   pfactorymap->create_factory < ::macos::file, ::file::file > ();
    
+   pfactorymap->create_factory < ::macos::acme_dir, ::acme_dir > ();
+   pfactorymap->create_factory < ::macos::acme_path, ::acme_path > ();
+
    //create_factory < ::macos::os_context         , ::os_context       > ();
    //create_factory < ::apple::process            , ::process::process > ();
    

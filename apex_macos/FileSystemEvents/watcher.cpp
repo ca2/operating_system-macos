@@ -27,14 +27,14 @@ namespace FileSystemEvents
       
       auto pwatcher = (watcher *) m_pwatcher->m_pThis;
       
-      pwatcher->m_ptask->m_ptask =__routine([&]()
+      pwatcher->post_predicate(__routine([&]()
       {
 
          CFStringRef mypath = CFStringCreateWithCString(kCFAllocatorDefault, pathFolder, kCFStringEncodingUTF8);
          
          CFArrayRef pathsToWatch = CFArrayCreate(nullptr, (const void **)&mypath, 1, nullptr);
          
-         void * callbackInfo = this; // put stream-specific data here.
+//         void * callbackInfo = this; // put stream-specific data here.
          
          CFAbsoluteTime latency = 0.3; /* Latency in seconds */
          
@@ -69,7 +69,7 @@ namespace FileSystemEvents
          
          CFRelease(pathsToWatch);
          
-      };
+      }));
       
       if(!m_stream)
       {

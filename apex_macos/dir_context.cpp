@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "acme/filesystem/filesystem/acme_dir.h"
 //#include "apex/os/_.h"
 //#include "apex/os/_os.h"
 //#include "apex/xml/_.h"
@@ -104,10 +105,12 @@ namespace macos
 
       }
 
-      string strRelative;
+      auto psystem = m_psystem;
+      
+      auto pacmedir = psystem->m_pacmedir;
 
-      strRelative = ::dir::install();
-
+      auto strRelative = pacmedir->install();
+      
       m_pdirsystem->m_strCommonAppData = str / strRelative / "commonappdata";
 
 //      xml::document doc;
@@ -140,7 +143,7 @@ namespace macos
       if(m_pdirsystem->m_strNetSeedFolder.is_empty())
       {
          
-         m_pdirsystem->m_strNetSeedFolder = ::dir::install() / "net";
+         m_pdirsystem->m_strNetSeedFolder = pacmedir->install() / "net";
          
       }
 
@@ -203,11 +206,11 @@ namespace macos
 
          {
 
-            __restore(listing.m_pathUser);
+            __scoped_restore(listing.m_pathUser);
 
-            __restore(listing.m_pathFinal);
+            __scoped_restore(listing.m_pathFinal);
 
-            __restore(listing.m_eextract);
+            __scoped_restore(listing.m_eextract);
 
             if(::dir_context::ls(listing))
             {
@@ -329,8 +332,10 @@ namespace macos
    {
 
       ::file::path path;
+      
+      auto pcontext = m_pcontext;
 
-      path = get_context()->defer_process_path(pathParam);
+      path = pcontext->m_papexcontext->defer_process_path(pathParam);
 
       if(::dir_context::is(path))
       {
@@ -491,9 +496,9 @@ namespace macos
             if(!::dir::mkdir(stra[i]))
             {
 
-               ::u32 dwError = ::get_last_error();
+               auto estatus = ::get_last_status();
 
-               if(dwError == ERROR_ALREADY_EXISTS)
+               if(estatus == error_already_exists)
                {
 
                   string str;
@@ -501,6 +506,8 @@ namespace macos
                   str.trim_right("\\/");
                   try
                   {
+                     
+                     auto pcontext = m_pcontext;
 
                      pcontext->m_papexcontext->file().del(str);
 
@@ -516,6 +523,8 @@ namespace macos
 
                   try
                   {
+                     
+                     auto pcontext = m_pcontext;
 
                      pcontext->m_papexcontext->file().del(str);
 
@@ -538,7 +547,7 @@ namespace macos
                   else
                   {
 
-                     dwError = ::get_last_error();
+                     estatus = ::get_last_status();
 
                   }
 
@@ -1239,7 +1248,11 @@ try1:
    ::file::path dir_context::appdata()
    {
       
-      return ::dir::appdata();
+      auto psystem = m_psystem;
+      
+      auto pacmedir = psystem->m_pacmedir;
+      
+      return pacmedir->appdata();
 
    }
 
