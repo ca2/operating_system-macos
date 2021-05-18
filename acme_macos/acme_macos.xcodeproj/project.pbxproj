@@ -42,6 +42,8 @@
 		9A7ECAC12651963500D5BA45 /* acme_dir.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A7ECABD2651963500D5BA45 /* acme_dir.h */; };
 		9A7ECAC22651963500D5BA45 /* acme_dir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A7ECABE2651963500D5BA45 /* acme_dir.cpp */; };
 		9A7ECAC32651963500D5BA45 /* acme_path.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A7ECABF2651963500D5BA45 /* acme_path.h */; };
+		9AC2CB3D26531C6200CC8096 /* list_serial_ports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */; };
+		9AC2D05A2653EBF000CC8096 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2D0582653EBF000CC8096 /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +140,8 @@
 		9A7ECABE2651963500D5BA45 /* acme_dir.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = acme_dir.cpp; sourceTree = "<group>"; };
 		9A7ECABF2651963500D5BA45 /* acme_path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = acme_path.h; sourceTree = "<group>"; };
 		9AB5F929264B020100C4F2A3 /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
+		9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = list_serial_ports.cpp; sourceTree = "<group>"; };
+		9AC2D0582653EBF000CC8096 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,7 @@
 				9A78640E26508C6C0034A0E1 /* libacme.dylib in Frameworks */,
 				9A78640F26508C6C0034A0E1 /* libacme_posix.dylib in Frameworks */,
 				9A78641026508C720034A0E1 /* libacme_apple.dylib in Frameworks */,
+				9AC2D05A2653EBF000CC8096 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +200,7 @@
 				9A15A620264B56770080670E /* file.h */,
 				9A0C178E264A2F4200B5CC33 /* framework.cpp */,
 				9A0C1790264A2F5000B5CC33 /* framework.h */,
+				9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */,
 				9A15A61D264B56760080670E /* main.cpp */,
 				9A787E8D264E901E003DF8A0 /* mm.mm */,
 				9A787C65264BD87E003DF8A0 /* mmos.h */,
@@ -242,6 +248,7 @@
 		9A787E78264E8919003DF8A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AC2D0582653EBF000CC8096 /* IOKit.framework */,
 				9A78630A2650483C0034A0E1 /* libacme.dylib */,
 				9A78630C2650483C0034A0E1 /* libacme_posix.dylib */,
 				9A787E8B264E8DC5003DF8A0 /* AppKit.framework */,
@@ -389,6 +396,7 @@
 				9A15A62F264B56770080670E /* main.cpp in Sources */,
 				9A7ECAC02651963500D5BA45 /* acme_path.cpp in Sources */,
 				9A787E8E264E901E003DF8A0 /* mm.mm in Sources */,
+				9AC2CB3D26531C6200CC8096 /* list_serial_ports.cpp in Sources */,
 				9A15A631264B56770080670E /* util.cpp in Sources */,
 				9A15A62C264B56770080670E /* thread.cpp in Sources */,
 				9A15A626264B56770080670E /* stdio_file.cpp in Sources */,

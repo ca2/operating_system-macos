@@ -113,12 +113,13 @@ namespace acme
 
          void shared_library_process(dword_array& dwa, string_array& straProcesses, const char* pszLibrary) override;
 
-         int_bool is_process_running(::u32 pid) override;
+//         int_bool is_process_running(::u32 pid) override;
          
          string get_environment_variable(const char* pszEnvironmentVariable) override;
          
          string expand_env(string str) override;
 
+         array <::serial::port_info> list_serial_ports() override;
 
       };
 

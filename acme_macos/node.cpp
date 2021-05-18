@@ -733,14 +733,14 @@ namespace acme
    }
 
 
-   int_bool node::is_process_running(::u32 pid)
-   {
-
-      __throw(error_interface_only);
-
-      return false;
-
-   }
+//   int_bool node::is_process_running(::u32 pid)
+//   {
+//
+//      __throw(error_interface_only);
+//
+//      return false;
+//
+//   }
 
 
    string node::get_environment_variable(const char* pszEnvironmentVariable)
