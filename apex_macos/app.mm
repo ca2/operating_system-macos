@@ -5,7 +5,7 @@
 //  Created by Camilo Sasuke Tsumanuma on 16/09/20.
 //  Copyright © 2020 Camilo Sasuke Tsumanuma. All rights reserved.
 //
-#import "_mm.h"
+#import "framework.h"
 
 
 bool nsapp_activation_policy_is_regular()

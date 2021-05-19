@@ -56,6 +56,19 @@
 		9A440A4C26548C38000C490B /* clipboard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = clipboard.cpp; sourceTree = "<group>"; };
 		9A440A4D26548C38000C490B /* mm_oswindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mm_oswindow.h; sourceTree = "<group>"; };
 		9A440A4E26548C38000C490B /* windowing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = windowing.cpp; sourceTree = "<group>"; };
+		9A440A5E2654DC51000C490B /* aura_window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aura_window.h; sourceTree = "<group>"; };
+		9A440A5F2654DC51000C490B /* AuraWindowFrameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuraWindowFrameView.h; sourceTree = "<group>"; };
+		9A440A602654DC51000C490B /* AuraWindow.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AuraWindow.mm; sourceTree = "<group>"; };
+		9A440A612654DC51000C490B /* aura_window.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = aura_window.mm; sourceTree = "<group>"; };
+		9A440A622654DC51000C490B /* AuraWindowApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuraWindowApp.h; sourceTree = "<group>"; };
+		9A440A632654DC51000C490B /* AuraWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuraWindow.h; sourceTree = "<group>"; };
+		9A440A642654DC51000C490B /* AuraWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuraWindowController.h; sourceTree = "<group>"; };
+		9A440A652654DC51000C490B /* AuraWindowController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AuraWindowController.mm; sourceTree = "<group>"; };
+		9A440A662654DC51000C490B /* AuraWindowApp.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AuraWindowApp.mm; sourceTree = "<group>"; };
+		9A440A672654DC51000C490B /* AuraWindowFrameView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AuraWindowFrameView.mm; sourceTree = "<group>"; };
+		9A440A682654DC66000C490B /* _.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
+		9A440A692654DD22000C490B /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
+		9A440A6A2654DD63000C490B /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +112,10 @@
 		9A440A2F26548C38000C490B /* windowing_macos */ = {
 			isa = PBXGroup;
 			children = (
+				9A440A5D2654DC51000C490B /* AuraWindow */,
+				9A440A682654DC66000C490B /* _.h */,
+				9A440A692654DD22000C490B /* _c_mm.h */,
+				9A440A6A2654DD63000C490B /* _mm.h */,
 				9A440A4C26548C38000C490B /* clipboard.cpp */,
 				9A440A4326548C38000C490B /* copydesk.cpp */,
 				9A440A3026548C38000C490B /* copydesk.h */,
@@ -117,6 +134,23 @@
 				9A440A4E26548C38000C490B /* windowing.cpp */,
 			);
 			name = windowing_macos;
+			sourceTree = "<group>";
+		};
+		9A440A5D2654DC51000C490B /* AuraWindow */ = {
+			isa = PBXGroup;
+			children = (
+				9A440A5E2654DC51000C490B /* aura_window.h */,
+				9A440A5F2654DC51000C490B /* AuraWindowFrameView.h */,
+				9A440A602654DC51000C490B /* AuraWindow.mm */,
+				9A440A612654DC51000C490B /* aura_window.mm */,
+				9A440A622654DC51000C490B /* AuraWindowApp.h */,
+				9A440A632654DC51000C490B /* AuraWindow.h */,
+				9A440A642654DC51000C490B /* AuraWindowController.h */,
+				9A440A652654DC51000C490B /* AuraWindowController.mm */,
+				9A440A662654DC51000C490B /* AuraWindowApp.mm */,
+				9A440A672654DC51000C490B /* AuraWindowFrameView.mm */,
+			);
+			path = AuraWindow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,7 +336,6 @@
 					"$(WorkspaceDir)/archive",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/_include",
-					"$(WorkspaceDir)/archive/platform-apple",
 					"$(WorkspaceDir)/archive/platform-posix",
 					"$(WorkspaceDir)/source/third/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include/include",
@@ -382,7 +415,6 @@
 					"$(WorkspaceDir)/archive",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/_include",
-					"$(WorkspaceDir)/archive/platform-apple",
 					"$(WorkspaceDir)/archive/platform-posix",
 					"$(WorkspaceDir)/source/third/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include/include",

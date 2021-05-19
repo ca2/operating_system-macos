@@ -11,9 +11,8 @@
 		07B657CF190F3CBF002DAADE /* libios_aura_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B657B8190F3CBF002DAADE /* libios_aura_macos.a */; };
 		07B657D5190F3CBF002DAADE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B657D3190F3CBF002DAADE /* InfoPlist.strings */; };
 		07B657D7190F3CBF002DAADE /* music_midi_core_audio_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B657D6190F3CBF002DAADE /* music_midi_core_audio_iosTests.m */; };
+		9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */; };
 		9A8997BD177D0E7F00C7761E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8997BC177D0E7D00C7761E /* Carbon.framework */; };
-		9A941A6A1FF334E40028686E /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A941A6B1FF334E40028686E /* libaura.dylib */; };
-		9A941A6C1FF334EA0028686E /* libaxis.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A941A6D1FF334EA0028686E /* libaxis.dylib */; };
 		9A941C501FF34F880028686E /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A941C4F1FF34F880028686E /* CoreMIDI.framework */; };
 		9A941C521FF34F9E0028686E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A941C511FF34F9E0028686E /* CoreAudio.framework */; };
 		9AA1B44A176361950019E812 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA1B449176361950019E812 /* Cocoa.framework */; };
@@ -25,16 +24,6 @@
 		9AC2D1D426542FBA00CC8096 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1C726542FBA00CC8096 /* framework.h */; };
 		9AC2D1D526542FBA00CC8096 /* interaction_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1C826542FBA00CC8096 /* interaction_impl.cpp */; };
 		9AC2D1DC265431BD00CC8096 /* _aura_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1DB265431BD00CC8096 /* _aura_macos.h */; };
-		9AC2D1E726543A7200CC8096 /* AuraWindowApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1DD26543A6A00CC8096 /* AuraWindowApp.h */; };
-		9AC2D1E826543A7200CC8096 /* AuraWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1DE26543A6A00CC8096 /* AuraWindow.h */; };
-		9AC2D1E926543A7200CC8096 /* AuraWindowFrameView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1DF26543A6A00CC8096 /* AuraWindowFrameView.h */; };
-		9AC2D1EA26543A7200CC8096 /* AuraWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1E026543A6B00CC8096 /* AuraWindow.mm */; };
-		9AC2D1EB26543A7200CC8096 /* AuraWindowApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1E126543A6D00CC8096 /* AuraWindowApp.mm */; };
-		9AC2D1EC26543A7200CC8096 /* aura_window.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1E226543A6D00CC8096 /* aura_window.h */; };
-		9AC2D1ED26543A7200CC8096 /* AuraWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1E326543A6E00CC8096 /* AuraWindowController.h */; };
-		9AC2D1EE26543A7200CC8096 /* AuraWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1E426543A6F00CC8096 /* AuraWindowController.mm */; };
-		9AC2D1EF26543A7200CC8096 /* aura_window.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1E526543A6F00CC8096 /* aura_window.mm */; };
-		9AC2D1F026543A7200CC8096 /* AuraWindowFrameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1E626543A7100CC8096 /* AuraWindowFrameView.mm */; };
 		9AC2D1F426543C7E00CC8096 /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1F326543C7E00CC8096 /* _mm.h */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +34,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 07B657B7190F3CBF002DAADE;
 			remoteInfo = music_midi_core_audio_ios;
+		};
+		9A440A6C2654E36C000C490B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AC2CFB02653DAD200CC8096 /* aura_apple.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A15A5AB264B54430080670E;
+			remoteInfo = aura_apple;
 		};
 		9AC2CFB42653DAD200CC8096 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -83,11 +79,8 @@
 		07B657D6190F3CBF002DAADE /* music_midi_core_audio_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = music_midi_core_audio_iosTests.m; sourceTree = "<group>"; };
 		9A8997BC177D0E7D00C7761E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		9A941A6B1FF334E40028686E /* libaura.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A941A6D1FF334EA0028686E /* libaxis.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaxis.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A941C4F1FF34F880028686E /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		9A941C511FF34F9E0028686E /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		9A986D861D226CFC001F4C04 /* libios_base.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libios_base.dylib; path = "../../app/base/build/Debug-iphoneos/libios_base.dylib"; sourceTree = "<group>"; };
-		9A986D881D226D07001F4C04 /* libios_core.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libios_core.dylib; path = "../../../../macos/app/core/build/Debug-iphoneos/libios_core.dylib"; sourceTree = "<group>"; };
 		9AA1B449176361950019E812 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9AC2CFB02653DAD200CC8096 /* aura_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = aura_apple.xcodeproj; path = "../../platform-apple/aura_apple/aura_apple.xcodeproj"; sourceTree = "<group>"; };
 		9AC2D1BA26542FBA00CC8096 /* notify_icon_mm_bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notify_icon_mm_bridge.h; sourceTree = "<group>"; };
@@ -99,16 +92,6 @@
 		9AC2D1C826542FBA00CC8096 /* interaction_impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interaction_impl.cpp; sourceTree = "<group>"; };
 		9AC2D1DA2654309000CC8096 /* _.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
 		9AC2D1DB265431BD00CC8096 /* _aura_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _aura_macos.h; sourceTree = "<group>"; };
-		9AC2D1DD26543A6A00CC8096 /* AuraWindowApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuraWindowApp.h; sourceTree = "<group>"; };
-		9AC2D1DE26543A6A00CC8096 /* AuraWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuraWindow.h; sourceTree = "<group>"; };
-		9AC2D1DF26543A6A00CC8096 /* AuraWindowFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuraWindowFrameView.h; sourceTree = "<group>"; };
-		9AC2D1E026543A6B00CC8096 /* AuraWindow.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AuraWindow.mm; sourceTree = "<group>"; };
-		9AC2D1E126543A6D00CC8096 /* AuraWindowApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AuraWindowApp.mm; sourceTree = "<group>"; };
-		9AC2D1E226543A6D00CC8096 /* aura_window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aura_window.h; sourceTree = "<group>"; };
-		9AC2D1E326543A6E00CC8096 /* AuraWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuraWindowController.h; sourceTree = "<group>"; };
-		9AC2D1E426543A6F00CC8096 /* AuraWindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AuraWindowController.mm; sourceTree = "<group>"; };
-		9AC2D1E526543A6F00CC8096 /* aura_window.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = aura_window.mm; sourceTree = "<group>"; };
-		9AC2D1E626543A7100CC8096 /* AuraWindowFrameView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AuraWindowFrameView.mm; sourceTree = "<group>"; };
 		9AC2D1F326543C7E00CC8096 /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
 		9AC2D2012654615500CC8096 /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
 		A1CFD778154F5EAA007447E2 /* libaura_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libaura_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,10 +118,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */,
 				9A941C521FF34F9E0028686E /* CoreAudio.framework in Frameworks */,
 				9A941C501FF34F880028686E /* CoreMIDI.framework in Frameworks */,
-				9A941A6C1FF334EA0028686E /* libaxis.dylib in Frameworks */,
-				9A941A6A1FF334E40028686E /* libaura.dylib in Frameworks */,
 				9AA1B44A176361950019E812 /* Cocoa.framework in Frameworks */,
 				9A8997BD177D0E7F00C7761E /* Carbon.framework in Frameworks */,
 			);
@@ -152,10 +134,7 @@
 			children = (
 				9A941C511FF34F9E0028686E /* CoreAudio.framework */,
 				9A941C4F1FF34F880028686E /* CoreMIDI.framework */,
-				9A941A6D1FF334EA0028686E /* libaxis.dylib */,
 				9A941A6B1FF334E40028686E /* libaura.dylib */,
-				9A986D881D226D07001F4C04 /* libios_core.dylib */,
-				9A986D861D226CFC001F4C04 /* libios_base.dylib */,
 				07B657BA190F3CBF002DAADE /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -194,16 +173,6 @@
 				9AC2D1DB265431BD00CC8096 /* _aura_macos.h */,
 				9AC2D2012654615500CC8096 /* _c_mm.h */,
 				9AC2D1F326543C7E00CC8096 /* _mm.h */,
-				9AC2D1E226543A6D00CC8096 /* aura_window.h */,
-				9AC2D1E526543A6F00CC8096 /* aura_window.mm */,
-				9AC2D1DE26543A6A00CC8096 /* AuraWindow.h */,
-				9AC2D1E026543A6B00CC8096 /* AuraWindow.mm */,
-				9AC2D1DD26543A6A00CC8096 /* AuraWindowApp.h */,
-				9AC2D1E126543A6D00CC8096 /* AuraWindowApp.mm */,
-				9AC2D1E326543A6E00CC8096 /* AuraWindowController.h */,
-				9AC2D1E426543A6F00CC8096 /* AuraWindowController.mm */,
-				9AC2D1DF26543A6A00CC8096 /* AuraWindowFrameView.h */,
-				9AC2D1E626543A7100CC8096 /* AuraWindowFrameView.mm */,
 				9AC2D1C126542FBA00CC8096 /* factory_exchange.cpp */,
 				9AC2D1BC26542FBA00CC8096 /* factory_exchange.h */,
 				9AC2D1BB26542FBA00CC8096 /* framework.cpp */,
@@ -246,16 +215,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC2D1F426543C7E00CC8096 /* _mm.h in Headers */,
-				9AC2D1EC26543A7200CC8096 /* aura_window.h in Headers */,
-				9AC2D1E826543A7200CC8096 /* AuraWindow.h in Headers */,
 				9AC2D1D026542FBA00CC8096 /* factory_exchange.h in Headers */,
-				9AC2D1E926543A7200CC8096 /* AuraWindowFrameView.h in Headers */,
 				9AC2D1CE26542FBA00CC8096 /* notify_icon_mm_bridge.h in Headers */,
-				9AC2D1ED26543A7200CC8096 /* AuraWindowController.h in Headers */,
 				9AC2D1D126542FBA00CC8096 /* interaction_impl.h in Headers */,
 				9AC2D1DC265431BD00CC8096 /* _aura_macos.h in Headers */,
 				9AC2D1D426542FBA00CC8096 /* framework.h in Headers */,
-				9AC2D1E726543A7200CC8096 /* AuraWindowApp.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +273,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9A440A6D2654E36C000C490B /* PBXTargetDependency */,
 			);
 			name = aura_macos;
 			productName = os;
@@ -397,12 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC2D1D526542FBA00CC8096 /* interaction_impl.cpp in Sources */,
-				9AC2D1EB26543A7200CC8096 /* AuraWindowApp.mm in Sources */,
 				9AC2D1D226542FBA00CC8096 /* factory_exchange.cpp in Sources */,
-				9AC2D1EA26543A7200CC8096 /* AuraWindow.mm in Sources */,
-				9AC2D1EF26543A7200CC8096 /* aura_window.mm in Sources */,
-				9AC2D1F026543A7200CC8096 /* AuraWindowFrameView.mm in Sources */,
-				9AC2D1EE26543A7200CC8096 /* AuraWindowController.mm in Sources */,
 				9AC2D1CF26542FBA00CC8096 /* framework.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +374,11 @@
 			isa = PBXTargetDependency;
 			target = 07B657B7190F3CBF002DAADE /* ios_aura_macos */;
 			targetProxy = 07B657CD190F3CBF002DAADE /* PBXContainerItemProxy */;
+		};
+		9A440A6D2654E36C000C490B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = aura_apple;
+			targetProxy = 9A440A6C2654E36C000C490B /* PBXContainerItemProxy */;
 		};
 		9AC2CFB72653DADC00CC8096 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

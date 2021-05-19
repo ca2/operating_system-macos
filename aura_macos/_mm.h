@@ -32,22 +32,3 @@ using oswindow = oswindow_t *;
 #include "_c_mm.h"
 
 
-#import "AuraWindow.h"
-
-
-#include "aura_window.h"
-
-
-NSWindow * new_aura_window(aura_window * papexwindow, CGRect rectangle, unsigned int uStyle);
-
-
-#import "AuraWindowFrameView.h"
-
-
-#import "AuraWindowApp.h"
-
-
-#import "AuraWindowController.h"
-
-
-

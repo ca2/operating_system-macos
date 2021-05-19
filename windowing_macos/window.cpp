@@ -12,8 +12,35 @@
 #include "acme/parallelization/message_queue.h"
 #include <CoreGraphics/CoreGraphics.h>
 
-namespace macos
+
+namespace windowing_macos
 {
+
+
+
+class aura_window_draw_life_time
+{
+public:
+
+
+   interaction_impl * m_pimpl;
+
+   aura_window_draw_life_time(interaction_impl * pimpl) :
+      m_pimpl(pimpl)
+   {
+
+      m_pimpl->m_nanosLastUpdateBeg.Now();
+
+   }
+
+   ~aura_window_draw_life_time()
+   {
+
+      m_pimpl->m_nanosLastUpdateEnd.Now();
+
+   }
+
+};
 
 
 
@@ -160,6 +187,24 @@ bool interaction_impl::pre_create_window(::user::system * pusersystem)
    return true;
 }
 
+void window::aura_window_add_ref()
+{
 
+   add_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_add_ref"));
+
+   m_puserinteraction->add_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_add_ref"));
 
 }
+
+
+void window::aura_window_dec_ref()
+{
+
+   m_puserinteraction->dec_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_dec_ref"));
+
+   dec_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_dec_ref"));
+
+}
+
+
+} // namespace windowing_macos

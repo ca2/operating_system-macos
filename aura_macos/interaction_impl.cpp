@@ -1,7 +1,11 @@
 #include "framework.h"
 #include "aura/platform/message_queue.h"
 #include "acme/const/activate.h"
+#include "acme/const/button_state.h"
 #include "aura/message.h"
+
+
+#define WHEEL_DELTA 120
 
 
 void deactivate_window(oswindow window);
@@ -27,30 +31,6 @@ namespace macos
 
    ::aura::application * g_pappPreTranslateMouseMessage = nullptr;
 
-
-   class aura_window_draw_life_time
-   {
-   public:
-
-
-      interaction_impl * m_pimpl;
-
-      aura_window_draw_life_time(interaction_impl * pimpl) :
-         m_pimpl(pimpl)
-      {
-
-         m_pimpl->m_nanosLastUpdateBeg.Now();
-
-      }
-
-      ~aura_window_draw_life_time()
-      {
-
-         m_pimpl->m_nanosLastUpdateEnd.Now();
-
-      }
-
-   };
 
 
    interaction_impl::interaction_impl()
@@ -86,24 +66,6 @@ namespace macos
    }
 
 
-   void interaction_impl::aura_window_add_ref()
-   {
-
-      add_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_add_ref"));
-
-      m_puserinteraction->add_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_add_ref"));
-
-   }
-
-
-   void interaction_impl::aura_window_dec_ref()
-   {
-
-      m_puserinteraction->dec_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_dec_ref"));
-
-      dec_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_dec_ref"));
-
-   }
 
 
    CLASS_DECL_AURA void hook_window_create(::user::interaction * pWnd);
@@ -689,7 +651,7 @@ namespace macos
 
       default_message_handler(pmessage);
 
-      aura_window_hide();
+      //aura_window_hide();
 
       //m_ptimerarray.release();
       
@@ -705,12 +667,12 @@ namespace macos
 
       ::user::interaction_impl::PostNcDestroy();
 
-      ns_main_async(^()
-      {
-      
-         aura_window_destroy();
-                      
-      });
+//      ns_main_async(^()
+//      {
+//      
+//         aura_window_destroy();
+//                      
+//      });
 
    }
 
@@ -870,7 +832,7 @@ namespace macos
 
       __zero(sz);
 
-      aura_window_get_title(sz, sizeof(sz));
+      //aura_window_get_title(sz, sizeof(sz));
 
       str = m_strWindowText;
 
@@ -2625,7 +2587,7 @@ namespace macos
 
       m_strWindowText = lpszString;
 
-      aura_window_set_title(m_strWindowText);
+      //aura_window_set_title(m_strWindowText);
 
    }
 
@@ -3069,7 +3031,7 @@ namespace macos
       if (m_puserinteraction->is_window_visible())
       {
 
-         aura_window_redraw();
+         //aura_window_redraw();
 
       }
 
@@ -4150,1281 +4112,147 @@ namespace macos
 #endif
 
 
-   void interaction_impl::aura_window_draw(CGContextRef cgc, CGSize sizeWindowParam)
-   {
-
-      ::size_i32 sizeWindow(sizeWindowParam.width, sizeWindowParam.height);
-
-      #ifdef EXTRALOG
-
-      static int s_iLastExact = -1;
-
-      string str;
-
-      string strFormat;
-
-      strFormat.Format("|-> window size_i32 %d, %d", sizeWindow.cx, sizeWindow.cy);
-
-      string strSize;
-
-      if(sizeLast != sizeWindow)
-      {
-
-         sizeLast = sizeWindow;
-
-         strSize = strFormat;
-
-      }
-
-      str += strFormat;
-
-      rectangle_i32 rect1 = m_puserinteraction->get_window_rect();
-
-      if(rect1.size() != rectLast.size())
-      {
-
-         rectLast = rect1;
-
-         // xxxlog output_debug_string("different window rectangle_i32 size_i32 (1)");
-
-      }
-
-#endif
-
-      millis tickNow = millis::now();
-
-      millis tickEllapsed = tickNow - m_millisLastAuraWindowDraw;
-
-      if(tickEllapsed < 12)
-      {
-
-         // xxxlog
-         //output_debug_string("\n\nwarning: aura_window_draw more than 80FPS!!! Ellapsed: " + str::from(tickEllapsed) + "ms.\n\n");
-
-      }
-
-      m_millisLastAuraWindowDraw = tickNow;
-
-      aura_window_draw_life_time roundwindowdrawlifetime(this);
-
-      critical_section_lock slDisplay(cs_display());
-
-      __pointer(::graphics::graphics) pbuffer = m_pgraphics;
-
-      if(!pbuffer)
-      {
-
-         return;
-
-      }
-      
-      if(!m_puserinteraction)
-      {
-      
-         return;
-
-      }
-         
-      ::draw2d::graphics_pointer g(e_create);
-
-      g->attach(cgc);
-
-      auto rectClient = m_puserinteraction->get_client_rect();
-
-      g->set_alpha_mode(::draw2d::alpha_mode_set);
-
-      synchronous_lock slGraphics(pbuffer->mutex());
-      
-      synchronous_lock sl1(pbuffer->get_screen_sync());
-
-      ::image_pointer & imageBuffer2 = pbuffer->get_screen_image();
-
-      if (!imageBuffer2)
-      {
-
-         output_debug_string("NOT DRAWING? <<---- search and bp here !imageBuffer2 ");
-
-         return;
-
-      }
-      
-      slGraphics.unlock();
-
-#ifdef EXTRALOG
-
-      if(strSize.has_char())
-      {
-
-         s_iLastExact = -1;
-
-      }
-
-      if(s_iLastExact > 0)
-      {
-
-
-         if(s_iLastExact % 10 == 0)
-         {
-
-            str = "\n.";
-
-         }
-         else
-         {
-
-            str = ".";
-
-         }
-         
-         strFormat.Format("%d", iAge);
-
-         str += strFormat;
-         
-         output_debug_string(str);
-         
-      }
-      else
-      {
-         
-         INFO(str);
-         
-      }
-      
-#endif
-
-      ::size_i32 sizeMin = imageBuffer2->size().minimum(sizeWindow);
-
-      g->draw(sizeMin, imageBuffer2);
-      
-      m_bPendingRedraw = false;
-      
-      m_millisLastRedraw.Now();
-
-   }
-
-
-   bool interaction_impl::aura_window_key_down(unsigned int uiKeyCode)
-   {
-
-      __pointer(::user::message) spbase;
-
-      auto pkey  = __new(::message::key);
-
-      pkey->m_id = e_message_key_down;
-
-      pkey->m_nChar = uiKeyCode;
-
-      spbase = pkey;
-
-      if(m_puserinteraction == nullptr)
-      {
-
-         return false;
-
-      }
-
-      m_puserinteraction->send(spbase);
-
-      return spbase->m_bRet;
-
-   }
-
-
-   bool interaction_impl::aura_window_key_up(unsigned int uiKeyCode)
-   {
-
-      __pointer(::user::message) spbase;
-
-      auto pkey  = __new(::message::key);
-
-      pkey->m_id = e_message_key_up;
-
-      pkey->m_nChar = uiKeyCode;
-
-      spbase = pkey;
-
-      if(m_puserinteraction == nullptr)
-      {
-
-         return false;
-
-      }
-
-      m_puserinteraction->send(spbase);
-
-      return spbase->m_bRet;
-
-   }
-
-
-   bool interaction_impl::aura_window_key_down(unsigned int vk, unsigned int scan, const char * pszUtf8)
-   {
-
-      __pointer(::user::message) spbase;
-
-      auto pkey  = __new(::message::key);
-
-      pkey->set(get_oswindow(), m_pwindow, e_message_key_down, vk, (lparam)(scan << 16), ::point_i32());
-
-      if(::is_set(pszUtf8))
-      {
-      
-         
-
-         string * pstringText = new string(pszUtf8);
-
-         auto lparam = (::lparam) (iptr) (string *) (pstringText);
-
-         printf("aura_window_key_down e_message_text_composition\n");
-
-         m_puserinteraction->post_message(e_message_text_composition, 0, lparam);
-         
-         
-//         pkey->m_strText = pszUtf8;
 //
-//         if(pkey->m_strText.has_char())
-//         {
-//
-//            pkey->m_ekey = ::user::e_key_refer_to_text_member;
-//
-//         }
-         
-      }
-      
-      spbase = pkey;
-
-      if(m_puserinteraction == nullptr)
-      {
-
-         return false;
-
-      }
-
-      m_puserinteraction->send(spbase);
-
-      return spbase->m_bRet;
-
-   }
-
-
-   bool interaction_impl::aura_window_key_up(unsigned int vk, unsigned int scan)
-   {
-
-      __pointer(::user::message) spbase;
-
-      auto pkey  = __new(::message::key);
-
-      pkey->set(get_oswindow(), m_pwindow, e_message_key_up, vk, (::lparam)(scan << 16), point_i32());
-
-      spbase = pkey;
-
-      if(m_puserinteraction == nullptr)
-      {
-
-         return false;
-
-      }
-
-      m_puserinteraction->send(spbase);
-
-      return spbase->m_bRet;
-
-   }
-
-
-   void interaction_impl::aura_window_mouse_down(int iButton, double x, double y)
-   {
-
-      __pointer(::user::message) spbase;
-
-      if (!m_pwindow->is_active_window())
-      {
-
-         try
-         {
-
-            auto pmouseactivate = __new(::message::mouse_activate);
-
-            pmouseactivate->m_id = e_message_mouse_activate;
-
-            spbase = pmouseactivate;
-
-            m_puserinteraction->send(spbase);
-
-            if (spbase->m_lresult == e_mouse_activate || spbase->m_lresult == e_mouse_activate_no_activate_and_eat)
-            {
-
-
-               m_puserinteraction->post_message(e_message_activate, MAKELONG(e_activate_click_active, 0), 0);
-
-            }
-
-         }
-         catch (...)
-         {
-
-         }
-
-      }
-
-      {
-
-         int message;
-
-         if (iButton == 1)
-         {
-
-            message = e_message_right_button_down;
-
-         }
-         else
-         {
-
-            message = e_message_left_button_down;
-
-         }
-
-         lparam lparam = MAKELPARAM(x, y);
-         
-         if(m_puserinteraction)
-         {
-
-            m_puserinteraction->post_message(message, 0, lparam);
-            
-         }
-
-      }
-
-   }
-
-
-   void interaction_impl::aura_window_mouse_up(int iButton, double x, double y)
-   {
-
-      int message;
-
-      if (iButton == 1)
-      {
-
-         message = e_message_right_button_up;
-
-      }
-      else
-      {
-
-         message = e_message_left_button_up;
-
-      }
-
-      lparam lparam = MAKELPARAM(x, y);
-      
-      if(!m_puserinteraction)
-      {
-         
-         return;
-         
-      }
-
-      m_puserinteraction->post_message(message, 0, lparam);
-
-
-   }
-
-
-   void interaction_impl::aura_window_double_click(int iButton, double x, double y)
-   {
-
-      int message;
-
-      if (iButton == 1)
-      {
-
-         message = e_message_right_button_double_click;
-
-      }
-      else
-      {
-
-         message = e_message_left_button_double_click;
-
-      }
-
-      lparam lparam = MAKELPARAM(x, y);
-      
-      if(!m_puserinteraction)
-      {
-         
-         return;
-         
-      }
-
-      m_puserinteraction->post_message(message, 0, lparam);
-
-   }
-
-
-   void interaction_impl::aura_window_mouse_moved(double x, double y, unsigned long ulAppleMouseButton)
-   {
-      
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
-      
-      bool bOk = true;
-      
-      if(!m_puserinteraction)
-      {
-         
-         return;
-         
-      }
-      
-      __pointer(::user::interaction) pinteraction = m_puserinteraction;
-
-      if(pinteraction.is_set())
-      {
-
-         if(pinteraction->m_millisMouseMove.elapsed() < pinteraction->m_millisMouseMoveIgnore)
-         {
-            
-            //printf("mouse_move_ignored %f, %f\n", x, y);
-
-            bOk = false;
-
-         }
-
-         if(bOk)
-         {
-
-//            printf("mouse_move_\"accepted\" %f, %f\n", x, y);
-
-            pinteraction->m_millisMouseMove.Now();
-
-            pinteraction->m_pointMouseMove.x = x;
-
-            pinteraction->m_pointMouseMove.y = y;
-
-//            if(false)
-//            {
-//
-//               if(pinteraction->m_millisMouseMovePeriod > 0)
-//               {
-//
-//                  ::size_i32 sizeDistance((pinteraction->m_pointMouseMoveSkip.x - pinteraction->m_pointMouseMove.x),
-//                     (pinteraction->m_pointMouseMoveSkip.y - pinteraction->m_pointMouseMove.y));
-//
-//                  if(!pinteraction->m_millisMouseMoveSkip.timeout(pinteraction->m_millisMouseMovePeriod)
-//                     && sizeDistance.cx * sizeDistance.cx + sizeDistance.cy * sizeDistance.cy < pinteraction->m_iMouseMoveSkipSquareDistance)
-//                  {
-//
-//                     pinteraction->m_iMouseMoveSkipCount++;
-//
-//                     pinteraction->m_bMouseMovePending = true;
-//
-//                     if(pinteraction->m_iMouseMoveSkipCount == 2)
-//                     {
-//
-//                        //output_debug_string("\nmmv>skip 2!");
-//
-//                     }
-//                     else if(pinteraction->m_iMouseMoveSkipCount == 5)
-//                     {
-//
-//                        //output_debug_string("\nmmv>Skip 5!!!");
-//
-//                     }
-//                     else if(pinteraction->m_iMouseMoveSkipCount == 10)
-//                     {
-//
-//                        //output_debug_string("\nmmv>SKIP 10 !!!!!!!!!");
-//
-//                     }
-//
-//                     return true;
-//
-//                  }
-//
-//                  pinteraction->m_iMouseMoveSkipCount = 0;
-//
-//                  pinteraction->m_pointMouseMoveSkip = pinteraction->m_pointMouseMove;
-//
-//               }
-//
-//            }
-
-         }
-
-      }
-
-      if(!bOk)
-      {
-
-         return;
-
-      }
-
-      if(m_puserinteraction == nullptr)
-      {
-
-         return;
-
-      }
-
-      lparam lparam = MAKELPARAM(x, y);
-
-      wparam wparam = 0;
-
-      if(ulAppleMouseButton & 1)
-      {
-
-         wparam |= MK_LBUTTON;
-
-      }
-
-      if(ulAppleMouseButton & 2)
-      {
-
-         wparam |= MK_RBUTTON;
-
-      }
-      
-      //printf("mouse_move_\"posted\" %f, %f\n", x, y);
-      
-      m_puserinteraction->post_message(e_message_mouse_move, wparam, lparam);
-      
-   }
-
-
-   void interaction_impl::aura_window_mouse_dragged(double x, double y, unsigned long ulAppleMouseButton)
-   {
-
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
-
-      if(m_puserinteraction == nullptr)
-      {
-
-         return;
-
-      }
-
-      lparam lparam = MAKELPARAM(x, y);
-
-      wparam wparam = 0;
-
-      if(ulAppleMouseButton & 1)
-      {
-
-         wparam |= MK_LBUTTON;
-
-      }
-
-      if(ulAppleMouseButton & 2)
-      {
-
-         wparam |= MK_RBUTTON;
-
-      }
-
-      m_puserinteraction->post_message(e_message_mouse_move, wparam, lparam);
-
-   }
-
-
-   void interaction_impl::aura_window_mouse_wheel(double deltaY, double x, double y)
-   {
-
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
-      
-      __pointer(::user::message) spbase;
-      
-      if(!m_puserinteraction)
-      {
-         
-         return;
-         
-      }
-
-      {
-
-         auto pwheel  = __new(::message::mouse_wheel);
-
-         pwheel->m_id = e_message_mouse_wheel;
-
-         pwheel->m_point.x = (::i32)x;
-         pwheel->m_point.y = (::i32)y;
-         pwheel->m_bTranslated = true;
-
-         short delta = deltaY * WHEEL_DELTA / 3.0;
-
-         pwheel->m_wparam = delta << 16;
-
-         spbase = pwheel;
-
-         if(m_puserinteraction == nullptr)
-         {
-
-            return;
-
-         }
-
-         m_puserinteraction->send(spbase);
-
-      }
-
-   }
-
-
-   void interaction_impl::aura_window_resized(CGRect rectangle_i32)
-   {
-      
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
-      
-      if(!m_puserinteraction)
-      {
-         
-         return;
-         
-      }
-
-      m_puserinteraction->post_message(e_message_move,0, MAKELPARAM(rectangle.origin.x, rectangle.origin.y));
-
-      m_puserinteraction->post_message(e_message_size,0, MAKELPARAM(rectangle.size.width, rectangle.size.height));
-
-      return;
-
-//      if(m_puserinteraction == nullptr)
-//      {
-//
-//         return;
-//
-//      }
-//
-//      //
-//      if(m_puserinteraction->window_state().m_point != rectangle.origin)
-//      {
-//
-//         m_puserinteraction->window_state().m_point = rectangle.origin;
-//
-//         TRACE("interaction_impl::aura_window_resized effective position is different from requested position");
-//
-//         m_puserinteraction->post_message(e_message_move, 0, m_puserinteraction->window_state().m_point.lparam());
-//
-//      }
-//
-//      if(m_puserinteraction->m_sizeRequest != rectangle.size_i32)
-//      {
-//
-//         m_puserinteraction->m_sizeRequest = rectangle.size_i32;
-//
-//         TRACE("interaction_impl::aura_window_resized effective position is different from requested position");
-//
-//         m_puserinteraction->post_message(e_message_size, 0, m_puserinteraction->m_sizeRequest.lparam());
-//
-//      }
-//
-//      m_puserinteraction->m_point = rectangle.origin;
-//
-//      m_puserinteraction->m_size = rectangle.size_i32;
-//
-////      ::size_i32 sz;
-////
-////      point_i64 pt(rectangle.origin.x, rectangle.origin.y);
-////
-////      bool bMove = false;
-////
-////      {
-////
-////         synchronous_lock synchronouslock(m_puserinteraction->mutex());
-////
-////         if (pt != m_puserinteraction->m_rectParentClient.top_left())
-////         {
-////
-////            bMove = true;
-////
-////         }
-////
-////         m_puserinteraction->m_rectParentClient.move_to(point);
-////
-////         m_puserinteraction->set_size(rectangle.size_i32);
-////
-////         sz = m_puserinteraction->m_rectParentClient.size();
-////
-////      }
-////
-////      if(m_puserinteraction == nullptr)
-////      {
-////
-////         return;
-////
-////      }
-////
-////      m_puserinteraction->post_message(e_message_size, 0, sz.lparam());
-////
-////      if (bMove)
-////      {
-////
-////         m_puserinteraction->post_message(e_message_move, 0, pt.lparam());
-////
-////      }
-
-//      if (m_puserinteraction->m_eflagLayouting)
-//      {
-//
-//         //pmessage->m_bRet = true;
-//
-//         return;
-//
-//      }
-//
-//      ::rectangle_i32 rectSize;
-//
-//      __copy(rectSize, rectangle);
-//
-//      if(m_puserinteraction->window_state().rectangle_i32() != rectSize)
-//      {
-//
-//         m_puserinteraction->window_state().m_point = rectSize.origin();
-//
-//         m_puserinteraction->window_state().m_size = rectSize.size();
-//
-//      }
-//
-//
-//      if (m_puserinteraction->layout().sketch().rectangle_i32() != rectSize)
-//      {
-//
-//         m_puserinteraction->place(rectSize);
-//
-//         if (m_puserinteraction->layout().design().display() != e_display_normal)
-//         {
-//
-//            m_puserinteraction->display();
-//
-//         }
-//
-//         m_puserinteraction->set_need_layout();
-//
-//         m_puserinteraction->set_need_redraw();
-//
-//      }
-
-   }
-
-
-   void interaction_impl::aura_window_moved(CGPoint point_i32)
-   {
-      
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
-      
-      if(m_bEatMoveEvent)
-      {
-         
-         m_bEatMoveEvent = false;
-         
-         return;
-         
-      }
-
-      m_puserinteraction->post_message(e_message_move,0, MAKELPARAM(point.x, point.y));
-
-      return;
-
-//      if(m_puserinteraction == nullptr)
-//      {
-//
-//         return;
-//
-//      }
-//
-//
-//      ::point_i32 pointMove;
-//
-//      __copy(pointMove, point);
-//
-//      if (m_puserinteraction->m_eflagLayouting)
-//      {
-//
-//         //pmessage->m_bRet = true;
-//
-//         return;
-//
-//      }
-//
-//      ///__pointer(::message::move) pmove(pmessage);
-//
-//      if (m_puserinteraction->layout().sketch().m_point != pointMove)
-//      {
-//
-//         m_puserinteraction->move_to(pointMove);
-//
-//         if (m_puserinteraction->layout().design().display() != e_display_normal)
-//         {
-//
-//            m_puserinteraction->display();
-//
-//         }
-//
-//         m_puserinteraction->set_reposition();
-//
-//         m_puserinteraction->set_need_redraw();
-//
-//      }
-//
-//
-////      if(m_puserinteraction->m_pointRequest != point_i32)
-////      {
-////
-////         m_puserinteraction->m_pointRequest = point;
-////
-////         TRACE("interaction_impl::aura_window_resized effective position is different from requested position");
-////
-////      }
-////
-////      m_puserinteraction->m_point = point;
-
-   }
-
-
-   void interaction_impl::aura_window_did_become_key()
-   {
-
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
-      
-      m_millisLastExposureAddUp.Now();
-
-   }
-
-
-   void interaction_impl::aura_window_activate()
-   {
-      
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
-      
-      ::set_active_window(get_handle());
-
-      if(m_puserinteraction == nullptr)
-      {
-
-         return;
-
-      }
-
-      m_puserinteraction->set_need_redraw();
-
-   }
-
-
-   void interaction_impl::aura_window_deactivate()
-   {
-
-      if(is_destroying())
-      {
-         
-         //return;
-         
-         output_debug_string("destroying");
-         
-      }
-      
-      ::deactivate_window(get_handle());
-
-      if(m_puserinteraction == nullptr)
-      {
-
-         return;
-
-      }
- 
-      if(!is_destroying())
-      {
-      
-         m_puserinteraction->set_need_redraw();
-         
-      }
-
-   }
-
-
-   void interaction_impl::aura_window_iconified()
-   {
-
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
-      
-      if(m_puserinteraction == nullptr)
-      {
-
-         return;
-
-      }
-      
-      if(m_puserbox != nullptr)
-      {
-
-         m_puserbox->m_windowrect.m_edisplayPrevious = m_puserbox->m_windowrect.m_edisplay;
-         
-      }
-
-      m_puserinteraction->layout().window() = ::e_display_iconic;
-
-   }
-
-
-   void interaction_impl::aura_window_deiconified()
-   {
-
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
-      
-      if(m_puserinteraction == nullptr)
-      {
-
-         return;
-
-      }
-      
-      if(m_puserbox)
-      {
-
-         if(m_puserbox->m_windowrect.m_edisplayPrevious == ::e_display_iconic)
-         {
-
-            m_puserbox->m_windowrect.m_edisplayPrevious = ::e_display_normal;
-
-         }
-         
-         m_puserinteraction->_001OnDeiconify(m_puserbox->m_windowrect.m_edisplayPrevious);
-
-         
-      }
-
-
-   }
-
-
-   void interaction_impl::aura_window_on_show()
-   {
-
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
-      
-      if(m_puserinteraction == nullptr)
-      {
-
-         return;
-
-      }
-
-      m_millisLastExposureAddUp.Now();
-
-      m_puserinteraction->message_call(e_message_show_window, 1);
-
-      //m_puserinteraction->user_interaction_update_visibility_cache(true);
-
-//      if(!(m_puserinteraction->m_ewindowflag & window_flag_miniaturizable))
-//      {
-//
-//         if(m_puserinteraction->layout().sketch().display() == e_display_iconic)
-//         {
-//
-//            m_puserinteraction->m_windowState3
-//
-//         }
-//
-//      }
-
-      m_puserinteraction->set_need_layout();
-
-      m_puserinteraction->set_need_redraw();
-
-      m_puserinteraction->post_redraw();
-
-   }
-
-
-   void interaction_impl::aura_window_on_hide()
-   {
-
-//      if(is_destroying())
-//      {
-//         
-//         return;
-//         
-//      }
-      
-      INFO("macos::interaction_impl::aura_window_on_hide");
-
-      if(m_puserinteraction == nullptr)
-      {
-
-         WARN("macos::interaction_impl::aura_window_on_hide (2) m_puserinteraction == nullptr");
-
-         return;
-
-      }
-      
-      if(m_puserinteraction->layout().window().is_screen_visible())
-      {
-
-         m_puserinteraction->hide();
-
-      }
-      
-      m_puserinteraction->message_call(e_message_show_window, 0);
-
-   }
-
-
-   void interaction_impl::aura_window_on_miniaturize()
-   {
-
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
-      
-      if(m_puserinteraction == nullptr)
-      {
-
-         return;
-
-      }
-
-      //m_puserinteraction->message_call(e_message_show_window, 0);
-
-      //m_puserinteraction->user_interaction_update_visibility_cache(false);
-
-   }
-
-
-   void CLASS_DECL_AURA __pre_init_dialog(
-   ::user::interaction * pWnd, RECTANGLE_I32 * lpRectOld, ::u32* pdwStyleOld)
-   {
-      ASSERT(lpRectOld != nullptr);
-      ASSERT(pdwStyleOld != nullptr);
-
-      pWnd->get_window_rect(lpRectOld);
-      *pdwStyleOld = pWnd->GetStyle();
-   }
-
-//   __STATIC void CLASS_DECL_AURA __post_init_dialog(
-//      ::user::interaction * p, const RECTANGLE_I32& rectOld, ::u32 dwStyleOld)
+//   CLASS_DECL_AURA void hook_window_create(::user::interaction * pinteraction)
 //   {
-//      // must be hidden to start with
-//      if (dwStyleOld & WS_VISIBLE)
-//         return;
 //
-//      // must not be visible after WM_INITDIALOG
-//      if (pWnd->GetStyle() & (WS_VISIBLE | WS_CHILD))
-//         return;
+//      UNREFERENCED_PARAMETER(pinteraction);
 //
-//      // must not move during WM_INITDIALOG
-//      ::rectangle_i32 rectangle;
-//      pWnd->get_window_rect(rectangle);
-//      if (rectOld.left != rectangle.left || rectOld.top != rectangle.top)
-//         return;
+//   }
 //
-//      // must be unowned or owner disabled
-//      ::user::interaction * pParent = pWnd->GetWindow(GW_OWNER);
-//      if (pParent != nullptr && pParent->is_window_enabled())
-//         return;
 //
-//      if (!pWnd->CheckAutoCenter())
-//         return;
+//   CLASS_DECL_AURA bool unhook_window_create()
+//   {
 //
-//      // center modal dialog boxes/message boxes
-//      //MAC_WINDOW(pWnd)->CenterWindow();
+//      return true;
+//
+//   }
+//
+
+//   void CLASS_DECL_AURA
+//   __handle_activate(::user::interaction * pWnd, WPARAM nState, ::user::interaction * pWndOther)
+//   {
+//
+//      __throw(error_not_implemented);
+//      //   ASSERT(pWnd != nullptr);
+//      //
+//      //   // m_puserinteraction->send WM_ACTIVATETOPLEVEL when top-level parents change
+//      //   if (!(MAC_WINDOW(pWnd)->GetStyle() & WS_CHILD))
+//      //   {
+//      //      ::user::interaction * pTopLevel= MAC_WINDOW(pWnd)->GetTopLevelParent();
+//      //      if (pTopLevel && (pWndOther == nullptr || !::is_window(MAC_WINDOW(pWndOther)->get_handle()) || pTopLevel != MAC_WINDOW(pWndOther)->GetTopLevelParent()))
+//      //      {
+//      //         // lparam points to user::interaction getting the e_message_activate message and
+//      //         //  hWndOther from the e_message_activate.
+//      //         oswindow hWnd2[2];
+//      //         hWnd2[0] = MAC_WINDOW(pWnd)->get_handle();
+//      //         if(pWndOther == nullptr || MAC_WINDOW(pWndOther) == nullptr)
+//      //         {
+//      //            hWnd2[1] = nullptr;
+//      //         }
+//      //         else
+//      //         {
+//      //            hWnd2[1] = MAC_WINDOW(pWndOther)->get_handle();
+//      //         }
+//      //         // m_puserinteraction->send it...
+//      //         pTopLevel->send_message(WM_ACTIVATETOPLEVEL, nState, (LPARAM)&hWnd2[0]);
+//      //      }
+//      //   }
+//   }
+//
+//   bool CLASS_DECL_AURA
+//   __handle_set_cursor(::user::interaction * pWnd, ::u32 nHitTest, ::u32 nMsg)
+//   {
+//
+//      __throw(error_not_implemented);
+//      //   if (nHitTest == HTERROR &&
+//      //      (nMsg == e_message_left_button_down || nMsg == e_message_middle_button_down ||
+//      //      nMsg == e_message_right_button_down))
+//      //   {
+//      //      // activate the last active user::interaction if not active
+//      //      ::user::interaction * pLastActive = MAC_WINDOW(pWnd)->GetTopLevelParent();
+//      //      if (pLastActive != nullptr)
+//      //         pLastActive = pLastActive->GetLastActivePopup();
+//      //      if (pLastActive != nullptr &&
+//      //         pLastActive != ::macos::interaction_impl::GetForegroundWindow() &&
+//      //         pLastActive->IsWindowEnabled())
+//      //      {
+//      //         pLastActive->SetForegroundWindow();
+//      //         return true;
+//      //      }
+//      //   }
+//      //   return false;
 //   }
 
 
 
-   CLASS_DECL_AURA void hook_window_create(::user::interaction * pinteraction)
-   {
-
-      UNREFERENCED_PARAMETER(pinteraction);
-
-   }
 
 
-   CLASS_DECL_AURA bool unhook_window_create()
-   {
-
-      return true;
-
-   }
-
-
-   void CLASS_DECL_AURA
-   __handle_activate(::user::interaction * pWnd, WPARAM nState, ::user::interaction * pWndOther)
-   {
-
-      __throw(error_not_implemented);
-      //   ASSERT(pWnd != nullptr);
-      //
-      //   // m_puserinteraction->send WM_ACTIVATETOPLEVEL when top-level parents change
-      //   if (!(MAC_WINDOW(pWnd)->GetStyle() & WS_CHILD))
-      //   {
-      //      ::user::interaction * pTopLevel= MAC_WINDOW(pWnd)->GetTopLevelParent();
-      //      if (pTopLevel && (pWndOther == nullptr || !::is_window(MAC_WINDOW(pWndOther)->get_handle()) || pTopLevel != MAC_WINDOW(pWndOther)->GetTopLevelParent()))
-      //      {
-      //         // lparam points to user::interaction getting the e_message_activate message and
-      //         //  hWndOther from the e_message_activate.
-      //         oswindow hWnd2[2];
-      //         hWnd2[0] = MAC_WINDOW(pWnd)->get_handle();
-      //         if(pWndOther == nullptr || MAC_WINDOW(pWndOther) == nullptr)
-      //         {
-      //            hWnd2[1] = nullptr;
-      //         }
-      //         else
-      //         {
-      //            hWnd2[1] = MAC_WINDOW(pWndOther)->get_handle();
-      //         }
-      //         // m_puserinteraction->send it...
-      //         pTopLevel->send_message(WM_ACTIVATETOPLEVEL, nState, (LPARAM)&hWnd2[0]);
-      //      }
-      //   }
-   }
-
-   bool CLASS_DECL_AURA
-   __handle_set_cursor(::user::interaction * pWnd, ::u32 nHitTest, ::u32 nMsg)
-   {
-
-      __throw(error_not_implemented);
-      //   if (nHitTest == HTERROR &&
-      //      (nMsg == e_message_left_button_down || nMsg == e_message_middle_button_down ||
-      //      nMsg == e_message_right_button_down))
-      //   {
-      //      // activate the last active user::interaction if not active
-      //      ::user::interaction * pLastActive = MAC_WINDOW(pWnd)->GetTopLevelParent();
-      //      if (pLastActive != nullptr)
-      //         pLastActive = pLastActive->GetLastActivePopup();
-      //      if (pLastActive != nullptr &&
-      //         pLastActive != ::macos::interaction_impl::GetForegroundWindow() &&
-      //         pLastActive->IsWindowEnabled())
-      //      {
-      //         pLastActive->SetForegroundWindow();
-      //         return true;
-      //      }
-      //   }
-      //   return false;
-   }
-
-
-
-
-
-   LRESULT CALLBACK
-   __activation_window_procedure(oswindow hWnd, ::u32 nMsg, wparam wparam, lparam lparam)
-   {
-
-      __throw(error_not_implemented);
-      //   WNDPROC oldWndProc = (WNDPROC)::GetProp(hWnd, gen_OldWndProc);
-      //   ASSERT(oldWndProc != nullptr);
-      //
-      //   LRESULT lResult = 0;
-      //   try
-      //   {
-      //      bool bCallDefault = true;
-      //      switch (nMsg)
-      //      {
-      //      case WM_INITDIALOG:
-      //         {
-      //            ::u32 uStyle;
-      //            ::rectangle_i32 rectOld;
-      //            ::user::interaction * pWnd = ::macos::interaction_impl::from_handle(hWnd);
-      //            __pre_init_dialog(pWnd, &rectOld, &uStyle);
-      //            bCallDefault = false;
-      //            lResult = CallWindowProc(oldWndProc, hWnd, nMsg, wparam, lparam);
-      //            __post_init_dialog(pWnd, rectOld, uStyle);
-      //         }
-      //         break;
-      //
-      //      case e_message_activate:
-      //         __handle_activate(::macos::interaction_impl::from_handle(hWnd), wparam,
-      //            ::macos::interaction_impl::from_handle((oswindow)lparam));
-      //         break;
-      //
-      //      case e_message_set_cursor:
-      //         bCallDefault = !__handle_set_cursor(::macos::interaction_impl::from_handle(hWnd),
-      //            (short)LOWORD(lparam), HIWORD(lparam));
-      //         break;
-      //
-      //      case e_message_ncdestroy:
-      //         SetWindowLongPtr(hWnd, GWLP_WNDPROC, reinterpret_cast<iptr>(oldWndProc));
-      //         RemoveProp(hWnd, gen_OldWndProc);
-      //         GlobalDeleteAtom(GlobalFindAtom(gen_OldWndProc));
-      //         break;
-      //      }
-      //
-      //      // call original wndproc for default handling
-      //      if (bCallDefault)
-      //         lResult = CallWindowProc(oldWndProc, hWnd, nMsg, wparam, lparam);
-      //   }
-      //   catch(::exception::aura * pe)
-      //   {
-      //      // handle exception
-      //      MESSAGE msg;
-      //      msg.hwnd = hWnd;
-      //      msg.message = nMsg;
-      //      msg.wparam = wparam;
-      //      msg.lparam = lparam;
-      //
-      //      //lResult = __process_window_procedure_exception(pe, &msg);
-      //      //      TRACE(::ca2::trace::category_AppMsg, 0, "Warning: Uncaught exception in __activation_window_procedure (returning %ld).\n",
-      //      //       lResult);
-      //      ::exception_pointer esp(pe);
-      //   }
-      //
-      //
-      //   return lResult;
-   }
+//   LRESULT CALLBACK
+//   __activation_window_procedure(oswindow hWnd, ::u32 nMsg, wparam wparam, lparam lparam)
+//   {
+//
+//      __throw(error_not_implemented);
+//      //   WNDPROC oldWndProc = (WNDPROC)::GetProp(hWnd, gen_OldWndProc);
+//      //   ASSERT(oldWndProc != nullptr);
+//      //
+//      //   LRESULT lResult = 0;
+//      //   try
+//      //   {
+//      //      bool bCallDefault = true;
+//      //      switch (nMsg)
+//      //      {
+//      //      case WM_INITDIALOG:
+//      //         {
+//      //            ::u32 uStyle;
+//      //            ::rectangle_i32 rectOld;
+//      //            ::user::interaction * pWnd = ::macos::interaction_impl::from_handle(hWnd);
+//      //            __pre_init_dialog(pWnd, &rectOld, &uStyle);
+//      //            bCallDefault = false;
+//      //            lResult = CallWindowProc(oldWndProc, hWnd, nMsg, wparam, lparam);
+//      //            __post_init_dialog(pWnd, rectOld, uStyle);
+//      //         }
+//      //         break;
+//      //
+//      //      case e_message_activate:
+//      //         __handle_activate(::macos::interaction_impl::from_handle(hWnd), wparam,
+//      //            ::macos::interaction_impl::from_handle((oswindow)lparam));
+//      //         break;
+//      //
+//      //      case e_message_set_cursor:
+//      //         bCallDefault = !__handle_set_cursor(::macos::interaction_impl::from_handle(hWnd),
+//      //            (short)LOWORD(lparam), HIWORD(lparam));
+//      //         break;
+//      //
+//      //      case e_message_ncdestroy:
+//      //         SetWindowLongPtr(hWnd, GWLP_WNDPROC, reinterpret_cast<iptr>(oldWndProc));
+//      //         RemoveProp(hWnd, gen_OldWndProc);
+//      //         GlobalDeleteAtom(GlobalFindAtom(gen_OldWndProc));
+//      //         break;
+//      //      }
+//      //
+//      //      // call original wndproc for default handling
+//      //      if (bCallDefault)
+//      //         lResult = CallWindowProc(oldWndProc, hWnd, nMsg, wparam, lparam);
+//      //   }
+//      //   catch(::exception::aura * pe)
+//      //   {
+//      //      // handle exception
+//      //      MESSAGE msg;
+//      //      msg.hwnd = hWnd;
+//      //      msg.message = nMsg;
+//      //      msg.wparam = wparam;
+//      //      msg.lparam = lparam;
+//      //
+//      //      //lResult = __process_window_procedure_exception(pe, &msg);
+//      //      //      TRACE(::ca2::trace::category_AppMsg, 0, "Warning: Uncaught exception in __activation_window_procedure (returning %ld).\n",
+//      //      //       lResult);
+//      //      ::exception_pointer esp(pe);
+//      //   }
+//      //
+//      //
+//      //   return lResult;
+//   }
 
 
    void interaction_impl::offset_viewport_org(RECTANGLE_I32 * lprectScreen)
@@ -5445,35 +4273,37 @@ namespace macos
 
    void interaction_impl::_001WindowMinimize()
    {
+//
+//      if(get_handle() == nullptr)
+//      {
+//
+//         return;
+//
+//      }
 
-      if(get_handle() == nullptr)
-      {
+      //aura_window_iconified();
 
-         return;
-
-      }
-
-      aura_window_iconified();
-
-      get_handle()->iconify();
-
-   }
-
-
-   bool interaction_impl::has_focus()
-   {
-
-      return ::get_focus() == get_handle();
+      //get_handle()->iconify();
+      
+      
 
    }
 
 
-   bool interaction_impl::is_active()
-   {
+//   bool interaction_impl::has_focus()
+//   {
+//
+//      return ::get_focus() == get_handle();
+//
+//   }
 
-      return ::get_active_window() == get_handle();
 
-   }
+//   bool interaction_impl::is_active()
+//   {
+//
+//      return ::get_active_window() == get_handle();
+//
+//   }
 
 
 //   void interaction_impl::ns_main_async(dispatch_block_t block)
@@ -5484,74 +4314,74 @@ namespace macos
 //   }
 
 
-   bool interaction_impl::ShowWindow(int iShow)
-   {
-   
-      if(iShow == SW_HIDE)
-      {
-         
-         aura_window_hide();
-         
-      }
-      else if(iShow == SW_MINIMIZE)
-      {
-         
-         aura_window_miniaturize();
-
-      }
-      else if(iShow == SW_SHOWNOACTIVATE)
-      {
-         
-         aura_window_order_front();
-         
-      }
-   else
-   {
-      
-      defer_dock_application(true);
-
-           nsapp_activate_ignoring_other_apps(1);
-
-           aura_window_show();
-   }
-   
-   }
+//   bool interaction_impl::ShowWindow(int iShow)
+//   {
+//
+//      if(iShow == SW_HIDE)
+//      {
+//
+//         aura_window_hide();
+//
+//      }
+//      else if(iShow == SW_MINIMIZE)
+//      {
+//
+//         aura_window_miniaturize();
+//
+//      }
+//      else if(iShow == SW_SHOWNOACTIVATE)
+//      {
+//
+//         aura_window_order_front();
+//
+//      }
+//   else
+//   {
+//
+//      defer_dock_application(true);
+//
+//           nsapp_activate_ignoring_other_apps(1);
+//
+//           aura_window_show();
+//   }
+//
+//   }
 
    void interaction_impl::window_show_change_visibility()
    {
 
-      auto edisplay = m_puserinteraction->layout().design().display();
+//      auto edisplay = m_puserinteraction->layout().design().display();
+//
+//      if(!::is_visible(edisplay))
+//      {
+//
+//         aura_window_hide();
+//
+//      }
+//      else if(edisplay == e_display_iconic)
+//      {
+//
+//         aura_window_miniaturize();
+//
+//      }
+//      else if(m_puserinteraction->layout().design().activation() & e_activation_no_activate)
+//      {
+//
+//         aura_window_order_front();
+//
+//      }
+//      else
+//      {
+//
+//         defer_dock_application(true);
+//
+//         nsapp_activate_ignoring_other_apps(1);
+//
+//         aura_window_show();
+//
+//      }
 
-      if(!::is_visible(edisplay))
-      {
-
-         aura_window_hide();
-
-      }
-      else if(edisplay == e_display_iconic)
-      {
-
-         aura_window_miniaturize();
-
-      }
-      else if(m_puserinteraction->layout().design().activation() & e_activation_no_activate)
-      {
-
-         aura_window_order_front();
-
-      }
-      else
-      {
-
-         defer_dock_application(true);
-
-         nsapp_activate_ignoring_other_apps(1);
-
-         aura_window_show();
-
-      }
-
-      return 1;
+      //return 1;
 
    }
 
@@ -5561,7 +4391,7 @@ namespace macos
       
       ::user::interaction_impl::set_destroying();
 
-      ::aura_window::m_bDestroying = true;
+      //::aura_window::m_bDestroying = true;
 
    }
 

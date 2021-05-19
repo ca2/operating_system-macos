@@ -2,11 +2,7 @@
 //  _c_mm.h
 //  windowing_macos
 //
-//  Created by Camilo Sasuke on 19/05/21.
+//  Created by Camilo Sasuke on 2021-05-19 02:44 BRT <3ThomasBS_!!
 //
+#pragma once
 
-#ifndef _c_mm_h
-#define _c_mm_h
-
-
-#endif /* _c_mm_h */

@@ -10,8 +10,9 @@ namespace macos
 
 
    class CLASS_DECL_AURA_MACOS interaction_impl :
-      virtual public ::user::interaction_impl,
-      virtual public ::aura_window
+      virtual public ::user::interaction_impl
+//,
+  //    virtual public ::aura_window
    {
    public:
 
@@ -37,7 +38,8 @@ namespace macos
       
       virtual void set_destroying() override;
 
-      inline bool is_destroying() const { return ::aura_window::m_bDestroying || ::user::interaction_impl::m_bDestroying; }
+      inline bool is_destroying() const { return //::aura_window::m_bDestroying ||
+         ::user::interaction_impl::m_bDestroying; }
 
       virtual void release_graphics_resources();
       
@@ -203,40 +205,6 @@ namespace macos
       virtual void ShowOwnedPopups(bool bShow = true) override;
 
 
-      virtual void aura_window_add_ref() override;
-      virtual void aura_window_dec_ref() override;
-
-
-      virtual void aura_window_draw(CGContextRef cgc, CGSize sizeWindow) override;
-      virtual void aura_window_mouse_down(int iButton, double x, double y) override;
-      virtual void aura_window_mouse_up(int iButton, double x, double y) override;
-      virtual void aura_window_mouse_moved(double x, double y, unsigned long ulAppleMouseButton) override;
-      virtual void aura_window_mouse_dragged(double x, double y, unsigned long iAppleMouseButton) override;
-      virtual void aura_window_mouse_wheel(double deltaY, double x, double y) override;
-      virtual void aura_window_double_click(int iButton, double x, double y) override;
-      virtual bool aura_window_key_down(unsigned int vk, unsigned int scan, const char * pszUtf8) override;
-      virtual bool aura_window_key_up(unsigned int vk, unsigned int scan) override;
-      virtual bool aura_window_key_down(unsigned int uiKeyCode) override;
-      virtual bool aura_window_key_up(unsigned int uiKeyCode) override;
-
-
-      virtual void aura_window_did_become_key() override;
-      virtual void aura_window_activate() override;
-      virtual void aura_window_deactivate() override;
-
-
-      virtual void aura_window_resized(CGRect rectangle_i32) override;
-      virtual void aura_window_moved(CGPoint point_i32) override;
-      virtual void aura_window_iconified() override;
-      virtual void aura_window_deiconified() override;
-
-
-
-
-
-      virtual void aura_window_on_show() override;
-      virtual void aura_window_on_hide() override;
-      virtual void aura_window_on_miniaturize() override;
 
 
       void set_viewport_org(::draw2d::graphics_pointer & pgraphics) override;
