@@ -83,10 +83,10 @@ namespace macos
       virtual void on_layout(::draw2d::graphics_pointer & pgraphics) override;
 
       // subclassing/unsubclassing functions
-      virtual void pre_subclass_window() override;
-      bool SubclassWindow(oswindow hWnd);
-      //bool SubclassDlgItem(::u32 nID, ::interaction_impl * pParent);
-      oswindow UnsubclassWindow();
+//      virtual void pre_subclass_window() override;
+//      bool SubclassWindow(oswindow hWnd);
+//      //bool SubclassDlgItem(::u32 nID, ::interaction_impl * pParent);
+//      oswindow UnsubclassWindow();
 
 //      // handling of RT_DLGINIT resource (extension to RT_DIALOG)
 //      bool ExecuteDlgInit(const char * lpszResourceName) override;
@@ -127,8 +127,8 @@ namespace macos
 
       virtual bool _is_window() const override;
 
-      lresult send_message(const ::id & id, wparam wParam = 0, lparam lParam = 0, const ::point_i32 & point = nullptr) override;
-      bool post_message(const ::id & id, wparam wParam = 0, lparam lParam = 0) override;
+//      lresult send_message(const ::id & id, wparam wParam = 0, lparam lParam = 0, const ::point_i32 & point = nullptr) override;
+//      bool post_message(const ::id & id, wparam wParam = 0, lparam lParam = 0) override;
 
 //      bool SendNotifyMessage(const ::id & id, WPARAM wParam, LPARAM lParam);
 //      bool SendChildNotifyLastMsg(LRESULT* pResult = nullptr);
@@ -157,7 +157,7 @@ namespace macos
 
 
       //virtual bool set_window_position(iptr z, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags);
-      virtual ::u32 ArrangeIconicWindows() override;
+      //virtual ::u32 ArrangeIconicWindows() override;
       //virtual void BringToTop(::e_display edisplay) override;
       //virtual bool BringWindowToTop() override;
 //      using ::user::interaction_impl::get_window_rect;
