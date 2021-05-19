@@ -6,6 +6,12 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9A2BB8952654FBD900ABA8B9 /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A752654F36C000C490B /* node.h */; };
+		9A2BB8982654FBE600ABA8B9 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A440A742654F36C000C490B /* node.cpp */; };
+		9A2BB8992654FBF300ABA8B9 /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A440A3826548C38000C490B /* window.cpp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		9A440A2726548C17000C490B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -166,6 +172,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A2BB8952654FBD900ABA8B9 /* node.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +263,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A2BB8992654FBF300ABA8B9 /* window.cpp in Sources */,
+				9A2BB8982654FBE600ABA8B9 /* node.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
