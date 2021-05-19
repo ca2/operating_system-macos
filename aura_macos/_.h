@@ -2,12 +2,22 @@
 //  _.h
 //  aura_macos
 //
-//  Created by Camilo Sasuke on 18/05/21.
+//  Created by Camilo Sasuke on 2021-05-18 14:27 BRT <3ThomasBS_!!
 //  Copyright © 2021 ca2 Desenvolvimento de Sofware Ltda. All rights reserved.
 //
 
-#ifndef __h
-#define __h
+
+#include "aura/_.h"
 
 
-#endif /* __h */
+#if defined(_AURA_MACOS_LIBRARY)
+   #define CLASS_DECL_AURA_MACOS  CLASS_DECL_EXPORT
+#else
+   #define CLASS_DECL_AURA_MACOS  CLASS_DECL_IMPORT
+#endif
+
+
+#include "_c_mm.h"
+
+
+

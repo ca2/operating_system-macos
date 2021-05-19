@@ -5,7 +5,7 @@
 //  Created by Camilo Sasuke Tsumanuma on 3/8/16.
 //
 //
-#import "_mm.h"
+#import "framework.h"
 
 
 char * ns_get_default_browser_path()

@@ -1,5 +1,4 @@
 #include "framework.h"
-#include "aura/os/macos/oswindow_data.h"
 #include "aura/platform/message_queue.h"
 #include "aura/message.h"
 
@@ -28,25 +27,25 @@ namespace macos
    ::aura::application * g_pappPreTranslateMouseMessage = nullptr;
 
 
-   class round_window_draw_life_time
+   class aura_window_draw_life_time
    {
    public:
 
 
       interaction_impl * m_pimpl;
 
-      round_window_draw_life_time(interaction_impl * pimpl) :
+      aura_window_draw_life_time(interaction_impl * pimpl) :
          m_pimpl(pimpl)
       {
 
-         m_pimpl->m_uiLastUpdateBeg = get_nanos();
+         m_pimpl->m_nanosLastUpdateBeg.Now();
 
       }
 
-      ~round_window_draw_life_time()
+      ~aura_window_draw_life_time()
       {
 
-         m_pimpl->m_uiLastUpdateEnd = get_nanos();
+         m_pimpl->m_nanosLastUpdateEnd.Now();
 
       }
 
@@ -57,27 +56,27 @@ namespace macos
    {
 
       m_bEnabled = true;
-      set_handle(nullptr);
+//      set_os_data(nullptr);
 
    }
 
 
-   void interaction_impl::construct(oswindow hWnd)
-   {
+//   void interaction_impl::construct(oswindow hWnd)
+//   {
+//
+//      set_os_data(hWnd);
+//
+//   }
 
-      set_handle(hWnd);
 
-   }
-
-
-   interaction_impl::interaction_impl(::object * pobject) :
-      ::object(pobject)
-   {
-
-      m_bEnabled = true;
-      set_handle(nullptr);
-
-   }
+//   interaction_impl::interaction_impl(::object * pobject) :
+//      ::object(pobject)
+//   {
+//
+//      m_bEnabled = true;
+//      set_handle(nullptr);
+//
+//   }
 
 
    interaction_impl::~interaction_impl()
@@ -86,22 +85,22 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_add_ref()
+   void interaction_impl::aura_window_add_ref()
    {
 
-      add_ref(OBJ_REF_DBG_P_NOTE(this, "round_window_add_ref"));
+      add_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_add_ref"));
 
-      m_puserinteraction->add_ref(OBJ_REF_DBG_P_NOTE(this, "round_window_add_ref"));
+      m_puserinteraction->add_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_add_ref"));
 
    }
 
 
-   void interaction_impl::round_window_dec_ref()
+   void interaction_impl::aura_window_dec_ref()
    {
 
-      m_puserinteraction->dec_ref(OBJ_REF_DBG_P_NOTE(this, "round_window_dec_ref"));
+      m_puserinteraction->dec_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_dec_ref"));
 
-      dec_ref(OBJ_REF_DBG_P_NOTE(this, "round_window_dec_ref"));
+      dec_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_dec_ref"));
 
    }
 
@@ -112,75 +111,75 @@ namespace macos
 
    void CLASS_DECL_AURA __pre_init_dialog(::user::interaction * pWnd, RECTANGLE_I32 * lpRectOld, ::u32* pdwStyleOld);
 
-   void CLASS_DECL_AURA __post_init_dialog(::user::interaction * pWnd, const RECTANGLE_I32& rectOld, ::u32 dwStyleOld);
+//   void CLASS_DECL_AURA __post_init_dialog(::user::interaction * pWnd, const RECTANGLE_I32& rectOld, ::u32 dwStyleOld);
+//
+//   LRESULT CALLBACK __activation_window_procedure(oswindow hWnd, ::u32 nMsg, wparam wparam, lparam lparam);
+////
+//
+//   ::user::interaction_impl * interaction_impl::from_os_data(void * pdata)
+//   {
+//
+//      return from_handle((oswindow)pdata);
+//
+//   }
 
-   LRESULT CALLBACK __activation_window_procedure(oswindow hWnd, ::u32 nMsg, wparam wparam, lparam lparam);
-
-
-   ::user::interaction_impl * interaction_impl::from_os_data(void * pdata)
-   {
-
-      return from_handle((oswindow)pdata);
-
-   }
-
-
-   void * interaction_impl::get_os_data() const
-   {
-
-      return ((oswindow &)m_oswindow);
-
-   }
-
-
-   bool interaction_impl::ModifyStyle(oswindow hWnd, ::u32 dwRemove, ::u32 dwAdd, ::u32 nFlags)
-   {
-
-      if (!::is_window(hWnd))
-         return false;
-
-      DWORD_PTR dw = hWnd->get_window_long_ptr(GWL_STYLE);
-
-      dw &= ~dwRemove;
-
-      dw |= dwAdd;
-
-      hWnd->set_window_long_ptr(GWL_STYLE, dw);
-
-      return true;
-
-   }
-
-
-   bool interaction_impl::ModifyStyleEx(oswindow hWnd, ::u32 dwRemove, ::u32 dwAdd, ::u32 nFlags)
-   {
-
-      if (!::is_window(hWnd))
-      {
-
-         return false;
-
-      }
-
-      DWORD_PTR dw = hWnd->get_window_long_ptr(GWL_EXSTYLE);
-
-      dw &= ~dwRemove;
-
-      dw |= dwAdd;
-
-      hWnd->set_window_long_ptr(GWL_EXSTYLE, dw);
-
-      return true;
-
-   }
-
-
-   const MESSAGE * PASCAL interaction_impl::GetCurrentMessage()
-   {
-
-      return nullptr;
-
-   }
+//
+//   void * interaction_impl::get_os_data() const
+//   {
+//
+//      return ((oswindow &)m_oswindow);
+//
+//   }
+//
+//
+//   bool interaction_impl::ModifyStyle(oswindow hWnd, ::u32 dwRemove, ::u32 dwAdd, ::u32 nFlags)
+//   {
+//
+//      if (!::is_window(hWnd))
+//         return false;
+//
+//      DWORD_PTR dw = hWnd->get_window_long_ptr(GWL_STYLE);
+//
+//      dw &= ~dwRemove;
+//
+//      dw |= dwAdd;
+//
+//      hWnd->set_window_long_ptr(GWL_STYLE, dw);
+//
+//      return true;
+//
+//   }
+//
+//
+//   bool interaction_impl::ModifyStyleEx(oswindow hWnd, ::u32 dwRemove, ::u32 dwAdd, ::u32 nFlags)
+//   {
+//
+//      if (!::is_window(hWnd))
+//      {
+//
+//         return false;
+//
+//      }
+//
+//      DWORD_PTR dw = hWnd->get_window_long_ptr(GWL_EXSTYLE);
+//
+//      dw &= ~dwRemove;
+//
+//      dw |= dwAdd;
+//
+//      hWnd->set_window_long_ptr(GWL_EXSTYLE, dw);
+//
+//      return true;
+//
+//   }
+//
+//
+//   const MESSAGE * PASCAL interaction_impl::GetCurrentMessage()
+//   {
+//
+//      return nullptr;
+//
+//   }
 
 
 //   LRESULT interaction_impl::Default()
@@ -191,81 +190,81 @@ namespace macos
 //   }
 
 
-   ::user::interaction_impl * interaction_impl::from_handle(oswindow oswindow)
-   {
+//   ::user::interaction_impl * interaction_impl::from_handle(oswindow oswindow)
+//   {
+//
+//      if (oswindow == nullptr)
+//      {
+//
+//         return nullptr;
+//
+//      }
+//
+//      return oswindow->m_pimpl;
+//
+//   }
 
-      if (oswindow == nullptr)
-      {
+//
+//   ::user::interaction_impl * interaction_impl::FromHandlePermanent(oswindow oswindow)
+//   {
+//
+//      if (oswindow == nullptr)
+//      {
+//
+//         return nullptr;
+//
+//      }
+//
+//      return oswindow->m_pimpl;
+//
+//   }
 
-         return nullptr;
-
-      }
-
-      return oswindow->m_pimpl;
-
-   }
-
-
-   ::user::interaction_impl * interaction_impl::FromHandlePermanent(oswindow oswindow)
-   {
-
-      if (oswindow == nullptr)
-      {
-
-         return nullptr;
-
-      }
-
-      return oswindow->m_pimpl;
-
-   }
-
-
-   bool interaction_impl::Attach(oswindow hWndNew)
-   {
-
-      ASSERT(get_handle() == nullptr);     // only attach once, detach on destroy
-      //  ASSERT(FromHandlePermanent(hWndNew) == nullptr);
-      // must not already be in permanent ::collection::map
-
-      if (hWndNew == nullptr)
-      {
-
-         return false;
-
-      }
-
-      //single_lock synchronouslock(afxMutexHwnd(), true);
-      //hwnd_map * pMap = afxMapHWND(true); // create ::collection::map if not exist
-      //ASSERT(pMap != nullptr);
-
-      //pMap->set_permanent(set_handle(hWndNew), this);
-      //if(m_puserinteraction == nullptr)
-      {
-         //m_puserinteraction = this;
-      }
-
-      m_oswindow = hWndNew;
-
-      return true;
-
-   }
-
-   oswindow interaction_impl::Detach()
-   {
-      oswindow hWnd = (oswindow)get_handle();
-      if (hWnd != nullptr)
-      {
-         //         single_lock synchronouslock(afxMutexHwnd(), true);
-         //  ;;       hwnd_map * pMap = afxMapHWND(); // don't create if not exist
-         //     if (pMap != nullptr)
-         //      pMap->erase_handle(get_handle());
-         //         set_handle(nullptr);
-         m_oswindow = nullptr;
-      }
-
-      return hWnd;
-   }
+//
+//   bool interaction_impl::Attach(oswindow hWndNew)
+//   {
+//
+//      ASSERT(get_oswindow() == nullptr);     // only attach once, detach on destroy
+//      //  ASSERT(FromHandlePermanent(hWndNew) == nullptr);
+//      // must not already be in permanent ::collection::map
+//
+//      if (hWndNew == nullptr)
+//      {
+//
+//         return false;
+//
+//      }
+//
+//      //single_lock synchronouslock(afxMutexHwnd(), true);
+//      //hwnd_map * pMap = afxMapHWND(true); // create ::collection::map if not exist
+//      //ASSERT(pMap != nullptr);
+//
+//      //pMap->set_permanent(set_handle(hWndNew), this);
+//      //if(m_puserinteraction == nullptr)
+//      {
+//         //m_puserinteraction = this;
+//      }
+//
+//      m_oswindow = hWndNew;
+//
+//      return true;
+//
+//   }
+//
+//   oswindow interaction_impl::Detach()
+//   {
+//      oswindow hWnd = (oswindow)get_handle();
+//      if (hWnd != nullptr)
+//      {
+//         //         single_lock synchronouslock(afxMutexHwnd(), true);
+//         //  ;;       hwnd_map * pMap = afxMapHWND(); // don't create if not exist
+//         //     if (pMap != nullptr)
+//         //      pMap->erase_handle(get_handle());
+//         //         set_handle(nullptr);
+//         m_oswindow = nullptr;
+//      }
+//
+//      return hWnd;
+//   }
 
    void interaction_impl::pre_subclass_window()
    {
@@ -273,21 +272,21 @@ namespace macos
    }
 
 
-   bool interaction_impl::create_window_ex(::user::interaction * pinteraction, __pointer(::user::system) pusersystem, ::user::interaction *  puiParent, id id)
-   {
-
-      if (!native_create_window_ex(pinteraction, cs,
-                                   puiParent == nullptr ? nullptr : puiParent->get_safe_handle(), id))
-      {
-
-         return false;
-
-      }
-
-      return true;
-
-   }
-
+//   bool interaction_impl::create_window_ex(::user::interaction * pinteraction, __pointer(::user::system) pusersystem, ::user::interaction *  puiParent, id id)
+//   {
+//
+//      if (!native_create_window_ex(pinteraction, cs,
+//                                   puiParent == nullptr ? nullptr : puiParent->get_safe_handle(), id))
+//      {
+//
+//         return false;
+//
+//      }
+//
+//      return true;
+//
+//   }
+//
 
    ::e_status interaction_impl::update_graphics_resources()
    {
@@ -324,164 +323,166 @@ namespace macos
    }
 
 
-   bool interaction_impl::_native_create_window_ex(__pointer(::user::system) pusersystem)
-   {
+//   ::e_status interaction_impl::native_create_host()
+//   {
+//
+//      //if (::is_window(get_handle()))
+//      //{
+//
+//      //   DestroyWindow();
+//
+//      //}
+//
+//      //      ASSERT(lpszClassName == nullptr || __is_valid_string(lpszClassName) ||
+//      //       __is_valid_atom(lpszClassName));
+////      ENSURE_ARG(pusersystem->m_createstruct.lpszName == nullptr || __is_valid_string(pusersystem->m_createstruct.lpszName));
+//
+//      // allow modification of several common create parameters
+//      //::user::system createstruct;
+//      //      pusersystem->m_createstruct.hwndParent = hWndParent;
+//      //   pusersystem->m_createstruct.hMenu = hWndParent == nullptr ? nullptr : nIDorHMenu;
+//      m_pusersystem->m_createstruct.hMenu = nullptr;
+//      //      pusersystem->m_createstruct.hInstance = ::aura::get_system()->m_hInstance;
+//      //pusersystem->m_createstruct.lpCreateParams = lpParam;
+//
+//      if (!m_puserinteraction->pre_create_window(m_pusersystem))
+//      {
+//
+//         return false;
+//
+//      }
+//
+//      install_message_routing(m_puserinteraction);
+//
+//      hook_window_create(m_puserinteraction);
+//
+//      CGRect rectangle_i32;
+//
+//      RECTANGLE_I32 rectParam;
+//
+////      rectParam.left = m_pusersystem->m_createstruct.x;
+////      rectParam.top = pusersystem->m_createstruct.y;
+////      rectParam.right = pusersystem->m_createstruct.x + pusersystem->m_createstruct.cx;
+////      rectParam.bottom = pusersystem->m_createstruct.y + pusersystem->m_createstruct.cy;
+//
+////      __copy(rectangle, rectParam);
+////
+////      if (pusersystem->m_createstruct.hwndParent == MESSAGE_WINDOW_PARENT)
+////      {
+////
+////         return true;
+////
+////      }
+////      else
+////      {
+//
+//         unsigned uStyle = 0;
+//
+//         if(m_puserinteraction->m_ewindowflag & ::e_window_flag_miniaturizable)
+//         {
+//
+//#define NSWindowStyleMaskMiniaturizable (1 << 2)
+//
+//            uStyle |= NSWindowStyleMaskMiniaturizable;
+//
+//         }
+//
+//         auto rectangle = m_puserinteraction-> get_window_rect();
+//
+//         m_oswindow = oswindow_get(new_aura_window(this, rectangle, uStyle));
+//
+//         m_puserinteraction->layout().window() = ::top_left(rectParam);
+//
+//         m_puserinteraction->layout().window() = ::size_i32(rectParam);
+//
+//         __refer(m_puserinteraction->m_pthreadUserInteraction, ::get_task());
+//
+//         //m_puserinteraction->place(rectParam);
+//
+//
+//
+//         m_oswindow->set_user_interaction_impl(this);
+//
+//         oswindow_assign(m_oswindow, this);
+//
+//      }
+//
+//      LRESULT lresult = m_puserinteraction->send_message(e_message_create, 0, (LPARAM)&cs);
+//
+//      bool bOk = true;
+//
+//      if (!unhook_window_create() || lresult == -1)
+//      {
+//
+//         bOk = false;
+//
+//         finalize();
+//
+//         //children_post_quit();
+//
+//         //children_wait_quit(one_minute());
+//
+//         PostNcDestroy();        // cleanup if CreateWindowEx fails too soon
+//
+//         return false;
+//
+//      }
+//
+//      if(pusersystem->m_createstruct.style & WS_VISIBLE)
+//      {
+//
+//         m_puserinteraction->display();
+//
+//         m_puserinteraction->set_need_redraw();
+//
+//         //m_puserinteraction->post_redraw();
+//
+//         //;//aura_window_show();
+//
+//      }
+//
+//      m_puserinteraction->set_need_layout();
+//
+//      m_puserinteraction->add_ref(OBJ_REF_DBG_P_NOTE(this, "native_create_window"));
+//
+//      m_puserinteraction->m_ewindowflag |= e_window_flag_window_created;
+//
+//      return bOk;
+//
+//   }
+//
+//
+//   // for child windows
+//   bool interaction_impl::pre_create_window(::user::system * pusersystem)
+//   {
+//      /*      if (pusersystem->m_createstruct.lpszClass == nullptr)
+//       {
+///xcore/app/aura/node/macos/macos_interaction_impl.cpp:712:44: No member named 'get_window_rect' in 'user::interaction_impl'       // make sure the default user::interaction class is registered
+//       VERIFY(__end_defer_register_class(__WND_REG, &pusersystem->m_createstruct.lpszClass));
+//
+//       // no WNDCLASS provided - use child user::interaction default
+//       ASSERT(pusersystem->m_createstruct.style & WS_CHILD);
+//       }*/
+//      return true;
+//   }
+//
 
-      //if (::is_window(get_handle()))
-      //{
-
-      //   DestroyWindow();
-
-      //}
-
-      //      ASSERT(lpszClassName == nullptr || __is_valid_string(lpszClassName) ||
-      //       __is_valid_atom(lpszClassName));
-      ENSURE_ARG(pusersystem->m_createstruct.lpszName == nullptr || __is_valid_string(pusersystem->m_createstruct.lpszName));
-
-      // allow modification of several common create parameters
-      //::user::system createstruct;
-      //      pusersystem->m_createstruct.hwndParent = hWndParent;
-      //   pusersystem->m_createstruct.hMenu = hWndParent == nullptr ? nullptr : nIDorHMenu;
-      pusersystem->m_createstruct.hMenu = nullptr;
-      //      pusersystem->m_createstruct.hInstance = ::aura::get_system()->m_hInstance;
-      //pusersystem->m_createstruct.lpCreateParams = lpParam;
-
-      if (!m_puserinteraction->pre_create_window(pusersystem))
-      {
-
-         return false;
-
-      }
-
-      install_message_routing(m_puserinteraction);
-
-      hook_window_create(m_puserinteraction);
-
-      CGRect rectangle_i32;
-
-      RECTANGLE_I32 rectParam;
-
-      rectParam.left = pusersystem->m_createstruct.x;
-      rectParam.top = pusersystem->m_createstruct.y;
-      rectParam.right = pusersystem->m_createstruct.x + pusersystem->m_createstruct.cx;
-      rectParam.bottom = pusersystem->m_createstruct.y + pusersystem->m_createstruct.cy;
-
-      __copy(rectangle, rectParam);
-
-      if (pusersystem->m_createstruct.hwndParent == MESSAGE_WINDOW_PARENT)
-      {
-
-         return true;
-
-      }
-      else
-      {
-
-         unsigned uStyle = 0;
-
-         if(m_puserinteraction->m_ewindowflag & window_flag_miniaturizable)
-         {
-
-#define NSWindowStyleMaskMiniaturizable (1 << 2)
-
-            uStyle |= NSWindowStyleMaskMiniaturizable;
-
-         }
-
-         m_oswindow = oswindow_get(new_apex_window(this, rectangle, uStyle));
-
-         m_puserinteraction->layout().window() = ::top_left(rectParam);
-
-         m_puserinteraction->layout().window() = ::size_i32(rectParam);
-
-         __refer(m_puserinteraction->m_pthreadUserInteraction, ::get_task());
-
-         //m_puserinteraction->place(rectParam);
-
-
-
-         m_oswindow->set_user_interaction_impl(this);
-
-         oswindow_assign(m_oswindow, this);
-
-      }
-
-      LRESULT lresult = m_puserinteraction->send_message(e_message_create, 0, (LPARAM)&cs);
-
-      bool bOk = true;
-
-      if (!unhook_window_create() || lresult == -1)
-      {
-
-         bOk = false;
-         
-         finalize();
-
-         //children_post_quit();
-
-         //children_wait_quit(one_minute());
-
-         PostNcDestroy();        // cleanup if CreateWindowEx fails too soon
-         
-         return false;
-
-      }
-
-      if(pusersystem->m_createstruct.style & WS_VISIBLE)
-      {
-
-         m_puserinteraction->display();
-
-         m_puserinteraction->set_need_redraw();
-
-         //m_puserinteraction->post_redraw();
-
-         //;//round_window_show();
-
-      }
-
-      m_puserinteraction->set_need_layout();
-
-      m_puserinteraction->add_ref(OBJ_REF_DBG_P_NOTE(this, "native_create_window"));
-
-      m_puserinteraction->m_ewindowflag |= e_window_flag_window_created;
-      
-      return bOk;
-
-   }
-
-
-   // for child windows
-   bool interaction_impl::pre_create_window(::user::system * pusersystem)
-   {
-      /*      if (pusersystem->m_createstruct.lpszClass == nullptr)
-       {
-/xcore/app/aura/node/macos/macos_interaction_impl.cpp:712:44: No member named 'get_window_rect' in 'user::interaction_impl'       // make sure the default user::interaction class is registered
-       VERIFY(__end_defer_register_class(__WND_REG, &pusersystem->m_createstruct.lpszClass));
-
-       // no WNDCLASS provided - use child user::interaction default
-       ASSERT(pusersystem->m_createstruct.style & WS_CHILD);
-       }*/
-      return true;
-   }
-
-
-   bool interaction_impl::create_window(::user::interaction * pinteraction, const char * lpszClassName,const char * lpszWindowName,u32 uStyle, const ::rectangle_i32 & rectangle,::user::interaction * puiParent,id id, ::create * pcreate)
-   {
-
-      // can't use for desktop or pop-up windows (use CreateEx instead)
-
-      ASSERT(puiParent != nullptr);
-      
-      ::user::system createstruct(0, lpszClassName, lpszWindowName, uStyle, rectangle, pcreate);
-
-      pusersystem->m_createstruct.hwndParent = puiParent->get_safe_handle();
-
-      ASSERT((pusersystem->m_createstruct.style & WS_POPUP) == 0);
-
-      return create_window_ex(pinteraction, createstruct, puiParent, id);
-
-   }
+//   bool interaction_impl::create_window(::user::interaction * pinteraction, const char * lpszClassName,const char * lpszWindowName,u32 uStyle, const ::rectangle_i32 & rectangle,::user::interaction * puiParent,id id, ::create * pcreate)
+//   {
+//
+//      // can't use for desktop or pop-up windows (use CreateEx instead)
+//
+//      ASSERT(puiParent != nullptr);
+//
+//      ::user::system createstruct(0, lpszClassName, lpszWindowName, uStyle, rectangle, pcreate);
+//
+//      pusersystem->m_createstruct.hwndParent = puiParent->get_safe_handle();
+//
+//      ASSERT((pusersystem->m_createstruct.style & WS_POPUP) == 0);
+//
+//      return create_window_ex(pinteraction, createstruct, puiParent, id);
+//
+//   }
 
 
    // bool interaction_impl::create_message_queue(::user::interaction * pinteraction, const char * pszName)
@@ -685,7 +686,7 @@ namespace macos
 
       default_message_handler(pmessage);
 
-      round_window_hide();
+      aura_window_hide();
 
       m_ptimerarray.release();
       
@@ -704,7 +705,7 @@ namespace macos
       ns_main_async(^()
       {
       
-         round_window_destroy();
+         aura_window_destroy();
                       
       });
 
@@ -866,7 +867,7 @@ namespace macos
 
       __zero(sz);
 
-      round_window_get_title(sz, sizeof(sz));
+      aura_window_get_title(sz, sizeof(sz));
 
       str = m_strWindowText;
 
@@ -2456,7 +2457,7 @@ namespace macos
 ////      if(nCmdShow <= SW_HIDE)
 ////      {
 ////
-////         round_window_hide();
+////         aura_window_hide();
 ////
 ////
 ////      }
@@ -2603,7 +2604,7 @@ namespace macos
 
       m_strWindowText = lpszString;
 
-      round_window_set_title(m_strWindowText);
+      aura_window_set_title(m_strWindowText);
 
    }
 
@@ -2660,7 +2661,7 @@ namespace macos
 ////
 ////         BringWindowToTop();
 ////
-////         //round_window_show();
+////         //aura_window_show();
 ////
 ////      }
 //
@@ -2937,13 +2938,13 @@ namespace macos
 //      if(show_window_is_visible(m_puserinteraction->m_iShowWindowRequest))
 //      {
 //
-//         round_window_show();
+//         aura_window_show();
 //
 //      }
 //      else if(show_window_is_visible(m_puserinteraction->m_iShowWindowRequest))
 //      {
 //
-//         round_window_hide();
+//         aura_window_hide();
 //
 //      }
 
@@ -3047,7 +3048,7 @@ namespace macos
       if (m_puserinteraction->is_window_visible())
       {
 
-         round_window_redraw();
+         aura_window_redraw();
 
       }
 
@@ -3513,7 +3514,7 @@ namespace macos
 
       bool b = ::SetForegroundWindow(get_handle()) != false;
 
-      //      round_window_show();
+      //      aura_window_show();
 
       return b;
 
@@ -4127,7 +4128,7 @@ namespace macos
 
 #endif
 
-   void interaction_impl::round_window_draw(CGContextRef cgc, CGSize sizeWindowParam)
+   void interaction_impl::aura_window_draw(CGContextRef cgc, CGSize sizeWindowParam)
    {
 
       ::size_i32 sizeWindow(sizeWindowParam.width, sizeWindowParam.height);
@@ -4176,13 +4177,13 @@ namespace macos
       {
 
          // xxxlog
-         //output_debug_string("\n\nwarning: round_window_draw more than 80FPS!!! Ellapsed: " + str::from(tickEllapsed) + "ms.\n\n");
+         //output_debug_string("\n\nwarning: aura_window_draw more than 80FPS!!! Ellapsed: " + str::from(tickEllapsed) + "ms.\n\n");
 
       }
 
       m_millisLastAuraWindowDraw = tickNow;
 
-      round_window_draw_life_time roundwindowdrawlifetime(this);
+      aura_window_draw_life_time roundwindowdrawlifetime(this);
 
       critical_section_lock slDisplay(cs_display());
 
@@ -4280,7 +4281,7 @@ namespace macos
    }
 
 
-   bool interaction_impl::round_window_key_down(unsigned int uiKeyCode)
+   bool interaction_impl::aura_window_key_down(unsigned int uiKeyCode)
    {
 
       __pointer(::user::message) spbase;
@@ -4307,7 +4308,7 @@ namespace macos
    }
 
 
-   bool interaction_impl::round_window_key_up(unsigned int uiKeyCode)
+   bool interaction_impl::aura_window_key_up(unsigned int uiKeyCode)
    {
 
       __pointer(::user::message) spbase;
@@ -4334,7 +4335,7 @@ namespace macos
    }
 
 
-   bool interaction_impl::round_window_key_down(unsigned int vk, unsigned int scan, const char * pszUtf8)
+   bool interaction_impl::aura_window_key_down(unsigned int vk, unsigned int scan, const char * pszUtf8)
    {
 
       __pointer(::user::message) spbase;
@@ -4352,7 +4353,7 @@ namespace macos
 
          auto lparam = (LPARAM) (iptr) (string *) (pstringText);
 
-         printf("round_window_key_down e_message_text_composition\n");
+         printf("aura_window_key_down e_message_text_composition\n");
 
          m_puserinteraction->post_message(e_message_text_composition, 0, lparam);
          
@@ -4384,7 +4385,7 @@ namespace macos
    }
 
 
-   bool interaction_impl::round_window_key_up(unsigned int vk, unsigned int scan)
+   bool interaction_impl::aura_window_key_up(unsigned int vk, unsigned int scan)
    {
 
       __pointer(::user::message) spbase;
@@ -4409,7 +4410,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_mouse_down(int iButton, double x, double y)
+   void interaction_impl::aura_window_mouse_down(int iButton, double x, double y)
    {
 
       __pointer(::user::message) spbase;
@@ -4475,7 +4476,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_mouse_up(int iButton, double x, double y)
+   void interaction_impl::aura_window_mouse_up(int iButton, double x, double y)
    {
 
       int message;
@@ -4508,7 +4509,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_double_click(int iButton, double x, double y)
+   void interaction_impl::aura_window_double_click(int iButton, double x, double y)
    {
 
       int message;
@@ -4540,7 +4541,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_mouse_moved(double x, double y, unsigned long ulAppleMouseButton)
+   void interaction_impl::aura_window_mouse_moved(double x, double y, unsigned long ulAppleMouseButton)
    {
       
       if(is_destroying())
@@ -4675,7 +4676,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_mouse_dragged(double x, double y, unsigned long ulAppleMouseButton)
+   void interaction_impl::aura_window_mouse_dragged(double x, double y, unsigned long ulAppleMouseButton)
    {
 
       if(is_destroying())
@@ -4715,7 +4716,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_mouse_wheel(double deltaY, double x, double y)
+   void interaction_impl::aura_window_mouse_wheel(double deltaY, double x, double y)
    {
 
       if(is_destroying())
@@ -4764,7 +4765,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_resized(CGRect rectangle_i32)
+   void interaction_impl::aura_window_resized(CGRect rectangle_i32)
    {
       
       if(is_destroying())
@@ -4800,7 +4801,7 @@ namespace macos
 //
 //         m_puserinteraction->window_state().m_point = rectangle.origin;
 //
-//         TRACE("interaction_impl::round_window_resized effective position is different from requested position");
+//         TRACE("interaction_impl::aura_window_resized effective position is different from requested position");
 //
 //         m_puserinteraction->post_message(e_message_move, 0, m_puserinteraction->window_state().m_point.lparam());
 //
@@ -4811,7 +4812,7 @@ namespace macos
 //
 //         m_puserinteraction->m_sizeRequest = rectangle.size_i32;
 //
-//         TRACE("interaction_impl::round_window_resized effective position is different from requested position");
+//         TRACE("interaction_impl::aura_window_resized effective position is different from requested position");
 //
 //         m_puserinteraction->post_message(e_message_size, 0, m_puserinteraction->m_sizeRequest.lparam());
 //
@@ -4906,7 +4907,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_moved(CGPoint point_i32)
+   void interaction_impl::aura_window_moved(CGPoint point_i32)
    {
       
       if(is_destroying())
@@ -4976,7 +4977,7 @@ namespace macos
 ////
 ////         m_puserinteraction->m_pointRequest = point;
 ////
-////         TRACE("interaction_impl::round_window_resized effective position is different from requested position");
+////         TRACE("interaction_impl::aura_window_resized effective position is different from requested position");
 ////
 ////      }
 ////
@@ -4985,7 +4986,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_did_become_key()
+   void interaction_impl::aura_window_did_become_key()
    {
 
       if(is_destroying())
@@ -5000,7 +5001,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_activate()
+   void interaction_impl::aura_window_activate()
    {
       
       if(is_destroying())
@@ -5024,7 +5025,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_deactivate()
+   void interaction_impl::aura_window_deactivate()
    {
 
       if(is_destroying())
@@ -5055,7 +5056,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_iconified()
+   void interaction_impl::aura_window_iconified()
    {
 
       if(is_destroying())
@@ -5084,7 +5085,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_deiconified()
+   void interaction_impl::aura_window_deiconified()
    {
 
       if(is_destroying())
@@ -5120,7 +5121,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_on_show()
+   void interaction_impl::aura_window_on_show()
    {
 
       if(is_destroying())
@@ -5164,7 +5165,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_on_hide()
+   void interaction_impl::aura_window_on_hide()
    {
 
 //      if(is_destroying())
@@ -5174,12 +5175,12 @@ namespace macos
 //         
 //      }
       
-      INFO("macos::interaction_impl::round_window_on_hide");
+      INFO("macos::interaction_impl::aura_window_on_hide");
 
       if(m_puserinteraction == nullptr)
       {
 
-         WARN("macos::interaction_impl::round_window_on_hide (2) m_puserinteraction == nullptr");
+         WARN("macos::interaction_impl::aura_window_on_hide (2) m_puserinteraction == nullptr");
 
          return;
 
@@ -5197,7 +5198,7 @@ namespace macos
    }
 
 
-   void interaction_impl::round_window_on_miniaturize()
+   void interaction_impl::aura_window_on_miniaturize()
    {
 
       if(is_destroying())
@@ -5430,7 +5431,7 @@ namespace macos
 
       }
 
-      round_window_iconified();
+      aura_window_iconified();
 
       get_handle()->iconify();
 
@@ -5467,19 +5468,19 @@ namespace macos
       if(iShow == SW_HIDE)
       {
          
-         round_window_hide();
+         aura_window_hide();
          
       }
       else if(iShow == SW_MINIMIZE)
       {
          
-         round_window_miniaturize();
+         aura_window_miniaturize();
 
       }
       else if(iShow == SW_SHOWNOACTIVATE)
       {
          
-         round_window_order_front();
+         aura_window_order_front();
          
       }
    else
@@ -5489,7 +5490,7 @@ namespace macos
 
            nsapp_activate_ignoring_other_apps(1);
 
-           round_window_show();
+           aura_window_show();
    }
    
    }
@@ -5502,19 +5503,19 @@ namespace macos
       if(!::is_visible(edisplay))
       {
 
-         round_window_hide();
+         aura_window_hide();
 
       }
       else if(edisplay == e_display_iconic)
       {
 
-         round_window_miniaturize();
+         aura_window_miniaturize();
 
       }
       else if(m_puserinteraction->layout().design().activation() & e_activation_no_activate)
       {
 
-         round_window_order_front();
+         aura_window_order_front();
 
       }
       else
@@ -5524,7 +5525,7 @@ namespace macos
 
          nsapp_activate_ignoring_other_apps(1);
 
-         round_window_show();
+         aura_window_show();
 
       }
 
@@ -5538,7 +5539,7 @@ namespace macos
       
       ::user::interaction_impl::set_destroying();
 
-      ::apex_window::m_bDestroying = true;
+      ::aura_window::m_bDestroying = true;
 
    }
 
