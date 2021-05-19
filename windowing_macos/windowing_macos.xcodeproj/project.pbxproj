@@ -69,6 +69,9 @@
 		9A440A682654DC66000C490B /* _.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
 		9A440A692654DD22000C490B /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
 		9A440A6A2654DD63000C490B /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
+		9A440A742654F36C000C490B /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
+		9A440A752654F36C000C490B /* node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
+		9A440A762654F440000C490B /* _windowing_macos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _windowing_macos.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,7 @@
 				9A440A682654DC66000C490B /* _.h */,
 				9A440A692654DD22000C490B /* _c_mm.h */,
 				9A440A6A2654DD63000C490B /* _mm.h */,
+				9A440A762654F440000C490B /* _windowing_macos.h */,
 				9A440A4C26548C38000C490B /* clipboard.cpp */,
 				9A440A4326548C38000C490B /* copydesk.cpp */,
 				9A440A3026548C38000C490B /* copydesk.h */,
@@ -124,6 +128,8 @@
 				9A440A4B26548C38000C490B /* keyboard.cpp */,
 				9A440A4226548C38000C490B /* keyboard.h */,
 				9A440A4D26548C38000C490B /* mm_oswindow.h */,
+				9A440A742654F36C000C490B /* node.cpp */,
+				9A440A752654F36C000C490B /* node.h */,
 				9A440A3626548C38000C490B /* NSPasteboard++.mm */,
 				9A440A4026548C38000C490B /* oswindow_data.cpp */,
 				9A440A4426548C38000C490B /* oswindow_data.h */,
