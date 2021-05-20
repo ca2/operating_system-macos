@@ -21,7 +21,7 @@
 //
 
 
-@interface AuraWindowApp : NSObject<NSApplicationDelegate, NSMenuDelegate>
+@interface macOSWindowApp : NSObject<NSApplicationDelegate, NSMenuDelegate>
 {
 @public
 

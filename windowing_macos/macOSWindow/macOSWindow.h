@@ -13,21 +13,21 @@
 //
 
 
-#include "AuraWindowController.h"
+#include "macOSWindowController.h"
 
 unsigned int event_key_code(NSEvent * event);
 
 
-class aura_window;
+class macos_window;
 
 
-@interface AuraWindow : NSWindow
+@interface macOSWindow : NSWindow
 {
 @public
    
    
    bool                       m_bNoActivate;
-   aura_window *              m_paurawindow;
+   macos_window *              m_pmacoswindow;
    
    
 	NSView *                   m_pviewChildContent;

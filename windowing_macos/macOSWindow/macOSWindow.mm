@@ -40,7 +40,7 @@
 
 
 
-@implementation AuraWindow
+@implementation macOSWindow
 
 
 //
@@ -62,7 +62,7 @@
 	if(self == NULL)
       return NULL;
    
-   AuraWindow * paurawindow = self;
+   macOSWindow * pmacoswindow = self;
    
 	[self setOpaque:NO];
    
@@ -92,31 +92,31 @@
 
    [self setIgnoresMouseEvents : NO];
    
-   m_pwindowcontroller = [[NSWindowController alloc] initWithWindow: paurawindow];
+   m_pwindowcontroller = [[NSWindowController alloc] initWithWindow: pmacoswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidBecomeKey:) name: NSWindowDidBecomeKeyNotification object: paurawindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidBecomeKey:) name: NSWindowDidBecomeKeyNotification object: pmacoswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidResignKey:) name: NSWindowDidResignKeyNotification object: paurawindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidResignKey:) name: NSWindowDidResignKeyNotification object: pmacoswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidBecomeMain:) name: NSWindowDidBecomeMainNotification object: paurawindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidBecomeMain:) name: NSWindowDidBecomeMainNotification object: pmacoswindow];
    
-   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidResignMain:) name: NSWindowDidResignMainNotification object: paurawindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidResignMain:) name: NSWindowDidResignMainNotification object: pmacoswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidResize:) name: NSWindowDidResizeNotification object: paurawindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidResize:) name: NSWindowDidResizeNotification object: pmacoswindow];
    
-   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector (windowDidMove:) name: NSWindowDidMoveNotification object: paurawindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector (windowDidMove:) name: NSWindowDidMoveNotification object: pmacoswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowWillClose:) name: NSWindowWillCloseNotification object: paurawindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowWillClose:) name: NSWindowWillCloseNotification object: pmacoswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidExpose:) name: NSWindowDidExposeNotification object: paurawindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidExpose:) name: NSWindowDidExposeNotification object: pmacoswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidMiniaturize:) name: NSWindowDidMiniaturizeNotification object: paurawindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidMiniaturize:) name: NSWindowDidMiniaturizeNotification object: pmacoswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidDeminiaturize:) name: NSWindowDidDeminiaturizeNotification object: paurawindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidDeminiaturize:) name: NSWindowDidDeminiaturizeNotification object: pmacoswindow];
    
    [self create_view];
    
-   m_paurawindow->aura_window_add_ref();
+   m_pmacoswindow->macos_window_add_ref();
    
    return self;
    
@@ -126,11 +126,11 @@
 - (void)dealloc
 {
    
-   auto pwindow = m_paurawindow;
+   auto pwindow = m_pmacoswindow;
    
-   m_paurawindow = NULL;
+   m_pmacoswindow = NULL;
 
-   pwindow->aura_window_dec_ref();
+   pwindow->macos_window_dec_ref();
    
 }
 
@@ -165,7 +165,7 @@
 
    printf("windowDidBecomeKey\n");
 
-   m_paurawindow->aura_window_did_become_key();
+   m_pmacoswindow->macos_window_did_become_key();
    
 }
 
@@ -174,7 +174,7 @@
    
    printf("windowDidResignKey\n");
    
-   //m_paurawindow->aura_window_deactivate();
+   //m_pmacoswindow->macos_window_deactivate();
    
 }
 
@@ -184,7 +184,7 @@
    
    printf("windowDidBecomeMain\n");
    
-   m_paurawindow->aura_window_activate();
+   m_pmacoswindow->macos_window_activate();
    
 }
 
@@ -193,7 +193,7 @@
    
    printf("windowDidResignMain\n");
    
-   m_paurawindow->aura_window_deactivate();
+   m_pmacoswindow->macos_window_deactivate();
    
 }
 
@@ -210,7 +210,7 @@
 	
    bounds.origin = NSZeroPoint;
 
-	AuraWindowFrameView * pframeview = [[AuraWindowFrameView alloc] initWithFrame: bounds andAuraWindow: self];
+	macOSWindowFrameView * pframeview = [[macOSWindowFrameView alloc] initWithFrame: bounds andmacOSWindow: self];
    
    m_pviewChildContent = pframeview;
    
@@ -314,7 +314,7 @@
       
       point.y = [[NSScreen mainScreen] frame].size.height - (rect.origin.y + rect.size.height);
       
-      m_paurawindow->aura_window_moved(point);
+      m_pmacoswindow->macos_window_moved(point);
       
    }
    catch (...)
@@ -342,7 +342,7 @@
       
       rect.origin.y = [[NSScreen mainScreen] frame].size.height - (rect.origin.y + rect.size.height);
       
-      m_paurawindow->aura_window_resized(rect);
+      m_pmacoswindow->macos_window_resized(rect);
       
    }
    catch (...)
@@ -359,7 +359,7 @@
    try
    {
       
-      m_paurawindow->aura_window_iconified();
+      m_pmacoswindow->macos_window_iconified();
       
    }
    catch (...)
@@ -376,7 +376,7 @@
    try
    {
       
-      m_paurawindow->aura_window_deiconified();
+      m_pmacoswindow->macos_window_deiconified();
       
    }
    catch (...)
@@ -393,14 +393,14 @@
    try
    {
       
-      if(m_paurawindow == NULL)
+      if(m_pmacoswindow == NULL)
       {
          
          return;
          
       }
       
-      m_paurawindow->aura_window_on_show();
+      m_pmacoswindow->macos_window_on_show();
 
    }
    catch (...)
@@ -417,7 +417,7 @@
    try
    {
       
-      m_paurawindow->aura_window_on_hide();
+      m_pmacoswindow->macos_window_on_hide();
 
    }
    catch (...)

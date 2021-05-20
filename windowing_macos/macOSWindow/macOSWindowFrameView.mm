@@ -17,10 +17,10 @@
 
 NSCursor * g_pcurrentNscursor = nullptr;
 
-@implementation AuraWindowFrameView
+@implementation macOSWindowFrameView
 
 
-- (id) initWithFrame: (NSRect) frame andAuraWindow: (AuraWindow *) paurawindow
+- (id) initWithFrame: (NSRect) frame andmacOSWindow: (macOSWindow *) pmacoswindow
 {
 
    self                 = [super initWithFrame:frame];
@@ -30,7 +30,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
    
 //   appleKeyboardType    = mac_detect_keyboard_type();
    
-   m_paurawindow        =  paurawindow;
+   m_pmacoswindow        =  pmacoswindow;
    
    m_bLShift            = false;
    m_bRShift            = false;
@@ -99,7 +99,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
 - (void) mouseUp: (NSEvent *) event
 {
 
-   aura_window * p = m_paurawindow->m_paurawindow;
+   macos_window * p = m_pmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -119,11 +119,11 @@ NSCursor * g_pcurrentNscursor = nullptr;
    if(i == 2)
    {
 
-      p->aura_window_double_click(iButton, x, y);
+      p->macos_window_double_click(iButton, x, y);
       
    }
    
-   p->aura_window_mouse_up(iButton, x, y);
+   p->macos_window_mouse_up(iButton, x, y);
    
 }
 
@@ -131,7 +131,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
 - (void) mouseMoved: (NSEvent *) event
 {
 
-   aura_window * p = m_paurawindow->m_paurawindow;
+   macos_window * p = m_pmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -142,7 +142,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
    
    int y = point.y;
    
-   p->aura_window_mouse_moved(x, y, [NSEvent pressedMouseButtons]);
+   p->macos_window_mouse_moved(x, y, [NSEvent pressedMouseButtons]);
    
    return;
    
@@ -152,7 +152,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
 - (void) mouseDragged: (NSEvent *) event
 {
 
-   aura_window * p = m_paurawindow->m_paurawindow;
+   macos_window * p = m_pmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -163,7 +163,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
    
    int y = point.y;
 
-   p->aura_window_mouse_dragged(x, y, [NSEvent pressedMouseButtons]);
+   p->macos_window_mouse_dragged(x, y, [NSEvent pressedMouseButtons]);
    
 }
 
@@ -183,7 +183,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
 - (void) mouseDown: (NSEvent *) event
 {
    
-   aura_window * p = m_paurawindow->m_paurawindow;
+   macos_window * p = m_pmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -198,7 +198,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
    
    int iButton = 0;
    
-   p->aura_window_mouse_down(iButton, x, y);
+   p->macos_window_mouse_down(iButton, x, y);
    
 }
 
@@ -206,7 +206,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
 - (void)rightMouseUp:(NSEvent *)event
 {
    
-   aura_window * p = m_paurawindow->m_paurawindow;
+   macos_window * p = m_pmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -221,7 +221,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
    
    int iButton = 1;
    
-   p->aura_window_mouse_up(iButton, x, y);
+   p->macos_window_mouse_up(iButton, x, y);
    
 }
 
@@ -229,7 +229,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
 - (void)rightMouseDown:(NSEvent *)event
 {
    
-   aura_window * p = m_paurawindow->m_paurawindow;
+   macos_window * p = m_pmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -244,7 +244,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
    
    int iButton = 1;
    
-   p->aura_window_mouse_down(iButton, x, y);
+   p->macos_window_mouse_down(iButton, x, y);
    
 }
 
@@ -252,7 +252,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
 - (void)scrollWheel:(NSEvent *)event
 {
    
-   aura_window * p = m_paurawindow->m_paurawindow;
+   macos_window * p = m_pmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -265,7 +265,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
    
    double delta = event.deltaY;
    
-   p->aura_window_mouse_wheel(delta, x, y);
+   p->macos_window_mouse_wheel(delta, x, y);
    
 }
 
@@ -307,15 +307,15 @@ NSCursor * g_pcurrentNscursor = nullptr;
     
     // return;
     
-    BOOL bWindowVisible = [m_paurawindow isVisible];
+    BOOL bWindowVisible = [m_pmacoswindow isVisible];
     
     BOOL bViewHidden = [self isHidden];
     
-    NSRect e = [m_paurawindow frame];
+    NSRect e = [m_pmacoswindow frame];
     
     NSRect e2 = [[NSScreen mainScreen] frame];
     
-    double a = [m_paurawindow alphaValue];
+    double a = [m_pmacoswindow alphaValue];
     
     CGContextRef cgc1 = (CGContextRef) [[NSGraphicsContext currentContext] graphicsPort];
     
@@ -401,7 +401,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
 - (void) drawRect: (NSRect) rect
 {
 
-   aura_window * p = m_paurawindow->m_paurawindow;
+   macos_window * p = m_pmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
    {
@@ -434,7 +434,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
    
    auto rectFrame = [self frame];
    
-   p->aura_window_draw(cgc, rectFrame.size);
+   p->macos_window_draw(cgc, rectFrame.size);
    
 #ifdef REDRAW_HINTING
    
@@ -483,24 +483,24 @@ NSCursor * g_pcurrentNscursor = nullptr;
       
    }
    
-   if(![m_paurawindow isKeyWindow])
+   if(![m_pmacoswindow isKeyWindow])
    {
       
-      [m_paurawindow makeKeyWindow];
+      [m_pmacoswindow makeKeyWindow];
       
    }
    
-//   if(![m_paurawindow isMainWindow])
+//   if(![m_pmacoswindow isMainWindow])
 //   {
 //
-//      [m_paurawindow makeMainWindow];
+//      [m_pmacoswindow makeMainWindow];
 //
 //   }
 //   
-//   if([[NSApp orderedWindows] firstObject] != m_paurawindow)
+//   if([[NSApp orderedWindows] firstObject] != m_pmacoswindow)
 //   {
 //   
-//      [m_paurawindow orderFront:self];
+//      [m_pmacoswindow orderFront:self];
 //      
 //   }
 
@@ -536,7 +536,7 @@ NSCursor * g_pcurrentNscursor = nullptr;
 //  // else
 //  // {
 //      
-//      //      m_paurawindow->aura_window_on_become_first_responder();
+//      //      m_pmacoswindow->macos_window_on_become_first_responder();
 //      
 //    //  return YES;
 //      
@@ -559,7 +559,7 @@ if(m_f) \
 { \
 if(!now) \
 { \
-p->aura_window_key_up(key); \
+p->macos_window_key_up(key); \
 m_f = false; \
 } \
 } \
@@ -567,7 +567,7 @@ else \
 { \
 if(now) \
 { \
-p->aura_window_key_down(key); \
+p->macos_window_key_down(key); \
 m_f = true; \
 } \
 }
@@ -576,7 +576,7 @@ m_f = true; \
 - (void)keyDown:(NSEvent *)event
 {
 
-   aura_window * p = m_paurawindow->m_paurawindow;
+   macos_window * p = m_pmacoswindow->m_pmacoswindow;
      
    if(p == NULL)
    {
@@ -658,9 +658,9 @@ m_f = true; \
       
    }
    
-   //bool bRet = p->aura_window_key_down(vkcode, scancode, pszUtf8);
+   //bool bRet = p->macos_window_key_down(vkcode, scancode, pszUtf8);
    
-   p->aura_window_key_down(vkcode, scancode, pszUtf8);
+   p->macos_window_key_down(vkcode, scancode, pszUtf8);
    
    if(pszUtf8)
    {
@@ -687,7 +687,7 @@ m_f = true; \
    
    NSString * characters;
    
-   aura_window * p = m_paurawindow->m_paurawindow;
+   macos_window * p = m_pmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
    {
@@ -732,9 +732,9 @@ m_f = true; \
 
    keyFlags |= (scancode & KBDEXT) ? KBDEXT : 0;
    
-   //bool bRet = p->aura_window_key_up(vkcode, scancode);
+   //bool bRet = p->macos_window_key_up(vkcode, scancode);
    
-   p->aura_window_key_up(vkcode, scancode);
+   p->macos_window_key_up(vkcode, scancode);
 
 }
 
@@ -742,7 +742,7 @@ m_f = true; \
 - (void)flagsChanged:(NSEvent *)event
 {
 
-   aura_window * p = m_paurawindow->m_paurawindow;
+   macos_window * p = m_pmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
    {
@@ -814,39 +814,39 @@ m_f = true; \
 //   }
 
    if ((modFlags & NSAlphaShiftKeyMask) && !(kbdModFlags & NSAlphaShiftKeyMask))
-      p->aura_window_key_down(vkcode, scancode, nullptr);
+      p->macos_window_key_down(vkcode, scancode, nullptr);
    else if (!(modFlags & NSAlphaShiftKeyMask) && (kbdModFlags & NSAlphaShiftKeyMask))
-      p->aura_window_key_up(vkcode, scancode);
+      p->macos_window_key_up(vkcode, scancode);
    
    if ((modFlags & NSShiftKeyMask) && !(kbdModFlags & NSShiftKeyMask))
-      p->aura_window_key_down(kVK_Shift, scancode, nullptr);
+      p->macos_window_key_down(kVK_Shift, scancode, nullptr);
    else if (!(modFlags & NSShiftKeyMask) && (kbdModFlags & NSShiftKeyMask))
-      p->aura_window_key_up(kVK_Shift, scancode);
+      p->macos_window_key_up(kVK_Shift, scancode);
    
    if ((modFlags & NSControlKeyMask) && !(kbdModFlags & NSControlKeyMask))
-      p->aura_window_key_down(kVK_Control, scancode, nullptr);
+      p->macos_window_key_down(kVK_Control, scancode, nullptr);
    else if (!(modFlags & NSControlKeyMask) && (kbdModFlags & NSControlKeyMask))
-      p->aura_window_key_up(kVK_Control, scancode);
+      p->macos_window_key_up(kVK_Control, scancode);
    
    if ((modFlags & NSAlternateKeyMask) && !(kbdModFlags & NSAlternateKeyMask))
-      p->aura_window_key_down(kVK_Option, scancode, nullptr);
+      p->macos_window_key_down(kVK_Option, scancode, nullptr);
    else if (!(modFlags & NSAlternateKeyMask) && (kbdModFlags & NSAlternateKeyMask))
-      p->aura_window_key_up(kVK_Option, scancode);
+      p->macos_window_key_up(kVK_Option, scancode);
    
    if ((modFlags & NSCommandKeyMask) && !(kbdModFlags & NSCommandKeyMask))
-      p->aura_window_key_down(kVK_Command, scancode, nullptr);
+      p->macos_window_key_down(kVK_Command, scancode, nullptr);
    else if (!(modFlags & NSCommandKeyMask) && (kbdModFlags & NSCommandKeyMask))
-      p->aura_window_key_up(kVK_Command, scancode);
+      p->macos_window_key_up(kVK_Command, scancode);
    
    if ((modFlags & NSNumericPadKeyMask) && !(kbdModFlags & NSNumericPadKeyMask))
-      p->aura_window_key_down(vkcode, scancode, nullptr);
+      p->macos_window_key_down(vkcode, scancode, nullptr);
    else if (!(modFlags & NSNumericPadKeyMask) && (kbdModFlags & NSNumericPadKeyMask))
-      p->aura_window_key_up(vkcode, scancode);
+      p->macos_window_key_up(vkcode, scancode);
    
    if ((modFlags & NSHelpKeyMask) && !(kbdModFlags & NSHelpKeyMask))
-      p->aura_window_key_down(vkcode, scancode, nullptr);
+      p->macos_window_key_down(vkcode, scancode, nullptr);
    else if (!(modFlags & NSHelpKeyMask) && (kbdModFlags & NSHelpKeyMask))
-      p->aura_window_key_up(vkcode, scancode);
+      p->macos_window_key_up(vkcode, scancode);
    
    kbdModFlags = modFlags;
 

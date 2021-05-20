@@ -28,7 +28,7 @@ void macos_on_app_changed_occlusion_state();
 
 void set_apex_system_as_thread();
 
-@implementation AuraWindowApp
+@implementation macOSWindowApp
 
 
 @synthesize windowcontroller;
@@ -539,7 +539,7 @@ void ns_create_main_menu(menu_shared * pmenushared)
    
    id menuMain = [NSMenu alloc];
    
-   AuraWindowApp * papp = (AuraWindowApp *) [[NSApplication sharedApplication] delegate ];
+   macOSWindowApp * papp = (macOSWindowApp *) [[NSApplication sharedApplication] delegate ];
    
    {
       
@@ -603,7 +603,7 @@ void os_begin_system();
 //   
 //   NSApplication * application = [NSApplication sharedApplication];
 //   
-//   AuraWindowApp * appDelegate = [[AuraWindowApp alloc] init];
+//   macOSWindowApp * appDelegate = [[macOSWindowApp alloc] init];
 //   
 //   [application setDelegate:appDelegate];
 //   
@@ -947,7 +947,7 @@ void apex_application_main(int argc, char *argv[], const char * pszCommandLine)
    
    NSApplication * application = [NSApplication sharedApplication];
    
-   AuraWindowApp * appDelegate = [[AuraWindowApp alloc] init];
+   macOSWindowApp * appDelegate = [[macOSWindowApp alloc] init];
    
    [application setDelegate:appDelegate];
    

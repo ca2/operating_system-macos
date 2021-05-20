@@ -1,5 +1,5 @@
 //
-//  aura_window.cpp
+//  macos_window.cpp
 //  os
 //
 //  Created by Camilo Sasuke Tsumanuma on 6/8/13.
@@ -9,7 +9,7 @@
 
 
 
-void * new_aura_window(aura_window * paurawindow, CGRect rect, unsigned int uStyle)
+void * new_macos_window(macos_window * pmacoswindow, CGRect rect, unsigned int uStyle)
 {
    
    // rect.origin.x        = 0;
@@ -28,20 +28,20 @@ void * new_aura_window(aura_window * paurawindow, CGRect rect, unsigned int uSty
  
 */
    
-   AuraWindow * pAuraWindow = [AuraWindow alloc];
+   macOSWindow * pmacOSWindow = [macOSWindow alloc];
    
-   NSWindow * pNSWindow = pAuraWindow;
+   NSWindow * pNSWindow = pmacOSWindow;
    
-   paurawindow->m_paurawindow = pAuraWindow;
+   pmacoswindow->m_pmacoswindow = pmacOSWindow;
    
-   paurawindow->m_paurawindow->m_paurawindow = paurawindow;
+   pmacoswindow->m_pmacoswindow->m_pmacoswindow = pmacoswindow;
    
    //__block RoundWindow * proundwindow;
    
    ns_main_sync(^()
    {
                    
-      auto id = [paurawindow->m_paurawindow initWithContentRect : rect styleMask : uStyle backing : NSBackingStoreBuffered defer : YES];
+      auto id = [pmacoswindow->m_pmacoswindow initWithContentRect : rect styleMask : uStyle backing : NSBackingStoreBuffered defer : YES];
       
       if(!id)
       {
@@ -57,7 +57,7 @@ void * new_aura_window(aura_window * paurawindow, CGRect rect, unsigned int uSty
 }
 
 
-aura_window::aura_window()
+macos_window::macos_window()
 {
    
    m_bDirty = false;
@@ -67,15 +67,15 @@ aura_window::aura_window()
 }
 
 
-aura_window::~aura_window()
+macos_window::~macos_window()
 {
    
-   m_paurawindow = nullptr;
+   m_pmacoswindow = nullptr;
    
 }
 
 
-void aura_window::aura_window_set_title(const char * pszTitle)
+void macos_window::macos_window_set_title(const char * pszTitle)
 {
    
    if(m_bDestroying)
@@ -92,7 +92,7 @@ void aura_window::aura_window_set_title(const char * pszTitle)
    
    NSString * str = [NSString stringWithUTF8String:pszText];
    
-   [m_paurawindow setTitle:str];
+   [m_pmacoswindow setTitle:str];
                     ::free((void *)pszText);
                     
                  });
@@ -100,7 +100,7 @@ void aura_window::aura_window_set_title(const char * pszTitle)
 }
 
 
-void aura_window::aura_window_get_title(char * pszTitle, int iSize)
+void macos_window::macos_window_get_title(char * pszTitle, int iSize)
 {
    
    if(m_bDestroying)
@@ -113,7 +113,7 @@ void aura_window::aura_window_get_title(char * pszTitle, int iSize)
    ns_main_sync(^
                 {
                    
-                  NSString * str = [m_paurawindow title];
+                  NSString * str = [m_pmacoswindow title];
                   
                   strncpy(pszTitle, [str UTF8String], iSize);
                    
@@ -123,28 +123,28 @@ void aura_window::aura_window_get_title(char * pszTitle, int iSize)
 }
 
 
-void aura_window::aura_window_destroy()
+void macos_window::macos_window_destroy()
 {
    
-   if(m_paurawindow == NULL)
+   if(m_pmacoswindow == NULL)
    {
       
       return;
       
    }
    
-   [[NSNotificationCenter defaultCenter] removeObserver: m_paurawindow];
+   [[NSNotificationCenter defaultCenter] removeObserver: m_pmacoswindow];
 
-   [m_paurawindow setReleasedWhenClosed: YES];
+   [m_pmacoswindow setReleasedWhenClosed: YES];
    
-   m_paurawindow->m_paurawindow = NULL;
+   m_pmacoswindow->m_pmacoswindow = NULL;
    
-   [m_paurawindow close];
+   [m_pmacoswindow close];
 
 }
 
 
-void aura_window::aura_window_show()
+void macos_window::macos_window_show()
 {
    
    if(m_bDestroying)
@@ -157,16 +157,16 @@ void aura_window::aura_window_show()
    ns_main_async(^
    {
       
-      [m_paurawindow->m_pwindowcontroller showWindow : m_paurawindow];
+      [m_pmacoswindow->m_pwindowcontroller showWindow : m_pmacoswindow];
       
-      [m_paurawindow windowDidExpose];
+      [m_pmacoswindow windowDidExpose];
 
    });
    
 }
 
 
-void aura_window::aura_window_hide()
+void macos_window::macos_window_hide()
 {
    
 //   if(m_bDestroying)
@@ -179,17 +179,17 @@ void aura_window::aura_window_hide()
    ns_main_async(^
               {
                  
-                 if(m_paurawindow)
+                 if(m_pmacoswindow)
                  {
                  
-                    [m_paurawindow orderOut : nil];
+                    [m_pmacoswindow orderOut : nil];
                     
                  }
                  
-                 if(m_paurawindow)
+                 if(m_pmacoswindow)
                  {
                     
-                    aura_window_on_hide();
+                    macos_window_on_hide();
                     
                  }
                  
@@ -198,7 +198,7 @@ void aura_window::aura_window_hide()
 }
 
 
-void aura_window::aura_window_miniaturize()
+void macos_window::macos_window_miniaturize()
 {
  
    if(m_bDestroying)
@@ -211,29 +211,29 @@ void aura_window::aura_window_miniaturize()
    ns_main_async(^
                  {
                     
-                    if([m_paurawindow styleMask] & NSWindowStyleMaskMiniaturizable)
+                    if([m_pmacoswindow styleMask] & NSWindowStyleMaskMiniaturizable)
                     {
                     
-                       [m_paurawindow performMiniaturize: nil];
+                       [m_pmacoswindow performMiniaturize: nil];
                        
                     }
                     else
                     {
                      
-                       [m_paurawindow orderOut : nil];
+                       [m_pmacoswindow orderOut : nil];
                        
-                       aura_window_iconified();
+                       macos_window_iconified();
                        
                     }
                     
-                    if(m_paurawindow->m_paurawindow == NULL)
+                    if(m_pmacoswindow->m_pmacoswindow == NULL)
                     {
                        
                        return;
                        
                     }
                     
-                    //aura_window_on_miniaturize();
+                    //macos_window_on_miniaturize();
                     
                  });
    
@@ -241,7 +241,7 @@ void aura_window::aura_window_miniaturize()
 
 
 
-void aura_window::aura_window_order_front()
+void macos_window::macos_window_order_front()
 {
    
    if(m_bDestroying)
@@ -254,14 +254,14 @@ void aura_window::aura_window_order_front()
    ns_main_async(^
               {
                  
-                 [m_paurawindow orderFront : m_paurawindow];
+                 [m_pmacoswindow orderFront : m_pmacoswindow];
                  
               });
    
 }
 
 
-void aura_window::aura_window_make_key_window()
+void macos_window::macos_window_make_key_window()
 {
 
    if(m_bDestroying)
@@ -274,14 +274,14 @@ void aura_window::aura_window_make_key_window()
    ns_main_async(^
               {
                  
-                 [m_paurawindow makeKeyWindow];
+                 [m_pmacoswindow makeKeyWindow];
                  
               });
    
 }
 
 
-void aura_window::aura_window_make_key_window_and_order_front()
+void macos_window::macos_window_make_key_window_and_order_front()
 {
    
    if(m_bDestroying)
@@ -294,14 +294,14 @@ void aura_window::aura_window_make_key_window_and_order_front()
    ns_main_async(^
               {
                  
-                 [m_paurawindow makeKeyAndOrderFront: m_paurawindow];
+                 [m_pmacoswindow makeKeyAndOrderFront: m_pmacoswindow];
                  
               });
    
 }
 
 
-void aura_window::aura_window_make_main_window()
+void macos_window::macos_window_make_main_window()
 {
    
    if(m_bDestroying)
@@ -314,14 +314,14 @@ void aura_window::aura_window_make_main_window()
    ns_main_async(^
               {
                  
-                 [m_paurawindow makeMainWindow];
+                 [m_pmacoswindow makeMainWindow];
                  
               });
    
 }
 
 
-void aura_window::aura_window_redraw()
+void macos_window::macos_window_redraw()
 {
    
    if(m_bDestroying)
@@ -331,7 +331,7 @@ void aura_window::aura_window_redraw()
       
    }
    
-   auto proundwindow = m_paurawindow;
+   auto proundwindow = m_pmacoswindow;
    
    if(proundwindow)
    {
@@ -355,7 +355,7 @@ void aura_window::aura_window_redraw()
 }
 
 
-void aura_window::aura_window_redraw_sync()
+void macos_window::macos_window_redraw_sync()
 {
    
    if(m_bDestroying)
@@ -368,7 +368,7 @@ void aura_window::aura_window_redraw_sync()
    ns_main_sync(^
                  {
                     
-                    [m_paurawindow display];
+                    [m_pmacoswindow display];
                     
                  });
    
@@ -376,7 +376,7 @@ void aura_window::aura_window_redraw_sync()
 
 
 
-void aura_window::aura_window_set_frame(CGRect r)
+void macos_window::macos_window_set_frame(CGRect r)
 {
    
    if(m_bDestroying)
@@ -397,14 +397,14 @@ void aura_window::aura_window_set_frame(CGRect r)
       rect.origin.y     = rectScreen.size.height    -     r.origin.y - r.size.height;
       rect.size   = r.size;
       
-      [m_paurawindow setFrame : rect display: TRUE];
+      [m_pmacoswindow setFrame : rect display: TRUE];
 
    });
    
 }
 
 
-void aura_window::aura_window_invalidate()
+void macos_window::macos_window_invalidate()
 {
   
    if(m_bDestroying)
@@ -417,7 +417,7 @@ void aura_window::aura_window_invalidate()
    ns_main_async(^
    {
       
-      [m_paurawindow setViewsNeedDisplay : TRUE];
+      [m_pmacoswindow setViewsNeedDisplay : TRUE];
       
    });
    

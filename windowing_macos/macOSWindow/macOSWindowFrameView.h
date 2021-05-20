@@ -25,15 +25,15 @@ struct mf_context
 };
 
 
-@class AuraWindow;
+@class macOSWindow;
 
 
-@interface AuraWindowFrameView : NSView
+@interface macOSWindowFrameView : NSView
 {
    @public
 //   mf_context* mfc;
    //APPLE_KEYBOARD_TYPE appleKeyboardType;
-   AuraWindow * m_paurawindow;
+   macOSWindow * m_pmacoswindow;
    NSTrackingArea * trackingArea;
    bool m_bLShift;
    bool m_bRShift;
@@ -47,6 +47,6 @@ struct mf_context
    
 }
 
-- (id)initWithFrame:(NSRect)frame andAuraWindow:(AuraWindow*)apexwindow;
+- (id)initWithFrame:(NSRect)frame andmacOSWindow:(macOSWindow*)apexwindow;
 
 @end
