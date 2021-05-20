@@ -6,7 +6,7 @@
 //
 //
 
-#import "_mm.h"
+#include "framework.h"
 
 
 //#include "apex/user/menu_shared.h"
@@ -199,7 +199,7 @@ if(str != nil)
    
    macos_calc_dark_mode();
    
-   os_system_start();
+   on_start_system(m_pSystem);
 
    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
 

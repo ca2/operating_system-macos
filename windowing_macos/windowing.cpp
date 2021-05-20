@@ -2,7 +2,29 @@
 //  windowing.cpp
 //  windowing_macos
 //
-//  Created by Camilo Sasuke on 20/05/21.
+//  Created by Camilo Sasuke on 2021-05-21 02:00 <3ThomasBS_!!
 //
+#include "framework.h"
 
-#include "windowing.hpp"
+
+namespace windowing_macos
+{
+
+
+   windowing::windowing()
+   {
+      
+   }
+
+
+   windowing::windowing()
+   {
+   
+   }
+
+
+} // namespace windowing_macos
+
+
+
+}

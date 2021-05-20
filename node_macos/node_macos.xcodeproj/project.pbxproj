@@ -7,12 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A5D7389265619C000D5C39E /* libwindowing_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73862656198300D5C39E /* libwindowing_macos.dylib */; };
 		9AC2D1B326542F4400CC8096 /* factory_exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D19326542EA800CC8096 /* factory_exchange.cpp */; };
 		9AC2D1B426542F4700CC8096 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D18E26542EA800CC8096 /* framework.cpp */; };
 		9AC2D1B826542F6E00CC8096 /* libaura_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2D18826542E3A00CC8096 /* libaura_macos.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9A5D73852656198300D5C39E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A5D737F2656198200D5C39E /* windowing_macos.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A440A1526548BE4000C490B;
+			remoteInfo = windowing_macos;
+		};
+		9A5D7387265619A700D5C39E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A5D737F2656198200D5C39E /* windowing_macos.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A440A1426548BE4000C490B;
+			remoteInfo = windowing_macos;
+		};
 		9AC2D18726542E3A00CC8096 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AC2D18126542E3A00CC8096 /* aura_macos.xcodeproj */;
@@ -44,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A5D737F2656198200D5C39E /* windowing_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = windowing_macos.xcodeproj; path = ../windowing_macos/windowing_macos.xcodeproj; sourceTree = "<group>"; };
 		9AC2D16F26542E1000CC8096 /* libnode_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libnode_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC2D18126542E3A00CC8096 /* aura_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = aura_macos.xcodeproj; path = ../aura_macos/aura_macos.xcodeproj; sourceTree = "<group>"; };
 		9AC2D18E26542EA800CC8096 /* framework.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
@@ -57,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5D7389265619C000D5C39E /* libwindowing_macos.dylib in Frameworks */,
 				9AC2D1B826542F6E00CC8096 /* libaura_macos.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,10 +81,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A5D73802656198200D5C39E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A5D73862656198300D5C39E /* libwindowing_macos.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9AC2D16626542E1000CC8096 = {
 			isa = PBXGroup;
 			children = (
 				9AC2D18126542E3A00CC8096 /* aura_macos.xcodeproj */,
+				9A5D737F2656198200D5C39E /* windowing_macos.xcodeproj */,
 				9AC2D18D26542EA800CC8096 /* node_macos */,
 				9AC2D17026542E1000CC8096 /* Products */,
 				9AC2D1B726542F6E00CC8096 /* Frameworks */,
@@ -134,6 +160,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9A5D7388265619A700D5C39E /* PBXTargetDependency */,
 				9AC2D1B626542F6000CC8096 /* PBXTargetDependency */,
 			);
 			name = node_macos;
@@ -170,6 +197,10 @@
 					ProductGroup = 9AC2D18226542E3A00CC8096 /* Products */;
 					ProjectRef = 9AC2D18126542E3A00CC8096 /* aura_macos.xcodeproj */;
 				},
+				{
+					ProductGroup = 9A5D73802656198200D5C39E /* Products */;
+					ProjectRef = 9A5D737F2656198200D5C39E /* windowing_macos.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -179,6 +210,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		9A5D73862656198300D5C39E /* libwindowing_macos.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libwindowing_macos.dylib;
+			remoteRef = 9A5D73852656198300D5C39E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9AC2D18826542E3A00CC8096 /* libaura_macos.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
@@ -215,6 +253,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9A5D7388265619A700D5C39E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = windowing_macos;
+			targetProxy = 9A5D7387265619A700D5C39E /* PBXContainerItemProxy */;
+		};
 		9AC2D1B626542F6000CC8096 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = aura_macos;
@@ -295,6 +338,8 @@
 					"$(WorkspaceDir)/archive",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/_include",
+					"$(WorkspaceDir)/archive/platform-apple",
+					"$(WorkspaceDir)/archive/platform-posix",
 					"$(WorkspaceDir)/source/third/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include",
@@ -373,6 +418,8 @@
 					"$(WorkspaceDir)/archive",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/_include",
+					"$(WorkspaceDir)/archive/platform-apple",
+					"$(WorkspaceDir)/archive/platform-posix",
 					"$(WorkspaceDir)/source/third/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include/include",
 					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include",

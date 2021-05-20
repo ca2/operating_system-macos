@@ -7,42 +7,19 @@
 #pragma once
 
 
-void os_menu_item_enable(void * pitem, bool bEnable);
-void os_menu_item_check(void * pitem, bool bCheck);
+#include "aura_macos/_aura_macos.h"
 
 
-namespace windowing_macos
-{
+#include "AuraWindow/aura_window.h"
 
 
-   node::node()
-   {
-      
-   }
+#include "window.h"
 
 
-   node::˜node()
-   {
-      
-      
-   }
+#include "windowing.h"
 
 
-   void node::os_menu_item_enable(void * pitem, bool bEnable)
-   {
-    
-      ::os_menu_item_enable(pitem, bEnable)
-      
-   }
-   
-
-   void node::os_menu_item_check(void * pitem, bool bCheck)
-   {
-   
-      ::os_menu_item_check(pitem, bCheck);
-      
-   }
-   }
+#include "node.h"
 
 
-} // namespace windowing_macos
+

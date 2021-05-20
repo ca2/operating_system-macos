@@ -13,7 +13,7 @@ void apex_macos_factory_exchange(::factory_map * pfactorymap);
 
 
 extern "C"
-void apex_macos_factory_exchange(::factory_map * pfactorymap)
+void aura_macos_factory_exchange(::factory_map * pfactorymap)
 {
    
 

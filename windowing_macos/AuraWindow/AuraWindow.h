@@ -27,7 +27,7 @@ class aura_window;
    
    
    bool                       m_bNoActivate;
-   aura_window *              m_papexwindow;
+   aura_window *              m_paurawindow;
    
    
 	NSView *                   m_pviewChildContent;

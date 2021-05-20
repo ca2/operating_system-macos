@@ -5,11 +5,11 @@
 //  Created by Camilo Sasuke Tsumanuma on 6/8/13.
 //  Copyright (c) 2013 ca2 Desenvolvimento de Sofware Ltda. All rights reserved.
 //
-#import "_mm.h"
-#import "AuraWindow.h"
+#include "framework.h"
 
 
-NSWindow * new_aura_window(aura_window * papexwindow, CGRect rect, unsigned int uStyle)
+
+void * new_aura_window(aura_window * paurawindow, CGRect rect, unsigned int uStyle)
 {
    
    // rect.origin.x        = 0;
@@ -28,16 +28,20 @@ NSWindow * new_aura_window(aura_window * papexwindow, CGRect rect, unsigned int 
  
 */
    
-   papexwindow->m_papexwindow = [AuraWindow alloc];
+   AuraWindow * pAuraWindow = [AuraWindow alloc];
    
-   papexwindow->m_papexwindow->m_papexwindow = papexwindow;
+   NSWindow * pNSWindow = pAuraWindow;
+   
+   paurawindow->m_paurawindow = pAuraWindow;
+   
+   paurawindow->m_paurawindow->m_paurawindow = paurawindow;
    
    //__block RoundWindow * proundwindow;
    
    ns_main_sync(^()
    {
                    
-      auto id = [papexwindow->m_papexwindow initWithContentRect : rect styleMask : uStyle backing : NSBackingStoreBuffered defer : YES];
+      auto id = [paurawindow->m_paurawindow initWithContentRect : rect styleMask : uStyle backing : NSBackingStoreBuffered defer : YES];
       
       if(!id)
       {
@@ -48,7 +52,7 @@ NSWindow * new_aura_window(aura_window * papexwindow, CGRect rect, unsigned int 
                    
    });
    
-   return  papexwindow->m_papexwindow;
+   return (__bridge_retained void *) pNSWindow;
    
 }
 
@@ -66,7 +70,7 @@ aura_window::aura_window()
 aura_window::~aura_window()
 {
    
-   m_papexwindow = nullptr;
+   m_paurawindow = nullptr;
    
 }
 
@@ -88,7 +92,7 @@ void aura_window::aura_window_set_title(const char * pszTitle)
    
    NSString * str = [NSString stringWithUTF8String:pszText];
    
-   [m_papexwindow setTitle:str];
+   [m_paurawindow setTitle:str];
                     ::free((void *)pszText);
                     
                  });
@@ -109,7 +113,7 @@ void aura_window::aura_window_get_title(char * pszTitle, int iSize)
    ns_main_sync(^
                 {
                    
-                  NSString * str = [m_papexwindow title];
+                  NSString * str = [m_paurawindow title];
                   
                   strncpy(pszTitle, [str UTF8String], iSize);
                    
@@ -122,20 +126,20 @@ void aura_window::aura_window_get_title(char * pszTitle, int iSize)
 void aura_window::aura_window_destroy()
 {
    
-   if(m_papexwindow == NULL)
+   if(m_paurawindow == NULL)
    {
       
       return;
       
    }
    
-   [[NSNotificationCenter defaultCenter] removeObserver: m_papexwindow];
+   [[NSNotificationCenter defaultCenter] removeObserver: m_paurawindow];
 
-   [m_papexwindow setReleasedWhenClosed: YES];
+   [m_paurawindow setReleasedWhenClosed: YES];
    
-   m_papexwindow->m_papexwindow = NULL;
+   m_paurawindow->m_paurawindow = NULL;
    
-   [m_papexwindow close];
+   [m_paurawindow close];
 
 }
 
@@ -153,9 +157,9 @@ void aura_window::aura_window_show()
    ns_main_async(^
    {
       
-      [m_papexwindow->m_pwindowcontroller showWindow : m_papexwindow];
+      [m_paurawindow->m_pwindowcontroller showWindow : m_paurawindow];
       
-      [m_papexwindow windowDidExpose];
+      [m_paurawindow windowDidExpose];
 
    });
    
@@ -175,14 +179,14 @@ void aura_window::aura_window_hide()
    ns_main_async(^
               {
                  
-                 if(m_papexwindow)
+                 if(m_paurawindow)
                  {
                  
-                    [m_papexwindow orderOut : nil];
+                    [m_paurawindow orderOut : nil];
                     
                  }
                  
-                 if(m_papexwindow)
+                 if(m_paurawindow)
                  {
                     
                     aura_window_on_hide();
@@ -207,22 +211,22 @@ void aura_window::aura_window_miniaturize()
    ns_main_async(^
                  {
                     
-                    if([m_papexwindow styleMask] & NSWindowStyleMaskMiniaturizable)
+                    if([m_paurawindow styleMask] & NSWindowStyleMaskMiniaturizable)
                     {
                     
-                       [m_papexwindow performMiniaturize: nil];
+                       [m_paurawindow performMiniaturize: nil];
                        
                     }
                     else
                     {
                      
-                       [m_papexwindow orderOut : nil];
+                       [m_paurawindow orderOut : nil];
                        
                        aura_window_iconified();
                        
                     }
                     
-                    if(m_papexwindow->m_papexwindow == NULL)
+                    if(m_paurawindow->m_paurawindow == NULL)
                     {
                        
                        return;
@@ -250,7 +254,7 @@ void aura_window::aura_window_order_front()
    ns_main_async(^
               {
                  
-                 [m_papexwindow orderFront : m_papexwindow];
+                 [m_paurawindow orderFront : m_paurawindow];
                  
               });
    
@@ -270,7 +274,7 @@ void aura_window::aura_window_make_key_window()
    ns_main_async(^
               {
                  
-                 [m_papexwindow makeKeyWindow];
+                 [m_paurawindow makeKeyWindow];
                  
               });
    
@@ -290,7 +294,7 @@ void aura_window::aura_window_make_key_window_and_order_front()
    ns_main_async(^
               {
                  
-                 [m_papexwindow makeKeyAndOrderFront: m_papexwindow];
+                 [m_paurawindow makeKeyAndOrderFront: m_paurawindow];
                  
               });
    
@@ -310,7 +314,7 @@ void aura_window::aura_window_make_main_window()
    ns_main_async(^
               {
                  
-                 [m_papexwindow makeMainWindow];
+                 [m_paurawindow makeMainWindow];
                  
               });
    
@@ -327,7 +331,7 @@ void aura_window::aura_window_redraw()
       
    }
    
-   auto proundwindow = m_papexwindow;
+   auto proundwindow = m_paurawindow;
    
    if(proundwindow)
    {
@@ -364,7 +368,7 @@ void aura_window::aura_window_redraw_sync()
    ns_main_sync(^
                  {
                     
-                    [m_papexwindow display];
+                    [m_paurawindow display];
                     
                  });
    
@@ -393,7 +397,7 @@ void aura_window::aura_window_set_frame(CGRect r)
       rect.origin.y     = rectScreen.size.height    -     r.origin.y - r.size.height;
       rect.size   = r.size;
       
-      [m_papexwindow setFrame : rect display: TRUE];
+      [m_paurawindow setFrame : rect display: TRUE];
 
    });
    
@@ -413,7 +417,7 @@ void aura_window::aura_window_invalidate()
    ns_main_async(^
    {
       
-      [m_papexwindow setViewsNeedDisplay : TRUE];
+      [m_paurawindow setViewsNeedDisplay : TRUE];
       
    });
    

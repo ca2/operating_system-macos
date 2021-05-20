@@ -33,7 +33,7 @@ struct mf_context
    @public
 //   mf_context* mfc;
    //APPLE_KEYBOARD_TYPE appleKeyboardType;
-   AuraWindow * m_papexwindow;
+   AuraWindow * m_paurawindow;
    NSTrackingArea * trackingArea;
    bool m_bLShift;
    bool m_bRShift;

@@ -286,6 +286,43 @@ namespace macos
    }
 
 
+   bool interaction_impl::destroy_impl_only()
+   {
+      
+      return false;
+      
+   }
+
+
+   bool interaction_impl::start_destroying_window()
+{
+   
+   return false;
+   
+}
+
+
+   void interaction_impl::destroy_window()
+{
+   
+   
+}
+
+
+bool interaction_impl::_is_window() const
+{
+   
+   if(::is_null(m_pwindow))
+   {
+      
+      return false;
+      
+   }
+   
+   return true;
+   
+}
+
 //   ::e_status interaction_impl::native_create_host()
 //   {
 //
@@ -2408,7 +2445,7 @@ namespace macos
       if(bShow)
       {
 
-         defer_dock_application(true);
+         m_psystem->m_pauranode->defer_dock_application(true);
 
          m_puserinteraction->set_need_layout();
 
@@ -2418,7 +2455,7 @@ namespace macos
       else
       {
 
-         defer_dock_application(false);
+         m_psystem->m_pauranode->defer_dock_application(false);
 
       }
 

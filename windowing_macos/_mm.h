@@ -16,7 +16,7 @@
 #include "AuraWindow/aura_window.h"
 
 
-NSWindow * new_aura_window(aura_window * papexwindow, CGRect rectangle, unsigned int uStyle);
+void * new_aura_window(aura_window * papexwindow, CGRect rectangle, unsigned int uStyle);
 
 
 #import "AuraWindow/AuraWindowFrameView.h"

@@ -19,11 +19,11 @@ public:
    
 #ifdef __OBJC__
    
-   AuraWindow * m_papexwindow;
+   AuraWindow * m_paurawindow;
    
 #else
    
-   void * m_papexwindow; // cast to RoundWindow * to use it
+   void * m_paurawindow; // cast to AuraWindow * to use it
    
 #endif
 

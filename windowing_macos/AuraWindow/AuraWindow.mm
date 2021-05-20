@@ -11,7 +11,7 @@
 //  this copyright and permission notice. Attribution in compiled projects is
 //  appreciated but not required.
 //
-#import "_mm.h"
+#include "framework.h"
 
 //NSWindow * get_os_window_ns_window(oswindow hwnd);
 
@@ -62,7 +62,7 @@
 	if(self == NULL)
       return NULL;
    
-   AuraWindow * papexwindow = self;
+   AuraWindow * paurawindow = self;
    
 	[self setOpaque:NO];
    
@@ -92,31 +92,31 @@
 
    [self setIgnoresMouseEvents : NO];
    
-   m_pwindowcontroller = [[NSWindowController alloc] initWithWindow: papexwindow];
+   m_pwindowcontroller = [[NSWindowController alloc] initWithWindow: paurawindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: papexwindow selector: @selector(windowDidBecomeKey:) name: NSWindowDidBecomeKeyNotification object: papexwindow];
+   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidBecomeKey:) name: NSWindowDidBecomeKeyNotification object: paurawindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: papexwindow selector: @selector(windowDidResignKey:) name: NSWindowDidResignKeyNotification object: papexwindow];
+   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidResignKey:) name: NSWindowDidResignKeyNotification object: paurawindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: papexwindow selector: @selector(windowDidBecomeMain:) name: NSWindowDidBecomeMainNotification object: papexwindow];
+   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidBecomeMain:) name: NSWindowDidBecomeMainNotification object: paurawindow];
    
-   [[NSNotificationCenter defaultCenter] addObserver: papexwindow selector: @selector(windowDidResignMain:) name: NSWindowDidResignMainNotification object: papexwindow];
+   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidResignMain:) name: NSWindowDidResignMainNotification object: paurawindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: papexwindow selector: @selector(windowDidResize:) name: NSWindowDidResizeNotification object: papexwindow];
+   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidResize:) name: NSWindowDidResizeNotification object: paurawindow];
    
-   [[NSNotificationCenter defaultCenter] addObserver: papexwindow selector: @selector (windowDidMove:) name: NSWindowDidMoveNotification object: papexwindow];
+   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector (windowDidMove:) name: NSWindowDidMoveNotification object: paurawindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: papexwindow selector: @selector(windowWillClose:) name: NSWindowWillCloseNotification object: papexwindow];
+   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowWillClose:) name: NSWindowWillCloseNotification object: paurawindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: papexwindow selector: @selector(windowDidExpose:) name: NSWindowDidExposeNotification object: papexwindow];
+   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidExpose:) name: NSWindowDidExposeNotification object: paurawindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: papexwindow selector: @selector(windowDidMiniaturize:) name: NSWindowDidMiniaturizeNotification object: papexwindow];
+   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidMiniaturize:) name: NSWindowDidMiniaturizeNotification object: paurawindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: papexwindow selector: @selector(windowDidDeminiaturize:) name: NSWindowDidDeminiaturizeNotification object: papexwindow];
+   [[NSNotificationCenter defaultCenter] addObserver: paurawindow selector: @selector(windowDidDeminiaturize:) name: NSWindowDidDeminiaturizeNotification object: paurawindow];
    
    [self create_view];
    
-   m_papexwindow->aura_window_add_ref();
+   m_paurawindow->aura_window_add_ref();
    
    return self;
    
@@ -126,9 +126,9 @@
 - (void)dealloc
 {
    
-   auto pwindow = m_papexwindow;
+   auto pwindow = m_paurawindow;
    
-   m_papexwindow = NULL;
+   m_paurawindow = NULL;
 
    pwindow->aura_window_dec_ref();
    
@@ -165,7 +165,7 @@
 
    printf("windowDidBecomeKey\n");
 
-   m_papexwindow->aura_window_did_become_key();
+   m_paurawindow->aura_window_did_become_key();
    
 }
 
@@ -174,7 +174,7 @@
    
    printf("windowDidResignKey\n");
    
-   //m_papexwindow->aura_window_deactivate();
+   //m_paurawindow->aura_window_deactivate();
    
 }
 
@@ -184,7 +184,7 @@
    
    printf("windowDidBecomeMain\n");
    
-   m_papexwindow->aura_window_activate();
+   m_paurawindow->aura_window_activate();
    
 }
 
@@ -193,7 +193,7 @@
    
    printf("windowDidResignMain\n");
    
-   m_papexwindow->aura_window_deactivate();
+   m_paurawindow->aura_window_deactivate();
    
 }
 
@@ -314,7 +314,7 @@
       
       point.y = [[NSScreen mainScreen] frame].size.height - (rect.origin.y + rect.size.height);
       
-      m_papexwindow->aura_window_moved(point);
+      m_paurawindow->aura_window_moved(point);
       
    }
    catch (...)
@@ -342,7 +342,7 @@
       
       rect.origin.y = [[NSScreen mainScreen] frame].size.height - (rect.origin.y + rect.size.height);
       
-      m_papexwindow->aura_window_resized(rect);
+      m_paurawindow->aura_window_resized(rect);
       
    }
    catch (...)
@@ -359,7 +359,7 @@
    try
    {
       
-      m_papexwindow->aura_window_iconified();
+      m_paurawindow->aura_window_iconified();
       
    }
    catch (...)
@@ -376,7 +376,7 @@
    try
    {
       
-      m_papexwindow->aura_window_deiconified();
+      m_paurawindow->aura_window_deiconified();
       
    }
    catch (...)
@@ -393,14 +393,14 @@
    try
    {
       
-      if(m_papexwindow == NULL)
+      if(m_paurawindow == NULL)
       {
          
          return;
          
       }
       
-      m_papexwindow->aura_window_on_show();
+      m_paurawindow->aura_window_on_show();
 
    }
    catch (...)
@@ -417,7 +417,7 @@
    try
    {
       
-      m_papexwindow->aura_window_on_hide();
+      m_paurawindow->aura_window_on_hide();
 
    }
    catch (...)

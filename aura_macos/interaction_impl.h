@@ -20,14 +20,13 @@ namespace macos
       string                           m_strWindowText;
       ::user::primitive *              m_pbasewnd;
       bool                             m_bNeedsUpdate;
-      rectangle_i64                           m_rectLastOsPlacement;
+      rectangle_i64                    m_rectLastOsPlacement;
       bool                             m_bEnabled;
-      millis                             m_millisLastAuraWindowDraw;
 
 
       interaction_impl();
       //interaction_impl(::object * pobject);
-      virtual ~interaction_impl();
+      ~interaction_impl() override;
 
 
       //virtual void construct(oswindow hwnd);
@@ -38,7 +37,7 @@ namespace macos
       
       virtual void set_destroying() override;
 
-      inline bool is_destroying() const { return //::aura_window::m_bDestroying ||
+      bool is_destroying() const { return //::aura_window::m_bDestroying ||
          ::user::interaction_impl::m_bDestroying; }
 
       virtual void release_graphics_resources();
@@ -71,8 +70,8 @@ namespace macos
       DECLARE_MESSAGE_HANDLER(_001OnSize);
       DECLARE_MESSAGE_HANDLER(_001OnProdevianSynch);
 
-      virtual ::user::interaction_impl * from_os_data(void * pdata) override;
-      virtual void * get_os_data() const override;
+      //virtual ::user::interaction_impl * from_os_data(void * pdata) override;
+      //virtual void * get_os_data() const override;
 
 //
 //      bool Attach(oswindow hWndNew);
@@ -100,7 +99,7 @@ namespace macos
 //      virtual bool create_window(::user::interaction * pinteraction, const char * lpszClassName, const char * lpszWindowName, u32 uStyle, const ::rectangle_i32 & prectangle, ::user::interaction * puiParent, id id, ::create * pcreate = nullptr) override;
 //
 
-      virtual ::e_status native_create_host() override;
+      //virtual ::e_status native_create_host() override;
   
       virtual bool destroy_impl_only() override;
       virtual bool start_destroying_window() override;
@@ -119,7 +118,7 @@ namespace macos
 //      virtual bool DestroyWindow() override;
 
       // special pre-creation and ::interaction_impl rectangle_i32 adjustment hooks
-      virtual bool pre_create_window(::user::system * pusersystem) override;
+//      virtual bool pre_create_window(::user::system * pusersystem) override;
 
 //      // Advanced: virtual AdjustWindowRect
 //      enum AdjustType { adjustBorder = 0, adjustOutside = 1 };
@@ -127,7 +126,7 @@ namespace macos
 //
 
 
-      virtual bool _is_window() const override;
+      bool _is_window() const override;
 
 //      lresult send_message(const ::id & id, wparam wParam = 0, lparam lParam = 0, const ::point_i32 & point = nullptr) override;
 //      bool post_message(const ::id & id, wparam wParam = 0, lparam lParam = 0) override;
