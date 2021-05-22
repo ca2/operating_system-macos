@@ -7,6 +7,9 @@
 #include "framework.h"
 
 
+void windowing_macos_application_main(int argc, char *argv[]);
+
+
 void os_menu_item_enable(void * pitem, bool bEnable);
 void os_menu_item_check(void * pitem, bool bCheck);
 
@@ -44,7 +47,24 @@ namespace windowing_macos
    }
 
 
+   ::e_status node::main()
+   {
+      
+      auto psystem = m_psystem;
+      
+      auto argc = psystem->m_argc;
+      
+      auto argv = psystem->m_argv;
+      
+      windowing_macos_application_main(argc, argv);
+      
+      return psystem->m_estatus;
+      
+   }
+
+
 } // namespace windowing_macos
+
 
 
 

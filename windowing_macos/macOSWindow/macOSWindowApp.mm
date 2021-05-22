@@ -9,21 +9,29 @@
 #include "framework.h"
 
 
+#include "acme/id.h"
 //#include "apex/user/menu_shared.h"
 
+//void on_start_system(void * pSystem);
 
-void macos_calc_dark_mode();
+//void macos_calc_dark_mode();
 void os_system_start();
-bool on_application_menu_action(const char * pszCommand);
 int file_put_contents(const char * path, const char * contents);
 void file_add_contents_raw(const char * path, const char * psz);
-i32 defer_run_system();
-u32 __start_system_with_file(const char * pszFileName);
-i32 defer_run_system(const char * pszFileName);
 
-i32 defer_run_system(char * * psza, int c);
+void application_on_menu_action(void * pApplication, const char * pszCommand);
+void * application_system(void * pApplication);
 
-void system_call_update_app_activated();
+
+void system_int_update(void* pSystem, int iUpdate, int iPayload);
+
+
+void system_on_start_system(void * pSystem);
+void system_on_open_untitled_file(void * pSystem);
+void system_on_open_file(void * pSystem, const char * pszFile);
+
+
+//void system_call_update_app_activated();
 void macos_on_app_changed_occlusion_state();
 
 void set_apex_system_as_thread();
@@ -132,8 +140,10 @@ void set_apex_system_as_thread();
    return self;
 }
 
+
 -(void)applicationActivity:(NSNotification *)notification
 {
+   
    NSRunningApplication *app = [[notification userInfo] objectForKey:@"NSWorkspaceApplicationKey"];
    
    NSString * strName = app.localizedName;
@@ -161,7 +171,7 @@ void set_apex_system_as_thread();
          
          //m_pbridge->notification_area_action(psz);
          
-         on_application_menu_action(psz);
+         application_on_menu_action(m_pApplication, psz);
          
          return;
          
@@ -183,7 +193,7 @@ if(str != nil)
          
          //m_pbridge->notification_area_action(psz);
          
-         on_application_menu_action(psz);
+         application_on_menu_action(m_pApplication, psz);
          
          return;
          
@@ -197,9 +207,9 @@ if(str != nil)
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
    
-   macos_calc_dark_mode();
+   //macos_calc_dark_mode();
    
-   on_start_system(m_pSystem);
+   system_on_start_system(application_system(m_pApplication));
 
    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
 
@@ -224,7 +234,7 @@ if(str != nil)
    
    //MessageBox(NULL, "applicationShouldHandleReopen", "applicationShouldHandleReopen", e_message_box_ok);
    
-   system_call_update_app_activated();
+   system_int_update(application_system(m_pApplication), id_app_activated, 0);
 
    return NO;
    
@@ -242,11 +252,8 @@ if(str != nil)
 {
    
    file_put_contents("/eco/001.txt", "applicationOpenUntitledFile");
-   //MessageBox(NULL, "applicationOpenUntitledFile", "applicationOpenUntitledFile", e_message_box_ok);
    
-   defer_run_system();
-   
-   //__start_system_with_file(NULL);
+   system_on_open_untitled_file(application_system(m_pApplication));
    
    return YES;
    
@@ -257,12 +264,10 @@ if(str != nil)
 - (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename
 {
    
-   file_put_contents("/eco/002.txt", "applicationOpenFile");
-   file_put_contents("/eco/003.txt", [filename UTF8String]);
+   //file_put_contents("/eco/002.txt", "applicationOpenFile");
+   //file_put_contents("/eco/003.txt", [filename UTF8String]);
 
-   //MessageBox(NULL, "application: openFile", "application: openFile", e_message_box_ok);
-   
-   defer_run_system([filename UTF8String]);
+   system_on_open_file(application_system(m_pApplication), [filename UTF8String]);
    
    return true;
    
@@ -282,21 +287,25 @@ if(str != nil)
       
    }
    
-   char ** psza = (char **) malloc(ulCount * sizeof(char*));
+   //char ** psza = (char **) malloc(ulCount * sizeof(char*));
    
    for(unsigned long ul = 0; ul < ulCount; ul++)
    {
       
-      char * psz = strdup([[filenames objectAtIndex:ul] UTF8String]);
+      const char * psz = [[filenames objectAtIndex:ul] UTF8String];
       
-      psza[ul] = psz;
+      system_on_open_file(application_system(m_pApplication), psz);
+      
+      //psza[ul] = psz;
       
    }
    
-   defer_run_system(psza, (int) ulCount);
-   
-   
+//   defer_run_system(psza, (int) ulCount);
+//
+//
 }
+
+
 - (void)application:(NSApplication *)application open:(NSURL * )url
 {
    file_put_contents("/eco/006.txt", "open");
@@ -304,18 +313,20 @@ if(str != nil)
    
    //MessageBox(NULL, "application: openFile", "application: openFile", e_message_box_ok);
    
-   defer_run_system([[url absoluteString] UTF8String]);
+   system_on_open_file(application_system(m_pApplication), [[url absoluteString] UTF8String]);
+   
 }
+
 
 - (BOOL)application:(id)sender
   openFileWithoutUI:(NSString *)filename;
 {
-   file_put_contents("/eco/007.txt", "openFileWithoutUI");
-   file_add_contents_raw("/eco/007.txt", [filename UTF8String]);
+   //file_put_contents("/eco/007.txt", "openFileWithoutUI");
+   //file_add_contents_raw("/eco/007.txt", [filename UTF8String]);
    
    //MessageBox(NULL, "application: openFile", "application: openFile", e_message_box_ok);
    
-   defer_run_system([filename UTF8String]);
+   system_on_open_file(application_system(m_pApplication), [filename UTF8String]);
    
    return TRUE;
    
@@ -332,18 +343,22 @@ if(str != nil)
       
    }
    
-   char ** psza = (char **) malloc(ulCount * sizeof(char*));
+   //char ** psza = (char **) malloc(ulCount * sizeof(char*));
    
    for(unsigned long ul = 0; ul < ulCount; ul++)
    {
       
-      char * psz = strdup([[[urls objectAtIndex:ul] absoluteString] UTF8String]);
+      const char * psz = [[[urls objectAtIndex:ul] absoluteString] UTF8String];
       
-      psza[ul] = psz;
+      //psza[ul] = psz;
+      
+      system_on_open_file(application_system(m_pApplication), psz);
+      
+      //free
       
    }
    
-   defer_run_system(psza, (int) ulCount);
+   //defer_run_system(psza, (int) ulCount);
    
    
 
@@ -394,18 +409,18 @@ if(str != nil)
    // Extract the URL from the Apple event and handle it here.
    NSString* url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
    
-   defer_run_system([url UTF8String]);
+   system_on_open_file(application_system(m_pApplication), [url UTF8String]);
    
 }
+
+
 -(NSMenu *) applicationDockMenu:(NSApplication*)sender
 {
 
-   
    return m_menu;
    
 }
 
-//[appDelegate->m_menu setDelegate:NSApp];
 
 - (void) ns_add_menu :(NSMenu *) menuParent withParent: (const char *) pszParent  withSharedMenu : (menu_shared *) pmenushared
 {
@@ -468,7 +483,7 @@ if(str != nil)
          
          //m_pbridge->notification_area_action(psz);
          
-         on_application_menu_action(psz);
+         application_on_menu_action(m_pApplication, psz);
          
          return;
          
@@ -479,17 +494,17 @@ if(str != nil)
 }
 
 
-
--(void)themeChanged:(NSNotification *) notification {
-    NSLog (@"%@", notification);
-   macos_calc_dark_mode();
+-(void)themeChanged:(NSNotification *) notification
+{
+ 
+   NSLog (@"%@", notification);
+   
+   system_int_update(application_system(m_pApplication), id_os_dark_mode, 0);
+   
 }
-//[m_statusitem setEnabled:YES];
 
 
 @end
-
-
 
 
 void os_menu_item_enable(void * pitem, bool bEnable)
@@ -596,49 +611,37 @@ void ns_create_main_menu(menu_shared * pmenushared)
    
 }
 
+
 void os_begin_system();
 
-//void aura_application_main(int argc, char *argv[], const char * pszCommandLine)
-//{
-//   
-//   NSApplication * application = [NSApplication sharedApplication];
-//   
-//   macOSWindowApp * appDelegate = [[macOSWindowApp alloc] init];
-//   
-//   [application setDelegate:appDelegate];
-//   
-//   
-//   
-//   //[m_statusitem setEnabled:YES];
-//
-//   
-//   [NSApplication sharedApplication];
-//   
-//   bool bNoDock = strstr(pszCommandLine, " no_dock") != NULL;
-//   
-//   if(bNoDock)
-//   {
-//      
-//      nsapp_activation_policy_accessory();
-//      
-//   }
-////   else
-////   {
-////
-////      nsapp_activation_policy_regular();
-////
-////   }
-//   
-//
-//   [NSApp activateIgnoringOtherApps:YES];
-//   
-//   os_begin_system();
-//   
-//
-//   
-//   [NSApp run];
-//   
-//}
+
+void windowing_macos_application_main(int argc, char *argv[])
+{
+   
+   NSApplication * application = [NSApplication sharedApplication];
+   
+   macOSWindowApp * appDelegate = [[macOSWindowApp alloc] init];
+   
+   [application setDelegate:appDelegate];
+   
+   //[m_statusitem setEnabled:YES];
+   
+   [NSApplication sharedApplication];
+   
+   bool bNoDock = argcargv_contains_parameter(argc, argv, "no_dock");
+   
+   if(bNoDock)
+   {
+      
+      nsapp_activation_policy_accessory();
+      
+   }
+
+   [NSApp activateIgnoringOtherApps:YES];
+   
+   [NSApp run];
+   
+}
 
 
 //-(void)applicationActivity:(NSNotification *)notification
@@ -942,41 +945,41 @@ void ns_create_main_menu()
 
 
 
-void apex_application_main(int argc, char *argv[], const char * pszCommandLine)
-{
-   
-   NSApplication * application = [NSApplication sharedApplication];
-   
-   macOSWindowApp * appDelegate = [[macOSWindowApp alloc] init];
-   
-   [application setDelegate:appDelegate];
-   
-   [NSApplication sharedApplication];
-   
-   bool bNoDock = strstr(pszCommandLine, " no_dock") != NULL;
-   
-   if(bNoDock)
-   {
-      
-      nsapp_activation_policy_accessory();
-      
-   }
-//   else
+//void apex_application_main(int argc, char *argv[])
+//{
+//
+//   NSApplication * application = [NSApplication sharedApplication];
+//
+//   macOSWindowApp * appDelegate = [[macOSWindowApp alloc] init];
+//
+//   [application setDelegate:appDelegate];
+//
+//   [NSApplication sharedApplication];
+//
+//   bool bNoDock = argcargv_contains_paramater(argc, argv, "no_dock");
+//
+//   if(bNoDock)
 //   {
-//      
-//      nsapp_activation_policy_regular();
-//      
+//
+//      nsapp_activation_policy_accessory();
+//
 //   }
-   
-
-   [NSApp activateIgnoringOtherApps:YES];
-   
-   [NSApp run];
-   
-}
-
-
-
+////   else
+////   {
+////
+////      nsapp_activation_policy_regular();
+////
+////   }
+//
+//
+//   [NSApp activateIgnoringOtherApps:YES];
+//
+//   [NSApp run];
+//
+//}
+//
+//
+//
 
 
 //

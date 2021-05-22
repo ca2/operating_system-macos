@@ -20,9 +20,13 @@ namespace windowing_macos
       node();
       ~node() override;
 
+      
       void os_menu_item_enable(void * pitem, bool bEnable) override;
       void os_menu_item_check(void * pitem, bool bCheck) override;
 
+      
+      ::e_status main() override;
+      
       
    };
 

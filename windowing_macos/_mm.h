@@ -10,22 +10,22 @@
 #include "aura_macos/_mm.h"
 
 
-#import "AuraWindow/AuraWindow.h"
+#import "macOSWindow/macOSWindow.h"
 
 
-#include "AuraWindow/aura_window.h"
+#include "macOSWindow/macos_window.h"
 
 
-void * new_aura_window(aura_window * papexwindow, CGRect rectangle, unsigned int uStyle);
+void * new_macos_window(macos_window * papexwindow, CGRect rectangle, unsigned int uStyle);
 
 
-#import "AuraWindow/AuraWindowFrameView.h"
+#import "macOSWindow/macOSWindowFrameView.h"
 
 
-#import "AuraWindow/AuraWindowApp.h"
+#import "macOSWindow/macOSWindowApp.h"
 
 
-#import "AuraWindow/AuraWindowController.h"
+#import "macOSWindow/macOSWindowController.h"
 
 
 

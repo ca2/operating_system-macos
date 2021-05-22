@@ -15,15 +15,25 @@
 
 #define WHEEL_DELTA 120
 
-void * new_aura_window(aura_window * papexwindow, CGRect rect, unsigned int uStyle);
+void * new_macos_window(macos_window * papexwindow, CGRect rect, unsigned int uStyle);
 
 
 namespace windowing_macos
 {
 
 
+window::window()
+{
+   
+   
+}
 
 
+window::~window()
+{
+   
+   
+}
 
 
 ::e_status window::create_window(::user::interaction_impl * pimpl)
@@ -108,7 +118,7 @@ namespace windowing_macos
       //and because cgrect origin is bottom-left and,
       //the origin of screen is at bottom.
 
-      auto pNSWindow = new_aura_window(this, cgrect, uStyle);
+      auto pNSWindow = new_macos_window(this, cgrect, uStyle);
    
       set_os_data(pNSWindow);
 
@@ -162,7 +172,7 @@ namespace windowing_macos
 
       //puserinteraction->post_redraw();
 
-      //;//aura_window_show();
+      //;//macos_window_show();
 
    }
 
@@ -191,32 +201,32 @@ namespace windowing_macos
 //   return true;
 //}
 
-void window::aura_window_add_ref()
+void window::macos_window_add_ref()
 {
 
-   add_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_add_ref"));
+   add_ref(OBJ_REF_DBG_P_NOTE(this, "macos_window_add_ref"));
    
    auto puserinteraction = m_pimpl->m_puserinteraction;
 
-   puserinteraction->add_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_add_ref"));
+   puserinteraction->add_ref(OBJ_REF_DBG_P_NOTE(this, "macos_window_add_ref"));
 
 }
 
 
-void window::aura_window_dec_ref()
+void window::macos_window_dec_ref()
 {
    
    auto puserinteraction = m_pimpl->m_puserinteraction;
 
-   puserinteraction->dec_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_dec_ref"));
+   puserinteraction->dec_ref(OBJ_REF_DBG_P_NOTE(this, "macos_window_dec_ref"));
 
-   dec_ref(OBJ_REF_DBG_P_NOTE(this, "aura_window_dec_ref"));
+   dec_ref(OBJ_REF_DBG_P_NOTE(this, "macos_window_dec_ref"));
 
 }
 
 
 
-void window::aura_window_draw(CGContextRef cgc, CGSize sizeWindowParam)
+void window::macos_window_draw(CGContextRef cgc, CGSize sizeWindowParam)
 {
 
    ::size_i32 sizeWindow(sizeWindowParam.width, sizeWindowParam.height);
@@ -265,7 +275,7 @@ void window::aura_window_draw(CGContextRef cgc, CGSize sizeWindowParam)
    {
 
       // xxxlog
-      //output_debug_string("\n\nwarning: aura_window_draw more than 80FPS!!! Ellapsed: " + str::from(tickEllapsed) + "ms.\n\n");
+      //output_debug_string("\n\nwarning: macos_window_draw more than 80FPS!!! Ellapsed: " + str::from(tickEllapsed) + "ms.\n\n");
 
    }
 
@@ -371,7 +381,7 @@ void window::aura_window_draw(CGContextRef cgc, CGSize sizeWindowParam)
 }
 
 
-bool window::aura_window_key_down(unsigned int uiKeyCode)
+bool window::macos_window_key_down(unsigned int uiKeyCode)
 {
 
    __pointer(::user::message) spbase;
@@ -400,7 +410,7 @@ bool window::aura_window_key_down(unsigned int uiKeyCode)
 }
 
 
-bool window::aura_window_key_up(unsigned int uiKeyCode)
+bool window::macos_window_key_up(unsigned int uiKeyCode)
 {
 
    __pointer(::user::message) spbase;
@@ -429,7 +439,7 @@ bool window::aura_window_key_up(unsigned int uiKeyCode)
 }
 
 
-bool window::aura_window_key_down(unsigned int vk, unsigned int scan, const char * pszUtf8)
+bool window::macos_window_key_down(unsigned int vk, unsigned int scan, const char * pszUtf8)
 {
 
    __pointer(::user::message) spbase;
@@ -447,7 +457,7 @@ bool window::aura_window_key_down(unsigned int vk, unsigned int scan, const char
 
       auto lparam = (::lparam) (iptr) (string *) (pstringText);
 
-      printf("aura_window_key_down e_message_text_composition\n");
+      printf("macos_window_key_down e_message_text_composition\n");
 
       auto puserinteraction = m_pimpl->m_puserinteraction;
 
@@ -483,7 +493,7 @@ bool window::aura_window_key_down(unsigned int vk, unsigned int scan, const char
 }
 
 
-bool window::aura_window_key_up(unsigned int vk, unsigned int scan)
+bool window::macos_window_key_up(unsigned int vk, unsigned int scan)
 {
 
    __pointer(::user::message) spbase;
@@ -510,7 +520,7 @@ bool window::aura_window_key_up(unsigned int vk, unsigned int scan)
 }
 
 
-void window::aura_window_mouse_down(int iButton, double x, double y)
+void window::macos_window_mouse_down(int iButton, double x, double y)
 {
 
    __pointer(::user::message) spbase;
@@ -580,7 +590,7 @@ void window::aura_window_mouse_down(int iButton, double x, double y)
 }
 
 
-void window::aura_window_mouse_up(int iButton, double x, double y)
+void window::macos_window_mouse_up(int iButton, double x, double y)
 {
 
    int message;
@@ -614,7 +624,7 @@ void window::aura_window_mouse_up(int iButton, double x, double y)
 }
 
 
-void window::aura_window_double_click(int iButton, double x, double y)
+void window::macos_window_double_click(int iButton, double x, double y)
 {
 
    int message;
@@ -648,7 +658,7 @@ void window::aura_window_double_click(int iButton, double x, double y)
 }
 
 
-void window::aura_window_mouse_moved(double x, double y, unsigned long ulAppleMouseButton)
+void window::macos_window_mouse_moved(double x, double y, unsigned long ulAppleMouseButton)
 {
    
    if(is_destroying())
@@ -785,7 +795,7 @@ void window::aura_window_mouse_moved(double x, double y, unsigned long ulAppleMo
 }
 
 
-void window::aura_window_mouse_dragged(double x, double y, unsigned long ulAppleMouseButton)
+void window::macos_window_mouse_dragged(double x, double y, unsigned long ulAppleMouseButton)
 {
 
    if(is_destroying())
@@ -827,7 +837,7 @@ void window::aura_window_mouse_dragged(double x, double y, unsigned long ulApple
 }
 
 
-void window::aura_window_mouse_wheel(double deltaY, double x, double y)
+void window::macos_window_mouse_wheel(double deltaY, double x, double y)
 {
 
    if(is_destroying())
@@ -878,7 +888,7 @@ void window::aura_window_mouse_wheel(double deltaY, double x, double y)
 }
 
 
-void window::aura_window_resized(CGRect rectangle)
+void window::macos_window_resized(CGRect rectangle)
 {
    
    if(is_destroying())
@@ -916,7 +926,7 @@ void window::aura_window_resized(CGRect rectangle)
 //
 //         puserinteraction->window_state().m_point = rectangle.origin;
 //
-//         TRACE("window::aura_window_resized effective position is different from requested position");
+//         TRACE("window::macos_window_resized effective position is different from requested position");
 //
 //         puserinteraction->post_message(e_message_move, 0, puserinteraction->window_state().m_point.lparam());
 //
@@ -927,7 +937,7 @@ void window::aura_window_resized(CGRect rectangle)
 //
 //         puserinteraction->m_sizeRequest = rectangle.size_i32;
 //
-//         TRACE("window::aura_window_resized effective position is different from requested position");
+//         TRACE("window::macos_window_resized effective position is different from requested position");
 //
 //         puserinteraction->post_message(e_message_size, 0, puserinteraction->m_sizeRequest.lparam());
 //
@@ -1022,7 +1032,7 @@ void window::aura_window_resized(CGRect rectangle)
 }
 
 
-void window::aura_window_moved(CGPoint point)
+void window::macos_window_moved(CGPoint point)
 {
    
    if(is_destroying())
@@ -1094,7 +1104,7 @@ void window::aura_window_moved(CGPoint point)
 ////
 ////         puserinteraction->m_pointRequest = point;
 ////
-////         TRACE("window::aura_window_resized effective position is different from requested position");
+////         TRACE("window::macos_window_resized effective position is different from requested position");
 ////
 ////      }
 ////
@@ -1103,7 +1113,7 @@ void window::aura_window_moved(CGPoint point)
 }
 
 
-void window::aura_window_did_become_key()
+void window::macos_window_did_become_key()
 {
 
    if(is_destroying())
@@ -1118,7 +1128,7 @@ void window::aura_window_did_become_key()
 }
 
 
-void window::aura_window_activate()
+void window::macos_window_activate()
 {
    
    if(is_destroying())
@@ -1144,7 +1154,7 @@ void window::aura_window_activate()
 }
 
 
-void window::aura_window_deactivate()
+void window::macos_window_deactivate()
 {
 
    if(is_destroying())
@@ -1197,7 +1207,7 @@ void window::aura_window_deactivate()
 }
 
 
-void window::aura_window_iconified()
+void window::macos_window_iconified()
 {
 
    if(is_destroying())
@@ -1228,7 +1238,7 @@ void window::aura_window_iconified()
 }
 
 
-void window::aura_window_deiconified()
+void window::macos_window_deiconified()
 {
 
    if(is_destroying())
@@ -1264,7 +1274,7 @@ void window::aura_window_deiconified()
 }
 
 
-void window::aura_window_on_show()
+void window::macos_window_on_show()
 {
 
    if(is_destroying())
@@ -1310,7 +1320,7 @@ void window::aura_window_on_show()
 }
 
 
-void window::aura_window_on_hide()
+void window::macos_window_on_hide()
 {
 
 //      if(is_destroying())
@@ -1320,14 +1330,14 @@ void window::aura_window_on_hide()
 //
 //      }
    
-   INFO("macos::window::aura_window_on_hide");
+   INFO("macos::window::macos_window_on_hide");
 
    auto puserinteraction = m_pimpl->m_puserinteraction;
 
    if(::is_null(puserinteraction))
    {
 
-      WARN("macos::window::aura_window_on_hide (2) puserinteraction == nullptr");
+      WARN("macos::window::macos_window_on_hide (2) puserinteraction == nullptr");
 
       return;
 
@@ -1345,7 +1355,7 @@ void window::aura_window_on_hide()
 }
 
 
-void window::aura_window_on_miniaturize()
+void window::macos_window_on_miniaturize()
 {
 
    if(is_destroying())

@@ -10,7 +10,7 @@
 #include "aura_macos/_aura_macos.h"
 
 
-#include "AuraWindow/aura_window.h"
+#include "macOSWindow/macos_window.h"
 
 
 #include "window.h"

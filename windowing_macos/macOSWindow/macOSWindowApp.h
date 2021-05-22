@@ -25,7 +25,7 @@
 {
 @public
 
-   void *               m_pAcmeSystem;
+   void *               m_pApplication;
    NSMenu *             m_menu;
    NSMutableArray *     m_menuitema;
    NSMutableArray *     m_menuida;

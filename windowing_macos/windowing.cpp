@@ -17,7 +17,7 @@ namespace windowing_macos
    }
 
 
-   windowing::windowing()
+   windowing::~windowing()
    {
    
    }
@@ -27,4 +27,3 @@ namespace windowing_macos
 
 
 
-}
