@@ -435,7 +435,7 @@ namespace macos
 
       bool bIsDir;
 
-      ::u32 dwLastError;
+      //::u32 dwLastError;
 
       if(::thread_is_set(id_thread_zip_is_dir) && iLast >= 3  && !ansi_count_compare_ci(&((const char *) str)[iLast - 3], ".zip", 4))
       {

@@ -145,27 +145,27 @@ namespace FileSystemEvents
          if(eventFlags[i] & kFSEventStreamEventFlagItemRemoved)
          {
 
-            action.m_eaction = ::file::action_delete;
+            action.m_eaction = ::file::e_action_delete;
 
          }
 
          if(eventFlags[i] & kFSEventStreamEventFlagItemRenamed)
          {
 
-            action.m_eaction = ::file::action_modify;
+            action.m_eaction = ::file::e_action_modify;
          }
 
          if(eventFlags[i] & kFSEventStreamEventFlagItemModified)
          {
 
-            action.m_eaction = ::file::action_modify;
+            action.m_eaction = ::file::e_action_modify;
 
          }
 
          if(eventFlags[i] & kFSEventStreamEventFlagItemCreated)
          {
 
-            action.m_eaction = ::file::action_add;
+            action.m_eaction = ::file::e_action_add;
 
          }
 
@@ -193,10 +193,10 @@ namespace FileSystemEvents
    ::e_status watcher::step()
    {
       
-      bool done = false;
+      //bool done = false;
       
       // Start the run loop but return after each source is handled.
-      SInt32 result = CFRunLoopRunInMode(kCFRunLoopDefaultMode, 2, true);
+      //SInt32 result = CFRunLoopRunInMode(kCFRunLoopDefaultMode, 2, true);
       
       // If a source explicitly stopped the run loop, or if there are no
       // sources or timers, go ahead and exit.

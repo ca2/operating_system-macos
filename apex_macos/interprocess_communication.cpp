@@ -38,11 +38,11 @@ interprocess_communication_tx::~interprocess_communication_tx()
    bool interprocess_communication_tx::open(const char * pszChannel,launcher * plauncher)
    {
 
-      CFDataRef data;
+      //CFDataRef data;
 
-      SInt32 messageID = 0x1111; // Arbitrary
+      //SInt32 messageID = 0x1111; // Arbitrary
 
-      CFTimeInterval timeout = 10.0;
+      //CFTimeInterval timeout = 10.0;
 
       CFStringRef name = CFStringCreateWithCString(nullptr,  (string("com.ca2.app.port.server.") + pszChannel), kCFStringEncodingUTF8);
 
@@ -82,7 +82,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
 
       ::count c = ansi_length(pszMessage);
 
-      ::count cSend;
+      //::count cSend;
 
       memory m;
 
@@ -133,9 +133,9 @@ interprocess_communication_tx::~interprocess_communication_tx()
 
       memory m(pdata, len);
 
-      ::count c = len;
+      //::count c = len;
 
-      ::count cSend;
+      //::count cSend;
 
 
       SInt32 status =
