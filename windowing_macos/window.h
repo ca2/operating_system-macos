@@ -48,6 +48,8 @@ namespace windowing_macos
       
       void install_message_routing(channel * pchannel) override;
       
+      ::e_status set_keyboard_focus() override;
+      
       ::e_status set_active_window() override;
       
       bool is_active_window() const override;

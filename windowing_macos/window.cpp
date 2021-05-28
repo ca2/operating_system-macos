@@ -308,6 +308,16 @@ void window::install_message_routing(channel * pchannel)
    }
 
 
+   ::e_status window::set_keyboard_focus()
+   {
+
+      macos_window_make_first_responder();
+
+      return ::success;
+
+   }
+
+
    ::e_status window::set_active_window()
    {
 

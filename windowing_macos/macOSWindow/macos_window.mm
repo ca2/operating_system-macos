@@ -288,6 +288,26 @@ void macos_window::macos_window_order_front()
 }
 
 
+void macos_window::macos_window_make_first_responder()
+{
+
+   if(m_bDestroying)
+   {
+      
+      return;
+      
+   }
+   
+   ns_main_async(^
+              {
+                 
+                 [m_pmacoswindow makeFirstResponder:nullptr];
+                 
+              });
+   
+}
+
+
 void macos_window::macos_window_make_key_window()
 {
 

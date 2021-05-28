@@ -77,6 +77,8 @@ public:
    virtual void macos_window_redraw();
    virtual void macos_window_redraw_sync();
    
+   virtual void macos_window_make_first_responder();
+   
    virtual void macos_window_order_front();
    virtual void macos_window_make_key_window();
    virtual void macos_window_make_key_window_and_order_front();

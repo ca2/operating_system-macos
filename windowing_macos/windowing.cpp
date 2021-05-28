@@ -84,6 +84,16 @@ namespace windowing_macos
    }
 
 
+   ::windowing::window * windowing::get_active_window(::thread * pthread)
+   {
+      
+      
+      return nullptr;
+      
+   }
+
+
+
    bool windowing::post_ui_message(const MESSAGE &message)
    {
 

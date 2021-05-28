@@ -1286,75 +1286,75 @@ bool interaction_impl::_is_window() const
      //
      //         }
 
-              if(m_bTranslateMouseMessageCursor && !pmouse->m_bTranslated)
-              {
-                 pmouse->m_bTranslated = true;
-                 ::rectangle_i32 rectWindow;
-     //            if(m_bScreenRelativeMouseMessagePosition)
-     //            {
-     //
-     //               INFO("Screen Relative Mouse Message Position");
-     //
-     //               ::rectangle_i32 rectWindow32;
-     //
-     //               ::get_window_rect((oswindow) get_handle(), &rectWindow32);
-     //
-     //               ::copy(rectWindow, rectWindow32);
-     //
-     //            }
-     //            else
-                 {
-                    m_puserinteraction->get_window_rect(rectWindow);
-                 }
-
-                 auto puser = psession->user();
-
-                 auto pwindowing = puser->windowing();
-
-                 auto pdisplay = pwindowing->display();
-
-                 if(pdisplay->get_monitor_count() > 0)
-                 {
-
-                    ::rectangle_i32 rcMonitor;
-
-                    pdisplay->get_monitor_rectangle(0, &rcMonitor);
-
-                    if(rectWindow.left >= rcMonitor.left)
-                    {
-
-                       pmouse->m_point.x += (::i32) rectWindow.left;
-
-                    }
-
-                    if(rectWindow.top >= rcMonitor.top)
-                    {
-
-                       pmouse->m_point.y += (::i32) rectWindow.top;
-
-                    }
-
-                 }
-                 else
-                 {
-
-                    if(rectWindow.left >= 0)
-                    {
-
-                       pmouse->m_point.x += (::i32) rectWindow.left;
-
-                    }
-
-                    if(rectWindow.top >= 0)
-                    {
-
-                       pmouse->m_point.y += (::i32) rectWindow.top;
-
-                    }
-
-                 }
-
-              }
+//              if(m_bTranslateMouseMessageCursor && !pmouse->m_bTranslated)
+//              {
+//                 pmouse->m_bTranslated = true;
+//                 ::rectangle_i32 rectWindow;
+//     //            if(m_bScreenRelativeMouseMessagePosition)
+//     //            {
+//     //
+//     //               INFO("Screen Relative Mouse Message Position");
+//     //
+//     //               ::rectangle_i32 rectWindow32;
+//     //
+//     //               ::get_window_rect((oswindow) get_handle(), &rectWindow32);
+//     //
+//     //               ::copy(rectWindow, rectWindow32);
+//     //
+//     //            }
+//     //            else
+//                 {
+//                    m_puserinteraction->get_window_rect(rectWindow);
+//                 }
+//
+//                 auto puser = psession->user();
+//
+//                 auto pwindowing = puser->windowing();
+//
+//                 auto pdisplay = pwindowing->display();
+//
+//                 if(pdisplay->get_monitor_count() > 0)
+//                 {
+//
+//                    ::rectangle_i32 rcMonitor;
+//
+//                    pdisplay->get_monitor_rectangle(0, &rcMonitor);
+//
+//                    if(rectWindow.left >= rcMonitor.left)
+//                    {
+//
+//                       pmouse->m_point.x += (::i32) rectWindow.left;
+//
+//                    }
+//
+//                    if(rectWindow.top >= rcMonitor.top)
+//                    {
+//
+//                       pmouse->m_point.y += (::i32) rectWindow.top;
+//
+//                    }
+//
+//                 }
+//                 else
+//                 {
+//
+//                    if(rectWindow.left >= 0)
+//                    {
+//
+//                       pmouse->m_point.x += (::i32) rectWindow.left;
+//
+//                    }
+//
+//                    if(rectWindow.top >= 0)
+//                    {
+//
+//                       pmouse->m_point.y += (::i32) rectWindow.top;
+//
+//                    }
+//
+//                 }
+//
+//              }
 
               auto puser = psession->user();
 
@@ -1420,10 +1420,32 @@ bool interaction_impl::_is_window() const
 
               if(!puserinteractionMouse)
               {
+                 
+                 if(pmouse->m_id == e_message_left_button_down)
+                 {
+
 
                  puserinteractionMouse = m_puserinteraction->child_from_point(pmouse->m_point);
+                    
+                 }
+                 
+                 else
+                 {
+                    puserinteractionMouse = m_puserinteraction->child_from_point(pmouse->m_point);
 
-              }
+                 }
+                 }
+
+                 if(puserinteractionMouse)
+                 {
+                 
+                    string strType2 = puserinteractionMouse->type_c_str();
+                    
+                    ::output_debug_string(strType2);
+                    
+                 }
+              //}
+              
 
               if(pmouse->m_id == e_message_left_button_down)
               {

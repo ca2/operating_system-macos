@@ -35,6 +35,9 @@ namespace windowing_macos
 
       
       ::windowing::display * display() override;
+      
+      
+      ::windowing::window * get_active_window(::thread * pthread) override;
 
       
       virtual bool post_ui_message(const MESSAGE &message);
