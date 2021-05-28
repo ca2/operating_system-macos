@@ -5,9 +5,16 @@
 //  Created by Camilo Sasuke on 2021-05-19 04:22 BRT <3ThomasBS_!!
 //
 #include "framework.h"
+#include "apex/user/menu_shared.h"
+
+
+__pointer(menu_shared) create_menu_shared(const string_array & straParent, const string_array & straMenu, const string_array & straId);
 
 
 void windowing_macos_application_main(void * pApplication, int argc, char *argv[]);
+
+
+void ns_create_main_menu(menu_shared * pmenushared);
 
 
 void os_menu_item_enable(void * pitem, bool bEnable);
@@ -47,6 +54,23 @@ namespace windowing_macos
    }
 
 
+   ::e_status node::defer_create_main_menu(const string_array & straMenuParent, const string_array & straMenuName, const string_array & straMenuId)
+   {
+      
+      auto pmenushared =
+         create_menu_shared(
+                            
+                            straMenuParent,
+                            straMenuName,
+                            straMenuId
+                            
+                            );
+
+      ns_create_main_menu(pmenushared);
+      
+      return success;
+      
+   }
 
 
    ::e_status node::main()

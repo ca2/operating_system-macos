@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "platform/config.h"
+#include "operating_system/config.h"
 
 
 

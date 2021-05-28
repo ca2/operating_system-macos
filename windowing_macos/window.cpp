@@ -13,6 +13,8 @@
 #include "acme/parallelization/message_queue.h"
 #include <CoreGraphics/CoreGraphics.h>
 
+void ns_main_async(dispatch_block_t block);
+
 void ns_set_cursor(void * pNSCursor);
 void * ns_get_cursor();
 
@@ -1597,6 +1599,57 @@ void window::install_message_routing(channel * pchannel)
 
    }
 
+   ::e_status window::frame_toggle_restore()
+{
+      
+      ns_main_async(^()
+                     {
+         
+         auto puserinteraction = m_pimpl->m_puserinteraction;
+
+      if(puserinteraction->get_parent() == nullptr && puserinteraction->get_owner() == nullptr)
+      {
+
+         if(!puserinteraction->is_window_visible()
+            || (!(puserinteraction->m_ewindowflag & e_window_flag_miniaturizable)
+                && !puserinteraction->is_window_screen_visible()))
+         {
+
+            puserinteraction->display_previous_restore();
+
+         }
+         else if(puserinteraction->_001GetTopLeftWeightedOccludedOpaqueRate()  > 0.025)
+         {
+
+            puserinteraction->order(::e_zorder_top);
+
+            puserinteraction->display(e_display_default, e_activation_set_foreground);
+
+         }
+         else if(puserinteraction->m_pimpl2 && puserinteraction->m_pimpl2->m_millisLastExposureAddUp.elapsed() < 300)
+         {
+
+            INFO("Ignored minituarize request (by toggle intent) because of recent full exposure.");
+
+         }
+         else
+         {
+
+            puserinteraction->display(e_display_iconic, e_activation_no_activate);
+
+         }
+
+         puserinteraction->set_need_redraw();
+
+         puserinteraction->post_redraw();
+
+      }
+
+      });
+
+      return ::success;
+      
+   }
 
 
 } // namespace windowing_macos

@@ -7,6 +7,9 @@
 #include "framework.h"
 
 
+void ns_main_async(dispatch_block_t block);
+
+
 namespace windowing_macos
 {
 
@@ -45,6 +48,8 @@ namespace windowing_macos
          return estatus;
          
       }
+      
+      m_pdisplay->m_pwindowing = this;
          
       return estatus;
       

@@ -98,7 +98,8 @@ namespace windowing_macos
       virtual void macos_window_on_hide() override;
       virtual void macos_window_on_miniaturize() override;
 
-
+      ::e_status frame_toggle_restore() override;
+      
 
    };
 

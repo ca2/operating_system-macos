@@ -11,17 +11,19 @@
 		07B657CF190F3CBF002DAADE /* libios_aura_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B657B8190F3CBF002DAADE /* libios_aura_macos.a */; };
 		07B657D5190F3CBF002DAADE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B657D3190F3CBF002DAADE /* InfoPlist.strings */; };
 		07B657D7190F3CBF002DAADE /* music_midi_core_audio_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B657D6190F3CBF002DAADE /* music_midi_core_audio_iosTests.m */; };
+		9A00E60D26616C9C00517464 /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E60C26616C9C00517464 /* libacme.dylib */; };
+		9A00E60F26616C9C00517464 /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E60E26616C9C00517464 /* libacme_apple.dylib */; };
+		9A00E61126616C9C00517464 /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61026616C9C00517464 /* libacme_macos.dylib */; };
+		9A00E61326616CA500517464 /* libacme_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61226616CA500517464 /* libacme_posix.dylib */; };
+		9A00E61526616CB800517464 /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61426616CB800517464 /* libapex_apple.dylib */; };
+		9A00E61726616CC500517464 /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61626616CC500517464 /* libacme_apple.dylib */; };
+		9A00E61926616CC500517464 /* libacme_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61826616CC500517464 /* libacme_posix.dylib */; };
+		9A00E61B26616CD300517464 /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61A26616CD300517464 /* libapex.dylib */; };
+		9A00E61D26616CD300517464 /* libapex_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61C26616CD300517464 /* libapex_posix.dylib */; };
+		9A00E61E26616CD300517464 /* libapex_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A64C10426604FB50074030F /* libapex_macos.dylib */; };
+		9A00E62026616D1400517464 /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61F26616D1400517464 /* libaura.dylib */; };
+		9A00E62226616D1400517464 /* libaura_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E62126616D1400517464 /* libaura_posix.dylib */; };
 		9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */; };
-		9A5D734D2655138300D5C39E /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D734C2655138300D5C39E /* libacme.dylib */; };
-		9A5D734F2655138300D5C39E /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D734E2655138300D5C39E /* libacme_apple.dylib */; };
-		9A5D73512655138300D5C39E /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73502655138300D5C39E /* libacme_macos.dylib */; };
-		9A5D73532655138300D5C39E /* libacme_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73522655138300D5C39E /* libacme_posix.dylib */; };
-		9A5D73552655138300D5C39E /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73542655138300D5C39E /* libapex.dylib */; };
-		9A5D73572655138300D5C39E /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73562655138300D5C39E /* libapex_apple.dylib */; };
-		9A5D73592655138300D5C39E /* libapex_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73582655138300D5C39E /* libapex_macos.dylib */; };
-		9A5D735B2655138300D5C39E /* libapex_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D735A2655138300D5C39E /* libapex_posix.dylib */; };
-		9A5D735D265513CF00D5C39E /* libaura_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D735C265513CF00D5C39E /* libaura_posix.dylib */; };
-		9A5D735F2655140700D5C39E /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D735E2655140700D5C39E /* libaura.dylib */; };
 		9A5D73912656D1DC00D5C39E /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D738F2656D1DC00D5C39E /* node.cpp */; };
 		9A5D73922656D1DC00D5C39E /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A5D73902656D1DC00D5C39E /* node.h */; };
 		9A8997BD177D0E7F00C7761E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8997BC177D0E7D00C7761E /* Carbon.framework */; };
@@ -46,6 +48,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 07B657B7190F3CBF002DAADE;
 			remoteInfo = music_midi_core_audio_ios;
+		};
+		9A00E60A26616BFE00517464 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A64C0FF26604FB50074030F /* apex_macos.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A0C1694264A2AA700B5CC33;
+			remoteInfo = apex_macos;
 		};
 		9A440A6C2654E36C000C490B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -96,16 +105,17 @@
 		07B657D2190F3CBF002DAADE /* music_midi_core_audio_iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "music_midi_core_audio_iosTests-Info.plist"; sourceTree = "<group>"; };
 		07B657D4190F3CBF002DAADE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		07B657D6190F3CBF002DAADE /* music_midi_core_audio_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = music_midi_core_audio_iosTests.m; sourceTree = "<group>"; };
-		9A5D734C2655138300D5C39E /* libacme.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A5D734E2655138300D5C39E /* libacme_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A5D73502655138300D5C39E /* libacme_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A5D73522655138300D5C39E /* libacme_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A5D73542655138300D5C39E /* libapex.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A5D73562655138300D5C39E /* libapex_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A5D73582655138300D5C39E /* libapex_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A5D735A2655138300D5C39E /* libapex_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A5D735C265513CF00D5C39E /* libaura_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A5D735E2655140700D5C39E /* libaura.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A00E60C26616C9C00517464 /* libacme.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A00E60E26616C9C00517464 /* libacme_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A00E61026616C9C00517464 /* libacme_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A00E61226616CA500517464 /* libacme_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A00E61426616CB800517464 /* libapex_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A00E61626616CC500517464 /* libacme_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A00E61826616CC500517464 /* libacme_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A00E61A26616CD300517464 /* libapex.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A00E61C26616CD300517464 /* libapex_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A00E61F26616D1400517464 /* libaura.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A00E62126616D1400517464 /* libaura_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5D738F2656D1DC00D5C39E /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		9A5D73902656D1DC00D5C39E /* node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
 		9A64C0FF26604FB50074030F /* apex_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = apex_macos.xcodeproj; path = "/Users/camilo/solution/basis/source/app/app/../../../archive/platform-macos/apex_macos/apex_macos.xcodeproj"; sourceTree = "<absolute>"; };
@@ -149,17 +159,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A5D735F2655140700D5C39E /* libaura.dylib in Frameworks */,
-				9A5D735D265513CF00D5C39E /* libaura_posix.dylib in Frameworks */,
-				9A5D734D2655138300D5C39E /* libacme.dylib in Frameworks */,
-				9A5D734F2655138300D5C39E /* libacme_apple.dylib in Frameworks */,
-				9A5D73512655138300D5C39E /* libacme_macos.dylib in Frameworks */,
-				9A5D73532655138300D5C39E /* libacme_posix.dylib in Frameworks */,
-				9A5D73552655138300D5C39E /* libapex.dylib in Frameworks */,
-				9A5D73572655138300D5C39E /* libapex_apple.dylib in Frameworks */,
-				9A5D73592655138300D5C39E /* libapex_macos.dylib in Frameworks */,
-				9A5D735B2655138300D5C39E /* libapex_posix.dylib in Frameworks */,
+				9A00E62026616D1400517464 /* libaura.dylib in Frameworks */,
 				9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */,
+				9A00E62226616D1400517464 /* libaura_posix.dylib in Frameworks */,
+				9A00E61B26616CD300517464 /* libapex.dylib in Frameworks */,
+				9A00E61526616CB800517464 /* libapex_apple.dylib in Frameworks */,
+				9A00E61E26616CD300517464 /* libapex_macos.dylib in Frameworks */,
+				9A00E61D26616CD300517464 /* libapex_posix.dylib in Frameworks */,
+				9A00E61726616CC500517464 /* libacme_apple.dylib in Frameworks */,
+				9A00E61126616C9C00517464 /* libacme_macos.dylib in Frameworks */,
+				9A00E61926616CC500517464 /* libacme_posix.dylib in Frameworks */,
+				9A00E61326616CA500517464 /* libacme_posix.dylib in Frameworks */,
+				9A00E60D26616C9C00517464 /* libacme.dylib in Frameworks */,
+				9A00E60F26616C9C00517464 /* libacme_apple.dylib in Frameworks */,
 				9A941C521FF34F9E0028686E /* CoreAudio.framework in Frameworks */,
 				9A941C501FF34F880028686E /* CoreMIDI.framework in Frameworks */,
 				9AA1B44A176361950019E812 /* Cocoa.framework in Frameworks */,
@@ -173,16 +185,17 @@
 		07B657B9190F3CBF002DAADE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9A5D735E2655140700D5C39E /* libaura.dylib */,
-				9A5D735C265513CF00D5C39E /* libaura_posix.dylib */,
-				9A5D734C2655138300D5C39E /* libacme.dylib */,
-				9A5D734E2655138300D5C39E /* libacme_apple.dylib */,
-				9A5D73502655138300D5C39E /* libacme_macos.dylib */,
-				9A5D73522655138300D5C39E /* libacme_posix.dylib */,
-				9A5D73542655138300D5C39E /* libapex.dylib */,
-				9A5D73562655138300D5C39E /* libapex_apple.dylib */,
-				9A5D73582655138300D5C39E /* libapex_macos.dylib */,
-				9A5D735A2655138300D5C39E /* libapex_posix.dylib */,
+				9A00E61F26616D1400517464 /* libaura.dylib */,
+				9A00E62126616D1400517464 /* libaura_posix.dylib */,
+				9A00E61A26616CD300517464 /* libapex.dylib */,
+				9A00E61C26616CD300517464 /* libapex_posix.dylib */,
+				9A00E61626616CC500517464 /* libacme_apple.dylib */,
+				9A00E61826616CC500517464 /* libacme_posix.dylib */,
+				9A00E61426616CB800517464 /* libapex_apple.dylib */,
+				9A00E61226616CA500517464 /* libacme_posix.dylib */,
+				9A00E60C26616C9C00517464 /* libacme.dylib */,
+				9A00E60E26616C9C00517464 /* libacme_apple.dylib */,
+				9A00E61026616C9C00517464 /* libacme_macos.dylib */,
 				9A941C511FF34F9E0028686E /* CoreAudio.framework */,
 				9A941C4F1FF34F880028686E /* CoreMIDI.framework */,
 				07B657BA190F3CBF002DAADE /* Foundation.framework */,
@@ -335,6 +348,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9A00E60B26616BFE00517464 /* PBXTargetDependency */,
 				9A440A6D2654E36C000C490B /* PBXTargetDependency */,
 			);
 			name = aura_macos;
@@ -448,6 +462,11 @@
 			isa = PBXTargetDependency;
 			target = 07B657B7190F3CBF002DAADE /* ios_aura_macos */;
 			targetProxy = 07B657CD190F3CBF002DAADE /* PBXContainerItemProxy */;
+		};
+		9A00E60B26616BFE00517464 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = apex_macos;
+			targetProxy = 9A00E60A26616BFE00517464 /* PBXContainerItemProxy */;
 		};
 		9A440A6D2654E36C000C490B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
