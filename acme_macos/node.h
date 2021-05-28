@@ -35,6 +35,9 @@ namespace acme
          ::e_status call_sync(const char * pszPath, const char * pszParam, const char * pszDir, ::e_display edisplay, const ::duration & durationTimeout, ::property_set & set) override;
 
          //virtual ::color::color get_system_color(enum_system_color esystemcolor) override;
+         
+         bool _os_calc_system_dark_mode() override;
+        
 
          virtual int node_init_check(int * pi, char *** ppz) override;
 

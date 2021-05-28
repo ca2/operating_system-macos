@@ -17,10 +17,29 @@ namespace windowing_macos
    public:
       
       
+      __pointer(::windowing::display)        m_pdisplay;
+      
+      __pointer(class window)                m_pwindowActive;
+      
+      
       windowing();
       ~windowing() override;
       
       
+      ::e_status initialize(::object * pobject) override;
+      
+      
+      ::e_status windowing_branch(const ::routine & routine) override;
+      
+      ::windowing::window * window(oswindow oswindow) override;
+
+      
+      ::windowing::display * display() override;
+
+      
+      virtual bool post_ui_message(const MESSAGE &message);
+
+
    };
       
 

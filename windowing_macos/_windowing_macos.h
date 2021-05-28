@@ -13,6 +13,15 @@
 #include "macOSWindow/macos_window.h"
 
 
+#include "display.h"
+
+
+#include "monitor.h"
+
+
+#include "cursor.h"
+
+
 #include "window.h"
 
 

@@ -25,7 +25,10 @@ void windowing_macos_factory_exchange(::factory_map * pfactorymap)
    pfactorymap->create_factory < windowing_macos::window, ::windowing::window > ();
 
    pfactorymap->create_factory < windowing_macos::node, ::acme::node > ();
-   
+   pfactorymap->create_factory < windowing_macos::display, ::windowing::display > ();
+   pfactorymap->create_factory < windowing_macos::monitor, ::windowing::monitor > ();
+   pfactorymap->create_factory < windowing_macos::cursor, ::windowing::cursor > ();
+
    
 }
 

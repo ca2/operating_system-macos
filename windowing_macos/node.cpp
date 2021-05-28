@@ -7,7 +7,7 @@
 #include "framework.h"
 
 
-void windowing_macos_application_main(int argc, char *argv[]);
+void windowing_macos_application_main(void * pApplication, int argc, char *argv[]);
 
 
 void os_menu_item_enable(void * pitem, bool bEnable);
@@ -47,18 +47,45 @@ namespace windowing_macos
    }
 
 
+
+
    ::e_status node::main()
    {
       
-      auto psystem = m_psystem;
+      auto psystem = m_psystem->m_papexsystem;
       
       auto argc = psystem->m_argc;
       
       auto argv = psystem->m_argv;
       
-      windowing_macos_application_main(argc, argv);
+      auto papplication = psystem->m_papplicationStartup;
+      
+      void * pApplication = (void *) (::application *) papplication;
+      
+      windowing_macos_application_main(pApplication, argc, argv);
       
       return psystem->m_estatus;
+      
+   }
+
+
+   ::e_status node::_will_finish_launching()
+   {
+      
+      auto psystem = m_psystem->m_papexsystem;
+
+      auto estatus = psystem->begin_synch();
+
+      if(!estatus)
+      {
+
+         return estatus;
+
+      }
+      
+      m_psystem->post_initial_request();
+
+      return ::success;
       
    }
 

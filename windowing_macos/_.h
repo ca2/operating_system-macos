@@ -17,6 +17,19 @@
 #endif
 
 
+namespace windowing_macos
+{
+
+   
+   class window;
+   class windowing;
+   class display;
+   class monitor;
+
+
+} // namespace windowing_macos
+
+
 #include "_c_mm.h"
 
 

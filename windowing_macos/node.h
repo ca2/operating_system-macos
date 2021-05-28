@@ -28,6 +28,9 @@ namespace windowing_macos
       ::e_status main() override;
       
       
+      ::e_status _will_finish_launching() override;
+      
+      
    };
 
 

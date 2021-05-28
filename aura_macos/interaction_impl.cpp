@@ -25,9 +25,19 @@ struct __CTLCOLOR
 
 // int_bool GetMessage(MESSAGE * lpMsg, oswindow hWnd, ::u32 wMsgFilterMin, ::u32 wMsgFilterMax);
 
+::user::interaction * g_puserinteractionMouseCapture123 = nullptr;
+//#define MESSAGE_WINDOW_PARENT (::oswindow((void *) (iptr) 1))
+
+
+#define TEST 0
+
 
 namespace macos
 {
+
+
+   i64 g_iMouseMove = 0;
+
 
    ::aura::application * g_pappPreTranslateMouseMessage = nullptr;
 
@@ -945,22 +955,71 @@ bool interaction_impl::_is_window() const
    }
 
 
-   void interaction_impl::message_handler(::message::message * pusermessage)
+   void interaction_impl::message_handler(::message::message * pmessage)
+{
+      
+      bool bKeyMessage = false;
+
+   ::message::key * pkey = nullptr;
+
+   if (pre_message_handler(pkey, bKeyMessage, pmessage))
    {
 
-      if (pusermessage->m_id == e_message_size || pusermessage->m_id == e_message_move)
+      return;
+
+   }
+
+   if(pmessage->m_id == e_message_timer)
+   {
+
+      //m_pthread->step_timer();
+
+   }
+   else if(pmessage->m_id == e_message_left_button_down)
+   {
+
+      output_debug_string("linux::interaction_impl::e_message_left_button_down\n");
+
+   }
+   else if(pmessage->m_id == e_message_left_button_up)
+   {
+
+      output_debug_string("linux::interaction_impl::e_message_left_button_up\n");
+
+   }
+   else if(pmessage->m_id == e_message_mouse_move)
+   {
+
+      g_iMouseMove++;
+
+      //TRACE("linux::interaction_impl::message_handler e_message_mouse_move");
+      //printf("g_iMouseMove = %d\n", g_iMouseMove);
+
+   }
+   else if(pmessage->m_id == e_message_paint)
+   {
+
+   }
+   else if(pmessage->m_id == e_message_left_button_up)
+   {
+
+      TRACE("e_message_left_button_up (0)");
+
+   }
+
+      if (pmessage->m_id == e_message_size || pmessage->m_id == e_message_move)
       {
 
          //         win_update_graqhics();
 
       }
 
-      if (pusermessage->m_id == e_message_key_down ||
-            pusermessage->m_id == e_message_key_up ||
-            pusermessage->m_id == e_message_char)
+      if (pmessage->m_id == e_message_key_down ||
+          pmessage->m_id == e_message_key_up ||
+          pmessage->m_id == e_message_char)
       {
 
-         __pointer(::message::key) pkey(pusermessage);
+         __pointer(::message::key) pkey(pmessage);
          
          auto psession = get_session()->m_paurasession;
          
@@ -973,7 +1032,7 @@ bool interaction_impl::_is_window() const
          if(pkey->m_ekey != ::user::e_key_refer_to_text_member)
          {
             
-            if (pusermessage->m_id == e_message_key_down)
+            if (pmessage->m_id == e_message_key_down)
             {
                
                try
@@ -995,7 +1054,7 @@ bool interaction_impl::_is_window() const
                }
                
             }
-            else if (pusermessage->m_id == e_message_key_up)
+            else if (pmessage->m_id == e_message_key_up)
             {
                
                try
@@ -1029,26 +1088,26 @@ bool interaction_impl::_is_window() const
          else
          {
 
-            m_puserinteraction->pre_translate_message(pusermessage);
+            m_puserinteraction->pre_translate_message(pmessage);
 
-            if (pusermessage->m_bRet)
+            if (pmessage->m_bRet)
                return;
 
-            pusermessage->m_uiMessageFlags |= 1;
+            pmessage->m_uiMessageFlags |= 1;
 
          }
 
       }
 
-      if (pusermessage->m_id == e_message_timer)
+      if (pmessage->m_id == e_message_timer)
       {
          //         get_application()->get_application()->step_timer();
       }
-      else if (pusermessage->m_id == e_message_left_button_down)
+      else if (pmessage->m_id == e_message_left_button_down)
       {
          //  g_puserinteractionLastLButtonDown = this;
       }
-      else if (pusermessage->m_id == e_message_size)
+      else if (pmessage->m_id == e_message_size)
       {
          m_bUpdateGraphics = true;
       }
@@ -1062,138 +1121,385 @@ bool interaction_impl::_is_window() const
        return;
        }
        }*/
-      pusermessage->m_lresult = 0;
+      pmessage->m_lresult = 0;
 
 
-      if (pusermessage->m_id == e_message_left_button_down ||
-            pusermessage->m_id == e_message_left_button_up ||
-            pusermessage->m_id == e_message_middle_button_down ||
-            pusermessage->m_id == e_message_middle_button_up ||
-            pusermessage->m_id == e_message_right_button_down ||
-            pusermessage->m_id == e_message_right_button_up ||
-            pusermessage->m_id == e_message_right_button_double_click ||
-            pusermessage->m_id == e_message_left_button_double_click ||
-            pusermessage->m_id == e_message_mouse_move ||
-            pusermessage->m_id == e_message_mouse_move ||
-            pusermessage->m_id == e_message_mouse_wheel)
+//      if (pusermessage->m_id == e_message_left_button_down ||
+//            pusermessage->m_id == e_message_left_button_up ||
+//            pusermessage->m_id == e_message_middle_button_down ||
+//            pusermessage->m_id == e_message_middle_button_up ||
+//            pusermessage->m_id == e_message_right_button_down ||
+//            pusermessage->m_id == e_message_right_button_up ||
+//            pusermessage->m_id == e_message_right_button_double_click ||
+//            pusermessage->m_id == e_message_left_button_double_click ||
+//            pusermessage->m_id == e_message_mouse_move ||
+//            pusermessage->m_id == e_message_mouse_move ||
+//            pusermessage->m_id == e_message_mouse_wheel)
+//      {
+//
+//         if (pusermessage->m_id == e_message_left_button_down)
+//         {
+//
+//            //output_debug_string("\nWM_LBUTTONDOWN");
+//
+//         }
+//         else if(pusermessage->m_id == e_message_mouse_move)
+//         {
+//
+//            output_debug_string("\nWM_MOUSEMOVE");
+//
+//         }
+//
+//         __pointer(::message::mouse) pmouse =  pusermessage;
+//
+//         auto psession = get_session();
+//
+//         // user presence status activity reporting
+//
+//         psession->on_ui_mouse_message(pmouse);
+//
+//
+//         if (get_session() != nullptr)
+//         {
+//
+//            psession->m_pointCursor = pmouse->m_point;
+//
+//         }
+//
+//         if (m_bTranslateMouseMessageCursor)
+//         {
+//
+//            ::rectangle_i32 rectangle;
+//
+//            if(!pmouse->m_bTranslated)
+//            {
+//
+//               pmouse->m_bTranslated = true;
+//
+//               auto pwindowing = m_pwindowing;
+//
+//               auto pdisplay = pwindowing->display();
+//
+//               if (pdisplay->get_monitor_count() > 0)
+//               {
+//
+//                  pdisplay->get_monitor_rectangle(0, &rectangle);
+//
+//               }
+//               else
+//               {
+//
+//                  if (m_bScreenRelativeMouseMessagePosition)
+//                  {
+//
+//#ifndef __APPLE__
+//
+//                     ::get_window_rect(get_handle(), &rectangle);
+//
+//#endif
+//
+//                  }
+//                  else
+//                  {
+//
+//                     m_puserinteraction->get_window_rect(rectangle);
+//
+//                  }
+//
+//               }
+//
+//               if (rectangle.left >= 0)
+//               {
+//
+//                  pmouse->m_point.x += (::i32)rectangle.left;
+//
+//               }
+//
+//               if (rectangle.top >= 0)
+//               {
+//
+//                  pmouse->m_point.y += (::i32)rectangle.top;
+//
+//               }
+//
+//            }
+//
+//         }
+//
+//         if (pusermessage->m_id == e_message_mouse_move)
+//         {
+//
+//            auto pwindowing = m_pwindowing;
+//            // We are at the message handler procedure.
+//            // mouse messages originated from message handler and that are mouse move events should end up with the correct cursor.
+//            // So the procedure starts by setting to the default cursor,
+//            // what forces, at the end of message processing, setting the bergedge cursor to the default cursor, if no other
+//            // handler has set it to another one.
+//            pmouse->m_pcursor = pwindowing->load_default_cursor(e_cursor_arrow);
+//
+//         }
+//
+//         //_008OnMouse(pmouse);
+//
+//         return;
+//
+//      }
+      if(pmessage->m_id == e_message_left_button_down ||
+                 pmessage->m_id == e_message_left_button_up ||
+                 pmessage->m_id == e_message_middle_button_down ||
+                 pmessage->m_id == e_message_middle_button_up ||
+                 pmessage->m_id == e_message_right_button_down ||
+                 pmessage->m_id == e_message_right_button_up ||
+                 pmessage->m_id == e_message_mouse_move ||
+                 pmessage->m_id == e_message_mouse_move)
+     //         pmessage->m_id == e_message_mouse_wheel)
+           {
+
+              if(::is_set(m_puserinteraction) && !m_puserinteraction->m_bUserPrimitiveOk)
+              {
+
+                 return;
+
+              }
+
+              __pointer(::message::mouse) pmouse = pmessage;
+
+              auto psession = get_session();
+
+              if(psession != nullptr)
+              {
+
+                 psession->on_ui_mouse_message(pmouse);
+
+                 psession->m_pointCursor = pmouse->m_point;
+
+              }
+
+     //         if(m_puserinteraction != nullptr && m_puserinteraction->get_session()  != nullptr && m_puserinteraction->get_session() != get_session())
+     //         {
+     //
+     //            auto psystem = m_psystem;
+     //
+     //            auto psession = psystem->node();
+     //
+     //            psession->m_pointCursor = pmouse->m_point;
+     //
+     //         }
+
+              if(m_bTranslateMouseMessageCursor && !pmouse->m_bTranslated)
+              {
+                 pmouse->m_bTranslated = true;
+                 ::rectangle_i32 rectWindow;
+     //            if(m_bScreenRelativeMouseMessagePosition)
+     //            {
+     //
+     //               INFO("Screen Relative Mouse Message Position");
+     //
+     //               ::rectangle_i32 rectWindow32;
+     //
+     //               ::get_window_rect((oswindow) get_handle(), &rectWindow32);
+     //
+     //               ::copy(rectWindow, rectWindow32);
+     //
+     //            }
+     //            else
+                 {
+                    m_puserinteraction->get_window_rect(rectWindow);
+                 }
+
+                 auto puser = psession->user();
+
+                 auto pwindowing = puser->windowing();
+
+                 auto pdisplay = pwindowing->display();
+
+                 if(pdisplay->get_monitor_count() > 0)
+                 {
+
+                    ::rectangle_i32 rcMonitor;
+
+                    pdisplay->get_monitor_rectangle(0, &rcMonitor);
+
+                    if(rectWindow.left >= rcMonitor.left)
+                    {
+
+                       pmouse->m_point.x += (::i32) rectWindow.left;
+
+                    }
+
+                    if(rectWindow.top >= rcMonitor.top)
+                    {
+
+                       pmouse->m_point.y += (::i32) rectWindow.top;
+
+                    }
+
+                 }
+                 else
+                 {
+
+                    if(rectWindow.left >= 0)
+                    {
+
+                       pmouse->m_point.x += (::i32) rectWindow.left;
+
+                    }
+
+                    if(rectWindow.top >= 0)
+                    {
+
+                       pmouse->m_point.y += (::i32) rectWindow.top;
+
+                    }
+
+                 }
+
+              }
+
+              auto puser = psession->user();
+
+              auto pwindowing = puser->windowing();
+
+              pwindowing->set(pmouse, get_oswindow(), m_pwindow, pmouse->m_id, pmouse->m_wparam, pmouse->m_lparam);
+
+              if(pmessage->m_id == e_message_mouse_move)
+              {
+
+                 // We are at the message handler routine.
+                 // mouse messages originated from message handler and that are mouse move events should end up with the correct cursor.
+                 // So the routine starts by setting to the default cursor,
+                 // what forces, at the end of message processing, setting the bergedge cursor to the default cursor, if no other
+                 // handler has set it to another one.
+
+                 m_puserinteraction->m_pimpl2->_on_mouse_move_step(pmouse->m_point);
+
+              }
+
+              //_008OnMouse(pmouse);
+
+              ::user::interaction * puserinteractionMouse = nullptr;
+
+              if(m_puserinteractionCapture)
+              {
+
+                 if(g_puserinteractionMouseCapture123 == nullptr)
+                 {
+
+                    g_puserinteractionMouseCapture123 = m_puserinteractionCapture;
+
+                 }
+                 else if(g_puserinteractionMouseCapture123 != m_puserinteractionCapture)
+                 {
+
+                    output_debug_string("different capture (1)");
+
+                 }
+
+                 puserinteractionMouse = m_puserinteractionCapture;
+
+              }
+
+              if(g_puserinteractionMouseCapture123 != nullptr)
+              {
+
+                 if(g_puserinteractionMouseCapture123 != puserinteractionMouse)
+                 {
+
+                    output_debug_string("different capture (2)");
+
+                 }
+
+              }
+              else
+              {
+
+
+
+              }
+
+
+              if(!puserinteractionMouse)
+              {
+
+                 puserinteractionMouse = m_puserinteraction->child_from_point(pmouse->m_point);
+
+              }
+
+              if(pmouse->m_id == e_message_left_button_down)
+              {
+
+
+                 ::output_debug_string("left_button_down");
+
+              }
+              else if(pmouse->m_id == e_message_left_button_up)
+              {
+
+
+                 ::output_debug_string("left_button_up");
+
+              }
+
+              string strUserInteractionType(puserinteractionMouse->type_c_str());
+
+              if(pmouse->m_id == e_message_mouse_move)
+              {
+
+                 static int s_iMotionNotify = 0;
+
+                 s_iMotionNotify++;
+
+                 if (strUserInteractionType.contains_ci("button"))
+                 {
+
+                    output_debug_string("mouse_move::userinteraction=button");
+
+                 }
+                 else
+                 {
+
+
+                    puserinteractionMouse = m_puserinteraction->child_from_point(pmouse->m_point);
+
+
+
+                 }
+
+              }
+
+              if(puserinteractionMouse)
+              {
+
+                 do
+                 {
+
+                    puserinteractionMouse->route_message(pmouse);
+
+                    if(pmouse->m_bRet)
+                    {
+
+                       break;
+
+                    }
+
+                    puserinteractionMouse = puserinteractionMouse->get_parent();
+
+                 }while(puserinteractionMouse != nullptr);
+
+              }
+
+              return;
+              
+           }
+      else if (pmessage->m_id == e_message_key_down ||
+               pmessage->m_id == e_message_key_up ||
+               pmessage->m_id == e_message_char)
       {
 
-         if (pusermessage->m_id == e_message_left_button_down)
-         {
-
-            //output_debug_string("\nWM_LBUTTONDOWN");
-
-         }
-         else if(pusermessage->m_id == e_message_mouse_move)
-         {
-            
-            //output_debug_string("\nWM_MOUSEMOVE");
-            
-         }
-
-         __pointer(::message::mouse) pmouse =  pusermessage;
-
-         auto psession = get_session();
-
-         // user presence status activity reporting
-
-         psession->on_ui_mouse_message(pmouse);
-
-
-         if (get_session() != nullptr)
-         {
-
-            psession->m_pointCursor = pmouse->m_point;
-
-         }
-
-         if (m_bTranslateMouseMessageCursor)
-         {
-
-            ::rectangle_i32 rectangle;
-
-            if(!pmouse->m_bTranslated)
-            {
-
-               pmouse->m_bTranslated = true;
-               
-               auto pwindowing = m_pwindowing;
-               
-               auto pdisplay = pwindowing->display();
-
-               if (pdisplay->get_monitor_count() > 0)
-               {
-
-                  pdisplay->get_monitor_rectangle(0, &rectangle);
-
-               }
-               else
-               {
-
-                  if (m_bScreenRelativeMouseMessagePosition)
-                  {
-                     
-#ifndef __APPLE__
-
-                     ::get_window_rect(get_handle(), &rectangle);
-                     
-#endif
-
-                  }
-                  else
-                  {
-
-                     m_puserinteraction->get_window_rect(rectangle);
-
-                  }
-
-               }
-
-               if (rectangle.left >= 0)
-               {
-
-                  pmouse->m_point.x += (::i32)rectangle.left;
-
-               }
-
-               if (rectangle.top >= 0)
-               {
-
-                  pmouse->m_point.y += (::i32)rectangle.top;
-
-               }
-
-            }
-
-         }
-
-         if (pusermessage->m_id == e_message_mouse_move)
-         {
-            
-            auto pwindowing = m_pwindowing;
-            // We are at the message handler procedure.
-            // mouse messages originated from message handler and that are mouse move events should end up with the correct cursor.
-            // So the procedure starts by setting to the default cursor,
-            // what forces, at the end of message processing, setting the bergedge cursor to the default cursor, if no other
-            // handler has set it to another one.
-            pmouse->m_pcursor = pwindowing->load_default_cursor(e_cursor_arrow);
-
-         }
-
-         //_008OnMouse(pmouse);
-
-         return;
-
-      }
-      else if (pusermessage->m_id == e_message_key_down ||
-               pusermessage->m_id == e_message_key_up ||
-               pusermessage->m_id == e_message_char)
-      {
-
-         __pointer(::message::key) pkey = pusermessage;
+         __pointer(::message::key) pkey = pmessage;
          
          
-         auto psession = get_session();
+         //auto psession = get_session();
          
          auto pwindowing = m_pwindowing;
 
@@ -1207,7 +1513,7 @@ bool interaction_impl::_is_window() const
 
             puiFocus->send(pkey);
 
-            if (pusermessage->m_bRet)
+            if (pmessage->m_bRet)
             {
 
                return;
@@ -1223,7 +1529,7 @@ bool interaction_impl::_is_window() const
 
                m_puserinteraction->_000OnKey(pkey);
 
-               if (pusermessage->m_bRet)
+               if (pmessage->m_bRet)
                {
 
                   return;
@@ -1234,25 +1540,25 @@ bool interaction_impl::_is_window() const
 
          }
 
-         default_message_handler(pusermessage);
+         default_message_handler(pmessage);
 
          return;
 
       }
 
-      if (pusermessage->m_id == e_message_event)
+      if (pmessage->m_id == e_message_event)
       {
 
          if (m_puserinteraction != nullptr)
          {
 
-            m_puserinteraction->on_control_event((::user::control_event *) pusermessage->m_lparam.m_lparam);
+            m_puserinteraction->on_control_event((::user::control_event *) pmessage->m_lparam.m_lparam);
 
          }
          else
          {
 
-//            on_control_event((::user::control_event *) pusermessage->m_lparam.m_lparam);
+//            on_control_event((::user::control_event *) pmessage->m_lparam.m_lparam);
 
          }
 
@@ -1262,16 +1568,16 @@ bool interaction_impl::_is_window() const
 
       //(this->*m_pfnDispatchWindowProc)(pmessage);
 
-      m_puserinteraction->route_message(pusermessage);
+      m_puserinteraction->route_message(pmessage);
 
-      if (pusermessage->m_bRet)
+      if (pmessage->m_bRet)
       {
 
          return;
 
       }
 
-      default_message_handler(pusermessage);
+      default_message_handler(pmessage);
 
    }
 

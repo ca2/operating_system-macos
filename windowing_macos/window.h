@@ -29,6 +29,8 @@ namespace windowing_macos
    {
    public:
       
+      void *            m_pNSCursorLast;
+      class windowing * m_pmacoswindowing;
       
       window();
       ~window() override;
@@ -41,8 +43,27 @@ namespace windowing_macos
       virtual void macos_window_dec_ref() override;
       
       
+      DECLARE_MESSAGE_HANDLER(on_message_create);
+      DECLARE_MESSAGE_HANDLER(on_message_destroy);
       
+      void install_message_routing(channel * pchannel) override;
+      
+      ::e_status set_active_window() override;
+      
+      bool is_active_window() const override;
 
+      void window_show() override;
+      
+      ::e_status set_mouse_cursor(::windowing::cursor * pcursor) override;
+      
+      bool set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags) override;
+
+      
+      ::e_status set_mouse_capture() override;
+
+      
+      void update_screen() override;
+      
 
       virtual void macos_window_draw(CGContextRef cgc, CGSize sizeWindow) override;
       virtual void macos_window_mouse_down(int iButton, double x, double y) override;

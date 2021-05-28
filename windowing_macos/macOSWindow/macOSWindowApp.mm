@@ -25,8 +25,7 @@ void * application_system(void * pApplication);
 
 void system_int_update(void* pSystem, int iUpdate, int iPayload);
 
-
-void system_on_start_system(void * pSystem);
+void node_will_finish_launching(void * pSystem);
 void system_on_open_untitled_file(void * pSystem);
 void system_on_open_file(void * pSystem, const char * pszFile);
 
@@ -209,7 +208,7 @@ if(str != nil)
    
    //macos_calc_dark_mode();
    
-   system_on_start_system(application_system(m_pApplication));
+   node_will_finish_launching(application_system(m_pApplication));
 
    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
 
@@ -615,12 +614,14 @@ void ns_create_main_menu(menu_shared * pmenushared)
 void os_begin_system();
 
 
-void windowing_macos_application_main(int argc, char *argv[])
+void windowing_macos_application_main(void * pApplication, int argc, char *argv[])
 {
    
    NSApplication * application = [NSApplication sharedApplication];
    
    macOSWindowApp * appDelegate = [[macOSWindowApp alloc] init];
+   
+   appDelegate->m_pApplication = pApplication;
    
    [application setDelegate:appDelegate];
    

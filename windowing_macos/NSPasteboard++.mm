@@ -249,3 +249,4 @@ void * mm_clipboard_get_image(int & cx, int & cy, int & iScan)
    return pdata;
    
 }
+

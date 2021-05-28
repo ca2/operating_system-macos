@@ -67,9 +67,11 @@ public:
    virtual void macos_window_activate() = 0;
    virtual void macos_window_deactivate() = 0;
    
-   virtual void macos_window_set_frame(CGRect rectangle_i32);
+   virtual void macos_window_set_frame(CGRect rect);
+   virtual void macos_window_get_frame(CGRect * prect);
    virtual void macos_window_invalidate();
    virtual void macos_window_show();
+   virtual void macos_window_defer_show();
    virtual void macos_window_hide();
    virtual void macos_window_miniaturize();
    virtual void macos_window_redraw();

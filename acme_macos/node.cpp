@@ -4,6 +4,9 @@
 #include "framework.h"
 
 
+bool ns_is_system_dark_mode();
+
+
 void os_post_quit();
 
 
@@ -283,12 +286,13 @@ namespace acme
       }
 
 
-      //void node::os_calc_user_dark_mode()
-      //{
-      //
-      //      ::node_gnome::os_calc_dark_mode();
-      //
-      //}
+      bool node::_os_calc_system_dark_mode()
+      {
+      
+         return ns_is_system_dark_mode();
+      
+      }
+   
       //
       //
       //   string node::os_get_user_theme()

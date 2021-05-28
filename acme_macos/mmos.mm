@@ -518,3 +518,15 @@ char** mm_browse_file_open(void * pSystem, const char ** pszStartDir, bool bMult
 
 
 
+
+
+bool ns_is_system_dark_mode()
+{
+   
+   NSString *interfaceStyle = [NSUserDefaults.standardUserDefaults valueForKey:@"AppleInterfaceStyle"];
+   
+   auto bDark = [interfaceStyle isEqualToString:@"Dark"];
+   
+   return bDark;
+   
+}

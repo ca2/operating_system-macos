@@ -158,7 +158,6 @@
 //
 // mainWindowChanged:
 //
-// Redraw the close button when the main window status changes.
 //
 - (void)windowDidBecomeKey:(NSNotification *)aNotification
 {

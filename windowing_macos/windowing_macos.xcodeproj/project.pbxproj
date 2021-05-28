@@ -24,6 +24,11 @@
 		9A5D73AB265701F400D5C39E /* libaura_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73AA265701F400D5C39E /* libaura_posix.dylib */; };
 		9A5D73AC265701F400D5C39E /* libaura_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A440A2826548C17000C490B /* libaura_macos.dylib */; };
 		9A5D73B326570CAE00D5C39E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73B226570CAE00D5C39E /* AppKit.framework */; };
+		9A64C10B26605BB70074030F /* display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C105266057F00074030F /* display.cpp */; };
+		9A64C10C26605BD40074030F /* monitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C109266058D20074030F /* monitor.cpp */; };
+		9A64C10F266062B40074030F /* monitor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C10E266062940074030F /* monitor.mm */; };
+		9A64C11226609BA40074030F /* cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C110266099790074030F /* cursor.cpp */; };
+		9A64C1142660A9F40074030F /* cursor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C1132660A9D40074030F /* cursor.mm */; };
 		9A6E9B7426571095001F6FC8 /* macOSWindowFrameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E9B6B26571088001F6FC8 /* macOSWindowFrameView.mm */; };
 		9A6E9B7526571099001F6FC8 /* macOSWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E9B6F26571088001F6FC8 /* macOSWindow.mm */; };
 		9A6E9B762657109D001F6FC8 /* macos_window.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E9B7026571088001F6FC8 /* macos_window.mm */; };
@@ -105,6 +110,14 @@
 		9A5D73A8265701DC00D5C39E /* libaura_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5D73AA265701F400D5C39E /* libaura_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5D73B226570CAE00D5C39E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9A64C105266057F00074030F /* display.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = display.cpp; sourceTree = "<group>"; };
+		9A64C106266057F00074030F /* display.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = display.h; sourceTree = "<group>"; };
+		9A64C109266058D20074030F /* monitor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = monitor.cpp; sourceTree = "<group>"; };
+		9A64C10A266058D20074030F /* monitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = monitor.h; sourceTree = "<group>"; };
+		9A64C10E266062940074030F /* monitor.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = monitor.mm; sourceTree = "<group>"; };
+		9A64C110266099790074030F /* cursor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cursor.cpp; sourceTree = "<group>"; };
+		9A64C111266099790074030F /* cursor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cursor.h; sourceTree = "<group>"; };
+		9A64C1132660A9D40074030F /* cursor.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = cursor.mm; sourceTree = "<group>"; };
 		9A6E9B6826571088001F6FC8 /* macOSWindowApp.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = macOSWindowApp.mm; sourceTree = "<group>"; };
 		9A6E9B6926571088001F6FC8 /* macos_window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macos_window.h; sourceTree = "<group>"; };
 		9A6E9B6A26571088001F6FC8 /* macOSWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macOSWindow.h; sourceTree = "<group>"; };
@@ -181,12 +194,20 @@
 				9A440A4C26548C38000C490B /* clipboard.cpp */,
 				9A440A4326548C38000C490B /* copydesk.cpp */,
 				9A440A3026548C38000C490B /* copydesk.h */,
+				9A64C110266099790074030F /* cursor.cpp */,
+				9A64C1132660A9D40074030F /* cursor.mm */,
+				9A64C111266099790074030F /* cursor.h */,
+				9A64C105266057F00074030F /* display.cpp */,
+				9A64C106266057F00074030F /* display.h */,
 				9A5D738A26561AAA00D5C39E /* factory_exchange.cpp */,
 				9A440A3726548C38000C490B /* framework.cpp */,
 				9A440A4A26548C38000C490B /* framework.h */,
 				9A440A4B26548C38000C490B /* keyboard.cpp */,
 				9A440A4226548C38000C490B /* keyboard.h */,
 				9A440A4D26548C38000C490B /* mm_oswindow.h */,
+				9A64C109266058D20074030F /* monitor.cpp */,
+				9A64C10E266062940074030F /* monitor.mm */,
+				9A64C10A266058D20074030F /* monitor.h */,
 				9A440A742654F36C000C490B /* node.cpp */,
 				9A440A752654F36C000C490B /* node.h */,
 				9A440A3626548C38000C490B /* NSPasteboard++.mm */,
@@ -338,14 +359,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A64C10C26605BD40074030F /* monitor.cpp in Sources */,
+				9A64C10B26605BB70074030F /* display.cpp in Sources */,
 				9A6E9B7426571095001F6FC8 /* macOSWindowFrameView.mm in Sources */,
 				9A6E9B77265710A1001F6FC8 /* macOSWindowApp.mm in Sources */,
 				9A6E9B7B26573C35001F6FC8 /* windowing.cpp in Sources */,
+				9A64C11226609BA40074030F /* cursor.cpp in Sources */,
 				9A6E9B762657109D001F6FC8 /* macos_window.mm in Sources */,
+				9A64C1142660A9F40074030F /* cursor.mm in Sources */,
 				9A6E9B7526571099001F6FC8 /* macOSWindow.mm in Sources */,
 				9A2BB8992654FBF300ABA8B9 /* window.cpp in Sources */,
 				9A6E9B78265710A9001F6FC8 /* macOSWindowController.mm in Sources */,
 				9A2BB8982654FBE600ABA8B9 /* node.cpp in Sources */,
+				9A64C10F266062B40074030F /* monitor.mm in Sources */,
 				9A6E9B7A26573B99001F6FC8 /* factory_exchange.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

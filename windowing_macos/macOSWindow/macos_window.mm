@@ -166,6 +166,33 @@ void macos_window::macos_window_show()
 }
 
 
+void macos_window::macos_window_defer_show()
+{
+   
+   if(m_bDestroying)
+   {
+      
+      return;
+      
+   }
+   
+   ns_main_async(^
+   {
+      
+      if(![m_pmacoswindow isVisible])
+      {
+      
+         [m_pmacoswindow->m_pwindowcontroller showWindow : m_pmacoswindow];
+      
+         [m_pmacoswindow windowDidExpose];
+         
+      }
+
+   });
+   
+}
+
+
 void macos_window::macos_window_hide()
 {
    
@@ -398,6 +425,35 @@ void macos_window::macos_window_set_frame(CGRect r)
       rect.size   = r.size;
       
       [m_pmacoswindow setFrame : rect display: TRUE];
+
+   });
+   
+}
+
+void macos_window::macos_window_get_frame(CGRect *pr)
+{
+   
+   if(m_bDestroying)
+   {
+      
+      return;
+      
+   }
+   
+   ns_main_sync(^
+   {
+      
+      NSRect rect;
+      
+      NSRect rectScreen = [[[NSScreen screens] objectAtIndex:0] frame];
+      
+      [m_pmacoswindow setFrame : rect display: TRUE];
+
+      
+      pr->origin.x     = rect.origin.x;
+      pr->origin.y     = rectScreen.size.height    -     rect.origin.y - rect.size.height;
+      pr->size   = rect.size;
+      
 
    });
    
