@@ -467,7 +467,7 @@ void macos_window::macos_window_get_frame(CGRect *pr)
       
       NSRect rectScreen = [[[NSScreen screens] objectAtIndex:0] frame];
       
-      [m_pmacoswindow setFrame : rect display: TRUE];
+      rect = [m_pmacoswindow frame];
 
       
       pr->origin.x     = rect.origin.x;

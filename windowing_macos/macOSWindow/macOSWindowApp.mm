@@ -549,8 +549,15 @@ void os_menu_item_check(void * pitem, bool bCheck)
 
 void ns_create_main_menu(menu_shared * pmenushared)
 {
-   
-   
+
+   if(pmenushared)
+   {
+      
+   pmenushared->add_ref();
+      
+   }
+
+   ns_main_async(^{
    id menuMain = [NSMenu alloc];
    
    macOSWindowApp * papp = (macOSWindowApp *) [[NSApplication sharedApplication] delegate ];
@@ -572,7 +579,11 @@ void ns_create_main_menu(menu_shared * pmenushared)
       id menuitemQuit = [[NSMenuItem alloc] initWithTitle:strQuitTitle
                                                    action:@selector(terminate:) keyEquivalent:@"q"];
 
+      if(pmenushared)
+      {
       [ papp ns_add_menu : menuApp withParent: "" withSharedMenu: pmenushared];
+         
+      }
 
       [menuApp addItem: menuitemQuit];
       
@@ -596,8 +607,11 @@ void ns_create_main_menu(menu_shared * pmenushared)
       NSMenuItem * menuitemFxx = [[NSMenuItem alloc] initWithTitle:strFxxTitle
                                                             action:@selector(on_command:) keyEquivalent:@"f"];
       
+      if(pmenushared)
+      {
       [ papp ns_add_menu : menuView withParent: "view" withSharedMenu: pmenushared];
 
+      }
       [menuitemFxx setRepresentedObject: @"transparent_frame"];
       
       [menuView addItem: menuitemFxx];
@@ -606,7 +620,16 @@ void ns_create_main_menu(menu_shared * pmenushared)
    
    [NSApp setMainMenu:menuMain];
 
+      if(pmenushared)
+      {
 
+      pmenushared->release();
+         
+      }
+      
+   });
+   
+   
    
 }
 
