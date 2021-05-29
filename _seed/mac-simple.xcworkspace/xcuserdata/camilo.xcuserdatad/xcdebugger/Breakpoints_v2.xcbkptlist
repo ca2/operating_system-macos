@@ -7,176 +7,113 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "04470467-7335-4852-9C92-D9F1683BA940"
+            uuid = "94F00F52-FC92-47EE-8DEF-47E9671ACA57"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../app/apex/platform/application.cpp"
+            filePath = "../../../source/app/base/user/experience/move_manager.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
-            landmarkName = "application::initialize(pobjectContext)"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "move_manager::on_message_mouse_move(pmouse)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.OpenGLErrorBreakpoint">
          <BreakpointContent
-            uuid = "B8D4AC19-FFA8-4F1A-86BA-42ABDC0DA308"
-            shouldBeEnabled = "No"
+            uuid = "C431CCAA-051B-4AE3-8BCF-0BD2CBBA0883"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../app/apex/platform/application.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
-            landmarkName = "application::initialize(pobjectContext)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D34932A2-D144-4941-9BC0-94543EDB63C8"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/base/user/user/impact_system.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "impact_system::create_new_document(pcreate)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BC78DABA-466C-4F78-BAEC-7AE79A2ABE74"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/aura/user/interaction.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6722"
-            endingLineNumber = "6722"
-            landmarkName = "interaction::pre_translate_message(pmessage)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "54EFC6E8-24FB-463B-B9B0-1CBB3A0BC5E5"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/aura/user/interaction.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "10621"
-            endingLineNumber = "10621"
-            landmarkName = "interaction::good_restore(prect, rect, bSet, eactivation, zorderParam, edisplay)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3AB08E87-7C7A-44E0-BF8D-173B2B030EDE"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/apex/primitive/primitive/create.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5"
-            endingLineNumber = "5"
-            landmarkName = "create::create(pobjectContext)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2C934DEC-50DC-4CB0-BA87-55C721628AA3"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../app/apex/primitive/primitive/create.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "create::create()"
-            landmarkType = "7">
+            breakpointStackSelectionBehavior = "1"
+            symbolName = "__GPUTOOLS_HAS_DETECTED_AN_OPENGL_ERROR__"
+            moduleName = "libglInterpose.dylib">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.OpenGLError">
+                  <ActionContent>
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
             <Locations>
-               <Location
-                  uuid = "2C934DEC-50DC-4CB0-BA87-55C721628AA3 - ae7fc4a5a01c68f3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "create::create()"
-                  moduleName = "libapex.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/camilo/__archive/basis/app/apex/primitive/primitive/create.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "27">
-               </Location>
-               <Location
-                  uuid = "2C934DEC-50DC-4CB0-BA87-55C721628AA3 - ae7fc4a5a01c68f3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "create::create()"
-                  moduleName = "libapex.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/camilo/__archive/basis/app/apex/primitive/primitive/create.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "19">
-               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            uuid = "4CF4B6A8-EAA4-4AE5-B916-BDB38EF037D8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            breakpointStackSelectionBehavior = "1"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EAA7E6A6-4AE7-4CD4-BF68-304CE8B55D18"
+            uuid = "D13BF562-FAE4-448A-8425-87BF7DD1B11D"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../app/apex/primitive/primitive/create.cpp"
+            filePath = "../../../source/app/apex/filesystem/filesystem/file_context.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "create::create(pobject, arguments)"
+            startingLineNumber = "640"
+            endingLineNumber = "640"
+            landmarkName = "file_context::as_memory(varFile, mem)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3142BD62-3684-4E8F-98A8-D10F747FB017"
-            shouldBeEnabled = "Yes"
+            uuid = "71892E01-344D-44EB-BEDA-4EB0C620C0FA"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../app/apex/primitive/primitive/create.cpp"
+            filePath = "../../../source/app/apex/platform/application.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "create::create(pobject, strAppId, varFile, varOptions, puiParent, ewindowflag, id)"
+            startingLineNumber = "5906"
+            endingLineNumber = "5906"
+            landmarkName = "application::on_start_application()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83660CBB-0582-40A8-A11A-282954430068"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/apex/filesystem/filesystem/file_context.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2806"
+            endingLineNumber = "2806"
+            landmarkName = "file_context::get_file(varFile, eopenFlags)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "34631D30-9334-4E1A-9FD5-12C573229D24"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../acme_macos/file.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "file::open(lpszFileName, efileopenParam)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

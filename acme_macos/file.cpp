@@ -194,14 +194,14 @@ namespace macos
 
          }
 
-         if (hFile == -1)
-         {
-
-            estatus = ::get_last_status();
+//         if (hFile == -1)
+//         {
+//
+//            estatus = ::get_last_status();
 
             return estatus;
 
-         }
+//         }
 
       }
 

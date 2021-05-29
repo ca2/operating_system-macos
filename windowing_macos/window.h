@@ -52,6 +52,8 @@ namespace windowing_macos
       
       ::e_status set_active_window() override;
       
+      ::e_status set_foreground_window() override;
+      
       bool is_active_window() const override;
 
       void window_show() override;

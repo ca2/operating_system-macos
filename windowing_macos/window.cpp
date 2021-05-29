@@ -334,6 +334,16 @@ void window::install_message_routing(channel * pchannel)
    }
 
 
+   ::e_status window::set_foreground_window()
+   {
+      
+      macos_window_order_front();
+      
+      return ::success;
+      
+   }
+
+
    bool window::is_active_window() const
    {
 

@@ -13,12 +13,12 @@ namespace macos
 
 
    class CLASS_DECL_APEX file_context :
-      virtual public ::file_context
+      virtual public ::apple::file_context
    {
    public:
 
       
-      __reference(dir_system)      m_pdirsystem;
+      __reference(dir_system)       m_pdirsystem;
       __reference(file_system)      m_pfilesystem;
 
 
