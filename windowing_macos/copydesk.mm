@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #undef new
+NSImage * nsimage_from_image_data(void * pdata, int cx, int cy, int scan);
 
 
 char * ns_string(NSString * str);
@@ -247,6 +248,32 @@ void * mm_clipboard_get_image(int & cx, int & cy, int & iScan)
    }
 
    return pdata;
+   
+}
+
+
+bool mm_clipboard_set_image(void * pdata, int cx, int cy, int scan)
+{
+   
+   NSImage * image = nsimage_from_image_data( pdata, cx, cy, scan);
+   
+   if(!image)
+   {
+      
+      return false;
+      
+   }
+
+   NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+   
+   NSArray * objects = [NSArray arrayWithObject:image];
+   
+   [pasteboard writeObjects: objects];
+
+   
+   [pasteboard release];
+
+   return true;
    
 }
 
