@@ -23,6 +23,7 @@
 		9A00E61E26616CD300517464 /* libapex_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A64C10426604FB50074030F /* libapex_macos.dylib */; };
 		9A00E62026616D1400517464 /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61F26616D1400517464 /* libaura.dylib */; };
 		9A00E62226616D1400517464 /* libaura_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E62126616D1400517464 /* libaura_posix.dylib */; };
+		9A07060C2662B1AC004E8CB4 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A07060B2662B1AC004E8CB4 /* image.cpp */; };
 		9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */; };
 		9A5D73912656D1DC00D5C39E /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D738F2656D1DC00D5C39E /* node.cpp */; };
 		9A5D73922656D1DC00D5C39E /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A5D73902656D1DC00D5C39E /* node.h */; };
@@ -116,6 +117,7 @@
 		9A00E61C26616CD300517464 /* libapex_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A00E61F26616D1400517464 /* libaura.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A00E62126616D1400517464 /* libaura_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A07060B2662B1AC004E8CB4 /* image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
 		9A5D738F2656D1DC00D5C39E /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		9A5D73902656D1DC00D5C39E /* node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
 		9A64C0FF26604FB50074030F /* apex_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = apex_macos.xcodeproj; path = "/Users/camilo/solution/basis/source/app/app/../../../archive/platform-macos/apex_macos/apex_macos.xcodeproj"; sourceTree = "<absolute>"; };
@@ -253,6 +255,7 @@
 				9A5D738F2656D1DC00D5C39E /* node.cpp */,
 				9A5D73902656D1DC00D5C39E /* node.h */,
 				9AC2D1BA26542FBA00CC8096 /* notify_icon_mm_bridge.h */,
+				9A07060B2662B1AC004E8CB4 /* image.cpp */,
 			);
 			name = aura_macos;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 			files = (
 				9AC2D1D526542FBA00CC8096 /* interaction_impl.cpp in Sources */,
 				9AC2D1D226542FBA00CC8096 /* factory_exchange.cpp in Sources */,
+				9A07060C2662B1AC004E8CB4 /* image.cpp in Sources */,
 				9AC2D1CF26542FBA00CC8096 /* framework.cpp in Sources */,
 				9A5D73912656D1DC00D5C39E /* node.cpp in Sources */,
 			);

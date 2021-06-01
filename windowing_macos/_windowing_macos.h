@@ -13,10 +13,29 @@
 #include "macOSWindow/macos_window.h"
 
 
+rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid);
+CGWindowID ns_get_window_id(void * pnswindow);
+
+
 #include "display.h"
 
 
+#include "imm_client.h"
+
+
+#include "keyboard.h"
+
+
 #include "monitor.h"
+
+
+#include "notify_icon_mm_bridge.h"
+
+
+#include "notify_icon.h"
+
+
+#include "icon.h"
 
 
 #include "cursor.h"

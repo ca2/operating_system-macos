@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A070600266275B4004E8CB4 /* image.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0705FF266275B4004E8CB4 /* image.mm */; };
 		9A0C178F264A2F4200B5CC33 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C178E264A2F4200B5CC33 /* framework.cpp */; };
 		9A0C1791264A2F5000B5CC33 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A0C1790264A2F5000B5CC33 /* framework.h */; };
 		9A15A622264B56770080670E /* _acme_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A610264B56740080670E /* _acme_macos.h */; };
@@ -99,6 +100,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A0705FF266275B4004E8CB4 /* image.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = image.mm; sourceTree = "<group>"; };
 		9A0C165F264A290E00B5CC33 /* libacme_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libacme_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0C178E264A2F4200B5CC33 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9A0C1790264A2F5000B5CC33 /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				9A15A620264B56770080670E /* file.h */,
 				9A0C178E264A2F4200B5CC33 /* framework.cpp */,
 				9A0C1790264A2F5000B5CC33 /* framework.h */,
+				9A0705FF266275B4004E8CB4 /* image.mm */,
 				9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */,
 				9A15A61D264B56760080670E /* main.cpp */,
 				9A787E8D264E901E003DF8A0 /* mm.mm */,
@@ -390,6 +393,7 @@
 				9A0C178F264A2F4200B5CC33 /* framework.cpp in Sources */,
 				9A7ECAC22651963500D5BA45 /* acme_dir.cpp in Sources */,
 				9A787E39264DC3B5003DF8A0 /* process_pid.cpp in Sources */,
+				9A070600266275B4004E8CB4 /* image.mm in Sources */,
 				9A787BE8264BD7AF003DF8A0 /* mmos.mm in Sources */,
 				9A787E91264E9276003DF8A0 /* process.cpp in Sources */,
 				9A15A62E264B56770080670E /* file.cpp in Sources */,

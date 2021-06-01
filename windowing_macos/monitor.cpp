@@ -34,7 +34,7 @@ namespace windowing_macos
    
    CGRect r;
    
-   ns_monitor_cgrect(m_iIndex, &r);
+   ns_monitor_cgrect((int) m_iIndex, &r);
    
    __copy(prectangle, r);
    
@@ -42,11 +42,13 @@ namespace windowing_macos
    
 }
 
+
 ::e_status monitor::get_workspace_rectangle(::RECTANGLE_I32 * prectangle)
 {
+   
    CGRect r;
    
-   ns_workspace_cgrect(m_iIndex, &r);
+   ns_workspace_cgrect((int) m_iIndex, &r);
    
    __copy(prectangle, r);
    
@@ -58,3 +60,22 @@ namespace windowing_macos
 } // namespace windowing_macos
 
 
+
+
+
+void ns_main_monitor_cgrect(CGRect * p);
+
+
+
+int GetMainScreenRect(RECTANGLE_I32 * pr)
+{
+   
+   CGRect r;
+   
+   ns_main_monitor_cgrect(&r);
+   
+   __copy(pr, r);
+   
+   return true;
+   
+}

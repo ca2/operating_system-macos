@@ -19,6 +19,12 @@
 void * new_macos_window(macos_window * papexwindow, CGRect rectangle, unsigned int uStyle);
 
 
+#import "notify_icon_mm.h"
+
+
+#import "notify_icon_mm_bridge.h"
+
+
 #import "macOSWindow/macOSWindowFrameView.h"
 
 

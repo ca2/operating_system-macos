@@ -28,6 +28,12 @@ void windowing_macos_factory_exchange(::factory_map * pfactorymap)
    pfactorymap->create_factory < windowing_macos::display, ::windowing::display > ();
    pfactorymap->create_factory < windowing_macos::monitor, ::windowing::monitor > ();
    pfactorymap->create_factory < windowing_macos::cursor, ::windowing::cursor > ();
+   pfactorymap->create_factory < windowing_macos::notify_icon, ::user::notify_icon > ();
+   pfactorymap->create_factory < windowing_macos::icon, ::windowing::icon > ();
+
+   pfactorymap->create_factory < ::imm_client, ::user::text_composition_client > ();
+
+   pfactorymap->create_factory < windowing_macos::keyboard, ::windowing::keyboard > ();
 
    
 }

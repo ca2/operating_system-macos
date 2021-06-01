@@ -60,7 +60,7 @@ namespace macos
    ::file::path acme_dir::roaming()
    {
 
-      return home() / ".config";
+      return home() / "Library/Application Support";
 
    }
 

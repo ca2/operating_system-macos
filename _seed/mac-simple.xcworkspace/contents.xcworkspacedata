@@ -2,21 +2,21 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/camilo/solution/basis/source/app-simple/application/app_simple_application.xcodeproj">
+      location = "group:/Users/camilo/solution/basis/source/app-simple/application/_app_simple_application.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-simple/box/app_simple_box.xcodeproj">
+      location = "group:/Users/camilo/solution/basis/source/app-simple/box/_app_simple_box.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-simple/drawing/app_simple_drawing.xcodeproj">
+      location = "group:/Users/camilo/solution/basis/source/app-simple/drawing/_app_simple_drawing.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-simple/notify_drawing/app_simple_notify_drawing.xcodeproj">
+      location = "group:/Users/camilo/solution/basis/source/app-simple/notify_drawing/_app_simple_notify_drawing.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-simple/shader/app_simple_shader.xcodeproj">
+      location = "group:/Users/camilo/solution/basis/source/app-simple/shader/_app_simple_shader.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-simple/webserver/app_simple_webserver.xcodeproj">
+      location = "group:/Users/camilo/solution/basis/source/app-simple/webserver/_app_simple_webserver.xcodeproj">
    </FileRef>
 </Workspace>

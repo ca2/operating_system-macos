@@ -29,8 +29,11 @@ namespace windowing_macos
    {
    public:
       
-      void *            m_pNSCursorLast;
-      class windowing * m_pmacoswindowing;
+      
+      void *                     m_pNSCursorLast;
+      class windowing *          m_pmacoswindowing;
+      ::windowing::window *      m_pwindowCapture;
+      
       
       window();
       ~window() override;
@@ -55,6 +58,8 @@ namespace windowing_macos
       ::e_status set_foreground_window() override;
       
       bool is_active_window() const override;
+      
+      bool has_keyboard_focus() const override;
 
       void window_show() override;
       
@@ -62,7 +67,6 @@ namespace windowing_macos
       
       bool set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags) override;
 
-      
       ::e_status set_mouse_capture() override;
 
       
@@ -78,15 +82,18 @@ namespace windowing_macos
       virtual void macos_window_double_click(int iButton, double x, double y) override;
       virtual bool macos_window_key_down(unsigned int vk, unsigned int scan, const char * pszUtf8) override;
       virtual bool macos_window_key_up(unsigned int vk, unsigned int scan) override;
-      virtual bool macos_window_key_down(unsigned int uiKeyCode) override;
-      virtual bool macos_window_key_up(unsigned int uiKeyCode) override;
-
-
+//      virtual bool macos_window_key_down(unsigned int uiKeyCode) override;
+//      virtual bool macos_window_key_up(unsigned int uiKeyCode) override;
+      
+      
       virtual void macos_window_did_become_key() override;
       virtual void macos_window_activate() override;
       virtual void macos_window_deactivate() override;
 
+      
+      void * macos_window_get_mouse_cursor() override;
 
+      
       virtual void macos_window_resized(CGRect rectangle_i32) override;
       virtual void macos_window_moved(CGPoint point_i32) override;
       virtual void macos_window_iconified() override;
@@ -102,6 +109,13 @@ namespace windowing_macos
 
       ::e_status frame_toggle_restore() override;
       
+      
+      void non_top_most_upper_window_rects(::rectangle_i32_array & recta) override;
+
+
+      bool post_message(::message::message * pmessage);
+      bool send_message(::message::message * pmessage);
+
 
    };
 

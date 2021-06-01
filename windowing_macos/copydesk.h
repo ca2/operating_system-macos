@@ -5,7 +5,7 @@ namespace macos
 {
 
 
-   class CLASS_DECL_AURA copydesk :
+   class CLASS_DECL_WINDOWING_MACOS copydesk :
       virtual public ::user::copydesk
    {
    public:

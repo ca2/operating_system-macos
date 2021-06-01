@@ -34,6 +34,8 @@ void * new_macos_window(macos_window * pmacoswindow, CGRect rect, unsigned int u
    
    pmacoswindow->m_pmacoswindow = pmacOSWindow;
    
+   pmacoswindow->m_pnswindow = pmacOSWindow;
+   
    pmacoswindow->m_pmacoswindow->m_pmacoswindow = pmacoswindow;
    
    //__block RoundWindow * proundwindow;
@@ -328,6 +330,31 @@ void macos_window::macos_window_make_key_window()
 }
 
 
+bool macos_window::macos_window_is_key_window() const
+{
+
+   if(m_bDestroying)
+   {
+      
+      return false;
+      
+   }
+   
+   bool bKeyWindow = false;
+   
+   //ns_main_async(^
+     //         {
+                 
+                bKeyWindow =  [m_pmacoswindow isKeyWindow];
+                 
+       //       });
+   
+   
+   return bKeyWindow;
+   
+}
+
+
 void macos_window::macos_window_make_key_window_and_order_front()
 {
    
@@ -450,6 +477,15 @@ void macos_window::macos_window_set_frame(CGRect r)
    
 }
 
+
+//void * macos_window::macos_window_get_mouse_cursor()
+//{
+//   
+//   auto pcursor =
+//   
+//}
+
+
 void macos_window::macos_window_get_frame(CGRect *pr)
 {
    
@@ -509,3 +545,35 @@ void macos_window::macos_window_invalidate()
 
 
 
+
+
+
+
+CGWindowID ns_get_window_id(void * pNSWindow)
+{
+   
+   NSWindow * pnswindow = (__bridge NSWindow *) pNSWindow;
+   
+   auto windowid = (CGWindowID)[pnswindow windowNumber];
+   
+   return windowid;
+   
+}
+
+
+void * ns_get_key_window()
+{
+   
+   __block void * pnswindowKey = nullptr;
+   
+   ns_main_sync(^{
+      
+      NSWindow * pwindowKey = [NSApp keyWindow];
+      
+      pnswindowKey = (__bridge void *) pwindowKey;
+      
+   });
+   
+   return pnswindowKey;
+   
+}

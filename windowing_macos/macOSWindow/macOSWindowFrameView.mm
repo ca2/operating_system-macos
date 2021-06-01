@@ -15,7 +15,7 @@
 #include "apex_macos/keyboard.h"
 #import "apex/os/winpr_input.h"
 
-NSCursor * g_pcurrentNscursor = nullptr;
+//NSCursor * g_pcurrentNscursor = nullptr;
 
 @implementation macOSWindowFrameView
 
@@ -862,17 +862,17 @@ m_f = true; \
 
 - (void)resetCursorRects {
    [super resetCursorRects];
-   [self addCursorRect:self.bounds cursor:g_pcurrentNscursor];
+   [self addCursorRect:self.bounds cursor:(__bridge NSCursor*)m_pmacoswindow->m_pmacoswindow->macos_window_get_mouse_cursor()];
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {
    [super mouseEntered:theEvent];
-   [g_pcurrentNscursor push];
+   //[g_pcurrentNscursor push];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
    [super mouseExited:theEvent];
-   [g_pcurrentNscursor pop];
+   //[g_pcurrentNscursor pop];
 }
 
 
@@ -946,9 +946,6 @@ unsigned int event_key_code(NSEvent * event)
    return uiKeyCode;
    
 }
-
-
-
 
 
 

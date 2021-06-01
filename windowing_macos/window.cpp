@@ -33,6 +33,7 @@ namespace windowing_macos
       m_pWindow2 = this;
       m_pmacoswindowing = nullptr;
       m_pNSCursorLast = nullptr;
+      m_pwindowCapture = nullptr;
       
    }
 
@@ -195,7 +196,7 @@ void window::install_message_routing(channel * pchannel)
 
       auto puser = psession->user();
 
-      auto pwindowing = puser->windowing();
+      auto pwindowing = (::windowing_macos::windowing *) puser->windowing()->m_pWindowing2;
       
       m_pmacoswindowing = pwindowing->cast < class windowing >();
       
@@ -209,6 +210,8 @@ void window::install_message_routing(channel * pchannel)
       
       set_oswindow(this);
 
+      pwindowing->m_nsmap[m_pnswindow] = this;
+      
          puserinteraction->layout().window() = ::top_left(rectParam);
 
          puserinteraction->layout().window() = ::size_i32(rectParam);
@@ -353,6 +356,15 @@ void window::install_message_routing(channel * pchannel)
 
    }
 
+   
+   bool window::has_keyboard_focus() const
+   {
+      
+      bool bHasKeyboardFocus = macos_window_is_key_window();
+   
+      return bHasKeyboardFocus;
+   
+   }
 
 
    void window::window_show()
@@ -459,7 +471,18 @@ void window::install_message_routing(channel * pchannel)
    ::e_status window::set_mouse_capture()
    {
 
-      return success;
+      auto pwindowing = (class windowing *) windowing()->m_pWindowing2;
+      
+      if(!pwindowing)
+      {
+         
+         return ::error_failed;
+         
+      }
+      
+      pwindowing->m_pwindowCapture = this;
+
+      return ::success;
 
    }
 
@@ -628,114 +651,107 @@ void window::install_message_routing(channel * pchannel)
    }
 
 
-   bool window::macos_window_key_down(unsigned int uiKeyCode)
+//   bool window::macos_window_key_down(unsigned int uiKeyCode)
+//   {
+//
+//      auto puserinteraction = m_pimpl->m_puserinteraction;
+//
+//      if(puserinteraction == nullptr)
+//      {
+//
+//         return false;
+//
+//      }
+//
+//      auto pkey  = __create_new < ::message::key >();
+//
+//      pkey->m_id = e_message_key_down;
+//
+//      pkey->m_strText = pszUtf8;
+//
+//      pkey->m_nChar = uiKeyCode;
+//
+//      puserinteraction->send(pkey);
+//
+//      return true;
+//
+//   }
+//
+//
+//   bool window::macos_window_key_up(unsigned int uiKeyCode)
+//   {
+//
+//      __pointer(::user::message) spbase;
+//
+//      auto pkey  = __new(::message::key);
+//
+//      pkey->m_id = e_message_key_up;
+//
+//      pkey->m_nChar = uiKeyCode;
+//
+//      spbase = pkey;
+//
+//      auto puserinteraction = m_pimpl->m_puserinteraction;
+//
+//      if(puserinteraction == nullptr)
+//      {
+//
+//         return false;
+//
+//      }
+//
+//      puserinteraction->send(spbase);
+//
+//      return spbase->m_bRet;
+//
+//   }
+
+   bool window::macos_window_key_down(unsigned int virtualKey, unsigned int scanCode, const char * pszUtf8)
    {
-
-      __pointer(::user::message) spbase;
-
-      auto pkey  = __new(::message::key);
-
-      pkey->m_id = e_message_key_down;
-
-      pkey->m_nChar = uiKeyCode;
-
-      spbase = pkey;
       
-      auto puserinteraction = m_pimpl->m_puserinteraction;
-
-      if(puserinteraction == nullptr)
       {
 
-         return false;
+         auto pkey  = __create_new < ::message::key >();
 
-      }
-
-      puserinteraction->send(spbase);
-
-      return spbase->m_bRet;
-
-   }
-
-
-   bool window::macos_window_key_up(unsigned int uiKeyCode)
-   {
-
-      __pointer(::user::message) spbase;
-
-      auto pkey  = __new(::message::key);
-
-      pkey->m_id = e_message_key_up;
-
-      pkey->m_nChar = uiKeyCode;
-
-      spbase = pkey;
-
-      auto puserinteraction = m_pimpl->m_puserinteraction;
-
-      if(puserinteraction == nullptr)
-      {
-
-         return false;
-
-      }
-
-      puserinteraction->send(spbase);
-
-      return spbase->m_bRet;
-
-   }
-
-
-   bool window::macos_window_key_down(unsigned int vk, unsigned int scan, const char * pszUtf8)
-   {
-
-      __pointer(::user::message) spbase;
-
-      auto pkey  = __new(::message::key);
-
-      pkey->set(get_oswindow(), this, e_message_key_down, vk, (lparam)(scan << 16), ::point_i32());
-
-      if(::is_set(pszUtf8))
-      {
-      
+         pkey->set(get_oswindow(), this, e_message_key_down, virtualKey, (lparam)(scanCode << 16), ::point_i32());
          
-
-         string * pstringText = new string(pszUtf8);
-
-         auto lparam = (::lparam) (iptr) (string *) (pstringText);
-
-         printf("macos_window_key_down e_message_text_composition\n");
-
-         auto puserinteraction = m_pimpl->m_puserinteraction;
-
-         puserinteraction->post_message(e_message_text_composition, 0, lparam);
-         
-         
-   //         pkey->m_strText = pszUtf8;
-   //
-   //         if(pkey->m_strText.has_char())
-   //         {
-   //
-   //            pkey->m_ekey = ::user::e_key_refer_to_text_member;
-   //
-   //         }
+         post_message(pkey);
          
       }
       
-      spbase = pkey;
-      
-      auto puserinteraction = m_pimpl->m_puserinteraction;
-
-      if(puserinteraction == nullptr)
+      if(::is_set(pszUtf8) && ansi_len(pszUtf8) > 0)
       {
 
-         return false;
+         auto pkey = __create_new < ::message::key >();
+         
+         pkey->set(get_oswindow(), this, e_message_text_composition, 0, 0, ::point_i32());
 
+         pkey->m_strText = pszUtf8;
+      
+         post_message(pkey);
+         
       }
 
-      puserinteraction->send(spbase);
 
-      return spbase->m_bRet;
+//      if(::is_set(pszUtf8))
+//      {
+//
+//
+//
+//         string * pstringText = new string(pszUtf8);
+//
+//         auto lparam = (::lparam) (iptr) (string *) (pstringText);
+//
+//         printf("macos_window_key_down e_message_text_composition\n");
+//
+//         auto puserinteraction = m_pimpl->m_puserinteraction;
+//
+//         puserinteraction->post_message(e_message_text_composition, 0, lparam);
+//
+//      }
+//
+
+      return true;
 
    }
 
@@ -743,14 +759,6 @@ void window::install_message_routing(channel * pchannel)
    bool window::macos_window_key_up(unsigned int vk, unsigned int scan)
    {
 
-      __pointer(::user::message) spbase;
-
-      auto pkey  = __new(::message::key);
-
-      pkey->set(get_oswindow(), this, e_message_key_up, vk, (::lparam)(scan << 16), point_i32());
-
-      spbase = pkey;
-      
       auto puserinteraction = m_pimpl->m_puserinteraction;
 
       if(puserinteraction == nullptr)
@@ -760,9 +768,13 @@ void window::install_message_routing(channel * pchannel)
 
       }
 
-      puserinteraction->send(spbase);
+      auto pkey  = __new(::message::key);
 
-      return spbase->m_bRet;
+      pkey->set(get_oswindow(), this, e_message_key_up, vk, (::lparam)(scan << 16), point_i32());
+      
+      puserinteraction->send(pkey);
+
+      return true;
 
    }
 
@@ -770,7 +782,7 @@ void window::install_message_routing(channel * pchannel)
    void window::macos_window_mouse_down(int iButton, double x, double y)
    {
 
-      __pointer(::user::message) spbase;
+      //__pointer(::user::message) spbase;
 
       if (!this->is_active_window())
       {
@@ -778,21 +790,20 @@ void window::install_message_routing(channel * pchannel)
          try
          {
 
-            auto pmouseactivate = __new(::message::mouse_activate);
+            auto pmouseactivate = __create_new < ::message::mouse_activate >();
 
-            pmouseactivate->m_id = e_message_mouse_activate;
+            pmouseactivate->set(this, this, e_message_mouse_activate, (wparam) 0, (lparam) 0, point_i32());
 
-            spbase = pmouseactivate;
-            
-            auto puserinteraction = m_pimpl->m_puserinteraction;
+            send_message(pmouseactivate);
 
-            puserinteraction->send(spbase);
-
-            if (spbase->m_lresult == e_mouse_activate || spbase->m_lresult == e_mouse_activate_no_activate_and_eat)
+            if (pmouseactivate->m_lresult == e_mouse_activate || pmouseactivate->m_lresult == e_mouse_activate_no_activate_and_eat)
             {
 
+               auto pactivate = __create_new < ::message::activate >();
 
-               puserinteraction->post_message(e_message_activate, MAKELONG(e_activate_click_active, 0), 0);
+               pactivate->set(this, this, e_message_activate, MAKELONG(e_activate_click_active, 0), (lparam) 0, point_i32());
+
+               post_message(pactivate);
 
             }
 
@@ -806,28 +817,26 @@ void window::install_message_routing(channel * pchannel)
 
       {
 
-         MESSAGE message;
+         auto pmouse = __create_new < ::message::mouse > ();
 
+         ::id id;
+         
          if (iButton == 1)
          {
 
-            message.m_id = e_message_right_button_down;
+            id = e_message_right_button_down;
 
          }
          else
          {
 
-            message.m_id = e_message_left_button_down;
+            id = e_message_left_button_down;
 
          }
-
-         message.lParam = MAKELPARAM(x, y);
-
-         message.oswindow = this;
          
-         message.wParam =0;
-         
-         m_pmacoswindowing->post_ui_message(message);
+         pmouse->set(this, this, id, 0, MAKELPARAM(x, y), point_i32(x, y));
+
+         post_message(pmouse);
 
       }
 
@@ -836,29 +845,27 @@ void window::install_message_routing(channel * pchannel)
 
    void window::macos_window_mouse_up(int iButton, double x, double y)
    {
+      
+      auto pmouse = __create_new < ::message::mouse >();
 
-      MESSAGE message;
+      ::id id;
 
       if (iButton == 1)
       {
 
-         message.m_id = e_message_right_button_up;
+         id = e_message_right_button_up;
 
       }
       else
       {
 
-         message.m_id = e_message_left_button_up;
+         id = e_message_left_button_up;
 
       }
+      
+      pmouse->set(this, this, id, (wparam) 0, MAKELPARAM(x, y), ::point_i32(x, y));
 
-      message.lParam = MAKELPARAM(x, y);
-      
-      message.wParam = 0;
-      
-      message.oswindow = this;
-      
-      m_pmacoswindowing->post_ui_message(message);
+      post_message(pmouse);
 
    }
 
@@ -866,28 +873,26 @@ void window::install_message_routing(channel * pchannel)
    void window::macos_window_double_click(int iButton, double x, double y)
    {
 
-      MESSAGE message;
+      auto pmouse = __create_new < ::message::mouse >();
+      
+      ::id id;
 
       if (iButton == 1)
       {
 
-         message.m_id = e_message_right_button_double_click;
+         id = e_message_right_button_double_click;
 
       }
       else
       {
 
-         message.m_id = e_message_left_button_double_click;
+         id = e_message_left_button_double_click;
 
       }
 
-      message.lParam = MAKELPARAM(x, y);
-      
-      message.wParam = 0;
-      
-      message.oswindow = this;
+      pmouse->set(this, this, id, (wparam) 0, MAKELPARAM(x, y), ::point_i32(x, y));
 
-      m_pmacoswindowing->post_ui_message(message);
+      post_message(pmouse);
 
    }
 
@@ -895,93 +900,93 @@ void window::install_message_routing(channel * pchannel)
    void window::macos_window_mouse_moved(double x, double y, unsigned long ulAppleMouseButton)
    {
       
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
+//      if(is_destroying())
+//      {
+//
+//         return;
+//
+//      }
       
       bool bOk = true;
-      
+
       auto puserinteraction = m_pimpl->m_puserinteraction;
 
       if(!puserinteraction)
       {
-         
+
          return;
-         
+
       }
       
       if(puserinteraction->m_millisMouseMove.elapsed() < puserinteraction->m_millisMouseMoveIgnore)
-         {
-            
-            //printf("mouse_move_ignored %f, %f\n", x, y);
+      {
+         
+         //printf("mouse_move_ignored %f, %f\n", x, y);
 
-            bOk = false;
+         bOk = false;
 
-         }
+      }
 
-         if(bOk)
-         {
+      if(bOk)
+      {
 
-   //            printf("mouse_move_\"accepted\" %f, %f\n", x, y);
+//            printf("mouse_move_\"accepted\" %f, %f\n", x, y);
 
-            puserinteraction->m_millisMouseMove.Now();
+         puserinteraction->m_millisMouseMove.Now();
 
-            puserinteraction->m_pointMouseMove.x = x;
+         puserinteraction->m_pointMouseMove.x = x;
 
-            puserinteraction->m_pointMouseMove.y = y;
+         puserinteraction->m_pointMouseMove.y = y;
 
-   //            if(false)
-   //            {
-   //
-   //               if(pinteraction->m_millisMouseMovePeriod > 0)
-   //               {
-   //
-   //                  ::size_i32 sizeDistance((pinteraction->m_pointMouseMoveSkip.x - pinteraction->m_pointMouseMove.x),
-   //                     (pinteraction->m_pointMouseMoveSkip.y - pinteraction->m_pointMouseMove.y));
-   //
-   //                  if(!pinteraction->m_millisMouseMoveSkip.timeout(pinteraction->m_millisMouseMovePeriod)
-   //                     && sizeDistance.cx * sizeDistance.cx + sizeDistance.cy * sizeDistance.cy < pinteraction->m_iMouseMoveSkipSquareDistance)
-   //                  {
-   //
-   //                     pinteraction->m_iMouseMoveSkipCount++;
-   //
-   //                     pinteraction->m_bMouseMovePending = true;
-   //
-   //                     if(pinteraction->m_iMouseMoveSkipCount == 2)
-   //                     {
-   //
-   //                        //output_debug_string("\nmmv>skip 2!");
-   //
-   //                     }
-   //                     else if(pinteraction->m_iMouseMoveSkipCount == 5)
-   //                     {
-   //
-   //                        //output_debug_string("\nmmv>Skip 5!!!");
-   //
-   //                     }
-   //                     else if(pinteraction->m_iMouseMoveSkipCount == 10)
-   //                     {
-   //
-   //                        //output_debug_string("\nmmv>SKIP 10 !!!!!!!!!");
-   //
-   //                     }
-   //
-   //                     return true;
-   //
-   //                  }
-   //
-   //                  pinteraction->m_iMouseMoveSkipCount = 0;
-   //
-   //                  pinteraction->m_pointMouseMoveSkip = pinteraction->m_pointMouseMove;
-   //
-   //               }
-   //
-   //            }
+//            if(false)
+//            {
+//
+//               if(pinteraction->m_millisMouseMovePeriod > 0)
+//               {
+//
+//                  ::size_i32 sizeDistance((pinteraction->m_pointMouseMoveSkip.x - pinteraction->m_pointMouseMove.x),
+//                     (pinteraction->m_pointMouseMoveSkip.y - pinteraction->m_pointMouseMove.y));
+//
+//                  if(!pinteraction->m_millisMouseMoveSkip.timeout(pinteraction->m_millisMouseMovePeriod)
+//                     && sizeDistance.cx * sizeDistance.cx + sizeDistance.cy * sizeDistance.cy < pinteraction->m_iMouseMoveSkipSquareDistance)
+//                  {
+//
+//                     pinteraction->m_iMouseMoveSkipCount++;
+//
+//                     pinteraction->m_bMouseMovePending = true;
+//
+//                     if(pinteraction->m_iMouseMoveSkipCount == 2)
+//                     {
+//
+//                        //output_debug_string("\nmmv>skip 2!");
+//
+//                     }
+//                     else if(pinteraction->m_iMouseMoveSkipCount == 5)
+//                     {
+//
+//                        //output_debug_string("\nmmv>Skip 5!!!");
+//
+//                     }
+//                     else if(pinteraction->m_iMouseMoveSkipCount == 10)
+//                     {
+//
+//                        //output_debug_string("\nmmv>SKIP 10 !!!!!!!!!");
+//
+//                     }
+//
+//                     return true;
+//
+//                  }
+//
+//                  pinteraction->m_iMouseMoveSkipCount = 0;
+//
+//                  pinteraction->m_pointMouseMoveSkip = pinteraction->m_pointMouseMove;
+//
+//               }
+//
+//            }
 
-         }
+      }
 
       if(!bOk)
       {
@@ -990,60 +995,43 @@ void window::install_message_routing(channel * pchannel)
 
       }
       
-      MESSAGE message;
+      ::id id = e_message_mouse_move;
       
-      message.lParam = MAKELPARAM(x, y);
-
-      message.wParam = 0;
-
+      wparam wparam = 0;
+      
+      lparam lparam = MAKELPARAM(x, y);
+      
       if(ulAppleMouseButton & 1)
       {
 
-         message.wParam |= ::user::e_button_state_left;
+         wparam |= ::user::e_button_state_left;
 
       }
 
       if(ulAppleMouseButton & 2)
       {
 
-         message.wParam |= ::user::e_button_state_right;
+         wparam |= ::user::e_button_state_right;
 
       }
       
-      message.oswindow = this;
+      auto pmouse = __create_new < ::message::mouse >();
       
-      message.m_id = e_message_mouse_move;
-      
-      //printf("mouse_move_\"posted\" %f, %f\n", x, y);
-      
-      m_pmacoswindowing->post_ui_message(message);
+      pmouse->set(this, this, id, wparam, lparam, ::point_i32(x, y));
+
+      post_message(pmouse);
       
    }
 
 
-
    void window::macos_window_mouse_dragged(double x, double y, unsigned long ulAppleMouseButton)
    {
-
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
-
-      auto puserinteraction = m_pimpl->m_puserinteraction;
-
-      if(puserinteraction == nullptr)
-      {
-
-         return;
-
-      }
-
-      lparam lparam = MAKELPARAM(x, y);
+      
+      id id = e_message_mouse_move;
 
       wparam wparam = 0;
+
+      lparam lparam = MAKELPARAM(x, y);
 
       if(ulAppleMouseButton & 1)
       {
@@ -1059,7 +1047,11 @@ void window::install_message_routing(channel * pchannel)
 
       }
 
-      puserinteraction->post_message(e_message_mouse_move, wparam, lparam);
+      auto pmouse = __create_new < ::message::mouse >();
+      
+      pmouse->set(this, this, id, wparam, lparam, ::point_i32(x, y));
+
+      post_message(pmouse);
 
    }
 
@@ -1067,50 +1059,19 @@ void window::install_message_routing(channel * pchannel)
    void window::macos_window_mouse_wheel(double deltaY, double x, double y)
    {
 
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
+      id id = e_message_mouse_wheel;
+
+      short delta = deltaY * WHEEL_DELTA / 3.0;
+
+      wparam wparam = delta << 16;
+
+      lparam lparam = MAKELPARAM(x, y);
+
+      auto pwheel  = __create_new < ::message::mouse_wheel > ();
       
-      __pointer(::user::message) spbase;
-      
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      pwheel->set(this, this, id, wparam, lparam, ::point_i32(x, y));
 
-      if(!puserinteraction)
-      {
-         
-         return;
-         
-      }
-
-      {
-
-         auto pwheel  = __new(::message::mouse_wheel);
-
-         pwheel->m_id = e_message_mouse_wheel;
-
-         pwheel->m_point.x = (::i32)x;
-         pwheel->m_point.y = (::i32)y;
-         pwheel->m_bTranslated = true;
-
-         short delta = deltaY * WHEEL_DELTA / 3.0;
-
-         pwheel->m_wparam = delta << 16;
-
-         spbase = pwheel;
-
-         if(puserinteraction == nullptr)
-         {
-
-            return;
-
-         }
-
-         puserinteraction->send(spbase);
-
-      }
+      post_message(pwheel);
 
    }
 
@@ -1118,27 +1079,39 @@ void window::install_message_routing(channel * pchannel)
    void window::macos_window_resized(CGRect rectangle)
    {
       
-      if(is_destroying())
       {
+      
+         id id = e_message_move;
          
-         return;
+         wparam wparam = 0;
+         
+         lparam lparam = MAKELPARAM(rectangle.origin.x, rectangle.origin.y);
+      
+         auto pmove  = __create_new < ::message::move > ();
+      
+         pmove->set(this, this, id, wparam, lparam, ::point_i32());
+
+         post_message(pmove);
          
       }
       
-      auto puserinteraction = m_pimpl->m_puserinteraction;
-
-      if(!puserinteraction)
       {
+
+         id id = e_message_size;
          
-         return;
+         wparam wparam = 0;
+         
+         lparam lparam = MAKELPARAM(rectangle.size.width, rectangle.size.height);
+      
+         auto psize  = __create_new < ::message::size > ();
+      
+         psize->set(this, this, id, wparam, lparam, ::point_i32());
+
+         post_message(psize);
          
       }
 
-      puserinteraction->post_message(e_message_move,0, MAKELPARAM(rectangle.origin.x, rectangle.origin.y));
-
-      puserinteraction->post_message(e_message_size,0, MAKELPARAM(rectangle.size.width, rectangle.size.height));
-
-      return;
+      //return;
 
    //      if(puserinteraction == nullptr)
    //      {
@@ -1262,12 +1235,6 @@ void window::install_message_routing(channel * pchannel)
    void window::macos_window_moved(CGPoint point)
    {
       
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
       
       if(m_pimpl->m_bEatMoveEvent)
       {
@@ -1278,12 +1245,21 @@ void window::install_message_routing(channel * pchannel)
          
       }
 
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      {
+      
+         id id = e_message_move;
+         
+         wparam wparam = 0;
+         
+         lparam lparam = MAKELPARAM(point.x, point.y);
+      
+         auto pmove  = __create_new < ::message::move > ();
+      
+         pmove->set(this, this, id, wparam, lparam, ::point_i32());
 
-      puserinteraction->post_message(e_message_move,0, MAKELPARAM(point.x, point.y));
-
-      return;
-
+         post_message(pmove);
+         
+      }
    //      if(puserinteraction == nullptr)
    //      {
    //
@@ -1343,12 +1319,12 @@ void window::install_message_routing(channel * pchannel)
    void window::macos_window_did_become_key()
    {
 
-      if(is_destroying())
-      {
-         
-         return;
-         
-      }
+//      if(is_destroying())
+//      {
+//
+//         return;
+//
+//      }
       
       m_pimpl->m_millisLastExposureAddUp.Now();
 
@@ -1379,8 +1355,6 @@ void window::install_message_routing(channel * pchannel)
       puserinteraction->set_need_redraw();
 
    }
-
-
 
 
    void window::macos_window_deactivate()
@@ -1435,6 +1409,49 @@ void window::install_message_routing(channel * pchannel)
 
    }
 
+
+   void * window::macos_window_get_mouse_cursor()
+   {
+      
+      auto pimpl = m_pimpl;
+      
+      if(::is_null(pimpl))
+      {
+       
+         return nullptr;
+         
+      }
+      
+      auto puserinteraction = pimpl->m_puserinteraction;
+   
+      if(::is_null(puserinteraction))
+      {
+       
+         return nullptr;
+         
+      }
+      
+      auto pcursor = puserinteraction->get_mouse_cursor();
+      
+      if(::is_null(pcursor))
+      {
+         
+         return nullptr;
+         
+      }
+      
+      auto poscursor = pcursor->get_os_data();
+      
+      if(::is_null(poscursor))
+      {
+       
+         return nullptr;
+         
+      }
+      
+      return poscursor;
+      
+   }
 
    void window::macos_window_iconified()
    {
@@ -1659,6 +1676,210 @@ void window::install_message_routing(channel * pchannel)
 
       return ::success;
       
+   }
+
+
+   void window::non_top_most_upper_window_rects(::rectangle_i32_array & recta)
+   {
+      
+      
+      recta = cg_get_window_rect_list_intersect_above(ns_get_window_id(m_pnswindow));
+      
+      
+   }
+
+
+   bool window::post_message(::message::message * pmessage)
+   {
+
+//      oswindow oswindow = message.oswindow;
+//
+//      ASSERT(oswindow != nullptr);
+//
+//      auto pimpl = oswindow->m_pimpl;
+//
+//      if(::is_null(pimpl))
+//      {
+//
+//         return false;
+//
+//      }
+
+      auto puserinteraction = m_pimpl->m_puserinteraction;
+
+      if(::is_null(puserinteraction))
+      {
+
+         return false;
+
+      }
+      
+      puserinteraction->post(pmessage);
+
+      //::thread * pthread = nullptr;
+
+//      if (::is_set(puserinteraction))
+//      {
+//
+//         pthread = puserinteraction->m_pthreadUserInteraction;
+//
+//      }
+//
+//      if (::is_null(pthread))
+//      {
+//
+//         return false;
+//
+//      }
+//
+//      class ::message_queue * pmq = pthread->m_pmq;
+//
+//      if (pmq == nullptr)
+//      {
+//
+//         if (message.m_id == e_message_quit)
+//         {
+//
+//            return false;
+//
+//         }
+//
+//         pmq = pthread->get_message_queue();
+//
+//      }
+//
+//      if (pmq == nullptr)
+//      {
+//
+//         return false;
+//
+//      }
+//
+//      synchronous_lock ml(pmq->mutex());
+//
+//      if (message.m_id == e_message_quit)
+//      {
+//
+//         output_debug_string("e_message_quit thread");
+//
+//      }
+//
+//      if (message.m_id == e_message_left_button_down)
+//      {
+//
+//         output_debug_string("post_ui_message::e_message_left_button_down\n");
+//
+//      }
+//      else if (message.m_id == e_message_left_button_up)
+//      {
+//
+//         output_debug_string("post_ui_message::e_message_left_button_up\n");
+//
+//      }
+//
+//      pmq->m_messagea.add(message);
+//
+//      pmq->m_eventNewMessage.set_event();
+
+      return true;
+
+   }
+
+
+   bool window::send_message(::message::message * pmessage)
+   {
+
+   //      oswindow oswindow = message.oswindow;
+   //
+   //      ASSERT(oswindow != nullptr);
+   //
+   //      auto pimpl = oswindow->m_pimpl;
+   //
+   //      if(::is_null(pimpl))
+   //      {
+   //
+   //         return false;
+   //
+   //      }
+
+      auto puserinteraction = m_pimpl->m_puserinteraction;
+
+      if(::is_null(puserinteraction))
+      {
+
+         return false;
+
+      }
+      
+      puserinteraction->send(pmessage);
+
+      //::thread * pthread = nullptr;
+
+   //      if (::is_set(puserinteraction))
+   //      {
+   //
+   //         pthread = puserinteraction->m_pthreadUserInteraction;
+   //
+   //      }
+   //
+   //      if (::is_null(pthread))
+   //      {
+   //
+   //         return false;
+   //
+   //      }
+   //
+   //      class ::message_queue * pmq = pthread->m_pmq;
+   //
+   //      if (pmq == nullptr)
+   //      {
+   //
+   //         if (message.m_id == e_message_quit)
+   //         {
+   //
+   //            return false;
+   //
+   //         }
+   //
+   //         pmq = pthread->get_message_queue();
+   //
+   //      }
+   //
+   //      if (pmq == nullptr)
+   //      {
+   //
+   //         return false;
+   //
+   //      }
+   //
+   //      synchronous_lock ml(pmq->mutex());
+   //
+   //      if (message.m_id == e_message_quit)
+   //      {
+   //
+   //         output_debug_string("e_message_quit thread");
+   //
+   //      }
+   //
+   //      if (message.m_id == e_message_left_button_down)
+   //      {
+   //
+   //         output_debug_string("post_ui_message::e_message_left_button_down\n");
+   //
+   //      }
+   //      else if (message.m_id == e_message_left_button_up)
+   //      {
+   //
+   //         output_debug_string("post_ui_message::e_message_left_button_up\n");
+   //
+   //      }
+   //
+   //      pmq->m_messagea.add(message);
+   //
+   //      pmq->m_eventNewMessage.set_event();
+
+      return true;
+
    }
 
 

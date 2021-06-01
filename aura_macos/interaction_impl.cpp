@@ -1014,9 +1014,7 @@ bool interaction_impl::_is_window() const
 
       }
 
-      if (pmessage->m_id == e_message_key_down ||
-          pmessage->m_id == e_message_key_up ||
-          pmessage->m_id == e_message_char)
+      if (bKeyMessage)
       {
 
          __pointer(::message::key) pkey(pmessage);
@@ -1079,11 +1077,15 @@ bool interaction_impl::_is_window() const
 
          if (m_puserinteraction->layout().is_moving())
          {
+            
             //TRACE("moving: skip pre translate message");
+            
          }
          else if (m_puserinteraction->layout().is_sizing())
          {
+            
             //TRACE("sizing: skip pre translate message");
+            
          }
          else
          {
@@ -1091,7 +1093,11 @@ bool interaction_impl::_is_window() const
             m_puserinteraction->pre_translate_message(pmessage);
 
             if (pmessage->m_bRet)
+            {
+               
                return;
+               
+            }
 
             pmessage->m_uiMessageFlags |= 1;
 
@@ -1424,39 +1430,37 @@ bool interaction_impl::_is_window() const
                  if(pmouse->m_id == e_message_left_button_down)
                  {
 
-
-                 puserinteractionMouse = m_puserinteraction->child_from_point(pmouse->m_point);
+                    puserinteractionMouse = m_puserinteraction->child_from_point(pmouse->m_point);
                     
                  }
-                 
                  else
                  {
+
                     puserinteractionMouse = m_puserinteraction->child_from_point(pmouse->m_point);
 
                  }
-                 }
+               
+              }
 
-                 if(puserinteractionMouse)
-                 {
+              if(puserinteractionMouse)
+              {
                  
-                    string strType2 = puserinteractionMouse->type_c_str();
-                    
-                    ::output_debug_string(strType2);
-                    
-                 }
+                 string strType2 = puserinteractionMouse->type_c_str();
+                 
+                 ::output_debug_string(strType2);
+                 
+              }
               //}
               
 
               if(pmouse->m_id == e_message_left_button_down)
               {
 
-
                  ::output_debug_string("left_button_down");
 
               }
               else if(pmouse->m_id == e_message_left_button_up)
               {
-
 
                  ::output_debug_string("left_button_up");
 
@@ -1513,24 +1517,16 @@ bool interaction_impl::_is_window() const
               return;
               
            }
-      else if (pmessage->m_id == e_message_key_down ||
-               pmessage->m_id == e_message_key_up ||
-               pmessage->m_id == e_message_char)
+      else if (bKeyMessage)
       {
 
-         __pointer(::message::key) pkey = pmessage;
-         
-         
          //auto psession = get_session();
          
          auto pwindowing = m_pwindowing;
 
-         ::user::interaction * puiFocus = dynamic_cast <::user::interaction *> (pwindowing->get_keyboard_focus(m_puserinteraction->m_pthreadUserInteraction));
+         __pointer(::user::interaction) puiFocus = m_puserinteractionFocus1;
 
-         if (puiFocus != nullptr
-               && puiFocus->is_window()
-               && puiFocus->get_top_level() != nullptr
-               && puiFocus != m_puserinteraction)
+         if (puiFocus)
          {
 
             puiFocus->send(pkey);
@@ -1543,20 +1539,15 @@ bool interaction_impl::_is_window() const
             }
 
          }
-         else if (!pkey->m_bRet)
+         else
          {
 
-            if (m_puserinteraction != nullptr)
+            m_puserinteraction->_000OnKey(pkey);
+
+            if (pmessage->m_bRet)
             {
 
-               m_puserinteraction->_000OnKey(pkey);
-
-               if (pmessage->m_bRet)
-               {
-
-                  return;
-
-               }
+               return;
 
             }
 

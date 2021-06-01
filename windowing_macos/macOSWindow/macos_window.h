@@ -20,10 +20,12 @@ public:
 #ifdef __OBJC__
    
    macOSWindow * m_pmacoswindow;
+   NSWindow *     m_pnswindow;
    
 #else
    
    void * m_pmacoswindow; // cast to macOSWindow * to use it
+   void * m_pnswindow;
    
 #endif
 
@@ -49,8 +51,8 @@ public:
    virtual void macos_window_double_click(int iButton, double x, double y) = 0;
    virtual bool macos_window_key_down(unsigned int vk, unsigned int scan, const char * pszUtf8) = 0;
    virtual bool macos_window_key_up(unsigned int vk, unsigned int scan) = 0;
-   virtual bool macos_window_key_down(unsigned int uiKeyCode) = 0;
-   virtual bool macos_window_key_up(unsigned int uiKeyCode) = 0;
+   //virtual bool macos_window_key_down(unsigned int uiKeyCode) = 0;
+   //virtual bool macos_window_key_up(unsigned int uiKeyCode) = 0;
    
    virtual void macos_window_resized(CGRect rectangle_i32) = 0;
    virtual void macos_window_moved(CGPoint point_i32) = 0;
@@ -67,6 +69,10 @@ public:
    virtual void macos_window_activate() = 0;
    virtual void macos_window_deactivate() = 0;
    
+   
+   virtual void * macos_window_get_mouse_cursor() = 0;
+   
+   
    virtual void macos_window_set_frame(CGRect rect);
    virtual void macos_window_get_frame(CGRect * prect);
    virtual void macos_window_invalidate();
@@ -78,6 +84,7 @@ public:
    virtual void macos_window_redraw_sync();
    
    virtual void macos_window_make_first_responder();
+   virtual bool macos_window_is_key_window() const;
    
    virtual void macos_window_order_front();
    virtual void macos_window_make_key_window();

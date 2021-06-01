@@ -27,6 +27,8 @@ namespace windowing_macos
       
       ::e_status load_default_cursor(enum_cursor ecursor) override;
       
+      ::e_status create_from_image(const ::image * pimage, int xHotSpot, int yHotSpot) override;
+
       
    };
 

@@ -12,473 +12,473 @@
 #include "acme/parallelization/message_queue.h"
 #include <CoreGraphics/CoreGraphics.h>
 
-oswindow_dataptra * g_poswindowdataptra = nullptr;
-
-::mutex * g_pmutexOsWindowData = nullptr;
-         
-void ns_main_async(dispatch_block_t block);
-
-int oswindow_find(NSWindow * window)
-{
-
-   synchronous_lock synchronouslock(g_pmutexOsWindowData);
-
-   for(int i = 0; i < g_poswindowdataptra->get_count(); i++)
-   {
-      if(g_poswindowdataptra->element_at(i)->m_nswindow == window)
-      {
-         return i;
-      }
-   }
-
-   return -1;
-
-}
-
-oswindow_data * oswindow_get(nswindow window)
-{
-
-   synchronous_lock synchronouslock(g_pmutexOsWindowData);
-
-   iptr iFind = oswindow_find(window);
-
-   if(iFind >= 0)
-   {
-      
-      return g_poswindowdataptra->element_at(iFind);
-
-   }
-
-   ::oswindow_data * pdata = new ::oswindow_data;
-
-   pdata->m_nswindow    = window;
-
-   g_poswindowdataptra->add(pdata);
-
-   return pdata;
-
-}
-
-
-oswindow_data::oswindow_data()
-{
-
-   m_nswindow  = nullptr;
-   m_pimpl       = nullptr;
-   m_plongmap  = new iptr_to_iptr;
-   m_bNsWindowRect = false;
-}
-
-
-oswindow_data::oswindow_data(nswindow window)
-{
-
-   m_nswindow  = window;
-   m_pimpl       = nullptr;
-   m_plongmap  = new iptr_to_iptr;
-   m_bNsWindowRect = false;
-}
-
-
-oswindow_data::oswindow_data(const oswindow_data & oswindow)
-{
-
-   m_nswindow  = oswindow.m_nswindow;
-   m_pimpl       = oswindow.m_pimpl;
-   m_plongmap  = oswindow.m_plongmap;
-   m_bNsWindowRect = false;
-}
-
-
-oswindow_data::~oswindow_data()
-{
-
-   ::acme::del(m_plongmap);
-
-}
-
-
-oswindow_data & oswindow_data::operator = (const oswindow_data & oswindow)
-{
-
-   if(&oswindow != this)
-   {
-
-      m_nswindow  = oswindow.m_nswindow;
-      m_pimpl       = oswindow.m_pimpl;
-      m_plongmap  = oswindow.m_plongmap;
-
-   }
-
-   return *this;
-
-}
-
-
-bool oswindow_erase(nswindow window)
-{
-
-   synchronous_lock synchronouslock(g_pmutexOsWindowData);
-
-   iptr iFind = oswindow_find(window);
-
-   if(iFind < 0)
-   {
-
-      return false;
-
-   }
-
-   g_poswindowdataptra->erase_at(iFind);
-
-   return true;
-
-}
-
-
-void oswindow_data::set_user_interaction_impl(::user::interaction_impl * pimpl)
-{
-
-   if(is_null())
-      __throw(::exception::exception("error, m_pdata cannot be nullptr to ::oswindow::set_user_interaction"));
-
-   m_pimpl = pimpl;
-
-}
-
-
-::user::interaction * oswindow_data::get_user_interaction_base()
-{
-
-   if(is_null())
-   {
-
-      return nullptr;
-
-   }
-
-   if(m_pimpl == nullptr)
-   {
-
-      return nullptr;
-
-   }
-
-   return m_pimpl->m_puserinteraction;
-
-}
-
-
-::user::interaction * oswindow_data::get_user_interaction_base() const
-{
-
-   if(is_null())
-   {
-
-      return nullptr;
-
-   }
-
-   if(m_pimpl == nullptr)
-   {
-
-      return nullptr;
-
-   }
-
-   return m_pimpl->m_puserinteraction;
-
-}
-
-
-::user::interaction * oswindow_data::get_user_interaction()
-{
-
-   if(is_null())
-   {
-
-      return nullptr;
-
-   }
-
-   if(m_pimpl == nullptr)
-   {
-
-      return nullptr;
-
-   }
-
-   return m_pimpl->m_puserinteraction;
-
-}
-
-
-::user::interaction * oswindow_data::get_user_interaction() const
-{
-
-   if(is_null())
-   {
-
-      return nullptr;
-
-   }
-
-   if(m_pimpl == nullptr)
-   {
-
-      return nullptr;
-
-   }
-
-   return m_pimpl->m_puserinteraction;
-
-}
-
-
-oswindow oswindow_data::get_parent()
-{
-
-   if(is_null())
-      return nullptr;
-
-   return m_pimpl->m_puserinteraction->GetParentHandle();
-
-}
-
-
-oswindow oswindow_data::set_parent(oswindow oswindow)
-{
-
-   if(is_null())
-      return nullptr;
-
-   ::oswindow oswindowOldParent = get_parent();
-
-   if(oswindow == nullptr
-         || oswindow->m_pimpl == nullptr)
-   {
-
-      m_pimpl->SetParent(nullptr);
-
-   }
-   else
-   {
-
-      m_pimpl->SetParent(oswindow->m_pimpl->m_puserinteraction);
-
-   }
-
-   return oswindowOldParent;
-
-}
-
-
-
-bool oswindow_data::is_child(::oswindow oswindow)
-{
-
-   if (oswindow == nullptr || oswindow->m_pimpl == nullptr || oswindow->m_pimpl->m_puserinteraction == nullptr)
-   {
-
-      return false;
-
-   }
-
-   if (m_pimpl == nullptr || m_pimpl->m_puserinteraction == nullptr)
-   {
-
-      return false;
-
-   }
-
-   return m_pimpl->m_puserinteraction->is_child(oswindow->m_pimpl->m_puserinteraction);
-
-}
-
-
-iptr oswindow_data::get_window_long_ptr(iptr iIndex)
-{
-
-   if(is_null())
-      return 0;
-
-   if(m_plongmap == nullptr)
-      return 0;
-
-   return m_plongmap->operator[]((int) iIndex);
-
-}
-
-
-iptr oswindow_data::set_window_long_ptr(iptr iIndex, iptr iNewLong)
-{
-
-   if(is_null())
-      return 0;
-
-   if(m_plongmap == nullptr)
-      return 0;
-
-   iptr iLong = m_plongmap->operator[]((int) iIndex);
-
-   m_plongmap->operator[]((int) iIndex) = (int) iNewLong;
-
-   return iLong;
-
-}
-
-
-static oswindow g_oswindowCapture;
-
-
-oswindow get_capture()
-{
-   return g_oswindowCapture;
-}
-
-oswindow set_capture(oswindow window)
-{
-
-   oswindow windowOld(g_oswindowCapture);
-
-   if(window->window() == nullptr)
-      return nullptr;
-
-   g_oswindowCapture = window;
-
-   return windowOld;
-
-}
-
-
-int_bool release_capture()
-{
-
-   int_bool bRet = true;
-
-   if(bRet)
-   {
-
-      g_oswindowCapture = nullptr;
-
-   }
-
-   return bRet;
-
-}
-
-
-oswindow get_focus();
-
-static oswindow g_oswindowFocus = nullptr;
-
-oswindow set_focus(oswindow window)
-{
-
-   if(!is_window(window))
-      return nullptr;
-
-   oswindow windowOld = ::get_focus();
-
-   g_oswindowFocus = window;
-
-   return windowOld;
-
-}
-
-oswindow get_focus()
-{
-
-   return g_oswindowFocus;
-
-}
-
-
-::user::interaction_impl * window_from_handle(oswindow oswindow)
-{
-
-   if(oswindow == nullptr)
-      return nullptr;
-
-   return oswindow->m_pimpl;
-
-}
-
-static oswindow g_oswindowActive = nullptr;
-
-
-
-oswindow get_active_window()
-{
-
-   return g_oswindowActive;
-
-}
-
-int_bool session_accepts_first_responder()
-{
-   
-   return psession->m_bAcceptsFirstResponder ? 1 : 0;
-   
-}
-
-void deactivate_window(oswindow window)
-{
-
-   synchronous_lock synchronouslock(g_pmutexOsWindowData);
-   
-   if(g_oswindowActive != window)
-   {
-
-      return false;
-
-   }
-
-   g_oswindowActive = nullptr;
-
-   return true;
-
-}
-
-
-
-oswindow set_active_window(oswindow window)
-{
-
-   synchronous_lock synchronouslock(g_pmutexOsWindowData);
-
-   oswindow windowOld(g_oswindowActive);
-
-   if(window == nullptr)
-   {
-
-      g_oswindowActive = nullptr;
-
-      return windowOld;
-
-   }
-
-   g_oswindowActive = window;
-
-   return windowOld;
-
-}
-
-
-NSWindow * __nswindow(oswindow oswindow)
-{
-   
-   return (NSWindow *) oswindow->window();
-   
-}
-
-
-oswindow get_window(oswindow window, int iParentHood)
-{
-
-   return nullptr;
-
-}
+//oswindow_dataptra * g_poswindowdataptra = nullptr;
+//
+//::mutex * g_pmutexOsWindowData = nullptr;
+//
+//void ns_main_async(dispatch_block_t block);
+//
+//int oswindow_find(NSWindow * window)
+//{
+//
+//   synchronous_lock synchronouslock(g_pmutexOsWindowData);
+//
+//   for(int i = 0; i < g_poswindowdataptra->get_count(); i++)
+//   {
+//      if(g_poswindowdataptra->element_at(i)->m_nswindow == window)
+//      {
+//         return i;
+//      }
+//   }
+//
+//   return -1;
+//
+//}
+//
+//oswindow_data * oswindow_get(nswindow window)
+//{
+//
+//   synchronous_lock synchronouslock(g_pmutexOsWindowData);
+//
+//   iptr iFind = oswindow_find(window);
+//
+//   if(iFind >= 0)
+//   {
+//
+//      return g_poswindowdataptra->element_at(iFind);
+//
+//   }
+//
+//   ::oswindow_data * pdata = new ::oswindow_data;
+//
+//   pdata->m_nswindow    = window;
+//
+//   g_poswindowdataptra->add(pdata);
+//
+//   return pdata;
+//
+//}
+//
+//
+//oswindow_data::oswindow_data()
+//{
+//
+//   m_nswindow  = nullptr;
+//   m_pimpl       = nullptr;
+//   m_plongmap  = new iptr_to_iptr;
+//   m_bNsWindowRect = false;
+//}
+//
+//
+//oswindow_data::oswindow_data(nswindow window)
+//{
+//
+//   m_nswindow  = window;
+//   m_pimpl       = nullptr;
+//   m_plongmap  = new iptr_to_iptr;
+//   m_bNsWindowRect = false;
+//}
+//
+//
+//oswindow_data::oswindow_data(const oswindow_data & oswindow)
+//{
+//
+//   m_nswindow  = oswindow.m_nswindow;
+//   m_pimpl       = oswindow.m_pimpl;
+//   m_plongmap  = oswindow.m_plongmap;
+//   m_bNsWindowRect = false;
+//}
+//
+//
+//oswindow_data::~oswindow_data()
+//{
+//
+//   ::acme::del(m_plongmap);
+//
+//}
+//
+//
+//oswindow_data & oswindow_data::operator = (const oswindow_data & oswindow)
+//{
+//
+//   if(&oswindow != this)
+//   {
+//
+//      m_nswindow  = oswindow.m_nswindow;
+//      m_pimpl       = oswindow.m_pimpl;
+//      m_plongmap  = oswindow.m_plongmap;
+//
+//   }
+//
+//   return *this;
+//
+//}
+//
+//
+//bool oswindow_erase(nswindow window)
+//{
+//
+//   synchronous_lock synchronouslock(g_pmutexOsWindowData);
+//
+//   iptr iFind = oswindow_find(window);
+//
+//   if(iFind < 0)
+//   {
+//
+//      return false;
+//
+//   }
+//
+//   g_poswindowdataptra->erase_at(iFind);
+//
+//   return true;
+//
+//}
+//
+//
+//void oswindow_data::set_user_interaction_impl(::user::interaction_impl * pimpl)
+//{
+//
+//   if(is_null())
+//      __throw(::exception::exception("error, m_pdata cannot be nullptr to ::oswindow::set_user_interaction"));
+//
+//   m_pimpl = pimpl;
+//
+//}
+//
+//
+//::user::interaction * oswindow_data::get_user_interaction_base()
+//{
+//
+//   if(is_null())
+//   {
+//
+//      return nullptr;
+//
+//   }
+//
+//   if(m_pimpl == nullptr)
+//   {
+//
+//      return nullptr;
+//
+//   }
+//
+//   return m_pimpl->m_puserinteraction;
+//
+//}
+//
+//
+//::user::interaction * oswindow_data::get_user_interaction_base() const
+//{
+//
+//   if(is_null())
+//   {
+//
+//      return nullptr;
+//
+//   }
+//
+//   if(m_pimpl == nullptr)
+//   {
+//
+//      return nullptr;
+//
+//   }
+//
+//   return m_pimpl->m_puserinteraction;
+//
+//}
+//
+//
+//::user::interaction * oswindow_data::get_user_interaction()
+//{
+//
+//   if(is_null())
+//   {
+//
+//      return nullptr;
+//
+//   }
+//
+//   if(m_pimpl == nullptr)
+//   {
+//
+//      return nullptr;
+//
+//   }
+//
+//   return m_pimpl->m_puserinteraction;
+//
+//}
+//
+//
+//::user::interaction * oswindow_data::get_user_interaction() const
+//{
+//
+//   if(is_null())
+//   {
+//
+//      return nullptr;
+//
+//   }
+//
+//   if(m_pimpl == nullptr)
+//   {
+//
+//      return nullptr;
+//
+//   }
+//
+//   return m_pimpl->m_puserinteraction;
+//
+//}
+//
+//
+//oswindow oswindow_data::get_parent()
+//{
+//
+//   if(is_null())
+//      return nullptr;
+//
+//   return m_pimpl->m_puserinteraction->GetParentHandle();
+//
+//}
+//
+//
+//oswindow oswindow_data::set_parent(oswindow oswindow)
+//{
+//
+//   if(is_null())
+//      return nullptr;
+//
+//   ::oswindow oswindowOldParent = get_parent();
+//
+//   if(oswindow == nullptr
+//         || oswindow->m_pimpl == nullptr)
+//   {
+//
+//      m_pimpl->SetParent(nullptr);
+//
+//   }
+//   else
+//   {
+//
+//      m_pimpl->SetParent(oswindow->m_pimpl->m_puserinteraction);
+//
+//   }
+//
+//   return oswindowOldParent;
+//
+//}
+//
+//
+//
+//bool oswindow_data::is_child(::oswindow oswindow)
+//{
+//
+//   if (oswindow == nullptr || oswindow->m_pimpl == nullptr || oswindow->m_pimpl->m_puserinteraction == nullptr)
+//   {
+//
+//      return false;
+//
+//   }
+//
+//   if (m_pimpl == nullptr || m_pimpl->m_puserinteraction == nullptr)
+//   {
+//
+//      return false;
+//
+//   }
+//
+//   return m_pimpl->m_puserinteraction->is_child(oswindow->m_pimpl->m_puserinteraction);
+//
+//}
+//
+//
+//iptr oswindow_data::get_window_long_ptr(iptr iIndex)
+//{
+//
+//   if(is_null())
+//      return 0;
+//
+//   if(m_plongmap == nullptr)
+//      return 0;
+//
+//   return m_plongmap->operator[]((int) iIndex);
+//
+//}
+//
+//
+//iptr oswindow_data::set_window_long_ptr(iptr iIndex, iptr iNewLong)
+//{
+//
+//   if(is_null())
+//      return 0;
+//
+//   if(m_plongmap == nullptr)
+//      return 0;
+//
+//   iptr iLong = m_plongmap->operator[]((int) iIndex);
+//
+//   m_plongmap->operator[]((int) iIndex) = (int) iNewLong;
+//
+//   return iLong;
+//
+//}
+//
+//
+//static oswindow g_oswindowCapture;
+//
+//
+//oswindow get_capture()
+//{
+//   return g_oswindowCapture;
+//}
+//
+//oswindow set_capture(oswindow window)
+//{
+//
+//   oswindow windowOld(g_oswindowCapture);
+//
+//   if(window->window() == nullptr)
+//      return nullptr;
+//
+//   g_oswindowCapture = window;
+//
+//   return windowOld;
+//
+//}
+//
+//
+//int_bool release_capture()
+//{
+//
+//   int_bool bRet = true;
+//
+//   if(bRet)
+//   {
+//
+//      g_oswindowCapture = nullptr;
+//
+//   }
+//
+//   return bRet;
+//
+//}
+//
+//
+//oswindow get_focus();
+//
+//static oswindow g_oswindowFocus = nullptr;
+//
+//oswindow set_focus(oswindow window)
+//{
+//
+//   if(!is_window(window))
+//      return nullptr;
+//
+//   oswindow windowOld = ::get_focus();
+//
+//   g_oswindowFocus = window;
+//
+//   return windowOld;
+//
+//}
+//
+//oswindow get_focus()
+//{
+//
+//   return g_oswindowFocus;
+//
+//}
+//
+//
+//::user::interaction_impl * window_from_handle(oswindow oswindow)
+//{
+//
+//   if(oswindow == nullptr)
+//      return nullptr;
+//
+//   return oswindow->m_pimpl;
+//
+//}
+//
+//static oswindow g_oswindowActive = nullptr;
+//
+//
+//
+//oswindow get_active_window()
+//{
+//
+//   return g_oswindowActive;
+//
+//}
+//
+//int_bool session_accepts_first_responder()
+//{
+//
+//   return psession->m_bAcceptsFirstResponder ? 1 : 0;
+//
+//}
+//
+//void deactivate_window(oswindow window)
+//{
+//
+//   synchronous_lock synchronouslock(g_pmutexOsWindowData);
+//
+//   if(g_oswindowActive != window)
+//   {
+//
+//      return false;
+//
+//   }
+//
+//   g_oswindowActive = nullptr;
+//
+//   return true;
+//
+//}
+//
+//
+//
+//oswindow set_active_window(oswindow window)
+//{
+//
+//   synchronous_lock synchronouslock(g_pmutexOsWindowData);
+//
+//   oswindow windowOld(g_oswindowActive);
+//
+//   if(window == nullptr)
+//   {
+//
+//      g_oswindowActive = nullptr;
+//
+//      return windowOld;
+//
+//   }
+//
+//   g_oswindowActive = window;
+//
+//   return windowOld;
+//
+//}
+//
+//
+//NSWindow * __nswindow(oswindow oswindow)
+//{
+//
+//   return (NSWindow *) oswindow->window();
+//
+//}
+//
+//
+//oswindow get_window(oswindow window, int iParentHood)
+//{
+//
+//   return nullptr;
+//
+//}
 
 
 void defer_dock_application(int_bool bDock)
@@ -515,83 +515,83 @@ void defer_dock_application(int_bool bDock)
 
 }
 
-
-int_bool destroy_window(oswindow w)
-{
-   
-   if(is_null(w))
-   {
-      
-      return false;
-      
-   }
-   
-   if(is_null(w->m_pimpl))
-   {
-      
-      return false;
-      
-   }
-   
-   w->m_pimpl->set_destroying();
-   
-   if(!w->m_pimpl->m_bDestroyImplOnly)
-   {
-      
-      w->m_pimpl->m_puserinteraction->post_message(e_message_destroy);
-      
-      w->m_pimpl->m_puserinteraction->post_message(e_message_ncdestroy);
-      
-   }
-   else
-   {
-   
-      ns_main_async(^()
-      {
-
-         w->m_pimpl->call_message_handler(e_message_destroy, 0, 0);
-                      
-         w->m_pimpl->call_message_handler(e_message_ncdestroy, 0, 0);
-                   
-      });
-      
-   }
-
-   return 1;
-
-}
-
-
-bool oswindow_data::is_null() const
-{
-
-   return ::is_null(this);
-
-}
-
-
-
 //
-//  c_os_cross_win_user.cpp
-//  c
+//int_bool destroy_window(oswindow w)
+//{
 //
-//  Created by Snow Leopard User on 06/11/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//   if(is_null(w))
+//   {
 //
-#include "framework.h"
-
+//      return false;
+//
+//   }
+//
+//   if(is_null(w->m_pimpl))
+//   {
+//
+//      return false;
+//
+//   }
+//
+//   w->m_pimpl->set_destroying();
+//
+//   if(!w->m_pimpl->m_bDestroyImplOnly)
+//   {
+//
+//      w->m_pimpl->m_puserinteraction->post_message(e_message_destroy);
+//
+//      w->m_pimpl->m_puserinteraction->post_message(e_message_ncdestroy);
+//
+//   }
+//   else
+//   {
+//
+//      ns_main_async(^()
+//      {
+//
+//         w->m_pimpl->call_message_handler(e_message_destroy, 0, 0);
+//
+//         w->m_pimpl->call_message_handler(e_message_ncdestroy, 0, 0);
+//
+//      });
+//
+//   }
+//
+//   return 1;
+//
+//}
+//
+//
+//bool oswindow_data::is_null() const
+//{
+//
+//   return ::is_null(this);
+//
+//}
+//
+//
+//
+////
+////  c_os_cross_win_user.cpp
+////  c
+////
+////  Created by Snow Leopard User on 06/11/2011.
+////  Copyright 2011 __MyCompanyName__. All rights reserved.
+////
+//#include "framework.h"
+//
 
 #include <Carbon/Carbon.h>
 #include <CoreFoundation/CoreFoundation.h>
 
-
-int_bool set_need_redraw(oswindow hWnd, const RECTANGLE_I32 * pcrect, HRGN hrgnUpdate, ::u32 flags)
-{
-
-   return true;
-
-}
-
+//
+//int_bool set_need_redraw(oswindow hWnd, const RECTANGLE_I32 * pcrect, HRGN hrgnUpdate, ::u32 flags)
+//{
+//
+//   return true;
+//
+//}
+//
 
 const char * mm_keyboard_input_source();
 
@@ -637,32 +637,32 @@ CLASS_DECL_AURA ::user::interaction_impl * oswindow_get(oswindow oswindow)
 
 void mm_init_workspace_rect();
 
-int_bool os_init_windowing()
-{
-
-//   set_TranslateMessage(&axis_TranslateMessage);
-   
-//   set_DispatchMessage(&axis_DispatchMessage);
-   
-   g_pmutexOsWindowData = new ::mutex();
-         
-   g_poswindowdataptra = new oswindow_dataptra;
-   
-   mm_init_workspace_rect();
-   
-   return true;
-
-}
-
-
-void os_term_windowing()
-{
-
-   ::acme::del(g_poswindowdataptra);
-
-   ::acme::del(g_pmutexOsWindowData);
-
-}
+//int_bool os_init_windowing()
+//{
+//
+////   set_TranslateMessage(&axis_TranslateMessage);
+//
+////   set_DispatchMessage(&axis_DispatchMessage);
+//
+//   g_pmutexOsWindowData = new ::mutex();
+//
+//   g_poswindowdataptra = new oswindow_dataptra;
+//
+//   mm_init_workspace_rect();
+//
+//   return true;
+//
+//}
+//
+//
+//void os_term_windowing()
+//{
+//
+//   ::acme::del(g_poswindowdataptra);
+//
+//   ::acme::del(g_pmutexOsWindowData);
+//
+//}
 
 
 // front first
@@ -728,23 +728,23 @@ rectangle_i32_array cg_get_window_rect_list_above(CGWindowID windowid)
       if(dictRect)
       {
 
-      CGRect rectangle_i32= {};
+         CGRect rect = {};
       
-      CGRectMakeWithDictionaryRepresentation(dictRect, &rectangle);
+         CGRectMakeWithDictionaryRepresentation(dictRect, &rect);
 
-      if(rectangle.size.width > 0 && rectangle.size.height > 0)
-      {
+         if(rect.size.width > 0 && rect.size.height > 0)
+         {
 
-         ::rectangle_i32 rectCopy;
+            ::rectangle_i32 rectCopy;
 
-         rectCopy.left = rectangle.origin.x;
-         rectCopy.top = rMainScreen.height() - (rectangle.origin.y + rectangle.size.height);
-         rectCopy.bottom = rectCopy.top + rectangle.size.height;
-         rectCopy.right = rectangle.origin.x + rectangle.size.width;
+            rectCopy.left = rect.origin.x;
+            rectCopy.top = rMainScreen.height() - (rect.origin.y + rect.size.height);
+            rectCopy.bottom = rectCopy.top + rect.size.height;
+            rectCopy.right = rect.origin.x + rect.size.width;
 
-         recta.add(rectCopy);
+            recta.add(rectCopy);
 
-      }
+         }
          
          CFRelease(dictRect);
          
@@ -795,6 +795,7 @@ string MYCFStringCopyUTF8String(CFStringRef aString)
 #undef FUNCTION_TRACE
 
 
+
 rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
 {
    
@@ -824,7 +825,7 @@ rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
    
    long c = CFArrayGetCount(windowa);
    
-   CGWindowID windowidTopic = -1;
+   //CGWindowID windowidTopic = -1;
    
    string strName;
    
@@ -983,41 +984,41 @@ rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
       if(dictRect)
       {
          
-         CGRect rectangle_i32= {};
+         CGRect rect= {};
    
-         CGRectMakeWithDictionaryRepresentation(dictRect, &rectangle);
+         CGRectMakeWithDictionaryRepresentation(dictRect, &rect);
       
 #ifdef FUNCTION_TRACE
          
          FUNCTION_TRACE("  %5.0f,%5.0f - %5.0f,%5.0f  ",
-              rectangle.origin.x,
-              rectangle.origin.y,
-              rectangle.size.width,
-              rectangle.size.height);
+              rect.origin.x,
+              rect.origin.y,
+              rect.size.width,
+              rect.size.height);
          
 #endif
 
-         if(rectangle.size.width > 0 && rectangle.size.height > 0)
+         if(rect.size.width > 0 && rect.size.height > 0)
          {
             
             if(iWindowId == windowid)
             {
                
-               rect1 = rectangle;
+               rect1 = rect;
                
             }
             else if(bFound)
             {
             
-               if(CGRectIntersectsRect(rect1, rectangle))
+               if(CGRectIntersectsRect(rect1, rect))
                {
 
                   ::rectangle_i32 rectCopy;
 
-                  rectCopy.left = rectangle.origin.x;
-                  rectCopy.right = rectangle.origin.x + rectangle.size.width;
-                  rectCopy.top = rectangle.origin.y;
-                  rectCopy.bottom = rectangle.origin.y + rectangle.size.height;
+                  rectCopy.left = rect.origin.x;
+                  rectCopy.right = rect.origin.x + rect.size.width;
+                  rectCopy.top = rect.origin.y;
+                  rectCopy.bottom = rect.origin.y + rect.size.height;
 
                   recta.add(rectCopy);
 
@@ -1067,7 +1068,7 @@ end1:
 void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > & windowida)
 {
 
-   bool bFound = false;
+   //bool bFound = false;
 
 #ifdef FUNCTION_TRACE
    
@@ -1083,7 +1084,7 @@ void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > &
    
    long c = CFArrayGetCount(windowa);
    
-   CGRect rect1={};
+   //CGRect rect1={};
    
    //rectangle_i32 rMainScreen;
 
@@ -1218,9 +1219,9 @@ void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > &
       if(dictRect)
       {
          
-         CGRect rectangle_i32= {};
+         CGRect rect= {};
          
-         CGRectMakeWithDictionaryRepresentation(dictRect, &rectangle);
+         CGRectMakeWithDictionaryRepresentation(dictRect, &rect);
          
          ::rectangle_i32 rectCopy;
          
@@ -1229,10 +1230,10 @@ void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > &
          //rectCopy.bottom = rectCopy.top + rectangle.size.height;
          //rectCopy.right = rectangle.origin.x + rectangle.size.width;
 
-         rectCopy.left = rectangle.origin.x;
-         rectCopy.right = rectangle.origin.x + rectangle.size.width;
-         rectCopy.top = rectangle.origin.y;
-         rectCopy.bottom = rectangle.origin.y + rectangle.size.height;
+         rectCopy.left = rect.origin.x;
+         rectCopy.right = rect.origin.x + rect.size.width;
+         rectCopy.top = rect.origin.y;
+         rectCopy.bottom = rect.origin.y + rect.size.height;
 
          recta.add(rectCopy);
          windowida.add(iWindowId);
@@ -1270,7 +1271,18 @@ end1:;
 
 
 
-CGWindowID get_os_window_window_number(oswindow oswindow);
+CGWindowID get_os_window_window_number(oswindow oswindow)
+{
+   
+   auto pwindow = (::windowing_macos::window *) oswindow->m_pWindow2;
+   
+   auto pnswindow = pwindow->m_pnswindow;
+   
+   auto windowId = ns_get_window_id(pnswindow);
+   
+   return windowId;
+   
+}
 
 int_bool is_window_occluded(oswindow oswindow)
 {
@@ -1351,13 +1363,7 @@ int_bool point_is_window_origin(POINT_I32 pointHitTest, oswindow oswindowExclude
 
       auto rectangle = recta[i];
 
-      ::rectangle_i32 rectHitTest;
-      
-      rectHitTest.set(rectangle.origin(), ::size());
-      
-      rectHitTest.inflate(iMargin+1);
-      
-      if(rectHitTest.contains(pointHitTest))
+      if(rectangle.contains(pointHitTest))
       {
          
          return true;

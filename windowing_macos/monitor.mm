@@ -42,3 +42,13 @@ void ns_workspace_cgrect(int i, CGRect * p)
 
 
 
+
+
+void ns_main_monitor_cgrect(CGRect * p)
+{
+
+   auto pscreen = [NSScreen mainScreen];
+
+   *p =[pscreen frame];
+   
+}
