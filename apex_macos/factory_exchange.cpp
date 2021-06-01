@@ -33,6 +33,12 @@ void apex_macos_factory_exchange(::factory_map * pfactorymap)
    pfactorymap->create_factory < ::macos::dir_system, ::dir_system > ();
 
    pfactorymap->create_factory < ::macos::os_context, ::os_context > ();
+   
+   pfactorymap->create_factory < ::macos::interprocess_communication_base, ::interprocess_communication::base >();
+   pfactorymap->create_factory < ::macos::interprocess_communication_rx, ::interprocess_communication::rx >();
+   pfactorymap->create_factory < ::macos::interprocess_communication_tx, ::interprocess_communication::tx >();
+//   pfactorymap->create_factory < ::macos::launcher, ::launcher > ();
+//   pfactorymap->create_factory < ::macos::shell_launcher, ::shell_launcher > ();
 
 
 }

@@ -44,6 +44,9 @@ CGWindowID ns_get_window_id(void * pnswindow);
 #include "window.h"
 
 
+#include "copydesk.h"
+
+
 #include "windowing.h"
 
 

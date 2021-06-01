@@ -1,11 +1,9 @@
 #include "framework.h"
-#include "_macos.h"
-#include "copydesk.h"
 
 
-bool mm_clipboard_has_changed(long & lTicket);
+bool macos_clipboard_has_changed(long & lTicket);
 
-long mm_clipboard_init();
+long macos_clipboard_init();
 
 dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, dispatch_block_t block)
 {
@@ -30,20 +28,23 @@ string macos_clipboard_get_plain_text();
 
 void macos_clipboard_set_plain_text(const char * pszPlainText);
 
-void * mm_clipboard_get_image(int & cx, int & cy, int & iScan);
+void * macos_clipboard_get_image(int & cx, int & cy, int & iScan);
 
-bool mm_clipboard_has_image();
+bool macos_clipboard_set_image(const void * pdata, int cx, int cy, int scan);
 
-bool mm_clipboard_has_plain_text();
+bool macos_clipboard_has_image();
 
-namespace macos
+bool macos_clipboard_has_plain_text();
+
+
+namespace windowing_macos
 {
 
 
    copydesk::copydesk()
    {
       
-      m_lTicket = mm_clipboard_init();
+      m_lTicket = macos_clipboard_init();
 
       m_bHasFile = false;
 
@@ -58,7 +59,7 @@ namespace macos
       m_ds = CreateDispatchTimer(secondsToFire, queue, ^ { _os_step(); });
 
       
-      ns_main_async(^()
+      ns_main_sync(^()
       {
          _on_os_clipboard_changed();
       });
@@ -83,7 +84,7 @@ namespace macos
    bool copydesk::_os_clipboard_has_changed()
    {
       
-      return mm_clipboard_has_changed(m_lTicket);
+      return macos_clipboard_has_changed(m_lTicket);
       
    }
    
@@ -163,7 +164,7 @@ namespace macos
    {
 
      
-      ::user::copydesk::finalize();
+      auto estatus = ::user::copydesk::finalize();
 
 //      if(window_pointer::is_set() && window_pointer::m_p->is_window())
       //    {
@@ -174,6 +175,14 @@ namespace macos
       //     bOk = false;
       //}
 
+      if(!estatus)
+      {
+       
+         return estatus;
+         
+      }
+      
+      return estatus;
      
    }
 
@@ -201,7 +210,7 @@ namespace macos
    bool copydesk::_os_has_plain_text()
    {
 
-      return mm_clipboard_has_plain_text();
+      return macos_clipboard_has_plain_text();
 
    }
 
@@ -223,7 +232,7 @@ namespace macos
 
       int iScan = 0;
 
-      ::acme::malloc < color32_t * > pcolorref = (color32_t *) mm_clipboard_get_image(w, h, iScan);
+      ::acme::malloc < color32_t * > pcolorref = (color32_t *) macos_clipboard_get_image(w, h, iScan);
 
       if(pcolorref == nullptr)
       {
@@ -265,28 +274,18 @@ namespace macos
    bool copydesk::_image_to_desk(const ::image * pimage)
    {
 
-      throw todo();
-//      int w = 0;
-//
-//      int h = 0;
-//
-//      int iScan = 0;
-//
-//      ::aura::malloc < color32_t * > pcolorref = (color32_t *) mm_clipboard_get_image(w, h, iScan);
-//
-//      if(pcolorref == nullptr)
-//      {
-//
-//         return false;
-//
-//      }
-//
-//      if(!::aura::get_system()->imaging()._load_image(pimage, w, h, iScan, pcolorref))
-//      {
-//
-//         return false;
-//
-//      }
+      bool bOk = macos_clipboard_set_image(
+                                        pimage->get_data(),
+                                        pimage->width(),
+                                        pimage->height(),
+                                        pimage->scan_size());
+
+      if(bOk)
+      {
+
+         return false;
+
+      }
 
       return true;
 
@@ -296,7 +295,7 @@ namespace macos
    bool copydesk::_os_has_image()
    {
 
-      return mm_clipboard_has_image();
+      return macos_clipboard_has_image();
 
    }
 
@@ -309,37 +308,75 @@ namespace macos
    }
 
 
-void copydesk::_on_os_clipboard_changed()
-{
+   void copydesk::_on_os_clipboard_changed()
+   {
 
+      m_bHasFile = _os_has_filea();
 
-m_bHasFile = _os_has_filea();
+      m_bHasText = _os_has_plain_text();
 
-m_bHasText = _os_has_plain_text();
+      m_bHasDib = _os_has_image();
 
-m_bHasDib = _os_has_image();
-                 
+   }
 
-
-}
 
    void copydesk::_os_step()
    {
       
       ns_main_async(^()
-                    {
-      if(_os_clipboard_has_changed())
       {
-
-         _on_os_clipboard_changed();
          
-      }
+         if(_os_clipboard_has_changed())
+         {
+
+            _on_os_clipboard_changed();
+            
+         }
                        
       });
 
    }
 
 
-} // namespace macos
+} // namespace windowing_macos
 
+
+
+
+
+char ** macos_clipboard_get_filea(long * pc);
+
+
+void macos_clipboard_get_filea(::file::patha & patha)
+{
+
+   long c = 0;
+
+   try
+   {
+
+      char ** psza = macos_clipboard_get_filea(&c);
+
+      patha.c_add(psza, c, false);
+
+   }
+   catch (...)
+   {
+
+   }
+
+}
+
+
+void macos_clipboard_set_filea(const char ** psza, long c);
+
+
+void macos_clipboard_set_filea(const ::file::patha & patha)
+{
+
+   auto psza = patha.c_ansi_get();
+
+   macos_clipboard_set_filea(psza.get_data(), psza.get_count());
+
+}
 

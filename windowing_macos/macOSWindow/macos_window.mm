@@ -340,15 +340,14 @@ bool macos_window::macos_window_is_key_window() const
       
    }
    
-   bool bKeyWindow = false;
+   __block bool bKeyWindow = false;
    
-   //ns_main_async(^
-     //         {
+   ns_main_sync(^
+   {
                  
-                bKeyWindow =  [m_pmacoswindow isKeyWindow];
+      bKeyWindow =  [m_pmacoswindow isKeyWindow];
                  
-       //       });
-   
+   });
    
    return bKeyWindow;
    

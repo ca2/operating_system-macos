@@ -31,7 +31,6 @@
 		9A941C501FF34F880028686E /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A941C4F1FF34F880028686E /* CoreMIDI.framework */; };
 		9A941C521FF34F9E0028686E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A941C511FF34F9E0028686E /* CoreAudio.framework */; };
 		9AA1B44A176361950019E812 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA1B449176361950019E812 /* Cocoa.framework */; };
-		9AC2D1CE26542FBA00CC8096 /* notify_icon_mm_bridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1BA26542FBA00CC8096 /* notify_icon_mm_bridge.h */; };
 		9AC2D1CF26542FBA00CC8096 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1BB26542FBA00CC8096 /* framework.cpp */; };
 		9AC2D1D026542FBA00CC8096 /* factory_exchange.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1BC26542FBA00CC8096 /* factory_exchange.h */; };
 		9AC2D1D126542FBA00CC8096 /* interaction_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1C026542FBA00CC8096 /* interaction_impl.h */; };
@@ -126,7 +125,6 @@
 		9A941C511FF34F9E0028686E /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		9AA1B449176361950019E812 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9AC2CFB02653DAD200CC8096 /* aura_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = aura_apple.xcodeproj; path = "../../platform-apple/aura_apple/aura_apple.xcodeproj"; sourceTree = "<group>"; };
-		9AC2D1BA26542FBA00CC8096 /* notify_icon_mm_bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notify_icon_mm_bridge.h; sourceTree = "<group>"; };
 		9AC2D1BB26542FBA00CC8096 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9AC2D1BC26542FBA00CC8096 /* factory_exchange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = factory_exchange.h; sourceTree = "<group>"; };
 		9AC2D1C026542FBA00CC8096 /* interaction_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interaction_impl.h; sourceTree = "<group>"; };
@@ -254,7 +252,6 @@
 				9AC2D1C026542FBA00CC8096 /* interaction_impl.h */,
 				9A5D738F2656D1DC00D5C39E /* node.cpp */,
 				9A5D73902656D1DC00D5C39E /* node.h */,
-				9AC2D1BA26542FBA00CC8096 /* notify_icon_mm_bridge.h */,
 				9A07060B2662B1AC004E8CB4 /* image.cpp */,
 			);
 			name = aura_macos;
@@ -293,7 +290,6 @@
 			files = (
 				9AC2D1F426543C7E00CC8096 /* _mm.h in Headers */,
 				9AC2D1D026542FBA00CC8096 /* factory_exchange.h in Headers */,
-				9AC2D1CE26542FBA00CC8096 /* notify_icon_mm_bridge.h in Headers */,
 				9AC2D1D126542FBA00CC8096 /* interaction_impl.h in Headers */,
 				9AC2D1DC265431BD00CC8096 /* _aura_macos.h in Headers */,
 				9AC2D1D426542FBA00CC8096 /* framework.h in Headers */,

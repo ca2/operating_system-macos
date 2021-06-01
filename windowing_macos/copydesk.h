@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace macos
+namespace windowing_macos
 {
 
 
@@ -53,7 +53,7 @@ namespace macos
    };
 
 
-} // namespace macos
+} // namespace windowing_macos
 
 
 

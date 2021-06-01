@@ -1027,48 +1027,48 @@ bool interaction_impl::_is_window() const
 
          pkeyboard->translate_os_key_message(pkey);
 
-         if(pkey->m_ekey != ::user::e_key_refer_to_text_member)
-         {
+//         if(pkey->m_ekey != ::user::e_key_refer_to_text_member)
+//         {
+//
+//            if (pmessage->m_id == e_message_key_down)
+//            {
+//
+//               try
+//               {
+//
+//                  if(psession->is_key_pressed(pkey->m_ekey))
+//                  {
+//
+//                     return;
+//
+//                  }
+//
+//                  psession->set_key_pressed(pkey->m_ekey, true);
+//
+//               }
+//               catch (...)
+//               {
+//
+//               }
+//
+//            }
+//            else if (pmessage->m_id == e_message_key_up)
+//            {
+//
+//               try
+//               {
+//
+//                  psession->set_key_pressed(pkey->m_ekey, false);
+//
+//               }
+//               catch (...)
+//               {
+//
+//               }
+//
+//            }
             
-            if (pmessage->m_id == e_message_key_down)
-            {
-               
-               try
-               {
-                  
-                  if(psession->is_key_pressed(pkey->m_ekey))
-                  {
-
-                     return;
-
-                  }
-                  
-                  psession->set_key_pressed(pkey->m_ekey, true);
-                  
-               }
-               catch (...)
-               {
-                  
-               }
-               
-            }
-            else if (pmessage->m_id == e_message_key_up)
-            {
-               
-               try
-               {
-                  
-                  psession->set_key_pressed(pkey->m_ekey, false);
-                  
-               }
-               catch (...)
-               {
-                  
-               }
-               
-            }
-            
-         }
+//         }
          
       }
 

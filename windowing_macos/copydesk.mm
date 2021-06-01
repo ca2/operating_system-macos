@@ -5,18 +5,17 @@
 //  Created by Camilo Sasuke Tsumanuma on 10/08/17.
 //
 //
+#include "framework.h"
 
-#import <Foundation/Foundation.h>
 
-#undef new
-NSImage * nsimage_from_image_data(void * pdata, int cx, int cy, int scan);
+NSImage * nsimage_from_image_data(const void * pdata, int cx, int cy, int scan);
 
 
 char * ns_string(NSString * str);
 
 static NSPasteboard * g_ppasteboard = nullptr;
 
-bool mm_clipboard_has_changed(long & lTicket)
+bool macos_clipboard_has_changed(long & lTicket)
 {
    
    auto lClipboardChangeCount = [g_ppasteboard changeCount];
@@ -35,7 +34,7 @@ bool mm_clipboard_has_changed(long & lTicket)
 }
 
 
-long mm_clipboard_init()
+long macos_clipboard_init()
 {
    
    if(g_ppasteboard == nullptr)
@@ -52,7 +51,7 @@ long mm_clipboard_init()
 }
 
 
-long mm_clipboard_get_file_count()
+long macos_clipboard_get_file_count()
 {
    
    NSPasteboard * pasteboard = [NSPasteboard generalPasteboard];
@@ -71,7 +70,7 @@ long mm_clipboard_get_file_count()
 }
 
 
-char ** mm_clipboard_get_filea(long * pc)
+char ** macos_clipboard_get_filea(long * pc)
 {
    
    NSPasteboard * pasteboard = [NSPasteboard generalPasteboard];
@@ -112,7 +111,7 @@ char ** mm_clipboard_get_filea(long * pc)
 }
 
 
-void mm_clipboard_set_filea(const char ** psza, long c)
+void macos_clipboard_set_filea(const char ** psza, long c)
 {
    
    NSMutableArray * filea = [NSMutableArray new];
@@ -156,7 +155,7 @@ void mm_clipboard_set_filea(const char ** psza, long c)
 
 
 // https://stackoverflow.com/questions/6167557/get-string-from-nspasteboard
-char * mm_clipboard_get_plain_text()
+char * macos_clipboard_get_plain_text()
 {
    
    NSPasteboard * pasteboard = [NSPasteboard generalPasteboard];
@@ -168,7 +167,7 @@ char * mm_clipboard_get_plain_text()
 }
 
 
-bool mm_clipboard_has_plain_text()
+bool macos_clipboard_has_plain_text()
 {
    
    NSPasteboard * pasteboard = [NSPasteboard generalPasteboard];
@@ -183,7 +182,7 @@ bool mm_clipboard_has_plain_text()
 //https://stackoverflow.com/questions/3655038/how-to-copy-textfield-to-osx-clipboard
 //On OSX
 
-void mm_clipboard_set_plain_text(const char * psz)
+void macos_clipboard_set_plain_text(const char * psz)
 {
    
    NSPasteboard * pasteboard = [NSPasteboard generalPasteboard];
@@ -199,7 +198,7 @@ void mm_clipboard_set_plain_text(const char * psz)
 
 void * ns_image_get_image_data(int & width, int & height, int & iScan, NSImage * pimage);
 
-bool mm_clipboard_has_image()
+bool macos_clipboard_has_image()
 {
    
    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
@@ -216,7 +215,7 @@ bool mm_clipboard_has_image()
 
 
 // http://findnerd.com/list/view/How-to-copy-image-in-NSPasteBoard/756/
-void * mm_clipboard_get_image(int & cx, int & cy, int & iScan)
+void * macos_clipboard_get_image(int & cx, int & cy, int & iScan)
 {
 
    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
@@ -252,7 +251,7 @@ void * mm_clipboard_get_image(int & cx, int & cy, int & iScan)
 }
 
 
-bool mm_clipboard_set_image(void * pdata, int cx, int cy, int scan)
+bool macos_clipboard_set_image(const void * pdata, int cx, int cy, int scan)
 {
    
    NSImage * image = nsimage_from_image_data( pdata, cx, cy, scan);
@@ -269,9 +268,6 @@ bool mm_clipboard_set_image(void * pdata, int cx, int cy, int scan)
    NSArray * objects = [NSArray arrayWithObject:image];
    
    [pasteboard writeObjects: objects];
-
-   
-   [pasteboard release];
 
    return true;
    

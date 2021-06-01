@@ -35,9 +35,9 @@ void windowing_macos_factory_exchange(::factory_map * pfactorymap)
 
    pfactorymap->create_factory < windowing_macos::keyboard, ::windowing::keyboard > ();
 
-   
-}
+   pfactorymap->create_factory < windowing_macos::copydesk, ::user::copydesk > ();
 
+}
 
 
 

@@ -240,9 +240,8 @@ bool mm1_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const cha
 {
    
    return mm2_get_file_image(pcr, cx, cy, iScan, psz);
+
 }
-
-
 
 
 void os_post_quit()

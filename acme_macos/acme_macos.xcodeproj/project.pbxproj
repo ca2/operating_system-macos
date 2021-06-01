@@ -27,6 +27,7 @@
 		9A15A630264B56770080670E /* application.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A61E264B56770080670E /* application.h */; };
 		9A15A631264B56770080670E /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A61F264B56770080670E /* util.cpp */; };
 		9A15A632264B56770080670E /* file.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A620264B56770080670E /* file.h */; };
+		9A6543FE2666F2A400F8A254 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6543FD2666F2A400F8A254 /* image.cpp */; };
 		9A78640E26508C6C0034A0E1 /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78640826508C5A0034A0E1 /* libacme.dylib */; };
 		9A78640F26508C6C0034A0E1 /* libacme_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78640D26508C5A0034A0E1 /* libacme_posix.dylib */; };
 		9A78641026508C720034A0E1 /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5DC264B54CB0080670E /* libacme_apple.dylib */; };
@@ -122,6 +123,7 @@
 		9A15A61E264B56770080670E /* application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = application.h; sourceTree = "<group>"; };
 		9A15A61F264B56770080670E /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
 		9A15A620264B56770080670E /* file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file.h; sourceTree = "<group>"; };
+		9A6543FD2666F2A400F8A254 /* image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
 		9A78630A2650483C0034A0E1 /* libacme.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A78630C2650483C0034A0E1 /* libacme_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7863FB26508C5A0034A0E1 /* acme.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme.xcodeproj; path = /Users/camilo/solution/basis/source/app/acme/acme.xcodeproj; sourceTree = "<absolute>"; };
@@ -202,6 +204,7 @@
 				9A15A620264B56770080670E /* file.h */,
 				9A0C178E264A2F4200B5CC33 /* framework.cpp */,
 				9A0C1790264A2F5000B5CC33 /* framework.h */,
+				9A6543FD2666F2A400F8A254 /* image.cpp */,
 				9A0705FF266275B4004E8CB4 /* image.mm */,
 				9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */,
 				9A15A61D264B56760080670E /* main.cpp */,
@@ -403,6 +406,7 @@
 				9AC2CB3D26531C6200CC8096 /* list_serial_ports.cpp in Sources */,
 				9A15A631264B56770080670E /* util.cpp in Sources */,
 				9A15A62C264B56770080670E /* thread.cpp in Sources */,
+				9A6543FE2666F2A400F8A254 /* image.cpp in Sources */,
 				9A15A626264B56770080670E /* stdio_file.cpp in Sources */,
 				9A15A629264B56770080670E /* trace.cpp in Sources */,
 				9A15A624264B56770080670E /* factory_exchange.cpp in Sources */,

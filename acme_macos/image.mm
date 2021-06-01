@@ -7,6 +7,10 @@
 #import <AppKit/AppKit.h>
 
 
+void * cg_image_get_image_data(int & width, int & height, int & iScan, CGImageRef image);
+
+
+
 NSImage * nsimage_from_cgimageref(CGImageRef image, int cx, int cy)
 {
    
@@ -17,6 +21,44 @@ NSImage * nsimage_from_cgimageref(CGImageRef image, int cx, int cy)
    sz.height = cy;
    
    return [[NSImage alloc] initWithCGImage:image size:sz];
+   
+}
+
+
+NSImage * nsimage_from_image_data(const void * pdata, int cx, int cy, int scan)
+{
+
+   NSBitmapImageRep * imageRep = [ NSBitmapImageRep alloc] ;
+  
+   [imageRep initWithBitmapDataPlanes: (unsigned char *_Nullable *_Nullable) pdata
+          pixelsWide:cx
+         pixelsHigh:cy                                  bitsPerSample:8
+            samplesPerPixel:4
+            hasAlpha:TRUE
+               isPlanar: FALSE
+               colorSpaceName:NSDeviceRGBColorSpace
+               bitmapFormat:0
+                                       bytesPerRow:scan
+                                      bitsPerPixel:32] ;
+
+   NSSize imageSize = NSMakeSize(cx, cy);
+
+   NSImage * image = [[NSImage alloc] initWithSize:imageSize];
+   
+   [image addRepresentation:imageRep];
+
+   return image;
+
+}
+
+
+
+void * ns_image_get_image_data(int & width, int & height, int & iScan, NSImage * image)
+{
+   
+   CGImageRef inputCGImage = [image CGImageForProposedRect:NULL context:NULL hints:NULL];
+   
+   return cg_image_get_image_data(width, height, iScan, inputCGImage);
    
 }
 
