@@ -47,6 +47,8 @@ namespace windowing_macos
       ::windowing::window * get_keyboard_focus(::thread *) override;
 
       
+      void get_cursor_position(POINT_I32 * ppoint) override;
+      
    };
       
 

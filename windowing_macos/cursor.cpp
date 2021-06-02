@@ -109,3 +109,24 @@ namespace windowing_macos
 
 
 
+
+
+bool macos_get_cursor_position(POINT_I32 * ppointCursor)
+{
+ 
+   HIPoint point;
+ 
+   HICoordinateSpace space = kHICoordSpaceScreenPixel;
+ 
+   HIGetMousePosition(space, nullptr, &point);
+ 
+ 
+   ppointCursor->x = point.x;
+ 
+   ppointCursor->y = point.y;
+ 
+ 
+ 
+   return TRUE;
+ 
+}

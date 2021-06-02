@@ -27,7 +27,7 @@ namespace FileSystemEvents
       
       auto pwatcher = (watcher *) m_pwatcher->m_pThis;
       
-      pwatcher->post_predicate(__routine([&]()
+      fork(__routine([&]()
       {
 
          CFStringRef mypath = CFStringCreateWithCString(kCFAllocatorDefault, pathFolder, kCFStringEncodingUTF8);
@@ -52,7 +52,7 @@ namespace FileSystemEvents
          
          /* Create the stream, passing in a callback */
          
-         m_stream = FSEventStreamCreate(nullptr,
+         auto stream = FSEventStreamCreate(nullptr,
                                        &myCallbackFunction,
                                        &context,
                                        pathsToWatch,
@@ -61,10 +61,17 @@ namespace FileSystemEvents
                                        kFSEventStreamCreateFlagFileEvents /* Flags explained in object */
                                        );
          
-         FSEventStreamScheduleWithRunLoop(m_stream, CFRunLoopGetCurrent(), kCFRunLoopCommonModes);
+         FSEventStreamScheduleWithRunLoop(stream, CFRunLoopGetCurrent(), kCFRunLoopCommonModes);
          
-         FSEventStreamStart(m_stream);
+         FSEventStreamStart(stream);
 
+         while(::task_get_run())
+         {
+            
+            ::sleep(1);
+            
+         }
+         
          CFRelease(mypath);
          
          CFRelease(pathsToWatch);

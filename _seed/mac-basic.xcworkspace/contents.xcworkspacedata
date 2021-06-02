@@ -17,9 +17,6 @@
       location = "group:../../../source/app-core/projection/_app_core_projection.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/desk/_app_core_desk.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:../../../source/app-core/weather/_app_core_weather.xcodeproj">
    </FileRef>
 </Workspace>
