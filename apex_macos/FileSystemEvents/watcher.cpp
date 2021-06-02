@@ -25,7 +25,7 @@ namespace FileSystemEvents
       
       m_stream = nullptr;
       
-      auto pwatcher = (watcher *) m_pwatcher->m_pThis;
+      //auto pwatcher = (watcher *) m_pwatcher->m_pThis;
       
       fork(__routine([&]()
       {
