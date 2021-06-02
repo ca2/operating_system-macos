@@ -754,10 +754,12 @@ namespace acme
       }
       
 
-      void node::ns_launch_app(const char * psz, const char ** argv, int iFlags)
+      ::e_status node::launch_app(const char * psz, const char ** argv, int iFlags)
       {
          
          ::ns_launch_app(psz, argv, iFlags);
+         
+         return ::success;
          
       }
 
@@ -926,16 +928,6 @@ namespace acme
       }
    
       
-      ::e_status node::launch_app(const char * psz, const char ** argv, int iFlags)
-      {
-         
-         __throw(error_interface_only);
-         
-         return error_interface_only;
-         
-      }
-
-
    } // namespace macos
 
 

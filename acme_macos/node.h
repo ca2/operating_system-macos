@@ -98,7 +98,7 @@ namespace acme
 
          ::e_status _launch_macos_app_args(const char * pszAppFolder, const char * pszArgs) override;
 
-         void launch_app(const char * psz, const char ** argv, int iFlags) override;
+         ::e_status launch_app(const char * psz, const char ** argv, int iFlags) override;
          
          
          virtual int _create_process2(const char * _cmd_line, u32 * pprocessId);
