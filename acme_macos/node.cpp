@@ -715,219 +715,228 @@ namespace acme
 
       }
 
-   
-   ::e_status node::_launch_macos_app(const char * pszAppFolder)
-   {
       
-      if (!pszAppFolder)
+      ::e_status node::_launch_macos_app(const char * pszAppFolder)
       {
          
-         return false;
-         
-      }
-      
-      string strCommand;
-      
-      strCommand.Format("open \"%s\"", pszAppFolder);
-      
-      return _launch_command(strCommand);
-      
-   }
-
-
-   ::e_status node::_launch_macos_app_args(const char * pszAppFolder, const char * pszArgs)
-   {
-      
-      if (!pszAppFolder)
-      {
-         
-         return false;
-         
-      }
-      
-      string strCommand;
-      
-      strCommand.Format("open \"%s\" --args %s", pszAppFolder, pszArgs);
-      
-      return _launch_command(strCommand);
-      
-   }
-   
-
-   void node::ns_launch_app(const char * psz, const char ** argv, int iFlags)
-   {
-      
-      ::ns_launch_app(psz, argv, iFlags);
-      
-   }
-
-   
-   int node::_create_process2(const char * _cmd_line, u32 * pprocessId)
-   {
-      char *   exec_path_name;
-      char *   cmd_line;
-
-      cmd_line = (char *) ::malloc(strlen(_cmd_line ) + 1 );
-
-      if(cmd_line == nullptr)
-         return 0;
-
-      ansi_copy(cmd_line, _cmd_line);
-
-      if((*pprocessId = ::fork()) == 0)
-      {
-         // child
-         const char      *pArg, *pPtr;
-         const char      *argv[1024 + 1];
-         int       argc;
-         exec_path_name = cmd_line;
-         if( ( pArg = ansi_find_char_reverse( exec_path_name, '/' ) ) != nullptr )
-            pArg++;
-         else
-            pArg = exec_path_name;
-         argv[0] = pArg;
-         argc = 1;
-
-         if( cmd_line != nullptr && *cmd_line != '\0' )
+         if (!pszAppFolder)
          {
-            pArg = strtok_r(cmd_line, " ", (char **) &pPtr);
-            while( pArg != nullptr )
-            {
-               argv[argc] = pArg;
-               argc++;
-               if( argc >= 1024 )
-                  break;
-               pArg = strtok_r(nullptr, " ", (char **) &pPtr);
-            }
+            
+            return false;
+            
          }
-         argv[argc] = nullptr;
-
-         execv(exec_path_name, (char * const *) argv);
-         free(cmd_line);
-         exit( -1 );
+         
+         string strCommand;
+         
+         strCommand.Format("open \"%s\"", pszAppFolder);
+         
+         return _launch_command(strCommand);
+         
       }
-      else if(*pprocessId == -1)
+
+
+      ::e_status node::_launch_macos_app_args(const char * pszAppFolder, const char * pszArgs)
       {
-         // in parent, but error
-         *pprocessId = 0;
-         free(cmd_line);
-         return 0;
+         
+         if (!pszAppFolder)
+         {
+            
+            return false;
+            
+         }
+         
+         string strCommand;
+         
+         strCommand.Format("open \"%s\" --args %s", pszAppFolder, pszArgs);
+         
+         return _launch_command(strCommand);
+         
       }
-      // in parent, success
-      return 1;
-   }
+      
+
+      void node::ns_launch_app(const char * psz, const char ** argv, int iFlags)
+      {
+         
+         ::ns_launch_app(psz, argv, iFlags);
+         
+      }
+
+      
+      int node::_create_process2(const char * _cmd_line, u32 * pprocessId)
+      {
+         char *   exec_path_name;
+         char *   cmd_line;
+
+         cmd_line = (char *) ::malloc(strlen(_cmd_line ) + 1 );
+
+         if(cmd_line == nullptr)
+            return 0;
+
+         ansi_copy(cmd_line, _cmd_line);
+
+         if((*pprocessId = ::fork()) == 0)
+         {
+            // child
+            const char      *pArg, *pPtr;
+            const char      *argv[1024 + 1];
+            int       argc;
+            exec_path_name = cmd_line;
+            if( ( pArg = ansi_find_char_reverse( exec_path_name, '/' ) ) != nullptr )
+               pArg++;
+            else
+               pArg = exec_path_name;
+            argv[0] = pArg;
+            argc = 1;
+
+            if( cmd_line != nullptr && *cmd_line != '\0' )
+            {
+               pArg = strtok_r(cmd_line, " ", (char **) &pPtr);
+               while( pArg != nullptr )
+               {
+                  argv[argc] = pArg;
+                  argc++;
+                  if( argc >= 1024 )
+                     break;
+                  pArg = strtok_r(nullptr, " ", (char **) &pPtr);
+               }
+            }
+            argv[argc] = nullptr;
+
+            execv(exec_path_name, (char * const *) argv);
+            free(cmd_line);
+            exit( -1 );
+         }
+         else if(*pprocessId == -1)
+         {
+            // in parent, but error
+            *pprocessId = 0;
+            free(cmd_line);
+            return 0;
+         }
+         // in parent, success
+         return 1;
+      }
 
 
-   bool node::process_modules(string_array& stra, u32 processID)
-   {
+      bool node::process_modules(string_array& stra, u32 processID)
+      {
 
-      __throw(error_interface_only);
+         __throw(error_interface_only);
 
-      return false;
+         return false;
 
-   }
-
-
-   bool node::load_modules_diff(string_array& straOld, string_array& straNew, const char* pszExceptDir)
-   {
-
-      __throw(error_interface_only);
-
-      return false;
-
-   }
+      }
 
 
-//   id_array node::get_pids()
-//   {
-//
-//      return ::get_pids();
-//
-//   }
+      bool node::load_modules_diff(string_array& straOld, string_array& straNew, const char* pszExceptDir)
+      {
+
+         __throw(error_interface_only);
+
+         return false;
+
+      }
 
 
-//   id_array node::module_path_get_pid(const char* pszModulePath, bool bModuleNameIsPropertyFormatted)
-//   {
-//
-//      return ::module_path_get_pid(pszModulePath, bModuleNameisPropertyFormatted);
-//
-//   }
-
-//
-//   string node::module_path_from_pid(u32 pid)
-//   {
-//
-//      return "";
-//
-//   }
+   //   id_array node::get_pids()
+   //   {
+   //
+   //      return ::get_pids();
+   //
+   //   }
 
 
-   bool node::is_shared_library_busy(u32 processid, const string_array& stra)
-   {
+   //   id_array node::module_path_get_pid(const char* pszModulePath, bool bModuleNameIsPropertyFormatted)
+   //   {
+   //
+   //      return ::module_path_get_pid(pszModulePath, bModuleNameisPropertyFormatted);
+   //
+   //   }
 
-      __throw(error_interface_only);
-
-      return false;
-
-   }
-
-
-   bool node::is_shared_library_busy(const string_array& stra)
-   {
-
-      __throw(error_interface_only);
-
-      return false;
-
-   }
+   //
+   //   string node::module_path_from_pid(u32 pid)
+   //   {
+   //
+   //      return "";
+   //
+   //   }
 
 
-   bool node::process_contains_module(string& strImage, ::u32 processID, const char* pszLibrary)
-   {
+      bool node::is_shared_library_busy(u32 processid, const string_array& stra)
+      {
 
-      __throw(error_interface_only);
+         __throw(error_interface_only);
 
-      return false;
+         return false;
 
-   }
-
-
-   void node::shared_library_process(dword_array& dwa, string_array& straProcesses, const char* pszLibrary)
-   {
-
-      __throw(error_interface_only);
-
-   }
+      }
 
 
-//   int_bool node::is_process_running(::u32 pid)
-//   {
-//
-//      __throw(error_interface_only);
-//
-//      return false;
-//
-//   }
+      bool node::is_shared_library_busy(const string_array& stra)
+      {
+
+         __throw(error_interface_only);
+
+         return false;
+
+      }
 
 
-   string node::get_environment_variable(const char* pszEnvironmentVariable)
-   {
+      bool node::process_contains_module(string& strImage, ::u32 processID, const char* pszLibrary)
+      {
 
-      return "";
+         __throw(error_interface_only);
 
-   }
+         return false;
+
+      }
 
 
-   string node::expand_env(string str)
-   {
+      void node::shared_library_process(dword_array& dwa, string_array& straProcesses, const char* pszLibrary)
+      {
 
-      return "";
+         __throw(error_interface_only);
 
-   }
+      }
+
+
+   //   int_bool node::is_process_running(::u32 pid)
+   //   {
+   //
+   //      __throw(error_interface_only);
+   //
+   //      return false;
+   //
+   //   }
+
+
+      string node::get_environment_variable(const char* pszEnvironmentVariable)
+      {
+
+         return "";
+
+      }
+
+
+      string node::expand_env(string str)
+      {
+
+         return "";
+
+      }
+   
+      
+      ::e_status node::launch_app(const char * psz, const char ** argv, int iFlags)
+      {
+         
+         __throw(error_interface_only);
+         
+         return error_interface_only;
+         
+      }
 
 
    } // namespace macos
-
 
 
 } // namespace acme
