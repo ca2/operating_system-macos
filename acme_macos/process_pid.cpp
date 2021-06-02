@@ -328,15 +328,33 @@ namespace acme
          /*
           * Search for the given process name and return its pid.
           */
-
+      
+      string strName = ::file::path(pszModulePath).name();
+      id_array ida2;
          for (i = 0; i < iNumProcs; i++)
          {
-            auto pid = sProcesses[i].kp_proc.p_pid;
-            if( ansi_count_compare(pszModulePath, sProcesses[i].kp_proc.p_comm, MAXCOMLEN) == 0 )
+            auto processPath = sProcesses[i].kp_proc.p_comm;
+            if( ansi_count_compare(strName, processPath, MAXCOMLEN) == 0 )
             {
-               ida.add(pid);
+               auto pid = sProcesses[i].kp_proc.p_pid;
+               ida2.add(pid);
             }
          }
+      
+         for(auto & processId : ida2)
+         {
+          
+            auto strPath = module_path_from_pid((::u32) processId);
+            
+            if(strPath == pszModulePath)
+            {
+             
+               ida.add(processId);
+               
+            }
+         
+         }
+
 
          /*
           * Clean up and return -1 because the given proc name was not found

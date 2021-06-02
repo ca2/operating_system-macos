@@ -37,6 +37,16 @@ namespace apex
 
       }
 
+   
+      string node::app_id_to_executable_name(const string & strAppId)
+      {
+         
+         string strName = app_id_to_app_name(strAppId);
+
+         return "_" + strName;
+
+      }
+
 
    } // namespace macos
 

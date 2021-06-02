@@ -27,6 +27,9 @@ namespace apex
          node();
          virtual ~node();
 
+         
+         string app_id_to_executable_name(const string & strAppId) override;
+
 
       };
 
