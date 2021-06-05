@@ -2,30 +2,24 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../third/_group/group_third.xcodeproj">
+      location = "group:../../../source/app-core/audioaura/_app_core_audioaura.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app/_group/group_app.xcodeproj">
+      location = "group:../../../source/app-core/auraclick/_app_core_auraclick.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app-core/_group/group_audio.xcodeproj">
+      location = "group:../../../source/app-core/auratype/_app_core_auratype.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app-core/audioaura/audioaura.xcodeproj">
+      location = "group:../../../source/app-core/chronometer/_app_core_chronometer.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app-core/auraclick/auraclick.xcodeproj">
+      location = "group:../../../source/app-core/clockverse/_app_core_clockverse.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app-core/auratype/auratype.xcodeproj">
+      location = "group:../../../source/app-core/timer/_app_core_timer.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app-core/chronometer/chronometer.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/clockverse/clockverse.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/timer/timer.xcodeproj">
+      location = "group:../../../source/app-core/todo/_app_core_todo.xcodeproj">
    </FileRef>
 </Workspace>

@@ -28,9 +28,7 @@ NSImage * nsimage_from_cgimageref(CGImageRef image, int cx, int cy)
 NSImage * nsimage_from_image_data(const void * pdata, int cx, int cy, int scan)
 {
 
-   NSBitmapImageRep * imageRep = [ NSBitmapImageRep alloc] ;
-  
-   [imageRep initWithBitmapDataPlanes: (unsigned char *_Nullable *_Nullable) pdata
+   NSBitmapImageRep * imageRep = [[ NSBitmapImageRep alloc] initWithBitmapDataPlanes: (unsigned char *_Nullable *_Nullable) pdata
           pixelsWide:cx
          pixelsHigh:cy                                  bitsPerSample:8
             samplesPerPixel:4

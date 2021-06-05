@@ -1019,7 +1019,7 @@ bool interaction_impl::_is_window() const
 
          __pointer(::message::key) pkey(pmessage);
          
-         auto psession = get_session()->m_paurasession;
+         //auto psession = get_session()->m_paurasession;
          
          auto pwindowing = m_pwindowing;
          

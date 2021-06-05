@@ -337,6 +337,18 @@ void window::install_message_routing(channel * pchannel)
    }
 
 
+   ::e_status window::set_tool_window(bool bSet)
+   {
+      
+      auto pwindowing = (::windowing_macos::windowing *) m_pwindowing->m_pWindowing2;
+      
+      pwindowing->_defer_dock_application(!bSet);
+
+      return ::success;
+      
+   }
+
+
    ::e_status window::set_foreground_window()
    {
       

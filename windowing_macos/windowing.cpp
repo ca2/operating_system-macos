@@ -246,6 +246,41 @@ namespace windowing_macos
    }
 
 
+   void windowing::_defer_dock_application(int_bool bDock)
+   {
+
+      if (bDock)
+      {
+   
+         //if (!nsapp_activation_policy_is_regular())
+         {
+   
+            nsapp_activation_policy_regular();
+            //hide icon on Dock
+            ProcessSerialNumber psn = { 0, kCurrentProcess };
+            TransformProcessType(&psn, kProcessTransformToForegroundApplication);
+         }
+   
+      }
+      else
+      {
+   
+         //if (!nsapp_activation_policy_is_accessory())
+         {
+   
+            nsapp_activation_policy_accessory();
+   
+            //hide icon on Dock
+            ProcessSerialNumber psn = { 0, kCurrentProcess };
+            TransformProcessType(&psn, kProcessTransformToUIElementApplication);
+   
+         }
+   
+      }
+
+   }
+
+
 } // namespace windowing_macos
 
 

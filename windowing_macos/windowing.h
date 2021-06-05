@@ -49,6 +49,8 @@ namespace windowing_macos
       
       void get_cursor_position(POINT_I32 * ppoint) override;
       
+      void _defer_dock_application(int_bool bDock);
+      
    };
       
 

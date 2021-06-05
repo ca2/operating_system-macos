@@ -57,6 +57,8 @@ namespace windowing_macos
       
       ::e_status set_foreground_window() override;
       
+      ::e_status set_tool_window(bool bSet) override;
+      
       bool is_active_window() const override;
       
       bool has_keyboard_focus() const override;

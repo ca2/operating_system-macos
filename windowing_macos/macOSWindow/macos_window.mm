@@ -553,7 +553,13 @@ CGWindowID ns_get_window_id(void * pNSWindow)
    
    NSWindow * pnswindow = (__bridge NSWindow *) pNSWindow;
    
-   auto windowid = (CGWindowID)[pnswindow windowNumber];
+   __block CGWindowID windowid = 0;
+   
+   ns_main_sync(^{
+   
+   windowid = (CGWindowID)[pnswindow windowNumber];
+      
+   });
    
    return windowid;
    

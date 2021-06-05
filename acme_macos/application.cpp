@@ -279,27 +279,6 @@ namespace acme
 //
 //   }
 
-//   string application::multimedia_audio_get_default_library_name()
-//   {
-//
-//      return "audio_core_audio";
-//
-//   }
-
-//   string application::multimedia_audio_mixer_get_default_library_name()
-//   {
-//
-//      return "audio_mixer_core_audio";
-//
-//   }
-//   string application::veriwell_multimedia_music_midi_get_default_library_name()
-//   {
-//
-//      return "music_midi_core_midi";
-//
-//   }
-
-
 //   void application::show_wait_cursor(bool bShow)
 //   {
 //
