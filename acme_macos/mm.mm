@@ -76,7 +76,7 @@ bool ns_open_file(const char * psz)
       
    }
    
-   NSURL * url = [[NSURL alloc] initWithString:path];
+   NSURL * url = [[NSURL alloc] initFileURLWithPath:path];
    
    if(![[NSWorkspace sharedWorkspace] openURL: url])
    {

@@ -7,6 +7,27 @@
 #include <sys/stat.h>
 #endif
 
+
+void ns_fork(const ::routine & routine)
+{
+   
+   __block auto routineHold = routine;
+   
+   routineHold.m_p->add_ref();
+ 
+   ns_main_async(^
+                 {
+      
+      routineHold();
+      
+      routineHold.release();
+      
+   }
+                 );
+   
+}
+
+
 #undef USERNAME_LENGTH // mysql one
 
 bool ns_open_file(const char * );
@@ -1145,13 +1166,20 @@ namespace macos
       auto pcontext = m_pcontext;
 
       path = pcontext->m_papexcontext->defer_process_path(path);
+      
+//      // pretend actually gonna open the file here to trigger
+//      // asking for file access permission
+//
+//      auto psystem = m_psystem->m_papexsystem;
+//
+//      auto preader = psystem->file().get_reader(path);
 
-      ns_main_async(^
+      ns_fork(__routine([path]()
       {
 
          ns_open_file(path.c_str());
 
-      });
+      }));
 
       return true;
 
