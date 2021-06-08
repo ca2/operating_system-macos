@@ -38,7 +38,7 @@ namespace music
 
 
             bool PlayRate(double dRate = 0.0, uint32_t dwEllapse = 584) override;
-            bool Play(imedia_position tkStart, uint32_t dwEllapse = 584) override;
+            bool Play(imedia_time tkStart, uint32_t dwEllapse = 584) override;
 
             virtual bool init_thread() override;
             virtual void term_thread() override;
@@ -56,7 +56,7 @@ namespace music
             uint32_t GetMidiOutDevice() override;
             void PostNotifyEvent(::music::midi::player::e_notify_event eevent) override;
 
-            imedia_position RateToTicks(double dRate) override;
+            imedia_time RateToTicks(double dRate) override;
 
             bool SetTempoShift(int32_t iTempoShift);
 

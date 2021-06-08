@@ -2,15 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../source/app/app/app_app.xcodeproj">
+      location = "group:/Users/camilo/solution/basis/source/app/app/_app_app.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app/just_message_box/app_just_message_box.xcodeproj">
+      location = "group:/Users/camilo/solution/basis/source/app/just_message_box/_app_just_message_box.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app/message_box/app_message_box.xcodeproj">
+      location = "group:/Users/camilo/solution/basis/source/app/message_box/_app_message_box.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app/shader/app_shader.xcodeproj">
+      location = "group:/Users/camilo/solution/basis/source/app/shader/_app_shader.xcodeproj">
    </FileRef>
 </Workspace>

@@ -214,7 +214,7 @@ namespace music
       }
       
       
-      void sequence_thread::Play(imedia_position tkStart)
+      void sequence_thread::Play(imedia_time tkStart)
       {
          
          ASSERT(get_sequence() != NULL);
@@ -242,7 +242,7 @@ namespace music
       }
       
       
-      void sequence_thread::PrerollAndWait(imedia_position tkStart)
+      void sequence_thread::PrerollAndWait(imedia_time tkStart)
       {
          
          ::music::midi::PREROLL                 preroll;
@@ -283,7 +283,7 @@ namespace music
          ::math::math::MaxClip(&dRate, 1.0);
          ::math::math::MinClip(&dRate,  0.0);
          
-         preroll.tkBase = (imedia_position) (int32_t) ((double) get_sequence()->m_tkLength * dRate);
+         preroll.tkBase = (imedia_time) (int32_t) ((double) get_sequence()->m_tkLength * dRate);
          preroll.tkEnd  = get_sequence()->m_tkLength;
          
          get_sequence()->SetMidiOutDevice(m_pplayer->GetMidiOutDevice());
@@ -349,7 +349,7 @@ namespace music
          
 //         snd_seq_event_t * pev = NULL;
          
-         imedia_position pos = 0;
+         imedia_time pos = 0;
          
          pseq->GetPosition(pos);
          

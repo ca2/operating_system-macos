@@ -63,6 +63,13 @@
 			remoteGlobalIDString = 9A0C1695264A2AA700B5CC33;
 			remoteInfo = apex_macos;
 		};
+		9A413D54266EDEA500C3FF0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A64C0FF26604FB50074030F /* apex_macos.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A0C1695264A2AA700B5CC33;
+			remoteInfo = apex_macos;
+		};
 		9A440A6C2654E36C000C490B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AC2CFB02653DAD200CC8096 /* aura_apple.xcodeproj */;
@@ -230,6 +237,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9A413D51266EDEA500C3FF0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A413D55266EDEA500C3FF0E /* libapex_macos.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9AC2CFB12653DAD200CC8096 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +399,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 9A413D51266EDEA500C3FF0E /* Products */;
+					ProjectRef = 9A64C0FF26604FB50074030F /* apex_macos.xcodeproj */;
+				},
+				{
 					ProductGroup = 9A41244E266C401B00C3FF0E /* Products */;
 					ProjectRef = 9A41244D266C401B00C3FF0E /* apex_macos.xcodeproj */;
 				},
@@ -407,6 +426,13 @@
 			fileType = "compiled.mach-o.dylib";
 			path = libapex_macos.dylib;
 			remoteRef = 9A412453266C401B00C3FF0E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A413D55266EDEA500C3FF0E /* libapex_macos.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libapex_macos.dylib;
+			remoteRef = 9A413D54266EDEA500C3FF0E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */ = {

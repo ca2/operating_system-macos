@@ -2,24 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:../../third/_group/group_third.xcodeproj">
+      location = "group:../../../source/app-veriwell/waven/_app_veriwell_waven.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:../../app/_group/group_app.xcodeproj">
+      location = "group:../../../source/app-veriwell/verisimplevideo/_app_veriwell_verisimplevideo.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:../../app-core/_group/group_multimedia.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "container:../../app-veriwell/waven/waven.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "container:../../app-veriwell/verisimplevideo/verisimplevideo.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "container:../../app-veriwell/musical_player_lite/musical_player_lite.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "container:../../app-veriwell/musical_player/musical_player.xcodeproj">
+      location = "group:../../../source/app-veriwell/musical_player_lite/_app_veriwell_musical_player_lite.xcodeproj">
    </FileRef>
 </Workspace>

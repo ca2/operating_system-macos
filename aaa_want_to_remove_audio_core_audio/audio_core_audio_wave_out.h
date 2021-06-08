@@ -30,7 +30,7 @@ namespace multimedia
          void install_message_routing(::message::sender * pinterface) override;
 
          virtual imedia_time wave_out_get_position_millis() override;
-         imedia_position wave_out_get_position() override;
+         imedia_time wave_out_get_position() override;
          virtual void wave_out_buffer_ready(index iBuffer) override;
 
          virtual ::multimedia::e_result wave_out_open(::thread * pthreadCallback, ::count iBufferCount, ::count iBufferSampleCount) override;
@@ -42,7 +42,7 @@ namespace multimedia
          virtual void * get_os_data();
          AudioQueueRef wave_out_get_safe_AudioQueueRef();
          
-         ::multimedia::e_result wave_out_start(const imedia_position & position) override;
+         ::multimedia::e_result wave_out_start(const imedia_time & position) override;
          
 
          virtual void wave_out_on_playback_end() override;

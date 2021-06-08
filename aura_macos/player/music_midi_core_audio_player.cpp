@@ -78,7 +78,7 @@ namespace music
             //IGUI_WIN_MSG_LINK(MM_MOM_POSITIONCB, pinterface, this, &player::OnMultimediaMidiOutputMessagePositionCB);
          }
          
-         bool player::Play(imedia_position tkStart, uint32_t dwEllapse)
+         bool player::Play(imedia_time tkStart, uint32_t dwEllapse)
          {
             
             ::music::midi::player::command * pcommand = new ::music::midi::player::command(get_app());
@@ -117,11 +117,11 @@ namespace music
             
          }
          
-         imedia_position player::RateToTicks(double dRate)
+         imedia_time player::RateToTicks(double dRate)
          {
             ASSERT(dRate >= 0.0);
             ASSERT(dRate <= 1.0);
-            return (imedia_position) (int32_t) (get_sequence()->m_tkLength * dRate);
+            return (imedia_time) (int32_t) (get_sequence()->m_tkLength * dRate);
          }
          
          
@@ -359,7 +359,7 @@ namespace music
               link.ModifyFlag(
               ::music::midi::sequence::FlagTempoChange,
               ::music::midi::sequence::FlagNull);
-              imedia_position tk = get_sequence()->GetPositionTicks();
+              imedia_time tk = get_sequence()->GetPositionTicks();
               get_sequence()->m_evMmsgDone.ResetEvent();
               link.m_tkRestart = tk + get_sequence()->m_tkBase;
               //m_bChangingTempo = true;
@@ -369,7 +369,7 @@ namespace music
                
                bool bPlay = IsPlaying();
                
-               imedia_position ticks = 0;
+               imedia_time ticks = 0;
                
                if(bPlay)
                {
@@ -453,7 +453,7 @@ namespace music
             if(get_sequence()->IsPlaying())
             {
                
-               imedia_position tkPosition = 0;
+               imedia_time tkPosition = 0;
                
                get_sequence()->get_position(tkPosition);
                
