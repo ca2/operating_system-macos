@@ -54,7 +54,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "3F49F01B-8EBF-4056-94B5-ADF92392820F - 4064dd06126f94e9"
+                  uuid = "3F49F01B-8EBF-4056-94B5-ADF92392820F - 85198b367dbe262e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -69,7 +69,7 @@
                   offsetFromSymbolStart = "558">
                </Location>
                <Location
-                  uuid = "3F49F01B-8EBF-4056-94B5-ADF92392820F - 4064dd06126f94e9"
+                  uuid = "3F49F01B-8EBF-4056-94B5-ADF92392820F - 85198b367dbe262e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -84,6 +84,22 @@
                   offsetFromSymbolStart = "1007">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CDD9E1B7-FC69-49E7-B592-3EA95B6DF377"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/plain_edit.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2551"
+            endingLineNumber = "2551"
+            landmarkName = "plain_edit::plain_edit_on_calc_layout(pgraphics, iLineUpdate)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

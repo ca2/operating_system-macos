@@ -2,78 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../third/_group/group_third.xcodeproj">
+      location = "group:../../../source/app-core/addressbook/_app_core_addressbook.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app/_group/group_app.xcodeproj">
+      location = "group:../../../source/app-core/hash_hub/_app_core_hash_hub.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app-core/_group/group_foundation.xcodeproj">
+      location = "group:../../../source/app-core/note/_app_core_note.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app-core/addressbook/addressbook.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/verilux/verilux.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/verifile/verifile.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/note/note.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/hash_hub/hash_hub.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../design/text_format/text_format.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/addressbook/app_core_addressbook.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/hash_hub/app_core_hash_hub.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/note/app_core_note.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/verifile/app_core_verifile.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/verilux/app_core_verilux.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/audio/audio.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app/audio_core_audio/audio_core_audio.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "container:../../app-veriwell/audio_decode_libmpg123/audio_decode_libmpg123.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/audio_decode_wave/audio_decode_wave.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "container:../../app/aura/aura.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../design/text_format/design_text_format.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "container:../../app/draw2d_quartz2d/draw2d_quartz2d.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app/experience_core/experience_core.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "container:../../app-core/gcom/gcom.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../app-core/hash_base/hash_base.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "container:../../app-core/multimedia/multimedia.xcodeproj">
+      location = "group:../../../source/app-core/verilux/_app_core_verilux.xcodeproj">
    </FileRef>
 </Workspace>
