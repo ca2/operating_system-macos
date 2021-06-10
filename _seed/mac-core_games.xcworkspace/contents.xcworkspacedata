@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../source/app-core/audioaura/_app_core_audioaura.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:../../../source/game/coincube/_game_coincube.xcodeproj">
    </FileRef>
    <FileRef
