@@ -54,7 +54,7 @@ namespace macos
 
 
 
-      virtual ::file::path appdata() override;
+      virtual ::file::path appdata(const string & strAppId = "") override;
       virtual ::file::path commonappdata_root() override;
       virtual ::file::path commonappdata() override;
 

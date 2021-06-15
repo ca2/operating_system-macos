@@ -1245,14 +1245,16 @@ try1:
 //        return "";
 //    }
 
-   ::file::path dir_context::appdata()
+   ::file::path dir_context::appdata(const string & strAppId)
    {
       
-      auto psystem = m_psystem;
+      return ::dir_context::appdata();
       
-      auto pacmedir = psystem->m_pacmedir;
-      
-      return pacmedir->appdata();
+//      auto psystem = m_psystem;
+//
+//      auto pacmedir = psystem->m_pacmedir;
+//
+//      return pacmedir->appdata();
 
    }
 
