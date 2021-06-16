@@ -15,6 +15,8 @@
 		9A42D7FD2665B61F0011645D /* imm_client.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A42D7F92665B61F0011645D /* imm_client.h */; };
 		9A42D8002665C5860011645D /* keyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A42D7FE2665C5850011645D /* keyboard.h */; };
 		9A42D8012665C5860011645D /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A42D7FF2665C5850011645D /* keyboard.cpp */; };
+		9A46D35726785209000B22D0 /* notify_icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A79BE2826645D9C009E6C44 /* notify_icon.cpp */; };
+		9A46D35826785244000B22D0 /* icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA80242266558E000A6B449 /* icon.cpp */; };
 		9A5D7395265700D200D5C39E /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D7394265700D200D5C39E /* libacme.dylib */; };
 		9A5D73972657011600D5C39E /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73962657011600D5C39E /* libapex.dylib */; };
 		9A5D73992657012A00D5C39E /* libaqua.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73982657012A00D5C39E /* libaqua.dylib */; };
@@ -44,9 +46,7 @@
 		9A6E9B7A26573B99001F6FC8 /* factory_exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D738A26561AAA00D5C39E /* factory_exchange.cpp */; };
 		9A6E9B7B26573C35001F6FC8 /* windowing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D738D2656240A00D5C39E /* windowing.cpp */; };
 		9A79BE2C26645DB8009E6C44 /* notify_icon_mm_bridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A79BE2426645D9B009E6C44 /* notify_icon_mm_bridge.mm */; };
-		9A79BE2D26645DBD009E6C44 /* notify_icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A79BE2826645D9C009E6C44 /* notify_icon.cpp */; };
 		9A79BE2E26645DC2009E6C44 /* notify_icon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A79BE2A26645D9C009E6C44 /* notify_icon.mm */; };
-		9AA8024626655E9100A6B449 /* icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA80242266558E000A6B449 /* icon.cpp */; };
 		9AA802472665690800A6B449 /* windowing_macos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A440A4E26548C38000C490B /* windowing_macos.cpp */; };
 		9AA802492665706600A6B449 /* windowing_keyboard.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AA802482665706600A6B449 /* windowing_keyboard.mm */; };
 		9AA8024B266571D600A6B449 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8024A266571D600A6B449 /* Carbon.framework */; };
@@ -409,9 +409,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A46D35826785244000B22D0 /* icon.cpp in Sources */,
+				9A46D35726785209000B22D0 /* notify_icon.cpp in Sources */,
 				9A64C10C26605BD40074030F /* monitor.cpp in Sources */,
-				9A79BE2D26645DBD009E6C44 /* notify_icon.cpp in Sources */,
-				9AA8024626655E9100A6B449 /* icon.cpp in Sources */,
 				9A79BE2E26645DC2009E6C44 /* notify_icon.mm in Sources */,
 				9A64C10B26605BB70074030F /* display.cpp in Sources */,
 				9A6E9B7426571095001F6FC8 /* macOSWindowFrameView.mm in Sources */,

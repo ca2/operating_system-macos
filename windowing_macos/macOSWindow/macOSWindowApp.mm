@@ -23,7 +23,7 @@ void application_on_menu_action(void * pApplication, const char * pszCommand);
 void * application_system(void * pApplication);
 
 
-void system_int_update(void* pSystem, int iUpdate, int iPayload);
+void system_id_update(void* pSystem, ::i64 iUpdate, ::i64 iPayload);
 
 void node_will_finish_launching(void * pSystem);
 void system_on_open_untitled_file(void * pSystem);
@@ -233,7 +233,7 @@ if(str != nil)
    
    //MessageBox(NULL, "applicationShouldHandleReopen", "applicationShouldHandleReopen", e_message_box_ok);
    
-   system_int_update(application_system(m_pApplication), id_app_activated, 0);
+   system_id_update(application_system(m_pApplication), id_app_activated, 0);
 
    return NO;
    
@@ -498,7 +498,7 @@ if(str != nil)
  
    NSLog (@"%@", notification);
    
-   system_int_update(application_system(m_pApplication), id_os_dark_mode, 0);
+   system_id_update(application_system(m_pApplication), id_os_dark_mode, 0);
    
 }
 

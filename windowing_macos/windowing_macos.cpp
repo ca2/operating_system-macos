@@ -762,7 +762,6 @@ string MYCFStringCopyUTF8String(CFStringRef aString)
 #undef FUNCTION_TRACE
 
 
-
 rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
 {
    
