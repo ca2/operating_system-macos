@@ -92,7 +92,7 @@ bool notify_icon::create_notify_icon(::u32 uId, ::user::notify_icon_listener * p
 //
 //      string strFile = "menubar-icon-22.png";
 //
-//      string strUrl = "https://server.ca2.cc/matter/" + strFolder + strFile;
+//      string strUrl = "https://server.ca2.software/matter/" + strFolder + strFile;
 //
 //      strFile = Context.dir().appdata() / strFolder / strFile;
 //

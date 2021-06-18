@@ -105,7 +105,7 @@ namespace macos
       
       ASSERT(__is_valid_string(lpszFileName));
 
-      eopen -= ::file::e_open_binary;
+      //eopen -= ::file::e_open_binary;
 
       if ((eopen & ::file::e_open_defer_create_directory) && (eopen & ::file::e_open_write))
       {
@@ -206,6 +206,8 @@ namespace macos
       }
 
       m_iFile = (i32)hFile;
+      
+      m_eopen = eopen;
 
       return ::success;
 

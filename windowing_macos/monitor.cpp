@@ -46,11 +46,11 @@ namespace windowing_macos
 ::e_status monitor::get_workspace_rectangle(::RECTANGLE_I32 * prectangle)
 {
    
-   CGRect r;
+   CGRect rectWorkspace;
    
-   ns_workspace_cgrect((int) m_iIndex, &r);
+   ns_workspace_cgrect((int) m_iIndex, &rectWorkspace);
    
-   __copy(prectangle, r);
+   __copy(prectangle, rectWorkspace);
    
    return ::success;
    

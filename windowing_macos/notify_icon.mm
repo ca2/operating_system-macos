@@ -73,9 +73,11 @@
          
          strTitle = [[NSString alloc] initWithUTF8String: pszName];
          
-         strId = [[NSString alloc] initWithUTF8String: pszId];
+         strId = [NSString stringWithFormat:@"menu_item_%s",  pszId];
          
-         item = [[NSMenuItem alloc] initWithTitle:  strTitle action: @selector(play:) keyEquivalent:@"" ];
+         item = [[NSMenuItem alloc] initWithTitle:  strTitle action: @selector(on_item_action:) keyEquivalent:@"" ];
+         
+         item.identifier = strId;
          
       }
       
@@ -83,9 +85,9 @@
       
       [m_menu addItem:item];
       
-      [m_menuitema addObject: item];
+      //[m_menuitema addObject: item];
       
-      [m_menuida addObject: strId];
+      //[m_menuida addObject: strId];
       
 //      if(pszName) free(pszName);
 //      if(pszId) free(pszId);
@@ -114,7 +116,7 @@
 }
 
 
-- (void)play:(id)sender
+- (void) on_item_action :(id)sender
 {
    
    NSMenuItem * pitem = (NSMenuItem *) sender;
@@ -126,19 +128,27 @@
       
    }
    
-   for(int i = 0; i < m_pbridge->_get_notification_area_action_count(); i++)
+   NSString *prefixToRemove = @"menu_item_";
+   NSString *strId = [pitem.identifier copy];
+   if ([pitem.identifier hasPrefix:prefixToRemove])
    {
+      strId = [pitem.identifier substringFromIndex:[prefixToRemove length]];
+   
+//   for(int i = 0; i < m_pbridge->_get_notification_area_action_count(); i++)
+//   {
       
-      if(pitem == [m_menuitema objectAtIndex:i])
-      {
+//      if(pitem == [m_menuitema objectAtIndex:i])
+//      {
          
-         const char * psz = [[m_menuida objectAtIndex:i] UTF8String];
+         //const char * psz = [[m_menuida objectAtIndex:i] UTF8String];
+      
+      const char * psz = [strId UTF8String];
          
          m_pbridge->call_notification_area_action(psz);
          
          return;
          
-      }
+      //}
       
    }
    

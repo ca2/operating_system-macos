@@ -339,7 +339,7 @@
       
       NSRect rect = [self frame];
       
-      rect.origin.y = [[NSScreen mainScreen] frame].size.height - (rect.origin.y + rect.size.height);
+      ns_screen_translate(&rect);
       
       m_pmacoswindow->macos_window_resized(rect);
       

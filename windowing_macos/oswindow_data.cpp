@@ -14,8 +14,6 @@ bool nswindow_iconify(NSWindow * window);
 bool nswindow_show_window(NSWindow * window, int iShow);
 
 
-
-
 bool oswindow_data::is_window_visible()
 {
    

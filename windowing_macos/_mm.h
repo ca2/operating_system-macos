@@ -16,6 +16,9 @@
 #include "macOSWindow/macos_window.h"
 
 
+#include "_c_mm.h"
+
+
 void * new_macos_window(macos_window * papexwindow, CGRect rectangle, unsigned int uStyle);
 
 

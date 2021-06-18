@@ -34,12 +34,17 @@ class user_notify_icon_mm_bridge;
    
 }
 
+
 - (id)init:(NSString *)strIconFile bridge: (user_notify_icon_bridge *) pbridge;
 
-- (void)play:(NSString *)strIconFile;
+
+- (void) on_item_action : (NSString *) strIconFile;
+
 
 - (void) close;
 
+
 @end
+
 
 #endif /* user_notify_icon_mm_h */

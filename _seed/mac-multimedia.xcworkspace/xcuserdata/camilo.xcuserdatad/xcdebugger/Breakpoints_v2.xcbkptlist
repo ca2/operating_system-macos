@@ -860,7 +860,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1087"
             endingLineNumber = "1087"
-            landmarkName = "midi_out_core_midi :: sendMessage(m_midimessage, size, bFlush)"
+            landmarkName = "midi_out_core_midi :: sendMessage(pmidimessage, size, bFlush)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -876,7 +876,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1135"
             endingLineNumber = "1135"
-            landmarkName = "midi_out_core_midi :: sendMessage(m_midimessage, size, bFlush)"
+            landmarkName = "midi_out_core_midi :: sendMessage(pmidimessage, size, bFlush)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1133,6 +1133,38 @@
             startingLineNumber = "224"
             endingLineNumber = "224"
             landmarkName = "midi::get_message_out(strDevice)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6E1D825D-EAAD-4D61-9EA4-BB5DC1599CA4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aqua/platform/system.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "system::defer_multimedia()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8ECF69B7-9B12-4DCF-82A8-B95B298C046F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app-veriwell/multimedia/multimedia/multimedia.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "multimedia::initialize_multimedia(pobject)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
