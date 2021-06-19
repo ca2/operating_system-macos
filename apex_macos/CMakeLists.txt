@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.17)
-project(apex_macos CXX)
+project(apex_macos CXX OBJCXX)
+
+
+
 
 
 list(APPEND library_source
