@@ -23,10 +23,10 @@
 		9A00E62026616D1400517464 /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61F26616D1400517464 /* libaura.dylib */; };
 		9A00E62226616D1400517464 /* libaura_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E62126616D1400517464 /* libaura_posix.dylib */; };
 		9A07060C2662B1AC004E8CB4 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A07060B2662B1AC004E8CB4 /* image.cpp */; };
-		9A412455266C408200C3FF0E /* libapex_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A412454266C401B00C3FF0E /* libapex_macos.dylib */; };
 		9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */; };
 		9A5D73912656D1DC00D5C39E /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D738F2656D1DC00D5C39E /* node.cpp */; };
 		9A5D73922656D1DC00D5C39E /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A5D73902656D1DC00D5C39E /* node.h */; };
+		9A5FE2062689E57A003682E6 /* libapex_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A413D55266EDEA500C3FF0E /* libapex_macos.dylib */; };
 		9A8997BD177D0E7F00C7761E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8997BC177D0E7D00C7761E /* Carbon.framework */; };
 		9A941C501FF34F880028686E /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A941C4F1FF34F880028686E /* CoreMIDI.framework */; };
 		9A941C521FF34F9E0028686E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A941C511FF34F9E0028686E /* CoreAudio.framework */; };
@@ -49,20 +49,6 @@
 			remoteGlobalIDString = 07B657B7190F3CBF002DAADE;
 			remoteInfo = music_midi_core_audio_ios;
 		};
-		9A412450266C401B00C3FF0E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A41244D266C401B00C3FF0E /* apex_macos.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A0C1694264A2AA700B5CC33;
-			remoteInfo = apex_macos;
-		};
-		9A412453266C401B00C3FF0E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A41244D266C401B00C3FF0E /* apex_macos.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9A0C1695264A2AA700B5CC33;
-			remoteInfo = apex_macos;
-		};
 		9A413D54266EDEA500C3FF0E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A64C0FF26604FB50074030F /* apex_macos.xcodeproj */;
@@ -76,6 +62,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9A15A5AB264B54430080670E;
 			remoteInfo = aura_apple;
+		};
+		9A5FE2042689E27D003682E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A64C0FF26604FB50074030F /* apex_macos.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A0C1694264A2AA700B5CC33;
+			remoteInfo = apex_macos;
 		};
 		9AC2CFB42653DAD200CC8096 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -124,7 +117,6 @@
 		9A00E61F26616D1400517464 /* libaura.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A00E62126616D1400517464 /* libaura_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A07060B2662B1AC004E8CB4 /* image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
-		9A41244D266C401B00C3FF0E /* apex_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = apex_macos.xcodeproj; path = "/Users/camilo/solution/basis/archive/platform-macos/apex_macos/apex_macos.xcodeproj"; sourceTree = "<absolute>"; };
 		9A5D738F2656D1DC00D5C39E /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		9A5D73902656D1DC00D5C39E /* node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
 		9A64C0FF26604FB50074030F /* apex_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = apex_macos.xcodeproj; path = ../apex_macos/apex_macos.xcodeproj; sourceTree = "<group>"; };
@@ -167,7 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A412455266C408200C3FF0E /* libapex_macos.dylib in Frameworks */,
+				9A5FE2062689E57A003682E6 /* libapex_macos.dylib in Frameworks */,
 				9A00E62026616D1400517464 /* libaura.dylib in Frameworks */,
 				9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */,
 				9A00E62226616D1400517464 /* libaura_posix.dylib in Frameworks */,
@@ -229,14 +221,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9A41244E266C401B00C3FF0E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9A412454266C401B00C3FF0E /* libapex_macos.dylib */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		9A413D51266EDEA500C3FF0E /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,7 +268,6 @@
 				07B657D0190F3CBF002DAADE /* music_midi_core_audio_iosTests */,
 				07B657B9190F3CBF002DAADE /* Frameworks */,
 				A1CFD779154F5EAA007447E2 /* Products */,
-				9A41244D266C401B00C3FF0E /* apex_macos.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -364,7 +347,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				9A412451266C401B00C3FF0E /* PBXTargetDependency */,
+				9A5FE2052689E27D003682E6 /* PBXTargetDependency */,
 				9A440A6D2654E36C000C490B /* PBXTargetDependency */,
 			);
 			name = aura_macos;
@@ -403,10 +386,6 @@
 					ProjectRef = 9A64C0FF26604FB50074030F /* apex_macos.xcodeproj */;
 				},
 				{
-					ProductGroup = 9A41244E266C401B00C3FF0E /* Products */;
-					ProjectRef = 9A41244D266C401B00C3FF0E /* apex_macos.xcodeproj */;
-				},
-				{
 					ProductGroup = 9AC2CFB12653DAD200CC8096 /* Products */;
 					ProjectRef = 9AC2CFB02653DAD200CC8096 /* aura_apple.xcodeproj */;
 				},
@@ -421,13 +400,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		9A412454266C401B00C3FF0E /* libapex_macos.dylib */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.dylib";
-			path = libapex_macos.dylib;
-			remoteRef = 9A412453266C401B00C3FF0E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		9A413D55266EDEA500C3FF0E /* libapex_macos.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
@@ -491,15 +463,15 @@
 			target = 07B657B7190F3CBF002DAADE /* ios_aura_macos */;
 			targetProxy = 07B657CD190F3CBF002DAADE /* PBXContainerItemProxy */;
 		};
-		9A412451266C401B00C3FF0E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = apex_macos;
-			targetProxy = 9A412450266C401B00C3FF0E /* PBXContainerItemProxy */;
-		};
 		9A440A6D2654E36C000C490B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = aura_apple;
 			targetProxy = 9A440A6C2654E36C000C490B /* PBXContainerItemProxy */;
+		};
+		9A5FE2052689E27D003682E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = apex_macos;
+			targetProxy = 9A5FE2042689E27D003682E6 /* PBXContainerItemProxy */;
 		};
 		9AC2CFB72653DADC00CC8096 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -653,6 +625,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -676,7 +649,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(WorkspaceDir)/archive",
-					"$(WorkspaceDir)/archive/storage-$(PLATFORM_MODIFIER)/library/$(CONFIGURATION)",
+					"$(WorkspaceDir)/archive/storage-$(PLATFORM_MODIFIER)/library/x64/$(CONFIGURATION)",
 					"$(WorkspaceDir)/time/$(PLATFORM_MODIFIER)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -728,6 +701,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = framework.h;
@@ -745,10 +719,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(WorkspaceDir)/archive",
-					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/storage-$(PLATFORM_MODIFIER)/library/$(CONFIGURATION)",
+					"$(WorkspaceDir)/archive//storage-$(PLATFORM_MODIFIER)/library/x64/$(CONFIGURATION)",
 					"$(WorkspaceDir)/archive",
-					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/storage-$(PLATFORM_MODIFIER)/third/library/$(CONFIGURATION)",
-					"$(WorkspaceDir)/time/$(PLATFORM_MODIFIER)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";

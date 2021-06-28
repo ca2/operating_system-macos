@@ -11,6 +11,9 @@
       location = "group:../../../source/app-core/note/_app_core_note.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/verilux/_app_core_verilux.xcodeproj">
+      location = "group:../../../source/app-core/photo/_app_core_photo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-core/picture/_app_core_picture.xcodeproj">
    </FileRef>
 </Workspace>

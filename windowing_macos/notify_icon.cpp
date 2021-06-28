@@ -33,13 +33,13 @@ namespace windowing_macos
    }
 
 
-bool notify_icon::create_notify_icon(::u32 uId, ::user::notify_icon_listener * plistener, ::windowing::icon * pvisualicon)
+::e_status notify_icon::create_notify_icon(::u32 uId, ::user::notify_icon_listener * plistener, ::windowing::icon * pvisualicon)
    {
 
       if(m_bCreated)
       {
 
-         return false;
+         return ::success_none;
 
       }
       
@@ -169,10 +169,19 @@ bool notify_icon::create_notify_icon(::u32 uId, ::user::notify_icon_listener * p
    }
 
 
-   void notify_icon::AddHiddenWindow(__pointer(::user::interaction) pwnd)
+   ::e_status notify_icon::add_hidden_window(::user::interaction * puserinteraction)
    {
 
-      m_wndptraHidden.add_unique(pwnd);
+      auto estatus = ::user::notify_icon::add_hidden_window(puserinteraction);
+      
+      if(!estatus)
+      {
+         
+         return estatus;
+         
+      }
+         
+      return estatus;
 
    }
 

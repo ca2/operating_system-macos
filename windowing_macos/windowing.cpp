@@ -256,8 +256,9 @@ namespace windowing_macos
          {
    
             nsapp_activation_policy_regular();
-            //hide icon on Dock
+
             ProcessSerialNumber psn = { 0, kCurrentProcess };
+            
             TransformProcessType(&psn, kProcessTransformToForegroundApplication);
          }
    

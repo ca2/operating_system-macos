@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9A5D7389265619C000D5C39E /* libwindowing_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73862656198300D5C39E /* libwindowing_macos.dylib */; };
+		9A5FE1FC2689E0E7003682E6 /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1A526542EA800CC8096 /* _.h */; };
+		9A5FE1FD2689E0F0003682E6 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D19926542EA800CC8096 /* framework.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		9AC2D1B326542F4400CC8096 /* factory_exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D19326542EA800CC8096 /* factory_exchange.cpp */; };
 		9AC2D1B426542F4700CC8096 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D18E26542EA800CC8096 /* framework.cpp */; };
-		9AC2D1B826542F6E00CC8096 /* libaura_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2D18826542E3A00CC8096 /* libaura_macos.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,40 +29,11 @@
 			remoteGlobalIDString = 9A440A1426548BE4000C490B;
 			remoteInfo = windowing_macos;
 		};
-		9AC2D18726542E3A00CC8096 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AC2D18126542E3A00CC8096 /* aura_macos.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A1CFD778154F5EAA007447E2;
-			remoteInfo = aura_macos;
-		};
-		9AC2D18926542E3A00CC8096 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AC2D18126542E3A00CC8096 /* aura_macos.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 07B657B8190F3CBF002DAADE;
-			remoteInfo = ios_aura_macos;
-		};
-		9AC2D18B26542E3A00CC8096 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AC2D18126542E3A00CC8096 /* aura_macos.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 07B657C7190F3CBF002DAADE;
-			remoteInfo = music_midi_core_audio_iosTests;
-		};
-		9AC2D1B526542F6000CC8096 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AC2D18126542E3A00CC8096 /* aura_macos.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = A1CFD777154F5EAA007447E2;
-			remoteInfo = aura_macos;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9A5D737F2656198200D5C39E /* windowing_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = windowing_macos.xcodeproj; path = ../windowing_macos/windowing_macos.xcodeproj; sourceTree = "<group>"; };
 		9AC2D16F26542E1000CC8096 /* libnode_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libnode_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AC2D18126542E3A00CC8096 /* aura_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = aura_macos.xcodeproj; path = ../aura_macos/aura_macos.xcodeproj; sourceTree = "<group>"; };
 		9AC2D18E26542EA800CC8096 /* framework.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9AC2D19326542EA800CC8096 /* factory_exchange.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = factory_exchange.cpp; sourceTree = "<group>"; };
 		9AC2D19926542EA800CC8096 /* framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
@@ -74,7 +46,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A5D7389265619C000D5C39E /* libwindowing_macos.dylib in Frameworks */,
-				9AC2D1B826542F6E00CC8096 /* libaura_macos.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +63,6 @@
 		9AC2D16626542E1000CC8096 = {
 			isa = PBXGroup;
 			children = (
-				9AC2D18126542E3A00CC8096 /* aura_macos.xcodeproj */,
 				9A5D737F2656198200D5C39E /* windowing_macos.xcodeproj */,
 				9AC2D18D26542EA800CC8096 /* node_macos */,
 				9AC2D17026542E1000CC8096 /* Products */,
@@ -104,16 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				9AC2D16F26542E1000CC8096 /* libnode_macos.dylib */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9AC2D18226542E3A00CC8096 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9AC2D18826542E3A00CC8096 /* libaura_macos.dylib */,
-				9AC2D18A26542E3A00CC8096 /* libios_aura_macos.a */,
-				9AC2D18C26542E3A00CC8096 /* music_midi_core_audio_iosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +103,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5FE1FD2689E0F0003682E6 /* framework.h in Headers */,
+				9A5FE1FC2689E0E7003682E6 /* _.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +123,6 @@
 			);
 			dependencies = (
 				9A5D7388265619A700D5C39E /* PBXTargetDependency */,
-				9AC2D1B626542F6000CC8096 /* PBXTargetDependency */,
 			);
 			name = node_macos;
 			productName = node_macos;
@@ -194,10 +155,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 9AC2D18226542E3A00CC8096 /* Products */;
-					ProjectRef = 9AC2D18126542E3A00CC8096 /* aura_macos.xcodeproj */;
-				},
-				{
 					ProductGroup = 9A5D73802656198200D5C39E /* Products */;
 					ProjectRef = 9A5D737F2656198200D5C39E /* windowing_macos.xcodeproj */;
 				},
@@ -215,27 +172,6 @@
 			fileType = "compiled.mach-o.dylib";
 			path = libwindowing_macos.dylib;
 			remoteRef = 9A5D73852656198300D5C39E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9AC2D18826542E3A00CC8096 /* libaura_macos.dylib */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.dylib";
-			path = libaura_macos.dylib;
-			remoteRef = 9AC2D18726542E3A00CC8096 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9AC2D18A26542E3A00CC8096 /* libios_aura_macos.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libios_aura_macos.a;
-			remoteRef = 9AC2D18926542E3A00CC8096 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9AC2D18C26542E3A00CC8096 /* music_midi_core_audio_iosTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = music_midi_core_audio_iosTests.xctest;
-			remoteRef = 9AC2D18B26542E3A00CC8096 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -257,11 +193,6 @@
 			isa = PBXTargetDependency;
 			name = windowing_macos;
 			targetProxy = 9A5D7387265619A700D5C39E /* PBXContainerItemProxy */;
-		};
-		9AC2D1B626542F6000CC8096 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = aura_macos;
-			targetProxy = 9AC2D1B526542F6000CC8096 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -305,8 +236,11 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = framework.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -321,7 +255,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(WorkspaceDir)/archive",
-					"$(WorkspaceDir)/archive/storage-$(PLATFORM_MODIFIER)/library/$(CONFIGURATION)",
+					"$(WorkspaceDir)/archive/storage-$(PLATFORM_MODIFIER)/library/x64/$(CONFIGURATION)",
 					"$(WorkspaceDir)/time/$(PLATFORM_MODIFIER)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -389,7 +323,10 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = framework.h;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -400,10 +337,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(WorkspaceDir)/archive",
-					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/storage-$(PLATFORM_MODIFIER)/library/$(CONFIGURATION)",
+					"$(WorkspaceDir)/archive//storage-$(PLATFORM_MODIFIER)/library/x64/$(CONFIGURATION)",
 					"$(WorkspaceDir)/archive",
-					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/storage-$(PLATFORM_MODIFIER)/third/library/$(CONFIGURATION)",
-					"$(WorkspaceDir)/time/$(PLATFORM_MODIFIER)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;

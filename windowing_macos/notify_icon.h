@@ -16,7 +16,7 @@ namespace windowing_macos
       virtual ~notify_icon();
 
 
-      void AddHiddenWindow(__pointer(::user::interaction) pwnd);
+      ::e_status add_hidden_window(::user::interaction * puserinteraction) override;
 
 
       virtual bool DestroyWindow();
@@ -25,7 +25,7 @@ namespace windowing_macos
       bool ModifyIcon(__pointer(::draw2d::icon) picon, bool bForce = false);
 
 
-      bool create_notify_icon(::u32 id, ::user::notify_icon_listener * plistener, ::windowing::icon * picon) override;
+      ::e_status create_notify_icon(::u32 id, ::user::notify_icon_listener * plistener, ::windowing::icon * picon) override;
 
       //DECL_GEN_SIGNAL(_001OnNotifyIconMessage);
       //DECL_GEN_SIGNAL(_001OnDestroy);

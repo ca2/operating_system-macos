@@ -65,6 +65,8 @@ namespace windowing_macos
 
       void window_show() override;
       
+      ::e_status show_window(const ::e_display &edisplay, const ::e_activation &eactivation) override;
+      
       ::e_status set_mouse_cursor(::windowing::cursor * pcursor) override;
       
       bool set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags) override;

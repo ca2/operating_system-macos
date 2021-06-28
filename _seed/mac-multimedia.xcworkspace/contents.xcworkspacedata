@@ -10,4 +10,10 @@
    <FileRef
       location = "group:../../../source/app-veriwell/musical_player_lite/_app_veriwell_musical_player_lite.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:../../../source/app-veriwell/musical_player/_app_veriwell_musical_player.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-veriwell/keyboard/_app_veriwell_keyboard.xcodeproj">
+   </FileRef>
 </Workspace>

@@ -1447,7 +1447,7 @@ bool interaction_impl::_is_window() const
                  
                  string strType2 = puserinteractionMouse->type_c_str();
                  
-                 ::output_debug_string(strType2);
+                 //::output_debug_string("\nmouse: "+ strType2);
                  
               }
               //}
@@ -1478,16 +1478,13 @@ bool interaction_impl::_is_window() const
                  if (strUserInteractionType.contains_ci("button"))
                  {
 
-                    output_debug_string("mouse_move::userinteraction=button");
+                    //output_debug_string("mouse_move::userinteraction=button");
 
                  }
                  else
                  {
 
-
                     puserinteractionMouse = m_puserinteraction->child_from_point(pmouse->m_point);
-
-
 
                  }
 

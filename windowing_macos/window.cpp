@@ -212,9 +212,9 @@ void window::install_message_routing(channel * pchannel)
 
       pwindowing->m_nsmap[m_pnswindow] = this;
       
-         puserinteraction->layout().window() = ::top_left(rectParam);
+         puserinteraction->layout().window().origin() = ::top_left(rectParam);
 
-         puserinteraction->layout().window() = ::size_i32(rectParam);
+         puserinteraction->layout().window().size() = ::size_i32(rectParam);
 
          __refer(puserinteraction->m_pthreadUserInteraction, ::get_task());
 
@@ -388,6 +388,28 @@ void window::install_message_routing(channel * pchannel)
       
    }
 
+
+   ::e_status window::show_window(const ::e_display &edisplay, const ::e_activation &eactivation)
+   {
+
+      //windowing_output_debug_string("\n::windowing_macos::window::show_window 1");
+      
+      if(edisplay == e_display_iconic)
+      {
+       
+         macos_window_miniaturize();
+         
+      }
+      else if(edisplay == e_display_restore)
+      {
+       
+         macos_window_make_key_window_and_order_front();
+         
+      }
+
+      return ::success;
+
+   }
 
    ::e_status window::set_mouse_cursor(::windowing::cursor * pcursor)
    {
