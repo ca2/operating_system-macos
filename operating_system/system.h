@@ -159,6 +159,7 @@ typedef wchar_t            unichar32;
 
 #define strnicmp strncasecmp
 #define stricmp strcasecmp
+#define _strdup strdup
 
 
 

@@ -13,7 +13,7 @@ void ns_fork(const ::routine & routine)
    
    __block auto routineHold = routine;
    
-   routineHold.m_p->add_ref();
+   routineHold.m_p->increment_reference_count();
  
    ns_main_async(^
                  {

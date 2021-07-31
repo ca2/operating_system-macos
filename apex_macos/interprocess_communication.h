@@ -70,25 +70,25 @@ namespace macos
       
 
       interprocess_communication_rx();
-      virtual ~interprocess_communication_rx();
+      ~interprocess_communication_rx() override;
 
 
-      bool create(const char * pszChannel);
-      bool destroy();
+      bool create(const char * pszChannel) override;
+      ::e_status destroy() override;
 
 
-      virtual void * on_interprocess_receive(::interprocess_communication::rx * prx, const char * pszMessage);
-      virtual void * on_interprocess_receive(::interprocess_communication::rx * prx, int message, void * pdata, memsize len);
-      virtual void * on_interprocess_post(::interprocess_communication::rx * prx, i64 a, i64 b);
+      void * on_interprocess_receive(::interprocess_communication::rx * prx, const char * pszMessage) override;
+      void * on_interprocess_receive(::interprocess_communication::rx * prx, int message, void * pdata, memsize len) override;
+      void * on_interprocess_post(::interprocess_communication::rx * prx, i64 a, i64 b) override;
 
 
-      virtual bool on_idle();
+      virtual bool on_idle() override;
 //
 //
 //      LRESULT message_queue_proc(UINT message, WPARAM wparam, LPARAM lparam);
 
 
-      bool is_rx_ok();
+      bool is_rx_ok() override;
       
       bool start_receiving();
 

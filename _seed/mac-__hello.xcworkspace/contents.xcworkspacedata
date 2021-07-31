@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../source/console/hello/hello.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:/Users/camilo/solution/basis/source/console/helloearth/helloearth.xcodeproj">
    </FileRef>
    <FileRef

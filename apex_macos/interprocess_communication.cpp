@@ -238,17 +238,21 @@ interprocess_communication_rx::~interprocess_communication_rx()
    }
 
 
-   bool interprocess_communication_rx::destroy()
+   ::e_status interprocess_communication_rx::destroy()
    {
 
       if(m_port == nullptr)
-         return true;
+      {
+         
+         return ::success_none;
+         
+      }
 
       CFRelease(m_port);
 
       m_port = nullptr;
 
-      return true;
+      return ::success;
 
    }
 
