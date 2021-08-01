@@ -256,10 +256,15 @@ namespace windowing_macos
          {
    
             nsapp_activation_policy_regular();
+            
+            ns_main_async(^()
+                          {
 
             ProcessSerialNumber psn = { 0, kCurrentProcess };
             
             TransformProcessType(&psn, kProcessTransformToForegroundApplication);
+               
+            });
          }
    
       }
@@ -270,10 +275,14 @@ namespace windowing_macos
          {
    
             nsapp_activation_policy_accessory();
-   
+            
+            ns_main_async(^()
+                          {
             //hide icon on Dock
             ProcessSerialNumber psn = { 0, kCurrentProcess };
             TransformProcessType(&psn, kProcessTransformToUIElementApplication);
+               
+            });
    
          }
    

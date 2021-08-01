@@ -160,11 +160,11 @@ namespace windowing_macos
    }
 
 
-   ::e_status copydesk::finalize()
+   ::e_status copydesk::destroy()
    {
 
      
-      auto estatus = ::user::copydesk::finalize();
+      auto estatus = ::user::copydesk::destroy();
 
 //      if(window_pointer::is_set() && window_pointer::m_p->is_window())
       //    {

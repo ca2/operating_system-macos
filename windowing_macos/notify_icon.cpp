@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "acme/filesystem/filesystem/acme_dir.h"
 
 
 static ::user::notify_icon * g_pnotifyiconLast = nullptr;
@@ -14,6 +15,8 @@ namespace windowing_macos
       g_pnotifyiconLast = this;
 
       m_bCreated = false;
+      
+      m_pnotifyiconbridge = this;
       
    }
 
@@ -33,7 +36,7 @@ namespace windowing_macos
    }
 
 
-::e_status notify_icon::create_notify_icon(::u32 uId, ::user::notify_icon_listener * plistener, ::windowing::icon * pvisualicon)
+::e_status notify_icon::create_notify_icon(const ::id & id, ::user::interaction * puserinteractionNotify, ::windowing::icon * pwindowingicon)
    {
 
       if(m_bCreated)
@@ -43,15 +46,15 @@ namespace windowing_macos
 
       }
       
-      m_strId.Format("notify_icon_%d", uId);
+      m_strId = "notify_icon_" + id.to_string();
 
-      m_strId = "ca2-" + pvisualicon->get_tray_icon_name() + "-" + m_strId;
+      m_strId = "ca2-" + pwindowingicon->get_tray_icon_name() + "-" + m_strId;
 
-      m_uiId                     = uId;
+      m_id                       = id;
 
-      m_plistener                = plistener;
+      m_puserinteractionNotify   = puserinteractionNotify;
 
-      m_pnotifyiconbridge        = plistener;
+      //m_pnotifyiconbridge        = plistener;
 
 //      string strFolder;
 //
@@ -111,10 +114,23 @@ namespace windowing_macos
 //         iRetry--;
 //
 //      }
+   
+   
+      ::file::path pathFolder = m_psystem->m_pacmedir->ca2roaming() / "matter/icon/128";
 
-      auto pcontext = m_pcontext->m_papexcontext;
+      string strIconName = get_application()->m_strAppId;
 
-      auto pathFile = pcontext->defer_process_matter_path("matter://main/menubar-icon-22.png");
+      strIconName.replace("/", "_");
+      strIconName.replace("-", "_");
+
+
+      //auto pcontext = m_pcontext->m_papexcontext;
+
+      //auto pathFile = pcontext->defer_process_matter_path("matter://main/menubar-icon-22.png");
+   
+      //auto pathFile = pwindowingicon->m_strTrayIconName;
+   
+      auto pathFile = pathFolder / ( strIconName + ".png" );
 
       notify_icon_mm_initialize(pathFile);
 

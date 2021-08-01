@@ -30,10 +30,41 @@ namespace windowing_macos
    }
 
 
-   ::e_status cursor::load_default_cursor(enum_cursor ecursor)
+   ::e_status cursor::_create_os_cursor()
    {
 
-      m_pNSCursor = ns_get_default_system_cursor(ecursor);
+      if(::is_ok(m_pimage))
+      {
+         
+         auto estatus = _create_from_image(m_pimage, m_szHotspotOffset.cx, m_szHotspotOffset.cy);
+         
+         if(::succeeded(estatus))
+         {
+            
+            return estatus;
+            
+         }
+         
+      }
+      
+      auto estatus = _load_default_cursor();
+      
+      if(::succeeded(estatus))
+      {
+         
+         return estatus;
+         
+      }
+      
+      return ::success;
+      
+   }
+
+
+   ::e_status cursor::_load_default_cursor()
+   {
+
+      m_pNSCursor = ns_get_default_system_cursor(m_ecursor);
 
       if(!m_pNSCursor)
       {
@@ -47,7 +78,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status cursor::create_from_image(const ::image * pimage, int xHotSpot, int yHotSpot)
+   ::e_status cursor::_create_from_image(const ::image * pimage, int xHotSpot, int yHotSpot)
    {
       
       CGImageRef cgimageref = cgimageref_from_image(pimage);

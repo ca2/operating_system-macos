@@ -142,6 +142,10 @@ void macos_window::macos_window_destroy()
    m_pmacoswindow->m_pmacoswindow = NULL;
    
    [m_pmacoswindow close];
+   
+   m_pnswindow = nullptr;
+   
+   m_pmacoswindow = nullptr;
 
 }
 
@@ -308,6 +312,27 @@ void macos_window::macos_window_make_first_responder()
               });
    
 }
+
+
+void macos_window::macos_window_resign_key()
+{
+
+   if(m_bDestroying)
+   {
+      
+      return;
+      
+   }
+   
+   ns_main_async(^
+              {
+                 
+                 [m_pmacoswindow resignKeyWindow];
+                 
+              });
+   
+}
+
 
 
 void macos_window::macos_window_make_key_window()

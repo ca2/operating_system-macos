@@ -44,66 +44,76 @@ namespace windowing_macos
       
    }
 
-void window::on_message_create(::message::message * pmessage)
-{
-   
-   
-   
-}
 
-void window::on_message_destroy(::message::message * pmessage)
-{
-   
-   
-   
-}
-
-void window::install_message_routing(channel * pchannel)
-{
-
-   ::windowing::window::install_message_routing(pchannel);
-
-   MESSAGE_LINK(e_message_create, pchannel, this, &window::on_message_create);
-
-   auto puserinteraction = m_pimpl->m_puserinteraction;
-
-   auto pimpl = m_pimpl.m_p;
-
-   if (!puserinteraction->m_bMessageWindow)
+   void window::on_message_create(::message::message * pmessage)
    {
-
-      //MESSAGE_LINK(e_message_redraw, pchannel, pimpl, &::user::interaction_impl::_001OnRedraw);
-      //MESSAGE_LINK(e_message_apply_visual, pchannel, pimpl, &::user::interaction_impl::_001OnApplyVisual);
-
-
-      //#ifndef LINUX
-      //MESSAGE_LINK(e_message_move, pchannel, this, &window::_001OnMove);
-      //MESSAGE_LINK(e_message_size, pchannel, this, &window::_001OnSize);
-      //#endif
-
-
-      //MESSAGE_LINK(e_message_show_window, pchannel, this, &window::_001OnShowWindow);
-      //MESSAGE_LINK(e_message_kill_focus, pchannel, this, &window::_001OnKillFocus);
-      //MESSAGE_LINK(e_message_set_focus, pchannel, this, &window::_001OnSetFocus);
-      //MESSAGE_LINK(e_message_set_cursor, pchannel, this, &window::_001OnSetCursor);
-
+      
+      
+      
    }
 
-   //MESSAGE_LINK(e_message_destroy_window, pchannel, pimpl, &::user::interaction_impl::_001OnDestroyWindow);
 
-//   MESSAGE_LINK(WM_ACTIVATE, pchannel, this, &window::_001OnActivate);
-  // MESSAGE_LINK(WM_DWMNCRENDERINGCHANGED, pchannel, this, &window::_001OnDwmNcRenderingChanged);
+   void window::on_message_destroy(::message::message * pmessage)
+   {
+      
+      ns_main_sync(^{
+         
+         
+         macos_window_hide();
+         
+         macos_window_destroy();
+         
+         
+      });
+      
+      
+   }
 
-   pimpl->install_message_routing(pchannel);
+
+   void window::install_message_routing(channel * pchannel)
+   {
+
+      ::windowing::window::install_message_routing(pchannel);
+
+      MESSAGE_LINK(e_message_create, pchannel, this, &window::on_message_create);
+
+      auto puserinteraction = m_pimpl->m_puserinteraction;
+
+      auto pimpl = m_pimpl.m_p;
+
+      if (!puserinteraction->m_bMessageWindow)
+      {
+
+         //MESSAGE_LINK(e_message_redraw, pchannel, pimpl, &::user::interaction_impl::_001OnRedraw);
+         //MESSAGE_LINK(e_message_apply_visual, pchannel, pimpl, &::user::interaction_impl::_001OnApplyVisual);
 
 
-   MESSAGE_LINK(e_message_destroy, pchannel, this, &window::on_message_destroy);
+         //#ifndef LINUX
+         //MESSAGE_LINK(e_message_move, pchannel, this, &window::_001OnMove);
+         //MESSAGE_LINK(e_message_size, pchannel, this, &window::_001OnSize);
+         //#endif
 
-   //MESSAGE_LINK(e_message_create, pchannel, pimpl, &::user::interaction_impl::_001OnPrioCreate);
 
-}
+         //MESSAGE_LINK(e_message_show_window, pchannel, this, &window::_001OnShowWindow);
+         //MESSAGE_LINK(e_message_kill_focus, pchannel, this, &window::_001OnKillFocus);
+         //MESSAGE_LINK(e_message_set_focus, pchannel, this, &window::_001OnSetFocus);
+         //MESSAGE_LINK(e_message_set_cursor, pchannel, this, &window::_001OnSetCursor);
+
+      }
+
+      //MESSAGE_LINK(e_message_destroy_window, pchannel, pimpl, &::user::interaction_impl::_001OnDestroyWindow);
+
+   //   MESSAGE_LINK(WM_ACTIVATE, pchannel, this, &window::_001OnActivate);
+     // MESSAGE_LINK(WM_DWMNCRENDERINGCHANGED, pchannel, this, &window::_001OnDwmNcRenderingChanged);
+
+      pimpl->install_message_routing(pchannel);
 
 
+      MESSAGE_LINK(e_message_destroy, pchannel, this, &window::on_message_destroy);
+
+      //MESSAGE_LINK(e_message_create, pchannel, pimpl, &::user::interaction_impl::_001OnPrioCreate);
+
+   }
 
 
    ::e_status window::create_window(::user::interaction_impl * pimpl)
@@ -237,7 +247,7 @@ void window::install_message_routing(channel * pchannel)
 
          bOk = false;
          
-         finalize();
+         set_finish();
 
          //children_post_quit();
 
@@ -266,7 +276,7 @@ void window::install_message_routing(channel * pchannel)
 
       puserinteraction->set_need_layout();
 
-      puserinteraction->add_ref(OBJ_REF_DBG_P_NOTE(this, "native_create_window"));
+      puserinteraction->increment_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "native_create_window"));
 
       puserinteraction->m_ewindowflag |= e_window_flag_window_created;
       
@@ -292,11 +302,11 @@ void window::install_message_routing(channel * pchannel)
    void window::macos_window_add_ref()
    {
 
-      add_ref(OBJ_REF_DBG_P_NOTE(this, "macos_window_add_ref"));
+      increment_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "macos_window_add_ref"));
       
       auto puserinteraction = m_pimpl->m_puserinteraction;
 
-      puserinteraction->add_ref(OBJ_REF_DBG_P_NOTE(this, "macos_window_add_ref"));
+      puserinteraction->increment_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "macos_window_add_ref"));
 
    }
 
@@ -306,9 +316,9 @@ void window::install_message_routing(channel * pchannel)
       
       auto puserinteraction = m_pimpl->m_puserinteraction;
 
-      puserinteraction->dec_ref(OBJ_REF_DBG_P_NOTE(this, "macos_window_dec_ref"));
+      puserinteraction->decrement_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "macos_window_dec_ref"));
 
-      dec_ref(OBJ_REF_DBG_P_NOTE(this, "macos_window_dec_ref"));
+      decrement_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "macos_window_dec_ref"));
 
    }
 
@@ -402,8 +412,33 @@ void window::install_message_routing(channel * pchannel)
       }
       else if(edisplay == e_display_restore)
       {
+         
+         macos_window_show();
        
          macos_window_make_key_window_and_order_front();
+         
+         macos_window_make_main_window();
+         
+         nsapp_activate_ignoring_other_apps(1);
+         
+      }
+      else if(edisplay == e_display_normal)
+      {
+         
+         macos_window_show();
+       
+         macos_window_make_key_window_and_order_front();
+         
+         macos_window_make_main_window();
+         
+         nsapp_activate_ignoring_other_apps(1);
+         
+      }
+      else if(edisplay == e_display_none || edisplay == e_display_hide)
+      {
+         
+         macos_window_resign_key();
+         macos_window_hide();
          
       }
 
@@ -613,7 +648,7 @@ void window::install_message_routing(channel * pchannel)
       
       //auto rectClient = puserinteraction->get_client_rect();
 
-      g->set_alpha_mode(::draw2d::alpha_mode_set);
+      g->set_alpha_mode(::draw2d::e_alpha_mode_set);
 
       synchronous_lock slGraphics(pbuffer->mutex());
       
@@ -747,7 +782,7 @@ void window::install_message_routing(channel * pchannel)
 
          auto pkey  = __create_new < ::message::key >();
 
-         pkey->set(get_oswindow(), this, e_message_key_down, virtualKey, (lparam)(scanCode << 16), ::point_i32());
+         pkey->set(get_oswindow(), this, e_message_key_down, virtualKey, (lparam)(scanCode << 16));
          
          post_message(pkey);
          
@@ -758,7 +793,7 @@ void window::install_message_routing(channel * pchannel)
 
          auto pkey = __create_new < ::message::key >();
          
-         pkey->set(get_oswindow(), this, e_message_text_composition, 0, 0, ::point_i32());
+         pkey->set(get_oswindow(), this, e_message_text_composition, 0, 0);
 
          pkey->m_strText = pszUtf8;
       
@@ -804,7 +839,7 @@ void window::install_message_routing(channel * pchannel)
 
       auto pkey  = __new(::message::key);
 
-      pkey->set(get_oswindow(), this, e_message_key_up, vk, (::lparam)(scan << 16), point_i32());
+      pkey->set(get_oswindow(), this, e_message_key_up, vk, (::lparam)(scan << 16));
       
       puserinteraction->send(pkey);
 
@@ -826,7 +861,7 @@ void window::install_message_routing(channel * pchannel)
 
             auto pmouseactivate = __create_new < ::message::mouse_activate >();
 
-            pmouseactivate->set(this, this, e_message_mouse_activate, (wparam) 0, (lparam) 0, point_i32());
+            pmouseactivate->set(this, this, e_message_mouse_activate, (wparam) 0, (lparam) 0);
 
             send_message(pmouseactivate);
 
@@ -835,7 +870,7 @@ void window::install_message_routing(channel * pchannel)
 
                auto pactivate = __create_new < ::message::activate >();
 
-               pactivate->set(this, this, e_message_activate, MAKELONG(e_activate_click_active, 0), (lparam) 0, point_i32());
+               pactivate->set(this, this, e_message_activate, MAKELONG(e_activate_click_active, 0), (lparam) 0);
 
                post_message(pactivate);
 
@@ -868,7 +903,7 @@ void window::install_message_routing(channel * pchannel)
 
          }
          
-         pmouse->set(this, this, id, 0, MAKELPARAM(x, y), point_i32(x, y));
+         pmouse->set(this, this, id, 0, MAKELPARAM(x, y));
 
          post_message(pmouse);
 
@@ -897,7 +932,7 @@ void window::install_message_routing(channel * pchannel)
 
       }
       
-      pmouse->set(this, this, id, (wparam) 0, MAKELPARAM(x, y), ::point_i32(x, y));
+      pmouse->set(this, this, id, (wparam) 0, MAKELPARAM(x, y));
 
       post_message(pmouse);
 
@@ -924,7 +959,7 @@ void window::install_message_routing(channel * pchannel)
 
       }
 
-      pmouse->set(this, this, id, (wparam) 0, MAKELPARAM(x, y), ::point_i32(x, y));
+      pmouse->set(this, this, id, (wparam) 0, MAKELPARAM(x, y));
 
       post_message(pmouse);
 
@@ -1051,7 +1086,7 @@ void window::install_message_routing(channel * pchannel)
       
       auto pmouse = __create_new < ::message::mouse >();
       
-      pmouse->set(this, this, id, wparam, lparam, ::point_i32(x, y));
+      pmouse->set(this, this, id, wparam, lparam);
 
       post_message(pmouse);
       
@@ -1083,7 +1118,7 @@ void window::install_message_routing(channel * pchannel)
 
       auto pmouse = __create_new < ::message::mouse >();
       
-      pmouse->set(this, this, id, wparam, lparam, ::point_i32(x, y));
+      pmouse->set(this, this, id, wparam, lparam);
 
       post_message(pmouse);
 
@@ -1103,7 +1138,7 @@ void window::install_message_routing(channel * pchannel)
 
       auto pwheel  = __create_new < ::message::mouse_wheel > ();
       
-      pwheel->set(this, this, id, wparam, lparam, ::point_i32(x, y));
+      pwheel->set(this, this, id, wparam, lparam);
 
       post_message(pwheel);
 
@@ -1123,7 +1158,7 @@ void window::install_message_routing(channel * pchannel)
       
          auto pmove  = __create_new < ::message::move > ();
       
-         pmove->set(this, this, id, wparam, lparam, ::point_i32());
+         pmove->set(this, this, id, wparam, lparam);
 
          post_message(pmove);
          
@@ -1139,7 +1174,7 @@ void window::install_message_routing(channel * pchannel)
       
          auto psize  = __create_new < ::message::size > ();
       
-         psize->set(this, this, id, wparam, lparam, ::point_i32());
+         psize->set(this, this, id, wparam, lparam);
 
          post_message(psize);
          
@@ -1289,7 +1324,7 @@ void window::install_message_routing(channel * pchannel)
       
          auto pmove  = __create_new < ::message::move > ();
       
-         pmove->set(this, this, id, wparam, lparam, ::point_i32());
+         pmove->set(this, this, id, wparam, lparam);
 
          post_message(pmove);
          
@@ -1365,7 +1400,7 @@ void window::install_message_routing(channel * pchannel)
    }
 
 
-   void window::macos_window_activate()
+   void window::macos_window_on_activate()
    {
       
       if(is_destroying())
@@ -1375,7 +1410,7 @@ void window::install_message_routing(channel * pchannel)
          
       }
       
-      this->set_active_window();
+      //this->set_active_window();
 
       auto puserinteraction = m_pimpl->m_puserinteraction;
 
@@ -1386,12 +1421,13 @@ void window::install_message_routing(channel * pchannel)
 
       }
 
-      puserinteraction->set_need_redraw();
+//      puserinteraction->set_need_redraw();
+      puserinteraction->send_message(e_message_activate, 1);
 
    }
 
 
-   void window::macos_window_deactivate()
+   void window::macos_window_on_deactivate()
    {
 
       if(is_destroying())
@@ -1407,23 +1443,23 @@ void window::install_message_routing(channel * pchannel)
       
       auto puserinteraction = m_pimpl->m_puserinteraction;
       
-      auto pwindowActive = pwindowing->get_active_window(puserinteraction->m_pthreadUserInteraction);
-      
-      if(::is_null(pwindowActive))
-      {
-         
-         return;
-         
-      }
-      
-      if(pwindowActive != this)
-      {
-         
-         return;
-         
-      }
-      
-      pwindowing->clear_active_window(puserinteraction->m_pthreadUserInteraction);
+//      auto pwindowActive = pwindowing->get_active_window(puserinteraction->m_pthreadUserInteraction);
+//
+//      if(::is_null(pwindowActive))
+//      {
+//
+//         return;
+//
+//      }
+//
+//      if(pwindowActive != this)
+//      {
+//
+//         return;
+//
+//      }
+//
+//      pwindowing->clear_active_window(puserinteraction->m_pthreadUserInteraction);
       
       //::deactivate_window(get_handle());
 
@@ -1433,13 +1469,15 @@ void window::install_message_routing(channel * pchannel)
    //         return;
    //
    //      }
-
-      if(!is_destroying())
-      {
       
-         puserinteraction->set_need_redraw();
-         
-      }
+      puserinteraction->send_message(e_message_activate, 0);
+
+//      if(!is_destroying())
+//      {
+//
+//         puserinteraction->set_need_redraw();
+//
+//      }
 
    }
 
@@ -1621,6 +1659,13 @@ void window::install_message_routing(channel * pchannel)
 
          return;
 
+      }
+      
+      if(puserinteraction->m_bDestroying)
+      {
+         
+         return;
+         
       }
       
       if(puserinteraction->layout().window().is_screen_visible())
@@ -1913,6 +1958,40 @@ void window::install_message_routing(channel * pchannel)
    //      pmq->m_eventNewMessage.set_event();
 
       return true;
+
+   }
+
+
+   ::e_status window::destroy_window()
+   {
+
+      __pointer(::user::primitive_impl) pimplThis = m_pimpl;
+
+      __pointer(::user::interaction) puiThis = pimplThis->m_puserinteraction;
+
+      try
+      {
+
+         puiThis->send_message(e_message_destroy);
+
+      }
+      catch (...)
+      {
+
+      }
+
+      try
+      {
+
+         puiThis->send_message(e_message_non_client_destroy);
+
+      }
+      catch (...)
+      {
+
+      }
+
+      return ::success;
 
    }
 

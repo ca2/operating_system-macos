@@ -91,8 +91,8 @@ namespace windowing_macos
       
       
       virtual void macos_window_did_become_key() override;
-      virtual void macos_window_activate() override;
-      virtual void macos_window_deactivate() override;
+      virtual void macos_window_on_activate() override;
+      virtual void macos_window_on_deactivate() override;
 
       
       void * macos_window_get_mouse_cursor() override;
@@ -120,6 +120,9 @@ namespace windowing_macos
       bool post_message(::message::message * pmessage);
       bool send_message(::message::message * pmessage);
 
+      
+      ::e_status destroy_window() override;
+      
 
    };
 

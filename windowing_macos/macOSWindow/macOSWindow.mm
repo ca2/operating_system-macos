@@ -183,7 +183,7 @@
    
    printf("windowDidBecomeMain\n");
    
-   m_pmacoswindow->macos_window_activate();
+   m_pmacoswindow->macos_window_on_activate();
    
 }
 
@@ -192,7 +192,7 @@
    
    printf("windowDidResignMain\n");
    
-   m_pmacoswindow->macos_window_deactivate();
+   m_pmacoswindow->macos_window_on_deactivate();
    
 }
 

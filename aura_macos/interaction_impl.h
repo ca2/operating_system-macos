@@ -511,7 +511,7 @@ namespace macos
 //      LRESULT Default() override;
 //      virtual LRESULT DefWindowProc(const ::id & id, WPARAM wParam, LPARAM lParam);
 
-      virtual void PostNcDestroy() override;
+      void post_non_client_destroy() override;
 
 
       friend class frame_window;

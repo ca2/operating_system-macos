@@ -46,6 +46,8 @@ namespace acme
          //override;
 
          virtual ::e_status initialize(::object * pobject) override;
+         
+         void os_post_quit() override;
 
    //      virtual ::e_status get_system_time(system_time_t * psystemtime)
    //

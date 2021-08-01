@@ -8,6 +8,8 @@
 #import "framework.h"
 
 
+
+
 void user_notify_icon_mm_bridge::notify_icon_mm_initialize(const char * strIconFile)
 {
 
@@ -17,7 +19,7 @@ void user_notify_icon_mm_bridge::notify_icon_mm_initialize(const char * strIconF
    ns_main_sync(^()
                 {
 
-   m_pnotifyicon = (__bridge_retained void *) [[user_notify_icon alloc] init: str bridge: m_pnotifyiconbridge];
+   m_pnotifyicon = (__bridge_retained void *) [[user_notify_icon alloc] initIconFile: str withBridge: m_pnotifyiconbridge];
       
    });
 

@@ -305,18 +305,26 @@ namespace macos
 
 
    bool interaction_impl::start_destroying_window()
-{
+   {
+      
+      if(!::user::interaction_impl::start_destroying_window())
+      {
+         
+         return false;
+         
+      }
    
-   return false;
+      return true;
    
-}
+   }
 
 
    void interaction_impl::destroy_window()
-{
+   {
    
+      ::user::interaction_impl::destroy_window();
    
-}
+   }
 
 
 bool interaction_impl::_is_window() const
@@ -453,7 +461,7 @@ bool interaction_impl::_is_window() const
 //
 //      m_puserinteraction->set_need_layout();
 //
-//      m_puserinteraction->add_ref(OBJ_REF_DBG_P_NOTE(this, "native_create_window"));
+//      m_puserinteraction->add_ref(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "native_create_window"));
 //
 //      m_puserinteraction->m_ewindowflag |= e_window_flag_window_created;
 //
@@ -705,14 +713,14 @@ bool interaction_impl::_is_window() const
    }
 
 
-   void interaction_impl::PostNcDestroy()
+   void interaction_impl::post_non_client_destroy()
    {
 
       //Detach();
 
       //ASSERT(get_handle() == nullptr);
 
-      ::user::interaction_impl::PostNcDestroy();
+      ::user::interaction_impl::post_non_client_destroy();
 
 //      ns_main_async(^()
 //      {

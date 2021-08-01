@@ -17,11 +17,11 @@ class user_notify_icon_mm_bridge
 public:
 
 
-   void *                           m_pnotifyicon;
-   ::user_notify_icon_bridge *      m_pnotifyiconbridge;
+   void *                              m_pnotifyicon;
+   ::user_notify_icon_bridge *         m_pnotifyiconbridge;
    
 
-   virtual void notify_icon_mm_initialize(const char * strIconFile);
+   virtual void notify_icon_mm_initialize(const char * pszIconFile);
    
    
    virtual void notify_icon_mm_finalize();

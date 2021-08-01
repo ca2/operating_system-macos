@@ -7,6 +7,27 @@
 //
 
 #include "framework.h"
+#include "apex/user/notify_icon_bridge.h"
+
+NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
+{
+   //[sourceImage setScalesWhenResized:YES];
+   // Report an error if the source isn't a valid image
+   if (![sourceImage isValid])
+   {
+      NSLog(@"Invalid Image");
+      return nullptr;
+   }
+   
+   NSImage *newImage = [[NSImage alloc] initWithSize: newSize];
+   [newImage lockFocus];
+   [sourceImage setSize: newSize];
+   [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationHigh];
+   [sourceImage drawAtPoint:NSZeroPoint fromRect:CGRectMake(0, 0, newSize.width, newSize.height) operation:NSCompositingOperationCopy fraction:1.0];
+   [newImage unlockFocus];
+   return newImage;
+   
+}
 
 
 @implementation user_notify_icon
@@ -17,17 +38,36 @@
 //
 // Init method for the object.
 //
-- (id)init:(NSString*)strIconFile bridge:(user_notify_icon_bridge *)pbridge
+- (id)initIconFile:(NSString *)strIconFile withBridge:(::user_notify_icon_bridge *)pbridge
 {
    
-   m_pbridge = pbridge;
+   m_pnotifyiconbridge = pbridge;
    
    // http://stackoverflow.com/questions/3409985/how-to-create-a-menubar-application-for-mac
    m_statusitem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
    
    [m_statusitem setHighlightMode: YES];
    
-   [m_statusitem setImage: [[NSImage alloc] initByReferencingFile:strIconFile]];
+   auto pimage = [NSImage alloc];
+   
+   if([pimage initByReferencingFile:strIconFile])
+   {
+      NSSize sizeNotifyIcon;
+      
+      sizeNotifyIcon.width = 22;
+      sizeNotifyIcon.height = 22;
+
+      if([pimage size].width != sizeNotifyIcon.width
+         || [pimage size].height != sizeNotifyIcon.height)
+      {
+         
+         pimage = image_resize(pimage, sizeNotifyIcon);
+         
+      }
+   
+      [m_statusitem setImage: pimage ];
+      
+   }
    
    m_menu = [[NSMenu alloc] initWithTitle:@"menubar_menu"];
    
@@ -111,7 +151,7 @@
 - (void)dealloc
 {
    
-   m_pbridge = NULL;
+   m_pnotifyiconbridge = NULL;
    
 }
 
@@ -121,34 +161,27 @@
    
    NSMenuItem * pitem = (NSMenuItem *) sender;
    
-   if(m_pbridge == NULL)
+   if(m_pnotifyiconbridge == NULL)
    {
       
       return;
       
    }
    
-   NSString *prefixToRemove = @"menu_item_";
-   NSString *strId = [pitem.identifier copy];
+   NSString * prefixToRemove = @"menu_item_";
+   
+   NSString * strId = [pitem.identifier copy];
+   
    if ([pitem.identifier hasPrefix:prefixToRemove])
    {
+      
       strId = [pitem.identifier substringFromIndex:[prefixToRemove length]];
    
-//   for(int i = 0; i < m_pbridge->_get_notification_area_action_count(); i++)
-//   {
-      
-//      if(pitem == [m_menuitema objectAtIndex:i])
-//      {
-         
-         //const char * psz = [[m_menuida objectAtIndex:i] UTF8String];
-      
       const char * psz = [strId UTF8String];
          
-         m_pbridge->call_notification_area_action(psz);
+      m_pnotifyiconbridge->call_notification_area_action(psz);
          
-         return;
-         
-      //}
+      return;
       
    }
    

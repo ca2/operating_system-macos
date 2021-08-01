@@ -16,14 +16,15 @@
 #include "apex/user/notify_icon_bridge.h"
 
 
-class user_notify_icon_mm_bridge;
+class user_notify_icon_bridge;
 
 
 @interface user_notify_icon :  NSObject < NSMenuDelegate> {
 @public
    
    
-   user_notify_icon_bridge * m_pbridge;
+   ::user_notify_icon_bridge *   m_pnotifyiconbridge;
+   
    
    // http://stackoverflow.com/questions/3409985/how-to-create-a-menubar-application-for-mac
    // Flycut/AppController.h
@@ -35,10 +36,10 @@ class user_notify_icon_mm_bridge;
 }
 
 
-- (id)init:(NSString *)strIconFile bridge: (user_notify_icon_bridge *) pbridge;
+- (id)initIconFile:(NSString *)strIconFile withBridge: (::user_notify_icon_bridge *) pbridge;
 
 
-- (void) on_item_action : (NSString *) strIconFile;
+- (void) on_item_action : (id)sender;
 
 
 - (void) close;

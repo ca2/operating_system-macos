@@ -38,6 +38,7 @@ public:
    
    macos_window();
    virtual ~macos_window();
+
    
    virtual void macos_window_add_ref() = 0;
    virtual void macos_window_dec_ref() = 0;
@@ -66,8 +67,8 @@ public:
    
    virtual void macos_window_did_become_key() = 0;
 
-   virtual void macos_window_activate() = 0;
-   virtual void macos_window_deactivate() = 0;
+   virtual void macos_window_on_activate() = 0;
+   virtual void macos_window_on_deactivate() = 0;
    
    
    virtual void * macos_window_get_mouse_cursor() = 0;
@@ -85,6 +86,7 @@ public:
    
    virtual void macos_window_make_first_responder();
    virtual bool macos_window_is_key_window() const;
+   virtual void macos_window_resign_key();
    
    virtual void macos_window_order_front();
    virtual void macos_window_make_key_window();

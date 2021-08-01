@@ -364,6 +364,16 @@ if(str != nil)
 }
 
 
+
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+   
+   
+   
+}
+
+
+
 //- (void)sendEvent:(NSEvent *)theEvent
 //{
 //
@@ -553,7 +563,7 @@ void ns_create_main_menu(menu_shared * pmenushared)
    if(pmenushared)
    {
       
-   pmenushared->add_ref();
+      pmenushared->increment_reference_count();
       
    }
 
@@ -1023,3 +1033,6 @@ void ns_create_main_menu()
 //
 //
 //} // namespace user
+
+
+
