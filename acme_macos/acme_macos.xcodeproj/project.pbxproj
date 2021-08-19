@@ -27,6 +27,9 @@
 		9A15A630264B56770080670E /* application.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A61E264B56770080670E /* application.h */; };
 		9A15A631264B56770080670E /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A61F264B56770080670E /* util.cpp */; };
 		9A15A632264B56770080670E /* file.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A620264B56770080670E /* file.h */; };
+		9A239CB626CDEF9300F98012 /* acme_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A239CB426CDEF9300F98012 /* acme_file.cpp */; };
+		9A239CB726CDEF9300F98012 /* acme_file.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A239CB526CDEF9300F98012 /* acme_file.h */; };
+		9A23A71F26CEC02A00F98012 /* file.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A71E26CEC02A00F98012 /* file.mm */; };
 		9A412456266C40A400C3FF0E /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78630A2650483C0034A0E1 /* libacme.dylib */; };
 		9A412457266C40AE00C3FF0E /* libacme_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78630C2650483C0034A0E1 /* libacme_posix.dylib */; };
 		9A6543FE2666F2A400F8A254 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6543FD2666F2A400F8A254 /* image.cpp */; };
@@ -88,6 +91,9 @@
 		9A15A61E264B56770080670E /* application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = application.h; sourceTree = "<group>"; };
 		9A15A61F264B56770080670E /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
 		9A15A620264B56770080670E /* file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file.h; sourceTree = "<group>"; };
+		9A239CB426CDEF9300F98012 /* acme_file.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = acme_file.cpp; sourceTree = "<group>"; };
+		9A239CB526CDEF9300F98012 /* acme_file.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = acme_file.h; sourceTree = "<group>"; };
+		9A23A71E26CEC02A00F98012 /* file.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = file.mm; sourceTree = "<group>"; };
 		9A6543FD2666F2A400F8A254 /* image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
 		9A78630A2650483C0034A0E1 /* libacme.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A78630C2650483C0034A0E1 /* libacme_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,12 +155,15 @@
 		9A0C16D6264A2CE900B5CC33 /* acme_macos */ = {
 			isa = PBXGroup;
 			children = (
+				9A23A71E26CEC02A00F98012 /* file.mm */,
 				9A15A613264B56750080670E /* _.h */,
 				9A15A610264B56740080670E /* _acme_macos.h */,
 				9AB5F929264B020100C4F2A3 /* _c_mm.h */,
 				9A15A619264B56760080670E /* _mm.h */,
 				9A7ECABE2651963500D5BA45 /* acme_dir.cpp */,
 				9A7ECABD2651963500D5BA45 /* acme_dir.h */,
+				9A239CB426CDEF9300F98012 /* acme_file.cpp */,
+				9A239CB526CDEF9300F98012 /* acme_file.h */,
 				9A7ECABB2651963500D5BA45 /* acme_path.cpp */,
 				9A7ECABF2651963500D5BA45 /* acme_path.h */,
 				9A15A61B264B56760080670E /* application.cpp */,
@@ -218,6 +227,7 @@
 			files = (
 				9A787C68264BD87E003DF8A0 /* mmos.h in Headers */,
 				9A15A632264B56770080670E /* file.h in Headers */,
+				9A239CB726CDEF9300F98012 /* acme_file.h in Headers */,
 				9A15A625264B56770080670E /* _.h in Headers */,
 				9A7ECAC32651963500D5BA45 /* acme_path.h in Headers */,
 				9A15A62A264B56770080670E /* factory_exchange.h in Headers */,
@@ -313,6 +323,7 @@
 				9A787BE8264BD7AF003DF8A0 /* mmos.mm in Sources */,
 				9A787E91264E9276003DF8A0 /* process.cpp in Sources */,
 				9A15A62E264B56770080670E /* file.cpp in Sources */,
+				9A239CB626CDEF9300F98012 /* acme_file.cpp in Sources */,
 				9A15A62F264B56770080670E /* main.cpp in Sources */,
 				9A7ECAC02651963500D5BA45 /* acme_path.cpp in Sources */,
 				9A787E8E264E901E003DF8A0 /* mm.mm in Sources */,
@@ -320,6 +331,7 @@
 				9A15A631264B56770080670E /* util.cpp in Sources */,
 				9A15A62C264B56770080670E /* thread.cpp in Sources */,
 				9A6543FE2666F2A400F8A254 /* image.cpp in Sources */,
+				9A23A71F26CEC02A00F98012 /* file.mm in Sources */,
 				9A15A626264B56770080670E /* stdio_file.cpp in Sources */,
 				9A15A629264B56770080670E /* trace.cpp in Sources */,
 				9A15A624264B56770080670E /* factory_exchange.cpp in Sources */,

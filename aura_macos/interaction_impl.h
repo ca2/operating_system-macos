@@ -139,7 +139,7 @@ namespace macos
 
 
       // oswindow Text Functions
-      void set_window_text(const char * lpszString) override;
+      void set_window_text(const ::string & lpszString) override;
       //strsize GetWindowText(char * lpszStringBuf, strsize nMaxCount);
       void get_window_text(string & str) override;
       //strsize GetWindowTextLength();

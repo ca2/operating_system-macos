@@ -13,8 +13,8 @@
 //
 #include "framework.h"
 #include "apex_macos/keyboard.h"
-#import "apex/os/winpr_input.h"
-
+#import "apex/node/operating_system/winpr_input.h"
+#include <Carbon/Carbon.h>
 //NSCursor * g_pcurrentNscursor = nullptr;
 
 @implementation macOSWindowFrameView

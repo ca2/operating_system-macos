@@ -16,8 +16,8 @@
 
 //void macos_calc_dark_mode();
 void os_system_start();
-int file_put_contents(const char * path, const char * contents);
-void file_add_contents_raw(const char * path, const char * psz);
+//int file_put_contents(const char * path, const char * contents);
+//void file_add_contents_raw(const char * path, const char * psz);
 
 void application_on_menu_action(void * pApplication, const char * pszCommand);
 void * application_system(void * pApplication);
@@ -250,7 +250,7 @@ if(str != nil)
 - (BOOL)applicationOpenUntitledFile:(NSApplication *)sender
 {
    
-   file_put_contents("/eco/001.txt", "applicationOpenUntitledFile");
+   //file_put_contents("/eco/001.txt", "applicationOpenUntitledFile");
    
    system_on_open_untitled_file(application_system(m_pApplication));
    
@@ -307,8 +307,8 @@ if(str != nil)
 
 - (void)application:(NSApplication *)application open:(NSURL * )url
 {
-   file_put_contents("/eco/006.txt", "open");
-   file_add_contents_raw("/eco/006.txt", [[url absoluteString] UTF8String]);
+   //file_put_contents("/eco/006.txt", "open");
+   //file_add_contents_raw("/eco/006.txt", [[url absoluteString] UTF8String]);
    
    //MessageBox(NULL, "application: openFile", "application: openFile", e_message_box_ok);
    

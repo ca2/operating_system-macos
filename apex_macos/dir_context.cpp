@@ -146,10 +146,10 @@ namespace macos
          m_pdirsystem->m_strNetSeedFolder = pacmedir->install() / "net";
          
       }
+      
+      pacmedir->create(m_pdirsystem->m_strTimeFolder);
 
-      ::dir::mk(m_pdirsystem->m_strTimeFolder);
-
-      if(!::dir::is(m_pdirsystem->m_strTimeFolder))
+      if(!pacmedir->is(m_pdirsystem->m_strTimeFolder))
       {
          
          return false;
@@ -162,9 +162,9 @@ namespace macos
 
       strTime /= "time";
 
-      ::dir::mk(strTime);
+      pacmedir->create(strTime);
 
-      if(!::dir::is(strTime))
+      if(!pacmedir->is(strTime))
       {
          
          return false;
@@ -250,8 +250,10 @@ namespace macos
          }
 
          ::file::patha  straPath;
+         
+         auto pacmedir = m_psystem->m_pacmedir;
 
-         ::dir::ls(straPath, listing.m_pathFinal);
+         pacmedir->ls(straPath, listing.m_pathFinal);
 
 //            file_find file_find;
 
@@ -295,8 +297,10 @@ namespace macos
          }
 
          ::file::patha  straPath;
+         
+         auto pacmedir = m_psystem->m_pacmedir;
 
-         ::dir::ls(straPath, listing.m_pathFinal);
+         pacmedir->ls(straPath, listing.m_pathFinal);
 
          // file_find file_find;
 
@@ -344,7 +348,9 @@ namespace macos
 
       }
 
-      return ::dir::_is(path);
+      auto pacmedir = m_psystem->m_pacmedir;
+      
+      return pacmedir->_is(path);
 
    }
 
@@ -492,8 +498,10 @@ namespace macos
 
          if(!is(stra[i]))
          {
+            
+            auto pacmedir = m_psystem->m_pacmedir;
 
-            if(!::dir::mkdir(stra[i]))
+            if(!pacmedir->create_directory(stra[i]))
             {
 
                auto estatus = ::get_last_status();
@@ -535,8 +543,10 @@ namespace macos
                   }
 
                   //if(::CreateDirectory(::str::international::utf8_to_unicode("\\\\?\\" + stra[i]), nullptr))
+                  
+                  auto pacmedir = m_psystem->m_pacmedir;
 
-                  if(::dir::mkdir(stra[i]))
+                  if(pacmedir->create_directory(stra[i]))
                   {
 
                      //m_isdirmap.set(stra[i], true, 0);

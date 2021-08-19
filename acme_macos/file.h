@@ -53,49 +53,45 @@ namespace macos
       
       string         m_strFileName;
       i32            m_iFile;
+      i32            m_iPutCharacterBack;
 
 
       file();
-      virtual ~file();
+      ~file() override;
 
 
-      virtual void assert_valid() const override;
-      virtual void dump(dump_context & dumpcontext) const override;
+      void assert_valid() const override;
+      void dump(dump_context & dumpcontext) const override;
 
 
-      virtual filesize get_position() const override;
+      filesize get_position() const override;
 
 
-      virtual bool get_status(::file::file_status & status) const override;
-      virtual ::file::path get_file_path() const override;
-      virtual void set_file_path(const ::file::path & path)override;
+      bool get_status(::file::file_status & status) const override;
+      ::file::path get_file_path() const override;
+      void set_file_path(const ::file::path & path)override;
 
-      virtual ::extended::status open(const ::file::path & lpszFileName, const ::file::e_open & eopenflags)override;
+      ::extended::status open(const ::file::path & lpszFileName, const ::file::e_open & eopenflags)override;
 
-      //virtual bool PASCAL GetStatus(const char * lpszFileName, ::file::file_status& rStatus);
+      ::index translate(::count offset, ::enum_seek nFrom)override;
+      void set_size(filesize dwNewLen)override;
+      filesize get_size() const override;
 
-      //u64 ReadHuge(void * lpBuffer, u64 dwCount);
-      //void WriteHuge(const void * lpBuffer, u64 dwCount);
+      memsize read(void * lpBuf, memsize nCount)override;
+      void write(const void * lpBuf, memsize nCount)override;
 
-      //virtual __pointer(::file::file) Duplicate() const;
-
-      virtual filesize seek(filesize lOff, ::file::e_seek nFrom)override;
-      virtual void set_size(filesize dwNewLen)override;
-      virtual filesize get_size() const override;
-
-      virtual memsize read(void * lpBuf, memsize nCount)override;
-      virtual void write(const void * lpBuf, memsize nCount)override;
-
-      virtual void lock(filesize dwPos, filesize dwCount)override;
-      virtual void unlock(filesize dwPos, filesize dwCount)override;
+      void lock(filesize dwPos, filesize dwCount)override;
+      void unlock(filesize dwPos, filesize dwCount)override;
 
       //virtual void Abort();
-      virtual void flush() override;
-      virtual void close() override;
+      void flush() override;
+      void close() override;
 
-      virtual bool is_opened() const override;
+      bool is_opened() const override;
 //      virtual u64 GetBufferPtr(::u32 nCommand, u64 nCount = 0, void ** ppBufStart = nullptr, void ** ppBufMax = nullptr);
 
+      int put_character_back(int iCharacter) override;
+      
 
    };
 

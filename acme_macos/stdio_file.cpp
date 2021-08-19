@@ -36,7 +36,7 @@ namespace macos
       if ((nOpenFlags & ::file::e_open_defer_create_directory) && (nOpenFlags & ::file::e_open_write))
       {
          
-         ::dir::mk(::file::path(lpszFileName).folder());
+         m_psystem->m_pacmedir->create(::file_path_folder(lpszFileName));
          
       }
 
@@ -227,22 +227,22 @@ namespace macos
    }
 
 
-   filesize stdio_file::seek(filesize lOff, ::file::e_seek eseek)
+   filesize stdio_file::seek(filesize lOff, ::enum_seek eseek)
    {
       ASSERT_VALID(this);
-      ASSERT(eseek == ::file::seek_begin || eseek== ::file::seek_end || eseek== ::file::seek_current);
+      ASSERT(eseek == ::e_seek_set || eseek== ::e_seek_from_end || eseek== ::e_seek_current);
       ASSERT(m_pStream != nullptr);
 
       i32 nFrom;
       switch(eseek)
       {
-      case ::file::seek_begin:
+      case ::e_seek_set:
          nFrom = SEEK_SET;
          break;
-      case ::file::seek_end:
+      case ::e_seek_from_end:
          nFrom = SEEK_END;
          break;
-      case ::file::seek_current:
+      case ::e_seek_current:
          nFrom = SEEK_CUR;
          break;
       default:

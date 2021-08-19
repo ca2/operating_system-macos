@@ -16,7 +16,7 @@ void ns_launch_app(const char * psz, const char ** argv, int iFlags);
 void ansios_sigchld_handler(int sig);
 
 
-void apex_application_run(const char * pszAppName, const char * pszProgName);
+void apex_application_run(const ::string & pszAppName, const ::string & pszProgName);
 
 
 namespace acme
@@ -51,9 +51,9 @@ namespace acme
 
    
     ::e_status node::call_async(
-   const char * pszPath,
-   const char * pszParam,
-   const char * pszDir,
+   const ::string & pszPath,
+   const ::string & pszParam,
+   const ::string & pszDir,
    ::e_display edisplay,
    bool bPrivileged,
    unsigned int * puiPid)
@@ -95,7 +95,7 @@ namespace acme
    }
 
 
-    ::e_status node::call_sync(const char * pszPath, const char * pszParam, const char * pszDir, ::e_display edisplay, const ::duration & durationTimeout, ::property_set & set)
+    ::e_status node::call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const ::duration & durationTimeout, ::property_set & set)
    {
 
       string strCmdLine;
@@ -147,7 +147,7 @@ namespace acme
 
 
 
-   bool node::shell_execute_sync(const char * pszFile, const char * pszParams, ::duration durationTimeout )
+   bool node::shell_execute_sync(const ::string & pszFile, const ::string & pszParams, ::duration durationTimeout )
    {
       
       property_set set;
@@ -486,7 +486,7 @@ namespace acme
       //   }
       //
       //
-      //   string node::get_file_icon_path(const char * pszPath, int iSize)
+      //   string node::get_file_icon_path(const ::string & pszPath, int iSize)
       //   {
       //
       //      return ::linux_g_direct_get_file_icon_path(pszPath, iSize);
@@ -494,7 +494,7 @@ namespace acme
       //   }
       //
       //
-      //   string node::get_file_content_type(const char * pszPath)
+      //   string node::get_file_content_type(const ::string & pszPath)
       //   {
       //
       //      return ::linux_g_direct_get_file_content_type(pszPath);
@@ -612,7 +612,7 @@ namespace acme
       //   }
 
 
-       void node::os_post_quit()
+       void node::node_quit()
          {
       
           ::os_post_quit();
@@ -718,7 +718,7 @@ namespace acme
       }
 
       
-      ::e_status node::_launch_macos_app(const char * pszAppFolder)
+      ::e_status node::_launch_macos_app(const ::string & pszAppFolder)
       {
          
          if (!pszAppFolder)
@@ -730,14 +730,14 @@ namespace acme
          
          string strCommand;
          
-         strCommand.Format("open \"%s\"", pszAppFolder);
+         strCommand.Format("open \"%s\"", pszAppFolder.c_str());
          
          return _launch_command(strCommand);
          
       }
 
 
-      ::e_status node::_launch_macos_app_args(const char * pszAppFolder, const char * pszArgs)
+      ::e_status node::_launch_macos_app_args(const ::string & pszAppFolder, const ::string & pszArgs)
       {
          
          if (!pszAppFolder)
@@ -749,14 +749,14 @@ namespace acme
          
          string strCommand;
          
-         strCommand.Format("open \"%s\" --args %s", pszAppFolder, pszArgs);
+         strCommand.Format("open \"%s\" --args %s", pszAppFolder.c_str(), pszArgs.c_str());
          
          return _launch_command(strCommand);
          
       }
       
 
-      ::e_status node::launch_app(const char * psz, const char ** argv, int iFlags)
+      ::e_status node::launch_app(const ::string & psz, const char ** argv, int iFlags)
       {
          
          ::ns_launch_app(psz, argv, iFlags);
@@ -832,7 +832,7 @@ namespace acme
       }
 
 
-      bool node::load_modules_diff(string_array& straOld, string_array& straNew, const char* pszExceptDir)
+      bool node::load_modules_diff(string_array& straOld, string_array& straNew, const ::string & pszExceptDir)
       {
 
          __throw(error_interface_only);
@@ -886,7 +886,7 @@ namespace acme
       }
 
 
-      bool node::process_contains_module(string& strImage, ::u32 processID, const char* pszLibrary)
+      bool node::process_contains_module(string& strImage, ::u32 processID, const ::string & pszLibrary)
       {
 
          __throw(error_interface_only);
@@ -896,7 +896,7 @@ namespace acme
       }
 
 
-      void node::shared_library_process(dword_array& dwa, string_array& straProcesses, const char* pszLibrary)
+      void node::shared_library_process(dword_array& dwa, string_array& straProcesses, const ::string & pszLibrary)
       {
 
          __throw(error_interface_only);
@@ -914,7 +914,7 @@ namespace acme
    //   }
 
 
-      string node::get_environment_variable(const char* pszEnvironmentVariable)
+      string node::get_environment_variable(const ::string & strEnvironmentVariable)
       {
 
          return "";
@@ -922,7 +922,7 @@ namespace acme
       }
 
 
-      string node::expand_env(string str)
+   string node::expand_environment_variables(const ::string & str)
       {
 
          return "";

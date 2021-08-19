@@ -6,7 +6,7 @@
 //
 
 #import <AppKit/AppKit.h>
-#include "acme/const/cursor.h"
+#include "acme/constant/cursor.h"
 
 
 void ns_set_cursor(void * pNSCursor)

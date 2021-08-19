@@ -5,8 +5,11 @@
 #pragma once
 
 
-
 #define __ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES 0
+
+
+//#define _POSIX_C_SOURCE 200809
+
 
 #ifndef MAX_PATH
 #define MAX_PATH 260
@@ -21,6 +24,8 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include <errno.h>
+#include <strings.h>
+#include <string.h>
 #include <sys/time.h>
 #include <wchar.h>
 #include <xlocale.h>
@@ -71,7 +76,7 @@ typedef struct gdi_object * HGDIOBJ;
 #endif
 
 
-#include <Carbon/Carbon.h>
+//#include <Carbon/Carbon.h>
 
 
 #if DEBUG
@@ -141,7 +146,7 @@ typedef void * PVOID;
 #define _strcmpi strcasecmp
 
 
-#include <pthread.h>
+//#include <pthread.h>
 
 
 

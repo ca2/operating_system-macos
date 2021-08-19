@@ -9,20 +9,20 @@
 #include <sys/stat.h>
 
 
-::e_status translate_unix_error(int error)
-{
-
-   switch(error)
-   {
-   case 0:
-      return ::success;
-   case ENOENT:
-      return error_file_not_found;
-   default:
-      return error_failed;
-   }
-
-}
+//::e_status translate_unix_error(int error)
+//{
+//
+//   switch(error)
+//   {
+//   case 0:
+//      return ::success;
+//   case ENOENT:
+//      return error_file_not_found;
+//   default:
+//      return error_failed;
+//   }
+//
+//}
 
 
 namespace macos
@@ -72,6 +72,7 @@ namespace macos
    {
 
       m_iFile = (::u32) hFileNull;
+      m_iPutCharacterBack = -1;
 
    }
 
@@ -110,7 +111,7 @@ namespace macos
       if ((eopen & ::file::e_open_defer_create_directory) && (eopen & ::file::e_open_write))
       {
          
-         ::dir::mk(::file::path(lpszFileName).folder());
+         m_psystem->m_pacmedir->create(file_path_folder(lpszFileName));
          
       }
 
@@ -185,7 +186,7 @@ namespace macos
       if(hFile == hFileNull)
       {
 
-         auto estatus = translate_unix_error(errno);
+         auto estatus = errno_to_status(errno);
 
          if(estatus != error_file_not_found && estatus != error_path_not_found)
          {
@@ -226,6 +227,30 @@ namespace macos
          
          return 0;   // avoid Win32 "null-read"
          
+      }
+      
+      if(m_iPutCharacterBack >= 0)
+      {
+         
+         auto p = (byte *) lpBuf;
+         
+         *p = (::byte) m_iPutCharacterBack;
+         
+         nCount--;
+         
+         m_iPutCharacterBack = -1;
+         
+         if(nCount <= 0)
+         {
+          
+            return 1;
+            
+         }
+      
+         p++;
+         
+         lpBuf = p;
+
       }
 
       ASSERT(lpBuf != nullptr);
@@ -330,7 +355,7 @@ namespace macos
    }
 
 
-   filesize file::seek(filesize lOff, ::file::e_seek nFrom)
+   ::index file::translate(::count offset, ::enum_seek nFrom)
    {
 
       if(m_iFile == (::u32)hFileNull)
@@ -344,11 +369,11 @@ namespace macos
       
       ASSERT(m_iFile != (::u32)hFileNull);
       
-      ASSERT(nFrom == ::file::seek_begin || nFrom == ::file::seek_end || nFrom == ::file::seek_current);
+      ASSERT(nFrom == ::e_seek_set || nFrom == ::e_seek_from_end || nFrom == ::e_seek_current);
       
-      ASSERT(::file::seek_begin == SEEK_SET && ::file::seek_end == SEEK_END && ::file::seek_current == SEEK_CUR);
+      ASSERT(::e_seek_set == SEEK_SET && ::e_seek_from_end == SEEK_END && ::e_seek_current == SEEK_CUR);
 
-      ::i32 lLoOffset = lOff & 0xffffffff;
+      ::i32 lLoOffset = offset & 0xffffffff;
 
       filesize posNew = ::lseek(m_iFile, lLoOffset, (::u32)nFrom);
 
@@ -470,11 +495,11 @@ namespace macos
       // seek is a non const operation
       file * pFile = (file*)this;
       
-      dwCur = pFile->seek(0L, ::file::seek_current);
+      dwCur = pFile->increment_position(0);
       
       dwLen = pFile->seek_to_end();
       
-      if(dwCur != (u64)pFile->seek((filesize) dwCur, ::file::seek_begin))
+      if(dwCur != (u64)pFile->set_position((filesize) dwCur))
       {
 
          __throw(error_io, "failed to seek back to the original position on get_length");
@@ -609,50 +634,17 @@ namespace macos
    }
 
 
-} // namespace win
-
-
-#define _wcsdec(_cpc1, _cpc2) ((_cpc1)>=(_cpc2) ? nullptr : (_cpc2)-1)
-
-
-#define _wcsinc(_pc) ((_pc)+1)
-
-
-bool CLASS_DECL_ACME vfxFullPath(wstring & wstrFullPath, const wstring & wstrPath)
-{
-
-   wstrFullPath = wstrPath;
-
-   return true;
-
-}
-
-
-//CLASS_DECL_ACME void vfxGetModuleShortFileName(HINSTANCE hInst, string& strShortName)
-//{
-//
-//   __throw(todo);
-//
-//}
-
-
-CLASS_DECL_ACME bool vfxResolveShortcut(string & strTarget, const char * pszSource, ::user::primitive * puiMessageParentOptional)
-{
-
-   char realname[_POSIX_PATH_MAX * 4];
-
-   if(realpath(pszSource, realname) == 0)
+   int file::put_character_back(int iCharacter)
    {
       
-      return false;
+      m_iPutCharacterBack = iCharacter;
+      
+      return m_iPutCharacterBack;
       
    }
 
-   strTarget = realname;
 
-   return true;
-
-}
+} // namespace win
 
 
 

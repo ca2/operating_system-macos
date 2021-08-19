@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "aura/platform/message_queue.h"
-#include "acme/const/activate.h"
-#include "acme/const/button_state.h"
+#include "acme/constant/activate.h"
+#include "acme/constant/button_state.h"
 #include "aura/message.h"
 
 
@@ -700,7 +700,7 @@ bool interaction_impl::_is_window() const
       if(pwindowing->get_active_window(m_puserinteraction->m_pthreadUserInteraction) == m_puserinteraction)
       {
 
-         pwindowing->clear_active_window(m_puserinteraction->m_pthreadUserInteraction);
+         pwindowing->clear_active_window(m_puserinteraction->m_pthreadUserInteraction, m_pwindow);
 
       }
 
@@ -2943,7 +2943,7 @@ bool interaction_impl::_is_window() const
 //   }
 
 
-   void interaction_impl::set_window_text(const char * lpszString)
+   void interaction_impl::set_window_text(const ::string & lpszString)
    {
 
       m_strWindowText = lpszString;

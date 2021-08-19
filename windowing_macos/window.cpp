@@ -9,7 +9,7 @@
 #include "framework.h"
 #include "window_impl.h"
 #include "oswindow_data.h"
-#include "acme/os/_user.h"
+#include "acme/node/operating_system/_user.h"
 #include "acme/parallelization/message_queue.h"
 #include <CoreGraphics/CoreGraphics.h>
 
@@ -372,9 +372,7 @@ namespace windowing_macos
    bool window::is_active_window() const
    {
 
-      auto pwindowing = (::windowing_macos::windowing *) m_pwindowing->m_pWindowing2;
-
-      return pwindowing->m_pwindowActive == this;
+      return macos_window_is_key_window();
 
    }
 
@@ -710,8 +708,14 @@ namespace windowing_macos
    #endif
 
       ::size_i32 sizeMin = imageBuffer2->size().minimum(sizeWindow);
+      
+      image_source imagesource(imageBuffer2);
+      
+      image_drawing_options imagedrawingoptions(sizeMin);
+      
+      image_drawing imagedrawing(imagedrawingoptions, imagesource);
 
-      g->draw(sizeMin, imageBuffer2);
+      g->draw(imagedrawing);
       
       m_pimpl->m_bPendingRedraw = false;
       

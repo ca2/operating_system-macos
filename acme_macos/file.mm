@@ -6,13 +6,60 @@
 //
 #import "_mm.h"
 
-void ns_create_alias(const char * pszTarget, const char * pszSource)
+enum_status ns_create_alias(const char * pszTarget, const char * pszSource)
 {
+   
    NSString * strTarget = [[NSString alloc]initWithUTF8String:pszTarget];
+   
    NSString * strSource = [[NSString alloc]initWithUTF8String:pszSource];
    
-   [[NSFileManager defaultManager ] createSymbolicLinkAtPath: strTarget withDestinationPath: strSource error:nil];
+   NSError * error = nullptr;
+   if([[NSFileManager defaultManager ] createSymbolicLinkAtPath: strTarget withDestinationPath: strSource error:&error] == NO)
+   {
+      
+      if([error code] == NSFileWriteFileExistsError)
+      {
+         
+         return error_already_exists;
+         
+      }
+      
+      return error_failed;
+      
+   }
+   
+   return ::success;
+   
 }
+
+enum_status ns_symbolic_link_destination(char ** ppszDestination, const char * pszLink)
+{
+   
+  
+   NSString * strLink = [[NSString alloc]initWithUTF8String:pszLink];
+   
+   NSError * error = nullptr;
+   
+   NSString * strDestination = [[NSFileManager defaultManager ] destinationOfSymbolicLinkAtPath:strLink error:&error];
+   
+   if(strDestination == nullptr)
+   {
+      
+      return error_failed;
+      
+   }
+   
+   if(ppszDestination)
+   {
+   
+      *ppszDestination = ns_string(strDestination);
+      
+   }
+   
+   return success;
+   
+}
+
 
 
 char * ns_user_local_folder(NSSearchPathDirectory e)

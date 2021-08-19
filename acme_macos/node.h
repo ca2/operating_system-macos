@@ -31,8 +31,8 @@ namespace acme
 
 
          
-         ::e_status call_async(const char * pszPath, const char * pszParam, const char * pszDir, ::e_display edisplay, bool bPrivileged, unsigned int * puiPid = nullptr) override;
-         ::e_status call_sync(const char * pszPath, const char * pszParam, const char * pszDir, ::e_display edisplay, const ::duration & durationTimeout, ::property_set & set) override;
+         ::e_status call_async(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, bool bPrivileged, unsigned int * puiPid = nullptr) override;
+         ::e_status call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const ::duration & durationTimeout, ::property_set & set) override;
 
          //virtual ::color::color get_system_color(enum_system_color esystemcolor) override;
          
@@ -47,7 +47,7 @@ namespace acme
 
          virtual ::e_status initialize(::object * pobject) override;
          
-         void os_post_quit() override;
+         void node_quit() override;
 
    //      virtual ::e_status get_system_time(system_time_t * psystemtime)
    //
@@ -96,24 +96,24 @@ namespace acme
 
          virtual ::e_status install_sigchld_handler() override;
 
-         ::e_status _launch_macos_app(const char * pszAppFolder) override;
+         ::e_status _launch_macos_app(const ::string & pszAppFolder) override;
 
-         ::e_status _launch_macos_app_args(const char * pszAppFolder, const char * pszArgs) override;
+         ::e_status _launch_macos_app_args(const ::string & pszAppFolder, const ::string & pszArgs) override;
 
-         ::e_status launch_app(const char * psz, const char ** argv, int iFlags) override;
+         ::e_status launch_app(const ::string & psz, const char ** argv, int iFlags) override;
          
          
          virtual int _create_process2(const char * _cmd_line, u32 * pprocessId);
          
-         ::e_status create_process(const char * pszCommandLine, u32 * pprocessId) override;
+         ::e_status create_process(const ::string & pszCommandLine, u32 * pprocessId) override;
          
          bool process_modules(string_array& stra, u32 processID) override;
 
-         bool load_modules_diff(string_array& straOld, string_array& straNew, const char* pszExceptDir) override;
+         bool load_modules_diff(string_array& straOld, string_array& straNew, const ::string & pszExceptDir) override;
 
          id_array get_pids() override;
          
-         id_array module_path_get_pid(const char* pszModulePath, bool bModuleNameIsPropertyFormatted = false) override;
+         id_array module_path_get_pid(const ::string & pszModulePath, bool bModuleNameIsPropertyFormatted = false) override;
          
          string module_path_from_pid(u32 pid) override;
          
@@ -123,21 +123,21 @@ namespace acme
 
          bool is_shared_library_busy(const string_array& stra) override;
          
-         bool process_contains_module(string& strImage, ::u32 processID, const char* pszLibrary) override;
+         bool process_contains_module(string& strImage, ::u32 processID, const ::string & pszLibrary) override;
 
-         void shared_library_process(dword_array& dwa, string_array& straProcesses, const char* pszLibrary) override;
+         void shared_library_process(dword_array& dwa, string_array& straProcesses, const ::string & pszLibrary) override;
 
 //         int_bool is_process_running(::u32 pid) override;
          
-         string get_environment_variable(const char* pszEnvironmentVariable) override;
+         string get_environment_variable(const ::string & pszEnvironmentVariable) override;
          
-         string expand_env(string str) override;
+         string expand_environment_variables(const ::string & str) override;
 
          array <::serial::port_info> list_serial_ports() override;
          
          virtual bool _launch_command(const char * const pszCommand);
 
-         virtual bool shell_execute_sync(const char * pszFile, const char * pszParams, ::duration durationTimeout );
+         virtual bool shell_execute_sync(const ::string & pszFile, const ::string & pszParams, ::duration durationTimeout );
          
       };
 

@@ -275,7 +275,7 @@ namespace acme
        *
        *************************************************************************/
       /*=======================================================================*/
-   id_array node::module_path_get_pid(const char *pszModulePath
+   id_array node::module_path_get_pid(const ::string & pszModulePath
                                           , bool bModuleNameIsPropertyFormatted)
       {
          /*=======================================================================*/

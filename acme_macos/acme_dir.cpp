@@ -6,6 +6,7 @@
 #include "acme_dir.h"
 
 
+
 namespace macos
 {
 
@@ -137,7 +138,7 @@ namespace macos
 
       ::file::path pathSystemShortName = localconfig() / "system_short_name.txt";
 
-      return file_as_string(pathSystemShortName).trimmed();
+      return m_pacmefile->as_string(pathSystemShortName).trimmed();
 
    #endif
 
@@ -172,7 +173,7 @@ namespace macos
    ::file::path acme_dir::app_relative()
    {
 
-      ::file::path path = m_psystem->m_pacmepath->app_module();
+      ::file::path path = m_psystem->m_pacmefile->executable();
 
       path = relative(path);
 
@@ -234,7 +235,7 @@ namespace macos
 
    #else
 
-      return m_psystem->m_pacmepath->app_module().folder(4);
+      return m_psystem->m_pacmefile->executable().folder(4);
 
    #endif
 
@@ -265,7 +266,7 @@ namespace macos
 
    #else
 
-      return m_psystem->m_pacmepath->app_module().folder(4);
+      return m_psystem->m_pacmefile->executable().folder(4);
 
    #endif
 
@@ -297,7 +298,7 @@ namespace macos
 
    #elif defined(__APPLE__)
 
-      return m_psystem->m_pacmepath->app_module().folder(3);
+      return m_psystem->m_pacmefile->executable().folder(3);
 
    #else
 
@@ -311,7 +312,7 @@ namespace macos
    ::file::path acme_dir::beforeca2()
    {
 
-      return dir::name(install());
+      return file_path_folder(install());
 
    }
 
@@ -460,10 +461,10 @@ namespace macos
 
 
 
-   void acme_dir::set_path_install_folder(const char* pszPath)
+   void acme_dir::set_path_install_folder(const ::string & strPath)
    {
 
-      m_pathInstallFolder = pszPath;
+      m_pathInstallFolder = strPath;
 
    }
 
@@ -642,3 +643,4 @@ namespace macos
 
 
 
+   

@@ -6,7 +6,8 @@
 
 
 string apple_app_module_path();
-
+enum_status ns_create_alias(const char * pszLink, const char * pszSource);
+enum_status ns_symbolic_link_destination(char ** ppszDestination, const char * pszLink);
 
 namespace macos
 {
@@ -27,28 +28,73 @@ namespace macos
    }
 
 
-   ::file::path acme_path::app_module()
+//   ::file::path acme_path::app_module()
+//   {
+//
+//      ::file::path path = apple_app_module_path();
+//
+//      return path;
+//
+//   }
+//
+
+
+   ::e_status acme_path::create_symbolic_link(const char * pszLink, const char * pszSource)
    {
+      
+      if(!ns_create_alias(pszLink, pszSource))
+      {
+         
+         return error_failed;
+         
+      }
+      
+      return success;
+      
+   }
 
-      ::file::path path = apple_app_module_path();
 
-      return path;
+   ::e_status acme_path::is_symbolic_link(const char * pszLink)
+   {
+      
+      auto estatus = ns_symbolic_link_destination(nullptr, pszLink);
+      
+      if(!estatus)
+      {
+         
+         return estatus;
+         
+      }
+      
+      return estatus;
+      
+   }
 
+
+   ::file::path acme_path::symbolic_link_destination(const char * pszLink)
+   {
+      
+      string strDestination;
+      
+      char * pszDestination = nullptr;
+      
+      auto estatus = ns_symbolic_link_destination(&pszDestination, pszLink);
+      
+      strDestination = ::str::from_strdup(pszDestination);
+      
+      if(!estatus)
+      {
+         
+         return "";
+         
+      }
+      
+      return strDestination;
+      
    }
 
 
 } // namespace macos
-
-
-char * ns_get_executable_path();
-
-
-string apple_app_module_path()
-{
-   
-   return ::str::from_strdup(ns_get_executable_path());
-   
-}
 
 
 

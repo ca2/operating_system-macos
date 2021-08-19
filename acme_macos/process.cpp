@@ -52,7 +52,7 @@ namespace acme
       }
 
       
-      ::e_status node::create_process(const char * pszCommandLine, u32 * pprocessId)
+      ::e_status node::create_process(const ::string & pszCommandLine, u32 * pprocessId)
       {
 
          string_array stra;

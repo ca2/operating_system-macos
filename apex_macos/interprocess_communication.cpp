@@ -1,7 +1,7 @@
 #include "framework.h"
 #include <sys/ipc.h>
 #include <sys/msg.h>
-#include "acme/os/ansios/_pthread.h"
+#include "acme/node/operating_system/ansi/_pthread.h"
 
 
 
@@ -35,7 +35,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
    }
 
 
-   bool interprocess_communication_tx::open(const char * pszChannel,launcher * plauncher)
+   bool interprocess_communication_tx::open(const ::string & pszChannel,launcher * plauncher)
    {
 
       //CFDataRef data;
@@ -74,7 +74,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
    }
 
 
-   bool interprocess_communication_tx::send(const char * pszMessage,::duration durationTimeout)
+   bool interprocess_communication_tx::send(const ::string & pszMessage,::duration durationTimeout)
    {
 
       if(m_port == nullptr)
@@ -88,7 +88,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
 
       m.assign(pszMessage, c);
 
-      CFDataRef data = m.get_os_cf_data();
+      CFDataRef data = get_os_cf_data(m);
 
       CFTimeInterval sendTimeout = durationTimeout.seconds();
 
@@ -141,7 +141,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
       SInt32 status =
       CFMessagePortSendRequest(m_port,
                                message,
-                               m.get_os_cf_data(),
+                               get_os_cf_data(m),
                                (double) durationTimeout.seconds(),
                                (double) durationTimeout.seconds(),
                                nullptr,
@@ -197,9 +197,9 @@ interprocess_communication_rx::~interprocess_communication_rx()
 
          memory m;
 
-         m.set_os_cf_data(data);
+         set_os_cf_data(m, data);
 
-         prx->on_interprocess_receive(prx, __str(m));
+         prx->on_interprocess_receive(::move(__str(m)));
 
       }
       else
@@ -207,9 +207,9 @@ interprocess_communication_rx::~interprocess_communication_rx()
 
          memory m;
 
-         m.set_os_cf_data(data);
+         set_os_cf_data(m, data);
 
-         prx->on_interprocess_receive(prx, messageID, m.get_data(), (int)m.get_size());
+         prx->on_interprocess_receive(messageID, ::move(m));
 
       }
       
@@ -218,7 +218,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
    }
    
 
-   bool interprocess_communication_rx::create(const char * pszChannel)
+   bool interprocess_communication_rx::create(const ::string & pszChannel)
    {
 
       CFMessagePortContext c = {};
@@ -275,7 +275,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
    }
 
 
-//      void rx::receiver::on_ipc_receive(rx * prx,const char * pszMessage)
+//      void rx::receiver::on_ipc_receive(rx * prx,const ::string & pszMessage)
 //      {
 //
 //      }
@@ -291,64 +291,57 @@ interprocess_communication_rx::~interprocess_communication_rx()
 
 
 
-   void * interprocess_communication_rx::on_interprocess_receive(::interprocess_communication::rx * prx,const char * pszMessage)
-   {
-
-      if(m_preceiver != nullptr)
-      {
-
-         string strMessage(pszMessage);
-
-         fork([=]()
-         {
-
-            m_preceiver->on_interprocess_receive(prx,strMessage);
-
-         });
-
-      }
-
-      // ODOW - on date of writing : return ignored by this windows implementation
-
-      return nullptr;
-
-   }
-   
-
-   void * interprocess_communication_rx::on_interprocess_receive(::interprocess_communication::rx * prx,int message,void * pdata,memsize len)
-   {
-
-      if(m_preceiver != nullptr)
-      {
-         
-         m_preceiver->on_interprocess_receive(prx, message, pdata, len);
-         
-      }
-
-      // ODOW - on date of writing : return ignored by this windows implementation
-
-      return nullptr;
-
-   }
-
-
-   void * interprocess_communication_rx::on_interprocess_post(::interprocess_communication::rx * prx,i64 a,i64 b)
-   {
-
-      if(m_preceiver != nullptr)
-      {
-         
-         m_preceiver->on_interprocess_post(prx, a, b);
-         
-      }
-
-      // ODOW - on date of writing : return ignored by this windows implementation
-
-      return nullptr;
-
-   }
-
-
+//   void interprocess_communication_rx::on_interprocess_receive(::string && pszMessage)
+//   {
+//
+//      if(m_preceiver != nullptr)
+//      {
+//
+//         string strMessage(pszMessage);
+//
+//            m_preceiver->on_interprocess_receive(this,strMessage);
+//
+//      }
+//
+//      // ODOW - on date of writing : return ignored by this windows implementation
+//
+//   }
+//
+//
+//   void interprocess_communication_rx::on_interprocess_receive(int message,memory && memory)
+//   {
+//
+//      if(m_preceiver != nullptr)
+//      {
+//
+//         m_preceiver->on_interprocess_receive(message, memory);
+//
+//      }
+//
+//      // ODOW - on date of writing : return ignored by this windows implementation
+//
+//      return nullptr;
+//
+//   }
+//
+//
+//   void * interprocess_communication_rx::on_interprocess_post(::interprocess_communication::rx * prx,i64 a,i64 b)
+//   {
+//
+//      if(m_preceiver != nullptr)
+//      {
+//
+//         m_preceiver->on_interprocess_post(prx, a, b);
+//
+//      }
+//
+//      // ODOW - on date of writing : return ignored by this windows implementation
+//
+//      return nullptr;
+//
+//   }
+//
+//
 
    bool interprocess_communication_rx::on_idle()
    {
@@ -492,7 +485,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
 //
 //
 //
-//   bool interprocess_communication::open_ab(const char * pszChannel,launcher * plauncher)
+//   bool interprocess_communication::open_ab(const ::string & pszChannel,launcher * plauncher)
 //   {
 //
 //      m_strChannel = pszChannel;
@@ -517,7 +510,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
 //
 //   }
 //
-//   bool interprocess_communication::open_ba(const char * pszChannel,launcher * plauncher)
+//   bool interprocess_communication::open_ba(const ::string & pszChannel,launcher * plauncher)
 //   {
 //
 //      m_strChannel = pszChannel;

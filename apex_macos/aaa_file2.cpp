@@ -329,7 +329,7 @@ namespace macos
    }
 
 
-   filesize file::seek(filesize lOff, ::file::e_seek nFrom)
+   filesize file::seek(filesize lOff, ::enum_seek nFrom)
    {
 
       if(m_iFile == (::u32)hFileNull)
@@ -343,9 +343,9 @@ namespace macos
       
       ASSERT(m_iFile != (::u32)hFileNull);
       
-      ASSERT(nFrom == ::file::seek_begin || nFrom == ::file::seek_end || nFrom == ::file::seek_current);
+      ASSERT(nFrom == ::e_seek_set || nFrom == ::e_seek_from_end || nFrom == ::e_seek_current);
       
-      ASSERT(::file::seek_begin == SEEK_SET && ::file::seek_end == SEEK_END && ::file::seek_current == SEEK_CUR);
+      ASSERT(::e_seek_set == SEEK_SET && ::e_seek_from_end == SEEK_END && ::e_seek_current == SEEK_CUR);
 
       ::i32 lLoOffset = lOff & 0xffffffff;
 
@@ -469,11 +469,11 @@ namespace macos
       // seek is a non const operation
       file * pFile = (file*)this;
       
-      dwCur = pFile->seek(0L, ::file::seek_current);
+      dwCur = pFile->seek(0L, ::e_seek_current);
       
       dwLen = pFile->seek_to_end();
       
-      if(dwCur != (u64)pFile->seek((filesize) dwCur, ::file::seek_begin))
+      if(dwCur != (u64)pFile->seek((filesize) dwCur, ::e_seek_set))
       {
 
          __throw(io_exception("failed to seek back to the original position on get_length"));

@@ -7,9 +7,13 @@
 #pragma once
 
 
+#if defined(__MM)
+
 void ns_screen_translate(CGRect * prect);
 
 void ns_main_monitor_cgrect(CGRect * prect);
+
+#endif
 
 
 

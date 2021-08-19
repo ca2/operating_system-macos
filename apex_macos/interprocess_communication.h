@@ -40,14 +40,14 @@ namespace macos
 
 
 #if defined(_UWP)
-      bool open(const char * pszChannel);
+      bool open(const ::string & pszChannel);
 #else
-      bool open(const char * pszChannel, ::launcher * plauncher = nullptr);
+      bool open(const ::string & pszChannel, ::launcher * plauncher = nullptr);
 #endif
       bool close();
 
 
-      bool send(const char * pszMessage, duration durationTimeout);
+      bool send(const ::string & pszMessage, duration durationTimeout);
       bool send(int message, void * pdata, int len, duration durationTimeout);
 
 
@@ -73,13 +73,13 @@ namespace macos
       ~interprocess_communication_rx() override;
 
 
-      bool create(const char * pszChannel) override;
+      bool create(const ::string & pszChannel) override;
       ::e_status destroy() override;
 
 
-      void * on_interprocess_receive(::interprocess_communication::rx * prx, const char * pszMessage) override;
-      void * on_interprocess_receive(::interprocess_communication::rx * prx, int message, void * pdata, memsize len) override;
-      void * on_interprocess_post(::interprocess_communication::rx * prx, i64 a, i64 b) override;
+//      void on_interprocess_receive(::string && strMessage) override;
+//      void on_interprocess_receive(int message, memory && memory) override;
+//      void on_interprocess_post(i64 a, i64 b) override;
 
 
       virtual bool on_idle() override;

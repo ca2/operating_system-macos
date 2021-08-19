@@ -33,7 +33,7 @@ void ns_fork(const ::routine & routine)
 bool ns_open_file(const char * );
 void ns_main_async(dispatch_block_t block);
 void ns_create_alias(const char * pszTarget, const char * pszSource);
-char * ns_get_default_browser_path();
+::string & ns_get_default_browser_path();
 void ns_set_this_process_binary_default_browser();
 
 string apple_browse_folder(class ::system * psystem, const char * pszStartDir, bool bCanCreateDirectories);
@@ -51,7 +51,7 @@ namespace macos
 
       string strPath;
 
-      char * psz = ns_get_default_browser_path();
+      ::string & psz = ns_get_default_browser_path();
 
       strPath = psz;
 
@@ -176,7 +176,7 @@ namespace macos
 
    }
 
-   void os_context::terminate_processes_by_title(const char * pszName)
+   void os_context::terminate_processes_by_title(const ::string & pszName)
    {
 //      __throw(error_not_implemented);
       return;
@@ -207,7 +207,7 @@ namespace macos
       //  }
    }
 
-   bool os_context::get_pid_by_path(const char * pszName, ::u32 & dwPid)
+   bool os_context::get_pid_by_path(const ::string & pszName, ::u32 & dwPid)
    {
       u32_array dwa;
       get_all_processes(dwa);
@@ -222,7 +222,7 @@ namespace macos
       return false;
    }
 
-   bool os_context::get_pid_by_title(const char * pszName, ::u32 & dwPid)
+   bool os_context::get_pid_by_title(const ::string & pszName, ::u32 & dwPid)
    {
       u32_array dwa;
       get_all_processes(dwa);
@@ -332,7 +332,7 @@ namespace macos
        */
    }
 
-   bool os_context::local_machine_set_run(const char * pszKey, const char * pszCommand)
+   bool os_context::local_machine_set_run(const ::string & pszKey, const ::string & pszCommand)
    {
 
 //     __throw(error_not_implemented);
@@ -350,7 +350,7 @@ namespace macos
    }
 
 
-   bool os_context::local_machine_set_run_once(const char * pszKey, const char * pszCommand)
+   bool os_context::local_machine_set_run_once(const ::string & pszKey, const ::string & pszCommand)
    {
 
 
@@ -366,7 +366,7 @@ namespace macos
 
    }
 
-   bool os_context::current_user_set_run(const char * pszKey, const char * pszCommand)
+   bool os_context::current_user_set_run(const ::string & pszKey, const ::string & pszCommand)
    {
 
       //   __throw(error_not_implemented);
@@ -383,7 +383,7 @@ namespace macos
 
    }
 
-   bool os_context::current_user_set_run_once(const char * pszKey, const char * pszCommand)
+   bool os_context::current_user_set_run_once(const ::string & pszKey, const ::string & pszCommand)
    {
 
 //    __throw(error_not_implemented);
@@ -440,7 +440,7 @@ namespace macos
        */
    }
 
-   bool os_context::file_extension_get_open_with_list_keys(string_array & straKey, const char * pszExtension)
+   bool os_context::file_extension_get_open_with_list_keys(string_array & straKey, const ::string & pszExtension)
    {
       //   __throw(error_not_implemented);
       return false;
@@ -465,7 +465,7 @@ namespace macos
    }
 
 
-   bool os_context::file_extension_get_open_with_list_commands(string_array & straCommand, const char * pszExtension)
+   bool os_context::file_extension_get_open_with_list_commands(string_array & straCommand, const ::string & pszExtension)
    {
 
       string_array straKey;
@@ -478,7 +478,7 @@ namespace macos
 
    }
 
-   bool os_context::file_association_set_default_icon(const char * pszExtension, const char * pszExtensionNamingClass, const char * pszIconPath)
+   bool os_context::file_association_set_default_icon(const ::string & pszExtension, const ::string & pszExtensionNamingClass, const ::string & pszIconPath)
    {
 
       //    __throw(error_not_implemented);
@@ -496,7 +496,7 @@ namespace macos
    }
 
 
-   bool os_context::file_association_set_shell_open_command(const char * pszExtension, const char * pszExtensionNamingClass,  const char * pszCommand, const char * pszParam)
+   bool os_context::file_association_set_shell_open_command(const ::string & pszExtension, const ::string & pszExtensionNamingClass,  const ::string & pszCommand, const ::string & pszParam)
    {
       //   __throw(error_not_implemented);
       return false;
@@ -528,7 +528,7 @@ namespace macos
        */
    }
 
-   bool os_context::file_association_get_shell_open_command(const char * pszExtension, string & strExtensionNamingClass, string & strCommand, string & strParam)
+   bool os_context::file_association_get_shell_open_command(const ::string & pszExtension, string & strExtensionNamingClass, string & strCommand, string & strParam)
    {
       //    __throw(error_not_implemented);
       return false;
@@ -549,7 +549,7 @@ namespace macos
        if(keyLink.QueryValue(nullptr, strFormat))
        {
 
-       const char * psz = strFormat;
+       const ::string & psz = strFormat;
 
        try
        {
@@ -571,7 +571,7 @@ namespace macos
        */
    }
 
-   bool os_context::open_in_ie(const char * pcsz)
+   bool os_context::open_in_ie(const ::string & pcsz)
    {
 
       //    __throw(error_not_implemented);
@@ -812,12 +812,12 @@ namespace macos
 
       pathTarget = pcontext->defer_process_path(strSource);
 
-      pathTarget = node_full_file_path(pathTarget);
+      pathTarget = m_psystem->m_pacmepath->_final(pathTarget);
 
       while(pcontext->os_resolve_alias(pathTarget, pathTarget))
       {
 
-         pathTarget = node_full_file_path(pathTarget);
+         pathTarget = m_psystem->m_pacmepath->_final(pathTarget);
 
       }
 
@@ -1011,9 +1011,9 @@ namespace macos
 
          p = pacmedir->ca2roaming();
 
-         p /= "mypath" / pcommand->m_pcommandline->m_varQuery.propset()["app"].get_string() + ".txt";
+         p /= "mypath" / pcommand->m_pcommandline->m_varQuery.propset()["app"].to_string() + ".txt";
 
-         file_put_contents(p, pcommand->m_pcommandline->m_strExe);
+         m_psystem->m_pacmefile->put_contents(p, pcommand->m_pcommandline->m_strExe);
 
          string strApp = pcommand->m_pcommandline->m_strExe;
 
@@ -1024,17 +1024,17 @@ namespace macos
 
             p = pacmedir->ca2roaming();
 
-            p /= "mypath" / pcommand->m_pcommandline->m_varQuery.propset()["app"].get_string() + "-app";
+            p /= "mypath" / pcommand->m_pcommandline->m_varQuery.propset()["app"].to_string() + "-app";
 
             ::file::path p2;
 
             p2 = pacmedir->ca2roaming();
 
-            p2 /= "mypath" / ::file::path(pcommand->m_pcommandline->m_varQuery.propset()["app"].get_string()).folder()/ ::file::path(strApp.Left(iFind + strlen(".app"))).name();
+            p2 /= "mypath" / ::file::path(pcommand->m_pcommandline->m_varQuery.propset()["app"].to_string()).folder()/ ::file::path(strApp.Left(iFind + strlen(".app"))).name();
 
             ns_create_alias(p2, strApp.Left(iFind + strlen(".app")));
 
-            if(::dir::is(pacmedir->localconfig() / "monitor-0/desk/2desk"))
+            if(pacmedir->is(pacmedir->localconfig() / "monitor-0/desk/2desk"))
             {
 
                ::file::path p3;
@@ -1045,7 +1045,7 @@ namespace macos
 
             }
 
-            file_put_contents(p, "open -a \""+strApp.Left(iFind + strlen(".app")) + "\"");
+            m_psystem->m_pacmefile->put_contents(p, "open -a \""+strApp.Left(iFind + strlen(".app")) + "\"");
 
             chmod(p, 0777);
 
@@ -1055,7 +1055,7 @@ namespace macos
 
    }
 
-   void os_context::set_file_status(const char * lpszFileName, const ::file::file_status& status)
+   void os_context::set_file_status(const ::string & lpszFileName, const ::file::file_status& status)
    {
 
 
@@ -1204,7 +1204,7 @@ namespace macos
    bool os_context::browse_folder(property_set &set)
    {
       
-      const char *pszStartDir = nullptr;
+      const char * pszStartDir = nullptr;
 
       string strStartDir;
 
@@ -1238,7 +1238,7 @@ namespace macos
    bool os_context::browse_file_open(property_set &set)
    {
 
-      const char *pszStartDir = nullptr;
+      const char * pszStartDir = nullptr;
 
       string strStartDir;
 
@@ -1260,7 +1260,7 @@ namespace macos
       if(pszStartDir != nullptr && pszStartDir != strStartDir.c_str())
       {
 
-         ::file::path pathFolder = ::file::path(::str::from_strdup((char *) pszStartDir));
+         ::file::path pathFolder = ::file::path(::str::from_strdup((::string &) pszStartDir));
 
          set["folder"] = pathFolder;
 

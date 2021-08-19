@@ -5,9 +5,31 @@
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 18/08/21.
 //
 
-#ifndef acme_file_hpp
-#define acme_file_hpp
+#pragma once
 
-#include <stdio.h>
 
-#endif /* acme_file_hpp */
+namespace macos
+{
+
+
+   class CLASS_DECL_ACME_MACOS acme_file :
+      virtual public ::posix::acme_file
+   {
+   public:
+      
+      
+      
+      acme_file();
+      ~acme_file() override;
+
+      
+      virtual ::file::path executable() override;
+      
+
+   };
+
+
+} // namespace macos
+
+
+
