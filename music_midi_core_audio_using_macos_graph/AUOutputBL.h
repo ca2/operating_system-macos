@@ -92,7 +92,7 @@ public:
    
    const CAStreamBasicDescription&		GetFormat() const { return mFormat; }
    
-#ifdef DEBUG
+#ifdef _DEBUG
    void								Print();
 #endif
    

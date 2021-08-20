@@ -8,6 +8,11 @@
 #pragma once
 
 
+#if defined(DEBUG) && DEBUG > 0
+#define _DEBUG
+#endif
+
+
 #define PARALLELIZATION_PTHREAD
 
 //#define _POSIX_C_SOURCE 200809L
@@ -19,9 +24,9 @@
 
 #define PLATFORM_NAMESPACE macos
 
-#if defined(_DEBUG) && !defined(DEBUG)
-#define DEBUG 1
-#endif
+// #if defined(_DEBUG) && !defined(DEBUG)
+// #define DEBUG 1
+// #endif
 
 
 #define HAVE_TERMIOS_H 1

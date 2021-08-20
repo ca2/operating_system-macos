@@ -58,12 +58,12 @@ typedef struct gdi_object * HGDIOBJ;
 #define DECL_SPEC_ANY
 
 
-#ifdef DEBUG
-#undef DEBUG
-#define DEBUG 1
-#else
-#define DEBUG 0
-#endif
+// #ifdef _DEBUG
+// #undef DEBUG
+// #define DEBUG 1
+// #else
+// #define DEBUG 0
+// #endif
 
 
 #if defined(__MM) || defined(__M)
@@ -121,7 +121,7 @@ inline void debug_break() { __asm("int $3"); }
 
 #define _WCHAR_T_DEFINED
 
-#ifdef DEBUG
+#ifdef _DEBUG
 
 #define RELEASENOTHROW
 

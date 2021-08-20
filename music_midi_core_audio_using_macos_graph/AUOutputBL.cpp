@@ -163,7 +163,7 @@ void	AUOutputBL::Allocate (UInt32 inNumFrames)
    }
 }
 
-#ifdef DEBUG
+#ifdef _DEBUG
 void			AUOutputBL::Print()
 {
    printf ("AUOutputBL::Print\n");
