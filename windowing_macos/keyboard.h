@@ -13,7 +13,10 @@ namespace windowing_macos
 
 
       keyboard();
-      virtual ~keyboard();
+      ~keyboard() override;
+      
+      
+      ::user::enum_key wparam_to_userkey(wparam wparam) override;
 
 
    };
