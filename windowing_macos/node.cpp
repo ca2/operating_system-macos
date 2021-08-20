@@ -107,6 +107,10 @@ namespace windowing_macos
 
       }
       
+      // release the initial allocation from platform_create_system as
+      // task::begin_synch holds a reference to the running system task.
+      psystem->release();
+      
       m_psystem->post_initial_request();
 
       return ::success;
