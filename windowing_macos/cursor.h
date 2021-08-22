@@ -7,7 +7,6 @@
 #pragma once
 
 
-
 namespace windowing_macos
 {
 

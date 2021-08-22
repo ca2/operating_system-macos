@@ -444,6 +444,7 @@ namespace windowing_macos
 
    }
 
+
    ::e_status window::set_mouse_cursor(::windowing::cursor * pcursor)
    {
 
@@ -462,15 +463,26 @@ namespace windowing_macos
          return error_failed;
 
       }
-
-      if (ns_get_cursor() == pcursorMacos->m_pNSCursor)
+      
+      if(::is_null(pcursorMacos->m_pNSCursor)
+         && (::is_ok(pcursorMacos->m_pimage)
+             || pcursor->m_ecursor != e_cursor_none))
+      {
+         
+         pcursorMacos->_create_os_cursor();
+         
+      }
+      
+      void * pNSCursor = pcursorMacos->m_pNSCursor;
+      
+      if (ns_get_cursor() == pNSCursor)
       {
 
          return true;
 
       }
 
-      m_pwindowing->windowing_branch(__routine([this, pcursorMacos]()
+      m_pwindowing->windowing_branch(__routine([this, pNSCursor]()
                                           {
 
 //                                             synchronous_lock sl(user_mutex());
@@ -479,7 +491,7 @@ namespace windowing_macos
 //
 //                                             display_lock displaylock(x11_display()->Display());;
 
-         ns_set_cursor(pcursorMacos->m_pNSCursor);
+         ns_set_cursor(pNSCursor);
          
          
 //                                             XDefineCursor(Display(), Window(), pcursorx11->m_cursor);
