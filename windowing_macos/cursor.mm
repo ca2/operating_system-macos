@@ -54,6 +54,30 @@ void * ns_get_default_system_cursor(enum_cursor ecursor)
       case e_cursor_text_select:
          pcursor = [NSCursor IBeamCursor];
          break;
+      case e_cursor_size_bottom_right:
+         pcursor = [[NSCursor class] performSelector:@selector( _bottomRightResizeCursor)];
+         break;
+      case e_cursor_size_bottom_left:
+         pcursor = [[NSCursor class] performSelector:@selector(_bottomLeftResizeCursor)];
+         break;
+      case e_cursor_size_top_right:
+         pcursor = [[NSCursor class] performSelector:@selector(_topRightResizeCursor)];
+         break;
+      case e_cursor_size_top_left:
+         pcursor = [[NSCursor class] performSelector:@selector(_topLeftResizeCursor)];
+         break;
+      case e_cursor_size_bottom:
+         pcursor = [NSCursor resizeDownCursor];
+         break;
+      case e_cursor_size_top:
+         pcursor = [NSCursor resizeUpCursor];
+         break;
+      case e_cursor_size_right:
+         pcursor = [NSCursor resizeRightCursor];
+         break;
+      case e_cursor_size_left:
+         pcursor = [NSCursor resizeLeftCursor];
+         break;
       default:
          break;
          
