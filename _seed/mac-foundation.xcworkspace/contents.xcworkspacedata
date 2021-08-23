@@ -5,6 +5,9 @@
       location = "group:../../../source/app-core/addressbook/_app_core_addressbook.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:../../../source/app-core/file_manager/_app_core_file_manager.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:../../../source/app-core/hash_hub/_app_core_hash_hub.xcodeproj">
    </FileRef>
    <FileRef

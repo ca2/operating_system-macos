@@ -6,6 +6,7 @@
 //
 //
 #import "framework.h"
+#include <UniformTypeIdentifiers/UTType.h>
 
 
 char * ns_get_default_browser_path()
@@ -315,5 +316,77 @@ void library_launch(const char *psz)
                       configuration:configuration
                 completionHandler:nil];
   */
+   
+}
+
+
+
+char * mm2_get_type_identifier(const char * pszFilePath)
+{
+   
+   NSString * strFilePath = [NSString stringWithUTF8String:pszFilePath];
+   
+   if(strFilePath == NULL)
+   {
+      
+      return nullptr;
+      
+   }
+   
+   NSURL * url = [[NSURL alloc] initFileURLWithPath:strFilePath];
+   
+   if(url == nullptr)
+   {
+      
+      return nullptr;
+      
+   }
+   
+   NSString * strType = nullptr;
+   
+   if(@available(macOS 11.0, *))
+   {
+      
+      UTType * type = nullptr;
+
+      if(![url getResourceValue: &type
+                       forKey: NSURLContentTypeKey error:nil])
+      {
+       
+         return nullptr;
+         
+      }
+      
+      if(type == nullptr)
+      {
+       
+         return nullptr;
+      
+      }
+
+      strType = [type identifier];
+      
+   }
+   else
+   {
+      
+      if(![url getResourceValue: &strType
+                       forKey: NSURLTypeIdentifierKey error:nil])
+      {
+       
+         return nullptr;
+         
+      }
+
+   }
+   
+   if(strType == nullptr)
+   {
+    
+      return nullptr;
+      
+   }
+   
+   return strdup([strType UTF8String]);
    
 }

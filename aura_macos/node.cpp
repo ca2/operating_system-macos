@@ -8,6 +8,10 @@
 #include "framework.h"
 
 
+bool macos_get_file_image(::image * pimage, const char * pszFilePath);
+bool macos_get_file_image_by_type_identifier(::image * pimage, const char * pszTypeIdentifier);
+
+
 namespace aura
 {
 
@@ -53,7 +57,41 @@ namespace aura
          
       }
 
-          
+   
+      ::image_pointer node::get_file_image_by_type_identifier(int iSize, const char * pszTypeIdentifier)
+      {
+
+         auto pimage = create_image( { iSize, iSize } );
+
+         if(!macos_get_file_image_by_type_identifier(pimage, pszTypeIdentifier))
+         {
+
+            return nullptr;
+
+         }
+
+         return pimage;
+
+      }
+
+   
+      ::image_pointer node::get_file_image(int iSize, const char * path)
+      {
+
+         auto pimage = create_image( { iSize, iSize } );
+
+         if(!macos_get_file_image(pimage, path))
+         {
+
+            return nullptr;
+
+         }
+
+         return pimage;
+
+      }
+
+       
    } // namespace macos
 
 

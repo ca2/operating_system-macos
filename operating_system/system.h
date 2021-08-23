@@ -76,15 +76,15 @@ typedef struct gdi_object * HGDIOBJ;
 #endif
 
 
-//#include <Carbon/Carbon.h>
-
-
-#if DEBUG
-#undef DEBUG
-#define DEBUG
-#else
-#undef DEBUG
-#endif
+////#include <Carbon/Carbon.h>
+//
+//
+//#if DEBUG
+//#undef DEBUG
+//#define DEBUG
+//#else
+//#undef DEBUG
+//#endif
 
 
 

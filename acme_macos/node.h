@@ -27,9 +27,11 @@ namespace acme
 
 
          node();
-         virtual ~node();
+         ~node() override;
 
-
+         
+         ::string get_file_type_identifier(const char * path) override;
+         
          
          ::e_status call_async(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, bool bPrivileged, unsigned int * puiPid = nullptr) override;
          ::e_status call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const ::duration & durationTimeout, ::property_set & set) override;

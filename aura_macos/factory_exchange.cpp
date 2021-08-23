@@ -23,6 +23,7 @@ void aura_macos_factory_exchange(::factory_map * pfactorymap)
 
    pfactorymap->create_factory < ::macos::interaction_impl, ::user::interaction_impl > ();
 
+   pfactorymap->create_factory < ::macos::shell, ::user::shell > ();
 
 }
 

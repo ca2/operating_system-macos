@@ -18,6 +18,9 @@
 #include "interaction_impl.h"
 
 
+#include "shell.h"
+
+
 #include "node.h"
 
 

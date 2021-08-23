@@ -24,6 +24,8 @@ namespace macos
 
       ::file::path symbolic_link_destination(const char * pszLink) override;
 
+      bool has_custom_icon(const char * path) override;
+      
 
    };
 

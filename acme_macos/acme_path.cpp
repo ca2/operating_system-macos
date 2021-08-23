@@ -3,6 +3,7 @@
 #include "framework.h"
 #include "acme/filesystem/filesystem/acme_path.h"
 #include "acme_path.h"
+#include <Carbon/Carbon.h>
 
 
 string apple_app_module_path();
@@ -90,6 +91,45 @@ namespace macos
       }
       
       return strDestination;
+      
+   }
+
+
+   bool acme_path::has_custom_icon(const char * path)
+   {
+
+      FSRef ref;
+      
+      FSCatalogInfo info = {};
+      
+      //path = (const UInt8 *)[path fileSystemRepresentation]
+      
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+      if (FSPathMakeRef((const UInt8 *) path, &ref, NULL) == noErr)
+#pragma clang diagnostic pop
+      {
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+         if (FSGetCatalogInfo(&ref, kFSCatInfoFinderInfo, &info, NULL, NULL, NULL) == noErr)
+#pragma clang diagnostic pop
+         {
+        
+            FileInfo *fileInfo = (FileInfo *)(&info.finderInfo);
+      
+            if(fileInfo->finderFlags & kHasCustomIcon)
+            {
+               
+               return true;
+               
+            }
+    
+         }
+
+      }
+
+      return false;
       
    }
 

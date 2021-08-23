@@ -30,10 +30,19 @@ namespace aura
          ::e_status initialize(::object * pobject) override;
          
          
+         ::image_pointer get_file_image_by_type_identifier(int iSize, const char * pszTypeIdentifier) override;
+
+         ::image_pointer get_file_image(int iSize, const char * path) override;
+
+         
       };
       
    
    } // namespace macos
+
+
+
+
 
 
 } // namespace aura

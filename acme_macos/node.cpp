@@ -4,6 +4,8 @@
 #include "framework.h"
 
 
+string macos_get_type_identifier(const char * str);
+
 bool ns_is_system_dark_mode();
 
 
@@ -30,8 +32,6 @@ namespace acme
       node::node()
       {
 
-         //m_pGtkSettingsDefault = nullptr;
-
          m_pAcmePosix = this;
 
       }
@@ -40,15 +40,18 @@ namespace acme
       node::~node()
       {
 
-         //      if(m_pGtkSettingsDefault)
-         //      {
-         //
-         //         g_object_unref(m_pGtkSettingsDefault);
-         //
-         //      }
-
       }
 
+   
+      ::string node::get_file_type_identifier(const char * path)
+      {
+      
+         string strTypeIdentifier = macos_get_type_identifier(path);
+      
+         return strTypeIdentifier;
+      
+      }
+   
    
     ::e_status node::call_async(
    const ::string & pszPath,
@@ -954,3 +957,17 @@ void set_system_mmos(void * pSystem, void * pmmos)
    psystem->m_pmmos = pmmos;
    
 }
+
+
+char * mm2_get_type_identifier(const char * psz);
+
+
+string macos_get_type_identifier(const char * psz)
+{
+   
+   return ::str::from_strdup(mm2_get_type_identifier(psz));
+   
+}
+
+
+
