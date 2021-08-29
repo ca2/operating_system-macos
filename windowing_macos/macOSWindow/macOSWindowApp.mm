@@ -563,7 +563,7 @@ void ns_create_main_menu(menu_shared * pmenushared)
    if(pmenushared)
    {
       
-      pmenushared->increment_reference_count();
+      menu_shared_increment_reference_count(pmenushared);
       
    }
 
@@ -633,7 +633,7 @@ void ns_create_main_menu(menu_shared * pmenushared)
       if(pmenushared)
       {
 
-      pmenushared->release();
+         menu_shared_release(pmenushared);
          
       }
       
