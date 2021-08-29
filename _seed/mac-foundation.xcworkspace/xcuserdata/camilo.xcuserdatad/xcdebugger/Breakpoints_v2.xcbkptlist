@@ -240,8 +240,8 @@
             filePath = "../../platform-apple/draw2d_quartz2d/graphics.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1593"
-            endingLineNumber = "1593"
+            startingLineNumber = "1599"
+            endingLineNumber = "1599"
             landmarkName = "graphics::_draw_raw(imagedrawing)"
             landmarkType = "7">
          </BreakpointContent>
@@ -483,6 +483,38 @@
             startingLineNumber = "1575"
             endingLineNumber = "1575"
             landmarkName = "shell::defer_get_file_image_by_file_image(getfileimage)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "36A5ED11-A0D0-4D54-BC4D-091E93D90A55"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app-core/addressbook/edit_view.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "558"
+            endingLineNumber = "558"
+            landmarkName = "edit_view::on_message_create(pmessage)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C7264B4-AA0A-4275-8F3B-F8F56D11230B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/apex/platform/system.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1658"
+            endingLineNumber = "1658"
+            landmarkName = "system::init1()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
