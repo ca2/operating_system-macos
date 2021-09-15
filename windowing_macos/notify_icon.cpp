@@ -177,7 +177,7 @@ namespace windowing_macos
 //
 //#else
 
-      __throw(todo);
+      throw exception::exception(todo);
 
 //#endif
 

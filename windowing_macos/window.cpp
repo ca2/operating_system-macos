@@ -184,11 +184,12 @@ namespace windowing_macos
 
          }
       
-         //auto rectangle = puserinteraction-> get_window_rect();
+         auto rectangle = puserinteraction-> get_window_rect();
       
          CGRect cgrect;
       
-         //__copy(cgrect, rectangle);
+         copy(&cgrect, &rectangle);
+      
          //__todo?
          //windowing()->copy(cgrect, rectangle);
          //or
@@ -886,7 +887,7 @@ namespace windowing_macos
 
                auto pactivate = __create_new < ::message::activate >();
 
-               pactivate->set(this, this, e_message_activate, MAKELONG(e_activate_click_active, 0), (lparam) 0);
+               pactivate->set(this, this, e_message_activate, __MAKE_LONG(e_activate_click_active, 0), (lparam) 0);
 
                post_message(pactivate);
 
@@ -919,7 +920,7 @@ namespace windowing_macos
 
          }
          
-         pmouse->set(this, this, id, 0, MAKELPARAM(x, y));
+         pmouse->set(this, this, id, 0, __MAKE_LPARAM(x, y));
 
          post_message(pmouse);
 
@@ -948,7 +949,7 @@ namespace windowing_macos
 
       }
       
-      pmouse->set(this, this, id, (wparam) 0, MAKELPARAM(x, y));
+      pmouse->set(this, this, id, (wparam) 0, __MAKE_LPARAM(x, y));
 
       post_message(pmouse);
 
@@ -975,7 +976,7 @@ namespace windowing_macos
 
       }
 
-      pmouse->set(this, this, id, (wparam) 0, MAKELPARAM(x, y));
+      pmouse->set(this, this, id, (wparam) 0, __MAKE_LPARAM(x, y));
 
       post_message(pmouse);
 
@@ -1084,7 +1085,7 @@ namespace windowing_macos
       
       wparam wparam = 0;
       
-      lparam lparam = MAKELPARAM(x, y);
+      lparam lparam = __MAKE_LPARAM(x, y);
       
       if(ulAppleMouseButton & 1)
       {
@@ -1116,7 +1117,7 @@ namespace windowing_macos
 
       wparam wparam = 0;
 
-      lparam lparam = MAKELPARAM(x, y);
+      lparam lparam = __MAKE_LPARAM(x, y);
 
       if(ulAppleMouseButton & 1)
       {
@@ -1150,7 +1151,7 @@ namespace windowing_macos
 
       wparam wparam = delta << 16;
 
-      lparam lparam = MAKELPARAM(x, y);
+      lparam lparam = __MAKE_LPARAM(x, y);
 
       auto pwheel  = __create_new < ::message::mouse_wheel > ();
       
@@ -1170,7 +1171,7 @@ namespace windowing_macos
          
          wparam wparam = 0;
          
-         lparam lparam = MAKELPARAM(rectangle.origin.x, rectangle.origin.y);
+         lparam lparam = __MAKE_LPARAM(rectangle.origin.x, rectangle.origin.y);
       
          auto pmove  = __create_new < ::message::move > ();
       
@@ -1186,7 +1187,7 @@ namespace windowing_macos
          
          wparam wparam = 0;
          
-         lparam lparam = MAKELPARAM(rectangle.size.width, rectangle.size.height);
+         lparam lparam = __MAKE_LPARAM(rectangle.size.width, rectangle.size.height);
       
          auto psize  = __create_new < ::message::size > ();
       
@@ -1336,7 +1337,7 @@ namespace windowing_macos
          
          wparam wparam = 0;
          
-         lparam lparam = MAKELPARAM(point.x, point.y);
+         lparam lparam = __MAKE_LPARAM(point.x, point.y);
       
          auto pmove  = __create_new < ::message::move > ();
       
@@ -1677,7 +1678,7 @@ namespace windowing_macos
 
       }
       
-      if(puserinteraction->m_bDestroying)
+      if(puserinteraction->is_destroying())
       {
          
          return;

@@ -61,7 +61,7 @@ namespace aura
       ::image_pointer node::get_file_image_by_type_identifier(int iSize, const char * pszTypeIdentifier)
       {
 
-         auto pimage = create_image( { iSize, iSize } );
+         auto pimage = m_pcontext->context_image()->create_image( { iSize, iSize } );
 
          if(!macos_get_file_image_by_type_identifier(pimage, pszTypeIdentifier))
          {
@@ -78,7 +78,7 @@ namespace aura
       ::image_pointer node::get_file_image(int iSize, const char * path)
       {
 
-         auto pimage = create_image( { iSize, iSize } );
+         auto pimage = m_pcontext->context_image()->create_image( { iSize, iSize } );
 
          if(!macos_get_file_image(pimage, path))
          {

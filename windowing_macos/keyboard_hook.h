@@ -3,10 +3,23 @@
 //  windowing_macos
 //
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 13/09/21.
-//
-
-#ifndef keyboard_hook_h
-#define keyboard_hook_h
+//  22:30 BRT
+#pragma once
 
 
-#endif /* keyboard_hook_h */
+namespace keyboard_hook
+{
+
+   
+   ::e_status install(::matter * pmatterListener);
+
+   ::e_status uninstall(::matter * pmatterListener);
+
+   ::e_status is_enabled(bool bPrompt);
+
+
+} // keyboard_hook
+
+
+
+

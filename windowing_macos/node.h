@@ -32,6 +32,17 @@ namespace windowing_macos
       ::e_status _will_finish_launching() override;
       
       
+      ::e_status is_keyboard_hook_enabled(::user::interaction * puserinteractionEnablePrompt) override;
+
+      
+      ::e_status install_keyboard_hook(::matter * pmatterListener) override;
+      ::e_status uninstall_keyboard_hook(::matter * pmatterListener) override;
+
+      ::e_status install_mouse_hook(::matter * pmatterListener) override;
+      ::e_status uninstall_mouse_hook(::matter * pmatterListener) override;
+
+
+      
    };
 
 

@@ -590,7 +590,7 @@ bool interaction_impl::_is_window() const
    void interaction_impl::_001OnShowWindow(::message::message * pmessage)
    {
 
-      UNREFERENCED_PARAMETER(pmessage);
+      __UNREFERENCED_PARAMETER(pmessage);
 
 //      do_show_flags();
 //
@@ -693,7 +693,7 @@ bool interaction_impl::_is_window() const
    void interaction_impl::_001OnDestroy(::message::message * pmessage)
    {
 
-      UNREFERENCED_PARAMETER(pmessage);
+      __UNREFERENCED_PARAMETER(pmessage);
       
       auto pwindowing = m_pwindowing;
 
@@ -875,8 +875,11 @@ bool interaction_impl::_is_window() const
     */
    void interaction_impl::pre_translate_message(::message::message * pmessage)
    {
-      UNREFERENCED_PARAMETER(pmessage);
+      
+      __UNREFERENCED_PARAMETER(pmessage);
+      
       // no default processing
+      
    }
 
 
@@ -2182,7 +2185,7 @@ bool interaction_impl::_is_window() const
    void interaction_impl::on_message_create(::message::message * pmessage)
    {
 
-      UNREFERENCED_PARAMETER(pmessage);
+      __UNREFERENCED_PARAMETER(pmessage);
 
       default_message_handler(pmessage);
 
@@ -2326,7 +2329,9 @@ bool interaction_impl::_is_window() const
 
    void interaction_impl::_001OnProdevianSynch(::message::message * pmessage)
    {
-      UNREFERENCED_PARAMETER(pmessage);
+      
+      __UNREFERENCED_PARAMETER(pmessage);
+      
       //      ::aura::get_system()->get_event(get_application()->get_application())->SetEvent();
       //    ::aura::get_system()->get_event(::aura::get_system()->get_twf())->wait(millis(8400));
    }
@@ -3088,7 +3093,7 @@ bool interaction_impl::_is_window() const
    bool interaction_impl::GetUpdateRect(RECTANGLE_I32 * lpRect, bool bErase)
    {
 
-      __throw(error_not_implemented);
+      throw ::exception::exception(error_not_implemented);
 
    }
 
@@ -3096,7 +3101,7 @@ bool interaction_impl::_is_window() const
    i32 interaction_impl::GetUpdateRgn(::draw2d::region* pRgn, bool bErase)
    {
 
-      __throw(error_not_implemented);
+      throw ::exception::exception(error_not_implemented);
 
    }
 
@@ -3261,7 +3266,7 @@ bool interaction_impl::_is_window() const
    bool interaction_impl::LockWindowUpdate()
    {
 
-      __throw(error_not_implemented);
+      throw ::exception::exception(error_not_implemented);
 
    }
 
@@ -3269,7 +3274,7 @@ bool interaction_impl::_is_window() const
    void interaction_impl::UnlockWindowUpdate()
    {
 
-      __throw(error_not_implemented);
+      throw ::exception::exception(error_not_implemented);
 
    }
 
@@ -4746,13 +4751,15 @@ bool interaction_impl::_is_window() const
 
    }
 
-   
-   void interaction_impl::set_destroying()
+//   
+   ::e_status interaction_impl::on_destroy()
    {
       
-      ::user::interaction_impl::set_destroying();
+//      ::user::interaction_impl::set_destroying();
 
       //::aura_window::m_bDestroying = true;
+      
+      return ::success;
 
    }
 

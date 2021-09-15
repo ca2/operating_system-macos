@@ -355,7 +355,7 @@ namespace macos
    }
 
 
-   ::index file::translate(::count offset, ::enum_seek nFrom)
+   filesize file::translate(filesize offset, ::enum_seek nFrom)
    {
 
       if(m_iFile == (::u32)hFileNull)

@@ -73,7 +73,7 @@ namespace macos
 
       ::extended::status open(const ::file::path & lpszFileName, const ::file::e_open & eopenflags)override;
 
-      ::index translate(::count offset, ::enum_seek nFrom)override;
+      filesize translate(filesize offset, ::enum_seek nFrom)override;
       void set_size(filesize dwNewLen)override;
       filesize get_size() const override;
 

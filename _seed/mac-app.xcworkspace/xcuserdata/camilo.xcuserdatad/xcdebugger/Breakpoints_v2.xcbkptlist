@@ -39,9 +39,9 @@
             filePath = "../../platform-apple/draw2d_quartz2d/graphics.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4713"
-            endingLineNumber = "4713"
-            landmarkName = "graphics::internal_show_text(x, y, wAlign, str, emode, ealign, edrawtext, bDraw, pascent, pdescent, pleading, pwidth, ppen, pbrush, pfont)"
+            startingLineNumber = "4720"
+            endingLineNumber = "4720"
+            landmarkName = "graphics::get_text_extent(size, str)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -55,9 +55,9 @@
             filePath = "../../platform-apple/draw2d_quartz2d/graphics.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4710"
-            endingLineNumber = "4710"
-            landmarkName = "graphics::internal_show_text(x, y, wAlign, str, emode, ealign, edrawtext, bDraw, pascent, pdescent, pleading, pwidth, ppen, pbrush, pfont)"
+            startingLineNumber = "4717"
+            endingLineNumber = "4717"
+            landmarkName = "graphics::get_text_extent(size, str)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -199,8 +199,8 @@
             filePath = "../windowing_macos/macOSWindow/macOSWindow.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "-windowDidResignMain:"
             landmarkType = "7">
          </BreakpointContent>
@@ -375,8 +375,8 @@
             filePath = "../aura_macos/interaction_impl.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1462"
-            endingLineNumber = "1462"
+            startingLineNumber = "1465"
+            endingLineNumber = "1465"
             landmarkName = "interaction_impl::message_handler(pmessage)"
             landmarkType = "7">
          </BreakpointContent>
@@ -391,8 +391,8 @@
             filePath = "../aura_macos/interaction_impl.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1436"
-            endingLineNumber = "1436"
+            startingLineNumber = "1439"
+            endingLineNumber = "1439"
             landmarkName = "interaction_impl::message_handler(pmessage)"
             landmarkType = "7">
          </BreakpointContent>
@@ -407,8 +407,8 @@
             filePath = "../aura_macos/interaction_impl.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1452"
-            endingLineNumber = "1452"
+            startingLineNumber = "1455"
+            endingLineNumber = "1455"
             landmarkName = "interaction_impl::message_handler(pmessage)"
             landmarkType = "7">
          </BreakpointContent>
@@ -423,8 +423,8 @@
             filePath = "../aura_macos/interaction_impl.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1442"
-            endingLineNumber = "1442"
+            startingLineNumber = "1445"
+            endingLineNumber = "1445"
             landmarkName = "interaction_impl::message_handler(pmessage)"
             landmarkType = "7">
          </BreakpointContent>
@@ -601,7 +601,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1342"
             endingLineNumber = "1342"
-            landmarkName = "thread::post_quit()"
+            landmarkName = "thread::kick_idle()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -903,8 +903,8 @@
             filePath = "../windowing_macos/macOSWindow/macOSWindow.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "-dealloc"
             landmarkType = "7">
          </BreakpointContent>
@@ -1031,10 +1031,10 @@
             filePath = "../windowing_macos/window.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1645"
-            endingLineNumber = "1645"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "1646"
+            endingLineNumber = "1646"
+            landmarkName = "window::macos_window_on_show()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1481,6 +1481,38 @@
             endingLineNumber = "69"
             landmarkName = "acme_path::is_symbolic_link(pszLink)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF0071BA-800B-4826-B524-AAD5F348841C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../windowing_macos/macOSWindow/macos_window.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "new_macos_window(pmacoswindow, rect, uStyle)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB60A3CB-8C6A-4059-A670-F350B5941E90"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../windowing_macos/macOSWindow/macos_window.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "new_macos_window(pmacoswindow, rect, uStyle)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

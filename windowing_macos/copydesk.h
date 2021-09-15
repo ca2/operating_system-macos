@@ -24,24 +24,24 @@ namespace windowing_macos
       ::e_status initialize(::object * pobject) override;
       ::e_status destroy() override;
 
-      virtual bool _set_filea(const ::file::patha & stra, e_op eop) override;
-      virtual bool _get_filea(::file::patha & stra, e_op & eop) override;
-      virtual bool _has_filea() override;
+      ::e_status _set_filea(const ::file::patha & stra, e_op eop) override;
+      ::e_status _get_filea(::file::patha & stra, e_op & eop) override;
+      bool _has_filea() override;
 
       virtual bool _os_has_filea();
       
       virtual bool _os_clipboard_has_changed();
 
-      virtual bool _set_plain_text(const string & str) override;
-      virtual bool _get_plain_text(string & str) override;
-      virtual bool _has_plain_text() override;
+      ::e_status _set_plain_text(const string & str) override;
+      ::e_status _get_plain_text(string & str) override;
+      bool _has_plain_text() override;
 
       virtual bool _os_has_plain_text();
 
 
-      virtual bool _desk_to_image(::image * pimage) override;
-      virtual bool _image_to_desk(const ::image * pimage) override;
-      virtual bool _has_image() override;
+      ::e_status _desk_to_image(::image * pimage) override;
+      ::e_status _image_to_desk(const ::image * pimage) override;
+      bool _has_image() override;
 
       virtual bool _os_has_image();
 

@@ -17,6 +17,8 @@
 		9A42D8012665C5860011645D /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A42D7FF2665C5850011645D /* keyboard.cpp */; };
 		9A46D35726785209000B22D0 /* notify_icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A79BE2826645D9C009E6C44 /* notify_icon.cpp */; };
 		9A46D35826785244000B22D0 /* icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA80242266558E000A6B449 /* icon.cpp */; };
+		9A59A4AC26F02F7E00096562 /* mouse_hook.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A59A4AB26F02F7E00096562 /* mouse_hook.mm */; };
+		9A59A4B026F02FBC00096562 /* keyboard_hook.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A59A4AF26F02FBC00096562 /* keyboard_hook.mm */; };
 		9A5D7395265700D200D5C39E /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D7394265700D200D5C39E /* libacme.dylib */; };
 		9A5D73972657011600D5C39E /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73962657011600D5C39E /* libapex.dylib */; };
 		9A5D73992657012A00D5C39E /* libaqua.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73982657012A00D5C39E /* libaqua.dylib */; };
@@ -31,6 +33,9 @@
 		9A5D73AB265701F400D5C39E /* libaura_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73AA265701F400D5C39E /* libaura_posix.dylib */; };
 		9A5D73AC265701F400D5C39E /* libaura_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A440A2826548C17000C490B /* libaura_macos.dylib */; };
 		9A5D73B326570CAE00D5C39E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73B226570CAE00D5C39E /* AppKit.framework */; };
+		9A62EC0226F04B7B00EA958E /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62EBFF26F04B7B00EA958E /* ScriptingBridge.framework */; };
+		9A62EC0626F05C7300EA958E /* keyboard_hook_authorization.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A62EC0526F05C7300EA958E /* keyboard_hook_authorization.mm */; };
+		9A62EC0826F05CC200EA958E /* SBSystemPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A62EC0726F05CC100EA958E /* SBSystemPreferences.h */; };
 		9A64C10B26605BB70074030F /* display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C105266057F00074030F /* display.cpp */; };
 		9A64C10C26605BD40074030F /* monitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C109266058D20074030F /* monitor.cpp */; };
 		9A64C10F266062B40074030F /* monitor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C10E266062940074030F /* monitor.mm */; };
@@ -114,6 +119,10 @@
 		9A440A742654F36C000C490B /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		9A440A752654F36C000C490B /* node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
 		9A440A762654F440000C490B /* _windowing_macos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _windowing_macos.h; sourceTree = "<group>"; };
+		9A59A4AB26F02F7E00096562 /* mouse_hook.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = mouse_hook.mm; sourceTree = "<group>"; };
+		9A59A4AF26F02FBC00096562 /* keyboard_hook.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = keyboard_hook.mm; sourceTree = "<group>"; };
+		9A59A4B526F0328400096562 /* keyboard_hook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keyboard_hook.h; sourceTree = "<group>"; };
+		9A59A4B626F032A800096562 /* mouse_hook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mouse_hook.h; sourceTree = "<group>"; };
 		9A5D738A26561AAA00D5C39E /* factory_exchange.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = factory_exchange.cpp; sourceTree = "<group>"; };
 		9A5D738D2656240A00D5C39E /* windowing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = windowing.cpp; sourceTree = "<group>"; };
 		9A5D738E2656240A00D5C39E /* windowing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = windowing.h; sourceTree = "<group>"; };
@@ -130,6 +139,9 @@
 		9A5D73A8265701DC00D5C39E /* libaura_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5D73AA265701F400D5C39E /* libaura_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5D73B226570CAE00D5C39E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9A62EBFF26F04B7B00EA958E /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		9A62EC0526F05C7300EA958E /* keyboard_hook_authorization.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = keyboard_hook_authorization.mm; sourceTree = "<group>"; };
+		9A62EC0726F05CC100EA958E /* SBSystemPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSystemPreferences.h; sourceTree = "<group>"; };
 		9A64C105266057F00074030F /* display.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = display.cpp; sourceTree = "<group>"; };
 		9A64C106266057F00074030F /* display.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = display.h; sourceTree = "<group>"; };
 		9A64C109266058D20074030F /* monitor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = monitor.cpp; sourceTree = "<group>"; };
@@ -165,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A62EC0226F04B7B00EA958E /* ScriptingBridge.framework in Frameworks */,
 				9AA8024B266571D600A6B449 /* Carbon.framework in Frameworks */,
 				9A5D73B326570CAE00D5C39E /* AppKit.framework in Frameworks */,
 				9A5D73AC265701F400D5C39E /* libaura_macos.dylib in Frameworks */,
@@ -240,6 +253,9 @@
 				9A42D7F92665B61F0011645D /* imm_client.h */,
 				9A42D7FF2665C5850011645D /* keyboard.cpp */,
 				9A42D7FE2665C5850011645D /* keyboard.h */,
+				9A59A4B526F0328400096562 /* keyboard_hook.h */,
+				9A59A4AF26F02FBC00096562 /* keyboard_hook.mm */,
+				9A62EC0526F05C7300EA958E /* keyboard_hook_authorization.mm */,
 				9A42D7F72665B61E0011645D /* aaa_imm_context.cpp */,
 				9A42D7F82665B61E0011645D /* aaa_imm_context.h */,
 				9A440A4B26548C38000C490B /* windowing_keyboard.cpp */,
@@ -249,6 +265,8 @@
 				9A64C109266058D20074030F /* monitor.cpp */,
 				9A64C10E266062940074030F /* monitor.mm */,
 				9A64C10A266058D20074030F /* monitor.h */,
+				9A59A4B626F032A800096562 /* mouse_hook.h */,
+				9A59A4AB26F02F7E00096562 /* mouse_hook.mm */,
 				9A440A742654F36C000C490B /* node.cpp */,
 				9A440A752654F36C000C490B /* node.h */,
 				9A79BE2526645D9B009E6C44 /* notify_icon_mm_bridge.h */,
@@ -259,6 +277,7 @@
 				9A79BE2A26645D9C009E6C44 /* notify_icon.mm */,
 				9A440A4026548C38000C490B /* oswindow_data.cpp */,
 				9A440A4426548C38000C490B /* oswindow_data.h */,
+				9A62EC0726F05CC100EA958E /* SBSystemPreferences.h */,
 				9A440A4126548C38000C490B /* window_impl.h */,
 				9A440A3826548C38000C490B /* window.cpp */,
 				9A440A3C26548C38000C490B /* window.h */,
@@ -273,6 +292,7 @@
 		9A5D7393265700D200D5C39E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A62EBFF26F04B7B00EA958E /* ScriptingBridge.framework */,
 				9AA8024A266571D600A6B449 /* Carbon.framework */,
 				9A5D73B226570CAE00D5C39E /* AppKit.framework */,
 				9A5D73AA265701F400D5C39E /* libaura_posix.dylib */,
@@ -317,6 +337,7 @@
 			files = (
 				9A42D7FC2665B61F0011645D /* aaa_imm_context.h in Headers */,
 				9A42D8002665C5860011645D /* keyboard.h in Headers */,
+				9A62EC0826F05CC200EA958E /* SBSystemPreferences.h in Headers */,
 				9A2BB8952654FBD900ABA8B9 /* node.h in Headers */,
 				9A42D7FD2665B61F0011645D /* imm_client.h in Headers */,
 			);
@@ -410,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A46D35826785244000B22D0 /* icon.cpp in Sources */,
+				9A59A4AC26F02F7E00096562 /* mouse_hook.mm in Sources */,
 				9A46D35726785209000B22D0 /* notify_icon.cpp in Sources */,
 				9A64C10C26605BD40074030F /* monitor.cpp in Sources */,
 				9A79BE2E26645DC2009E6C44 /* notify_icon.mm in Sources */,
@@ -431,8 +453,10 @@
 				9A2BB8982654FBE600ABA8B9 /* node.cpp in Sources */,
 				9A64C10F266062B40074030F /* monitor.mm in Sources */,
 				9A42D7FA2665B61F0011645D /* imm_client.cpp in Sources */,
+				9A59A4B026F02FBC00096562 /* keyboard_hook.mm in Sources */,
 				9A42D8012665C5860011645D /* keyboard.cpp in Sources */,
 				9A6E9B7A26573B99001F6FC8 /* factory_exchange.cpp in Sources */,
+				9A62EC0626F05C7300EA958E /* keyboard_hook_authorization.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

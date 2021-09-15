@@ -35,10 +35,10 @@ namespace macos
       virtual void assert_valid() const override;
       virtual void dump(dump_context & dumpcontext) const override;
       
-      virtual void set_destroying() override;
+      virtual ::e_status on_destroy() override;
 
-      bool is_destroying() const { return //::aura_window::m_bDestroying ||
-         ::user::interaction_impl::m_bDestroying; }
+//      bool is_destroying() const { return //::aura_window::m_bDestroying ||
+//         ::user::interaction_impl::m_bDestroying; }
 
       virtual void release_graphics_resources();
       

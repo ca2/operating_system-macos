@@ -53,14 +53,19 @@
    
    m_bNoActivate = false;
    
-	self = [super initWithContentRect:contentRect styleMask:windowStyle
-           
-                             // | NSWindowStyleMaskMiniaturizable
-           
-                             backing:bufferingType defer:deferCreation];
+	self = [ super
+      initWithContentRect: contentRect
+      styleMask: windowStyle
+      backing: bufferingType
+      defer: deferCreation
+      ];
 
 	if(self == NULL)
+   {
+    
       return NULL;
+      
+   }
    
    macOSWindow * pmacoswindow = self;
    

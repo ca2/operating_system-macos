@@ -105,7 +105,7 @@ namespace windowing_macos
    }
 
 
-   bool copydesk::_get_filea(::file::patha & patha, e_op & eop)
+   ::e_status copydesk::_get_filea(::file::patha & patha, e_op & eop)
    {
 
       if(!has_filea())
@@ -123,7 +123,8 @@ namespace windowing_macos
 
    }
 
-   bool copydesk::_set_filea(const ::file::patha & patha, e_op eop)
+
+   ::e_status copydesk::_set_filea(const ::file::patha & patha, e_op eop)
    {
 
       ns_main_sync(^
@@ -187,7 +188,7 @@ namespace windowing_macos
    }
 
 
-   bool copydesk::_set_plain_text(const string & str)
+   ::e_status copydesk::_set_plain_text(const string & str)
    {
 
       macos_clipboard_set_plain_text(str);
@@ -197,7 +198,7 @@ namespace windowing_macos
    }
 
 
-   bool copydesk::_get_plain_text(string & str)
+   ::e_status copydesk::_get_plain_text(string & str)
    {
 
       str = macos_clipboard_get_plain_text();
@@ -223,7 +224,7 @@ namespace windowing_macos
    }
 
 
-   bool copydesk::_desk_to_image(::image * pimage)
+   ::e_status copydesk::_desk_to_image(::image * pimage)
    {
 
       int w = 0;
@@ -271,7 +272,7 @@ namespace windowing_macos
    }
 
 
-   bool copydesk::_image_to_desk(const ::image * pimage)
+   ::e_status copydesk::_image_to_desk(const ::image * pimage)
    {
 
       bool bOk = macos_clipboard_set_image(
