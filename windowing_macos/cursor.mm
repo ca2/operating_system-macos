@@ -54,6 +54,10 @@ void * ns_get_default_system_cursor(enum_cursor ecursor)
       case e_cursor_text_select:
          pcursor = [NSCursor IBeamCursor];
          break;
+         
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+
       case e_cursor_size_bottom_right:
          pcursor = [[NSCursor class] performSelector:@selector( _bottomRightResizeCursor)];
          break;
@@ -66,6 +70,9 @@ void * ns_get_default_system_cursor(enum_cursor ecursor)
       case e_cursor_size_top_left:
          pcursor = [[NSCursor class] performSelector:@selector(_topLeftResizeCursor)];
          break;
+         
+#pragma clang diagnostic pop
+
       case e_cursor_size_bottom:
          pcursor = [NSCursor resizeDownCursor];
          break;
