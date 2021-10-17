@@ -965,7 +965,7 @@ char * mm2_get_type_identifier(const char * psz);
 string macos_get_type_identifier(const char * psz)
 {
    
-   return ::str::from_strdup(mm2_get_type_identifier(psz));
+   return ::string_from_strdup(mm2_get_type_identifier(psz));
    
 }
 

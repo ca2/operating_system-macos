@@ -32,7 +32,7 @@ namespace windowing_macos
       
       ::e_status initialize(::object * pobject) override;
       
-      ::e_status windowing_branch(const ::routine & routine) override;
+      ::e_status windowing_post(const ::routine & routine) override;
       
       ::windowing::window * window(oswindow oswindow) override;
 

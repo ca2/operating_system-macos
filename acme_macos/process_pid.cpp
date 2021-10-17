@@ -317,7 +317,7 @@ namespace acme
             {
                if (sProcesses)
                   free(sProcesses);
-               throw ::exception::exception("could not reallocate memory");
+               throw ::exception("could not reallocate memory");
             }
             sProcesses = sNewProcesses;
             iRetCode = sysctl(aiNames, (u_int) iNamesLength, sProcesses, &iSize, nullptr, 0);

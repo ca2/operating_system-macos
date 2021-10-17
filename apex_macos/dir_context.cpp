@@ -443,7 +443,7 @@ namespace macos
 
       //::u32 dwLastError;
 
-      if(::thread_is_set(id_thread_zip_is_dir) && iLast >= 3  && !ansi_count_compare_ci(&((const char *) str)[iLast - 3], ".zip", 4))
+      if(::task_flag().is_set(e_task_flag_zip_is_dir) && iLast >= 3  && !ansi_count_compare_ci(&((const char *) str)[iLast - 3], ".zip", 4))
       {
          //m_isdirmap.set(str.Left(iLast + 1), true, 0);
          return true;
@@ -702,7 +702,7 @@ try1:
          str += "\\trash_that_is_not_trash\\";
          string strFormat;
          ::datetime::time time;
-         time = ::datetime::time::get_current_time();
+         time = ::datetime::time::now();
          strFormat.Format("%04d-%02d-%02d %02d-%02d-%02d\\", time.GetYear(), time.GetMonth(), time.GetDay(), time.GetHour(), time.GetMinute(), time.GetSecond());
          str += strFormat;
          if(strDir[2] == '\\')
@@ -1457,7 +1457,7 @@ try1:
    ::file::path dir_context::desktop()
    {
 
-      return ::str::from_strdup(ns_user_local_desktop_folder());
+      return ::string_from_strdup(ns_user_local_desktop_folder());
 
 
    }
@@ -1466,7 +1466,7 @@ try1:
    ::file::path dir_context::document()
    {
 
-      return ::str::from_strdup(ns_user_local_documents_folder());
+      return ::string_from_strdup(ns_user_local_documents_folder());
 
 
    }
@@ -1474,7 +1474,7 @@ try1:
    ::file::path dir_context::download()
    {
 
-      return ::str::from_strdup(ns_user_local_downloads_folder());
+      return ::string_from_strdup(ns_user_local_downloads_folder());
 
    }
 
@@ -1482,7 +1482,7 @@ try1:
    ::file::path dir_context::music()
    {
 
-      return ::str::from_strdup(ns_user_local_music_folder());
+      return ::string_from_strdup(ns_user_local_music_folder());
 
    }
 
@@ -1490,7 +1490,7 @@ try1:
    ::file::path dir_context::video()
    {
 
-      return ::str::from_strdup(ns_user_local_video_folder());
+      return ::string_from_strdup(ns_user_local_video_folder());
 
    }
 
@@ -1498,7 +1498,7 @@ try1:
    ::file::path dir_context::image()
    {
 
-      return ::str::from_strdup(ns_user_local_image_folder());
+      return ::string_from_strdup(ns_user_local_image_folder());
 
    }
 

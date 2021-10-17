@@ -66,13 +66,13 @@ namespace keyboard_hook
    ::e_status check_system_permissions();
    
 
-   static ::matter * g_pmatterListener = nullptr;
+   static ::element * g_pelementListener = nullptr;
 
 
    static id g_idEventMonitor;
    
 
-   ::e_status install(::matter * pmatterListener)
+   ::e_status install(::element * pelementListener)
    {
       
       auto estatus = is_enabled(false);
@@ -84,7 +84,7 @@ namespace keyboard_hook
       
       }
 
-      g_pmatterListener = pmatterListener;
+      g_pelementListener = pelementListener;
       
       //   NSDictionary *options = @{(__bridge NSString *)kAXTrustedCheckOptionPrompt: @NO};
 //   BOOL accessibilityEnabled = AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
@@ -158,19 +158,19 @@ namespace keyboard_hook
                                                             if([incomingEvent keyCode] == kVK_Return)
                                                             {
                                                                
-                                                  g_pmatterListener->handle(e_message_key_down, kVK_Return);
+                                                               g_pelementListener->call(e_message_key_down, kVK_Return);
                                                                
                                                             }
                                                             else if([incomingEvent keyCode] == kVK_Space)
                                                             {
                                                                
-                                                               g_pmatterListener->handle(e_message_key_down, kVK_Space);
+                                                               g_pelementListener->call(e_message_key_down, kVK_Space);
                                                                
                                                             }
                                                             else
                                                             {
                                                                
-                                                               g_pmatterListener->handle(e_message_key_down, kVK_ANSI_A);
+                                                               g_pelementListener->call(e_message_key_down, kVK_ANSI_A);
                                                                
                                                             }
                                                                
@@ -181,19 +181,19 @@ namespace keyboard_hook
                                                             if([incomingEvent keyCode] == kVK_Return)
                                                             {
                                                                
-                                                               g_pmatterListener->handle(e_message_key_up, kVK_Return);
+                                                               g_pelementListener->call(e_message_key_up, kVK_Return);
                                                                
                                                             }
                                                             else if([incomingEvent keyCode] == kVK_Space)
                                                             {
                                                                
-                                                               g_pmatterListener->handle(e_message_key_up, kVK_Space);
+                                                               g_pelementListener->call(e_message_key_up, kVK_Space);
                                                                
                                                             }
                                                             else
                                                             {
                                                                
-                                                               g_pmatterListener->handle(e_message_key_up, kVK_ANSI_A);
+                                                               g_pelementListener->call(e_message_key_up, kVK_ANSI_A);
                                                                
                                                             }
                        
@@ -207,7 +207,7 @@ namespace keyboard_hook
    }
 
    
-   ::e_status uninstall(::matter * pmatterListener)
+   ::e_status uninstall(::element * pelementListener)
    {
       
       [NSEvent removeMonitor: g_idEventMonitor ];

@@ -59,9 +59,9 @@ namespace windowing_macos
       ns_main_sync(^{
          
          
-         macos_window_hide();
+         ::macos_window::macos_window_hide();
          
-         macos_window_destroy();
+         ::macos_window::macos_window_destroy();
          
          
       });
@@ -483,7 +483,7 @@ namespace windowing_macos
 
       }
 
-      m_pwindowing->windowing_branch(__routine([this, pNSCursor]()
+      m_pwindowing->windowing_post(__routine([this, pNSCursor]()
                                           {
 
 //                                             synchronous_lock sl(user_mutex());
@@ -617,11 +617,11 @@ namespace windowing_macos
 
    #endif
 
-      millis tickNow = millis::now();
+      auto tickNow = ::duration::now();
 
-      millis tickEllapsed = tickNow - m_pimpl->m_millisLastDeviceDraw;
+      auto tickEllapsed = tickNow - m_pimpl->m_durationLastDeviceDraw;
 
-      if(tickEllapsed < 12)
+      if(tickEllapsed < 12_ms)
       {
 
          // xxxlog
@@ -629,7 +629,7 @@ namespace windowing_macos
 
       }
 
-      m_pimpl->m_millisLastDeviceDraw = tickNow;
+      m_pimpl->m_durationLastDeviceDraw = tickNow;
 
       ::user::device_draw_life_time devicedrawlifetime(m_pimpl);
 
@@ -653,7 +653,7 @@ namespace windowing_macos
 
       }
          
-      ::draw2d::graphics_pointer g(e_create);
+      auto g = __create < ::draw2d::graphics >();
 
       g->attach(cgc);
       
@@ -732,7 +732,7 @@ namespace windowing_macos
       
       m_pimpl->m_bPendingRedraw = false;
       
-      m_pimpl->m_millisLastRedraw.Now();
+      m_pimpl->m_durationLastRedraw.Now();
 
    }
 
@@ -1004,7 +1004,7 @@ namespace windowing_macos
 
       }
       
-      if(puserinteraction->m_millisMouseMove.elapsed() < puserinteraction->m_millisMouseMoveIgnore)
+      if(puserinteraction->m_durationMouseMove.elapsed() < puserinteraction->m_durationMouseMoveIgnore)
       {
          
          //printf("mouse_move_ignored %f, %f\n", x, y);
@@ -1018,7 +1018,7 @@ namespace windowing_macos
 
 //            printf("mouse_move_\"accepted\" %f, %f\n", x, y);
 
-         puserinteraction->m_millisMouseMove.Now();
+         puserinteraction->m_durationMouseMove.Now();
 
          puserinteraction->m_pointMouseMove.x = x;
 
@@ -1412,7 +1412,7 @@ namespace windowing_macos
 //
 //      }
       
-      m_pimpl->m_millisLastExposureAddUp.Now();
+      m_pimpl->m_durationLastExposureAddUp.Now();
 
    }
 
@@ -1628,7 +1628,7 @@ namespace windowing_macos
 
       }
 
-      m_pimpl->m_millisLastExposureAddUp.Now();
+      m_pimpl->m_durationLastExposureAddUp.Now();
 
       puserinteraction->send_message(e_message_show_window, 1);
 
@@ -1665,14 +1665,14 @@ namespace windowing_macos
    //
    //      }
       
-      INFO("macos::window::macos_window_on_hide");
+      INFORMATION("macos::window::macos_window_on_hide");
 
       auto puserinteraction = m_pimpl->m_puserinteraction;
 
       if(::is_null(puserinteraction))
       {
 
-         WARN("macos::window::macos_window_on_hide (2) puserinteraction == nullptr");
+         WARNING("macos::window::macos_window_on_hide (2) puserinteraction == nullptr");
 
          return;
 
@@ -1749,10 +1749,10 @@ namespace windowing_macos
             puserinteraction->display(e_display_default, e_activation_set_foreground);
 
          }
-         else if(puserinteraction->m_pimpl2 && puserinteraction->m_pimpl2->m_millisLastExposureAddUp.elapsed() < 300)
+         else if(puserinteraction->m_pimpl2 && puserinteraction->m_pimpl2->m_durationLastExposureAddUp.elapsed() < 300_ms)
          {
 
-            INFO("Ignored minituarize request (by toggle intent) because of recent full exposure.");
+            INFORMATION("Ignored minituarize request (by toggle intent) because of recent full exposure.");
 
          }
          else

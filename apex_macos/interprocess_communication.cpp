@@ -90,9 +90,9 @@ interprocess_communication_tx::~interprocess_communication_tx()
 
       CFDataRef data = get_os_cf_data(m);
 
-      CFTimeInterval sendTimeout = durationTimeout.seconds();
+      CFTimeInterval sendTimeout = durationTimeout.floating_second().m_d;
 
-      CFTimeInterval rcvimeout = durationTimeout.seconds();
+      CFTimeInterval rcvimeout = durationTimeout.floating_second().m_d;
 
       SInt32 status =
       CFMessagePortSendRequest(m_port,
@@ -142,8 +142,8 @@ interprocess_communication_tx::~interprocess_communication_tx()
       CFMessagePortSendRequest(m_port,
                                message,
                                get_os_cf_data(m),
-                               (double) durationTimeout.seconds(),
-                               (double) durationTimeout.seconds(),
+                               (double) durationTimeout.floating_second().m_d,
+                               (double) durationTimeout.floating_second().m_d,
                                nullptr,
                                nullptr);
       if (status == kCFMessagePortSuccess)
@@ -199,7 +199,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
 
          set_os_cf_data(m, data);
 
-         prx->on_interprocess_receive(::move(__str(m)));
+         prx->on_interprocess_receive(::move(__string(m)));
 
       }
       else

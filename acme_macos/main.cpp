@@ -10,7 +10,7 @@ CLASS_DECL_ACME i32 ca2_main();
 void CLASS_DECL_ACME __cdecl _ca2_purecall()
 {
    
-   throw ::exception::exception(error_pure_call);
+   throw ::exception(error_pure_call);
    
 }
 

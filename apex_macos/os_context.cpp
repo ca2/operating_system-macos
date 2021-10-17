@@ -1011,7 +1011,7 @@ namespace macos
 
          p = pacmedir->ca2roaming();
 
-         p /= "mypath" / pcommand->m_pcommandline->m_varQuery.propset()["app"].to_string() + ".txt";
+         p /= "mypath" / pcommand->m_pcommandline->m_varQuery.propset()["app"].get_string() + ".txt";
 
          m_psystem->m_pacmefile->put_contents(p, pcommand->m_pcommandline->m_strExe);
 
@@ -1024,13 +1024,13 @@ namespace macos
 
             p = pacmedir->ca2roaming();
 
-            p /= "mypath" / pcommand->m_pcommandline->m_varQuery.propset()["app"].to_string() + "-app";
+            p /= "mypath" / pcommand->m_pcommandline->m_varQuery.propset()["app"].get_string() + "-app";
 
             ::file::path p2;
 
             p2 = pacmedir->ca2roaming();
 
-            p2 /= "mypath" / ::file::path(pcommand->m_pcommandline->m_varQuery.propset()["app"].to_string()).folder()/ ::file::path(strApp.Left(iFind + strlen(".app"))).name();
+            p2 /= "mypath" / ::file::path(pcommand->m_pcommandline->m_varQuery.propset()["app"].get_string()).folder()/ ::file::path(strApp.Left(iFind + strlen(".app"))).name();
 
             ns_create_alias(p2, strApp.Left(iFind + strlen(".app")));
 
@@ -1260,7 +1260,7 @@ namespace macos
       if(pszStartDir != nullptr && pszStartDir != strStartDir.c_str())
       {
 
-         ::file::path pathFolder = ::file::path(::str::from_strdup((::string &) pszStartDir));
+         ::file::path pathFolder = ::file::path(::string_from_strdup((::string &) pszStartDir));
 
          set["folder"] = pathFolder;
 

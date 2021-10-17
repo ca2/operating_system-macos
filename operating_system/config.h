@@ -16,7 +16,8 @@
 #define PARALLELIZATION_PTHREAD
 
 //#define _POSIX_C_SOURCE 200809L
-#define index __ancient_posix_c_source_index
+#define index __ancient_bsd_source_index
+#define wait __ancient_bsd_source_wait
 
 #define CDECL
 

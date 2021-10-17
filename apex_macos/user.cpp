@@ -25,7 +25,7 @@ char * mm_browse_folder(void * pSystem, const char * pszStartDir, bool bCanCreat
 string apple_browse_folder(class ::system * psystem, const char * pszStartDir, bool bCanCreateDirectories)
 {
 
-   return ::str::from_strdup(mm_browse_folder(psystem, pszStartDir, bCanCreateDirectories));
+   return ::string_from_strdup(mm_browse_folder(psystem, pszStartDir, bCanCreateDirectories));
 
 }
 
@@ -35,8 +35,12 @@ char** mm_browse_file_open(void * psystem, const char ** pszStartDir, bool bMult
 
 string_array apple_browse_file_open(class ::system * psystem, const char ** pszStartDir, bool bMulti)
 {
+   
+   string_array stra;
+   
+   stra.from_strdup(mm_browse_file_open(psystem, pszStartDir, bMulti));
 
-   return ::stra::from_strdup(mm_browse_file_open(psystem, pszStartDir, bMulti));
+   return stra;
 
 }
 

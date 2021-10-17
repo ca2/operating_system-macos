@@ -898,10 +898,10 @@ bool interaction_impl::_is_window() const
 
 
 
-   void interaction_impl::route_command_message(::message::command * pcommand)
+   void interaction_impl::route_command(::message::command * pcommand, bool bRouteToKeyDescendant)
    {
 
-      channel::route_command_message(pcommand);
+      channel::route_command(pcommand, bRouteToKeyDescendant);
 
       if(pcommand->m_bRet)
       {
@@ -915,9 +915,11 @@ bool interaction_impl::_is_window() const
       //if(_iguimessageDispatchCommandMessage(pcommand, b))
       // return b;
 
-      channel * pcmdtarget = dynamic_cast <channel *> (this);
-      return pcmdtarget->channel::route_command_message(pcommand);
+//      channel * pcmdtarget = dynamic_cast <channel *> (this);
+//      return pcmdtarget->channel::route_command_message(pcommand);
+      
    }
+
 
 
 //   void interaction_impl::on_control_event(::user::control_event * pevent)
@@ -1272,7 +1274,7 @@ bool interaction_impl::_is_window() const
      //         pmessage->m_id == e_message_mouse_wheel)
            {
 
-              if(::is_set(m_puserinteraction) && !m_puserinteraction->m_bUserPrimitiveOk)
+              if(::is_set(m_puserinteraction) && !m_puserinteraction->m_bUserElementOk)
               {
 
                  return;
@@ -1567,25 +1569,25 @@ bool interaction_impl::_is_window() const
 
       }
 
-      if (pmessage->m_id == e_message_event)
-      {
-
-         if (m_puserinteraction != nullptr)
-         {
-
-            m_puserinteraction->on_control_event((::user::control_event *) pmessage->m_lparam.m_lparam);
-
-         }
-         else
-         {
-
-//            on_control_event((::user::control_event *) pmessage->m_lparam.m_lparam);
-
-         }
-
-         return;
-
-      }
+//      if (pmessage->m_id == e_message_event)
+//      {
+//
+//         if (m_puserinteraction != nullptr)
+//         {
+//
+//            m_puserinteraction->on_control_event((::user::control_event *) pmessage->m_lparam.m_lparam);
+//
+//         }
+//         else
+//         {
+//
+////            on_control_event((::user::control_event *) pmessage->m_lparam.m_lparam);
+//
+//         }
+//
+//         return;
+//
+//      }
 
       //(this->*m_pfnDispatchWindowProc)(pmessage);
 
@@ -3093,7 +3095,7 @@ bool interaction_impl::_is_window() const
    bool interaction_impl::GetUpdateRect(RECTANGLE_I32 * lpRect, bool bErase)
    {
 
-      throw ::exception::exception(error_not_implemented);
+      throw ::exception(error_not_implemented);
 
    }
 
@@ -3101,13 +3103,13 @@ bool interaction_impl::_is_window() const
    i32 interaction_impl::GetUpdateRgn(::draw2d::region* pRgn, bool bErase)
    {
 
-      throw ::exception::exception(error_not_implemented);
+      throw ::exception(error_not_implemented);
 
    }
 
 
    void interaction_impl::Invalidate(bool bErase)
-   {
+   {\
 
       m_bNeedsUpdate = true;
 
@@ -3266,7 +3268,7 @@ bool interaction_impl::_is_window() const
    bool interaction_impl::LockWindowUpdate()
    {
 
-      throw ::exception::exception(error_not_implemented);
+      throw ::exception(error_not_implemented);
 
    }
 
@@ -3274,7 +3276,7 @@ bool interaction_impl::_is_window() const
    void interaction_impl::UnlockWindowUpdate()
    {
 
-      throw ::exception::exception(error_not_implemented);
+      throw ::exception(error_not_implemented);
 
    }
 

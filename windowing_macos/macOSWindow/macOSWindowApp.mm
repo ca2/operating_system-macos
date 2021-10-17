@@ -41,7 +41,6 @@ void set_apex_system_as_thread();
 @synthesize windowcontroller;
 - (id)init
 {
-   
 
    self = [super init];
    
@@ -50,8 +49,6 @@ void set_apex_system_as_thread();
    m_menuitema = [[NSMutableArray alloc] init];
    
    m_menuida = [[NSMutableArray alloc] init];
-   
-   
    
    // Monitor menu/dock theme changes...
    [NSDistributedNotificationCenter.defaultCenter addObserver:self selector:@selector(themeChanged:) name:@"AppleInterfaceThemeChangedNotification" object: nil];
@@ -508,8 +505,20 @@ if(str != nil)
  
    NSLog (@"%@", notification);
    
-   system_id_update(application_system(m_pApplication), id_os_dark_mode, 0);
+   [self fetch_dark_mode];
    
+//   system_id_update(application_system(m_pApplication), id_user_color, 0);
+   
+}
+
+
+-(void) fetch_dark_mode
+{
+   NSString *interfaceStyle = [NSUserDefaults.standardUserDefaults valueForKey:@"AppleInterfaceStyle"];
+   int iDarkMode = [interfaceStyle isEqualToString:@"Dark"];
+
+   system_id_update(application_system(m_pApplication), id_set_dark_mode, iDarkMode);
+
 }
 
 
@@ -657,6 +666,8 @@ void windowing_macos_application_main(void * pApplication, int argc, char *argv[
    appDelegate->m_pApplication = pApplication;
    
    [application setDelegate:appDelegate];
+   
+   [appDelegate fetch_dark_mode];
    
    //[m_statusitem setEnabled:YES];
    

@@ -3,6 +3,14 @@
 #include "framework.h"
 #include "acme/filesystem/filesystem/acme_path.h"
 #include "acme_path.h"
+
+//enum
+//{
+//   e_anonymouse_enum,
+//   
+//};
+//typedef UInt16 UniChar;
+//inline int operator -(UniChar ush, decltype(e_anonymouse_enum) e) { return ush - (int) e; }
 #include <Carbon/Carbon.h>
 
 
@@ -81,7 +89,7 @@ namespace macos
       
       auto estatus = ns_symbolic_link_destination(&pszDestination, pszLink);
       
-      strDestination = ::str::from_strdup(pszDestination);
+      strDestination = ::string_from_strdup(pszDestination);
       
       if(!estatus)
       {

@@ -107,5 +107,5 @@
 -(NSMenu *) applicationDockMenu:(NSApplication*)sender;
 @property(strong) NSWindowController *windowcontroller;
 - (void)play:(id)sender;
-
+-(void)fetch_dark_mode;
 @end

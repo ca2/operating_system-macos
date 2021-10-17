@@ -50,7 +50,7 @@ void acme_macos_factory_exchange(::factory_map * pfactorymap)
    //create_factory < ::macos::os_context         , ::os_context       > ();
    //create_factory < ::apple::process            , ::process::process > ();
    
-  pfactorymap->create_factory < ::posix::pipe               , ::process::pipe    > ();
+  pfactorymap->create_factory < ::posix::pipe               , ::operating_system::pipe    > ();
    
    //create_factory < ::macos::dir_system         , ::dir_system       > ();
    //create_factory < ::macos::file_system        , ::file_system      > ();

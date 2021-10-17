@@ -8,6 +8,12 @@
 #define __ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES 0
 
 
+//#define index bsd_index
+
+
+//#define wait macos_wait
+
+
 //#define _POSIX_C_SOURCE 200809
 
 
@@ -19,6 +25,8 @@
 #define _MAX_PATH MAX_PATH
 #endif
 
+#include <time.h>
+#include <sys/wait.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
@@ -185,9 +193,21 @@ typedef ::std::type_info std_type_info;
 #include <malloc/malloc.h>
 
 #include <sys/types.h>
-#include <time.h>
+//#include <time.h>
 
 #define __time_t time_t
 
 
 #include <netinet/in.h>
+
+
+#define timespec_get mach_timespec_get
+
+
+int mach_timespec_get(timespec * ptimespec, int);
+
+
+#define INFINITE_TIMEOUT UINT_MAX
+
+
+
