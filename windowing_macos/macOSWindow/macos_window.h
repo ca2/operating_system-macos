@@ -74,6 +74,10 @@ public:
    virtual void * macos_window_get_mouse_cursor() = 0;
    
    
+   virtual void profiling_on_start_draw_rectangle() = 0;
+   virtual void profiling_on_end_draw_rectangle() = 0;
+   
+   
    virtual void macos_window_set_frame(CGRect rect);
    virtual void macos_window_get_frame(CGRect * prect);
    virtual void macos_window_invalidate();

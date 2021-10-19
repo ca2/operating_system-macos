@@ -45,6 +45,8 @@ namespace macos
 
    interaction_impl::interaction_impl()
    {
+      
+      m_pImpl2 = this;
 
       m_bEnabled = true;
 //      set_os_data(nullptr);

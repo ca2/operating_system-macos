@@ -410,6 +410,8 @@
       
    }
    
+   p->profiling_on_start_draw_rectangle();
+   
    CGContextRef cgc = (CGContextRef) [[NSGraphicsContext currentContext] graphicsPort];
 
 #ifdef REDRAW_HINTING
@@ -435,6 +437,8 @@
    auto rectFrame = [self frame];
    
    p->macos_window_draw(cgc, rectFrame.size);
+   
+   p->profiling_on_end_draw_rectangle();
    
 #ifdef REDRAW_HINTING
    

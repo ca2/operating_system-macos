@@ -9,6 +9,7 @@
 #include "framework.h"
 #include "window_impl.h"
 #include "oswindow_data.h"
+#include "aura/user/interaction_prodevian.h"
 #include "acme/node/operating_system/_user.h"
 #include "acme/parallelization/message_queue.h"
 #include <CoreGraphics/CoreGraphics.h>
@@ -506,6 +507,14 @@ namespace windowing_macos
    }
 
 
+   ::point_i32 window::get_mouse_cursor_position()
+   {
+      
+      return m_pointMouseCursor;
+      
+   }
+   
+
    bool window::set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags)
    {
       
@@ -867,6 +876,10 @@ namespace windowing_macos
 
    void window::macos_window_mouse_down(int iButton, double x, double y)
    {
+      
+      m_pointMouseCursor.x = x;
+      
+      m_pointMouseCursor.y = y;
 
       //__pointer(::user::message) spbase;
 
@@ -932,6 +945,10 @@ namespace windowing_macos
    void window::macos_window_mouse_up(int iButton, double x, double y)
    {
       
+      m_pointMouseCursor.x = x;
+      
+      m_pointMouseCursor.y = y;
+      
       auto pmouse = __create_new < ::message::mouse >();
 
       ::id id;
@@ -992,6 +1009,10 @@ namespace windowing_macos
 //         return;
 //
 //      }
+      
+      m_pointMouseCursor.x = x;
+      
+      m_pointMouseCursor.y = y;
       
       bool bOk = true;
 
@@ -1542,6 +1563,77 @@ namespace windowing_macos
       
    }
 
+   
+   void window::profiling_on_start_draw_rectangle()
+   {
+      
+      auto pimpl = m_pimpl;
+      
+      if(::is_null(pimpl))
+      {
+       
+         return;
+         
+      }
+
+      auto pimpl2 = pimpl->m_pImpl2;
+
+      if(::is_null(pimpl2))
+      {
+       
+         return;
+         
+      }
+      
+      auto pprodevian = pimpl2->m_pprodevian;
+      
+      if(::is_null(pprodevian))
+      {
+       
+         return;
+         
+      }
+      
+      pprodevian->profiling_on_before_update_screen();
+
+   }
+
+
+   void window::profiling_on_end_draw_rectangle()
+   {
+      
+      auto pimpl = m_pimpl;
+      
+      if(::is_null(pimpl))
+      {
+       
+         return;
+         
+      }
+
+      auto pimpl2 = pimpl->m_pImpl2;
+
+      if(::is_null(pimpl2))
+      {
+       
+         return;
+         
+      }
+      
+      auto pprodevian = pimpl2->m_pprodevian;
+      
+      if(::is_null(pprodevian))
+      {
+       
+         return;
+         
+      }
+      
+      pprodevian->profiling_on_after_update_screen();
+      
+   }
+
+
    void window::macos_window_iconified()
    {
 
@@ -2007,6 +2099,16 @@ namespace windowing_macos
       {
 
       }
+
+      return ::success;
+
+   }
+
+
+   ::e_status window::bring_to_front()
+   {
+
+      macos_window_order_front();
 
       return ::success;
 

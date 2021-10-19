@@ -33,6 +33,7 @@ namespace windowing_macos
       void *                     m_pNSCursorLast;
       class windowing *          m_pmacoswindowing;
       ::windowing::window *      m_pwindowCapture;
+      ::point_i32                m_pointMouseCursor;
       
       
       window();
@@ -69,6 +70,8 @@ namespace windowing_macos
       
       ::e_status set_mouse_cursor(::windowing::cursor * pcursor) override;
       
+      ::point_i32 get_mouse_cursor_position() override;
+      
       bool set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags) override;
 
       ::e_status set_mouse_capture() override;
@@ -97,6 +100,10 @@ namespace windowing_macos
       
       void * macos_window_get_mouse_cursor() override;
 
+
+      void profiling_on_start_draw_rectangle() override;
+      void profiling_on_end_draw_rectangle() override;
+
       
       virtual void macos_window_resized(CGRect rectangle_i32) override;
       virtual void macos_window_moved(CGPoint point_i32) override;
@@ -122,6 +129,9 @@ namespace windowing_macos
 
       
       ::e_status destroy_window() override;
+      
+      
+      ::e_status bring_to_front() override;
       
 
    };
