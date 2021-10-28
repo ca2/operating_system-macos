@@ -1460,7 +1460,7 @@ bool interaction_impl::_is_window() const
               if(puserinteractionMouse)
               {
                  
-                 string strType2 = puserinteractionMouse->type_c_str();
+                 string strType2 = __type_name(puserinteractionMouse);
                  
                  //::output_debug_string("\nmouse: "+ strType2);
                  
@@ -1481,7 +1481,7 @@ bool interaction_impl::_is_window() const
 
               }
 
-              string strUserInteractionType(puserinteractionMouse->type_c_str());
+              string strUserInteractionType(__type_name(puserinteractionMouse));
 
               if(pmouse->m_id == e_message_mouse_move)
               {

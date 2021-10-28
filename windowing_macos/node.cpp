@@ -139,7 +139,7 @@ namespace windowing_macos
       
       manual_reset_event ev;
       
-      message_box(puserinteractionEnablePrompt, "You gonna be prompted to enable Accessibility for \""+m_psystem->m_papplicationMain->m_strAppName+"\" to enable keyboard monitoring.",
+      puserinteractionEnablePrompt->message_box("You gonna be prompted to enable Accessibility for \""+m_psystem->m_papplicationMain->m_strAppName+"\" to enable keyboard monitoring.",
                      "Aura Click", e_message_box_ok)->then(
                                                            [this, &ev,puserinteractionEnablePrompt](auto & sequence)
                                                            {

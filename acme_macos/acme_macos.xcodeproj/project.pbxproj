@@ -61,20 +61,6 @@
 			remoteGlobalIDString = 9A15A582264B536C0080670E;
 			remoteInfo = acme_apple;
 		};
-		9A5F8E292719B0B1002CB2B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A5F8E252719B0B1002CB2B8 /* acid_macos.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9A5F8E1E2719B006002CB2B8;
-			remoteInfo = acid;
-		};
-		9A5F8E2F2719B170002CB2B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A5F8E252719B0B1002CB2B8 /* acid_macos.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A5F8E1D2719B006002CB2B8;
-			remoteInfo = acid;
-		};
 		9A787E71264E23AD003DF8A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A15A5D6264B54CA0080670E /* acme_apple.xcodeproj */;
@@ -112,7 +98,6 @@
 		9A23A71E26CEC02A00F98012 /* file.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = file.mm; sourceTree = "<group>"; };
 		9A5DCE35271A6E5700C2ED86 /* xxx.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = xxx.cpp; sourceTree = "<group>"; };
 		9A5DCE36271A6E5700C2ED86 /* xxx.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = xxx.hpp; sourceTree = "<group>"; };
-		9A5F8E252719B0B1002CB2B8 /* acid_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acid_macos.xcodeproj; path = ../acid_macos/acid_macos.xcodeproj; sourceTree = "<group>"; };
 		9A6543FD2666F2A400F8A254 /* image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
 		9A78630A2650483C0034A0E1 /* libacme.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A78630C2650483C0034A0E1 /* libacme_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,7 +141,6 @@
 		9A0C1656264A290E00B5CC33 = {
 			isa = PBXGroup;
 			children = (
-				9A5F8E252719B0B1002CB2B8 /* acid_macos.xcodeproj */,
 				9A15A5D6264B54CA0080670E /* acme_apple.xcodeproj */,
 				9A0C16D6264A2CE900B5CC33 /* acme_macos */,
 				9A0C1660264A290E00B5CC33 /* Products */,
@@ -226,14 +210,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9A5F8E262719B0B1002CB2B8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9A5F8E2A2719B0B1002CB2B8 /* libacid.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		9A787E78264E8919003DF8A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,7 +264,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				9A5F8E302719B170002CB2B8 /* PBXTargetDependency */,
 				9A787E72264E23AD003DF8A0 /* PBXTargetDependency */,
 			);
 			name = acme_macos;
@@ -322,10 +297,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 9A5F8E262719B0B1002CB2B8 /* Products */;
-					ProjectRef = 9A5F8E252719B0B1002CB2B8 /* acid_macos.xcodeproj */;
-				},
-				{
 					ProductGroup = 9A15A5D7264B54CA0080670E /* Products */;
 					ProjectRef = 9A15A5D6264B54CA0080670E /* acme_apple.xcodeproj */;
 				},
@@ -343,13 +314,6 @@
 			fileType = "compiled.mach-o.dylib";
 			path = libacme_apple.dylib;
 			remoteRef = 9A15A5DB264B54CB0080670E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9A5F8E2A2719B0B1002CB2B8 /* libacid.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libacid.a;
-			remoteRef = 9A5F8E292719B0B1002CB2B8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -387,11 +351,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9A5F8E302719B170002CB2B8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = acid;
-			targetProxy = 9A5F8E2F2719B170002CB2B8 /* PBXContainerItemProxy */;
-		};
 		9A787E72264E23AD003DF8A0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = acme_apple;

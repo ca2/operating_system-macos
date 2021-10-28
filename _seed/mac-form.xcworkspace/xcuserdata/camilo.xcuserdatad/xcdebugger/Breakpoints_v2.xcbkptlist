@@ -154,8 +154,8 @@
             filePath = "../../../source/app/aura/user/interaction.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4030"
-            endingLineNumber = "4030"
+            startingLineNumber = "4031"
+            endingLineNumber = "4031"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -362,8 +362,8 @@
             filePath = "../../../source/app/aura/user/interaction.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5489"
-            endingLineNumber = "5489"
+            startingLineNumber = "5490"
+            endingLineNumber = "5490"
             landmarkName = "interaction::post(pmessage)"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,10 +522,57 @@
             filePath = "../../../source/app/aura/user/interaction.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15501"
-            endingLineNumber = "15501"
+            startingLineNumber = "15502"
+            endingLineNumber = "15502"
             landmarkName = "interaction::on_message_left_button_down(pmessage)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AEF488E4-8D58-45F6-9EFB-CA2DB4ADE610 - 9a491afb0edd24e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction::on_message_left_button_down(message::message*)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15501"
+                  endingLineNumber = "15501"
+                  offsetFromSymbolStart = "659">
+               </Location>
+               <Location
+                  uuid = "AEF488E4-8D58-45F6-9EFB-CA2DB4ADE610 - 9a491afb0edd25aa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction::on_message_left_button_down(message::message*)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15511"
+                  endingLineNumber = "15511"
+                  offsetFromSymbolStart = "659">
+               </Location>
+               <Location
+                  uuid = "AEF488E4-8D58-45F6-9EFB-CA2DB4ADE610 - 9a491afb0edd2483"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction::on_message_left_button_down(message::message*)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15502"
+                  endingLineNumber = "15502"
+                  offsetFromSymbolStart = "659">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -538,8 +585,8 @@
             filePath = "../../../source/app/aura/user/interaction.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15686"
-            endingLineNumber = "15686"
+            startingLineNumber = "15687"
+            endingLineNumber = "15687"
             landmarkName = "interaction::on_message_left_button_up(pmessage)"
             landmarkType = "7">
          </BreakpointContent>
@@ -556,15 +603,15 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "397"
             endingLineNumber = "397"
-            landmarkName = "channel::command_handler(pcommand)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "1F140ABB-1E8D-4437-8206-87A55D7831AC"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../source/app/apex/message/channel.cpp"
@@ -588,7 +635,629 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "443"
             endingLineNumber = "443"
-            landmarkName = "channel::has_command_handler(pcommand)"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85B63C7A-FB69-48A4-88CA-DE72CAE125F3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../acme_macos/mm.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "os_post_quit()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1F5CCE5E-180F-4A24-9657-FFAA5864709C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_impl.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "682"
+            endingLineNumber = "682"
+            landmarkName = "interaction_impl::create_host(puserinteraction)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1F5CCE5E-180F-4A24-9657-FFAA5864709C - 98262b74f8a38987"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::create_host(user::interaction*)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "680"
+                  endingLineNumber = "680"
+                  offsetFromSymbolStart = "690">
+               </Location>
+               <Location
+                  uuid = "1F5CCE5E-180F-4A24-9657-FFAA5864709C - 98262b74f8a38849"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::create_host(user::interaction*)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "682"
+                  endingLineNumber = "682"
+                  offsetFromSymbolStart = "763">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85722F72-C58A-43CD-B7A5-5165E2AD7A05"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_impl.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "637"
+            endingLineNumber = "637"
+            landmarkName = "interaction_impl::create_host(puserinteraction)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DC52A03D-39D3-41CF-986B-893F9A11CDC9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_impl.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "708"
+            endingLineNumber = "708"
+            landmarkName = "interaction_impl::create_host(puserinteraction)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DC52A03D-39D3-41CF-986B-893F9A11CDC9 - 98262b74f8a38561"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::create_host(user::interaction*)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "706"
+                  endingLineNumber = "706"
+                  offsetFromSymbolStart = "1493">
+               </Location>
+               <Location
+                  uuid = "DC52A03D-39D3-41CF-986B-893F9A11CDC9 - 98262b74f8a38523"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::create_host(user::interaction*)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "708"
+                  endingLineNumber = "708"
+                  offsetFromSymbolStart = "1569">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FC61D105-2400-4E27-ABC5-F6836304AD4B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_impl.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1675"
+            endingLineNumber = "1675"
+            landmarkName = "interaction_impl::destroy_impl_only()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FC61D105-2400-4E27-ABC5-F6836304AD4B - 6161c733948ddbf8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::destroy_impl_only()"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1673"
+                  endingLineNumber = "1673"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "FC61D105-2400-4E27-ABC5-F6836304AD4B - 6161c733948dda36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::destroy_impl_only()"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1675"
+                  endingLineNumber = "1675"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C01F1A2-A043-4122-8E11-29C31A05690E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_impl.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1743"
+            endingLineNumber = "1743"
+            landmarkName = "interaction_impl::start_destroying_window()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4C01F1A2-A043-4122-8E11-29C31A05690E - 8453fa4d2e1ed002"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::start_destroying_window()"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1741"
+                  endingLineNumber = "1741"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "4C01F1A2-A043-4122-8E11-29C31A05690E - 8453fa4d2e1ed044"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::start_destroying_window()"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1743"
+                  endingLineNumber = "1743"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EB236F43-9851-4E62-B9F4-970D37B369A9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_impl.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4591"
+            endingLineNumber = "4591"
+            landmarkName = "interaction_impl::prodevian_redraw(bUpdateBuffer)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EB236F43-9851-4E62-B9F4-970D37B369A9 - 25bf2ac3911a55ab"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::prodevian_redraw(bool)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "4589"
+                  endingLineNumber = "4589"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  uuid = "EB236F43-9851-4E62-B9F4-970D37B369A9 - 25bf2ac3911a55ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::prodevian_redraw(bool)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "4591"
+                  endingLineNumber = "4591"
+                  offsetFromSymbolStart = "124">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EEE26173-D9C8-4FF2-B49E-6440BC61F432"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_impl.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4599"
+            endingLineNumber = "4599"
+            landmarkName = "interaction_impl::prodevian_redraw(bUpdateBuffer)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06189610-5257-4DF5-9130-19178F54B614"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_impl.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4637"
+            endingLineNumber = "4637"
+            landmarkName = "interaction_impl::prodevian_stop()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "06189610-5257-4DF5-9130-19178F54B614 - 2bf96dd29c93cc08"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::prodevian_stop()"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "4635"
+                  endingLineNumber = "4635"
+                  offsetFromSymbolStart = "46">
+               </Location>
+               <Location
+                  uuid = "06189610-5257-4DF5-9130-19178F54B614 - 2bf96dd29c93cc4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::prodevian_stop()"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "4637"
+                  endingLineNumber = "4637"
+                  offsetFromSymbolStart = "46">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "515594EA-41DF-405E-BA6D-938E00524D86"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15313"
+            endingLineNumber = "15313"
+            landmarkName = "interaction::prodevian_stop()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "515594EA-41DF-405E-BA6D-938E00524D86 - 6c25f9fd1ee2d89f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction::prodevian_stop()"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15312"
+                  endingLineNumber = "15312"
+                  offsetFromSymbolStart = "54">
+               </Location>
+               <Location
+                  uuid = "515594EA-41DF-405E-BA6D-938E00524D86 - 6c25f9fd1ee2d965"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction::prodevian_stop()"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15322"
+                  endingLineNumber = "15322"
+                  offsetFromSymbolStart = "54">
+               </Location>
+               <Location
+                  uuid = "515594EA-41DF-405E-BA6D-938E00524D86 - 6c25f9fd1ee2d8be"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction::prodevian_stop()"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15313"
+                  endingLineNumber = "15313"
+                  offsetFromSymbolStart = "54">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5547A080-AFA7-411C-A875-2B4AFBA297DE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15306"
+            endingLineNumber = "15306"
+            landmarkName = "interaction::prodevian_stop()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5547A080-AFA7-411C-A875-2B4AFBA297DE - 6c25f9fd1ee2dbb6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction::prodevian_stop()"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15305"
+                  endingLineNumber = "15305"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "5547A080-AFA7-411C-A875-2B4AFBA297DE - 6c25f9fd1ee2d87c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction::prodevian_stop()"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15315"
+                  endingLineNumber = "15315"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "5547A080-AFA7-411C-A875-2B4AFBA297DE - 6c25f9fd1ee2db55"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction::prodevian_stop()"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15306"
+                  endingLineNumber = "15306"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A9AEE50F-6353-48EA-A188-7713C2943D26"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_impl.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3737"
+            endingLineNumber = "3737"
+            landmarkName = "interaction_impl::on_message_create(pmessage)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A9AEE50F-6353-48EA-A188-7713C2943D26 - 29b7c67154e580fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::on_message_create(message::message*)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "3735"
+                  endingLineNumber = "3735"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  uuid = "A9AEE50F-6353-48EA-A188-7713C2943D26 - 29b7c67154e580b9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::on_message_create(message::message*)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "3737"
+                  endingLineNumber = "3737"
+                  offsetFromSymbolStart = "156">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E57C8404-4786-4BCC-AA12-84DBB6118F5B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_impl.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3778"
+            endingLineNumber = "3778"
+            landmarkName = "interaction_impl::on_message_create(pmessage)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E57C8404-4786-4BCC-AA12-84DBB6118F5B - 29b7c67154e59db0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::on_message_create(message::message*)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "3776"
+                  endingLineNumber = "3776"
+                  offsetFromSymbolStart = "692">
+               </Location>
+               <Location
+                  uuid = "E57C8404-4786-4BCC-AA12-84DBB6118F5B - 29b7c67154e59a4e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "user::interaction_impl::on_message_create(message::message*)"
+                  moduleName = "libaura.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/aura/user/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "3778"
+                  endingLineNumber = "3778"
+                  offsetFromSymbolStart = "692">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CAA44D79-CBF3-4217-A387-9BEF2C658715"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_child.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
+            landmarkName = "interaction_child::destroy_window()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E695836E-B84B-4AF2-B9A8-9C09385D9277"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_impl.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "598"
+            endingLineNumber = "598"
+            landmarkName = "interaction_impl::create_host(puserinteraction)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "89871D87-5F3A-4AC9-9A66-4522E1DAA84A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2280"
+            endingLineNumber = "2280"
+            landmarkName = "interaction::user_interaction_on_destroy()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "546E184C-612E-49DA-B00E-423B28FDAE0D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/aura/user/interaction_prodevian.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "prodevian::defer_create_prodevian()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

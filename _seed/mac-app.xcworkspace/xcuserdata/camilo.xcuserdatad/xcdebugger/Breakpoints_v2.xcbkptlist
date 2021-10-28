@@ -937,8 +937,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "interaction_impl::~interaction_impl()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   uuid = "7349DDBC-F5C3-47E5-89A5-DDD07F29B27B - dd6ca80529899991"
@@ -983,6 +983,36 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
                   endingLineNumber = "74"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "7349DDBC-F5C3-47E5-89A5-DDD07F29B27B - dd6ca8052989994f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "macos::interaction_impl::~interaction_impl()"
+                  moduleName = "libaura_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/archive/platform-macos/aura_macos/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "7349DDBC-F5C3-47E5-89A5-DDD07F29B27B - dd6ca8052989994f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "macos::interaction_impl::~interaction_impl()"
+                  moduleName = "libaura_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/archive/platform-macos/aura_macos/interaction_impl.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
                   offsetFromSymbolStart = "20">
                </Location>
             </Locations>
