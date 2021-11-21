@@ -733,7 +733,7 @@ namespace acme
          
          string strCommand;
          
-         strCommand.Format("open \"%s\"", pszAppFolder.c_str());
+         strCommand.format("open \"%s\"", pszAppFolder.c_str());
          
          return _launch_command(strCommand);
          
@@ -752,7 +752,7 @@ namespace acme
          
          string strCommand;
          
-         strCommand.Format("open \"%s\" --args %s", pszAppFolder.c_str(), pszArgs.c_str());
+         strCommand.format("open \"%s\" --args %s", pszAppFolder.c_str(), pszArgs.c_str());
          
          return _launch_command(strCommand);
          

@@ -75,7 +75,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status node::main()
+   ::e_status node::implement()
    {
       
       auto psystem = m_psystem->m_papexsystem;

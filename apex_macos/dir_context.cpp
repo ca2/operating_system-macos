@@ -443,7 +443,7 @@ namespace macos
 
       //::u32 dwLastError;
 
-      if(::task_flag().is_set(e_task_flag_zip_is_dir) && iLast >= 3  && !ansi_count_compare_ci(&((const char *) str)[iLast - 3], ".zip", 4))
+      if(::task_flag().is_set(e_task_flag_compress_is_dir) && iLast >= 3  && !ansi_count_compare_ci(&((const char *) str)[iLast - 3], ".zip", 4))
       {
          //m_isdirmap.set(str.Left(iLast + 1), true, 0);
          return true;
@@ -703,7 +703,7 @@ try1:
          string strFormat;
          ::datetime::time time;
          time = ::datetime::time::now();
-         strFormat.Format("%04d-%02d-%02d %02d-%02d-%02d\\", time.year(), time.month(), time.day(), time.hour(), time.minute(), time.second());
+         strFormat.format("%04d-%02d-%02d %02d-%02d-%02d\\", time.year(), time.month(), time.day(), time.hour(), time.minute(), time.second());
          str += strFormat;
          if(strDir[2] == '\\')
          {

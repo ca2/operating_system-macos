@@ -1186,7 +1186,7 @@ namespace macos
    }
 
 
-   ::e_status os_context::link_open(string strUrl)
+   ::e_status os_context::link_open(const ::string & strUrl, const ::string & strProfile)
    {
 
       ns_main_async(^

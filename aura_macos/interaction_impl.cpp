@@ -977,7 +977,7 @@ bool interaction_impl::_is_window() const
 
    ::message::key * pkey = nullptr;
 
-   if (pre_message_handler(pkey, bKeyMessage, pmessage))
+   if (m_puserinteraction->pre_message_handler(pkey, bKeyMessage, pmessage))
    {
 
       return;

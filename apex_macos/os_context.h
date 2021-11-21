@@ -78,18 +78,18 @@ namespace macos
 
       virtual bool set_default_browser() override;
 
-      virtual ::file::path get_app_path(const string & strApp) override;
+      ::file::path get_app_path(const string & strApp) override;
 
-      virtual void on_process_command(::create * pcommand) override;
+      void on_process_command(::create * pcommand) override;
 
-      virtual bool file_open(::file::path path, string strParams = "", string strFolder = "") override;
+      bool file_open(::file::path path, string strParams = "", string strFolder = "") override;
       
-      virtual ::e_status link_open(string strUrl) override;
+      ::e_status link_open(const ::string & strUrl, const ::string & strProfile) override;
 
-      virtual void set_file_status(const ::string & lpszFileName, const ::file::file_status& status) override;
+      void set_file_status(const ::string & lpszFileName, const ::file::file_status& status) override;
 
-      virtual bool browse_folder(property_set &set) override;
-      virtual bool browse_file_open(property_set &set) override;
+      bool browse_folder(property_set &set) override;
+      bool browse_file_open(property_set &set) override;
 
    };
 

@@ -36,7 +36,7 @@ namespace acme
          
          strCommand.replace("\"", "\\\"");
          
-         strParams.Format("-c \"screen -d -m %s\"", strCommand.c_str());
+         strParams.format("-c \"screen -d -m %s\"", strCommand.c_str());
          
          auto estatus = call_async("/bin/bash", strParams, pacmedir->home(), e_display_none, false);
          

@@ -804,9 +804,7 @@ namespace windowing_macos
    bool window::macos_window_key_down(unsigned int virtualKey, unsigned int scanCode, const char * pszUtf8)
    {
       
-      {
-
-         auto pkey  = __create_new < ::message::key >();
+      {         auto pkey  = __create_new < ::message::key >();
 
          pkey->set(get_oswindow(), this, e_message_key_down, virtualKey, (lparam)(scanCode << 16));
          
