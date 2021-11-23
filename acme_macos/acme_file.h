@@ -23,7 +23,7 @@ namespace macos
       ~acme_file() override;
 
       
-      virtual ::file::path executable() override;
+      ::file::path module() override;
       
 
    };

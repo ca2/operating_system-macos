@@ -5,40 +5,40 @@
 
 
 extern "C"
-void apex_apple_factory_exchange(::factory_map * pfactorymap);
+void apex_apple_factory_exchange(::factory::factory * pfactory);
 
 
 extern "C"
-void acme_macos_factory_exchange(::factory_map * pfactorymap);
+void acme_macos_factory_exchange(::factory::factory * pfactory);
 
 
 extern "C"
-void apex_macos_factory_exchange(::factory_map * pfactorymap)
+void apex_macos_factory_exchange(::factory::factory * pfactory)
 {
    
 
-   apex_apple_factory_exchange(pfactorymap);
+   apex_apple_factory_exchange(pfactory);
    
-   acme_macos_factory_exchange(pfactorymap);
+   acme_macos_factory_exchange(pfactory);
 
-   pfactorymap->create_factory < ::apex::macos::node, ::acme::node > ();
+   pfactory->add_factory_item < ::apex::macos::node, ::acme::node > ();
 
-   pfactorymap->create_factory < ::FileSystemEvents::watcher, ::file::watcher > ();
+   pfactory->add_factory_item < ::FileSystemEvents::watcher, ::file::watcher > ();
 
-   pfactorymap->create_factory < ::FileSystemEvents::watch, ::file::watch > ();
+   pfactory->add_factory_item < ::FileSystemEvents::watch, ::file::watch > ();
 
-   pfactorymap->create_factory < ::macos::file_context, ::file_context > ();
-   pfactorymap->create_factory < ::macos::dir_context, ::dir_context > ();
-   pfactorymap->create_factory < ::macos::file_system, ::file_system > ();
-   pfactorymap->create_factory < ::macos::dir_system, ::dir_system > ();
+   pfactory->add_factory_item < ::macos::file_context, ::file_context > ();
+   pfactory->add_factory_item < ::macos::dir_context, ::dir_context > ();
+   pfactory->add_factory_item < ::macos::file_system, ::file_system > ();
+   pfactory->add_factory_item < ::macos::dir_system, ::dir_system > ();
 
-   pfactorymap->create_factory < ::macos::os_context, ::os_context > ();
+   pfactory->add_factory_item < ::macos::os_context, ::os_context > ();
    
-   pfactorymap->create_factory < ::macos::interprocess_communication_base, ::interprocess_communication::base >();
-   pfactorymap->create_factory < ::macos::interprocess_communication_rx, ::interprocess_communication::rx >();
-   pfactorymap->create_factory < ::macos::interprocess_communication_tx, ::interprocess_communication::tx >();
-//   pfactorymap->create_factory < ::macos::launcher, ::launcher > ();
-//   pfactorymap->create_factory < ::macos::shell_launcher, ::shell_launcher > ();
+   pfactory->add_factory_item < ::macos::interprocess_communication_base, ::interprocess_communication::base >();
+   pfactory->add_factory_item < ::macos::interprocess_communication_rx, ::interprocess_communication::rx >();
+   pfactory->add_factory_item < ::macos::interprocess_communication_tx, ::interprocess_communication::tx >();
+//   pfactory->add_factory_item < ::macos::launcher, ::launcher > ();
+//   pfactory->add_factory_item < ::macos::shell_launcher, ::shell_launcher > ();
 
 
 }

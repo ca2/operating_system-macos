@@ -173,7 +173,7 @@ namespace macos
    ::file::path acme_dir::app_relative()
    {
 
-      ::file::path path = m_psystem->m_pacmefile->executable();
+      ::file::path path = m_psystem->m_pacmefile->module();
 
       path = relative(path);
 
@@ -235,10 +235,9 @@ namespace macos
 
    #else
 
-      return m_psystem->m_pacmefile->executable().folder(4);
+      return m_psystem->m_pacmefile->module().folder(4);
 
    #endif
-
 
    }
 
@@ -266,7 +265,7 @@ namespace macos
 
    #else
 
-      return m_psystem->m_pacmefile->executable().folder(4);
+      return m_psystem->m_pacmefile->module().folder(4);
 
    #endif
 
@@ -298,7 +297,7 @@ namespace macos
 
    #elif defined(__APPLE__)
 
-      return m_psystem->m_pacmefile->executable().folder(3);
+      return m_psystem->m_pacmefile->module().folder(3);
 
    #else
 

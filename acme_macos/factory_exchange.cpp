@@ -31,26 +31,24 @@
 //} // namespace macos
 
 
-extern "C"
-void acme_apple_factory_exchange(::factory_map * pfactorymap);
+__FACTORY_EXPORT void acme_apple_factory_exchange(::factory::factory * pfactory);
 
 
-extern "C"
-void acme_macos_factory_exchange(::factory_map * pfactorymap)
+__FACTORY_EXPORT void acme_macos_factory_exchange(::factory::factory * pfactory)
 {
    
-   acme_apple_factory_exchange(pfactorymap);
+   acme_apple_factory_exchange(pfactory);
 
-   pfactorymap->create_factory < ::macos::stdio_file, ::file::text_file > ();
-   pfactorymap->create_factory < ::macos::file, ::file::file > ();
+   pfactory->add_factory_item < ::macos::stdio_file, ::file::text_file > ();
+   pfactory->add_factory_item < ::macos::file, ::file::file > ();
    
-   pfactorymap->create_factory < ::macos::acme_dir, ::acme_dir > ();
-   pfactorymap->create_factory < ::macos::acme_path, ::acme_path > ();
+   pfactory->add_factory_item < ::macos::acme_dir, ::acme_dir > ();
+   pfactory->add_factory_item < ::macos::acme_path, ::acme_path > ();
 
    //create_factory < ::macos::os_context         , ::os_context       > ();
    //create_factory < ::apple::process            , ::process::process > ();
    
-  pfactorymap->create_factory < ::posix::pipe               , ::operating_system::pipe    > ();
+  pfactory->add_factory_item < ::posix::pipe               , ::operating_system::pipe    > ();
    
    //create_factory < ::macos::dir_system         , ::dir_system       > ();
    //create_factory < ::macos::file_system        , ::file_system      > ();

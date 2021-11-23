@@ -5,25 +5,25 @@
 
 
 extern "C"
-void aura_apple_factory_exchange(::factory_map * pfactorymap);
+void aura_apple_factory_exchange(::factory::factory * pfactory);
 
 
 extern "C"
-void apex_macos_factory_exchange(::factory_map * pfactorymap);
+void apex_macos_factory_exchange(::factory::factory * pfactory);
 
 
 extern "C"
-void aura_macos_factory_exchange(::factory_map * pfactorymap)
+void aura_macos_factory_exchange(::factory::factory * pfactory)
 {
    
 
-   aura_apple_factory_exchange(pfactorymap);
+   aura_apple_factory_exchange(pfactory);
    
-   apex_macos_factory_exchange(pfactorymap);
+   apex_macos_factory_exchange(pfactory);
 
-   pfactorymap->create_factory < ::macos::interaction_impl, ::user::interaction_impl > ();
+   pfactory->add_factory_item < ::macos::interaction_impl, ::user::interaction_impl > ();
 
-   pfactorymap->create_factory < ::macos::shell, ::user::shell > ();
+   pfactory->add_factory_item < ::macos::shell, ::user::shell > ();
 
 }
 
