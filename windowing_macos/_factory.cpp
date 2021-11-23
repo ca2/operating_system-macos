@@ -7,16 +7,14 @@
 #include "framework.h"
 
 
-extern "C"
-void aura_macos_factory_exchange(::factory_map * pfactorymap);
+__FACTORY_EXPORT void aura_macos_factory(::factory_map * pfactorymap);
 
 
-extern "C"
-void windowing_macos_factory_exchange(::factory_map * pfactorymap)
+__FACTORY_EXPORT void windowing_macos_factory(::factory_map * pfactorymap)
 {
    
 
-   aura_macos_factory_exchange(pfactorymap);
+   aura_macos_factory(pfactorymap);
 
    
    pfactorymap->create_factory < windowing_macos::windowing, ::windowing::windowing > ();

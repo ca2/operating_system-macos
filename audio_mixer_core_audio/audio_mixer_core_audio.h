@@ -58,7 +58,7 @@ namespace multimedia
 
 
 
-#include "audio_mixer_audio_core_factory_exchange.h"
+#include "audio_mixer_audio_core_factory.h"
 
 
 

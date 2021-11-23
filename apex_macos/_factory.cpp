@@ -4,22 +4,19 @@
 #include "FileSystemEvents/watcher.h"
 
 
-extern "C"
-void apex_apple_factory_exchange(::factory_map * pfactorymap);
+__FACTORY_EXPORT void apex_apple_factory(::factory_map * pfactorymap);
 
 
-extern "C"
-void acme_macos_factory_exchange(::factory_map * pfactorymap);
+__FACTORY_EXPORT void acme_macos_factory(::factory_map * pfactorymap);
 
 
-extern "C"
-void apex_macos_factory_exchange(::factory_map * pfactorymap)
+__FACTORY_EXPORT void apex_macos_factory(::factory_map * pfactorymap)
 {
    
 
-   apex_apple_factory_exchange(pfactorymap);
+   apex_apple_factory(pfactorymap);
    
-   acme_macos_factory_exchange(pfactorymap);
+   acme_macos_factory(pfactorymap);
 
    pfactorymap->create_factory < ::apex::macos::node, ::acme::node > ();
 

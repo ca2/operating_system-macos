@@ -16,8 +16,8 @@
 		9A8997BD177D0E7F00C7761E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8997BC177D0E7D00C7761E /* Carbon.framework */; };
 		9A8C49411F606996004A5BA4 /* libace.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8C49401F606996004A5BA4 /* libace.dylib */; };
 		9A8EAF3317C563A300C458D1 /* audio_core_audio_command.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8EAF2817C563A300C458D1 /* audio_core_audio_command.h */; };
-		9A8EAF3417C563A300C458D1 /* audio_core_audio_factory_exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EAF2917C563A300C458D1 /* audio_core_audio_factory_exchange.cpp */; };
-		9A8EAF3517C563A300C458D1 /* audio_core_audio_factory_exchange.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8EAF2A17C563A300C458D1 /* audio_core_audio_factory_exchange.h */; };
+		9A8EAF3417C563A300C458D1 /* audio_core_audio_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EAF2917C563A300C458D1 /* audio_core_audio_factory.cpp */; };
+		9A8EAF3517C563A300C458D1 /* audio_core_audio_factory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8EAF2A17C563A300C458D1 /* audio_core_audio_factory.h */; };
 		9A8EAF3617C563A300C458D1 /* audio_core_audio_translation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EAF2B17C563A300C458D1 /* audio_core_audio_translation.cpp */; };
 		9A8EAF3717C563A300C458D1 /* audio_core_audio_translation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8EAF2C17C563A300C458D1 /* audio_core_audio_translation.h */; };
 		9A8EAF3817C563A300C458D1 /* audio_core_audio_wave_in.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EAF2D17C563A300C458D1 /* audio_core_audio_wave_in.cpp */; };
@@ -75,8 +75,8 @@
 		9A8997BC177D0E7D00C7761E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		9A8C49401F606996004A5BA4 /* libace.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libace.dylib; path = ../../../../Volumes/apple/archive/Xcode/DerivedData/Build/Products/Debug/libace.dylib; sourceTree = "<group>"; };
 		9A8EAF2817C563A300C458D1 /* audio_core_audio_command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_core_audio_command.h; sourceTree = "<group>"; };
-		9A8EAF2917C563A300C458D1 /* audio_core_audio_factory_exchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio_core_audio_factory_exchange.cpp; sourceTree = "<group>"; };
-		9A8EAF2A17C563A300C458D1 /* audio_core_audio_factory_exchange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_core_audio_factory_exchange.h; sourceTree = "<group>"; };
+		9A8EAF2917C563A300C458D1 /* audio_core_audio_factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio_core_audio_factory.cpp; sourceTree = "<group>"; };
+		9A8EAF2A17C563A300C458D1 /* audio_core_audio_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_core_audio_factory.h; sourceTree = "<group>"; };
 		9A8EAF2B17C563A300C458D1 /* audio_core_audio_translation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio_core_audio_translation.cpp; sourceTree = "<group>"; };
 		9A8EAF2C17C563A300C458D1 /* audio_core_audio_translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_core_audio_translation.h; sourceTree = "<group>"; };
 		9A8EAF2D17C563A300C458D1 /* audio_core_audio_wave_in.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = audio_core_audio_wave_in.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
@@ -156,8 +156,8 @@
 			children = (
 				9A8EAF3217C563A300C458D1 /* audio_core_audio.h */,
 				9A8EAF2817C563A300C458D1 /* audio_core_audio_command.h */,
-				9A8EAF2917C563A300C458D1 /* audio_core_audio_factory_exchange.cpp */,
-				9A8EAF2A17C563A300C458D1 /* audio_core_audio_factory_exchange.h */,
+				9A8EAF2917C563A300C458D1 /* audio_core_audio_factory.cpp */,
+				9A8EAF2A17C563A300C458D1 /* audio_core_audio_factory.h */,
 				07A27B391808C1F3005F7B47 /* audio_core_audio_toolbox.cpp */,
 				07A27B3A1808C1F3005F7B47 /* audio_core_audio_toolbox.h */,
 				9A8EAF2B17C563A300C458D1 /* audio_core_audio_translation.cpp */,
@@ -187,7 +187,7 @@
 				07A27B3C1808C1F3005F7B47 /* audio_core_audio_toolbox.h in Headers */,
 				9A8EAF3317C563A300C458D1 /* audio_core_audio_command.h in Headers */,
 				9AC9451D1828E7CE00AA7325 /* audio_core_aligned_pointer.h in Headers */,
-				9A8EAF3517C563A300C458D1 /* audio_core_audio_factory_exchange.h in Headers */,
+				9A8EAF3517C563A300C458D1 /* audio_core_audio_factory.h in Headers */,
 				9A8EAF3717C563A300C458D1 /* audio_core_audio_translation.h in Headers */,
 				9A8EAF3917C563A300C458D1 /* audio_core_audio_wave_in.h in Headers */,
 				9A8EAF3B17C563A300C458D1 /* audio_core_audio_wave_out.h in Headers */,
@@ -279,7 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A1B496716A4A10100875A94 /* framework.cpp in Sources */,
-				9A8EAF3417C563A300C458D1 /* audio_core_audio_factory_exchange.cpp in Sources */,
+				9A8EAF3417C563A300C458D1 /* audio_core_audio_factory.cpp in Sources */,
 				9A8EAF3617C563A300C458D1 /* audio_core_audio_translation.cpp in Sources */,
 				9AC9451C1828E7CE00AA7325 /* audio_core_aligned_pointer.cpp in Sources */,
 				9AC9452018290B7700AA7325 /* audio_core_aligned.cpp in Sources */,
