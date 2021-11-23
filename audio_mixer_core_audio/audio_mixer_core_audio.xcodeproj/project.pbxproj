@@ -18,8 +18,8 @@
 		9A8EAF5A17C563D300C458D1 /* audio_mixer_core_audio_destination.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8EAF4217C563D300C458D1 /* audio_mixer_core_audio_destination.h */; };
 		9A8EAF5B17C563D300C458D1 /* audio_mixer_core_audio_device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EAF4317C563D300C458D1 /* audio_mixer_core_audio_device.cpp */; };
 		9A8EAF5C17C563D300C458D1 /* audio_mixer_core_audio_device.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8EAF4417C563D300C458D1 /* audio_mixer_core_audio_device.h */; };
-		9A8EAF5D17C563D300C458D1 /* audio_mixer_core_audio_factory_exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EAF4517C563D300C458D1 /* audio_mixer_core_audio_factory_exchange.cpp */; };
-		9A8EAF5E17C563D300C458D1 /* audio_mixer_core_audio_factory_exchange.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8EAF4617C563D300C458D1 /* audio_mixer_core_audio_factory_exchange.h */; };
+		9A8EAF5D17C563D300C458D1 /* audio_mixer_core_audio_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EAF4517C563D300C458D1 /* audio_mixer_core_audio_factory.cpp */; };
+		9A8EAF5E17C563D300C458D1 /* audio_mixer_core_audio_factory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8EAF4617C563D300C458D1 /* audio_mixer_core_audio_factory.h */; };
 		9A8EAF5F17C563D300C458D1 /* audio_mixer_core_audio_line_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EAF4717C563D300C458D1 /* audio_mixer_core_audio_line_info.cpp */; };
 		9A8EAF6017C563D300C458D1 /* audio_mixer_core_audio_line_info.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8EAF4817C563D300C458D1 /* audio_mixer_core_audio_line_info.h */; };
 		9A8EAF6117C563D300C458D1 /* audio_mixer_core_audio_mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EAF4917C563D300C458D1 /* audio_mixer_core_audio_mixer.cpp */; };
@@ -73,8 +73,8 @@
 		9A8EAF4217C563D300C458D1 /* audio_mixer_core_audio_destination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_mixer_core_audio_destination.h; sourceTree = "<group>"; };
 		9A8EAF4317C563D300C458D1 /* audio_mixer_core_audio_device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio_mixer_core_audio_device.cpp; sourceTree = "<group>"; };
 		9A8EAF4417C563D300C458D1 /* audio_mixer_core_audio_device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_mixer_core_audio_device.h; sourceTree = "<group>"; };
-		9A8EAF4517C563D300C458D1 /* audio_mixer_core_audio_factory_exchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio_mixer_core_audio_factory_exchange.cpp; sourceTree = "<group>"; };
-		9A8EAF4617C563D300C458D1 /* audio_mixer_core_audio_factory_exchange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_mixer_core_audio_factory_exchange.h; sourceTree = "<group>"; };
+		9A8EAF4517C563D300C458D1 /* audio_mixer_core_audio_factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio_mixer_core_audio_factory.cpp; sourceTree = "<group>"; };
+		9A8EAF4617C563D300C458D1 /* audio_mixer_core_audio_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_mixer_core_audio_factory.h; sourceTree = "<group>"; };
 		9A8EAF4717C563D300C458D1 /* audio_mixer_core_audio_line_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio_mixer_core_audio_line_info.cpp; sourceTree = "<group>"; };
 		9A8EAF4817C563D300C458D1 /* audio_mixer_core_audio_line_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_mixer_core_audio_line_info.h; sourceTree = "<group>"; };
 		9A8EAF4917C563D300C458D1 /* audio_mixer_core_audio_mixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio_mixer_core_audio_mixer.cpp; sourceTree = "<group>"; };
@@ -153,8 +153,8 @@
 				9A8EAF4217C563D300C458D1 /* audio_mixer_core_audio_destination.h */,
 				9A8EAF4317C563D300C458D1 /* audio_mixer_core_audio_device.cpp */,
 				9A8EAF4417C563D300C458D1 /* audio_mixer_core_audio_device.h */,
-				9A8EAF4517C563D300C458D1 /* audio_mixer_core_audio_factory_exchange.cpp */,
-				9A8EAF4617C563D300C458D1 /* audio_mixer_core_audio_factory_exchange.h */,
+				9A8EAF4517C563D300C458D1 /* audio_mixer_core_audio_factory.cpp */,
+				9A8EAF4617C563D300C458D1 /* audio_mixer_core_audio_factory.h */,
 				9A8EAF4717C563D300C458D1 /* audio_mixer_core_audio_line_info.cpp */,
 				9A8EAF4817C563D300C458D1 /* audio_mixer_core_audio_line_info.h */,
 				9A8EAF4917C563D300C458D1 /* audio_mixer_core_audio_mixer.cpp */,
@@ -186,7 +186,7 @@
 				9A8EAF5817C563D300C458D1 /* audio_mixer_core_audio_control.h in Headers */,
 				9A8EAF5A17C563D300C458D1 /* audio_mixer_core_audio_destination.h in Headers */,
 				9A8EAF5C17C563D300C458D1 /* audio_mixer_core_audio_device.h in Headers */,
-				9A8EAF5E17C563D300C458D1 /* audio_mixer_core_audio_factory_exchange.h in Headers */,
+				9A8EAF5E17C563D300C458D1 /* audio_mixer_core_audio_factory.h in Headers */,
 				9A8EAF6017C563D300C458D1 /* audio_mixer_core_audio_line_info.h in Headers */,
 				9A8EAF6217C563D300C458D1 /* audio_mixer_core_audio_mixer.h in Headers */,
 				9A8EAF6417C563D300C458D1 /* audio_mixer_core_audio_section.h in Headers */,
@@ -284,7 +284,7 @@
 				9A8EAF5717C563D300C458D1 /* audio_mixer_core_audio_control.cpp in Sources */,
 				9A8EAF5917C563D300C458D1 /* audio_mixer_core_audio_destination.cpp in Sources */,
 				9A8EAF5B17C563D300C458D1 /* audio_mixer_core_audio_device.cpp in Sources */,
-				9A8EAF5D17C563D300C458D1 /* audio_mixer_core_audio_factory_exchange.cpp in Sources */,
+				9A8EAF5D17C563D300C458D1 /* audio_mixer_core_audio_factory.cpp in Sources */,
 				9A8EAF5F17C563D300C458D1 /* audio_mixer_core_audio_line_info.cpp in Sources */,
 				9A8EAF6117C563D300C458D1 /* audio_mixer_core_audio_mixer.cpp in Sources */,
 				9A8EAF6317C563D300C458D1 /* audio_mixer_core_audio_section.cpp in Sources */,
