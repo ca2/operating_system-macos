@@ -21,7 +21,7 @@
 		9A7862AC265029FA0034A0E1 /* user.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7862AB265029FA0034A0E1 /* user.mm */; };
 		9A787E9C264ED595003DF8A0 /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787E92264ED593003DF8A0 /* _.h */; };
 		9A787E9F264ED5BB003DF8A0 /* _apex_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787E9D264ED5BA003DF8A0 /* _apex_macos.h */; };
-		9A787EA0264ED5BB003DF8A0 /* factory_exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787E9E264ED5BA003DF8A0 /* factory_exchange.cpp */; };
+		9A787EA0264ED5BB003DF8A0 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787E9E264ED5BA003DF8A0 /* _factory.cpp */; };
 		9A787EE2264EE881003DF8A0 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787EE0264EE881003DF8A0 /* node.cpp */; };
 		9A787EE3264EE881003DF8A0 /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787EE1264EE881003DF8A0 /* node.h */; };
 		9A787F87264EF105003DF8A0 /* application.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F63264EF103003DF8A0 /* application.h */; };
@@ -110,7 +110,7 @@
 		9A7862AB265029FA0034A0E1 /* user.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = user.mm; sourceTree = "<group>"; };
 		9A787E92264ED593003DF8A0 /* _.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
 		9A787E9D264ED5BA003DF8A0 /* _apex_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _apex_macos.h; sourceTree = "<group>"; };
-		9A787E9E264ED5BA003DF8A0 /* factory_exchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = factory_exchange.cpp; sourceTree = "<group>"; };
+		9A787E9E264ED5BA003DF8A0 /* _factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
 		9A787EE0264EE881003DF8A0 /* node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		9A787EE1264EE881003DF8A0 /* node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
 		9A787F63264EF103003DF8A0 /* application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = application.h; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 				9A787F85264EF105003DF8A0 /* dir_context.h */,
 				9A787F7B264EF104003DF8A0 /* dir_system.cpp */,
 				9A787F68264EF103003DF8A0 /* dir_system.h */,
-				9A787E9E264ED5BA003DF8A0 /* factory_exchange.cpp */,
+				9A787E9E264ED5BA003DF8A0 /* _factory.cpp */,
 				9A787F67264EF103003DF8A0 /* file_context.cpp */,
 				9A787F74264EF104003DF8A0 /* file_context.h */,
 				9A787F6F264EF103003DF8A0 /* file_system.cpp */,
@@ -410,7 +410,7 @@
 				9A788038264F1ECA003DF8A0 /* watcher.cpp in Sources */,
 				9A787F8E264EF105003DF8A0 /* application.cpp in Sources */,
 				9A787F8B264EF105003DF8A0 /* file_context.cpp in Sources */,
-				9A787EA0264ED5BB003DF8A0 /* factory_exchange.cpp in Sources */,
+				9A787EA0264ED5BB003DF8A0 /* _factory.cpp in Sources */,
 				9A7862AC265029FA0034A0E1 /* user.mm in Sources */,
 				9A787FA6264EF105003DF8A0 /* keyboard_mm.mm in Sources */,
 				9A787FAA264EF105003DF8A0 /* util.cpp in Sources */,

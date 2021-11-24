@@ -4,15 +4,14 @@
 //#include "FileSystemEvents/watcher.h"
 
 
-__FACTORY_EXPORT void aura_apple_factory(::factory::factory * pfactory);
+__FACTORY_EXCHANGE void aura_apple_factory(::factory::factory * pfactory);
 
 
-__FACTORY_EXPORT void apex_macos_factory(::factory::factory * pfactory);
+__FACTORY_EXCHANGE void apex_macos_factory(::factory::factory * pfactory);
 
 
-__FACTORY_EXPORT void aura_macos_factory(::factory::factory * pfactory)
+__FACTORY_EXCHANGE void aura_macos_factory(::factory::factory * pfactory)
 {
-   
 
    aura_apple_factory(pfactory);
    

@@ -5,7 +5,7 @@ project(node_macos CXX)
 list(APPEND library_source
         _.h
         #_node_macos.h
-        factory_exchange.cpp
+        _factory.cpp
         framework.cpp
         framework.h
 )

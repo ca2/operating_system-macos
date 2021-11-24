@@ -12,13 +12,12 @@
 		9A0C1791264A2F5000B5CC33 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A0C1790264A2F5000B5CC33 /* framework.h */; };
 		9A15A622264B56770080670E /* _acme_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A610264B56740080670E /* _acme_macos.h */; };
 		9A15A623264B56770080670E /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A611264B56740080670E /* thread.h */; };
-		9A15A624264B56770080670E /* factory_exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A612264B56750080670E /* factory_exchange.cpp */; };
+		9A15A624264B56770080670E /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A612264B56750080670E /* _factory.cpp */; };
 		9A15A625264B56770080670E /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A613264B56750080670E /* _.h */; };
 		9A15A626264B56770080670E /* stdio_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A614264B56750080670E /* stdio_file.cpp */; };
 		9A15A627264B56770080670E /* stdio_file.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A615264B56750080670E /* stdio_file.h */; };
 		9A15A628264B56770080670E /* user.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A616264B56750080670E /* user.h */; };
 		9A15A629264B56770080670E /* trace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A617264B56750080670E /* trace.cpp */; };
-		9A15A62A264B56770080670E /* factory_exchange.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A618264B56750080670E /* factory_exchange.h */; };
 		9A15A62B264B56770080670E /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A619264B56760080670E /* _mm.h */; };
 		9A15A62C264B56770080670E /* thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A61A264B56760080670E /* thread.cpp */; };
 		9A15A62D264B56770080670E /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A61B264B56760080670E /* application.cpp */; };
@@ -78,13 +77,12 @@
 		9A15A5D6264B54CA0080670E /* acme_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_apple.xcodeproj; path = "../../platform-apple/acme_apple/acme_apple.xcodeproj"; sourceTree = "<group>"; };
 		9A15A610264B56740080670E /* _acme_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _acme_macos.h; sourceTree = "<group>"; };
 		9A15A611264B56740080670E /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread.h; sourceTree = "<group>"; };
-		9A15A612264B56750080670E /* factory_exchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = factory_exchange.cpp; sourceTree = "<group>"; };
+		9A15A612264B56750080670E /* _factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
 		9A15A613264B56750080670E /* _.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
 		9A15A614264B56750080670E /* stdio_file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdio_file.cpp; sourceTree = "<group>"; };
 		9A15A615264B56750080670E /* stdio_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdio_file.h; sourceTree = "<group>"; };
 		9A15A616264B56750080670E /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
 		9A15A617264B56750080670E /* trace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = trace.cpp; sourceTree = "<group>"; };
-		9A15A618264B56750080670E /* factory_exchange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = factory_exchange.h; sourceTree = "<group>"; };
 		9A15A619264B56760080670E /* _mm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
 		9A15A61A264B56760080670E /* thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread.cpp; sourceTree = "<group>"; };
 		9A15A61B264B56760080670E /* application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = application.cpp; sourceTree = "<group>"; };
@@ -172,8 +170,7 @@
 				9A7ECABF2651963500D5BA45 /* acme_path.h */,
 				9A15A61B264B56760080670E /* application.cpp */,
 				9A15A61E264B56770080670E /* application.h */,
-				9A15A612264B56750080670E /* factory_exchange.cpp */,
-				9A15A618264B56750080670E /* factory_exchange.h */,
+				9A15A612264B56750080670E /* _factory.cpp */,
 				9A15A61C264B56760080670E /* file.cpp */,
 				9A15A620264B56770080670E /* file.h */,
 				9A0C178E264A2F4200B5CC33 /* framework.cpp */,
@@ -237,7 +234,6 @@
 				9A15A625264B56770080670E /* _.h in Headers */,
 				9A7ECAC32651963500D5BA45 /* acme_path.h in Headers */,
 				9A5DCE38271A6E5700C2ED86 /* xxx.hpp in Headers */,
-				9A15A62A264B56770080670E /* factory_exchange.h in Headers */,
 				9A15A623264B56770080670E /* thread.h in Headers */,
 				9A15A622264B56770080670E /* _acme_macos.h in Headers */,
 				9A787C67264BD87E003DF8A0 /* node.h in Headers */,
@@ -342,7 +338,7 @@
 				9A23A71F26CEC02A00F98012 /* file.mm in Sources */,
 				9A15A626264B56770080670E /* stdio_file.cpp in Sources */,
 				9A15A629264B56770080670E /* trace.cpp in Sources */,
-				9A15A624264B56770080670E /* factory_exchange.cpp in Sources */,
+				9A15A624264B56770080670E /* _factory.cpp in Sources */,
 				9A787C66264BD87E003DF8A0 /* node.cpp in Sources */,
 				9A15A62D264B56770080670E /* application.cpp in Sources */,
 			);

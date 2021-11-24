@@ -35,7 +35,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
    }
 
 
-   bool interprocess_communication_tx::open(const ::string & pszChannel,launcher * plauncher)
+   ::e_status interprocess_communication_tx::open(const ::string & strChannel,launcher * plauncher)
    {
 
       //CFDataRef data;
@@ -44,7 +44,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
 
       //CFTimeInterval timeout = 10.0;
 
-      CFStringRef name = CFStringCreateWithCString(nullptr,  (string("com.ca2.app.port.server.") + pszChannel), kCFStringEncodingUTF8);
+      CFStringRef name = CFStringCreateWithCString(nullptr,  (string("com.ca2.app.port.server.") + strChannel), kCFStringEncodingUTF8);
 
       m_port =        CFMessagePortCreateRemote(nil,name);
 
@@ -55,7 +55,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
    }
 
 
-   bool interprocess_communication_tx::close()
+   ::e_status interprocess_communication_tx::close()
    {
 
       if(m_port == nullptr)
@@ -74,19 +74,23 @@ interprocess_communication_tx::~interprocess_communication_tx()
    }
 
 
-   bool interprocess_communication_tx::send(const ::string & pszMessage,::duration durationTimeout)
+   ::e_status interprocess_communication_tx::send(const ::string & strMessage, const ::duration & durationTimeout)
    {
 
       if(m_port == nullptr)
-         return false;
+      {
+         
+         return error_failed;
+         
+      }
 
-      ::count c = ansi_length(pszMessage);
+      ::count c = ansi_length(strMessage);
 
       //::count cSend;
 
       memory m;
 
-      m.assign(pszMessage, c);
+      m.assign(strMessage, c);
 
       CFDataRef data = get_os_cf_data(m);
 
@@ -121,7 +125,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
    }
 
 
-   bool interprocess_communication_tx::send(int message,void * pdata,int len,duration durationTimeout)
+   ::e_status interprocess_communication_tx::send(int message,void * pdata,int len, const duration & durationTimeout)
    {
 
       if(message == 0x80000000)
@@ -218,14 +222,14 @@ interprocess_communication_rx::~interprocess_communication_rx()
    }
    
 
-   bool interprocess_communication_rx::create(const ::string & pszChannel)
+   ::e_status interprocess_communication_rx::create(const ::string & strChannel)
    {
 
       CFMessagePortContext c = {};
 
       c.info = this;
 
-      CFStringRef kungfuck = CFStringCreateWithCString(nullptr,  (string("com.ca2.app.port.server.") + pszChannel), kCFStringEncodingUTF8);
+      CFStringRef kungfuck = CFStringCreateWithCString(nullptr,  (string("com.ca2.app.port.server.") + strChannel), kCFStringEncodingUTF8);
 
       Boolean b = false;
 

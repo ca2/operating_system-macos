@@ -39,7 +39,7 @@
 		9AC2D1CF26542FBA00CC8096 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1BB26542FBA00CC8096 /* framework.cpp */; };
 		9AC2D1D026542FBA00CC8096 /* factory_exchange.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1BC26542FBA00CC8096 /* factory_exchange.h */; };
 		9AC2D1D126542FBA00CC8096 /* interaction_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1C026542FBA00CC8096 /* interaction_impl.h */; };
-		9AC2D1D226542FBA00CC8096 /* factory_exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1C126542FBA00CC8096 /* factory_exchange.cpp */; };
+		9AC2D1D226542FBA00CC8096 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1C126542FBA00CC8096 /* _factory.cpp */; };
 		9AC2D1D426542FBA00CC8096 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1C726542FBA00CC8096 /* framework.h */; };
 		9AC2D1D526542FBA00CC8096 /* interaction_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1C826542FBA00CC8096 /* interaction_impl.cpp */; };
 		9AC2D1DC265431BD00CC8096 /* _aura_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1DB265431BD00CC8096 /* _aura_macos.h */; };
@@ -138,7 +138,7 @@
 		9AC2D1BB26542FBA00CC8096 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9AC2D1BC26542FBA00CC8096 /* factory_exchange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = factory_exchange.h; sourceTree = "<group>"; };
 		9AC2D1C026542FBA00CC8096 /* interaction_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interaction_impl.h; sourceTree = "<group>"; };
-		9AC2D1C126542FBA00CC8096 /* factory_exchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = factory_exchange.cpp; sourceTree = "<group>"; };
+		9AC2D1C126542FBA00CC8096 /* _factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
 		9AC2D1C726542FBA00CC8096 /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
 		9AC2D1C826542FBA00CC8096 /* interaction_impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interaction_impl.cpp; sourceTree = "<group>"; };
 		9AC2D1DA2654309000CC8096 /* _.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 				9AC2D1DB265431BD00CC8096 /* _aura_macos.h */,
 				9AC2D2012654615500CC8096 /* _c_mm.h */,
 				9AC2D1F326543C7E00CC8096 /* _mm.h */,
-				9AC2D1C126542FBA00CC8096 /* factory_exchange.cpp */,
+				9AC2D1C126542FBA00CC8096 /* _factory.cpp */,
 				9AC2D1BC26542FBA00CC8096 /* factory_exchange.h */,
 				9A6E49A526D327AC00D1845E /* file_image.cpp */,
 				9AC2D1BB26542FBA00CC8096 /* framework.cpp */,
@@ -466,7 +466,7 @@
 			files = (
 				9AC2D1D526542FBA00CC8096 /* interaction_impl.cpp in Sources */,
 				9A6E49A626D327AC00D1845E /* file_image.cpp in Sources */,
-				9AC2D1D226542FBA00CC8096 /* factory_exchange.cpp in Sources */,
+				9AC2D1D226542FBA00CC8096 /* _factory.cpp in Sources */,
 				9A07060C2662B1AC004E8CB4 /* image.cpp in Sources */,
 				9AC2D1CF26542FBA00CC8096 /* framework.cpp in Sources */,
 				9A5A897326D2CA88004AF957 /* shell.cpp in Sources */,

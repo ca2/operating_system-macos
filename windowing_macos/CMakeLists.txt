@@ -16,7 +16,7 @@ list(APPEND library_source
         cursor.mm
         display.cpp
         display.h
-        factory_exchange.cpp
+        _factory.cpp
         framework.cpp
         framework.h
         icon.cpp

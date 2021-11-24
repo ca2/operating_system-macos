@@ -1188,11 +1188,15 @@ namespace macos
 
    ::e_status os_context::link_open(const ::string & strUrl, const ::string & strProfile)
    {
+      
+      string strUrlCopy(strUrl);
+      
+      string strProfieCopy(strProfile);
 
       ns_main_async(^
       {
 
-         ns_open_url(strUrl.c_str());
+         ns_open_url(strUrlCopy.c_str());
 
       });
 

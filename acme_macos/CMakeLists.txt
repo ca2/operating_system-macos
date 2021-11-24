@@ -16,7 +16,7 @@ list(APPEND library_source
         acme_path.h
         application.cpp
         application.h
-        factory_exchange.cpp
+        _factory.cpp
         factory_exchange.h
         file.cpp
         file.h

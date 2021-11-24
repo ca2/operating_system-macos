@@ -35,23 +35,20 @@ namespace macos
 
 
       interprocess_communication_tx();
-      virtual ~interprocess_communication_tx();
+      ~interprocess_communication_tx() override;
 
 
 
-#if defined(_UWP)
-      bool open(const ::string & pszChannel);
-#else
-      bool open(const ::string & pszChannel, ::launcher * plauncher = nullptr);
-#endif
-      bool close();
+      ::e_status open(const ::string & strChannel, ::launcher * plauncher = nullptr) override;
+      ::e_status close() override;
 
 
-      bool send(const ::string & pszMessage, duration durationTimeout);
-      bool send(int message, void * pdata, int len, duration durationTimeout);
+      ::e_status send(const ::string & strMessage, const duration & durationTimeout) override;
+      ::e_status send(int message, void * pdata, int len, const duration & durationTimeout) override;
 
 
-      bool is_tx_ok();
+      bool is_tx_ok() override;
+      
 
    };
 
@@ -73,7 +70,7 @@ namespace macos
       ~interprocess_communication_rx() override;
 
 
-      bool create(const ::string & pszChannel) override;
+      ::e_status create(const ::string & strChannel) override;
       ::e_status destroy() override;
 
 
