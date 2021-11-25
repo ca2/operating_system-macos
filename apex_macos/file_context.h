@@ -35,6 +35,9 @@ namespace macos
       virtual file_transport get_file(const ::payload & varFile, const ::file::e_open & eopen) override;
 
 
+      void calculate_main_resource_memory() override;
+      
+      
    };
 
 

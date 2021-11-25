@@ -73,6 +73,8 @@ namespace macos
       
       ::str::ends_eat_ci(m_pathCa2, ".app");
 
+      m_pathCa2Config = m_pathHome / "Library/Application Support/ca2";
+
       return estatus;
       
    }

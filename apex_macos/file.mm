@@ -15,6 +15,16 @@ void ns_create_alias(const char * pszTarget, const char * pszSource)
 }
 
 
+char * ns_resource_folder()
+{
+   
+   NSString * resourcePath = [ [ NSBundle mainBundle ] resourcePath ];
+   
+   return ns_string(resourcePath);
+   
+}
+
+
 char * ns_user_local_folder(NSSearchPathDirectory e)
 {
    

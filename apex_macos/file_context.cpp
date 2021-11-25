@@ -6,14 +6,18 @@
 //
 
 #include "framework.h"
+#include <sys/stat.h>
+#include <ctype.h>
+#include <mach-o/dyld.h>
+
+
 //#include "macos.h"
 //#include "apex/os/_.h"
 //#include "apex/os/_os.h"
 
 
-#include <sys/stat.h>
-#include <ctype.h>
-#include <mach-o/dyld.h>
+string macos_resource_folder();
+
 
 struct PROCESS_INFO_t
 {
@@ -140,8 +144,34 @@ namespace macos
    }
 
 
+   void file_context::calculate_main_resource_memory()
+   {
+      
+      ::file::path pathFolder;
+      
+      pathFolder = macos_resource_folder();
+      
+      ::file::path pathMatter;
+      
+      pathMatter = pathFolder / "_matter.zip";
+
+      m_memoryMainResource = as_memory(pathMatter);
+
+   }
+
 
 } // namespace macos
+
+
+char * ns_resource_folder();
+
+
+string macos_resource_folder()
+{
+   
+   return ::string_from_strdup(ns_resource_folder());
+   
+}
 
 
 

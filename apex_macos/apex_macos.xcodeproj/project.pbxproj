@@ -14,6 +14,7 @@
 		9A46D24526784388000B22D0 /* libacme_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A46D24426784388000B22D0 /* libacme_posix.dylib */; };
 		9A46D24726784394000B22D0 /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A46D24626784394000B22D0 /* libapex.dylib */; };
 		9A46D24926784394000B22D0 /* libapex_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A46D24826784394000B22D0 /* libapex_posix.dylib */; };
+		9A5D760D274E4FF300403BC3 /* file.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7C264EF104003DF8A0 /* file.mm */; };
 		9A7862A0265023D30034A0E1 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78629D265023D30034A0E1 /* CoreServices.framework */; };
 		9A7862A2265024F50034A0E1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7862A1265024F40034A0E1 /* IOKit.framework */; };
 		9A7862A6265025940034A0E1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7862A5265025940034A0E1 /* AppKit.framework */; };
@@ -401,6 +402,7 @@
 				9A787F9E264EF105003DF8A0 /* dir_context.cpp in Sources */,
 				9A787F90264EF105003DF8A0 /* trace.cpp in Sources */,
 				9A787F9D264EF105003DF8A0 /* thread.cpp in Sources */,
+				9A5D760D274E4FF300403BC3 /* file.mm in Sources */,
 				9A787FA2264EF105003DF8A0 /* os_context.cpp in Sources */,
 				9A787F9B264EF105003DF8A0 /* keyboard.cpp in Sources */,
 				9A787F96264EF105003DF8A0 /* app.mm in Sources */,
