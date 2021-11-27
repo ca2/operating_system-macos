@@ -124,12 +124,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9ABC54B426DAEA9F00718C0D /* libacme_apple.dylib in Frameworks */,
-				9A412457266C40AE00C3FF0E /* libacme_posix.dylib in Frameworks */,
-				9A412456266C40A400C3FF0E /* libacme.dylib in Frameworks */,
 				9A787E8C264E8DC5003DF8A0 /* AppKit.framework in Frameworks */,
 				9A787E88264E8D02003DF8A0 /* CoreServices.framework in Frameworks */,
 				9AC2D05A2653EBF000CC8096 /* IOKit.framework in Frameworks */,
+				9A412456266C40A400C3FF0E /* libacme.dylib in Frameworks */,
+				9A412457266C40AE00C3FF0E /* libacme_posix.dylib in Frameworks */,
+				9ABC54B426DAEA9F00718C0D /* libacme_apple.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -245,20 +245,24 @@ bool mm1_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const cha
 }
 
 
-void os_post_quit()
+void os_post_quit(::element * pelementQuit)
 {
    
    ns_main_async(^()
    {
-   
-      [NSApp terminate:nil];
+
+      pelementQuit->run();
       
    });
    
 }
 
+void ns_app_terminate()
+{
 
+   [NSApp terminate:nil];
 
+}
 
 
 

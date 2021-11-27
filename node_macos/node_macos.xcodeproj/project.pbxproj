@@ -22,11 +22,11 @@
 			remoteGlobalIDString = 9A440A1526548BE4000C490B;
 			remoteInfo = windowing_macos;
 		};
-		9A5D7387265619A700D5C39E /* PBXContainerItemProxy */ = {
+		9A9E4ADA2751A5060094A04C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A5D737F2656198200D5C39E /* windowing_macos.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 9A440A1426548BE4000C490B;
+			remoteGlobalIDString = 9A9E4AD52751A3F40094A04C;
 			remoteInfo = windowing_macos;
 		};
 /* End PBXContainerItemProxy section */
@@ -122,7 +122,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				9A5D7388265619A700D5C39E /* PBXTargetDependency */,
+				9A9E4ADB2751A5060094A04C /* PBXTargetDependency */,
 			);
 			name = node_macos;
 			productName = node_macos;
@@ -190,10 +190,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9A5D7388265619A700D5C39E /* PBXTargetDependency */ = {
+		9A9E4ADB2751A5060094A04C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = windowing_macos;
-			targetProxy = 9A5D7387265619A700D5C39E /* PBXContainerItemProxy */;
+			targetProxy = 9A9E4ADA2751A5060094A04C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

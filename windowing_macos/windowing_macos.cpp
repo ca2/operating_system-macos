@@ -8,7 +8,7 @@
 
 #include "framework.h"
 #include "window_impl.h"
-#include "oswindow_data.h"
+//#include "oswindow_data.h"
 #include "acme/parallelization/message_queue.h"
 #include <CoreGraphics/CoreGraphics.h>
 

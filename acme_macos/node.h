@@ -21,10 +21,30 @@ namespace acme
       {
       public:
 
+         
+         class element_quit :
+         virtual public ::element
+         {
+         public:
+            
+            node * m_pnode;
+            
+            element_quit(node * pnode)
+            {
+               
+               m_pnode = pnode;
+               
+            }
+            
+            ::e_status run() override;
+            
+            
+         };
 
          //gpointer m_pGtkSettingsDefault;
          string m_strTheme;
 
+         __pointer(manual_reset_event) m_peventReadyToTerminateApp;
 
          node();
          ~node() override;

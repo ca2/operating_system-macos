@@ -8,8 +8,8 @@ string macos_get_type_identifier(const char * str);
 
 bool ns_is_system_dark_mode();
 
-
-void os_post_quit();
+void ns_app_terminate();
+void os_post_quit(::element * pelementQuit);
 
 
 void ns_launch_app(const char * psz, const char ** argv, int iFlags);
@@ -614,11 +614,37 @@ namespace acme
       //
       //   }
 
+   ::e_status node::element_quit::run()
+   {
+      
+      m_pnode->m_peventReadyToTerminateApp->set_event();
+      
+      auto htaskSystem = (pthread_t) m_pnode->m_htaskSystem;
+   
+      pthread_join(htaskSystem, nullptr);
+
+      ns_app_terminate();
+      
+      delete this;
+      
+      return ::success;
+      
+   }
+
+
 
        void node::node_quit()
          {
+          
+          m_peventReadyToTerminateApp = __new(manual_reset_event);
+          
+          m_peventReadyToTerminateApp->ResetEvent();
+          
+          element_quit * pelementquit = new element_quit(this);
       
-          ::os_post_quit();
+          ::os_post_quit(pelementquit);
+          
+          m_peventReadyToTerminateApp->_wait();
           
          }
 
