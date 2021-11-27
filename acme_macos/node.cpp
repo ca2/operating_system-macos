@@ -32,7 +32,8 @@ namespace acme
       node::node()
       {
 
-         m_pAcmePosix = this;
+          m_pelementquit = nullptr;
+         m_pAcmePlatform = this;
 
       }
 
@@ -617,11 +618,15 @@ namespace acme
    ::e_status node::element_quit::run()
    {
       
-      m_pnode->m_peventReadyToTerminateApp->set_event();
+      m_pnode->m_pAcmePlatform->m_peventReadyToTerminateApp->set_event();
       
       auto htaskSystem = (pthread_t) m_pnode->m_htaskSystem;
    
       pthread_join(htaskSystem, nullptr);
+       
+      m_pnode.release();
+       
+      m_psystem.release();
 
       ns_app_terminate();
       
@@ -640,9 +645,11 @@ namespace acme
           
           m_peventReadyToTerminateApp->ResetEvent();
           
-          element_quit * pelementquit = new element_quit(this);
+//          element_quit * pelementquit = new element_quit(this);
       
-          ::os_post_quit(pelementquit);
+          ::os_post_quit(m_pelementquit);
+           
+           m_pelementquit = nullptr;
           
           m_peventReadyToTerminateApp->_wait();
           

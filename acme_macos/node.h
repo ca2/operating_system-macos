@@ -27,12 +27,14 @@ namespace acme
          {
          public:
             
-            node * m_pnode;
+             __transport(::acme::node) & m_pnode;
+             __transport(class ::system) & m_psystem;
             
-            element_quit(node * pnode)
+             element_quit(__transport(::acme::node) & pnode,__transport(class ::system) & psystem
+                          
+                          ) :
+             m_pnode(pnode),m_psystem(psystem)
             {
-               
-               m_pnode = pnode;
                
             }
             
@@ -40,6 +42,8 @@ namespace acme
             
             
          };
+          
+          element_quit * m_pelementquit;
 
          //gpointer m_pGtkSettingsDefault;
          string m_strTheme;

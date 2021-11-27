@@ -26,7 +26,7 @@ namespace windowing_macos
 
       ::e_status defer_create_main_menu(const string_array & straParent, const string_array & straMenu, const string_array & straId) override;
       
-      ::e_status implement() override;
+      ::e_status implement(__transport(::acme::node) & pnode, __transport(class ::system) & psystem) override;
       
       
       ::e_status _will_finish_launching() override;

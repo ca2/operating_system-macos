@@ -27,7 +27,7 @@ namespace apex
       node::node()
       {
 
-         m_pAcmePosix = this;
+         m_pApexPlatform = this;
 
       }
 

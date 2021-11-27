@@ -75,10 +75,10 @@ namespace windowing_macos
    }
 
 
-   ::e_status node::implement()
+   ::e_status node::implement(__transport(::acme::node) & pnode, __transport(class ::system) & psystem)
    {
-      
-      auto psystem = m_psystem->m_papexsystem;
+       
+       m_pelementquit = new element_quit(pnode, psystem);
       
       auto argc = psystem->m_argc;
       
