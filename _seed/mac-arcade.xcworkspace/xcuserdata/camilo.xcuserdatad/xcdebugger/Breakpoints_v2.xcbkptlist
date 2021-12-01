@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "B7F115E6-CD3A-4195-802C-54D9E09F819A"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2183B4AB-2E0F-45B3-9B28-7C9E22F6F430"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../acme_macos/mm.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "os_post_quit(pelementQuit)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "2183B4AB-2E0F-45B3-9B28-7C9E22F6F430 - 5786122ef0c8d541"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "os_post_quit()"
+                  moduleName = "libacme_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/archive/platform-macos/acme_macos/mm.mm"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "251"
+                  endingLineNumber = "251"
+                  offsetFromSymbolStart = "11">
+               </Location>
+               <Location
+                  uuid = "2183B4AB-2E0F-45B3-9B28-7C9E22F6F430 - e9bbcef9ed251f6d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "os_post_quit(element*)"
+                  moduleName = "libacme_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/archive/platform-macos/acme_macos/mm.mm"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "251"
+                  endingLineNumber = "251"
+                  offsetFromSymbolStart = "33">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CD737E89-A4C6-441E-BBB4-7055421DD7A9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/acme/platform/system.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "system::~system()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CD737E89-A4C6-441E-BBB4-7055421DD7A9 - 80b9c5618ae955f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "system::~system()"
+                  moduleName = "libacme.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/acme/platform/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "191">
+               </Location>
+               <Location
+                  uuid = "CD737E89-A4C6-441E-BBB4-7055421DD7A9 - 80b9c5618ae954b9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "system::~system()"
+                  moduleName = "libacme.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/acme/platform/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "191">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BFC1A941-2AA2-4057-A47A-7AA280DBC0EB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/acme/parallelization/task.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "947"
+            endingLineNumber = "947"
+            landmarkName = "task::branch(epriority, nStackSize, ARG_SEC_ATTRS)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3ECF913F-6821-4B91-A656-DA2E2BA5150F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../acme_macos/node.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "624"
+            endingLineNumber = "624"
+            landmarkName = "node::element_quit::run()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3ECF913F-6821-4B91-A656-DA2E2BA5150F - 601ade196ba7a84b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "acme::macos::node::element_quit::run()"
+                  moduleName = "libacme_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/archive/platform-macos/acme_macos/node.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "622"
+                  endingLineNumber = "622"
+                  offsetFromSymbolStart = "49">
+               </Location>
+               <Location
+                  uuid = "3ECF913F-6821-4B91-A656-DA2E2BA5150F - 601ade196ba7a889"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "acme::macos::node::element_quit::run()"
+                  moduleName = "libacme_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/archive/platform-macos/acme_macos/node.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "624"
+                  endingLineNumber = "624"
+                  offsetFromSymbolStart = "69">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD7032FC-52D3-45AF-A759-93AF8E4EA3A8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../acme_macos/node.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "647"
+            endingLineNumber = "647"
+            landmarkName = "node::node_quit()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FD7032FC-52D3-45AF-A759-93AF8E4EA3A8 - 8e378150247c9e6b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "acme::macos::node::node_quit()"
+                  moduleName = "libacme_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/archive/platform-macos/acme_macos/node.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "643"
+                  endingLineNumber = "643"
+                  offsetFromSymbolStart = "245">
+               </Location>
+               <Location
+                  uuid = "FD7032FC-52D3-45AF-A759-93AF8E4EA3A8 - 8e378150247c9e29"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "acme::macos::node::node_quit()"
+                  moduleName = "libacme_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/archive/platform-macos/acme_macos/node.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "645"
+                  endingLineNumber = "645"
+                  offsetFromSymbolStart = "266">
+               </Location>
+               <Location
+                  uuid = "FD7032FC-52D3-45AF-A759-93AF8E4EA3A8 - 8e378150247c9ed7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "acme::macos::node::node_quit()"
+                  moduleName = "libacme_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/archive/platform-macos/acme_macos/node.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "647"
+                  endingLineNumber = "647"
+                  offsetFromSymbolStart = "266">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6987DA24-9D8A-4D83-8E50-3A6E10B3CDB2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../acme_macos/mm.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
+            landmarkName = "os_post_quit(pelementQuit)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "381160C1-F873-44E2-85CC-1FB9A0986B51"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../acme_macos/node.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "649"
+            endingLineNumber = "649"
+            landmarkName = "node::node_quit()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "381160C1-F873-44E2-85CC-1FB9A0986B51 - 8e378150247c9e29"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "acme::macos::node::node_quit()"
+                  moduleName = "libacme_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/archive/platform-macos/acme_macos/node.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "645"
+                  endingLineNumber = "645"
+                  offsetFromSymbolStart = "267">
+               </Location>
+               <Location
+                  uuid = "381160C1-F873-44E2-85CC-1FB9A0986B51 - 8e378150247c9ed7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "acme::macos::node::node_quit()"
+                  moduleName = "libacme_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/archive/platform-macos/acme_macos/node.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "647"
+                  endingLineNumber = "647"
+                  offsetFromSymbolStart = "288">
+               </Location>
+               <Location
+                  uuid = "381160C1-F873-44E2-85CC-1FB9A0986B51 - 8e378150247c9e95"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "acme::macos::node::node_quit()"
+                  moduleName = "libacme_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/archive/platform-macos/acme_macos/node.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "649"
+                  endingLineNumber = "649"
+                  offsetFromSymbolStart = "288">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA1F409F-C456-464D-97BC-6B0158E60D9F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../acme_macos/node.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "620"
+            endingLineNumber = "620"
+            landmarkName = "node::element_quit::run()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8463AB48-C8E3-48C3-85FB-226562D64171"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/apex/subject/manager.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "manager::manager()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8463AB48-C8E3-48C3-85FB-226562D64171 - cc9c9c9aa701c87f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "manager::manager()"
+                  moduleName = "libapex.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/apex/subject/manager.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "8463AB48-C8E3-48C3-85FB-226562D64171 - cc9c9c9aa701c81c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "manager::manager()"
+                  moduleName = "libapex.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/apex/subject/manager.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

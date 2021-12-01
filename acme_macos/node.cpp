@@ -32,7 +32,7 @@ namespace acme
       node::node()
       {
 
-          m_pelementquit = nullptr;
+         m_pelementquit = nullptr;
          m_pAcmePlatform = this;
 
       }
@@ -615,45 +615,64 @@ namespace acme
       //
       //   }
 
-   ::e_status node::element_quit::run()
-   {
+      ::e_status node::element_quit::run()
+      {
       
-      m_pnode->m_pAcmePlatform->m_peventReadyToTerminateApp->set_event();
+         m_pnode->m_pAcmePlatform->m_peventReadyToTerminateApp->set_event();
       
-      auto htaskSystem = (pthread_t) m_pnode->m_htaskSystem;
+         auto htaskSystem = (pthread_t) m_pnode->m_htaskSystem;
    
-      pthread_join(htaskSystem, nullptr);
+         pthread_join(htaskSystem, nullptr);
        
-      m_pnode.release();
+         m_pnode.release();
        
-      m_psystem.release();
+         m_psystem.release();
 
-      ns_app_terminate();
+         ns_app_terminate();
       
-      delete this;
+         delete this;
       
-      return ::success;
+         return ::success;
       
-   }
+      }
 
 
 
-       void node::node_quit()
-         {
+      void node::node_quit()
+      {
           
-          m_peventReadyToTerminateApp = __new(manual_reset_event);
+         m_peventReadyToTerminateApp = __new(manual_reset_event);
           
-          m_peventReadyToTerminateApp->ResetEvent();
+         m_peventReadyToTerminateApp->ResetEvent();
           
-//          element_quit * pelementquit = new element_quit(this);
+         // element_quit * pelementquit = new element_quit(this);
       
-          ::os_post_quit(m_pelementquit);
+         ::os_post_quit(m_pelementquit);
            
-           m_pelementquit = nullptr;
+         m_pelementquit = nullptr;
           
-          m_peventReadyToTerminateApp->_wait();
+         m_peventReadyToTerminateApp->_wait();
           
+      }
+
+   
+      ::e_status node::implement(__transport(::acme::node) & pnode, __transport(class ::system) & psystem)
+      {
+         
+         m_pelementquit = new element_quit(pnode, psystem);
+
+         auto estatus = ::acme::apple::node::implement(pnode, psystem);
+
+         if(!estatus)
+         {
+
+            return estatus;
+
          }
+
+         return estatus;
+
+      }
 
 
       //   void * node::node_wrap_window(void * pvoidDisplay, i64 window)

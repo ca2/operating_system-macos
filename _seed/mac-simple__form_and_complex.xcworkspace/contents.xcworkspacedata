@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:/Users/camilo/solution/basis/source/app-simple/application/_app_simple_application.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/camilo/solution/basis/source/app-simple/box/_app_simple_box.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/camilo/solution/basis/source/app-simple/drawing/_app_simple_drawing.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-simple/networking_application/_app_simple_networking_application.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/camilo/solution/basis/source/app-simple/notify_drawing/_app_simple_notify_drawing.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/camilo/solution/basis/source/app-simple/shader/_app_simple_shader.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-simple/form/_app_simple_form.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-complex/drawing/_app_complex_drawing.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-complex/form/_app_complex_form.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/game/light/_game_light.xcodeproj">
+   </FileRef>
+</Workspace>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4A827C0D-2A66-4F35-BD91-54193D9E43E7"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8A0D8052-6C5A-4397-9D85-B06633AAB70C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app-veriwell/multimedia/music/midi/sequencer.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1023"
+            endingLineNumber = "1023"
+            landmarkName = "sequencer::_001OnCommand(pmessage)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "941ACD7B-3E39-43B3-91A5-A1E2EDA1121C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app-veriwell/musical_player_lite/pane_view.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "pane_view::on_message_create(pmessage)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5ACA9D1-16D8-4DC8-B004-1B2C31D19CA5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app-veriwell/musical_player_lite/application.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1588"
+            endingLineNumber = "1588"
+            landmarkName = "application::on_request(pcreate)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "23CD6A01-87E7-4692-851B-59408C0FA334"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app-veriwell/musical_player_lite/main_frame.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "main_frame::on_message_create(pmessage)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1E650D50-D427-4353-B9BE-0FDF30DFE4A0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app-veriwell/musical_player_lite/pane_view.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "pane_view::pane_view()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1E650D50-D427-4353-B9BE-0FDF30DFE4A0 - a6110b946130cd04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "app_veriwell_musical_player_lite::pane_view::pane_view()"
+                  moduleName = "libapp_veriwell_musical_player_lite.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app-veriwell/musical_player_lite/pane_view.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "635">
+               </Location>
+               <Location
+                  uuid = "1E650D50-D427-4353-B9BE-0FDF30DFE4A0 - a6110b946130cd04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "app_veriwell_musical_player_lite::pane_view::pane_view()"
+                  moduleName = "libapp_veriwell_musical_player_lite.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app-veriwell/musical_player_lite/pane_view.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "1630">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            uuid = "2A412C87-E3F3-4BE2-AC9E-4BF54523E8A7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            breakpointStackSelectionBehavior = "1"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../../../source/app-core/audioaura/_app_core_audioaura.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-core/auraclick/_app_core_auraclick.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-core/auratype/_app_core_auratype.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-core/chronometer/_app_core_chronometer.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-core/clockverse/_app_core_clockverse.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-core/timer/_app_core_timer.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-core/todo/_app_core_todo.xcodeproj">
+   </FileRef>
+</Workspace>

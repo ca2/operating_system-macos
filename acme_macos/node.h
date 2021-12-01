@@ -74,6 +74,9 @@ namespace acme
          virtual ::e_status initialize(::object * pobject) override;
          
          void node_quit() override;
+         
+         ::e_status implement(__transport(::acme::node) & pnode, __transport(class ::system) & psystem) override;
+
 
    //      virtual ::e_status get_system_time(system_time_t * psystemtime)
    //

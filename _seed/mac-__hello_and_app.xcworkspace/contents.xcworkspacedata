@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../../../source/console/application_build_helper/application_build_helper.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/console/hello/hello.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/camilo/solution/basis/source/console/helloearth/helloearth.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/camilo/solution/basis/source/console/hellosolarsystem/hellosolarsystem.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/camilo/solution/basis/source/console/readlines/readlines.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app/app/_app_app.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app/just_message_box/_app_just_message_box.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app/message_box/_app_message_box.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app/shader/_app_shader.xcodeproj">
+   </FileRef>
+</Workspace>
