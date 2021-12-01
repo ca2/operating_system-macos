@@ -1,0 +1,2623 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		9A6B7C5E2757D4EC00DB33D9 /* agreggate-all */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 9A6B7C5F2757D4ED00DB33D9 /* Build configuration list for PBXAggregateTarget "agreggate-all" */;
+			buildPhases = (
+			);
+			dependencies = (
+				9A6B7C632757D52A00DB33D9 /* PBXTargetDependency */,
+				9A6B7CAB2757D65400DB33D9 /* PBXTargetDependency */,
+				9A6B7C672757D52A00DB33D9 /* PBXTargetDependency */,
+				9A6B7C752757D52A00DB33D9 /* PBXTargetDependency */,
+				9A6B7CA32757D5D600DB33D9 /* PBXTargetDependency */,
+				9A6B7CA52757D5D600DB33D9 /* PBXTargetDependency */,
+				9A6B7CA72757D60900DB33D9 /* PBXTargetDependency */,
+				9A6B7CA92757D60900DB33D9 /* PBXTargetDependency */,
+				9A6B7C932757D5B400DB33D9 /* PBXTargetDependency */,
+				9A6B7C952757D5B400DB33D9 /* PBXTargetDependency */,
+				9A6B7C972757D5B400DB33D9 /* PBXTargetDependency */,
+				9A6B7C992757D5B400DB33D9 /* PBXTargetDependency */,
+				9A6B7C9B2757D5B400DB33D9 /* PBXTargetDependency */,
+				9A6B7C9D2757D5B400DB33D9 /* PBXTargetDependency */,
+				9A6B7C9F2757D5B400DB33D9 /* PBXTargetDependency */,
+				9A6B7CA12757D5B400DB33D9 /* PBXTargetDependency */,
+				9A6B7C652757D52A00DB33D9 /* PBXTargetDependency */,
+				9A6B7C692757D52A00DB33D9 /* PBXTargetDependency */,
+				9A6B7C6B2757D52A00DB33D9 /* PBXTargetDependency */,
+				9A6B7C6F2757D52A00DB33D9 /* PBXTargetDependency */,
+				9A6B7C712757D52A00DB33D9 /* PBXTargetDependency */,
+				9A6B7C732757D52A00DB33D9 /* PBXTargetDependency */,
+				9A6B7C772757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C792757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C7B2757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C7D2757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C7F2757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C812757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C832757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C852757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C872757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C892757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C8B2757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C8D2757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C8F2757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C912757D58B00DB33D9 /* PBXTargetDependency */,
+				9A6B7C6D2757D52A00DB33D9 /* PBXTargetDependency */,
+			);
+			name = "agreggate-all";
+			productName = "agreggate-all";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXContainerItemProxy section */
+		9A6B7ABB2757D4AC00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AB72757D4AC00DB33D9 /* _app_core_picture.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A5FE2EF2689EC31003682E6;
+			remoteInfo = _app_core_picture;
+		};
+		9A6B7AC22757D4AD00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7ABD2757D4AD00DB33D9 /* _app_simple_drawing.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_simple_drawing;
+		};
+		9A6B7AC42757D4AD00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7ABD2757D4AD00DB33D9 /* _app_simple_drawing.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = _app_simple_drawing_Tests;
+		};
+		9A6B7ACB2757D4AD00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AC62757D4AD00DB33D9 /* _game_light.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _game_light;
+		};
+		9A6B7ACD2757D4AD00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AC62757D4AD00DB33D9 /* _game_light.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "light Tests";
+		};
+		9A6B7AD42757D4AE00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7ACF2757D4AD00DB33D9 /* _app_simple_networking_application.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_simple_networking_application;
+		};
+		9A6B7AD62757D4AE00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7ACF2757D4AD00DB33D9 /* _app_simple_networking_application.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = _app_simple_networking_application_Tests;
+		};
+		9A6B7ADD2757D4AE00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AD82757D4AE00DB33D9 /* _app_core_todo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_todo;
+		};
+		9A6B7ADF2757D4AE00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AD82757D4AE00DB33D9 /* _app_core_todo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = _app_core_todo_Testing;
+		};
+		9A6B7AE62757D4AF00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AE12757D4AE00DB33D9 /* _app_core_hash_hub.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_hash_hub;
+		};
+		9A6B7AE82757D4AF00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AE12757D4AE00DB33D9 /* _app_core_hash_hub.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = _app_core_hash_hub_Testing;
+		};
+		9A6B7AEF2757D4AF00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AEA2757D4AF00DB33D9 /* _game_game_of_life.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _game_game_of_life;
+		};
+		9A6B7AF12757D4AF00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AEA2757D4AF00DB33D9 /* _game_game_of_life.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Game of Life Tests";
+		};
+		9A6B7AF72757D4AF00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AF32757D4AF00DB33D9 /* hellosolarsystem.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A68A38B25112AED008DABD2;
+			remoteInfo = hellosolarsystem;
+		};
+		9A6B7AFE2757D4B000DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AF92757D4AF00DB33D9 /* _app_complex_form.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_complex_form;
+		};
+		9A6B7B002757D4B000DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AF92757D4AF00DB33D9 /* _app_complex_form.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Hello Multiverse!!Tests";
+		};
+		9A6B7B072757D4B000DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B022757D4B000DB33D9 /* _app_cidadedecuritiba_alphaclock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_cidadedecuritiba_alphaclock;
+		};
+		9A6B7B092757D4B000DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B022757D4B000DB33D9 /* _app_cidadedecuritiba_alphaclock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = alphaclockTests;
+		};
+		9A6B7B102757D4B100DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B0B2757D4B000DB33D9 /* _game_arkanoid.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _game_arkanoid;
+		};
+		9A6B7B122757D4B100DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B0B2757D4B000DB33D9 /* _game_arkanoid.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Tic Tac Toe Tests";
+		};
+		9A6B7B192757D4B100DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B142757D4B100DB33D9 /* _app_app.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_app;
+		};
+		9A6B7B1B2757D4B100DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B142757D4B100DB33D9 /* _app_app.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Hello Multiverse!!Tests";
+		};
+		9A6B7B222757D4B100DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B1D2757D4B100DB33D9 /* _app_core_file_manager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_file_manager;
+		};
+		9A6B7B242757D4B100DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B1D2757D4B100DB33D9 /* _app_core_file_manager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = file_managerTests;
+		};
+		9A6B7B2B2757D4B200DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B262757D4B200DB33D9 /* _game_coincube.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _game_coincube;
+		};
+		9A6B7B2D2757D4B200DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B262757D4B200DB33D9 /* _game_coincube.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "coincube Tests";
+		};
+		9A6B7B342757D4B200DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B2F2757D4B200DB33D9 /* _app_core_flag.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_flag;
+		};
+		9A6B7B362757D4B200DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B2F2757D4B200DB33D9 /* _app_core_flag.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = flagTests;
+		};
+		9A6B7B3C2757D4B300DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B382757D4B200DB33D9 /* _app_veriwell_verisimplevideo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = app_veriwell_verisimplevideo;
+		};
+		9A6B7B422757D4B300DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B3E2757D4B300DB33D9 /* application_build_helper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9ADD64DE26B5CBBC00D11298;
+			remoteInfo = application_build_helper;
+		};
+		9A6B7B492757D4B300DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B442757D4B300DB33D9 /* _app_complex_drawing.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_complex_drawing;
+		};
+		9A6B7B4B2757D4B300DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B442757D4B300DB33D9 /* _app_complex_drawing.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Hello Multiverse!!Tests";
+		};
+		9A6B7B522757D4B400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B4D2757D4B300DB33D9 /* _app_core_clockverse.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_clockverse;
+		};
+		9A6B7B542757D4B400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B4D2757D4B300DB33D9 /* _app_core_clockverse.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = clockverseTests;
+		};
+		9A6B7B5B2757D4B400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B562757D4B400DB33D9 /* _game_tetris.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _game_tetris;
+		};
+		9A6B7B5D2757D4B400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B562757D4B400DB33D9 /* _game_tetris.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Tic Tac Toe Tests";
+		};
+		9A6B7B642757D4B500DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B5F2757D4B400DB33D9 /* _app_core_projection.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_projection;
+		};
+		9A6B7B662757D4B500DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B5F2757D4B400DB33D9 /* _app_core_projection.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = projectionTests;
+		};
+		9A6B7B6D2757D4B500DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B682757D4B500DB33D9 /* _app_core_resident_desktop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_resident_desktop;
+		};
+		9A6B7B6F2757D4B500DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B682757D4B500DB33D9 /* _app_core_resident_desktop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Hello Multiverse!!Tests";
+		};
+		9A6B7B762757D4B600DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B712757D4B500DB33D9 /* _app_shader.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_shader;
+		};
+		9A6B7B782757D4B600DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B712757D4B500DB33D9 /* _app_shader.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Hello Multiverse!!Tests";
+		};
+		9A6B7B7F2757D4B600DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B7A2757D4B600DB33D9 /* _app_simple_shader.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_simple_shader;
+		};
+		9A6B7B812757D4B600DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B7A2757D4B600DB33D9 /* _app_simple_shader.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = _app_simple_shader_Tests;
+		};
+		9A6B7B872757D4B600DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B832757D4B600DB33D9 /* helloearth.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A5EE4912650D105009F25F0;
+			remoteInfo = helloearth;
+		};
+		9A6B7B8D2757D4B700DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B892757D4B600DB33D9 /* _app_core_photo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A5FE2D22689EC08003682E6;
+			remoteInfo = _app_core_photo;
+		};
+		9A6B7B932757D4B700DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B8F2757D4B700DB33D9 /* readlines.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A68A39E25112AFD008DABD2;
+			remoteInfo = readlines;
+		};
+		9A6B7B992757D4B800DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B952757D4B700DB33D9 /* _app_veriwell_keyboard.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A5FDF952689DAFB003682E6;
+			remoteInfo = _app_veriwell_keyboard;
+		};
+		9A6B7B9F2757D4B800DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B9B2757D4B800DB33D9 /* hello.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9ADD64DE26B5CBBC00D11298;
+			remoteInfo = hello;
+		};
+		9A6B7BA62757D4B800DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BA12757D4B800DB33D9 /* _app_core_chronometer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_chronometer;
+		};
+		9A6B7BA82757D4B800DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BA12757D4B800DB33D9 /* _app_core_chronometer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = timerTests;
+		};
+		9A6B7BAF2757D4B900DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BAA2757D4B800DB33D9 /* _app_core_note.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_note;
+		};
+		9A6B7BB12757D4B900DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BAA2757D4B800DB33D9 /* _app_core_note.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = _app_core_note_Tests;
+		};
+		9A6B7BB82757D4B900DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BB32757D4B900DB33D9 /* _app_simple_form.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_simple_form;
+		};
+		9A6B7BBA2757D4B900DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BB32757D4B900DB33D9 /* _app_simple_form.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = _app_simple_form_Tests;
+		};
+		9A6B7BC12757D4BA00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BBC2757D4B900DB33D9 /* _game_pacman.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _game_pacman;
+		};
+		9A6B7BC32757D4BA00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BBC2757D4B900DB33D9 /* _game_pacman.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Tic Tac Toe Tests";
+		};
+		9A6B7BCA2757D4BA00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BC52757D4BA00DB33D9 /* _app_core_audioaura.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_audioaura;
+		};
+		9A6B7BCC2757D4BA00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BC52757D4BA00DB33D9 /* _app_core_audioaura.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = audioTests;
+		};
+		9A6B7BD32757D4BA00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BCE2757D4BA00DB33D9 /* _game_arch001.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _game_arch001;
+		};
+		9A6B7BD52757D4BA00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BCE2757D4BA00DB33D9 /* _game_arch001.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "arch001 Tests";
+		};
+		9A6B7BDC2757D4BB00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BD72757D4BA00DB33D9 /* _app_core_addressbook.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_addressbook;
+		};
+		9A6B7BDE2757D4BB00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BD72757D4BA00DB33D9 /* _app_core_addressbook.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = addressbookTests;
+		};
+		9A6B7BE52757D4BB00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BE02757D4BB00DB33D9 /* _app_core_weather.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_weather;
+		};
+		9A6B7BE72757D4BB00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BE02757D4BB00DB33D9 /* _app_core_weather.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = weatherTests;
+		};
+		9A6B7BEE2757D4BC00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BE92757D4BB00DB33D9 /* _app_simple_notify_drawing.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_simple_notify_drawing;
+		};
+		9A6B7BF02757D4BC00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BE92757D4BB00DB33D9 /* _app_simple_notify_drawing.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = _app_simple_notify_drawing_Tests;
+		};
+		9A6B7BF72757D4BC00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BF22757D4BC00DB33D9 /* _app_core_desk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_desk;
+		};
+		9A6B7BF92757D4BC00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BF22757D4BC00DB33D9 /* _app_core_desk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Hello Multiverse!!Tests";
+		};
+		9A6B7C002757D4BD00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BFB2757D4BC00DB33D9 /* _app_core_auratype.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_auratype;
+		};
+		9A6B7C022757D4BD00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BFB2757D4BC00DB33D9 /* _app_core_auratype.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = auratypeTests;
+		};
+		9A6B7C092757D4BD00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C042757D4BD00DB33D9 /* _app_core_clockverse_no_audio.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_clockverse_no_audio;
+		};
+		9A6B7C0B2757D4BD00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C042757D4BD00DB33D9 /* _app_core_clockverse_no_audio.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = clockverseTests;
+		};
+		9A6B7C122757D4BF00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C0D2757D4BD00DB33D9 /* _app_message_box.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_message_box;
+		};
+		9A6B7C142757D4BF00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C0D2757D4BD00DB33D9 /* _app_message_box.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Hello Multiverse!!Tests";
+		};
+		9A6B7C1A2757D4BF00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C162757D4BF00DB33D9 /* _app_veriwell_waven.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = app_veriwell_waven;
+		};
+		9A6B7C212757D4C000DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C1C2757D4BF00DB33D9 /* _app_core_auraclick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_auraclick;
+		};
+		9A6B7C232757D4C000DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C1C2757D4BF00DB33D9 /* _app_core_auraclick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = auraclickTests;
+		};
+		9A6B7C2A2757D4C000DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C252757D4C000DB33D9 /* _game_sokoban.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _game_sokoban;
+		};
+		9A6B7C2C2757D4C000DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C252757D4C000DB33D9 /* _game_sokoban.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Tic Tac Toe Tests";
+		};
+		9A6B7C322757D4C100DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C2E2757D4C000DB33D9 /* _app_veriwell_musical_player_lite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = app_veriwell_musical_player_lite;
+		};
+		9A6B7C392757D4C100DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C342757D4C100DB33D9 /* _game_tictactoe.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _game_tictactoe;
+		};
+		9A6B7C3B2757D4C100DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C342757D4C100DB33D9 /* _game_tictactoe.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = "Tic Tac Toe Tests";
+		};
+		9A6B7C422757D4C200DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C3D2757D4C200DB33D9 /* _app_core_hellomultiverse.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_hellomultiverse;
+		};
+		9A6B7C442757D4C200DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C3D2757D4C200DB33D9 /* _app_core_hellomultiverse.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = hellomultiverseTests;
+		};
+		9A6B7C4B2757D4C200DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C462757D4C200DB33D9 /* _app_simple_application.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_simple_application;
+		};
+		9A6B7C4D2757D4C200DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C462757D4C200DB33D9 /* _app_simple_application.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = _app_simple_application_Tests;
+		};
+		9A6B7C542757D4C300DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C4F2757D4C300DB33D9 /* _app_core_timer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_timer;
+		};
+		9A6B7C562757D4C300DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C4F2757D4C300DB33D9 /* _app_core_timer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = timerTests;
+		};
+		9A6B7C5C2757D4C300DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C582757D4C300DB33D9 /* _app_veriwell_musical_player.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A5FDC9526895216003682E6;
+			remoteInfo = _app_veriwell_musical_player;
+		};
+		9A6B7C622757D52A00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C582757D4C300DB33D9 /* _app_veriwell_musical_player.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A5FDC9426895216003682E6;
+			remoteInfo = _app_veriwell_musical_player;
+		};
+		9A6B7C642757D52A00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C4F2757D4C300DB33D9 /* _app_core_timer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_timer;
+		};
+		9A6B7C662757D52A00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C462757D4C200DB33D9 /* _app_simple_application.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_simple_application;
+		};
+		9A6B7C682757D52A00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C3D2757D4C200DB33D9 /* _app_core_hellomultiverse.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_hellomultiverse;
+		};
+		9A6B7C6A2757D52A00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C1C2757D4BF00DB33D9 /* _app_core_auraclick.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_auraclick;
+		};
+		9A6B7C6C2757D52A00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C0D2757D4BD00DB33D9 /* _app_message_box.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_message_box;
+		};
+		9A6B7C6E2757D52A00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C042757D4BD00DB33D9 /* _app_core_clockverse_no_audio.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_clockverse_no_audio;
+		};
+		9A6B7C702757D52A00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BFB2757D4BC00DB33D9 /* _app_core_auratype.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_auratype;
+		};
+		9A6B7C722757D52A00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BF22757D4BC00DB33D9 /* _app_core_desk.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_desk;
+		};
+		9A6B7C742757D52A00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BE92757D4BB00DB33D9 /* _app_simple_notify_drawing.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_simple_notify_drawing;
+		};
+		9A6B7C762757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BE02757D4BB00DB33D9 /* _app_core_weather.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_weather;
+		};
+		9A6B7C782757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BD72757D4BA00DB33D9 /* _app_core_addressbook.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_addressbook;
+		};
+		9A6B7C7A2757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BC52757D4BA00DB33D9 /* _app_core_audioaura.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_audioaura;
+		};
+		9A6B7C7C2757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BAA2757D4B800DB33D9 /* _app_core_note.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_note;
+		};
+		9A6B7C7E2757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BA12757D4B800DB33D9 /* _app_core_chronometer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_chronometer;
+		};
+		9A6B7C802757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B892757D4B600DB33D9 /* _app_core_photo.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A5FE2D12689EC08003682E6;
+			remoteInfo = _app_core_photo;
+		};
+		9A6B7C822757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B682757D4B500DB33D9 /* _app_core_resident_desktop.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_resident_desktop;
+		};
+		9A6B7C842757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B5F2757D4B400DB33D9 /* _app_core_projection.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_projection;
+		};
+		9A6B7C862757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B4D2757D4B300DB33D9 /* _app_core_clockverse.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_clockverse;
+		};
+		9A6B7C882757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B2F2757D4B200DB33D9 /* _app_core_flag.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_flag;
+		};
+		9A6B7C8A2757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B1D2757D4B100DB33D9 /* _app_core_file_manager.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_file_manager;
+		};
+		9A6B7C8C2757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AE12757D4AE00DB33D9 /* _app_core_hash_hub.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_hash_hub;
+		};
+		9A6B7C8E2757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AD82757D4AE00DB33D9 /* _app_core_todo.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_core_todo;
+		};
+		9A6B7C902757D58B00DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AB72757D4AC00DB33D9 /* _app_core_picture.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A5FE2EE2689EC31003682E6;
+			remoteInfo = _app_core_picture;
+		};
+		9A6B7C922757D5B400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7C252757D4C000DB33D9 /* _game_sokoban.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _game_sokoban;
+		};
+		9A6B7C942757D5B400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BCE2757D4BA00DB33D9 /* _game_arch001.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _game_arch001;
+		};
+		9A6B7C962757D5B400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BBC2757D4B900DB33D9 /* _game_pacman.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _game_pacman;
+		};
+		9A6B7C982757D5B400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B562757D4B400DB33D9 /* _game_tetris.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _game_tetris;
+		};
+		9A6B7C9A2757D5B400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B262757D4B200DB33D9 /* _game_coincube.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _game_coincube;
+		};
+		9A6B7C9C2757D5B400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B0B2757D4B000DB33D9 /* _game_arkanoid.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _game_arkanoid;
+		};
+		9A6B7C9E2757D5B400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AC62757D4AD00DB33D9 /* _game_light.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _game_light;
+		};
+		9A6B7CA02757D5B400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7AEA2757D4AF00DB33D9 /* _game_game_of_life.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _game_game_of_life;
+		};
+		9A6B7CA22757D5D600DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7BB32757D4B900DB33D9 /* _app_simple_form.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_simple_form;
+		};
+		9A6B7CA42757D5D600DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B7A2757D4B600DB33D9 /* _app_simple_shader.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_simple_shader;
+		};
+		9A6B7CA62757D60900DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7ACF2757D4AD00DB33D9 /* _app_simple_networking_application.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_simple_networking_application;
+		};
+		9A6B7CA82757D60900DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7ABD2757D4AD00DB33D9 /* _app_simple_drawing.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
+			remoteInfo = _app_simple_drawing;
+		};
+		9A6B7CAA2757D65400DB33D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6B7B952757D4B700DB33D9 /* _app_veriwell_keyboard.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A5FDF942689DAFB003682E6;
+			remoteInfo = _app_veriwell_keyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9A6B7AB72757D4AC00DB33D9 /* _app_core_picture.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_picture.xcodeproj; path = "../../../source/app-core/picture/_app_core_picture.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7ABD2757D4AD00DB33D9 /* _app_simple_drawing.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_simple_drawing.xcodeproj; path = "../../../source/app-simple/drawing/_app_simple_drawing.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7AC62757D4AD00DB33D9 /* _game_light.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _game_light.xcodeproj; path = ../../../source/game/light/_game_light.xcodeproj; sourceTree = "<group>"; };
+		9A6B7ACF2757D4AD00DB33D9 /* _app_simple_networking_application.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_simple_networking_application.xcodeproj; path = "../../../source/app-simple/networking_application/_app_simple_networking_application.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7AD82757D4AE00DB33D9 /* _app_core_todo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_todo.xcodeproj; path = "../../../source/app-core/todo/_app_core_todo.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7AE12757D4AE00DB33D9 /* _app_core_hash_hub.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_hash_hub.xcodeproj; path = "../../../source/app-core/hash_hub/_app_core_hash_hub.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7AEA2757D4AF00DB33D9 /* _game_game_of_life.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _game_game_of_life.xcodeproj; path = ../../../source/game/game_of_life/_game_game_of_life.xcodeproj; sourceTree = "<group>"; };
+		9A6B7AF32757D4AF00DB33D9 /* hellosolarsystem.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = hellosolarsystem.xcodeproj; path = ../../../source/console/hellosolarsystem/hellosolarsystem.xcodeproj; sourceTree = "<group>"; };
+		9A6B7AF92757D4AF00DB33D9 /* _app_complex_form.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_complex_form.xcodeproj; path = "../../../source/app-complex/form/_app_complex_form.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7B022757D4B000DB33D9 /* _app_cidadedecuritiba_alphaclock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_cidadedecuritiba_alphaclock.xcodeproj; path = "../../../source/app-cidadedecuritiba/alphaclock/_app_cidadedecuritiba_alphaclock.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7B0B2757D4B000DB33D9 /* _game_arkanoid.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _game_arkanoid.xcodeproj; path = ../../../source/game/arkanoid/_game_arkanoid.xcodeproj; sourceTree = "<group>"; };
+		9A6B7B142757D4B100DB33D9 /* _app_app.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_app.xcodeproj; path = ../../../source/app/app/_app_app.xcodeproj; sourceTree = "<group>"; };
+		9A6B7B1D2757D4B100DB33D9 /* _app_core_file_manager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_file_manager.xcodeproj; path = "../../../source/app-core/file_manager/_app_core_file_manager.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7B262757D4B200DB33D9 /* _game_coincube.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _game_coincube.xcodeproj; path = ../../../source/game/coincube/_game_coincube.xcodeproj; sourceTree = "<group>"; };
+		9A6B7B2F2757D4B200DB33D9 /* _app_core_flag.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_flag.xcodeproj; path = "../../../source/app-core/flag/_app_core_flag.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7B382757D4B200DB33D9 /* _app_veriwell_verisimplevideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_veriwell_verisimplevideo.xcodeproj; path = "../../../source/app-veriwell/verisimplevideo/_app_veriwell_verisimplevideo.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7B3E2757D4B300DB33D9 /* application_build_helper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = application_build_helper.xcodeproj; path = ../../../source/console/application_build_helper/application_build_helper.xcodeproj; sourceTree = "<group>"; };
+		9A6B7B442757D4B300DB33D9 /* _app_complex_drawing.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_complex_drawing.xcodeproj; path = "../../../source/app-complex/drawing/_app_complex_drawing.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7B4D2757D4B300DB33D9 /* _app_core_clockverse.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_clockverse.xcodeproj; path = "../../../source/app-core/clockverse/_app_core_clockverse.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7B562757D4B400DB33D9 /* _game_tetris.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _game_tetris.xcodeproj; path = ../../../source/game/tetris/_game_tetris.xcodeproj; sourceTree = "<group>"; };
+		9A6B7B5F2757D4B400DB33D9 /* _app_core_projection.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_projection.xcodeproj; path = "../../../source/app-core/projection/_app_core_projection.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7B682757D4B500DB33D9 /* _app_core_resident_desktop.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_resident_desktop.xcodeproj; path = "../../../source/app-core/resident_desktop/_app_core_resident_desktop.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7B712757D4B500DB33D9 /* _app_shader.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_shader.xcodeproj; path = ../../../source/app/shader/_app_shader.xcodeproj; sourceTree = "<group>"; };
+		9A6B7B7A2757D4B600DB33D9 /* _app_simple_shader.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_simple_shader.xcodeproj; path = "../../../source/app-simple/shader/_app_simple_shader.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7B832757D4B600DB33D9 /* helloearth.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = helloearth.xcodeproj; path = ../../../source/console/helloearth/helloearth.xcodeproj; sourceTree = "<group>"; };
+		9A6B7B892757D4B600DB33D9 /* _app_core_photo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_photo.xcodeproj; path = "../../../source/app-core/photo/_app_core_photo.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7B8F2757D4B700DB33D9 /* readlines.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = readlines.xcodeproj; path = ../../../source/console/readlines/readlines.xcodeproj; sourceTree = "<group>"; };
+		9A6B7B952757D4B700DB33D9 /* _app_veriwell_keyboard.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_veriwell_keyboard.xcodeproj; path = "../../../source/app-veriwell/keyboard/_app_veriwell_keyboard.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7B9B2757D4B800DB33D9 /* hello.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = hello.xcodeproj; path = ../../../source/console/hello/hello.xcodeproj; sourceTree = "<group>"; };
+		9A6B7BA12757D4B800DB33D9 /* _app_core_chronometer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_chronometer.xcodeproj; path = "../../../source/app-core/chronometer/_app_core_chronometer.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7BAA2757D4B800DB33D9 /* _app_core_note.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_note.xcodeproj; path = "../../../source/app-core/note/_app_core_note.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7BB32757D4B900DB33D9 /* _app_simple_form.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_simple_form.xcodeproj; path = "../../../source/app-simple/form/_app_simple_form.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7BBC2757D4B900DB33D9 /* _game_pacman.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _game_pacman.xcodeproj; path = ../../../source/game/pacman/_game_pacman.xcodeproj; sourceTree = "<group>"; };
+		9A6B7BC52757D4BA00DB33D9 /* _app_core_audioaura.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_audioaura.xcodeproj; path = "../../../source/app-core/audioaura/_app_core_audioaura.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7BCE2757D4BA00DB33D9 /* _game_arch001.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _game_arch001.xcodeproj; path = ../../../source/game/arch001/_game_arch001.xcodeproj; sourceTree = "<group>"; };
+		9A6B7BD72757D4BA00DB33D9 /* _app_core_addressbook.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_addressbook.xcodeproj; path = "../../../source/app-core/addressbook/_app_core_addressbook.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7BE02757D4BB00DB33D9 /* _app_core_weather.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_weather.xcodeproj; path = "../../../source/app-core/weather/_app_core_weather.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7BE92757D4BB00DB33D9 /* _app_simple_notify_drawing.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_simple_notify_drawing.xcodeproj; path = "../../../source/app-simple/notify_drawing/_app_simple_notify_drawing.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7BF22757D4BC00DB33D9 /* _app_core_desk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_desk.xcodeproj; path = "../../../source/app-core/desk/_app_core_desk.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7BFB2757D4BC00DB33D9 /* _app_core_auratype.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_auratype.xcodeproj; path = "../../../source/app-core/auratype/_app_core_auratype.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7C042757D4BD00DB33D9 /* _app_core_clockverse_no_audio.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_clockverse_no_audio.xcodeproj; path = "../../../source/app-core/clockverse/_app_core_clockverse_no_audio.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7C0D2757D4BD00DB33D9 /* _app_message_box.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_message_box.xcodeproj; path = ../../../source/app/message_box/_app_message_box.xcodeproj; sourceTree = "<group>"; };
+		9A6B7C162757D4BF00DB33D9 /* _app_veriwell_waven.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_veriwell_waven.xcodeproj; path = "../../../source/app-veriwell/waven/_app_veriwell_waven.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7C1C2757D4BF00DB33D9 /* _app_core_auraclick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_auraclick.xcodeproj; path = "../../../source/app-core/auraclick/_app_core_auraclick.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7C252757D4C000DB33D9 /* _game_sokoban.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _game_sokoban.xcodeproj; path = ../../../source/game/sokoban/_game_sokoban.xcodeproj; sourceTree = "<group>"; };
+		9A6B7C2E2757D4C000DB33D9 /* _app_veriwell_musical_player_lite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_veriwell_musical_player_lite.xcodeproj; path = "../../../source/app-veriwell/musical_player_lite/_app_veriwell_musical_player_lite.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7C342757D4C100DB33D9 /* _game_tictactoe.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _game_tictactoe.xcodeproj; path = ../../../source/game/tictactoe/_game_tictactoe.xcodeproj; sourceTree = "<group>"; };
+		9A6B7C3D2757D4C200DB33D9 /* _app_core_hellomultiverse.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_hellomultiverse.xcodeproj; path = "../../../source/app-core/hellomultiverse/_app_core_hellomultiverse.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7C462757D4C200DB33D9 /* _app_simple_application.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_simple_application.xcodeproj; path = "../../../source/app-simple/application/_app_simple_application.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7C4F2757D4C300DB33D9 /* _app_core_timer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_timer.xcodeproj; path = "../../../source/app-core/timer/_app_core_timer.xcodeproj"; sourceTree = "<group>"; };
+		9A6B7C582757D4C300DB33D9 /* _app_veriwell_musical_player.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_veriwell_musical_player.xcodeproj; path = "../../../source/app-veriwell/musical_player/_app_veriwell_musical_player.xcodeproj"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		9A6B7AB02757D43B00DB33D9 = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C582757D4C300DB33D9 /* _app_veriwell_musical_player.xcodeproj */,
+				9A6B7C4F2757D4C300DB33D9 /* _app_core_timer.xcodeproj */,
+				9A6B7C462757D4C200DB33D9 /* _app_simple_application.xcodeproj */,
+				9A6B7C3D2757D4C200DB33D9 /* _app_core_hellomultiverse.xcodeproj */,
+				9A6B7C342757D4C100DB33D9 /* _game_tictactoe.xcodeproj */,
+				9A6B7C2E2757D4C000DB33D9 /* _app_veriwell_musical_player_lite.xcodeproj */,
+				9A6B7C252757D4C000DB33D9 /* _game_sokoban.xcodeproj */,
+				9A6B7C1C2757D4BF00DB33D9 /* _app_core_auraclick.xcodeproj */,
+				9A6B7C162757D4BF00DB33D9 /* _app_veriwell_waven.xcodeproj */,
+				9A6B7C0D2757D4BD00DB33D9 /* _app_message_box.xcodeproj */,
+				9A6B7C042757D4BD00DB33D9 /* _app_core_clockverse_no_audio.xcodeproj */,
+				9A6B7BFB2757D4BC00DB33D9 /* _app_core_auratype.xcodeproj */,
+				9A6B7BF22757D4BC00DB33D9 /* _app_core_desk.xcodeproj */,
+				9A6B7BE92757D4BB00DB33D9 /* _app_simple_notify_drawing.xcodeproj */,
+				9A6B7BE02757D4BB00DB33D9 /* _app_core_weather.xcodeproj */,
+				9A6B7BD72757D4BA00DB33D9 /* _app_core_addressbook.xcodeproj */,
+				9A6B7BCE2757D4BA00DB33D9 /* _game_arch001.xcodeproj */,
+				9A6B7BC52757D4BA00DB33D9 /* _app_core_audioaura.xcodeproj */,
+				9A6B7BBC2757D4B900DB33D9 /* _game_pacman.xcodeproj */,
+				9A6B7BB32757D4B900DB33D9 /* _app_simple_form.xcodeproj */,
+				9A6B7BAA2757D4B800DB33D9 /* _app_core_note.xcodeproj */,
+				9A6B7BA12757D4B800DB33D9 /* _app_core_chronometer.xcodeproj */,
+				9A6B7B9B2757D4B800DB33D9 /* hello.xcodeproj */,
+				9A6B7B952757D4B700DB33D9 /* _app_veriwell_keyboard.xcodeproj */,
+				9A6B7B8F2757D4B700DB33D9 /* readlines.xcodeproj */,
+				9A6B7B892757D4B600DB33D9 /* _app_core_photo.xcodeproj */,
+				9A6B7B832757D4B600DB33D9 /* helloearth.xcodeproj */,
+				9A6B7B7A2757D4B600DB33D9 /* _app_simple_shader.xcodeproj */,
+				9A6B7B712757D4B500DB33D9 /* _app_shader.xcodeproj */,
+				9A6B7B682757D4B500DB33D9 /* _app_core_resident_desktop.xcodeproj */,
+				9A6B7B5F2757D4B400DB33D9 /* _app_core_projection.xcodeproj */,
+				9A6B7B562757D4B400DB33D9 /* _game_tetris.xcodeproj */,
+				9A6B7B4D2757D4B300DB33D9 /* _app_core_clockverse.xcodeproj */,
+				9A6B7B442757D4B300DB33D9 /* _app_complex_drawing.xcodeproj */,
+				9A6B7B3E2757D4B300DB33D9 /* application_build_helper.xcodeproj */,
+				9A6B7B382757D4B200DB33D9 /* _app_veriwell_verisimplevideo.xcodeproj */,
+				9A6B7B2F2757D4B200DB33D9 /* _app_core_flag.xcodeproj */,
+				9A6B7B262757D4B200DB33D9 /* _game_coincube.xcodeproj */,
+				9A6B7B1D2757D4B100DB33D9 /* _app_core_file_manager.xcodeproj */,
+				9A6B7B142757D4B100DB33D9 /* _app_app.xcodeproj */,
+				9A6B7B0B2757D4B000DB33D9 /* _game_arkanoid.xcodeproj */,
+				9A6B7B022757D4B000DB33D9 /* _app_cidadedecuritiba_alphaclock.xcodeproj */,
+				9A6B7AF92757D4AF00DB33D9 /* _app_complex_form.xcodeproj */,
+				9A6B7AF32757D4AF00DB33D9 /* hellosolarsystem.xcodeproj */,
+				9A6B7AEA2757D4AF00DB33D9 /* _game_game_of_life.xcodeproj */,
+				9A6B7AE12757D4AE00DB33D9 /* _app_core_hash_hub.xcodeproj */,
+				9A6B7AD82757D4AE00DB33D9 /* _app_core_todo.xcodeproj */,
+				9A6B7ACF2757D4AD00DB33D9 /* _app_simple_networking_application.xcodeproj */,
+				9A6B7AC62757D4AD00DB33D9 /* _game_light.xcodeproj */,
+				9A6B7ABD2757D4AD00DB33D9 /* _app_simple_drawing.xcodeproj */,
+				9A6B7AB72757D4AC00DB33D9 /* _app_core_picture.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		9A6B7AB82757D4AC00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7ABC2757D4AC00DB33D9 /* _app_core_picture.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7ABE2757D4AD00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7AC32757D4AD00DB33D9 /* _app_simple_drawing.app */,
+				9A6B7AC52757D4AD00DB33D9 /* _app_simple_drawing_Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7AC72757D4AD00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7ACC2757D4AD00DB33D9 /* _game_light.app */,
+				9A6B7ACE2757D4AD00DB33D9 /* light Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7AD02757D4AD00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7AD52757D4AE00DB33D9 /* _app_simple_webserver.app */,
+				9A6B7AD72757D4AE00DB33D9 /* _app_simple_networking_application_Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7AD92757D4AE00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7ADE2757D4AE00DB33D9 /* _app_core_todo.app */,
+				9A6B7AE02757D4AE00DB33D9 /* _app_core_todo_Testing.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7AE22757D4AE00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7AE72757D4AF00DB33D9 /* app_core_hash_hub.app */,
+				9A6B7AE92757D4AF00DB33D9 /* _app_core_hash_hub_Testing.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7AEB2757D4AF00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7AF02757D4AF00DB33D9 /* _game_game_of_life.app */,
+				9A6B7AF22757D4AF00DB33D9 /* Game of Life Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7AF42757D4AF00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7AF82757D4AF00DB33D9 /* hellosolarsystem */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7AFA2757D4AF00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7AFF2757D4B000DB33D9 /* _app_complex_form.app */,
+				9A6B7B012757D4B000DB33D9 /* Hello Multiverse!!Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B032757D4B000DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B082757D4B000DB33D9 /* _app_cidadedecuritiba_alphaclock.app */,
+				9A6B7B0A2757D4B000DB33D9 /* alphaclockTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B0C2757D4B000DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B112757D4B100DB33D9 /* _game_arkanoid.app */,
+				9A6B7B132757D4B100DB33D9 /* Tic Tac Toe Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B152757D4B100DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B1A2757D4B100DB33D9 /* _app_app.app */,
+				9A6B7B1C2757D4B100DB33D9 /* Hello Multiverse!!Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B1E2757D4B100DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B232757D4B100DB33D9 /* _app_core_file_manager.app */,
+				9A6B7B252757D4B100DB33D9 /* file_manager.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B272757D4B200DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B2C2757D4B200DB33D9 /* _game_coincube.app */,
+				9A6B7B2E2757D4B200DB33D9 /* coincube Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B302757D4B200DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B352757D4B200DB33D9 /* _app_core_flag.app */,
+				9A6B7B372757D4B200DB33D9 /* flagTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B392757D4B200DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B3D2757D4B300DB33D9 /* app_veriwell_verisimplevideo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B3F2757D4B300DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B432757D4B300DB33D9 /* application_build_helper */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B452757D4B300DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B4A2757D4B300DB33D9 /* _app_complex_drawing.app */,
+				9A6B7B4C2757D4B300DB33D9 /* Hello Multiverse!!Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B4E2757D4B300DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B532757D4B400DB33D9 /* _app_core_clockverse.app */,
+				9A6B7B552757D4B400DB33D9 /* clockverseTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B572757D4B400DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B5C2757D4B400DB33D9 /* _game_tetris.app */,
+				9A6B7B5E2757D4B400DB33D9 /* Tic Tac Toe Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B602757D4B400DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B652757D4B500DB33D9 /* _app_core_projection.app */,
+				9A6B7B672757D4B500DB33D9 /* projectionTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B692757D4B500DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B6E2757D4B500DB33D9 /* _app_core_resident_desktop.app */,
+				9A6B7B702757D4B500DB33D9 /* Hello Multiverse!!Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B722757D4B500DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B772757D4B600DB33D9 /* _app_shader.app */,
+				9A6B7B792757D4B600DB33D9 /* Hello Multiverse!!Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B7B2757D4B600DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B802757D4B600DB33D9 /* _app_simple_shader.app */,
+				9A6B7B822757D4B600DB33D9 /* _app_simple_shader_Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B842757D4B600DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B882757D4B600DB33D9 /* helloearth */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B8A2757D4B600DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B8E2757D4B700DB33D9 /* _app_core_photo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B902757D4B700DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B942757D4B700DB33D9 /* readlines */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B962757D4B700DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7B9A2757D4B800DB33D9 /* _app_veriwell_keyboard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7B9C2757D4B800DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7BA02757D4B800DB33D9 /* hello */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7BA22757D4B800DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7BA72757D4B800DB33D9 /* _app_core_chronometer.app */,
+				9A6B7BA92757D4B800DB33D9 /* timerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7BAB2757D4B800DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7BB02757D4B900DB33D9 /* _app_core_note.app */,
+				9A6B7BB22757D4B900DB33D9 /* verifile.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7BB42757D4B900DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7BB92757D4B900DB33D9 /* _app_simple_form.app */,
+				9A6B7BBB2757D4B900DB33D9 /* _app_simple_form_Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7BBD2757D4B900DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7BC22757D4BA00DB33D9 /* _game_pacman.app */,
+				9A6B7BC42757D4BA00DB33D9 /* Tic Tac Toe Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7BC62757D4BA00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7BCB2757D4BA00DB33D9 /* _app_core_audioaura.app */,
+				9A6B7BCD2757D4BA00DB33D9 /* audioTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7BCF2757D4BA00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7BD42757D4BA00DB33D9 /* _game_arch001.app */,
+				9A6B7BD62757D4BA00DB33D9 /* arch001 Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7BD82757D4BA00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7BDD2757D4BB00DB33D9 /* _app_core_addressbook.app */,
+				9A6B7BDF2757D4BB00DB33D9 /* addressbookTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7BE12757D4BB00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7BE62757D4BB00DB33D9 /* _app_core_weather.app */,
+				9A6B7BE82757D4BB00DB33D9 /* weatherTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7BEA2757D4BB00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7BEF2757D4BC00DB33D9 /* _app_simple_notify_drawing.app */,
+				9A6B7BF12757D4BC00DB33D9 /* _app_simple_notify_drawing_Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7BF32757D4BC00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7BF82757D4BC00DB33D9 /* _app_core_desk.app */,
+				9A6B7BFA2757D4BC00DB33D9 /* Hello Multiverse!!Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7BFC2757D4BC00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C012757D4BD00DB33D9 /* _app_core_auratype.app */,
+				9A6B7C032757D4BD00DB33D9 /* auratypeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7C052757D4BD00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C0A2757D4BD00DB33D9 /* _app_core_clockverse_no_audio.app */,
+				9A6B7C0C2757D4BD00DB33D9 /* clockverseTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7C0E2757D4BD00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C132757D4BF00DB33D9 /* _app_message_box.app */,
+				9A6B7C152757D4BF00DB33D9 /* Hello Multiverse!!Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7C172757D4BF00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C1B2757D4BF00DB33D9 /* app_veriwell_waven.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7C1D2757D4BF00DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C222757D4C000DB33D9 /* _app_core_auraclick.app */,
+				9A6B7C242757D4C000DB33D9 /* auraclickTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7C262757D4C000DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C2B2757D4C000DB33D9 /* _game_sokoban.app */,
+				9A6B7C2D2757D4C000DB33D9 /* Tic Tac Toe Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7C2F2757D4C000DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C332757D4C100DB33D9 /* app_veriwell_musical_player_lite.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7C352757D4C100DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C3A2757D4C100DB33D9 /* _game_tictactoe.app */,
+				9A6B7C3C2757D4C100DB33D9 /* Tic Tac Toe Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7C3E2757D4C200DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C432757D4C200DB33D9 /* _app_core_hellomultiverse.app */,
+				9A6B7C452757D4C200DB33D9 /* hellomultiverseTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7C472757D4C200DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C4C2757D4C200DB33D9 /* _app_simple_application.app */,
+				9A6B7C4E2757D4C200DB33D9 /* _app_simple_application_Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7C502757D4C300DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C552757D4C300DB33D9 /* _app_core_timer.app */,
+				9A6B7C572757D4C300DB33D9 /* timerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A6B7C592757D4C300DB33D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B7C5D2757D4C300DB33D9 /* _app_veriwell_musical_player.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		9A6B7AB12757D43B00DB33D9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					9A6B7C5E2757D4EC00DB33D9 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 9A6B7AB42757D43B00DB33D9 /* Build configuration list for PBXProject "mac-all" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A6B7AB02757D43B00DB33D9;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9A6B7B152757D4B100DB33D9 /* Products */;
+					ProjectRef = 9A6B7B142757D4B100DB33D9 /* _app_app.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B032757D4B000DB33D9 /* Products */;
+					ProjectRef = 9A6B7B022757D4B000DB33D9 /* _app_cidadedecuritiba_alphaclock.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B452757D4B300DB33D9 /* Products */;
+					ProjectRef = 9A6B7B442757D4B300DB33D9 /* _app_complex_drawing.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7AFA2757D4AF00DB33D9 /* Products */;
+					ProjectRef = 9A6B7AF92757D4AF00DB33D9 /* _app_complex_form.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7BD82757D4BA00DB33D9 /* Products */;
+					ProjectRef = 9A6B7BD72757D4BA00DB33D9 /* _app_core_addressbook.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7BC62757D4BA00DB33D9 /* Products */;
+					ProjectRef = 9A6B7BC52757D4BA00DB33D9 /* _app_core_audioaura.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7C1D2757D4BF00DB33D9 /* Products */;
+					ProjectRef = 9A6B7C1C2757D4BF00DB33D9 /* _app_core_auraclick.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7BFC2757D4BC00DB33D9 /* Products */;
+					ProjectRef = 9A6B7BFB2757D4BC00DB33D9 /* _app_core_auratype.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7BA22757D4B800DB33D9 /* Products */;
+					ProjectRef = 9A6B7BA12757D4B800DB33D9 /* _app_core_chronometer.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B4E2757D4B300DB33D9 /* Products */;
+					ProjectRef = 9A6B7B4D2757D4B300DB33D9 /* _app_core_clockverse.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7C052757D4BD00DB33D9 /* Products */;
+					ProjectRef = 9A6B7C042757D4BD00DB33D9 /* _app_core_clockverse_no_audio.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7BF32757D4BC00DB33D9 /* Products */;
+					ProjectRef = 9A6B7BF22757D4BC00DB33D9 /* _app_core_desk.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B1E2757D4B100DB33D9 /* Products */;
+					ProjectRef = 9A6B7B1D2757D4B100DB33D9 /* _app_core_file_manager.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B302757D4B200DB33D9 /* Products */;
+					ProjectRef = 9A6B7B2F2757D4B200DB33D9 /* _app_core_flag.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7AE22757D4AE00DB33D9 /* Products */;
+					ProjectRef = 9A6B7AE12757D4AE00DB33D9 /* _app_core_hash_hub.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7C3E2757D4C200DB33D9 /* Products */;
+					ProjectRef = 9A6B7C3D2757D4C200DB33D9 /* _app_core_hellomultiverse.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7BAB2757D4B800DB33D9 /* Products */;
+					ProjectRef = 9A6B7BAA2757D4B800DB33D9 /* _app_core_note.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B8A2757D4B600DB33D9 /* Products */;
+					ProjectRef = 9A6B7B892757D4B600DB33D9 /* _app_core_photo.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7AB82757D4AC00DB33D9 /* Products */;
+					ProjectRef = 9A6B7AB72757D4AC00DB33D9 /* _app_core_picture.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B602757D4B400DB33D9 /* Products */;
+					ProjectRef = 9A6B7B5F2757D4B400DB33D9 /* _app_core_projection.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B692757D4B500DB33D9 /* Products */;
+					ProjectRef = 9A6B7B682757D4B500DB33D9 /* _app_core_resident_desktop.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7C502757D4C300DB33D9 /* Products */;
+					ProjectRef = 9A6B7C4F2757D4C300DB33D9 /* _app_core_timer.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7AD92757D4AE00DB33D9 /* Products */;
+					ProjectRef = 9A6B7AD82757D4AE00DB33D9 /* _app_core_todo.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7BE12757D4BB00DB33D9 /* Products */;
+					ProjectRef = 9A6B7BE02757D4BB00DB33D9 /* _app_core_weather.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7C0E2757D4BD00DB33D9 /* Products */;
+					ProjectRef = 9A6B7C0D2757D4BD00DB33D9 /* _app_message_box.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B722757D4B500DB33D9 /* Products */;
+					ProjectRef = 9A6B7B712757D4B500DB33D9 /* _app_shader.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7C472757D4C200DB33D9 /* Products */;
+					ProjectRef = 9A6B7C462757D4C200DB33D9 /* _app_simple_application.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7ABE2757D4AD00DB33D9 /* Products */;
+					ProjectRef = 9A6B7ABD2757D4AD00DB33D9 /* _app_simple_drawing.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7BB42757D4B900DB33D9 /* Products */;
+					ProjectRef = 9A6B7BB32757D4B900DB33D9 /* _app_simple_form.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7AD02757D4AD00DB33D9 /* Products */;
+					ProjectRef = 9A6B7ACF2757D4AD00DB33D9 /* _app_simple_networking_application.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7BEA2757D4BB00DB33D9 /* Products */;
+					ProjectRef = 9A6B7BE92757D4BB00DB33D9 /* _app_simple_notify_drawing.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B7B2757D4B600DB33D9 /* Products */;
+					ProjectRef = 9A6B7B7A2757D4B600DB33D9 /* _app_simple_shader.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B962757D4B700DB33D9 /* Products */;
+					ProjectRef = 9A6B7B952757D4B700DB33D9 /* _app_veriwell_keyboard.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7C592757D4C300DB33D9 /* Products */;
+					ProjectRef = 9A6B7C582757D4C300DB33D9 /* _app_veriwell_musical_player.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7C2F2757D4C000DB33D9 /* Products */;
+					ProjectRef = 9A6B7C2E2757D4C000DB33D9 /* _app_veriwell_musical_player_lite.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B392757D4B200DB33D9 /* Products */;
+					ProjectRef = 9A6B7B382757D4B200DB33D9 /* _app_veriwell_verisimplevideo.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7C172757D4BF00DB33D9 /* Products */;
+					ProjectRef = 9A6B7C162757D4BF00DB33D9 /* _app_veriwell_waven.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7BCF2757D4BA00DB33D9 /* Products */;
+					ProjectRef = 9A6B7BCE2757D4BA00DB33D9 /* _game_arch001.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B0C2757D4B000DB33D9 /* Products */;
+					ProjectRef = 9A6B7B0B2757D4B000DB33D9 /* _game_arkanoid.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B272757D4B200DB33D9 /* Products */;
+					ProjectRef = 9A6B7B262757D4B200DB33D9 /* _game_coincube.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7AEB2757D4AF00DB33D9 /* Products */;
+					ProjectRef = 9A6B7AEA2757D4AF00DB33D9 /* _game_game_of_life.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7AC72757D4AD00DB33D9 /* Products */;
+					ProjectRef = 9A6B7AC62757D4AD00DB33D9 /* _game_light.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7BBD2757D4B900DB33D9 /* Products */;
+					ProjectRef = 9A6B7BBC2757D4B900DB33D9 /* _game_pacman.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7C262757D4C000DB33D9 /* Products */;
+					ProjectRef = 9A6B7C252757D4C000DB33D9 /* _game_sokoban.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B572757D4B400DB33D9 /* Products */;
+					ProjectRef = 9A6B7B562757D4B400DB33D9 /* _game_tetris.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7C352757D4C100DB33D9 /* Products */;
+					ProjectRef = 9A6B7C342757D4C100DB33D9 /* _game_tictactoe.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B3F2757D4B300DB33D9 /* Products */;
+					ProjectRef = 9A6B7B3E2757D4B300DB33D9 /* application_build_helper.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B9C2757D4B800DB33D9 /* Products */;
+					ProjectRef = 9A6B7B9B2757D4B800DB33D9 /* hello.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B842757D4B600DB33D9 /* Products */;
+					ProjectRef = 9A6B7B832757D4B600DB33D9 /* helloearth.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7AF42757D4AF00DB33D9 /* Products */;
+					ProjectRef = 9A6B7AF32757D4AF00DB33D9 /* hellosolarsystem.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A6B7B902757D4B700DB33D9 /* Products */;
+					ProjectRef = 9A6B7B8F2757D4B700DB33D9 /* readlines.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				9A6B7C5E2757D4EC00DB33D9 /* agreggate-all */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9A6B7ABC2757D4AC00DB33D9 /* _app_core_picture.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_picture.app;
+			remoteRef = 9A6B7ABB2757D4AC00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7AC32757D4AD00DB33D9 /* _app_simple_drawing.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_simple_drawing.app;
+			remoteRef = 9A6B7AC22757D4AD00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7AC52757D4AD00DB33D9 /* _app_simple_drawing_Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = _app_simple_drawing_Tests.xctest;
+			remoteRef = 9A6B7AC42757D4AD00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7ACC2757D4AD00DB33D9 /* _game_light.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _game_light.app;
+			remoteRef = 9A6B7ACB2757D4AD00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7ACE2757D4AD00DB33D9 /* light Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "light Tests.xctest";
+			remoteRef = 9A6B7ACD2757D4AD00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7AD52757D4AE00DB33D9 /* _app_simple_webserver.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_simple_webserver.app;
+			remoteRef = 9A6B7AD42757D4AE00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7AD72757D4AE00DB33D9 /* _app_simple_networking_application_Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = _app_simple_networking_application_Tests.xctest;
+			remoteRef = 9A6B7AD62757D4AE00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7ADE2757D4AE00DB33D9 /* _app_core_todo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_todo.app;
+			remoteRef = 9A6B7ADD2757D4AE00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7AE02757D4AE00DB33D9 /* _app_core_todo_Testing.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = _app_core_todo_Testing.xctest;
+			remoteRef = 9A6B7ADF2757D4AE00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7AE72757D4AF00DB33D9 /* app_core_hash_hub.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = app_core_hash_hub.app;
+			remoteRef = 9A6B7AE62757D4AF00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7AE92757D4AF00DB33D9 /* _app_core_hash_hub_Testing.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = _app_core_hash_hub_Testing.xctest;
+			remoteRef = 9A6B7AE82757D4AF00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7AF02757D4AF00DB33D9 /* _game_game_of_life.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _game_game_of_life.app;
+			remoteRef = 9A6B7AEF2757D4AF00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7AF22757D4AF00DB33D9 /* Game of Life Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Game of Life Tests.xctest";
+			remoteRef = 9A6B7AF12757D4AF00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7AF82757D4AF00DB33D9 /* hellosolarsystem */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = hellosolarsystem;
+			remoteRef = 9A6B7AF72757D4AF00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7AFF2757D4B000DB33D9 /* _app_complex_form.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_complex_form.app;
+			remoteRef = 9A6B7AFE2757D4B000DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B012757D4B000DB33D9 /* Hello Multiverse!!Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Hello Multiverse!!Tests.xctest";
+			remoteRef = 9A6B7B002757D4B000DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B082757D4B000DB33D9 /* _app_cidadedecuritiba_alphaclock.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_cidadedecuritiba_alphaclock.app;
+			remoteRef = 9A6B7B072757D4B000DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B0A2757D4B000DB33D9 /* alphaclockTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = alphaclockTests.xctest;
+			remoteRef = 9A6B7B092757D4B000DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B112757D4B100DB33D9 /* _game_arkanoid.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _game_arkanoid.app;
+			remoteRef = 9A6B7B102757D4B100DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B132757D4B100DB33D9 /* Tic Tac Toe Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Tic Tac Toe Tests.xctest";
+			remoteRef = 9A6B7B122757D4B100DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B1A2757D4B100DB33D9 /* _app_app.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_app.app;
+			remoteRef = 9A6B7B192757D4B100DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B1C2757D4B100DB33D9 /* Hello Multiverse!!Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Hello Multiverse!!Tests.xctest";
+			remoteRef = 9A6B7B1B2757D4B100DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B232757D4B100DB33D9 /* _app_core_file_manager.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_file_manager.app;
+			remoteRef = 9A6B7B222757D4B100DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B252757D4B100DB33D9 /* file_manager.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = file_manager.xctest;
+			remoteRef = 9A6B7B242757D4B100DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B2C2757D4B200DB33D9 /* _game_coincube.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _game_coincube.app;
+			remoteRef = 9A6B7B2B2757D4B200DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B2E2757D4B200DB33D9 /* coincube Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "coincube Tests.xctest";
+			remoteRef = 9A6B7B2D2757D4B200DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B352757D4B200DB33D9 /* _app_core_flag.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_flag.app;
+			remoteRef = 9A6B7B342757D4B200DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B372757D4B200DB33D9 /* flagTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = flagTests.xctest;
+			remoteRef = 9A6B7B362757D4B200DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B3D2757D4B300DB33D9 /* app_veriwell_verisimplevideo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = app_veriwell_verisimplevideo.app;
+			remoteRef = 9A6B7B3C2757D4B300DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B432757D4B300DB33D9 /* application_build_helper */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = application_build_helper;
+			remoteRef = 9A6B7B422757D4B300DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B4A2757D4B300DB33D9 /* _app_complex_drawing.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_complex_drawing.app;
+			remoteRef = 9A6B7B492757D4B300DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B4C2757D4B300DB33D9 /* Hello Multiverse!!Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Hello Multiverse!!Tests.xctest";
+			remoteRef = 9A6B7B4B2757D4B300DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B532757D4B400DB33D9 /* _app_core_clockverse.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_clockverse.app;
+			remoteRef = 9A6B7B522757D4B400DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B552757D4B400DB33D9 /* clockverseTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = clockverseTests.xctest;
+			remoteRef = 9A6B7B542757D4B400DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B5C2757D4B400DB33D9 /* _game_tetris.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _game_tetris.app;
+			remoteRef = 9A6B7B5B2757D4B400DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B5E2757D4B400DB33D9 /* Tic Tac Toe Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Tic Tac Toe Tests.xctest";
+			remoteRef = 9A6B7B5D2757D4B400DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B652757D4B500DB33D9 /* _app_core_projection.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_projection.app;
+			remoteRef = 9A6B7B642757D4B500DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B672757D4B500DB33D9 /* projectionTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = projectionTests.xctest;
+			remoteRef = 9A6B7B662757D4B500DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B6E2757D4B500DB33D9 /* _app_core_resident_desktop.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_resident_desktop.app;
+			remoteRef = 9A6B7B6D2757D4B500DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B702757D4B500DB33D9 /* Hello Multiverse!!Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Hello Multiverse!!Tests.xctest";
+			remoteRef = 9A6B7B6F2757D4B500DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B772757D4B600DB33D9 /* _app_shader.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_shader.app;
+			remoteRef = 9A6B7B762757D4B600DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B792757D4B600DB33D9 /* Hello Multiverse!!Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Hello Multiverse!!Tests.xctest";
+			remoteRef = 9A6B7B782757D4B600DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B802757D4B600DB33D9 /* _app_simple_shader.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_simple_shader.app;
+			remoteRef = 9A6B7B7F2757D4B600DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B822757D4B600DB33D9 /* _app_simple_shader_Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = _app_simple_shader_Tests.xctest;
+			remoteRef = 9A6B7B812757D4B600DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B882757D4B600DB33D9 /* helloearth */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = helloearth;
+			remoteRef = 9A6B7B872757D4B600DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B8E2757D4B700DB33D9 /* _app_core_photo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_photo.app;
+			remoteRef = 9A6B7B8D2757D4B700DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B942757D4B700DB33D9 /* readlines */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = readlines;
+			remoteRef = 9A6B7B932757D4B700DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7B9A2757D4B800DB33D9 /* _app_veriwell_keyboard.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_veriwell_keyboard.app;
+			remoteRef = 9A6B7B992757D4B800DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BA02757D4B800DB33D9 /* hello */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = hello;
+			remoteRef = 9A6B7B9F2757D4B800DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BA72757D4B800DB33D9 /* _app_core_chronometer.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_chronometer.app;
+			remoteRef = 9A6B7BA62757D4B800DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BA92757D4B800DB33D9 /* timerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = timerTests.xctest;
+			remoteRef = 9A6B7BA82757D4B800DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BB02757D4B900DB33D9 /* _app_core_note.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_note.app;
+			remoteRef = 9A6B7BAF2757D4B900DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BB22757D4B900DB33D9 /* verifile.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = verifile.xctest;
+			remoteRef = 9A6B7BB12757D4B900DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BB92757D4B900DB33D9 /* _app_simple_form.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_simple_form.app;
+			remoteRef = 9A6B7BB82757D4B900DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BBB2757D4B900DB33D9 /* _app_simple_form_Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = _app_simple_form_Tests.xctest;
+			remoteRef = 9A6B7BBA2757D4B900DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BC22757D4BA00DB33D9 /* _game_pacman.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _game_pacman.app;
+			remoteRef = 9A6B7BC12757D4BA00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BC42757D4BA00DB33D9 /* Tic Tac Toe Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Tic Tac Toe Tests.xctest";
+			remoteRef = 9A6B7BC32757D4BA00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BCB2757D4BA00DB33D9 /* _app_core_audioaura.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_audioaura.app;
+			remoteRef = 9A6B7BCA2757D4BA00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BCD2757D4BA00DB33D9 /* audioTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = audioTests.xctest;
+			remoteRef = 9A6B7BCC2757D4BA00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BD42757D4BA00DB33D9 /* _game_arch001.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _game_arch001.app;
+			remoteRef = 9A6B7BD32757D4BA00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BD62757D4BA00DB33D9 /* arch001 Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "arch001 Tests.xctest";
+			remoteRef = 9A6B7BD52757D4BA00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BDD2757D4BB00DB33D9 /* _app_core_addressbook.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_addressbook.app;
+			remoteRef = 9A6B7BDC2757D4BB00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BDF2757D4BB00DB33D9 /* addressbookTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = addressbookTests.xctest;
+			remoteRef = 9A6B7BDE2757D4BB00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BE62757D4BB00DB33D9 /* _app_core_weather.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_weather.app;
+			remoteRef = 9A6B7BE52757D4BB00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BE82757D4BB00DB33D9 /* weatherTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = weatherTests.xctest;
+			remoteRef = 9A6B7BE72757D4BB00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BEF2757D4BC00DB33D9 /* _app_simple_notify_drawing.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_simple_notify_drawing.app;
+			remoteRef = 9A6B7BEE2757D4BC00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BF12757D4BC00DB33D9 /* _app_simple_notify_drawing_Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = _app_simple_notify_drawing_Tests.xctest;
+			remoteRef = 9A6B7BF02757D4BC00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BF82757D4BC00DB33D9 /* _app_core_desk.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_desk.app;
+			remoteRef = 9A6B7BF72757D4BC00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7BFA2757D4BC00DB33D9 /* Hello Multiverse!!Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Hello Multiverse!!Tests.xctest";
+			remoteRef = 9A6B7BF92757D4BC00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C012757D4BD00DB33D9 /* _app_core_auratype.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_auratype.app;
+			remoteRef = 9A6B7C002757D4BD00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C032757D4BD00DB33D9 /* auratypeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = auratypeTests.xctest;
+			remoteRef = 9A6B7C022757D4BD00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C0A2757D4BD00DB33D9 /* _app_core_clockverse_no_audio.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_clockverse_no_audio.app;
+			remoteRef = 9A6B7C092757D4BD00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C0C2757D4BD00DB33D9 /* clockverseTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = clockverseTests.xctest;
+			remoteRef = 9A6B7C0B2757D4BD00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C132757D4BF00DB33D9 /* _app_message_box.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_message_box.app;
+			remoteRef = 9A6B7C122757D4BF00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C152757D4BF00DB33D9 /* Hello Multiverse!!Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Hello Multiverse!!Tests.xctest";
+			remoteRef = 9A6B7C142757D4BF00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C1B2757D4BF00DB33D9 /* app_veriwell_waven.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = app_veriwell_waven.app;
+			remoteRef = 9A6B7C1A2757D4BF00DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C222757D4C000DB33D9 /* _app_core_auraclick.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_auraclick.app;
+			remoteRef = 9A6B7C212757D4C000DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C242757D4C000DB33D9 /* auraclickTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = auraclickTests.xctest;
+			remoteRef = 9A6B7C232757D4C000DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C2B2757D4C000DB33D9 /* _game_sokoban.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _game_sokoban.app;
+			remoteRef = 9A6B7C2A2757D4C000DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C2D2757D4C000DB33D9 /* Tic Tac Toe Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Tic Tac Toe Tests.xctest";
+			remoteRef = 9A6B7C2C2757D4C000DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C332757D4C100DB33D9 /* app_veriwell_musical_player_lite.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = app_veriwell_musical_player_lite.app;
+			remoteRef = 9A6B7C322757D4C100DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C3A2757D4C100DB33D9 /* _game_tictactoe.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _game_tictactoe.app;
+			remoteRef = 9A6B7C392757D4C100DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C3C2757D4C100DB33D9 /* Tic Tac Toe Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Tic Tac Toe Tests.xctest";
+			remoteRef = 9A6B7C3B2757D4C100DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C432757D4C200DB33D9 /* _app_core_hellomultiverse.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_hellomultiverse.app;
+			remoteRef = 9A6B7C422757D4C200DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C452757D4C200DB33D9 /* hellomultiverseTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = hellomultiverseTests.xctest;
+			remoteRef = 9A6B7C442757D4C200DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C4C2757D4C200DB33D9 /* _app_simple_application.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_simple_application.app;
+			remoteRef = 9A6B7C4B2757D4C200DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C4E2757D4C200DB33D9 /* _app_simple_application_Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = _app_simple_application_Tests.xctest;
+			remoteRef = 9A6B7C4D2757D4C200DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C552757D4C300DB33D9 /* _app_core_timer.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_core_timer.app;
+			remoteRef = 9A6B7C542757D4C300DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C572757D4C300DB33D9 /* timerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = timerTests.xctest;
+			remoteRef = 9A6B7C562757D4C300DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A6B7C5D2757D4C300DB33D9 /* _app_veriwell_musical_player.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = _app_veriwell_musical_player.app;
+			remoteRef = 9A6B7C5C2757D4C300DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXTargetDependency section */
+		9A6B7C632757D52A00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_veriwell_musical_player;
+			targetProxy = 9A6B7C622757D52A00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C652757D52A00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_timer;
+			targetProxy = 9A6B7C642757D52A00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C672757D52A00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_simple_application;
+			targetProxy = 9A6B7C662757D52A00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C692757D52A00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_hellomultiverse;
+			targetProxy = 9A6B7C682757D52A00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C6B2757D52A00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_auraclick;
+			targetProxy = 9A6B7C6A2757D52A00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C6D2757D52A00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_message_box;
+			targetProxy = 9A6B7C6C2757D52A00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C6F2757D52A00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_clockverse_no_audio;
+			targetProxy = 9A6B7C6E2757D52A00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C712757D52A00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_auratype;
+			targetProxy = 9A6B7C702757D52A00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C732757D52A00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_desk;
+			targetProxy = 9A6B7C722757D52A00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C752757D52A00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_simple_notify_drawing;
+			targetProxy = 9A6B7C742757D52A00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C772757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_weather;
+			targetProxy = 9A6B7C762757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C792757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_addressbook;
+			targetProxy = 9A6B7C782757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C7B2757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_audioaura;
+			targetProxy = 9A6B7C7A2757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C7D2757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_note;
+			targetProxy = 9A6B7C7C2757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C7F2757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_chronometer;
+			targetProxy = 9A6B7C7E2757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C812757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_photo;
+			targetProxy = 9A6B7C802757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C832757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_resident_desktop;
+			targetProxy = 9A6B7C822757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C852757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_projection;
+			targetProxy = 9A6B7C842757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C872757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_clockverse;
+			targetProxy = 9A6B7C862757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C892757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_flag;
+			targetProxy = 9A6B7C882757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C8B2757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_file_manager;
+			targetProxy = 9A6B7C8A2757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C8D2757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_hash_hub;
+			targetProxy = 9A6B7C8C2757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C8F2757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_todo;
+			targetProxy = 9A6B7C8E2757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C912757D58B00DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_core_picture;
+			targetProxy = 9A6B7C902757D58B00DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C932757D5B400DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _game_sokoban;
+			targetProxy = 9A6B7C922757D5B400DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C952757D5B400DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _game_arch001;
+			targetProxy = 9A6B7C942757D5B400DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C972757D5B400DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _game_pacman;
+			targetProxy = 9A6B7C962757D5B400DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C992757D5B400DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _game_tetris;
+			targetProxy = 9A6B7C982757D5B400DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C9B2757D5B400DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _game_coincube;
+			targetProxy = 9A6B7C9A2757D5B400DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C9D2757D5B400DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _game_arkanoid;
+			targetProxy = 9A6B7C9C2757D5B400DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7C9F2757D5B400DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _game_light;
+			targetProxy = 9A6B7C9E2757D5B400DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7CA12757D5B400DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _game_game_of_life;
+			targetProxy = 9A6B7CA02757D5B400DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7CA32757D5D600DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_simple_form;
+			targetProxy = 9A6B7CA22757D5D600DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7CA52757D5D600DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_simple_shader;
+			targetProxy = 9A6B7CA42757D5D600DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7CA72757D60900DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_simple_networking_application;
+			targetProxy = 9A6B7CA62757D60900DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7CA92757D60900DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_simple_drawing;
+			targetProxy = 9A6B7CA82757D60900DB33D9 /* PBXContainerItemProxy */;
+		};
+		9A6B7CAB2757D65400DB33D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = _app_veriwell_keyboard;
+			targetProxy = 9A6B7CAA2757D65400DB33D9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9A6B7AB52757D43B00DB33D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		9A6B7AB62757D43B00DB33D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		9A6B7C602757D4ED00DB33D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L8N5V6TZE5;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9A6B7C612757D4ED00DB33D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L8N5V6TZE5;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A6B7AB42757D43B00DB33D9 /* Build configuration list for PBXProject "mac-all" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A6B7AB52757D43B00DB33D9 /* Debug */,
+				9A6B7AB62757D43B00DB33D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A6B7C5F2757D4ED00DB33D9 /* Build configuration list for PBXAggregateTarget "agreggate-all" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A6B7C602757D4ED00DB33D9 /* Debug */,
+				9A6B7C612757D4ED00DB33D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A6B7AB12757D43B00DB33D9 /* Project object */;
+}
