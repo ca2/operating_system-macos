@@ -946,6 +946,27 @@
 			remoteGlobalIDString = 9A5FDF942689DAFB003682E6;
 			remoteInfo = _app_veriwell_keyboard;
 		};
+		9AF6DF27275EE07A00CBB275 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AF6DF0A275EE07A00CBB275 /* _app_core_store.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9AEB75A316F78DF10085103B;
+			remoteInfo = app_core_store;
+		};
+		9AF6DF29275EE07A00CBB275 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AF6DF0A275EE07A00CBB275 /* _app_core_store.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9AE24E8A1904CFFD001AEFFB;
+			remoteInfo = ios_app_core_store;
+		};
+		9AF6DF2B275EE07A00CBB275 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AF6DF0A275EE07A00CBB275 /* _app_core_store.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9AE24E991904CFFD001AEFFB;
+			remoteInfo = app_core_store_iosTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -1000,6 +1021,7 @@
 		9A6B7C462757D4C200DB33D9 /* _app_simple_application.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_simple_application.xcodeproj; path = "../../../source/app-simple/application/_app_simple_application.xcodeproj"; sourceTree = "<group>"; };
 		9A6B7C4F2757D4C300DB33D9 /* _app_core_timer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_timer.xcodeproj; path = "../../../source/app-core/timer/_app_core_timer.xcodeproj"; sourceTree = "<group>"; };
 		9A6B7C582757D4C300DB33D9 /* _app_veriwell_musical_player.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_veriwell_musical_player.xcodeproj; path = "../../../source/app-veriwell/musical_player/_app_veriwell_musical_player.xcodeproj"; sourceTree = "<group>"; };
+		9AF6DF0A275EE07A00CBB275 /* _app_core_store.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _app_core_store.xcodeproj; path = "../../../source/app-core/store/_app_core_store.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -1028,6 +1050,7 @@
 				9A6B7BB32757D4B900DB33D9 /* _app_simple_form.xcodeproj */,
 				9A6B7BAA2757D4B800DB33D9 /* _app_core_note.xcodeproj */,
 				9A6B7BA12757D4B800DB33D9 /* _app_core_chronometer.xcodeproj */,
+				9AF6DF0A275EE07A00CBB275 /* _app_core_store.xcodeproj */,
 				9A6B7B9B2757D4B800DB33D9 /* hello.xcodeproj */,
 				9A6B7B952757D4B700DB33D9 /* _app_veriwell_keyboard.xcodeproj */,
 				9A6B7B8F2757D4B700DB33D9 /* readlines.xcodeproj */,
@@ -1507,6 +1530,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9AF6DF0B275EE07A00CBB275 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AF6DF28275EE07A00CBB275 /* libapp_core_store.dylib */,
+				9AF6DF2A275EE07A00CBB275 /* libapp_core_store.a */,
+				9AF6DF2C275EE07A00CBB275 /* app_core_store_iosTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXProject section */
@@ -1615,6 +1648,10 @@
 				{
 					ProductGroup = 9A6B7B692757D4B500DB33D9 /* Products */;
 					ProjectRef = 9A6B7B682757D4B500DB33D9 /* _app_core_resident_desktop.xcodeproj */;
+				},
+				{
+					ProductGroup = 9AF6DF0B275EE07A00CBB275 /* Products */;
+					ProjectRef = 9AF6DF0A275EE07A00CBB275 /* _app_core_store.xcodeproj */;
 				},
 				{
 					ProductGroup = 9A6B7C502757D4C300DB33D9 /* Products */;
@@ -2373,6 +2410,29 @@
 			fileType = wrapper.application;
 			path = _app_veriwell_musical_player.app;
 			remoteRef = 9A6B7C5C2757D4C300DB33D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AF6DF28275EE07A00CBB275 /* libapp_core_store.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			name = libapp_core_store.dylib;
+			path = lib_app_core_store.dylib;
+			remoteRef = 9AF6DF27275EE07A00CBB275 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AF6DF2A275EE07A00CBB275 /* libapp_core_store.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = libapp_core_store.a;
+			path = lib_app_core_store.a;
+			remoteRef = 9AF6DF29275EE07A00CBB275 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AF6DF2C275EE07A00CBB275 /* app_core_store_iosTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = app_core_store_iosTests.xctest;
+			remoteRef = 9AF6DF2B275EE07A00CBB275 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
