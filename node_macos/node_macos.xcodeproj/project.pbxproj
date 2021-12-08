@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A5D7389265619C000D5C39E /* lib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73862656198300D5C39E /* lib.dylib */; };
+		9A5D7389265619C000D5C39E /* libwindowing_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73862656198300D5C39E /* libwindowing_macos.dylib */; };
 		9A5FE1FC2689E0E7003682E6 /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1A526542EA800CC8096 /* _.h */; };
 		9A5FE1FD2689E0F0003682E6 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D19926542EA800CC8096 /* framework.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		9AC2D1B326542F4400CC8096 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D19326542EA800CC8096 /* _factory.cpp */; };
 		9AC2D1B426542F4700CC8096 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D18E26542EA800CC8096 /* framework.cpp */; };
+		9AEA17B6275FF955006437A3 /* libnode_macos.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9AC2D16F26542E1000CC8096 /* libnode_macos.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9AEA17B5275FF945006437A3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(WorkspaceDir)/time-$(PLATFORM_MODIFIER)/$(ARCHS)/$(CONFIGURATION)";
+			dstSubfolderSpec = 0;
+			files = (
+				9AEA17B6275FF955006437A3 /* libnode_macos.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		9A5D737F2656198200D5C39E /* windowing_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = windowing_macos.xcodeproj; path = ../windowing_macos/windowing_macos.xcodeproj; sourceTree = "<group>"; };
 		9AC2D16F26542E1000CC8096 /* libnode_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libnode_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A5D7389265619C000D5C39E /* lib.dylib in Frameworks */,
+				9A5D7389265619C000D5C39E /* libwindowing_macos.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +69,7 @@
 		9A5D73802656198200D5C39E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A5D73862656198300D5C39E /* lib.dylib */,
+				9A5D73862656198300D5C39E /* libwindowing_macos.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,6 +132,7 @@
 				9AC2D16B26542E1000CC8096 /* Headers */,
 				9AC2D16C26542E1000CC8096 /* Sources */,
 				9AC2D16D26542E1000CC8096 /* Frameworks */,
+				9AEA17B5275FF945006437A3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -167,10 +182,9 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		9A5D73862656198300D5C39E /* lib.dylib */ = {
+		9A5D73862656198300D5C39E /* libwindowing_macos.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			name = lib.dylib;
 			path = libwindowing_macos.dylib;
 			remoteRef = 9A5D73852656198300D5C39E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -257,7 +271,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(WorkspaceDir)/archive",
-					"$(WorkspaceDir)/archive/storage-$(PLATFORM_MODIFIER)/library/$(CONFIGURATION)",
+					"\"$(WorkspaceDir)/archive/storage-$(PLATFORM_MODIFIER)/library/$(ARCHS)/$(CONFIGURATION)\"",
+					"\"$(WorkspaceDir)/time-$(PLATFORM_MODIFIER)/$(ARCHS)/$(CONFIGURATION)\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_FAST_MATH = YES;
@@ -340,7 +355,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(WorkspaceDir)/archive",
-					"$(WorkspaceDir)/archive/storage-$(PLATFORM_MODIFIER)/library/$(CONFIGURATION)",
+					"\"$(WorkspaceDir)/archive/storage-$(PLATFORM_MODIFIER)/library/$(ARCHS)/$(CONFIGURATION)\"",
+					"\"$(WorkspaceDir)/time-$(PLATFORM_MODIFIER)/$(ARCHS)/$(CONFIGURATION)\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_FAST_MATH = YES;
