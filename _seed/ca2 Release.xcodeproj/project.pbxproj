@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		9AEA16F9275FE4F2006437A3 /* ca2 */ = {
+		9AEA16F9275FE4F2006437A3 /* ca2 Release */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 9AEA16FA275FE4F2006437A3 /* Build configuration list for PBXAggregateTarget "ca2" */;
+			buildConfigurationList = 9AEA16FA275FE4F2006437A3 /* Build configuration list for PBXAggregateTarget "ca2 Release" */;
 			buildPhases = (
 			);
 			dependencies = (
@@ -24,7 +24,7 @@
 				9AEA20DB27603B88006437A3 /* PBXTargetDependency */,
 				9AEA20DD27603B88006437A3 /* PBXTargetDependency */,
 			);
-			name = ca2;
+			name = "ca2 Release";
 			productName = "ca2 framework frameworks";
 		};
 /* End PBXAggregateTarget section */
@@ -393,7 +393,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9AEA16E6275FE47A006437A3 /* Build configuration list for PBXProject "ca2" */;
+			buildConfigurationList = 9AEA16E6275FE47A006437A3 /* Build configuration list for PBXProject "ca2 Release" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -451,7 +451,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				9AEA16F9275FE4F2006437A3 /* ca2 */,
+				9AEA16F9275FE4F2006437A3 /* ca2 Release */,
 			);
 		};
 /* End PBXProject section */
@@ -693,7 +693,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9AEA16E6275FE47A006437A3 /* Build configuration list for PBXProject "ca2" */ = {
+		9AEA16E6275FE47A006437A3 /* Build configuration list for PBXProject "ca2 Release" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9AEA16E7275FE47A006437A3 /* Debug */,
@@ -702,7 +702,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9AEA16FA275FE4F2006437A3 /* Build configuration list for PBXAggregateTarget "ca2" */ = {
+		9AEA16FA275FE4F2006437A3 /* Build configuration list for PBXAggregateTarget "ca2 Release" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9AEA16FB275FE4F2006437A3 /* Debug */,
