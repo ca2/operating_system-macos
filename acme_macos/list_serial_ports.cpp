@@ -255,7 +255,7 @@ namespace macos
       io_registry_entry_t parent = get_parent_iousb_device( serial_port );
       IOObjectRelease(serial_port);
 
-      if( device_path.empty() )
+      if( device_path.is_empty() )
          continue;
 
       ::serial::port_info port_info;
@@ -266,7 +266,7 @@ namespace macos
       string device_name = rtrim( get_string_property( parent, "USB Product Name" ) );
       string vendor_name = rtrim( get_string_property( parent, "USB Vendor Name") );
       string description = rtrim( vendor_name + " " + device_name );
-      if( !description.empty() )
+      if( !description.is_empty() )
          port_info.description = description;
 
       string serial_number = rtrim(get_string_property( parent, "USB serial Number" ) );
@@ -277,7 +277,7 @@ namespace macos
       {
          char cstring[HARDWARE_ID_STRING_LENGTH];
 
-         if(serial_number.empty())
+         if(serial_number.is_empty())
             serial_number = "None";
 
          int ret = snprintf( cstring, HARDWARE_ID_STRING_LENGTH, "USB VID:PID=%04x:%04x SNR=%s",

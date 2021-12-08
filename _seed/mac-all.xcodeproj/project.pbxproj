@@ -946,26 +946,19 @@
 			remoteGlobalIDString = 9A5FDF942689DAFB003682E6;
 			remoteInfo = _app_veriwell_keyboard;
 		};
-		9AF6DF27275EE07A00CBB275 /* PBXContainerItemProxy */ = {
+		9AF6E5A3275F86D700CBB275 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AF6DF0A275EE07A00CBB275 /* _app_core_store.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 9AEB75A316F78DF10085103B;
-			remoteInfo = app_core_store;
+			remoteGlobalIDString = 070B8EEA1B6E53F900D26137;
+			remoteInfo = _app_core_store;
 		};
-		9AF6DF29275EE07A00CBB275 /* PBXContainerItemProxy */ = {
+		9AF6E5A5275F86D700CBB275 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AF6DF0A275EE07A00CBB275 /* _app_core_store.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 9AE24E8A1904CFFD001AEFFB;
-			remoteInfo = ios_app_core_store;
-		};
-		9AF6DF2B275EE07A00CBB275 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AF6DF0A275EE07A00CBB275 /* _app_core_store.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9AE24E991904CFFD001AEFFB;
-			remoteInfo = app_core_store_iosTests;
+			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
+			remoteInfo = _app_core_store_Test;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1028,58 +1021,58 @@
 		9A6B7AB02757D43B00DB33D9 = {
 			isa = PBXGroup;
 			children = (
-				9A6B7C582757D4C300DB33D9 /* _app_veriwell_musical_player.xcodeproj */,
-				9A6B7C4F2757D4C300DB33D9 /* _app_core_timer.xcodeproj */,
-				9A6B7C462757D4C200DB33D9 /* _app_simple_application.xcodeproj */,
-				9A6B7C3D2757D4C200DB33D9 /* _app_core_hellomultiverse.xcodeproj */,
-				9A6B7C342757D4C100DB33D9 /* _game_tictactoe.xcodeproj */,
-				9A6B7C2E2757D4C000DB33D9 /* _app_veriwell_musical_player_lite.xcodeproj */,
-				9A6B7C252757D4C000DB33D9 /* _game_sokoban.xcodeproj */,
-				9A6B7C1C2757D4BF00DB33D9 /* _app_core_auraclick.xcodeproj */,
-				9A6B7C162757D4BF00DB33D9 /* _app_veriwell_waven.xcodeproj */,
-				9A6B7C0D2757D4BD00DB33D9 /* _app_message_box.xcodeproj */,
-				9A6B7C042757D4BD00DB33D9 /* _app_core_clockverse_no_audio.xcodeproj */,
-				9A6B7BFB2757D4BC00DB33D9 /* _app_core_auratype.xcodeproj */,
-				9A6B7BF22757D4BC00DB33D9 /* _app_core_desk.xcodeproj */,
-				9A6B7BE92757D4BB00DB33D9 /* _app_simple_notify_drawing.xcodeproj */,
-				9A6B7BE02757D4BB00DB33D9 /* _app_core_weather.xcodeproj */,
-				9A6B7BD72757D4BA00DB33D9 /* _app_core_addressbook.xcodeproj */,
-				9A6B7BCE2757D4BA00DB33D9 /* _game_arch001.xcodeproj */,
-				9A6B7BC52757D4BA00DB33D9 /* _app_core_audioaura.xcodeproj */,
-				9A6B7BBC2757D4B900DB33D9 /* _game_pacman.xcodeproj */,
-				9A6B7BB32757D4B900DB33D9 /* _app_simple_form.xcodeproj */,
-				9A6B7BAA2757D4B800DB33D9 /* _app_core_note.xcodeproj */,
-				9A6B7BA12757D4B800DB33D9 /* _app_core_chronometer.xcodeproj */,
-				9AF6DF0A275EE07A00CBB275 /* _app_core_store.xcodeproj */,
+				9A6B7B3E2757D4B300DB33D9 /* application_build_helper.xcodeproj */,
 				9A6B7B9B2757D4B800DB33D9 /* hello.xcodeproj */,
-				9A6B7B952757D4B700DB33D9 /* _app_veriwell_keyboard.xcodeproj */,
-				9A6B7B8F2757D4B700DB33D9 /* readlines.xcodeproj */,
-				9A6B7B892757D4B600DB33D9 /* _app_core_photo.xcodeproj */,
 				9A6B7B832757D4B600DB33D9 /* helloearth.xcodeproj */,
+				9A6B7AF32757D4AF00DB33D9 /* hellosolarsystem.xcodeproj */,
+				9A6B7B8F2757D4B700DB33D9 /* readlines.xcodeproj */,
+				9AF6DF0A275EE07A00CBB275 /* _app_core_store.xcodeproj */,
+				9A6B7B142757D4B100DB33D9 /* _app_app.xcodeproj */,
+				9A6B7C0D2757D4BD00DB33D9 /* _app_message_box.xcodeproj */,
+				9A6B7C462757D4C200DB33D9 /* _app_simple_application.xcodeproj */,
+				9A6B7ABD2757D4AD00DB33D9 /* _app_simple_drawing.xcodeproj */,
+				9A6B7ACF2757D4AD00DB33D9 /* _app_simple_networking_application.xcodeproj */,
+				9A6B7BE92757D4BB00DB33D9 /* _app_simple_notify_drawing.xcodeproj */,
+				9A6B7BD72757D4BA00DB33D9 /* _app_core_addressbook.xcodeproj */,
+				9A6B7BB32757D4B900DB33D9 /* _app_simple_form.xcodeproj */,
+				9A6B7B442757D4B300DB33D9 /* _app_complex_drawing.xcodeproj */,
+				9A6B7AF92757D4AF00DB33D9 /* _app_complex_form.xcodeproj */,
+				9A6B7AC62757D4AD00DB33D9 /* _game_light.xcodeproj */,
+				9A6B7C3D2757D4C200DB33D9 /* _app_core_hellomultiverse.xcodeproj */,
+				9A6B7B2F2757D4B200DB33D9 /* _app_core_flag.xcodeproj */,
+				9A6B7B022757D4B000DB33D9 /* _app_cidadedecuritiba_alphaclock.xcodeproj */,
+				9A6B7C042757D4BD00DB33D9 /* _app_core_clockverse_no_audio.xcodeproj */,
+				9A6B7B5F2757D4B400DB33D9 /* _app_core_projection.xcodeproj */,
+				9A6B7BF22757D4BC00DB33D9 /* _app_core_desk.xcodeproj */,
+				9A6B7BE02757D4BB00DB33D9 /* _app_core_weather.xcodeproj */,
+				9A6B7BC52757D4BA00DB33D9 /* _app_core_audioaura.xcodeproj */,
+				9A6B7C1C2757D4BF00DB33D9 /* _app_core_auraclick.xcodeproj */,
+				9A6B7BFB2757D4BC00DB33D9 /* _app_core_auratype.xcodeproj */,
+				9A6B7BA12757D4B800DB33D9 /* _app_core_chronometer.xcodeproj */,
+				9A6B7B4D2757D4B300DB33D9 /* _app_core_clockverse.xcodeproj */,
+				9A6B7C4F2757D4C300DB33D9 /* _app_core_timer.xcodeproj */,
+				9A6B7AD82757D4AE00DB33D9 /* _app_core_todo.xcodeproj */,
+				9A6B7C162757D4BF00DB33D9 /* _app_veriwell_waven.xcodeproj */,
+				9A6B7B382757D4B200DB33D9 /* _app_veriwell_verisimplevideo.xcodeproj */,
+				9A6B7C2E2757D4C000DB33D9 /* _app_veriwell_musical_player_lite.xcodeproj */,
+				9A6B7C582757D4C300DB33D9 /* _app_veriwell_musical_player.xcodeproj */,
+				9A6B7B952757D4B700DB33D9 /* _app_veriwell_keyboard.xcodeproj */,
+				9A6B7BAA2757D4B800DB33D9 /* _app_core_note.xcodeproj */,
+				9A6B7B682757D4B500DB33D9 /* _app_core_resident_desktop.xcodeproj */,
+				9A6B7AE12757D4AE00DB33D9 /* _app_core_hash_hub.xcodeproj */,
+				9A6B7B1D2757D4B100DB33D9 /* _app_core_file_manager.xcodeproj */,
+				9A6B7B892757D4B600DB33D9 /* _app_core_photo.xcodeproj */,
+				9A6B7AB72757D4AC00DB33D9 /* _app_core_picture.xcodeproj */,
 				9A6B7B7A2757D4B600DB33D9 /* _app_simple_shader.xcodeproj */,
 				9A6B7B712757D4B500DB33D9 /* _app_shader.xcodeproj */,
-				9A6B7B682757D4B500DB33D9 /* _app_core_resident_desktop.xcodeproj */,
-				9A6B7B5F2757D4B400DB33D9 /* _app_core_projection.xcodeproj */,
-				9A6B7B562757D4B400DB33D9 /* _game_tetris.xcodeproj */,
-				9A6B7B4D2757D4B300DB33D9 /* _app_core_clockverse.xcodeproj */,
-				9A6B7B442757D4B300DB33D9 /* _app_complex_drawing.xcodeproj */,
-				9A6B7B3E2757D4B300DB33D9 /* application_build_helper.xcodeproj */,
-				9A6B7B382757D4B200DB33D9 /* _app_veriwell_verisimplevideo.xcodeproj */,
-				9A6B7B2F2757D4B200DB33D9 /* _app_core_flag.xcodeproj */,
-				9A6B7B262757D4B200DB33D9 /* _game_coincube.xcodeproj */,
-				9A6B7B1D2757D4B100DB33D9 /* _app_core_file_manager.xcodeproj */,
-				9A6B7B142757D4B100DB33D9 /* _app_app.xcodeproj */,
-				9A6B7B0B2757D4B000DB33D9 /* _game_arkanoid.xcodeproj */,
-				9A6B7B022757D4B000DB33D9 /* _app_cidadedecuritiba_alphaclock.xcodeproj */,
-				9A6B7AF92757D4AF00DB33D9 /* _app_complex_form.xcodeproj */,
-				9A6B7AF32757D4AF00DB33D9 /* hellosolarsystem.xcodeproj */,
 				9A6B7AEA2757D4AF00DB33D9 /* _game_game_of_life.xcodeproj */,
-				9A6B7AE12757D4AE00DB33D9 /* _app_core_hash_hub.xcodeproj */,
-				9A6B7AD82757D4AE00DB33D9 /* _app_core_todo.xcodeproj */,
-				9A6B7ACF2757D4AD00DB33D9 /* _app_simple_networking_application.xcodeproj */,
-				9A6B7AC62757D4AD00DB33D9 /* _game_light.xcodeproj */,
-				9A6B7ABD2757D4AD00DB33D9 /* _app_simple_drawing.xcodeproj */,
-				9A6B7AB72757D4AC00DB33D9 /* _app_core_picture.xcodeproj */,
+				9A6B7C342757D4C100DB33D9 /* _game_tictactoe.xcodeproj */,
+				9A6B7B562757D4B400DB33D9 /* _game_tetris.xcodeproj */,
+				9A6B7B0B2757D4B000DB33D9 /* _game_arkanoid.xcodeproj */,
+				9A6B7C252757D4C000DB33D9 /* _game_sokoban.xcodeproj */,
+				9A6B7BBC2757D4B900DB33D9 /* _game_pacman.xcodeproj */,
+				9A6B7B262757D4B200DB33D9 /* _game_coincube.xcodeproj */,
+				9A6B7BCE2757D4BA00DB33D9 /* _game_arch001.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1533,9 +1526,8 @@
 		9AF6DF0B275EE07A00CBB275 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9AF6DF28275EE07A00CBB275 /* libapp_core_store.dylib */,
-				9AF6DF2A275EE07A00CBB275 /* libapp_core_store.a */,
-				9AF6DF2C275EE07A00CBB275 /* app_core_store_iosTests.xctest */,
+				9AF6E5A4275F86D700CBB275 /* Store!!.app */,
+				9AF6E5A6275F86D700CBB275 /* _app_core_store_Test.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2412,27 +2404,18 @@
 			remoteRef = 9A6B7C5C2757D4C300DB33D9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9AF6DF28275EE07A00CBB275 /* libapp_core_store.dylib */ = {
+		9AF6E5A4275F86D700CBB275 /* Store!!.app */ = {
 			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.dylib";
-			name = libapp_core_store.dylib;
-			path = lib_app_core_store.dylib;
-			remoteRef = 9AF6DF27275EE07A00CBB275 /* PBXContainerItemProxy */;
+			fileType = wrapper.application;
+			path = "Store!!.app";
+			remoteRef = 9AF6E5A3275F86D700CBB275 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9AF6DF2A275EE07A00CBB275 /* libapp_core_store.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			name = libapp_core_store.a;
-			path = lib_app_core_store.a;
-			remoteRef = 9AF6DF29275EE07A00CBB275 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9AF6DF2C275EE07A00CBB275 /* app_core_store_iosTests.xctest */ = {
+		9AF6E5A6275F86D700CBB275 /* _app_core_store_Test.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = app_core_store_iosTests.xctest;
-			remoteRef = 9AF6DF2B275EE07A00CBB275 /* PBXContainerItemProxy */;
+			path = _app_core_store_Test.xctest;
+			remoteRef = 9AF6E5A5275F86D700CBB275 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
