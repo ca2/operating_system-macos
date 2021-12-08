@@ -50,7 +50,6 @@
 		9ABC54B426DAEA9F00718C0D /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5DC264B54CB0080670E /* libacme_apple.dylib */; };
 		9AC2CB3D26531C6200CC8096 /* list_serial_ports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */; };
 		9AC2D05A2653EBF000CC8096 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2D0582653EBF000CC8096 /* IOKit.framework */; };
-		9AEA17D5275FFD02006437A3 /* libacme_macos.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A0C165F264A290E00B5CC33 /* libacme_macos.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,19 +68,6 @@
 			remoteInfo = acme_apple;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		9AEA17D4275FFCEF006437A3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(WorkspaceDir)/time-$(PLATFORM_MODIFIER)/output";
-			dstSubfolderSpec = 0;
-			files = (
-				9AEA17D5275FFD02006437A3 /* libacme_macos.dylib in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9A0705FF266275B4004E8CB4 /* image.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = image.mm; sourceTree = "<group>"; };
@@ -270,7 +256,6 @@
 				9A0C165B264A290E00B5CC33 /* Headers */,
 				9A0C165C264A290E00B5CC33 /* Sources */,
 				9A0C165D264A290E00B5CC33 /* Frameworks */,
-				9AEA17D4275FFCEF006437A3 /* CopyFiles */,
 			);
 			buildRules = (
 			);

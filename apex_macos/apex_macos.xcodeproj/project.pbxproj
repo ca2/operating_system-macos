@@ -59,7 +59,6 @@
 		9A788038264F1ECA003DF8A0 /* watcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A788036264F1ECA003DF8A0 /* watcher.cpp */; };
 		9ABC54B726DAEE2700718C0D /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17EB264A325700B5CC33 /* libacme_macos.dylib */; };
 		9ABC54B826DAEE5100718C0D /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5EF264B54EE0080670E /* libapex_apple.dylib */; };
-		9AEA17C3275FF9F8006437A3 /* libapex_macos.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A0C1695264A2AA700B5CC33 /* libapex_macos.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,19 +91,6 @@
 			remoteInfo = apex_apple;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		9AEA17C2275FF9E5006437A3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(WorkspaceDir)/time-$(PLATFORM_MODIFIER)/output";
-			dstSubfolderSpec = 0;
-			files = (
-				9AEA17C3275FF9F8006437A3 /* libapex_macos.dylib in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9A0C1695264A2AA700B5CC33 /* libapex_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libapex_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,7 +323,6 @@
 				9A0C1691264A2AA700B5CC33 /* Headers */,
 				9A0C1692264A2AA700B5CC33 /* Sources */,
 				9A0C1693264A2AA700B5CC33 /* Frameworks */,
-				9AEA17C2275FF9E5006437A3 /* CopyFiles */,
 			);
 			buildRules = (
 			);

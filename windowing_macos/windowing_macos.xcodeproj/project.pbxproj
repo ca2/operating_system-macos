@@ -80,7 +80,6 @@
 		9A1D5F6C2751BE0B003D9B5F /* libaura_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73AA265701F400D5C39E /* libaura_posix.dylib */; };
 		9A1D5F6D2751BE22003D9B5F /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73B226570CAE00D5C39E /* AppKit.framework */; };
 		9A1D5F702751BF50003D9B5F /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8024A266571D600A6B449 /* Carbon.framework */; };
-		9AEA17BA275FF97A006437A3 /* libwindowing_macos.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A9E4AD62751A3F40094A04C /* libwindowing_macos.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,19 +112,6 @@
 			remoteInfo = music_midi_core_audio_iosTests;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		9AEA17B7275FF968006437A3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(WorkspaceDir)/time-$(PLATFORM_MODIFIER)/output";
-			dstSubfolderSpec = 0;
-			files = (
-				9AEA17BA275FF97A006437A3 /* libwindowing_macos.dylib in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9A1D5F6E2751BE47003D9B5F /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -405,7 +391,6 @@
 				9A9E4AD22751A3F40094A04C /* Headers */,
 				9A9E4AD32751A3F40094A04C /* Sources */,
 				9A9E4AD42751A3F40094A04C /* Frameworks */,
-				9AEA17B7275FF968006437A3 /* CopyFiles */,
 			);
 			buildRules = (
 			);

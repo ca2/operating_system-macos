@@ -43,7 +43,6 @@
 		9AC2D1D526542FBA00CC8096 /* interaction_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1C826542FBA00CC8096 /* interaction_impl.cpp */; };
 		9AC2D1DC265431BD00CC8096 /* _aura_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1DB265431BD00CC8096 /* _aura_macos.h */; };
 		9AC2D1F426543C7E00CC8096 /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1F326543C7E00CC8096 /* _mm.h */; };
-		9AEA17BC275FF9A0006437A3 /* libaura_macos.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = A1CFD778154F5EAA007447E2 /* libaura_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,16 +97,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AEA17BB275FF98D006437A3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(WorkspaceDir)/time-$(PLATFORM_MODIFIER)/output";
-			dstSubfolderSpec = 0;
-			files = (
-				9AEA17BC275FF9A0006437A3 /* libaura_macos.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +356,6 @@
 				A1CFD776154F5EAA007447E2 /* Headers */,
 				A1CFD774154F5EAA007447E2 /* Sources */,
 				A1CFD775154F5EAA007447E2 /* Frameworks */,
-				9AEA17BB275FF98D006437A3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
