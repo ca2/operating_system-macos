@@ -108,7 +108,6 @@
 		9A7862A1265024F40034A0E1 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		9A7862A3265025370034A0E1 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		9A7862A5265025940034A0E1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		9A7862A7265028550034A0E1 /* HIDDriverKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HIDDriverKit.framework; path = System/Library/Frameworks/HIDDriverKit.framework; sourceTree = SDKROOT; };
 		9A7862A92650292A0034A0E1 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		9A7862AB265029FA0034A0E1 /* user.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = user.mm; sourceTree = "<group>"; };
 		9A787E92264ED593003DF8A0 /* _.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
@@ -267,7 +266,6 @@
 				9A46D24226784388000B22D0 /* libacme_apple.dylib */,
 				9A46D24426784388000B22D0 /* libacme_posix.dylib */,
 				9A7862A92650292A0034A0E1 /* Carbon.framework */,
-				9A7862A7265028550034A0E1 /* HIDDriverKit.framework */,
 				9A7862A5265025940034A0E1 /* AppKit.framework */,
 				9A7862A3265025370034A0E1 /* CoreFoundation.framework */,
 				9A7862A1265024F40034A0E1 /* IOKit.framework */,

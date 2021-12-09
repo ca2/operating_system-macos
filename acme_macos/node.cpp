@@ -2,7 +2,7 @@
 // Created by camilo on 19/01/2021. --<33ThomasBS!!
 //
 #include "framework.h"
-
+void ns_launch_app(const char * psz, const char ** argv, int iFlags);
 
 string macos_get_type_identifier(const char * str);
 
@@ -783,11 +783,9 @@ namespace acme
             
          }
          
-         string strCommand;
-         
-         strCommand.format("open \"%s\"", pszAppFolder.c_str());
-         
-         return _launch_command(strCommand);
+         ns_launch_app(pszAppFolder, nullptr, 0);
+ 
+         return ::success;
          
       }
 

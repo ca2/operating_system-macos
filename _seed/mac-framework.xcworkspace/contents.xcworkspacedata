@@ -20,6 +20,9 @@
       location = "group:../../../source/console/readlines/readlines.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:../../../source/app-core/store/_app_core_store.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:../../../source/app/app/_app_app.xcodeproj">
    </FileRef>
    <FileRef
