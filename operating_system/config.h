@@ -15,10 +15,6 @@
 
 #define PARALLELIZATION_PTHREAD
 
-//#define _POSIX_C_SOURCE 200809L
-#define index __ancient_bsd_source_index
-#define wait __ancient_bsd_source_wait
-
 #define CDECL
 
 #define WCHAR_T_SIZE 32

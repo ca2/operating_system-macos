@@ -76,25 +76,25 @@ namespace macos
    }
 
 
-   ::e_status file_system::update_module_path()
-   {
-      
-      auto estatus = ::file_system::update_module_path();
-      
-      if(!estatus)
-      {
-         
-         return estatus;
-         
-      }
-
-      m_pathModule = apple_app_module_path();
-
-      m_pathCa2Module = apple_app_module_path();
-
-      return estatus;
-
-   }
+//   ::e_status file_system::update_module_path()
+//   {
+//      
+//      auto estatus = ::file_system::update_module_path();
+//      
+//      if(!estatus)
+//      {
+//         
+//         return estatus;
+//         
+//      }
+//
+//      m_pathModule = apple_app_module_path();
+//
+//      m_pathCa2Module = apple_app_module_path();
+//
+//      return estatus;
+//
+//   }
 
 
 } // namespace macos

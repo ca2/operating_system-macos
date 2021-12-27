@@ -61,18 +61,18 @@ namespace macos
          
       }
       
-      auto psystem= m_psystem->m_papexsystem;
+//      auto psystem= m_psystem->m_papexsystem;
       
-      ::file::path pathCa2Module = psystem->m_pfilesystem->m_pathCa2Module;
+//      ::file::path pathModule = psystem->m_pfilesystem->m_pathModule;
       
       m_pathHome = getenv("HOME");
       
-      m_pathCa2 = pathCa2Module;
+//      auto pathCa2 = pathModule - 2;
+//
+//      ::str::ends_eat_ci(pathCa2, ".app");
+//
+//      m_pathCa2 = pathCa2;
       
-      m_pathCa2 -= 2;
-      
-      ::str::ends_eat_ci(m_pathCa2, ".app");
-
       m_pathCa2Config = m_pathHome / "Library/Application Support/ca2";
 
       return estatus;

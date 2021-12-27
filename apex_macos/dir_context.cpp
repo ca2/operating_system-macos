@@ -1047,15 +1047,15 @@ try1:
       return m_pdirsystem->m_strNetSeedFolder;
    }
 
-   // stage in ca2os spalib
-   ::file::path dir_context::install()
-   {
-
-      single_lock synchronouslock(mutex(), true);
-
-      return m_pdirsystem->m_pathCa2;
-
-   }
+//   // stage in ca2os spalib
+//   ::file::path dir_context::install()
+//   {
+//
+//      single_lock synchronouslock(mutex(), true);
+//
+//      return m_pdirsystem->m_pathCa2;
+//
+//   }
 
 
    ::file::path dir_context::module()
@@ -1066,12 +1066,12 @@ try1:
    }
 
 
-   ::file::path dir_context::ca2module()
-   {
-
-      return m_pdirsystem->m_pathCa2Module;
-
-   }
+//   ::file::path dir_context::ca2module()
+//   {
+//
+//      return m_pdirsystem->m_pathCa2Module;
+//
+//   }
 
 
    ::file::path dir_context::time_square(const string & strPrefix,const string & strSuffix)

@@ -9,6 +9,7 @@ namespace macos
       virtual public ::dir_context
    {
    public:
+      
 
       __reference(dir_system)      m_pdirsystem;
       __reference(file_system)      m_pfilesystem;
@@ -41,11 +42,11 @@ namespace macos
       virtual ::file::path stage() override;
       virtual ::file::path stageapp() override;
       virtual ::file::path netseed() override;
-      virtual ::file::path install() override;
+      //virtual ::file::path install() override;
 //       virtual ::file::path profile();
 
       virtual ::file::path module() override;
-      virtual ::file::path ca2module() override;
+      //virtual ::file::path ca2module() override;
       virtual ::file::path time_square(const string & strPrefix = nullptr, const string & strSuffix = nullptr);
       virtual ::file::path time_log();
 

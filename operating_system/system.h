@@ -25,6 +25,11 @@
 #define _MAX_PATH MAX_PATH
 #endif
 
+//#define _POSIX_C_SOURCE 200809L
+#define index __ancient_bsd_source_index
+#define wait __ancient_bsd_source_wait
+
+
 #include <time.h>
 #include <sys/wait.h>
 #include <stdlib.h>
@@ -37,7 +42,6 @@
 #include <sys/time.h>
 #include <wchar.h>
 #include <xlocale.h>
-
 
 #define platform_char char
 
@@ -208,6 +212,11 @@ int mach_timespec_get(timespec * ptimespec, int);
 
 
 #define INFINITE_TIMEOUT UINT_MAX
+
+
+#undef index
+#undef wait
+
 
 
 

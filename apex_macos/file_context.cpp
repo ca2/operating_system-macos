@@ -123,17 +123,17 @@ namespace macos
 
 
 
-   ::e_status file_context::update_module_path()
-   {
-
-
-//      m_pathModule = apple_app_module_path();
+//   ::e_status file_context::update_module_path()
+//   {
 //
-//      m_pathCa2Module = ca2_module_dup();
-
-      return true;
-
-   }
+//
+////      m_pathModule = apple_app_module_path();
+////
+////      m_pathCa2Module = ca2_module_dup();
+//
+//      return true;
+//
+//   }
 
 
    file_transport file_context::get_file(const ::payload & varFile, const ::file::e_open & eopenFlags)

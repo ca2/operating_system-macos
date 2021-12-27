@@ -30,7 +30,7 @@ namespace macos
 
       virtual ::payload length(const ::file::path & path) override;
 
-      virtual ::e_status update_module_path() override;
+      //virtual ::e_status update_module_path() override;
 
       virtual file_transport get_file(const ::payload & varFile, const ::file::e_open & eopen) override;
 
