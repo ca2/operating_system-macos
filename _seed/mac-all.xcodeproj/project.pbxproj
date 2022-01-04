@@ -1029,6 +1029,7 @@
 				9AF6DF0A275EE07A00CBB275 /* _app_core_store.xcodeproj */,
 				9A6B7B142757D4B100DB33D9 /* _app_app.xcodeproj */,
 				9A6B7C0D2757D4BD00DB33D9 /* _app_message_box.xcodeproj */,
+				9A6B7B712757D4B500DB33D9 /* _app_shader.xcodeproj */,
 				9A6B7C462757D4C200DB33D9 /* _app_simple_application.xcodeproj */,
 				9A6B7ABD2757D4AD00DB33D9 /* _app_simple_drawing.xcodeproj */,
 				9A6B7ACF2757D4AD00DB33D9 /* _app_simple_networking_application.xcodeproj */,
@@ -1064,7 +1065,6 @@
 				9A6B7B892757D4B600DB33D9 /* _app_core_photo.xcodeproj */,
 				9A6B7AB72757D4AC00DB33D9 /* _app_core_picture.xcodeproj */,
 				9A6B7B7A2757D4B600DB33D9 /* _app_simple_shader.xcodeproj */,
-				9A6B7B712757D4B500DB33D9 /* _app_shader.xcodeproj */,
 				9A6B7AEA2757D4AF00DB33D9 /* _game_game_of_life.xcodeproj */,
 				9A6B7C342757D4C100DB33D9 /* _game_tictactoe.xcodeproj */,
 				9A6B7B562757D4B400DB33D9 /* _game_tetris.xcodeproj */,
@@ -1526,7 +1526,7 @@
 		9AF6DF0B275EE07A00CBB275 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9AF6E5A4275F86D700CBB275 /* Store!!.app */,
+				9AF6E5A4275F86D700CBB275 /* _app_core_store.app */,
 				9AF6E5A6275F86D700CBB275 /* _app_core_store_Test.xctest */,
 			);
 			name = Products;
@@ -2404,10 +2404,10 @@
 			remoteRef = 9A6B7C5C2757D4C300DB33D9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9AF6E5A4275F86D700CBB275 /* Store!!.app */ = {
+		9AF6E5A4275F86D700CBB275 /* _app_core_store.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
-			path = "Store!!.app";
+			path = _app_core_store.app;
 			remoteRef = 9AF6E5A3275F86D700CBB275 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};

@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "acme/filesystem/filesystem/acme_dir.h"
+#include "aura/graphics/draw2d/icon.h"
 
 
 static ::user::notify_icon * g_pnotifyiconLast = nullptr;

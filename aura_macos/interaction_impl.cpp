@@ -3,6 +3,8 @@
 #include "acme/constant/activate.h"
 #include "acme/constant/button_state.h"
 #include "aura/message.h"
+#include "aura/graphics/graphics/_.h"
+#include "aura/graphics/graphics/_graphics.h"
 
 
 #define WHEEL_DELTA 120
