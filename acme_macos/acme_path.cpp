@@ -48,22 +48,23 @@ namespace macos
 //
 
 
-   ::e_status acme_path::create_symbolic_link(const char * pszLink, const char * pszSource)
+   void acme_path::create_symbolic_link(const char * pszLink, const char * pszSource)
    {
       
-      if(!ns_create_alias(pszLink, pszSource))
-      {
-         
-         return error_failed;
-         
-      }
-      
-      return success;
+      ns_create_alias(pszLink, pszSource);
+//      if(!)
+//      {
+//         
+//         return error_failed;
+//         
+//      }
+//      
+//      return success;
       
    }
 
 
-   ::e_status acme_path::is_symbolic_link(const char * pszLink)
+   bool acme_path::is_symbolic_link(const char * pszLink)
    {
       
       auto estatus = ns_symbolic_link_destination(nullptr, pszLink);
@@ -71,11 +72,11 @@ namespace macos
       if(!estatus)
       {
          
-         return estatus;
+         return false;
          
       }
       
-      return estatus;
+      return true;
       
    }
 

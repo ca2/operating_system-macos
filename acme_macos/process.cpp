@@ -34,25 +34,26 @@ namespace acme
          
          string strCommand(pszCommand);
          
-         strCommand.replace("\"", "\\\"");
+         strCommand.find_replace("\"", "\\\"");
          
          strParams.format("-c \"screen -d -m %s\"", strCommand.c_str());
          
-         auto estatus = call_async("/bin/bash", strParams, pacmedir->home(), e_display_none, false);
+         /*auto estatus = */ call_async("/bin/bash", strParams, pacmedir->home(), e_display_none, false);
          
-         if(!estatus)
-         {
-            
-            return estatus;
-            
-         }
-         
-         return estatus;
+//         if(!estatus)
+//         {
+//            
+//            return estatus;
+//            
+//         }
+//         
+//         return estatus;
+         return true;
          
       }
 
       
-      ::e_status node::create_process(const ::string & pszCommandLine, u32 * pprocessId)
+      void node::create_process(const ::string & pszCommandLine, u32 * pprocessId)
       {
 
          string_array stra;
@@ -100,14 +101,6 @@ namespace acme
                *pprocessId = pid;
 
             }
-
-            return 1;
-
-         }
-         else
-         {
-
-            return 0;
 
          }
 

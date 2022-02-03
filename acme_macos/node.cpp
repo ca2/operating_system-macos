@@ -54,7 +54,7 @@ namespace acme
       }
    
    
-    ::e_status node::call_async(
+    void node::call_async(
    const ::string & pszPath,
    const ::string & pszParam,
    const ::string & pszDir,
@@ -79,13 +79,15 @@ namespace acme
       u32 processId;
 
       chdir(pszDir);
+       
+       create_process(strCmdLine, &processId);
 
-      if(!create_process(strCmdLine, &processId))
-      {
-
-         return -1;
-
-      }
+      //if(!create_process(strCmdLine, &processId))
+//      {
+//
+//         return -1;
+//
+//      }
 
       if(puiPid != nullptr)
       {
@@ -94,12 +96,12 @@ namespace acme
 
       }
 
-      return 0;
+      //return 0;
 
    }
 
 
-    ::e_status node::call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const ::duration & durationTimeout, ::property_set & set)
+   void node::call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const ::duration & durationTimeout, ::property_set & set)
    {
 
       string strCmdLine;
@@ -116,13 +118,15 @@ namespace acme
       }
 
       u32 processId;
+      
+      create_process(strCmdLine, &processId);
 
-      if(!create_process(strCmdLine, &processId))
-      {
-         
-         return -1;
-
-      }
+//      if(!create_process(strCmdLine, &processId))
+//      {
+//         
+//         return -1;
+//
+//      }
 
       set["pid"] = processId;
 
@@ -136,7 +140,7 @@ namespace acme
 
       }
 
-      return 0;
+      //return 0;
 
    }
 
@@ -156,7 +160,9 @@ namespace acme
       
       property_set set;
 
-      return call_sync(pszFile, pszParams, ::file::path(pszFile).folder(), e_display_none, durationTimeout, set);
+      call_sync(pszFile, pszParams, ::file::path(pszFile).folder(), e_display_none, durationTimeout, set);
+      
+      return true;
 
    }
 
@@ -273,19 +279,21 @@ namespace acme
 //      }
 
 
-      ::e_status node::initialize(::object * pobject)
+      void node::initialize(::object * pobject)
       {
 
-         auto estatus = ::acme::node::initialize(pobject);
-
-         if(!estatus)
-         {
-
-            return estatus;
-
-         }
-
-         return estatus;
+         ::acme::node::initialize(pobject);
+         
+//         auto estatus = ::acme::node::initialize(pobject);
+//
+//         if(!estatus)
+//         {
+//
+//            return estatus;
+//
+//         }
+//
+//         return estatus;
 
       }
 
@@ -615,7 +623,7 @@ namespace acme
       //
       //   }
 
-      ::e_status node::element_quit::run()
+      void node::element_quit::run()
       {
       
          m_pnode->m_pAcmePlatform->m_peventReadyToTerminateApp->set_event();
@@ -632,8 +640,8 @@ namespace acme
       
          delete this;
       
-         return ::success;
-      
+//         return ::success;
+//      
       }
 
 
@@ -656,21 +664,23 @@ namespace acme
       }
 
    
-      ::e_status node::implement(__transport(::acme::node) & pnode, __transport(class ::system) & psystem)
+      void node::implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem)
       {
          
          m_pelementquit = new element_quit(pnode, psystem);
 
-         auto estatus = ::acme::apple::node::implement(pnode, psystem);
+         //auto estatus =
+         
+         ::acme::apple::node::implement(pnode, psystem);
 
-         if(!estatus)
-         {
-
-            return estatus;
-
-         }
-
-         return estatus;
+//         if(!estatus)
+//         {
+//
+//            return estatus;
+//
+//         }
+//
+//         return estatus;
 
       }
 
@@ -753,7 +763,7 @@ namespace acme
    //
 
 
-      ::e_status node::install_sigchld_handler()
+      void node::install_sigchld_handler()
       {
 
 //         struct sigaction sa;
@@ -768,35 +778,35 @@ namespace acme
 //
 //         sigaction(SIGCHLD, &sa, nullptr);
 
-         return ::success;
+         //return ::success;
 
       }
 
       
-      ::e_status node::_launch_macos_app(const ::string & pszAppFolder)
+      void node::_launch_macos_app(const ::string & pszAppFolder)
       {
          
          if (!pszAppFolder)
          {
             
-            return false;
+            throw_status(error_invalid_empty_argument);
             
          }
          
          ns_launch_app(pszAppFolder, nullptr, 0);
  
-         return ::success;
+         //return ::success;
          
       }
 
 
-      ::e_status node::_launch_macos_app_args(const ::string & pszAppFolder, const ::string & pszArgs)
+      void node::_launch_macos_app_args(const ::string & pszAppFolder, const ::string & pszArgs)
       {
          
          if (!pszAppFolder)
          {
             
-            return false;
+            throw_status(error_exception);
             
          }
          
@@ -804,17 +814,17 @@ namespace acme
          
          strCommand.format("open \"%s\" --args %s", pszAppFolder.c_str(), pszArgs.c_str());
          
-         return _launch_command(strCommand);
+         _launch_command(strCommand);
          
       }
       
 
-      ::e_status node::launch_app(const ::string & psz, const char ** argv, int iFlags)
+      void node::launch_app(const ::string & psz, const char ** argv, int iFlags)
       {
          
          ::ns_launch_app(psz, argv, iFlags);
          
-         return ::success;
+         //return ::success;
          
       }
 

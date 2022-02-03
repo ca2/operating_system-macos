@@ -30,10 +30,10 @@ namespace macos
    }
 
 
-   ::extended::status stdio_file::open(const ::file::path & lpszFileName, ::u32 nOpenFlags)
+   void stdio_file::open(const ::file::path & lpszFileName, const ::file::e_open & eopen)
    {
 
-      if ((nOpenFlags & ::file::e_open_defer_create_directory) && (nOpenFlags & ::file::e_open_write))
+      if ((eopen & ::file::e_open_defer_create_directory) && (eopen & ::file::e_open_write))
       {
          
          m_psystem->m_pacmedir->create(::file_path_folder(lpszFileName));
@@ -51,21 +51,39 @@ namespace macos
       i32 nMode = 0;
 
       // determine read/write mode depending on ::ca2::filesp mode
-      if (nOpenFlags & ::file::e_open_create)
+      if (eopen & ::file::e_open_create)
       {
-         if (nOpenFlags & ::file::e_open_no_truncate)
+         
+         if (eopen & ::file::e_open_no_truncate)
+         {
+            
             szMode[nMode++] = 'a';
+            
+         }
          else
+         {
+          
             szMode[nMode++] = 'w';
+            
+         }
+         
       }
-      else if (nOpenFlags & ::file::e_open_write)
+      else if (eopen & ::file::e_open_write)
+      {
+         
          szMode[nMode++] = 'a';
+         
+      }
       else
+      {
+       
          szMode[nMode++] = 'r';
+         
+      }
 
       // add '+' if necessary (when read/write modes mismatched)
-      if ((szMode[0] == 'r' && (nOpenFlags & ::file::e_open_read_write)) ||
-            (szMode[0] != 'r' && !(nOpenFlags & ::file::e_open_write)))
+      if ((szMode[0] == 'r' && (eopen & ::file::e_open_read_write)) ||
+            (szMode[0] != 'r' && !(eopen & ::file::e_open_write)))
       {
          // current szMode mismatched, need to add '+' to fix
          szMode[nMode++] = '+';
@@ -73,13 +91,22 @@ namespace macos
 
       // will be inverted if not necessary
       i32 nFlags = O_RDONLY;
-      if (nOpenFlags & (::file::e_open_write | ::file::e_open_read_write))
+      if (eopen & (::file::e_open_write | ::file::e_open_read_write))
          nFlags ^= O_RDONLY;
 
-      if (nOpenFlags & ::file::e_open_binary)
+      if (eopen & ::file::e_open_binary)
+      {
+         
          szMode[nMode++] = 'b'; // , nFlags ^= _O_TEXT;
+         
+      }
       else
+      {
+         
          szMode[nMode++] = 't';
+         
+      }
+      
       szMode[nMode++] = '\0';
 
       // open a C-runtime low-level file handle
@@ -92,24 +119,39 @@ namespace macos
 
       if (m_pStream == nullptr)
       {
+         
+         int iErrNo = errno;
+         
+         m_estatus = failed_errno_to_status(iErrNo);
+         
+         set_nok();
+         
+         if(!(eopen & ::file::e_open_no_exception_on_open))
+         {
+            
+            throw_status(m_estatus);
+            
+         }
+         
+         //throw_
          //::file::exception * pe = get_Fileexception(::error_file, errno, m_strFileName);
          // an error somewhere along the way...
          //if (pException != nullptr)
-         {
-            //         pException->m_lOsError = errno;
-            //         pException->m_cause = ::file::exception::OsErrorToException(errno);
-         }
+//         {
+//            //         pException->m_lOsError = errno;
+//            //         pException->m_cause = ::file::exception::OsErrorToException(errno);
+//         }
 
          //::macos::file::Abort(); // close m_hFile
 
-         return ::error_failed;
+         //return ::error_failed;
 
       }
 
       m_strFileName = lpszFileName;
 
-      return ::success;
-
+//      return ::success;
+//
    }
 
 

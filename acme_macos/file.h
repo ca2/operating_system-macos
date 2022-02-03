@@ -71,7 +71,7 @@ namespace macos
       ::file::path get_file_path() const override;
       void set_file_path(const ::file::path & path)override;
 
-      ::extended::status open(const ::file::path & lpszFileName, const ::file::e_open & eopenflags)override;
+      void open(const ::file::path & lpszFileName, const ::file::e_open & eopenflags)override;
 
       filesize translate(filesize offset, ::enum_seek nFrom)override;
       void set_size(filesize dwNewLen)override;

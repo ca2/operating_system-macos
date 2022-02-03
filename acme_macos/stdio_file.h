@@ -16,23 +16,23 @@ namespace macos
       
 
       stdio_file();
-      virtual ~stdio_file();
+      ~stdio_file() override;
       
 
-      virtual void write_string(const char * lpsz);
+      void write_string(const char * lpsz) override;
       virtual char * read_string(char * lpsz, ::u32 nMax);
-      virtual bool read_string(string & rString);
+      bool read_string(string & rString) override;
 
-      void dump(dump_context & dumpcontext) const;
+      void dump(dump_context & dumpcontext) const override;
 
-      virtual filesize get_position() const;
-      virtual ::extended::status open(const ::file::path & lpszFileName, ::u32 nOpenFlags);
-      virtual memsize read(void * lpBuf, memsize nCount);
-      virtual void write(const void * lpBuf, memsize nCount);
+      filesize get_position() const override;
+      void open(const ::file::path & lpszFileName, const ::file::e_open & eopen) override;
+      memsize read(void * lpBuf, memsize nCount) override;
+      void write(const void * lpBuf, memsize nCount) override;
       virtual filesize seek(filesize lOff, ::enum_seek nFrom);
       virtual void Abort();
       virtual void Flush();
-      virtual void close();
+      void close() override;
       virtual filesize get_length() const;
 
       // Unsupported APIs

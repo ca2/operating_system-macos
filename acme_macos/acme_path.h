@@ -18,9 +18,9 @@ namespace macos
 
 
       
-      ::e_status create_symbolic_link(const char * pszLink, const char * pszSource) override;
+      void create_symbolic_link(const char * pszLink, const char * pszSource) override;
 
-      ::e_status is_symbolic_link(const char * pszLink) override;
+      bool is_symbolic_link(const char * pszLink) override;
 
       ::file::path symbolic_link_destination(const char * pszLink) override;
 

@@ -19,7 +19,7 @@
 
 #define WCHAR_T_SIZE 32
 
-#define PLATFORM_NAMESPACE macos
+#define OPERATING_SYSTEM_NAMESPACE macos
 
 // #if defined(_DEBUG) && !defined(DEBUG)
 // #define DEBUG 1
@@ -29,8 +29,8 @@
 #define HAVE_TERMIOS_H 1
 
 
-#define PLATFORM_NAME "macos"
-#define PLATFORM_NAMESPACE macos
+#define OPERATING_SYSTEM_NAME "macos"
+#define OPERATING_SYSTEM_NAMESPACE macos
 
 //#ifdef __cplusplus
 //typedef wchar_t unichar;

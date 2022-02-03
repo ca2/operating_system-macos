@@ -9,60 +9,6 @@
 #include "keyboard.h"
 
 
-bool apple_is_action_key(int i)
-{
-   
-   if(i==kVK_Return) return true;
-  if(i==kVK_Tab          ) return true;
-  //if(i==kVK_Space        ) return true;
-  if(i==kVK_Delete       ) return true;
-  if(i==kVK_Escape       ) return true;
-  if(i==kVK_Command      ) return true;
-  if(i==kVK_Shift        ) return true;
-  if(i==kVK_CapsLock     ) return true;
-  if(i==kVK_Option       ) return true;
-  if(i==kVK_Control      ) return true;
-  if(i==kVK_RightShift   ) return true;
-  if(i==kVK_RightOption  ) return true;
-  if(i==kVK_RightControl ) return true;
-  if(i==kVK_Function     ) return true;
-  if(i==kVK_F17          ) return true;
-  if(i==kVK_VolumeUp     ) return true;
-  if(i==kVK_VolumeDown   ) return true;
-  if(i==kVK_Mute         ) return true;
-  if(i==kVK_F18          ) return true;
-  if(i==kVK_F19          ) return true;
-  if(i==kVK_F20          ) return true;
-  if(i==kVK_F5           ) return true;
-  if(i==kVK_F6           ) return true;
-  if(i==kVK_F7           ) return true;
-  if(i==kVK_F3           ) return true;
-  if(i==kVK_F8           ) return true;
-  if(i==kVK_F9           ) return true;
-  if(i==kVK_F11          ) return true;
-  if(i==kVK_F13          ) return true;
-  if(i==kVK_F16          ) return true;
-  if(i==kVK_F14          ) return true;
-  if(i==kVK_F10          ) return true;
-  if(i==kVK_F12          ) return true;
-  if(i==kVK_F15          ) return true;
-  if(i==kVK_Help         ) return true;
-  if(i==kVK_Home         ) return true;
-  if(i==kVK_PageUp       ) return true;
-  if(i==kVK_ForwardDelete) return true;
-  if(i==kVK_F4           ) return true;
-  if(i==kVK_End          ) return true;
-  if(i==kVK_F2           ) return true;
-  if(i==kVK_PageDown     ) return true;
-  if(i==kVK_F1           ) return true;
-  if(i==kVK_LeftArrow    ) return true;
-  if(i==kVK_RightArrow   ) return true;
-  if(i==kVK_DownArrow    ) return true;
-  if(i==kVK_UpArrow      ) return true;
-
-   return false;
-}
-
 
 ///**
 // * Key Flags

@@ -148,7 +148,7 @@ namespace macos
    ::file::path acme_dir::relative(::file::path path)
    {
 
-      path.replace(":", "");
+      path.find_replace(":", "");
 
       ::str::ends_eat_ci(path, ".exe");
 

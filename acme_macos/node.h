@@ -27,10 +27,10 @@ namespace acme
          {
          public:
             
-             __transport(::acme::node) & m_pnode;
-             __transport(class ::system) & m_psystem;
+             __pointer(::acme::node) & m_pnode;
+             __pointer(class ::system) & m_psystem;
             
-             element_quit(__transport(::acme::node) & pnode,__transport(class ::system) & psystem
+             element_quit(__pointer(::acme::node) & pnode,__pointer(class ::system) & psystem
                           
                           ) :
              m_pnode(pnode),m_psystem(psystem)
@@ -38,12 +38,12 @@ namespace acme
                
             }
             
-            ::e_status run() override;
+            void run() override;
             
             
          };
           
-          element_quit * m_pelementquit;
+         element_quit * m_pelementquit;
 
          //gpointer m_pGtkSettingsDefault;
          string m_strTheme;
@@ -57,8 +57,8 @@ namespace acme
          ::string get_file_type_identifier(const char * path) override;
          
          
-         ::e_status call_async(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, bool bPrivileged, unsigned int * puiPid = nullptr) override;
-         ::e_status call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const ::duration & durationTimeout, ::property_set & set) override;
+         void call_async(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, bool bPrivileged, unsigned int * puiPid = nullptr) override;
+         void call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const ::duration & durationTimeout, ::property_set & set) override;
 
          //virtual ::color::color get_system_color(enum_system_color esystemcolor) override;
          
@@ -71,11 +71,11 @@ namespace acme
 
          //override;
 
-         virtual ::e_status initialize(::object * pobject) override;
+         void initialize(::object * pobject) override;
          
          void node_quit() override;
          
-         ::e_status implement(__transport(::acme::node) & pnode, __transport(class ::system) & psystem) override;
+         void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;
 
 
    //      virtual ::e_status get_system_time(system_time_t * psystemtime)
@@ -123,18 +123,18 @@ namespace acme
    //      virtual filetime get_filetime_now();
 
 
-         virtual ::e_status install_sigchld_handler() override;
+         void install_sigchld_handler() override;
 
-         ::e_status _launch_macos_app(const ::string & pszAppFolder) override;
+         void _launch_macos_app(const ::string & pszAppFolder) override;
 
-         ::e_status _launch_macos_app_args(const ::string & pszAppFolder, const ::string & pszArgs) override;
+         void _launch_macos_app_args(const ::string & pszAppFolder, const ::string & pszArgs) override;
 
-         ::e_status launch_app(const ::string & psz, const char ** argv, int iFlags) override;
+         void launch_app(const ::string & psz, const char ** argv, int iFlags) override;
          
          
          virtual int _create_process2(const char * _cmd_line, u32 * pprocessId);
          
-         ::e_status create_process(const ::string & pszCommandLine, u32 * pprocessId) override;
+         void create_process(const ::string & pszCommandLine, u32 * pprocessId) override;
          
          bool process_modules(string_array& stra, u32 processID) override;
 

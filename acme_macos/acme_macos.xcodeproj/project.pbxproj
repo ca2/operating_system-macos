@@ -74,7 +74,7 @@
 		9A0C165F264A290E00B5CC33 /* libacme_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libacme_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0C178E264A2F4200B5CC33 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9A0C1790264A2F5000B5CC33 /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
-		9A15A5D6264B54CA0080670E /* acme_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_apple.xcodeproj; path = "../../platform-apple/acme_apple/acme_apple.xcodeproj"; sourceTree = "<group>"; };
+		9A15A5D6264B54CA0080670E /* acme_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_apple.xcodeproj; path = "../../operating-system-apple/acme_apple/acme_apple.xcodeproj"; sourceTree = "<group>"; };
 		9A15A610264B56740080670E /* _acme_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _acme_macos.h; sourceTree = "<group>"; };
 		9A15A611264B56740080670E /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread.h; sourceTree = "<group>"; };
 		9A15A612264B56750080670E /* _factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(WorkspaceDir)/archive/storage-$(PLATFORM_MODIFIER)/library",
+					"$(WorkspaceDir)/operating-system/storage-$(PLATFORM_MODIFIER)/library",
 					"$(WorkspaceDir)/time-$(PLATFORM_MODIFIER)/output",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -428,13 +428,13 @@
 					"$(WorkspaceDir)/source/app",
 					"$(WorkspaceDir)/source/app/_include",
 					"$(WorkspaceDir)/archive",
-					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)",
-					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/_include",
-					"$(WorkspaceDir)/archive/platform-apple",
-					"$(WorkspaceDir)/archive/platform-posix",
+					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)",
+					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)/_include",
+					"$(WorkspaceDir)/operating-system/operating-system-apple",
+					"$(WorkspaceDir)/operating-system/operating-system-posix",
 					"$(WorkspaceDir)/source/third/include",
-					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include/include",
-					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include",
+					"$(WorkspaceDir)/operating-system/third-$(PLATFORM_MODIFIER)/third/include/include",
+					"$(WorkspaceDir)/operating-system/third-$(PLATFORM_MODIFIER)/third/include",
 					"$(PROJECT_DIR)",
 					"$(HOME)/sensitive/sensitive/include",
 				);
@@ -496,7 +496,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(WorkspaceDir)/archive/storage-$(PLATFORM_MODIFIER)/library",
+					"$(WorkspaceDir)/operating-system/storage-$(PLATFORM_MODIFIER)/library",
 					"$(WorkspaceDir)/time-$(PLATFORM_MODIFIER)/output",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -510,13 +510,13 @@
 					"$(WorkspaceDir)/source/app",
 					"$(WorkspaceDir)/source/app/_include",
 					"$(WorkspaceDir)/archive",
-					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)",
-					"$(WorkspaceDir)/archive/platform-$(PLATFORM_MODIFIER)/_include",
-					"$(WorkspaceDir)/archive/platform-apple",
-					"$(WorkspaceDir)/archive/platform-posix",
+					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)",
+					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)/_include",
+					"$(WorkspaceDir)/operating-system/operating-system-apple",
+					"$(WorkspaceDir)/operating-system/operating-system-posix",
 					"$(WorkspaceDir)/source/third/include",
-					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include/include",
-					"$(WorkspaceDir)/archive/third-$(PLATFORM_MODIFIER)/third/include",
+					"$(WorkspaceDir)/operating-system/third-$(PLATFORM_MODIFIER)/third/include/include",
+					"$(WorkspaceDir)/operating-system/third-$(PLATFORM_MODIFIER)/third/include",
 					"$(PROJECT_DIR)",
 					"$(HOME)/sensitive/sensitive/include",
 				);

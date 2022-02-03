@@ -90,7 +90,7 @@ namespace macos
    }
 
 
-   ::extended::status file::open(const ::file::path & lpszFileName, const ::file::e_open & efileopenParam)
+   void file::open(const ::file::path & lpszFileName, const ::file::e_open & efileopenParam)
    {
       
       ::file::e_open eopen(efileopenParam);
@@ -186,23 +186,28 @@ namespace macos
       if(hFile == hFileNull)
       {
 
-         auto estatus = errno_to_status(errno);
-
-         if(estatus != error_file_not_found && estatus != error_path_not_found)
+         m_estatus = errno_to_status(errno);
+         
+         if(!(eopen & ::file::e_open_no_exception_on_open))
          {
 
-            return ::error_io;
-
-         }
-
+//            if(m_estatus != error_file_not_found && m_estatus != error_path_not_found)
+//            {
+//
+//               throw_status(::error_io);
+//
+//            }
+//
 //         if (hFile == -1)
 //         {
 //
 //            estatus = ::get_last_status();
 
-            return estatus;
+//            return estatus;
+            throw_status(m_estatus);
 
 //         }
+         }
 
       }
 
@@ -210,7 +215,7 @@ namespace macos
       
       m_eopen = eopen;
 
-      return ::success;
+      //return ::success;
 
    }
 
