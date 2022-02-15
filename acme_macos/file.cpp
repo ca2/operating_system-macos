@@ -8,7 +8,7 @@
 #include <dlfcn.h>
 #include <sys/stat.h>
 
-
+#define hFileNull -1
 //::e_status translate_unix_error(int error)
 //{
 //
@@ -194,7 +194,7 @@ namespace macos
 //            if(m_estatus != error_file_not_found && m_estatus != error_path_not_found)
 //            {
 //
-//               throw_status(::error_io);
+//               throw ::exception(::error_io);
 //
 //            }
 //
@@ -204,7 +204,7 @@ namespace macos
 //            estatus = ::get_last_status();
 
 //            return estatus;
-            throw_status(m_estatus);
+            throw ::exception(m_estatus);
 
 //         }
          }
@@ -285,7 +285,7 @@ namespace macos
 
             }
 
-            ::file::throw_errno(errno, m_strFileName);
+            throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
 
          }
          else if(iRead == 0)
@@ -347,7 +347,7 @@ namespace macos
          if(iWrite < 0)
          {
             
-            ::file::throw_errno(errno, m_strFileName);
+            throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
             
          }
          
@@ -366,7 +366,7 @@ namespace macos
       if(m_iFile == (::u32)hFileNull)
       {
          
-         ::file::throw_errno(errno, m_strFileName);
+         throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
          
       }
 
@@ -385,7 +385,7 @@ namespace macos
       if(posNew  == (filesize)-1)
       {
          
-         ::file::throw_errno(errno, m_strFileName);
+         throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
          
       }
 
@@ -408,7 +408,7 @@ namespace macos
       if(pos  == (filesize)-1)
       {
          
-         ::file::throw_errno(errno, m_strFileName);
+         throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
          
       }
 
@@ -446,7 +446,7 @@ namespace macos
       if (bError)
       {
          
-         ::file::throw_errno(errno, m_strFileName);
+         throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
          
       }
       
@@ -483,7 +483,7 @@ namespace macos
       if (::ftruncate(m_iFile, dwNewLen) == -1)
       {
          
-         ::file::throw_errno(errno, m_strFileName);
+         throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
          
       }
       
@@ -507,7 +507,7 @@ namespace macos
       if(dwCur != (u64)pFile->set_position((filesize) dwCur))
       {
 
-         __throw(error_io, "failed to seek back to the original position on get_length");
+         throw ::exception(error_io, "failed to seek back to the original position on get_length");;
 
       }
 

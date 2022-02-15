@@ -13,9 +13,11 @@ namespace macos
    public:
 
 
+      __creatable_from_library(acme_path, ::acme_path, "acme_macos");
+
+
       acme_path();
       ~acme_path() override;
-
 
       
       void create_symbolic_link(const char * pszLink, const char * pszSource) override;

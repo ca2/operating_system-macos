@@ -140,7 +140,7 @@
 //{
 //
 //   if(is_null())
-//      __throw(::exception::exception("error, m_pdata cannot be nullptr to ::oswindow::set_user_interaction"));
+//      throw ::exception(::exception::exception("error, m_pdata cannot be nullptr to ::oswindow::set_user_interaction"));;
 //
 //   m_pimpl = pimpl;
 //

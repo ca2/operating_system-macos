@@ -110,7 +110,7 @@ namespace macos
        AdjustTokenPrivileges(hToken, false, &tkp, 0, (PTOKEN_PRIVILEGES) nullptr, 0);
        return retval;*/
 
-      //  __throw(error_not_implemented);
+      //  throw ::exception(error_not_implemented);;
       return false;
 
    }
@@ -171,14 +171,14 @@ namespace macos
       /*    tkp.Privileges[0].Attributes = 0;
        AdjustTokenPrivileges(hToken, false, &tkp, 0, (PTOKEN_PRIVILEGES) nullptr, 0);
        return true;*/
-      //    __throw(error_not_implemented);
+      //    throw ::exception(error_not_implemented);;
       return false;
 
    }
 
    void os_context::terminate_processes_by_title(const ::string & pszName)
    {
-//      __throw(error_not_implemented);
+//      throw ::exception(error_not_implemented);;
       return;
 
       /*      ::u32 dwPid;
@@ -262,7 +262,7 @@ namespace macos
 
        CloseHandle( hProcess );
        return strName;*/
-      //    __throw(error_not_implemented);
+      //    throw ::exception(error_not_implemented);;
       return "";
 
    }
@@ -270,7 +270,7 @@ namespace macos
    void os_context::get_all_processes(u32_array & dwa )
    {
 
-      //  __throw(error_not_implemented);
+      //  throw ::exception(error_not_implemented);;
       return;
 
       /*
@@ -294,7 +294,7 @@ namespace macos
 
    ::payload os_context::connection_settings_get_auto_detect()
    {
-//      __throw(error_not_implemented);
+//      throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -317,7 +317,7 @@ namespace macos
    ::payload os_context::connection_settings_get_auto_config_url()
    {
 
-//      __throw(error_not_implemented);
+//      throw ::exception(error_not_implemented);;
       return "";
       /*
        registry::Key key;
@@ -335,7 +335,7 @@ namespace macos
    bool os_context::local_machine_set_run(const ::string & pszKey, const ::string & pszCommand)
    {
 
-//     __throw(error_not_implemented);
+//     throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -354,7 +354,7 @@ namespace macos
    {
 
 
-//     __throw(error_not_implemented);
+//     throw ::exception(error_not_implemented);;
       return false;
       /*    registry::Key keyKar(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce", true);
 
@@ -369,7 +369,7 @@ namespace macos
    bool os_context::current_user_set_run(const ::string & pszKey, const ::string & pszCommand)
    {
 
-      //   __throw(error_not_implemented);
+      //   throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -386,7 +386,7 @@ namespace macos
    bool os_context::current_user_set_run_once(const ::string & pszKey, const ::string & pszCommand)
    {
 
-//    __throw(error_not_implemented);
+//    throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -403,7 +403,7 @@ namespace macos
 
    bool os_context::defer_register_ca2_plugin_for_mozilla()
    {
-      //    __throw(error_not_implemented);
+      //    throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -442,7 +442,7 @@ namespace macos
 
    bool os_context::file_extension_get_open_with_list_keys(string_array & straKey, const ::string & pszExtension)
    {
-      //   __throw(error_not_implemented);
+      //   throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -481,7 +481,7 @@ namespace macos
    bool os_context::file_association_set_default_icon(const ::string & pszExtension, const ::string & pszExtensionNamingClass, const ::string & pszIconPath)
    {
 
-      //    __throw(error_not_implemented);
+      //    throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -498,7 +498,7 @@ namespace macos
 
    bool os_context::file_association_set_shell_open_command(const ::string & pszExtension, const ::string & pszExtensionNamingClass,  const ::string & pszCommand, const ::string & pszParam)
    {
-      //   __throw(error_not_implemented);
+      //   throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -530,7 +530,7 @@ namespace macos
 
    bool os_context::file_association_get_shell_open_command(const ::string & pszExtension, string & strExtensionNamingClass, string & strCommand, string & strParam)
    {
-      //    __throw(error_not_implemented);
+      //    throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -574,7 +574,7 @@ namespace macos
    bool os_context::open_in_ie(const ::string & pcsz)
    {
 
-      //    __throw(error_not_implemented);
+      //    throw ::exception(error_not_implemented);;
       return false;
 
       /*    registry reg;
@@ -624,7 +624,7 @@ namespace macos
    ::e_status os_context::enable_service()
    {
 
-      //    __throw(error_not_implemented);
+      //    throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -676,7 +676,7 @@ namespace macos
 
    ::e_status os_context::disable_service()
    {
-      //   __throw(error_not_implemented);
+      //   throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -717,7 +717,7 @@ namespace macos
 
    ::e_status os_context::start_service()
    {
-      //  __throw(error_not_implemented);
+      //  throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -759,7 +759,7 @@ namespace macos
 
    ::e_status os_context::stop_service()
    {
-      //    __throw(error_not_implemented);
+      //    throw ::exception(error_not_implemented);;
       return false;
 
       /*
@@ -829,7 +829,7 @@ namespace macos
    void os_context::raise_exception( ::u32 dwExceptionCode, ::u32 dwExceptionFlags)
    {
 
-      __throw(error_not_implemented);
+      throw ::exception(error_not_implemented);;
       return;
       /*
        RaiseException( dwExceptionCode, dwExceptionFlags, 0, nullptr );
@@ -839,7 +839,7 @@ namespace macos
    bool os_context::is_remote_session()
    {
 
-//      __throw(error_not_implemented);
+//      throw ::exception(error_not_implemented);;
       return false;
       /*
        return GetSystemMetrics(SM_REMOTESESSION) != false;
@@ -858,7 +858,7 @@ namespace macos
 //   void os_context::post_to_all_threads(const ::id & id, wparam wparam, lparam lparam)
 //   {
 //
-////      __throw(error_not_implemented);
+////      throw ::exception(error_not_implemented);;
 //      return;
 //
 //   }

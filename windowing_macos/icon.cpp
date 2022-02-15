@@ -50,7 +50,7 @@ namespace windowing_macos
 //   ::e_status icon::load_file(string strPath)
 //   {
 //
-//      __throw(error_interface_only);
+//      throw interface_only();
 //
 //      return false;
 //
@@ -109,7 +109,7 @@ namespace windowing_macos
 //   image_pointer icon::get_image(const concrete < ::size_i32 > & size)
 //   {
 //
-//      __throw(error_interface_only);
+//      throw interface_only();
 //
 //      return nullptr;
 //

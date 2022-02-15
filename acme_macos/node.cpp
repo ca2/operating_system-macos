@@ -145,24 +145,12 @@ namespace acme
    }
 
 
-
-
-
-
-
-
-
-
-
-
-   bool node::shell_execute_sync(const ::string & pszFile, const ::string & pszParams, ::duration durationTimeout )
+   void node::shell_execute_sync(const char * pszFile, const char * pszParams, ::duration durationTimeout)
    {
       
       property_set set;
 
       call_sync(pszFile, pszParams, ::file::path(pszFile).folder(), e_display_none, durationTimeout, set);
-      
-      return true;
 
    }
 
@@ -789,7 +777,7 @@ namespace acme
          if (!pszAppFolder)
          {
             
-            throw_status(error_invalid_empty_argument);
+            throw ::exception(error_invalid_empty_argument);
             
          }
          
@@ -806,7 +794,7 @@ namespace acme
          if (!pszAppFolder)
          {
             
-            throw_status(error_exception);
+            throw ::exception(error_exception);
             
          }
          
@@ -888,7 +876,7 @@ namespace acme
       bool node::process_modules(string_array& stra, u32 processID)
       {
 
-         __throw(error_interface_only);
+         throw interface_only();
 
          return false;
 
@@ -898,7 +886,7 @@ namespace acme
       bool node::load_modules_diff(string_array& straOld, string_array& straNew, const ::string & pszExceptDir)
       {
 
-         __throw(error_interface_only);
+         throw interface_only();
 
          return false;
 
@@ -932,7 +920,7 @@ namespace acme
       bool node::is_shared_library_busy(u32 processid, const string_array& stra)
       {
 
-         __throw(error_interface_only);
+         throw interface_only();
 
          return false;
 
@@ -942,7 +930,7 @@ namespace acme
       bool node::is_shared_library_busy(const string_array& stra)
       {
 
-         __throw(error_interface_only);
+         throw interface_only();
 
          return false;
 
@@ -952,7 +940,7 @@ namespace acme
       bool node::process_contains_module(string& strImage, ::u32 processID, const ::string & pszLibrary)
       {
 
-         __throw(error_interface_only);
+         throw interface_only();
 
          return false;
 
@@ -962,7 +950,7 @@ namespace acme
       void node::shared_library_process(dword_array& dwa, string_array& straProcesses, const ::string & pszLibrary)
       {
 
-         __throw(error_interface_only);
+         throw interface_only();
 
       }
 
@@ -970,7 +958,7 @@ namespace acme
    //   int_bool node::is_process_running(::u32 pid)
    //   {
    //
-   //      __throw(error_interface_only);
+   //      throw interface_only();
    //
    //      return false;
    //
@@ -985,14 +973,14 @@ namespace acme
       }
 
 
-   string node::expand_environment_variables(const ::string & str)
+      string node::expand_environment_variables(const ::string & str)
       {
 
          return "";
 
       }
    
-      
+   
    } // namespace macos
 
 

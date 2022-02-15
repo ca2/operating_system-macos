@@ -126,11 +126,11 @@ namespace macos
       size_t nRead = 0;
 
       if ((nRead = fread(lpBuf, sizeof(byte), nCount, m_pStream)) == 0 && !feof(m_pStream))
-         ::file::throw_status(error_file, errno, m_strFileName);
+         throw ::file::exception(error_file, -1, errno, m_strFileName);
       if (ferror(m_pStream))
       {
          clearerr(m_pStream);
-         ::file::throw_status(error_file, errno, m_strFileName);
+         throw ::file::exception(error_file, -1, errno, m_strFileName);
       }
       return nRead;
    }
@@ -142,7 +142,7 @@ namespace macos
       //   ASSERT(fx_is_valid_address(lpBuf, nCount, false));
 
       if (fwrite(lpBuf, sizeof(byte), nCount, m_pStream) != nCount)
-         ::file::throw_status(error_file, errno, m_strFileName);
+         throw ::file::exception(error_file, -1, errno, m_strFileName);
    }
 
    void stdio_file::write_string(const char * lpsz)
@@ -151,7 +151,7 @@ namespace macos
       ASSERT(m_pStream != nullptr);
 
       if (fputs(lpsz, m_pStream) == EOF)
-         ::file::throw_status(error_disk_full, errno, m_strFileName);
+         throw ::file::exception(error_disk_full, -1, errno, m_strFileName);
    }
 
    char * stdio_file::read_string(char * lpsz, ::u32 nMax)
@@ -164,7 +164,7 @@ namespace macos
       if (lpszResult == nullptr && !feof(m_pStream))
       {
          clearerr(m_pStream);
-         ::file::throw_status(error_file, errno, m_strFileName);
+         throw ::file::exception(error_file, -1, errno, m_strFileName);
       }
 
       return lpszResult;
@@ -195,7 +195,7 @@ namespace macos
             
             clearerr(m_pStream);
             
-            ::file::throw_status(error_file, errno, m_strFileName);
+            throw ::file::exception(error_file, -1, errno, m_strFileName);
          }
 
          // if string is read completely or EOF
@@ -246,11 +246,11 @@ namespace macos
          nFrom = SEEK_CUR;
          break;
       default:
-         ::file::throw_status(error_bad_seek, -1, m_strFileName);
+         ::file::throw ::exception(error_bad_seek, -1, m_strFileName);
       }
 
       if (fseek(m_pStream, lOff, nFrom) != 0)
-         ::file::throw_status(error_bad_seek, errno,
+         throw ::file::exception(error_bad_seek, -1, errno, 
                               m_strFileName);
 
       long pos = ftell(m_pStream);
@@ -264,7 +264,7 @@ namespace macos
 
       long pos = ftell(m_pStream);
       if (pos == -1)
-         ::file::throw_status(error_invalid_file, errno,
+         throw ::file::exception(error_invalid_file, -1, errno, 
                               m_strFileName);
       return pos;
    }
@@ -274,7 +274,7 @@ namespace macos
       ASSERT_VALID(this);
 
       if (m_pStream != nullptr && fflush(m_pStream) != 0)
-         ::file::throw_status(error_disk_full, errno,
+         throw ::file::exception(error_disk_full, -1, errno, 
                               m_strFileName);
    }
 
@@ -293,7 +293,7 @@ namespace macos
       m_pStream = nullptr;
 
       if (nErr != 0)
-         ::file::throw_status(error_disk_full, errno,
+         throw ::file::exception(error_disk_full, -1, errno, 
                               m_strFileName);
    }
 
@@ -316,7 +316,7 @@ namespace macos
       ASSERT_VALID(this);
       ASSERT(m_pStream != nullptr);
 
-      __throw(error_not_supported);
+      throw ::exception(error_not_supported);;
 
       return nullptr;
 
@@ -328,7 +328,7 @@ namespace macos
       ASSERT_VALID(this);
       ASSERT(m_pStream != nullptr);
 
-      __throw(error_not_supported);
+      throw ::exception(error_not_supported);;
    }
 
    void stdio_file::UnlockRange(filesize /* dwPos */, filesize /* dwCount */)
@@ -336,7 +336,7 @@ namespace macos
       ASSERT_VALID(this);
       ASSERT(m_pStream != nullptr);
 
-      __throw(error_not_supported);
+      throw ::exception(error_not_supported);;
    }
 
    void stdio_file::dump(dump_context & dumpcontext) const
@@ -359,21 +359,21 @@ namespace macos
 
       nCurrent = ftell(m_pStream);
       if (nCurrent == -1)
-         ::file::throw_status(error_invalid_file, errno,
+         throw ::file::exception(error_invalid_file, -1, errno, 
                               m_strFileName);
 
       nResult = fseek(m_pStream, 0, SEEK_END);
       if (nResult != 0)
-         ::file::throw_status(error_bad_seek, errno,
+         throw ::file::exception(error_bad_seek, -1, errno, 
                               m_strFileName);
 
       nLength = ftell(m_pStream);
       if (nLength == -1)
-         ::file::throw_status(error_invalid_file, errno,
+         throw ::file::exception(error_invalid_file, -1, errno, 
                               m_strFileName);
       nResult = fseek(m_pStream, nCurrent, SEEK_SET);
       if (nResult != 0)
-         ::file::throw_status(error_bad_seek, errno,
+         throw ::file::exception(error_bad_seek, -1, errno, 
                               m_strFileName);
 
       return nLength;

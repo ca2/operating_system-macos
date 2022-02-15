@@ -13,8 +13,11 @@ namespace macos
    public:
 
 
+      __creatable_from_library(acme_dir, ::acme_dir, "acme_macos");
+      
+
       acme_dir();
-      virtual ~acme_dir();
+      ~acme_dir() override;
 
 
       virtual ::file::path install() override;
