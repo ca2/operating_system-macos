@@ -24,8 +24,8 @@ namespace macos
       virtual ::e_status initialize(::object * pobject) override;
       virtual ::e_status finalize() override;
 
-      virtual bool _set_filea(const ::file::patha & stra, e_op eop) override;
-      virtual bool _get_filea(::file::patha & stra, e_op & eop) override;
+      virtual bool _set_filea(const ::file::path_array & stra, e_op eop) override;
+      virtual bool _get_filea(::file::path_array & stra, e_op & eop) override;
       virtual bool _has_filea() override;
 
       virtual bool _os_has_filea();

@@ -29,20 +29,15 @@ namespace macos
       dir_system();
 
 
-      virtual ::e_status initialize(::object * pobject) override;
+      void initialize(::object * pobject) override;
 
-      virtual ::e_status init_system() override;
+      void init_system() override;
       
 
    };
 
 
 } // namespace macos
-
-
-
-
-
 
 
 

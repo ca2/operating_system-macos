@@ -88,7 +88,7 @@ namespace macos
    }
 
 
-   bool os_context::shutdown(bool bIfPowerOff)
+   void os_context::shutdown(bool bIfPowerOff)
    {
       /*      bool retval = true;
        HANDLE hToken;
@@ -111,11 +111,12 @@ namespace macos
        return retval;*/
 
       //  throw ::exception(error_not_implemented);;
-      return false;
+      //return false;
 
    }
 
-   bool os_context::reboot()
+
+   void os_context::reboot()
    {
       /*      HANDLE hToken;
        TOKEN_PRIVILEGES tkp;
@@ -172,7 +173,7 @@ namespace macos
        AdjustTokenPrivileges(hToken, false, &tkp, 0, (PTOKEN_PRIVILEGES) nullptr, 0);
        return true;*/
       //    throw ::exception(error_not_implemented);;
-      return false;
+      //return false;
 
    }
 
@@ -207,7 +208,7 @@ namespace macos
       //  }
    }
 
-   bool os_context::get_pid_by_path(const ::string & pszName, ::u32 & dwPid)
+   bool os_context::path_pid(::u32 &uPid, const ::string & pszName)
    {
       u32_array dwa;
       get_all_processes(dwa);
@@ -215,14 +216,15 @@ namespace macos
       {
          if(get_process_path(dwa[i]).compare_ci(pszName) == 0)
          {
-            dwPid = dwa[i];
+            uPid = dwa[i];
             return true;
          }
       }
       return false;
    }
 
-   bool os_context::get_pid_by_title(const ::string & pszName, ::u32 & dwPid)
+
+   bool os_context::title_pid(::u32 & uPid, const ::string & pszName)
    {
       u32_array dwa;
       get_all_processes(dwa);
@@ -230,7 +232,7 @@ namespace macos
       {
          if(get_process_path(dwa[i]).title().compare_ci(pszName) == 0)
          {
-            dwPid = dwa[i];
+            uPid = dwa[i];
             return true;
          }
       }
@@ -401,10 +403,10 @@ namespace macos
    }
 
 
-   bool os_context::defer_register_ca2_plugin_for_mozilla()
+   void os_context::defer_register_ca2_plugin_for_mozilla()
    {
       //    throw ::exception(error_not_implemented);;
-      return false;
+      return;
 
       /*
        registry::Key keyPlugins;
@@ -440,10 +442,11 @@ namespace macos
        */
    }
 
-   bool os_context::file_extension_get_open_with_list_keys(string_array & straKey, const ::string & pszExtension)
+   
+   void os_context::file_extension_get_open_with_list_keys(string_array & straKey, const ::string & pszExtension)
    {
       //   throw ::exception(error_not_implemented);;
-      return false;
+      return;
 
       /*
        string strExt;
@@ -465,24 +468,21 @@ namespace macos
    }
 
 
-   bool os_context::file_extension_get_open_with_list_commands(string_array & straCommand, const ::string & pszExtension)
+   void os_context::file_extension_get_open_with_list_commands(string_array & straCommand, const ::string & pszExtension)
    {
 
       string_array straKey;
 
-      if(!file_extension_get_open_with_list_keys(straKey, pszExtension))
-         return false;
-
-
-      return true;
+      file_extension_get_open_with_list_keys(straKey, pszExtension);
 
    }
 
-   bool os_context::file_association_set_default_icon(const ::string & pszExtension, const ::string & pszExtensionNamingClass, const ::string & pszIconPath)
+
+   void os_context::file_association_set_default_icon(const ::string & pszExtension, const ::string & pszExtensionNamingClass, const ::string & pszIconPath)
    {
 
       //    throw ::exception(error_not_implemented);;
-      return false;
+      //return false;
 
       /*
        string strExtensionNamingClass(pszExtensionNamingClass);
@@ -496,10 +496,10 @@ namespace macos
    }
 
 
-   bool os_context::file_association_set_shell_open_command(const ::string & pszExtension, const ::string & pszExtensionNamingClass,  const ::string & pszCommand, const ::string & pszParam)
+   void os_context::file_association_set_shell_open_command(const ::string & pszExtension, const ::string & pszExtensionNamingClass,  const ::string & pszCommand, const ::string & pszParam)
    {
       //   throw ::exception(error_not_implemented);;
-      return false;
+      return;
 
       /*
        string strExt;
@@ -528,10 +528,11 @@ namespace macos
        */
    }
 
-   bool os_context::file_association_get_shell_open_command(const ::string & pszExtension, string & strExtensionNamingClass, string & strCommand, string & strParam)
+
+   void os_context::file_association_get_shell_open_command(const ::string & pszExtension, string & strExtensionNamingClass, string & strCommand, string & strParam)
    {
       //    throw ::exception(error_not_implemented);;
-      return false;
+      return;
 
       /*
        string strExt;
@@ -621,11 +622,11 @@ namespace macos
    }
 
 
-   ::e_status os_context::enable_service()
+   void os_context::enable_service()
    {
 
       //    throw ::exception(error_not_implemented);;
-      return false;
+      return;
 
       /*
        if(papp->m_strAppName.is_empty()
@@ -674,10 +675,10 @@ namespace macos
    }
 
 
-   ::e_status os_context::disable_service()
+   void os_context::disable_service()
    {
       //   throw ::exception(error_not_implemented);;
-      return false;
+      return;
 
       /*
        if(papp->m_strAppName.is_empty()
@@ -715,10 +716,11 @@ namespace macos
        */
    }
 
-   ::e_status os_context::start_service()
+
+   void os_context::start_service()
    {
       //  throw ::exception(error_not_implemented);;
-      return false;
+      return;
 
       /*
        if(papp->m_strAppName.is_empty()
@@ -757,10 +759,10 @@ namespace macos
    }
 
 
-   ::e_status os_context::stop_service()
+   void os_context::stop_service()
    {
       //    throw ::exception(error_not_implemented);;
-      return false;
+      return;
 
       /*
        if(papp->m_strAppName.is_empty()
@@ -864,7 +866,7 @@ namespace macos
 //   }
 
 
-   bool os_context::initialize_wallpaper_fileset(::file::set * pfileset, bool bAddSearch)
+   void os_context::initialize_wallpaper_fileset(::file::set * pfileset, bool bAddSearch)
    {
 
       if (bAddSearch)
@@ -879,11 +881,12 @@ namespace macos
 
       }
 
-      return true;
+      //return true;
 
    }
 
-   bool os_context::get_default_browser(string & strId, ::file::path & path, string & strParam)
+
+   void os_context::get_default_browser(string & strId, ::file::path & path, string & strParam)
    {
 
       path = ::macos::get_default_browser_path();
@@ -913,19 +916,20 @@ namespace macos
 
       }
 
-      return true;
+      //return true;
 
    }
 
 
-   bool os_context::set_default_browser()
+   void os_context::set_default_browser()
    {
 
       ns_set_this_process_binary_default_browser();
 
-      return false;
+      //return false;
 
    }
+
 
    ::file::path os_context::get_app_path(const string & strApp)
    {
@@ -1011,7 +1015,7 @@ namespace macos
 
          p = pacmedir->ca2roaming();
 
-         p /= "mypath" / pcommand->m_pcommandline->m_varQuery.propset()["app"].get_string() + ".txt";
+         p /= "mypath" / pcommand->payload("app").get_string() + ".txt";
 
          m_psystem->m_pacmefile->put_contents(p, pcommand->m_pcommandline->m_strExe);
 
@@ -1024,13 +1028,13 @@ namespace macos
 
             p = pacmedir->ca2roaming();
 
-            p /= "mypath" / pcommand->m_pcommandline->m_varQuery.propset()["app"].get_string() + "-app";
+            p /= "mypath" / pcommand->m_pcommandline->payload("app").get_string() + "-app";
 
             ::file::path p2;
 
             p2 = pacmedir->ca2roaming();
 
-            p2 /= "mypath" / ::file::path(pcommand->m_pcommandline->m_varQuery.propset()["app"].get_string()).folder()/ ::file::path(strApp.Left(iFind + strlen(".app"))).name();
+            p2 /= "mypath" / ::file::path(pcommand->m_pcommandline->payload("app").get_string()).folder()/ ::file::path(strApp.Left(iFind + strlen(".app"))).name();
 
             ns_create_alias(p2, strApp.Left(iFind + strlen(".app")));
 
@@ -1160,7 +1164,7 @@ namespace macos
    }
 
 
-   bool os_context::file_open(::file::path path, string strParams, string strFolder)
+   void os_context::file_open(::file::path path, string strParams, string strFolder)
    {
       
       auto pcontext = m_pcontext;
@@ -1181,12 +1185,12 @@ namespace macos
 
       }));
 
-      return true;
+      //return true;
 
    }
 
 
-   ::e_status os_context::link_open(const ::string & strUrl, const ::string & strProfile)
+   void os_context::link_open(const ::string & strUrl, const ::string & strProfile)
    {
       
       string strUrlCopy(strUrl);
@@ -1200,12 +1204,12 @@ namespace macos
 
       });
 
-      return success;
+      //return success;
 
    }
 
 
-   bool os_context::browse_folder(property_set &set)
+   void os_context::browse_folder(property_set &set)
    {
       
       const char * pszStartDir = nullptr;
@@ -1228,18 +1232,20 @@ namespace macos
       if(strFolder.is_empty())
       {
 
-         return false;
+         //return false;
+         
+         return;
 
       }
 
       set["folder"] = strFolder;
 
-      return true;
+      //return true;
 
    }
 
 
-   bool os_context::browse_file_open(property_set &set)
+   void os_context::browse_file_open(property_set &set)
    {
 
       const char * pszStartDir = nullptr;
@@ -1273,7 +1279,9 @@ namespace macos
       if(straFileName.is_empty())
       {
 
-         return false;
+         //return false;
+         
+         return;
 
       }
 
@@ -1291,13 +1299,11 @@ namespace macos
 
       }
 
-      return true;
+      //return true;
 
    }
 
 } // namespace macos
-
-
 
 
 

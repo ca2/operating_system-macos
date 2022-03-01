@@ -12,7 +12,7 @@ namespace macos
    public:
 
 
-      __creatable_from_library(stdio_file, ::file::text_file, "acme_macos");
+      //__creatable_from_library(stdio_file, ::file::text_file, "acme_macos");
 
 
       FILE * m_pStream;

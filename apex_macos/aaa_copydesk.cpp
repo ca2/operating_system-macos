@@ -22,9 +22,9 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 
 long macos_clipboard_get_file_count();
 
-void macos_clipboard_get_filea(::file::patha & stra);
+void macos_clipboard_get_filea(::file::path_array & stra);
 
-void macos_clipboard_set_filea(const ::file::patha & stra);
+void macos_clipboard_set_filea(const ::file::path_array & stra);
 
 string macos_clipboard_get_plain_text();
 
@@ -104,7 +104,7 @@ namespace macos
    }
 
 
-   bool copydesk::_get_filea(::file::patha & patha, e_op & eop)
+   bool copydesk::_get_filea(::file::path_array & patha, e_op & eop)
    {
 
       if(!has_filea())
@@ -122,7 +122,7 @@ namespace macos
 
    }
 
-   bool copydesk::_set_filea(const ::file::patha & patha, e_op eop)
+   bool copydesk::_set_filea(const ::file::path_array & patha, e_op eop)
    {
 
       ns_main_sync(^

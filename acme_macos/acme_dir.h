@@ -13,7 +13,7 @@ namespace macos
    public:
 
 
-      __creatable_from_library(acme_dir, ::acme_dir, "acme_macos");
+      //__creatable_from_library(acme_dir, ::acme_dir, "acme_macos");
       
 
       acme_dir();

@@ -24,8 +24,8 @@ namespace windowing_macos
       ::e_status initialize(::object * pobject) override;
       ::e_status destroy() override;
 
-      ::e_status _set_filea(const ::file::patha & stra, e_op eop) override;
-      ::e_status _get_filea(::file::patha & stra, e_op & eop) override;
+      ::e_status _set_filea(const ::file::path_array & stra, e_op eop) override;
+      ::e_status _get_filea(::file::path_array & stra, e_op & eop) override;
       bool _has_filea() override;
 
       virtual bool _os_has_filea();

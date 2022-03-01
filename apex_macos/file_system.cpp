@@ -34,17 +34,19 @@ namespace macos
    }
 
 
-   ::e_status file_system::initialize(::object * pobject)
+   void file_system::initialize(::object * pobject)
    {
       
-      auto estatus = ::file_system::initialize(pobject);
+      //auto estatus =
       
-      if(!estatus)
-      {
-         
-         return estatus;
-         
-      }
+      ::file_system::initialize(pobject);
+      
+//      if(!estatus)
+//      {
+//
+//         return estatus;
+//
+//      }
       
       string str = getenv("HOME");
       
@@ -59,7 +61,7 @@ namespace macos
       if(psystem->has_property("user_folder_relative_path"))
       {
 
-         strUserFolderShift = strRelative / get_application()->payload("user_folder_relative_path").get_string();
+         strUserFolderShift = strRelative / get_app()->payload("user_folder_relative_path").get_string();
 
       }
       else
@@ -71,7 +73,7 @@ namespace macos
 
       m_strUserFolder = str / "ca2" / strUserFolderShift;
 
-      return true;
+      //return true;
 
    }
 

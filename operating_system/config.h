@@ -90,12 +90,14 @@
 #define AXIS_FREEIMAGE
 
 
-#define FONT_SANS "Helvetica"
-#define FONT_SERIF "Times"
-#define FONT_SANS_EX "Arial"
-#define FONT_SERIF_EX "Times New Roman"
-#define FONT_SANS_FX "Verdana"
-#define FONT_SERIF_FX "Georgia"
+#define FONT_SANS "Arial"
+#define FONT_SERIF "Times New Roman"
+#define FONT_SANS_EX "Geneva"
+#define FONT_SERIF_EX "Georgia"
+#define FONT_SANS_FX "Futura"
+#define FONT_SERIF_FX "Palatino"
+#define FONT_SANS_UI "Helvetica"
+#define FONT_SERIF_UI "Times"
 #define FONT_MONO "Menlo"
 
 

@@ -45,9 +45,9 @@ namespace macos
 
       status.m_size = st.st_size;
 
-      status.m_ctime = ::datetime::time(st.st_mtime);
-      status.m_atime = ::datetime::time(st.st_atime);
-      status.m_mtime = ::datetime::time(st.st_ctime);
+      status.m_ctime = ::earth::time(st.st_mtime);
+      status.m_atime = ::earth::time(st.st_atime);
+      status.m_mtime = ::earth::time(st.st_ctime);
 
       if (status.m_ctime.get_time() == 0)
       {
@@ -208,12 +208,22 @@ namespace macos
 
 //         }
          }
+         
+         m_iFile = hFileNull;
+         
+         set_nok();
+         
+         return;
 
       }
 
       m_iFile = (i32)hFile;
       
       m_eopen = eopen;
+      
+      set_ok();
+      
+      m_estatus = ::success;
 
       //return ::success;
 
@@ -594,9 +604,9 @@ namespace macos
 
          rStatus.m_attribute = 0;
 
-         rStatus.m_ctime = ::datetime::time(st.st_mtime);
-         rStatus.m_atime = ::datetime::time(st.st_atime);
-         rStatus.m_mtime = ::datetime::time(st.st_ctime);
+         rStatus.m_ctime = ::earth::time(st.st_mtime);
+         rStatus.m_atime = ::earth::time(st.st_atime);
+         rStatus.m_mtime = ::earth::time(st.st_ctime);
 
          if (rStatus.m_ctime.get_time() == 0)
          {

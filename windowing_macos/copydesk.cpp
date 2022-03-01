@@ -20,9 +20,9 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 
 long macos_clipboard_get_file_count();
 
-void macos_clipboard_get_filea(::file::patha & stra);
+void macos_clipboard_get_filea(::file::path_array & stra);
 
-void macos_clipboard_set_filea(const ::file::patha & stra);
+void macos_clipboard_set_filea(const ::file::path_array & stra);
 
 string macos_clipboard_get_plain_text();
 
@@ -105,7 +105,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status copydesk::_get_filea(::file::patha & patha, e_op & eop)
+   ::e_status copydesk::_get_filea(::file::path_array & patha, e_op & eop)
    {
 
       if(!has_filea())
@@ -124,7 +124,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status copydesk::_set_filea(const ::file::patha & patha, e_op eop)
+   ::e_status copydesk::_set_filea(const ::file::path_array & patha, e_op eop)
    {
 
       ns_main_sync(^
@@ -348,7 +348,7 @@ namespace windowing_macos
 char ** macos_clipboard_get_filea(long * pc);
 
 
-void macos_clipboard_get_filea(::file::patha & patha)
+void macos_clipboard_get_filea(::file::path_array & patha)
 {
 
    long c = 0;
@@ -372,7 +372,7 @@ void macos_clipboard_get_filea(::file::patha & patha)
 void macos_clipboard_set_filea(const char ** psza, long c);
 
 
-void macos_clipboard_set_filea(const ::file::patha & patha)
+void macos_clipboard_set_filea(const ::file::path_array & patha)
 {
 
    auto psza = patha.c_ansi_get();

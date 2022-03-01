@@ -18,7 +18,7 @@ namespace macos
    public:
 
 
-      __creatable_from_library(file, ::file::file, "acme_macos");
+      //__creatable_from_library(file, ::file::file, "acme_macos");
 
       
       // enum Attribute

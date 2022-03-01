@@ -18,7 +18,7 @@ namespace macos
    public:
       
       
-      __creatable_from_library(acme_file, ::acme_file, "acme_macos");
+      //__creatable_from_library(acme_file, ::acme_file, "acme_macos");
       
       
       acme_file();

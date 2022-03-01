@@ -8,7 +8,7 @@ namespace macos
 {
 
 
-   ::e_status launcher::start()
+   void launcher::start()
    {
 
       auto estatus = ensure_executable();
@@ -16,7 +16,9 @@ namespace macos
       if(!estatus)
       {
          
-         return estatus;
+         //return estatus;
+         
+         throw exception(error_wrong_state);
          
       }
 
@@ -37,7 +39,7 @@ namespace macos
 
       execlp(strPath, strPath, (char *) 0);
 
-      return estatus;
+      //return estatus;
 
    }
 

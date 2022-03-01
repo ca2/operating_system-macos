@@ -32,35 +32,39 @@ namespace macos
 
 
 
-   ::e_status dir_system::initialize(::object * pobject)
+   void dir_system::initialize(::object * pobject)
    {
       
-      auto estatus = ::dir_system::initialize(pobject);
+      //auto estatus =
       
-      if(!estatus)
-      {
-         
-         return estatus;
-         
-      }
+      ::dir_system::initialize(pobject);
       
-      return estatus;
+//      if(!estatus)
+//      {
+//         
+//         return estatus;
+//         
+//      }
+//      
+//      return estatus;
 
    }
 
 
-   ::e_status dir_system::init_system()
+   void dir_system::init_system()
    {
 
-      auto estatus = ::dir_system::init_system();
+      //auto estatus =
       
-      if(!estatus)
-      {
-         
-         return estatus;
-         
-      }
+      ::dir_system::init_system();
       
+//      if(!estatus)
+//      {
+//
+//         return estatus;
+//
+//      }
+//
 //      auto psystem= m_psystem->m_papexsystem;
       
 //      ::file::path pathModule = psystem->m_pfilesystem->m_pathModule;
@@ -75,7 +79,7 @@ namespace macos
       
       m_pathCa2Config = m_pathHome / "Library/Application Support/ca2";
 
-      return estatus;
+      //return estatus;
       
    }
 

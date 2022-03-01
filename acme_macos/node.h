@@ -22,7 +22,7 @@ namespace acme
       public:
 
          
-         __creatable_from_library(node, ::acme::node, "acme_macos");
+         //__creatable_from_library(node, ::acme::node, "acme_macos");
          
          
          class element_quit :

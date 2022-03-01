@@ -594,7 +594,7 @@ namespace macos
    ::file::path acme_dir::pathfind(const string& pszEnv, const string& pszTopic, const string& pszMode)
    {
 
-      ::file::patha stra;
+      ::file::path_array stra;
 
       stra.add_tokens(pszEnv, ":", false);
 

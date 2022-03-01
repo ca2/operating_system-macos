@@ -26,13 +26,13 @@ namespace macos
       virtual ~file_context();
       
       
-      virtual ::e_status initialize(::object * pobject) override;
+      void initialize(::object * pobject) override;
 
       virtual ::payload length(const ::file::path & path) override;
 
       //virtual ::e_status update_module_path() override;
 
-      virtual file_transport get_file(const ::payload & varFile, const ::file::e_open & eopen) override;
+      virtual file_pointer get_file(const ::payload & varFile, const ::file::e_open & eopen) override;
 
 
       void calculate_main_resource_memory() override;

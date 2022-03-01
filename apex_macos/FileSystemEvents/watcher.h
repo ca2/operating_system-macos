@@ -37,7 +37,7 @@ namespace FileSystemEvents
       void addAll();
       void eraseAll();
 
-      ::e_status step() override;
+      bool step() override;
       
 
    };
@@ -50,10 +50,10 @@ namespace FileSystemEvents
 
 
       watcher();
-      virtual ~watcher();
+      ~watcher() override;
 
       
-      ::e_status step() override;
+      bool step() override;
       
 
    };

@@ -63,37 +63,41 @@ namespace macos
    }
 
 
-   ::e_status file_context::initialize(::object * pobject)
+   void file_context::initialize(::object * pobject)
    {
       
-      auto estatus = ::file_context::initialize(pobject);
+      //auto estatus =
       
-      if(!estatus)
-      {
-         
-         return estatus;
-         
-      }
-      
+      ::file_context::initialize(pobject);
+//
+//      if(!estatus)
+//      {
+//
+//         return estatus;
+//
+//      }
+//
       auto psystem = m_psystem->m_papexsystem;
 
-      estatus = __refer(m_pdirsystem, psystem->m_pdirsystem);
+       __refer(m_pdirsystem, psystem->m_pdirsystem);
       
-      if(!estatus)
-      {
-         
-         return estatus;
-         
-      }
+//      if(!estatus)
+//      {
+//
+//         throw exception(error_wrong_type);
+//
+//      }
       
-      estatus = __refer(m_pfilesystem, psystem->m_pfilesystem);
+      //estatus =
+      __refer(m_pfilesystem, psystem->m_pfilesystem);
       
-      if(!estatus)
-      {
-         
-         return estatus;
-         
-      }
+//      if(!estatus)
+//      {
+//         
+//         throw exception(error_wrong_type);
+//         //return estatus;
+//         
+//      }
       
 //      string str = getenv("HOME");
 //
@@ -116,7 +120,7 @@ namespace macos
 //
 //      m_strUserFolder = str / "ca2" / strUserFolderShift;
 
-      return estatus;
+//      return estatus;
 
    }
 
@@ -136,7 +140,7 @@ namespace macos
 //   }
 
 
-   file_transport file_context::get_file(const ::payload & varFile, const ::file::e_open & eopenFlags)
+   file_pointer file_context::get_file(const ::payload & varFile, const ::file::e_open & eopenFlags)
    {
 
       return ::file_context::get_file(varFile, eopenFlags);

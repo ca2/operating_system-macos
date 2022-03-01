@@ -1,7 +1,7 @@
 #include "framework.h"
 #include <sys/ipc.h>
 #include <sys/msg.h>
-#include "acme/node/operating_system/ansi/_pthread.h"
+#include "acme/operating_system/ansi/_pthread.h"
 
 
 
@@ -35,7 +35,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
    }
 
 
-   ::e_status interprocess_communication_tx::open(const ::string & strChannel,launcher * plauncher)
+   void interprocess_communication_tx::open(const ::string & strChannel,launcher * plauncher)
    {
 
       //CFDataRef data;
@@ -50,18 +50,18 @@ interprocess_communication_tx::~interprocess_communication_tx()
 
       CFRelease(name);
 
-      return true;
+      //return true;
 
    }
 
 
-   ::e_status interprocess_communication_tx::close()
+   void interprocess_communication_tx::close()
    {
 
       if(m_port == nullptr)
       {
 
-         return true;
+         throw exception(error_wrong_state);
 
       }
 
@@ -69,18 +69,18 @@ interprocess_communication_tx::~interprocess_communication_tx()
 
       m_port = nullptr;
 
-      return true;
+      //return true;
 
    }
 
 
-   ::e_status interprocess_communication_tx::send(const ::string & strMessage, const ::duration & durationTimeout)
+   void interprocess_communication_tx::send(const ::string & strMessage, const ::duration & durationTimeout)
    {
 
       if(m_port == nullptr)
       {
          
-         return error_failed;
+         throw exception(error_wrong_state);
          
       }
 
@@ -109,7 +109,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
       if (status == kCFMessagePortSuccess)
       {
 
-         return true;
+         return;
 
       }
 
@@ -120,20 +120,20 @@ interprocess_communication_tx::~interprocess_communication_tx()
 
       }
 
-      return false;
+      //return false;
 
    }
 
 
-   ::e_status interprocess_communication_tx::send(int message,void * pdata,int len, const duration & durationTimeout)
+   void interprocess_communication_tx::send(int message,void * pdata,int len, const duration & durationTimeout)
    {
 
       if(message == 0x80000000)
-         return false;
+         throw exception(error_wrong_state);
 
 
       if(!is_tx_ok())
-         return false;
+         throw exception(error_wrong_state);
 
       memory m(pdata, len);
 
@@ -154,7 +154,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
       {
          // ...
       }
-      return true;
+      //return true;
 
    }
 
@@ -173,7 +173,7 @@ interprocess_communication_tx::~interprocess_communication_tx()
 interprocess_communication_rx::interprocess_communication_rx()
    {
 
-      m_id = "::interprocess_communication::rx";
+      m_atom = "::interprocess_communication::rx";
    
       m_runloop = nullptr;
 
@@ -222,7 +222,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
    }
    
 
-   ::e_status interprocess_communication_rx::create(const ::string & strChannel)
+   void interprocess_communication_rx::create(const ::string & strChannel)
    {
 
       CFMessagePortContext c = {};
@@ -237,18 +237,18 @@ interprocess_communication_rx::~interprocess_communication_rx()
 
       start_receiving();
 
-      return true;
+      //return true;
 
    }
 
 
-   ::e_status interprocess_communication_rx::destroy()
+   void interprocess_communication_rx::destroy()
    {
 
       if(m_port == nullptr)
       {
          
-         return ::success_none;
+         return;
          
       }
 
@@ -256,7 +256,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
 
       m_port = nullptr;
 
-      return ::success;
+      //return ::success;
 
    }
 
