@@ -37,21 +37,23 @@ namespace windowing_macos
    }
 
 
-::e_status notify_icon::create_notify_icon(const ::id & id, ::user::interaction * puserinteractionNotify, ::windowing::icon * pwindowingicon)
+   void notify_icon::create_notify_icon(const ::atom & atom, ::user::interaction * puserinteractionNotify, ::windowing::icon * pwindowingicon)
    {
 
       if(m_bCreated)
       {
 
-         return ::success_none;
+         //return ::success_none;
+         
+         return;
 
       }
       
-      m_strId = "notify_icon_" + id.to_string();
+      m_strId = "notify_icon_" + atom.to_string();
 
       m_strId = "ca2-" + pwindowingicon->get_tray_icon_name() + "-" + m_strId;
 
-      m_id                       = id;
+      m_atom                       = atom;
 
       m_puserinteractionNotify   = puserinteractionNotify;
 
@@ -119,10 +121,10 @@ namespace windowing_macos
    
       ::file::path pathFolder = m_psystem->m_pacmedir->ca2roaming() / "matter/icon/128";
 
-      string strIconName = get_application()->m_strAppId;
+      string strIconName = get_app()->m_strAppId;
 
-      strIconName.replace("/", "_");
-      strIconName.replace("-", "_");
+      strIconName.find_replace("/", "_");
+      strIconName.find_replace("-", "_");
 
 
       //auto pcontext = m_pcontext->m_papexcontext;
@@ -137,7 +139,7 @@ namespace windowing_macos
 
       m_bCreated = true;
 
-      return true;
+      //return true;
 
    }
 
@@ -186,19 +188,21 @@ namespace windowing_macos
    }
 
 
-   ::e_status notify_icon::add_hidden_window(::user::interaction * puserinteraction)
+   void notify_icon::add_hidden_window(::user::interaction * puserinteraction)
    {
 
-      auto estatus = ::user::notify_icon::add_hidden_window(puserinteraction);
+      //auto estatus =
       
-      if(!estatus)
-      {
-         
-         return estatus;
-         
-      }
-         
-      return estatus;
+      ::user::notify_icon::add_hidden_window(puserinteraction);
+      
+//      if(!estatus)
+//      {
+//
+//         return estatus;
+//
+//      }
+//
+//      return estatus;
 
    }
 
@@ -322,7 +326,7 @@ namespace windowing_macos
 //   }
 
 
-   ::e_status notify_icon::step()
+   bool notify_icon::step()
    {
 
 #if defined(LINUX)
@@ -336,7 +340,9 @@ namespace windowing_macos
 
 #endif
       
-      return ::success;
+      //return ::success;
+      
+      return true;
 
    }
 

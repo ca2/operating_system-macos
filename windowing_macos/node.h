@@ -24,22 +24,22 @@ namespace windowing_macos
       void os_menu_item_enable(void * pitem, bool bEnable) override;
       void os_menu_item_check(void * pitem, bool bCheck) override;
 
-      ::e_status defer_create_main_menu(const string_array & straParent, const string_array & straMenu, const string_array & straId) override;
+      void defer_create_main_menu(const string_array & straParent, const string_array & straMenu, const string_array & straId) override;
       
-      ::e_status implement(__transport(::acme::node) & pnode, __transport(class ::system) & psystem) override;
+      void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;
       
       
-      ::e_status _will_finish_launching() override;
+      void _will_finish_launching() override;
       
       
       ::e_status is_keyboard_hook_enabled(::user::interaction * puserinteractionEnablePrompt) override;
 
       
-      ::e_status install_keyboard_hook(::matter * pmatterListener) override;
-      ::e_status uninstall_keyboard_hook(::matter * pmatterListener) override;
+      void install_keyboard_hook(::matter * pmatterListener) override;
+      void uninstall_keyboard_hook(::matter * pmatterListener) override;
 
-      ::e_status install_mouse_hook(::matter * pmatterListener) override;
-      ::e_status uninstall_mouse_hook(::matter * pmatterListener) override;
+      void install_mouse_hook(::matter * pmatterListener) override;
+      void uninstall_mouse_hook(::matter * pmatterListener) override;
 
 
       

@@ -80,6 +80,7 @@
 		9A1D5F6C2751BE0B003D9B5F /* libaura_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73AA265701F400D5C39E /* libaura_posix.dylib */; };
 		9A1D5F6D2751BE22003D9B5F /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73B226570CAE00D5C39E /* AppKit.framework */; };
 		9A1D5F702751BF50003D9B5F /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8024A266571D600A6B449 /* Carbon.framework */; };
+		9A22739827CF00E20042BAC2 /* windowing.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22739727CF00E20042BAC2 /* windowing.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 
 /* Begin PBXFileReference section */
 		9A1D5F6E2751BE47003D9B5F /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		9A22739727CF00E20042BAC2 /* windowing.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = windowing.mm; sourceTree = "<group>"; };
 		9A42D7F42665B61E0011645D /* imm_client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imm_client.cpp; sourceTree = "<group>"; };
 		9A42D7F92665B61F0011645D /* imm_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imm_client.h; sourceTree = "<group>"; };
 		9A42D7FE2665C5850011645D /* keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keyboard.h; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				9A440A4E26548C38000C490B /* windowing_macos.cpp */,
 				9A5D738D2656240A00D5C39E /* windowing.cpp */,
 				9A5D738E2656240A00D5C39E /* windowing.h */,
+				9A22739727CF00E20042BAC2 /* windowing.mm */,
 			);
 			name = windowing_macos;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 			files = (
 				9A1D5EEA2751B059003D9B5F /* copydesk.cpp in Sources */,
 				9A1D5EEB2751B059003D9B5F /* window.cpp in Sources */,
+				9A22739827CF00E20042BAC2 /* windowing.mm in Sources */,
 				9A1D5EEC2751B059003D9B5F /* windowing_macos.cpp in Sources */,
 				9A1D5EED2751B059003D9B5F /* windowing.cpp in Sources */,
 				9A1D5ED32751B036003D9B5F /* macOSWindowFrameView.mm in Sources */,
@@ -570,7 +574,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(WorkspaceDir)/operating-system/storage-$(PLATFORM_MODIFIER)/library",
-					"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -654,7 +657,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(WorkspaceDir)/operating-system/storage-$(PLATFORM_MODIFIER)/library",
-					"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;

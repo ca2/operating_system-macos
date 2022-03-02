@@ -33,28 +33,32 @@ namespace aura
       }
    
    
-      ::e_status node::initialize(::object * pobject)
+      void node::initialize(::object * pobject)
       {
          
-         auto estatus = ::aura::apple::node::initialize(pobject);
+         //auto estatus =
          
-         if(!estatus)
-         {
-          
-            return estatus;
-            
-         }
+         ::aura::apple::node::initialize(pobject);
          
-         estatus = ::apex::macos::node::initialize(pobject);
+//         if(!estatus)
+//         {
+//
+//            return estatus;
+//
+//         }
          
-         if(!estatus)
-         {
-            
-            return estatus;
-            
-         }
-      
-         return estatus;
+         //estatus =
+         
+         ::apex::macos::node::initialize(pobject);
+         
+//         if(!estatus)
+//         {
+//            
+//            return estatus;
+//            
+//         }
+//      
+//         return estatus;
          
       }
 

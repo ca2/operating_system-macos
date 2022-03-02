@@ -36,35 +36,39 @@ namespace windowing_macos
    }
 
 
-   ::e_status windowing::initialize(::object * pobject)
+   void windowing::initialize(::object * pobject)
    {
    
-      auto estatus = ::windowing::windowing::initialize(pobject);
+      //auto estatus =
       
-      if(!estatus)
-      {
-       
-         return estatus;
-         
-      }
+      ::windowing::windowing::initialize(pobject);
       
-      estatus = __construct(m_pdisplay);
+//      if(!estatus)
+//      {
+//
+//         return estatus;
+//
+//      }
       
-      if(!estatus)
-      {
-       
-         return estatus;
-         
-      }
+      //estatus =
       
+      __construct(m_pdisplay);
+      
+//      if(!estatus)
+//      {
+//
+//         return estatus;
+//
+//      }
+//
       m_pdisplay->m_pwindowing = this;
          
-      return estatus;
+      //return estatus;
       
    }
 
 
-   ::e_status windowing::windowing_post(const ::routine & routine)
+   void windowing::windowing_post(const ::routine & routine)
    {
       
       auto routineLocal = routine;
@@ -76,7 +80,7 @@ namespace windowing_macos
          
       });
       
-      return success;
+      //return success;
 
    }
 
@@ -105,7 +109,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status windowing::release_mouse_capture()
+   void windowing::release_mouse_capture()
    {
       
       auto pwindowCapture = m_pwindowCapture;
@@ -115,11 +119,11 @@ namespace windowing_macos
       if(pwindowCapture)
       {
          
-         pwindowCapture->m_pimpl->m_puserinteraction->m_pimpl2->m_puserinteractionCapture.release();
+         pwindowCapture->m_puserinteractionimpl->m_puserinteractionCapture.release();
          
       }
    
-      return ::success;
+      //return ::success;
       
    }
 

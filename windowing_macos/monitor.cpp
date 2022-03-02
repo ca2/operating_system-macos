@@ -29,43 +29,38 @@ namespace windowing_macos
    }
 
 
-::e_status monitor::get_monitor_rectangle(::RECTANGLE_I32 * prectangle)
-{
+   void monitor::get_monitor_rectangle(::RECTANGLE_I32 * prectangle)
+   {
    
-   CGRect r;
-   
-   ns_monitor_cgrect((int) m_iIndex, &r);
-   
-   __copy(prectangle, r);
-   
-   return ::success;
-   
-}
+      CGRect r;
+      
+      ns_monitor_cgrect((int) m_iIndex, &r);
+      
+      __copy(prectangle, r);
+      
+      //return ::success;
+      
+   }
 
 
-::e_status monitor::get_workspace_rectangle(::RECTANGLE_I32 * prectangle)
-{
-   
-   CGRect rectWorkspace;
-   
-   ns_workspace_cgrect((int) m_iIndex, &rectWorkspace);
-   
-   __copy(prectangle, rectWorkspace);
-   
-   return ::success;
-   
-}
+   void monitor::get_workspace_rectangle(::RECTANGLE_I32 * prectangle)
+   {
+      
+      CGRect rectWorkspace;
+      
+      ns_workspace_cgrect((int) m_iIndex, &rectWorkspace);
+      
+      __copy(prectangle, rectWorkspace);
+      
+      //return ::success;
+      
+   }
 
 
 } // namespace windowing_macos
 
 
-
-
-
 void ns_main_monitor_cgrect(CGRect * p);
-
-
 
 int GetMainScreenRect(RECTANGLE_I32 * pr)
 {

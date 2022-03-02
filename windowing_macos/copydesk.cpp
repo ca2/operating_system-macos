@@ -105,7 +105,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status copydesk::_get_filea(::file::path_array & patha, e_op & eop)
+   bool copydesk::_get_filea(::file::path_array & patha, enum_op & eop)
    {
 
       if(!has_filea())
@@ -115,7 +115,7 @@ namespace windowing_macos
 
       }
 
-      eop = op_copy;
+      eop = e_op_copy;
 
       macos_clipboard_get_filea(patha);
 
@@ -124,7 +124,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status copydesk::_set_filea(const ::file::path_array & patha, e_op eop)
+   bool copydesk::_set_filea(const ::file::path_array & patha, enum_op eop)
    {
 
       ns_main_sync(^
@@ -138,17 +138,19 @@ namespace windowing_macos
 
 
 
-   ::e_status copydesk::initialize(::object * pobject)
+   void copydesk::initialize(::object * pobject)
    {
 
-      auto estatus = ::user::copydesk::initialize(pobject);
+      //auto estatus =
       
-      if(!estatus)
-      {
-
-         return estatus;
-
-      }
+      ::user::copydesk::initialize(pobject);
+      
+//      if(!estatus)
+//      {
+//
+//         return estatus;
+//
+//      }
 
       //    if(!m_p->CreateEx(0, ::aura::get_system()->RegisterWndClass(0), nullptr, 0, rectangle_i32(0, 0, 0, 0), nullptr, id()))
       //     return false;
@@ -156,16 +158,18 @@ namespace windowing_macos
 //      if(!m_p->CreateEx(0, nullptr, nullptr, 0, rectangle_i32(0, 0, 0, 0), nullptr, id()))
       //       return false;
 
-      return estatus;
+      //return estatus;
 
    }
 
 
-   ::e_status copydesk::destroy()
+   void copydesk::destroy()
    {
 
      
-      auto estatus = ::user::copydesk::destroy();
+      //auto estatus =
+      
+      ::user::copydesk::destroy();
 
 //      if(window_pointer::is_set() && window_pointer::m_p->is_window())
       //    {
@@ -175,20 +179,20 @@ namespace windowing_macos
       //    {
       //     bOk = false;
       //}
-
-      if(!estatus)
-      {
-       
-         return estatus;
-         
-      }
-      
-      return estatus;
-     
+//
+//      if(!estatus)
+//      {
+//
+//         return estatus;
+//
+//      }
+//
+//      return estatus;
+//
    }
 
 
-   ::e_status copydesk::_set_plain_text(const string & str)
+   bool copydesk::_set_plain_text(const string & str)
    {
 
       macos_clipboard_set_plain_text(str);
@@ -198,7 +202,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status copydesk::_get_plain_text(string & str)
+   bool copydesk::_get_plain_text(string & str)
    {
 
       str = macos_clipboard_get_plain_text();
@@ -224,7 +228,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status copydesk::_desk_to_image(::image * pimage)
+   bool copydesk::_desk_to_image(::image * pimage)
    {
 
       int w = 0;
@@ -272,7 +276,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status copydesk::_image_to_desk(const ::image * pimage)
+   bool copydesk::_image_to_desk(const ::image * pimage)
    {
 
       bool bOk = macos_clipboard_set_image(

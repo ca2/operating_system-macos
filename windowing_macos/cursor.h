@@ -24,11 +24,11 @@ namespace windowing_macos
       ~cursor() override;
       
       
-      ::e_status _create_os_cursor() override;
+      void _create_os_cursor() override;
 
-      ::e_status _load_default_cursor();
+      void _load_default_cursor();
 
-      ::e_status _create_from_image(const ::image * pimage, int xHotSpot, int yHotSpot);
+      void _create_from_image(const ::image * pimage, int xHotSpot, int yHotSpot);
 
       
    };

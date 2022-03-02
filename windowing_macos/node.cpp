@@ -56,7 +56,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status node::defer_create_main_menu(const string_array & straMenuParent, const string_array & straMenuName, const string_array & straMenuId)
+   void node::defer_create_main_menu(const string_array & straMenuParent, const string_array & straMenuName, const string_array & straMenuId)
    {
       
       auto pmenushared =
@@ -70,32 +70,32 @@ namespace windowing_macos
 
       ns_create_main_menu(pmenushared);
       
-      return success;
+      //return success;
       
    }
 
 
-   ::e_status node::implement(__transport(::acme::node) & pnode, __transport(class ::system) & psystem)
+   void node::implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem)
    {
        
-       m_pelementquit = new element_quit(pnode, psystem);
+      m_pelementquit = new element_quit(pnode, psystem);
       
       auto argc = psystem->m_argc;
       
       auto argv = psystem->m_argv;
       
-      auto papplication = psystem->m_papplicationStartup;
+      auto papp = psystem->m_pappStartup;
       
-      void * pApplication = (void *) (::application *) papplication;
+      void * pApplication = (void *) (::app *) papp;
       
       windowing_macos_application_main(pApplication, argc, argv);
       
-      return psystem->m_estatus;
+      //return psystem->m_estatus;
       
    }
 
 
-   ::e_status node::_will_finish_launching()
+   void node::_will_finish_launching()
    {
       
       auto psystem = m_psystem->m_papexsystem;
@@ -103,14 +103,16 @@ namespace windowing_macos
       if(::is_null(psystem->m_htask))
       {
 
-         auto estatus = psystem->begin_synch();
+         ///auto estatus =
+         
+         psystem->branch_synchronously();
 
-         if(!estatus)
-         {
-
-            return estatus;
-
-         }
+//         if(!estatus)
+//         {
+//
+//            return estatus;
+//
+//         }
          
          // release the initial allocation from platform_create_system as
          // task::begin_synch holds a reference to the running system task.
@@ -120,7 +122,7 @@ namespace windowing_macos
       
       m_psystem->post_initial_request();
 
-      return ::success;
+      //return ::success;
       
    }
 
@@ -139,7 +141,7 @@ namespace windowing_macos
       
       manual_reset_event ev;
       
-      puserinteractionEnablePrompt->message_box("You gonna be prompted to enable Accessibility for \""+m_psystem->m_papplicationMain->m_strAppName+"\" to enable keyboard monitoring.",
+      puserinteractionEnablePrompt->message_box("You gonna be prompted to enable Accessibility for \""+m_psystem->m_pappMain->m_strAppName+"\" to enable keyboard monitoring.",
                      "Aura Click", e_message_box_ok)->then(
                                                            [this, &ev,puserinteractionEnablePrompt](auto & sequence)
                                                            {
@@ -205,70 +207,78 @@ namespace windowing_macos
    }
 
 
-   ::e_status node::install_keyboard_hook(::matter * pmatterListener)
+   void node::install_keyboard_hook(::matter * pmatterListener)
    {
       
-      auto estatus = ::keyboard_hook::install(pmatterListener);
+      //auto estatus =
       
-      if(!estatus)
-      {
-         
-         return estatus;
-         
-      }
+      ::keyboard_hook::install(pmatterListener);
       
-      return estatus;
+//      if(!estatus)
+//      {
+//
+//         return estatus;
+//
+//      }
+//
+//      return estatus;
       
    }
 
 
-   ::e_status node::uninstall_keyboard_hook(::matter * pmatterListener)
+   void node::uninstall_keyboard_hook(::matter * pmatterListener)
    {
    
-      auto estatus = ::keyboard_hook::uninstall(pmatterListener);
+      ///auto estatus =
+      
+      ::keyboard_hook::uninstall(pmatterListener);
    
-      if(!estatus)
-      {
-         
-         return estatus;
-         
-      }
-      
-      return estatus;
-      
-   }
-
-
-   ::e_status node::install_mouse_hook(::matter * pmatterListener)
-   {
-      
-      auto estatus = ::mouse_hook::install(pmatterListener);
-      
-      if(!estatus)
-      {
-         
-         return estatus;
-         
-      }
-      
-      return estatus;
+//      if(!estatus)
+//      {
+//
+//         return estatus;
+//
+//      }
+//
+//      return estatus;
       
    }
 
 
-   ::e_status node::uninstall_mouse_hook(::matter * pmatterListener)
+   void node::install_mouse_hook(::matter * pmatterListener)
+   {
+      
+      //auto estatus =
+      
+      ::mouse_hook::install(pmatterListener);
+      
+//      if(!estatus)
+//      {
+//
+//         return estatus;
+//
+//      }
+//
+//      return estatus;
+      
+   }
+
+
+   void node::uninstall_mouse_hook(::matter * pmatterListener)
    {
 
-      auto estatus = ::mouse_hook::uninstall(pmatterListener);
-
-      if(!estatus)
-      {
-         
-         return estatus;
-         
-      }
+      //auto estatus =
       
-      return estatus;
+      ::mouse_hook::uninstall(pmatterListener);
+
+//      if(!estatus)
+//      {
+//
+//         return estatus;
+//
+//      }
+//
+//      return estatus;
       
    }
 

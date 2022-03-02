@@ -32,17 +32,17 @@ namespace macos
       //virtual void construct(oswindow hwnd);
 
 
-      virtual void assert_valid() const override;
-      virtual void dump(dump_context & dumpcontext) const override;
+      void assert_ok() const override;
+      void dump(dump_context & dumpcontext) const override;
       
-      virtual ::e_status on_destroy() override;
+      void on_destroy() override;
 
 //      bool is_destroying() const { return //::aura_window::m_bDestroying ||
 //         ::user::interaction_impl::m_bDestroying; }
 
       virtual void release_graphics_resources();
       
-      virtual ::e_status update_graphics_resources() override;
+      void update_graphics_resources() override;
 
 
       //virtual bool create_message_queue(::user::interaction * pinteraction, const char * pszName) override;
@@ -101,10 +101,10 @@ namespace macos
 
       //virtual ::e_status native_create_host() override;
   
-      virtual bool destroy_impl_only() override;
-      virtual bool start_destroying_window() override;
+      void destroy_impl_only() override;
+      void start_destroying_window() override;
   
-      virtual void destroy_window() override;
+      void destroy_window() override;
   
       // advanced creation (allows access to extended styles)
 //      virtual bool create_window_ex(
@@ -211,7 +211,7 @@ namespace macos
 
 
       //virtual ::draw2d::graphics * GetDCEx(::draw2d::region* prgnClip, ::u32 flags) override;
-      virtual bool LockWindowUpdate() override;
+      virtual void LockWindowUpdate() override;
       virtual void UnlockWindowUpdate() override;
 //        virtual bool RedrawWindow(const ::rectangle_i32 & rectUpdate = nullptr, ::draw2d::region* prgnUpdate = nullptr, ::u32 flags = RDW_INVALIDATE | RDW_ERASE);
       virtual void _001UpdateScreen() override;
@@ -219,7 +219,7 @@ namespace macos
       // xxx      virtual bool EnableScrollBar(i32 nSBFlags, ::u32 nArrowFlags = ESB_ENABLE_BOTH);
 
       //virtual bool DrawAnimatedRects(i32 idAni, const RECTANGLE_I32 *lprcFrom, const RECTANGLE_I32 *lprcTo) override;
-      virtual bool DrawCaption(::draw2d::graphics_pointer & pgraphics, const ::rectangle_i32 & rectangle, ::u32 uFlags) override;
+//      void DrawCaption(::draw2d::graphics_pointer & pgraphics, const ::rectangle_i32 & rectangle, ::u32 uFlags) override;
 
 
       // Timer Functions
@@ -228,7 +228,7 @@ namespace macos
 
       // oswindow State Functions
       virtual bool IsWindowEnabled();
-      virtual bool enable_window(bool bEnable = true) override;
+      void enable_window(bool bEnable = true) override;
 
 //      virtual ::user::interaction *  GetActiveWindow() override;
 //      virtual ::user::interaction *  SetActiveWindow() override;

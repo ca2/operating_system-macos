@@ -465,13 +465,7 @@
 //}
 //
 //
-//NSWindow * __nswindow(oswindow oswindow)
-//{
-//
-//   return (NSWindow *) oswindow->window();
-//
-//}
-//
+
 //
 //oswindow get_window(oswindow window, int iParentHood)
 //{
@@ -587,7 +581,7 @@ CLASS_DECL_AURA ::user::interaction_impl * oswindow_get(oswindow oswindow)
 
    }
 
-   return oswindow->m_pimpl;
+   return oswindow->m_puserinteractionimpl;
 
 }
 
@@ -1237,18 +1231,18 @@ end1:;
 
 
 
-CGWindowID get_os_window_window_number(oswindow oswindow)
-{
-   
-   auto pwindow = (::windowing_macos::window *) oswindow->m_pWindow2;
-   
-   auto pnswindow = pwindow->m_pnswindow;
-   
-   auto windowId = ns_get_window_id(pnswindow);
-   
-   return windowId;
-   
-}
+CGWindowID get_os_window_window_number(oswindow oswindow);
+//{
+//   
+//   auto pwindow = (::windowing_macos::window *) oswindow->m_pWindow2;
+//   
+//   auto pnswindow = pwindow->m_pnswindow;
+//   
+//   auto windowId = ns_get_window_id(pnswindow);
+//   
+//   return windowId;
+//   
+//}
 
 int_bool is_window_occluded(oswindow oswindow)
 {

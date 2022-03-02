@@ -10,7 +10,7 @@
 #include "window_impl.h"
 ///#include "oswindow_data.h"
 #include "aura/user/interaction_prodevian.h"
-#include "acme/node/operating_system/_user.h"
+#include "acme/operating_system/_user.h"
 #include "acme/parallelization/message_queue.h"
 #include "aura/graphics/graphics/_.h"
 #include "aura/graphics/graphics/_graphics.h"
@@ -81,9 +81,9 @@ namespace windowing_macos
 
       MESSAGE_LINK(e_message_create, pchannel, this, &window::on_message_create);
 
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
-      auto pimpl = m_pimpl.m_p;
+      auto pimpl = m_puserinteractionimpl.m_p;
 
       if (!puserinteraction->m_bMessageWindow)
       {
@@ -120,7 +120,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status window::create_window(::user::interaction_impl * pimpl)
+   void window::create_window(::user::interaction_impl * pimpl)
    {
 
       //if (::is_window(get_handle()))
@@ -150,10 +150,9 @@ namespace windowing_macos
       if (!puserinteraction->pre_create_window(pusersystem))
       {
 
-         return false;
+         throw ::exception(error_failed);
 
       }
-
 
       //hook_window_create(puserinteraction);
 
@@ -202,7 +201,7 @@ namespace windowing_macos
          //and because cgrect origin is bottom-left and,
          //the origin of screen is at bottom.
       
-      m_pimpl = pimpl;
+      m_puserinteractionimpl = pimpl;
       
       install_message_routing(puserinteraction);
 
@@ -260,7 +259,7 @@ namespace windowing_macos
 
          //PostNcDestroy();        // cleanup if CreateWindowEx fails too soon
          
-         return false;
+         throw exception(error_resource);
 
       }
 
@@ -285,7 +284,12 @@ namespace windowing_macos
 
       puserinteraction->m_ewindowflag |= e_window_flag_window_created;
       
-      return bOk;
+      if(!bOk)
+      {
+         
+         throw ::exception(error_resource);
+         
+      }
 
    }
 
@@ -309,7 +313,7 @@ namespace windowing_macos
 
       increment_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "macos_window_add_ref"));
       
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       puserinteraction->increment_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "macos_window_add_ref"));
 
@@ -319,7 +323,7 @@ namespace windowing_macos
    void window::macos_window_dec_ref()
    {
       
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       puserinteraction->decrement_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "macos_window_dec_ref"));
 
@@ -328,17 +332,17 @@ namespace windowing_macos
    }
 
 
-   ::e_status window::set_keyboard_focus()
+   void window::set_keyboard_focus()
    {
 
       macos_window_make_first_responder();
 
-      return ::success;
+      //return ::success;
 
    }
 
 
-   ::e_status window::set_active_window()
+   void window::set_active_window()
    {
 
       macos_window_make_key_window_and_order_front();
@@ -347,29 +351,29 @@ namespace windowing_macos
       
       pwindowing->m_pwindowActive = this;
 
-      return ::success;
+      //return ::success;
 
    }
 
 
-   ::e_status window::set_tool_window(bool bSet)
+   void window::set_tool_window(bool bSet)
    {
       
       auto pwindowing = (::windowing_macos::windowing *) m_pwindowing->m_pWindowing2;
       
       pwindowing->_defer_dock_application(!bSet);
 
-      return ::success;
+      //return ::success;
       
    }
 
 
-   ::e_status window::set_foreground_window()
+   void window::set_foreground_window()
    {
       
       macos_window_order_front();
       
-      return ::success;
+      //return ::success;
       
    }
 
@@ -402,7 +406,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status window::show_window(const ::e_display &edisplay, const ::e_activation &eactivation)
+   void window::show_window(const ::e_display &edisplay, const ::e_activation &eactivation)
    {
 
       //windowing_output_debug_string("\n::windowing_macos::window::show_window 1");
@@ -445,18 +449,18 @@ namespace windowing_macos
          
       }
 
-      return ::success;
+      //return ::success;
 
    }
 
 
-   ::e_status window::set_mouse_cursor(::windowing::cursor * pcursor)
+   void window::set_mouse_cursor(::windowing::cursor * pcursor)
    {
 
       if (::is_null(pcursor))
       {
 
-         return error_failed;
+         throw exception(error_invalid_parameter);
 
       }
 
@@ -465,7 +469,7 @@ namespace windowing_macos
       if (::is_null(pcursorMacos))
       {
 
-         return error_failed;
+         throw exception(error_invalid_parameter);
 
       }
       
@@ -483,7 +487,7 @@ namespace windowing_macos
       if (ns_get_cursor() == pNSCursor)
       {
 
-         return true;
+         return;
 
       }
 
@@ -505,7 +509,7 @@ namespace windowing_macos
 
                                           }));
 
-      return true;
+      //return true;
 
    }
 
@@ -560,7 +564,7 @@ namespace windowing_macos
    }
 
 
-   ::e_status window::set_mouse_capture()
+   void window::set_mouse_capture()
    {
 
       auto pwindowing = (class windowing *) windowing()->m_pWindowing2;
@@ -568,13 +572,13 @@ namespace windowing_macos
       if(!pwindowing)
       {
          
-         return ::error_failed;
+         throw exception(error_wrong_state);
          
       }
       
       pwindowing->m_pwindowCapture = this;
 
-      return ::success;
+      //return ::success;
 
    }
 
@@ -631,7 +635,7 @@ namespace windowing_macos
 
       auto tickNow = ::duration::now();
 
-      auto tickEllapsed = tickNow - m_pimpl->m_durationLastDeviceDraw;
+      auto tickEllapsed = tickNow - m_puserinteractionimpl->m_durationLastDeviceDraw;
 
       if(tickEllapsed < 12_ms)
       {
@@ -641,13 +645,13 @@ namespace windowing_macos
 
       }
 
-      m_pimpl->m_durationLastDeviceDraw = tickNow;
+      m_puserinteractionimpl->m_durationLastDeviceDraw = tickNow;
 
-      ::user::device_draw_life_time devicedrawlifetime(m_pimpl);
+      ::user::device_draw_life_time devicedrawlifetime(m_puserinteractionimpl);
 
-      critical_section_lock slDisplay(m_pimpl->cs_display());
+      critical_section_lock slDisplay(m_puserinteractionimpl->cs_display());
 
-      __pointer(::graphics::graphics) pbuffer = m_pimpl->m_pgraphics;
+      __pointer(::graphics::graphics) pbuffer = m_puserinteractionimpl->m_pgraphics;
 
       if(!pbuffer)
       {
@@ -656,7 +660,7 @@ namespace windowing_macos
 
       }
       
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
       
       if(!puserinteraction)
       {
@@ -742,9 +746,9 @@ namespace windowing_macos
 
       g->draw(imagedrawing);
       
-      m_pimpl->m_bPendingRedraw = false;
+      m_puserinteractionimpl->m_bPendingRedraw = false;
       
-      m_pimpl->m_durationLastRedraw.Now();
+      m_puserinteractionimpl->m_durationLastRedraw.Now();
 
    }
 
@@ -752,7 +756,7 @@ namespace windowing_macos
 //   bool window::macos_window_key_down(unsigned int uiKeyCode)
 //   {
 //
-//      auto puserinteraction = m_pimpl->m_puserinteraction;
+//      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 //
 //      if(puserinteraction == nullptr)
 //      {
@@ -789,7 +793,7 @@ namespace windowing_macos
 //
 //      spbase = pkey;
 //
-//      auto puserinteraction = m_pimpl->m_puserinteraction;
+//      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 //
 //      if(puserinteraction == nullptr)
 //      {
@@ -840,7 +844,7 @@ namespace windowing_macos
 //
 //         printf("macos_window_key_down e_message_text_composition\n");
 //
-//         auto puserinteraction = m_pimpl->m_puserinteraction;
+//         auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 //
 //         puserinteraction->post_message(e_message_text_composition, 0, lparam);
 //
@@ -855,7 +859,7 @@ namespace windowing_macos
    bool window::macos_window_key_up(unsigned int vk, unsigned int scan)
    {
 
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(puserinteraction == nullptr)
       {
@@ -919,7 +923,7 @@ namespace windowing_macos
 
          auto pmouse = __create_new < ::message::mouse > ();
 
-         ::id id;
+         ::atom id;
          
          if (iButton == 1)
          {
@@ -952,7 +956,7 @@ namespace windowing_macos
       
       auto pmouse = __create_new < ::message::mouse >();
 
-      ::id id;
+      ::atom id;
 
       if (iButton == 1)
       {
@@ -979,7 +983,7 @@ namespace windowing_macos
 
       auto pmouse = __create_new < ::message::mouse >();
       
-      ::id id;
+      ::atom id;
 
       if (iButton == 1)
       {
@@ -1017,7 +1021,7 @@ namespace windowing_macos
       
       bool bOk = true;
 
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(!puserinteraction)
       {
@@ -1103,7 +1107,7 @@ namespace windowing_macos
 
       }
       
-      ::id id = e_message_mouse_move;
+      ::atom id = e_message_mouse_move;
       
       wparam wparam = 0;
       
@@ -1135,7 +1139,7 @@ namespace windowing_macos
    void window::macos_window_mouse_dragged(double x, double y, unsigned long ulAppleMouseButton)
    {
       
-      id id = e_message_mouse_move;
+      atom id = e_message_mouse_move;
 
       wparam wparam = 0;
 
@@ -1167,7 +1171,7 @@ namespace windowing_macos
    void window::macos_window_mouse_wheel(double deltaY, double x, double y)
    {
 
-      id id = e_message_mouse_wheel;
+      atom id = e_message_mouse_wheel;
 
       short delta = deltaY * WHEEL_DELTA / 3.0;
 
@@ -1189,7 +1193,7 @@ namespace windowing_macos
       
       {
       
-         id id = e_message_move;
+      atom id = e_message_move;
          
          wparam wparam = 0;
          
@@ -1205,7 +1209,7 @@ namespace windowing_macos
       
       {
 
-         id id = e_message_size;
+         atom id = e_message_size;
          
          wparam wparam = 0;
          
@@ -1344,10 +1348,10 @@ namespace windowing_macos
    {
       
       
-      if(m_pimpl->m_bEatMoveEvent)
+      if(m_puserinteractionimpl->m_bEatMoveEvent)
       {
          
-         m_pimpl->m_bEatMoveEvent = false;
+         m_puserinteractionimpl->m_bEatMoveEvent = false;
          
          return;
          
@@ -1355,7 +1359,7 @@ namespace windowing_macos
 
       {
       
-         id id = e_message_move;
+         atom id = e_message_move;
          
          wparam wparam = 0;
          
@@ -1434,7 +1438,7 @@ namespace windowing_macos
 //
 //      }
       
-      m_pimpl->m_durationLastExposureAddUp.Now();
+      m_puserinteractionimpl->m_durationLastExposureAddUp.Now();
 
    }
 
@@ -1451,7 +1455,7 @@ namespace windowing_macos
       
       //this->set_active_window();
 
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(::is_null(puserinteraction))
       {
@@ -1480,7 +1484,7 @@ namespace windowing_macos
       
       auto pwindowing = m_pwindowing;
       
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
       
 //      auto pwindowActive = pwindowing->get_active_window(puserinteraction->m_pthreadUserInteraction);
 //
@@ -1524,7 +1528,7 @@ namespace windowing_macos
    void * window::macos_window_get_mouse_cursor()
    {
       
-      auto pimpl = m_pimpl;
+      auto pimpl = m_puserinteractionimpl;
       
       if(::is_null(pimpl))
       {
@@ -1568,7 +1572,7 @@ namespace windowing_macos
    void window::profiling_on_start_draw_rectangle()
    {
       
-      auto pimpl = m_pimpl;
+      auto pimpl = m_puserinteractionimpl;
       
       if(::is_null(pimpl))
       {
@@ -1603,7 +1607,7 @@ namespace windowing_macos
    void window::profiling_on_end_draw_rectangle()
    {
       
-      auto pimpl = m_pimpl;
+      auto pimpl = m_puserinteractionimpl;
       
       if(::is_null(pimpl))
       {
@@ -1645,7 +1649,7 @@ namespace windowing_macos
          
       }
       
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(::is_null(puserinteraction))
       {
@@ -1654,10 +1658,10 @@ namespace windowing_macos
 
       }
       
-      if(m_pimpl->m_puserbox != nullptr)
+      if(m_puserinteractionimpl->m_puserbox != nullptr)
       {
 
-         m_pimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious = m_pimpl->m_puserbox->m_windowrectangle.m_edisplay;
+         m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious = m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplay;
          
       }
 
@@ -1676,7 +1680,7 @@ namespace windowing_macos
          
       }
       
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(puserinteraction == nullptr)
       {
@@ -1685,17 +1689,17 @@ namespace windowing_macos
 
       }
       
-      if(m_pimpl->m_puserbox)
+      if(m_puserinteractionimpl->m_puserbox)
       {
 
-         if(m_pimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious == ::e_display_iconic)
+         if(m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious == ::e_display_iconic)
          {
 
-            m_pimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious = ::e_display_normal;
+            m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious = ::e_display_normal;
 
          }
          
-         puserinteraction->_001OnDeiconify(m_pimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious);
+         puserinteraction->_001OnDeiconify(m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious);
          
       }
 
@@ -1712,7 +1716,7 @@ namespace windowing_macos
          
       }
       
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(puserinteraction == nullptr)
       {
@@ -1721,7 +1725,7 @@ namespace windowing_macos
 
       }
 
-      m_pimpl->m_durationLastExposureAddUp.Now();
+      m_puserinteractionimpl->m_durationLastExposureAddUp.Now();
 
       puserinteraction->send_message(e_message_show_window, 1);
 
@@ -1760,7 +1764,7 @@ namespace windowing_macos
       
       INFORMATION("macos::window::macos_window_on_hide");
 
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(::is_null(puserinteraction))
       {
@@ -1800,7 +1804,7 @@ namespace windowing_macos
          
       }
       
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(::is_null(puserinteraction))
       {
@@ -1815,13 +1819,14 @@ namespace windowing_macos
 
    }
 
-   ::e_status window::frame_toggle_restore()
+
+   void window::frame_toggle_restore()
 {
       
       ns_main_async(^()
                      {
          
-         auto puserinteraction = m_pimpl->m_puserinteraction;
+         auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(puserinteraction->get_parent() == nullptr && puserinteraction->get_owner() == nullptr)
       {
@@ -1842,7 +1847,7 @@ namespace windowing_macos
             puserinteraction->display(e_display_default, e_activation_set_foreground);
 
          }
-         else if(puserinteraction->m_pimpl2 && puserinteraction->m_pimpl2->m_durationLastExposureAddUp.elapsed() < 300_ms)
+         else if(puserinteraction->m_pinteractionimpl && puserinteraction->m_pinteractionimpl->m_durationLastExposureAddUp.elapsed() < 300_ms)
          {
 
             INFORMATION("Ignored minituarize request (by toggle intent) because of recent full exposure.");
@@ -1863,7 +1868,7 @@ namespace windowing_macos
 
       });
 
-      return ::success;
+      //return ::success;
       
    }
 
@@ -1885,7 +1890,7 @@ namespace windowing_macos
 //
 //      ASSERT(oswindow != nullptr);
 //
-//      auto pimpl = oswindow->m_pimpl;
+//      auto pimpl = oswindow->m_puserinteractionimpl;
 //
 //      if(::is_null(pimpl))
 //      {
@@ -1894,7 +1899,7 @@ namespace windowing_macos
 //
 //      }
 
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(::is_null(puserinteraction))
       {
@@ -1982,7 +1987,7 @@ namespace windowing_macos
    //
    //      ASSERT(oswindow != nullptr);
    //
-   //      auto pimpl = oswindow->m_pimpl;
+   //      auto pimpl = oswindow->m_puserinteractionimpl;
    //
    //      if(::is_null(pimpl))
    //      {
@@ -1991,7 +1996,7 @@ namespace windowing_macos
    //
    //      }
 
-      auto puserinteraction = m_pimpl->m_puserinteraction;
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(::is_null(puserinteraction))
       {
@@ -2072,10 +2077,10 @@ namespace windowing_macos
    }
 
 
-   ::e_status window::destroy_window()
+   void window::destroy_window()
    {
 
-      __pointer(::user::primitive_impl) pimplThis = m_pimpl;
+      __pointer(::user::primitive_impl) pimplThis = m_puserinteractionimpl;
 
       __pointer(::user::interaction) puiThis = pimplThis->m_puserinteraction;
 
@@ -2101,22 +2106,32 @@ namespace windowing_macos
 
       }
 
-      return ::success;
+      //return ::success;
 
    }
 
 
-   ::e_status window::bring_to_front()
+   void window::bring_to_front()
    {
 
       macos_window_order_front();
 
-      return ::success;
+      //return ::success;
 
    }
 
 
 } // namespace windowing_macos
+
+
+struct NSWindow;
+
+NSWindow * __nswindow(oswindow oswindow)
+{
+
+   return (NSWindow *) oswindow->get_oswindow();
+
+}
 
 
 

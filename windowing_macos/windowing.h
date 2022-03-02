@@ -30,9 +30,9 @@ namespace windowing_macos
       ~windowing() override;
       
       
-      ::e_status initialize(::object * pobject) override;
+      void initialize(::object * pobject) override;
       
-      ::e_status windowing_post(const ::routine & routine) override;
+      void windowing_post(const ::routine & routine) override;
       
       ::windowing::window * window(oswindow oswindow) override;
 
@@ -42,7 +42,7 @@ namespace windowing_macos
 
       //virtual bool post_ui_message(::message::base * pbase);
       
-      ::e_status release_mouse_capture() override;
+      void release_mouse_capture() override;
       
       ::windowing::window * get_keyboard_focus(::thread *) override;
 

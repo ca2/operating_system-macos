@@ -13,10 +13,10 @@ namespace windowing_macos
 
 
       notify_icon();
-      virtual ~notify_icon();
+      ~notify_icon() override;
 
 
-      ::e_status add_hidden_window(::user::interaction * puserinteraction) override;
+      void add_hidden_window(::user::interaction * puserinteraction) override;
 
 
       virtual bool DestroyWindow();
@@ -25,12 +25,12 @@ namespace windowing_macos
       bool ModifyIcon(__pointer(::draw2d::icon) picon, bool bForce = false);
 
 
-      ::e_status create_notify_icon(const ::id & id, ::user::interaction * puserinteractionNotify, ::windowing::icon * picon) override;
+      void create_notify_icon(const ::atom & atom, ::user::interaction * puserinteractionNotify, ::windowing::icon * picon) override;
 
       //DECL_GEN_SIGNAL(_001OnNotifyIconMessage);
       //DECL_GEN_SIGNAL(_001OnDestroy);
 
-      ::e_status step() override;
+      bool step() override;
       //virtual void notify_icon_play(const char * action) override;
 
       

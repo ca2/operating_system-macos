@@ -485,10 +485,10 @@ namespace macos
    }
 
 
-   void file::assert_valid() const
+   void file::assert_ok() const
    {
 
-      ::file::file::assert_valid();
+      ::file::file::assert_ok();
 
    }
 

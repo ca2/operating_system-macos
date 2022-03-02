@@ -59,7 +59,7 @@ namespace macos
       virtual ~file();
 
 
-      virtual void assert_valid() const override;
+      virtual void assert_ok() const override;
       virtual void dump(dump_context & dumpcontext) const override;
 
 
