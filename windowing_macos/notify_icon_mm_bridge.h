@@ -21,7 +21,9 @@ public:
    ::user_notify_icon_bridge *         m_pnotifyiconbridge;
    
 
-   virtual void notify_icon_mm_initialize(const char * pszIconFile);
+   //virtual void notify_icon_mm_initialize(const void * pdata, int cx, int cy, int scan);
+   
+   virtual void notify_icon_mm_initialize(const void * pdataImageFile, int size);
    
    
    virtual void notify_icon_mm_finalize();

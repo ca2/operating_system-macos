@@ -8,18 +8,20 @@
 #import "framework.h"
 
 
+NSImage * nsimage_from_image_data(const void * pdata, int cx, int cy, int scan);
 
-
-void user_notify_icon_mm_bridge::notify_icon_mm_initialize(const char * strIconFile)
+void user_notify_icon_mm_bridge::notify_icon_mm_initialize(const void * pdata, int size)
 {
+   
+//   NSImage * pimage = nsimage_from_image_data(pdata, cx, cy, scan);
 
-   NSString * str = [[NSString alloc] initWithCString:strIconFile encoding:NSUTF8StringEncoding];
+//   NSString * str = [[NSString alloc] initWithCString:strIconFile encoding:NSUTF8StringEncoding];
    
    
    ns_main_sync(^()
                 {
 
-   m_pnotifyicon = (__bridge_retained void *) [[user_notify_icon alloc] initIconFile: str withBridge: m_pnotifyiconbridge];
+   m_pnotifyicon = (__bridge_retained void *) [[user_notify_icon alloc] initIconImageFileData: pdata withSize: size withBridge: m_pnotifyiconbridge];
       
    });
 

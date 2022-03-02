@@ -35,8 +35,9 @@ class user_notify_icon_bridge;
    
 }
 
+- (id) initIconImageFileData:(const void *) pdata withSize: (int) size withBridge: (::user_notify_icon_bridge *) pbridge;
 
-- (id)initIconFile:(NSString *)strIconFile withBridge: (::user_notify_icon_bridge *) pbridge;
+- (id)initIconImage:(NSImage *)pimage withBridge: (::user_notify_icon_bridge *) pbridge;
 
 
 - (void) on_item_action : (id)sender;

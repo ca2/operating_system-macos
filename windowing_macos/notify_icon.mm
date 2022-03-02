@@ -33,12 +33,26 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
 @implementation user_notify_icon
 
 
-//
-// initWithContentRect:styleMask:backing:defer:screen:
-//
-// Init method for the object.
-//
-- (id)initIconFile:(NSString *)strIconFile withBridge:(::user_notify_icon_bridge *)pbridge
+- (id) initIconImageFileData:(const void *) pdata withSize: (int) size withBridge: (::user_notify_icon_bridge *) pbridge
+{
+
+   NSData * data = [NSData dataWithBytes:pdata length:size];
+   
+   if(data == nil)
+   {
+      
+      return NULL;
+      
+   }
+   
+   NSImage * pimage = [[NSImage alloc] initWithData: data];
+
+   return [ self initIconImage: pimage withBridge:pbridge ];
+
+}
+
+
+- (id)initIconImage:(NSImage *)pimage withBridge:(::user_notify_icon_bridge *)pbridge
 {
    
    m_pnotifyiconbridge = pbridge;
@@ -48,26 +62,26 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
    
    [m_statusitem setHighlightMode: YES];
    
-   auto pimage = [NSImage alloc];
-   
-   if([pimage initByReferencingFile:strIconFile])
-   {
+//   auto pimage = [NSImage alloc];
+//
+//   if([pimage initByReferencingFile:strIconFile])
+//   {
       NSSize sizeNotifyIcon;
-      
+
       sizeNotifyIcon.width = 22;
       sizeNotifyIcon.height = 22;
 
       if([pimage size].width != sizeNotifyIcon.width
          || [pimage size].height != sizeNotifyIcon.height)
       {
-         
+
          pimage = image_resize(pimage, sizeNotifyIcon);
-         
+
       }
    
       [m_statusitem setImage: pimage ];
       
-   }
+//   }
    
    m_menu = [[NSMenu alloc] initWithTitle:@"menubar_menu"];
    

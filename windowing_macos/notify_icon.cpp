@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "acme/filesystem/filesystem/acme_dir.h"
 #include "aura/graphics/draw2d/icon.h"
+#include "aura/graphics/draw2d/context_image.h"
 
 
 static ::user::notify_icon * g_pnotifyiconLast = nullptr;
@@ -127,15 +128,18 @@ namespace windowing_macos
       strIconName.find_replace("-", "_");
 
 
-      //auto pcontext = m_pcontext->m_papexcontext;
+      auto pcontext = m_pcontext->m_papexcontext;
 
-      //auto pathFile = pcontext->defer_process_matter_path("matter://main/menubar-icon-22.png");
+      auto memoryIconImage = pcontext->file().as_memory("matter://main/menubar-icon-22.png");
+      
+      
+      //auto pimage = m_psystem->context_image()->get_image(pathFile);
    
       //auto pathFile = pwindowingicon->m_strTrayIconName;
    
-      auto pathFile = pathFolder / ( strIconName + ".png" );
+      //auto pathFile = pathFolder / ( strIconName + ".png" );
 
-      notify_icon_mm_initialize(pathFile);
+      notify_icon_mm_initialize(memoryIconImage.get_data(), (int) memoryIconImage.get_size());
 
       m_bCreated = true;
 
