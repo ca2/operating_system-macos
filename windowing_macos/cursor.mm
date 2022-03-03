@@ -72,7 +72,12 @@ void * ns_get_default_system_cursor(enum_cursor ecursor)
          break;
          
 #pragma clang diagnostic pop
-
+      case e_cursor_size_vertical:
+         pcursor = [NSCursor resizeUpDownCursor];
+         break;
+      case e_cursor_size_horizontal:
+         pcursor = [NSCursor resizeLeftRightCursor];
+         break;
       case e_cursor_size_bottom:
          pcursor = [NSCursor resizeDownCursor];
          break;
