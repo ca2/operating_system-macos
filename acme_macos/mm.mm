@@ -399,3 +399,36 @@ char * mm2_get_type_identifier(const char * pszFilePath)
    return strdup([strType UTF8String]);
    
 }
+
+
+
+void ns_set_system_lite_mode()
+{
+   
+   NSAppleScript * pscript = [[NSAppleScript alloc] initWithSource: @"tell application \"System Events\"\ntell appearance preferences\nset dark mode to false\nend tell\nend tell" ];
+   NSDictionary *dict = nil;
+         NSAppleEventDescriptor *descriptor = [pscript executeAndReturnError:&dict];
+
+         NSLog(@"%@", descriptor);
+         NSLog(@"%@", dict);
+   
+}
+
+
+void ns_set_system_dark_mode()
+{
+   
+   NSAppleScript * pscript = [[NSAppleScript alloc] initWithSource: @"tell application \"System Events\"\ntell appearance preferences\nset dark mode to true\nend tell\nend tell" ];
+   
+   
+   NSDictionary *dict = nil;
+         NSAppleEventDescriptor *descriptor = [pscript executeAndReturnError:&dict];
+
+         NSLog(@"%@", descriptor);
+         NSLog(@"%@", dict);
+   
+}
+
+
+
+

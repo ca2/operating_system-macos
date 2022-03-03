@@ -235,7 +235,7 @@ namespace macos
       
       ASSERT_VALID(this);
       
-      ASSERT(m_iFile != (::u32)hFileNull);
+      //ASSERT(m_iFile != (::u32)hFileNull);
 
       if (nCount == 0)
       {
