@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "acme/filesystem/filesystem/acme_dir.h"
+#include "acme/filesystem/filesystem/acme_directory.h"
 
 
 #include <sys/stat.h>
@@ -52,9 +52,9 @@ namespace macos
       
       auto psystem = m_psystem;
       
-      auto pacmedir = psystem->m_pacmedir;
+      auto pacmedirectory = psystem->m_pacmedirectory;
 
-      ::file::path strRelative = pacmedir->install();
+      ::file::path strRelative = pacmedirectory->install();
 
       string strUserFolderShift;
 

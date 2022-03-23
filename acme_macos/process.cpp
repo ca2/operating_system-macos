@@ -5,7 +5,7 @@
 //  Created by Camilo Sasuke on 2021-05-14 08:14 BRT <3ThomasBS_!!
 //
 #include "framework.h"
-#include "acme/filesystem/filesystem/acme_dir.h"
+#include "acme/filesystem/filesystem/acme_directory.h"
 #include <spawn.h>
 
 namespace acme
@@ -28,7 +28,7 @@ namespace acme
          
          auto psystem = m_psystem;
          
-         auto pacmedir = psystem->m_pacmedir;
+         auto pacmedirectory = psystem->m_pacmedirectory;
          
          string strParams;
          
@@ -38,7 +38,7 @@ namespace acme
          
          strParams.format("-c \"screen -d -m %s\"", strCommand.c_str());
          
-         /*auto estatus = */ call_async("/bin/bash", strParams, pacmedir->home(), e_display_none, false);
+         /*auto estatus = */ call_async("/bin/bash", strParams, pacmedirectory->home(), e_display_none, false);
          
 //         if(!estatus)
 //         {

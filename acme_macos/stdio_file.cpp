@@ -36,7 +36,7 @@ namespace macos
       if ((eopen & ::file::e_open_defer_create_directory) && (eopen & ::file::e_open_write))
       {
          
-         m_psystem->m_pacmedir->create(::file_path_folder(lpszFileName));
+         m_psystem->m_pacmedirectory->create(::file_path_folder(lpszFileName));
          
       }
 

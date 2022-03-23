@@ -1,7 +1,7 @@
 #include "framework.h"
-#include "acme/filesystem/filesystem/acme_dir.h"
-#include "aura/graphics/draw2d/icon.h"
-#include "aura/graphics/draw2d/context_image.h"
+#include "acme/filesystem/filesystem/acme_directory.h"
+#include "aura/graphics/image/icon.h"
+#include "aura/graphics/image/context_image.h"
 
 
 static ::user::notify_icon * g_pnotifyiconLast = nullptr;
@@ -120,7 +120,7 @@ namespace windowing_macos
 //      }
    
    
-      ::file::path pathFolder = m_psystem->m_pacmedir->ca2roaming() / "matter/icon/128";
+      ::file::path pathFolder = m_psystem->m_pacmedirectory->ca2roaming() / "matter/icon/128";
 
       string strIconName = get_app()->m_strAppId;
 

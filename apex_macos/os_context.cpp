@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "acme/filesystem/filesystem/acme_dir.h"
+#include "acme/filesystem/filesystem/acme_directory.h"
 //#include "_.h"
 //#include "apex/os/_.h"
 //#include "apex/os/_os.h"
@@ -1011,9 +1011,9 @@ namespace macos
          
          auto psystem = m_psystem;
          
-         auto pacmedir = psystem->m_pacmedir;
+         auto pacmedirectory = psystem->m_pacmedirectory;
 
-         p = pacmedir->ca2roaming();
+         p = pacmedirectory->ca2roaming();
 
          p /= "mypath" / pcommand->payload("app").get_string() + ".txt";
 
@@ -1026,24 +1026,24 @@ namespace macos
          if(iFind > 0)
          {
 
-            p = pacmedir->ca2roaming();
+            p = pacmedirectory->ca2roaming();
 
             p /= "mypath" / pcommand->m_pcommandline->payload("app").get_string() + "-app";
 
             ::file::path p2;
 
-            p2 = pacmedir->ca2roaming();
+            p2 = pacmedirectory->ca2roaming();
 
             p2 /= "mypath" / ::file::path(pcommand->m_pcommandline->payload("app").get_string()).folder()/ ::file::path(strApp.Left(iFind + strlen(".app"))).name();
 
             ns_create_alias(p2, strApp.Left(iFind + strlen(".app")));
 
-            if(pacmedir->is(pacmedir->localconfig() / "monitor-0/desk/2desk"))
+            if(pacmedirectory->is(pacmedirectory->localconfig() / "monitor-0/desk/2desk"))
             {
 
                ::file::path p3;
 
-               p3 = pacmedir->localconfig() / "monitor-0/desk/2desk" / ::file::path(strApp.Left(iFind + strlen(".app"))).name();
+               p3 = pacmedirectory->localconfig() / "monitor-0/desk/2desk" / ::file::path(strApp.Left(iFind + strlen(".app"))).name();
 
                ns_create_alias(p3, strApp.Left(iFind + strlen(".app")));
 

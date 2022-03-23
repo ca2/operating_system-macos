@@ -67,9 +67,9 @@ namespace macos
 //
 //      if (         auto psystem = m_psystem;
 //
-//         auto pacmedir = psystem->m_pacmedir;
+//         auto pacmedirectory = psystem->m_pacmedirectory;
 //
-//pacmedir->is(strPath))
+//pacmedirectory->is(strPath))
 //      {
 //         return folder_file_system;
 //      }

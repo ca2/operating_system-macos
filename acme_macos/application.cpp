@@ -297,7 +297,7 @@ namespace acme
 //      if(::dir::is(path))
 //      {
 //
-//         ::file::path path2 = pacmedir->localconfig() / "monitor-0/desk/2desk" / path.name();
+//         ::file::path path2 = pacmedirectory->localconfig() / "monitor-0/desk/2desk" / path.name();
 //
 //         if(::file_exists(path2))
 //         {

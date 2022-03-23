@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "aura/graphics/draw2d/_draw2d.h"
 
 
 bool macos_clipboard_has_changed(long & lTicket);

@@ -43,7 +43,7 @@ namespace macos
 
       status.m_attribute = 0;
 
-      status.m_size = st.st_size;
+      status.m_filesize = st.st_size;
 
       status.m_ctime = ::earth::time(st.st_mtime);
       status.m_atime = ::earth::time(st.st_atime);
@@ -111,7 +111,7 @@ namespace macos
       if ((eopen & ::file::e_open_defer_create_directory) && (eopen & ::file::e_open_write))
       {
          
-         m_psystem->m_pacmedir->create(file_path_folder(lpszFileName));
+         m_psystem->m_pacmedirectory->create(file_path_folder(lpszFileName));
          
       }
 
@@ -600,7 +600,7 @@ namespace macos
             
          }
 
-         rStatus.m_size = st.st_size;
+         rStatus.m_filesize = st.st_size;
 
          rStatus.m_attribute = 0;
 

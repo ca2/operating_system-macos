@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "acme/filesystem/filesystem/acme_dir.h"
+#include "acme/filesystem/filesystem/acme_directory.h"
 //#include "apex/os/_.h"
 //#include "apex/os/_os.h"
 //#include "apex/xml/_.h"
@@ -115,9 +115,9 @@ namespace macos
 
       auto psystem = m_psystem;
       
-      auto pacmedir = psystem->m_pacmedir;
+      auto pacmedirectory = psystem->m_pacmedirectory;
 
-      auto strRelative = pacmedir->install();
+      auto strRelative = pacmedirectory->install();
       
       //m_psystem->m_papexsystem->m_pdirsystem->m_strCommonAppData = str / strRelative / "commonappdata";
 
@@ -151,13 +151,13 @@ namespace macos
 //      if(m_psystem->m_papexsystem->m_pdirsystem->m_strNetSeedFolder.is_empty())
 //      {
 //
-//         m_psystem->m_papexsystem->m_pdirsystem->m_strNetSeedFolder = pacmedir->install() / "net";
+//         m_psystem->m_papexsystem->m_pdirsystem->m_strNetSeedFolder = pacmedirectory->install() / "net";
 //
 //      }
       
-//      pacmedir->create(m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder);
+//      pacmedirectory->create(m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder);
 //
-//      if(!pacmedir->is(m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder))
+//      if(!pacmedirectory->is(m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder))
 //      {
 //
 //         throw exception(error_resource);
@@ -170,9 +170,9 @@ namespace macos
 //
 //      strTime /= "time";
 //
-//      pacmedir->create(strTime);
+//      pacmedirectory->create(strTime);
 //
-//      if(!pacmedir->is(strTime))
+//      if(!pacmedirectory->is(strTime))
 //      {
 //
 //         throw ::exception(error_resource);
@@ -194,8 +194,14 @@ namespace macos
 
    ::file::listing & dir_context::root_ones(::file::listing & listing)
    {
+      
+      ::file::path path;
+      
+      path = "/";
+      
+      path.m_iDir = 1;
 
-      listing.add("/");
+      listing.defer_add(path);
 
       listing.m_straTitle.add("File ::apex::get_system()");
 
@@ -204,136 +210,155 @@ namespace macos
    }
 
 
-   bool dir_context::ls(::file::listing & listing)
+   bool dir_context::enumerate(::file::listing & listing)
    {
-
-      if(listing.m_bRecursive)
+      
+      if(::dir_context::enumerate(listing))
       {
-
-         index iStart = listing.get_size();
-
-         {
-
-            __scoped_restore(listing.m_pathUser);
-
-            __scoped_restore(listing.m_pathFinal);
-
-            __scoped_restore(listing.m_eextract);
-
-            if(::dir_context::ls(listing))
-            {
-
-               return true;
-
-            }
-
-            ::file::listing dira;
-
-            get_app()->m_papplication->dir().ls_dir(dira, listing.m_pathFinal);
-
-            for(i32 i = 0; i < dira.get_count(); i++)
-            {
-
-               ::file::path dir_context = dira[i];
-
-               if(dir_context == listing.m_pathFinal)
-                  continue;
-
-               listing.m_pathUser.Empty();
-               listing.m_pathFinal = dir_context;
-
-               if(listing.m_eextract != extract_all)
-               {
-
-                  listing.m_eextract = extract_none;
-
-               }
-
-               get_app()->m_papplication->dir().ls(listing);
-
-            }
-
-         }
-
-         ::file::path_array  straPath;
          
-         auto pacmedir = m_psystem->m_pacmedir;
-
-         pacmedir->ls(straPath, listing.m_pathFinal);
-
-//            file_find file_find;
-
-         //          bool bWorking = file_find.FindFile(listing.m_path / listing.os_pattern()) != false;
-
-         for(auto & strPath : straPath)
-         {
-
-            bool bDir = is(strPath);
-
-            if((listing.m_bDir && bDir) || (listing.m_bFile && !bDir))
-            {
-
-               if(!bDir && !matches_wildcard_criteria(listing.m_straPattern, strPath.name()))
-                  continue;
-
-               listing.add(strPath);
-
-               listing.last().m_iDir = bDir ? 1 : 0;
-
-            }
-
-         }
-
-         for(index i = iStart; i < listing.get_size(); i++)
-         {
-
-            listing[i].m_iRelative = listing.m_pathFinal.get_length() + 1;
-
-         }
-
+         return true;
+         
       }
-      else
+      
+      auto pacmedirectory = m_psystem->m_pacmedirectory;
+      
+      if(!pacmedirectory->enumerate(listing))
       {
-
-         if(::dir_context::ls(listing))
-         {
-
-            return true;
-
-         }
-
-         ::file::path_array  straPath;
+       
+         return false;
          
-         auto pacmedir = m_psystem->m_pacmedir;
-
-         pacmedir->ls(straPath, listing.m_pathFinal);
-
-         // file_find file_find;
-
-         // bool bWorking = file_find.FindFile(listing.m_path / listing.os_pattern()) != false;
-
-         for(auto & strPath : straPath)
-         {
-
-            bool bDir = is(strPath);
-
-            if((listing.m_bDir && bDir) || (listing.m_bFile && !bDir))
-            {
-
-               if(!bDir && !matches_wildcard_criteria(listing.m_straPattern, strPath.name()))
-                  continue;
-
-               listing.add(strPath);
-
-               listing.last().m_iDir = bDir ? 1 : 0;
-
-            }
-
-         }
-
       }
-         
-      return listing;
+      
+      return true;
+      
+
+//      if(listing.m_bRecursive)
+//      {
+//
+//         index iStart = listing.get_size();
+//
+//         {
+//
+//            __scoped_restore(listing.m_pathUser);
+//
+//            __scoped_restore(listing.m_pathFinal);
+//
+//            __scoped_restore(listing.m_eextract);
+//
+//            if(::dir_context::ls(listing))
+//            {
+//
+//               return true;
+//
+//            }
+//
+//            ::file::listing dira;
+//
+//            get_app()->m_papplication->dir().ls_dir(dira, listing.m_pathFinal);
+//
+//            for(i32 i = 0; i < dira.get_count(); i++)
+//            {
+//
+//               ::file::path dir_context = dira[i];
+//
+//               if(dir_context == listing.m_pathFinal)
+//                  continue;
+//
+//               listing.m_pathUser.Empty();
+//               listing.m_pathFinal = dir_context;
+//
+//               if(listing.m_eextract != extract_all)
+//               {
+//
+//                  listing.m_eextract = extract_none;
+//
+//               }
+//
+//               get_app()->m_papplication->dir().ls(listing);
+//
+//            }
+//
+//         }
+//
+//         ::file::path_array  straPath;
+//
+//         auto pacmedirectory = m_psystem->m_pacmedirectory;
+//
+//         pacmedirectory->ls(straPath, listing.m_pathFinal);
+//
+////            file_find file_find;
+//
+//         //          bool bWorking = file_find.FindFile(listing.m_path / listing.os_pattern()) != false;
+//
+//         for(auto & strPath : straPath)
+//         {
+//
+//            bool bDir = is(strPath);
+//
+//            if((listing.m_bDir && bDir) || (listing.m_bFile && !bDir))
+//            {
+//
+//               if(!bDir && !matches_wildcard_criteria(listing.m_straPattern, strPath.name()))
+//                  continue;
+//
+//               listing.add(strPath);
+//
+//               listing.last().m_iDir = bDir ? 1 : 0;
+//
+//            }
+//
+//         }
+//
+//         for(index i = iStart; i < listing.get_size(); i++)
+//         {
+//
+//            listing[i].m_iRelative = listing.m_pathFinal.get_length() + 1;
+//
+//         }
+//
+//      }
+//      else
+//      {
+//
+//         if(::dir_context::ls(listing))
+//         {
+//
+//            return true;
+//
+//         }
+//
+//         ::file::path_array  straPath;
+//
+//         auto pacmedirectory = m_psystem->m_pacmedirectory;
+//
+//         pacmedirectory->ls(straPath, listing.m_pathFinal);
+//
+//         // file_find file_find;
+//
+//         // bool bWorking = file_find.FindFile(listing.m_path / listing.os_pattern()) != false;
+//
+//         for(auto & strPath : straPath)
+//         {
+//
+//            bool bDir = is(strPath);
+//
+//            if((listing.m_bDir && bDir) || (listing.m_bFile && !bDir))
+//            {
+//
+//               if(!bDir && !matches_wildcard_criteria(listing.m_straPattern, strPath.name()))
+//                  continue;
+//
+//               listing.add(strPath);
+//
+//               listing.last().m_iDir = bDir ? 1 : 0;
+//
+//            }
+//
+//         }
+//
+//      }
+//
+//      return listing;
 
    }
 
@@ -341,22 +366,23 @@ namespace macos
    bool dir_context::is(const ::file::path & pathParam)
    {
 
-      ::file::path path;
-      
-      auto pcontext = m_pcontext;
-
-      path = pcontext->m_papexcontext->defer_process_path(pathParam);
-
-      if(::dir_context::is(path))
-      {
-
-         return true;
-
-      }
-
-      auto pacmedir = m_psystem->m_pacmedir;
-      
-      return pacmedir->_is(path);
+      return ::dir_context::is(pathParam);
+//      ::file::path path;
+//
+//      auto pcontext = m_pcontext;
+//
+//      path = pcontext->m_papexcontext->defer_process_path(pathParam);
+//
+//      if(::dir_context::is(path))
+//      {
+//
+//         return true;
+//
+//      }
+//
+//      auto pacmedirectory = m_psystem->m_pacmedirectory;
+//
+//      return pacmedirectory->_is(path);
 
    }
 
@@ -505,12 +531,12 @@ namespace macos
 //         if(!is(stra[i]))
 //         {
 //            
-//            auto pacmedir = m_psystem->m_pacmedir;
+//            auto pacmedirectory = m_psystem->m_pacmedirectory;
 //            
 //            try
 //            {
 //               
-//               pacmedir->create(stra[i]);
+//               pacmedirectory->create(stra[i]);
 //               
 //            }
 //            catch (exception & e)
@@ -556,9 +582,9 @@ namespace macos
 //
 //                  //if(::CreateDirectory(::str::international::utf8_to_unicode("\\\\?\\" + stra[i]), nullptr))
 //                  
-//                  auto pacmedir = m_psystem->m_pacmedir;
+//                  auto pacmedirectory = m_psystem->m_pacmedirectory;
 //
-//                  pacmedir->create(stra[i]);
+//                  pacmedirectory->create(stra[i]);
 ////                  {
 ////
 ////                     //m_isdirmap.set(stra[i], true, 0);
@@ -849,14 +875,16 @@ namespace macos
 //
 
 
-   bool dir_context::has_subdir(const ::file::path & pszDir)
+   bool dir_context::has_subdir(const ::file::path & pathFolder)
    {
+      
+      return ::dir_context::has_subdir(pathFolder);
 
-      ::file::listing stra;
-
-      get_app()->m_papplication->dir().ls_dir(stra, pszDir);
-
-      return stra.has_elements();
+//      ::file::listing stra;
+//
+//      get_app()->m_papplication->dir().ls_dir(stra, pszDir);
+//
+//      return stra.has_elements();
 
    }
 
@@ -1302,9 +1330,9 @@ namespace macos
       
 //      auto psystem = m_psystem;
 //
-//      auto pacmedir = psystem->m_pacmedir;
+//      auto pacmedirectory = psystem->m_pacmedirectory;
 //
-//      return pacmedir->appdata();
+//      return pacmedirectory->appdata();
 
    }
 

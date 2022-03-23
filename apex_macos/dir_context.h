@@ -22,7 +22,7 @@ namespace macos
       void init_system() override;
 
       // rls fetchs should set a meaningful m_iRelative value at each returned path
-      bool ls(::file::listing & path) override;
+      bool enumerate(::file::listing & path) override;
 
 
       virtual bool  is(const ::file::path & path) override;

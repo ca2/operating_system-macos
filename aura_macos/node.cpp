@@ -6,7 +6,7 @@
 //  Copyright © 2021 ca2 Desenvolvimento de Sofware Ltda. All rights reserved.
 //
 #include "framework.h"
-#include "aura/graphics/draw2d/context_image.h"
+#include "aura/graphics/image/context_image.h"
 
 
 bool macos_get_file_image(::image * pimage, const char * pszFilePath);

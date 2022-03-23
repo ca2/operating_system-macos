@@ -9,12 +9,12 @@
 #include "framework.h"
 #include "window_impl.h"
 ///#include "oswindow_data.h"
-#include "aura/user/interaction_prodevian.h"
+#include "aura/user/user/interaction_prodevian.h"
 #include "acme/operating_system/_user.h"
 #include "acme/parallelization/message_queue.h"
 #include "aura/graphics/graphics/_.h"
 #include "aura/graphics/graphics/_graphics.h"
-#include "aura/graphics/draw2d/image_drawing.h"
+#include "aura/graphics/image/drawing.h"
 #include <CoreGraphics/CoreGraphics.h>
 
 void ns_main_async(dispatch_block_t block);
