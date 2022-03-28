@@ -5,11 +5,11 @@ namespace multimedia
 {
 
 
-   namespace audio_mixer_audio_core
+   namespace audio_mixer_core_audio
    {
 
 
-      line_info::line_info(sp(::aura::application) papp)
+      line_info::line_info()
       {
 
       }
@@ -21,7 +21,7 @@ namespace multimedia
       }
 
 
-   } // namespace audio_mixer_audio_core
+   } // namespace audio_mixer_core_audio
 
 
 } // namespace multimedia

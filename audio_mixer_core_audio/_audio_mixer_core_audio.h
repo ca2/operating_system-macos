@@ -1,64 +1,31 @@
 #pragma once
 
 
-
-#include "app-core/multimedia/multimedia/multimedia.h"
-
-
-
-#if defined(_AUDIO_MIXER_MMSYSTEM_LIBRARY)
-   #define CLASS_DECL_AUDIO_MIXER_MMSYSTEM  CLASS_DECL_EXPORT
-#else
-   #define CLASS_DECL_AUDIO_MIXER_MMSYSTEM  CLASS_DECL_IMPORT
-#endif
+#include "app-core/multimedia/multimedia/_multimedia.h"
+#include "core/user/userex/_userex.h"
+#include "app-core/multimedia/audio_mixer_userbase/_audio_mixer_userbase.h"
 
 
+#include "window.h"
+#include "audio_mixer.h"
+#include "control.h"
+#include "source.h"
+#include "destination.h"
+#include "device.h"
+#include "line_info.h"
 
 
-
-namespace multimedia
-{
+//#include "callback.h"
 
 
-   namespace audio_mixer_audio_core
-   {
+//#include "thread.h"
 
 
-      class callback;
-      class device;
-      class source;
-      class destination;
-      class thread;
-      class audio_mixer;
-      class section;
-
-
-   } // namespace audio_mixer_audio_core
-
-
-} // namespace multimedia
-
-
-#include "audio_mixer_audio_core_window.h"
-#include "audio_mixer_audio_core_mixer.h"
-#include "audio_mixer_audio_core_control.h"
-#include "audio_mixer_audio_core_source.h"
-#include "audio_mixer_audio_core_destination.h"
-#include "audio_mixer_audio_core_device.h"
-#include "audio_mixer_audio_core_line_info.h"
-
-
-#include "audio_mixer_audio_core_callback.h"
-
-
-#include "audio_mixer_audio_core_thread.h"          
-
-
-#include "audio_mixer_audio_core_section.h"
+//#include "section.h"
 
 
 
-#include "audio_mixer_audio_core_factory.h"
+//#include "audio_mixer_audio_core_factory.h"
 
 
 

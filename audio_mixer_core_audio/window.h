@@ -5,7 +5,7 @@ namespace multimedia
 {
 
 
-   namespace audio_mixer_audio_core
+   namespace audio_mixer_core_audio
    {
 
 
@@ -18,24 +18,24 @@ namespace multimedia
       public:
 
 
-         ::multimedia::audio_mixer::audio_mixer                    * m_pmixer;
+         __pointer(::multimedia::audio_mixer::audio_mixer)   m_pmixer;
 
 
-         window(sp(::aura::application) papp);
-         virtual ~window();
+         window();
+         ~window() override;
 
 
-         void install_message_handling(::message::dispatch * pinterface);
+         void install_message_routing(::channel * pchannel) override;
 
 
-         DECL_GEN_SIGNAL(_001OnMixerControlChange)
-            DECL_GEN_SIGNAL(_001OnMixerLineChange)
+         DECLARE_MESSAGE_HANDLER(_001OnMixerControlChange);
+         DECLARE_MESSAGE_HANDLER(_001OnMixerLineChange);
 
 
       };
 
 
-   } // namespace audio_mixer_audio_core
+   } // namespace audio_mixer_core_audio
 
 
 } // namespace multimedia

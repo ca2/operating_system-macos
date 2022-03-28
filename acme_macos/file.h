@@ -56,7 +56,7 @@ namespace macos
       
       string         m_strFileName;
       i32            m_iFile;
-      i32            m_iPutCharacterBack;
+      //i32            m_iPutCharacterBack;
 
 
       file();
@@ -93,7 +93,7 @@ namespace macos
       bool is_opened() const override;
 //      virtual u64 GetBufferPtr(::u32 nCommand, u64 nCount = 0, void ** ppBufStart = nullptr, void ** ppBufMax = nullptr);
 
-      int put_character_back(int iCharacter) override;
+      //int put_byteer_back(int iCharacter) override;
       
 
    };

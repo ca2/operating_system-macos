@@ -6,8 +6,18 @@
 //  Copyright © 2022 ca2 Desenvolvimento de Sofware Ltda. All rights reserved.
 //
 
-#ifndef __h
-#define __h
+#pragma once
 
 
-#endif /* __h */
+
+#include "app-core/multimedia/multimedia/_.h"
+
+
+
+#if defined(_AUDIO_MIXER_CORE_AUDIO_LIBRARY)
+   #define CLASS_DECL_AUDIO_MIXER_CORE_AUDIO  CLASS_DECL_EXPORT
+#else
+   #define CLASS_DECL_AUDIO_MIXER_CORE_AUDIO  CLASS_DECL_IMPORT
+#endif
+
+

@@ -72,7 +72,7 @@ namespace macos
    {
 
       m_iFile = (::u32) hFileNull;
-      m_iPutCharacterBack = -1;
+      //m_iPutCharacterBack = -1;
 
    }
 
@@ -244,29 +244,29 @@ namespace macos
          
       }
       
-      if(m_iPutCharacterBack >= 0)
-      {
-         
-         auto p = (byte *) lpBuf;
-         
-         *p = (::byte) m_iPutCharacterBack;
-         
-         nCount--;
-         
-         m_iPutCharacterBack = -1;
-         
-         if(nCount <= 0)
-         {
-          
-            return 1;
-            
-         }
-      
-         p++;
-         
-         lpBuf = p;
-
-      }
+//      if(m_iPutCharacterBack >= 0)
+//      {
+//
+//         auto p = (byte *) lpBuf;
+//
+//         *p = (::byte) m_iPutCharacterBack;
+//         
+//         nCount--;
+//
+//         m_iPutCharacterBack = -1;
+//
+//         if(nCount <= 0)
+//         {
+//
+//            return 1;
+//
+//         }
+//
+//         p++;
+//
+//         lpBuf = p;
+//
+//      }
 
       ASSERT(lpBuf != nullptr);
       
@@ -649,14 +649,14 @@ namespace macos
    }
 
 
-   int file::put_character_back(int iCharacter)
-   {
-      
-      m_iPutCharacterBack = iCharacter;
-      
-      return m_iPutCharacterBack;
-      
-   }
+//   int file::put_character_back(int iCharacter)
+//   {
+//
+//      m_iPutCharacterBack = iCharacter;
+//
+//      return m_iPutCharacterBack;
+//
+//   }
 
 
 } // namespace win

@@ -5,7 +5,7 @@ namespace multimedia
 {
 
 
-   namespace audio_mixer_audio_core
+   namespace audio_mixer_core_audio
    {
 
 
@@ -15,7 +15,7 @@ namespace multimedia
       public:
 
 
-         __pointer(::multimedia::audio_mixer_audio_core::window)            m_pwindow;
+         __pointer(::multimedia::audio_mixer_core_audio::window)            m_pwindow;
 
 
          audio_mixer();
@@ -43,14 +43,10 @@ namespace multimedia
       };
 
 
-   } // namespace audio_mixer_audio_core
+   } // namespace audio_mixer_core_audio
 
 
 } // namespace multimedia
-
-
-
-
 
 
 

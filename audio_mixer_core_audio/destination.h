@@ -5,42 +5,42 @@ namespace multimedia
 {
 
 
-   namespace audio_mixer_audio_core
+   namespace audio_mixer_core_audio
    {
 
 
-      class CLASS_DECL_AUDIO_MIXER_MMSYSTEM destination :
-         virtual public ::multimedia::audio_mixer_audio_core::source,
+      class CLASS_DECL_AUDIO_MIXER_CORE_AUDIO destination :
+         virtual public ::multimedia::audio_mixer_core_audio::source,
          virtual public ::multimedia::audio_mixer::destination
       {
       public:
 
 
-         destination(sp(::aura::application) papp);
+         destination();
          destination(const destination & destination);
-         virtual ~destination();
+         ~destination() override;
 
 
-         uint32_t get_component_type();
-         void update_all_controls();
-         ::multimedia::e_result initialize_all_controls();
-         ::multimedia::e_result initialize_source_info();
+         uint32_t get_component_type() override;
+         void update_all_controls() override;
+         void initialize_all_controls() override;
+         void initialize_source_info() override;
 
-         ::multimedia::audio_mixer::source_array & get_source_info();
-         void operator delete(void *);
+         ::multimedia::audio_mixer::source_array & get_source_info() override;
+         //void operator delete(void *);
 
          destination & operator = (const destination & device);
 
-         ::multimedia::audio_mixer::device * get_device();
-         void set_device(::multimedia::audio_mixer::device * pdevice);
+         ::multimedia::audio_mixer::device * get_device() override;
+         void set_device(::multimedia::audio_mixer::device * pdevice) override;
 
 
-         virtual uint32_t get_mixer_line_id();
+         virtual uint32_t get_mixer_line_id() override;
 
       };
 
 
-   } // namespace audio_mixer_audio_core
+   } // namespace audio_mixer_core_audio
 
 
 

@@ -1,53 +1,22 @@
 #include "framework.h"
 
 
-namespace multimedia
+__FACTORY_EXPORT void audio_mixer_core_audio_factory(::factory::factory * pfactory)
 {
 
+      //System.factory().cloneable_large < callback                    >  (System.type_info < ::multimedia::audio_mixer::callback                 > ());
+   pfactory->add_factory_item < ::multimedia::audio_mixer_core_audio::control, ::multimedia::audio_mixer::control                  > ();
+      //System.factory().creatable_small < control_data                >  (System.type_info < ::multimedia::audio_mixer::control_data             > ());
+   pfactory->add_factory_item < ::multimedia::audio_mixer_core_audio::destination, ::multimedia::audio_mixer::destination                  > ();
+   pfactory->add_factory_item < ::multimedia::audio_mixer_core_audio::device, ::multimedia::audio_mixer::device                  > ();         pfactory->add_factory_item < ::multimedia::audio_mixer_core_audio::line_info, ::multimedia::audio_mixer::line_info                  > ();
+   pfactory->add_factory_item < ::multimedia::audio_mixer_core_audio::audio_mixer, ::multimedia::audio_mixer::audio_mixer                  > ();
+      //System.factory().cloneable_large < section                   >  (System.type_info < ::multimedia::audio_mixer::font                     > ());
+   pfactory->add_factory_item < ::multimedia::audio_mixer_core_audio::source, ::multimedia::audio_mixer::source                  > ();      //System.factory().creatable_small < thread                      >  (System.type_info < ::multimedia::audio_mixer::thread                   > ());
+      /*System.factory().creatable_small < user::label                 >  (System.type_info < ::multimedia::audio_mixer::user::label              > ());
+      System.factory().creatable_small < user::control               >  (System.type_info < ::multimedia::audio_mixer::user::control            > ());
+      System.factory().creatable_small < user::level_control         >  (System.type_info < ::multimedia::audio_mixer::user::level_control      > ());
+      System.factory().creatable_small < user::toggle_control        >  (System.type_info < ::multimedia::audio_mixer::user::toggle_control     > ());*/
 
-   namespace audio_mixer_audio_core
-   {
-
-
-      factory_exchange::factory_exchange(sp(::aura::application) papp) :
-         element(papp)
-      {
-
-         //System.factory().cloneable_large < callback                    >  (System.type_info < ::multimedia::audio_mixer::callback                 > ());
-         System.factory().creatable_small < control                     >  (System.type_info < ::multimedia::audio_mixer::control                  > ());
-         //System.factory().creatable_small < control_data                >  (System.type_info < ::multimedia::audio_mixer::control_data             > ());
-         System.factory().creatable_small < destination                 >  (System.type_info < ::multimedia::audio_mixer::destination              > ());
-         System.factory().creatable_small < device                      >  (System.type_info < ::multimedia::audio_mixer::device                   > ());
-         System.factory().creatable_small < line_info                   >  (System.type_info < ::multimedia::audio_mixer::line_info                > ());
-         System.factory().cloneable_large < audio_mixer                     >  (System.type_info < ::multimedia::audio_mixer::audio_mixer                   > ());
-         //System.factory().cloneable_large < section                   >  (System.type_info < ::multimedia::audio_mixer::font                     > ());
-         System.factory().creatable_small < source                      >  (System.type_info < ::multimedia::audio_mixer::source                   > ());
-         System.factory().creatable_small < thread                      >  (System.type_info < ::multimedia::audio_mixer::thread                   > ());
-         /*System.factory().creatable_small < user::label                 >  (System.type_info < ::multimedia::audio_mixer::user::label              > ());
-         System.factory().creatable_small < user::control               >  (System.type_info < ::multimedia::audio_mixer::user::control            > ());
-         System.factory().creatable_small < user::level_control         >  (System.type_info < ::multimedia::audio_mixer::user::level_control      > ());
-         System.factory().creatable_small < user::toggle_control        >  (System.type_info < ::multimedia::audio_mixer::user::toggle_control     > ());*/
-
-      }
-
-
-      factory_exchange::~factory_exchange()
-      {
-
-      }
-
-
-   } // namespace audio_core_audio
-
-
-} // namespace multimedia
-
-
-extern "C"
-void factory_exchange(sp(::aura::application) papp)
-{
-   ::multimedia::audio_mixer_audio_core::factory_exchange factoryexchange(papp);
 }
-
 
 
