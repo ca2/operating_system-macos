@@ -2129,7 +2129,7 @@ struct NSWindow;
 NSWindow * __nswindow(oswindow oswindow)
 {
 
-   return (NSWindow *) oswindow->get_oswindow();
+   return (NSWindow *) oswindow->get_os_data();
 
 }
 
