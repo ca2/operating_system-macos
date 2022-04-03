@@ -49,6 +49,36 @@
                   endingLineNumber = "249"
                   offsetFromSymbolStart = "465">
                </Location>
+               <Location
+                  uuid = "55C2AFD4-DB91-40A5-A036-AF00E091AD47 - 87a7c0d7369f36af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__node_library_open_ca2(char const*, string_base&lt;char&gt;&amp;)"
+                  moduleName = "libacme.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/acme/operating_system/macos/library.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "250"
+                  endingLineNumber = "250"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "55C2AFD4-DB91-40A5-A036-AF00E091AD47 - 87a7c0d7369f36af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__node_library_open_ca2(char const*, string_base&lt;char&gt;&amp;)"
+                  moduleName = "libacme.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/acme/operating_system/macos/library.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "250"
+                  endingLineNumber = "250"
+                  offsetFromSymbolStart = "1046">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
