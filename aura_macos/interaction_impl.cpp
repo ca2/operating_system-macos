@@ -1549,28 +1549,21 @@ namespace macos
          if (puiFocus)
          {
 
-            puiFocus->send(pkey);
-
-            if (pmessage->m_bRet)
-            {
-
-               return;
-
-            }
+            puiFocus->route_message(pkey);
 
          }
          else
          {
 
-            m_puserinteraction->_000OnKey(pkey);
+            m_puserinteraction->route_message(pkey);
 
-            if (pmessage->m_bRet)
-            {
-
-               return;
-
-            }
-
+         }
+         
+         if(pkey->m_bRet)
+         {
+            
+            return;
+            
          }
 
          default_message_handler(pmessage);
