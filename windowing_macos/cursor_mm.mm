@@ -4,13 +4,48 @@
 //
 //  Created by Camilo Sasuke on 28/05/21.
 //
-
 #import <AppKit/AppKit.h>
 #include "acme/constant/cursor.h"
 
 
+#define __IS_NULL(p) (((uintptr_t) (p)) < 65'536)
+
+
+void ns_cursor_show();
+void ns_cursor_hide();
+
+
+void __ns_cursor_hide()
+{
+   
+   [ NSCursor hide ];
+   
+}
+
+
+void __ns_cursor_unhide()
+{
+   
+   
+   [ NSCursor unhide ];
+   
+}
+
+
+
 void ns_set_cursor(void * pNSCursor)
 {
+   
+   if(__IS_NULL(pNSCursor))
+   {
+      
+      ns_cursor_hide();
+      
+      return;
+      
+   }
+   
+   ns_cursor_show();
    
    NSCursor * pcursor = (__bridge NSCursor *) pNSCursor;
    
@@ -29,10 +64,6 @@ void * ns_get_cursor()
    return pcursor;
    
 }
-
-
-
-
 
 
 void * ns_get_default_system_cursor(enum_cursor ecursor)
@@ -95,101 +126,9 @@ void * ns_get_default_system_cursor(enum_cursor ecursor)
          
    };
    
-   void * pNSCursor = (__bridge void *) pcursor;
-   
-   return pNSCursor;
-   
+   return (__bridge_retained void *) pcursor;
    
 }
-
-
-
-
-//extern NSCursor * g_pcurrentNscursor;
-//
-//
-//// int_bool window_set_mouse_cursor(oswindow window, HCURSOR hcursor)
-//int os_window_set_mouse_cursor(void *, void * p)
-//{
-//
-//   NSCursor * pcursor = (__bridge NSCursor *) p;
-//   
-//   if(g_pcurrentNscursor != nullptr)
-//   {
-//      
-//      if(p == NULL)
-//      {
-//         
-//         [NSCursor hide];
-//         
-//      }
-//      
-//   }
-//   else
-//   {
-//
-//      if(p != NULL)
-//      {
-//         
-//         [NSCursor unhide];
-//         
-//      }
-//
-//   }
-//
-//   g_pcurrentNscursor = pcursor;
-//   
-//   if(g_pcurrentNscursor != NULL)
-//   {
-//      
-//      if(g_pcurrentNscursor != [NSCursor currentCursor])
-//      {
-//   
-//         [g_pcurrentNscursor set];
-//         
-//      }
-//      
-//   }
-//
-//   return 1;
-//   
-//}
-
-
-extern NSCursor * g_pcurrentNscursor;
-
-
-//void ns_set_cursor_cgimageref(CGImageRef image, int cx, int cy, int xHotSpot, int yHotSpot)
-//{
-//
-//   if(g_pcurrentNscursor != nullptr)
-//   {
-//
-//      [g_pcurrentNscursor pop];
-//
-//   }
-//
-//   if(image == nullptr)
-//   {
-//
-//      return;
-//
-//   }
-//
-//   NSPoint point;
-//
-//   point.x = xHotSpot;
-//
-//   point.y = yHotSpot;
-//
-//   NSImage * pimage = nsimage_from_cgimageref(image, cx, cy);
-//
-//   g_pcurrentNscursor = [[NSCursor alloc] initWithImage: pimage hotSpot:point];
-//
-//   [g_pcurrentNscursor push];
-//
-//
-//}
 
 
 NSImage * nsimage_from_cgimageref(CGImageRef image, int cx, int cy);
@@ -220,8 +159,21 @@ void * nscursor_from_cgimageref(CGImageRef image, int cx, int cy, int xHotSpot, 
 }
 
 
+void ns_free(::id)
+{
+   
+   
+}
 
 
+void ns_cursor_free(void * pNSCursor)
+{
+   
+   NSCursor * pnscursor = (__bridge_transfer NSCursor *) pNSCursor;
+   
+   ns_free(pnscursor);
+   
+}
 
 
 
