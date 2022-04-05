@@ -10,7 +10,7 @@
 #include "aura_macos/_aura_macos.h"
 
 
-#include "macOSWindow/macos_window.h"
+#include "macos/macos_window.h"
 
 
 rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid);

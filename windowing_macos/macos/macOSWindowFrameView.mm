@@ -864,10 +864,34 @@ m_f = true; \
    [self.window invalidateCursorRectsForView:self];
 }
 
-- (void)resetCursorRects {
+
+- (void)resetCursorRects
+{
+
    [super resetCursorRects];
-   [self addCursorRect:self.bounds cursor:(__bridge NSCursor*)m_pmacoswindow->m_pmacoswindow->macos_window_get_mouse_cursor()];
+   
+   NSCursor * pcursor = nullptr;
+   
+   auto pmacoswindow = m_pmacoswindow;
+   
+   if(pmacoswindow)
+   {
+      
+      auto pMacOSwindow = pmacoswindow->m_pmacoswindow;
+      
+      if(pMacOSwindow)
+      {
+         
+         pcursor = (__bridge NSCursor *) pMacOSwindow->macos_window_get_mouse_cursor();
+         
+      }
+      
+   }
+   
+   [self addCursorRect:self.bounds cursor: pcursor ];
+   
 }
+
 
 - (void)mouseEntered:(NSEvent *)theEvent {
    [super mouseEntered:theEvent];

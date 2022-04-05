@@ -11,10 +11,6 @@
 #define __IS_NULL(p) (((uintptr_t) (p)) < 65'536)
 
 
-void ns_cursor_show();
-void ns_cursor_hide();
-
-
 void __ns_cursor_hide()
 {
    
@@ -32,20 +28,8 @@ void __ns_cursor_unhide()
 }
 
 
-
-void ns_set_cursor(void * pNSCursor)
+void __ns_set_cursor(void * pNSCursor)
 {
-   
-   if(__IS_NULL(pNSCursor))
-   {
-      
-      ns_cursor_hide();
-      
-      return;
-      
-   }
-   
-   ns_cursor_show();
    
    NSCursor * pcursor = (__bridge NSCursor *) pNSCursor;
    
@@ -54,7 +38,7 @@ void ns_set_cursor(void * pNSCursor)
 }
 
 
-void * ns_get_cursor()
+void * __ns_get_cursor()
 {
    
    NSCursor * pnscursor = [NSCursor currentSystemCursor];
@@ -66,7 +50,7 @@ void * ns_get_cursor()
 }
 
 
-void * ns_get_default_system_cursor(enum_cursor ecursor)
+void * __ns_get_default_system_cursor(enum_cursor ecursor)
 {
    
    NSCursor * pcursor = nullptr;
@@ -134,7 +118,7 @@ void * ns_get_default_system_cursor(enum_cursor ecursor)
 NSImage * nsimage_from_cgimageref(CGImageRef image, int cx, int cy);
 
 
-void * nscursor_from_cgimageref(CGImageRef image, int cx, int cy, int xHotSpot, int yHotSpot)
+void * __nscursor_from_cgimageref(CGImageRef image, int cx, int cy, int xHotSpot, int yHotSpot)
 {
    
    if(image == nullptr)
@@ -159,19 +143,19 @@ void * nscursor_from_cgimageref(CGImageRef image, int cx, int cy, int xHotSpot, 
 }
 
 
-void ns_free(::id)
+void __ns_free(::id)
 {
    
    
 }
 
 
-void ns_cursor_free(void * pNSCursor)
+void __ns_cursor_free(void * pNSCursor)
 {
    
    NSCursor * pnscursor = (__bridge_transfer NSCursor *) pNSCursor;
    
-   ns_free(pnscursor);
+   __ns_free(pnscursor);
    
 }
 

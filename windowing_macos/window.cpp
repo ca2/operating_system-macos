@@ -19,8 +19,8 @@
 
 void ns_main_async(dispatch_block_t block);
 
-void ns_set_cursor(void * pNSCursor);
-void * ns_get_cursor();
+void ns_set_cursor(::windowing::cursor * pwindowingcursor);
+::windowing::cursor * ns_get_cached_cursor();
 
 #define WHEEL_DELTA 120
 
@@ -454,8 +454,10 @@ namespace windowing_macos
    }
 
 
-   void window::set_mouse_cursor(::windowing::cursor * pcursor)
+   void window::set_mouse_cursor(::windowing::cursor * pcursorParam)
    {
+      
+      __pointer(::windowing::cursor) pcursor = pcursorParam;
 
       if (::is_null(pcursor))
       {
@@ -463,8 +465,15 @@ namespace windowing_macos
          throw exception(error_invalid_parameter);
 
       }
+      
+      if(pcursor == m_pcursor)
+      {
+         
+         return;
+         
+      }
 
-      auto pcursorMacos = dynamic_cast < class cursor * >(pcursor);
+      auto pcursorMacos = pcursor.cast < cursor >();
 
       if (::is_null(pcursorMacos))
       {
@@ -482,34 +491,14 @@ namespace windowing_macos
          
       }
       
-      void * pNSCursor = pcursorMacos->m_pNSCursor;
-      
-      if (ns_get_cursor() == pNSCursor)
+      if (ns_get_cached_cursor() == pcursor)
       {
 
          return;
 
       }
 
-      m_pwindowing->windowing_post(__routine([this, pNSCursor]()
-                                          {
-
-//                                             synchronous_lock sl(user_mutex());
-
-                                             windowing_output_debug_string("\n::SetCursor 1");
-//
-//                                             display_lock displaylock(x11_display()->Display());;
-
-         ns_set_cursor(pNSCursor);
-         
-         
-//                                             XDefineCursor(Display(), Window(), pcursorx11->m_cursor);
-
-//                                             m_cursorLast = pcursorx11->m_cursor;
-
-                                          }));
-
-      //return true;
+      ns_set_cursor(pcursor);
 
    }
 
@@ -1528,34 +1517,14 @@ namespace windowing_macos
    void * window::macos_window_get_mouse_cursor()
    {
       
-      auto pimpl = m_puserinteractionimpl;
-      
-      if(::is_null(pimpl))
-      {
-       
-         return nullptr;
-         
-      }
-      
-      auto puserinteraction = pimpl->m_puserinteraction;
-   
-      if(::is_null(puserinteraction))
-      {
-       
-         return nullptr;
-         
-      }
-      
-      auto pcursor = puserinteraction->get_mouse_cursor();
-      
-      if(::is_null(pcursor))
+      if(::is_null(m_pcursor))
       {
          
          return nullptr;
          
       }
       
-      auto poscursor = pcursor->get_os_data();
+      auto poscursor = m_pcursor->get_os_data();
       
       if(::is_null(poscursor))
       {
@@ -2132,6 +2101,5 @@ NSWindow * __nswindow(oswindow oswindow)
    return (NSWindow *) oswindow->get_os_data();
 
 }
-
 
 

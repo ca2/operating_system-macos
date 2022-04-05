@@ -30,10 +30,11 @@ namespace windowing_macos
    public:
       
       
-      void *                     m_pNSCursorLast;
-      class windowing *          m_pmacoswindowing;
-      ::windowing::window *      m_pwindowCapture;
-      ::point_i32                m_pointMouseCursor;
+      void *                           m_pNSCursorLast;
+      class windowing *                m_pmacoswindowing;
+      ::windowing::window *            m_pwindowCapture;
+      ::point_i32                      m_pointMouseCursor;
+      __pointer(::windowing::cursor)   m_pcursor;
       
       
       window();

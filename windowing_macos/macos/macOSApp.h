@@ -19,9 +19,9 @@
 //  this copyright and permission notice. Attribution in compiled projects is
 //  appreciated but not required.
 //
+#include "acme/operating_system/macos/nano/app.h"
 
-
-@interface macOSWindowApp : NSObject<NSApplicationDelegate, NSMenuDelegate>
+@interface macOSApp : macos_app< NSMenuDelegate>
 {
 @public
 
@@ -105,7 +105,7 @@
 //[appDelegate->m_menu setDelegate:NSApp];
 
 -(NSMenu *) applicationDockMenu:(NSApplication*)sender;
-@property(strong) NSWindowController *windowcontroller;
+@property(strong) NSWindowController *m_pwindowcontroller;
 - (void)play:(id)sender;
 -(void)fetch_dark_mode;
 @end

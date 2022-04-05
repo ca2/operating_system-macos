@@ -10,6 +10,7 @@
 void * ns_get_default_system_cursor(enum_cursor ecursor);
 CGImageRef cgimageref_from_image(const ::image * pimage);
 void * nscursor_from_cgimageref(CGImageRef image, int cx, int cy, int xHotSpot, int yHotSpot);
+void ns_cursor_free(void * pNSCursor);
 
 
 namespace windowing_macos
@@ -26,6 +27,14 @@ namespace windowing_macos
    cursor::~cursor()
    {
    
+      if(m_pNSCursor)
+      {
+         
+         ns_cursor_free(m_pNSCursor);
+         
+         m_pNSCursor = nullptr;
+         
+      }
    
    }
 
@@ -36,35 +45,37 @@ namespace windowing_macos
       if(::is_ok(m_pimage))
       {
          
-         _create_from_image(m_pimage, m_szHotspotOffset.cx, m_szHotspotOffset.cy);
-         
-//         if(::succeeded(estatus))
-//         {
-//
-//            return estatus;
-//
-//         }
+         try
+         {
+
+            _create_from_image(m_pimage, m_szHotspotOffset.cx, m_szHotspotOffset.cy);
+          
+            return;
+            
+         }
+         catch (...)
+         {
+
+         }
          
       }
       
-      //auto estatus =
-      
       _load_default_cursor();
-      
-//      if(::succeeded(estatus))
-//      {
-//
-//         return estatus;
-//
-//      }
-//
-//      return ::success;
       
    }
 
 
    void cursor::_load_default_cursor()
    {
+      
+      if(m_pNSCursor)
+      {
+         
+         ns_cursor_free(m_pNSCursor);
+         
+         m_pNSCursor = nullptr;
+         
+      }
 
       m_pNSCursor = ns_get_default_system_cursor(m_ecursor);
 
@@ -75,73 +86,29 @@ namespace windowing_macos
          
       }
 
-     //return ::success;
-      
    }
 
 
    void cursor::_create_from_image(const ::image * pimage, int xHotSpot, int yHotSpot)
    {
       
+      if(m_pNSCursor)
+      {
+         
+         ns_cursor_free(m_pNSCursor);
+         
+         m_pNSCursor = nullptr;
+         
+      }
+
       CGImageRef cgimageref = cgimageref_from_image(pimage);
 
       m_pNSCursor = nscursor_from_cgimageref(cgimageref, pimage->width(), pimage->height(), xHotSpot, yHotSpot);
 
-      //return ::success;
-      
    }
 
 
-//   HCURSOR context_image::load_default_cursor(e_cursor ecursor)
-//   {
-//
-//   #ifdef MACOS
-//
-//      return nscursor_system(ecursor);
-//
-//   #else
-//
-//      return nullptr;
-//
-//   #endif
-//
-//   }
-
-
-//void context_image::set_cursor_image(const ::image * pimage, int xHotSpot, int yHotSpot)
-//{
-//
-//   if(pimage)
-//   {
-//
-//#ifdef MACOS
-//      
-//      ns_set_cursor_cgimageref(cgimageref_from_image(pimage), pimage->width(), pimage->height(), xHotSpot, yHotSpot);
-//      
-//#endif
-//
-//   }
-//   else
-//   {
-//
-//#ifdef MACOS
-//      
-//      ns_set_cursor_cgimageref(nullptr, 0, 0, 0, 0);
-//      
-//#endif
-//
-//   }
-//
-//}
-//
-
-
-
 } // namespace windowing_macos
-
-
-
-
 
 
 bool macos_get_cursor_position(POINT_I32 * ppointCursor)
@@ -163,3 +130,6 @@ bool macos_get_cursor_position(POINT_I32 * ppointCursor)
    return TRUE;
  
 }
+
+
+

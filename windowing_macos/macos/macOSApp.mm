@@ -35,10 +35,10 @@ void macos_on_app_changed_occlusion_state();
 
 void set_apex_system_as_thread();
 
-@implementation macOSWindowApp
+@implementation macOSApp
 
 
-@synthesize windowcontroller;
+//@synthesize windowcontroller;
 - (id)init
 {
 
@@ -579,7 +579,7 @@ void ns_create_main_menu(menu_shared * pmenushared)
    ns_main_async(^{
    id menuMain = [NSMenu alloc];
    
-   macOSWindowApp * papp = (macOSWindowApp *) [[NSApplication sharedApplication] delegate ];
+   macOSApp * papp = (macOSApp *) [[NSApplication sharedApplication] delegate ];
    
    {
       
@@ -661,7 +661,7 @@ void windowing_macos_application_main(void * pApplication, int argc, char *argv[
    
    NSApplication * application = [NSApplication sharedApplication];
    
-   macOSWindowApp * appDelegate = [[macOSWindowApp alloc] init];
+   macOSApp * appDelegate = [[macOSApp alloc] init];
    
    appDelegate->m_pApplication = pApplication;
    
@@ -995,7 +995,7 @@ void ns_create_main_menu()
 //
 //   NSApplication * application = [NSApplication sharedApplication];
 //
-//   macOSWindowApp * appDelegate = [[macOSWindowApp alloc] init];
+//   macOSApp * appDelegate = [[macOSApp alloc] init];
 //
 //   [application setDelegate:appDelegate];
 //

@@ -3,7 +3,7 @@
 //
 #include "framework.h"
 void ns_launch_app(const char * psz, const char ** argv, int iFlags);
-
+void acme_macos_application_main(void * pApplication, int argc, char *argv[]);
 string macos_get_type_identifier(const char * str);
 
 bool ns_is_system_dark_mode();
@@ -657,9 +657,25 @@ namespace acme
          
          m_pelementquit = new element_quit(pnode, psystem);
 
+         
+         //m_pelementquit = new element_quit(pnode, psystem);
+         
+         auto argc = psystem->m_argc;
+         
+         auto argv = psystem->m_argv;
+         
+         auto papp = psystem->m_pappStartup;
+         
+         void * pApplication = (void *) (::app *) papp;
+         
+         acme_macos_application_main(pApplication, argc, argv);
+         
+         //return psystem->m_estatus;
+         
+
          //auto estatus =
          
-         ::acme::apple::node::implement(pnode, psystem);
+         //::acme::apple::node::implement(pnode, psystem);
 
 //         if(!estatus)
 //         {
@@ -980,7 +996,25 @@ namespace acme
 
       }
    
-   
+//   void node::implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem)
+//   {
+//
+//      m_pelementquit = new element_quit(pnode, psystem);
+//
+//      auto argc = psystem->m_argc;
+//
+//      auto argv = psystem->m_argv;
+//
+//      auto papp = psystem->m_pappStartup;
+//
+//      void * pApplication = (void *) (::app *) papp;
+//
+//      acme_macos_application_main(pApplication, argc, argv);
+//
+//      //return psystem->m_estatus;
+//
+//   }
+
    } // namespace macos
 
 

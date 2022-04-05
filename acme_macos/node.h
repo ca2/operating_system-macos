@@ -128,7 +128,7 @@ namespace acme
 
          void shell_execute_sync(const char * pszFile, const char * pszParams, ::duration durationTimeout) override;
          
-         
+         //void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem);
       };
 
 

@@ -27,7 +27,6 @@ struct __CTLCOLOR
 
 // int_bool GetMessage(MESSAGE * lpMsg, oswindow hWnd, ::u32 wMsgFilterMin, ::u32 wMsgFilterMax);
 
-::user::interaction * g_puserinteractionMouseCapture123 = nullptr;
 //#define MESSAGE_WINDOW_PARENT (::oswindow((void *) (iptr) 1))
 
 
@@ -1411,41 +1410,9 @@ namespace macos
               if(m_puserinteractionCapture)
               {
 
-                 if(g_puserinteractionMouseCapture123 == nullptr)
-                 {
-
-                    g_puserinteractionMouseCapture123 = m_puserinteractionCapture;
-
-                 }
-                 else if(g_puserinteractionMouseCapture123 != m_puserinteractionCapture)
-                 {
-
-                    output_debug_string("different capture (1)");
-
-                 }
-
                  puserinteractionMouse = m_puserinteractionCapture;
 
               }
-
-              if(g_puserinteractionMouseCapture123 != nullptr)
-              {
-
-                 if(g_puserinteractionMouseCapture123 != puserinteractionMouse)
-                 {
-
-                    output_debug_string("different capture (2)");
-
-                 }
-
-              }
-              else
-              {
-
-
-
-              }
-
 
               if(!puserinteractionMouse)
               {
@@ -1465,17 +1432,6 @@ namespace macos
                
               }
 
-              if(puserinteractionMouse)
-              {
-                 
-                 string strType2 = __type_name(puserinteractionMouse);
-                 
-                 //::output_debug_string("\nmouse: "+ strType2);
-                 
-              }
-              //}
-              
-
               if(pmouse->m_atom == e_message_left_button_down)
               {
 
@@ -1489,32 +1445,12 @@ namespace macos
 
               }
 
-              string strUserInteractionType(__type_name(puserinteractionMouse));
-
-              if(pmouse->m_atom == e_message_mouse_move)
-              {
-
-                 static int s_iMotionNotify = 0;
-
-                 s_iMotionNotify++;
-
-                 if (strUserInteractionType.contains_ci("button"))
-                 {
-
-                    //output_debug_string("mouse_move::userinteraction=button");
-
-                 }
-                 else
-                 {
-
-                    puserinteractionMouse = m_puserinteraction->child_from_point(pmouse->m_point);
-
-                 }
-
-              }
+              string strUserInteractionType;
 
               if(puserinteractionMouse)
               {
+                 
+                 strUserInteractionType = __type_name(puserinteractionMouse);
 
                  do
                  {
@@ -1675,7 +1611,7 @@ namespace macos
 //      else
 //         lpszCaption = strCaption;
 //
-//      i32 nResult = ::os_message_box((oswindow)get_handle(), lpszText, lpszCaption, nType);
+//      i32 nResult = ::message_box_synchronous((oswindow)get_handle(), lpszText, lpszCaption, nType);
 //
 //      return nResult;
 //

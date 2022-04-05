@@ -10,10 +10,10 @@
 #include "aura_macos/_mm.h"
 
 
-#import "macOSWindow/macOSWindow.h"
+#import "macos/macOSWindow.h"
 
 
-#include "macOSWindow/macos_window.h"
+#include "macos/macos_window.h"
 
 
 #include "_c_mm.h"
@@ -28,13 +28,13 @@ void * new_macos_window(macos_window * papexwindow, CGRect rectangle, unsigned i
 #import "notify_icon_mm_bridge.h"
 
 
-#import "macOSWindow/macOSWindowFrameView.h"
+#import "macos/macOSWindowFrameView.h"
 
 
-#import "macOSWindow/macOSWindowApp.h"
+#import "macos/macOSApp.h"
 
 
-#import "macOSWindow/macOSWindowController.h"
+#import "macos/macOSWindowController.h"
 
 
 
