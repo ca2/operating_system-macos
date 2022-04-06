@@ -143,7 +143,7 @@ void * __nscursor_from_cgimageref(CGImageRef image, int cx, int cy, int xHotSpot
 }
 
 
-void __ns_free(::id)
+void ___ns_cursor_free(NSCursor *)
 {
    
    
@@ -155,7 +155,7 @@ void __ns_cursor_free(void * pNSCursor)
    
    NSCursor * pnscursor = (__bridge_transfer NSCursor *) pNSCursor;
    
-   __ns_free(pnscursor);
+   ___ns_cursor_free(pnscursor);
    
 }
 
