@@ -10,7 +10,7 @@ bool ns_is_system_dark_mode();
 
 void ns_app_terminate();
 void os_post_quit(::element * pelementQuit);
-
+bool ns_open_file(const char * psz);
 
 void ns_launch_app(const char * psz, const char ** argv, int iFlags);
 
@@ -152,7 +152,9 @@ namespace acme
 
   //    call_sync(pszFile, pszParams, ::file::path(pszFile).folder(), e_display_none, durationTimeout, set);
       
-      ::acme::posix::node::shell_open(path, strParams, pathFolder);
+      //::acme::macos::node::shell_open(path, strParams, pathFolder);
+      
+      ns_open_file(path.c_str());
 
    }
 

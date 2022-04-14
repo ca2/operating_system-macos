@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             uuid = "FEDA58C1-7F90-4689-B6BF-9BE47B237549"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             breakpointStackSelectionBehavior = "1"
@@ -148,7 +148,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C50BEE6A-3E33-4517-8723-23A5C6AA1F6D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../source/app/acme/platform/system.cpp"
@@ -156,7 +156,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1798"
             endingLineNumber = "1798"
-            landmarkName = "system::on_open_untitled_file()"
+            landmarkName = "system::increment_reference_count()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -171,6 +171,452 @@
             moduleName = "">
             <Locations>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F6F72AE6-54C2-4BA1-A0F9-CE1B6AF0FED5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/app/main_window.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "main_window::_001OnDraw(pgraphics)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "09289676-435C-4EC3-BE27-D4428A1DB0A7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/app/main_window.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "main_window::_001OnDraw(pgraphics)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "09289676-435C-4EC3-BE27-D4428A1DB0A7 - 8770125dd99a4f6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "app_app::main_window::_001OnDraw(___pointer&lt;draw2d::graphics&gt;&amp;)"
+                  moduleName = "libapp_app.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/app/main_window.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "380">
+               </Location>
+               <Location
+                  uuid = "09289676-435C-4EC3-BE27-D4428A1DB0A7 - 8770125dd99a4ea4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "app_app::main_window::_001OnDraw(___pointer&lt;draw2d::graphics&gt;&amp;)"
+                  moduleName = "libapp_app.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/app/main_window.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "396">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E1A691CA-34CD-4F26-82D4-C02013D3336A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/app/main_window.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "main_window::_001OnDraw(pgraphics)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "71D62C3C-C093-48C5-9272-F6ABF7651D13"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../windowing_macos/macos/macOSWindowFrameView.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
+            landmarkName = "-drawRect:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5BE34899-FA95-4985-84FB-C0FD12D69ECE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../windowing_macos/window.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "728"
+            endingLineNumber = "728"
+            landmarkName = "window::macos_window_draw(cgc, sizeWindowParam)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69959592-5705-4E01-BE97-796941919E06"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../windowing_macos/window.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "736"
+            endingLineNumber = "736"
+            landmarkName = "window::macos_window_draw(cgc, sizeWindowParam)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "38A713E9-1020-4459-A2B3-E7138C40EFFF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../acme_macos/node.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "node::node()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "38A713E9-1020-4459-A2B3-E7138C40EFFF - 66710f1bbded492"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "acme::macos::node::node()"
+                  moduleName = "libacme_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/operating-system/operating-system-macos/acme_macos/node.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "226">
+               </Location>
+               <Location
+                  uuid = "38A713E9-1020-4459-A2B3-E7138C40EFFF - 66710f1bbded492"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "acme::macos::node::node()"
+                  moduleName = "libacme_macos.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/operating-system/operating-system-macos/acme_macos/node.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "424">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "13998867-88A3-48BE-905B-58361AD73A30"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/acme/platform/node.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1596"
+            endingLineNumber = "1596"
+            landmarkName = "node::shell_open(path, strParam, pathFolder)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D57147F-C840-4002-A5BC-D12003079F6C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/acme/operating_system/macos/nano/nswindow.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
+            landmarkName = "nano_window_bridge::display()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F6A34121-019A-4D5D-AC9A-8F5A8E72D8E8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/acme/operating_system/macos/nano/nswindow.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "nano_window_bridge::display()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8DF9049D-00E0-41B2-A01A-6DA6C69A4711"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/acme/user/nano/window_implementation.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "nano_window_implementation::handle(ptopic, pcontext)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "40C4AB8B-5D2A-4210-B15E-CA30D585ACA6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/acme/user/nano/window_implementation.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "nano_window_implementation::nano_window_on_create()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F692D02E-F241-4875-BC31-AA5B55D27650"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/gpu_opengl/context_glx.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "context_glx::context_glx()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD23A267-64CB-45D5-8F09-03A93FDEF7F7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/gpu_opengl/context_fbo.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "context_fbo::context_fbo()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FD23A267-64CB-45D5-8F09-03A93FDEF7F7 - f8419a090e596fc8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "opengl::context_fbo::context_fbo()"
+                  moduleName = "libgpu_opengl.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/gpu_opengl/context_fbo.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "477">
+               </Location>
+               <Location
+                  uuid = "FD23A267-64CB-45D5-8F09-03A93FDEF7F7 - f8419a090e596fc8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "opengl::context_fbo::context_fbo()"
+                  moduleName = "libgpu_opengl.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/gpu_opengl/context_fbo.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "161">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "02D44D42-A322-4128-84A9-B9736993736C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/gpu_opengl/context_fbo.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "context_fbo::_create_offscreen_buffer(size)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "02D44D42-A322-4128-84A9-B9736993736C - 32c16ea5d91abe73"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "opengl::context_fbo::_create_offscreen_buffer(size_type&lt;SIZE_I32, POINT_I32, RECTANGLE_I32&gt; const&amp;)"
+                  moduleName = "libgpu_opengl.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/gpu_opengl/context_fbo.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "471">
+               </Location>
+               <Location
+                  uuid = "02D44D42-A322-4128-84A9-B9736993736C - 32c16ea5d91abe73"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "opengl::context_fbo::_create_offscreen_buffer(size_type&lt;SIZE_I32, POINT_I32, RECTANGLE_I32&gt; const&amp;)"
+                  moduleName = "libgpu_opengl.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/gpu_opengl/context_fbo.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "439">
+               </Location>
+               <Location
+                  uuid = "02D44D42-A322-4128-84A9-B9736993736C - 32c16ea5d91abe73"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "opengl::context_fbo::_create_offscreen_buffer(size_type&lt;SIZE_I32, POINT_I32, RECTANGLE_I32&gt; const&amp;)"
+                  moduleName = "libgpu_opengl.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/gpu_opengl/context_fbo.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "427">
+               </Location>
+               <Location
+                  uuid = "02D44D42-A322-4128-84A9-B9736993736C - 32c16ea5d91abe73"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "opengl::context_fbo::_create_offscreen_buffer(size_type&lt;SIZE_I32, POINT_I32, RECTANGLE_I32&gt; const&amp;)"
+                  moduleName = "libgpu_opengl.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/gpu_opengl/context_fbo.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "450">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CCD0E916-3323-43AE-8F55-3D77821C0687"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/gpu_opengl/context_fbo.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "context_fbo::_create_offscreen_buffer(size)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4280DCC-7D40-4C6C-8C00-7C1DA456DA72"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/gpu_opengl/context_fbo.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "context_fbo::_create_offscreen_buffer(size)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C34C3BBF-8B14-4881-B431-556A996449A5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/gpu_opengl/context_fbo.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "context_fbo::_create_offscreen_buffer(size)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

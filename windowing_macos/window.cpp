@@ -727,9 +727,13 @@ namespace windowing_macos
 
       ::size_i32 sizeMin = imageBuffer2->size().minimum(sizeWindow);
       
-      image_source imagesource(imageBuffer2);
+      ::rectangle_f64 rectangleSource(sizeMin);
       
-      image_drawing_options imagedrawingoptions(sizeMin);
+      image_source imagesource(imageBuffer2, rectangleSource);
+      
+      ::rectangle_f64 rectangleTarget(sizeMin);
+      
+      image_drawing_options imagedrawingoptions(rectangleTarget);
       
       image_drawing imagedrawing(imagedrawingoptions, imagesource);
 
