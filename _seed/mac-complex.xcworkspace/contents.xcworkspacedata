@@ -8,6 +8,9 @@
       location = "group:../../../source/app-complex/form/_app_complex_form.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:../../../source/app-complex/video_capture/_app_complex_video_capture.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:../../../source/game/light/_game_light.xcodeproj">
    </FileRef>
 </Workspace>
