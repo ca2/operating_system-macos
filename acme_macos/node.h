@@ -126,7 +126,7 @@ namespace acme
          
          virtual bool _launch_command(const char * const pszCommand);
 
-         void shell_execute_sync(const char * pszFile, const char * pszParams, ::duration durationTimeout) override;
+         void shell_open(const ::file::path & pathFile, const ::string & strParams = "", const ::file::path & pathFolder = "") override;
          
          //void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem);
       };

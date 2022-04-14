@@ -1164,12 +1164,12 @@ namespace macos
    }
 
 
-   void os_context::file_open(::file::path path, string strParams, string strFolder)
+   void os_context::file_open(const ::file::path & pathParam, const ::string & strParams, const ::file::path & pathFolder)
    {
       
       auto pcontext = m_pcontext;
 
-      path = pcontext->m_papexcontext->defer_process_path(path);
+      auto path = pcontext->m_papexcontext->defer_process_path(pathParam);
       
 //      // pretend actually gonna open the file here to trigger
 //      // asking for file access permission

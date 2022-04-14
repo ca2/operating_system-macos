@@ -145,12 +145,14 @@ namespace acme
    }
 
 
-   void node::shell_execute_sync(const char * pszFile, const char * pszParams, ::duration durationTimeout)
+   void node::shell_open(const ::file::path & path, const ::string & strParams, const ::file::path & pathFolder)
    {
       
-      property_set set;
+//      property_set set;
 
-      call_sync(pszFile, pszParams, ::file::path(pszFile).folder(), e_display_none, durationTimeout, set);
+  //    call_sync(pszFile, pszParams, ::file::path(pszFile).folder(), e_display_none, durationTimeout, set);
+      
+      ::acme::posix::node::shell_open(path, strParams, pathFolder);
 
    }
 
@@ -659,6 +661,17 @@ namespace acme
 
          
          //m_pelementquit = new element_quit(pnode, psystem);
+         
+         if(psystem->m_pfnImplement)
+         {
+            
+            psystem->init_task();
+            
+            (*psystem->m_pfnImplement)(psystem);
+            
+            return;
+            
+         }
          
          auto argc = psystem->m_argc;
          

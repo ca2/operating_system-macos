@@ -80,7 +80,7 @@ namespace macos
 
       void on_process_command(::create * pcommand) override;
 
-      void file_open(::file::path path, string strParams = "", string strFolder = "") override;
+      void file_open(const ::file::path & path, const ::string & strParams = "", const ::file::path & pathFolder = "") override;
       
       void link_open(const ::string & strUrl, const ::string & strProfile) override;
 
