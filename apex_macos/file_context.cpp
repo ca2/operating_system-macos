@@ -26,7 +26,7 @@ struct PROCESS_INFO_t
 };
 
 
-namespace macos
+namespace apex_macos
 {
 
 
@@ -164,7 +164,7 @@ namespace macos
    }
 
 
-} // namespace macos
+} // namespace apex_macos
 
 
 char * ns_resource_folder();

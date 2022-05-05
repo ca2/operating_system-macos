@@ -13,21 +13,3 @@
 #endif
 
 
-namespace apex
-{
-
-
-   namespace macos
-   {
-
-
-      class node;
-
-
-   } // namespace macos
-
-
-} // namespace apex
-
-
-

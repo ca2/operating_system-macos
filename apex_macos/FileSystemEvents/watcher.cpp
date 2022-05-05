@@ -27,7 +27,7 @@ namespace FileSystemEvents
       
       //auto pwatcher = (watcher *) m_pwatcher->m_pThis;
       
-      fork(__routine([&]()
+      fork([&]()
       {
 
          CFStringRef mypath = CFStringCreateWithCString(kCFAllocatorDefault, pathFolder, kCFStringEncodingUTF8);
@@ -76,7 +76,7 @@ namespace FileSystemEvents
          
          CFRelease(pathsToWatch);
          
-      }));
+      });
       
       if(!m_stream)
       {

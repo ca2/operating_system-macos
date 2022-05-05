@@ -18,9 +18,9 @@ __FACTORY_EXPORT void aura_macos_factory(::factory::factory * pfactory)
    
    apex_macos_factory(pfactory);
 
-   pfactory->add_factory_item < ::macos::interaction_impl, ::user::interaction_impl > ();
+   pfactory->add_factory_item < ::aura_macos::interaction_impl, ::user::interaction_impl > ();
 
-   pfactory->add_factory_item < ::macos::shell, ::user::shell > ();
+   pfactory->add_factory_item < ::aura_macos::shell, ::user::shell > ();
 
 }
 

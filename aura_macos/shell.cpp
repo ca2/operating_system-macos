@@ -17,7 +17,7 @@
 //bool macos_get_file_image(::image * pimage, const ::string & psz);
 //
 //
-namespace macos
+namespace aura_macos
 {
 //
 //
@@ -354,7 +354,7 @@ bool shell::_get_file_image(_get_file_image_ & getfileimage)
 //         }
 //
       
-      if(::aura::posix::shell::_get_file_image(getfileimage))
+      if(::aura_posix::shell::_get_file_image(getfileimage))
       {
       
          return true;
@@ -617,7 +617,7 @@ bool shell::_get_file_image(_get_file_image_ & getfileimage)
 //   }
 //
 //
-} // namespace macos
+} // namespace aura_macos
 //
 //
 //

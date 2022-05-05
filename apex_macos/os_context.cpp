@@ -11,7 +11,7 @@
 void ns_fork(const ::procedure & procedure)
 {
    
-   __block auto routineHold = routine;
+   __block auto routineHold = procedure;
    
    routineHold.m_p->increment_reference_count();
  
@@ -43,7 +43,7 @@ string_array apple_browse_file_open(class ::system * psystem, const char ** pszS
 bool ns_open_url(const char * psz);
 
 
-namespace macos
+namespace apex_macos
 {
 
    ::file::path get_default_browser_path()
@@ -889,7 +889,7 @@ namespace macos
    void os_context::get_default_browser(string & strId, ::file::path & path, string & strParam)
    {
 
-      path = ::macos::get_default_browser_path();
+      path = ::apex_macos::get_default_browser_path();
 
       if(path.find_ci("chrome") >= 0)
       {
@@ -1178,12 +1178,12 @@ namespace macos
 //
 //      auto preader = psystem->file().get_reader(path);
 
-      ns_fork(__routine([path]()
+      ns_fork([path]()
       {
 
          ns_open_file(path.c_str());
 
-      }));
+      });
 
       //return true;
 
@@ -1303,7 +1303,7 @@ namespace macos
 
    }
 
-} // namespace macos
+} // namespace apex_macos
 
 
 

@@ -12,7 +12,7 @@ namespace windowing_macos
 
 
    class CLASS_DECL_WINDOWING_MACOS node :
-      virtual public ::aura::macos::node
+      virtual public ::aura_macos::node
    {
    public:
       

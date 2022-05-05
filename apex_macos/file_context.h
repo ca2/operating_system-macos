@@ -8,7 +8,7 @@
 #pragma once
 
 
-namespace macos
+namespace apex_macos
 {
 
 
@@ -41,7 +41,7 @@ namespace macos
    };
 
 
-} // namespace macos
+} // namespace apex_macos
 
 
 

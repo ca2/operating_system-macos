@@ -33,7 +33,7 @@ struct __CTLCOLOR
 #define TEST 0
 
 
-namespace macos
+namespace aura_macos
 {
 
 
@@ -4705,7 +4705,7 @@ namespace macos
    }
 
 
-} // namespace macos
+} // namespace aura_macos
 
 
 

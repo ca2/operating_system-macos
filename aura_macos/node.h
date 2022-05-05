@@ -34,14 +34,7 @@ namespace aura_macos
       };
       
    
-   } // namespace macos
-
-
-
-
-
-
-} // namespace aura
+} // namespace aura_macos
 
 
 

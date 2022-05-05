@@ -13,14 +13,10 @@ bool macos_get_file_image(::image * pimage, const char * pszFilePath);
 bool macos_get_file_image_by_type_identifier(::image * pimage, const char * pszTypeIdentifier);
 
 
-namespace aura
+namespace aura_macos
 {
 
-   
-   namespace macos
-   {
 
-      
       node::node()
       {
       
@@ -38,7 +34,7 @@ namespace aura
          
          //auto estatus =
          
-         ::aura::apple::node::initialize(pobject);
+         ::aura_apple::node::initialize(pobject);
          
 //         if(!estatus)
 //         {
@@ -49,7 +45,7 @@ namespace aura
          
          //estatus =
          
-         ::apex::macos::node::initialize(pobject);
+         ::apex_macos::node::initialize(pobject);
          
 //         if(!estatus)
 //         {
@@ -96,11 +92,9 @@ namespace aura
 
       }
 
-       
-   } // namespace macos
 
 
-} // namespace aura
+} // namespace aura_macos
 
 
 

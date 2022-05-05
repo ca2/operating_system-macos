@@ -4,7 +4,7 @@
 #undef USE_MISC
 
 
-namespace macos
+namespace apex_macos
 {
 
 
@@ -44,7 +44,7 @@ namespace macos
    }
 
 
-} // namespace macos
+} // namespace apex_macos
 
 
 

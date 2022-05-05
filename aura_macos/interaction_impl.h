@@ -5,7 +5,7 @@
 #include "aura/user/user/interaction_impl.h"
 
 
-namespace macos
+namespace aura_macos
 {
 
 
@@ -536,7 +536,7 @@ namespace macos
    };
 
 
-} // namespace macos
+} // namespace aura_macos
 
 
 

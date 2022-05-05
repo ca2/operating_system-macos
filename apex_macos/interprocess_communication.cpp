@@ -4,10 +4,7 @@
 #include "acme/operating_system/ansi/_pthread.h"
 
 
-
-
-
-namespace macos
+namespace apex_macos
 {
 
 
@@ -548,7 +545,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
 //   }
 
 
-} // namespace interprocess_communication
+} // namespace apex_macos
 
 
 

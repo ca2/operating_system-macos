@@ -19,7 +19,7 @@ char * ns_user_local_image_folder();
 char * ns_user_local_video_folder();
 
 
-namespace macos
+namespace apex_macos
 {
 
 
@@ -84,5 +84,5 @@ namespace macos
    }
 
 
-} // namespace macos
+} // namespace apex_macos
 
