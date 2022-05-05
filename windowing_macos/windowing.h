@@ -32,7 +32,7 @@ namespace windowing_macos
       
       void initialize(::object * pobject) override;
       
-      void windowing_post(const ::routine & routine) override;
+      void windowing_post(const ::procedure & procedure) override;
       
       ::windowing::window * window(oswindow oswindow) override;
 

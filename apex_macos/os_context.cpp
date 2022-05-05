@@ -8,7 +8,7 @@
 #endif
 
 
-void ns_fork(const ::routine & routine)
+void ns_fork(const ::procedure & procedure)
 {
    
    __block auto routineHold = routine;
