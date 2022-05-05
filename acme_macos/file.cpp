@@ -25,7 +25,7 @@
 //}
 
 
-namespace macos
+namespace acme_macos
 {
 
 
@@ -659,7 +659,7 @@ namespace macos
 //   }
 
 
-} // namespace win
+} // namespace acme_macos
 
 
 

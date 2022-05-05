@@ -1,12 +1,12 @@
 #pragma once
 
 
-namespace macos
+namespace acme_macos
 {
 
 
    class stdio_file :
-      virtual public ::macos::file,
+      virtual public ::acme_macos::file,
       virtual public ::file::text_file
    {
    public:
@@ -47,7 +47,7 @@ namespace macos
    };
 
 
-} // namespace macos
+} // namespace acme_macos
 
 
 

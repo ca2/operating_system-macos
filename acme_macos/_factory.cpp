@@ -41,17 +41,17 @@ __FACTORY_EXPORT void acme_macos_factory(::factory::factory * pfactory)
    
    acme_apple_factory(pfactory);
 
-   pfactory->add_factory_item < ::macos::stdio_file, ::file::text_file > ();
-   pfactory->add_factory_item < ::macos::file, ::file::file > ();
+   pfactory->add_factory_item < ::acme_macos::stdio_file, ::file::text_file > ();
+   pfactory->add_factory_item < ::acme_macos::file, ::file::file > ();
    
-   pfactory->add_factory_item < ::macos::acme_directory, ::acme_directory > ();
-   pfactory->add_factory_item < ::macos::acme_path, ::acme_path > ();
-   pfactory->add_factory_item < ::macos::acme_file, ::acme_file > ();
+   pfactory->add_factory_item < ::acme_macos::acme_directory, ::acme_directory > ();
+   pfactory->add_factory_item < ::acme_macos::acme_path, ::acme_path > ();
+   pfactory->add_factory_item < ::acme_macos::acme_file, ::acme_file > ();
 
    //create_factory < ::macos::os_context         , ::os_context       > ();
    //create_factory < ::apple::process            , ::process::process > ();
    
-   pfactory->add_factory_item < ::posix::pipe               , ::operating_system::pipe    > ();
+   pfactory->add_factory_item < ::acme_posix::pipe               , ::operating_system::pipe    > ();
    
    //create_factory < ::macos::dir_system         , ::dir_system       > ();
    //create_factory < ::macos::file_system        , ::file_system      > ();

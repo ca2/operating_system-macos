@@ -8,7 +8,7 @@ struct FileStatus;
 void CLASS_DECL_ACME vfxGetRoot(const unichar * lpszPath, string& wstrRoot);
 
 
-namespace macos
+namespace acme_macos
 {
 
 
@@ -99,7 +99,7 @@ namespace macos
    };
 
 
-} // namespace macos
+} // namespace acme_macos
 
 
 

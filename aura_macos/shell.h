@@ -1,12 +1,12 @@
 #pragma once
 
 
-namespace macos
+namespace aura_macos
 {
 
 
    class CLASS_DECL_AURA shell :
-      virtual public ::aura::posix::shell
+      virtual public ::aura_posix::shell
    {
    public:
 
@@ -23,7 +23,7 @@ namespace macos
    };
 
 
-} // namespace macos
+} // namespace aura_macos
 
 
 

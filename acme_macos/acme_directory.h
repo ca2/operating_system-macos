@@ -3,12 +3,12 @@
 #pragma once
 
 
-namespace macos
+namespace acme_macos
 {
 
 
    class CLASS_DECL_ACME_MACOS acme_directory :
-      virtual public ::posix::acme_directory
+      virtual public ::acme_posix::acme_directory
    {
    public:
 
@@ -78,7 +78,7 @@ namespace macos
    };
 
 
-} // namespace macos
+} // namespace acme_macos
 
 
 

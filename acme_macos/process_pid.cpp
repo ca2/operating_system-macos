@@ -96,80 +96,76 @@ extern int ansi_count_compare(const char * sz1, const char * sz2, iptr iLen);
 // https://github.com/vslavik/
 
 
-namespace acme
+namespace acme_macos
 {
 
 
-   namespace macos
+   id_array node::get_pids()
    {
 
-   
-      id_array node::get_pids()
+      id_array pids;
+
+      array < pid_t > pida;
+
+      int numberOfProcesses = proc_listpids(PROC_ALL_PIDS, 0, nullptr, 0);
+
+      pida.set_size(numberOfProcesses);
+
+      proc_listpids(PROC_ALL_PIDS, 0, pida.get_data(), (int) (pida.get_size()));
+
+      for(auto pid : pida)
       {
-
-         id_array pids;
-
-         array < pid_t > pida;
-
-         int numberOfProcesses = proc_listpids(PROC_ALL_PIDS, 0, nullptr, 0);
-
-         pida.set_size(numberOfProcesses);
-
-         proc_listpids(PROC_ALL_PIDS, 0, pida.get_data(), (int) (pida.get_size()));
-
-         for(auto pid : pida)
+         if(pid == 0)
          {
-            if(pid == 0)
-            {
 
-               continue;
-
-            }
-
-            pids.add(pid);
+            continue;
 
          }
 
-         return pids;
+         pids.add(pid);
 
       }
 
+      return pids;
+
+   }
 
 
 
-      // https://astojanov.wordpress.com/2011/11/16/mac-os-x-resolve-absolute-path-using-process-pid/
+
+   // https://astojanov.wordpress.com/2011/11/16/mac-os-x-resolve-absolute-path-using-process-pid/
 
 
-      string node::module_path_from_pid(unsigned int uiPid)
+   string node::module_path_from_pid(unsigned int uiPid)
+   {
+
+
+      pid_t pid = uiPid;
+
+      int ret;
+
+      char pathbuf[PROC_PIDPATHINFO_MAXSIZE];
+
+      ret = proc_pidpath (pid, pathbuf, sizeof(pathbuf));
+
+      if ( ret <= 0 )
       {
 
+         fprintf(stderr, "PID %d: proc_pidpath ();\n", pid);
 
-         pid_t pid = uiPid;
+         fprintf(stderr,	"    %s\n", strerror(errno));
 
-         int ret;
-
-         char pathbuf[PROC_PIDPATHINFO_MAXSIZE];
-
-         ret = proc_pidpath (pid, pathbuf, sizeof(pathbuf));
-
-         if ( ret <= 0 )
-         {
-
-            fprintf(stderr, "PID %d: proc_pidpath ();\n", pid);
-
-            fprintf(stderr,	"    %s\n", strerror(errno));
-
-            return "";
-
-         }
-         else
-         {
-
-            return pathbuf;
-
-         }
+         return "";
 
       }
+      else
+      {
+
+         return pathbuf;
+
+      }
+
+   }
 
 
 //id_array app_get_pid(const char * psz)
@@ -244,131 +240,128 @@ namespace acme
 //
 
 
-      // http://stackoverflow.com/questions/31500821/get-process-cmdline-in-mac-os-from-another-c-based-executable
-      // http://stackoverflow.com/users/823872/dan
+   // http://stackoverflow.com/questions/31500821/get-process-cmdline-in-mac-os-from-another-c-based-executable
+   // http://stackoverflow.com/users/823872/dan
 
-      #define SHOW_ZOMBIES 0
+   #define SHOW_ZOMBIES 0
 
-      string node::command_line_from_pid(unsigned int uiPid)
+   string node::command_line_from_pid(unsigned int uiPid)
+   {
+
+      struct proc_taskallinfo info = {};
+
+      //int ret = proc_pidinfo((pid_t) uiPid, PROC_PIDTASKALLINFO, SHOW_ZOMBIES, &info, sizeof(struct proc_taskallinfo));
+
+      proc_pidinfo((pid_t) uiPid, PROC_PIDTASKALLINFO, SHOW_ZOMBIES, &info, sizeof(struct proc_taskallinfo));
+
+      return info.pbsd.pbi_comm;
+
+   }
+
+
+
+
+
+
+   /************************************************************************
+    *
+    * Returns the pid of the process name which is given as the function
+    * argument.
+    * In case no process found with the given name -1 will be returned.
+    *
+    *************************************************************************/
+   /*=======================================================================*/
+id_array node::module_path_get_pid(const ::string & pszModulePath
+                                       , bool bModuleNameIsPropertyFormatted)
+   {
+      /*=======================================================================*/
+   
+   id_array ida;
+
+      struct kinfo_proc *sProcesses = nullptr, *sNewProcesses;
+      int    aiNames[4];
+      size_t iNamesLength;
+      int    i, iRetCode, iNumProcs;
+      size_t iSize;
+
+      iSize = 0;
+      aiNames[0] = CTL_KERN;
+      aiNames[1] = KERN_PROC;
+      aiNames[2] = KERN_PROC_ALL;
+      aiNames[3] = 0;
+      iNamesLength = 3;
+
+      iRetCode = sysctl(aiNames, (u_int) iNamesLength, nullptr, &iSize, nullptr, 0);
+
+      if(iRetCode == -1)
       {
 
-         struct proc_taskallinfo info = {};
-
-         //int ret = proc_pidinfo((pid_t) uiPid, PROC_PIDTASKALLINFO, SHOW_ZOMBIES, &info, sizeof(struct proc_taskallinfo));
-
-         proc_pidinfo((pid_t) uiPid, PROC_PIDTASKALLINFO, SHOW_ZOMBIES, &info, sizeof(struct proc_taskallinfo));
-
-         return info.pbsd.pbi_comm;
+         return ida;
 
       }
 
+      /*
+       * Allocate memory and populate info in the  processes structure
+       */
 
-
-
-
-
-      /************************************************************************
-       *
-       * Returns the pid of the process name which is given as the function
-       * argument.
-       * In case no process found with the given name -1 will be returned.
-       *
-       *************************************************************************/
-      /*=======================================================================*/
-   id_array node::module_path_get_pid(const ::string & pszModulePath
-                                          , bool bModuleNameIsPropertyFormatted)
+      do
       {
-         /*=======================================================================*/
-      
-      id_array ida;
+         iSize += iSize / 10;
+         sNewProcesses = (struct kinfo_proc *) realloc(sProcesses, iSize);
 
-         struct kinfo_proc *sProcesses = nullptr, *sNewProcesses;
-         int    aiNames[4];
-         size_t iNamesLength;
-         int    i, iRetCode, iNumProcs;
-         size_t iSize;
-
-         iSize = 0;
-         aiNames[0] = CTL_KERN;
-         aiNames[1] = KERN_PROC;
-         aiNames[2] = KERN_PROC_ALL;
-         aiNames[3] = 0;
-         iNamesLength = 3;
-
-         iRetCode = sysctl(aiNames, (u_int) iNamesLength, nullptr, &iSize, nullptr, 0);
-
-         if(iRetCode == -1)
+         if (sNewProcesses == 0)
          {
-
-            return ida;
-
+            if (sProcesses)
+               free(sProcesses);
+            throw ::exception("could not reallocate memory");
          }
+         sProcesses = sNewProcesses;
+         iRetCode = sysctl(aiNames, (u_int) iNamesLength, sProcesses, &iSize, nullptr, 0);
+      }
+      while (iRetCode == -1 && errno == ENOMEM);
 
-         /*
-          * Allocate memory and populate info in the  processes structure
-          */
-
-         do
+      iNumProcs = (int) (iSize / sizeof(struct kinfo_proc));
+      /*
+       * Search for the given process name and return its pid.
+       */
+   
+   string strName = ::file::path(pszModulePath).name();
+   id_array ida2;
+      for (i = 0; i < iNumProcs; i++)
+      {
+         auto processPath = sProcesses[i].kp_proc.p_comm;
+         if( ansi_count_compare(strName, processPath, MAXCOMLEN) == 0 )
          {
-            iSize += iSize / 10;
-            sNewProcesses = (struct kinfo_proc *) realloc(sProcesses, iSize);
-
-            if (sNewProcesses == 0)
-            {
-               if (sProcesses)
-                  free(sProcesses);
-               throw ::exception("could not reallocate memory");
-            }
-            sProcesses = sNewProcesses;
-            iRetCode = sysctl(aiNames, (u_int) iNamesLength, sProcesses, &iSize, nullptr, 0);
+            auto pid = sProcesses[i].kp_proc.p_pid;
+            ida2.add(pid);
          }
-         while (iRetCode == -1 && errno == ENOMEM);
-
-         iNumProcs = (int) (iSize / sizeof(struct kinfo_proc));
-         /*
-          * Search for the given process name and return its pid.
-          */
-      
-      string strName = ::file::path(pszModulePath).name();
-      id_array ida2;
-         for (i = 0; i < iNumProcs; i++)
-         {
-            auto processPath = sProcesses[i].kp_proc.p_comm;
-            if( ansi_count_compare(strName, processPath, MAXCOMLEN) == 0 )
-            {
-               auto pid = sProcesses[i].kp_proc.p_pid;
-               ida2.add(pid);
-            }
-         }
-      
-         for(auto & processId : ida2)
+      }
+   
+      for(auto & processId : ida2)
+      {
+       
+         auto strPath = module_path_from_pid((::u32) processId);
+         
+         if(strPath == pszModulePath)
          {
           
-            auto strPath = module_path_from_pid((::u32) processId);
+            ida.add(processId);
             
-            if(strPath == pszModulePath)
-            {
-             
-               ida.add(processId);
-               
-            }
-         
          }
+      
+      }
 
 
-         /*
-          * Clean up and return -1 because the given proc name was not found
-          */
+      /*
+       * Clean up and return -1 because the given proc name was not found
+       */
 
-         free(sProcesses);
-         return ida;
-      } /* end of getProcessId() */
+      free(sProcesses);
+      return ida;
+   } /* end of getProcessId() */
 
    
-   } // namespace macos
-
-
-} // namespace acme
+} // namespace acme_macos
 
 
 

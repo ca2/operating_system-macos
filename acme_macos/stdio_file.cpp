@@ -5,7 +5,7 @@
 #include <fcntl.h>
 
 
-namespace macos
+namespace acme_macos
 {
 
 
@@ -387,7 +387,7 @@ namespace macos
 
    void stdio_file::dump(dump_context & dumpcontext) const
    {
-      ::macos::file::dump(dumpcontext);
+      ::acme_macos::file::dump(dumpcontext);
 
       dumpcontext << "m_pStream = " << (void *)m_pStream;
       dumpcontext << "\n";
@@ -426,4 +426,4 @@ namespace macos
    }
 
 
-} // namespace macos
+} // namespace acme_macos

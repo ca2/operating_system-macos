@@ -214,12 +214,10 @@ string rtrim(const string& str)
 }
 
 
-namespace acme
+namespace acme_macos
 {
 
 
-namespace macos
-{
 
    array < ::serial::port_info > node::list_serial_ports(void)
 {
@@ -296,9 +294,7 @@ namespace macos
    return devices_found;
 }
 
-} // namespace macos
 
-
-} //namespace acme
+} //namespace acme_macos
 
 #endif // defined(__APPLE__)

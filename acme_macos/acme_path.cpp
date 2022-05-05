@@ -18,7 +18,7 @@ string apple_app_module_path();
 enum_status ns_create_alias(const char * pszLink, const char * pszSource);
 enum_status ns_symbolic_link_destination(char ** ppszDestination, const char * pszLink);
 
-namespace macos
+namespace acme_macos
 {
 
    
@@ -143,7 +143,7 @@ namespace macos
    }
 
 
-} // namespace macos
+} // namespace acme_macos
 
 
 

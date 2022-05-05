@@ -13,7 +13,7 @@ namespace macos
 
 
    class CLASS_DECL_APEX file_context :
-      virtual public ::apple::file_context
+      virtual public ::apex_apple::file_context
    {
    public:
 

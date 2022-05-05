@@ -7,7 +7,7 @@
 
 
 
-namespace macos
+namespace acme_macos
 {
 
    
@@ -638,7 +638,7 @@ namespace macos
    }
 
 
-} // namespace macos
+} // namespace acme_macos
 
 
 

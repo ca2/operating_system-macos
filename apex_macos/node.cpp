@@ -16,12 +16,8 @@ void ansios_sigchld_handler(int sig);
 void apex_application_run(const char * pszAppName, const char * pszProgName);
 
 
-namespace apex
+namespace apex_macos
 {
-
-
-   namespace macos
-   {
 
 
       node::node()
@@ -38,6 +34,14 @@ namespace apex
       }
 
    
+   int node::node_init_check(int * pi, char *** ppz)
+   {
+   
+      return 0;
+   
+   }
+
+   
       string node::app_id_to_executable_name(const string & strAppId)
       {
          
@@ -48,30 +52,6 @@ namespace apex
       }
 
 
-   } // namespace macos
+} // namespace apex_macos
 
 
-} // namespace apex
-
-//
-//void * get_system_mmos(void * pSystem)
-//{
-//   
-//   auto psystem = (class ::system *) pSystem;
-//   
-//   return psystem->m_pmmos;
-//   
-//}
-//
-//
-//void set_system_mmos(void * pSystem, void * pmmos)
-//{
-//   
-//   auto psystem = (class ::system *) pSystem;
-//   
-//   psystem->m_pmmos = pmmos;
-//   
-//}
-//
-//
-//

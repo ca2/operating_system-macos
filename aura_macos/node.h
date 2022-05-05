@@ -8,17 +8,13 @@
 #pragma once
 
 
-namespace aura
+namespace aura_macos
 {
 
-
-   namespace macos
-   {
-   
    
       class CLASS_DECL_AURA_MACOS node :
-         virtual public aura::apple::node,
-         virtual public apex::macos::node
+         virtual public aura_apple::node,
+         virtual public apex_macos::node
       {
       public:
          
