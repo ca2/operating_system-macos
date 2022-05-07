@@ -106,8 +106,9 @@ typedef struct gdi_object * HGDIOBJ;
 
 
 
-inline void debug_break() { __asm("int $3"); }
+//inline void debug_break() { __asm("int $3"); }
 
+//void debug_break();
 
 #define TRUE 1
 #define FALSE 0

@@ -40,6 +40,8 @@ namespace aura_macos
 //      bool is_destroying() const { return //::aura_window::m_bDestroying ||
 //         ::user::interaction_impl::m_bDestroying; }
 
+      void native_create_host() override;
+      
       virtual void release_graphics_resources();
       
       void update_graphics_resources() override;
