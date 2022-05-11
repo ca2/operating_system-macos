@@ -72,6 +72,13 @@
 			remoteGlobalIDString = 9A0C1694264A2AA700B5CC33;
 			remoteInfo = apex_macos;
 		};
+		9A750DDA282B49AE00C4861B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AC2CFB02653DAD200CC8096 /* aura_apple.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A8E9E2F282A2FEB005FF778;
+			remoteInfo = ios_aura_apple;
+		};
 		9AC2CFB42653DAD200CC8096 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AC2CFB02653DAD200CC8096 /* aura_apple.xcodeproj */;
@@ -235,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */,
+				9A750DDB282B49AE00C4861B /* libios_aura_apple.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -265,8 +273,8 @@
 		A1CFD76D154F5EA7007447E2 = {
 			isa = PBXGroup;
 			children = (
-				9AC2CFB02653DAD200CC8096 /* aura_apple.xcodeproj */,
 				9A64C0FF26604FB50074030F /* apex_macos.xcodeproj */,
+				9AC2CFB02653DAD200CC8096 /* aura_apple.xcodeproj */,
 				9A8997BC177D0E7D00C7761E /* Carbon.framework */,
 				9AA1B449176361950019E812 /* Cocoa.framework */,
 				9AC2D1B926542FBA00CC8096 /* aura_macos */,
@@ -410,6 +418,13 @@
 			fileType = "compiled.mach-o.dylib";
 			path = libapex_macos.dylib;
 			remoteRef = 9A413D54266EDEA500C3FF0E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A750DDB282B49AE00C4861B /* libios_aura_apple.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libios_aura_apple.a;
+			remoteRef = 9A750DDA282B49AE00C4861B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */ = {
@@ -657,7 +672,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(WorkspaceDir)/operating-system/storage-$(PLATFORM_MODIFIER)/library",
-				
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
@@ -726,7 +740,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(WorkspaceDir)/operating-system/storage-$(PLATFORM_MODIFIER)/library",
-				
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -26,7 +26,9 @@ namespace acme_macos
 
       
       ::file::path module() override;
+
       
+      void touch(const char* path) override;
 
    };
 
