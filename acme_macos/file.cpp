@@ -117,9 +117,9 @@ namespace acme_macos
 
       m_iFile = (::u32)hFileNull;
       
-      m_strFileName.Empty();
+      m_path.Empty();
 
-      m_strFileName     = lpszFileName;
+      m_path     = lpszFileName;
 
       ASSERT(::file::e_open_share_compat == 0);
 
@@ -181,7 +181,7 @@ namespace acme_macos
 
       i32 hFile;
 
-      hFile = ::open(m_strFileName, dwFlags, dwPermission);
+      hFile = ::open(m_path, dwFlags, dwPermission);
 
       if(hFile == hFileNull)
       {
@@ -295,7 +295,7 @@ namespace acme_macos
 
             }
 
-            throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
+            throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
 
          }
          else if(iRead == 0)
@@ -357,7 +357,7 @@ namespace acme_macos
          if(iWrite < 0)
          {
             
-            throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
+            throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
             
          }
          
@@ -376,7 +376,7 @@ namespace acme_macos
       if(m_iFile == (::u32)hFileNull)
       {
          
-         throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
+         throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
          
       }
 
@@ -395,7 +395,7 @@ namespace acme_macos
       if(posNew  == (filesize)-1)
       {
          
-         throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
+         throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
          
       }
 
@@ -418,7 +418,7 @@ namespace acme_macos
       if(pos  == (filesize)-1)
       {
          
-         throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
+         throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
          
       }
 
@@ -451,12 +451,12 @@ namespace acme_macos
 
       m_iFile = (::u32) hFileNull;
       
-      m_strFileName.Empty();
+      m_path.Empty();
 
       if (bError)
       {
          
-         throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
+         throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
          
       }
       
@@ -493,7 +493,7 @@ namespace acme_macos
       if (::ftruncate(m_iFile, dwNewLen) == -1)
       {
          
-         throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
+         throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
          
       }
       
@@ -540,7 +540,7 @@ namespace acme_macos
       ::file::file::dump(dumpcontext);
 
       dumpcontext << "with handle " << (::u32)m_iFile;
-      dumpcontext << " and name \"" << m_strFileName << "\"";
+      dumpcontext << " and name \"" << m_path << "\"";
       dumpcontext << "\n";
 
    }
@@ -576,7 +576,7 @@ namespace acme_macos
       
       ASSERT_VALID(this);
 
-      return m_strFileName;
+      return m_path;
 
    }
 
@@ -586,7 +586,7 @@ namespace acme_macos
 
       ASSERT_VALID(this);
 
-      rStatus.m_strFullName = m_strFileName;
+      rStatus.m_strFullName = m_path;
 
       if (m_iFile != hFileNull)
       {
@@ -644,7 +644,7 @@ namespace acme_macos
       
       ASSERT(__is_valid_string(path));
       
-      m_strFileName = path;
+      m_path = path;
       
    }
 

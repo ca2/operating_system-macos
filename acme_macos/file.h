@@ -18,43 +18,9 @@ namespace acme_macos
    public:
 
 
-      //__creatable_from_library(file, ::file::file, "acme_macos");
 
       
-      // enum Attribute
-      // {
-         
-      //    normal =    0x00,
-      //    readOnly =  0x01,
-      //    hidden =    0x02,
-      //    system =    0x04,
-      //    volume =    0x08,
-      //    directory = 0x10,
-      //    archive =   0x20
-         
-      // };
-      
-
-      // enum
-      // {
-
-      //    hFileNull = -1
-
-      // };
-      
-
-      // enum BufferCommand
-      // {
-
-      //    bufferRead,
-      //    bufferWrite,
-      //    bufferCommit,
-      //    bufferCheck
-
-      // };
-
-      
-      string         m_strFileName;
+      //string         m_strFileName;
       i32            m_iFile;
       //i32            m_iPutCharacterBack;
 
