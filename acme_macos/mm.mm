@@ -250,17 +250,7 @@ bool mm2_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const cha
 //}
 
 
-void os_post_quit(::element * pelementQuit)
-{
-   
-   ns_main_async(^()
-   {
 
-      pelementQuit->run();
-      
-   });
-   
-}
 //
 void ns_app_terminate()
 {
