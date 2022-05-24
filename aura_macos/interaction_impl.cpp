@@ -1407,10 +1407,10 @@ namespace aura_macos
 
               ::user::interaction * puserinteractionMouse = nullptr;
 
-              if(m_puserinteractionCapture)
+              if(m_puserinteractionMouseCapture)
               {
 
-                 puserinteractionMouse = m_puserinteractionCapture;
+                 puserinteractionMouse = m_puserinteractionMouseCapture;
 
               }
 
@@ -1480,7 +1480,7 @@ namespace aura_macos
          
          auto pwindowing = m_pwindowing;
 
-         __pointer(::user::interaction) puiFocus = m_puserinteractionFocus1;
+         __pointer(::user::interaction) puiFocus = m_puserinteractionKeyboardFocus;
 
          if (puiFocus)
          {
@@ -1544,58 +1544,58 @@ namespace aura_macos
    }
 
 
-void interaction_impl::native_create_host()
-{
-
-   auto pwindowMain = m_psystem->m_paurasystem->m_pwindowMain;
-
-   if (pwindowMain && !pwindowMain->m_puserinteractionimpl)
-   {
-
-      m_pwindow = m_psystem->m_paurasystem->m_pwindowMain;
-
-      m_pwindow->m_puserinteractionimpl = this;
-
-      m_puserinteraction->m_pinteractionimpl = this;
-
-   }
-   else
-   {
-
-      //auto estatus =
-      
-      __construct(m_pwindow);
-
-      //if (!estatus)
-      //{
-
-      //   return estatus;
-
-      //}
-
-      if (!m_psystem->m_paurasystem->m_pwindowMain)
-      {
-
-         m_psystem->m_paurasystem->m_pwindowMain = m_pwindow;
-
-      }
-
-   }
-
-   //auto estatus =
-   
-   m_pwindow->create_window(this);
-
-   //if (!estatus)
-   //{
-
-   //   return estatus;
-
-   //}
-
-   //return true;
-
-}
+//void interaction_impl::native_create_host()
+//{
+//
+//   auto pwindowMain = m_psystem->m_paurasystem->m_pwindowMain;
+//
+//   if (pwindowMain && !pwindowMain->m_puserinteractionimpl)
+//   {
+//
+//      m_pwindow = m_psystem->m_paurasystem->m_pwindowMain;
+//
+//      m_pwindow->m_puserinteractionimpl = this;
+//
+//      m_puserinteraction->m_pinteractionimpl = this;
+//
+//   }
+//   else
+//   {
+//
+//      //auto estatus =
+//
+//      __construct(m_pwindow);
+//
+//      //if (!estatus)
+//      //{
+//
+//      //   return estatus;
+//
+//      //}
+//
+//      if (!m_psystem->m_paurasystem->m_pwindowMain)
+//      {
+//
+//         m_psystem->m_paurasystem->m_pwindowMain = m_pwindow;
+//
+//      }
+//
+//   }
+//
+//   //auto estatus =
+//
+//   m_pwindow->create_window(this);
+//
+//   //if (!estatus)
+//   //{
+//
+//   //   return estatus;
+//
+//   //}
+//
+//   //return true;
+//
+//}
 
 //   bool interaction_impl::IsTopParentActive()
 //   {
@@ -2214,20 +2214,20 @@ void interaction_impl::native_create_host()
 
    }
 
-
-   void interaction_impl::_001OnTimer(::timer * ptimer)
-   {
-
-      ::user::interaction_impl::_001OnTimer(ptimer);;
-
-//      if (ptimer->m_uEvent == 2049)
-      //    {
 //
-      //       set_need_redraw();
+//   void interaction_impl::_001OnTimer(::timer * ptimer)
+//   {
 //
-      //    }
-
-   }
+//      ::user::interaction_impl::_001OnTimer(ptimer);;
+//
+////      if (ptimer->m_uEvent == 2049)
+//      //    {
+////
+//      //       set_need_redraw();
+////
+//      //    }
+//
+//   }
 
 
    /*
@@ -3084,12 +3084,12 @@ void interaction_impl::native_create_host()
    }
 
 
-   bool interaction_impl::GetUpdateRect(RECTANGLE_I32 * lpRect, bool bErase)
-   {
-
-      throw ::exception(error_not_implemented);
-
-   }
+//   bool interaction_impl::GetUpdateRect(RECTANGLE_I32 * lpRect, bool bErase)
+//   {
+//
+//      throw ::exception(error_not_implemented);
+//
+//   }
 
 
    i32 interaction_impl::GetUpdateRgn(::draw2d::region* pRgn, bool bErase)

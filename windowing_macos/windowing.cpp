@@ -119,7 +119,7 @@ namespace windowing_macos
       if(pwindowCapture)
       {
          
-         pwindowCapture->m_puserinteractionimpl->m_puserinteractionCapture.release();
+         pwindowCapture->m_puserinteractionimpl->m_puserinteractionMouseCapture.release();
          
       }
    
