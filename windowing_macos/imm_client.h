@@ -36,7 +36,7 @@ public:
 
    bool is_text_composition_active() const override;
 
-   virtual void set_text_composition_active(bool bActive = true);
+   virtual void set_text_composition_active(bool bActive = true) override;
 
    string get_ime_composition() const override;
 
