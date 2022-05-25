@@ -534,7 +534,10 @@ namespace aura_macos
 
       virtual void window_show_change_visibility();
       
-      
+      void show_software_keyboard(::user::element * pelement) override;
+
+      void hide_software_keyboard(::user::element * pelement) override;
+
    };
 
 

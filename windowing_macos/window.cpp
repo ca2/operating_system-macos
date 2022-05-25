@@ -203,6 +203,8 @@ namespace windowing_macos
       
       m_puserinteractionimpl = pimpl;
       
+      pimpl->m_pwindow = this;
+      
       install_message_routing(puserinteraction);
 
       

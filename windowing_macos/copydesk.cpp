@@ -386,3 +386,15 @@ void macos_clipboard_set_filea(const ::file::path_array & patha)
 
 }
 
+
+char * _macos_clipboard_get_plain_text();
+
+
+string macos_clipboard_get_plain_text()
+{
+   
+   string str = string_from_strdup(_macos_clipboard_get_plain_text()); 
+
+   return str;
+   
+}

@@ -155,7 +155,7 @@ void macos_clipboard_set_filea(const char ** psza, long c)
 
 
 // https://stackoverflow.com/questions/6167557/get-string-from-nspasteboard
-char * macos_clipboard_get_plain_text()
+char * _macos_clipboard_get_plain_text()
 {
    
    NSPasteboard * pasteboard = [NSPasteboard generalPasteboard];
