@@ -51,6 +51,10 @@ namespace windowing_macos
       
       void _defer_dock_application(int_bool bDock);
       
+      
+      void clear_keyboard_focus(::windowing::window* pwindowGainingFocusIfAny) override;
+
+      
    };
       
 

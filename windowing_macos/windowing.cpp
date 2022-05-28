@@ -295,6 +295,12 @@ namespace windowing_macos
    }
 
 
+void windowing::clear_keyboard_focus(::windowing::window* pwindowGainingFocusIfAny)
+{
+
+}
+
+
 } // namespace windowing_macos
 
 
