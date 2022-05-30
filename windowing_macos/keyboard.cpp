@@ -148,6 +148,23 @@ namespace windowing_macos
     }
 
 
+   void keyboard::translate_os_key_message(::user::key * pkey)
+   {
+
+      synchronous_lock synchronouslock(mutex());
+
+      if(pkey->m_ekey == ::user::e_key_refer_to_text_member
+         && pkey->m_strText.has_char())
+      {
+
+         return;
+
+      }
+      
+      pkey->m_ekey = wparam_to_userkey(pkey->m_wparam);
+
+   }
+
 
 } // namespace windowing_macos
 

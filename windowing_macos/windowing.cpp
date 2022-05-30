@@ -119,7 +119,7 @@ namespace windowing_macos
       if(pwindowCapture)
       {
          
-         pwindowCapture->m_puserinteractionimpl->m_puserinteractionCapture.release();
+         pwindowCapture->m_puserinteractionimpl->m_puserinteractionMouseCapture.release();
          
       }
    
@@ -293,6 +293,12 @@ namespace windowing_macos
       }
 
    }
+
+
+void windowing::clear_keyboard_focus(::windowing::window* pwindowGainingFocusIfAny)
+{
+
+}
 
 
 } // namespace windowing_macos

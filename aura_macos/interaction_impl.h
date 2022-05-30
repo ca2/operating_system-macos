@@ -40,7 +40,7 @@ namespace aura_macos
 //      bool is_destroying() const { return //::aura_window::m_bDestroying ||
 //         ::user::interaction_impl::m_bDestroying; }
 
-      void native_create_host() override;
+      //void native_create_host() override;
       
       virtual void release_graphics_resources();
       
@@ -192,7 +192,7 @@ namespace aura_macos
 
       virtual void UpdateWindow() override;
       virtual void SetRedraw(bool bRedraw = true) override;
-      virtual bool GetUpdateRect(RECTANGLE_I32 * lpRect, bool bErase = false) override;
+      //virtual bool GetUpdateRect(RECTANGLE_I32 * lpRect, bool bErase = false) override;
       virtual i32 GetUpdateRgn(::draw2d::region* pRgn, bool bErase = false) override;
       virtual void Invalidate(bool bErase = true) override;
       virtual void InvalidateRect(const ::rectangle_i32 &rectangle, bool bErase = true) override;
@@ -526,7 +526,7 @@ namespace aura_macos
 
       void _001OnTriggerMouseInside() override;
 
-      void _001OnTimer(::timer * ptimer) override;
+      //void _001OnTimer(::timer * ptimer) override;
 
       virtual void _thread_prodevian();
 
@@ -534,7 +534,10 @@ namespace aura_macos
 
       virtual void window_show_change_visibility();
       
-      
+      void show_software_keyboard(::user::element * pelement) override;
+
+      void hide_software_keyboard(::user::element * pelement) override;
+
    };
 
 

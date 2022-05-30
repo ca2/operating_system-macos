@@ -18,6 +18,8 @@ namespace windowing_macos
       
       ::user::enum_key wparam_to_userkey(wparam wparam) override;
 
+      void translate_os_key_message(::user::key * pkey) override;
+      
 
    };
 

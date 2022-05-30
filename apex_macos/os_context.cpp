@@ -1004,7 +1004,7 @@ namespace apex_macos
 
 //      __pointer(::handler) phandler = ::apex::get_system()->handler();
 
-      if(pcommand->m_pcommandline->m_strExe[0] == '/')
+      if(pcommand->m_strExe[0] == '/')
       {
 
          ::file::path p;
@@ -1017,9 +1017,9 @@ namespace apex_macos
 
          p /= "mypath" / pcommand->payload("app").get_string() + ".txt";
 
-         m_psystem->m_pacmefile->put_contents(p, pcommand->m_pcommandline->m_strExe);
+         m_psystem->m_pacmefile->put_contents(p, pcommand->m_strExe);
 
-         string strApp = pcommand->m_pcommandline->m_strExe;
+         string strApp = pcommand->m_strExe;
 
          strsize iFind = strApp.find_ci(".app/");
 
@@ -1028,13 +1028,13 @@ namespace apex_macos
 
             p = pacmedirectory->ca2roaming();
 
-            p /= "mypath" / pcommand->m_pcommandline->payload("app").get_string() + "-app";
+            p /= "mypath" / pcommand->payload("app").get_string() + "-app";
 
             ::file::path p2;
 
             p2 = pacmedirectory->ca2roaming();
 
-            p2 /= "mypath" / ::file::path(pcommand->m_pcommandline->payload("app").get_string()).folder()/ ::file::path(strApp.Left(iFind + strlen(".app"))).name();
+            p2 /= "mypath" / ::file::path(pcommand->payload("app").get_string()).folder()/ ::file::path(strApp.Left(iFind + strlen(".app"))).name();
 
             ns_create_alias(p2, strApp.Left(iFind + strlen(".app")));
 
