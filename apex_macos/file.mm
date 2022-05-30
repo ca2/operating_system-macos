@@ -125,21 +125,21 @@ char * ns_user_local_video_folder()
 //
 //}
 
-
-bool os_is_alias(const char * psz)
-{
-   
-   NSString * str = [[NSString alloc] initWithUTF8String: psz];
-   
-   NSURL * url = [NSURL fileURLWithPath: str];
-   
-   NSNumber * aliasFlag = nil;
-   
-   [url getResourceValue:&aliasFlag forKey:NSURLIsAliasFileKey error: nil];
-   
-   return aliasFlag.boolValue;
-   
-}
-
+//
+//bool os_is_alias(const char * psz)
+//{
+//   
+//   NSString * str = [[NSString alloc] initWithUTF8String: psz];
+//   
+//   NSURL * url = [NSURL fileURLWithPath: str];
+//   
+//   NSNumber * aliasFlag = nil;
+//   
+//   [url getResourceValue:&aliasFlag forKey:NSURLIsAliasFileKey error: nil];
+//   
+//   return aliasFlag.boolValue;
+//   
+//}
+//
 
 

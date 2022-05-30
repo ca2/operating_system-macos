@@ -91,15 +91,15 @@ namespace acme_macos
 } // namespace acme_macos
 
 
-char * ns_get_executable_path();
+//char * ns_get_executable_path();
 
 
-string apple_app_module_path()
-{
-   
-   return ::string_from_strdup(ns_get_executable_path());
-   
-}
-
+//string apple_app_module_path()
+//{
+//
+//   return ::string_from_strdup(ns_get_executable_path());
+//
+//}
+//
 
 

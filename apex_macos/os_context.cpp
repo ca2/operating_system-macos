@@ -33,7 +33,7 @@ void ns_fork(const ::procedure & procedure)
 bool ns_open_file(const char * );
 void ns_main_async(dispatch_block_t block);
 void ns_create_alias(const char * pszTarget, const char * pszSource);
-::string & ns_get_default_browser_path();
+//::string & ns_get_default_browser_path();
 void ns_set_this_process_binary_default_browser();
 
 string apple_browse_folder(class ::system * psystem, const char * pszStartDir, bool bCanCreateDirectories);
@@ -46,26 +46,26 @@ bool ns_open_url(const char * psz);
 namespace apex_macos
 {
 
-   ::file::path get_default_browser_path()
-   {
-
-      string strPath;
-
-      ::string & psz = ns_get_default_browser_path();
-
-      strPath = psz;
-
-      ::str::begins_eat_ci(strPath, "file://");
-
-      free(psz);
-
-      ::file::path path;
-
-      path = strPath;
-
-      return path;
-
-   }
+//   ::file::path get_default_browser_path()
+//   {
+//
+//      string strPath;
+//
+//      ::string & psz = ns_get_default_browser_path();
+//
+//      strPath = psz;
+//
+//      ::str::begins_eat_ci(strPath, "file://");
+//
+//      free(psz);
+//
+//      ::file::path path;
+//
+//      path = strPath;
+//
+//      return path;
+//
+//   }
 
 
    os_context::os_context()
