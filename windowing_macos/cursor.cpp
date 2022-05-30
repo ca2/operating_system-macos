@@ -85,6 +85,8 @@ namespace windowing_macos
          throw ::exception(error_resource);
          
       }
+      
+      set_os_data(m_pNSCursor);
 
    }
 
