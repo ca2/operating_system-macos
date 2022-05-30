@@ -889,32 +889,32 @@ namespace apex_macos
    void os_context::get_default_browser(string & strId, ::file::path & path, string & strParam)
    {
 
-      path = ::apex_macos::get_default_browser_path();
-
-      if(path.find_ci("chrome") >= 0)
-      {
-
-         strId = "chrome";
-
-      }
-      else if(path.find_ci("firefox") >= 0)
-      {
-
-         strId = "firefox";
-
-      }
-      else if(path.find_ci("commander") >= 0)
-      {
-
-         strId = "commander";
-
-      }
-      else
-      {
-
-         strId = "default";
-
-      }
+//      path = ::apex_macos::get_default_browser_path();
+//
+//      if(path.find_ci("chrome") >= 0)
+//      {
+//
+//         strId = "chrome";
+//
+//      }
+//      else if(path.find_ci("firefox") >= 0)
+//      {
+//
+//         strId = "firefox";
+//
+//      }
+//      else if(path.find_ci("commander") >= 0)
+//      {
+//
+//         strId = "commander";
+//
+//      }
+//      else
+//      {
+//
+//         strId = "default";
+//
+//      }
 
       //return true;
 
