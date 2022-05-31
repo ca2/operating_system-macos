@@ -7,6 +7,9 @@
 #include "framework.h"
 
 
+void ns_monitor_cgrect(int i, CGRect * prect);
+
+
 int ns_monitor_count()
 {
    
