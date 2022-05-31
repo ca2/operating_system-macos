@@ -69,6 +69,7 @@
 #define CLASS_DECL_EXPORT
 #define CLASS_DECL_THREAD __thread
 #define __FACTORY_EXPORT extern "C"
+#define __FACTORY_IMPORT extern "C"
 
 
 #ifdef __cplusplus
