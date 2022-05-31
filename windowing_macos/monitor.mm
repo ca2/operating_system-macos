@@ -19,16 +19,16 @@ int ns_monitor_count()
 }
 
 
-void ns_screen_translate(CGRect * prect)
+void ns_screen_translate(CGRect * prect, int iIndex)
 {
    
-   CGRect rectMainMonitor;
+   CGRect rectMonitor;
 
-   ns_main_monitor_cgrect(&rectMainMonitor);
+   ns_monitor_cgrect(iIndex, &rectMonitor);
    
    auto nsBottom = prect->origin.y + prect->size.height;
    
-   auto top = rectMainMonitor.origin.y + rectMainMonitor.size.height;
+   auto top = rectMonitor.origin.y + rectMonitor.size.height;
 
    prect->origin.y = top - nsBottom;
 
@@ -37,14 +37,27 @@ void ns_screen_translate(CGRect * prect)
 
 void ns_monitor_cgrect(int i, CGRect * prect)
 {
-
-   auto screenArray = [NSScreen screens];
-
-   auto pscreen = [screenArray objectAtIndex:i];
    
+   NSScreen * pscreen;
+   
+   if(i < 0)
+   {
+      
+      auto screenArray = [NSScreen screens];
+
+      pscreen = [screenArray objectAtIndex:i];
+      
+   }
+   else
+   {
+      
+      pscreen = [NSScreen mainScreen];
+      
+   }
+
    *prect = [pscreen frame];
-   
-   ns_screen_translate(prect);
+
+   ns_screen_translate(prect, i);
    
 }
 
@@ -52,13 +65,26 @@ void ns_monitor_cgrect(int i, CGRect * prect)
 void ns_workspace_cgrect(int i, CGRect * prect)
 {
 
-   auto screenArray = [NSScreen screens];
-
-   auto pscreen = [screenArray objectAtIndex:i];
+   NSScreen * pscreen;
    
+   if(i < 0)
+   {
+      
+      auto screenArray = [NSScreen screens];
+
+      pscreen = [screenArray objectAtIndex:i];
+      
+   }
+   else
+   {
+      
+      pscreen = [NSScreen mainScreen];
+      
+   }
+
    *prect = [pscreen visibleFrame];
    
-   ns_screen_translate(prect);
+   ns_screen_translate(prect, i);
    
 }
 

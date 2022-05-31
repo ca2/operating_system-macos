@@ -9,7 +9,7 @@
 
 #if defined(__MM)
 
-void ns_screen_translate(CGRect * prect);
+void ns_screen_translate(CGRect * prect, int iIndex = -1);
 
 void ns_main_monitor_cgrect(CGRect * prect);
 
