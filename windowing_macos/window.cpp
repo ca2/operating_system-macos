@@ -806,45 +806,18 @@ namespace windowing_macos
    bool window::macos_window_key_down(unsigned int virtualKey, unsigned int scanCode, const char * pszUtf8)
    {
       
-      {         auto pkey  = __create_new < ::message::key >();
+      auto pkey  = __create_new < ::message::key >();
 
-         pkey->set(get_oswindow(), this, e_message_key_down, virtualKey, (lparam)(scanCode << 16));
-         
-         post_message(pkey);
-         
-      }
-      
+      pkey->set(get_oswindow(), this, e_message_key_down, virtualKey, (lparam)(scanCode << 16));
+
       if(::is_set(pszUtf8) && ansi_len(pszUtf8) > 0)
       {
 
-         auto pkey = __create_new < ::message::key >();
-         
-         pkey->set(get_oswindow(), this, e_message_text_composition, 0, 0);
-
          pkey->m_strText = pszUtf8;
       
-         post_message(pkey);
-         
       }
 
-
-//      if(::is_set(pszUtf8))
-//      {
-//
-//
-//
-//         string * pstringText = new string(pszUtf8);
-//
-//         auto lparam = (::lparam) (iptr) (string *) (pstringText);
-//
-//         printf("macos_window_key_down e_message_text_composition\n");
-//
-//         auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
-//
-//         puserinteraction->post_message(e_message_text_composition, 0, lparam);
-//
-//      }
-//
+      post_message(pkey);
 
       return true;
 

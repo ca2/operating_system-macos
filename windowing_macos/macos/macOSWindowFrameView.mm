@@ -576,7 +576,6 @@ m_f = true; \
 } \
 }
 
-
 - (void)keyDown:(NSEvent *)event
 {
 
