@@ -8,7 +8,8 @@
 
 
 void ns_monitor_cgrect(int i, CGRect * prect);
-
+void __ns_monitor_cgrect(int i, CGRect * prect);
+void __ns_main_monitor_cgrect(CGRect * prect);
 
 int ns_monitor_count()
 {
@@ -27,7 +28,7 @@ void ns_screen_translate(CGRect * prect, int iIndex)
    
    CGRect rectMonitor;
 
-   ns_monitor_cgrect(iIndex, &rectMonitor);
+   __ns_monitor_cgrect(iIndex, &rectMonitor);
    
    auto nsBottom = prect->origin.y + prect->size.height;
    
@@ -41,41 +42,32 @@ void ns_screen_translate(CGRect * prect, int iIndex)
 void ns_monitor_cgrect(int i, CGRect * prect)
 {
    
-   NSScreen * pscreen;
-   
-   if(i < 0)
-   {
-      
-      auto screenArray = [NSScreen screens];
-
-      pscreen = [screenArray objectAtIndex:i];
-      
-   }
-   else
-   {
-      
-      pscreen = [NSScreen mainScreen];
-      
-   }
-
-   *prect = [pscreen frame];
+   __ns_monitor_cgrect(i, prect);
 
    ns_screen_translate(prect, i);
    
 }
 
 
-void ns_workspace_cgrect(int i, CGRect * prect)
+void ns_main_monitor_cgrect(CGRect * prect)
+{
+   
+   __ns_main_monitor_cgrect(prect);
+   
+}
+
+
+void ns_workspace_cgrect(int iIndex, CGRect * prect)
 {
 
    NSScreen * pscreen;
    
-   if(i < 0)
+   if(iIndex >= 0)
    {
       
       auto screenArray = [NSScreen screens];
 
-      pscreen = [screenArray objectAtIndex:i];
+      pscreen = [screenArray objectAtIndex:iIndex];
       
    }
    else
@@ -87,18 +79,43 @@ void ns_workspace_cgrect(int i, CGRect * prect)
 
    *prect = [pscreen visibleFrame];
    
-   ns_screen_translate(prect, i);
+   ns_screen_translate(prect, iIndex);
    
 }
 
 
-void ns_main_monitor_cgrect(CGRect * prect)
+void __ns_main_monitor_cgrect(CGRect * prect)
 {
 
    auto pscreen = [NSScreen mainScreen];
 
    *prect = [pscreen frame];
    
+}
+
+
+void __ns_monitor_cgrect(int iIndex, CGRect * prect)
+{
+
+   NSScreen * pscreen;
+   
+   if(iIndex >= 0)
+   {
+      
+      auto screenArray = [NSScreen screens];
+
+      pscreen = [screenArray objectAtIndex:iIndex];
+      
+   }
+   else
+   {
+      
+      pscreen = [NSScreen mainScreen];
+      
+   }
+
+   *prect = [pscreen frame];
+
 }
 
 
