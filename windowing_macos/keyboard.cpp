@@ -139,8 +139,6 @@ namespace windowing_macos
           return ::user::e_key_left_command;
        case kVK_RightCommand:
           return ::user::e_key_right_command;
- 
- 
        }
  
        return ::user::e_key_none;

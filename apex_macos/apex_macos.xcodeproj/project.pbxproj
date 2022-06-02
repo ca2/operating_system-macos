@@ -52,7 +52,6 @@
 		9A788033264F1130003DF8A0 /* shell_launcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788032264F1130003DF8A0 /* shell_launcher.h */; };
 		9A788037264F1ECA003DF8A0 /* watcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788035264F1ECA003DF8A0 /* watcher.h */; };
 		9A788038264F1ECA003DF8A0 /* watcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A788036264F1ECA003DF8A0 /* watcher.cpp */; };
-		9AA74F5828482348009BB762 /* libaura_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA74F5728482348009BB762 /* libaura_apple.dylib */; };
 		9ABC54B726DAEE2700718C0D /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17EB264A325700B5CC33 /* libacme_macos.dylib */; };
 		9ABC54B826DAEE5100718C0D /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5EF264B54EE0080670E /* libapex_apple.dylib */; };
 /* End PBXBuildFile section */
@@ -154,7 +153,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AA74F5828482348009BB762 /* libaura_apple.dylib in Frameworks */,
 				9A7862AA2650292A0034A0E1 /* Carbon.framework in Frameworks */,
 				9A7862A6265025940034A0E1 /* AppKit.framework in Frameworks */,
 				9A7862A2265024F50034A0E1 /* IOKit.framework in Frameworks */,
