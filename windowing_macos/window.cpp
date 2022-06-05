@@ -816,9 +816,66 @@ namespace windowing_macos
          pkey->m_strText = pszUtf8;
       
       }
+       
+      if(pkey->m_strText.length() == 1)
+      {
+          
+          auto character = pkey->m_strText[0];
+          
+          if(character >= 'a' && character <= 'z')
+          {
+              
+              pkey->m_ekey = (::user::enum_key) ((int)::user::e_key_a + character - 'a');
+              
+          }
+          else if(character >= 'A' && character <= 'Z')
+          {
+              
+              pkey->m_ekey = (::user::enum_key) ((int) ::user::e_key_a + character - 'A');
+              
+          }
+          else if(character >= '0' && character <= 'Z')
+          {
+              
+              pkey->m_ekey = (::user::enum_key) ((int) ::user::e_key_0 + character - '0');
+              
+          }
+
+      }
 
       post_message(pkey);
+    
+       const char * psz = pszUtf8;
+       
+       if(::is_set(psz))
+       {
+       while(true)
+       {
+           
+           auto len = utf8_len(psz);
+           
+           string strChar(psz, len);
+           
+           psz += len;
+           
+           auto codepoint = __uni_index(strChar);
+           
+           auto pkey  = __create_new < ::message::key >();
 
+           pkey->set(get_oswindow(), this, e_message_char, codepoint, 0);
+           
+           post_message(pkey);
+
+           if(!*psz)
+           {
+               
+               break;
+           }
+           
+       }
+           
+       }
+    
       return true;
 
    }
