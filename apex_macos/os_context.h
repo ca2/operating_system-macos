@@ -88,13 +88,15 @@ namespace apex_macos
 
       void browse_folder(property_set &set) override;
       void browse_file_open(property_set &set) override;
+      
+      
+      void set_this_application_as_default_for_file_extension(const ::string& strExtension) override;
 
+      
    };
 
 
-
 } // namespace apex_macos
-
 
 
 
