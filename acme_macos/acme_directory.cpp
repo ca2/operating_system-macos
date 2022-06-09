@@ -150,7 +150,7 @@ namespace acme_macos
 
       path.find_replace(":", "");
 
-      ::str::ends_eat_ci(path, ".exe");
+      ::str().ends_eat_ci(path, ".exe");
 
       return path;
 

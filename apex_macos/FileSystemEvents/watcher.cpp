@@ -145,7 +145,7 @@ namespace FileSystemEvents
 
          }
 
-         ::str::begins_eat(path, action.m_pathFolder);
+         ::str().begins_eat(path, action.m_pathFolder);
 
          action.m_pathFile = path;
 

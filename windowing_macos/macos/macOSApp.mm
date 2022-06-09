@@ -16,7 +16,7 @@
 
 //void macos_calc_dark_mode();
 void os_system_start();
-//int file_put_contents(const char * path, const char * contents);
+int file_put_contents(const char * path, const char * contents);
 //void file_add_contents_raw(const char * path, const char * psz);
 
 void application_on_menu_action(void * pApplication, const char * pszCommand);
@@ -260,8 +260,7 @@ if(str != nil)
 - (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename
 {
    
-   //file_put_contents("/eco/002.txt", "applicationOpenFile");
-   //file_put_contents("/eco/003.txt", [filename UTF8String]);
+   file_put_contents("/Users/camilo/debug/open_file.txt", [filename UTF8String]);
 
    system_on_open_file(application_system(m_pApplication), [filename UTF8String]);
    
@@ -274,6 +273,9 @@ if(str != nil)
 - (void)application:(NSApplication *)sender openFiles:(NSArray<NSString *> *)filenames
 {
    
+   
+   file_put_contents("/Users/camilo/debug/open_files.txt", "");
+
    unsigned long ulCount = [filenames count];
    
    if(ulCount <= 0)
@@ -304,6 +306,10 @@ if(str != nil)
 
 - (void)application:(NSApplication *)application open:(NSURL * )url
 {
+   
+   
+   file_put_contents("/Users/camilo/debug/open(url).txt", [[url absoluteString] UTF8String]);
+
    //file_put_contents("/eco/006.txt", "open");
    //file_add_contents_raw("/eco/006.txt", [[url absoluteString] UTF8String]);
    
@@ -317,8 +323,14 @@ if(str != nil)
 - (BOOL)application:(id)sender
   openFileWithoutUI:(NSString *)filename;
 {
+   
+   
+   file_put_contents("/Users/camilo/debug/openFileWithoutUI(url).txt", [filename UTF8String]);
+
    //file_put_contents("/eco/007.txt", "openFileWithoutUI");
    //file_add_contents_raw("/eco/007.txt", [filename UTF8String]);
+   
+   
    
    //MessageBox(NULL, "application: openFile", "application: openFile", e_message_box_ok);
    
@@ -330,6 +342,10 @@ if(str != nil)
 
 - (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls
 {
+   
+   
+   file_put_contents("/Users/camilo/debug/open_urls.txt", "");
+
    unsigned long ulCount = [urls count];
    
    if(ulCount <= 0)
@@ -412,9 +428,14 @@ if(str != nil)
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event
            withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
    
+   
    // Extract the URL from the Apple event and handle it here.
    NSString* url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
    
+   
+   file_put_contents("/Users/camilo/debug/handleGetURLEvent.txt", [url  UTF8String]);
+
+
    system_on_open_file(application_system(m_pApplication), [url UTF8String]);
    
 }

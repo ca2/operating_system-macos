@@ -487,7 +487,7 @@ namespace apex_macos
 
       //wstrPath.alloc(iLen + 32);
 
-      wstrPath = ::str::international::utf8_to_unicode(str, iLast + 1);
+      wstrPath = utf8_to_unicode(str, iLast + 1);
 
       //output_debug_string(wstrPath);
 
@@ -503,7 +503,7 @@ namespace apex_macos
 //         }
 //      }
 
-      bIsDir = ::dir_context::is(::str::international::unicode_to_utf8(wstrPath));
+      bIsDir = ::dir_context::is(unicode_to_utf8(wstrPath));
 
       //m_isdirmap.set(str.Left(iLast + 1), bIsDir, bIsDir ? //0 : ::get_last_error());
 
@@ -1441,7 +1441,7 @@ namespace apex_macos
    bool dir_context::is_inside(const ::file::path & pszDir, const ::file::path & pszPath)
    {
 
-      return ::str::begins_ci(pszDir, pszPath);
+      return ::str().begins_ci(pszDir, pszPath);
 
    }
 
