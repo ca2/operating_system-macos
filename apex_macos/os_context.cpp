@@ -8,6 +8,9 @@
 #endif
 
 
+void setMyselfAsDefaultApplicationForFileExtension(const char * pszExtension);
+
+
 void ns_fork(const ::procedure & procedure)
 {
    
@@ -1302,6 +1305,27 @@ namespace apex_macos
       //return true;
 
    }
+
+
+   void os_context::set_this_application_as_default_for_file_extension(const ::string& strExtension)
+   {
+      
+      string strFormattedExtension(strExtension);
+      
+      strFormattedExtension.trim();
+      
+      strFormattedExtension.trim(".");
+      
+      strFormattedExtension.trim();
+      
+      strFormattedExtension.trim(".");
+      
+      strFormattedExtension = "." + strFormattedExtension;
+      
+      setMyselfAsDefaultApplicationForFileExtension(strFormattedExtension);
+      
+   }
+
 
 } // namespace apex_macos
 
