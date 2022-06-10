@@ -17,7 +17,7 @@
 //void macos_calc_dark_mode();
 void os_system_start();
 int file_put_contents(const char * path, const char * contents);
-//void file_add_contents_raw(const char * path, const char * psz);
+void file_add_contents_raw(const char * path, const char * psz);
 
 void application_on_menu_action(void * pApplication, const char * pszCommand);
 void * application_system(void * pApplication);
@@ -260,7 +260,7 @@ if(str != nil)
 - (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename
 {
    
-   file_put_contents("/Users/camilo/debug/open_file.txt", [filename UTF8String]);
+   //file_put_contents("/Users/camilo/debug/open_file.txt", [filename UTF8String]);
 
    system_on_open_file(application_system(m_pApplication), [filename UTF8String]);
    
@@ -274,7 +274,7 @@ if(str != nil)
 {
    
    
-   file_put_contents("/Users/camilo/debug/open_files.txt", "");
+   //file_put_contents("/Users/camilo/debug/open_files.txt", "");
 
    unsigned long ulCount = [filenames count];
    
@@ -308,7 +308,7 @@ if(str != nil)
 {
    
    
-   file_put_contents("/Users/camilo/debug/open(url).txt", [[url absoluteString] UTF8String]);
+   //file_put_contents("/Users/camilo/debug/open(url).txt", [[url absoluteString] UTF8String]);
 
    //file_put_contents("/eco/006.txt", "open");
    //file_add_contents_raw("/eco/006.txt", [[url absoluteString] UTF8String]);
@@ -325,7 +325,7 @@ if(str != nil)
 {
    
    
-   file_put_contents("/Users/camilo/debug/openFileWithoutUI(url).txt", [filename UTF8String]);
+   //file_put_contents("/Users/camilo/debug/openFileWithoutUI(url).txt", [filename UTF8String]);
 
    //file_put_contents("/eco/007.txt", "openFileWithoutUI");
    //file_add_contents_raw("/eco/007.txt", [filename UTF8String]);
@@ -344,7 +344,7 @@ if(str != nil)
 {
    
    
-   file_put_contents("/Users/camilo/debug/open_urls.txt", "");
+   //file_put_contents("/Users/camilo/debug/open_urls.txt", "");
 
    unsigned long ulCount = [urls count];
    
@@ -364,6 +364,8 @@ if(str != nil)
       
       //psza[ul] = psz;
       
+      //file_add_contents_raw("/Users/camilo/debug/open_urls.txt", psz);
+      //file_add_contents_raw("/Users/camilo/debug/open_urls.txt", "\n");
       system_on_open_file(application_system(m_pApplication), psz);
       
       //free
@@ -433,7 +435,7 @@ if(str != nil)
    NSString* url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
    
    
-   file_put_contents("/Users/camilo/debug/handleGetURLEvent.txt", [url  UTF8String]);
+   //file_put_contents("/Users/camilo/debug/handleGetURLEvent.txt", [url  UTF8String]);
 
 
    system_on_open_file(application_system(m_pApplication), [url UTF8String]);
