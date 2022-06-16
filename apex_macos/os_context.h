@@ -60,7 +60,7 @@ namespace apex_macos
 
       void stop_service() override;
 
-      bool resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder = nullptr, string * pstrParams = nullptr) override;
+      bool resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder = nullptr, string * pstrParams = nullptr, string * pstrIconLocation = nullptr, int * piIcon = nullptr) override;
 
       void raise_exception( ::u32 dwExceptionCode, ::u32 dwExceptionFlags);
 

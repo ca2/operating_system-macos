@@ -810,7 +810,7 @@ namespace apex_macos
    }
 
 
-   bool os_context::resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder, string * pstrParams)
+   bool os_context::resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder, string * pstrParams, string * pstrIconLocation, int * piIcon)
    {
       
       auto pcontext = m_pcontext->m_papexcontext;
