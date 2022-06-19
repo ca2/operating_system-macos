@@ -16,7 +16,4 @@
    <FileRef
       location = "group:/Users/camilo/solution/basis/source/app-simple/notify_drawing/_app_simple_notify_drawing.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:/Users/camilo/solution/basis/source/app-simple/shader/_app_simple_shader.xcodeproj">
-   </FileRef>
 </Workspace>
