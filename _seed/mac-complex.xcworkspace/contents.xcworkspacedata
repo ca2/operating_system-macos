@@ -13,4 +13,7 @@
    <FileRef
       location = "group:../../../source/game/light/_game_light.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:../../../source/app-core/store/_app_core_store.xcodeproj">
+   </FileRef>
 </Workspace>
