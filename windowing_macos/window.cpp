@@ -228,9 +228,9 @@ namespace windowing_macos
 
       pwindowing->m_nsmap[m_pnswindow] = this;
       
-         puserinteraction->layout().window().origin() = ::top_left(rectParam);
+         puserinteraction->set_position(::top_left(rectParam), ::user::e_layout_window);
 
-         puserinteraction->layout().window().size() = ::size_i32(rectParam);
+         puserinteraction->set_size(::size_i32(rectParam), ::user::e_layout_window);
 
          __refer(puserinteraction->m_pthreadUserInteraction, ::get_task());
 
@@ -267,7 +267,7 @@ namespace windowing_macos
 
       //if(pusersystem->m_createstruct.style & WS_VISIBLE)
       //if(pusersystem->m_.style & WS_VISIBLE)
-      if(puserinteraction->layout().design().is_screen_visible())
+      if(puserinteraction->const_layout().design().is_screen_visible())
       {
 
          puserinteraction->display();
@@ -1670,7 +1670,7 @@ namespace windowing_macos
          
       }
 
-      puserinteraction->layout().window() = ::e_display_iconic;
+      puserinteraction->set_display(::e_display_iconic, ::user::e_layout_window);
 
    }
 
@@ -1787,7 +1787,7 @@ namespace windowing_macos
          
       }
       
-      if(puserinteraction->layout().window().is_screen_visible())
+      if(puserinteraction->const_layout().window().is_screen_visible())
       {
 
          puserinteraction->hide();
