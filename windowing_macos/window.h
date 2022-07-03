@@ -77,6 +77,7 @@ namespace windowing_macos
 
       void set_mouse_capture() override;
 
+      void get_cursor_position(POINT_I32 * ppoint) override;
       
       void update_screen() override;
       

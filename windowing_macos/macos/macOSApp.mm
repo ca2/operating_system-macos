@@ -679,6 +679,9 @@ void ns_create_main_menu(menu_shared * pmenushared)
 void os_begin_system();
 
 
+void ns_app_run();
+
+
 void windowing_macos_application_main(void * pApplication, int argc, char *argv[])
 {
    
@@ -707,7 +710,8 @@ void windowing_macos_application_main(void * pApplication, int argc, char *argv[
 
    [NSApp activateIgnoringOtherApps:YES];
    
-   [NSApp run];
+   ns_app_run();
+   //[NSApp run];
    
 }
 

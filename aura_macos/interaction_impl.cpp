@@ -744,7 +744,7 @@ namespace aura_macos
    void interaction_impl::assert_ok() const
    {
       
-      if (get_oswindow() == nullptr)
+      if (oswindow() == nullptr)
       {
          
          return; // null (unattached) windows are valid
@@ -1386,9 +1386,9 @@ namespace aura_macos
 
               auto puser = psession->user();
 
-              auto pwindowing = puser->windowing();
+              auto pwindowing = puser->windowing1();
 
-              pwindowing->set(pmouse, get_oswindow(), m_pwindow, pmouse->m_atom, pmouse->m_wparam, pmouse->m_lparam);
+              pwindowing->set(pmouse, oswindow(), m_pwindow, pmouse->m_atom, pmouse->m_wparam, pmouse->m_lparam);
 
               if(pmessage->m_atom == e_message_mouse_move)
               {

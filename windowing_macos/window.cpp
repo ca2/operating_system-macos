@@ -17,6 +17,10 @@
 #include "aura/graphics/image/drawing.h"
 #include <CoreGraphics/CoreGraphics.h>
 
+
+bool macos_get_cursor_position(POINT_I32 * ppointCursor);
+
+
 void ns_main_async(dispatch_block_t block);
 
 void ns_set_cursor(::windowing::cursor * pwindowingcursor);
@@ -34,7 +38,7 @@ namespace windowing_macos
    window::window()
    {
       
-      m_pWindow2 = this;
+      m_pWindow4 = this;
       m_pmacoswindowing = nullptr;
       m_pNSCursorLast = nullptr;
       m_pwindowCapture = nullptr;
@@ -203,6 +207,10 @@ namespace windowing_macos
       
       m_puserinteractionimpl = pimpl;
       
+      puserinteraction->m_puserinteractionTopLevel = puserinteraction;
+      
+      puserinteraction->m_pwindow = this;
+      
       pimpl->m_pwindow = this;
       
       install_message_routing(puserinteraction);
@@ -212,7 +220,7 @@ namespace windowing_macos
 
       auto puser = psession->user();
 
-      auto pwindowing = (::windowing_macos::windowing *) puser->windowing()->m_pWindowing2;
+      auto pwindowing = (::windowing_macos::windowing *) puser->windowing1()->m_pWindowing4;
       
       m_pmacoswindowing = pwindowing->cast < class windowing >();
       
@@ -349,7 +357,7 @@ namespace windowing_macos
 
       macos_window_make_key_window_and_order_front();
       
-      auto pwindowing = (::windowing_macos::windowing *) m_pwindowing->m_pWindowing2;
+      auto pwindowing = (::windowing_macos::windowing *) m_pwindowing->m_pWindowing4;
       
       pwindowing->m_pwindowActive = this;
 
@@ -361,7 +369,7 @@ namespace windowing_macos
    void window::set_tool_window(bool bSet)
    {
       
-      auto pwindowing = (::windowing_macos::windowing *) m_pwindowing->m_pWindowing2;
+      auto pwindowing = (::windowing_macos::windowing *) m_pwindowing->m_pWindowing4;
       
       pwindowing->_defer_dock_application(!bSet);
 
@@ -558,7 +566,7 @@ namespace windowing_macos
    void window::set_mouse_capture()
    {
 
-      auto pwindowing = (class windowing *) windowing()->m_pWindowing2;
+      auto pwindowing = (class windowing *) windowing()->m_pWindowing4;
       
       if(!pwindowing)
       {
@@ -808,7 +816,7 @@ namespace windowing_macos
       
       auto pkey  = __create_new < ::message::key >();
 
-      pkey->set(get_oswindow(), this, e_message_key_down, virtualKey, (lparam)(scanCode << 16));
+      pkey->set(oswindow(), this, e_message_key_down, virtualKey, (lparam)(scanCode << 16));
 
       if(::is_set(pszUtf8) && ansi_len(pszUtf8) > 0)
       {
@@ -862,7 +870,7 @@ namespace windowing_macos
            
            auto pkey  = __create_new < ::message::key >();
 
-           pkey->set(get_oswindow(), this, e_message_char, codepoint, 0);
+           pkey->set(oswindow(), this, e_message_char, codepoint, 0);
            
            post_message(pkey);
 
@@ -895,7 +903,7 @@ namespace windowing_macos
 
       auto pkey  = __new(::message::key);
 
-      pkey->set(get_oswindow(), this, e_message_key_up, vk, (::lparam)(scan << 16));
+      pkey->set(oswindow(), this, e_message_key_up, vk, (::lparam)(scan << 16));
       
       puserinteraction->send(pkey);
 
@@ -2123,6 +2131,14 @@ namespace windowing_macos
 
       //return ::success;
 
+   }
+
+
+   void window::get_cursor_position(POINT_I32 * ppoint)
+   {
+      
+      macos_get_cursor_position(ppoint);
+      
    }
 
 

@@ -7,9 +7,6 @@
 #include "framework.h"
 
 
-bool macos_get_cursor_position(POINT_I32 * ppointCursor);
-
-
 void ns_main_async(dispatch_block_t block);
 
 
@@ -23,7 +20,7 @@ namespace windowing_macos
    windowing::windowing()
    {
       
-      m_pWindowing2 = this;
+      m_pWindowing4 = this;
       
       m_pwindowCapture = nullptr;
       
@@ -242,12 +239,7 @@ namespace windowing_macos
    }
 
 
-   void windowing::get_cursor_position(POINT_I32 * ppoint)
-   {
-      
-      macos_get_cursor_position(ppoint);
-      
-   }
+
 
 
    void windowing::_defer_dock_application(int_bool bDock)
