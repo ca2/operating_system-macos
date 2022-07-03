@@ -555,8 +555,8 @@
             filePath = "../../../source/app-core/video_input_avfoundation/avfoundation.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
+            startingLineNumber = "401"
+            endingLineNumber = "401"
             landmarkName = "avcapture_device_set_best_format_001(ptyperef, w, h)"
             landmarkType = "9">
          </BreakpointContent>
@@ -844,6 +844,22 @@
             startingLineNumber = "282"
             endingLineNumber = "282"
             landmarkName = "avdevice_capture_create(typerefAVCaptureDevice, w, h, pcallback)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2920A9BA-F01C-423F-94A4-85BCE08D92E3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app-core/video_input_avfoundation/avfoundation.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
+            landmarkName = "avcapture_device_set_best_format_001(ptyperef, w, h)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
