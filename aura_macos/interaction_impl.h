@@ -526,10 +526,6 @@ namespace aura_macos
 
       void _001OnTriggerMouseInside() override;
 
-      //void _001OnTimer(::timer * ptimer) override;
-
-      virtual void _thread_prodevian();
-
       virtual void show_task(bool bShow) override;
 
       virtual void window_show_change_visibility();
