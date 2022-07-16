@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:mac-all.xcodeproj">
+      location = "group:agreggate-all.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../../source/console/application_build_helper/application_build_helper.xcodeproj">
@@ -56,7 +56,10 @@
       location = "group:../../../source/game/light/_game_light.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/hellomultiverse/_app_core_hellomultiverse.xcodeproj">
+      location = "group:../../../source/app-core/hello_animation/_app_core_hello_animation.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/app-core/hello_multiverse/_app_core_hello_multiverse.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../../source/app-core/flag/_app_core_flag.xcodeproj">
