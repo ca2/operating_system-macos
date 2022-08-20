@@ -5,6 +5,10 @@
 //  Created by Camilo Sasuke on 27/05/21 19:48 BRT <3ThomasBS_!!
 //
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
+
 
 void ns_monitor_cgrect(int i, CGRect * p);
 void ns_workspace_cgrect(int i, CGRect * p);
@@ -62,7 +66,7 @@ namespace windowing_macos
 
 void ns_main_monitor_cgrect(CGRect * p);
 
-int GetMainScreenRect(RECTANGLE_I32 * pr)
+int get_main_screen_rectangle(RECTANGLE_I32 * pr)
 {
    
    CGRect r;

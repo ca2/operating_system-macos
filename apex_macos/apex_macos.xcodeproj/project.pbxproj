@@ -22,7 +22,7 @@
 		9A7862AA2650292A0034A0E1 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7862A92650292A0034A0E1 /* Carbon.framework */; };
 		9A7862AC265029FA0034A0E1 /* user.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7862AB265029FA0034A0E1 /* user.mm */; };
 		9A787E9C264ED595003DF8A0 /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787E92264ED593003DF8A0 /* _.h */; };
-		9A787E9F264ED5BB003DF8A0 /* _apex_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787E9D264ED5BA003DF8A0 /* _apex_macos.h */; };
+		9A787E9F264ED5BB003DF8A0 /* _library.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787E9D264ED5BA003DF8A0 /* _library.h */; };
 		9A787EA0264ED5BB003DF8A0 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787E9E264ED5BA003DF8A0 /* _factory.cpp */; };
 		9A787EE2264EE881003DF8A0 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787EE0264EE881003DF8A0 /* node.cpp */; };
 		9A787EE3264EE881003DF8A0 /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787EE1264EE881003DF8A0 /* node.h */; };
@@ -53,7 +53,7 @@
 		9A788037264F1ECA003DF8A0 /* watcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788035264F1ECA003DF8A0 /* watcher.h */; };
 		9A788038264F1ECA003DF8A0 /* watcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A788036264F1ECA003DF8A0 /* watcher.cpp */; };
 		9ABC54B726DAEE2700718C0D /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17EB264A325700B5CC33 /* libacme_macos.dylib */; };
-		9ABC54B826DAEE5100718C0D /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5EF264B54EE0080670E /* libapex_apple.dylib */; };
+		9ABC54B826DAEE5100718C0D /* apex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5EF264B54EE0080670E /* apex_apple.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,7 +113,7 @@
 		9A7862A92650292A0034A0E1 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		9A7862AB265029FA0034A0E1 /* user.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = user.mm; sourceTree = "<group>"; };
 		9A787E92264ED593003DF8A0 /* _.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
-		9A787E9D264ED5BA003DF8A0 /* _apex_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _apex_macos.h; sourceTree = "<group>"; };
+		9A787E9D264ED5BA003DF8A0 /* _library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _library.h; sourceTree = "<group>"; };
 		9A787E9E264ED5BA003DF8A0 /* _factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
 		9A787EE0264EE881003DF8A0 /* node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		9A787EE1264EE881003DF8A0 /* node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 				9ABC54B726DAEE2700718C0D /* libacme_macos.dylib in Frameworks */,
 				9A46D24726784394000B22D0 /* libapex.dylib in Frameworks */,
 				9A46D24926784394000B22D0 /* libapex_posix.dylib in Frameworks */,
-				9ABC54B826DAEE5100718C0D /* libapex_apple.dylib in Frameworks */,
+				9ABC54B826DAEE5100718C0D /* apex_apple.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +194,7 @@
 			children = (
 				9A788034264F1ECA003DF8A0 /* FileSystemEvents */,
 				9A787E92264ED593003DF8A0 /* _.h */,
-				9A787E9D264ED5BA003DF8A0 /* _apex_macos.h */,
+				9A787E9D264ED5BA003DF8A0 /* _library.h */,
 				9A787F6D264EF103003DF8A0 /* _mm.h */,
 				9A787F72264EF104003DF8A0 /* app.mm */,
 				9A787F6A264EF103003DF8A0 /* application.cpp */,
@@ -243,7 +243,7 @@
 		9A15A5EB264B54EE0080670E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A15A5EF264B54EE0080670E /* libapex_apple.dylib */,
+				9A15A5EF264B54EE0080670E /* apex_apple.dylib */,
 				9AA74F5B28482348009BB762 /* libios_apex_apple.a */,
 			);
 			name = Products;
@@ -296,7 +296,7 @@
 				9A787EE3264EE881003DF8A0 /* node.h in Headers */,
 				9A787FAE264F0F3B003DF8A0 /* launcher.h in Headers */,
 				9A787FAC264EF342003DF8A0 /* interprocess_communication.h in Headers */,
-				9A787E9F264ED5BB003DF8A0 /* _apex_macos.h in Headers */,
+				9A787E9F264ED5BB003DF8A0 /* _library.h in Headers */,
 				9A788037264F1ECA003DF8A0 /* watcher.h in Headers */,
 				9A787F87264EF105003DF8A0 /* application.h in Headers */,
 			);
@@ -373,9 +373,10 @@
 			remoteRef = 9A0C17EA264A325700B5CC33 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9A15A5EF264B54EE0080670E /* libapex_apple.dylib */ = {
+		9A15A5EF264B54EE0080670E /* apex_apple.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
+			name = apex_apple.dylib;
 			path = libapex_apple.dylib;
 			remoteRef = 9A15A5EE264B54EE0080670E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -505,7 +506,7 @@
 					"$(WorkspaceDir)/source",
 					"$(WorkspaceDir)/source/include",
 					"$(WorkspaceDir)/source/app",
-					"$(WorkspaceDir)/source/app/_include",
+					"$(WorkspaceDir)/source/app/include",
 					"$(WorkspaceDir)/operating-system",
 					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)/_include",
@@ -589,7 +590,7 @@
 					"$(WorkspaceDir)/source",
 					"$(WorkspaceDir)/source/include",
 					"$(WorkspaceDir)/source/app",
-					"$(WorkspaceDir)/source/app/_include",
+					"$(WorkspaceDir)/source/app/include",
 					"$(WorkspaceDir)/operating-system",
 					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)/_include",

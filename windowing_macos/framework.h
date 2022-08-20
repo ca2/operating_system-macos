@@ -18,7 +18,13 @@
 #include "_.h"
 
 
-#include "_windowing_macos.h"
+#if BROAD_PRECOMPILED_HEADER
+
+
+#include "_library.h"
+
+
+#endif
 
 
 #include "acme/_defer.h"

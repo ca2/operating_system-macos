@@ -10,7 +10,7 @@
 		9A070600266275B4004E8CB4 /* image.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0705FF266275B4004E8CB4 /* image.mm */; };
 		9A0C178F264A2F4200B5CC33 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C178E264A2F4200B5CC33 /* framework.cpp */; };
 		9A0C1791264A2F5000B5CC33 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A0C1790264A2F5000B5CC33 /* framework.h */; };
-		9A15A622264B56770080670E /* _acme_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A610264B56740080670E /* _acme_macos.h */; };
+		9A15A622264B56770080670E /* _library.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A610264B56740080670E /* _library.h */; };
 		9A15A624264B56770080670E /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A612264B56750080670E /* _factory.cpp */; };
 		9A15A625264B56770080670E /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A613264B56750080670E /* _.h */; };
 		9A15A62B264B56770080670E /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A619264B56760080670E /* _mm.h */; };
@@ -36,7 +36,7 @@
 		9A7ECAC32651963500D5BA45 /* acme_path.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A7ECABF2651963500D5BA45 /* acme_path.h */; };
 		9A92314C27EAE30D00B5A78D /* acme_directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A92314A27EAE30D00B5A78D /* acme_directory.cpp */; };
 		9A92314D27EAE30D00B5A78D /* acme_directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A92314B27EAE30D00B5A78D /* acme_directory.h */; };
-		9ABC54B426DAEA9F00718C0D /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5DC264B54CB0080670E /* libacme_apple.dylib */; };
+		9ABC54B426DAEA9F00718C0D /* acme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5DC264B54CB0080670E /* acme_apple.dylib */; };
 		9AC2CB3D26531C6200CC8096 /* list_serial_ports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */; };
 		9AC2D05A2653EBF000CC8096 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2D0582653EBF000CC8096 /* IOKit.framework */; };
 /* End PBXBuildFile section */
@@ -71,7 +71,7 @@
 		9A0C178E264A2F4200B5CC33 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9A0C1790264A2F5000B5CC33 /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
 		9A15A5D6264B54CA0080670E /* acme_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_apple.xcodeproj; path = "../../operating-system-apple/acme_apple/acme_apple.xcodeproj"; sourceTree = "<group>"; };
-		9A15A610264B56740080670E /* _acme_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _acme_macos.h; sourceTree = "<group>"; };
+		9A15A610264B56740080670E /* _library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _library.h; sourceTree = "<group>"; };
 		9A15A612264B56750080670E /* _factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
 		9A15A613264B56750080670E /* _.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
 		9A15A619264B56760080670E /* _mm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 				9AC2D05A2653EBF000CC8096 /* IOKit.framework in Frameworks */,
 				9A412456266C40A400C3FF0E /* libacme.dylib in Frameworks */,
 				9A412457266C40AE00C3FF0E /* libacme_posix.dylib in Frameworks */,
-				9ABC54B426DAEA9F00718C0D /* libacme_apple.dylib in Frameworks */,
+				9ABC54B426DAEA9F00718C0D /* acme_apple.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				9A15A613264B56750080670E /* _.h */,
-				9A15A610264B56740080670E /* _acme_macos.h */,
+				9A15A610264B56740080670E /* _library.h */,
 				9AB5F929264B020100C4F2A3 /* _c_mm.h */,
 				9A15A612264B56750080670E /* _factory.cpp */,
 				9A15A619264B56760080670E /* _mm.h */,
@@ -176,7 +176,7 @@
 		9A15A5D7264B54CA0080670E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A15A5DC264B54CB0080670E /* libacme_apple.dylib */,
+				9A15A5DC264B54CB0080670E /* acme_apple.dylib */,
 				9A750EFE282B6F5C00C4861B /* libios_acme_apple.a */,
 			);
 			name = Products;
@@ -209,7 +209,7 @@
 				9A239CB726CDEF9300F98012 /* acme_file.h in Headers */,
 				9A15A625264B56770080670E /* _.h in Headers */,
 				9A7ECAC32651963500D5BA45 /* acme_path.h in Headers */,
-				9A15A622264B56770080670E /* _acme_macos.h in Headers */,
+				9A15A622264B56770080670E /* _library.h in Headers */,
 				9A787C67264BD87E003DF8A0 /* node.h in Headers */,
 				9A15A62B264B56770080670E /* _mm.h in Headers */,
 				9A0C1791264A2F5000B5CC33 /* framework.h in Headers */,
@@ -275,9 +275,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		9A15A5DC264B54CB0080670E /* libacme_apple.dylib */ = {
+		9A15A5DC264B54CB0080670E /* acme_apple.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
+			name = acme_apple.dylib;
 			path = libacme_apple.dylib;
 			remoteRef = 9A15A5DB264B54CB0080670E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -285,6 +286,7 @@
 		9A750EFE282B6F5C00C4861B /* libios_acme_apple.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
+			name = ios_acme_apple.a;
 			path = libios_acme_apple.a;
 			remoteRef = 9A750EFD282B6F5C00C4861B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -396,7 +398,7 @@
 					"$(WorkspaceDir)/source",
 					"$(WorkspaceDir)/source/include",
 					"$(WorkspaceDir)/source/app",
-					"$(WorkspaceDir)/source/app/_include",
+					"$(WorkspaceDir)/source/app/include",
 					"$(WorkspaceDir)/operating-system",
 					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)/_include",
@@ -478,7 +480,7 @@
 					"$(WorkspaceDir)/source",
 					"$(WorkspaceDir)/source/include",
 					"$(WorkspaceDir)/source/app",
-					"$(WorkspaceDir)/source/app/_include",
+					"$(WorkspaceDir)/source/app/include",
 					"$(WorkspaceDir)/operating-system",
 					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)/_include",

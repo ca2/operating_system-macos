@@ -7,7 +7,7 @@
 #pragma once
 
 
-#include "aura_macos/_aura_macos.h"
+#include "aura_macos/_library.h"
 
 
 #include "macos/macos_window.h"

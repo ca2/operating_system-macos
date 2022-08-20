@@ -2,6 +2,9 @@
 // recreated by Camilo 2021-01-28 16:38
 // macOS version by Camilo 2021-05-31 14:53
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
 
 
 namespace windowing_macos

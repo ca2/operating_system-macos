@@ -1,4 +1,7 @@
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
 #include "acme/filesystem/filesystem/acme_directory.h"
 #include "aura/graphics/image/icon.h"
 #include "aura/graphics/image/context_image.h"

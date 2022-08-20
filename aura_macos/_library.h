@@ -7,8 +7,8 @@
 //
 
 
-#include "aura_apple/_aura_apple.h"
-#include "apex_macos/_apex_macos.h"
+#include "aura_apple/_library.h"
+#include "apex_macos/_library.h"
 #include "aura/user/user/_component.h"
 
 

@@ -22,7 +22,7 @@
 		9A00E61D26616CD300517464 /* libapex_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61C26616CD300517464 /* libapex_posix.dylib */; };
 		9A00E62026616D1400517464 /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61F26616D1400517464 /* libaura.dylib */; };
 		9A00E62226616D1400517464 /* libaura_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E62126616D1400517464 /* libaura_posix.dylib */; };
-		9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */; };
+		9A440A6B2654E34A000C490B /* aura_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2CFB52653DAD200CC8096 /* aura_apple.dylib */; };
 		9A5A897226D2CA88004AF957 /* shell.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A5A897026D2CA88004AF957 /* shell.h */; };
 		9A5A897326D2CA88004AF957 /* shell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A897126D2CA88004AF957 /* shell.cpp */; };
 		9A5A897526D2CC6E004AF957 /* shell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A897426D2CC6E004AF957 /* shell.mm */; };
@@ -38,7 +38,7 @@
 		9AC2D1D226542FBA00CC8096 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1C126542FBA00CC8096 /* _factory.cpp */; };
 		9AC2D1D426542FBA00CC8096 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1C726542FBA00CC8096 /* framework.h */; };
 		9AC2D1D526542FBA00CC8096 /* interaction_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1C826542FBA00CC8096 /* interaction_impl.cpp */; };
-		9AC2D1DC265431BD00CC8096 /* _aura_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1DB265431BD00CC8096 /* _aura_macos.h */; };
+		9AC2D1DC265431BD00CC8096 /* _library.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1DB265431BD00CC8096 /* _library.h */; };
 		9AC2D1F426543C7E00CC8096 /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1F326543C7E00CC8096 /* _mm.h */; };
 /* End PBXBuildFile section */
 
@@ -141,7 +141,7 @@
 		9AC2D1C726542FBA00CC8096 /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
 		9AC2D1C826542FBA00CC8096 /* interaction_impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interaction_impl.cpp; sourceTree = "<group>"; };
 		9AC2D1DA2654309000CC8096 /* _.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
-		9AC2D1DB265431BD00CC8096 /* _aura_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _aura_macos.h; sourceTree = "<group>"; };
+		9AC2D1DB265431BD00CC8096 /* _library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _library.h; sourceTree = "<group>"; };
 		9AC2D1F326543C7E00CC8096 /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
 		9AC2D2012654615500CC8096 /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
 		A1CFD778154F5EAA007447E2 /* libaura_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libaura_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,7 +171,7 @@
 				9A5A897726D304B4004AF957 /* UniformTypeIdentifiers.framework in Frameworks */,
 				9A5FE2062689E57A003682E6 /* libapex_macos.dylib in Frameworks */,
 				9A00E62026616D1400517464 /* libaura.dylib in Frameworks */,
-				9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */,
+				9A440A6B2654E34A000C490B /* aura_apple.dylib in Frameworks */,
 				9A00E62226616D1400517464 /* libaura_posix.dylib in Frameworks */,
 				9A00E61B26616CD300517464 /* libapex.dylib in Frameworks */,
 				9A00E61526616CB800517464 /* libapex_apple.dylib in Frameworks */,
@@ -239,7 +239,7 @@
 		9AC2CFB12653DAD200CC8096 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */,
+				9AC2CFB52653DAD200CC8096 /* aura_apple.dylib */,
 				9A750DDB282B49AE00C4861B /* libios_aura_apple.a */,
 			);
 			name = Products;
@@ -249,7 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				9AC2D1DA2654309000CC8096 /* _.h */,
-				9AC2D1DB265431BD00CC8096 /* _aura_macos.h */,
+				9AC2D1DB265431BD00CC8096 /* _library.h */,
 				9AC2D2012654615500CC8096 /* _c_mm.h */,
 				9AC2D1F326543C7E00CC8096 /* _mm.h */,
 				9AC2D1C126542FBA00CC8096 /* _factory.cpp */,
@@ -300,7 +300,7 @@
 			files = (
 				9AC2D1F426543C7E00CC8096 /* _mm.h in Headers */,
 				9AC2D1D126542FBA00CC8096 /* interaction_impl.h in Headers */,
-				9AC2D1DC265431BD00CC8096 /* _aura_macos.h in Headers */,
+				9AC2D1DC265431BD00CC8096 /* _library.h in Headers */,
 				9A5A897226D2CA88004AF957 /* shell.h in Headers */,
 				9AC2D1D426542FBA00CC8096 /* framework.h in Headers */,
 				9A5D73922656D1DC00D5C39E /* node.h in Headers */,
@@ -420,13 +420,15 @@
 		9A750DDB282B49AE00C4861B /* libios_aura_apple.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
+			name = ios_aura_apple.a;
 			path = libios_aura_apple.a;
 			remoteRef = 9A750DDA282B49AE00C4861B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */ = {
+		9AC2CFB52653DAD200CC8096 /* aura_apple.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
+			name = aura_apple.dylib;
 			path = libaura_apple.dylib;
 			remoteRef = 9AC2CFB42653DAD200CC8096 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -675,7 +677,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
-				USER_HEADER_SEARCH_PATHS = ". $(WorkspaceDir)/source $(WorkspaceDir)/source/include $(WorkspaceDir)/source/app $(WorkspaceDir)/source/app/_include $(WorkspaceDir)/operating-system $(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER) $(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)/_include $(WorkspaceDir)/operating-system/operating-system-apple $(WorkspaceDir)/operating-system/operating-system-posix $(WorkspaceDir)/source/port/include $(WorkspaceDir)/source/port $(WorkspaceDir)/operating-system/third-$(PLATFORM_MODIFIER)/third/include/include $(WorkspaceDir)/operating-system/third-$(PLATFORM_MODIFIER)/third/include $(PROJECT_DIR) $(HOME)/sensitive/sensitive/include";
+				USER_HEADER_SEARCH_PATHS = ". $(WorkspaceDir)/source $(WorkspaceDir)/source/include $(WorkspaceDir)/source/app $(WorkspaceDir)/source/app/include $(WorkspaceDir)/operating-system $(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER) $(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)/_include $(WorkspaceDir)/operating-system/operating-system-apple $(WorkspaceDir)/operating-system/operating-system-posix $(WorkspaceDir)/source/port/include $(WorkspaceDir)/source/port $(WorkspaceDir)/operating-system/third-$(PLATFORM_MODIFIER)/third/include/include $(WorkspaceDir)/operating-system/third-$(PLATFORM_MODIFIER)/third/include $(PROJECT_DIR) $(HOME)/sensitive/sensitive/include";
 				USE_HEADERMAP = NO;
 				WorkspaceDir = "$(SRCROOT)/../../..";
 			};
@@ -741,7 +743,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = ". $(WorkspaceDir)/source $(WorkspaceDir)/source/include $(WorkspaceDir)/source/app $(WorkspaceDir)/source/app/_include $(WorkspaceDir)/operating-system $(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER) $(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)/_include $(WorkspaceDir)/operating-system/operating-system-apple $(WorkspaceDir)/operating-system/operating-system-posix $(WorkspaceDir)/source/port/include $(WorkspaceDir)/source/port $(WorkspaceDir)/operating-system/third-$(PLATFORM_MODIFIER)/third/include/include $(WorkspaceDir)/operating-system/third-$(PLATFORM_MODIFIER)/third/include $(PROJECT_DIR) $(HOME)/sensitive/sensitive/include";
+				USER_HEADER_SEARCH_PATHS = ". $(WorkspaceDir)/source $(WorkspaceDir)/source/include $(WorkspaceDir)/source/app $(WorkspaceDir)/source/app/include $(WorkspaceDir)/operating-system $(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER) $(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)/_include $(WorkspaceDir)/operating-system/operating-system-apple $(WorkspaceDir)/operating-system/operating-system-posix $(WorkspaceDir)/source/port/include $(WorkspaceDir)/source/port $(WorkspaceDir)/operating-system/third-$(PLATFORM_MODIFIER)/third/include/include $(WorkspaceDir)/operating-system/third-$(PLATFORM_MODIFIER)/third/include $(PROJECT_DIR) $(HOME)/sensitive/sensitive/include";
 				USE_HEADERMAP = NO;
 				WorkspaceDir = "$(SRCROOT)/../../..";
 			};

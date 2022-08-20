@@ -4,8 +4,10 @@
 //
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 05/04/22 19:38.
 //
-
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
 
 ::mutex  g_mutexCursor;
 bool     g_bCursorHidden;

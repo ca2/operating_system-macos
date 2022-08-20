@@ -7,6 +7,9 @@
 //
 
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
 #include "window_impl.h"
 ///#include "oswindow_data.h"
 #include "aura/user/user/interaction_prodevian.h"

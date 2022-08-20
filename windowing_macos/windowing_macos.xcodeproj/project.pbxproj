@@ -34,7 +34,7 @@
 		9A1D5EF32751B129003D9B5F /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A682654DC66000C490B /* _.h */; };
 		9A1D5EF42751B129003D9B5F /* _c_mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A692654DD22000C490B /* _c_mm.h */; };
 		9A1D5EF52751B129003D9B5F /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A6A2654DD63000C490B /* _mm.h */; };
-		9A1D5EF62751B129003D9B5F /* _windowing_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A762654F440000C490B /* _windowing_macos.h */; };
+		9A1D5EF62751B129003D9B5F /* _library.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A762654F440000C490B /* _library.h */; };
 		9A1D5EF72751B129003D9B5F /* copydesk.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A3026548C38000C490B /* copydesk.h */; };
 		9A1D5EF82751B129003D9B5F /* cursor.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A64C111266099790074030F /* cursor.h */; };
 		9A1D5EF92751B129003D9B5F /* display.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A64C106266057F00074030F /* display.h */; };
@@ -140,7 +140,7 @@
 		9A440A6A2654DD63000C490B /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
 		9A440A742654F36C000C490B /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		9A440A752654F36C000C490B /* node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
-		9A440A762654F440000C490B /* _windowing_macos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _windowing_macos.h; sourceTree = "<group>"; };
+		9A440A762654F440000C490B /* _library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _library.h; sourceTree = "<group>"; };
 		9A59A4AB26F02F7E00096562 /* mouse_hook.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = mouse_hook.mm; sourceTree = "<group>"; };
 		9A59A4AF26F02FBC00096562 /* keyboard_hook.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = keyboard_hook.mm; sourceTree = "<group>"; };
 		9A59A4B526F0328400096562 /* keyboard_hook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keyboard_hook.h; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 				9A440A692654DD22000C490B /* _c_mm.h */,
 				9A5D738A26561AAA00D5C39E /* _factory.cpp */,
 				9A440A6A2654DD63000C490B /* _mm.h */,
-				9A440A762654F440000C490B /* _windowing_macos.h */,
+				9A440A762654F440000C490B /* _library.h */,
 				9A440A4326548C38000C490B /* copydesk.cpp */,
 				9A440A3026548C38000C490B /* copydesk.h */,
 				9A440A3626548C38000C490B /* copydesk.mm */,
@@ -358,7 +358,7 @@
 				9A1D5EF32751B129003D9B5F /* _.h in Headers */,
 				9A1D5EF42751B129003D9B5F /* _c_mm.h in Headers */,
 				9A1D5EF52751B129003D9B5F /* _mm.h in Headers */,
-				9A1D5EF62751B129003D9B5F /* _windowing_macos.h in Headers */,
+				9A1D5EF62751B129003D9B5F /* _library.h in Headers */,
 				9A1D5EF72751B129003D9B5F /* copydesk.h in Headers */,
 				9A1D5EF82751B129003D9B5F /* cursor.h in Headers */,
 				9A1D5EF92751B129003D9B5F /* display.h in Headers */,
@@ -591,7 +591,7 @@
 					"$(WorkspaceDir)/source",
 					"$(WorkspaceDir)/source/include",
 					"$(WorkspaceDir)/source/app",
-					"$(WorkspaceDir)/source/app/_include",
+					"$(WorkspaceDir)/source/app/include",
 					"$(WorkspaceDir)/operating-system",
 					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)/_include",
@@ -674,7 +674,7 @@
 					"$(WorkspaceDir)/source",
 					"$(WorkspaceDir)/source/include",
 					"$(WorkspaceDir)/source/app",
-					"$(WorkspaceDir)/source/app/_include",
+					"$(WorkspaceDir)/source/app/include",
 					"$(WorkspaceDir)/operating-system",
 					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)",
 					"$(WorkspaceDir)/operating-system/operating-system-$(PLATFORM_MODIFIER)/_include",

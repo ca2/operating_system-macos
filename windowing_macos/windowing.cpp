@@ -5,6 +5,9 @@
 //  Created by Camilo Sasuke on 2021-05-21 02:00 <3ThomasBS_!!
 //
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
 
 
 void ns_main_async(dispatch_block_t block);
