@@ -9,7 +9,7 @@
 
 #include "aura_apple/_aura_apple.h"
 #include "apex_macos/_apex_macos.h"
-#include "aura/user/user/_user.h"
+#include "aura/user/user/_component.h"
 
 
 //#include "aura_window.h"
