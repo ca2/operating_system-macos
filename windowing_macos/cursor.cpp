@@ -5,6 +5,10 @@
 //  Created by Camilo Sasuke on 28/05/21  00:26 BRT <3ThomasBS_!!
 //
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#include "aura/_defer.h"
+#endif
 
 
 void * ns_get_default_system_cursor(enum_cursor ecursor);

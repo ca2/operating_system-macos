@@ -4,6 +4,7 @@
 **/.svn
 **/CVS
 **/xcuserdata
+**/DerivedData
 .DS_Store
 ._.DS_Store
 *.suo

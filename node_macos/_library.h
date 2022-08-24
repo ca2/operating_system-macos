@@ -4,9 +4,10 @@
 //
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 20/08/22.
 //
-
-#ifndef _library_h
-#define _library_h
+#pragma once
 
 
-#endif /* _library_h */
+#include "windowing_macos/_library.h"
+
+
+#include "node.h"

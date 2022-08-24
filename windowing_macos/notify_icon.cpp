@@ -1,6 +1,8 @@
 #include "framework.h"
 #if !BROAD_PRECOMPILED_HEADER
 #include "_library.h"
+#include "aura/_defer.h"
+
 #endif
 #include "acme/filesystem/filesystem/acme_directory.h"
 #include "aura/graphics/image/icon.h"

@@ -1,4 +1,7 @@
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
 #include "apex/platform/launcher.h"
 #include "launcher.h"
 #undef USE_MISC

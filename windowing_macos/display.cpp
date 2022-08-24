@@ -5,6 +5,10 @@
 //  Created by Camilo Sasuke on 27/05/21 19:43 BRT <3ThomasBS_!!
 //
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#include "aura/_defer.h"
+#endif
 
 
 int ns_monitor_count();

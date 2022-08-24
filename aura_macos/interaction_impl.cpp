@@ -1,4 +1,7 @@
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
 #include "aura/platform/message_queue.h"
 #include "acme/constant/activate.h"
 #include "acme/constant/button_state.h"
@@ -2640,12 +2643,12 @@ namespace aura_macos
    }
 
 
-   void interaction_impl::set_viewport_org(::draw2d::graphics_pointer & pgraphics)
+   void interaction_impl::set_origin(::draw2d::graphics_pointer & pgraphics)
    {
 
       // graphics will be already set its view port to the user::interaction for linux - cairo with xlib
 
-      pgraphics->SetViewportOrg(::point_i32());
+      pgraphics->set_origin(::point_i32());
 
    }
 

@@ -11,6 +11,7 @@
 //#include "oswindow_data.h"
 #include "acme/parallelization/message_queue.h"
 #include <CoreGraphics/CoreGraphics.h>
+#include "aura/_defer.h"
 
 
 int get_main_screen_rectangle(RECTANGLE_I32 * pr);

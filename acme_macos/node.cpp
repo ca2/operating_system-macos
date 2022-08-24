@@ -2,14 +2,20 @@
 // Created by camilo on 19/01/2021. --<33ThomasBS!!
 //
 #include "framework.h"
-void ns_launch_app(const char * psz, const char ** argv, int iFlags);
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
+#include "quit.h"
+
+
+void ns_launch_app(const char * psz, const char
+                   ** argv, int iFlags);
 void acme_macos_application_main(void * pApplication, int argc, char *argv[]);
 string macos_get_type_identifier(const char * str);
 
 bool ns_is_system_dark_mode();
 
 void ns_app_terminate();
-void os_post_quit(::element * pelementQuit);
 bool ns_open_file(const char * psz);
 
 void ns_launch_app(const char * psz, const char ** argv, int iFlags);
@@ -28,7 +34,6 @@ namespace acme_macos
    node::node()
    {
 
-      m_pelementquit = nullptr;
       m_pAcmePlatform = this;
 
    }
@@ -611,26 +616,6 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    //
    //   }
 
-   void node::element_quit::run()
-   {
-   
-      m_pnode->m_pAcmePlatform->m_peventReadyToTerminateApp->set_event();
-   
-      auto htaskSystem = (pthread_t) m_pnode->m_htaskSystem;
-
-      pthread_join(htaskSystem, nullptr);
-    
-      m_pnode.release();
-    
-      m_psystem.release();
-
-      ns_app_terminate();
-   
-      delete this;
-   
-//         return ::success;
-//      
-   }
 
 
 
@@ -642,62 +627,22 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
       m_peventReadyToTerminateApp->ResetEvent();
        
       // element_quit * pelementquit = new element_quit(this);
-   
-      ::os_post_quit(m_pelementquit);
-        
-      m_pelementquit = nullptr;
+
+      //m_psystem->windowing_post_quit();
+      
+      main_asynchronous(m_pelementQuit);
+//           {
+//         
+//         m_pelementQuit
+//         
+//      }
+//           )
        
       m_peventReadyToTerminateApp->_wait();
        
    }
 
 
-   void node::implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem)
-   {
-      
-      m_pelementquit = new element_quit(pnode, psystem);
-
-      
-      //m_pelementquit = new element_quit(pnode, psystem);
-      
-      if(psystem->m_pfnImplement)
-      {
-         
-         psystem->init_task();
-         
-         (*psystem->m_pfnImplement)(psystem);
-         
-         return;
-         
-      }
-      
-      auto argc = psystem->m_argc;
-      
-      auto argv = psystem->m_argv;
-      
-      auto papp = psystem->m_pappStartup;
-      
-      void * pApplication = (void *) (::app *) papp;
-      
-      acme_macos_application_main(pApplication, argc, argv);
-      
-      //return psystem->m_estatus;
-      
-
-      //auto estatus =
-      
-      //::acme::apple::node::implement(pnode, psystem);
-
-//         if(!estatus)
-//         {
-//
-//            return estatus;
-//
-//         }
-//
-//         return estatus;
-
-   }
 
 
    //   void * node::node_wrap_window(void * pvoidDisplay, i64 window)
@@ -1007,27 +952,65 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 
    }
 
-//   void node::implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem)
-//   {
-//
-//      m_pelementquit = new element_quit(pnode, psystem);
-//
-//      auto argc = psystem->m_argc;
-//
-//      auto argv = psystem->m_argv;
-//
-//      auto papp = psystem->m_pappStartup;
-//
-//      void * pApplication = (void *) (::app *) papp;
-//
-//      acme_macos_application_main(pApplication, argc, argv);
-//
-//      //return psystem->m_estatus;
-//
-//   }
+   void node::acme_application_main(class ::system * psystem)
+   {
+
+      auto argc = psystem->m_argc;
+
+      auto argv = psystem->m_argv;
+
+      auto papp = psystem->m_pappStartup;
+
+      void * pApplication = (void *) (::app *) papp;
+
+      acme_macos_application_main(pApplication, argc, argv);
+
+      //return psystem->m_estatus;
+
+   }
+
+
+   __pointer(::element) node::create_quit_element(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem)
+   {
+      
+      return __new(quit(pnode, psystem));
+      
+   }
+
+   
+   void node::_will_finish_launching()
+   {
+      
+      auto psystem = m_psystem;
+      
+      if(::is_null(psystem->m_htask))
+      {
+
+         ///auto estatus =
+         
+         psystem->branch_synchronously();
+
+   //         if(!estatus)
+   //         {
+   //
+   //            return estatus;
+   //
+   //         }
+         
+         // release the initial allocation from platform_create_system as
+         // task::begin_synch holds a reference to the running system task.
+         psystem->release();
+         
+      }
+      
+      m_psystem->post_initial_request();
+
+      //return ::success;
+      
+   }
+
 
 } // namespace acme_macos
-
 
 
 void * get_system_mmos(void * pSystem)

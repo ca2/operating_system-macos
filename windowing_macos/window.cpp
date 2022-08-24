@@ -9,6 +9,8 @@
 #include "framework.h"
 #if !BROAD_PRECOMPILED_HEADER
 #include "_library.h"
+#include "aura/_defer.h"
+
 #endif
 #include "window_impl.h"
 ///#include "oswindow_data.h"
@@ -442,7 +444,7 @@ namespace windowing_macos
          nsapp_activate_ignoring_other_apps(1);
          
       }
-      else if(edisplay == e_display_normal)
+      else if(edisplay == e_display_restored)
       {
          
          macos_window_show();
@@ -1711,7 +1713,7 @@ namespace windowing_macos
          if(m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious == ::e_display_iconic)
          {
 
-            m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious = ::e_display_normal;
+            m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious = ::e_display_restored;
 
          }
          

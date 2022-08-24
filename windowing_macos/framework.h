@@ -24,10 +24,10 @@
 #include "_library.h"
 
 
-#endif
-
-
 #include "acme/_defer.h"
+
+
+#endif
 
 
 #endif

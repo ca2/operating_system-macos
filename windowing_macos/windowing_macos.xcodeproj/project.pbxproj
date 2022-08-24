@@ -23,7 +23,6 @@
 		9A1D5EE22751B037003D9B5F /* monitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C109266058D20074030F /* monitor.cpp */; };
 		9A1D5EE32751B037003D9B5F /* monitor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C10E266062940074030F /* monitor.mm */; };
 		9A1D5EE42751B037003D9B5F /* mouse_hook.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A59A4AB26F02F7E00096562 /* mouse_hook.mm */; };
-		9A1D5EE52751B037003D9B5F /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A440A742654F36C000C490B /* node.cpp */; };
 		9A1D5EE62751B037003D9B5F /* notify_icon_mm_bridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A79BE2426645D9B009E6C44 /* notify_icon_mm_bridge.mm */; };
 		9A1D5EE72751B037003D9B5F /* notify_icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A79BE2826645D9C009E6C44 /* notify_icon.cpp */; };
 		9A1D5EE82751B037003D9B5F /* notify_icon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A79BE2A26645D9C009E6C44 /* notify_icon.mm */; };
@@ -46,7 +45,6 @@
 		9A1D5EFF2751B129003D9B5F /* windowing_keyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A4226548C38000C490B /* windowing_keyboard.h */; };
 		9A1D5F012751B129003D9B5F /* monitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A64C10A266058D20074030F /* monitor.h */; };
 		9A1D5F022751B129003D9B5F /* mouse_hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A59A4B626F032A800096562 /* mouse_hook.h */; };
-		9A1D5F032751B129003D9B5F /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A752654F36C000C490B /* node.h */; };
 		9A1D5F042751B129003D9B5F /* notify_icon_mm_bridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A79BE2526645D9B009E6C44 /* notify_icon_mm_bridge.h */; };
 		9A1D5F052751B129003D9B5F /* notify_icon_mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A79BE2726645D9C009E6C44 /* notify_icon_mm.h */; };
 		9A1D5F062751B129003D9B5F /* notify_icon.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A79BE2B26645D9C009E6C44 /* notify_icon.h */; };
@@ -138,8 +136,6 @@
 		9A440A682654DC66000C490B /* _.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
 		9A440A692654DD22000C490B /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
 		9A440A6A2654DD63000C490B /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
-		9A440A742654F36C000C490B /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
-		9A440A752654F36C000C490B /* node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
 		9A440A762654F440000C490B /* _library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _library.h; sourceTree = "<group>"; };
 		9A59A4AB26F02F7E00096562 /* mouse_hook.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = mouse_hook.mm; sourceTree = "<group>"; };
 		9A59A4AF26F02FBC00096562 /* keyboard_hook.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = keyboard_hook.mm; sourceTree = "<group>"; };
@@ -284,8 +280,6 @@
 				9A64C10E266062940074030F /* monitor.mm */,
 				9A59A4B626F032A800096562 /* mouse_hook.h */,
 				9A59A4AB26F02F7E00096562 /* mouse_hook.mm */,
-				9A440A742654F36C000C490B /* node.cpp */,
-				9A440A752654F36C000C490B /* node.h */,
 				9A79BE2526645D9B009E6C44 /* notify_icon_mm_bridge.h */,
 				9A79BE2426645D9B009E6C44 /* notify_icon_mm_bridge.mm */,
 				9A79BE2726645D9C009E6C44 /* notify_icon_mm.h */,
@@ -374,7 +368,6 @@
 				9A1D5F012751B129003D9B5F /* monitor.h in Headers */,
 				9A1D5F022751B129003D9B5F /* mouse_hook.h in Headers */,
 				9AF2844527FBC96400D4C1A8 /* macos_window.h in Headers */,
-				9A1D5F032751B129003D9B5F /* node.h in Headers */,
 				9A1D5F042751B129003D9B5F /* notify_icon_mm_bridge.h in Headers */,
 				9AF2845727FBCA7100D4C1A8 /* macOSApp.h in Headers */,
 				9A1D5F052751B129003D9B5F /* notify_icon_mm.h in Headers */,
@@ -501,7 +494,6 @@
 				9A1D5EE22751B037003D9B5F /* monitor.cpp in Sources */,
 				9A1D5EE32751B037003D9B5F /* monitor.mm in Sources */,
 				9A1D5EE42751B037003D9B5F /* mouse_hook.mm in Sources */,
-				9A1D5EE52751B037003D9B5F /* node.cpp in Sources */,
 				9A1D5EE62751B037003D9B5F /* notify_icon_mm_bridge.mm in Sources */,
 				9A1D5EE72751B037003D9B5F /* notify_icon.cpp in Sources */,
 				9A1D5EE82751B037003D9B5F /* notify_icon.mm in Sources */,

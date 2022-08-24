@@ -5,6 +5,9 @@
 //  Created by Camilo Sasuke on 2021-05-14 08:14 BRT <3ThomasBS_!!
 //
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
 #include "acme/filesystem/filesystem/acme_directory.h"
 #include <spawn.h>
 

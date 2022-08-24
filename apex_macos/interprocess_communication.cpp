@@ -1,4 +1,7 @@
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
 #include <sys/ipc.h>
 #include <sys/msg.h>
 #include "acme/operating_system/ansi/_pthread.h"
@@ -15,20 +18,25 @@ namespace apex_macos
       
    }
 
-interprocess_communication_base::~interprocess_communication_base()
+   
+   interprocess_communication_base::~interprocess_communication_base()
    {
+      
+      
    }
 
 
-interprocess_communication_tx::interprocess_communication_tx()
+   interprocess_communication_tx::interprocess_communication_tx()
    {
 
+      
    }
 
 
-interprocess_communication_tx::~interprocess_communication_tx()
+   interprocess_communication_tx::~interprocess_communication_tx()
    {
 
+      
    }
 
 

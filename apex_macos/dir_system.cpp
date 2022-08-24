@@ -4,8 +4,11 @@
 //
 //  Created by Camilo Sasuke Tsumanuma on 28/02/20.
 //
-
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
+
 //#include "apex/os/_.h"
 //#include "apex/os/_os.h"
 //#include "apex/xml/_.h"

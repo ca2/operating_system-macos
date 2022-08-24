@@ -19,7 +19,17 @@
 
 #define WCHAR_T_SIZE 32
 
+#define BROAD_PRECOMPILED_HEADER 1
+
 #define OPERATING_SYSTEM_NAMESPACE macos
+
+#define PLATFORM_COMMON_NAMESPACE apple
+
+#define PLATFORM_STRING "linux"
+
+#define PLATFORM_COMMON_STRING "apple"
+
+#define DEFAULT_DIR_SEPARATOR "/"
 
 // #if defined(_DEBUG) && !defined(DEBUG)
 // #define DEBUG 1

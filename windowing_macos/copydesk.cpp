@@ -1,5 +1,9 @@
 #include "framework.h"
-#include "aura/graphics/draw2d/_draw2d.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#include "aura/_defer.h"
+#endif
+#include "aura/graphics/draw2d/_component.h"
 
 
 bool macos_clipboard_has_changed(long & lTicket);

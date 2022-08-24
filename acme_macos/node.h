@@ -20,29 +20,7 @@ namespace acme_macos
       //__creatable_from_library(node, ::acme::node, "acme_macos");
       
       
-      class element_quit :
-      virtual public ::element
-      {
-      public:
-         
-          __pointer(::acme::node) & m_pnode;
-          __pointer(class ::system) & m_psystem;
-         
-          element_quit(__pointer(::acme::node) & pnode,__pointer(class ::system) & psystem
-                       
-                       ) :
-          m_pnode(pnode),m_psystem(psystem)
-         {
-            
-         }
-         
-         void run() override;
-         
-         
-      };
        
-      element_quit * m_pelementquit;
-
       //gpointer m_pGtkSettingsDefault;
       string m_strTheme;
 
@@ -73,8 +51,8 @@ namespace acme_macos
       
       void node_quit() override;
       
-      void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;
-
+//      void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;
+//
 
 
 
@@ -124,6 +102,19 @@ namespace acme_macos
       void shell_open(const ::file::path & pathFile, const ::string & strParams = "", const ::file::path & pathFolder = "") override;
       
       //void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem);
+      
+      void acme_application_main(class ::system * psystem) override;
+      
+      
+      __pointer(::element) create_quit_element(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;
+  
+
+//      void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;
+
+
+      void _will_finish_launching() override;
+
+      
    };
 
 

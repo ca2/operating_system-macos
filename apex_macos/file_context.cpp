@@ -4,8 +4,10 @@
 //
 //  Created by Camilo Sasuke Tsumanuma on 28/02/20.
 //
-
 #include "framework.h"
+#if !BROAD_PRECOMPILED_HEADER
+#include "_library.h"
+#endif
 #include <sys/stat.h>
 #include <ctype.h>
 #include <mach-o/dyld.h>
