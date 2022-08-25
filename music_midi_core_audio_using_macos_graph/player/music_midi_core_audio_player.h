@@ -52,7 +52,7 @@ namespace music
             virtual void OnMidiOutDeviceChange();
 
             uint32_t GetMidiOutDevice();
-            void PostNotifyEvent(::music::midi::player::e_notify_event eevent);
+            void PostNotifyEvent(::music::midi::player::enum_notify_event eevent);
 
             imedia_time RateToTicks(double dRate);
 

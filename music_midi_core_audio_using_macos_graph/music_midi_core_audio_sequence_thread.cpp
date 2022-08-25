@@ -197,7 +197,7 @@ namespace music
          
       }
       
-      void sequence_thread::PostNotifyEvent(::music::midi::player::e_notify_event eevent)
+      void sequence_thread::PostNotifyEvent(::music::midi::player::enum_notify_event eevent)
       {
          
          if(m_pplayer != NULL)

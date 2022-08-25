@@ -28,7 +28,7 @@ namespace music
 
          bool PostMidiSequenceEvent(::music::midi::sequence * pseq, ::music::midi::sequence::e_event event, LPMIDIHDR lpmh);
 
-         void PostNotifyEvent(::music::midi::player::e_notify_event eevent);
+         void PostNotifyEvent(::music::midi::player::enum_notify_event eevent);
 
          void PrerollAndWait(double rate = 0.0);
          void PrerollAndWait(imedia_time tkStart);
