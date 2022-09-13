@@ -9,6 +9,10 @@
 #pragma once
 
 
+#include "apex_apple/node.h"
+#include "acme_macos/node.h"
+
+
 namespace apex_macos
 {
 

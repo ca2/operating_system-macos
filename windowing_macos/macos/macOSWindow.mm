@@ -12,6 +12,14 @@
 //  appreciated but not required.
 //
 #include "framework.h"
+#include "macOSWindow.h"
+#include "macos_window.h"
+#include "macOSWindowFrameView.h"
+#include "_c_mm.h"
+
+
+NSString * __ns_get_text(const char * psz);
+
 
 //NSWindow * get_os_window_ns_window(oswindow hwnd);
 

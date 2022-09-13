@@ -2,6 +2,7 @@
 
 
 #include "apex/filesystem/filesystem/file_watcher.h"
+#include <CoreServices/CoreServices.h>
 
 
 namespace FileSystemEvents

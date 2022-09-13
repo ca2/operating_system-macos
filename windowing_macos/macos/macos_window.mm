@@ -6,7 +6,8 @@
 //  Copyright (c) 2013 ca2 Desenvolvimento de Sofware Ltda. All rights reserved.
 //
 #include "framework.h"
-
+#include "macos_window.h"
+#include "macOSWindow.h"
 
 
 void * new_macos_window(macos_window * pmacoswindow, CGRect rect, unsigned int uStyle)

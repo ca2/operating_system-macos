@@ -1,13 +1,15 @@
 #include "framework.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#endif
+#include "interaction_impl.h"
 #include "aura/platform/message_queue.h"
 #include "acme/constant/activate.h"
 #include "acme/constant/button_state.h"
 #include "aura/message.h"
-#include "aura/graphics/graphics/_.h"
-#include "aura/graphics/graphics/_graphics.h"
+#include "aura/graphics/draw2d/graphics.h"
+#include "aura/graphics/graphics/double_buffer.h"
+#include "aura/platform/node.h"
+#include "aura/windowing/windowing.h"
+#include "aura/windowing/window.h"
+#include "aura/user/user/box.h"
 
 
 #define WHEEL_DELTA 120

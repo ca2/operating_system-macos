@@ -8,6 +8,9 @@
 #pragma once
 
 
+#include "acme_apple/node.h"
+
+
 namespace acme_macos
 {
 

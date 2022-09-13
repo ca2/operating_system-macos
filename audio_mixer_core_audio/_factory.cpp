@@ -1,4 +1,10 @@
 #include "framework.h"
+#include "control.h"
+#include "destination.h"
+#include "device.h"
+#include "line_info.h"
+#include "audio_mixer.h"
+#include "source.h"
 
 
 __FACTORY_EXPORT void audio_mixer_core_audio_factory(::factory::factory * pfactory)

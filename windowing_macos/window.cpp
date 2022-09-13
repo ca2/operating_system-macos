@@ -7,19 +7,18 @@
 //
 
 #include "framework.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#include "aura/_defer.h"
-
-#endif
 #include "window_impl.h"
-///#include "oswindow_data.h"
 #include "aura/user/user/interaction_prodevian.h"
-#include "acme/operating_system/_user.h"
+#include "aura/user/user/interaction_impl.h"
+#include "aura/user/user/box.h"
+#include "aura_macos/interaction_impl.h"
 #include "acme/parallelization/message_queue.h"
 #include "aura/graphics/graphics/_.h"
 #include "aura/graphics/graphics/_graphics.h"
 #include "aura/graphics/image/drawing.h"
+#include "aura/platform/session.h"
+#include "aura/user/user/user.h"
+#include "aura/message/user.h"
 #include <CoreGraphics/CoreGraphics.h>
 
 

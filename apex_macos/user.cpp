@@ -1,7 +1,5 @@
 #include "framework.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#endif
+#include <Carbon/Carbon.h>
 
 
 int_bool GetCursorPos(POINT_I32 * ppointCursor)

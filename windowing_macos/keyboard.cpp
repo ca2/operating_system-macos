@@ -1,10 +1,7 @@
 // created by Camilo 2021-02-04 00:58 BRT CamiloSasuke<3ThomasBorregaardSoerensen
 #include "framework.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#include "aura/_defer.h"
-
-#endif
+#include "aura/message/user.h"
+#include <Carbon/Carbon.h>
 
 
 namespace windowing_macos

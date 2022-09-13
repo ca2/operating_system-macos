@@ -7,6 +7,9 @@
 #pragma once
 
 
+#include "aura_macos/node.h"
+
+
 namespace node_macos
 {
 

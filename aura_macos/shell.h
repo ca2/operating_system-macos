@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "aura_posix/shell.h"
+
+
 namespace aura_macos
 {
 

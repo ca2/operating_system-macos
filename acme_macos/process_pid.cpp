@@ -1,7 +1,4 @@
 #include "framework.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#endif
 #include <sys/types.h>
 #include <sys/param.h>
 #define user user_struct

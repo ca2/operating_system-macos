@@ -6,10 +6,9 @@
 //  Copyright © 2021 ca2 Desenvolvimento de Sofware Ltda. All rights reserved.
 //
 #include "framework.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#endif
+#include "node.h"
 #include "aura/graphics/image/context_image.h"
+#include "aura/platform/context.h"
 
 
 bool macos_get_file_image(::image * pimage, const char * pszFilePath);
