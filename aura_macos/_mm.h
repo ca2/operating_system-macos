@@ -9,7 +9,6 @@
 #pragma once
 
 
-#include "aura/include/objcpp.h"
 #include "aura_apple/_mm.h"
 #include "apex_macos/_mm.h"
 

@@ -7,6 +7,9 @@
 #pragma once
 
 
+#include "aura/windowing/windowing.h"
+
+
 namespace windowing_macos
 {
 

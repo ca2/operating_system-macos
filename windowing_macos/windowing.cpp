@@ -5,12 +5,13 @@
 //  Created by Camilo Sasuke on 2021-05-21 02:00 <3ThomasBS_!!
 //
 #include "framework.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#include "aura/_defer.h"
-
-#endif
-#include "aura/user/menu/menu_shared.h"
+//#if !BROAD_PRECOMPILED_HEADER
+//#include "_library.h"
+//#include "aura/_defer.h"
+//
+//#endif
+#include "aura/user/user/interaction_impl.h"
+#include "aura/user/menu/shared.h"
 ///#include "apex/user/menu_shared.h"
 #include "keyboard_hook.h"
 #include "mouse_hook.h"
@@ -427,8 +428,10 @@ namespace windowing_macos
       
       manual_reset_event ev;
       
-      puserinteractionEnablePrompt->message_box("You gonna be prompted to enable Accessibility for \""+m_psystem->m_pappMain->m_strAppName+"\" to enable keyboard monitoring.",
-                     "Aura Click", e_message_box_ok)->then(
+      auto psequencer = puserinteractionEnablePrompt->create_message_box_sequencer("You gonna be prompted to enable Accessibility for \""+m_psystem->m_pappMain->m_strAppName+"\" to enable keyboard monitoring.",
+                                                                                   "Aura Click", e_message_box_ok);
+      
+      psequencer->then(
                                                            [this, &ev,puserinteractionEnablePrompt](auto & sequence)
                                                            {
                         
@@ -467,6 +470,8 @@ namespace windowing_macos
                      });
 
       //}
+      
+      psequencer->do_asynchronously();
 
       ev.wait();
       

@@ -1,7 +1,9 @@
 #include "framework.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#endif
+#include "shell.h"
+#include "interaction_impl.h"
+//#if !BROAD_PRECOMPILED_HEADER
+//#include "_library.h"
+//#endif
 #include "apex/platform/launcher.h"
 //#include "launcher.h"
 //#include "FileSystemEvents/watcher.h"
@@ -16,7 +18,6 @@ __FACTORY_EXPORT void apex_macos_factory(::factory::factory * pfactory);
 __FACTORY_EXPORT void aura_macos_factory(::factory::factory * pfactory)
 {
    
-
    aura_apple_factory(pfactory);
    
    apex_macos_factory(pfactory);

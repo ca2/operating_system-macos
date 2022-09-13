@@ -1,7 +1,12 @@
 #include "framework.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#endif
+#include "interaction_impl.h"
+#include "aura/platform/node.h"
+#include "aura/windowing/windowing.h"
+#include "aura/windowing/window.h"
+#include "aura/user/user/box.h"
+//#if !BROAD_PRECOMPILED_HEADER
+//#include "_library.h"
+//#endif
 #include "aura/platform/message_queue.h"
 #include "acme/constant/activate.h"
 #include "acme/constant/button_state.h"

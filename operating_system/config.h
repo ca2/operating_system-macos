@@ -52,8 +52,8 @@
 //#define MEMDLEAK 1
 
 
-#define BSD_STYLE_SOCKETS
-#define HAVE_OPENSSL
+//#define BSD_STYLE_SOCKETS
+//#define HAVE_OPENSSL
 #define VARIADIC_TEMPLATE_FORMAT2
 #define MUTEX_COND_TIMED
 

@@ -2,6 +2,7 @@
 
 
 #include "apex/filesystem/filesystem/file_watcher.h"
+#include <CoreServices/CoreServices.h>
 
 
 namespace FileSystemEvents
@@ -18,7 +19,7 @@ namespace FileSystemEvents
 
 
       watch();
-      virtual ~watch();
+      ~watch() override;
 
 
       virtual bool open(const ::file::path & pathFolder, bool bRecursive) override;

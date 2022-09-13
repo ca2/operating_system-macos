@@ -1,9 +1,11 @@
 #include "framework.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#include "aura/_defer.h"
-#endif
-#include "aura/graphics/draw2d/_component.h"
+//#if !BROAD_PRECOMPILED_HEADER
+//#include "_library.h"
+//#include "aura/_defer.h"
+//#endif
+//#include "aura/graphics/draw2d/_component.h"
+#include "aura/graphics/image/_image.h"
+#include "aura/graphics/image/image.h"
 
 
 bool macos_clipboard_has_changed(long & lTicket);

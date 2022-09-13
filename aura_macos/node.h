@@ -8,6 +8,10 @@
 #pragma once
 
 
+#include "aura_apple/node.h"
+#include "apex_macos/node.h"
+
+
 namespace aura_macos
 {
 

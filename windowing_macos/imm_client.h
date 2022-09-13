@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "aura/user/user/text_composition_client.h"
+
+
 class CLASS_DECL_WINDOWING_MACOS imm_client :
    virtual public ::user::text_composition_client,
    virtual public ::channel
@@ -14,7 +17,7 @@ public:
 
 
    imm_client();
-   virtual ~imm_client();
+   ~imm_client() override;
 
 
    virtual void initialize_text_composition_client(::channel * pchannel, ::user::interaction * puserinteraction) override;

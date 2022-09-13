@@ -8,6 +8,8 @@
 
 
 #include "aura_macos/_.h"
+#include "aura/operating_system.h"
+//#include <Carbon/Carbon.h>
 
 
 #if defined(_WINDOWING_MACOS_LIBRARY)

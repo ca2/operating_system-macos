@@ -8,6 +8,9 @@
 #pragma once
 
 
+#include "apex_apple/file_context.h"
+
+
 namespace apex_macos
 {
 

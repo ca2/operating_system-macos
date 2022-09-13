@@ -6,9 +6,12 @@
 //  Copyright © 2016 ca2 Desenvolvimento de Sofware Ltda. All rights reserved.
 //
 #include "framework.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#endif
+#include "shell.h"
+
+
+//#if !BROAD_PRECOMPILED_HEADER
+//#include "_library.h"
+//#endif
 
 //string macos_get_type_identifier(const ::string & str);
 //

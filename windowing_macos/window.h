@@ -18,6 +18,8 @@
 //#endif
 
 
+#include "aura/windowing/window.h"
+
 
 namespace windowing_macos
 {
