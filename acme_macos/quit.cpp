@@ -5,9 +5,6 @@
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 20/08/22 16:35
 //
 #include "framework.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#endif
 #include "quit.h"
 
 

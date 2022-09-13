@@ -2,11 +2,7 @@
 // Created by camilo on 19/01/2021. --<33ThomasBS!!
 //
 #include "framework.h"
-//#if !BROAD_PRECOMPILED_HEADER
-//#include "_library.h"
-//#endif
 #include "quit.h"
-#include <unistd.h>
 
 
 void ns_launch_app(const char * psz, const char

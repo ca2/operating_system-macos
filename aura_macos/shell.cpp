@@ -7,12 +7,6 @@
 //
 #include "framework.h"
 #include "shell.h"
-
-
-//#if !BROAD_PRECOMPILED_HEADER
-//#include "_library.h"
-//#endif
-
 //string macos_get_type_identifier(const ::string & str);
 //
 //#include "apex/compress/zip/context.h"

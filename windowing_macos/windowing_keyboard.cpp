@@ -6,12 +6,8 @@
 //
 
 #include "framework.h"
-//#if !BROAD_PRECOMPILED_HEADER
-//#include "_library.h"
-//#include "aura/_defer.h"
-//
-//#endif
 #include "keyboard.h"
+#include <Carbon/Carbon.h>
 
 
 bool apple_is_action_key(int i)

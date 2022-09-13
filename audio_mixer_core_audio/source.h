@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "app-core/multimedia/audio_mixer/source.h"
+
+
 namespace multimedia
 {
 
@@ -24,8 +27,8 @@ namespace multimedia
          ~source() override;
 
 
-         void mixerGetLineInfo(uint32_t dwSource, uint32_t dwDestination, uint32_t fdwInfo) override;
-         void mixerGetLineInfo(uint32_t dwSource, ::multimedia::audio_mixer::destination * pdestination) override;
+         void get_line_info(uint32_t dwSource, uint32_t dwDestination, uint32_t fdwInfo) override;
+         void get_line_info(uint32_t dwSource, ::multimedia::audio_mixer::destination * pdestination) override;
 
          ::atom GetLineID() override;
          const char * GetSZName();

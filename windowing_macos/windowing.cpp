@@ -5,16 +5,11 @@
 //  Created by Camilo Sasuke on 2021-05-21 02:00 <3ThomasBS_!!
 //
 #include "framework.h"
-//#if !BROAD_PRECOMPILED_HEADER
-//#include "_library.h"
-//#include "aura/_defer.h"
-//
-//#endif
-#include "aura/user/user/interaction_impl.h"
 #include "aura/user/menu/shared.h"
-///#include "apex/user/menu_shared.h"
+#include "aura/user/user/interaction_impl.h"
 #include "keyboard_hook.h"
 #include "mouse_hook.h"
+#include <Carbon/Carbon.h>
 
 
 void ns_main_async(dispatch_block_t block);
@@ -469,11 +464,12 @@ namespace windowing_macos
                         
                      });
 
+      psequencer->do_synchronously(5_minute);
       //}
       
       psequencer->do_asynchronously();
 
-      ev.wait();
+      //ev.wait();
       
       estatus = ::keyboard_hook::is_enabled(false);
       

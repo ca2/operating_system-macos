@@ -2,6 +2,7 @@
 
 
 #include "aura/user/user/notify_icon.h"
+#include "notify_icon_mm_bridge.h"
 
 
 namespace windowing_macos

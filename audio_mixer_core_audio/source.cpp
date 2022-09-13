@@ -1,4 +1,6 @@
 #include "framework.h"
+#include "source.h"
+#include "destination.h"
 
 
 namespace multimedia
@@ -220,7 +222,7 @@ namespace multimedia
       }
 
 
-      void source::mixerGetLineInfo(uint32_t dwSource, uint32_t dwDestination, uint32_t fdwInfo)
+      void source::get_line_info(uint32_t dwSource, uint32_t dwDestination, uint32_t fdwInfo)
       {
          
 //         m_mixerline.cbStruct       = sizeof(MIXERLINE);
@@ -245,7 +247,7 @@ namespace multimedia
       }
 
    
-      void source::mixerGetLineInfo(uint32_t dwSource, ::multimedia::audio_mixer::destination * pdestination)
+      void source::get_line_info(uint32_t dwSource, ::multimedia::audio_mixer::destination * pdestination)
       {
          
 //         sp(::multimedia::audio_mixer_audio_core::destination) destination = pdestination;

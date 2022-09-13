@@ -7,9 +7,11 @@
 //
 
 #include "framework.h"
+#include "macOSApp.h"
+#include "aura_macos/_c_mm.h"
 
 
-#include "acme/id.h"
+NSString * __ns_get_text(const char * psz);
 //#include "apex/user/menu_shared.h"
 
 //void on_start_system(void * pSystem);

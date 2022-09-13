@@ -10,7 +10,7 @@
 
 
 
-#include "app-core/multimedia/multimedia/_.h"
+#include "app-core/multimedia/_.h"
 
 
 
@@ -19,5 +19,23 @@
 #else
    #define CLASS_DECL_AUDIO_MIXER_CORE_AUDIO  CLASS_DECL_IMPORT
 #endif
+
+
+namespace multimedia
+{
+
+
+   namespace audio_mixer_core_audio
+   {
+
+
+      class window;
+   
+   
+   } // namespace audio_mixer_core_audio
+
+
+} // namespace multimedia
+
 
 

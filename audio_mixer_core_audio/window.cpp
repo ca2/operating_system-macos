@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "window.h"
 
 
 namespace multimedia

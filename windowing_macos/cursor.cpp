@@ -6,11 +6,8 @@
 //
 #include "framework.h"
 #include "cursor.h"
-//#if !BROAD_PRECOMPILED_HEADER
-//#include "_library.h"
-//#include "aura/_defer.h"
-//#endif
 #include "aura/graphics/image/image.h"
+#include <Carbon/Carbon.h>
 
 
 void * ns_get_default_system_cursor(enum_cursor ecursor);

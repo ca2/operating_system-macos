@@ -7,9 +7,6 @@
 //
 #include "framework.h"
 #include "aura/graphics/image/image.h"
-//#if !BROAD_PRECOMPILED_HEADER
-//#include "_library.h"
-//#endif
 
 
 bool mm1_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const char * pszFilePath);

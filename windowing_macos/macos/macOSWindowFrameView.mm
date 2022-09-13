@@ -12,6 +12,9 @@
 //  appreciated but not required.
 //
 #include "framework.h"
+#include "macOSWindowFrameView.h"
+#include "macos_window.h"
+#include "macOSWindow.h"
 #include "acme/operating_system/macos/keyboard.h"
 #import "apex/operating_system/winpr_input.h"
 #include <Carbon/Carbon.h>

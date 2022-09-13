@@ -7,11 +7,8 @@
 //
 #include "framework.h"
 #include "node.h"
-//#if !BROAD_PRECOMPILED_HEADER
-//#include "_library.h"
-//#endif
-#include "aura/platform/context.h"
 #include "aura/graphics/image/context_image.h"
+#include "aura/platform/context.h"
 
 
 bool macos_get_file_image(::image * pimage, const char * pszFilePath);

@@ -4,7 +4,6 @@
 //
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 18/08/21.
 //
-
 #pragma once
 
 

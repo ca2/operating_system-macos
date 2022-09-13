@@ -10,12 +10,13 @@
 
 
 //#include "app/axis/user/user/user_key_enum.h"
-
+#ifdef __OBJC__
+@class macOSWindow;
+#endif
 
 class macos_window
 {
 public:
-   
    
 #ifdef __OBJC__
    
