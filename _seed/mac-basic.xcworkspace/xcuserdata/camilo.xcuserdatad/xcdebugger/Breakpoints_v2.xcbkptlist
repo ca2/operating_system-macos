@@ -395,9 +395,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "430"
-            endingLineNumber = "430"
-            landmarkName = "ns_set_system_dark_mode()"
-            landmarkType = "9">
+            endingLineNumber = "430">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -412,7 +410,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "415"
             endingLineNumber = "415"
-            landmarkName = "ns_set_system_lite_mode()"
+            landmarkName = "ns_set_system_dark_mode()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
