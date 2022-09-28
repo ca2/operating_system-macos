@@ -18,9 +18,9 @@ namespace acme_macos
       
       
       __pointer(::acme::node) & m_pnode;
-      __pointer(class ::system) & m_psystem;
+      __pointer(class ::acme::system) & m_psystem;
 
-      quit(__pointer(::acme::node) & pnode,__pointer(class ::system) & psystem
+      quit(__pointer(::acme::node) & pnode,__pointer(class ::acme::system) & psystem
             
             ) :
       m_pnode(pnode),m_psystem(psystem)

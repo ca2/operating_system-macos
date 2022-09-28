@@ -949,16 +949,16 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 
    }
 
-   void node::acme_application_main(class ::system * psystem)
+   void node::acme_application_main(class ::acme::system * psystem)
    {
 
       auto argc = psystem->m_argc;
 
       auto argv = psystem->m_argv;
 
-      auto papp = psystem->m_pappStartup;
+      auto papp = psystem->m_pacmeapplicationStartup;
 
-      void * pApplication = (void *) (::app *) papp;
+      void * pApplication = (void *) (::acme::application *) papp;
 
       acme_macos_application_main(pApplication, argc, argv);
 
@@ -967,7 +967,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   __pointer(::element) node::create_quit_element(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem)
+   __pointer(::element) node::create_quit_element(__pointer(::acme::node) & pnode, __pointer(class ::acme::system) & psystem)
    {
       
       return __new(quit(pnode, psystem));
@@ -1013,7 +1013,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 void * get_system_mmos(void * pSystem)
 {
    
-   auto psystem = (class ::system *) pSystem;
+   auto psystem = (class ::acme::system *) pSystem;
    
    return psystem->m_pmmos;
    
@@ -1022,7 +1022,7 @@ void * get_system_mmos(void * pSystem)
 void set_system_mmos(void * pSystem, void * pmmos)
 {
    
-   auto psystem = (class ::system *) pSystem;
+   auto psystem = (class ::acme::system *) pSystem;
    
    psystem->m_pmmos = pmmos;
    

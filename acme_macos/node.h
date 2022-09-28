@@ -106,10 +106,10 @@ namespace acme_macos
       
       //void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem);
       
-      void acme_application_main(class ::system * psystem) override;
+      void acme_application_main(class ::acme::system * psystem) override;
       
       
-      __pointer(::element) create_quit_element(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;
+      __pointer(::element) create_quit_element(__pointer(::acme::node) & pnode, __pointer(class ::acme::system) & psystem) override;
   
 
 //      void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;

@@ -124,7 +124,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "233"
             endingLineNumber = "233"
-            landmarkName = "nano_message_box::display(strMessage, strTitle, emessagebox, strDetails)"
+            landmarkName = "nano_message_box::initialize_message_box(strMessage, strTitle, emessagebox, strDetails)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,8 +138,8 @@
             filePath = "../../../source/app/acme/operating_system/macos/nano/window.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "nano_window::do_synchronously()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,9 +154,199 @@
             filePath = "../../../source/app/acme/operating_system/macos/nano/window.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
             landmarkName = "nano_window::do_synchronously()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6FE9D6A7-DA28-490A-97D3-9E58B4D64CC8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/console/hello/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "implement(psystem)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5E65BF6B-96F6-42EA-BBC5-5720A8993831"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/acme/user/nano/window_implementation.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "nano_window_implementation::do_synchronously(wait)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C30F0A66-00FD-40B3-9E75-C550F5AE6C9D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/acme/user/nano/window_implementation.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "nano_window_implementation::do_synchronously(wait)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C30F0A66-00FD-40B3-9E75-C550F5AE6C9D - 6d15efc05cf48ecb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nano_window_implementation::do_synchronously(wait const&amp;)"
+                  moduleName = "libacme.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/acme/user/nano/window_implementation.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  uuid = "C30F0A66-00FD-40B3-9E75-C550F5AE6C9D - 6d15efc05cf48ecb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nano_window_implementation::do_synchronously(wait const&amp;)"
+                  moduleName = "libacme.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/acme/user/nano/window_implementation.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "310">
+               </Location>
+               <Location
+                  uuid = "C30F0A66-00FD-40B3-9E75-C550F5AE6C9D - 6d15efc05cf48e56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nano_window_implementation::do_synchronously(wait const&amp;)"
+                  moduleName = "libacme.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/acme/user/nano/window_implementation.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "392">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5CE8BF94-0780-4392-A5ED-B0A06951C539"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/acme/user/nano/window_implementation.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "nano_window_implementation::do_synchronously(wait)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5CE8BF94-0780-4392-A5ED-B0A06951C539 - 6d15efc05cf48a36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nano_window_implementation::do_synchronously(wait const&amp;)"
+                  moduleName = "libacme.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/acme/user/nano/window_implementation.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "326">
+               </Location>
+               <Location
+                  uuid = "5CE8BF94-0780-4392-A5ED-B0A06951C539 - 6d15efc05cf48a36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nano_window_implementation::do_synchronously(wait const&amp;)"
+                  moduleName = "libacme.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/acme/user/nano/window_implementation.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "356">
+               </Location>
+               <Location
+                  uuid = "5CE8BF94-0780-4392-A5ED-B0A06951C539 - 6d15efc05cf48993"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nano_window_implementation::do_synchronously(wait const&amp;)"
+                  moduleName = "libacme.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/camilo/solution/basis/source/app/acme/user/nano/window_implementation.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "169"
+                  endingLineNumber = "169"
+                  offsetFromSymbolStart = "538">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A67E518E-958C-4E9C-8D4B-238A3E7CF682"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/acme/user/nano/window_implementation.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "nano_window_implementation::do_synchronously(wait)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2167CD57-6AD9-4584-9A55-DEFC928D2090"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../source/app/acme/user/nano/window.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
+            landmarkName = "nano_window::on_left_button_up(pmouse)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

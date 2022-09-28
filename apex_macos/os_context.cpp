@@ -40,8 +40,8 @@ void ns_create_alias(const char * pszTarget, const char * pszSource);
 //::string & ns_get_default_browser_path();
 void ns_set_this_process_binary_default_browser();
 
-string apple_browse_folder(class ::system * psystem, const char * pszStartDir, bool bCanCreateDirectories);
-string_array apple_browse_file_open(class ::system * psystem, const char ** pszStartDir, bool bAllowsMultipleSelection);
+string apple_browse_folder(class ::acme::system * psystem, const char * pszStartDir, bool bCanCreateDirectories);
+string_array apple_browse_file_open(class ::acme::system * psystem, const char ** pszStartDir, bool bAllowsMultipleSelection);
 
 
 bool ns_open_url(const char * psz);
