@@ -8,12 +8,12 @@
       location = "group:../../../source/console/hello/hello.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/camilo/solution/basis/source/console/helloearth/helloearth.xcodeproj">
+      location = "group:../../../source/console/helloearth/helloearth.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/camilo/solution/basis/source/console/hellosolarsystem/hellosolarsystem.xcodeproj">
+      location = "group:../../../source/console/hellosolarsystem/hellosolarsystem.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/camilo/solution/basis/source/console/readlines/readlines.xcodeproj">
+      location = "group:../../../source/console/readlines/readlines.xcodeproj">
    </FileRef>
 </Workspace>

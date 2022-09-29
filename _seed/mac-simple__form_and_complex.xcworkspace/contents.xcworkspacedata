@@ -2,22 +2,22 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/camilo/solution/basis/source/app-simple/application/_app_simple_application.xcodeproj">
+      location = "group:../../../source/app-simple/application/__implement/_app_simple_application.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/camilo/solution/basis/source/app-simple/box/_app_simple_box.xcodeproj">
+      location = "group:../../../source/app-simple/box/__implement/_app_simple_box.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/camilo/solution/basis/source/app-simple/drawing/_app_simple_drawing.xcodeproj">
+      location = "group:../../../source/app-simple/drawing/__implement/_app_simple_drawing.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../../source/app-simple/networking_application/__implement/_app_simple_networking_application.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/camilo/solution/basis/source/app-simple/notify_drawing/_app_simple_notify_drawing.xcodeproj">
+      location = "group:../../../source/app-simple/notify_drawing/__implement/_app_simple_notify_drawing.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/camilo/solution/basis/source/app-simple/shader/_app_simple_shader.xcodeproj">
+      location = "group:../../../source/app-simple/shader/__implement/_app_simple_shader.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../../source/app-simple/form/__implement/_app_simple_form.xcodeproj">
