@@ -14,7 +14,7 @@
       location = "group:../../../source/app-cidadedecuritiba/alphaclock/__implement/_app_cidadedecuritiba_alphaclock.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/clockverse/__implement/_app_core_clockverse_no_audio.xcodeproj">
+      location = "group:../../../source/app-core/clockverse/__implement_no_audio/_app_core_clockverse_no_audio.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../../source/app-core/projection/__implement/_app_core_projection.xcodeproj">

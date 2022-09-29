@@ -27,7 +27,7 @@ namespace FileSystemEvents
       
       //auto pwatcher = (watcher *) m_pwatcher->m_pThis;
       
-      fork([&]()
+      fork([pathFolder]()
       {
 
          CFStringRef mypath = CFStringCreateWithCString(kCFAllocatorDefault, pathFolder, kCFStringEncodingUTF8);
