@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../source/app-simple/nanogui_example/_app_simple_nanogui_example.xcodeproj">
+      location = "group:../../../source/app-simple/nanogui_example/__implement/_app_simple_nanogui_example.xcodeproj">
    </FileRef>
 </Workspace>

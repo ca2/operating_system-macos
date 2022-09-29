@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../source/game/coincube/_game_coincube.xcodeproj">
+      location = "group:../../../source/game/coincube/__implement/_game_coincube.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/game/arch001/_game_arch001.xcodeproj">
+      location = "group:../../../source/game/arch001/__implement/_game_arch001.xcodeproj">
    </FileRef>
 </Workspace>

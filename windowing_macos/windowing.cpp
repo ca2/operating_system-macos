@@ -423,7 +423,7 @@ namespace windowing_macos
       
       manual_reset_event ev;
       
-      auto psequencer = puserinteractionEnablePrompt->create_message_box_sequencer("You gonna be prompted to enable Accessibility for \""+m_psystem->m_pappMain->m_strAppName+"\" to enable keyboard monitoring.",
+      auto psequencer = puserinteractionEnablePrompt->create_message_box_sequencer("You gonna be prompted to enable Accessibility for \""+m_psystem->m_pacmeapplicationMain->m_strAppName+"\" to enable keyboard monitoring.",
                                                                                    "Aura Click", e_message_box_ok);
       
       psequencer->then(

@@ -2,27 +2,27 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../source/app-core/hello_animation/_app_core_hello_animation.xcodeproj">
+      location = "group:../../../source/app-core/hello_animation/__implement/_app_core_hello_animation.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/hello_multiverse/_app_core_hello_multiverse.xcodeproj">
+      location = "group:../../../source/app-core/hello_multiverse/__implement/_app_core_hello_multiverse.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/flag/_app_core_flag.xcodeproj">
+      location = "group:../../../source/app-core/flag/__implement/_app_core_flag.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-cidadedecuritiba/alphaclock/_app_cidadedecuritiba_alphaclock.xcodeproj">
+      location = "group:../../../source/app-cidadedecuritiba/alphaclock/__implement/_app_cidadedecuritiba_alphaclock.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/clockverse/_app_core_clockverse_no_audio.xcodeproj">
+      location = "group:../../../source/app-core/clockverse/__implement/_app_core_clockverse_no_audio.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/projection/_app_core_projection.xcodeproj">
+      location = "group:../../../source/app-core/projection/__implement/_app_core_projection.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/desk/_app_core_desk.xcodeproj">
+      location = "group:../../../source/app-core/desk/__implement/_app_core_desk.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/weather/_app_core_weather.xcodeproj">
+      location = "group:../../../source/app-core/weather/__implement/_app_core_weather.xcodeproj">
    </FileRef>
 </Workspace>

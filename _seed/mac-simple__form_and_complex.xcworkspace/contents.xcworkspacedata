@@ -11,7 +11,7 @@
       location = "group:/Users/camilo/solution/basis/source/app-simple/drawing/_app_simple_drawing.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-simple/networking_application/_app_simple_networking_application.xcodeproj">
+      location = "group:../../../source/app-simple/networking_application/__implement/_app_simple_networking_application.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:/Users/camilo/solution/basis/source/app-simple/notify_drawing/_app_simple_notify_drawing.xcodeproj">
@@ -20,15 +20,15 @@
       location = "group:/Users/camilo/solution/basis/source/app-simple/shader/_app_simple_shader.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-simple/form/_app_simple_form.xcodeproj">
+      location = "group:../../../source/app-simple/form/__implement/_app_simple_form.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-complex/drawing/_app_complex_drawing.xcodeproj">
+      location = "group:../../../source/app-complex/drawing/__implement/_app_complex_drawing.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-complex/form/_app_complex_form.xcodeproj">
+      location = "group:../../../source/app-complex/form/__implement/_app_complex_form.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/game/light/_game_light.xcodeproj">
+      location = "group:../../../source/game/light/__implement/_game_light.xcodeproj">
    </FileRef>
 </Workspace>

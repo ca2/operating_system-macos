@@ -2,21 +2,21 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../source/app-core/addressbook/_app_core_addressbook.xcodeproj">
+      location = "group:../../../source/app-core/addressbook/__implement/_app_core_addressbook.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/file_manager/_app_core_file_manager.xcodeproj">
+      location = "group:../../../source/app-core/file_manager/__implement/_app_core_file_manager.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/hash_hub/_app_core_hash_hub.xcodeproj">
+      location = "group:../../../source/app-core/hash_hub/__implement/_app_core_hash_hub.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/note/_app_core_note.xcodeproj">
+      location = "group:../../../source/app-core/note/__implement/_app_core_note.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/photo/_app_core_photo.xcodeproj">
+      location = "group:../../../source/app-core/photo/__implement/_app_core_photo.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/picture/_app_core_picture.xcodeproj">
+      location = "group:../../../source/app-core/picture/__implement/_app_core_picture.xcodeproj">
    </FileRef>
 </Workspace>
