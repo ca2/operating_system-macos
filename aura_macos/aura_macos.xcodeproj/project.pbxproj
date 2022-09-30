@@ -20,7 +20,7 @@
 		9A00E61D26616CD300517464 /* libapex_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61C26616CD300517464 /* libapex_posix.dylib */; };
 		9A00E62026616D1400517464 /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61F26616D1400517464 /* libaura.dylib */; };
 		9A00E62226616D1400517464 /* libaura_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E62126616D1400517464 /* libaura_posix.dylib */; };
-		9A440A6B2654E34A000C490B /* aura_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2CFB52653DAD200CC8096 /* aura_apple.dylib */; };
+		9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */; };
 		9A5A897226D2CA88004AF957 /* shell.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A5A897026D2CA88004AF957 /* shell.h */; };
 		9A5A897326D2CA88004AF957 /* shell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A897126D2CA88004AF957 /* shell.cpp */; };
 		9A5A897526D2CC6E004AF957 /* shell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A897426D2CC6E004AF957 /* shell.mm */; };
@@ -169,7 +169,7 @@
 				9A5A897726D304B4004AF957 /* UniformTypeIdentifiers.framework in Frameworks */,
 				9A5FE2062689E57A003682E6 /* libapex_macos.dylib in Frameworks */,
 				9A00E62026616D1400517464 /* libaura.dylib in Frameworks */,
-				9A440A6B2654E34A000C490B /* aura_apple.dylib in Frameworks */,
+				9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */,
 				9A00E62226616D1400517464 /* libaura_posix.dylib in Frameworks */,
 				9A00E61B26616CD300517464 /* libapex.dylib in Frameworks */,
 				9A00E61526616CB800517464 /* libapex_apple.dylib in Frameworks */,
@@ -235,7 +235,7 @@
 		9AC2CFB12653DAD200CC8096 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9AC2CFB52653DAD200CC8096 /* aura_apple.dylib */,
+				9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */,
 				9A750DDB282B49AE00C4861B /* ios_aura_apple.a */,
 			);
 			name = Products;
@@ -421,10 +421,9 @@
 			remoteRef = 9A750DDA282B49AE00C4861B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9AC2CFB52653DAD200CC8096 /* aura_apple.dylib */ = {
+		9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			name = aura_apple.dylib;
 			path = libaura_apple.dylib;
 			remoteRef = 9AC2CFB42653DAD200CC8096 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -632,7 +631,9 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = L8N5V6TZE5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				EXECUTABLE_EXTENSION = dylib;
@@ -725,8 +726,10 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = L8N5V6TZE5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_EXTENSION = dylib;

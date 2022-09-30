@@ -36,7 +36,7 @@
 		9A7ECAC32651963500D5BA45 /* acme_path.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A7ECABF2651963500D5BA45 /* acme_path.h */; };
 		9A92314C27EAE30D00B5A78D /* acme_directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A92314A27EAE30D00B5A78D /* acme_directory.cpp */; };
 		9A92314D27EAE30D00B5A78D /* acme_directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A92314B27EAE30D00B5A78D /* acme_directory.h */; };
-		9ABC54B426DAEA9F00718C0D /* acme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5DC264B54CB0080670E /* acme_apple.dylib */; };
+		9ABC54B426DAEA9F00718C0D /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5DC264B54CB0080670E /* libacme_apple.dylib */; };
 		9AC2CB3D26531C6200CC8096 /* list_serial_ports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */; };
 		9AC2D05A2653EBF000CC8096 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2D0582653EBF000CC8096 /* IOKit.framework */; };
 		9AE382A228B16D59007EA867 /* quit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE382A028B16D59007EA867 /* quit.h */; };
@@ -118,7 +118,7 @@
 				9AC2D05A2653EBF000CC8096 /* IOKit.framework in Frameworks */,
 				9A412456266C40A400C3FF0E /* libacme.dylib in Frameworks */,
 				9A412457266C40AE00C3FF0E /* libacme_posix.dylib in Frameworks */,
-				9ABC54B426DAEA9F00718C0D /* acme_apple.dylib in Frameworks */,
+				9ABC54B426DAEA9F00718C0D /* libacme_apple.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +182,7 @@
 		9A15A5D7264B54CA0080670E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A15A5DC264B54CB0080670E /* acme_apple.dylib */,
+				9A15A5DC264B54CB0080670E /* libacme_apple.dylib */,
 				9A750EFE282B6F5C00C4861B /* ios_acme_apple.a */,
 			);
 			name = Products;
@@ -282,10 +282,9 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		9A15A5DC264B54CB0080670E /* acme_apple.dylib */ = {
+		9A15A5DC264B54CB0080670E /* libacme_apple.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			name = acme_apple.dylib;
 			path = libacme_apple.dylib;
 			remoteRef = 9A15A5DB264B54CB0080670E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -368,8 +367,10 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = L8N5V6TZE5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
@@ -458,8 +459,10 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = L8N5V6TZE5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

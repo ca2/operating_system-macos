@@ -50,6 +50,8 @@ namespace node_macos
 //
 //
 
+      void acme_application_main(class ::acme::system * psystem) override;
+
    };
 
 

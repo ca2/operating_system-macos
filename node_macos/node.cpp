@@ -10,6 +10,7 @@
 //#include "mouse_hook.h"
 
 
+void windowing_macos_application_main(void * pApplication, int argc, char *argv[]);
 
 namespace node_macos
 {
@@ -278,6 +279,23 @@ namespace node_macos
 //   }
 
 
+
+void node::acme_application_main(class ::acme::system * psystem)
+{
+
+   auto argc = psystem->m_argc;
+
+   auto argv = psystem->m_argv;
+
+   auto papp = psystem->m_pacmeapplicationStartup;
+
+   void * pApplication = (void *) (::acme::application *) papp;
+
+   windowing_macos_application_main(pApplication, argc, argv);
+
+   //return psystem->m_estatus;
+
+}
 } // namespace node_macos
 
 

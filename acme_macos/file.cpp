@@ -184,8 +184,12 @@ namespace acme_macos
 
       if(hFile == hFileNull)
       {
+         
+         int iErrNo = errno;
+         
+         auto errorcode = __errno(iErrNo);
 
-         m_estatus = errno_to_status(errno);
+         m_estatus = errno_to_status(iErrNo);
          
          if(!(eopen & ::file::e_open_no_exception_on_open))
          {
@@ -203,7 +207,7 @@ namespace acme_macos
 //            estatus = ::get_last_status();
 
 //            return estatus;
-            throw ::exception(m_estatus);
+            throw ::file::exception(m_estatus, errorcode, m_path, "!open");
 
 //         }
          }
@@ -287,14 +291,18 @@ namespace acme_macos
          if(iRead < 0)
          {
 
-            i32 iError = errno;
+            i32 iErrNo = errno;
+            
+            auto errorcode = __errno(iErrNo);
 
-            if(iError == EAGAIN)
+            auto estatus = errno_to_status(iErrNo);
+
+            if(iErrNo == EAGAIN)
             {
 
             }
-
-            throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
+            
+            throw ::file::exception(estatus, errorcode, m_path, "::read < 0");
 
          }
          else if(iRead == 0)
@@ -356,7 +364,13 @@ namespace acme_macos
          if(iWrite < 0)
          {
             
-            throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
+            i32 iErrNo = errno;
+            
+            auto errorcode = __errno(iErrNo);
+
+            auto estatus = errno_to_status(iErrNo);
+            
+            throw ::file::exception(estatus, errorcode, m_path, "::write < 0");
             
          }
          
@@ -375,7 +389,13 @@ namespace acme_macos
       if(m_iFile == (::u32)hFileNull)
       {
          
-         throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
+         i32 iErrNo = errno;
+         
+         auto errorcode = __errno(iErrNo);
+
+         auto estatus = errno_to_status(iErrNo);
+         
+         throw ::file::exception(estatus, errorcode, m_path, "m_iFile == hFileNull");
          
       }
 
@@ -391,10 +411,17 @@ namespace acme_macos
 
       filesize posNew = ::lseek(m_iFile, lLoOffset, (::u32)nFrom);
 
-      if(posNew  == (filesize)-1)
+      if(posNew < 0)
       {
          
-         throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
+         
+         i32 iErrNo = errno;
+         
+         auto errorcode = __errno(iErrNo);
+
+         auto estatus = errno_to_status(iErrNo);
+
+         throw ::file::exception(estatus, errorcode, m_path, "lseek < 0");
          
       }
 
@@ -414,10 +441,16 @@ namespace acme_macos
 
       filesize pos = ::lseek(m_iFile, lLoOffset, SEEK_CUR);
 
-      if(pos  == (filesize)-1)
+      if(pos < 0)
       {
          
-         throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
+         i32 iErrNo = errno;
+         
+         auto errorcode = __errno(iErrNo);
+
+         auto estatus = errno_to_status(iErrNo);
+         
+         throw ::file::exception(estatus, errorcode, m_path, "lseek < 0");
          
       }
 
@@ -455,7 +488,13 @@ namespace acme_macos
       if (bError)
       {
          
-         throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
+         i32 iErrNo = errno;
+         
+         auto errorcode = __errno(iErrNo);
+
+         auto estatus = errno_to_status(iErrNo);
+         
+         throw ::file::exception(estatus, errorcode, m_path, "close != 0");
          
       }
       
@@ -489,10 +528,18 @@ namespace acme_macos
 
       ASSERT(m_iFile != (::u32)hFileNull);
 
-      if (::ftruncate(m_iFile, dwNewLen) == -1)
+      int iFtruncateResult = ::ftruncate(m_iFile, dwNewLen);
+      
+      if(iFtruncateResult != 0)
       {
          
-         throw ::file::exception(errno_to_status(errno), -1, errno,m_path);
+         i32 iErrNo = errno;
+         
+         auto errorcode = __errno(iErrNo);
+
+         auto estatus = errno_to_status(iErrNo);
+
+         throw ::file::exception(estatus, errorcode, m_path, "ftruncate != 0");
          
       }
       

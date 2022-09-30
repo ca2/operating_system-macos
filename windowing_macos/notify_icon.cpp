@@ -135,7 +135,7 @@ namespace windowing_macos
 
       auto pcontext = m_pcontext->m_papexcontext;
 
-      auto memoryIconImage = pcontext->file().as_memory("matter://main/menubar-icon-22.png");
+      auto memoryIconImage = pcontext->file().safe_get_memory("matter://main/menubar-icon-22.png");
       
       
       //auto pimage = m_psystem->context_image()->get_image(pathFile);

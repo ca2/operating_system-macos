@@ -604,7 +604,7 @@ void ns_create_main_menu(menu_shared * pmenushared)
    ns_main_async(^{
    id menuMain = [NSMenu alloc];
    
-   macos_app * papp = (macos_app *) [[NSApplication sharedApplication] delegate ];
+   macOSApp * papp = (macOSApp *) [[NSApplication sharedApplication] delegate ];
    
    {
       
@@ -1075,4 +1075,38 @@ void ns_create_main_menu()
 //} // namespace user
 
 
+
+
+
+//void windowing_macos_application_main(void * pApplication, int argc, char *argv[])
+//{
+//
+//   NSApplication * application = [NSApplication sharedApplication];
+//
+//   macos_app * appDelegate = [[macos_app alloc] init];
+//
+//   appDelegate->m_pApp = pApplication;
+//
+//   [application setDelegate:appDelegate];
+//
+//   [appDelegate fetch_dark_mode];
+//
+//   //[m_statusitem setEnabled:YES];
+//
+//   [NSApplication sharedApplication];
+//
+//   bool bNoDock = argcargv_contains_parameter(argc, argv, "no_dock");
+////
+////   if(bNoDock)
+////   {
+////
+////      nsapp_activation_policy_accessory();
+////
+////   }
+//
+//   [NSApp activateIgnoringOtherApps:YES];
+//
+//   [NSApp run];
+//
+//}
 
