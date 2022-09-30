@@ -604,7 +604,7 @@ void ns_create_main_menu(menu_shared * pmenushared)
    ns_main_async(^{
    id menuMain = [NSMenu alloc];
    
-   macOSApp * papp = (macOSApp *) [[NSApplication sharedApplication] delegate ];
+   macos_app * papp = (macos_app *) [[NSApplication sharedApplication] delegate ];
    
    {
       

@@ -108,4 +108,6 @@
 @property(strong) NSWindowController *m_pwindowcontroller;
 - (void)play:(id)sender;
 -(void)fetch_dark_mode;
+- (void) ns_add_menu :(NSMenu *) menuParent withParent: (const char *) pszParent  withSharedMenu : (menu_shared *) pmenushared;
+
 @end
