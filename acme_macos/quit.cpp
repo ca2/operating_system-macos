@@ -24,9 +24,9 @@ namespace acme_macos
 
       pthread_join(htaskSystem, nullptr);
     
-      m_pnode.release();
-    
-      m_psystem.release();
+//      m_pnode.release();
+//    
+//      m_psystem.release();
 
       ns_app_terminate();
 
