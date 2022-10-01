@@ -5,6 +5,8 @@
 #include "acme_directory.h"
 #include "acme_file.h"
 #include "acme_path.h"
+#include <libunwind.h>
+//#include "address_to_line.h"
 #include "acme_posix/pipe.h"
 ////#include "copydesk.h"
 ////#include "file_os_watcher.h"
@@ -51,6 +53,9 @@ __FACTORY_EXPORT void acme_macos_factory(::factory::factory * pfactory)
 
    
    pfactory->add_factory_item < ::acme_macos::node, ::acme::node > ();
+   
+   
+   //pfactory->add_factory_item < ::acme_macos::address_to_line, ::acme_posix::address_to_line > ();
 
    //create_factory < ::macos::os_context         , ::os_context       > ();
    //create_factory < ::apple::process            , ::process::process > ();
