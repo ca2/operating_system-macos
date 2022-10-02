@@ -25,7 +25,7 @@
 
 #define PLATFORM_COMMON_NAMESPACE apple
 
-#define PLATFORM_STRING "linux"
+#define PLATFORM_STRING "macos"
 
 #define PLATFORM_COMMON_STRING "apple"
 
