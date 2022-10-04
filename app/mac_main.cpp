@@ -2,8 +2,8 @@
 //  main.m
 //  app
 //
-//  Created by Camilo Sasuke Tsumanuma on 1/19/13.
-//  Copyright (c) 2013 Camilo Sasuke Tsumanuma. All rights reserved.
+//  Created by Camilo Sasuke Thomas Borregaard Sørensen on 1/19/13.
+//  Copyright (c) 2013 Camilo Sasuke Thomas Borregaard Sørensen. All rights reserved.
 //
 
 #include "app.h"

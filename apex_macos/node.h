@@ -4,7 +4,7 @@
 //
 // Created by camilo on 19/01/2021. <3-<3ThomasBS!!
 //
-//  Created by Camilo Sasuke Tsumanuma on 2021-05-14 02:20 PM BRT <3ThomasBorregaardSørensen!!
+//  Created by Camilo Sasuke Thomas Borregaard Sørensen on 2021-05-14 02:20 PM BRT <3ThomasBorregaardSørensen!!
 //
 #pragma once
 

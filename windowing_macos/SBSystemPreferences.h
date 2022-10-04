@@ -2,8 +2,8 @@
 //  SBSystemPreferences.h
 //  app_core_auratype
 //
-//  Created by Camilo Sasuke Tsumanuma on 3/17/16.
-//  Copyright © 2016 Camilo Sasuke Tsumanuma. All rights reserved.
+//  Created by Camilo Sasuke Thomas Borregaard Sørensen on 3/17/16.
+//  Copyright © 2016 Camilo Sasuke Thomas Borregaard Sørensen. All rights reserved.
 //
 /*
  * SBSystemPreferences.h

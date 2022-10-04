@@ -2,7 +2,7 @@
 //  RoundWindowController.h
 //  base
 //
-//  Created by Camilo Sasuke Tsumanuma on 18/11/16.
+//  Created by Camilo Sasuke Thomas Borregaard Sørensen on 18/11/16.
 //
 //
 
