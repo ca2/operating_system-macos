@@ -65,17 +65,17 @@ namespace windowing_macos
 } // namespace windowing_macos
 
 
-void ns_main_monitor_cgrect(CGRect * p);
+// void ns_main_monitor_cgrect(CGRect * p);
 
-int get_main_screen_rectangle(RECTANGLE_I32 * pr)
-{
+// int get_main_screen_rectangle(RECTANGLE_I32 * pr)
+// {
    
-   CGRect r;
+//    CGRect r;
    
-   ns_main_monitor_cgrect(&r);
+//    ns_main_monitor_cgrect(&r);
    
-   __copy(pr, r);
+//    __copy(pr, r);
    
-   return true;
+//    return true;
    
-}
+// }

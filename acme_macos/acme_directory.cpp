@@ -150,11 +150,12 @@ namespace acme_macos
 
       path.find_replace(":", "");
 
-      ::str().ends_eat_ci(path, ".exe");
+      path.ends_eat_ci(".exe");
 
       return path;
 
    }
+
 
    #ifdef _UWP
 
@@ -173,7 +174,7 @@ namespace acme_macos
    ::file::path acme_directory::app_relative()
    {
 
-      ::file::path path = m_psystem->m_pacmefile->module();
+      ::file::path path = acmefile()->module();
 
       path = relative(path);
 
@@ -235,7 +236,7 @@ namespace acme_macos
 
    #else
 
-      return m_psystem->m_pacmefile->module().folder(4);
+      return acmefile()->module().folder(4);
 
    #endif
 
@@ -265,7 +266,7 @@ namespace acme_macos
 
    #else
 
-      return m_psystem->m_pacmefile->module().folder(4);
+      return acmefile()->module().folder(4);
 
    #endif
 
@@ -297,7 +298,7 @@ namespace acme_macos
 
    #elif defined(__APPLE__)
 
-      return m_psystem->m_pacmefile->module().folder(3);
+      return acmefile()->module().folder(3);
 
    #else
 
@@ -407,7 +408,7 @@ namespace acme_macos
    ::file::path acme_directory::stage(string strAppId, string strPlatform, string strConfiguration)
    {
 
-      return inplace_install(strAppId, strPlatform, strConfiguration) / "time" / time_binary_platform(strPlatform) / strConfiguration;
+      return inplace_install(strAppId, strPlatform, strConfiguration) / "time" / acmenode()->time_binary_platform(strPlatform) / strConfiguration;
 
    }
 

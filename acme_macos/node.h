@@ -8,6 +8,7 @@
 #pragma once
 
 
+#include "acme/parallelization/manual_reset_event.h"
 #include "acme_apple/node.h"
 
 
@@ -27,7 +28,7 @@ namespace acme_macos
       //gpointer m_pGtkSettingsDefault;
       string m_strTheme;
 
-      __pointer(manual_reset_event) m_peventReadyToTerminateApp;
+      ::pointer < manual_reset_event > m_peventReadyToTerminateApp;
 
       node();
       ~node() override;
@@ -37,7 +38,7 @@ namespace acme_macos
       
       
       void call_async(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, bool bPrivileged, unsigned int * puiPid = nullptr) override;
-      void call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const ::duration & durationTimeout, ::property_set & set) override;
+      void call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const class ::time & durationTimeout, ::property_set & set, ::i32 * piExitCode) override;
 
       //virtual ::color::color get_system_color(enum_system_color esystemcolor) override;
       
@@ -50,15 +51,10 @@ namespace acme_macos
 
       //override;
 
-      void initialize(::object * pobject) override;
+      void initialize(::particle * pparticle) override;
       
       void node_quit() override;
       
-//      void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;
-//
-
-
-
       void install_sigchld_handler() override;
 
       void _launch_macos_app(const ::string & pszAppFolder) override;
@@ -76,9 +72,9 @@ namespace acme_macos
 
       bool load_modules_diff(string_array& straOld, string_array& straNew, const ::string & pszExceptDir) override;
 
-      id_array get_pids() override;
+      atom_array get_pids() override;
       
-      id_array module_path_get_pid(const ::string & pszModulePath, bool bModuleNameIsPropertyFormatted = false) override;
+      atom_array module_path_get_pid(const ::string & pszModulePath, bool bModuleNameIsPropertyFormatted = false) override;
       
       string module_path_from_pid(u32 pid) override;
       
@@ -109,7 +105,7 @@ namespace acme_macos
       void acme_application_main(class ::acme::system * psystem) override;
       
       
-      __pointer(::element) create_quit_element(__pointer(::acme::node) & pnode, __pointer(class ::acme::system) & psystem) override;
+      ::pointer < ::particle > create_quit_particle(::pointer < ::acme::node > & pnode, ::pointer < ::acme::system > & psystem) override;
   
 
 //      void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;

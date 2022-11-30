@@ -6,7 +6,12 @@
 //
 #include "framework.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
+#include "acme/platform/system.h"
 #include <spawn.h>
+
+
+string_array get_c_args_for_c(const char * psz);
+
 
 namespace acme_macos
 {
@@ -21,10 +26,6 @@ namespace acme_macos
          
       }
       
-      auto psystem = m_psystem;
-      
-      auto pacmedirectory = psystem->m_pacmedirectory;
-      
       string strParams;
       
       string strCommand(pszCommand);
@@ -33,7 +34,7 @@ namespace acme_macos
       
       strParams.format("-c \"screen -d -m %s\"", strCommand.c_str());
       
-      /*auto estatus = */ call_async("/bin/bash", strParams, pacmedirectory->home(), e_display_none, false);
+      /*auto estatus = */ call_async("/bin/bash", strParams, acmedirectory()->home(), e_display_none, false);
       
 //         if(!estatus)
 //         {
@@ -70,7 +71,7 @@ namespace acme_macos
 
       argv[argc] = nullptr;
       
-      auto envp = m_psystem->m_envp;
+      auto envp = acmesystem()->m_psubsystem->m_envp;
 
       pid_t pid = 0;
 

@@ -3,6 +3,12 @@
 //
 #include "framework.h"
 #include "quit.h"
+#include "acme/exception/interface_only.h"
+#include "acme/platform/system.h"
+
+
+#include <unistd.h>
+#include <signal.h>
 
 
 void ns_launch_app(const char * psz, const char
@@ -99,7 +105,7 @@ unsigned int * puiPid)
 }
 
 
-void node::call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const ::duration & durationTimeout, ::property_set & set)
+void node::call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const class ::time & timeTimeout, ::property_set & set, ::i32 * piExitCode)
 {
 
    string strCmdLine;
@@ -269,10 +275,10 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 //      }
 
 
-   void node::initialize(::object * pobject)
+   void node::initialize(::particle * pparticle)
    {
 
-      ::acme::node::initialize(pobject);
+      ::acme_apple::node::initialize(pparticle);
       
 //         auto estatus = ::acme::node::initialize(pobject);
 //
@@ -627,7 +633,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 
       //m_psystem->windowing_post_quit();
       
-      main_asynchronous(m_pelementQuit);
+      main_asynchronous(m_pparticleQuit);
 //           {
 //         
 //         m_pelementQuit
@@ -952,9 +958,9 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    void node::acme_application_main(class ::acme::system * psystem)
    {
 
-      auto argc = psystem->m_argc;
+      auto argc = psystem->m_psubsystem->m_argc;
 
-      auto argv = psystem->m_argv;
+      auto argv = psystem->m_psubsystem->m_argv;
 
       auto papp = psystem->m_pacmeapplicationStartup;
 
@@ -967,7 +973,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   __pointer(::element) node::create_quit_element(__pointer(::acme::node) & pnode, __pointer(class ::acme::system) & psystem)
+   ::pointer < ::particle > node::create_quit_particle(::pointer < ::acme::node > & pnode, ::pointer < ::acme::system > & psystem)
    {
       
       return __new(quit(pnode, psystem));
@@ -978,7 +984,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    void node::_will_finish_launching()
    {
       
-      auto psystem = m_psystem;
+      auto psystem = acmesystem();
       
       if(::is_null(psystem->m_htask))
       {
@@ -1000,7 +1006,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
          
       }
       
-      m_psystem->post_initial_request();
+      psystem->post_initial_request();
 
       //return ::success;
       

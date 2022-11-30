@@ -78,12 +78,10 @@ typedef struct gdi_object * HGDIOBJ;
 // #endif
 
 
-#if defined(__MM) || defined(__M)
-
+#ifdef __OBJC__
 
 #include <Foundation/Foundation.h>
 #include <Cocoa/Cocoa.h>
-
 
 #endif
 

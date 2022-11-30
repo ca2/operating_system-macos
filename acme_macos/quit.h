@@ -12,26 +12,27 @@ namespace acme_macos
 
    
    class CLASS_DECL_ACME_MACOS quit :
-      virtual public ::element
+      virtual public ::particle
    {
    public:
       
       
-      __pointer(::acme::node) & m_pnode;
-      __pointer(class ::acme::system) & m_psystem;
+      ::pointer < ::acme::node > & m_pnode;
+      ::pointer < ::acme::system > & m_psystem;
 
-      quit(__pointer(::acme::node) & pnode,__pointer(class ::acme::system) & psystem
-            
-            ) :
+      quit(::pointer < ::acme::node > & pnode, ::pointer < ::acme::system > & psystem) :
       m_pnode(pnode),m_psystem(psystem)
       {
 
       }
-      
       
       void run() override;
       
    
    };
 
+
 } // namespace acme_macos
+
+
+

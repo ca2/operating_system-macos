@@ -1,9 +1,11 @@
 #include "framework.h"
+#include "acme/filesystem/file/exception.h"
+#include "acme/filesystem/file/status.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
 
 #include <fcntl.h>
 
-
+#include <unistd.h>
 #include <dlfcn.h>
 #include <sys/stat.h>
 
@@ -89,7 +91,7 @@ namespace acme_macos
    }
 
 
-   void file::open(const ::file::path & lpszFileName, const ::file::e_open & efileopenParam)
+   void file::open(const ::file::path & path, const ::file::e_open & efileopenParam)
    {
       
       ::file::e_open eopen(efileopenParam);
@@ -103,14 +105,14 @@ namespace acme_macos
 
       ASSERT_VALID(this);
       
-      ASSERT(__is_valid_string(lpszFileName));
+      //ASSERT(__is_valid_string(lpszFileName));
 
       //eopen -= ::file::e_open_binary;
 
       if ((eopen & ::file::e_open_defer_create_directory) && (eopen & ::file::e_open_write))
       {
          
-         m_psystem->m_pacmedirectory->create(file_path_folder(lpszFileName));
+         acmedirectory()->create(path.folder());
          
       }
 
@@ -118,7 +120,7 @@ namespace acme_macos
       
       m_path.Empty();
 
-      m_path     = lpszFileName;
+      m_path     = path;
 
       ASSERT(::file::e_open_share_compat == 0);
 
@@ -187,9 +189,9 @@ namespace acme_macos
          
          int iErrNo = errno;
          
-         auto errorcode = __errno(iErrNo);
+         auto errorcode = errno_error_code(iErrNo);
 
-         m_estatus = errno_to_status(iErrNo);
+         m_estatus = errno_status(iErrNo);
          
          if(!(eopen & ::file::e_open_no_exception_on_open))
          {
@@ -224,7 +226,7 @@ namespace acme_macos
       
       m_eopen = eopen;
       
-      set_ok();
+      set_ok_flag();
       
       m_estatus = ::success;
 
@@ -293,9 +295,9 @@ namespace acme_macos
 
             i32 iErrNo = errno;
             
-            auto errorcode = __errno(iErrNo);
+            auto errorcode = errno_error_code(iErrNo);
 
-            auto estatus = errno_to_status(iErrNo);
+            auto estatus = errno_status(iErrNo);
 
             if(iErrNo == EAGAIN)
             {
@@ -366,9 +368,9 @@ namespace acme_macos
             
             i32 iErrNo = errno;
             
-            auto errorcode = __errno(iErrNo);
+            auto errorcode = errno_error_code(iErrNo);
 
-            auto estatus = errno_to_status(iErrNo);
+            auto estatus = errno_status(iErrNo);
             
             throw ::file::exception(estatus, errorcode, m_path, "::write < 0");
             
@@ -391,9 +393,9 @@ namespace acme_macos
          
          i32 iErrNo = errno;
          
-         auto errorcode = __errno(iErrNo);
+         auto errorcode = errno_error_code(iErrNo);
 
-         auto estatus = errno_to_status(iErrNo);
+         auto estatus = errno_status(iErrNo);
          
          throw ::file::exception(estatus, errorcode, m_path, "m_iFile == hFileNull");
          
@@ -417,9 +419,9 @@ namespace acme_macos
          
          i32 iErrNo = errno;
          
-         auto errorcode = __errno(iErrNo);
+         auto errorcode = errno_error_code(iErrNo);
 
-         auto estatus = errno_to_status(iErrNo);
+         auto estatus = errno_status(iErrNo);
 
          throw ::file::exception(estatus, errorcode, m_path, "lseek < 0");
          
@@ -446,9 +448,9 @@ namespace acme_macos
          
          i32 iErrNo = errno;
          
-         auto errorcode = __errno(iErrNo);
+         auto errorcode = errno_error_code(iErrNo);
 
-         auto estatus = errno_to_status(iErrNo);
+         auto estatus = errno_status(iErrNo);
          
          throw ::file::exception(estatus, errorcode, m_path, "lseek < 0");
          
@@ -490,9 +492,9 @@ namespace acme_macos
          
          i32 iErrNo = errno;
          
-         auto errorcode = __errno(iErrNo);
+         auto errorcode = errno_error_code(iErrNo);
 
-         auto estatus = errno_to_status(iErrNo);
+         auto estatus = errno_status(iErrNo);
          
          throw ::file::exception(estatus, errorcode, m_path, "close != 0");
          
@@ -535,9 +537,9 @@ namespace acme_macos
          
          i32 iErrNo = errno;
          
-         auto errorcode = __errno(iErrNo);
+         auto errorcode = errno_error_code(iErrNo);
 
-         auto estatus = errno_to_status(iErrNo);
+         auto estatus = errno_status(iErrNo);
 
          throw ::file::exception(estatus, errorcode, m_path, "ftruncate != 0");
          
@@ -572,24 +574,24 @@ namespace acme_macos
    }
 
 
-   void file::assert_ok() const
-   {
-
-      ::file::file::assert_ok();
-
-   }
-
-
-   void file::dump(dump_context & dumpcontext) const
-   {
-
-      ::file::file::dump(dumpcontext);
-
-      dumpcontext << "with handle " << (::u32)m_iFile;
-      dumpcontext << " and name \"" << m_path << "\"";
-      dumpcontext << "\n";
-
-   }
+//   void file::assert_ok() const
+//   {
+//
+//      ::file::file::assert_ok();
+//
+//   }
+//
+//
+//   void file::dump(dump_context & dumpcontext) const
+//   {
+//
+//      ::file::file::dump(dumpcontext);
+//
+//      dumpcontext << "with handle " << (::u32)m_iFile;
+//      dumpcontext << " and name \"" << m_path << "\"";
+//      dumpcontext << "\n";
+//
+//   }
 
 
 //   static const char * rgszFileExceptionCause[] =

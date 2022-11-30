@@ -10,8 +10,10 @@
 #include "acme_file.h"
 
 
+#include <unistd.h>
 #include <sys/stat.h>
-//#include <utime.h>
+#include <fcntl.h>
+
 
 string apple_app_module_path();
 

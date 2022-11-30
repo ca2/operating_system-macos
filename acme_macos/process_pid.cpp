@@ -100,10 +100,10 @@ namespace acme_macos
 {
 
 
-   id_array node::get_pids()
+   ::atom_array node::get_pids()
    {
 
-      id_array pids;
+      ::atom_array pids;
 
       array < pid_t > pida;
 
@@ -271,12 +271,12 @@ namespace acme_macos
     *
     *************************************************************************/
    /*=======================================================================*/
-id_array node::module_path_get_pid(const ::string & pszModulePath
+   ::atom_array node::module_path_get_pid(const ::string & pszModulePath
                                        , bool bModuleNameIsPropertyFormatted)
    {
       /*=======================================================================*/
    
-   id_array ida;
+      ::atom_array ida;
 
       struct kinfo_proc *sProcesses = nullptr, *sNewProcesses;
       int    aiNames[4];
@@ -325,8 +325,10 @@ id_array node::module_path_get_pid(const ::string & pszModulePath
        * Search for the given process name and return its pid.
        */
    
-   string strName = ::file::path(pszModulePath).name();
-   id_array ida2;
+      string strName = ::file::path(pszModulePath).name();
+      
+      ::atom_array ida2;
+      
       for (i = 0; i < iNumProcs; i++)
       {
          auto processPath = sProcesses[i].kp_proc.p_comm;
