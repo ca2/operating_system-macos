@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "acme/filesystem/file/file.h"
+
+
 class FileException;
 struct FileStatus;
 
@@ -44,7 +47,7 @@ namespace acme_macos
 
       filesize translate(filesize offset, ::enum_seek nFrom)override;
       void set_size(filesize dwNewLen)override;
-      filesize get_size() const override;
+      filesize size() const override;
 
       memsize read(void * lpBuf, memsize nCount)override;
       void write(const void * lpBuf, memsize nCount)override;
