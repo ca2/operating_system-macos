@@ -870,7 +870,7 @@ namespace apex_macos
 //
 //   bool dir_context::is_inside(const char * pszDir, const char * pszPath)
 //   {
-//      return ::str::begins_ci(pszDir, pszPath);
+//      return ::str::case_insensitive_begins(pszDir, pszPath);
 //   }
 //
 
@@ -1441,7 +1441,7 @@ namespace apex_macos
    bool dir_context::is_inside(const ::file::path & pszDir, const ::file::path & pszPath)
    {
 
-      return ::str().begins_ci(pszDir, pszPath);
+      return ::str().case_insensitive_begins(pszDir, pszPath);
 
    }
 

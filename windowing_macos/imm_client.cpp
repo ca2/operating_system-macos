@@ -102,7 +102,7 @@ void imm_client::_011OnChar(::message::message * pmessage)
 
       strChar = wsz;
 
-      //if (!::str::begins_eat_ci(m_strImeComposition, strChar))
+      //if (!::str::case_insensitive_begins_eat(m_strImeComposition, strChar))
       //{
 
       m_puserinteraction->insert_text(strChar, false, e_source_user);

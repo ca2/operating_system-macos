@@ -59,7 +59,7 @@ namespace apex_macos
 //
 //      strPath = psz;
 //
-//      ::str::begins_eat_ci(strPath, "file://");
+//      ::str::case_insensitive_begins_eat(strPath, "file://");
 //
 //      free(psz);
 //
@@ -945,7 +945,7 @@ namespace apex_macos
 
       }
 
-      if(strApp.begins_ci("/Applications/"))
+      if(strApp.case_insensitive_begins("/Applications/"))
       {
 
          return strApp;
@@ -971,7 +971,7 @@ namespace apex_macos
 
       strAppReturn = "/Applications/" + strAppReturn;
 
-      if(!strAppReturn.ends_ci(".app"))
+      if(!strAppReturn.case_insensitive_ends(".app"))
       {
 
          strAppReturn += ".app";
@@ -991,7 +991,7 @@ namespace apex_macos
 
       strAppReturn = "/Applications/" + strAppReturn;
 
-      if(!strAppReturn.ends_ci(".app"))
+      if(!strAppReturn.case_insensitive_ends(".app"))
       {
 
          strAppReturn += ".app";

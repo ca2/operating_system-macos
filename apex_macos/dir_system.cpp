@@ -73,7 +73,7 @@ namespace apex_macos
       
 //      auto pathCa2 = pathModule - 2;
 //
-//      ::str::ends_eat_ci(pathCa2, ".app");
+//      ::str::case_insensitive_ends_eat(pathCa2, ".app");
 //
 //      m_pathCa2 = pathCa2;
       

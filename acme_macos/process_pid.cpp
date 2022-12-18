@@ -111,7 +111,7 @@ namespace acme_macos
 
       pida.set_size(numberOfProcesses);
 
-      proc_listpids(PROC_ALL_PIDS, 0, pida.get_data(), (int) (pida.get_size()));
+      proc_listpids(PROC_ALL_PIDS, 0, pida.data(), (int) (pida.get_size()));
 
       for(auto pid : pida)
       {

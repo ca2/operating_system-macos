@@ -150,7 +150,7 @@ namespace acme_macos
 
       path.find_replace(":", "");
 
-      path.ends_eat_ci(".exe");
+      path.case_insensitive_ends_eat(".exe");
 
       return path;
 
