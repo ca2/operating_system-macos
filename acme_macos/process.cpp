@@ -10,7 +10,7 @@
 #include <spawn.h>
 
 
-string_array get_c_args_for_c(const char * psz);
+string_array get_c_args_for_c(const ::scoped_string & scopedstr);
 
 
 namespace acme_macos
