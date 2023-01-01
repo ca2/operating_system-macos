@@ -277,7 +277,7 @@ namespace acme_macos
    ::file::path acme_directory::install()
    {
 
-      if (m_pathInstallFolder == nullptr || m_pathInstallFolder.is_empty())
+      if (m_pathInstallFolder.is_empty())
       {
 
          return default_install();

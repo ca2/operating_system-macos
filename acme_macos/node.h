@@ -34,7 +34,7 @@ namespace acme_macos
       ~node() override;
 
       
-      ::string get_file_type_identifier(const char * path) override;
+      ::string get_file_type_identifier(const ::file::path & path) override;
       
       
       void call_async(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, bool bPrivileged, unsigned int * puiPid = nullptr) override;

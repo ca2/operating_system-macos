@@ -47,7 +47,7 @@ namespace acme_macos
    }
 
 
-   void acme_file::touch(const char* path)
+   void acme_file::touch(const ::file::path & path)
    {
 
       ::e_status estatus = ::success;

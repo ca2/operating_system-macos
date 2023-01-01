@@ -118,7 +118,7 @@ namespace acme_macos
 
       m_iFile = (::u32)hFileNull;
       
-      m_path.Empty();
+      m_path.empty();
 
       m_path     = path;
 
@@ -385,7 +385,7 @@ namespace acme_macos
    }
 
 
-   filesize file::translate(filesize offset, ::enum_seek nFrom)
+   void file::translate(filesize offset, ::enum_seek nFrom)
    {
 
       if(m_iFile == (::u32)hFileNull)
@@ -427,7 +427,7 @@ namespace acme_macos
          
       }
 
-      return posNew;
+      //return posNew;
       
    }
 
@@ -485,7 +485,7 @@ namespace acme_macos
 
       m_iFile = (::u32) hFileNull;
       
-      m_path.Empty();
+      m_path.empty();
 
       if (bError)
       {
@@ -548,7 +548,7 @@ namespace acme_macos
    }
 
 
-   filesize file::get_size() const
+   filesize file::size() const
    {
 
       ASSERT_VALID(this);
@@ -558,18 +558,15 @@ namespace acme_macos
       // seek is a non const operation
       file * pFile = (file*)this;
       
-      dwCur = pFile->increment_position(0);
+      dwCur = pFile->get_position();
       
-      dwLen = pFile->seek_to_end();
+      pFile->seek_to_end();
       
-      if(dwCur != (u64)pFile->set_position((filesize) dwCur))
-      {
+      dwLen = pFile->get_position();
+      
+      pFile->set_position(dwCur);
 
-         throw ::exception(error_io, "failed to seek back to the original position on get_length");;
-
-      }
-
-      return (filesize) dwLen;
+      return dwLen;
       
    }
 

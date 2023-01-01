@@ -45,7 +45,7 @@ namespace acme_macos
 
       void open(const ::file::path & lpszFileName, const ::file::e_open & eopenflags)override;
 
-      filesize translate(filesize offset, ::enum_seek nFrom)override;
+      void translate(filesize offset, ::enum_seek nFrom)override;
       void set_size(filesize dwNewLen)override;
       filesize size() const override;
 

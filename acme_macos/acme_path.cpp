@@ -48,10 +48,10 @@ namespace acme_macos
 //
 
 
-   void acme_path::create_symbolic_link(const char * pszLink, const char * pszSource)
+   void acme_path::create_symbolic_link(const ::scoped_string & scopedstrLink, const ::scoped_string & scopedstrSource)
    {
       
-      ns_create_alias(pszLink, pszSource);
+      ns_create_alias(scopedstrLink, scopedstrSource);
 //      if(!)
 //      {
 //         
@@ -64,10 +64,10 @@ namespace acme_macos
    }
 
 
-   bool acme_path::is_symbolic_link(const char * pszLink)
+   bool acme_path::is_symbolic_link(const ::scoped_string & scopedstrLink)
    {
       
-      auto estatus = ns_symbolic_link_destination(nullptr, pszLink);
+      auto estatus = ns_symbolic_link_destination(nullptr, scopedstrLink);
       
       if(!estatus)
       {
@@ -81,14 +81,14 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_path::symbolic_link_destination(const char * pszLink)
+   ::file::path acme_path::symbolic_link_destination(const scoped_string & scopedstrLink)
    {
       
       string strDestination;
       
       char * pszDestination = nullptr;
       
-      auto estatus = ns_symbolic_link_destination(&pszDestination, pszLink);
+      auto estatus = ns_symbolic_link_destination(&pszDestination,scopedstrLink);
       
       strDestination = ::string_from_strdup(pszDestination);
       
@@ -104,7 +104,7 @@ namespace acme_macos
    }
 
 
-   bool acme_path::has_custom_icon(const char * path)
+   bool acme_path::has_custom_icon(const ::file::path & path)
    {
 
       FSRef ref;
@@ -115,7 +115,7 @@ namespace acme_macos
       
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-      if (FSPathMakeRef((const UInt8 *) path, &ref, NULL) == noErr)
+      if (FSPathMakeRef((const UInt8 *) path.c_str(), &ref, NULL) == noErr)
 #pragma clang diagnostic pop
       {
     

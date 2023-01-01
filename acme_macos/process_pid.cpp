@@ -342,7 +342,7 @@ namespace acme_macos
       for(auto & processId : ida2)
       {
        
-         auto strPath = module_path_from_pid((::u32) processId);
+         auto strPath = module_path_from_pid(processId.as_u32());
          
          if(strPath == pszModulePath)
          {

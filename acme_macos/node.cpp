@@ -48,7 +48,7 @@ namespace acme_macos
    }
 
 
-   ::string node::get_file_type_identifier(const char * path)
+   ::string node::get_file_type_identifier(const ::file::path & path)
    {
    
       string strTypeIdentifier = macos_get_type_identifier(path);
@@ -962,7 +962,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 
       auto argv = psystem->m_psubsystem->m_argv;
 
-      auto papp = psystem->m_pacmeapplicationStartup;
+      auto papp = psystem->m_pacmeapplication;
 
       void * pApplication = (void *) (::acme::application *) papp;
 
@@ -1006,9 +1006,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
          
       }
       
-      psystem->post_initial_request();
-
-      //return ::success;
+      psystem->defer_post_initial_request();
       
    }
 

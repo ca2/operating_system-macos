@@ -194,18 +194,14 @@ string rtrim(const string& str)
 
    string whitespace = " \t\f\v\n\r";
 
-   std::size_t found = result.find_last_not_of(whitespace);
+   auto p = result.skip_any_character_in(whitespace);
+   
+   auto found = result.offset_of(p);
 
-   if (found != -1)
+   if (found >= 0)
    {
       
       result.erase(found+1);
-      
-   }
-   else
-   {
-      
-      result.clear();
       
    }
 
