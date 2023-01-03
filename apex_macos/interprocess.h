@@ -2,12 +2,20 @@
 #pragma once
 
 
+#include "apex/interprocess/base.h"
+#include "apex/interprocess/caller.h"
+#include "apex/interprocess/target.h"
+
+
+#include <CoreFoundation/CoreFoundation.h>
+
+
 namespace apex_macos
 {
 
 
-   class CLASS_DECL_APEX_MACOS interprocess_communication_base :
-      virtual public interprocess_communication::base
+   class CLASS_DECL_APEX_MACOS interprocess_base :
+      virtual public interprocess::base
    {
    public:
 
@@ -17,8 +25,8 @@ namespace apex_macos
       string            m_strBaseChannel;
 
 
-      interprocess_communication_base();
-      virtual ~interprocess_communication_base();
+      interprocess_base();
+      virtual ~interprocess_base();
 
 
       //HWND get_hwnd() const { return (HWND) m_hwnd; }
@@ -27,15 +35,15 @@ namespace apex_macos
    };
 
 
-   class CLASS_DECL_APEX_MACOS interprocess_communication_tx :
-      virtual public interprocess_communication_base,
-      virtual public interprocess_communication::tx
+   class CLASS_DECL_APEX_MACOS interprocess_caller :
+      virtual public interprocess_base,
+      virtual public interprocess::caller
    {
    public:
 
 
-      interprocess_communication_tx();
-      ~interprocess_communication_tx() override;
+      interprocess_caller();
+      ~interprocess_caller() override;
 
 
 
@@ -43,11 +51,11 @@ namespace apex_macos
       void close() override;
 
 
-      void send(const ::string & strMessage, const duration & durationTimeout) override;
-      void send(int message, void * pdata, int len, const duration & durationTimeout) override;
+      void call(const ::string & strMessage, const class ::time & timeTimeout) override;
+//      void send(int message, void * pdata, int len, const class ::time & timeTimeout) override;
 
 
-      bool is_tx_ok() override;
+      bool is_caller_ok() override;
       
 
    };
@@ -56,9 +64,9 @@ namespace apex_macos
    class rx_private;
 
 
-   class CLASS_DECL_APEX_MACOS interprocess_communication_rx :
-      virtual public interprocess_communication_base,
-      virtual public interprocess_communication::rx
+   class CLASS_DECL_APEX_MACOS interprocess_target :
+      virtual public interprocess_base,
+      virtual public interprocess::target
    {
    public:
 
@@ -66,8 +74,8 @@ namespace apex_macos
       CFRunLoopRef      m_runloop;
       
 
-      interprocess_communication_rx();
-      ~interprocess_communication_rx() override;
+      interprocess_target();
+      ~interprocess_target() override;
 
 
       void create(const ::string & strChannel) override;
@@ -85,7 +93,7 @@ namespace apex_macos
 //      LRESULT message_queue_proc(UINT message, WPARAM wparam, LPARAM lparam);
 
 
-      bool is_rx_ok() override;
+      bool is_target_ok() override;
       
       bool start_receiving();
 
