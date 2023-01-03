@@ -30,10 +30,10 @@ namespace node_macos
 //      void defer_create_main_menu(const string_array & straParent, const string_array & straMenu, const string_array & straId) override;
       
       
-      //__pointer(::element) create_quit_element(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;
+      //::pointer < ::element > create_quit_element(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem) override;
   
 
-//      void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;
+//      void implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem) override;
 
 
       //void _will_finish_launching() override;

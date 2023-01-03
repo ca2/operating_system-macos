@@ -16,17 +16,6 @@ bool mm1_get_file_image_by_type_identifier(unsigned int * pcr, int cx, int cy, i
 bool macos1_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const char * pszFilePath)
 {
 
-   static ::mutex * pmutex = nullptr;
-
-   if(pmutex == nullptr)
-   {
-
-      pmutex = new ::mutex();
-
-   }
-
-   synchronous_lock synchronouslock(pmutex);
-
 
    return mm1_get_file_image(pcr, cx, cy, iScan, pszFilePath);
 
@@ -36,18 +25,6 @@ bool macos1_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const 
 
 bool macos1_get_file_image_by_type_identifier(unsigned int * pcr, int cx, int cy, int iScan, const char * pszTypeIdentifier)
 {
-
-   static ::mutex * pmutex = nullptr;
-
-   if(pmutex == nullptr)
-   {
-
-      pmutex = new ::mutex();
-
-   }
-
-   synchronous_lock synchronouslock(pmutex);
-
 
    return mm1_get_file_image_by_type_identifier(pcr, cx, cy, iScan, pszTypeIdentifier);
 

@@ -27,12 +27,12 @@ namespace aura_macos
          ~node() override;
          
          
-         void initialize(::object * pobject) override;
+         void initialize(::particle * pparticle) override;
          
          
-         ::image_pointer get_file_image_by_type_identifier(int iSize, const char * pszTypeIdentifier) override;
+         ::image_pointer get_file_image_by_type_identifier(int iSize, const ::scoped_string & scopedstrTypeIdentifier) override;
 
-         ::image_pointer get_file_image(int iSize, const char * path) override;
+         ::image_pointer get_file_image(int iSize, const ::file::path & path) override;
 
          
       };

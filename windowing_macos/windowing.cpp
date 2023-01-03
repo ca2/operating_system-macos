@@ -5,6 +5,9 @@
 //  Created by Camilo Sasuke on 2021-05-21 02:00 <3ThomasBS_!!
 //
 #include "framework.h"
+#include "acme/parallelization/manual_reset_event.h"
+#include "acme/platform/application.h"
+#include "acme/platform/sequencer.h"
 #include "aura/user/menu/shared.h"
 #include "aura/user/user/interaction_impl.h"
 #include "keyboard_hook.h"
@@ -21,7 +24,7 @@ void * ns_get_key_window();
 //void os_post_quit(::element * pelementQuit);
 
 
-__pointer(menu_shared) create_menu_shared(::object * pobject, const string_array & straParent, const string_array & straMenu, const string_array & straId);
+::pointer < menu_shared > create_menu_shared(::object * pobject, const string_array & straParent, const string_array & straMenu, const string_array & straId);
 
 
 void windowing_macos_application_main(void * pApplication, int argc, char *argv[]);
@@ -58,12 +61,12 @@ namespace windowing_macos
    }
 
 
-   void windowing::initialize(::object * pobject)
+   void windowing::initialize(::particle * pparticle)
    {
    
       //auto estatus =
       
-      ::windowing::windowing::initialize(pobject);
+      ::windowing::windowing::initialize(pparticle);
       
 //      if(!estatus)
 //      {
@@ -357,7 +360,7 @@ namespace windowing_macos
    }
 
 
-//   void windowing::implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem)
+//   void windowing::implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem)
 //   {
 //
 //      m_pelementquit = new element_quit(pnode, psystem);
@@ -423,7 +426,7 @@ namespace windowing_macos
       
       manual_reset_event ev;
       
-      auto psequencer = puserinteractionEnablePrompt->create_message_box_sequencer("You gonna be prompted to enable Accessibility for \""+m_psystem->m_pacmeapplicationMain->m_strAppName+"\" to enable keyboard monitoring.",
+      auto psequencer = puserinteractionEnablePrompt->message_box("You gonna be prompted to enable Accessibility for \""+acmeapplication()->m_strAppName+"\" to enable keyboard monitoring.",
                                                                                    "Aura Click", e_message_box_ok);
       
       psequencer->then(

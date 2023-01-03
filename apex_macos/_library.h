@@ -28,7 +28,7 @@
 //#include "shell_launcher.h"
 
 
-#include "interprocess_communication.h"
+#include "interprocess.h"
 
 
 #include "node.h"

@@ -24,8 +24,8 @@ namespace windowing_macos
       ~monitor() override;
       
       
-      void get_monitor_rectangle(::RECTANGLE_I32 * prectangle) override;
-      void get_workspace_rectangle(::RECTANGLE_I32 * prectangle) override;
+      void get_monitor_rectangle(::RECTANGLE_I32 & rectangle) override;
+      void get_workspace_rectangle(::RECTANGLE_I32 & rectangle) override;
 
       
    };

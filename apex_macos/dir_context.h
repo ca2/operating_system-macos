@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "apex/filesystem/filesystem/dir_context.h"
+
+
 namespace apex_macos
 {
 
@@ -11,13 +14,15 @@ namespace apex_macos
    public:
       
 
-      __reference(dir_system)      m_pdirsystem;
-      __reference(file_system)      m_pfilesystem;
+      pointer < dir_system >      m_pdirsystem;
+      pointer < file_system >     m_pfilesystem;
 
+      
       dir_context();
       ~dir_context() override;
 
-      void initialize(::object * pobject) override;
+      
+      void initialize(::particle * pparticle) override;
 
       void init_system() override;
 

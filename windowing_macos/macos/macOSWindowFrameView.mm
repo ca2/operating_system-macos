@@ -16,7 +16,7 @@
 #include "macos_window.h"
 #include "macOSWindow.h"
 #include "acme/operating_system/macos/keyboard.h"
-#import "apex/operating_system/winpr_input.h"
+#import "acme/operating_system/winpr_input.h"
 #include <Carbon/Carbon.h>
 //NSCursor * g_pcurrentNscursor = nullptr;
 
@@ -645,7 +645,7 @@ m_f = true; \
    
    char * pszUtf8 = nullptr;
    
-   if(!apple_is_action_key(keyCode) && !(kbdModFlags &(NSControlKeyMask | NSCommandKeyMask|NSAlternateKeyMask)))
+   if(!apple_is_action_key(keyCode) && !(kbdModFlags &(NSEventModifierFlagControl | NSEventModifierFlagCommand|NSEventModifierFlagOption)))
    {
    
       if([[event characters] length ] > 0)
@@ -773,7 +773,7 @@ m_f = true; \
    
    key = [event keyCode] + 8;
    
-   modFlags = [event modifierFlags] & NSDeviceIndependentModifierFlagsMask;
+   modFlags = [event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask;
    
    vkcode = GetVirtualKeyCodeFromKeycode(key, KEYCODE_TYPE_APPLE);
    
@@ -819,39 +819,39 @@ m_f = true; \
 //
 //   }
 
-   if ((modFlags & NSAlphaShiftKeyMask) && !(kbdModFlags & NSAlphaShiftKeyMask))
+   if ((modFlags & NSEventModifierFlagCapsLock) && !(kbdModFlags & NSEventModifierFlagCapsLock))
       p->macos_window_key_down(vkcode, scancode, nullptr);
-   else if (!(modFlags & NSAlphaShiftKeyMask) && (kbdModFlags & NSAlphaShiftKeyMask))
+   else if (!(modFlags & NSEventModifierFlagCapsLock) && (kbdModFlags & NSEventModifierFlagCapsLock))
       p->macos_window_key_up(vkcode, scancode);
    
-   if ((modFlags & NSShiftKeyMask) && !(kbdModFlags & NSShiftKeyMask))
+   if ((modFlags & NSEventModifierFlagShift) && !(kbdModFlags & NSEventModifierFlagShift))
       p->macos_window_key_down(kVK_Shift, scancode, nullptr);
-   else if (!(modFlags & NSShiftKeyMask) && (kbdModFlags & NSShiftKeyMask))
+   else if (!(modFlags & NSEventModifierFlagShift) && (kbdModFlags & NSEventModifierFlagShift))
       p->macos_window_key_up(kVK_Shift, scancode);
    
-   if ((modFlags & NSControlKeyMask) && !(kbdModFlags & NSControlKeyMask))
+   if ((modFlags & NSEventModifierFlagControl) && !(kbdModFlags & NSEventModifierFlagControl))
       p->macos_window_key_down(kVK_Control, scancode, nullptr);
-   else if (!(modFlags & NSControlKeyMask) && (kbdModFlags & NSControlKeyMask))
+   else if (!(modFlags & NSEventModifierFlagControl) && (kbdModFlags & NSEventModifierFlagControl))
       p->macos_window_key_up(kVK_Control, scancode);
    
-   if ((modFlags & NSAlternateKeyMask) && !(kbdModFlags & NSAlternateKeyMask))
+   if ((modFlags & NSEventModifierFlagOption) && !(kbdModFlags & NSEventModifierFlagOption))
       p->macos_window_key_down(kVK_Option, scancode, nullptr);
-   else if (!(modFlags & NSAlternateKeyMask) && (kbdModFlags & NSAlternateKeyMask))
+   else if (!(modFlags & NSEventModifierFlagOption) && (kbdModFlags & NSEventModifierFlagOption))
       p->macos_window_key_up(kVK_Option, scancode);
    
-   if ((modFlags & NSCommandKeyMask) && !(kbdModFlags & NSCommandKeyMask))
+   if ((modFlags & NSEventModifierFlagCommand) && !(kbdModFlags & NSEventModifierFlagCommand))
       p->macos_window_key_down(kVK_Command, scancode, nullptr);
-   else if (!(modFlags & NSCommandKeyMask) && (kbdModFlags & NSCommandKeyMask))
+   else if (!(modFlags & NSEventModifierFlagCommand) && (kbdModFlags & NSEventModifierFlagCommand))
       p->macos_window_key_up(kVK_Command, scancode);
    
-   if ((modFlags & NSNumericPadKeyMask) && !(kbdModFlags & NSNumericPadKeyMask))
+   if ((modFlags & NSEventModifierFlagNumericPad) && !(kbdModFlags & NSEventModifierFlagNumericPad))
       p->macos_window_key_down(vkcode, scancode, nullptr);
-   else if (!(modFlags & NSNumericPadKeyMask) && (kbdModFlags & NSNumericPadKeyMask))
+   else if (!(modFlags & NSEventModifierFlagNumericPad) && (kbdModFlags & NSEventModifierFlagNumericPad))
       p->macos_window_key_up(vkcode, scancode);
    
-   if ((modFlags & NSHelpKeyMask) && !(kbdModFlags & NSHelpKeyMask))
+   if ((modFlags & NSEventModifierFlagHelp) && !(kbdModFlags & NSEventModifierFlagHelp))
       p->macos_window_key_down(vkcode, scancode, nullptr);
-   else if (!(modFlags & NSHelpKeyMask) && (kbdModFlags & NSHelpKeyMask))
+   else if (!(modFlags & NSEventModifierFlagHelp) && (kbdModFlags & NSEventModifierFlagHelp))
       p->macos_window_key_up(vkcode, scancode);
    
    kbdModFlags = modFlags;
@@ -964,7 +964,7 @@ unsigned int event_key_code(NSEvent * event)
 
    unsigned int uiModifierFlags = (unsigned int) [event modifierFlags];
 
-   if(uiModifierFlags & NSNumericPadKeyMask)
+   if(uiModifierFlags & NSEventModifierFlagNumericPad)
    {
 
       return event_num_pad_key_code(event);

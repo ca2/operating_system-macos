@@ -310,7 +310,7 @@ namespace macos
    }
 
 
-   __pointer(::file::file) stdio_file::Duplicate() const
+   ::pointer < ::file::file > stdio_file::Duplicate() const
    {
 
       ASSERT_VALID(this);

@@ -32,7 +32,7 @@
 		9A787F8D264EF105003DF8A0 /* launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F69264EF103003DF8A0 /* launcher.cpp */; };
 		9A787F8E264EF105003DF8A0 /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6A264EF103003DF8A0 /* application.cpp */; };
 		9A787F91264EF105003DF8A0 /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F6D264EF103003DF8A0 /* _mm.h */; };
-		9A787F92264EF105003DF8A0 /* interprocess_communication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6E264EF103003DF8A0 /* interprocess_communication.cpp */; };
+		9A787F92264EF105003DF8A0 /* interprocess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6E264EF103003DF8A0 /* interprocess.cpp */; };
 		9A787F93264EF105003DF8A0 /* file_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6F264EF103003DF8A0 /* file_system.cpp */; };
 		9A787F95264EF105003DF8A0 /* user.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F71264EF104003DF8A0 /* user.h */; };
 		9A787F96264EF105003DF8A0 /* app.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F72264EF104003DF8A0 /* app.mm */; };
@@ -47,13 +47,13 @@
 		9A787FA7264EF105003DF8A0 /* shell_macos_mm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F83264EF105003DF8A0 /* shell_macos_mm.mm */; };
 		9A787FA8264EF105003DF8A0 /* user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F84264EF105003DF8A0 /* user.cpp */; };
 		9A787FA9264EF105003DF8A0 /* dir_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F85264EF105003DF8A0 /* dir_context.h */; };
-		9A787FAC264EF342003DF8A0 /* interprocess_communication.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787FAB264EF342003DF8A0 /* interprocess_communication.h */; };
+		9A787FAC264EF342003DF8A0 /* interprocess.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787FAB264EF342003DF8A0 /* interprocess.h */; };
 		9A787FAE264F0F3B003DF8A0 /* launcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787FAD264F0F3B003DF8A0 /* launcher.h */; };
 		9A788033264F1130003DF8A0 /* shell_launcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788032264F1130003DF8A0 /* shell_launcher.h */; };
 		9A788037264F1ECA003DF8A0 /* watcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788035264F1ECA003DF8A0 /* watcher.h */; };
 		9A788038264F1ECA003DF8A0 /* watcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A788036264F1ECA003DF8A0 /* watcher.cpp */; };
 		9ABC54B726DAEE2700718C0D /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17EB264A325700B5CC33 /* libacme_macos.dylib */; };
-		9ABC54B826DAEE5100718C0D /* apex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5EF264B54EE0080670E /* apex_apple.dylib */; };
+		9ABC54B826DAEE5100718C0D /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5EF264B54EE0080670E /* libapex_apple.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,7 +123,7 @@
 		9A787F69264EF103003DF8A0 /* launcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = launcher.cpp; sourceTree = "<group>"; };
 		9A787F6A264EF103003DF8A0 /* application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = application.cpp; sourceTree = "<group>"; };
 		9A787F6D264EF103003DF8A0 /* _mm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
-		9A787F6E264EF103003DF8A0 /* interprocess_communication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interprocess_communication.cpp; sourceTree = "<group>"; };
+		9A787F6E264EF103003DF8A0 /* interprocess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interprocess.cpp; sourceTree = "<group>"; };
 		9A787F6F264EF103003DF8A0 /* file_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_system.cpp; sourceTree = "<group>"; };
 		9A787F71264EF104003DF8A0 /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
 		9A787F72264EF104003DF8A0 /* app.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = app.mm; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 		9A787F83264EF105003DF8A0 /* shell_macos_mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = shell_macos_mm.mm; sourceTree = "<group>"; };
 		9A787F84264EF105003DF8A0 /* user.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user.cpp; sourceTree = "<group>"; };
 		9A787F85264EF105003DF8A0 /* dir_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dir_context.h; sourceTree = "<group>"; };
-		9A787FAB264EF342003DF8A0 /* interprocess_communication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interprocess_communication.h; sourceTree = "<group>"; };
+		9A787FAB264EF342003DF8A0 /* interprocess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interprocess.h; sourceTree = "<group>"; };
 		9A787FAD264F0F3B003DF8A0 /* launcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = launcher.h; sourceTree = "<group>"; };
 		9A788032264F1130003DF8A0 /* shell_launcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shell_launcher.h; sourceTree = "<group>"; };
 		9A788035264F1ECA003DF8A0 /* watcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = watcher.h; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 				9ABC54B726DAEE2700718C0D /* libacme_macos.dylib in Frameworks */,
 				9A46D24726784394000B22D0 /* libapex.dylib in Frameworks */,
 				9A46D24926784394000B22D0 /* libapex_posix.dylib in Frameworks */,
-				9ABC54B826DAEE5100718C0D /* apex_apple.dylib in Frameworks */,
+				9ABC54B826DAEE5100718C0D /* libapex_apple.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,8 +211,8 @@
 				9A787F7C264EF104003DF8A0 /* file.mm */,
 				9A0C1755264A2DFA00B5CC33 /* framework.cpp */,
 				9A0C1766264A2DFA00B5CC33 /* framework.h */,
-				9A787F6E264EF103003DF8A0 /* interprocess_communication.cpp */,
-				9A787FAB264EF342003DF8A0 /* interprocess_communication.h */,
+				9A787F6E264EF103003DF8A0 /* interprocess.cpp */,
+				9A787FAB264EF342003DF8A0 /* interprocess.h */,
 				9A787F82264EF105003DF8A0 /* keyboard_mm.mm */,
 				9A787F77264EF104003DF8A0 /* keyboard.cpp */,
 				9A787F69264EF103003DF8A0 /* launcher.cpp */,
@@ -243,7 +243,7 @@
 		9A15A5EB264B54EE0080670E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A15A5EF264B54EE0080670E /* apex_apple.dylib */,
+				9A15A5EF264B54EE0080670E /* libapex_apple.dylib */,
 				9AA74F5B28482348009BB762 /* libios_apex_apple.a */,
 			);
 			name = Products;
@@ -295,7 +295,7 @@
 				9A788033264F1130003DF8A0 /* shell_launcher.h in Headers */,
 				9A787EE3264EE881003DF8A0 /* node.h in Headers */,
 				9A787FAE264F0F3B003DF8A0 /* launcher.h in Headers */,
-				9A787FAC264EF342003DF8A0 /* interprocess_communication.h in Headers */,
+				9A787FAC264EF342003DF8A0 /* interprocess.h in Headers */,
 				9A787E9F264ED5BB003DF8A0 /* _library.h in Headers */,
 				9A788037264F1ECA003DF8A0 /* watcher.h in Headers */,
 				9A787F87264EF105003DF8A0 /* application.h in Headers */,
@@ -330,7 +330,7 @@
 		9A0C168D264A2AA700B5CC33 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					9A0C1694264A2AA700B5CC33 = {
 						CreatedOnToolsVersion = 12.5;
@@ -373,10 +373,9 @@
 			remoteRef = 9A0C17EA264A325700B5CC33 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9A15A5EF264B54EE0080670E /* apex_apple.dylib */ = {
+		9A15A5EF264B54EE0080670E /* libapex_apple.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			name = apex_apple.dylib;
 			path = libapex_apple.dylib;
 			remoteRef = 9A15A5EE264B54EE0080670E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -399,7 +398,7 @@
 				9A1D5F722751C033003D9B5F /* NSPasteboard++.mm in Sources */,
 				9A787FA7264EF105003DF8A0 /* shell_macos_mm.mm in Sources */,
 				9A787F8D264EF105003DF8A0 /* launcher.cpp in Sources */,
-				9A787F92264EF105003DF8A0 /* interprocess_communication.cpp in Sources */,
+				9A787F92264EF105003DF8A0 /* interprocess.cpp in Sources */,
 				9A787F9E264EF105003DF8A0 /* dir_context.cpp in Sources */,
 				9A5D760D274E4FF300403BC3 /* file.mm in Sources */,
 				9A787FA2264EF105003DF8A0 /* os_context.cpp in Sources */,
@@ -468,6 +467,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = L8N5V6TZE5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -563,6 +563,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = L8N5V6TZE5;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -621,9 +622,11 @@
 		9A0C169F264A2AA700B5CC33 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PLATFORM_MODIFIER = macos;
 			};
 			name = Debug;
@@ -631,9 +634,11 @@
 		9A0C16A0264A2AA700B5CC33 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PLATFORM_MODIFIER = macos;
 			};
 			name = Release;

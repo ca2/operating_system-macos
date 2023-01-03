@@ -5,6 +5,7 @@
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 28/02/20.
 //
 #include "framework.h"
+#include "apex/platform/system.h"
 #include <sys/stat.h>
 #include <ctype.h>
 #include <mach-o/dyld.h>
@@ -62,12 +63,12 @@ namespace apex_macos
    }
 
 
-   void file_context::initialize(::object * pobject)
+   void file_context::initialize(::particle * pparticle)
    {
       
       //auto estatus =
       
-      ::file_context::initialize(pobject);
+      ::file_context::initialize(pparticle);
 //
 //      if(!estatus)
 //      {
@@ -76,9 +77,9 @@ namespace apex_macos
 //
 //      }
 //
-      auto psystem = m_psystem->m_papexsystem;
+      auto psystem = acmesystem()->m_papexsystem;
 
-       __refer(m_pdirsystem, psystem->m_pdirsystem);
+       m_pdirsystem = psystem->m_pdirsystem;
       
 //      if(!estatus)
 //      {
@@ -88,7 +89,7 @@ namespace apex_macos
 //      }
       
       //estatus =
-      __refer(m_pfilesystem, psystem->m_pfilesystem);
+      m_pfilesystem = psystem->m_pfilesystem;
       
 //      if(!estatus)
 //      {

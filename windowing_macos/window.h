@@ -36,7 +36,7 @@ namespace windowing_macos
       class windowing *                m_pmacoswindowing;
       ::windowing::window *            m_pwindowCapture;
       ::point_i32                      m_pointMouseCursor;
-      __pointer(::windowing::cursor)   m_pcursor;
+      ::pointer < ::windowing::cursor >   m_pcursor;
       
       
       window();
@@ -75,7 +75,7 @@ namespace windowing_macos
       
       ::point_i32 get_mouse_cursor_position() override;
       
-      bool set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags) override;
+      bool set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
 
       void set_mouse_capture() override;
 

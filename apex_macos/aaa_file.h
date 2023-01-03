@@ -77,7 +77,7 @@ namespace macos
       //u64 ReadHuge(void * lpBuffer, u64 dwCount);
       //void WriteHuge(const void * lpBuffer, u64 dwCount);
 
-      //virtual __pointer(::file::file) Duplicate() const;
+      //virtual ::pointer < ::file::file > Duplicate() const;
 
       virtual filesize seek(filesize lOff, ::enum_seek nFrom)override;
       virtual void set_size(filesize dwNewLen)override;

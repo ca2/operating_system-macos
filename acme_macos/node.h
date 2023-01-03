@@ -100,7 +100,7 @@ namespace acme_macos
 
       void shell_open(const ::file::path & pathFile, const ::string & strParams = "", const ::file::path & pathFolder = "") override;
       
-      //void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem);
+      //void implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem);
       
       void acme_application_main(class ::acme::system * psystem) override;
       
@@ -108,7 +108,7 @@ namespace acme_macos
       ::pointer < ::particle > create_quit_particle(::pointer < ::acme::node > & pnode, ::pointer < ::acme::system > & psystem) override;
   
 
-//      void implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem) override;
+//      void implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem) override;
 
 
       void _will_finish_launching() override;

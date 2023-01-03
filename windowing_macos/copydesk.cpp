@@ -144,12 +144,12 @@ namespace windowing_macos
 
 
 
-   void copydesk::initialize(::object * pobject)
+   void copydesk::initialize(::particle * pparticle)
    {
 
       //auto estatus =
       
-      ::user::copydesk::initialize(pobject);
+      ::user::copydesk::initialize(pparticle);
       
 //      if(!estatus)
 //      {
@@ -387,7 +387,7 @@ void macos_clipboard_set_filea(const ::file::path_array & patha)
 
    auto psza = patha.c_ansi_get();
 
-   macos_clipboard_set_filea(psza.get_data(), psza.get_count());
+   macos_clipboard_set_filea(psza.data(), psza.count());
 
 }
 

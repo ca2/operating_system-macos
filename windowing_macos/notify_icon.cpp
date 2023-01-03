@@ -1,9 +1,12 @@
 #include "framework.h"
+#include "acme/platform/system.h"
 #if !BROAD_PRECOMPILED_HEADER
 #include "_library.h"
 #include "aura/_defer.h"
-
 #endif
+#include "apex/filesystem/filesystem/file_context.h"
+#include "apex/platform/context.h"
+#include "acme/platform/application.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
 #include "aura/graphics/image/icon.h"
 #include "aura/graphics/image/context_image.h"
@@ -55,7 +58,7 @@ namespace windowing_macos
 
       }
       
-      m_strId = "notify_icon_" + atom.to_string();
+      m_strId = "notify_icon_" + atom;
 
       m_strId = "ca2-" + pwindowingicon->get_tray_icon_name() + "-" + m_strId;
 
@@ -125,17 +128,16 @@ namespace windowing_macos
 //      }
    
    
-      ::file::path pathFolder = m_psystem->m_pacmedirectory->ca2roaming() / "matter/icon/128";
+      ::file::path pathFolder = acmesystem()->m_pacmedirectory->ca2roaming() / "matter/icon/128";
 
-      string strIconName = get_app()->m_strAppId;
+      string strIconName = acmeapplication()->m_strAppId;
 
       strIconName.find_replace("/", "_");
       strIconName.find_replace("-", "_");
 
-
       auto pcontext = m_pcontext->m_papexcontext;
 
-      auto memoryIconImage = pcontext->file().safe_get_memory("matter://main/menubar-icon-22.png");
+      auto memoryIconImage = pcontext->file()->safe_get_memory("matter://main/menubar-icon-22.png");
       
       
       //auto pimage = m_psystem->context_image()->get_image(pathFile);
@@ -144,7 +146,7 @@ namespace windowing_macos
    
       //auto pathFile = pathFolder / ( strIconName + ".png" );
 
-      notify_icon_mm_initialize(memoryIconImage.get_data(), (int) memoryIconImage.get_size());
+      notify_icon_mm_initialize(memoryIconImage.data(), (int) memoryIconImage.size());
 
       m_bCreated = true;
 
@@ -153,7 +155,7 @@ namespace windowing_macos
    }
 
 
-   bool notify_icon::ModifyIcon(__pointer(::draw2d::icon) hicon, bool bForce)
+   bool notify_icon::ModifyIcon(::pointer < ::draw2d::icon > hicon, bool bForce)
    {
 
       if(!m_bCreated)
@@ -296,7 +298,7 @@ namespace windowing_macos
 //            try
 //            {
 //
-//               __pointer(::user::interaction) pframe = (m_wndptraHidden.element_at(0));
+//               ::pointer < ::user::interaction > pframe = (m_wndptraHidden.element_at(0));
 //
 //               if (pframe != nullptr)
 //               {

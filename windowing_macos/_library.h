@@ -13,6 +13,9 @@
 #include "macos/macos_window.h"
 
 
+#include "acme/primitive/geometry2d/_collection.h"
+
+
 rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid);
 CGWindowID ns_get_window_id(void * pnswindow);
 

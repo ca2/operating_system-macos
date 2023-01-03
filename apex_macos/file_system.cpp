@@ -1,6 +1,6 @@
 #include "framework.h"
+#include "acme/platform/system.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
-
 
 #include <sys/stat.h>
 #include <ctype.h>
@@ -34,12 +34,12 @@ namespace apex_macos
    }
 
 
-   void file_system::initialize(::object * pobject)
+   void file_system::initialize(::particle * pparticle)
    {
       
       //auto estatus =
       
-      ::file_system::initialize(pobject);
+      ::file_system::initialize(pparticle);
       
 //      if(!estatus)
 //      {
@@ -50,7 +50,7 @@ namespace apex_macos
       
       string str = getenv("HOME");
       
-      auto psystem = m_psystem;
+      auto psystem = acmesystem();
       
       auto pacmedirectory = psystem->m_pacmedirectory;
 

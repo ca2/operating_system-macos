@@ -21,7 +21,7 @@ namespace multimedia
       public:
 
 
-         __pointer(::multimedia::audio_mixer::audio_mixer)   m_pmixer;
+         ::pointer < ::multimedia::audio_mixer::audio_mixer >   m_pmixer;
 
 
          window();

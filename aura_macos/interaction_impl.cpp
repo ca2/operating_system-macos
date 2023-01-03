@@ -1,9 +1,10 @@
 #include "framework.h"
 #include "interaction_impl.h"
+#include "acme/constant/message.h"
 #include "aura/platform/message_queue.h"
 #include "acme/constant/activate.h"
 #include "acme/constant/button_state.h"
-#include "aura/message.h"
+//#include "aura/message.h"
 #include "aura/graphics/draw2d/graphics.h"
 #include "aura/graphics/graphics/double_buffer.h"
 #include "aura/platform/node.h"
@@ -253,7 +254,7 @@ namespace aura_macos
 //   }
 
 
-//   bool interaction_impl::create_window_ex(::user::interaction * pinteraction, __pointer(::user::system) pusersystem, ::user::interaction *  puiParent, id id)
+//   bool interaction_impl::create_window_ex(::user::interaction * pinteraction, ::pointer < ::user::system > pusersystem, ::user::interaction *  puiParent, id id)
 //   {
 //
 //      if (!native_create_window_ex(pinteraction, cs,
@@ -279,7 +280,7 @@ namespace aura_macos
   
          //auto estatus =
          
-         __compose(m_pgraphics, __new(::graphics::double_buffer));
+         m_pgraphics = __new(::graphics::double_buffer);
          
 //         if(!estatus)
 //         {
@@ -341,7 +342,7 @@ namespace aura_macos
    }
 
 
-   bool interaction_impl::_is_window() const
+   bool interaction_impl::_is_window()
    {
       
       if(::is_null(m_pwindow))
@@ -397,7 +398,7 @@ namespace aura_macos
 ////      rectParam.right = pusersystem->m_createstruct.x + pusersystem->m_createstruct.cx;
 ////      rectParam.bottom = pusersystem->m_createstruct.y + pusersystem->m_createstruct.cy;
 //
-////      __copy(rectangle, rectParam);
+////      copy(rectangle, rectParam);
 ////
 ////      if (pusersystem->m_createstruct.hwndParent == MESSAGE_WINDOW_PARENT)
 ////      {
@@ -593,7 +594,7 @@ namespace aura_macos
       //      MESSAGE_LINK(e_message_create            , pchannel, this, &interaction_impl::on_message_create);
       //      MESSAGE_LINK(e_message_set_cursor         , pchannel, this, &interaction_impl::_001OnSetCursor);
       //      MESSAGE_LINK(e_message_erase_background        , pchannel, this, &interaction_impl::_001OnEraseBkgnd);
-      //      MESSAGE_LINK(e_message_move              , pchannel, this, &interaction_impl::_001OnMove);
+      //      MESSAGE_LINK(e_message_reposition              , pchannel, this, &interaction_impl::_001OnMove);
       //      MESSAGE_LINK(e_message_size              , pchannel, this, &interaction_impl::_001OnSize);
       MESSAGE_LINK(e_message_show_window, pchannel, this, &interaction_impl::_001OnShowWindow);
       //      MESSAGE_LINK(ca2m_PRODEVIAN_SYNCH , pchannel, this, &interaction_impl::_001OnProdevianSynch);
@@ -630,7 +631,7 @@ namespace aura_macos
 //
 //      }
 //
-//      __pointer(::message::move) pmove(pmessage);
+//      ::pointer < ::message::move > pmove(pmessage);
 //
 //      m_puserinteraction->window_state().m_point = pmove->m_point;
 //
@@ -679,7 +680,7 @@ namespace aura_macos
 //
 //      }
 //
-//      __pointer(::message::size) psize(pmessage);
+//      ::pointer < ::message::size > psize(pmessage);
 //
 //      m_puserinteraction->window_state().m_size = psize->m_size;
 //
@@ -746,112 +747,112 @@ namespace aura_macos
    }
 
 
-   void interaction_impl::assert_ok() const
-   {
-      
-      if (oswindow() == nullptr)
-      {
-         
-         return; // null (unattached) windows are valid
-         
-      }
-
-      // check for special wnd??? values
-      //      ASSERT(oswindow_TOP == nullptr);       // same as desktop
-      /*      if (get_handle() == oswindow_BOTTOM)
-       {
-       }
-       else if (get_handle() == oswindow_TOPMOST)
-       {
-       }
-       else if (get_handle() == oswindow_NOTOPMOST)
-       {
-       }
-       else
-       {
-       // should be a normal user::interaction
-       ASSERT(::is_window(get_handle()));
-
-       // should also be in the permanent or temporary handle ::collection::map
-       single_lock synchronouslock(afxMutexHwnd(), true);
-       hwnd_map * pMap = afxMapHWND();
-       if(pMap == nullptr) // inside thread not having windows
-       return; // let go
-       ASSERT(pMap != nullptr);
-
-       //         ::ca2::object* p=nullptr;
-       if(pMap)
-       {
-       ASSERT( (p = pMap->lookup_permanent(get_handle())) != nullptr ||
-       (p = pMap->lookup_temporary(get_handle())) != nullptr);
-       }*/
-
-      //ASSERT(dynamic_cast < ::user::interaction *  > (p) == this);   // must be us
-
-      // Note: if either of the above asserts fire and you are
-      // writing a multithreaded application, it is likely that
-      // you have passed a C++ object from one thread to another
-      // and have used that object in a way that was not intended.
-      // (only simple inline wrapper functions should be used)
-      //
-      // In general, user::interaction objects should be passed by oswindow from
-      // one thread to another.  The receiving thread can wrap
-      // the oswindow with a user::interaction object by using ::macos::interaction_impl::from_handle.
-      //
-      // It is dangerous to pass C++ objects from one thread to
-      // another, unless the objects are designed to be used in
-      // such a manner.
-      //      }*/
-      
-   }
-
-
-   void interaction_impl::dump(dump_context & dumpcontext) const
-   {
-      ::object::dump(dumpcontext);
-
-//      dumpcontext << "\nm_hWnd = " << (void *)get_handle();
-
-      /*      if (get_handle() == nullptr || get_handle() == oswindow_BOTTOM ||
-       get_handle() == oswindow_TOPMOST || get_handle() == oswindow_NOTOPMOST)
-       {
-       // not a normal user::interaction - nothing more to dump
-       return;
-       }*/
-
-      /*      if (!::is_window(get_handle()))
-       {
-       // not a valid user::interaction
-       dumpcontext << " (illegal oswindow)";
-       return; // don't do anything more
-       }*/
-
-      ::user::interaction_impl * pWnd = (::user::interaction_impl *) this;
-      if (pWnd != this)
-         dumpcontext << " (Detached or temporary user::interaction)";
-      else
-         dumpcontext << " (permanent user::interaction)";
-
-      // dump out user::interaction specific statistics
-      char szBuf[64];
-      dumpcontext << "\ncaption = \"" << szBuf << "\"";
-
-      //      ::GetClassName(get_handle(), szBuf, _countof(szBuf));
-      //    dumpcontext << "\nclass name = \"" << szBuf << "\"";
-
-      ::rectangle_i32 rectangle;
-      
-      ((::user::interaction_impl *) this)->m_puserinteraction->get_window_rect(rectangle);
-      
-//      dumpcontext << "\nrect = " << rectangle_i32;
-      dumpcontext << "\nparent ::user::interaction * = " << (void *)((::user::interaction_impl *) this)->get_parent();
-
-      //      dumpcontext << "\nstyle = " << (void *)(dword_ptr)::GetWindowLong(get_handle(), GWL_STYLE);
-      //    if (::GetWindowLong(get_handle(), GWL_STYLE) & WS_CHILD)
-      //     dumpcontext << "\nid = " << __get_dialog_control_id(get_handle());
-
-      dumpcontext << "\n";
-   }
+//   void interaction_impl::assert_ok() const
+//   {
+//
+//      if (oswindow() == nullptr)
+//      {
+//
+//         return; // null (unattached) windows are valid
+//
+//      }
+//
+//      // check for special wnd??? values
+//      //      ASSERT(oswindow_TOP == nullptr);       // same as desktop
+//      /*      if (get_handle() == oswindow_BOTTOM)
+//       {
+//       }
+//       else if (get_handle() == oswindow_TOPMOST)
+//       {
+//       }
+//       else if (get_handle() == oswindow_NOTOPMOST)
+//       {
+//       }
+//       else
+//       {
+//       // should be a normal user::interaction
+//       ASSERT(::is_window(get_handle()));
+//
+//       // should also be in the permanent or temporary handle ::collection::map
+//       single_lock synchronouslock(afxMutexHwnd(), true);
+//       hwnd_map * pMap = afxMapHWND();
+//       if(pMap == nullptr) // inside thread not having windows
+//       return; // let go
+//       ASSERT(pMap != nullptr);
+//
+//       //         ::ca2::object* p=nullptr;
+//       if(pMap)
+//       {
+//       ASSERT( (p = pMap->lookup_permanent(get_handle())) != nullptr ||
+//       (p = pMap->lookup_temporary(get_handle())) != nullptr);
+//       }*/
+//
+//      //ASSERT(dynamic_cast < ::user::interaction *  > (p) == this);   // must be us
+//
+//      // Note: if either of the above asserts fire and you are
+//      // writing a multithreaded application, it is likely that
+//      // you have passed a C++ object from one thread to another
+//      // and have used that object in a way that was not intended.
+//      // (only simple inline wrapper functions should be used)
+//      //
+//      // In general, user::interaction objects should be passed by oswindow from
+//      // one thread to another.  The receiving thread can wrap
+//      // the oswindow with a user::interaction object by using ::macos::interaction_impl::from_handle.
+//      //
+//      // It is dangerous to pass C++ objects from one thread to
+//      // another, unless the objects are designed to be used in
+//      // such a manner.
+//      //      }*/
+//
+//   }
+//
+//
+//   void interaction_impl::dump(dump_context & dumpcontext) const
+//   {
+//      ::object::dump(dumpcontext);
+//
+////      dumpcontext << "\nm_hWnd = " << (void *)get_handle();
+//
+//      /*      if (get_handle() == nullptr || get_handle() == oswindow_BOTTOM ||
+//       get_handle() == oswindow_TOPMOST || get_handle() == oswindow_NOTOPMOST)
+//       {
+//       // not a normal user::interaction - nothing more to dump
+//       return;
+//       }*/
+//
+//      /*      if (!::is_window(get_handle()))
+//       {
+//       // not a valid user::interaction
+//       dumpcontext << " (illegal oswindow)";
+//       return; // don't do anything more
+//       }*/
+//
+//      ::user::interaction_impl * pWnd = (::user::interaction_impl *) this;
+//      if (pWnd != this)
+//         dumpcontext << " (Detached or temporary user::interaction)";
+//      else
+//         dumpcontext << " (permanent user::interaction)";
+//
+//      // dump out user::interaction specific statistics
+//      char szBuf[64];
+//      dumpcontext << "\ncaption = \"" << szBuf << "\"";
+//
+//      //      ::GetClassName(get_handle(), szBuf, _countof(szBuf));
+//      //    dumpcontext << "\nclass name = \"" << szBuf << "\"";
+//
+//      ::rectangle_i32 rectangle;
+//
+//      ((::user::interaction_impl *) this)->m_puserinteraction->get_window_rect(rectangle);
+//
+////      dumpcontext << "\nrect = " << rectangle_i32;
+//      dumpcontext << "\nparent ::user::interaction * = " << (void *)((::user::interaction_impl *) this)->get_parent();
+//
+//      //      dumpcontext << "\nstyle = " << (void *)(dword_ptr)::GetWindowLong(get_handle(), GWL_STYLE);
+//      //    if (::GetWindowLong(get_handle(), GWL_STYLE) & WS_CHILD)
+//      //     dumpcontext << "\nid = " << __get_dialog_control_id(get_handle());
+//
+//      dumpcontext << "\n";
+//   }
 
 
 //   bool interaction_impl::DestroyWindow()
@@ -902,7 +903,7 @@ namespace aura_macos
 
       char sz[2048];
 
-      __zero(sz);
+      zero(sz);
 
       //aura_window_get_title(sz, sizeof(sz));
 
@@ -1016,7 +1017,7 @@ namespace aura_macos
    void interaction_impl::release_graphics_resources()
    {
 
-      __release(m_pgraphics);
+      m_pgraphics.release();
 
    }
 
@@ -1045,12 +1046,12 @@ namespace aura_macos
    }
 
 
-   ::user::interaction * interaction_impl::get_wnd() const
-   {
-
-      return m_puserinteraction;
-
-   }
+//   ::user::interaction * interaction_impl::get_wnd() const
+//   {
+//
+//      return m_puserinteraction;
+//
+//   }
 
 
    void interaction_impl::show_task(bool bShow)
@@ -1059,7 +1060,7 @@ namespace aura_macos
       if(bShow)
       {
 
-         m_psystem->m_pauranode->defer_dock_application(true);
+         acmenode()->m_pauranode->defer_dock_application(true);
 
          m_puserinteraction->set_need_layout();
 
@@ -1069,7 +1070,7 @@ namespace aura_macos
       else
       {
 
-         m_psystem->m_pauranode->defer_dock_application(false);
+         acmenode()->m_pauranode->defer_dock_application(false);
 
       }
 
@@ -2042,7 +2043,7 @@ namespace aura_macos
 //
 //   void interaction_impl::_001OnSetCursor(::message::message * pmessage)
 //   {
-//      __pointer(::user::message) pusermessage(pmessage);
+//      ::pointer < ::user::message > pusermessage(pmessage);
 //      if (psession->get_cursor() != nullptr
 //            && psession->get_cursor()->m_ecursor != cursor_system)
 //      {
@@ -2458,7 +2459,7 @@ namespace aura_macos
 //   void interaction_impl::_001OnEraseBkgnd(::message::message * pmessage)
 //   {
 //
-//      __pointer(::message::erase_bkgnd) perasebkgnd(pmessage);
+//      ::pointer < ::message::erase_bkgnd > perasebkgnd(pmessage);
 //
 //      perasebkgnd->m_bRet = true;
 //

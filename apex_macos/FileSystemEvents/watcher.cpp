@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "watcher.h"
+#include "apex/filesystem/file/action.h"
 
 
 namespace FileSystemEvents

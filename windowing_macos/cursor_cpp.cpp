@@ -9,10 +9,14 @@
 #include "_library.h"
 #include "aura/_defer.h"
 #endif
+#include "acme/platform/acme.h"
+#include "acme/platform/system.h"
+#include "acme/platform/application.h"
+#include "acme/parallelization/synchronous_lock.h"
 
-::mutex  g_mutexCursor;
+//::mutex  g_mutexCursor;
 bool     g_bCursorHidden;
-__pointer(::windowing::cursor)   g_pwindowingcursor;
+::pointer < ::windowing::cursor >   g_pwindowingcursor;
 
 void __ns_cursor_hide();
 void __ns_cursor_unhide();
@@ -29,12 +33,12 @@ void _locked_ns_cursor_show();
 void ns_set_cursor(::windowing::cursor * pcursorParam)
 {
    
-   __pointer(::windowing::cursor) pcursor(pcursorParam);
+   ::pointer < ::windowing::cursor > pcursor(pcursorParam);
    
    main_asynchronous([pcursor]()
    {
 
-      synchronous_lock lock(&g_mutexCursor);
+      synchronous_lock lock(pcursor->acmesystem()->synchronization());
       
       auto pNSCursor = pcursor->get_os_data();
       
@@ -63,7 +67,7 @@ void ns_set_cursor(::windowing::cursor * pcursorParam)
 ::windowing::cursor * ns_get_cached_cursor()
 {
    
-   synchronous_lock lock(&g_mutexCursor);
+   synchronous_lock lock(::acme::acme::g_p->m_psubsystem->acmesystem()->synchronization());
    
    return g_pwindowingcursor;
    
@@ -73,7 +77,7 @@ void ns_set_cursor(::windowing::cursor * pcursorParam)
 void ns_cursor_show()
 {
    
-   synchronous_lock lock(&g_mutexCursor);
+   synchronous_lock lock(::acme::acme::g_p->m_psubsystem->acmesystem()->synchronization());
    
    _locked_ns_cursor_show();
    
@@ -83,7 +87,7 @@ void ns_cursor_show()
 void ns_cursor_hide()
 {
    
-   synchronous_lock lock(&g_mutexCursor);
+   synchronous_lock lock(::acme::acme::g_p->m_psubsystem->acmesystem()->synchronization());
   
    _locked_ns_cursor_hide();
   
@@ -93,7 +97,7 @@ void ns_cursor_hide()
 void ns_cursor_free(void * pNSCursor)
 {
    
-   synchronous_lock lock(&g_mutexCursor);
+   synchronous_lock lock(::acme::acme::g_p->m_psubsystem->acmesystem()->synchronization());
    
    __ns_cursor_free(pNSCursor);
    
@@ -103,7 +107,7 @@ void ns_cursor_free(void * pNSCursor)
 void * nscursor_from_cgimageref(CGImageRef image, int cx, int cy, int xHotSpot, int yHotSpot)
 {
    
-   synchronous_lock lock(&g_mutexCursor);
+   synchronous_lock lock(::acme::acme::g_p->m_psubsystem->acmesystem()->synchronization());
    
    return __nscursor_from_cgimageref(image, cx, cy, xHotSpot, yHotSpot);
    
@@ -113,7 +117,7 @@ void * nscursor_from_cgimageref(CGImageRef image, int cx, int cy, int xHotSpot, 
 void * ns_get_default_system_cursor(enum_cursor ecursor)
 {
    
-   synchronous_lock lock(&g_mutexCursor);
+   synchronous_lock lock(::acme::acme::g_p->m_psubsystem->acmesystem()->synchronization());
    
    return __ns_get_default_system_cursor(ecursor);
 

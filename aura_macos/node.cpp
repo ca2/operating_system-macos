@@ -7,6 +7,7 @@
 //
 #include "framework.h"
 #include "node.h"
+#include "acme/parallelization/synchronous_lock.h"
 #include "aura/graphics/image/context_image.h"
 #include "aura/platform/context.h"
 
@@ -31,12 +32,12 @@ namespace aura_macos
       }
    
    
-      void node::initialize(::object * pobject)
+      void node::initialize(::particle * pparticle)
       {
          
          //auto estatus =
          
-         ::aura_apple::node::initialize(pobject);
+         ::aura_apple::node::initialize(pparticle);
          
 //         if(!estatus)
 //         {
@@ -47,7 +48,7 @@ namespace aura_macos
          
          //estatus =
          
-         ::apex_macos::node::initialize(pobject);
+         ::apex_macos::node::initialize(pparticle);
          
 //         if(!estatus)
 //         {
@@ -61,12 +62,14 @@ namespace aura_macos
       }
 
    
-      ::image_pointer node::get_file_image_by_type_identifier(int iSize, const char * pszTypeIdentifier)
+      ::image_pointer node::get_file_image_by_type_identifier(int iSize, const ::scoped_string & scopedstrTypeIdentifier)
       {
 
          auto pimage = m_pcontext->m_pauracontext->create_image( { iSize, iSize } );
 
-         if(!macos_get_file_image_by_type_identifier(pimage, pszTypeIdentifier))
+         synchronous_lock synchronouslock(this->synchronization());
+
+         if(!macos_get_file_image_by_type_identifier(pimage, scopedstrTypeIdentifier))
          {
 
             return nullptr;
@@ -78,10 +81,13 @@ namespace aura_macos
       }
 
    
-      ::image_pointer node::get_file_image(int iSize, const char * path)
+      ::image_pointer node::get_file_image(int iSize, const ::file::path & path)
       {
+         
 
          auto pimage = m_pcontext->m_pauracontext->create_image( { iSize, iSize } );
+
+         synchronous_lock synchronouslock(this->synchronization());
 
          if(!macos_get_file_image(pimage, path))
          {

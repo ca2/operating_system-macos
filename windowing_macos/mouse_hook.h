@@ -12,9 +12,9 @@ namespace mouse_hook
 {
 
    
-   ::e_status install(::element * pelementListener);
+   ::e_status install(::particle * pparticleListener);
 
-   ::e_status uninstall(::element * pelementListener);
+   ::e_status uninstall(::particle * pparticleListener);
 
 
 } // mouse_hook

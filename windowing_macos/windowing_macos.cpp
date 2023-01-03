@@ -11,7 +11,7 @@
 //#include "oswindow_data.h"
 #include "acme/parallelization/message_queue.h"
 #include <CoreGraphics/CoreGraphics.h>
-#include "aura/_defer.h"
+//#include "aura/_defer.h"
 
 
 int get_main_screen_rectangle(RECTANGLE_I32 * pr);
@@ -680,7 +680,7 @@ rectangle_i32_array cg_get_window_rect_list_above(CGWindowID windowid)
 
          CFRelease(cfstrName);
          
-         if(strName.compare_ci("cursor") == 0)
+         if(strName.case_insensitive_equals("cursor"))
          {
             
             continue;
@@ -900,7 +900,7 @@ rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
 
       CFStringRef name = (CFStringRef) CFDictionaryGetValue(dict, kCGWindowName);
       
-      strName.Empty();
+      strName.empty();
 
       if(name)
       {
@@ -911,7 +911,7 @@ rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
       
       CFStringRef appname = (CFStringRef) CFDictionaryGetValue(dict, kCGWindowOwnerName);
       
-      strAppName.Empty();
+      strAppName.empty();
       
       if(appname)
       {
@@ -920,10 +920,10 @@ rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
          
       }
       
-      if(strAppName.compare_ci("window server") == 0)
+      if(strAppName.case_insensitive_equals("window server"))
       {
 
-         if(strName.compare_ci("cursor") == 0)
+         if(strName.case_insensitive_equals("cursor"))
          {
             
             continue;
@@ -932,7 +932,7 @@ rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
          
       }
       
-      if(strAppName.compare_ci("Dock") == 0)
+      if(strAppName.case_insensitive_equals("Dock"))
       {
          
          if(strName.is_empty())
@@ -1140,7 +1140,7 @@ void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > &
       
       CFStringRef name = (CFStringRef) CFDictionaryGetValue(dict, kCGWindowName);
       
-      strName.Empty();
+      strName.empty();
       
       if(name)
       {
@@ -1151,7 +1151,7 @@ void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > &
       
       CFStringRef appname = (CFStringRef) CFDictionaryGetValue(dict, kCGWindowOwnerName);
       
-      strAppName.Empty();
+      strAppName.empty();
       
       if(appname)
       {
@@ -1160,10 +1160,10 @@ void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > &
          
       }
       
-      if(strAppName.compare_ci("window server") == 0)
+      if(strAppName.case_insensitive_equals("window server"))
       {
          
-         if(strName.compare_ci("cursor") == 0)
+         if(strName.case_insensitive_equals("cursor"))
          {
             
             continue;
@@ -1172,7 +1172,7 @@ void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > &
          
       }
       
-      if(strName.compare_ci("dock") == 0)
+      if(strName.case_insensitive_equals("dock"))
       {
          
          continue;

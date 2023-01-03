@@ -27,7 +27,7 @@ namespace aura_macos
       
       m_bGetFileImageByFileImage = true;
 
-      defer_create_mutex();
+      defer_create_synchronization();
 
    }
 //   
@@ -510,7 +510,7 @@ bool shell::_get_file_image(_get_file_image_ & getfileimage)
 //
 //      iImage = get_foo_image(i2, i2.m_cr);
 //
-//      synchronous_lock synchronouslock(mutex());
+//      synchronous_lock synchronouslock(synchronization());
 //
 //      m_imagemap.set_at(imagekey, iImage);
 //

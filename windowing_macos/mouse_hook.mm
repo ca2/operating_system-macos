@@ -21,55 +21,55 @@ namespace mouse_hook
 {
    
 
-   static ::element * g_pelementListener = NULL;
+   static ::particle * g_pparticleListener = NULL;
 
 
    static id g_idEventMonitor;
    
    
-   ::e_status install(::element * pelementListener)
+   ::e_status install(::particle * pparticleListener)
    {
       
-      g_pelementListener = pelementListener;
+      g_pparticleListener = pparticleListener;
 
       g_idEventMonitor = [ NSEvent addGlobalMonitorForEventsMatchingMask:
                  
-                 (NSLeftMouseDownMask | NSRightMouseDownMask | NSOtherMouseDownMask)
+                          (NSEventMaskLeftMouseDown | NSEventMaskRightMouseDown | NSEventMaskOtherMouseDown)
                  
-                 | (NSLeftMouseUpMask | NSRightMouseUpMask | NSOtherMouseUpMask)                                     handler: ^(NSEvent *incomingEvent)
+                          | (NSEventMaskLeftMouseUp | NSEventMaskRightMouseUp | NSEventMaskOtherMouseUp)                                     handler: ^(NSEvent *incomingEvent)
                  {
                                                          
                                              //NSEvent *result = incomingEvent;
                                                          
                                                          //NSWindow *targetWindowForEvent = //[incomingEvent window];
                                                          
-                                                         if ([incomingEvent type] == NSLeftMouseDown) {
-                                                            g_pelementListener->call(e_message_left_button_down);
+         if ([incomingEvent type] == NSEventTypeLeftMouseDown) {
+                                                            g_pparticleListener->call(e_message_left_button_down);
                                                             
                                                             
                                                          }
-                                                         else if ([incomingEvent type] == NSLeftMouseUp) {
-                                                  g_pelementListener->call(e_message_left_button_up);
+         else if ([incomingEvent type] == NSEventTypeLeftMouseUp) {
+                                                            g_pparticleListener->call(e_message_left_button_up);
                        
                        
                     }
-                    else if ([incomingEvent type] == NSRightMouseDown) {
-                       g_pelementListener->call(e_message_right_button_down);
+         else if ([incomingEvent type] == NSEventTypeRightMouseDown) {
+                       g_pparticleListener->call(e_message_right_button_down);
                        
                        
                     }
-                    else if ([incomingEvent type] == NSRightMouseUp) {
-                       g_pelementListener->call(e_message_right_button_up);
+         else if ([incomingEvent type] == NSEventTypeRightMouseUp) {
+                       g_pparticleListener->call(e_message_right_button_up);
                        
                        
                     }
-                    else if ([incomingEvent type] == NSOtherMouseDown) {
-                       g_pelementListener->call(e_message_middle_button_down);
+         else if ([incomingEvent type] == NSEventTypeOtherMouseDown) {
+                       g_pparticleListener->call(e_message_middle_button_down);
                        
                        
                     }
-                    else if ([incomingEvent type] == NSOtherMouseUp) {
-                       g_pelementListener->call(e_message_middle_button_up);
+                    else if ([incomingEvent type] == NSEventTypeOtherMouseUp) {
+                       g_pparticleListener->call(e_message_middle_button_up);
                        
                        
                     }
@@ -81,7 +81,7 @@ namespace mouse_hook
    }
    
 
-   ::e_status uninstall(::element * pelementListener)
+   ::e_status uninstall(::particle * pparticleListener)
    {
       
       [NSEvent removeMonitor:g_idEventMonitor ];

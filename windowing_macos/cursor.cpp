@@ -45,7 +45,7 @@ namespace windowing_macos
    void cursor::_create_os_cursor()
    {
 
-      if(::is_ok(m_pimage))
+      if(m_pimage)
       {
          
          try

@@ -34,9 +34,9 @@ void apex_macos_factory(::factory::factory * pfactory)
 
    pfactory->add_factory_item < ::apex_macos::os_context, ::os_context > ();
    
-   pfactory->add_factory_item < ::apex_macos::interprocess_communication_base, ::interprocess_communication::base >();
-   pfactory->add_factory_item < ::apex_macos::interprocess_communication_rx, ::interprocess_communication::rx >();
-   pfactory->add_factory_item < ::apex_macos::interprocess_communication_tx, ::interprocess_communication::tx >();
+   pfactory->add_factory_item < ::apex_macos::interprocess_base, ::interprocess::base >();
+   pfactory->add_factory_item < ::apex_macos::interprocess_target, ::interprocess::target >();
+   pfactory->add_factory_item < ::apex_macos::interprocess_caller, ::interprocess::caller >();
 //   pfactory->add_factory_item < ::macos::launcher, ::launcher > ();
 //   pfactory->add_factory_item < ::macos::shell_launcher, ::shell_launcher > ();
 

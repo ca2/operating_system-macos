@@ -31,9 +31,9 @@ namespace aura_macos
 
       //virtual void construct(oswindow hwnd);
 
-
-      void assert_ok() const override;
-      void dump(dump_context & dumpcontext) const override;
+//
+//      void assert_ok() const override;
+//      void dump(dump_context & dumpcontext) const override;
       
       void on_destroy() override;
 
@@ -55,7 +55,7 @@ namespace aura_macos
 //
 //      virtual ::user::interaction *  SetOwner(::user::interaction *   pOwnerWnd) override;
 
-      virtual ::user::interaction * get_wnd() const override;
+//      virtual ::user::interaction * get_wnd() const override;
 
       virtual void route_command(::message::command * pcommand, bool bRouteToKeyDescendant = false) override;
 //
@@ -111,11 +111,11 @@ namespace aura_macos
       // advanced creation (allows access to extended styles)
 //      virtual bool create_window_ex(
 //      ::user::interaction * pinteraction,
-//      __pointer(::user::system) pusersystem,
+//      ::pointer < ::user::system > pusersystem,
 //      ::user::interaction * puiParent,
 //      id id) override;
 //
-//      virtual bool _native_create_window_ex(__pointer(::user::system) pusersystem) override;
+//      virtual bool _native_create_window_ex(::pointer < ::user::system > pusersystem) override;
 //
 //      virtual bool DestroyWindow() override;
 
@@ -128,7 +128,7 @@ namespace aura_macos
 //
 
 
-      bool _is_window() const override;
+      bool _is_window() override;
 
 //      lresult send_message(const ::id & id, wparam wParam = 0, lparam lParam = 0, const ::point_i32 & point = nullptr) override;
 //      bool post_message(const ::id & id, wparam wParam = 0, lparam lParam = 0) override;

@@ -76,7 +76,7 @@ namespace multimedia
 //         int32_t                         nRange;
 //         int32_t                         nPageInc;
 //
-//         __pointer(::multimedia::audio_mixer_audio_core::source) psource = m_pmixersource;
+//         ::pointer < ::multimedia::audio_mixer_audio_core::source > psource = m_pmixersource;
 //
 //         ASSERT(spource != NULL);
 //
@@ -292,7 +292,7 @@ namespace multimedia
          //m_mixercontroldetails.dwControlID = m_mixercontrol.dwControlID;
       }
 
-      __pointer(::multimedia::audio_mixer::user::control) control::GetControl(int32_t iType)
+      ::pointer < ::multimedia::audio_mixer::user::control > control::GetControl(int32_t iType)
       {
 //         ::multimedia::audio_mixer::user::control  * pusercontrol = NULL;
 //         for(int32_t i = 0; i < this->get_size(); i++)
@@ -308,7 +308,7 @@ namespace multimedia
          return NULL;
       }
 
-      __pointer(::multimedia::audio_mixer::user::control) control::GetControlByIndex(::index iIndex)
+      ::pointer < ::multimedia::audio_mixer::user::control > control::GetControlByIndex(::index iIndex)
       {
          //return this->element_at(iIndex);
          return nullptr;
@@ -464,7 +464,7 @@ namespace multimedia
 //         }
       }
 
-      __pointer(::multimedia::audio_mixer::control_data) control::GetWindowData(int32_t iType)
+      ::pointer < ::multimedia::audio_mixer::control_data > control::GetWindowData(int32_t iType)
       {
 //         ::multimedia::audio_mixer::user::control * pusercontrol = NULL;
 //         for(int32_t i = 0; i < this->get_size(); i++)
@@ -615,7 +615,7 @@ namespace multimedia
 
       }*/
 
-      __pointer(::multimedia::audio_mixer::user::control) control::GetControlByDlgCtrlID(uint32_t nID)
+      ::pointer < ::multimedia::audio_mixer::user::control > control::GetControlByDlgCtrlID(uint32_t nID)
       {
 //         ::multimedia::audio_mixer::user::control * pusercontrol = NULL;
 //         for(int32_t i = 0; i < this->get_size(); i++)
@@ -632,7 +632,7 @@ namespace multimedia
          return nullptr;
       }
 
-      __pointer(::multimedia::audio_mixer::control_data) control::GetWindowDataByDlgCtrlID(uint32_t nID)
+      ::pointer < ::multimedia::audio_mixer::control_data > control::GetWindowDataByDlgCtrlID(uint32_t nID)
       {
 //         ::multimedia::audio_mixer::user::control * pusercontrol = NULL;
 //         for(int32_t i = 0; i < this->get_size(); i++)

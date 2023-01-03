@@ -2,11 +2,14 @@
 #include "acme/filesystem/filesystem/acme_directory.h"
 #include "acme/filesystem/filesystem/acme_path.h"
 #include "acme/filesystem/filesystem/acme_file.h"
+#include "acme/platform/system.h"
 //#include "apex/os/_.h"
 //#include "apex/os/_os.h"
 #if defined(MACOS)
 #include <sys/stat.h>
 #endif
+
+void ns_main_async(dispatch_block_t block);
 
 
 void setMyselfAsDefaultApplicationForFileExtension(const char * pszExtension);
@@ -85,7 +88,7 @@ namespace apex_macos
    string os_context::get_command_line()
    {
       
-      auto psystem = m_psystem->m_papexsystem;
+      auto psystem = acmesystem()->m_papexsystem;
 
       return psystem->get_command_line();
 
@@ -1006,7 +1009,7 @@ namespace apex_macos
    void os_context::on_process_command(::create * pcommand)
    {
 
-//      __pointer(::handler) phandler = ::apex::get_system()->handler();
+//      ::pointer < ::handler > phandler = ::apex::get_system()->handler();
 
       if(pcommand->m_strExe[0] == '/')
       {

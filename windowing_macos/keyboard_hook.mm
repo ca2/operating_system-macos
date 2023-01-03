@@ -13,6 +13,7 @@
 //
 #include "framework.h"
 #include "keyboard_hook.h"
+#include "acme/constant/message.h"
 //#import <ApplicationServices/ApplicationServices.h>
 #include <Carbon/Carbon.h>
 //#import <ScriptingBridge/ScriptingBridge.h>
@@ -66,13 +67,13 @@ namespace keyboard_hook
    ::e_status check_system_permissions();
    
 
-   static ::element * g_pelementListener = nullptr;
+   static ::particle * g_pparticleListener = nullptr;
 
 
    static id g_idEventMonitor;
    
 
-   ::e_status install(::element * pelementListener)
+   ::e_status install(::particle * pparticleListener)
    {
       
       auto estatus = is_enabled(false);
@@ -84,7 +85,7 @@ namespace keyboard_hook
       
       }
 
-      g_pelementListener = pelementListener;
+      g_pparticleListener = pparticleListener;
       
       //   NSDictionary *options = @{(__bridge NSString *)kAXTrustedCheckOptionPrompt: @NO};
 //   BOOL accessibilityEnabled = AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
@@ -145,55 +146,55 @@ namespace keyboard_hook
    //}
       g_idEventMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:
                  
-                 (NSKeyDownMask | NSKeyUpMask)                                    handler: ^(NSEvent *incomingEvent)
+                          (NSEventMaskKeyDown | NSEventMaskKeyUp)                                    handler: ^(NSEvent *incomingEvent)
                  {
                                                          
                                              //NSEvent *result = incomingEvent;
                                                          
                                                          //NSWindow *targetWindowForEvent = [incomingEvent window];
                                                          
-                                                         if ([incomingEvent type] == NSKeyDown)
+         if ([incomingEvent type] == NSEventTypeKeyDown)
                                                          {
                                                             
                                                             if([incomingEvent keyCode] == kVK_Return)
                                                             {
                                                                
-                                                               g_pelementListener->call(e_message_key_down, kVK_Return);
+                                                               g_pparticleListener->call(e_message_key_down, kVK_Return);
                                                                
                                                             }
                                                             else if([incomingEvent keyCode] == kVK_Space)
                                                             {
                                                                
-                                                               g_pelementListener->call(e_message_key_down, kVK_Space);
+                                                               g_pparticleListener->call(e_message_key_down, kVK_Space);
                                                                
                                                             }
                                                             else
                                                             {
                                                                
-                                                               g_pelementListener->call(e_message_key_down, kVK_ANSI_A);
+                                                               g_pparticleListener->call(e_message_key_down, kVK_ANSI_A);
                                                                
                                                             }
                                                                
                                                          }
-                                                         else if ([incomingEvent type] == NSKeyUp)
+         else if ([incomingEvent type] == NSEventTypeKeyUp)
                                                          {
                                                             
                                                             if([incomingEvent keyCode] == kVK_Return)
                                                             {
                                                                
-                                                               g_pelementListener->call(e_message_key_up, kVK_Return);
+                                                               g_pparticleListener->call(e_message_key_up, kVK_Return);
                                                                
                                                             }
                                                             else if([incomingEvent keyCode] == kVK_Space)
                                                             {
                                                                
-                                                               g_pelementListener->call(e_message_key_up, kVK_Space);
+                                                               g_pparticleListener->call(e_message_key_up, kVK_Space);
                                                                
                                                             }
                                                             else
                                                             {
                                                                
-                                                               g_pelementListener->call(e_message_key_up, kVK_ANSI_A);
+                                                               g_pparticleListener->call(e_message_key_up, kVK_ANSI_A);
                                                                
                                                             }
                        
@@ -207,7 +208,7 @@ namespace keyboard_hook
    }
 
    
-   ::e_status uninstall(::element * pelementListener)
+   ::e_status uninstall(::particle * pparticleListener)
    {
       
       [NSEvent removeMonitor: g_idEventMonitor ];

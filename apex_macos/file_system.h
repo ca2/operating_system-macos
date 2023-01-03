@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "apex/filesystem/filesystem/file_system.h"
+
+
 namespace apex_macos
 {
 
@@ -18,7 +21,7 @@ namespace apex_macos
       ~file_system() override;
       
       
-      void initialize(::object * pobject) override;
+      void initialize(::particle * pparticle) override;
 
 
 

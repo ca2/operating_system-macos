@@ -10,7 +10,8 @@
 #include <unistd.h>
 #include <signal.h>
 
-
+void defer_acme_macos_application_init(::acme::system * psystem);
+void acme_macos_application_init(void * pApplication, int argc, char *argv[]);
 void ns_launch_app(const char * psz, const char
                    ** argv, int iFlags);
 void acme_macos_application_main(void * pApplication, int argc, char *argv[]);
@@ -605,13 +606,13 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    //
    //                                 gdk_monitor_get_workarea(pmonitor, &rect);
    //
-   //                                 __copy(rectWorkspace, rect);
+   //                                 copy(rectWorkspace, rect);
    //
    //                                 __zero(rect);
    //
    //                                 gdk_monitor_get_geometry(pmonitor, &rect);
    //
-   //                                 __copy(rectMonitor, rect);
+   //                                 copy(rectMonitor, rect);
    //
    //                              }
    //
@@ -955,8 +956,11 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 
    }
 
+
    void node::acme_application_main(class ::acme::system * psystem)
    {
+      
+      defer_acme_macos_application_init(psystem);
 
       auto argc = psystem->m_psubsystem->m_argc;
 
@@ -1042,6 +1046,4 @@ string macos_get_type_identifier(const char * psz)
    return ::string_from_strdup(mm2_get_type_identifier(psz));
    
 }
-
-
 

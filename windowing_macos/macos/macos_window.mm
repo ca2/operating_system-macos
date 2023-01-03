@@ -10,6 +10,12 @@
 #include "macOSWindow.h"
 
 
+void ns_main_async(dispatch_block_t block);
+
+
+void ns_main_sync(dispatch_block_t block);
+
+
 void * new_macos_window(macos_window * pmacoswindow, CGRect rect, unsigned int uStyle)
 {
    

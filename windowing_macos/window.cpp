@@ -8,13 +8,17 @@
 
 #include "framework.h"
 #include "window_impl.h"
+#include "acme/constant/message.h"
+#include "acme/parallelization/synchronous_lock.h"
+#include "acme/parallelization/synchronous_lock.h"
 #include "aura/user/user/interaction_prodevian.h"
 #include "aura/user/user/interaction_impl.h"
 #include "aura/user/user/box.h"
+#include "aura/message/user.h"
 #include "aura_macos/interaction_impl.h"
 #include "acme/parallelization/message_queue.h"
-#include "aura/graphics/graphics/_.h"
-#include "aura/graphics/graphics/_graphics.h"
+#include "aura/graphics/graphics/graphics.h"
+//#include "aura/graphics/graphics/_graphics.h"
 #include "aura/graphics/image/drawing.h"
 #include "aura/platform/session.h"
 #include "aura/user/user/user.h"
@@ -101,7 +105,7 @@ namespace windowing_macos
 
 
          //#ifndef LINUX
-         //MESSAGE_LINK(e_message_move, pchannel, this, &window::_001OnMove);
+         //MESSAGE_LINK(e_message_reposition, pchannel, this, &window::_001OnMove);
          //MESSAGE_LINK(e_message_size, pchannel, this, &window::_001OnSize);
          //#endif
 
@@ -166,14 +170,14 @@ namespace windowing_macos
 
       //CGRect rectangle_i32;
 
-      RECTANGLE_I32 rectParam;
+      rectangle_i32 rectParam;
 
    //      rectParam.left = m_pusersystem->m_createstruct.x;
    //      rectParam.top = pusersystem->m_createstruct.y;
    //      rectParam.right = pusersystem->m_createstruct.x + pusersystem->m_createstruct.cx;
    //      rectParam.bottom = pusersystem->m_createstruct.y + pusersystem->m_createstruct.cy;
 
-   //      __copy(rectangle, rectParam);
+   //      copy(rectangle, rectParam);
    //
    //      if (pusersystem->m_createstruct.hwndParent == MESSAGE_WINDOW_PARENT)
    //      {
@@ -199,7 +203,7 @@ namespace windowing_macos
       
          CGRect cgrect;
       
-         copy(&cgrect, &rectangle);
+         copy(cgrect, rectangle);
       
          //__todo?
          //windowing()->copy(cgrect, rectangle);
@@ -220,13 +224,13 @@ namespace windowing_macos
       install_message_routing(puserinteraction);
 
       
-      auto psession = m_pcontext->m_paurasession;
+      auto psession = m_pcontext->m_pacmesession->m_paurasession;
 
       auto puser = psession->user();
 
       auto pwindowing = (::windowing_macos::windowing *) puser->windowing1()->m_pWindowing4;
       
-      m_pmacoswindowing = pwindowing->cast < class windowing >();
+      m_pmacoswindowing = dynamic_cast < class windowing * >(pwindowing);
       
       m_pwindowing = pwindowing;
       
@@ -244,7 +248,7 @@ namespace windowing_macos
 
          puserinteraction->set_size(::size_i32(rectParam), ::user::e_layout_window);
 
-         __refer(puserinteraction->m_pthreadUserInteraction, ::get_task());
+         puserinteraction->m_pthreadUserInteraction = ::get_task();
 
          //puserinteraction->place(rectParam);
 
@@ -471,7 +475,7 @@ namespace windowing_macos
    void window::set_mouse_cursor(::windowing::cursor * pcursorParam)
    {
       
-      __pointer(::windowing::cursor) pcursor = pcursorParam;
+      ::pointer < ::windowing::cursor > pcursor = pcursorParam;
 
       if (::is_null(pcursor))
       {
@@ -497,7 +501,7 @@ namespace windowing_macos
       }
       
       if(::is_null(pcursorMacos->m_pNSCursor)
-         && (::is_ok(pcursorMacos->m_pimage)
+         && (pcursorMacos->m_pimage
              || pcursor->m_ecursor != e_cursor_none))
       {
          
@@ -525,20 +529,25 @@ namespace windowing_macos
    }
    
 
-   bool window::set_window_position(const class ::zorder & zorder, i32 x, i32 y, i32 cx, i32 cy, ::u32 nFlags)
+   bool window::set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide)
    {
       
       ns_main_async(^(){
+         
          CGRect r;
 
          macos_window_get_frame(&r);
          
-         if(!(nFlags & SWP_NOMOVE))
+         if(!bNoMove)
          {
+            
             r.origin.x = x;
+            
             r.origin.y = y;
+            
          }
-         if(!(nFlags & SWP_NOSIZE))
+         
+         if(!bNoSize)
          {
          
             r.size.width = cx;
@@ -546,21 +555,19 @@ namespace windowing_macos
             r.size.height = cy;
             
          }
-         
             
          macos_window_set_frame(r);
          
-         if(nFlags & SWP_SHOWWINDOW)
+         if(bShow)
          {
           
             macos_window_defer_show();
             
          }
-         
 
       }
                     
-                    );
+      );
 
       return true;
 
@@ -636,9 +643,9 @@ namespace windowing_macos
 
    #endif
 
-      auto tickNow = ::duration::now();
+      auto tickNow = ::time::now();
 
-      auto tickEllapsed = tickNow - m_puserinteractionimpl->m_durationLastDeviceDraw;
+      auto tickEllapsed = tickNow - m_puserinteractionimpl->m_timeLastDeviceDraw;
 
       if(tickEllapsed < 12_ms)
       {
@@ -648,13 +655,13 @@ namespace windowing_macos
 
       }
 
-      m_puserinteractionimpl->m_durationLastDeviceDraw = tickNow;
+      m_puserinteractionimpl->m_timeLastDeviceDraw = tickNow;
 
       ::user::device_draw_life_time devicedrawlifetime(m_puserinteractionimpl);
 
       critical_section_lock slDisplay(m_puserinteractionimpl->cs_display());
 
-      __pointer(::graphics::graphics) pbuffer = m_puserinteractionimpl->m_pgraphics;
+      ::pointer < ::graphics::graphics > pbuffer = m_puserinteractionimpl->m_pgraphics;
 
       if(!pbuffer)
       {
@@ -680,7 +687,7 @@ namespace windowing_macos
 
       g->set_alpha_mode(::draw2d::e_alpha_mode_set);
 
-      synchronous_lock slGraphics(pbuffer->mutex());
+      synchronous_lock slGraphics(pbuffer->synchronization());
       
       synchronous_lock sl1(pbuffer->get_screen_sync());
 
@@ -755,7 +762,7 @@ namespace windowing_macos
       
       m_puserinteractionimpl->m_bPendingRedraw = false;
       
-      m_puserinteractionimpl->m_durationLastRedraw.Now();
+      m_puserinteractionimpl->m_timeLastRedraw.Now();
 
    }
 
@@ -790,7 +797,7 @@ namespace windowing_macos
 //   bool window::macos_window_key_up(unsigned int uiKeyCode)
 //   {
 //
-//      __pointer(::user::message) spbase;
+//      ::pointer < ::user::message > spbase;
 //
 //      auto pkey  = __new(::message::key);
 //
@@ -861,6 +868,7 @@ namespace windowing_macos
        
        if(::is_set(psz))
        {
+          
        while(true)
        {
            
@@ -870,7 +878,7 @@ namespace windowing_macos
            
            psz += len;
            
-           auto codepoint = __uni_index(strChar);
+           auto codepoint = unicode_index(strChar);
            
            auto pkey  = __create_new < ::message::key >();
 
@@ -923,7 +931,7 @@ namespace windowing_macos
       
       m_pointMouseCursor.y = y;
 
-      //__pointer(::user::message) spbase;
+      //::pointer < ::user::message > spbase;
 
       if (!this->is_active_window())
       {
@@ -1067,7 +1075,7 @@ namespace windowing_macos
 
       }
       
-      if(puserinteraction->m_durationMouseMove.elapsed() < puserinteraction->m_durationMouseMoveIgnore)
+      if(puserinteraction->m_timeMouseMove.elapsed() < puserinteraction->m_timeMouseMoveIgnore)
       {
          
          //printf("mouse_move_ignored %f, %f\n", x, y);
@@ -1081,7 +1089,7 @@ namespace windowing_macos
 
 //            printf("mouse_move_\"accepted\" %f, %f\n", x, y);
 
-         puserinteraction->m_durationMouseMove.Now();
+         puserinteraction->m_timeMouseMove.Now();
 
          puserinteraction->m_pointMouseMove.x = x;
 
@@ -1230,13 +1238,13 @@ namespace windowing_macos
       
       {
       
-      atom id = e_message_move;
+         atom id = e_message_reposition;
          
          wparam wparam = 0;
          
          lparam lparam = __MAKE_LPARAM(rectangle.origin.x, rectangle.origin.y);
       
-         auto pmove  = __create_new < ::message::move > ();
+         auto pmove  = __create_new < ::message::reposition > ();
       
          pmove->set(this, this, id, wparam, lparam);
 
@@ -1277,7 +1285,7 @@ namespace windowing_macos
    //
    //         TRACE("window::macos_window_resized effective position is different from requested position");
    //
-   //         puserinteraction->post_message(e_message_move, 0, puserinteraction->window_state().m_point.lparam());
+   //         puserinteraction->post_message(e_message_reposition, 0, puserinteraction->window_state().m_point.lparam());
    //
    //      }
    //
@@ -1333,7 +1341,7 @@ namespace windowing_macos
    ////      if (bMove)
    ////      {
    ////
-   ////         puserinteraction->post_message(e_message_move, 0, pt.lparam());
+   ////         puserinteraction->post_message(e_message_reposition, 0, pt.lparam());
    ////
    ////      }
 
@@ -1348,7 +1356,7 @@ namespace windowing_macos
    //
    //      ::rectangle_i32 rectSize;
    //
-   //      __copy(rectSize, rectangle);
+   //      copy(rectSize, rectangle);
    //
    //      if(puserinteraction->window_state().rectangle_i32() != rectSize)
    //      {
@@ -1396,13 +1404,13 @@ namespace windowing_macos
 
       {
       
-         atom id = e_message_move;
+         atom id = e_message_reposition;
          
          wparam wparam = 0;
          
          lparam lparam = __MAKE_LPARAM(point.x, point.y);
       
-         auto pmove  = __create_new < ::message::move > ();
+         auto pmove  = __create_new < ::message::reposition > ();
       
          pmove->set(this, this, id, wparam, lparam);
 
@@ -1419,7 +1427,7 @@ namespace windowing_macos
    //
    //      ::point_i32 pointMove;
    //
-   //      __copy(pointMove, point);
+   //      copy(pointMove, point);
    //
    //      if (puserinteraction->m_eflagLayouting)
    //      {
@@ -1430,7 +1438,7 @@ namespace windowing_macos
    //
    //      }
    //
-   //      ///__pointer(::message::move) pmove(pmessage);
+   //      ///::pointer < ::message::move > pmove(pmessage);
    //
    //      if (puserinteraction->layout().sketch().m_point != pointMove)
    //      {
@@ -1475,7 +1483,7 @@ namespace windowing_macos
 //
 //      }
       
-      m_puserinteractionimpl->m_durationLastExposureAddUp.Now();
+      m_puserinteractionimpl->m_timeLastExposureAddUp.Now();
 
    }
 
@@ -1742,7 +1750,7 @@ namespace windowing_macos
 
       }
 
-      m_puserinteractionimpl->m_durationLastExposureAddUp.Now();
+      m_puserinteractionimpl->m_timeLastExposureAddUp.Now();
 
       puserinteraction->send_message(e_message_show_window, 1);
 
@@ -1792,7 +1800,7 @@ namespace windowing_macos
 
       }
       
-      if(puserinteraction->is_destroying())
+      if(puserinteraction->has_destroying_flag())
       {
          
          return;
@@ -1864,7 +1872,7 @@ namespace windowing_macos
             puserinteraction->display(e_display_default, e_activation_set_foreground);
 
          }
-         else if(puserinteraction->m_pinteractionimpl && puserinteraction->m_pinteractionimpl->m_durationLastExposureAddUp.elapsed() < 300_ms)
+         else if(puserinteraction->m_pinteractionimpl && puserinteraction->m_pinteractionimpl->m_timeLastExposureAddUp.elapsed() < 300_ms)
          {
 
             INFORMATION("Ignored minituarize request (by toggle intent) because of recent full exposure.");
@@ -2097,9 +2105,9 @@ namespace windowing_macos
    void window::destroy_window()
    {
 
-      __pointer(::user::primitive_impl) pimplThis = m_puserinteractionimpl;
+      ::pointer < ::user::primitive_impl > pimplThis = m_puserinteractionimpl;
 
-      __pointer(::user::interaction) puiThis = pimplThis->m_puserinteraction;
+      ::pointer < ::user::interaction > puiThis = pimplThis->m_puserinteraction;
 
       try
       {

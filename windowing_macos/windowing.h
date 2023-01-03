@@ -25,10 +25,10 @@ namespace windowing_macos
 //      {
 //      public:
 //
-//         __pointer(::acme::node) & m_pnode;
+//         ::pointer < ::acme::node > & m_pnode;
 //         __pointer(class ::system) & m_psystem;
 //
-//         element_quit(__pointer(::acme::node) & pnode,__pointer(class ::system) & psystem
+//         element_quit(::pointer < ::acme::node > & pnode,__pointer(class ::system) & psystem
 //               
 //               ) :
 //         m_pnode(pnode),m_psystem(psystem)
@@ -42,21 +42,21 @@ namespace windowing_macos
 //      };
 
 
-      __pointer(::windowing::display)           m_pdisplay;
+      ::pointer < ::windowing::display >           m_pdisplay;
 
-      __pointer(class window)                   m_pwindowActive;
+      ::pointer < class window >                   m_pwindowActive;
 
-      __pointer(class window)                   m_pwindowCapture;
+      ::pointer < class window >                   m_pwindowCapture;
 
-      map < void *, __pointer(class window) >   m_nsmap;
+      map < void *, ::pointer < class window > >   m_nsmap;
 
-      //__pointer(element_quit)                   m_pelementquit;
+      //::pointer < element_quit >                   m_pelementquit;
 
       windowing();
       ~windowing() override;
 
 
-      void initialize(::object * pobject) override;
+      void initialize(::particle * pparticle) override;
 
       void windowing_post(const ::procedure & procedure) override;
 

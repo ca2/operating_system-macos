@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "apex/platform/os_context.h"
+
+
 namespace apex_macos
 {
 
@@ -78,7 +81,7 @@ namespace apex_macos
 
       ::file::path get_app_path(const string & strApp) override;
 
-      void on_process_command(::create * pcommand) override;
+      void on_process_request(::request * prequest) override;
 
       void file_open(const ::file::path & path, const ::string & strParams = "", const ::file::path & pathFolder = "") override;
       

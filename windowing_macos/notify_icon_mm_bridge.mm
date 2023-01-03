@@ -9,6 +9,8 @@
 #include "notify_icon_mm_bridge.h"
 #include "notify_icon_mm.h"
 
+void ns_main_sync(dispatch_block_t block);;
+
 
 NSImage * nsimage_from_image_data(const void * pdata, int cx, int cy, int scan);
 

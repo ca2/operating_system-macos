@@ -11,9 +11,9 @@ namespace keyboard_hook
 {
 
    
-   ::e_status install(::element * pelementListener);
+   ::e_status install(::particle * pparticleListener);
 
-   ::e_status uninstall(::element * pelementListener);
+   ::e_status uninstall(::particle * pparticleListener);
 
    ::e_status is_enabled(bool bPrompt);
 

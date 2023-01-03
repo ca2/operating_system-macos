@@ -88,7 +88,7 @@
 //{
 //   //   ENSURE_ARG(AfxIsValidString(lpszPrefix));
 //   ENSURE_ARG(pmessage != nullptr);
-//   __pointer(::user::message) pusermessage(pmessage);
+//   ::pointer < ::user::message > pusermessage(pmessage);
 //
 //   if (pusermessage->m_id == e_message_mouse_move || pusermessage->m_id == e_message_non_client_mouse_move ||
 //       pusermessage->m_id == e_message_nchittest || pusermessage->m_id == e_message_set_cursor ||

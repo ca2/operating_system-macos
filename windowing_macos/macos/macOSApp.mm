@@ -8,7 +8,12 @@
 
 #include "framework.h"
 #include "macOSApp.h"
+#include "acme/constant/id.h"
 #include "aura_macos/_c_mm.h"
+#include "acme/operating_system/argcargv.h"
+
+
+void ns_main_async(dispatch_block_t block);
 
 
 NSString * __ns_get_text(const char * psz);

@@ -5,6 +5,7 @@
 //  Created by Camilo Sasuke on 2021-05-19 04:22 BRT <3ThomasBS_!!
 //
 #include "framework.h"
+#include "acme/platform/system.h"
 /////#include "apex/user/menu_shared.h"
 //#include "keyboard_hook.h"
 //#include "mouse_hook.h"
@@ -66,7 +67,7 @@ namespace node_macos
 
 
 
-//   void node::implement(__pointer(::acme::node) & pnode, __pointer(class ::system) & psystem)
+//   void node::implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem)
 //   {
 //       
 //      m_pelementquit = new element_quit(pnode, psystem);
@@ -280,22 +281,24 @@ namespace node_macos
 
 
 
-void node::acme_application_main(class ::acme::system * psystem)
-{
+   void node::acme_application_main(class ::acme::system * psystem)
+   {
 
-   auto argc = psystem->m_argc;
+      auto argc = psystem->m_psubsystem->m_argc;
 
-   auto argv = psystem->m_argv;
+      auto argv = psystem->m_psubsystem->m_argv;
 
-   auto papp = psystem->m_pacmeapplicationStartup;
+      auto papp = psystem->m_psubsystem->acmeapplication();
 
-   void * pApplication = (void *) (::acme::application *) papp;
+      void * pApplication = (void *) (::acme::application *) papp;
 
-   windowing_macos_application_main(pApplication, argc, argv);
+      windowing_macos_application_main(pApplication, argc, argv);
 
-   //return psystem->m_estatus;
+      //return psystem->m_estatus;
 
-}
+   }
+
+
 } // namespace node_macos
 
 

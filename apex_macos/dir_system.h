@@ -7,6 +7,9 @@
 #pragma once
 
 
+#include "apex/filesystem/filesystem/dir_system.h"
+
+
 namespace apex_macos
 {
 
@@ -29,7 +32,7 @@ namespace apex_macos
       dir_system();
 
 
-      void initialize(::object * pobject) override;
+      void initialize(::particle * pparticle) override;
 
       void init_system() override;
       

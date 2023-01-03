@@ -20,15 +20,15 @@ namespace apex_macos
    public:
 
       
-      __reference(dir_system)       m_pdirsystem;
-      __reference(file_system)      m_pfilesystem;
+      ::pointer < dir_system >       m_pdirsystem;
+      ::pointer < file_system >      m_pfilesystem;
 
 
       file_context();
       virtual ~file_context();
       
       
-      void initialize(::object * pobject) override;
+      void initialize(::particle * pparticle) override;
 
       virtual ::payload length(const ::file::path & path) override;
 

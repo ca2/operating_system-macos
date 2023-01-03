@@ -2,6 +2,7 @@
 
 
 #include "aura/user/user/text_composition_client.h"
+#include "apex/message/channel.h"
 
 
 class CLASS_DECL_WINDOWING_MACOS imm_client :
@@ -13,7 +14,7 @@ public:
 
    bool                             m_bTextCompositionActive2; // replaced by m_bTextCompositionActive in base class.
    bool                             m_bImeCancelling;
-   __pointer(::user::interaction)   m_puserinteraction;
+   ::pointer< ::user::interaction >   m_puserinteraction;
 
 
    imm_client();

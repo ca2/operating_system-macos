@@ -123,7 +123,7 @@ void macos_clipboard_set_filea(const char ** psza, long c)
       
       NSString * str = [NSString stringWithUTF8String: psz];
       
-      str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+      str = [str stringByAddingPercentEncodingWithAllowedCharacters :  [ NSCharacterSet URLPathAllowedCharacterSet ] ] ;
       
       if(psz[0] == '/')
       {
