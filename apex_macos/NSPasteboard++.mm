@@ -123,7 +123,7 @@ void mm_clipboard_set_filea(const char ** psza, long c)
       
       NSString * str = [NSString stringWithUTF8String: psz];
       
-      str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+      str = [[str stringByAddingPercentEncodingWithAllowedCharacters: [NSCharacterSet URLPathAllowedCharacterSet ] ];
       
       if(psz[0] == '/')
       {
@@ -142,7 +142,7 @@ void mm_clipboard_set_filea(const char ** psza, long c)
    
    NSPasteboard * pasteboard = [NSPasteboard generalPasteboard];
    
-   [pasteboard declareTypes:[NSArray arrayWithObject:NSFilenamesPboardType] owner:nil];
+   [pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeFileURL] owner:nil];
 
    [pasteboard writeObjects: filea];
        

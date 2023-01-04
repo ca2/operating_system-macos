@@ -62,7 +62,7 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
    // http://stackoverflow.com/questions/3409985/how-to-create-a-menubar-application-for-mac
    m_statusitem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
    
-   [m_statusitem setHighlightMode: YES];
+   [ [ [ m_statusitem button ] cell ] setHighlighted: YES];
    
 //   auto pimage = [NSImage alloc];
 //
@@ -81,7 +81,7 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
 
       }
    
-      [m_statusitem setImage: pimage ];
+      [ [m_statusitem button] setImage: pimage ];
       
 //   }
    
