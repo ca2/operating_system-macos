@@ -125,7 +125,7 @@ namespace FileSystemEvents
 
       action.m_pwatch = pwatch;
 
-      action.m_atom = pwatch->m_atom;
+      action.m_watchid = pwatch->m_watchid;
 
       action.m_pathFolder = pwatch->m_pathFolder;
 
@@ -137,7 +137,7 @@ namespace FileSystemEvents
          if(!pwatch->m_bRecursive)
          {
 
-            if(path.folder().get_length() > action.m_pathFolder.get_length())
+            if(path.folder().length() > action.m_pathFolder.length())
             {
 
                continue;
@@ -146,7 +146,7 @@ namespace FileSystemEvents
 
          }
 
-         ::str().begins_eat(path, action.m_pathFolder);
+         path.begins_eat(action.m_pathFolder);
 
          action.m_pathFile = path;
 

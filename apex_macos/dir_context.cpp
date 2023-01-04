@@ -1,9 +1,13 @@
 #include "framework.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
+#include "acme/filesystem/filesystem/listing.h"
+#include "acme/parallelization/task_flag.h"
+#include "apex/platform/system.h"
+#include "acme/primitive/string/international.h"
 //#include "apex/os/_.h"
 //#include "apex/os/_os.h"
 //#include "apex/xml/_.h"
-#include "acme/id.h"
+#include "acme/constant/id.h"
 
 //#include "_.h"
 
@@ -33,12 +37,12 @@ namespace apex_macos
    }
 
 
-   void dir_context::initialize(::object * pobject)
+   void dir_context::initialize(::particle * pparticle)
    {
       
       //auto estatus =
       
-      ::dir_context::initialize(pobject);
+      ::dir_context::initialize(pparticle);
       
 //      if(!estatus)
 //      {
@@ -47,7 +51,7 @@ namespace apex_macos
 //
 //      }
       
-      auto psystem = m_psystem->m_papexsystem;
+      auto psystem = acmesystem()->m_papexsystem;
       
       //estatus =
       
@@ -62,7 +66,7 @@ namespace apex_macos
       
       //estatus =
       
-      __refer(m_pfilesystem, psystem->m_pfilesystem);
+      m_pfilesystem = psystem->m_pfilesystem;
 //      
 //      if(!estatus)
 //      {
@@ -113,7 +117,7 @@ namespace apex_macos
 
       }
 
-      auto psystem = m_psystem;
+      auto psystem = acmesystem();
       
       auto pacmedirectory = psystem->m_pacmedirectory;
 
@@ -220,7 +224,7 @@ namespace apex_macos
          
       }
       
-      auto pacmedirectory = m_psystem->m_pacmedirectory;
+      auto pacmedirectory = acmesystem()->m_pacmedirectory;
       
       if(!pacmedirectory->enumerate(listing))
       {
@@ -440,7 +444,7 @@ namespace apex_macos
    bool dir_context::name_is(const ::file::path & str)
    {
       //output_debug_string(str);
-      strsize iLast = str.get_length() - 1;
+      strsize iLast = str.length() - 1;
       while(iLast >= 0)
       {
          if(str[iLast] != '\\' && str[iLast] != '/' && str[iLast] != ':')
@@ -487,7 +491,7 @@ namespace apex_macos
 
       //wstrPath.alloc(iLen + 32);
 
-      wstrPath = utf8_to_unicode(str, iLast + 1);
+      wstrPath = utf8_to_unicode(str(0, iLast + 1));
 
       //output_debug_string(wstrPath);
 
@@ -734,31 +738,43 @@ namespace apex_macos
 
 
 
-   ::file::path dir_context::trash_that_is_not_trash(const ::file::path & psz)
+   ::file::path dir_context::trash_that_is_not_trash(const ::file::path & path)
    {
-      if(psz == nullptr)
-         return "";
-
-      if(psz[1] == ':')
+      
+      if(path.is_empty())
       {
-         string strDir = ::file_path_name(psz);
-         string str;
-         str = strDir.Left(2);
-         str += "\\trash_that_is_not_trash\\";
+         
+         return "";
+         
+      }
+
+      if(path[1] == ':')
+      {
+         
+         auto pathFolder = path.folder();
+         
+         auto pathFolderWithoutDriveLetter = pathFolder(2);
+         
+         auto pathDriveLetter = pathFolder(0, 2);
+         
+         ::string str;
+         
+         str = pathDriveLetter + "\\trash_that_is_not_trash\\";
+         
          string strFormat;
+         
          ::earth::time time;
+         
          time = ::earth::time::now();
+         
          strFormat.format("%04d-%02d-%02d %02d-%02d-%02d\\", time.year(), time.month(), time.day(), time.hour(), time.minute(), time.second());
+         
          str += strFormat;
-         if(strDir[2] == '\\')
-         {
-            str += strDir.Mid(3);
-         }
-         else
-         {
-            str += strDir.Mid(2);
-         }
+         
+         str += pathFolderWithoutDriveLetter;
+         
          return str;
+         
       }
 
       return "";
@@ -1077,7 +1093,7 @@ namespace apex_macos
    ::file::path dir_context::time()
    {
       
-      return m_psystem->m_papexsystem->m_pdirsystem->m_pathAppData / "time";
+      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData / "time";
       
    }
 
@@ -1102,7 +1118,7 @@ namespace apex_macos
    ::file::path dir_context::netseed()
    {
       
-      return m_psystem->m_papexsystem->m_pdirsystem->m_pathHome / "netnodenet/net/seed";
+      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathHome / "netnodenet/net/seed";
       
    }
 
@@ -1120,7 +1136,7 @@ namespace apex_macos
    ::file::path dir_context::module()
    {
 
-      return m_psystem->m_papexsystem->m_pdirsystem->m_pathModule;
+      return acmesystem()->acmedirectory()->module();
 
    }
 
@@ -1326,7 +1342,7 @@ namespace apex_macos
    ::file::path dir_context::appdata(const string & strAppId)
    {
       
-      return m_psystem->m_papexsystem->m_pdirsystem->m_pathAppData / strAppId;
+      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData / strAppId;
       
 //      auto psystem = m_psystem;
 //
@@ -1340,13 +1356,15 @@ namespace apex_macos
    ::file::path dir_context::commonappdata_root()
    {
 
-      return m_psystem->m_papexsystem->m_pdirsystem->m_pathAppData;
+      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData;
 
    }
+
+
    ::file::path dir_context::commonappdata()
    {
 
-      return m_psystem->m_papexsystem->m_pdirsystem->m_pathAppData;
+      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData;
 
    }
 
@@ -1409,7 +1427,7 @@ namespace apex_macos
    ::file::path dir_context::userquicklaunch()
    {
 
-      return m_psystem->m_papexsystem->m_pdirsystem->m_pathAppData / "Microsoft\\Internet Explorer\\Quick Launch";
+      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData / "Microsoft\\Internet Explorer\\Quick Launch";
 
    }
 
@@ -1417,7 +1435,7 @@ namespace apex_macos
    ::file::path dir_context::userprograms()
    {
 
-      return m_psystem->m_papexsystem->m_pdirsystem->m_pathAppData;
+      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData;
 
    }
 
@@ -1425,7 +1443,7 @@ namespace apex_macos
    ::file::path dir_context::commonprograms()
    {
 
-      return m_psystem->m_papexsystem->m_pdirsystem->m_pathAppData;
+      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData;
 
    }
 
@@ -1438,10 +1456,10 @@ namespace apex_macos
    }
 
 
-   bool dir_context::is_inside(const ::file::path & pszDir, const ::file::path & pszPath)
+   bool dir_context::is_inside(const ::file::path & pathLonger, const ::file::path & pathShorter)
    {
 
-      return ::str().case_insensitive_begins(pszDir, pszPath);
+      return pathLonger.case_insensitive_begins(pathShorter);
 
    }
 
@@ -1517,7 +1535,7 @@ namespace apex_macos
    ::file::path dir_context::home()
    {
 
-      return m_psystem->m_papexsystem->m_pdirsystem->m_pathHome;
+      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathHome;
 
    }
 

@@ -1,6 +1,7 @@
 #include "framework.h"
 #include <sys/ipc.h>
 #include <sys/msg.h>
+#include "acme/_operating_system.h"
 #include "acme/operating_system/ansi/_pthread.h"
 
 
@@ -8,7 +9,7 @@ namespace apex_macos
 {
 
 
-   interprocess_communication_base::interprocess_communication_base()
+   interprocess_base::interprocess_base()
    {
       
       m_port = nullptr;
@@ -16,28 +17,28 @@ namespace apex_macos
    }
 
    
-   interprocess_communication_base::~interprocess_communication_base()
+   interprocess_base::~interprocess_base()
    {
       
       
    }
 
 
-   interprocess_communication_tx::interprocess_communication_tx()
+   interprocess_caller::interprocess_caller()
    {
 
       
    }
 
 
-   interprocess_communication_tx::~interprocess_communication_tx()
+   interprocess_caller::~interprocess_caller()
    {
 
       
    }
 
 
-   void interprocess_communication_tx::open(const ::string & strChannel,launcher * plauncher)
+   void interprocess_caller::open(const ::string & strChannel,launcher * plauncher)
    {
 
       //CFDataRef data;
@@ -57,7 +58,7 @@ namespace apex_macos
    }
 
 
-   void interprocess_communication_tx::close()
+   void interprocess_caller::close()
    {
 
       if(m_port == nullptr)
@@ -76,7 +77,7 @@ namespace apex_macos
    }
 
 
-   void interprocess_communication_tx::send(const ::string & strMessage, const ::duration & durationTimeout)
+   void interprocess_caller::call(const ::string & strMessage, const class ::time & timeTimeout)
    {
 
       if(m_port == nullptr)
@@ -96,9 +97,9 @@ namespace apex_macos
 
       CFDataRef data = get_os_cf_data(m);
 
-      CFTimeInterval sendTimeout = durationTimeout.floating_second().m_d;
+      CFTimeInterval sendTimeout = timeTimeout.floating_second().m_d;
 
-      CFTimeInterval rcvimeout = durationTimeout.floating_second().m_d;
+      CFTimeInterval rcvimeout = timeTimeout.floating_second().m_d;
 
       SInt32 status =
       CFMessagePortSendRequest(m_port,
@@ -127,42 +128,49 @@ namespace apex_macos
    }
 
 
-   void interprocess_communication_tx::send(int message,void * pdata,int len, const duration & durationTimeout)
-   {
+//   void interprocess_caller::call(int message,void * pdata,int len, const class ::time & timeTimeout)
+//   {
+//
+//      if(message == 0x80000000)
+//      {
+//
+//         throw exception(error_wrong_state);
+//
+//      }
+//
+//      if(!is_clear_ok())
+//      {
+//
+//         throw exception(error_wrong_state);
+//
+//      }
+//
+//      memory m(pdata, len);
+//
+//      //::count c = len;
+//
+//      //::count cSend;
+//
+//
+//      SInt32 status =
+//      CFMessagePortSendRequest(m_port,
+//                               message,
+//                               get_os_cf_data(m),
+//                               (double) timeTimeout.floating_second().m_d,
+//                               (double) timeTimeout.floating_second().m_d,
+//                               nullptr,
+//                               nullptr);
+//      if (status == kCFMessagePortSuccess)
+//      {
+//         // ...
+//      }
+//      //return true;
+//
+//   }
 
-      if(message == 0x80000000)
-         throw exception(error_wrong_state);
 
 
-      if(!is_tx_ok())
-         throw exception(error_wrong_state);
-
-      memory m(pdata, len);
-
-      //::count c = len;
-
-      //::count cSend;
-
-
-      SInt32 status =
-      CFMessagePortSendRequest(m_port,
-                               message,
-                               get_os_cf_data(m),
-                               (double) durationTimeout.floating_second().m_d,
-                               (double) durationTimeout.floating_second().m_d,
-                               nullptr,
-                               nullptr);
-      if (status == kCFMessagePortSuccess)
-      {
-         // ...
-      }
-      //return true;
-
-   }
-
-
-
-   bool interprocess_communication_tx::is_tx_ok()
+   bool interprocess_caller::is_caller_ok()
    {
 
       return m_port != nullptr;
@@ -170,21 +178,19 @@ namespace apex_macos
    }
 
 
-
-
-interprocess_communication_rx::interprocess_communication_rx()
+   interprocess_target::interprocess_target()
    {
 
       m_atom = "::interprocess_communication::rx";
    
       m_runloop = nullptr;
 
-      m_preceiver    = nullptr;
+      //m_preceiver    = nullptr;
 
    }
 
 
-interprocess_communication_rx::~interprocess_communication_rx()
+   interprocess_target::~interprocess_target()
    {
 
    }
@@ -196,7 +202,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
                       void *info)
    {
       
-      interprocess_communication_rx * prx = (interprocess_communication_rx*) info;
+      interprocess_target * ptarget = (interprocess_target*) info;
 
       if(messageID == 0x80000000)
       {
@@ -204,18 +210,23 @@ interprocess_communication_rx::~interprocess_communication_rx()
          memory m;
 
          set_os_cf_data(m, data);
+         
+         ::string strUri((const char *) m.data(), m.size());
 
-         prx->on_interprocess_receive(::move(__string(m)));
+         ptarget->handle_uri(::transfer(strUri));
 
       }
       else
       {
+         
+         
+         throw_exception(error_wrong_state);
 
-         memory m;
-
-         set_os_cf_data(m, data);
-
-         prx->on_interprocess_receive(messageID, ::move(m));
+//         memory m;
+//
+//         set_os_cf_data(m, data);
+//
+//         ptarget->on_interprocess_receive(messageID, ::move(m));
 
       }
       
@@ -224,7 +235,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
    }
    
 
-   void interprocess_communication_rx::create(const ::string & strChannel)
+   void interprocess_target::create(const ::string & strChannel)
    {
 
       CFMessagePortContext c = {};
@@ -244,7 +255,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
    }
 
 
-   void interprocess_communication_rx::destroy()
+   void interprocess_target::destroy()
    {
 
       if(m_port == nullptr)
@@ -263,7 +274,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
    }
 
 
-   bool interprocess_communication_rx::start_receiving()
+   bool interprocess_target::start_receiving()
    {
 
       m_bRunning = true;
@@ -281,23 +292,23 @@ interprocess_communication_rx::~interprocess_communication_rx()
    }
 
 
-//      void rx::receiver::on_ipc_receive(rx * prx,const ::string & pszMessage)
+//      void rx::receiver::on_ipc_receive(rx * ptarget,const ::string & pszMessage)
 //      {
 //
 //      }
 //
 //
-//      void rx::receiver::on_receive(rx * prx,int message,void * pdata,memsize len)
+//      void rx::receiver::on_receive(rx * ptarget,int message,void * pdata,memsize len)
 //      {
 //      }
 //
-//      void rx::receiver::on_post(rx * prx,i64 a,i64 b)
+//      void rx::receiver::on_post(rx * ptarget,i64 a,i64 b)
 //      {
 //      }
 
 
 
-//   void interprocess_communication_rx::on_interprocess_receive(::string && pszMessage)
+//   void interprocess_target::on_interprocess_receive(::string && pszMessage)
 //   {
 //
 //      if(m_preceiver != nullptr)
@@ -314,7 +325,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
 //   }
 //
 //
-//   void interprocess_communication_rx::on_interprocess_receive(int message,memory && memory)
+//   void interprocess_target::on_interprocess_receive(int message,memory && memory)
 //   {
 //
 //      if(m_preceiver != nullptr)
@@ -331,13 +342,13 @@ interprocess_communication_rx::~interprocess_communication_rx()
 //   }
 //
 //
-//   void * interprocess_communication_rx::on_interprocess_post(::interprocess_communication::rx * prx,i64 a,i64 b)
+//   void * interprocess_target::on_interprocess_post(::interprocess_communication::rx * ptarget,i64 a,i64 b)
 //   {
 //
 //      if(m_preceiver != nullptr)
 //      {
 //
-//         m_preceiver->on_interprocess_post(prx, a, b);
+//         m_preceiver->on_interprocess_post(ptarget, a, b);
 //
 //      }
 //
@@ -349,7 +360,7 @@ interprocess_communication_rx::~interprocess_communication_rx()
 //
 //
 
-   bool interprocess_communication_rx::on_idle()
+   bool interprocess_target::on_idle()
    {
 
       return false;
@@ -357,15 +368,15 @@ interprocess_communication_rx::~interprocess_communication_rx()
    }
 
 
-   bool interprocess_communication_rx::is_rx_ok()
+   bool interprocess_target::is_target_ok()
    {
 
       return m_port != nullptr;
+      
    }
 
 
-
-   void * interprocess_communication_rx::receive()
+   void * interprocess_target::receive()
    {
 
       if(m_port == nullptr)

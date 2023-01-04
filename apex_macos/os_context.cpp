@@ -2,7 +2,9 @@
 #include "acme/filesystem/filesystem/acme_directory.h"
 #include "acme/filesystem/filesystem/acme_path.h"
 #include "acme/filesystem/filesystem/acme_file.h"
-#include "acme/platform/system.h"
+#include "acme/platform/request.h"
+#include "apex/filesystem/file/set.h"
+#include "apex/platform/system.h"
 //#include "apex/os/_.h"
 //#include "apex/os/_os.h"
 #if defined(MACOS)
@@ -88,9 +90,34 @@ namespace apex_macos
    string os_context::get_command_line()
    {
       
-      auto psystem = acmesystem()->m_papexsystem;
-
-      return psystem->get_command_line();
+      ::string strCommandLine;
+      
+      for(int i = 0; i < ::acme::acme::g_p->m_psubsystem->m_argc; i++)
+      {
+         
+         auto psz = ::acme::acme::g_p->m_psubsystem->m_argv[i];
+         
+         ::string strArg(psz);
+         
+         if(::found(strArg.find_first_whitespace()))
+         {
+            
+            strArg = "\"" + strArg + "\"";
+            
+         }
+         
+         if(strCommandLine.has_char())
+         {
+            
+            strCommandLine += " ";
+            
+         }
+         
+         strCommandLine += strArg;
+         
+      }
+      
+      return strCommandLine;
 
    }
 
@@ -221,7 +248,7 @@ namespace apex_macos
       get_all_processes(dwa);
       for(i32 i = 0; i < dwa.get_count(); i++)
       {
-         if(get_process_path(dwa[i]).compare_ci(pszName) == 0)
+         if(get_process_path(dwa[i]).case_insensitive_equals(pszName))
          {
             uPid = dwa[i];
             return true;
@@ -237,7 +264,7 @@ namespace apex_macos
       get_all_processes(dwa);
       for(i32 i = 0; i < dwa.get_count(); i++)
       {
-         if(get_process_path(dwa[i]).title().compare_ci(pszName) == 0)
+         if(get_process_path(dwa[i]).title().case_insensitive_equals(pszName))
          {
             uPid = dwa[i];
             return true;
@@ -821,12 +848,12 @@ namespace apex_macos
 
       pathTarget = pcontext->defer_process_path(strSource);
 
-      pathTarget = m_psystem->m_pacmepath->_final(pathTarget);
+      pathTarget = acmesystem()->m_pacmepath->_final(pathTarget);
 
       while(pcontext->os_resolve_alias(pathTarget, pathTarget))
       {
 
-         pathTarget = m_psystem->m_pacmepath->_final(pathTarget);
+         pathTarget = acmesystem()->m_pacmepath->_final(pathTarget);
 
       }
 
@@ -957,7 +984,7 @@ namespace apex_macos
 
       string strAppReturn;
 
-      if(strApp.compare_ci("chrome") == 0)
+      if(strApp.case_insensitive_equals("chrome"))
       {
 
          strAppReturn = "Google Chrome";
@@ -983,7 +1010,7 @@ namespace apex_macos
       
       auto pcontext = m_pcontext;
 
-      if(pcontext->m_papexcontext->dir().is(strAppReturn))
+      if(pcontext->m_papexcontext->dir()->is(strAppReturn))
       {
 
          return strAppReturn;
@@ -1006,57 +1033,57 @@ namespace apex_macos
    }
 
 
-   void os_context::on_process_command(::create * pcommand)
+   void os_context::on_process_request(::request * prequest)
    {
 
 //      ::pointer < ::handler > phandler = ::apex::get_system()->handler();
 
-      if(pcommand->m_strExe[0] == '/')
+      if(prequest->m_strExe[0] == '/')
       {
 
          ::file::path p;
          
-         auto psystem = m_psystem;
+         auto psystem = acmesystem();
          
          auto pacmedirectory = psystem->m_pacmedirectory;
 
          p = pacmedirectory->ca2roaming();
 
-         p /= "mypath" / pcommand->payload("app").get_string() + ".txt";
+         p /= "mypath" / prequest->payload("app").get_string() + ".txt";
 
-         m_psystem->m_pacmefile->put_contents(p, pcommand->m_strExe);
+         psystem->m_pacmefile->put_contents(p, prequest->m_strExe);
 
-         string strApp = pcommand->m_strExe;
+         string strApp = prequest->m_strExe;
 
-         strsize iFind = strApp.find_ci(".app/");
+         strsize iFind = strApp.case_insensitive_find_index(".app/");
 
          if(iFind > 0)
          {
 
             p = pacmedirectory->ca2roaming();
 
-            p /= "mypath" / pcommand->payload("app").get_string() + "-app";
+            p /= "mypath" / prequest->payload("app").get_string() + "-app";
 
             ::file::path p2;
 
             p2 = pacmedirectory->ca2roaming();
 
-            p2 /= "mypath" / ::file::path(pcommand->payload("app").get_string()).folder()/ ::file::path(strApp.Left(iFind + strlen(".app"))).name();
+            p2 /= "mypath" / ::file::path(prequest->payload("app").get_string()).folder()/ ::file::path(strApp(0, iFind + strlen(".app"))).name();
 
-            ns_create_alias(p2, strApp.Left(iFind + strlen(".app")));
+            ns_create_alias(p2, strApp(0, iFind + strlen(".app")));
 
             if(pacmedirectory->is(pacmedirectory->localconfig() / "monitor-0/desk/2desk"))
             {
 
                ::file::path p3;
 
-               p3 = pacmedirectory->localconfig() / "monitor-0/desk/2desk" / ::file::path(strApp.Left(iFind + strlen(".app"))).name();
+               p3 = pacmedirectory->localconfig() / "monitor-0/desk/2desk" / ::file::path(strApp(0, iFind + strlen(".app"))).name();
 
-               ns_create_alias(p3, strApp.Left(iFind + strlen(".app")));
+               ns_create_alias(p3, strApp(0, iFind + strlen(".app")));
 
             }
 
-            m_psystem->m_pacmefile->put_contents(p, "open -a \""+strApp.Left(iFind + strlen(".app")) + "\"");
+            acmesystem()->m_pacmefile->put_contents(p, "open -a \""+strApp(0, iFind + strlen(".app")) + "\"");
 
             chmod(p, 0777);
 
@@ -1226,13 +1253,13 @@ namespace apex_macos
       if(set.has_property("folder"))
       {
 
-         strStartDir = set["folder"].get_file_path();
+         strStartDir = set["folder"].as_file_path();
 
          pszStartDir = strStartDir;
 
       }
       
-      auto psystem = m_psystem;
+      auto psystem = acmesystem();
 
       string strFolder = apple_browse_folder(psystem, pszStartDir, true);
 
@@ -1262,7 +1289,7 @@ namespace apex_macos
       if(set.has_property("folder"))
       {
 
-         strStartDir =set["folder"].get_file_path();
+         strStartDir =set["folder"].as_file_path();
 
          pszStartDir = strStartDir;
 
@@ -1270,7 +1297,7 @@ namespace apex_macos
 
       bool bMulti = set["allow_multi_select"];
       
-      auto psystem = m_psystem;
+      auto psystem = acmesystem();
 
       string_array straFileName = apple_browse_file_open(psystem, &pszStartDir, bMulti);
 

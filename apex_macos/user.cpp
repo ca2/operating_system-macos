@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "acme/primitive/collection/str_array.h"
 #include <Carbon/Carbon.h>
 
 
@@ -37,11 +38,7 @@ char** mm_browse_file_open(void * psystem, const char ** pszStartDir, bool bMult
 string_array apple_browse_file_open(class ::acme::system * psystem, const char ** pszStartDir, bool bMulti)
 {
    
-   string_array stra;
-   
-   stra.from_strdup(mm_browse_file_open(psystem, pszStartDir, bMulti));
-
-   return stra;
+   return ::stringa_from_strdup(mm_browse_file_open(psystem, pszStartDir, bMulti));
 
 }
 

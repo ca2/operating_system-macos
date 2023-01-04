@@ -2,7 +2,7 @@
 //  main.m
 //  app
 //
-//  Created by Carlos Gustavo Cecyn Lundgren on 3/18/16.
+//  Created by Camilo Sasuke Thomas Borregaard Soerensen on 3/18/16.
 //  Copyright © 2016 ca2 Desenvolvimento de Software Ltda. All rights reserved.
 //
 

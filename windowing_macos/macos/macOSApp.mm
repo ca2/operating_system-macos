@@ -581,13 +581,13 @@ void os_menu_item_check(void * pitem, bool bCheck)
       if(bCheck)
       {
 
-         [pmenuitem setState: NSOnState];
+         [pmenuitem setState: NSControlStateValueOn];
          
       }
       else
       {
          
-         [pmenuitem setState: NSOffState];
+         [pmenuitem setState: NSControlStateValueOff];
          
       }
 
