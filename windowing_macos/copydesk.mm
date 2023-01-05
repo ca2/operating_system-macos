@@ -191,7 +191,7 @@ void macos_clipboard_set_plain_text(const char * psz)
 
    [pasteboard clearContents];
    
-   [pasteboard setString:strPasteboard forType:NSStringPboardType];
+   [pasteboard setString:strPasteboard forType: NSPasteboardTypeString];
 
 }
 

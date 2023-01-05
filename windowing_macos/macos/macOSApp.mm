@@ -12,7 +12,7 @@
 #include "aura_macos/_c_mm.h"
 #include "acme/operating_system/argcargv.h"
 
-
+bool application_get_bool(void * pApplication, const char * pszItem);
 void ns_main_async(dispatch_block_t block);
 
 
@@ -58,7 +58,7 @@ void set_apex_system_as_thread();
    m_menuida = [[NSMutableArray alloc] init];
    
    // Monitor menu/dock theme changes...
-   [NSDistributedNotificationCenter.defaultCenter addObserver:self selector:@selector(themeChanged:) name:@"AppleInterfaceThemeChangedNotification" object: nil];
+//   [NSDistributedNotificationCenter.defaultCenter addObserver:self selector:@selector(themeChanged:) name:@"AppleInterfaceThemeChangedNotification" object: nil];
 
    //int iCount = pbridge->_get_notification_area_action_count();
    
@@ -143,6 +143,33 @@ void set_apex_system_as_thread();
    return self;
 }
 
+-(void)dealloc
+{
+   
+   
+   
+}
+
+
+-(void)continueInitialization
+{
+ 
+   [ super continueInitialization ];
+   
+   bool bNoDock = application_get_bool(m_pApplication, "no_dock");
+   
+   if(bNoDock)
+   {
+      
+      nsapp_activation_policy_accessory();
+      
+   }
+
+   [NSApp activateIgnoringOtherApps:YES];
+
+   
+}
+
 
 -(void)applicationActivity:(NSNotification *)notification
 {
@@ -212,11 +239,13 @@ if(str != nil)
    
    //macos_calc_dark_mode();
    
-   node_will_finish_launching(application_system(m_pApplication));
-
-   NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
-
-   [appleEventManager setEventHandler:self andSelector:@selector(handleGetURLEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
+   [ super applicationWillFinishLaunching: notification];
+   
+//   node_will_finish_launching(application_system(m_pApplication));
+//
+//   NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
+//
+//   [appleEventManager setEventHandler:self andSelector:@selector(handleGetURLEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
    
 }
 
@@ -530,26 +559,17 @@ if(str != nil)
 }
 
 
--(void)themeChanged:(NSNotification *) notification
-{
- 
-   NSLog (@"%@", notification);
-   
-   [self fetch_dark_mode];
-   
-//   system_id_update(application_system(m_pApplication), id_user_color, 0);
-   
-}
 
 
--(void) fetch_dark_mode
-{
-   NSString *interfaceStyle = [NSUserDefaults.standardUserDefaults valueForKey:@"AppleInterfaceStyle"];
-   int iDarkMode = [interfaceStyle isEqualToString:@"Dark"];
 
-   system_id_update(application_system(m_pApplication), id_set_dark_mode, iDarkMode);
-
-}
+//-(void) fetch_dark_mode
+//{
+//   NSString *interfaceStyle = [NSUserDefaults.standardUserDefaults valueForKey:@"AppleInterfaceStyle"];
+//   int iDarkMode = [interfaceStyle isEqualToString:@"Dark"];
+//
+//   system_id_update(application_system(m_pApplication), id_set_dark_mode, iDarkMode);
+//
+//}
 
 
 @end
@@ -688,39 +708,51 @@ void os_begin_system();
 
 void ns_app_run();
 
+void ns_apple_set_application_delegate(void * pApplication, macos_app * pappdelegate);
+void * apple_get_application_delegate(void * pApplication);
 
-void windowing_macos_application_main(void * pApplication, int argc, char *argv[])
+void defer_create_windowing_application_delegate(void * pApplication)
 {
    
-   NSApplication * application = [NSApplication sharedApplication];
+   macos_app * pappdelegate = (__bridge macos_app *) apple_get_application_delegate(pApplication);
    
-   macOSApp * appDelegate = [[macOSApp alloc] init];
+   if(pappdelegate == nullptr)
+   {
+      
+      pappdelegate = [ [ macOSApp alloc] init];
+      
+      ns_apple_set_application_delegate(pApplication, pappdelegate);
+      
+   }
    
-   appDelegate->m_pApplication = pApplication;
+}
    
-   [application setDelegate:appDelegate];
+//}
+//
+//void windowing_macos_application_main(void * pApplication, int argc, char *argv[])
+//{
    
-   [appDelegate fetch_dark_mode];
+//   NSApplication * application = [NSApplication sharedApplication];
+//
+//
+//
+//   appDelegate->m_pApplication = pApplication;
+//
+//   [ application setDelegate:appDelegate];
+//
+//   [ appDelegate continueInitialization ];
+//
+//   [appDelegate fetch_dark_mode];
    
    //[m_statusitem setEnabled:YES];
    
-   [NSApplication sharedApplication];
+   //[NSApplication sharedApplication];
    
-   bool bNoDock = argcargv_contains_parameter(argc, argv, "no_dock");
    
-   if(bNoDock)
-   {
-      
-      nsapp_activation_policy_accessory();
-      
-   }
-
-   [NSApp activateIgnoringOtherApps:YES];
    
-   ns_app_run();
    //[NSApp run];
    
-}
+//}
 
 
 //-(void)applicationActivity:(NSNotification *)notification

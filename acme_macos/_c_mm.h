@@ -24,15 +24,6 @@ char * ns_string(NSString * str);
 
 #endif
 
-//CGRect mm_get_workspace_rect();
-//
-//
-//void copy(CGRect * prectTarget, const RECTANGLE_I32 * prectSource);
-//void copy(RECTANGLE_I32 * prectTarget, const CGRect * prectSource);
-//void copy(CGRect * prectTarget, const RECTANGLE_F64 * prectSource);
-//void copy(RECTANGLE_F64 * prectTarget, const CGRect * prectSource);
-//void screen_coordinates_aware_copy(CGRect * prectTarget, const RECTANGLE_I32 * prectSource);
-//void screen_coordinates_aware_copy(RECTANGLE_I32 * prectTarget, const CGRect * prectSource);
 
 #ifdef MM
 

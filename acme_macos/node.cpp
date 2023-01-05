@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include <signal.h>
 
-void defer_acme_macos_application_init(::acme::system * psystem);
+void apple_defer_nano_application_create(::acme::system * psystem);
 void acme_macos_application_init(void * pApplication, int argc, char *argv[]);
 void ns_launch_app(const char * psz, const char
                    ** argv, int iFlags);
@@ -960,17 +960,17 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    void node::acme_application_main(class ::acme::system * psystem)
    {
       
-      defer_acme_macos_application_init(psystem);
+      apple_defer_nano_application_create(psystem);
 
-      auto argc = psystem->m_psubsystem->m_argc;
-
-      auto argv = psystem->m_psubsystem->m_argv;
-
-      auto papp = psystem->m_pacmeapplication;
-
-      void * pApplication = (void *) (::acme::application *) papp;
-
-      acme_macos_application_main(pApplication, argc, argv);
+//      auto argc = psystem->m_psubsystem->m_argc;
+//
+//      auto argv = psystem->m_psubsystem->m_argv;
+//
+//      auto papp = psystem->m_pacmeapplication;
+//
+//      void * pApplication = (void *) (::acme::application *) papp;
+//
+//      acme_macos_application_main(pApplication, argc, argv);
 
       //return psystem->m_estatus;
 

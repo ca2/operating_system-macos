@@ -24,10 +24,10 @@ void * ns_get_key_window();
 //void os_post_quit(::element * pelementQuit);
 
 
-::pointer < menu_shared > create_menu_shared(::object * pobject, const string_array & straParent, const string_array & straMenu, const string_array & straId);
+::pointer < menu_shared > create_menu_shared(::particle * pparticle, const string_array & straParent, const string_array & straMenu, const string_array & straId);
 
 
-void windowing_macos_application_main(void * pApplication, int argc, char *argv[]);
+//void defer_create_windowing_application_delegate(void * pApplication, int argc, char *argv[]);
 
 
 void ns_create_main_menu(menu_shared * pmenushared);

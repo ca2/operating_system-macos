@@ -415,7 +415,7 @@
    
    p->profiling_on_start_draw_rectangle();
    
-   CGContextRef cgc = (CGContextRef) [[NSGraphicsContext currentContext] graphicsPort];
+   CGContextRef cgc = (CGContextRef) [[NSGraphicsContext currentContext] CGContext];
 
 #ifdef REDRAW_HINTING
    

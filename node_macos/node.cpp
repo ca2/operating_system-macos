@@ -10,8 +10,8 @@
 //#include "keyboard_hook.h"
 //#include "mouse_hook.h"
 
-
-void windowing_macos_application_main(void * pApplication, int argc, char *argv[]);
+void ns_app_run();
+void defer_create_windowing_application_delegate(void * pApplication);
 
 namespace node_macos
 {
@@ -284,15 +284,17 @@ namespace node_macos
    void node::acme_application_main(class ::acme::system * psystem)
    {
 
-      auto argc = psystem->m_psubsystem->m_argc;
-
-      auto argv = psystem->m_psubsystem->m_argv;
+//      auto argc = psystem->m_psubsystem->m_argc;
+//
+//      auto argv = psystem->m_psubsystem->m_argv;
 
       auto papp = psystem->m_psubsystem->acmeapplication();
 
       void * pApplication = (void *) (::acme::application *) papp;
 
-      windowing_macos_application_main(pApplication, argc, argv);
+      defer_create_windowing_application_delegate(pApplication);
+      
+      ns_app_run();
 
       //return psystem->m_estatus;
 

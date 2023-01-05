@@ -157,7 +157,7 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
    
    [m_statusitem setMenu: m_menu];
    
-   [m_statusitem setEnabled:YES];
+   [ [ m_statusitem button ] setEnabled:YES];
    
    return self;
    

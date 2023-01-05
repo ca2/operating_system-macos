@@ -14,7 +14,7 @@
 //#include "aura/_defer.h"
 
 
-int get_main_screen_rectangle(RECTANGLE_I32 * pr);
+RECTANGLE_I32 get_main_screen_rectangle();
 
 
 //oswindow_dataptra * g_poswindowdataptra = nullptr;
@@ -639,9 +639,7 @@ rectangle_i32_array cg_get_window_rect_list_above(CGWindowID windowid)
    
    CFArrayRef windowa = CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenAboveWindow, windowid);
 
-   ::rectangle_i32 rMainScreen;
-
-   get_main_screen_rectangle(rMainScreen);
+   ::rectangle_i32 rMainScreen = get_main_screen_rectangle();
 
    long c = CFArrayGetCount(windowa);
 
