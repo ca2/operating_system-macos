@@ -97,9 +97,9 @@ namespace apex_macos
 
       CFDataRef data = get_os_cf_data(m);
 
-      CFTimeInterval sendTimeout = timeTimeout.floating_second().m_d;
+      CFTimeInterval sendTimeout = timeTimeout.floating_second();
 
-      CFTimeInterval rcvimeout = timeTimeout.floating_second().m_d;
+      CFTimeInterval rcvimeout = timeTimeout.floating_second();
 
       SInt32 status =
       CFMessagePortSendRequest(m_port,
