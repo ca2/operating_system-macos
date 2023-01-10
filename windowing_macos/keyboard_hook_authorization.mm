@@ -147,7 +147,7 @@ namespace keyboard_hook
    //      //});
 
       
-      return true;
+      return ::success;
 
    }
 

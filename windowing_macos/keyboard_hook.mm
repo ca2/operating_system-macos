@@ -203,7 +203,7 @@ namespace keyboard_hook
                                                          
                                                          
                                                       }];
-      return true;
+      return ::success;
       
    }
 
@@ -213,7 +213,7 @@ namespace keyboard_hook
       
       [NSEvent removeMonitor: g_idEventMonitor ];
       
-      return true;
+      return ::success;
       
    }
    

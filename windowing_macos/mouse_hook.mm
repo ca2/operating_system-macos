@@ -76,7 +76,7 @@ namespace mouse_hook
                                                          
                                                          
                                                       }];
-      return true;
+      return ::success;
    
    }
    
@@ -86,7 +86,7 @@ namespace mouse_hook
       
       [NSEvent removeMonitor:g_idEventMonitor ];
       
-      return true;
+      return ::success;
       
    }
 
