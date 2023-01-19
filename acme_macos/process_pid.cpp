@@ -313,7 +313,7 @@ namespace acme_macos
          {
             if (sProcesses)
                free(sProcesses);
-            throw ::exception("could not reallocate memory");
+            throw ::exception(error_failed, "could not reallocate memory");
          }
          sProcesses = sNewProcesses;
          iRetCode = sysctl(aiNames, (u_int) iNamesLength, sProcesses, &iSize, nullptr, 0);
