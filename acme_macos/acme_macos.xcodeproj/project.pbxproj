@@ -70,13 +70,6 @@
 		9AC14D48297B3488006D9BD3 /* file.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A71E26CEC02A00F98012 /* file.mm */; };
 		9AC14D49297B3488006D9BD3 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A612264B56750080670E /* _factory.cpp */; };
 		9AC14D4A297B3488006D9BD3 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787C63264BD87E003DF8A0 /* node.cpp */; };
-		9AC14D4C297B3488006D9BD3 /* libacme_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0844642936C026009F7FF4 /* libacme_darwin.dylib */; };
-		9AC14D4D297B3488006D9BD3 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A787E8B264E8DC5003DF8A0 /* AppKit.framework */; };
-		9AC14D4E297B3488006D9BD3 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A787E87264E8D02003DF8A0 /* CoreServices.framework */; };
-		9AC14D4F297B3488006D9BD3 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2D0582653EBF000CC8096 /* IOKit.framework */; };
-		9AC14D50297B3488006D9BD3 /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78630A2650483C0034A0E1 /* libacme.dylib */; };
-		9AC14D51297B3488006D9BD3 /* libacme_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78630C2650483C0034A0E1 /* libacme_posix.dylib */; };
-		9AC14D52297B3488006D9BD3 /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5DC264B54CB0080670E /* libacme_apple.dylib */; };
 		9AC2CB3D26531C6200CC8096 /* list_serial_ports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */; };
 		9AC2D05A2653EBF000CC8096 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2D0582653EBF000CC8096 /* IOKit.framework */; };
 		9AE382A228B16D59007EA867 /* quit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE382A028B16D59007EA867 /* quit.h */; };
@@ -185,20 +178,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9AC14D4B297B3488006D9BD3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AC14D4C297B3488006D9BD3 /* libacme_darwin.dylib in Frameworks */,
-				9AC14D4D297B3488006D9BD3 /* AppKit.framework in Frameworks */,
-				9AC14D4E297B3488006D9BD3 /* CoreServices.framework in Frameworks */,
-				9AC14D4F297B3488006D9BD3 /* IOKit.framework in Frameworks */,
-				9AC14D50297B3488006D9BD3 /* libacme.dylib in Frameworks */,
-				9AC14D51297B3488006D9BD3 /* libacme_posix.dylib in Frameworks */,
-				9AC14D52297B3488006D9BD3 /* libacme_apple.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -267,8 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				9A15A5DC264B54CB0080670E /* libacme_apple.dylib */,
-				9A750EFE282B6F5C00C4861B /* libios_acme_apple.a */,
 				9AC14D5A297B3489006D9BD3 /* lib_acme_apple.a */,
+				9A750EFE282B6F5C00C4861B /* libios_acme_apple.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -358,7 +337,6 @@
 			buildPhases = (
 				9AC14D2B297B3488006D9BD3 /* Headers */,
 				9AC14D39297B3488006D9BD3 /* Sources */,
-				9AC14D4B297B3488006D9BD3 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -711,6 +689,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_EXTENSION = "$(STATIC_LIBRARY_EXTENSION:default=a)";
 				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					CUBE,
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PLATFORM_MODIFIER = macos;
@@ -726,6 +709,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_EXTENSION = "$(STATIC_LIBRARY_EXTENSION:default=a)";
 				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = CUBE;
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PLATFORM_MODIFIER = macos;
