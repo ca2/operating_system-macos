@@ -199,7 +199,7 @@ namespace windowing_macos
 
          }
       
-         auto rectangle = puserinteraction-> get_window_rect();
+         auto rectangle = puserinteraction-> window_rectangle();
       
          CGRect cgrect;
       
@@ -317,7 +317,7 @@ namespace windowing_macos
    //{
    //   /*      if (pusersystem->m_createstruct.lpszClass == nullptr)
    //    {
-   ///xcore/app/aura/node/macos/macos_interaction_impl.cpp:712:44: No member named 'get_window_rect' in 'user::interaction_impl'       // make sure the default user::interaction class is registered
+   ///xcore/app/aura/node/macos/macos_interaction_impl.cpp:712:44: No member named 'window_rectangle' in 'user::interaction_impl'       // make sure the default user::interaction class is registered
    //    VERIFY(__end_defer_register_class(__WND_REG, &pusersystem->m_createstruct.lpszClass));
    //
    //    // no WNDCLASS provided - use child user::interaction default
@@ -630,7 +630,7 @@ namespace windowing_macos
 
       str += strFormat;
 
-      rectangle_i32 rect1 = puserinteraction->get_window_rect();
+      rectangle_i32 rect1 = puserinteraction->window_rectangle();
 
       if(rect1.size() != rectLast.size())
       {
@@ -683,7 +683,7 @@ namespace windowing_macos
 
       g->attach(cgc);
       
-      //auto rectClient = puserinteraction->get_client_rect();
+      //auto rectClient = puserinteraction->client_rectangle();
 
       g->set_alpha_mode(::draw2d::e_alpha_mode_set);
 

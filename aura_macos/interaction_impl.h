@@ -163,10 +163,10 @@ namespace aura_macos
       //virtual ::u32 ArrangeIconicWindows() override;
       //virtual void BringToTop(::e_display edisplay) override;
       //virtual bool BringWindowToTop() override;
-//      using ::user::interaction_impl::get_window_rect;
-//      virtual bool get_window_rect(RECTANGLE_I64 * lpRect) override;
-//      using ::user::interaction_impl::get_client_rect;
-//      virtual bool get_client_rect(RECTANGLE_I64 * lpRect) override;
+//      using ::user::interaction_impl::window_rectangle;
+//      virtual bool window_rectangle(RECTANGLE_I64 * lpRect) override;
+//      using ::user::interaction_impl::client_rectangle;
+//      virtual bool client_rectangle(RECTANGLE_I64 * lpRect) override;
 
       //virtual point_f64 client_screen_top_left() override;
 //        virtual bool _001ClientToScreen(RECTANGLE_I32 * lprect) override;

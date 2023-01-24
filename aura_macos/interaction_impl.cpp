@@ -420,7 +420,7 @@ namespace aura_macos
 //
 //         }
 //
-//         auto rectangle = m_puserinteraction-> get_window_rect();
+//         auto rectangle = m_puserinteraction-> window_rectangle();
 //
 //         m_oswindow = oswindow_get(new_aura_window(this, rectangle, uStyle));
 //
@@ -490,7 +490,7 @@ namespace aura_macos
 //   {
 //      /*      if (pusersystem->m_createstruct.lpszClass == nullptr)
 //       {
-///xcore/app/aura/node/macos/macos_interaction_impl.cpp:712:44: No member named 'get_window_rect' in 'user::interaction_impl'       // make sure the default user::interaction class is registered
+///xcore/app/aura/node/macos/macos_interaction_impl.cpp:712:44: No member named 'window_rectangle' in 'user::interaction_impl'       // make sure the default user::interaction class is registered
 //       VERIFY(__end_defer_register_class(__WND_REG, &pusersystem->m_createstruct.lpszClass));
 //
 //       // no WNDCLASS provided - use child user::interaction default
@@ -842,7 +842,7 @@ namespace aura_macos
 //
 //      ::rectangle_i32 rectangle;
 //
-//      ((::user::interaction_impl *) this)->m_puserinteraction->get_window_rect(rectangle);
+//      ((::user::interaction_impl *) this)->m_puserinteraction->window_rectangle(rectangle);
 //
 ////      dumpcontext << "\nrect = " << rectangle_i32;
 //      dumpcontext << "\nparent ::user::interaction * = " << (void *)((::user::interaction_impl *) this)->get_parent();

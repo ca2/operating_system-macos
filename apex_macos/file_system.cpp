@@ -62,7 +62,7 @@ namespace apex_macos
       if(psystem->has_property("user_folder_relative_path"))
       {
 
-         strUserFolderShift = strRelative / get_app()->payload("user_folder_relative_path").get_string();
+         strUserFolderShift = strRelative / get_app()->payload("user_folder_relative_path").as_string();
 
       }
       else

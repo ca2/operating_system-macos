@@ -1049,7 +1049,7 @@ namespace apex_macos
 
          p = pacmedirectory->ca2roaming();
 
-         p /= "mypath" / prequest->payload("app").get_string() + ".txt";
+         p /= "mypath" / prequest->payload("app").as_string() + ".txt";
 
          psystem->m_pacmefile->put_contents(p, prequest->m_strExe);
 
@@ -1062,13 +1062,13 @@ namespace apex_macos
 
             p = pacmedirectory->ca2roaming();
 
-            p /= "mypath" / prequest->payload("app").get_string() + "-app";
+            p /= "mypath" / prequest->payload("app").as_string() + "-app";
 
             ::file::path p2;
 
             p2 = pacmedirectory->ca2roaming();
 
-            p2 /= "mypath" / ::file::path(prequest->payload("app").get_string()).folder()/ ::file::path(strApp(0, iFind + strlen(".app"))).name();
+            p2 /= "mypath" / ::file::path(prequest->payload("app").as_string()).folder()/ ::file::path(strApp(0, iFind + strlen(".app"))).name();
 
             ns_create_alias(p2, strApp(0, iFind + strlen(".app")));
 
