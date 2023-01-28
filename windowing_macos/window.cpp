@@ -822,12 +822,19 @@ namespace windowing_macos
 //
 //   }
 
+#define _NEW_MESSAGE(pmessage, type, emessage) \
+auto pmessage = __create_new < type >(); \
+pmessage->m_oswindow = m_oswindow; \
+pmessage->m_pwindow = this; \
+pmessage->m_atom = emessage
+
    bool window::macos_window_key_down(unsigned int virtualKey, unsigned int scanCode, const char * pszUtf8)
    {
       
-      auto pkey  = __create_new < ::message::key >();
+      _NEW_MESSAGE(pkey, ::message::key, e_message_key_down);
 
-      pkey->set(oswindow(), this, e_message_key_down, virtualKey, (lparam)(scanCode << 16));
+      pkey->m_iVirtualKey = virtualKey;
+      pkey->m_nScanCode = scanCode;
 
       if(::is_set(pszUtf8) && ansi_len(pszUtf8) > 0)
       {
@@ -880,9 +887,9 @@ namespace windowing_macos
            
            auto codepoint = unicode_index(strChar);
            
-           auto pkey  = __create_new < ::message::key >();
-
-           pkey->set(oswindow(), this, e_message_char, codepoint, 0);
+          _NEW_MESSAGE(pkey, ::message::key, e_message_char);
+          
+          pkey->m_nChar = codepoint;
            
            post_message(pkey);
 
@@ -913,10 +920,11 @@ namespace windowing_macos
 
       }
 
-      auto pkey  = __new(::message::key);
+      _NEW_MESSAGE(pkey, ::message::key, e_message_key_up);
 
-      pkey->set(oswindow(), this, e_message_key_up, vk, (::lparam)(scan << 16));
-      
+      pkey->m_iVirtualKey = vk;
+      pkey->m_nScanCode = scan;
+
       puserinteraction->send(pkey);
 
       return true;
@@ -939,18 +947,20 @@ namespace windowing_macos
          try
          {
 
-            auto pmouseactivate = __create_new < ::message::mouse_activate >();
+            _NEW_MESSAGE(pmouseactivate, ::message::mouse_activate, e_message_mouse_activate);
 
-            pmouseactivate->set(this, this, e_message_mouse_activate, (wparam) 0, (lparam) 0);
+            pmouseactivate->m_wparam = 0;
+            pmouseactivate->m_lparam = 0;
 
             send_message(pmouseactivate);
 
             if (pmouseactivate->m_lresult == e_mouse_activate || pmouseactivate->m_lresult == e_mouse_activate_no_activate_and_eat)
             {
 
-               auto pactivate = __create_new < ::message::activate >();
+               _NEW_MESSAGE(pactivate, ::message::activate, e_message_activate);
 
-               pactivate->set(this, this, e_message_activate, __MAKE_LONG(e_activate_click_active, 0), (lparam) 0);
+               pactivate->m_wparam = __MAKE_LONG(e_activate_click_active, 0);
+               pactivate->m_lparam = 0;
 
                post_message(pactivate);
 
@@ -966,26 +976,30 @@ namespace windowing_macos
 
       {
 
-         auto pmouse = __create_new < ::message::mouse > ();
+//         auto pmouse = __create_new < ::message::mouse > ();
 
-         ::atom id;
+//         ::atom id;
          
          if (iButton == 1)
          {
-
-            id = e_message_right_button_down;
+            
+            _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_down);
+            pmouse->m_point.x = x;
+            pmouse->m_point.y = y;
+            post_message(pmouse);
 
          }
          else
          {
 
-            id = e_message_left_button_down;
-
+            _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_down);
+            pmouse->m_point.x = x;
+            pmouse->m_point.y = y;
+            post_message(pmouse);
          }
          
-         pmouse->set(this, this, id, 0, __MAKE_LPARAM(x, y));
+//         pmouse->set(this, this, id, 0, __MAKE_LPARAM(x, y));
 
-         post_message(pmouse);
 
       }
 
@@ -999,26 +1013,33 @@ namespace windowing_macos
       
       m_pointMouseCursor.y = y;
       
-      auto pmouse = __create_new < ::message::mouse >();
+      //auto pmouse = __create_new < ::message::mouse >();
 
-      ::atom id;
+      //::atom id;
 
       if (iButton == 1)
       {
 
-         id = e_message_right_button_up;
+         _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_up);
+         pmouse->m_point.x = x;
+         pmouse->m_point.y = y;
+         post_message(pmouse);
 
       }
       else
       {
 
-         id = e_message_left_button_up;
+         _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_up);
+         pmouse->m_point.x = x;
+         pmouse->m_point.y = y;
+         post_message(pmouse);
+
 
       }
       
-      pmouse->set(this, this, id, (wparam) 0, __MAKE_LPARAM(x, y));
-
-      post_message(pmouse);
+//      pmouse->set(this, this, id, (wparam) 0, __MAKE_LPARAM(x, y));
+//
+//      post_message(pmouse);
 
    }
 
@@ -1026,26 +1047,35 @@ namespace windowing_macos
    void window::macos_window_double_click(int iButton, double x, double y)
    {
 
-      auto pmouse = __create_new < ::message::mouse >();
+      //auto pmouse = __create_new < ::message::mouse >();
       
-      ::atom id;
+      //::atom id;
 
       if (iButton == 1)
       {
 
-         id = e_message_right_button_double_click;
+         _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_double_click);
+         pmouse->m_point.x = x;
+         pmouse->m_point.y = y;
+         post_message(pmouse);
+
+         //id = e_message_right_button_double_click;
 
       }
       else
       {
 
-         id = e_message_left_button_double_click;
+         _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_double_click);
+         pmouse->m_point.x = x;
+         pmouse->m_point.y = y;
+         post_message(pmouse);
+         //id = e_message_left_button_double_click;
 
       }
 
-      pmouse->set(this, this, id, (wparam) 0, __MAKE_LPARAM(x, y));
-
-      post_message(pmouse);
+//      pmouse->set(this, this, id, (wparam) 0, __MAKE_LPARAM(x, y));
+//
+//      post_message(pmouse);
 
    }
 
@@ -1152,29 +1182,34 @@ namespace windowing_macos
 
       }
       
-      ::atom id = e_message_mouse_move;
       
-      wparam wparam = 0;
+      _NEW_MESSAGE(pmouse, ::message::mouse, e_message_move);
+      pmouse->m_point.x = x;
+      pmouse->m_point.y = y;
       
-      lparam lparam = __MAKE_LPARAM(x, y);
+      //::atom id = e_message_mouse_move;
+      
+      //wparam wparam = 0;
+      
+      //lparam lparam = __MAKE_LPARAM(x, y);
       
       if(ulAppleMouseButton & 1)
       {
 
-         wparam |= ::user::e_button_state_left;
+         pmouse->m_nFlags |= ::user::e_button_state_left;
 
       }
 
       if(ulAppleMouseButton & 2)
       {
 
-         wparam |= ::user::e_button_state_right;
+         pmouse->m_nFlags |= ::user::e_button_state_right;
 
       }
       
-      auto pmouse = __create_new < ::message::mouse >();
-      
-      pmouse->set(this, this, id, wparam, lparam);
+//      auto pmouse = __create_new < ::message::mouse >();
+//
+//      pmouse->set(this, this, id, wparam, lparam);
 
       post_message(pmouse);
       
@@ -1184,29 +1219,34 @@ namespace windowing_macos
    void window::macos_window_mouse_dragged(double x, double y, unsigned long ulAppleMouseButton)
    {
       
-      atom id = e_message_mouse_move;
+      _NEW_MESSAGE(pmouse, ::message::mouse, e_message_move);
+      pmouse->m_point.x = x;
+      pmouse->m_point.y = y;
 
-      wparam wparam = 0;
+      
+//      atom id = e_message_mouse_move;
 
-      lparam lparam = __MAKE_LPARAM(x, y);
+  //    wparam wparam = 0;
+
+    //  lparam lparam = __MAKE_LPARAM(x, y);
 
       if(ulAppleMouseButton & 1)
       {
 
-         wparam |= ::user::e_button_state_left;
+         pmouse->m_nFlags |= ::user::e_button_state_left;
 
       }
 
       if(ulAppleMouseButton & 2)
       {
 
-         wparam |= ::user::e_button_state_right;
+         pmouse->m_nFlags |= ::user::e_button_state_right;
 
       }
-
-      auto pmouse = __create_new < ::message::mouse >();
-      
-      pmouse->set(this, this, id, wparam, lparam);
+//
+//      auto pmouse = __create_new < ::message::mouse >();
+//
+//      pmouse->set(this, this, id, wparam, lparam);
 
       post_message(pmouse);
 
@@ -1216,17 +1256,22 @@ namespace windowing_macos
    void window::macos_window_mouse_wheel(double deltaY, double x, double y)
    {
 
-      atom id = e_message_mouse_wheel;
-
-      short delta = deltaY * WHEEL_DELTA / 3.0;
-
-      wparam wparam = delta << 16;
-
-      lparam lparam = __MAKE_LPARAM(x, y);
-
-      auto pwheel  = __create_new < ::message::mouse_wheel > ();
       
-      pwheel->set(this, this, id, wparam, lparam);
+      _NEW_MESSAGE(pwheel, ::message::mouse_wheel, e_message_mouse_wheel);
+      pwheel->m_point.x = x;
+      pwheel->m_point.y = y;
+
+      //atom id = e_message_mouse_wheel;
+
+      pwheel->m_Δ = deltaY * WHEEL_DELTA / 3.0;
+
+      //wparam wparam = pwheel-delta << 16;
+
+      //lparam lparam = __MAKE_LPARAM(x, y);
+
+      //auto pwheel  = __create_new < ::message::mouse_wheel > ();
+      
+      //pwheel->set(this, this, id, wparam, lparam);
 
       post_message(pwheel);
 
@@ -1238,31 +1283,40 @@ namespace windowing_macos
       
       {
       
-         atom id = e_message_reposition;
-         
-         wparam wparam = 0;
-         
-         lparam lparam = __MAKE_LPARAM(rectangle.origin.x, rectangle.origin.y);
-      
-         auto pmove  = __create_new < ::message::reposition > ();
-      
-         pmove->set(this, this, id, wparam, lparam);
+         _NEW_MESSAGE(preposition, ::message::reposition, e_message_reposition);
+         preposition->m_point.x = rectangle.origin.x;
+         preposition->m_point.y = rectangle.origin.y;
 
-         post_message(pmove);
+         
+//         atom id = e_message_reposition;
+//
+//         wparam wparam = 0;
+//
+//         lparam lparam = __MAKE_LPARAM(rectangle.origin.x, rectangle.origin.y);
+//
+//         auto pmove  = __create_new < ::message::reposition > ();
+//
+//         pmove->set(this, this, id, wparam, lparam);
+
+         post_message(preposition);
          
       }
       
       {
 
-         atom id = e_message_size;
-         
-         wparam wparam = 0;
-         
-         lparam lparam = __MAKE_LPARAM(rectangle.size.width, rectangle.size.height);
-      
-         auto psize  = __create_new < ::message::size > ();
-      
-         psize->set(this, this, id, wparam, lparam);
+         _NEW_MESSAGE(psize, ::message::size, e_message_size);
+         psize->m_size.cx = rectangle.size.width;
+         psize->m_size.cy = rectangle.size.height;
+
+//         atom id = e_message_size;
+//
+//         wparam wparam = 0;
+//
+//         lparam lparam = __MAKE_LPARAM(rectangle.size.width, rectangle.size.height);
+//
+//         auto psize  = __create_new < ::message::size > ();
+//
+//         psize->set(this, this, id, wparam, lparam);
 
          post_message(psize);
          
@@ -1403,18 +1457,22 @@ namespace windowing_macos
       }
 
       {
-      
-         atom id = e_message_reposition;
-         
-         wparam wparam = 0;
-         
-         lparam lparam = __MAKE_LPARAM(point.x, point.y);
-      
-         auto pmove  = __create_new < ::message::reposition > ();
-      
-         pmove->set(this, this, id, wparam, lparam);
 
-         post_message(pmove);
+         _NEW_MESSAGE(preposition, ::message::reposition, e_message_reposition);
+         preposition->m_point.x = point.x;
+         preposition->m_point.y = point.y;
+
+//         atom id = e_message_reposition;
+//
+//         wparam wparam = 0;
+//
+//         lparam lparam = __MAKE_LPARAM(point.x, point.y);
+//
+//         auto pmove  = __create_new < ::message::reposition > ();
+//
+//         pmove->set(this, this, id, wparam, lparam);
+
+         post_message(preposition);
          
       }
    //      if(puserinteraction == nullptr)
