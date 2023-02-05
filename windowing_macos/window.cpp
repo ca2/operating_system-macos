@@ -1183,7 +1183,7 @@ pmessage->m_atom = emessage
       }
       
       
-      _NEW_MESSAGE(pmouse, ::message::mouse, e_message_move);
+      _NEW_MESSAGE(pmouse, ::message::mouse, e_message_mouse_move);
       pmouse->m_point.x = x;
       pmouse->m_point.y = y;
       
@@ -1219,7 +1219,7 @@ pmessage->m_atom = emessage
    void window::macos_window_mouse_dragged(double x, double y, unsigned long ulAppleMouseButton)
    {
       
-      _NEW_MESSAGE(pmouse, ::message::mouse, e_message_move);
+      _NEW_MESSAGE(pmouse, ::message::mouse, e_message_mouse_move);
       pmouse->m_point.x = x;
       pmouse->m_point.y = y;
 
