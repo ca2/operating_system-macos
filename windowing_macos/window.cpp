@@ -228,7 +228,7 @@ namespace windowing_macos
 
       auto puser = psession->user();
 
-      auto pwindowing = (::windowing_macos::windowing *) puser->windowing1()->m_pWindowing4;
+      auto pwindowing = (::windowing_macos::windowing *) puser->windowing()->m_pWindowing4;
       
       m_pmacoswindowing = dynamic_cast < class windowing * >(pwindowing);
       
