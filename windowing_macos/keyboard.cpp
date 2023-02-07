@@ -22,12 +22,10 @@ namespace windowing_macos
 
    }
 
-::user::enum_key keyboard::wparam_to_userkey(wparam wparam)
+::user::enum_key keyboard::virtual_key_to_user_key(int iVirtualKey)
     {
  
-       iptr vkcode = (iptr)wparam;
- 
-       switch(vkcode)
+       switch(iVirtualKey)
        {
              case kVK_ANSI_0:
                 return ::user::e_key_0;
@@ -162,7 +160,7 @@ namespace windowing_macos
 
       }
       
-      pkey->m_ekey = wparam_to_userkey(pkey->m_wparam);
+      //pkey->m_ekey = wparam_to_userkey(pkey->m_wparam);
 
    }
 

@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "apex/platform/os_context.h"
+#include "apex_darwin/os_context.h"
 
 
 namespace apex_macos
@@ -9,7 +9,7 @@ namespace apex_macos
 
 
    class CLASS_DECL_APEX os_context :
-      virtual public ::os_context
+      virtual public ::apex_darwin::os_context
    {
    public:
 

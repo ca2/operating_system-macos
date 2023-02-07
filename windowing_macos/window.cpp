@@ -835,6 +835,10 @@ pmessage->m_atom = emessage
 
       pkey->m_iVirtualKey = virtualKey;
       pkey->m_nScanCode = scanCode;
+      
+      ::pointer < keyboard > pkeyboard = windowing()->keyboard();
+      
+      pkey->m_ekey = pkeyboard->virtual_key_to_user_key(virtualKey);
 
       if(::is_set(pszUtf8) && ansi_len(pszUtf8) > 0)
       {
@@ -871,44 +875,24 @@ pmessage->m_atom = emessage
 
       post_message(pkey);
     
-       const char * psz = pszUtf8;
-       
-       if(::is_set(psz))
-       {
-          
-       while(true)
-       {
-           
-           auto len = utf8_len(psz);
-           
-           string strChar(psz, len);
-           
-           psz += len;
-           
-           auto codepoint = unicode_index(strChar);
-           
-          _NEW_MESSAGE(pkey, ::message::key, e_message_char);
-          
-          pkey->m_nChar = codepoint;
-           
-           post_message(pkey);
+      if(::is_set(pszUtf8) && ansi_len(pszUtf8) > 0)
+      {
 
-           if(!*psz)
-           {
-               
-               break;
-           }
+
+         _NEW_MESSAGE(pkey, ::message::key, e_message_char);
            
-       }
+         pkey->m_strText = pszUtf8;
            
-       }
+         post_message(pkey);
+
+      }
     
       return true;
 
    }
 
 
-   bool window::macos_window_key_up(unsigned int vk, unsigned int scan)
+   bool window::macos_window_key_up(unsigned int virtualKey, unsigned int scan)
    {
 
       auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
@@ -922,8 +906,12 @@ pmessage->m_atom = emessage
 
       _NEW_MESSAGE(pkey, ::message::key, e_message_key_up);
 
-      pkey->m_iVirtualKey = vk;
+      pkey->m_iVirtualKey = virtualKey;
       pkey->m_nScanCode = scan;
+      
+      ::pointer < keyboard > pkeyboard = windowing()->keyboard();
+
+      pkey->m_ekey = pkeyboard->virtual_key_to_user_key(virtualKey);
 
       puserinteraction->send(pkey);
 

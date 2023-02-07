@@ -95,14 +95,12 @@ void imm_client::_011OnChar(::message::message * pmessage)
          return;
 
       }
-
-      wchar_t wsz[2];
-      wsz[0] = (wchar_t)pusermessage->m_wparam;
-      wsz[1] = '\0';
+      
+      ::pointer < ::user::key > pkey(pmessage);
 
       string strChar;
 
-      strChar = wsz;
+      strChar = pkey->m_strText;
 
       //if (!::str::case_insensitive_begins_eat(m_strImeComposition, strChar))
       //{

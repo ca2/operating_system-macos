@@ -19,7 +19,7 @@ namespace windowing_macos
       ~keyboard() override;
       
       
-      ::user::enum_key wparam_to_userkey(wparam wparam) override;
+      ::user::enum_key virtual_key_to_user_key(int iVirtualKey);
 
       void translate_os_key_message(::user::key * pkey) override;
       
