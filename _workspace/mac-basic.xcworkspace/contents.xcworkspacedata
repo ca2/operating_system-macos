@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../source/app-core/hello_animation/__implement/_app_core_hello_animation.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:../../../source/app-core/hello_multiverse/__implement/_app_core_hello_multiverse.xcodeproj">
    </FileRef>
    <FileRef
