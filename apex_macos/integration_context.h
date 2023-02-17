@@ -1,11 +1,11 @@
-﻿// From apex/platform/integration_context.h by camilo on 2023-02-09 20:40 <3ThomasBorregaardSørensen!!
+// From apex-linux/integration_context.h by camilo on 2023-02-17 20:48 <3ThomasBorregaardSørensen!!
 #pragma once
 
 
 #include "apex/platform/integration_context.h"
 
 
-namespace apex_linux
+namespace apex_macos
 {
 
    namespace integration
@@ -91,7 +91,7 @@ namespace apex_linux
 
 
 
-} // namespace apex_linux
+} // namespace apex_macos
 
 
 

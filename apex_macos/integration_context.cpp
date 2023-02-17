@@ -1,4 +1,4 @@
-﻿// From apex/platform/integration_context.h by camilo on 2023-02-09 20:41 <3ThomasBorregaardSørensen!!
+// From apex-linux/integration_context.h by camilo on 2023-02-17 20:49 <3ThomasBorregaardSørensen!!
 #include "framework.h"
 #include "node.h"
 #include "integration_context.h"
@@ -18,7 +18,7 @@
 
 
 
-namespace apex_linux
+namespace apex_macos
 {
 
 
@@ -317,10 +317,10 @@ namespace apex_linux
    void node::integration_factory()
    {
 
-      acmesystem()->m_psubsystem->m_pfactory->add_factory_item<::apex_linux::integration::context, ::integration::context>();
+      acmesystem()->m_psubsystem->m_pfactory->add_factory_item<::apex_macos::integration::context, ::integration::context>();
 
    }
 
 
-} // namespace apex_linux
+} // namespace apex_macos
 

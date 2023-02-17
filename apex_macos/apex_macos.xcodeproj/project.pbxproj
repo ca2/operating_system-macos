@@ -56,6 +56,8 @@
 		9A865EEA299298AC0042465F /* libapex_darwin.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 9A865EE8299298AC0042465F /* libapex_darwin.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9A865FBE29661798000C82F0 /* libacme_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A865FBD29661798000C82F0 /* libacme_darwin.dylib */; };
 		9A865FBF29661799000C82F0 /* libacme_darwin.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 9A865FBD29661798000C82F0 /* libacme_darwin.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		9A8BCB3D29A049BC002BE91E /* integration_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8BCB3929A049BB002BE91E /* integration_context.h */; };
+		9A8BCB3E29A049BC002BE91E /* integration_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BCB3C29A049BB002BE91E /* integration_context.cpp */; };
 		9ABC54B726DAEE2700718C0D /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17EB264A325700B5CC33 /* libacme_macos.dylib */; };
 		9ABC54B826DAEE5100718C0D /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5EF264B54EE0080670E /* libapex_apple.dylib */; };
 /* End PBXBuildFile section */
@@ -173,6 +175,8 @@
 		9A788036264F1ECA003DF8A0 /* watcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = watcher.cpp; sourceTree = "<group>"; };
 		9A865EE8299298AC0042465F /* libapex_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A865FBD29661798000C82F0 /* libacme_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A8BCB3929A049BB002BE91E /* integration_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = integration_context.h; sourceTree = "<group>"; };
+		9A8BCB3C29A049BB002BE91E /* integration_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = integration_context.cpp; sourceTree = "<group>"; };
 		9AA74F5728482348009BB762 /* libaura_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -224,6 +228,7 @@
 			children = (
 				9A788034264F1ECA003DF8A0 /* FileSystemEvents */,
 				9A787E92264ED593003DF8A0 /* _.h */,
+				9A787E9E264ED5BA003DF8A0 /* _factory.cpp */,
 				9A787E9D264ED5BA003DF8A0 /* _library.h */,
 				9A787F6D264EF103003DF8A0 /* _mm.h */,
 				9A787F72264EF104003DF8A0 /* app.mm */,
@@ -233,7 +238,6 @@
 				9A787F85264EF105003DF8A0 /* dir_context.h */,
 				9A787F7B264EF104003DF8A0 /* dir_system.cpp */,
 				9A787F68264EF103003DF8A0 /* dir_system.h */,
-				9A787E9E264ED5BA003DF8A0 /* _factory.cpp */,
 				9A787F67264EF103003DF8A0 /* file_context.cpp */,
 				9A787F74264EF104003DF8A0 /* file_context.h */,
 				9A787F6F264EF103003DF8A0 /* file_system.cpp */,
@@ -241,6 +245,8 @@
 				9A787F7C264EF104003DF8A0 /* file.mm */,
 				9A0C1755264A2DFA00B5CC33 /* framework.cpp */,
 				9A0C1766264A2DFA00B5CC33 /* framework.h */,
+				9A8BCB3C29A049BB002BE91E /* integration_context.cpp */,
+				9A8BCB3929A049BB002BE91E /* integration_context.h */,
 				9A787F6E264EF103003DF8A0 /* interprocess.cpp */,
 				9A787FAB264EF342003DF8A0 /* interprocess.h */,
 				9A787F82264EF105003DF8A0 /* keyboard_mm.mm */,
@@ -326,6 +332,7 @@
 				9A787F91264EF105003DF8A0 /* _mm.h in Headers */,
 				9A0C1785264A2DFA00B5CC33 /* framework.h in Headers */,
 				9A788033264F1130003DF8A0 /* shell_launcher.h in Headers */,
+				9A8BCB3D29A049BC002BE91E /* integration_context.h in Headers */,
 				9A787EE3264EE881003DF8A0 /* node.h in Headers */,
 				9A787FAE264F0F3B003DF8A0 /* launcher.h in Headers */,
 				9A787FAC264EF342003DF8A0 /* interprocess.h in Headers */,
@@ -440,6 +447,7 @@
 				9A787FA7264EF105003DF8A0 /* shell_macos_mm.mm in Sources */,
 				9A787F8D264EF105003DF8A0 /* launcher.cpp in Sources */,
 				9A787F92264EF105003DF8A0 /* interprocess.cpp in Sources */,
+				9A8BCB3E29A049BC002BE91E /* integration_context.cpp in Sources */,
 				9A787F9E264EF105003DF8A0 /* dir_context.cpp in Sources */,
 				9A5D760D274E4FF300403BC3 /* file.mm in Sources */,
 				9A787FA2264EF105003DF8A0 /* os_context.cpp in Sources */,
