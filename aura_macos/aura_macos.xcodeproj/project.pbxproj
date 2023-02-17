@@ -252,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */,
-				9A750DDB282B49AE00C4861B /* ios_aura_apple.a */,
+				9A750DDB282B49AE00C4861B /* libios_aura_apple.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -430,7 +430,7 @@
 			remoteRef = 9A413D54266EDEA500C3FF0E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9A750DDB282B49AE00C4861B /* ios_aura_apple.a */ = {
+		9A750DDB282B49AE00C4861B /* libios_aura_apple.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
 			path = libios_aura_apple.a;
@@ -815,7 +815,6 @@
 				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = framework.h;
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PLATFORM_MODIFIER = macos;
 			};
 			name = Debug;
@@ -827,7 +826,6 @@
 				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = framework.h;
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PLATFORM_MODIFIER = macos;
 			};
 			name = Release;
