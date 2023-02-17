@@ -61,27 +61,27 @@ namespace apex_macos
       override;
 
 
-      virtual void prepare();
+      void prepare() override;
 
-      virtual void change_to_source_directory();
+      void change_to_source_directory() override;
 
-      virtual void prepare_compile_and_link_environment();
+      void prepare_compile_and_link_environment() override;
 
-      virtual void prepare_compilation_script(::string &str);
+      void prepare_compilation_script(::string &str) override;
 
-      virtual void prepare_linking_script(::string &str);
+      void prepare_linking_script(::string &str) override;
 
-      virtual int command_system(const ::scoped_string &scopedstr);
+      int command_system(const ::scoped_string &scopedstr) override;
 
-      virtual void clean();
+      void clean() override;
 
-      virtual void download_and_uncompress();
+      void download_and_uncompress() override;
 
-      virtual void git_clone();
+      void git_clone() override;
 
-      virtual void bash(const ::scoped_string &scopedstr);
+      void bash(const ::scoped_string &scopedstr) override;
 
-      virtual ::string prepare_path(const ::file::path &path);
+      ::string prepare_path(const ::file::path &path) override;
 
 
    };
