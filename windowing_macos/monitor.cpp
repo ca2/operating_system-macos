@@ -34,30 +34,34 @@ namespace windowing_macos
    }
 
 
-   void monitor::get_monitor_rectangle(::RECTANGLE_I32 & rectangle)
+   ::rectangle_i32 monitor::monitor_rectangle()
    {
    
       CGRect r;
       
       ns_monitor_cgrect((int) m_iIndex, &r);
       
+      ::rectangle_i32 rectangle;
+      
       copy(rectangle, r);
       
-      //return ::success;
+      return rectangle;
       
    }
 
 
-   void monitor::get_workspace_rectangle(::RECTANGLE_I32 & rectangle)
+   ::rectangle_i32 monitor::workspace_rectangle()
    {
       
       CGRect rectWorkspace;
       
       ns_workspace_cgrect((int) m_iIndex, &rectWorkspace);
       
+      ::rectangle_i32 rectangle;
+      
       copy(rectangle, rectWorkspace);
       
-      //return ::success;
+      return rectangle;
       
    }
 
