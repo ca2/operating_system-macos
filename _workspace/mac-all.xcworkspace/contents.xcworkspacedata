@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/camilo/solution/main/operating-system/operating-system-macos/_workspace/aggregate-all.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/camilo/solution/main/operating-system/operating-system-macos/_workspace/release-all.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:../../../source/app/app/__implement/_app_app.xcodeproj">
    </FileRef>
    <FileRef
@@ -162,5 +156,11 @@
    </FileRef>
    <FileRef
       location = "group:../../../source/console/readlines/readlines.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/camilo/solution/main/operating-system/operating-system-macos/_workspace/aggregate-all.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/camilo/solution/main/operating-system/operating-system-macos/_workspace/release-all.xcodeproj">
    </FileRef>
 </Workspace>
