@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "acme/filesystem/filesystem/path_array.h"
 #include "acme/primitive/collection/str_array.h"
 #include <Carbon/Carbon.h>
 
@@ -21,26 +22,6 @@ int_bool GetCursorPos(POINT_I32 * ppointCursor)
 }
 
 
-char * mm_browse_folder(void * pSystem, const char * pszStartDir, bool bCanCreateDirectories);
-
-
-string apple_browse_folder(class ::acme::system * psystem, const char * pszStartDir, bool bCanCreateDirectories)
-{
-
-   return ::string_from_strdup(mm_browse_folder(psystem, pszStartDir, bCanCreateDirectories));
-
-}
-
-
-char** mm_browse_file_open(void * psystem, const char ** pszStartDir, bool bMulti);
-
-
-string_array apple_browse_file_open(class ::acme::system * psystem, const char ** pszStartDir, bool bMulti)
-{
-   
-   return ::stringa_from_strdup(mm_browse_file_open(psystem, pszStartDir, bMulti));
-
-}
 
 
 

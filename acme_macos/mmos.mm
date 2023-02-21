@@ -80,76 +80,76 @@ void term_mmos(void * pSystem)
 
 @implementation mmos
 
--(NSURL *)browse_folder : (NSURL *) directoryURL canCreateDirectories: (bool) bCanCreateDirectories
-{
-   
-   NSOpenPanel * panel = [NSOpenPanel openPanel];
-   
-   [panel setCanCreateDirectories: bCanCreateDirectories];
-
-   [panel setAllowsMultipleSelection: NO];
-   
-   [panel setCanChooseDirectories:YES];
-   
-   [panel setCanChooseFiles:NO];
-   
-   if(directoryURL != nil)
-   {
-
-      panel.directoryURL = directoryURL;
-   
-   }
-   
-   if ([panel runModal] != NSModalResponseOK)
-   {
-      
-      return NULL;
-      
-   }
-
-   return [[panel URLs] lastObject];
-   
-}
-
-
--(NSArray < NSURL *> *)browse_file_open : (NSURL **) startDir multi: (bool) b
-{
-   
-   NSOpenPanel *panel = [NSOpenPanel openPanel];
-   
-      [panel setAllowsMultipleSelection:b];
-   
-      [panel setCanChooseDirectories:NO];
-   
-      [panel setCanChooseFiles:YES];
-   
-      if(startDir != nil && *startDir !=nil)
-      {
-         
-         panel.directoryURL= *startDir;
-   
-      }
-   
-      NSInteger result = [panel runModal];
-      
-      if(startDir != nil)
-      {
-         
-         *startDir = panel.directoryURL;
-         
-      }
-      
-      if(result != NSModalResponseOK)
-      {
-         
-         return NULL;
-         
-      }
+//-(NSURL *)browse_folder : (NSURL *) directoryURL canCreateDirectories: (bool) bCanCreateDirectories
+//{
+//
+//   NSOpenPanel * panel = [NSOpenPanel openPanel];
+//
+//   [panel setCanCreateDirectories: bCanCreateDirectories];
+//
+//   [panel setAllowsMultipleSelection: NO];
+//
+//   [panel setCanChooseDirectories:YES];
+//
+//   [panel setCanChooseFiles:NO];
+//
+//   if(directoryURL != nil)
+//   {
+//
+//      panel.directoryURL = directoryURL;
+//
+//   }
+//
+//   if ([panel runModal] != NSModalResponseOK)
+//   {
+//
+//      return NULL;
+//
+//   }
+//
+//   return [[panel URLs] lastObject];
+//
+//}
 
 
-   return [panel URLs];
-   
-}
+//-(NSArray < NSURL *> *)browse_file_open : (NSURL **) startDir multi: (bool) b
+//{
+//
+//   NSOpenPanel *panel = [NSOpenPanel openPanel];
+//
+//      [panel setAllowsMultipleSelection:b];
+//
+//      [panel setCanChooseDirectories:NO];
+//
+//      [panel setCanChooseFiles:YES];
+//
+//      if(startDir != nil && *startDir !=nil)
+//      {
+//
+//         panel.directoryURL= *startDir;
+//
+//      }
+//
+//      NSInteger result = [panel runModal];
+//
+//      if(startDir != nil)
+//      {
+//
+//         *startDir = panel.directoryURL;
+//
+//      }
+//
+//      if(result != NSModalResponseOK)
+//      {
+//
+//         return NULL;
+//
+//      }
+//
+//
+//   return [panel URLs];
+//
+//}
 
 
 - (id)get
@@ -441,64 +441,129 @@ void ns_log(const char * pszLog)
 }
 
 
+void ns_main_async(dispatch_block_t block);
 
 
-char * mm_browse_folder(void * pSystem, const char * pszStartDir, bool bCanCreateDirectories)
+void mm_folder_dialog(::function < void(const char *) > functionParameter, const char * pszStartFolder, bool bCanCreateDirectories)
 {
+   
+   __block auto function = functionParameter;
+   
+   __block NSString * strStartFolder = nil;
+   
+   if(pszStartFolder != nullptr)
+   {
+      
+      strStartFolder = [[NSString alloc] initWithUTF8String:pszStartFolder];
+      
+   }
 
-   __block char * p = NULL;
-
-   ns_main_sync(^
+   ns_main_async(^
    {
 
-      mmos * pos = (__bridge mmos *) get_system_mmos(pSystem);
+      //mmos * pos = (__bridge mmos *) get_system_mmos(pSystem);
 
-      NSURL * startDir = NULL;
+      NSURL * urlStartFolder = nil;
 
-      if(pszStartDir != NULL)
+      if(strStartFolder != nil)
       {
 
-         NSString * str = [[NSString alloc] initWithUTF8String:pszStartDir];
-
-         startDir = [[NSURL alloc]initWithString :str];
+         urlStartFolder = [[NSURL alloc]initWithString : strStartFolder];
 
       }
 
-      NSURL * url = [pos browse_folder:startDir canCreateDirectories:bCanCreateDirectories];
+      NSOpenPanel * panel = [NSOpenPanel openPanel];
+      
+      [panel setCanCreateDirectories: bCanCreateDirectories];
 
-      p = ns_string( [url absoluteString]);
+      [panel setAllowsMultipleSelection: NO];
+      
+      [panel setCanChooseDirectories:YES];
+      
+      [panel setCanChooseFiles:NO];
+      
+      if(urlStartFolder != nil)
+      {
+
+         panel.directoryURL = urlStartFolder;
+      
+      }
+      
+      if ([panel runModal] != NSModalResponseOK)
+      {
+         
+         function({});
+         
+      }
+      else
+      {
+         
+         function([[[[panel URLs] lastObject] absoluteString] UTF8String ]);
+         
+      }
 
    });
-
-   return p;
 
 }
 
 
-char** mm_browse_file_open(void * pSystem, const char ** pszStartDir, bool bMulti)
+void mm_file_dialog(::function < void(const char ** , const char *) > functionParameter, const char * pszStartFolder, bool bSave, bool bMultiple)
 {
 
-   __block char ** pp = NULL;
+   __block auto function = functionParameter;
+   
+   __block NSString * strStartFolder = nil;
+   
+   if(pszStartFolder != nullptr)
+   {
+      
+      strStartFolder = [[NSString alloc] initWithUTF8String:pszStartFolder];
+      
+   }
 
-   ns_main_sync(^
+   ns_main_async(^()
    {
 
-      mmos * pos = (__bridge mmos *) get_system_mmos(pSystem);
+//      mmos * pos = (__bridge mmos *) get_system_mmos(pSystem);
 
-      NSURL * startDir = NULL;
+      NSURL * urlStartFolder = nil;
 
-      if(pszStartDir != NULL && *pszStartDir != NULL)
+      if(strStartFolder != nil)
       {
 
-         NSString * str = [[NSString alloc] initWithUTF8String:*pszStartDir];
-
-         startDir = [[NSURL alloc]initWithString :str];
+         urlStartFolder = [[NSURL alloc]initWithString : strStartFolder];
 
       }
 
-      NSArray < NSURL * > * urla = [pos browse_file_open:&startDir multi:bMulti];
+      NSOpenPanel *panel = [NSOpenPanel openPanel];
+      
+      [panel setAllowsMultipleSelection:bMultiple];
+      
+      [panel setCanChooseDirectories:NO];
+      
+      [panel setCanChooseFiles:YES];
+      
+      if(urlStartFolder != nil)
+      {
+            
+         panel.directoryURL = urlStartFolder;
+      
+      }
+      
+      NSInteger result = [panel runModal];
+         
+      if(result != NSModalResponseOK)
+      {
+         
+         function(nullptr, nullptr);
+         
+         return;
+         
+      }
+      
+      NSArray < NSURL * > * urla = [panel URLs];
 
-      pp = (char **)malloc((urla.count + 1) * sizeof(char*));
+      char ** pp = (char **)malloc((urla.count + 1) * sizeof(char*));
 
       int i = 0;
 
@@ -511,16 +576,24 @@ char** mm_browse_file_open(void * pSystem, const char ** pszStartDir, bool bMult
 
       pp[i] = NULL;
 
-      *pszStartDir = ns_string([startDir absoluteString]);
+      function((const char **) pp, [ [ [ panel directoryURL ] absoluteString ] UTF8String]);
+      
+      i = 0;
+      
+      while(pp[i] != NULL)
+      {
+         
+         free(pp[i]);
+         
+         i++;
+         
+      }
+      
+      free(pp);
 
    });
 
-   return pp;
-
 }
-
-
-
 
 
 bool ns_is_system_dark_mode()

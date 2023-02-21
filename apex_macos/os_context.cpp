@@ -44,8 +44,9 @@ void ns_create_alias(const char * pszTarget, const char * pszSource);
 //::string & ns_get_default_browser_path();
 void ns_set_this_process_binary_default_browser();
 
-string apple_browse_folder(class ::acme::system * psystem, const char * pszStartDir, bool bCanCreateDirectories);
-string_array apple_browse_file_open(class ::acme::system * psystem, const char ** pszStartDir, bool bAllowsMultipleSelection);
+//string apple_browse_folder(class ::acme::system * psystem, ::operating_system_folder_dialog * pdialog);
+//string_array apple_browse_file_open(class ::acme::system * psystem, const char ** pszStartDir, bool bAllowsMultipleSelection);
+
 
 
 bool ns_open_url(const char * psz);
@@ -1245,94 +1246,99 @@ namespace apex_macos
    void os_context::browse_folder(property_set &set)
    {
       
-      const char * pszStartDir = nullptr;
-
-      string strStartDir;
-
-      if(set.has_property("folder"))
-      {
-
-         strStartDir = set["folder"].as_file_path();
-
-         pszStartDir = strStartDir;
-
-      }
       
-      auto psystem = acmesystem();
-
-      string strFolder = apple_browse_folder(psystem, pszStartDir, true);
-
-      if(strFolder.is_empty())
-      {
-
-         //return false;
-         
-         return;
-
-      }
-
-      set["folder"] = strFolder;
-
-      //return true;
+      throw "use node file::folder_dialog";
+      
+//      const char * pszStartDir = nullptr;
+//
+//      string strStartDir;
+//
+//      if(set.has_property("folder"))
+//      {
+//
+//         strStartDir = set["folder"].as_file_path();
+//
+//         pszStartDir = strStartDir;
+//
+//      }
+//
+//      auto psystem = acmesystem();
+//
+//      string strFolder = apple_browse_folder(psystem, pszStartDir, true);
+//
+//      if(strFolder.is_empty())
+//      {
+//
+//         //return false;
+//
+//         return;
+//
+//      }
+//
+//      set["folder"] = strFolder;
+//
+//      //return true;
 
    }
 
 
    void os_context::browse_file_open(property_set &set)
    {
-
-      const char * pszStartDir = nullptr;
-
-      string strStartDir;
-
-      if(set.has_property("folder"))
-      {
-
-         strStartDir =set["folder"].as_file_path();
-
-         pszStartDir = strStartDir;
-
-      }
-
-      bool bMulti = set["allow_multi_select"];
       
-      auto psystem = acmesystem();
+      throw "use node file::folder_dialog";
 
-      string_array straFileName = apple_browse_file_open(psystem, &pszStartDir, bMulti);
-
-      if(pszStartDir != nullptr && pszStartDir != strStartDir.c_str())
-      {
-
-         ::file::path pathFolder = ::file::path(::string_from_strdup((::string &) pszStartDir));
-
-         set["folder"] = pathFolder;
-
-      }
-
-      if(straFileName.is_empty())
-      {
-
-         //return false;
-         
-         return;
-
-      }
-
-
-      if(straFileName.get_count() == 1)
-      {
-
-         set["file_name"] = straFileName[0];
-
-      }
-      else
-      {
-
-         set["file_name"] = straFileName;
-
-      }
-
-      //return true;
+//      const char * pszStartDir = nullptr;
+//
+//      string strStartDir;
+//
+//      if(set.has_property("folder"))
+//      {
+//
+//         strStartDir =set["folder"].as_file_path();
+//
+//         pszStartDir = strStartDir;
+//
+//      }
+//
+//      bool bMulti = set["allow_multi_select"];
+//      
+//      auto psystem = acmesystem();
+//
+//      string_array straFileName = apple_browse_file_open(psystem, &pszStartDir, bMulti);
+//
+//      if(pszStartDir != nullptr && pszStartDir != strStartDir.c_str())
+//      {
+//
+//         ::file::path pathFolder = ::file::path(::string_from_strdup((::string &) pszStartDir));
+//
+//         set["folder"] = pathFolder;
+//
+//      }
+//
+//      if(straFileName.is_empty())
+//      {
+//
+//         //return false;
+//         
+//         return;
+//
+//      }
+//
+//
+//      if(straFileName.get_count() == 1)
+//      {
+//
+//         set["file_name"] = straFileName[0];
+//
+//      }
+//      else
+//      {
+//
+//         set["file_name"] = straFileName;
+//
+//      }
+//
+//      //return true;
 
    }
 

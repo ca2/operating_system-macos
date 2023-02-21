@@ -7,31 +7,15 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		9A6B7C5E2757D4EC00DB33D9 /* agreggate-all */ = {
+		9A6B7C5E2757D4EC00DB33D9 /* aggregate-all */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 9A6B7C5F2757D4ED00DB33D9 /* Build configuration list for PBXAggregateTarget "agreggate-all" */;
+			buildConfigurationList = 9A6B7C5F2757D4ED00DB33D9 /* Build configuration list for PBXAggregateTarget "aggregate-all" */;
 			buildPhases = (
 			);
 			dependencies = (
-				9AE46ED029A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46ED229A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46ED429A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46ED629A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46ED829A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46EDA29A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46EDC29A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46EDE29A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46EE029A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46EE229A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46EE429A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46EE629A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46EE829A10F9B00F2269A /* PBXTargetDependency */,
-				9AE46EEA29A10F9B00F2269A /* PBXTargetDependency */,
 				9AE46ECA29A10F6000F2269A /* PBXTargetDependency */,
-				9AE46ECC29A10F6000F2269A /* PBXTargetDependency */,
-				9AE46ECE29A10F6000F2269A /* PBXTargetDependency */,
 			);
-			name = "agreggate-all";
+			name = "aggregate-all";
 			productName = "agreggate-all";
 		};
 /* End PBXAggregateTarget section */
@@ -611,13 +595,6 @@
 			remoteGlobalIDString = 070B8EFD1B6E53FA00D26137;
 			remoteInfo = "Hello Multiverse!!Tests";
 		};
-		9AE46E8B29A10EA600F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46E8129A10EA600F2269A /* _app_app.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9AE46CA729A10D9D00F2269A;
-			remoteInfo = "_app_app copy";
-		};
 		9AE46E9229A10EA700F2269A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AE46E8D29A10EA600F2269A /* _app_core_auratype.xcodeproj */;
@@ -715,118 +692,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
 			remoteInfo = _app_app;
-		};
-		9AE46ECB29A10F6000F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46D7629A10E9B00F2269A /* _app_complex_drawing.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_complex_drawing;
-		};
-		9AE46ECD29A10F6000F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46D2E29A10E9900F2269A /* _app_core_addressbook.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_core_addressbook;
-		};
-		9AE46ECF29A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46EA229A10EA800F2269A /* _app_core_timer.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_core_timer;
-		};
-		9AE46ED129A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46E6F29A10EA500F2269A /* _app_core_todo.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_core_todo;
-		};
-		9AE46ED329A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46D6129A10E9B00F2269A /* _app_core_weather.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_core_weather;
-		};
-		9AE46ED529A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46D6A29A10E9B00F2269A /* _app_message_box.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_message_box;
-		};
-		9AE46ED729A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46E9629A10EA700F2269A /* _app_shader.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_shader;
-		};
-		9AE46ED929A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46D7F29A10E9C00F2269A /* _app_simple_application.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_simple_application;
-		};
-		9AE46EDB29A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46D4F29A10E9A00F2269A /* _app_simple_drawing.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_simple_drawing;
-		};
-		9AE46EDD29A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46DF729A10EA000F2269A /* _app_simple_networking_application.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_simple_networking_application;
-		};
-		9AE46EDF29A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46E0F29A10EA100F2269A /* _app_simple_notify_drawing.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_simple_notify_drawing;
-		};
-		9AE46EE129A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46DA029A10E9D00F2269A /* _app_simple_shader.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_simple_shader;
-		};
-		9AE46EE329A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46D9129A10E9C00F2269A /* _app_veriwell_keyboard.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A5FDF942689DAFB003682E6;
-			remoteInfo = _app_veriwell_keyboard;
-		};
-		9AE46EE529A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46D4929A10E9A00F2269A /* _app_veriwell_musical_player_lite.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = _app_veriwell_musical_player_lite;
-		};
-		9AE46EE729A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46DBB29A10E9E00F2269A /* _app_veriwell_musical_player.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A5FDC9426895216003682E6;
-			remoteInfo = _app_veriwell_musical_player;
-		};
-		9AE46EE929A10F9B00F2269A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE46EAB29A10EA800F2269A /* _app_veriwell_verisimplevideo.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = app_veriwell_verisimplevideo;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1337,7 +1202,6 @@
 			children = (
 				9AE46E8829A10EA600F2269A /* _app_app.app */,
 				9AE46E8A29A10EA600F2269A /* Hello Multiverse!!Tests.xctest */,
-				9AE46E8C29A10EA600F2269A /* _app_app copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1418,7 +1282,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9A6B7AB42757D43B00DB33D9 /* Build configuration list for PBXProject "agrgegate-all" */;
+			buildConfigurationList = 9A6B7AB42757D43B00DB33D9 /* Build configuration list for PBXProject "aggregate-all" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1640,7 +1504,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				9A6B7C5E2757D4EC00DB33D9 /* agreggate-all */,
+				9A6B7C5E2757D4EC00DB33D9 /* aggregate-all */,
 			);
 		};
 /* End PBXProject section */
@@ -2220,13 +2084,6 @@
 			remoteRef = 9AE46E8929A10EA600F2269A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9AE46E8C29A10EA600F2269A /* _app_app copy.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "_app_app copy.app";
-			remoteRef = 9AE46E8B29A10EA600F2269A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		9AE46E9329A10EA700F2269A /* _app_core_auratype.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -2326,86 +2183,6 @@
 			name = _app_app;
 			targetProxy = 9AE46EC929A10F6000F2269A /* PBXContainerItemProxy */;
 		};
-		9AE46ECC29A10F6000F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_complex_drawing;
-			targetProxy = 9AE46ECB29A10F6000F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46ECE29A10F6000F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_core_addressbook;
-			targetProxy = 9AE46ECD29A10F6000F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46ED029A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_core_timer;
-			targetProxy = 9AE46ECF29A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46ED229A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_core_todo;
-			targetProxy = 9AE46ED129A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46ED429A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_core_weather;
-			targetProxy = 9AE46ED329A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46ED629A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_message_box;
-			targetProxy = 9AE46ED529A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46ED829A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_shader;
-			targetProxy = 9AE46ED729A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46EDA29A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_simple_application;
-			targetProxy = 9AE46ED929A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46EDC29A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_simple_drawing;
-			targetProxy = 9AE46EDB29A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46EDE29A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_simple_networking_application;
-			targetProxy = 9AE46EDD29A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46EE029A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_simple_notify_drawing;
-			targetProxy = 9AE46EDF29A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46EE229A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_simple_shader;
-			targetProxy = 9AE46EE129A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46EE429A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_veriwell_keyboard;
-			targetProxy = 9AE46EE329A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46EE629A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_veriwell_musical_player_lite;
-			targetProxy = 9AE46EE529A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46EE829A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = _app_veriwell_musical_player;
-			targetProxy = 9AE46EE729A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
-		9AE46EEA29A10F9B00F2269A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = app_veriwell_verisimplevideo;
-			targetProxy = 9AE46EE929A10F9B00F2269A /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -2498,7 +2275,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9A6B7AB42757D43B00DB33D9 /* Build configuration list for PBXProject "agrgegate-all" */ = {
+		9A6B7AB42757D43B00DB33D9 /* Build configuration list for PBXProject "aggregate-all" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A6B7AB52757D43B00DB33D9 /* Debug */,
@@ -2507,7 +2284,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A6B7C5F2757D4ED00DB33D9 /* Build configuration list for PBXAggregateTarget "agreggate-all" */ = {
+		9A6B7C5F2757D4ED00DB33D9 /* Build configuration list for PBXAggregateTarget "aggregate-all" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A6B7C602757D4ED00DB33D9 /* Debug */,

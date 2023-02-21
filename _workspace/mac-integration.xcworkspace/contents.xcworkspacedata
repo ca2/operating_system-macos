@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../../../source/app-core/integration/__implement/_app_core_integration.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/camilo/solution/main/source/console/integration/console_integration.xcodeproj">
+   </FileRef>
+</Workspace>

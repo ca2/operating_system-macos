@@ -47,7 +47,7 @@
 
 -(void)runRunnable:(::matter *)pobjectTask;
 
--(NSURL *)browse_folder : (NSURL *) directoryURL canCreateDirectories: (bool) bCanCreateDirectories;
--(NSArray < NSURL * > *)browse_file_open : (NSURL **) startDir multi: (bool) b;
+//-(NSURL *)browse_folder : (NSURL *) directoryURL canCreateDirectories: (bool) bCanCreateDirectories;
+//-(NSArray < NSURL * > *)browse_file_open : (NSURL **) startDir multi: (bool) b;
 @end
 

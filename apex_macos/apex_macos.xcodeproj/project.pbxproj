@@ -53,9 +53,7 @@
 		9A788037264F1ECA003DF8A0 /* watcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788035264F1ECA003DF8A0 /* watcher.h */; };
 		9A788038264F1ECA003DF8A0 /* watcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A788036264F1ECA003DF8A0 /* watcher.cpp */; };
 		9A865EE9299298AC0042465F /* libapex_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A865EE8299298AC0042465F /* libapex_darwin.dylib */; };
-		9A865EEA299298AC0042465F /* libapex_darwin.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 9A865EE8299298AC0042465F /* libapex_darwin.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9A865FBE29661798000C82F0 /* libacme_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A865FBD29661798000C82F0 /* libacme_darwin.dylib */; };
-		9A865FBF29661799000C82F0 /* libacme_darwin.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 9A865FBD29661798000C82F0 /* libacme_darwin.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9A8BCB3D29A049BC002BE91E /* integration_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8BCB3929A049BB002BE91E /* integration_context.h */; };
 		9A8BCB3E29A049BC002BE91E /* integration_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BCB3C29A049BB002BE91E /* integration_context.cpp */; };
 		9ABC54B726DAEE2700718C0D /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17EB264A325700B5CC33 /* libacme_macos.dylib */; };
@@ -106,21 +104,6 @@
 			remoteInfo = ios_apex_apple;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		9A865FC029661799000C82F0 /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				9A865FBF29661799000C82F0 /* libacme_darwin.dylib in Embed Libraries */,
-				9A865EEA299298AC0042465F /* libapex_darwin.dylib in Embed Libraries */,
-			);
-			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9A0C1695264A2AA700B5CC33 /* libapex_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libapex_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,7 +335,6 @@
 				9A0C1691264A2AA700B5CC33 /* Headers */,
 				9A0C1692264A2AA700B5CC33 /* Sources */,
 				9A0C1693264A2AA700B5CC33 /* Frameworks */,
-				9A865FC029661799000C82F0 /* Embed Libraries */,
 			);
 			buildRules = (
 			);

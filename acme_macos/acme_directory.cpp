@@ -7,6 +7,8 @@
 #include "acme_directory.h"
 
 
+::string macos_get_home();
+
 namespace acme_macos
 {
 
@@ -60,6 +62,8 @@ namespace acme_macos
 
    ::file::path acme_directory::roaming()
    {
+      
+      auto pathHome = this->home();
 
       return home() / "Library/Application Support";
 
@@ -419,7 +423,7 @@ namespace acme_macos
    ::file::path acme_directory::home()
    {
 
-      return getenv("HOME");
+      return macos_get_home();
 
    }
 
@@ -642,5 +646,14 @@ namespace acme_macos
 } // namespace acme_macos
 
 
+char * ns_get_home();
 
+::string macos_get_home()
+{
    
+   return ::string_from_strdup(ns_get_home());
+   
+}
+   
+
+

@@ -422,3 +422,12 @@ void ns_set_system_dark_mode()
 
 
 
+
+
+char * ns_get_home()
+{
+   
+   return strdup([NSHomeDirectory() UTF8String]);
+   
+   
+}

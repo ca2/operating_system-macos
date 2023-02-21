@@ -4,11 +4,18 @@
 #include "framework.h"
 #include "quit.h"
 #include "acme/exception/interface_only.h"
+#include "acme/filesystem/filesystem/file_dialog.h"
+#include "acme/filesystem/filesystem/folder_dialog.h"
 #include "acme/platform/system.h"
 
 
 #include <unistd.h>
 #include <signal.h>
+
+
+void macos_folder_dialog(::file::folder_dialog * pdialog);
+void macos_file_dialog(::file::file_dialog * pdialog);
+
 
 void apple_defer_nano_application_create(::acme::system * psystem);
 void acme_macos_application_init(void * pApplication, int argc, char *argv[]);
@@ -1013,6 +1020,18 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
       psystem->defer_post_initial_request();
       
    }
+void node::_node_file_dialog(::file::file_dialog * pdialog)
+{
+   
+   macos_file_dialog(pdialog);
+   
+}
+void node::_node_folder_dialog(::file::folder_dialog * pdialog)
+{
+   
+   macos_folder_dialog(pdialog);
+   
+}
 
 
 } // namespace acme_macos
@@ -1027,11 +1046,12 @@ void * get_system_mmos(void * pSystem)
    
 }
 
+
 void set_system_mmos(void * pSystem, void * pmmos)
 {
    
    auto psystem = (class ::acme::system *) pSystem;
-   
+
    psystem->m_pmmos = pmmos;
    
 }
@@ -1046,4 +1066,85 @@ string macos_get_type_identifier(const char * psz)
    return ::string_from_strdup(mm2_get_type_identifier(psz));
    
 }
+
+
+void mm_folder_dialog(::function < void(const char * psz) > function, const char * pszStartFolder, bool bCanCreateDirectories);
+
+
+void macos_folder_dialog(::file::folder_dialog * pdialog)
+{
+   
+   pdialog->increment_reference_count();
+   
+   auto functionHere = [pdialog](const char * psz)
+   {
+      
+      ::pointer < ::file::folder_dialog > pdialogHold(e_move_transfer, pdialog);
+      
+      if(::is_set(psz))
+      {
+         
+         pdialog->m_path = psz;
+         
+      }
+      
+      pdialog->m_function(::transfer(pdialogHold));
+      
+   };
+
+   mm_folder_dialog(
+                    functionHere,
+                    pdialog->m_path,
+                    pdialog->m_bCanCreateFolders);
+
+}
+
+
+void mm_file_dialog(::function < void(const char **, const char *) > function, const char * pszStartFolder, bool bSave, bool bMultiple);
+
+
+void macos_file_dialog(::file::file_dialog * pdialog)
+{
+   
+   pdialog->increment_reference_count();
+   
+   auto functionHere = [pdialog](const char ** pp, const char * pszStartFolder)
+   {
+      
+      ::pointer < ::file::file_dialog > pdialogHold(e_move_transfer, pdialog);
+
+      if(pp)
+      {
+         
+         while(*pp)
+         {
+            
+            pdialog->m_patha.add(::file::path(*pp));
+            
+            pp++;
+            
+         }
+         
+      }
+
+      if(pszStartFolder)
+      {
+       
+         pdialog->m_pathStartFolder = pszStartFolder;
+         
+      }
+
+      pdialog->m_function(::transfer(pdialogHold));
+      
+   };
+   
+   mm_file_dialog(
+                  functionHere,
+                  pdialog->m_pathStartFolder,
+                  pdialog->m_bSave,
+                  pdialog->m_bMultiple);
+
+}
+
+
 

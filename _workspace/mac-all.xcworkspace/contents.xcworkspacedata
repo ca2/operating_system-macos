@@ -2,25 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:stage-all.xcodeproj">
+      location = "group:/Users/camilo/solution/main/operating-system/operating-system-macos/_workspace/aggregate-all.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:agreggate-all.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../../source/console/application_build_helper/application_build_helper.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../../source/console/hello/hello.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../../source/console/helloearth/helloearth.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../../source/console/hellosolarsystem/hellosolarsystem.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../../source/console/readlines/readlines.xcodeproj">
+      location = "group:/Users/camilo/solution/main/operating-system/operating-system-macos/_workspace/release-all.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../../source/app/app/__implement/_app_app.xcodeproj">
@@ -71,7 +56,7 @@
       location = "group:../../../source/app-cidadedecuritiba/alphaclock/__implement/_app_cidadedecuritiba_alphaclock.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../source/app-core/clockverse/__implement/_app_core_clockverse_no_audio.xcodeproj">
+      location = "group:../../../source/app-core/clockverse/__implement_no_audio/_app_core_clockverse_no_audio.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../../source/app-core/projection/__implement/_app_core_projection.xcodeproj">
@@ -162,5 +147,20 @@
    </FileRef>
    <FileRef
       location = "group:../../../source/game/arch001/__implement/_game_arch001.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/console/application_build_helper/application_build_helper.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/console/hello/hello.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/console/helloearth/helloearth.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/console/hellosolarsystem/hellosolarsystem.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../source/console/readlines/readlines.xcodeproj">
    </FileRef>
 </Workspace>

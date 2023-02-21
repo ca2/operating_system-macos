@@ -113,7 +113,9 @@ namespace acme_macos
 
       void _will_finish_launching() override;
 
-      
+      void _node_file_dialog(::file::file_dialog * pdialog) override;
+      void _node_folder_dialog(::file::folder_dialog * pdialog) override;
+
    };
 
 
