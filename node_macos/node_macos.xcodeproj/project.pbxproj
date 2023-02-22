@@ -447,11 +447,7 @@
 		9AC2D17926542E1000CC8096 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEAD_CODE_STRIPPING = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
-				INSTALL_PATH = "@executable_path";
 				PLATFORM_MODIFIER = macos;
 			};
 			name = Debug;
@@ -459,11 +455,7 @@
 		9AC2D17A26542E1000CC8096 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEAD_CODE_STRIPPING = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
-				INSTALL_PATH = "@executable_path";
 				PLATFORM_MODIFIER = macos;
 			};
 			name = Release;
