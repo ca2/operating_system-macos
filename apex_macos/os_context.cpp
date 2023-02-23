@@ -1243,104 +1243,104 @@ namespace apex_macos
    }
 
 
-   void os_context::browse_folder(property_set &set)
-   {
-      
-      
-      throw "use node file::folder_dialog";
-      
-//      const char * pszStartDir = nullptr;
-//
-//      string strStartDir;
-//
-//      if(set.has_property("folder"))
-//      {
-//
-//         strStartDir = set["folder"].as_file_path();
-//
-//         pszStartDir = strStartDir;
-//
-//      }
-//
-//      auto psystem = acmesystem();
-//
-//      string strFolder = apple_browse_folder(psystem, pszStartDir, true);
-//
-//      if(strFolder.is_empty())
-//      {
-//
-//         //return false;
-//
-//         return;
-//
-//      }
-//
-//      set["folder"] = strFolder;
-//
-//      //return true;
-
-   }
-
-
-   void os_context::browse_file_open(property_set &set)
-   {
-      
-      throw "use node file::folder_dialog";
-
-//      const char * pszStartDir = nullptr;
-//
-//      string strStartDir;
-//
-//      if(set.has_property("folder"))
-//      {
-//
-//         strStartDir =set["folder"].as_file_path();
-//
-//         pszStartDir = strStartDir;
-//
-//      }
-//
-//      bool bMulti = set["allow_multi_select"];
+//   void os_context::browse_folder(property_set &set)
+//   {
 //      
-//      auto psystem = acmesystem();
+//      
+//      throw "use node file::folder_dialog";
+//      
+////      const char * pszStartDir = nullptr;
+////
+////      string strStartDir;
+////
+////      if(set.has_property("folder"))
+////      {
+////
+////         strStartDir = set["folder"].as_file_path();
+////
+////         pszStartDir = strStartDir;
+////
+////      }
+////
+////      auto psystem = acmesystem();
+////
+////      string strFolder = apple_browse_folder(psystem, pszStartDir, true);
+////
+////      if(strFolder.is_empty())
+////      {
+////
+////         //return false;
+////
+////         return;
+////
+////      }
+////
+////      set["folder"] = strFolder;
+////
+////      //return true;
 //
-//      string_array straFileName = apple_browse_file_open(psystem, &pszStartDir, bMulti);
-//
-//      if(pszStartDir != nullptr && pszStartDir != strStartDir.c_str())
-//      {
-//
-//         ::file::path pathFolder = ::file::path(::string_from_strdup((::string &) pszStartDir));
-//
-//         set["folder"] = pathFolder;
-//
-//      }
-//
-//      if(straFileName.is_empty())
-//      {
-//
-//         //return false;
-//         
-//         return;
-//
-//      }
+//   }
 //
 //
-//      if(straFileName.get_count() == 1)
-//      {
+//   void os_context::browse_file_open(property_set &set)
+//   {
+//      
+//      throw "use node file::folder_dialog";
 //
-//         set["file_name"] = straFileName[0];
+////      const char * pszStartDir = nullptr;
+////
+////      string strStartDir;
+////
+////      if(set.has_property("folder"))
+////      {
+////
+////         strStartDir =set["folder"].as_file_path();
+////
+////         pszStartDir = strStartDir;
+////
+////      }
+////
+////      bool bMulti = set["allow_multi_select"];
+////      
+////      auto psystem = acmesystem();
+////
+////      string_array straFileName = apple_browse_file_open(psystem, &pszStartDir, bMulti);
+////
+////      if(pszStartDir != nullptr && pszStartDir != strStartDir.c_str())
+////      {
+////
+////         ::file::path pathFolder = ::file::path(::string_from_strdup((::string &) pszStartDir));
+////
+////         set["folder"] = pathFolder;
+////
+////      }
+////
+////      if(straFileName.is_empty())
+////      {
+////
+////         //return false;
+////         
+////         return;
+////
+////      }
+////
+////
+////      if(straFileName.get_count() == 1)
+////      {
+////
+////         set["file_name"] = straFileName[0];
+////
+////      }
+////      else
+////      {
+////
+////         set["file_name"] = straFileName;
+////
+////      }
+////
+////      //return true;
 //
-//      }
-//      else
-//      {
-//
-//         set["file_name"] = straFileName;
-//
-//      }
-//
-//      //return true;
-
-   }
+//   }
 
 
    void os_context::set_this_application_as_default_for_file_extension(const ::string& strExtension)
