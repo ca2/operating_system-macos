@@ -1184,14 +1184,14 @@ pmessage->m_atom = emessage
       if(ulAppleMouseButton & 1)
       {
 
-         pmouse->m_nFlags |= ::user::e_button_state_left;
+         pmouse->m_ebuttonstate |= ::user::e_button_state_left;
 
       }
 
       if(ulAppleMouseButton & 2)
       {
 
-         pmouse->m_nFlags |= ::user::e_button_state_right;
+         pmouse->m_ebuttonstate |= ::user::e_button_state_right;
 
       }
       
@@ -1221,14 +1221,14 @@ pmessage->m_atom = emessage
       if(ulAppleMouseButton & 1)
       {
 
-         pmouse->m_nFlags |= ::user::e_button_state_left;
+         pmouse->m_ebuttonstate |= ::user::e_button_state_left;
 
       }
 
       if(ulAppleMouseButton & 2)
       {
 
-         pmouse->m_nFlags |= ::user::e_button_state_right;
+         pmouse->m_ebuttonstate |= ::user::e_button_state_right;
 
       }
 //
