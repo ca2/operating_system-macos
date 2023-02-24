@@ -11,6 +11,8 @@
 		9A5FE1FC2689E0E7003682E6 /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1A526542EA800CC8096 /* _.h */; };
 		9A5FE1FD2689E0F0003682E6 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D19926542EA800CC8096 /* framework.h */; };
 		9A865FD229663287000C82F0 /* libacme_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A865FD129663287000C82F0 /* libacme_darwin.dylib */; };
+		9AB1608529A8A24700DFDF90 /* libapex_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB1608429A8A24700DFDF90 /* libapex_darwin.dylib */; };
+		9AB1608729A8A26600DFDF90 /* libaura_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB1608629A8A26600DFDF90 /* libaura_darwin.dylib */; };
 		9AC2D1B326542F4400CC8096 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D19326542EA800CC8096 /* _factory.cpp */; };
 		9AC2D1B426542F4700CC8096 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D18E26542EA800CC8096 /* framework.cpp */; };
 		9AE3828428B14BEC007EA867 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AE3828228B14BEB007EA867 /* node.cpp */; };
@@ -49,6 +51,8 @@
 /* Begin PBXFileReference section */
 		9A5D737F2656198200D5C39E /* windowing_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = windowing_macos.xcodeproj; path = ../windowing_macos/windowing_macos.xcodeproj; sourceTree = "<group>"; };
 		9A865FD129663287000C82F0 /* libacme_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AB1608429A8A24700DFDF90 /* libapex_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AB1608629A8A26600DFDF90 /* libaura_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC2D16F26542E1000CC8096 /* libnode_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libnode_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC2D18E26542EA800CC8096 /* framework.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9AC2D19326542EA800CC8096 /* _factory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AB1608729A8A26600DFDF90 /* libaura_darwin.dylib in Frameworks */,
+				9AB1608529A8A24700DFDF90 /* libapex_darwin.dylib in Frameworks */,
 				9AE382C528B18B64007EA867 /* libacme.dylib in Frameworks */,
 				9AE382C728B18B64007EA867 /* libapex.dylib in Frameworks */,
 				9AE382C928B18B64007EA867 /* libaqua.dylib in Frameworks */,
@@ -141,6 +147,8 @@
 		9AC2D1B726542F6E00CC8096 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AB1608629A8A26600DFDF90 /* libaura_darwin.dylib */,
+				9AB1608429A8A24700DFDF90 /* libapex_darwin.dylib */,
 				9A865FD129663287000C82F0 /* libacme_darwin.dylib */,
 				9AE382C428B18B64007EA867 /* libacme.dylib */,
 				9AE382C628B18B64007EA867 /* libapex.dylib */,
