@@ -39,6 +39,7 @@
 		9A7ECAC32651963500D5BA45 /* acme_path.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A7ECABF2651963500D5BA45 /* acme_path.h */; };
 		9A92314C27EAE30D00B5A78D /* acme_directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A92314A27EAE30D00B5A78D /* acme_directory.cpp */; };
 		9A92314D27EAE30D00B5A78D /* acme_directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A92314B27EAE30D00B5A78D /* acme_directory.h */; };
+		9A9DCBE229B853E500D1255B /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9DCB5A29B8239100D1255B /* libacme_apple.dylib */; };
 		9AC14D2C297B3488006D9BD3 /* acme_directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A92314B27EAE30D00B5A78D /* acme_directory.h */; };
 		9AC14D2D297B3488006D9BD3 /* mmos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787C65264BD87E003DF8A0 /* mmos.h */; };
 		9AC14D2E297B3488006D9BD3 /* file.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A620264B56770080670E /* file.h */; };
@@ -167,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A9DCBE229B853E500D1255B /* libacme_apple.dylib in Frameworks */,
 				9A0844652936C026009F7FF4 /* libacme_darwin.dylib in Frameworks */,
 				9A787E8C264E8DC5003DF8A0 /* AppKit.framework in Frameworks */,
 				9A787E88264E8D02003DF8A0 /* CoreServices.framework in Frameworks */,
