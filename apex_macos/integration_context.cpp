@@ -171,9 +171,7 @@ namespace apex_macos
       int context::command_system(const ::scoped_string &scopedstrCommand)
       {
 
-         int iExitCode = 0;
-
-         acmenode()->command_system(m_straOutput, iExitCode, scopedstrCommand, e_command_system_inline_log);
+         auto iExitCode = acmenode()->command_system(scopedstrCommand, ::std_inline_log());
 
          return iExitCode;
 
