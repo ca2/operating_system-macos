@@ -841,23 +841,33 @@ namespace apex_macos
    }
 
 
-   bool os_context::resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder, string * pstrParams, string * pstrIconLocation, int * piIcon)
+//   bool os_context::resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder, string * pstrParams, string * pstrIconLocation, int * piIcon)
+//   {
+//
+//      auto pcontext = m_pcontext->m_papexcontext;
+//
+//      pathTarget = pcontext->defer_process_path(strSource);
+//
+//      pathTarget = acmesystem()->m_pacmepath->_final(pathTarget);
+//
+//      while(pcontext->os_resolve_alias(pathTarget, pathTarget))
+//      {
+//
+//         pathTarget = acmesystem()->m_pacmepath->_final(pathTarget);
+//
+//      }
+//
+//      return true;
+//
+//   }
+
+
+   ::pointer < ::file::link > os_context::resolve_link(const ::file::path & path, ::file::e_link elink)
    {
+
+      auto plink = apex_darwin::os_context::resolve_link(path, elink);
       
-      auto pcontext = m_pcontext->m_papexcontext;
-
-      pathTarget = pcontext->defer_process_path(strSource);
-
-      pathTarget = acmesystem()->m_pacmepath->_final(pathTarget);
-
-      while(pcontext->os_resolve_alias(pathTarget, pathTarget))
-      {
-
-         pathTarget = acmesystem()->m_pacmepath->_final(pathTarget);
-
-      }
-
-      return true;
+      return plink;
 
    }
 
@@ -1093,109 +1103,109 @@ namespace apex_macos
 
    }
 
-   void os_context::set_file_status(const ::string & lpszFileName, const ::file::file_status& status)
-   {
-
-
-//      ::u32 wAttr;
-//      FILETIME creationTime;
-//      FILETIME lastAccessTime;
-//      FILETIME lastWriteTime;
-//      LPFILETIME lpCreationTime = nullptr;
-//      LPFILETIME lpLastAccessTime = nullptr;
-//      LPFILETIME lpLastWriteTime = nullptr;
+//   void os_context::set_file_status(const ::string & lpszFileName, const ::file::file_status& status)
+//   {
 //
-//      wstring wstr(lpszFileName);
 //
-//      if((wAttr = windows_get_file_attributes(wstr)) == (::u32)-1L)
-//      {
+////      ::u32 wAttr;
+////      FILETIME creationTime;
+////      FILETIME lastAccessTime;
+////      FILETIME lastWriteTime;
+////      LPFILETIME lpCreationTime = nullptr;
+////      LPFILETIME lpLastAccessTime = nullptr;
+////      LPFILETIME lpLastWriteTime = nullptr;
+////
+////      wstring wstr(lpszFileName);
+////
+////      if((wAttr = windows_get_file_attributes(wstr)) == (::u32)-1L)
+////      {
+////
+////         ::windows::file_exception::throw_os_error( (::i32)get_last_error());
+////
+////      }
+////
+////      if ((::u32)status.m_attribute != wAttr && (wAttr & ::windows::file::readOnly))
+////      {
+////
+////         // set file attribute, only if currently readonly.
+////         // This way we will be able to modify the time assuming the
+////         // caller changed the file from readonly.
+////
+////         if (!SetFileAttributesW(wstr, (::u32)status.m_attribute))
+////         {
+////
+////            ::windows::file_exception::throw_os_error( (::i32)get_last_error());
+////
+////         }
+////
+////      }
+////
+////      // last modification time
+////      if (status.m_mtime.get_time() != 0)
+////      {
+////
+////         ::windows::TimeToFileTime(get_application(), status.m_mtime, &lastWriteTime);
+////
+////         lpLastWriteTime = &lastWriteTime;
+////
+////      }
+////
+////      // last access time
+////      if (status.m_atime.get_time() != 0)
+////      {
+////
+////         ::windows::TimeToFileTime(get_application(),status.m_atime, &lastAccessTime);
+////
+////         lpLastAccessTime = &lastAccessTime;
+////
+////      }
+////
+////      // create time
+////      if (status.m_ctime.get_time() != 0)
+////      {
+////
+////         ::windows::TimeToFileTime(get_application(),status.m_ctime, &creationTime);
+////
+////         lpCreationTime = &creationTime;
+////
+////      }
+////
+////      HANDLE hFile = ::CreateFileW(wstr, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+////
+////      if(hFile == INVALID_HANDLE_VALUE)
+////      {
+////
+////         ::windows::file_exception::throw_os_error( (::i32)::get_last_error());
+////
+////      }
+////
+////      if(!SetFileTime((HANDLE)hFile, lpCreationTime, lpLastAccessTime, lpLastWriteTime))
+////      {
+////
+////         ::windows::file_exception::throw_os_error( (::i32)::get_last_error());
+////
+////      }
+////
+////      if(!::CloseHandle(hFile))
+////      {
+////
+////         ::windows::file_exception::throw_os_error( (::i32)::get_last_error());
+////
+////      }
+////
+////      if ((::u32)status.m_attribute != wAttr && !(wAttr & ::windows::file::readOnly))
+////      {
+////
+////         if (!::SetFileAttributesW(wstr, (::u32)status.m_attribute))
+////         {
+////
+////            ::windows::file_exception::throw_os_error( (::i32)get_last_error());
+////
+////         }
+////
+////      }
 //
-//         ::windows::file_exception::throw_os_error( (::i32)get_last_error());
-//
-//      }
-//
-//      if ((::u32)status.m_attribute != wAttr && (wAttr & ::windows::file::readOnly))
-//      {
-//
-//         // set file attribute, only if currently readonly.
-//         // This way we will be able to modify the time assuming the
-//         // caller changed the file from readonly.
-//
-//         if (!SetFileAttributesW(wstr, (::u32)status.m_attribute))
-//         {
-//
-//            ::windows::file_exception::throw_os_error( (::i32)get_last_error());
-//
-//         }
-//
-//      }
-//
-//      // last modification time
-//      if (status.m_mtime.get_time() != 0)
-//      {
-//
-//         ::windows::TimeToFileTime(get_application(), status.m_mtime, &lastWriteTime);
-//
-//         lpLastWriteTime = &lastWriteTime;
-//
-//      }
-//
-//      // last access time
-//      if (status.m_atime.get_time() != 0)
-//      {
-//
-//         ::windows::TimeToFileTime(get_application(),status.m_atime, &lastAccessTime);
-//
-//         lpLastAccessTime = &lastAccessTime;
-//
-//      }
-//
-//      // create time
-//      if (status.m_ctime.get_time() != 0)
-//      {
-//
-//         ::windows::TimeToFileTime(get_application(),status.m_ctime, &creationTime);
-//
-//         lpCreationTime = &creationTime;
-//
-//      }
-//
-//      HANDLE hFile = ::CreateFileW(wstr, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
-//
-//      if(hFile == INVALID_HANDLE_VALUE)
-//      {
-//
-//         ::windows::file_exception::throw_os_error( (::i32)::get_last_error());
-//
-//      }
-//
-//      if(!SetFileTime((HANDLE)hFile, lpCreationTime, lpLastAccessTime, lpLastWriteTime))
-//      {
-//
-//         ::windows::file_exception::throw_os_error( (::i32)::get_last_error());
-//
-//      }
-//
-//      if(!::CloseHandle(hFile))
-//      {
-//
-//         ::windows::file_exception::throw_os_error( (::i32)::get_last_error());
-//
-//      }
-//
-//      if ((::u32)status.m_attribute != wAttr && !(wAttr & ::windows::file::readOnly))
-//      {
-//
-//         if (!::SetFileAttributesW(wstr, (::u32)status.m_attribute))
-//         {
-//
-//            ::windows::file_exception::throw_os_error( (::i32)get_last_error());
-//
-//         }
-//
-//      }
-
-   }
+//   }
 
 
    void os_context::file_open(const ::file::path & pathParam, const ::string & strParams, const ::file::path & pathFolder)

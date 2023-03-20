@@ -997,12 +997,16 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
       
       auto psystem = acmesystem();
       
+      psystem->defer_post_initial_request();
+
       if(::is_null(psystem->m_htask))
       {
 
          ///auto estatus =
          
-         psystem->branch_synchronously();
+         //psystem->branch_synchronously();
+         
+         psystem->branch();
 
    //         if(!estatus)
    //         {
@@ -1017,9 +1021,9 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
          
       }
       
-      psystem->defer_post_initial_request();
-      
    }
+
+
 void node::_node_file_dialog(::file::file_dialog * pdialog)
 {
    

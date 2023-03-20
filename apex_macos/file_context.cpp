@@ -140,10 +140,10 @@ namespace apex_macos
 //   }
 
 
-   file_pointer file_context::get_file(const ::payload & varFile, const ::file::e_open & eopenFlags)
+   file_pointer file_context::get_file(const ::payload & payloadFile, ::file::e_open eopen, ::pointer < ::file::exception > * ppfileexception)
    {
 
-      return ::file_context::get_file(varFile, eopenFlags);
+      return ::file_context::get_file(payloadFile, eopen, ppfileexception);
 
    }
 

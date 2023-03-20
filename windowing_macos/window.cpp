@@ -247,8 +247,10 @@ namespace windowing_macos
          puserinteraction->set_position(::top_left(rectParam), ::user::e_layout_window);
 
          puserinteraction->set_size(::size_i32(rectParam), ::user::e_layout_window);
-
-         puserinteraction->m_pthreadUserInteraction = ::get_task();
+      
+      auto ptask = ::get_task();
+      
+      puserinteraction->m_pthreadUserInteraction = ptask;
 
          //puserinteraction->place(rectParam);
 

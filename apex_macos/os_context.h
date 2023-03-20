@@ -63,8 +63,11 @@ namespace apex_macos
 
       void stop_service() override;
 
-      bool resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder = nullptr, string * pstrParams = nullptr, string * pstrIconLocation = nullptr, int * piIcon = nullptr) override;
+      //bool resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder = nullptr, string * pstrParams = nullptr, string * pstrIconLocation = nullptr, int * piIcon = nullptr) override;
 
+      ::pointer < ::file::link > resolve_link(const ::file::path & path, ::file::e_link elink = ::file::e_link_all) override;
+
+      
       void raise_exception( ::u32 dwExceptionCode, ::u32 dwExceptionFlags);
 
       virtual bool is_remote_session() override;
@@ -87,7 +90,7 @@ namespace apex_macos
       
       void link_open(const ::string & strUrl, const ::string & strProfile) override;
 
-      void set_file_status(const ::string & lpszFileName, const ::file::file_status& status) override;
+//      void set_file_status(const ::string & lpszFileName, const ::file::file_status& status) override;
 
       //void browse_folder(property_set &set) override;
       //void browse_file_open(property_set &set) override;
