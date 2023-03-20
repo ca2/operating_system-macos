@@ -90,9 +90,9 @@ namespace acme_macos
 
 //         int_bool is_process_running(::u32 pid) override;
       
-      string get_environment_variable(const ::string & pszEnvironmentVariable) override;
+      string get_environment_variable(const ::scoped_string & scopedstrEnvironmentVariable) override;
       
-      string expand_environment_variables(const ::string & str) override;
+      string expand_environment_variables(const ::scoped_string & scopedstr) override;
 
       array <::serial::port_info> list_serial_ports() override;
       

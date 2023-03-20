@@ -948,7 +948,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 //   }
 
 
-   string node::get_environment_variable(const ::string & strEnvironmentVariable)
+   string node::get_environment_variable(const ::scoped_string & scopedstrEnvironmentVariable)
    {
 
       return "";
@@ -956,7 +956,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   string node::expand_environment_variables(const ::string & str)
+   string node::expand_environment_variables(const ::scoped_string & scopedstr)
    {
 
       return "";
@@ -1079,7 +1079,7 @@ void macos_folder_dialog(::file::folder_dialog * pdialog)
    auto functionHere = [pdialog](const char * psz)
    {
       
-      ::pointer < ::file::folder_dialog > pdialogHold(e_move_transfer, pdialog);
+      ::pointer < ::file::folder_dialog > pdialogHold(e_pointer_transfer, pdialog);
       
       if(::is_set(psz))
       {
@@ -1111,7 +1111,7 @@ void macos_file_dialog(::file::file_dialog * pdialog)
    auto functionHere = [pdialog](const char ** pp, const char * pszStartFolder)
    {
       
-      ::pointer < ::file::file_dialog > pdialogHold(e_move_transfer, pdialog);
+      ::pointer < ::file::file_dialog > pdialogHold(e_pointer_transfer, pdialog);
 
       if(pp)
       {

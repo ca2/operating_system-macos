@@ -89,7 +89,7 @@ namespace macos
    }
 
 
-   ::extended::status file::open(const ::file::path & lpszFileName, const ::file::e_open & efileopenParam)
+   ::extended::status file::open(const ::file::path & lpszFileName, ::file::e_open eopen)
    {
       
       ::file::e_open eopen(efileopenParam);
@@ -229,7 +229,7 @@ namespace macos
 
       ASSERT(lpBuf != nullptr);
       
-      ASSERT(__is_valid_address(lpBuf, nCount));
+      ASSERT(::is_memory_segment_ok(lpBuf, nCount));
 
       memsize pos = 0;
       
@@ -304,7 +304,7 @@ namespace macos
 
       ASSERT(lpBuf != nullptr);
       
-      ASSERT(__is_valid_address(lpBuf, nCount, false));
+      ASSERT(::is_memory_segment_ok(lpBuf, nCount, false));
 
       memsize pos = 0;
       
