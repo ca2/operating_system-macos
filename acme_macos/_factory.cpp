@@ -45,7 +45,7 @@ __FACTORY_EXPORT void acme_macos_factory(::factory::factory * pfactory)
    acme_apple_factory(pfactory);
 
    //pfactory->add_factory_item < ::acme_macos::stdio_file, ::file::text_file > ();
-   pfactory->add_factory_item < ::acme_macos::file, ::file::file > ();
+   //pfactory->add_factory_item < ::acme_macos::file, ::file::file > ();
    
    pfactory->add_factory_item < ::acme_macos::acme_directory, ::acme_directory > ();
    pfactory->add_factory_item < ::acme_macos::acme_path, ::acme_path > ();
