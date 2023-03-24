@@ -20,7 +20,7 @@
 #include "NSObject+DDExtensions.h"
 #include "DDInvocationGrabber.h"
 
-char * ns_string(NSString * str);
+char * __strdup(NSString * str);
 
 #endif
 

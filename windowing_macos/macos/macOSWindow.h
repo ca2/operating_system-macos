@@ -38,8 +38,8 @@ class macos_window;
 
 -(void)dealloc;
 
--(void)windowDidExpose;
+-(void)windowDidExpose:(NSNotification*)notification;
 
--(void)windowWillClose;
+-(void)windowWillClose:(NSNotification*)notification;
 
 @end

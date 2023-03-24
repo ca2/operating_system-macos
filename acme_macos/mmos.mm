@@ -570,7 +570,7 @@ void mm_file_dialog(::function < void(const char ** , const char *) > functionPa
       for(; i < urla.count; i++)
       {
 
-         pp[i] = ns_string([[urla objectAtIndex:i] absoluteString]);
+         pp[i] = __strdup([[urla objectAtIndex:i] absoluteString]);
 
       }
 

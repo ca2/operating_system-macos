@@ -16,7 +16,7 @@ bool application_get_bool(void * pApplication, const char * pszItem);
 void ns_main_async(dispatch_block_t block);
 
 
-NSString * __ns_get_text(const char * psz);
+NSString * __nsstring(const char * psz);
 //#include "apex/user/menu_shared.h"
 
 //void on_start_system(void * pSystem);
@@ -616,17 +616,9 @@ void os_menu_item_check(void * pitem, bool bCheck)
 }
 
 
-void ns_create_main_menu(menu_shared * pmenushared)
+NSMenu * _ns_create_main_menu(menu_shared * pmenushared)
 {
-
-   if(pmenushared)
-   {
-      
-      menu_shared_increment_reference_count(pmenushared);
-      
-   }
-
-   ns_main_async(^{
+   
    id menuMain = [NSMenu alloc];
    
    macOSApp * papp = (macOSApp *) [[NSApplication sharedApplication] delegate ];
@@ -637,27 +629,22 @@ void ns_create_main_menu(menu_shared * pmenushared)
       
       [menuMain addItem: menuitemApp];
       
-      id menuApp = [NSMenu alloc];
+      id strAppName = __nsstring(pmenushared->application_name());
+      
+      id menuApp = [[NSMenu alloc] initWithTitle: strAppName];
       
       [menuitemApp setSubmenu: menuApp];
-      
-      id strAppName = [[NSProcessInfo processInfo] processName];
       
       id strQuitTitle = [[_("Quit") stringByAppendingString: @" "] stringByAppendingString: strAppName];
       
       id menuitemQuit = [[NSMenuItem alloc] initWithTitle:strQuitTitle
                                                    action:@selector(terminate:) keyEquivalent:@"q"];
 
-      if(pmenushared)
-      {
       [ papp ns_add_menu : menuApp withParent: "" withSharedMenu: pmenushared];
-         
-      }
 
       [menuApp addItem: menuitemQuit];
       
    }
-
    
    {
       
@@ -676,29 +663,34 @@ void ns_create_main_menu(menu_shared * pmenushared)
       NSMenuItem * menuitemFxx = [[NSMenuItem alloc] initWithTitle:strFxxTitle
                                                             action:@selector(on_command:) keyEquivalent:@"f"];
       
-      if(pmenushared)
-      {
       [ papp ns_add_menu : menuView withParent: "view" withSharedMenu: pmenushared];
 
-      }
       [menuitemFxx setRepresentedObject: @"transparent_frame"];
       
       [menuView addItem: menuitemFxx];
       
    }
+
+   return menuMain;
    
-   [NSApp setMainMenu:menuMain];
+}
 
-      if(pmenushared)
-      {
 
-         menu_shared_release(pmenushared);
-         
-      }
+void ns_create_main_menu(menu_shared * pmenushared)
+{
+
+   menu_shared_increment_reference_count(pmenushared);
+
+   ns_main_async(
+   ^{
+      
+      NSMenu * menuMain = _ns_create_main_menu(pmenushared);
+   
+      [NSApp setMainMenu:menuMain];
+      
+      menu_shared_release(pmenushared);
       
    });
-   
-   
    
 }
 

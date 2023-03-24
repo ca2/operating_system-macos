@@ -172,7 +172,7 @@ void macos_window::macos_window_show()
       
       [m_pmacoswindow->m_pwindowcontroller showWindow : m_pmacoswindow];
       
-      [m_pmacoswindow windowDidExpose];
+      [m_pmacoswindow windowDidExpose:nil];
 
    });
    
@@ -197,7 +197,7 @@ void macos_window::macos_window_defer_show()
       
          [m_pmacoswindow->m_pwindowcontroller showWindow : m_pmacoswindow];
       
-         [m_pmacoswindow windowDidExpose];
+         [m_pmacoswindow windowDidExpose:nil];
          
       }
 

@@ -30,41 +30,6 @@ namespace node_macos
    }
 
 
-//   void node::os_menu_item_enable(void * pitem, bool bEnable)
-//   {
-//    
-//      ::os_menu_item_enable(pitem, bEnable);
-//      
-//   }
-//   
-//
-//   void node::os_menu_item_check(void * pitem, bool bCheck)
-//   {
-//   
-//      ::os_menu_item_check(pitem, bCheck);
-//      
-//   }
-//
-//
-//   void node::defer_create_main_menu(const string_array & straMenuParent, const string_array & straMenuName, const string_array & straMenuId)
-//   {
-//      
-//      auto pmenushared =
-//         create_menu_shared(
-//                            
-//                            straMenuParent,
-//                            straMenuName,
-//                            straMenuId
-//                            
-//                            );
-//
-//      ns_create_main_menu(pmenushared);
-//      
-//      //return success;
-//      
-//   }
-
-
 
 
 //   void node::implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem)

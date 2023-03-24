@@ -11,7 +11,7 @@
 NSImage * nsimage_from_image_data(const void * pdata, int cx, int cy, int scan);
 
 
-char * ns_string(NSString * str);
+char * __strdup(NSString * str);
 
 static NSPasteboard * g_ppasteboard = nullptr;
 
@@ -162,7 +162,7 @@ char * _macos_clipboard_get_plain_text()
    
    NSString * strPasteboard = [pasteboard stringForType:NSPasteboardTypeString];
    
-   return ns_string(strPasteboard);
+   return __strdup(strPasteboard);
    
 }
 

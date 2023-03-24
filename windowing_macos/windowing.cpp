@@ -573,41 +573,6 @@ namespace windowing_macos
    }
 
 
-//   void windowing::os_menu_item_enable(void * pitem, bool bEnable)
-//   {
-//
-//      ::os_menu_item_enable(pitem, bEnable);
-//
-//   }
-//
-//
-//   void windowing::os_menu_item_check(void * pitem, bool bCheck)
-//   {
-//
-//      ::os_menu_item_check(pitem, bCheck);
-//
-//   }
-
-
-//   void windowing::defer_create_main_menu(const string_array & straMenuParent, const string_array & straMenuName, const string_array & straMenuId)
-//   {
-//      
-//      auto pmenushared =
-//         create_menu_shared(
-//                            
-//                            straMenuParent,
-//                            straMenuName,
-//                            straMenuId
-//                            
-//                            );
-//
-//      ns_create_main_menu(pmenushared);
-//      
-//      //return success;
-//      
-//   }
-
-
 //   ::e_status windowing::is_keyboard_hook_enabled(::user::interaction * puserinteractionEnablePrompt)
 //   {
 //

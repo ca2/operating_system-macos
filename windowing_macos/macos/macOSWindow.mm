@@ -18,7 +18,7 @@
 #include "_c_mm.h"
 
 
-NSString * __ns_get_text(const char * psz);
+NSString * __nsstring(const char * psz);
 
 
 //NSWindow * get_os_window_ns_window(oswindow hwnd);
@@ -399,7 +399,7 @@ NSString * __ns_get_text(const char * psz);
 }
 
 
--(void)windowDidExpose
+-(void)windowDidExpose:(NSNotification*)notification
 {
    
    try
@@ -423,7 +423,7 @@ NSString * __ns_get_text(const char * psz);
 }
 
 
--(void)windowWillClose
+-(void)windowWillClose:(NSNotification*)notification
 {
    
    try
