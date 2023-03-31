@@ -21,14 +21,14 @@ void ns_fork(const ::procedure & procedure)
    
    __block auto routineHold = procedure;
    
-   routineHold.m_p->increment_reference_count();
+   routineHold.m_pbase->increment_reference_count();
  
    ns_main_async(^
                  {
       
       routineHold();
       
-      routineHold.release();
+      routineHold.m_pbase.release();
       
    }
                  );
