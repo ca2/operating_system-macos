@@ -1,4 +1,3 @@
-
 //
 //  RoundWindowApp.h
 //  axis
@@ -20,7 +19,13 @@
 //  this copyright and permission notice. Attribution in compiled projects is
 //  appreciated but not required.
 //
+
+
 #include "acme/operating_system/macos/nano/app.h"
+
+
+class menu_shared;
+
 
 @interface macOSApp : macos_app < NSMenuDelegate >
 {
