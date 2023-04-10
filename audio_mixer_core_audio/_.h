@@ -5,13 +5,10 @@
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 27/03/22.
 //  Copyright © 2022 ca2 Desenvolvimento de Sofware Ltda. All rights reserved.
 //
-
 #pragma once
 
 
-
-#include "app-core/multimedia/_.h"
-
+#include "audio-system/audio_mixer/_.h"
 
 
 #if defined(_AUDIO_MIXER_CORE_AUDIO_LIBRARY)

@@ -1,11 +1,11 @@
 #pragma once
 
 
-#include "app-core/multimedia/audio_mixer/control.h"
+#include "audio-system/audio_mixer/control.h"
 
-
-namespace multimedia
-{
+//
+//namespace multimedia
+//{
 
 
    namespace audio_mixer_core_audio
@@ -13,7 +13,7 @@ namespace multimedia
 
 
       class CLASS_DECL_AUDIO_MIXER_CORE_AUDIO control :
-         virtual public ::multimedia::audio_mixer::control
+         virtual public ::audio_mixer::control
       {
       public:
 
@@ -32,19 +32,19 @@ namespace multimedia
          control(control & control);
           ~control() override;
 
-         //using ::multimedia::audio_mixer::user::control_ptr_array::add;
-         virtual iptr add(::multimedia::audio_mixer::user::control * pcontrol) override;
+         //using ::audio_mixer::user::control_ptr_array::add;
+//         virtual iptr add(::audio_mixer::user::control * pcontrol) override;
 
-         bool control_type(::multimedia::audio_mixer::e_control econtrol) const override;
+         bool control_type(::audio_mixer::e_control econtrol) const override;
          //bool OnCommand(WPARAM wParam, LPARAM lParam);
-         ::pointer < ::multimedia::audio_mixer::control_data > GetWindowDataByDlgCtrlID(uint32_t nID) override;
-         ::pointer < ::multimedia::audio_mixer::user::control > GetControlByDlgCtrlID(uint32_t nID) override;
+         ::pointer < ::audio_mixer::control_data > GetWindowDataByDlgCtrlID(uint32_t nID) override;
+//         ::pointer < ::audio_mixer::user::control > GetControlByDlgCtrlID(uint32_t nID) override;
          //   bool OnNotify(uint32_t nID, LPNMHDR lpnmhdr);
          void OnVHScroll(uint32_t nSBCode, uint32_t nPos, ::user::interaction * pScrollBar);
-         ::pointer < ::multimedia::audio_mixer::control_data > GetWindowData(int32_t iType) override;
+         ::pointer < ::audio_mixer::control_data > GetWindowData(int32_t iType) override;
          void OnMixerControlChange() override;
-         ::pointer < ::multimedia::audio_mixer::user::control > GetControl(int32_t iType) override;
-         ::pointer < ::multimedia::audio_mixer::user::control > GetControlByIndex(::index iIndex) override;
+//         ::pointer < ::audio_mixer::user::control > GetControl(int32_t iType) override;
+//         ::pointer < ::audio_mixer::user::control > GetControlByIndex(::index iIndex) override;
          void Prepare() override;
          bool CreateWindowsVolumeV001(::user::interaction * pParent, uint32_t nStartID, uint32_t * nNextID);
 
@@ -65,9 +65,9 @@ namespace multimedia
 
    } // namespace audio_mixer_core_audio
 
-
-} // namespace multimedia
-
-
-
-
+//
+//} // namespace multimedia
+//
+//
+//
+//

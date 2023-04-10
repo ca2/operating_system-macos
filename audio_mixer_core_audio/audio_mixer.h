@@ -1,11 +1,11 @@
 #pragma once
 
 
-#include "app-core/multimedia/audio_mixer/audio_mixer.h"
+#include "audio-system/audio_mixer/audio_mixer.h"
 
-
-namespace multimedia
-{
+//
+//namespace multimedia
+//{
 
 
    namespace audio_mixer_core_audio
@@ -13,12 +13,12 @@ namespace multimedia
 
 
       class CLASS_DECL_AUDIO_MIXER_CORE_AUDIO audio_mixer :
-         virtual public ::multimedia::audio_mixer::audio_mixer
+         virtual public ::audio_mixer::audio_mixer
       {
       public:
 
-
-         ::pointer < ::multimedia::audio_mixer_core_audio::window >            m_pwindow;
+//
+//         ::pointer < ::audio_mixer_core_audio::window >            m_pwindow;
 
 
          audio_mixer();
@@ -26,8 +26,8 @@ namespace multimedia
 
 
 
-         ::multimedia::audio_mixer::callback * get_callback();
-         void set_callback(::multimedia::audio_mixer::callback * pcallback);
+         ::audio_mixer::callback * get_callback();
+         void set_callback(::audio_mixer::callback * pcallback);
 
 
          void set_new_device(uint32_t uiMixerId) override;
@@ -47,9 +47,9 @@ namespace multimedia
 
 
    } // namespace audio_mixer_core_audio
-
-
-} // namespace multimedia
-
-
-
+//
+//
+//} // namespace multimedia
+//
+//
+//

@@ -1,9 +1,9 @@
 #include "framework.h"
 #include "audio_mixer.h"
 
-
-namespace multimedia
-{
+//
+//namespace multimedia
+//{
 
 
    namespace audio_mixer_core_audio
@@ -15,7 +15,7 @@ namespace multimedia
 
          //m_window.//m_pmixer = this;
 
-//         m_pdevice = new ::multimedia::audio_mixer::device(this);
+//         m_pdevice = new ::audio_mixer::device(this);
 
       }
 
@@ -354,7 +354,7 @@ namespace multimedia
 //      }
 
 
-      ::multimedia::audio_mixer::callback * audio_mixer::get_callback()
+      ::audio_mixer::callback * audio_mixer::get_callback()
       {
 
          return nullptr;
@@ -362,7 +362,7 @@ namespace multimedia
       }
 
 
-      void audio_mixer::set_callback(::multimedia::audio_mixer::callback * pcallback)
+      void audio_mixer::set_callback(::audio_mixer::callback * pcallback)
       {
 
          //m_pcallback = pcallback;
@@ -372,5 +372,5 @@ namespace multimedia
 
    } // namespace audio_mixer_core_audio
 
-
-} // namespace multimedia
+//
+//} // namespace multimedia
