@@ -66,27 +66,27 @@ namespace acme_macos
       
       virtual int _create_process2(const char * _cmd_line, u32 * pprocessId);
       
-      void create_process(const ::string & pszCommandLine, u32 * pprocessId) override;
+      ::process_identifier create_process(const ::string & pszCommandLine) override;
       
-      bool process_modules(string_array& stra, u32 processID) override;
+      bool process_modules(string_array& stra, ::process_identifier processID) override;
 
       bool load_modules_diff(string_array& straOld, string_array& straNew, const ::string & pszExceptDir) override;
 
-      atom_array get_pids() override;
+      ::process_identifier_array processes_identifiers() override;
       
-      atom_array module_path_get_pid(const ::string & pszModulePath, bool bModuleNameIsPropertyFormatted = false) override;
+      ::process_identifier_array module_path_processes_identifiers(const ::string & pszModulePath, bool bModuleNameIsPropertyFormatted = false) override;
       
-      string module_path_from_pid(u32 pid) override;
+      string process_identifier_module_path(::process_identifier pid) override;
       
-      string command_line_from_pid(u32 pid) override;
+      string process_identifier_command_line(::process_identifier pid) override;
 
-      bool is_shared_library_busy(u32 processid, const string_array& stra) override;
+      bool is_shared_library_busy(::process_identifier processid, const string_array& stra) override;
 
       bool is_shared_library_busy(const string_array& stra) override;
       
-      bool process_contains_module(string& strImage, ::u32 processID, const ::string & pszLibrary) override;
+      bool process_contains_module(string& strImage, ::process_identifier processID, const ::string & pszLibrary) override;
 
-      void shared_library_process(dword_array& dwa, string_array& straProcesses, const ::string & pszLibrary) override;
+      ::process_identifier_array shared_library_process(string_array& straProcesses, const ::string & pszLibrary) override;
 
 //         int_bool is_process_running(::u32 pid) override;
       

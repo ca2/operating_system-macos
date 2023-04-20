@@ -49,7 +49,7 @@ namespace acme_macos
    }
 
    
-   void node::create_process(const ::string & pszCommandLine, u32 * pprocessId)
+   ::process_identifier node::create_process(const ::string & pszCommandLine)
    {
 
       string_array stra;
@@ -91,14 +91,9 @@ namespace acme_macos
       if (status == 0)
       {
 
-         if(pprocessId != nullptr)
-         {
-
-            *pprocessId = pid;
-
-         }
-
       }
+      
+      return pid;
 
    }
 

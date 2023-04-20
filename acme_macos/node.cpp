@@ -92,7 +92,7 @@ unsigned int * puiPid)
 
    chdir(pszDir);
     
-    create_process(strCmdLine, &processId);
+    processId = create_process(strCmdLine);
 
    //if(!create_process(strCmdLine, &processId))
 //      {
@@ -131,7 +131,7 @@ void node::call_sync(const ::string & pszPath, const ::string & pszParam, const 
 
    u32 processId;
    
-   create_process(strCmdLine, &processId);
+   processId = create_process(strCmdLine);
 
 //      if(!create_process(strCmdLine, &processId))
 //      {
@@ -856,7 +856,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   bool node::process_modules(string_array& stra, u32 processID)
+   bool node::process_modules(string_array& stra, ::process_identifier processID)
    {
 
       throw interface_only();
@@ -900,7 +900,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 //   }
 
 
-   bool node::is_shared_library_busy(u32 processid, const string_array& stra)
+   bool node::is_shared_library_busy(::process_identifier processid, const string_array& stra)
    {
 
       throw interface_only();
@@ -920,7 +920,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   bool node::process_contains_module(string& strImage, ::u32 processID, const ::string & pszLibrary)
+   bool node::process_contains_module(string& strImage, ::process_identifier processID, const ::string & pszLibrary)
    {
 
       throw interface_only();
@@ -930,7 +930,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   void node::shared_library_process(dword_array& dwa, string_array& straProcesses, const ::string & pszLibrary)
+::process_identifier_array node::shared_library_process(string_array& straProcesses, const ::string & pszLibrary)
    {
 
       throw interface_only();

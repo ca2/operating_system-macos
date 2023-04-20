@@ -100,10 +100,10 @@ namespace acme_macos
 {
 
 
-   ::atom_array node::get_pids()
+   ::process_identifier_array node::processes_identifiers()
    {
 
-      ::atom_array pids;
+      ::process_identifier_array pids;
 
       array < pid_t > pida;
 
@@ -136,11 +136,10 @@ namespace acme_macos
    // https://astojanov.wordpress.com/2011/11/16/mac-os-x-resolve-absolute-path-using-process-pid/
 
 
-   string node::module_path_from_pid(unsigned int uiPid)
+   string node::process_identifier_module_path(::process_identifier uiPid)
    {
 
-
-      pid_t pid = uiPid;
+      pid_t pid = (pid_t) uiPid;
 
       int ret;
 
@@ -245,7 +244,7 @@ namespace acme_macos
 
    #define SHOW_ZOMBIES 0
 
-   string node::command_line_from_pid(unsigned int uiPid)
+   string node::process_identifier_command_line(::process_identifier uiPid)
    {
 
       struct proc_taskallinfo info = {};
@@ -271,12 +270,12 @@ namespace acme_macos
     *
     *************************************************************************/
    /*=======================================================================*/
-   ::atom_array node::module_path_get_pid(const ::string & pszModulePath
+::process_identifier_array node::module_path_processes_identifiers(const ::string & pszModulePath
                                        , bool bModuleNameIsPropertyFormatted)
    {
       /*=======================================================================*/
    
-      ::atom_array ida;
+   ::process_identifier_array ida;
 
       struct kinfo_proc *sProcesses = nullptr, *sNewProcesses;
       int    aiNames[4];
@@ -327,7 +326,7 @@ namespace acme_macos
    
       string strName = ::file::path(pszModulePath).name();
       
-      ::atom_array ida2;
+   ::process_identifier_array ida2;
       
       for (i = 0; i < iNumProcs; i++)
       {
@@ -342,7 +341,7 @@ namespace acme_macos
       for(auto & processId : ida2)
       {
        
-         auto strPath = module_path_from_pid(processId.as_u32());
+         auto strPath = process_identifier_module_path(processId);
          
          if(strPath == pszModulePath)
          {
