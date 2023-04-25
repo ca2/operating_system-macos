@@ -1104,49 +1104,46 @@ void macos_folder_dialog(::file::folder_dialog * pdialog)
 }
 
 
-void mm_file_dialog(::function < void(const char **, const char *) > function, const char * pszStartFolder, bool bSave, bool bMultiple);
+void mm_file_dialog(::file::file_dialog * pdialog);
 
 
 void macos_file_dialog(::file::file_dialog * pdialog)
 {
    
-   pdialog->increment_reference_count();
-   
-   auto functionHere = [pdialog](const char ** pp, const char * pszStartFolder)
-   {
-      
-      ::pointer < ::file::file_dialog > pdialogHold(e_pointer_transfer, pdialog);
-
-      if(pp)
-      {
-         
-         while(*pp)
-         {
-            
-            pdialog->m_patha.add(::file::path(*pp));
-            
-            pp++;
-            
-         }
-         
-      }
-
-      if(pszStartFolder)
-      {
-       
-         pdialog->m_pathStartFolder = pszStartFolder;
-         
-      }
-
-      pdialog->m_function(::transfer(pdialogHold));
-      
-   };
-   
+//   pdialog->increment_reference_count();
+//   
+//   auto functionHere = [pdialog](const char ** pp, const char * pszStartFolder)
+//   {
+//      
+//      ::pointer < ::file::file_dialog > pdialogHold(e_pointer_transfer, pdialog);
+//
+//      if(pp)
+//      {
+//         
+//         while(*pp)
+//         {
+//            
+//            pdialog->m_patha.add(::file::path(*pp));
+//            
+//            pp++;
+//            
+//         }
+//         
+//      }
+//
+//      if(pszStartFolder)
+//      {
+//       
+//         pdialog->m_pathStartFolder = pszStartFolder;
+//         
+//      }
+//
+//      pdialog->m_function(::transfer(pdialogHold));
+//      
+//   };
+//   
    mm_file_dialog(
-                  functionHere,
-                  pdialog->m_pathStartFolder,
-                  pdialog->m_bSave,
-                  pdialog->m_bMultiple);
+                  pdialog);
 
 }
 

@@ -6,9 +6,12 @@
 #include "acme/handler/request.h"
 #include "apex/filesystem/file/set.h"
 #include "apex/platform/system.h"
-#if defined(MACOS)
+
+
+#include "acme/_operating_system.h"
+
+
 #include <sys/stat.h>
-#endif
 
 void ns_main_async(dispatch_block_t block);
 
@@ -242,38 +245,38 @@ namespace apex_macos
       //  }
    }
 
-   bool os_context::path_pid(::u32 &uPid, const ::string & pszName)
+
+   ::process_identifier os_context::module_path_process_identifier(const ::string & pszName)
    {
-      u32_array dwa;
-      get_all_processes(dwa);
+      auto dwa = processes_identifiers();
       for(i32 i = 0; i < dwa.get_count(); i++)
       {
-         if(get_process_path(dwa[i]).case_insensitive_equals(pszName))
+         if(process_identifier_module_path(dwa[i]).case_insensitive_equals(pszName))
          {
-            uPid = dwa[i];
-            return true;
+            return dwa[i];
          }
       }
-      return false;
+      return-1;
    }
 
 
-   bool os_context::title_pid(::u32 & uPid, const ::string & pszName)
+   ::process_identifier os_context::title_process_identifier(const ::string & pszName)
    {
-      u32_array dwa;
-      get_all_processes(dwa);
+      auto dwa = processes_identifiers();
+
       for(i32 i = 0; i < dwa.get_count(); i++)
       {
-         if(get_process_path(dwa[i]).title().case_insensitive_equals(pszName))
+         if(process_identifier_module_path(dwa[i]).title().case_insensitive_equals(pszName))
          {
-            uPid = dwa[i];
-            return true;
+            return dwa[i];
+            //return true;
          }
       }
-      return false;
+      //return false;
+      return -1;
    }
 
-   ::file::path os_context::get_process_path(::u32 dwPid)
+   ::file::path os_context::process_identifier_module_path(::process_identifier dwPid)
    {
       /*
        string strName = ":<unknown>";
@@ -302,30 +305,6 @@ namespace apex_macos
       return "";
 
    }
-
-   void os_context::get_all_processes(u32_array & dwa )
-   {
-
-      //  throw ::exception(error_not_implemented);;
-      return;
-
-      /*
-       dwa.set_size(0);
-       ::u32 cbNeeded = 0;
-       while(cbNeeded == natural(dwa.get_count()))
-       {
-       dwa.set_size(dwa.get_count() + 1024);
-       if(!EnumProcesses(
-       dwa.get_data(),
-       (::u32) (dwa.get_count() * sizeof(::u32)),
-       &cbNeeded))
-       {
-       return;
-       }
-       dwa.set_size(cbNeeded / sizeof(::u32));
-       }*/
-   }
-
 
 
    ::payload os_context::connection_settings_get_auto_detect()
@@ -892,7 +871,8 @@ namespace apex_macos
        */
    }
 
-   int os_context::get_pid()
+
+   ::process_identifier os_context::current_process_identifier()
    {
 
       return getpid();

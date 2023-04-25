@@ -6,91 +6,49 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#include "file_dialog_template.h"
-
-
-@implementation save_file_dialog_template
+#include "acme/filesystem/filesystem/file_dialog.h"
+#include "save_file_dialog_delegate.h"
 
 
-- (NSString *)panel:(id)sender
-userEnteredFilename:(NSString *)filename
-          confirmed:(BOOL)okFlag;
-{
-   
-   if(okFlag)
-   {
-      
-      if(m_pdialog->m_bSave)
-      {
-         
-         NSURL * url = [sender URL];
-         
-         int iCount = 1;
-         
-         char ** pp = (char **)malloc((iCount + 1) * sizeof(char*));
-         
-         int i = 0;
-         
-         pp[0] = __strdup([url absoluteString]);
-         
-         pp[1] = NULL;
-         
-         function((const char **) pp, [ [ [ panel directoryURL ] absoluteString ] UTF8String]);
-         
-         i = 0;
-         
-         while(pp[i] != NULL)
-         {
-            
-            free(pp[i]);
-            
-            i++;
-            
-         }
-         
-         free(pp);
-         
-      }
-      else
-      {
-         
-         NSOpenPanel * popenpanel = panel;
+@implementation save_file_dialog_delegate
 
-         NSArray < NSURL * > * urla = [sender URLs];
-
-         char ** pp = (char **)malloc((urla.count + 1) * sizeof(char*));
-
-         int i = 0;
-
-         for(; i < urla.count; i++)
-         {
-
-            pp[i] = __strdup([[urla objectAtIndex:i] absoluteString]);
-
-         }
-
-         pp[i] = NULL;
-
-         function((const char **) pp, [ [ [ panel directoryURL ] absoluteString ] UTF8String]);
-
-         i = 0;
-
-         while(pp[i] != NULL)
-         {
-
-            free(pp[i]);
-
-            i++;
-
-         }
-
-         free(pp);
-
-      }
-      
-   }
-
-}
+//
+//- (NSString *)panel:(id)sender
+//userEnteredFilename:(NSString *)filename
+//          confirmed:(BOOL)okFlag;
+//{
+//   
+//   if(okFlag)
+//   {
+//      
+//      if(m_pdialog->m_bSave)
+//      {
+//         
+//         m_pdialog->m_patha.add([[ [ sender URL] absoluteString ] UTF8String]);
+//         
+//      }
+//      else
+//      {
+//
+//         NSArray < NSURL * > * urla = [sender URLs];
+//         
+//         for(int i = 0; i < [ urla count]; i++)
+//         {
+//            
+//            m_pdialog->m_patha.add([[ [urla objectAtIndex:i ] absoluteString] UTF8String]);
+//            
+//         }
+//
+//      }
+//      
+//      m_pdialog->m_function(m_pdialog);
+//      
+//      [ sender stopModalWithCode : NSModalResponseOK ];
+//
+//   }
+//
+//   return nil;
+//   
+//}
 
 @end

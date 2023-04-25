@@ -27,10 +27,10 @@ namespace apex_macos
       virtual void terminate_processes_by_title(const ::string & pszName) override;
       //virtual string get_module_path(HMODULE hmodule);
 
-      bool path_pid(u32& dwPid, const ::string & strName) override;
-      bool title_pid(u32& dwPid, const ::string & strName) override;
-      void get_all_processes(u32_array & dwa) override;
-      ::file::path get_process_path(::u32 dwPid) override;
+      ::process_identifier  module_path_process_identifier(const ::string & strName) override;
+      ::process_identifier title_process_identifier(const ::string & strName) override;
+      //::process_identifier_array processes_identifiers() override;
+      ::file::path process_identifier_module_path(::process_identifier dwPid) override;
 
       ::payload connection_settings_get_auto_detect() override;
       ::payload connection_settings_get_auto_config_url() override;
@@ -74,7 +74,7 @@ namespace apex_macos
 
       //virtual void post_to_all_threads(const ::id & id, WPARAM wParam, LPARAM lParam);
 
-      virtual int get_pid() override;
+      virtual ::process_identifier current_process_identifier() override;
 
       void initialize_wallpaper_fileset(::file::set * pfileset, bool bAddSearch) override;
 
