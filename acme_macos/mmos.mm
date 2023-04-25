@@ -2,8 +2,6 @@
 #include "acme/constant/id.h"
 #import "save_file_dialog_delegate.h"
 #include "acme/filesystem/filesystem/file_dialog.h"
-///::e_status call(::particle * pparticle);
-
 
 
 NSWindow * g_pnswindow = nullptr;
@@ -530,24 +528,10 @@ void mm_folder_dialog(::function < void(const char *) > functionParameter, const
 void mm_file_dialog(::file::file_dialog * pdialogParam)
 {
 
-   //__block auto function = functionParameter;
-   
-   //__block NSString * strStartFolder = nil;
-   
-//   if(pszStartFolder != nullptr)
-//   {
-//
-//      strStartFolder = [[NSString alloc] initWithUTF8String:pszStartFolder];
-//
-//   }
-   
    ::pointer < ::file::file_dialog > pdialog(pdialogParam);
-   //pdialog->increment_reference_count();
 
    ns_main_async(^()
    {
-
-//      mmos * pos = (__bridge mmos *) get_system_mmos(pSystem);
 
       NSURL * urlStartFolder = nil;
       
@@ -555,177 +539,72 @@ void mm_file_dialog(::file::file_dialog * pdialogParam)
 
       urlStartFolder = [[NSURL alloc]initWithString : strStartFolder ];
     
-      NSSavePanel *panel = nil;
+      NSSavePanel * psavepanel = nil;
+      NSOpenPanel * popenpanel = nil;
       
       if(pdialog->m_bSave)
       {
          
-         panel = [ NSSavePanel savePanel ];
+         psavepanel = [ NSSavePanel savePanel ];
          
-//         auto pdelegate = [save_file_dialog_delegate alloc];
-//
-//         pdelegate->m_pdialog = pdialog;
-//
-//         [ panel setDelegate : pdelegate ];
-         
-//         panel beginSheetModalForWindow:<#(nonnull NSWindow *)#> completionHandler:<#^(NSModalResponse result)handler#>
-//         
-//          NSURL * url = [panel URL];
-//         
-//         int iCount = 1;
-//         
-//         char ** pp = (char **)malloc((iCount + 1) * sizeof(char*));
-//         
-//         int i = 0;
-//         
-//         pp[0] = __strdup([url absoluteString]);
-//         
-//         pp[1] = NULL;
-//         
-//         function((const char **) pp, [ [ [ panel directoryURL ] absoluteString ] UTF8String]);
-//         
-//         i = 0;
-//         
-//         while(pp[i] != NULL)
-//         {
-//            
-//            free(pp[i]);
-//            
-//            i++;
-//            
-//         }
-//         
-//         free(pp);
-
       }
       else
       {
 
-         auto popenpanel = [ NSOpenPanel openPanel ];
+         popenpanel = [ NSOpenPanel openPanel ];
 
-         [popenpanel setAllowsMultipleSelection:pdialog->m_bMultiple];
+         [ popenpanel setAllowsMultipleSelection:pdialog->m_bMultiple ];
 
-         [popenpanel setCanChooseDirectories:NO];
+         [ popenpanel setCanChooseDirectories: NO ];
 
-         [popenpanel setCanChooseFiles:YES];
+         [ popenpanel setCanChooseFiles: YES];
 
-         panel = popenpanel;
+         psavepanel = popenpanel;
          
       }
 
-      auto pdelegate = [save_file_dialog_delegate alloc];
-      
-      pdelegate->m_pdialog = pdialog;
-      
-      [ panel setDelegate : pdelegate ];
+//      auto pdelegate = [save_file_dialog_delegate alloc];
+//      
+//      pdelegate->m_pdialog = pdialog;
+//      
+//      [ psavepanel setDelegate : pdelegate ];
       
       if(urlStartFolder != nil)
       {
 
-         panel.directoryURL = urlStartFolder;
+         psavepanel.directoryURL = urlStartFolder;
 
       }
 
-//      [ panel center ];
-//
-//      [ panel setStyleMask: NSWindowStyleMaskUtilityWindow ];
-//
-//      [ panel setLevel: NSNormalWindowLevel ];
-//
-////      NSWindow * pnswindowMain = ns_main_window();
-//
-//      [ panel makeKeyAndOrderFront: nil ];
-//
-//      [ panel setAcceptsMouseMovedEvents: TRUE ];
+      NSModalResponse result = [ psavepanel runModal];
       
-      NSModalResponse result = [panel runModal];
-      
-      {
-    
       if(result == NSModalResponseOK)
       {
          
-         //if(okFlag)
+         if(pdialog->m_bSave)
          {
             
-            if(pdialog->m_bSave)
-            {
-               
-               pdialog->m_patha.add([[ [ panel URL] absoluteString ] UTF8String]);
-               
-            }
-            else
-            {
-               NSOpenPanel * popenpanel = panel;
-               NSArray < NSURL * > * urla = [popenpanel URLs];
-               
-               for(int i = 0; i < [ urla count]; i++)
-               {
-                  
-                  pdialog->m_patha.add([[ [urla objectAtIndex:i ] absoluteString] UTF8String]);
-                  
-               }
-               
-            }
+            pdialog->m_patha.add([ [ [ psavepanel URL] absoluteString ] UTF8String ]);
             
-            pdialog->m_function(::transfer(pdialog));
+         }
+         else
+         {
+
+            NSArray < NSURL * > * urla = [ popenpanel URLs ];
+            
+            for(int i = 0; i < [ urla count]; i++)
+            {
+               
+               pdialog->m_patha.add([ [ [ urla objectAtIndex:i ] absoluteString ] UTF8String ]);
+               
+            }
             
          }
          
+         pdialog->m_function(::transfer(pdialog));
          
       }
       
-   
-      }
-
-//         function(nullptr, nullptr);
-//
-//         return;
-//
-//      }
-//
-//      if(bSave)
-//      {
-//
-//
-//      }
-//      else
-//      {
-//
-//         NSOpenPanel * popenpanel = panel;
-//
-//         NSArray < NSURL * > * urla = [popenpanel URLs];
-//
-//         char ** pp = (char **)malloc((urla.count + 1) * sizeof(char*));
-//
-//         int i = 0;
-//
-//         for(; i < urla.count; i++)
-//         {
-//
-//            pp[i] = __strdup([[urla objectAtIndex:i] absoluteString]);
-//
-//         }
-//
-//         pp[i] = NULL;
-//
-//         function((const char **) pp, [ [ [ panel directoryURL ] absoluteString ] UTF8String]);
-//
-//         i = 0;
-//
-//         while(pp[i] != NULL)
-//         {
-//
-//            free(pp[i]);
-//
-//            i++;
-//
-//         }
-//
-//         free(pp);
-//
-//      }
-//
    });
 
 }
