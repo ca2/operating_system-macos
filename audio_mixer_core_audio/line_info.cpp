@@ -1,10 +1,10 @@
 #include "framework.h"
 #include "line_info.h"
 
-
-namespace multimedia
-{
-
+//
+//namespace multimedia
+//{
+//
 
    namespace audio_mixer_core_audio
    {
@@ -23,9 +23,9 @@ namespace multimedia
 
 
    } // namespace audio_mixer_core_audio
-
-
-} // namespace multimedia
-
-
-
+//
+//
+//} // namespace multimedia
+//
+//
+//

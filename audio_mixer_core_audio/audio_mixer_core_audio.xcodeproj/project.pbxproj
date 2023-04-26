@@ -35,38 +35,38 @@
 		9A90675E27F1409F0040B86D /* libbred.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675D27F1409F0040B86D /* libbred.dylib */; };
 		9A90676027F140AF0040B86D /* libcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675F27F140AF0040B86D /* libcore.dylib */; };
 		9A90676227F1581D0040B86D /* libaudio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90676127F1581D0040B86D /* libaudio.dylib */; };
-		9A90676327F158260040B86D /* libmultimedia.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90671F27F13CEC0040B86D /* libmultimedia.dylib */; };
+		9A94EBDB29E32C3100C8C249 /* libaudio_mixer.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A94E7A329E2318F00C8C249 /* libaudio_mixer.dylib */; };
 		9AA1B44A176361950019E812 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA1B449176361950019E812 /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9A90671E27F13CEC0040B86D /* PBXContainerItemProxy */ = {
+		9A94E7A229E2318F00C8C249 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A90671827F13CEC0040B86D /* multimedia.xcodeproj */;
+			containerPortal = 9A94E79A29E2318E00C8C249 /* audio_mixer.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 9AEB75A316F78DF10085103B;
 			remoteInfo = multimedia;
 		};
-		9A90672027F13CEC0040B86D /* PBXContainerItemProxy */ = {
+		9A94E7A429E2318F00C8C249 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A90671827F13CEC0040B86D /* multimedia.xcodeproj */;
+			containerPortal = 9A94E79A29E2318E00C8C249 /* audio_mixer.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 07B6578E190F3CAF002DAADE;
 			remoteInfo = ios_multimedia;
 		};
-		9A90672227F13CEC0040B86D /* PBXContainerItemProxy */ = {
+		9A94E7A629E2318F00C8C249 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A90671827F13CEC0040B86D /* multimedia.xcodeproj */;
+			containerPortal = 9A94E79A29E2318E00C8C249 /* audio_mixer.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 07B6579D190F3CAF002DAADE;
 			remoteInfo = multlimedia_iosTests;
 		};
-		9A90672427F13D070040B86D /* PBXContainerItemProxy */ = {
+		9A94EB8429E2365E00C8C249 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A90671827F13CEC0040B86D /* multimedia.xcodeproj */;
+			containerPortal = 9A94E79A29E2318E00C8C249 /* audio_mixer.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 9AEB75A216F78DF10085103B;
-			remoteInfo = multimedia;
+			remoteInfo = audio_mixer;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -75,7 +75,6 @@
 		9A1B496616A4A10100875A94 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9A8997BC177D0E7D00C7761E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		9A8EAF5417C563D300C458D1 /* _audio_mixer_core_audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _audio_mixer_core_audio.h; sourceTree = "<group>"; };
-		9A90671827F13CEC0040B86D /* multimedia.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = multimedia.xcodeproj; path = "../../../source/app-core/multimedia/multimedia.xcodeproj"; sourceTree = "<group>"; };
 		9A90672627F13D840040B86D /* source.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = source.cpp; sourceTree = "<group>"; };
 		9A90672727F13D840040B86D /* line_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = line_info.cpp; sourceTree = "<group>"; };
 		9A90672827F13D840040B86D /* control.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = control.h; sourceTree = "<group>"; };
@@ -101,6 +100,7 @@
 		9A90675D27F1409F0040B86D /* libbred.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libbred.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A90675F27F140AF0040B86D /* libcore.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libcore.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A90676127F1581D0040B86D /* libaudio.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaudio.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A94E79A29E2318E00C8C249 /* audio_mixer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = audio_mixer.xcodeproj; path = "../../../source/audio-system/audio_mixer/audio_mixer.xcodeproj"; sourceTree = "<group>"; };
 		9AA1B449176361950019E812 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A1CFD778154F5EAA007447E2 /* libaudio_mixer_core_audio.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libaudio_mixer_core_audio.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,7 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A90676327F158260040B86D /* libmultimedia.dylib in Frameworks */,
+				9A94EBDB29E32C3100C8C249 /* libaudio_mixer.dylib in Frameworks */,
 				9A90676227F1581D0040B86D /* libaudio.dylib in Frameworks */,
 				9A90676027F140AF0040B86D /* libcore.dylib in Frameworks */,
 				9A90675227F1409E0040B86D /* libacme.dylib in Frameworks */,
@@ -146,12 +146,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9A90671927F13CEC0040B86D /* Products */ = {
+		9A94E79B29E2318E00C8C249 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A90671F27F13CEC0040B86D /* libmultimedia.dylib */,
-				9A90672127F13CEC0040B86D /* libios_multimedia.a */,
-				9A90672327F13CEC0040B86D /* multlimedia_iosTests.xctest */,
+				9A94E7A329E2318F00C8C249 /* libaudio_mixer.dylib */,
+				9A94E7A529E2318F00C8C249 /* libios_audio_mixer.a */,
+				9A94E7A729E2318F00C8C249 /* multlimedia_iosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,7 +159,7 @@
 		A1CFD76D154F5EA7007447E2 = {
 			isa = PBXGroup;
 			children = (
-				9A90671827F13CEC0040B86D /* multimedia.xcodeproj */,
+				9A94E79A29E2318E00C8C249 /* audio_mixer.xcodeproj */,
 				A1CFD896154FB715007447E2 /* audio_mixer_core_audio */,
 				9A4E84701D1FD3BB008A419B /* Frameworks */,
 				A1CFD779154F5EAA007447E2 /* Products */,
@@ -233,7 +233,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				9A90672527F13D070040B86D /* PBXTargetDependency */,
+				9A94EB8529E2365E00C8C249 /* PBXTargetDependency */,
 			);
 			name = audio_mixer_core_audio;
 			productName = os;
@@ -262,8 +262,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 9A90671927F13CEC0040B86D /* Products */;
-					ProjectRef = 9A90671827F13CEC0040B86D /* multimedia.xcodeproj */;
+					ProductGroup = 9A94E79B29E2318E00C8C249 /* Products */;
+					ProjectRef = 9A94E79A29E2318E00C8C249 /* audio_mixer.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -274,25 +274,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		9A90671F27F13CEC0040B86D /* libmultimedia.dylib */ = {
+		9A94E7A329E2318F00C8C249 /* libaudio_mixer.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			path = libmultimedia.dylib;
-			remoteRef = 9A90671E27F13CEC0040B86D /* PBXContainerItemProxy */;
+			path = libaudio_mixer.dylib;
+			remoteRef = 9A94E7A229E2318F00C8C249 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9A90672127F13CEC0040B86D /* libios_multimedia.a */ = {
+		9A94E7A529E2318F00C8C249 /* libios_audio_mixer.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libios_multimedia.a;
-			remoteRef = 9A90672027F13CEC0040B86D /* PBXContainerItemProxy */;
+			path = libios_audio_mixer.a;
+			remoteRef = 9A94E7A429E2318F00C8C249 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9A90672327F13CEC0040B86D /* multlimedia_iosTests.xctest */ = {
+		9A94E7A729E2318F00C8C249 /* multlimedia_iosTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = multlimedia_iosTests.xctest;
-			remoteRef = 9A90672227F13CEC0040B86D /* PBXContainerItemProxy */;
+			remoteRef = 9A94E7A629E2318F00C8C249 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -317,10 +317,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9A90672527F13D070040B86D /* PBXTargetDependency */ = {
+		9A94EB8529E2365E00C8C249 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = multimedia;
-			targetProxy = 9A90672427F13D070040B86D /* PBXContainerItemProxy */;
+			name = audio_mixer;
+			targetProxy = 9A94EB8429E2365E00C8C249 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -387,7 +387,7 @@
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/library",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = "10.13";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -454,7 +454,7 @@
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/library",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = "10.13";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;

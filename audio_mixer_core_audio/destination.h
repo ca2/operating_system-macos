@@ -1,12 +1,12 @@
 #pragma once
 
 
-#include "app-core/multimedia/audio_mixer/destination.h"
+#include "audio-system/audio_mixer/destination.h"
 #include "source.h"
 
-
-namespace multimedia
-{
+//
+//namespace multimedia
+//{
 
 
    namespace audio_mixer_core_audio
@@ -14,8 +14,8 @@ namespace multimedia
 
 
       class CLASS_DECL_AUDIO_MIXER_CORE_AUDIO destination :
-         virtual public ::multimedia::audio_mixer_core_audio::source,
-         virtual public ::multimedia::audio_mixer::destination
+         virtual public ::audio_mixer_core_audio::source,
+         virtual public ::audio_mixer::destination
       {
       public:
 
@@ -30,13 +30,13 @@ namespace multimedia
          void initialize_all_controls() override;
          void initialize_source_info() override;
 
-         ::multimedia::audio_mixer::source_array & get_source_info() override;
+         ::audio_mixer::source_array & get_source_info() override;
          //void operator delete(void *);
 
          destination & operator = (const destination & device);
 
-         ::multimedia::audio_mixer::device * get_device() override;
-         void set_device(::multimedia::audio_mixer::device * pdevice) override;
+         ::audio_mixer::device * get_device() override;
+         void set_device(::audio_mixer::device * pdevice) override;
 
 
          virtual uint32_t get_mixer_line_id() override;
@@ -46,10 +46,10 @@ namespace multimedia
 
    } // namespace audio_mixer_core_audio
 
-
-
-} // namespace multimedia
-
-
-
-
+//
+//
+//} // namespace multimedia
+//
+//
+//
+//

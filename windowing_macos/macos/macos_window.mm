@@ -9,7 +9,7 @@
 #include "macos_window.h"
 #include "macOSWindow.h"
 
-
+void ns_set_main_window(NSWindow * pnswindow);
 void ns_main_async(dispatch_block_t block);
 
 
@@ -38,6 +38,8 @@ void * new_macos_window(macos_window * pmacoswindow, CGRect rect, unsigned int u
    macOSWindow * pmacOSWindow = [macOSWindow alloc];
    
    NSWindow * pNSWindow = pmacOSWindow;
+   
+   ns_set_main_window(pNSWindow);
    
    pmacoswindow->m_pmacoswindow = pmacOSWindow;
    

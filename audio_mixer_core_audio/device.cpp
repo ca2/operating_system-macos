@@ -1,9 +1,9 @@
 #include "framework.h"
 #include "device.h"
-
-
-namespace multimedia
-{
+//
+//
+//namespace multimedia
+//{
 
 
    namespace audio_mixer_core_audio
@@ -31,7 +31,7 @@ namespace multimedia
       }
 
    
-      bool device::initialize(::multimedia::audio_mixer::audio_mixer * pmixer)
+      bool device::initialize(::audio_mixer::audio_mixer * pmixer)
       {
 
          //m_pmixer = pmixer;
@@ -91,7 +91,7 @@ namespace multimedia
 //
 //         m_uiMixerID = uiMixerId;
 //
-//         //    AppSetWindowText(oswindow, "::multimedia::audio_mixer::audio_mixer Device: %s", (char *)mxcaps.szPname);
+//         //    AppSetWindowText(oswindow, "::audio_mixer::audio_mixer Device: %s", (char *)mxcaps.szPname);
 //
 //         return mmrc;
 
@@ -131,7 +131,7 @@ namespace multimedia
 //            lpDestination = m_mixerdestinationa(i);
 //            lpDestination->set_device(this);
 //            lpDestination->mixerGetLineInfo(0, i, MIXER_GETLINEINFOF_DESTINATION);
-//            //        ::multimedia::audio_mixer::audio_mixer::get_component_name(lpmxl, lpDestination->m_strComponent);
+//            //        ::audio_mixer::audio_mixer::get_component_name(lpmxl, lpDestination->m_strComponent);
 //
 //            //        //
 //            //      //
@@ -166,14 +166,14 @@ namespace multimedia
 
       }
 
-      void device::get_destination(::multimedia::audio_mixer::e_destination edestination, ::multimedia::audio_mixer::destination **ppDestination)
+      void device::get_destination(::audio_mixer::e_destination edestination, ::audio_mixer::destination **ppDestination)
       {
          
 //         uint32_t dwComponentType;
 //
 //         switch(edestination)
 //         {
-//         case ::multimedia::audio_mixer::destination_speakers:
+//         case ::audio_mixer::destination_speakers:
 //            dwComponentType = MIXERLINE_COMPONENTTYPE_DST_SPEAKERS;
 //            break;
 //         default:
@@ -208,10 +208,10 @@ namespace multimedia
 //         {
 //            sp(::multimedia::audio_mixer_audio_core::destination) destination = m_mixerdestinationa(i);
 //            MapLineControls(destination);
-//            ::multimedia::audio_mixer::source_array & sourcea = destination->get_source_info();
+//            ::audio_mixer::source_array & sourcea = destination->get_source_info();
 //            for(int32_t j = 0; j < sourcea.get_size(); j++)
 //            {
-//               sp(::multimedia::audio_mixer::source) source = sourcea(j);
+//               sp(::audio_mixer::source) source = sourcea(j);
 //               MapLineControls(source);
 //            }
 //         }
@@ -229,7 +229,7 @@ namespace multimedia
 //
 //            m_mapIDToLine.set_at(destination->get_mixer_line().dwLineID, destination);
 //
-//            ::multimedia::audio_mixer::source_array & sourcea = destination->get_source_info();
+//            ::audio_mixer::source_array & sourcea = destination->get_source_info();
 //
 //            for(int32_t j = 0; j < sourcea.get_size(); j++)
 //            {
@@ -246,7 +246,7 @@ namespace multimedia
 
       void device::OnMixerLineChange(uint32_t dwLineID)
       {
-//         ::multimedia::audio_mixer::source * pSource;
+//         ::audio_mixer::source * pSource;
 //         if(m_mapIDToLine.Lookup(dwLineID, pSource))
 //         {
 //            pSource->OnMixerLineChange();
@@ -255,23 +255,23 @@ namespace multimedia
 
       void device::OnMixerControlChange(uint32_t dwControlID)
       {
-//         ::multimedia::audio_mixer::control * pControl;
+//         ::audio_mixer::control * pControl;
 //         if(m_mapIDToControl.Lookup(dwControlID, pControl))
 //         {
 //            pControl->OnMixerControlChange();
 //         }
       }
 
-      void device::MapLineControls(::multimedia::audio_mixer::source * psource)
+      void device::MapLineControls(::audio_mixer::source * psource)
       {
-//         ::multimedia::audio_mixer::control_array & controla = psource->get_control_array();
+//         ::audio_mixer::control_array & controla = psource->get_control_array();
 //         for(int32_t k = 0; k < controla.get_size(); k++)
 //         {
 //            sp(::multimedia::audio_mixer_audio_core::control) control = controla(k);
 //            m_mapIDToControl.set_at(control->GetMixerControl().dwControlID, control);
 //            for(int32_t l = 0; l < control->get_size(); l++)
 //            {
-//               sp(::multimedia::audio_mixer::user::control) pcontrol = control->operator ()(l);
+//               sp(::audio_mixer::user::control) pcontrol = control->operator ()(l);
 //               m_mapDlgItemIDToControl.set_at(pcontrol->_GetDlgCtrlID(), control);
 //            }
 //         }
@@ -281,30 +281,30 @@ namespace multimedia
       {
 //         m_mapDlgItemIDToControl.remove_all();
 //
-//         ::multimedia::audio_mixer::destination_array & destinationa = m_mixerdestinationa;
+//         ::audio_mixer::destination_array & destinationa = m_mixerdestinationa;
 //         for(int32_t i = 0; i < destinationa.get_size(); i++)
 //         {
 //            sp(::multimedia::audio_mixer_audio_core::destination) destination = destinationa(i);
 //            MapDlgCtrlIDToLineControls(destination);
-//            ::multimedia::audio_mixer::source_array & sourcea = destination->get_source_info();
+//            ::audio_mixer::source_array & sourcea = destination->get_source_info();
 //            for(int32_t j = 0; j < sourcea.get_size(); j++)
 //            {
-//               ::multimedia::audio_mixer::source & source = sourcea[j];
+//               ::audio_mixer::source & source = sourcea[j];
 //               MapDlgCtrlIDToLineControls(&source);
 //            }
 //         }
 //
       }
 
-      void device::MapDlgCtrlIDToLineControls(::multimedia::audio_mixer::source * psource)
+      void device::MapDlgCtrlIDToLineControls(::audio_mixer::source * psource)
       {
-//         ::multimedia::audio_mixer::control_array & controla = psource->get_control_array();
+//         ::audio_mixer::control_array & controla = psource->get_control_array();
 //         for(int32_t k = 0; k < controla.get_size(); k++)
 //         {
-//            sp(::multimedia::audio_mixer::control) control = controla(k);
+//            sp(::audio_mixer::control) control = controla(k);
 //            for(int32_t l = 0; l < control->get_size(); l++)
 //            {
-//               sp(::multimedia::audio_mixer::user::control) pcontrol = control->operator()(l);
+//               sp(::audio_mixer::user::control) pcontrol = control->operator()(l);
 //               m_mapDlgItemIDToControl.set_at(pcontrol->_GetDlgCtrlID(), control);
 //            }
 //         }
@@ -341,7 +341,7 @@ namespace multimedia
 //
 //         uint32_t uiID = LOWORD(wparam);
 //
-//         ::multimedia::audio_mixer::control * pcontrol;
+//         ::audio_mixer::control * pcontrol;
 //
 //         if(m_mapDlgItemIDToControl.Lookup(uiID, pcontrol)
 //            && pcontrol->OnCommand(wparam, lparam))
@@ -361,7 +361,7 @@ namespace multimedia
       }
 
 
-      ::multimedia::audio_mixer::audio_mixer * device::get_mixer()
+      ::audio_mixer::audio_mixer * device::get_mixer()
       {
          //return m_pmixer;
          
@@ -372,7 +372,7 @@ namespace multimedia
 
    } // namespace audio_mixer_core_audio
 
-
-} // namespace multimedia
-
-
+//
+//} // namespace multimedia
+//
+//

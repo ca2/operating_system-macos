@@ -9,6 +9,8 @@
 #include "framework.h"
 #include "macOSApp.h"
 #include "acme/constant/id.h"
+#include "aura/_.h"
+#include "aura/user/menu/shared.h"
 #include "aura_macos/_c_mm.h"
 #include "acme/operating_system/argcargv.h"
 
@@ -635,7 +637,7 @@ NSMenu * _ns_create_main_menu(menu_shared * pmenushared)
       
       [menuitemApp setSubmenu: menuApp];
       
-      id strQuitTitle = [[_("Quit") stringByAppendingString: @" "] stringByAppendingString: strAppName];
+      id strQuitTitle = __nsstring("Quit " +  pmenushared->application_name());
       
       id menuitemQuit = [[NSMenuItem alloc] initWithTitle:strQuitTitle
                                                    action:@selector(terminate:) keyEquivalent:@"q"];
@@ -652,13 +654,13 @@ NSMenu * _ns_create_main_menu(menu_shared * pmenushared)
       
       [menuMain addItem: menuitemView];
       
-      id menuView = [[NSMenu alloc] initWithTitle:_("View")];
+      id menuView = [[NSMenu alloc] initWithTitle:__nsstring("View")];
       
       [menuView setDelegate: [ [NSApplication sharedApplication] delegate ] ];
       
       [menuitemView setSubmenu: menuView];
       
-      id strFxxTitle = _("Transparent Frame");
+      id strFxxTitle = __nsstring("Transparent Frame");
       
       NSMenuItem * menuitemFxx = [[NSMenuItem alloc] initWithTitle:strFxxTitle
                                                             action:@selector(on_command:) keyEquivalent:@"f"];
@@ -1008,7 +1010,7 @@ void ns_create_main_menu()
       
       id strAppName = [[NSProcessInfo processInfo] processName];
       
-      id strQuitTitle = [[_("Quit") stringByAppendingString: @" "] stringByAppendingString: strAppName];
+      id strQuitTitle = __nsstring("Quit " + ::string([strAppName UTF8String]));
       
       id menuitemQuit = [[NSMenuItem alloc] initWithTitle:strQuitTitle
                                                    action:@selector(terminate:) keyEquivalent:@"q"];
@@ -1023,13 +1025,13 @@ void ns_create_main_menu()
       
       [menuMain addItem: menuitemView];
       
-      id menuView = [[NSMenu alloc] initWithTitle:_("View")];
+      id menuView = [[NSMenu alloc] initWithTitle:__nsstring("View")];
       
       [menuView setDelegate: [ [NSApplication sharedApplication] delegate ] ];
       
       [menuitemView setSubmenu: menuView];
       
-      id strFxxTitle = _("Trasparentt(snowballeffect_smallerror>>>)Fxx");
+      id strFxxTitle = __nsstring("Trasparentt(snowballeffect_smallerror>>>)Fxx");
       
       NSMenuItem * menuitemFxx = [[NSMenuItem alloc] initWithTitle:strFxxTitle
                                                             action:@selector(on_command:) keyEquivalent:@"f"];

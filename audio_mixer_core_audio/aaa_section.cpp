@@ -63,7 +63,7 @@ namespace multimedia
       ::multimedia::e_result section::CreateNewDestination(uint32_t dwComponentType)
       {
       ::multimedia::e_result mmrc;
-      ::multimedia::audio_mixer::destination * pdestination = NULL;
+      ::audio_mixer::destination * pdestination = NULL;
 
       if(MMSYSERR_NOERROR != (mmrc =  m_pmixer->m_pdevice->get_destination(
       dwComponentType,
@@ -91,10 +91,10 @@ namespace multimedia
 
       bool section::initialize()
       {
-         //   m_pmixerthread = (::multimedia::audio_mixer::thread *) __begin_thread(System.type_info < ::multimedia::audio_mixer::thread > ());
+         //   m_pmixerthread = (::audio_mixer::thread *) __begin_thread(System.type_info < ::audio_mixer::thread > ());
          //   if(m_pmixerthread == NULL)
          //      return false;
-         //   return trueÇ
+         //   return trueï¿½
          return true;
       }
 

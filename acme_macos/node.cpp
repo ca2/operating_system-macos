@@ -92,7 +92,7 @@ unsigned int * puiPid)
 
    chdir(pszDir);
     
-    create_process(strCmdLine, &processId);
+    processId = create_process(strCmdLine);
 
    //if(!create_process(strCmdLine, &processId))
 //      {
@@ -131,7 +131,7 @@ void node::call_sync(const ::string & pszPath, const ::string & pszParam, const 
 
    u32 processId;
    
-   create_process(strCmdLine, &processId);
+   processId = create_process(strCmdLine);
 
 //      if(!create_process(strCmdLine, &processId))
 //      {
@@ -856,7 +856,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   bool node::process_modules(string_array& stra, u32 processID)
+   bool node::process_modules(string_array& stra, ::process_identifier processID)
    {
 
       throw interface_only();
@@ -900,7 +900,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 //   }
 
 
-   bool node::is_shared_library_busy(u32 processid, const string_array& stra)
+   bool node::is_shared_library_busy(::process_identifier processid, const string_array& stra)
    {
 
       throw interface_only();
@@ -920,7 +920,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   bool node::process_contains_module(string& strImage, ::u32 processID, const ::string & pszLibrary)
+   bool node::process_contains_module(string& strImage, ::process_identifier processID, const ::string & pszLibrary)
    {
 
       throw interface_only();
@@ -930,7 +930,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   void node::shared_library_process(dword_array& dwa, string_array& straProcesses, const ::string & pszLibrary)
+::process_identifier_array node::shared_library_process(string_array& straProcesses, const ::string & pszLibrary)
    {
 
       throw interface_only();
@@ -1104,49 +1104,46 @@ void macos_folder_dialog(::file::folder_dialog * pdialog)
 }
 
 
-void mm_file_dialog(::function < void(const char **, const char *) > function, const char * pszStartFolder, bool bSave, bool bMultiple);
+void mm_file_dialog(::file::file_dialog * pdialog);
 
 
 void macos_file_dialog(::file::file_dialog * pdialog)
 {
    
-   pdialog->increment_reference_count();
-   
-   auto functionHere = [pdialog](const char ** pp, const char * pszStartFolder)
-   {
-      
-      ::pointer < ::file::file_dialog > pdialogHold(e_pointer_transfer, pdialog);
-
-      if(pp)
-      {
-         
-         while(*pp)
-         {
-            
-            pdialog->m_patha.add(::file::path(*pp));
-            
-            pp++;
-            
-         }
-         
-      }
-
-      if(pszStartFolder)
-      {
-       
-         pdialog->m_pathStartFolder = pszStartFolder;
-         
-      }
-
-      pdialog->m_function(::transfer(pdialogHold));
-      
-   };
-   
+//   pdialog->increment_reference_count();
+//   
+//   auto functionHere = [pdialog](const char ** pp, const char * pszStartFolder)
+//   {
+//      
+//      ::pointer < ::file::file_dialog > pdialogHold(e_pointer_transfer, pdialog);
+//
+//      if(pp)
+//      {
+//         
+//         while(*pp)
+//         {
+//            
+//            pdialog->m_patha.add(::file::path(*pp));
+//            
+//            pp++;
+//            
+//         }
+//         
+//      }
+//
+//      if(pszStartFolder)
+//      {
+//       
+//         pdialog->m_pathStartFolder = pszStartFolder;
+//         
+//      }
+//
+//      pdialog->m_function(::transfer(pdialogHold));
+//      
+//   };
+//   
    mm_file_dialog(
-                  functionHere,
-                  pdialog->m_pathStartFolder,
-                  pdialog->m_bSave,
-                  pdialog->m_bMultiple);
+                  pdialog);
 
 }
 

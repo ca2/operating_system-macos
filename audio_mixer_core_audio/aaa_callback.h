@@ -18,9 +18,9 @@ namespace multimedia
          virtual ~callback();
 
 
-         ::pointer < ::multimedia::audio_mixer::user::level_control > allocate_level_control() override;
-         ::pointer < ::multimedia::audio_mixer::user::toggle_control > allocate_toggle_control() override;
-         ::pointer < ::multimedia::audio_mixer::user::label > allocate_label() override;
+         ::pointer < ::audio_mixer::user::level_control > allocate_level_control() override;
+         ::pointer < ::audio_mixer::user::toggle_control > allocate_toggle_control() override;
+         ::pointer < ::audio_mixer::user::label > allocate_label() override;
 
 
       };

@@ -38,6 +38,7 @@
 		9A92314C27EAE30D00B5A78D /* acme_directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A92314A27EAE30D00B5A78D /* acme_directory.cpp */; };
 		9A92314D27EAE30D00B5A78D /* acme_directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A92314B27EAE30D00B5A78D /* acme_directory.h */; };
 		9A9DCBE229B853E500D1255B /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9DCB5A29B8239100D1255B /* libacme_apple.dylib */; };
+		9A9E55F029F73CE3001559E9 /* save_file_dialog_delegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E55EF29F73CE3001559E9 /* save_file_dialog_delegate.mm */; };
 		9AC14D2C297B3488006D9BD3 /* acme_directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A92314B27EAE30D00B5A78D /* acme_directory.h */; };
 		9AC14D2D297B3488006D9BD3 /* mmos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787C65264BD87E003DF8A0 /* mmos.h */; };
 		9AC14D2F297B3488006D9BD3 /* acme_file.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A239CB526CDEF9300F98012 /* acme_file.h */; };
@@ -149,6 +150,8 @@
 		9A92314A27EAE30D00B5A78D /* acme_directory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = acme_directory.cpp; sourceTree = "<group>"; };
 		9A92314B27EAE30D00B5A78D /* acme_directory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = acme_directory.h; sourceTree = "<group>"; };
 		9A9DCB5329B8239100D1255B /* acme_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_apple.xcodeproj; path = "../../operating_system-apple/acme_apple/acme_apple.xcodeproj"; sourceTree = "<group>"; };
+		9A9E55EF29F73CE3001559E9 /* save_file_dialog_delegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = save_file_dialog_delegate.mm; sourceTree = "<group>"; };
+		9A9E55F229F7404C001559E9 /* save_file_dialog_delegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = save_file_dialog_delegate.h; sourceTree = "<group>"; };
 		9AB5F929264B020100C4F2A3 /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
 		9AC14D56297B3488006D9BD3 /* libstatic_acme_macos.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libstatic_acme_macos.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = list_serial_ports.cpp; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 				9A78F43D28E7D6A3007F62C0 /* _001address_to_line.hpp */,
 				9A78F44028E7D7F0007F62C0 /* address_to_line.cpp */,
 				9A78F44128E7D7F0007F62C0 /* address_to_line.h */,
+				9A9E55EF29F73CE3001559E9 /* save_file_dialog_delegate.mm */,
+				9A9E55F229F7404C001559E9 /* save_file_dialog_delegate.h */,
 			);
 			name = acme_macos;
 			sourceTree = "<group>";
@@ -416,6 +421,7 @@
 				9AE382A428B16F14007EA867 /* quit.cpp in Sources */,
 				9A787E8E264E901E003DF8A0 /* mm.mm in Sources */,
 				9AC2CB3D26531C6200CC8096 /* list_serial_ports.cpp in Sources */,
+				9A9E55F029F73CE3001559E9 /* save_file_dialog_delegate.mm in Sources */,
 				9A6543FE2666F2A400F8A254 /* image.cpp in Sources */,
 				9A92314C27EAE30D00B5A78D /* acme_directory.cpp in Sources */,
 				9A23A71F26CEC02A00F98012 /* file.mm in Sources */,
@@ -526,7 +532,7 @@
 					"$(inherited)",
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/library",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = "10.13";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -615,7 +621,7 @@
 					"$(inherited)",
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/library",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = "10.13";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
