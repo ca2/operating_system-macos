@@ -92,10 +92,10 @@ namespace apex_macos
       
       ::string strCommandLine;
       
-      for(int i = 0; i < ::acme::acme::g_p->m_psubsystem->m_argc; i++)
+      for(int i = 0; i < ::acme::acme::g_pacme->m_psubsystem->m_argc; i++)
       {
          
-         auto psz = ::acme::acme::g_p->m_psubsystem->m_argv[i];
+         auto psz = ::acme::acme::g_pacme->m_psubsystem->m_argv[i];
          
          ::string strArg(psz);
          
@@ -242,90 +242,69 @@ namespace apex_macos
       //  }
    }
 
-   bool os_context::path_pid(::u32 &uPid, const ::string & pszName)
+   
+   ::process_identifier_array os_context::module_path_processes_identifiers(const ::scoped_string & pszName)
    {
-      u32_array dwa;
-      get_all_processes(dwa);
+
+      auto dwa = processes_identifiers();
+   
+      ::process_identifier_array processidentifiera;
+   
       for(i32 i = 0; i < dwa.get_count(); i++)
       {
-         if(get_process_path(dwa[i]).case_insensitive_equals(pszName))
+         
+         if(process_identifier_module_path(dwa[i]).case_insensitive_equals(pszName))
          {
-            uPid = dwa[i];
-            return true;
+            
+            processidentifiera.add(dwa[i]);
+            
          }
+         
       }
-      return false;
+   
+      return processidentifiera;
+   
    }
 
 
-   bool os_context::title_pid(::u32 & uPid, const ::string & pszName)
+   ::process_identifier_array os_context::title_processes_identifiers(const ::scoped_string & pszName)
    {
-      u32_array dwa;
-      get_all_processes(dwa);
+
+      auto dwa = processes_identifiers();
+   
+      ::process_identifier_array processidentifiera;
+      
       for(i32 i = 0; i < dwa.get_count(); i++)
       {
-         if(get_process_path(dwa[i]).title().case_insensitive_equals(pszName))
+         
+         if(process_identifier_module_path(dwa[i]).title().case_insensitive_equals(pszName))
          {
-            uPid = dwa[i];
-            return true;
+            
+            processidentifiera.add(dwa[i]);
+            
          }
+         
       }
-      return false;
+      
+      return processidentifiera;
+      
    }
 
-   ::file::path os_context::get_process_path(::u32 dwPid)
+
+   ::file::path os_context::process_identifier_module_path(::process_identifier processidentifier)
    {
-      /*
-       string strName = ":<unknown>";
-       // get a handle to the process.
-       HANDLE hProcess = OpenProcess( PROCESS_QUERY_INFORMATION |
-       PROCESS_VM_READ,
-       false, dwPid );
-
-       // get the process name.
-
-       if (nullptr != hProcess )
-       {
-       HMODULE hMod;
-       ::u32 cbNeeded;
-
-       if(EnumProcessModules( hProcess, &hMod, sizeof(hMod),
-       &cbNeeded) )
-       {
-       strName = get_module_path(hMod);
-       }
-       }
-
-       CloseHandle( hProcess );
-       return strName;*/
-      //    throw ::exception(error_not_implemented);;
-      return "";
+      
+      return acmenode()->process_identifier_module_path(processidentifier);
 
    }
 
-   void os_context::get_all_processes(u32_array & dwa )
-   {
-
-      //  throw ::exception(error_not_implemented);;
-      return;
-
-      /*
-       dwa.set_size(0);
-       ::u32 cbNeeded = 0;
-       while(cbNeeded == natural(dwa.get_count()))
-       {
-       dwa.set_size(dwa.get_count() + 1024);
-       if(!EnumProcesses(
-       dwa.get_data(),
-       (::u32) (dwa.get_count() * sizeof(::u32)),
-       &cbNeeded))
-       {
-       return;
-       }
-       dwa.set_size(cbNeeded / sizeof(::u32));
-       }*/
-   }
-
+   
+//   ::process_identifier_array os_context::processes_identifiers()
+//   {
+//
+//      return acmenode()->processes_identifiers();
+//
+//   }
 
 
    ::payload os_context::connection_settings_get_auto_detect()
@@ -892,13 +871,13 @@ namespace apex_macos
        */
    }
 
-   int os_context::get_pid()
+   
+   ::process_identifier os_context::current_process_identifier()
    {
 
-      return getpid();
+      return acmenode()->current_process_identifier();
 
    }
-
 
 
 //   void os_context::post_to_all_threads(const ::id & id, wparam wparam, lparam lparam)
