@@ -26,6 +26,10 @@ namespace windowing_macos
       
       ::count get_monitor_count() override;
    
+      string impl_get_wallpaper(index iScreen) override;
+      bool impl_set_wallpaper(index iScreen, string strWallpaper) override;
+
+      
    };
 
 

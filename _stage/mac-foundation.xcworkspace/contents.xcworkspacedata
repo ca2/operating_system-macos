@@ -35,7 +35,7 @@
       location = "group:../../app-core/hash_hub/app_core_hash_hub.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app-core/note/app_core_note.xcodeproj">
+      location = "group:../../app-core/note/app_core_plain_text.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../app-core/verifile/app_core_verifile.xcodeproj">

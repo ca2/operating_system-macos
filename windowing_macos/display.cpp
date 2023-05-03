@@ -12,7 +12,8 @@
 
 
 int ns_monitor_count();
-
+char * ns_get_wallpaper();
+void ns_set_wallpaper(const char *psz);
 
 namespace windowing_macos
 {
@@ -37,6 +38,50 @@ namespace windowing_macos
    {
     
       return ns_monitor_count();
+      
+   }
+
+
+   string display::impl_get_wallpaper(index iScreen)
+   {
+      
+      auto psz = ns_get_wallpaper();
+      
+      ::string str(psz);
+      
+      if(psz)
+      {
+         
+         free(psz);
+         
+      }
+      
+//      str.case_insensitive_begins_eat("file://");
+//      
+//      str = ::url::decode(str);
+      
+      return ::transfer(str);
+      
+   }
+
+
+   bool display::impl_set_wallpaper(index iScreen, string strWallpaper)
+   {
+      
+//      if(!strWallpaper.case_insensitive_begins("file://"))
+//      {
+//
+//         ::string str = ::url::encode(strWallpaper);
+//
+//         str.find_replace("%2F", "/");
+//
+//         strWallpaper = "file://" + str;
+//
+//      }
+   
+      ns_set_wallpaper(strWallpaper);
+      
+      return true;
       
    }
 

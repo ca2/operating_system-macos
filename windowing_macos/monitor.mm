@@ -6,6 +6,10 @@
 //
 #include "framework.h"
 
+void ns_main_async(dispatch_block_t block);
+
+
+void ns_main_sync(dispatch_block_t block);
 
 void ns_monitor_cgrect(int i, CGRect * prect);
 void __ns_monitor_cgrect(int i, CGRect * prect);
@@ -120,3 +124,95 @@ void __ns_monitor_cgrect(int iIndex, CGRect * prect)
 
 
 
+void ns_set_wallpaper(const char * pszUrl)
+{
+   
+   auto p = strdup(pszUrl);
+   
+   ns_main_async(^()
+   {
+      
+      NSString * strUrl = [ [ NSString alloc ] initWithUTF8String: p ];
+      
+      NSURL * url = [ NSURL fileURLWithPath: strUrl ];
+      
+      NSError * error = nil;
+      
+      NSScreen * pmainscreen = [ NSScreen mainScreen ];
+      
+      NSDictionary * options =
+      [
+         NSDictionary
+         
+         dictionaryWithObjectsAndKeys:
+            
+            [ NSColor systemGrayColor   ],
+            NSWorkspaceDesktopImageFillColorKey,
+        
+            [ NSNumber numberWithBool: NO ],
+            NSWorkspaceDesktopImageAllowClippingKey,
+        
+            [ NSNumber numberWithInteger: NSImageScaleNone ],
+            NSWorkspaceDesktopImageScalingKey,
+         
+            nil
+         
+      ];
+      
+      const char * pszError = nullptr;
+
+      BOOL bOk = [ [ NSWorkspace sharedWorkspace ] setDesktopImageURL: url forScreen: pmainscreen options:options error:&error];
+      
+      if(bOk)
+      {
+         
+         printf("Wallpaper was set to : \"%s\"\n", p);
+         
+      }
+      else
+      {
+         
+         pszError = [ [ error localizedDescription ] UTF8String ];
+         
+         printf("Wallpaper wasn't set to : \"%s\" Error:%s\n", p, pszError);
+
+         
+      }
+   
+      ::free(p);
+      
+   });
+   
+}
+
+
+char * ns_get_wallpaper()
+{
+   
+   __block char * p = nullptr;
+   
+   ns_main_sync(^()
+   {
+
+      NSScreen * pmainscreen = [ NSScreen mainScreen ];
+      
+      NSURL * url = [ [ NSWorkspace sharedWorkspace ] desktopImageURLForScreen: pmainscreen];
+      
+      if(url == nil)
+      {
+         
+         return;
+         
+      }
+      
+      NSString * str = [ url absoluteString ];
+      
+      auto psz = [ str UTF8String ];
+      
+      p = strdup(psz);
+      
+   });
+ 
+   return p;
+   
+}

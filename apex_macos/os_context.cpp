@@ -13,6 +13,8 @@
 void ns_main_async(dispatch_block_t block);
 
 
+void ns_set_dark_mode(bool bDark);
+
 void setMyselfAsDefaultApplicationForFileExtension(const char * pszExtension);
 
 
@@ -819,6 +821,12 @@ namespace apex_macos
        */
    }
 
+void os_context::set_dark_mode(bool bDark)
+{
+   
+   ns_set_dark_mode(bDark);
+   
+}
 
 //   bool os_context::resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder, string * pstrParams, string * pstrIconLocation, int * piIcon)
 //   {

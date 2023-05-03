@@ -62,6 +62,9 @@ namespace apex_macos
       void start_service() override;
 
       void stop_service() override;
+      
+      
+      void set_dark_mode(bool bDark) override;
 
       //bool resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder = nullptr, string * pstrParams = nullptr, string * pstrIconLocation = nullptr, int * piIcon = nullptr) override;
 
