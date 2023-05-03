@@ -115,6 +115,8 @@ namespace acme_macos
 
       void _node_file_dialog(::file::file_dialog * pdialog) override;
       void _node_folder_dialog(::file::folder_dialog * pdialog) override;
+      
+      ::pointer < ::operating_system::application > application_predicate(const ::function < bool(::operating_system::application * papplication) > & function) override;
 
    };
 

@@ -39,6 +39,12 @@
 		9A92314D27EAE30D00B5A78D /* acme_directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A92314B27EAE30D00B5A78D /* acme_directory.h */; };
 		9A9DCBE229B853E500D1255B /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9DCB5A29B8239100D1255B /* libacme_apple.dylib */; };
 		9A9E55F029F73CE3001559E9 /* save_file_dialog_delegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E55EF29F73CE3001559E9 /* save_file_dialog_delegate.mm */; };
+		9AB812382A01F3D40032F4C8 /* main_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB812362A01F3D40032F4C8 /* main_window.cpp */; };
+		9AB812392A01F3D40032F4C8 /* main_window.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AB812372A01F3D40032F4C8 /* main_window.h */; };
+		9AB812452A0200580032F4C8 /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB812432A0200570032F4C8 /* application.cpp */; };
+		9AB812462A0200580032F4C8 /* application.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AB812442A0200580032F4C8 /* application.h */; };
+		9AB812492A025C7A0032F4C8 /* axuielement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB812472A025C7A0032F4C8 /* axuielement.cpp */; };
+		9AB8124A2A025C7A0032F4C8 /* axuielement.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AB812482A025C7A0032F4C8 /* axuielement.h */; };
 		9AC14D2C297B3488006D9BD3 /* acme_directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A92314B27EAE30D00B5A78D /* acme_directory.h */; };
 		9AC14D2D297B3488006D9BD3 /* mmos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787C65264BD87E003DF8A0 /* mmos.h */; };
 		9AC14D2F297B3488006D9BD3 /* acme_file.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A239CB526CDEF9300F98012 /* acme_file.h */; };
@@ -153,6 +159,12 @@
 		9A9E55EF29F73CE3001559E9 /* save_file_dialog_delegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = save_file_dialog_delegate.mm; sourceTree = "<group>"; };
 		9A9E55F229F7404C001559E9 /* save_file_dialog_delegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = save_file_dialog_delegate.h; sourceTree = "<group>"; };
 		9AB5F929264B020100C4F2A3 /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
+		9AB812362A01F3D40032F4C8 /* main_window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main_window.cpp; sourceTree = "<group>"; };
+		9AB812372A01F3D40032F4C8 /* main_window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main_window.h; sourceTree = "<group>"; };
+		9AB812432A0200570032F4C8 /* application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = application.cpp; sourceTree = "<group>"; };
+		9AB812442A0200580032F4C8 /* application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = application.h; sourceTree = "<group>"; };
+		9AB812472A025C7A0032F4C8 /* axuielement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = axuielement.cpp; sourceTree = "<group>"; };
+		9AB812482A025C7A0032F4C8 /* axuielement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = axuielement.h; sourceTree = "<group>"; };
 		9AC14D56297B3488006D9BD3 /* libstatic_acme_macos.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libstatic_acme_macos.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = list_serial_ports.cpp; sourceTree = "<group>"; };
 		9AC2D0582653EBF000CC8096 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -211,6 +223,10 @@
 				9A239CB526CDEF9300F98012 /* acme_file.h */,
 				9A7ECABB2651963500D5BA45 /* acme_path.cpp */,
 				9A7ECABF2651963500D5BA45 /* acme_path.h */,
+				9AB812432A0200570032F4C8 /* application.cpp */,
+				9AB812442A0200580032F4C8 /* application.h */,
+				9AB812472A025C7A0032F4C8 /* axuielement.cpp */,
+				9AB812482A025C7A0032F4C8 /* axuielement.h */,
 				9A23A71E26CEC02A00F98012 /* file.mm */,
 				9A0C178E264A2F4200B5CC33 /* framework.cpp */,
 				9A0C1790264A2F5000B5CC33 /* framework.h */,
@@ -218,6 +234,8 @@
 				9A0705FF266275B4004E8CB4 /* image.mm */,
 				9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */,
 				9A15A61D264B56760080670E /* main.cpp */,
+				9AB812362A01F3D40032F4C8 /* main_window.cpp */,
+				9AB812372A01F3D40032F4C8 /* main_window.h */,
 				9A787E8D264E901E003DF8A0 /* mm.mm */,
 				9A787C65264BD87E003DF8A0 /* mmos.h */,
 				9A787BE4264BD7AE003DF8A0 /* mmos.mm */,
@@ -277,6 +295,9 @@
 				9A78F43F28E7D6A3007F62C0 /* _001address_to_line.hpp in Headers */,
 				9A15A625264B56770080670E /* _.h in Headers */,
 				9A7ECAC32651963500D5BA45 /* acme_path.h in Headers */,
+				9AB812392A01F3D40032F4C8 /* main_window.h in Headers */,
+				9AB812462A0200580032F4C8 /* application.h in Headers */,
+				9AB8124A2A025C7A0032F4C8 /* axuielement.h in Headers */,
 				9A15A622264B56770080670E /* _library.h in Headers */,
 				9A787C67264BD87E003DF8A0 /* node.h in Headers */,
 				9A78F44328E7D7F0007F62C0 /* address_to_line.h in Headers */,
@@ -415,6 +436,7 @@
 				9A070600266275B4004E8CB4 /* image.mm in Sources */,
 				9A787BE8264BD7AF003DF8A0 /* mmos.mm in Sources */,
 				9A787E91264E9276003DF8A0 /* process.cpp in Sources */,
+				9AB812452A0200580032F4C8 /* application.cpp in Sources */,
 				9A239CB626CDEF9300F98012 /* acme_file.cpp in Sources */,
 				9A15A62F264B56770080670E /* main.cpp in Sources */,
 				9A7ECAC02651963500D5BA45 /* acme_path.cpp in Sources */,
@@ -422,8 +444,10 @@
 				9A787E8E264E901E003DF8A0 /* mm.mm in Sources */,
 				9AC2CB3D26531C6200CC8096 /* list_serial_ports.cpp in Sources */,
 				9A9E55F029F73CE3001559E9 /* save_file_dialog_delegate.mm in Sources */,
+				9AB812492A025C7A0032F4C8 /* axuielement.cpp in Sources */,
 				9A6543FE2666F2A400F8A254 /* image.cpp in Sources */,
 				9A92314C27EAE30D00B5A78D /* acme_directory.cpp in Sources */,
+				9AB812382A01F3D40032F4C8 /* main_window.cpp in Sources */,
 				9A23A71F26CEC02A00F98012 /* file.mm in Sources */,
 				9A15A624264B56770080670E /* _factory.cpp in Sources */,
 				9A787C66264BD87E003DF8A0 /* node.cpp in Sources */,

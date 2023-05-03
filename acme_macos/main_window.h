@@ -7,6 +7,12 @@
 #pragma once
 
 
+#include "acme/operating_system/main_window.h"
+
+
+#include <Carbon/Carbon.h>
+
+
 namespace acme_macos
 {
 
@@ -23,7 +29,7 @@ namespace acme_macos
       ~main_window() override;
 
 
-      virtual void from_application(application * papplication);
+      void from_application(::operating_system::application * papplication) override;
 
       virtual void post_close();
 

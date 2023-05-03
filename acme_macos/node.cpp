@@ -88,7 +88,7 @@ unsigned int * puiPid)
 
    }
 
-   u32 processId;
+   ::process_identifier processId;
 
    chdir(pszDir);
     
@@ -104,7 +104,7 @@ unsigned int * puiPid)
    if(puiPid != nullptr)
    {
 
-      *puiPid = processId;
+      *puiPid = (pid_t) processId;
 
    }
 
@@ -129,7 +129,7 @@ void node::call_sync(const ::string & pszPath, const ::string & pszParam, const 
       
    }
 
-   u32 processId;
+   ::process_identifier processId;
    
    processId = create_process(strCmdLine);
 
@@ -145,7 +145,7 @@ void node::call_sync(const ::string & pszPath, const ::string & pszParam, const 
    while(true)
    {
 
-      if(kill(processId, 0) == -1 && errno == ESRCH) // No process can be found corresponding to processId
+      if(kill((pid_t) processId, 0) == -1 && errno == ESRCH) // No process can be found corresponding to processId
          break;
 
       sleep(1_ms);
@@ -1035,6 +1035,29 @@ void node::_node_folder_dialog(::file::folder_dialog * pdialog)
    
    macos_folder_dialog(pdialog);
    
+}
+
+::pointer < ::operating_system::application > node::application_predicate(const ::function < bool(::operating_system::application * papplication) > & function)
+{
+
+   auto processesidentifiers = this->processes_identifiers();
+   
+   for(auto & processidentifier : processesidentifiers)
+   {
+      
+      auto papplication = process_identifier_application(processidentifier);
+      
+      if(function(papplication))
+      {
+       
+         return papplication;
+         
+      }
+      
+   }
+
+   return nullptr;
+
 }
 
 

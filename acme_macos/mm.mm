@@ -431,3 +431,27 @@ char * ns_get_home()
    
    
 }
+
+
+void show_accessibility_preferences_page()
+{
+   
+   
+   NSString* prefPage = @"x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility";
+   [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:prefPage]];
+
+   
+}
+
+
+[[nodiscard]] bool cf_is_string(CFTypeRef t)
+{
+   
+   NSObject * pobject = (__bridge NSObject *) t;
+   
+   return [ pobject isKindOfClass: [ NSString class ] ];
+   
+}
+
+
+
