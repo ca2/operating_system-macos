@@ -68,7 +68,7 @@ namespace acme_macos
       
       ::process_identifier create_process(const ::string & pszCommandLine) override;
       
-      bool process_modules(string_array& stra, ::process_identifier processID) override;
+      ::file::path_array process_identifier_modules_paths(::process_identifier processID) override;
 
       bool load_modules_diff(string_array& straOld, string_array& straNew, const ::string & pszExceptDir) override;
 
@@ -79,10 +79,10 @@ namespace acme_macos
       string process_identifier_module_path(::process_identifier pid) override;
       
       string process_identifier_command_line(::process_identifier pid) override;
-
-      bool is_shared_library_busy(::process_identifier processid, const string_array& stra) override;
-
-      bool is_shared_library_busy(const string_array& stra) override;
+//
+//      bool is_shared_library_busy(::process_identifier processid, const string_array& stra) override;
+//
+//      bool is_shared_library_busy(const string_array& stra) override;
       
       bool process_contains_module(string& strImage, ::process_identifier processID, const ::string & pszLibrary) override;
 

@@ -141,9 +141,9 @@ namespace aura_macos
 
 
       // oswindow Text Functions
-      void set_window_text(const ::string & lpszString) override;
-      //strsize GetWindowText(char * lpszStringBuf, strsize nMaxCount);
-      void get_window_text(string & str) override;
+//      void set_window_text(const ::string & lpszString) override;
+//      //strsize GetWindowText(char * lpszStringBuf, strsize nMaxCount);
+//      void get_window_text(string & str) override;
       //strsize GetWindowTextLength();
 //      void SetFont(::write_text::font* pFont, bool bRedraw = true);
       //    ::write_text::font* GetFont();
@@ -524,7 +524,7 @@ namespace aura_macos
 
       void _001WindowMinimize();
 
-      void _001OnTriggerMouseInside() override;
+      //void _001OnTriggerMouseInside() override;
 
       virtual void show_task(bool bShow) override;
 

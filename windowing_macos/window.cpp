@@ -9,7 +9,7 @@
 #include "framework.h"
 #include "window_impl.h"
 #include "acme/constant/message.h"
-#include "acme/parallelization/synchronous_lock.h"
+#include "acme/parallelization/mutex.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "aura/user/user/interaction_prodevian.h"
 #include "aura/user/user/interaction_impl.h"
@@ -17,8 +17,8 @@
 #include "aura/message/user.h"
 #include "aura_macos/interaction_impl.h"
 #include "acme/parallelization/message_queue.h"
+#include "aura/graphics/draw2d/graphics.h"
 #include "aura/graphics/graphics/graphics.h"
-//#include "aura/graphics/graphics/_graphics.h"
 #include "aura/graphics/image/drawing.h"
 #include "aura/platform/session.h"
 #include "aura/user/user/user.h"
@@ -437,7 +437,7 @@ namespace windowing_macos
          macos_window_miniaturize();
          
       }
-      else if(edisplay == e_display_restore)
+      else if(equivalence_sink(edisplay) == e_display_normal)
       {
          
          macos_window_show();
@@ -449,18 +449,18 @@ namespace windowing_macos
          nsapp_activate_ignoring_other_apps(1);
          
       }
-      else if(edisplay == e_display_restored)
-      {
-         
-         macos_window_show();
-       
-         macos_window_make_key_window_and_order_front();
-         
-         macos_window_make_main_window();
-         
-         nsapp_activate_ignoring_other_apps(1);
-         
-      }
+//      else if(edisplay == e_display_normal)
+//      {
+//
+//         macos_window_show();
+//
+//         macos_window_make_key_window_and_order_front();
+//
+//         macos_window_make_main_window();
+//
+//         nsapp_activate_ignoring_other_apps(1);
+//
+//      }
       else if(edisplay == e_display_none || edisplay == e_display_hide)
       {
          
@@ -691,9 +691,11 @@ namespace windowing_macos
 
       synchronous_lock slGraphics(pbuffer->synchronization());
       
-      synchronous_lock sl1(pbuffer->get_screen_sync());
+      auto pitem = pbuffer->get_screen_item();
+      
+      synchronous_lock sl1(pitem->m_pmutex);
 
-      ::image_pointer & imageBuffer2 = pbuffer->get_screen_image();
+      ::image_pointer & imageBuffer2 = pitem->m_pimage;
 
       if (!imageBuffer2)
       {
