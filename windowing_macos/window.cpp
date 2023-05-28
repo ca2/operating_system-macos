@@ -20,6 +20,7 @@
 #include "aura/graphics/draw2d/graphics.h"
 #include "aura/graphics/graphics/graphics.h"
 #include "aura/graphics/image/drawing.h"
+#include "aura/graphics/image/image.h"
 #include "aura/platform/session.h"
 #include "aura/user/user/user.h"
 #include "aura/message/user.h"
@@ -927,9 +928,9 @@ pmessage->m_atom = emessage
    void window::macos_window_mouse_down(int iButton, double x, double y)
    {
       
-      m_pointMouseCursor.x = x;
+      m_pointMouseCursor.x() = x;
       
-      m_pointMouseCursor.y = y;
+      m_pointMouseCursor.y() = y;
 
       //::pointer < ::user::message > spbase;
 

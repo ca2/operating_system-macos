@@ -26,11 +26,11 @@
       
       ::string str;
       
-      auto psz = str.get_string_buffer(len * 6);
+      auto psz = str.get_buffer(len * 6);
       
       CFStringGetCString((CFStringRef) t, psz, len * 6, kCFStringEncodingUTF8);
       
-      str.release_string_buffer();
+      str.release_buffer();
       
       return ::transfer(str);
       
