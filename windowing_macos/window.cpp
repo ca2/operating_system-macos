@@ -27,7 +27,7 @@
 #include <CoreGraphics/CoreGraphics.h>
 
 
-bool macos_get_cursor_position(POINT_I32 * ppointCursor);
+bool macos_get_cursor_position(::point_i32 * ppointCursor);
 
 
 void ns_main_async(dispatch_block_t block);
@@ -977,8 +977,8 @@ pmessage->m_atom = emessage
          {
             
             _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_down);
-            pmouse->m_point.x = x;
-            pmouse->m_point.y = y;
+            pmouse->m_point.x() = x;
+            pmouse->m_point.y() = y;
             post_message(pmouse);
 
          }
@@ -986,8 +986,8 @@ pmessage->m_atom = emessage
          {
 
             _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_down);
-            pmouse->m_point.x = x;
-            pmouse->m_point.y = y;
+            pmouse->m_point.x() = x;
+            pmouse->m_point.y() = y;
             post_message(pmouse);
          }
          
@@ -1002,9 +1002,9 @@ pmessage->m_atom = emessage
    void window::macos_window_mouse_up(int iButton, double x, double y)
    {
       
-      m_pointMouseCursor.x = x;
+      m_pointMouseCursor.x() = x;
       
-      m_pointMouseCursor.y = y;
+      m_pointMouseCursor.y() = y;
       
       //auto pmouse = __create_new < ::message::mouse >();
 
@@ -1014,8 +1014,8 @@ pmessage->m_atom = emessage
       {
 
          _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_up);
-         pmouse->m_point.x = x;
-         pmouse->m_point.y = y;
+         pmouse->m_point.x() = x;
+         pmouse->m_point.y() = y;
          post_message(pmouse);
 
       }
@@ -1023,8 +1023,8 @@ pmessage->m_atom = emessage
       {
 
          _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_up);
-         pmouse->m_point.x = x;
-         pmouse->m_point.y = y;
+         pmouse->m_point.x() = x;
+         pmouse->m_point.y() = y;
          post_message(pmouse);
 
 
@@ -1048,8 +1048,8 @@ pmessage->m_atom = emessage
       {
 
          _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_double_click);
-         pmouse->m_point.x = x;
-         pmouse->m_point.y = y;
+         pmouse->m_point.x() = x;
+         pmouse->m_point.y() = y;
          post_message(pmouse);
 
          //id = e_message_right_button_double_click;
@@ -1059,8 +1059,8 @@ pmessage->m_atom = emessage
       {
 
          _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_double_click);
-         pmouse->m_point.x = x;
-         pmouse->m_point.y = y;
+         pmouse->m_point.x() = x;
+         pmouse->m_point.y() = y;
          post_message(pmouse);
          //id = e_message_left_button_double_click;
 
@@ -1083,9 +1083,9 @@ pmessage->m_atom = emessage
 //
 //      }
       
-      m_pointMouseCursor.x = x;
+      m_pointMouseCursor.x() = x;
       
-      m_pointMouseCursor.y = y;
+      m_pointMouseCursor.y() = y;
       
       bool bOk = true;
 
@@ -1114,9 +1114,9 @@ pmessage->m_atom = emessage
 
          puserinteraction->m_timeMouseMove.Now();
 
-         puserinteraction->m_pointMouseMove.x = x;
+         puserinteraction->m_pointMouseMove.x() = x;
 
-         puserinteraction->m_pointMouseMove.y = y;
+         puserinteraction->m_pointMouseMove.y() = y;
 
 //            if(false)
 //            {
@@ -1177,8 +1177,8 @@ pmessage->m_atom = emessage
       
       
       _NEW_MESSAGE(pmouse, ::message::mouse, e_message_mouse_move);
-      pmouse->m_point.x = x;
-      pmouse->m_point.y = y;
+      pmouse->m_point.x() = x;
+      pmouse->m_point.y() = y;
       
       //::atom id = e_message_mouse_move;
       
@@ -1213,8 +1213,8 @@ pmessage->m_atom = emessage
    {
       
       _NEW_MESSAGE(pmouse, ::message::mouse, e_message_mouse_move);
-      pmouse->m_point.x = x;
-      pmouse->m_point.y = y;
+      pmouse->m_point.x() = x;
+      pmouse->m_point.y() = y;
 
       
 //      atom id = e_message_mouse_move;
@@ -1251,8 +1251,8 @@ pmessage->m_atom = emessage
 
       
       _NEW_MESSAGE(pwheel, ::message::mouse_wheel, e_message_mouse_wheel);
-      pwheel->m_point.x = x;
-      pwheel->m_point.y = y;
+      pwheel->m_point.x() = x;
+      pwheel->m_point.y() = y;
 
       //atom id = e_message_mouse_wheel;
 
@@ -1277,8 +1277,8 @@ pmessage->m_atom = emessage
       {
       
          _NEW_MESSAGE(preposition, ::message::reposition, e_message_reposition);
-         preposition->m_point.x = rectangle.origin.x;
-         preposition->m_point.y = rectangle.origin.y;
+         preposition->m_point.x() = rectangle.origin.x;
+         preposition->m_point.y() = rectangle.origin.y;
 
          
 //         atom id = e_message_reposition;
@@ -1452,8 +1452,8 @@ pmessage->m_atom = emessage
       {
 
          _NEW_MESSAGE(preposition, ::message::reposition, e_message_reposition);
-         preposition->m_point.x = point.x;
-         preposition->m_point.y = point.y;
+         preposition->m_point.x() = point.x;
+         preposition->m_point.y() = point.y;
 
 //         atom id = e_message_reposition;
 //
@@ -1771,7 +1771,7 @@ pmessage->m_atom = emessage
          if(m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious == ::e_display_iconic)
          {
 
-            m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious = ::e_display_restored;
+            m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious = ::e_display_normal;
 
          }
          
@@ -2197,7 +2197,7 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::get_cursor_position(POINT_I32 * ppoint)
+   void window::get_cursor_position(::point_i32 * ppoint)
    {
       
       macos_get_cursor_position(ppoint);

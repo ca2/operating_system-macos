@@ -1299,7 +1299,7 @@ int_bool is_window_occluded(oswindow oswindow)
 
 void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > & windowida);
 
-int_bool point_is_window_origin(POINT_I32 pointHitTest, oswindow oswindowExclude, int iMargin)
+int_bool point_is_window_origin(::point_i32 pointHitTest, oswindow oswindowExclude, int iMargin)
 {
    
    CGWindowID windowidExclude = get_os_window_window_number(oswindowExclude);
