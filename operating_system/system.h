@@ -55,6 +55,8 @@
 
 #include <concepts>
 
+#include <compare>
+
 
 #endif
 
