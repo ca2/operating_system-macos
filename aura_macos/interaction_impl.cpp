@@ -395,8 +395,8 @@ namespace aura_macos
 //
 ////      rectParam.left = m_pusersystem->m_createstruct.x;
 ////      rectParam.top = pusersystem->m_createstruct.y;
-////      rectParam.right = pusersystem->m_createstruct.x + pusersystem->m_createstruct.cx;
-////      rectParam.bottom = pusersystem->m_createstruct.y + pusersystem->m_createstruct.cy;
+////      rectParam.right = pusersystem->m_createstruct.x + pusersystem->m_createstruct.cx();
+////      rectParam.bottom = pusersystem->m_createstruct.y + pusersystem->m_createstruct.cy();
 //
 ////      copy(rectangle, rectParam);
 ////

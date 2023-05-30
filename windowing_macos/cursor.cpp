@@ -51,7 +51,7 @@ namespace windowing_macos
          try
          {
 
-            _create_from_image(m_pimage, m_szHotspotOffset.cx, m_szHotspotOffset.cy);
+            _create_from_image(m_pimage, m_szHotspotOffset.cx(), m_szHotspotOffset.cy());
           
             return;
             

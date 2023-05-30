@@ -175,8 +175,8 @@ namespace windowing_macos
 
    //      rectParam.left = m_pusersystem->m_createstruct.x;
    //      rectParam.top = pusersystem->m_createstruct.y;
-   //      rectParam.right = pusersystem->m_createstruct.x + pusersystem->m_createstruct.cx;
-   //      rectParam.bottom = pusersystem->m_createstruct.y + pusersystem->m_createstruct.cy;
+   //      rectParam.right = pusersystem->m_createstruct.x + pusersystem->m_createstruct.cx();
+   //      rectParam.bottom = pusersystem->m_createstruct.y + pusersystem->m_createstruct.cy();
 
    //      copy(rectangle, rectParam);
    //
@@ -618,7 +618,7 @@ namespace windowing_macos
 
       string strFormat;
 
-      strFormat.Format("|-> window size_i32 %d, %d", sizeWindow.cx, sizeWindow.cy);
+      strFormat.Format("|-> window size_i32 %d, %d", sizeWindow.cx(), sizeWindow.cy());
 
       string strSize;
 
@@ -1128,7 +1128,7 @@ pmessage->m_atom = emessage
 //                     (pinteraction->m_pointMouseMoveSkip.y - pinteraction->m_pointMouseMove.y));
 //
 //                  if(!pinteraction->m_millisMouseMoveSkip.timeout(pinteraction->m_millisMouseMovePeriod)
-//                     && sizeDistance.cx * sizeDistance.cx + sizeDistance.cy * sizeDistance.cy < pinteraction->m_iMouseMoveSkipSquareDistance)
+//                     && sizeDistance.cx() * sizeDistance.cx() + sizeDistance.cy() * sizeDistance.cy() < pinteraction->m_iMouseMoveSkipSquareDistance)
 //                  {
 //
 //                     pinteraction->m_iMouseMoveSkipCount++;
@@ -1298,8 +1298,8 @@ pmessage->m_atom = emessage
       {
 
          _NEW_MESSAGE(psize, ::message::size, e_message_size);
-         psize->m_size.cx = rectangle.size.width;
-         psize->m_size.cy = rectangle.size.height;
+         psize->m_size.cx() = rectangle.size.width;
+         psize->m_size.cy() = rectangle.size.height;
 
 //         atom id = e_message_size;
 //

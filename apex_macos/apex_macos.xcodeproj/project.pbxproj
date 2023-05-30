@@ -106,6 +106,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A03B80D2A25BE0600A0E33E /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
+		9A03B8102A25BE0600A0E33E /* release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = release.xcconfig; sourceTree = "<group>"; };
 		9A0C1695264A2AA700B5CC33 /* libapex_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libapex_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0C1755264A2DFA00B5CC33 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9A0C1766264A2DFA00B5CC33 /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				9A787F72264EF104003DF8A0 /* app.mm */,
 				9A787F6A264EF103003DF8A0 /* application.cpp */,
 				9A787F63264EF103003DF8A0 /* application.h */,
+				9A03B80D2A25BE0600A0E33E /* debug.xcconfig */,
 				9A787F7A264EF104003DF8A0 /* dir_context.cpp */,
 				9A787F85264EF105003DF8A0 /* dir_context.h */,
 				9A787F7B264EF104003DF8A0 /* dir_system.cpp */,
@@ -241,6 +244,7 @@
 				9A1D5F712751C033003D9B5F /* NSPasteboard++.mm */,
 				9A787F7E264EF105003DF8A0 /* os_context.cpp */,
 				9A787F78264EF104003DF8A0 /* os_context.h */,
+				9A03B8102A25BE0600A0E33E /* release.xcconfig */,
 				9A787F7F264EF105003DF8A0 /* shell_launcher.cpp */,
 				9A788032264F1130003DF8A0 /* shell_launcher.h */,
 				9A787F83264EF105003DF8A0 /* shell_macos_mm.mm */,
@@ -255,7 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				9A0C17EB264A325700B5CC33 /* libacme_macos.dylib */,
-				9A865EED299298AC0042465F /* lib_acme_macos.a */,
+				9A865EED299298AC0042465F /* libstatic_acme_macos.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -403,10 +407,10 @@
 			remoteRef = 9A15A5EE264B54EE0080670E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9A865EED299298AC0042465F /* lib_acme_macos.a */ = {
+		9A865EED299298AC0042465F /* libstatic_acme_macos.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			path = lib_acme_macos.a;
+			path = libstatic_acme_macos.a;
 			remoteRef = 9A865EEC299298AC0042465F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -466,6 +470,7 @@
 /* Begin XCBuildConfiguration section */
 		9A0C169C264A2AA700B5CC33 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A03B80D2A25BE0600A0E33E /* debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -563,6 +568,7 @@
 		};
 		9A0C169D264A2AA700B5CC33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A03B8102A25BE0600A0E33E /* release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
