@@ -898,18 +898,18 @@ namespace aura_macos
    }
 
 
-   void interaction_impl::get_window_text(string & str)
-   {
-
-      char sz[2048];
-
-      zero(sz);
-
-      //aura_window_get_title(sz, sizeof(sz));
-
-      str = m_strWindowText;
-
-   }
+//   void interaction_impl::get_window_text(string & str)
+//   {
+//
+//      char sz[2048];
+//
+//      zero(sz);
+//
+//      //aura_window_get_title(sz, sizeof(sz));
+//
+//      str = m_strWindowText;
+//
+//   }
 
 
 
