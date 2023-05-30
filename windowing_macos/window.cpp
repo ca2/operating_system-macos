@@ -604,6 +604,33 @@ namespace windowing_macos
    }
 
 
+   void window::set_window_text(const ::scoped_string & scopedstr)
+   {
+      
+      ::string strTitle;
+      
+      strTitle = scopedstr;
+      
+      macos_window_set_title(strTitle);
+      
+   }
+
+
+   ::string window::get_window_text()
+   {
+   
+      ::string strTitle;
+      
+      auto p = strTitle.get_buffer(1024);
+      
+      macos_window_get_title(p, 1024);
+      
+      strTitle.release_buffer();
+      
+      return strTitle;
+      
+   }
+
 
    void window::macos_window_draw(CGContextRef cgc, CGSize sizeWindowParam)
    {

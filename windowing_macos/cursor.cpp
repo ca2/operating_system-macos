@@ -116,7 +116,7 @@ namespace windowing_macos
 } // namespace windowing_macos
 
 
-bool macos_get_cursor_position(POINT_I32 * ppointCursor)
+bool macos_get_cursor_position(::point_i32 * ppointCursor)
 {
  
    HIPoint point;
@@ -126,9 +126,9 @@ bool macos_get_cursor_position(POINT_I32 * ppointCursor)
    HIGetMousePosition(space, nullptr, &point);
  
  
-   ppointCursor->x = point.x;
+   ppointCursor->x() = point.x;
  
-   ppointCursor->y = point.y;
+   ppointCursor->y() = point.y;
  
  
  
