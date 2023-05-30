@@ -675,8 +675,8 @@ FT_BEGIN_HEADER
    *   16.16 fixed-point format.  The computation performed is
    *
    *   ```
-   *     x' = x*xx + y*xy + Δx
-   *     y' = x*yx + y*yy + Δy
+   *     x' = x*xx + y*xy + greekdeltax
+   *     y' = x*yx + y*yy + greekdeltay
    *   ```
    *
    * @fields:
@@ -686,7 +686,7 @@ FT_BEGIN_HEADER
    *   xy ::
    *     Matrix coefficient.
    *
-   *   Δx ::
+   *   greekdeltax ::
    *     x translation.
    *
    *   yx ::
@@ -695,7 +695,7 @@ FT_BEGIN_HEADER
    *   yy ::
    *     Matrix coefficient.
    *
-   *   Δy ::
+   *   greekdeltay ::
    *     y translation.
    *
    * @since:
@@ -705,8 +705,8 @@ FT_BEGIN_HEADER
    */
   typedef struct  FT_Affine_23_
   {
-    FT_Fixed  xx, xy, Δx;
-    FT_Fixed  yx, yy, Δy;
+    FT_Fixed  xx, xy, greekdeltax;
+    FT_Fixed  yx, yy, greekdeltay;
 
   } FT_Affine23;
 
@@ -1090,10 +1090,10 @@ FT_BEGIN_HEADER
    *     An @FT_OpaquePaint object referencing the paint that is to be
    *     rotated.
    *
-   *   Δx ::
+   *   greekdeltax ::
    *     Translation in x~direction (in font units).
    *
-   *   Δy ::
+   *   greekdeltay ::
    *     Translation in y~direction (in font units).
    *
    * @since:
@@ -1105,8 +1105,8 @@ FT_BEGIN_HEADER
   {
     FT_OpaquePaint  paint;
 
-    FT_Fixed  Δx;
-    FT_Fixed  Δy;
+    FT_Fixed  greekdeltax;
+    FT_Fixed  greekdeltay;
 
   } FT_PaintTranslate;
 

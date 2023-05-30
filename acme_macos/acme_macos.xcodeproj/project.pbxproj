@@ -132,6 +132,8 @@
 		9A239CB526CDEF9300F98012 /* acme_file.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = acme_file.h; sourceTree = "<group>"; };
 		9A23A71E26CEC02A00F98012 /* file.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = file.mm; sourceTree = "<group>"; };
 		9A6543FD2666F2A400F8A254 /* image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
+		9A7724572A256BC500B9A835 /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
+		9A7724582A256BC500B9A835 /* release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = release.xcconfig; sourceTree = "<group>"; };
 		9A78630A2650483C0034A0E1 /* libacme.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A78630C2650483C0034A0E1 /* libacme_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A787BE4264BD7AE003DF8A0 /* mmos.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mmos.mm; sourceTree = "<group>"; };
@@ -212,6 +214,8 @@
 		9A0C16D6264A2CE900B5CC33 /* acme_macos */ = {
 			isa = PBXGroup;
 			children = (
+				9A7724572A256BC500B9A835 /* debug.xcconfig */,
+				9A7724582A256BC500B9A835 /* release.xcconfig */,
 				9A15A613264B56750080670E /* _.h */,
 				9A15A610264B56740080670E /* _library.h */,
 				9AB5F929264B020100C4F2A3 /* _c_mm.h */,
@@ -495,6 +499,7 @@
 /* Begin XCBuildConfiguration section */
 		9A0C1666264A290E00B5CC33 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A7724572A256BC500B9A835 /* debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -556,7 +561,6 @@
 					"$(inherited)",
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/library",
 				);
-				MACOSX_DEPLOYMENT_TARGET = "$(BUILD_MACHINE_MACOS_DEPLOYMENT_TARGET)";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -577,6 +581,7 @@
 					"$(WorkspaceDir)/operating_system/operating_system-posix",
 					"$(WorkspaceDir)/port/_",
 					"$(WorkspaceDir)/port/include",
+					"$(WorkspaceDir)/../operating_system/include",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/..",
 					"$(PROJECT_DIR)/../..",
@@ -589,6 +594,7 @@
 		};
 		9A0C1667264A290E00B5CC33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A7724582A256BC500B9A835 /* release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -645,7 +651,6 @@
 					"$(inherited)",
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/library",
 				);
-				MACOSX_DEPLOYMENT_TARGET = "$(BUILD_MACHINE_MACOS_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -665,6 +670,7 @@
 					"$(WorkspaceDir)/operating_system/operating_system-posix",
 					"$(WorkspaceDir)/port/_",
 					"$(WorkspaceDir)/port/include",
+					"$(WorkspaceDir)/../operating_system/include",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/..",
 					"$(PROJECT_DIR)/../..",

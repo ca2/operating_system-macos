@@ -856,12 +856,12 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   bool node::process_modules(string_array& stra, ::process_identifier processID)
+   ::file::path_array node::process_identifier_modules_paths(::process_identifier processID)
    {
 
       throw interface_only();
 
-      return false;
+      return {};
 
    }
 
@@ -900,24 +900,24 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 //   }
 
 
-   bool node::is_shared_library_busy(::process_identifier processid, const string_array& stra)
-   {
-
-      throw interface_only();
-
-      return false;
-
-   }
-
-
-   bool node::is_shared_library_busy(const string_array& stra)
-   {
-
-      throw interface_only();
-
-      return false;
-
-   }
+//   bool node::is_shared_library_busy(::process_identifier processid, const string_array& stra)
+//   {
+//
+//      throw interface_only();
+//
+//      return false;
+//
+//   }
+//
+//
+//   bool node::is_shared_library_busy(const string_array& stra)
+//   {
+//
+//      throw interface_only();
+//
+//      return false;
+//
+//   }
 
 
    bool node::process_contains_module(string& strImage, ::process_identifier processID, const ::string & pszLibrary)

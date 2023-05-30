@@ -31,10 +31,10 @@ namespace acme_macos
 
       void from_application(::operating_system::application * papplication) override;
 
-      virtual void post_close();
+      virtual void post_close() override;
 
-      virtual ::string get_window_text(const ::iptr_array & idPath);
-      virtual ::string indexed_get_window_text(const ::iptr_array & idPath);
+      virtual ::string get_window_text(const ::iptr_array & idPath) override;
+      virtual ::string indexed_get_window_text(const ::iptr_array & idPath) override;
 
 
    };

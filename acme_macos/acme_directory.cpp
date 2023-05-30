@@ -182,7 +182,7 @@ namespace acme_macos
 
       path = relative(path);
 
-      return path;
+      return ::transfer(path);
 
    }
 

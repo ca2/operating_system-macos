@@ -196,9 +196,9 @@ string rtrim(const string& str)
 
    auto p = result.skip_any_character_in(whitespace);
    
-   auto found = result.offset_of(p);
+   auto found = result.index_of(p);
 
-   if (found >= 0)
+   if (::found(found))
    {
       
       result.erase(found+1);
@@ -283,7 +283,7 @@ namespace acme_macos
             port_info.hardware_id = cstring;
       }
 
-      devices_found.push_back(port_info);
+      devices_found.add(port_info);
    }
 
    IOObjectRelease(serial_port_iterator);
