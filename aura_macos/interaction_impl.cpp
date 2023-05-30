@@ -1085,12 +1085,12 @@ namespace aura_macos
    }
 
 
-   void interaction_impl::set_window_text(const ::string & lpszString)
-   {
-
-      m_strWindowText = lpszString;
-
-   }
+//   void interaction_impl::set_window_text(const ::string & lpszString)
+//   {
+//
+//      m_strWindowText = lpszString;
+//
+//   }
 
 
    void interaction_impl::UpdateWindow()
@@ -2476,17 +2476,17 @@ namespace aura_macos
 //   }
 
 
-   void interaction_impl::_001OnTriggerMouseInside()
-   {
-
-      //throw ::exception(error_not_implemented);;
-      //      m_bMouseHover = true;
-      //      TRACKMOUSEEVENT tme = { sizeof(tme) };
-      //      tme.dwFlags = TME_LEAVE;
-      //      tme.hwndTrack = get_handle();
-      //      TrackMouseEvent(&tme);
-
-   }
+//   void interaction_impl::_001OnTriggerMouseInside()
+//   {
+//
+//      //throw ::exception(error_not_implemented);;
+//      //      m_bMouseHover = true;
+//      //      TRACKMOUSEEVENT tme = { sizeof(tme) };
+//      //      tme.dwFlags = TME_LEAVE;
+//      //      tme.hwndTrack = get_handle();
+//      //      TrackMouseEvent(&tme);
+//
+//   }
 
 #ifdef EXTRALOG
 

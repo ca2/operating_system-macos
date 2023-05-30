@@ -63,10 +63,12 @@ namespace apex_macos
       }
 
 
-      void context::change_to_source_directory()
+      void context::change_to_source_directory(const ::scoped_string & scopedstrRelative)
       {
 
-         acmedirectory()->change_current(m_pathSource2);
+         ::integration::context::change_to_source_directory(scopedstrRelative);
+         
+         //acmedirectory()->change_current(m_pathSource2);
 
       }
 

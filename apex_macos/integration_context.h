@@ -63,7 +63,7 @@ namespace apex_macos
 
       void prepare() override;
 
-      void change_to_source_directory() override;
+      void change_to_source_directory(const ::scoped_string & scopedstrRelative) override;
 
       void prepare_compile_and_link_environment() override;
 
