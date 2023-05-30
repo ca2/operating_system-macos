@@ -83,6 +83,10 @@ namespace windowing_macos
       
       void update_screen() override;
       
+      
+      void set_window_text(const ::scoped_string & scopedstr) override;
+      ::string get_window_text() override;
+      
 
       virtual void macos_window_draw(CGContextRef cgc, CGSize sizeWindow) override;
       virtual void macos_window_mouse_down(int iButton, double x, double y) override;
