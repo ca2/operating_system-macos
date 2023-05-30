@@ -22,6 +22,10 @@
 		9A412456266C40A400C3FF0E /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78630A2650483C0034A0E1 /* libacme.dylib */; };
 		9A412457266C40AE00C3FF0E /* libacme_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78630C2650483C0034A0E1 /* libacme_posix.dylib */; };
 		9A6543FE2666F2A400F8A254 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6543FD2666F2A400F8A254 /* image.cpp */; };
+		9A7724FF2A259DC700B9A835 /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB812432A0200570032F4C8 /* application.cpp */; };
+		9A7725002A259DEA00B9A835 /* axuielement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB812472A025C7A0032F4C8 /* axuielement.cpp */; };
+		9A7725012A259E1A00B9A835 /* save_file_dialog_delegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E55EF29F73CE3001559E9 /* save_file_dialog_delegate.mm */; };
+		9A7725022A259E3B00B9A835 /* main_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB812362A01F3D40032F4C8 /* main_window.cpp */; };
 		9A787BE8264BD7AF003DF8A0 /* mmos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787BE4264BD7AE003DF8A0 /* mmos.mm */; };
 		9A787C66264BD87E003DF8A0 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787C63264BD87E003DF8A0 /* node.cpp */; };
 		9A787C67264BD87E003DF8A0 /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787C64264BD87E003DF8A0 /* node.h */; };
@@ -473,11 +477,15 @@
 				9AC14D43297B3488006D9BD3 /* quit.cpp in Sources */,
 				9AC14D44297B3488006D9BD3 /* mm.mm in Sources */,
 				9AC14D45297B3488006D9BD3 /* list_serial_ports.cpp in Sources */,
+				9A7725012A259E1A00B9A835 /* save_file_dialog_delegate.mm in Sources */,
+				9A7725022A259E3B00B9A835 /* main_window.cpp in Sources */,
 				9AC14D46297B3488006D9BD3 /* image.cpp in Sources */,
 				9AC14D47297B3488006D9BD3 /* acme_directory.cpp in Sources */,
+				9A7724FF2A259DC700B9A835 /* application.cpp in Sources */,
 				9AC14D48297B3488006D9BD3 /* file.mm in Sources */,
 				9AC14D49297B3488006D9BD3 /* _factory.cpp in Sources */,
 				9AC14D4A297B3488006D9BD3 /* node.cpp in Sources */,
+				9A7725002A259DEA00B9A835 /* axuielement.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,7 +562,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
 				INSTALL_PATH = "@executable_path";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path";
 				LIBRARY_SEARCH_PATHS = (
@@ -581,7 +588,6 @@
 					"$(WorkspaceDir)/operating_system/operating_system-posix",
 					"$(WorkspaceDir)/port/_",
 					"$(WorkspaceDir)/port/include",
-					"$(WorkspaceDir)/../operating_system/include",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/..",
 					"$(PROJECT_DIR)/../..",
@@ -644,7 +650,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
 				INSTALL_PATH = "@executable_path";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path";
 				LIBRARY_SEARCH_PATHS = (
@@ -670,7 +675,6 @@
 					"$(WorkspaceDir)/operating_system/operating_system-posix",
 					"$(WorkspaceDir)/port/_",
 					"$(WorkspaceDir)/port/include",
-					"$(WorkspaceDir)/../operating_system/include",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/..",
 					"$(PROJECT_DIR)/../..",
