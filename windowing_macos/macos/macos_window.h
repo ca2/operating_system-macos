@@ -67,6 +67,7 @@ public:
    virtual void macos_window_on_miniaturize() = 0;
    
    virtual void macos_window_did_become_key() = 0;
+   virtual void macos_window_did_resign_key() = 0;
 
    virtual void macos_window_on_activate() = 0;
    virtual void macos_window_on_deactivate() = 0;

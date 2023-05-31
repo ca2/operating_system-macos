@@ -399,7 +399,7 @@ namespace windowing_macos
    }
 
 
-   bool window::is_active_window() const
+   bool window::_is_active_window() const
    {
 
       return macos_window_is_key_window();
@@ -407,7 +407,7 @@ namespace windowing_macos
    }
 
    
-   bool window::has_keyboard_focus() const
+   bool window::_has_keyboard_focus() const
    {
       
       bool bHasKeyboardFocus = macos_window_is_key_window();
@@ -1562,6 +1562,25 @@ pmessage->m_atom = emessage
 //      }
       
       m_puserinteractionimpl->m_timeLastExposureAddUp.Now();
+      
+      window_on_set_keyboard_focus();
+
+   }
+
+
+   void window::macos_window_did_resign_key()
+   {
+
+   //      if(is_destroying())
+   //      {
+   //
+   //         return;
+   //
+   //      }
+      
+      //m_puserinteractionimpl->m_timeLastExposureAddUp.Now();
+      
+      window_on_kill_keyboard_focus();
 
    }
 
@@ -1575,6 +1594,8 @@ pmessage->m_atom = emessage
          return;
          
       }
+      
+      window_on_activate();
       
       //this->set_active_window();
 
@@ -1604,6 +1625,8 @@ pmessage->m_atom = emessage
          output_debug_string("destroying");
          
       }
+      
+      window_on_deactivate();
       
       auto pwindowing = m_pwindowing;
       

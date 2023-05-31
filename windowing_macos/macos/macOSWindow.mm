@@ -186,7 +186,7 @@ NSString * __nsstring(const char * psz);
    
    printf("windowDidResignKey\n");
    
-   //m_pmacoswindow->macos_window_deactivate();
+   m_pmacoswindow->macos_window_did_resign_key();
    
 }
 

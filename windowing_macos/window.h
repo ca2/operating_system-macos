@@ -63,9 +63,9 @@ namespace windowing_macos
       
       void set_tool_window(bool bSet) override;
       
-      bool is_active_window() const override;
+      bool _is_active_window() const;
       
-      bool has_keyboard_focus() const override;
+      bool _has_keyboard_focus() const;
 
       void window_show() override;
       
@@ -102,6 +102,7 @@ namespace windowing_macos
       
       
       virtual void macos_window_did_become_key() override;
+      virtual void macos_window_did_resign_key() override;
       virtual void macos_window_on_activate() override;
       virtual void macos_window_on_deactivate() override;
 
