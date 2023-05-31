@@ -114,8 +114,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9A03B8062A25BD8100A0E33E /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
-		9A03B8092A25BD8100A0E33E /* release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = release.xcconfig; sourceTree = "<group>"; };
+		9A03B8062A25BD8100A0E33E /* _____debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = _____debug.xcconfig; sourceTree = "<group>"; };
+		9A03B8092A25BD8100A0E33E /* _____release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = _____release.xcconfig; sourceTree = "<group>"; };
 		9A1D5F6E2751BE47003D9B5F /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		9A22739727CF00E20042BAC2 /* windowing.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = windowing.mm; sourceTree = "<group>"; };
 		9A42D7F42665B61E0011645D /* imm_client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imm_client.cpp; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 				9A64C1132660A9D40074030F /* cursor_mm.mm */,
 				9A64C110266099790074030F /* cursor.cpp */,
 				9A64C111266099790074030F /* cursor.h */,
-				9A03B8062A25BD8100A0E33E /* debug.xcconfig */,
+				9A03B8062A25BD8100A0E33E /* _____debug.xcconfig */,
 				9A64C105266057F00074030F /* display.cpp */,
 				9A64C106266057F00074030F /* display.h */,
 				9A440A3726548C38000C490B /* framework.cpp */,
@@ -289,7 +289,7 @@
 				9A79BE2826645D9C009E6C44 /* notify_icon.cpp */,
 				9A79BE2B26645D9C009E6C44 /* notify_icon.h */,
 				9A79BE2A26645D9C009E6C44 /* notify_icon.mm */,
-				9A03B8092A25BD8100A0E33E /* release.xcconfig */,
+				9A03B8092A25BD8100A0E33E /* _____release.xcconfig */,
 				9A62EC0726F05CC100EA958E /* SBSystemPreferences.h */,
 				9A440A4126548C38000C490B /* window_impl.h */,
 				9A440A3826548C38000C490B /* window.cpp */,
@@ -517,7 +517,7 @@
 /* Begin XCBuildConfiguration section */
 		9A440A1C26548BE4000C490B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A03B8062A25BD8100A0E33E /* debug.xcconfig */;
+			baseConfigurationReference = 9A03B8062A25BD8100A0E33E /* _____debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -614,7 +614,7 @@
 		};
 		9A440A1D26548BE4000C490B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A03B8092A25BD8100A0E33E /* release.xcconfig */;
+			baseConfigurationReference = 9A03B8092A25BD8100A0E33E /* _____release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
