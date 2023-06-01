@@ -49,8 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9A03B8042A25BB6900A0E33E /* _____debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = _____debug.xcconfig; sourceTree = "<group>"; };
-		9A03B8052A25BB6900A0E33E /* _____release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = _____release.xcconfig; sourceTree = "<group>"; };
+		9A03B8042A25BB6900A0E33E /* _____debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "_____debug.xcconfig"; sourceTree = "<group>"; };
+		9A03B8052A25BB6900A0E33E /* _____release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "_____release.xcconfig"; sourceTree = "<group>"; };
 		9A5D737F2656198200D5C39E /* windowing_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = windowing_macos.xcodeproj; path = ../windowing_macos/windowing_macos.xcodeproj; sourceTree = "<group>"; };
 		9A865FD129663287000C82F0 /* libacme_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AB1608429A8A24700DFDF90 /* libapex_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,15 +135,15 @@
 		9AC2D18D26542EA800CC8096 /* node_macos */ = {
 			isa = PBXGroup;
 			children = (
+				9A03B8042A25BB6900A0E33E /* _____debug.xcconfig */,
+				9A03B8052A25BB6900A0E33E /* _____release.xcconfig */,
 				9AC2D1A526542EA800CC8096 /* _.h */,
 				9AC2D19326542EA800CC8096 /* _factory.cpp */,
 				9AE3828528B14CB4007EA867 /* _library.h */,
-				9A03B8042A25BB6900A0E33E /* _____debug.xcconfig */,
 				9AC2D18E26542EA800CC8096 /* framework.cpp */,
 				9AC2D19926542EA800CC8096 /* framework.h */,
 				9AE3828228B14BEB007EA867 /* node.cpp */,
 				9AE3828328B14BEB007EA867 /* node.h */,
-				9A03B8052A25BB6900A0E33E /* _____release.xcconfig */,
 			);
 			name = node_macos;
 			sourceTree = "<group>";
