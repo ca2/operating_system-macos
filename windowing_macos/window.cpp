@@ -1283,7 +1283,7 @@ pmessage->m_atom = emessage
 
       //atom id = e_message_mouse_wheel;
 
-      pwheel->m_Δ = deltaY * WHEEL_DELTA / 3.0;
+      pwheel->m_greekdelta = deltaY * WHEEL_DELTA / 3.0;
 
       //wparam wparam = pwheel-delta << 16;
 
