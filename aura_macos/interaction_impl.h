@@ -130,7 +130,7 @@ namespace aura_macos
 
       bool _is_window() override;
 
-//      lresult send_message(const ::id & id, wparam wParam = 0, lparam lParam = 0, const ::point_i32 & point = nullptr) override;
+//      lresult send_message(const ::id & id, wparam wParam = 0, lparam lParam = 0, const ::point_i32 & point = {}) override;
 //      bool post_message(const ::id & id, wparam wParam = 0, lparam lParam = 0) override;
 
 //      bool SendNotifyMessage(const ::id & id, WPARAM wParam, LPARAM lParam);

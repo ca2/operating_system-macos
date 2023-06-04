@@ -245,9 +245,9 @@ namespace windowing_macos
 
       pwindowing->m_nsmap[m_pnswindow] = this;
       
-         puserinteraction->set_position(::top_left(rectParam), ::user::e_layout_window);
+      puserinteraction->set_position(::top_left(rectParam), ::user::e_layout_window);
 
-         puserinteraction->set_size(::size_i32(rectParam), ::user::e_layout_window);
+      puserinteraction->set_size(rectParam.size(), ::user::e_layout_window);
       
       auto ptask = ::get_task();
       
