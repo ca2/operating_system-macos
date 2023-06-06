@@ -35,6 +35,9 @@ namespace windowing_macos
    }
 
 
+#if 0
+
+
    ::rectangle_i32 monitor::monitor_rectangle()
    {
    
@@ -65,6 +68,9 @@ namespace windowing_macos
       return rectangle;
       
    }
+
+
+#endif
 
 
 } // namespace windowing_macos

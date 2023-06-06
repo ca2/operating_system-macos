@@ -415,31 +415,42 @@
    
    p->profiling_on_start_draw_rectangle();
    
-   CGContextRef cgc = (CGContextRef) [[NSGraphicsContext currentContext] CGContext];
-
-#ifdef REDRAW_HINTING
-   
+   CGContextRef cgc = nullptr;
+   if (@available(macOS 10.10, *))
    {
-      
-      CGContextSetBlendMode(cgc, kCGBlendModeCopy);
-      
-      CGContextSetRGBFillColor(cgc, 255 / 255.0f, 200 / 255.0f, 0 / 255.0f, 155 / 255.0f);
-      
-      auto rectArtifact1 = rect;
-      
-      rectArtifact1.size.width /= 4;
-      
-      rectArtifact1.size.height /= 4;
-      
-      CGContextFillRect(cgc, rectArtifact1);
+         cgc = (CGContextRef) [[NSGraphicsContext currentContext] CGContext];
       
    }
-   
+   else
+   {
+      cgc = (__bridge_retained CGContextRef) [NSGraphicsContext currentContext];
+
+   }
+      
+#ifdef REDRAW_HINTING
+      
+      {
+         
+         CGContextSetBlendMode(cgc, kCGBlendModeCopy);
+         
+         CGContextSetRGBFillColor(cgc, 255 / 255.0f, 200 / 255.0f, 0 / 255.0f, 155 / 255.0f);
+         
+         auto rectArtifact1 = rect;
+         
+         rectArtifact1.size.width /= 4;
+         
+         rectArtifact1.size.height /= 4;
+         
+         CGContextFillRect(cgc, rectArtifact1);
+         
+      }
+      
 #endif
-   
-   auto rectFrame = [self frame];
-   
-   p->macos_window_draw(cgc, rectFrame.size);
+      
+      auto rectFrame = [self frame];
+      
+      p->macos_window_draw(cgc, rectFrame.size);
+
    
    p->profiling_on_end_draw_rectangle();
    

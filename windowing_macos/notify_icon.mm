@@ -62,7 +62,11 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
    // http://stackoverflow.com/questions/3409985/how-to-create-a-menubar-application-for-mac
    m_statusitem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
    
-   [ [ [ m_statusitem button ] cell ] setHighlighted: YES];
+   if (@available(macOS 10.10, *)) {
+       [ [ [ m_statusitem button ] cell ] setHighlighted: YES];
+   } else {
+      [ m_statusitem setHighlightMode: YES ];
+   }
    
 //   auto pimage = [NSImage alloc];
 //
@@ -81,7 +85,11 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
 
       }
    
-      [ [m_statusitem button] setImage: pimage ];
+   if (@available(macOS 10.10, *)) {
+          [ [m_statusitem button] setImage: pimage ];
+      } else {
+         [ m_statusitem setImage: pimage ];
+      }
       
 //   }
    
@@ -157,7 +165,11 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
    
    [m_statusitem setMenu: m_menu];
    
-   [ [ m_statusitem button ] setEnabled:YES];
+   if (@available(macOS 10.10, *)) {
+       [ [ m_statusitem button ] setEnabled:YES];
+   } else {
+      [ m_statusitem setEnabled:YES];
+   }
    
    return self;
    

@@ -5,5 +5,11 @@
 #define __LIBARCHIVE_CONFIG_H_INCLUDED
 
 
+
+
 #include "configuration/config.h"
+
+#ifdef MACOS_MONTEREY
+#undef HAVE_LINKAT
+#endif
 

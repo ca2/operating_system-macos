@@ -140,28 +140,43 @@ void ns_set_wallpaper(const char * pszUrl)
       
       NSScreen * pmainscreen = [ NSScreen mainScreen ];
       
-      NSDictionary * options =
-      [
-         NSDictionary
+      
+      NSColor * pcolorFill = nil;
+      
+      if (@available(macOS 10.10, *)) {
+         pcolorFill =[ NSColor systemGrayColor   ];
          
-         dictionaryWithObjectsAndKeys:
+      }
+      else
+      {
+         
+         pcolorFill = [ NSColor lightGrayColor];
+         
+      }
+
+         NSDictionary * options =
+         [
+            NSDictionary
             
-            [ NSColor systemGrayColor   ],
+            dictionaryWithObjectsAndKeys:
+               
+               pcolorFill,
             NSWorkspaceDesktopImageFillColorKey,
-        
+            
             [ NSNumber numberWithBool: NO ],
             NSWorkspaceDesktopImageAllowClippingKey,
-        
+            
             [ NSNumber numberWithInteger: NSImageScaleNone ],
             NSWorkspaceDesktopImageScalingKey,
-         
+            
             nil
+            
+         ];
          
-      ];
-      
-      const char * pszError = nullptr;
-
-      BOOL bOk = [ [ NSWorkspace sharedWorkspace ] setDesktopImageURL: url forScreen: pmainscreen options:options error:&error];
+         const char * pszError = nullptr;
+         
+         BOOL bOk = [ [ NSWorkspace sharedWorkspace ] setDesktopImageURL: url forScreen: pmainscreen options:options error:&error];
+     
       
       if(bOk)
       {
