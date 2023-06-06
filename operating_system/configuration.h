@@ -9,7 +9,9 @@
 
 
 #if defined(DEBUG) && DEBUG > 0
+#ifndef _DEBUG
 #define _DEBUG
+#endif
 #endif
 
 

@@ -39,7 +39,7 @@
 		9AC2D1D226542FBA00CC8096 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1C126542FBA00CC8096 /* _factory.cpp */; };
 		9AC2D1D426542FBA00CC8096 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1C726542FBA00CC8096 /* framework.h */; };
 		9AC2D1D526542FBA00CC8096 /* interaction_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1C826542FBA00CC8096 /* interaction_impl.cpp */; };
-		9AC2D1DC265431BD00CC8096 /* _library.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1DB265431BD00CC8096 /* _library.h */; };
+		9AC2D1DC265431BD00CC8096 /* aaa_library.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1DB265431BD00CC8096 /* aaa_library.h */; };
 		9AC2D1F426543C7E00CC8096 /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1F326543C7E00CC8096 /* _mm.h */; };
 /* End PBXBuildFile section */
 
@@ -147,7 +147,7 @@
 		9AC2D1C726542FBA00CC8096 /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
 		9AC2D1C826542FBA00CC8096 /* interaction_impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interaction_impl.cpp; sourceTree = "<group>"; };
 		9AC2D1DA2654309000CC8096 /* _.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
-		9AC2D1DB265431BD00CC8096 /* _library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _library.h; sourceTree = "<group>"; };
+		9AC2D1DB265431BD00CC8096 /* aaa_library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aaa_library.h; sourceTree = "<group>"; };
 		9AC2D1F326543C7E00CC8096 /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
 		9AC2D2012654615500CC8096 /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
 		A1CFD778154F5EAA007447E2 /* libaura_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libaura_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,7 +261,7 @@
 				9A03B80C2A25BDC500A0E33E /* _____debug.xcconfig */,
 				9A03B80A2A25BDC500A0E33E /* _____release.xcconfig */,
 				9AC2D1DA2654309000CC8096 /* _.h */,
-				9AC2D1DB265431BD00CC8096 /* _library.h */,
+				9AC2D1DB265431BD00CC8096 /* aaa_library.h */,
 				9AC2D2012654615500CC8096 /* _c_mm.h */,
 				9AC2D1F326543C7E00CC8096 /* _mm.h */,
 				9AC2D1C126542FBA00CC8096 /* _factory.cpp */,
@@ -312,7 +312,7 @@
 			files = (
 				9AC2D1F426543C7E00CC8096 /* _mm.h in Headers */,
 				9AC2D1D126542FBA00CC8096 /* interaction_impl.h in Headers */,
-				9AC2D1DC265431BD00CC8096 /* _library.h in Headers */,
+				9AC2D1DC265431BD00CC8096 /* aaa_library.h in Headers */,
 				9A5A897226D2CA88004AF957 /* shell.h in Headers */,
 				9AC2D1D426542FBA00CC8096 /* framework.h in Headers */,
 				9A5D73922656D1DC00D5C39E /* node.h in Headers */,
@@ -703,7 +703,6 @@
 					"$(WorkspaceDir)/operating_system/operating_system-posix",
 					"$(WorkspaceDir)/port/_",
 					"$(WorkspaceDir)/port/include",
-					"$(WorkspaceDir)/../operating_system/include",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/..",
 					"$(PROJECT_DIR)/../..",
@@ -793,7 +792,6 @@
 					"$(WorkspaceDir)/operating_system/operating_system-posix",
 					"$(WorkspaceDir)/port/_",
 					"$(WorkspaceDir)/port/include",
-					"$(WorkspaceDir)/../operating_system/include",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/..",
 					"$(PROJECT_DIR)/../..",
