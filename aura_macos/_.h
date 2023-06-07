@@ -11,14 +11,14 @@
 #include "apex_macos/_.h"
 
 
-#if defined(_AURA_MACOS_LIBRARY)
+#if defined(_aura_macos_project)
    #define CLASS_DECL_AURA_MACOS  CLASS_DECL_EXPORT
 #else
    #define CLASS_DECL_AURA_MACOS  CLASS_DECL_IMPORT
 #endif
 
-#if 0
+
 #include "_c_mm.h"
-#endif
+
 
 

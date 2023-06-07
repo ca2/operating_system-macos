@@ -5,7 +5,6 @@
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 2013-09-17.
 //
 //
-
 #include "framework.h"
 #include "window_impl.h"
 #include "acme/constant/message.h"
