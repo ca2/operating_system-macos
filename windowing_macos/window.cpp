@@ -978,7 +978,7 @@ pmessage->m_atom = emessage
 
                _NEW_MESSAGE(pactivate, ::message::activate, e_message_activate);
 
-               pactivate->m_wparam = __MAKE_LONG(e_activate_click_active, 0);
+               pactivate->m_wparam = make_u32(e_activate_click_active, 0);
                pactivate->m_lparam = 0;
 
                post_message(pactivate);
@@ -1887,14 +1887,14 @@ pmessage->m_atom = emessage
    //
    //      }
       
-      INFORMATION("macos::window::macos_window_on_hide");
+      information("macos::window::macos_window_on_hide");
 
       auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(::is_null(puserinteraction))
       {
 
-         WARNING("macos::window::macos_window_on_hide (2) puserinteraction == nullptr");
+         warning("macos::window::macos_window_on_hide (2) puserinteraction == nullptr");
 
          return;
 
@@ -1975,7 +1975,7 @@ pmessage->m_atom = emessage
          else if(puserinteraction->m_pinteractionimpl && puserinteraction->m_pinteractionimpl->m_timeLastExposureAddUp.elapsed() < 300_ms)
          {
 
-            INFORMATION("Ignored minituarize request (by toggle intent) because of recent full exposure.");
+            information("Ignored minituarize request (by toggle intent) because of recent full exposure.");
 
          }
          else

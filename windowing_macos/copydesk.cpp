@@ -243,7 +243,7 @@ namespace windowing_macos
 
       int iScan = 0;
 
-      ::acme::malloc < color32_t * > pcolorref = (color32_t *) macos_clipboard_get_image(w, h, iScan);
+      ::acme::malloc < image32_t * > pcolorref = (image32_t *) macos_clipboard_get_image(w, h, iScan);
 
       if(pcolorref == nullptr)
       {
@@ -256,10 +256,10 @@ namespace windowing_macos
       
       pimage->map();
       
-      if(pimage->colorref() != nullptr)
+      if(pimage->image32() != nullptr)
       {
       
-         ::_001ProperCopyColorref(pimage->colorref(), w, h, pimage->scan_size(), pcolorref, iScan);
+         ::_001ProperCopyColorref(pimage->image32(), w, h, pimage->scan_size(), pcolorref, iScan);
          
       }
 //      else if(pimage->m_pframea->is_set())
