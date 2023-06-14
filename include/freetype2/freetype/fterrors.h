@@ -36,7 +36,7 @@
    *   **Error Formats**
    *
    *   The configuration macro `FT_CONFIG_OPTION_USE_MODULE_ERRORS` can be
-   *   defined in `ftoption.h` in order to make the higher byte indicate the
+   *   defined in `ftoption.h` in order to make the higher ::u8 indicate the
    *   module where the error has happened (this is not compatible with
    *   standard builds of FreeType~2, however).  See the file `ftmoderr.h`
    *   for more details.

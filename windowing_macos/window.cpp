@@ -1356,7 +1356,7 @@ pmessage->m_atom = emessage
    //
    //         puserinteraction->window_state().m_point = rectangle.origin;
    //
-   //         TRACE("window::macos_window_resized effective position is different from requested position");
+   //         information("window::macos_window_resized effective position is different from requested position");
    //
    //         puserinteraction->post_message(e_message_reposition, 0, puserinteraction->window_state().m_point.lparam());
    //
@@ -1367,7 +1367,7 @@ pmessage->m_atom = emessage
    //
    //         puserinteraction->m_sizeRequest = rectangle.size_i32;
    //
-   //         TRACE("window::macos_window_resized effective position is different from requested position");
+   //         information("window::macos_window_resized effective position is different from requested position");
    //
    //         puserinteraction->post_message(e_message_size, 0, puserinteraction->m_sizeRequest.lparam());
    //
@@ -1541,7 +1541,7 @@ pmessage->m_atom = emessage
    ////
    ////         puserinteraction->m_pointRequest = point;
    ////
-   ////         TRACE("window::macos_window_resized effective position is different from requested position");
+   ////         information("window::macos_window_resized effective position is different from requested position");
    ////
    ////      }
    ////

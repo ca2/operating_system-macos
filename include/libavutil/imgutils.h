@@ -35,9 +35,9 @@
  * Compute the max pixel step for each plane of an image with a
  * format described by pixdesc.
  *
- * The pixel step is the distance in bytes between the first byte of
+ * The pixel step is the distance in bytes between the first ::u8 of
  * the group of bytes which describe a pixel component and the first
- * byte of the successive group in the same plane for the same
+ * ::u8 of the successive group in the same plane for the same
  * component.
  *
  * @param max_pixsteps an array which is filled with the max pixel step
@@ -111,7 +111,7 @@ int av_image_alloc(uint8_t *pointers[4], int linesizes[4],
 /**
  * Copy image plane from src to dst.
  * That is, copy "height" number of lines of "bytewidth" bytes each.
- * The first byte of each successive line is separated by *_linesize
+ * The first ::u8 of each successive line is separated by *_linesize
  * bytes.
  *
  * bytewidth must be contained by both absolute values of dst_linesize

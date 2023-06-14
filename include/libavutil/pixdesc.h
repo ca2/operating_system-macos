@@ -313,7 +313,7 @@ char *av_get_pix_fmt_string(char *buf, int buf_size,
  * format writes the values corresponding to the palette
  * component c in data[1] to dst, rather than the palette indexes in
  * data[0]. The behavior is undefined if the format is not paletted.
- * @param dst_element_size size of elements in dst array (2 or 4 byte)
+ * @param dst_element_size size of elements in dst array (2 or 4 ::u8)
  */
 void av_read_image_line2(void *dst, const uint8_t *data[4],
                         const int linesize[4], const AVPixFmtDescriptor *desc,
@@ -337,7 +337,7 @@ void av_read_image_line(uint16_t *dst, const uint8_t *data[4],
  * @param y the vertical coordinate of the first pixel to write
  * @param w the width of the line to write, that is the number of
  * values to write to the image line
- * @param src_element_size size of elements in src array (2 or 4 byte)
+ * @param src_element_size size of elements in src array (2 or 4 ::u8)
  */
 void av_write_image_line2(const void *src, uint8_t *data[4],
                          const int linesize[4], const AVPixFmtDescriptor *desc,

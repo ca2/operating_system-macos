@@ -787,7 +787,7 @@ typedef struct AVIndexEntry {
                                           * Flag is used to indicate which frame should be discarded after decoding.
                                           */
     int flags:2;
-    int size:30; //Yeah, trying to keep the size of this small to reduce memory requirements (it is 24 vs. 32 bytes due to possible 8-byte alignment).
+    int size:30; //Yeah, trying to keep the size of this small to reduce memory requirements (it is 24 vs. 32 bytes due to possible 8-::u8 alignment).
     int min_distance;         /**< Minimum distance between this and the previous keyframe, used to avoid unneeded searching. */
 } AVIndexEntry;
 
@@ -1569,7 +1569,7 @@ typedef struct AVFormatContext {
     /**
      * IO repositioned flag.
      * This is set by avformat when the underlaying IO context read pointer
-     * is repositioned, for example when doing byte based seeking.
+     * is repositioned, for example when doing ::u8 based seeking.
      * Demuxers can use the flag to detect such changes.
      */
     int io_repositioned;
@@ -2128,7 +2128,7 @@ int avformat_seek_file(AVFormatContext *s, int stream_index, int64_t min_ts, int
 
 /**
  * Discard all internally buffered data. This can be useful when dealing with
- * discontinuities in the byte stream. Generally works only with formats that
+ * discontinuities in the ::u8 stream. Generally works only with formats that
  * can resync. This includes headerless formats like MPEG-TS/TS but should also
  * work with NUT, Ogg and in a limited way AVI for example.
  *
@@ -2322,7 +2322,7 @@ int av_write_uncoded_frame(AVFormatContext *s, int stream_index,
  * If the muxer supports it, this function makes it possible to write an AVFrame
  * structure directly, without encoding it into a packet.
  * It is mostly useful for devices and similar special muxers that use raw
- * video or PCM data and will not serialize it into a byte stream.
+ * video or PCM data and will not serialize it into a ::u8 stream.
  *
  * To test whether it is possible to use it with a given muxer and stream,
  * use av_write_uncoded_frame_query().

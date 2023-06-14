@@ -68,7 +68,7 @@ void av_blowfish_crypt_ecb(struct AVBlowfish *ctx, uint32_t *xl, uint32_t *xr,
  * @param ctx an AVBlowfish context
  * @param dst destination array, can be equal to src
  * @param src source array, can be equal to dst
- * @param count number of 8 byte blocks
+ * @param count number of 8 ::u8 blocks
  * @param iv initialization vector for CBC mode, if NULL ECB will be used
  * @param decrypt 0 for encryption, 1 for decryption
  */

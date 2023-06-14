@@ -116,7 +116,7 @@ void av_bprint_init(AVBPrint *buf, unsigned size_init, unsigned size_max);
  * The buffer will not be reallocated.
  *
  * @param buf     buffer structure to init
- * @param buffer  byte buffer to use for the string data
+ * @param buffer  ::u8 buffer to use for the string data
  * @param size    size of buffer
  */
 void av_bprint_init_for_buffer(AVBPrint *buf, char *buffer, unsigned size);

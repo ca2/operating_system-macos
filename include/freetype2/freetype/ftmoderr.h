@@ -21,16 +21,16 @@
    * This file is used to define the FreeType module error codes.
    *
    * If the macro `FT_CONFIG_OPTION_USE_MODULE_ERRORS` in `ftoption.h` is
-   * set, the lower byte of an error value identifies the error code as
-   * usual.  In addition, the higher byte identifies the module.  For
+   * set, the lower ::u8 of an error value identifies the error code as
+   * usual.  In addition, the higher ::u8 identifies the module.  For
    * example, the error `FT_Err_Invalid_File_Format` has value 0x0003, the
    * error `TT_Err_Invalid_File_Format` has value 0x1303, the error
    * `T1_Err_Invalid_File_Format` has value 0x1403, etc.
    *
    * Note that `FT_Err_Ok`, `TT_Err_Ok`, etc. are always equal to zero,
-   * including the high byte.
+   * including the high ::u8.
    *
-   * If `FT_CONFIG_OPTION_USE_MODULE_ERRORS` isn't set, the higher byte of an
+   * If `FT_CONFIG_OPTION_USE_MODULE_ERRORS` isn't set, the higher ::u8 of an
    * error value is set to zero.
    *
    * To hide the various `XXX_Err_` prefixes in the source code, FreeType

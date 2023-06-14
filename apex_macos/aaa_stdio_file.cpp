@@ -125,7 +125,7 @@ namespace macos
 
       size_t nRead = 0;
 
-      if ((nRead = fread(lpBuf, sizeof(byte), nCount, m_pStream)) == 0 && !feof(m_pStream))
+      if ((nRead = fread(lpBuf, sizeof(::u8), nCount, m_pStream)) == 0 && !feof(m_pStream))
          throw ::file::exception(error_file, -1, errno, m_strFileName);
       if (ferror(m_pStream))
       {
@@ -141,7 +141,7 @@ namespace macos
       ASSERT(m_pStream != nullptr);
       //   ASSERT(fx_is_valid_address(lpBuf, nCount, false));
 
-      if (fwrite(lpBuf, sizeof(byte), nCount, m_pStream) != nCount)
+      if (fwrite(lpBuf, sizeof(::u8), nCount, m_pStream) != nCount)
          throw ::file::exception(error_file, -1, errno, m_strFileName);
    }
 

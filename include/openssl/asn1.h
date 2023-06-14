@@ -472,7 +472,7 @@ typedef const ASN1_ITEM *ASN1_ITEM_EXP (void);
 
 /*
  * If this is set we don't attempt to interpret content: just assume all
- * strings are 1 byte per character. This will produce some pretty odd
+ * strings are 1 ::u8 per character. This will produce some pretty odd
  * looking output!
  */
 

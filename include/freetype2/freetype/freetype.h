@@ -667,7 +667,7 @@ FT_BEGIN_HEADER
    *
    *   FT_ENCODING_SJIS ::
    *     Shift JIS encoding for Japanese.  More info at
-   *     'https://en.wikipedia.org/wiki/Shift_JIS'.  See note on multi-byte
+   *     'https://en.wikipedia.org/wiki/Shift_JIS'.  See note on multi-::u8
    *     encodings below.
    *
    *   FT_ENCODING_PRC ::
@@ -2061,7 +2061,7 @@ FT_BEGIN_HEADER
    *
    * @fields:
    *   tag ::
-   *     A four-byte identification tag.
+   *     A four-::u8 identification tag.
    *
    *   data ::
    *     A pointer to the parameter data.
@@ -2093,7 +2093,7 @@ FT_BEGIN_HEADER
    *     A set of bit flags indicating how to use the structure.
    *
    *   memory_base ::
-   *     The first byte of the file in memory.
+   *     The first ::u8 of the file in memory.
    *
    *   memory_size ::
    *     The size in bytes of the file in memory.
@@ -2981,7 +2981,7 @@ FT_BEGIN_HEADER
    *   FT_LOAD_MONOCHROME ::
    *     This flag is used with @FT_LOAD_RENDER to indicate that you want to
    *     render an outline glyph to a 1-bit monochrome bitmap glyph, with
-   *     8~pixels packed into each byte of the bitmap data.
+   *     8~pixels packed into each ::u8 of the bitmap data.
    *
    *     Note that this has no effect on the hinting algorithm used.  You
    *     should rather use @FT_LOAD_TARGET_MONO so that the
@@ -3656,7 +3656,7 @@ FT_BEGIN_HEADER
    *
    * @note:
    *   An error is returned if the face doesn't provide glyph names or if the
-   *   glyph index is invalid.  In all cases of failure, the first byte of
+   *   glyph index is invalid.  In all cases of failure, the first ::u8 of
    *   `buffer` is set to~0 to indicate an empty name.
    *
    *   The glyph name is truncated to fit within the buffer if it is too

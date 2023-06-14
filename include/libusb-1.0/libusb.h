@@ -164,7 +164,7 @@ extern "C" {
  * little endian systems, this function does nothing. On big endian systems,
  * the bytes are swapped.
  * \param x the host-endian value to convert
- * \returns the value in little-endian byte order
+ * \returns the value in little-endian ::u8 order
  */
 static inline uint16_t libusb_cpu_to_le16(const uint16_t x)
 {
@@ -183,7 +183,7 @@ static inline uint16_t libusb_cpu_to_le16(const uint16_t x)
  * little endian systems, this function does nothing. On big endian systems,
  * the bytes are swapped.
  * \param x the little-endian value to convert
- * \returns the value in host-endian byte order
+ * \returns the value in host-endian ::u8 order
  */
 #define libusb_le16_to_cpu libusb_cpu_to_le16
 
@@ -480,7 +480,7 @@ enum libusb_iso_usage_type {
 /** \ingroup libusb_desc
  * A structure representing the standard USB device descriptor. This
  * descriptor is documented in section 9.6.1 of the USB 3.0 specification.
- * All multiple-byte fields are represented in host-endian format.
+ * All multiple-::u8 fields are represented in host-endian format.
  */
 struct libusb_device_descriptor {
 	/** Size of this descriptor (in bytes) */
@@ -534,7 +534,7 @@ struct libusb_device_descriptor {
 /** \ingroup libusb_desc
  * A structure representing the standard USB endpoint descriptor. This
  * descriptor is documented in section 9.6.6 of the USB 3.0 specification.
- * All multiple-byte fields are represented in host-endian format.
+ * All multiple-::u8 fields are represented in host-endian format.
  */
 struct libusb_endpoint_descriptor {
 	/** Size of this descriptor (in bytes) */
@@ -584,7 +584,7 @@ struct libusb_endpoint_descriptor {
 /** \ingroup libusb_desc
  * A structure representing the standard USB interface descriptor. This
  * descriptor is documented in section 9.6.5 of the USB 3.0 specification.
- * All multiple-byte fields are represented in host-endian format.
+ * All multiple-::u8 fields are represented in host-endian format.
  */
 struct libusb_interface_descriptor {
 	/** Size of this descriptor (in bytes) */
@@ -647,7 +647,7 @@ struct libusb_interface {
 /** \ingroup libusb_desc
  * A structure representing the standard USB configuration descriptor. This
  * descriptor is documented in section 9.6.3 of the USB 3.0 specification.
- * All multiple-byte fields are represented in host-endian format.
+ * All multiple-::u8 fields are represented in host-endian format.
  */
 struct libusb_config_descriptor {
 	/** Size of this descriptor (in bytes) */
@@ -694,7 +694,7 @@ struct libusb_config_descriptor {
 /** \ingroup libusb_desc
  * A structure representing the superspeed endpoint companion
  * descriptor. This descriptor is documented in section 9.6.7 of
- * the USB 3.0 specification. All multiple-byte fields are represented in
+ * the USB 3.0 specification. All multiple-::u8 fields are represented in
  * host-endian format.
  */
 struct libusb_ss_endpoint_companion_descriptor {
@@ -744,7 +744,7 @@ struct libusb_bos_dev_capability_descriptor {
 /** \ingroup libusb_desc
  * A structure representing the Binary Device Object Store (BOS) descriptor.
  * This descriptor is documented in section 9.6.2 of the USB 3.0 specification.
- * All multiple-byte fields are represented in host-endian format.
+ * All multiple-::u8 fields are represented in host-endian format.
  */
 struct libusb_bos_descriptor {
 	/** Size of this descriptor (in bytes) */
@@ -769,7 +769,7 @@ struct libusb_bos_descriptor {
 /** \ingroup libusb_desc
  * A structure representing the USB 2.0 Extension descriptor
  * This descriptor is documented in section 9.6.2.1 of the USB 3.0 specification.
- * All multiple-byte fields are represented in host-endian format.
+ * All multiple-::u8 fields are represented in host-endian format.
  */
 struct libusb_usb_2_0_extension_descriptor {
 	/** Size of this descriptor (in bytes) */
@@ -795,7 +795,7 @@ struct libusb_usb_2_0_extension_descriptor {
 /** \ingroup libusb_desc
  * A structure representing the SuperSpeed USB Device Capability descriptor
  * This descriptor is documented in section 9.6.2.2 of the USB 3.0 specification.
- * All multiple-byte fields are represented in host-endian format.
+ * All multiple-::u8 fields are represented in host-endian format.
  */
 struct libusb_ss_usb_device_capability_descriptor {
 	/** Size of this descriptor (in bytes) */
@@ -837,7 +837,7 @@ struct libusb_ss_usb_device_capability_descriptor {
 /** \ingroup libusb_desc
  * A structure representing the Container ID descriptor.
  * This descriptor is documented in section 9.6.2.3 of the USB 3.0 specification.
- * All multiple-byte fields, except UUIDs, are represented in host-endian format.
+ * All multiple-::u8 fields, except UUIDs, are represented in host-endian format.
  */
 struct libusb_container_id_descriptor {
 	/** Size of this descriptor (in bytes) */
@@ -1440,7 +1440,7 @@ int LIBUSB_CALL libusb_set_auto_detach_kernel_driver(
  * transfer->buffer.
  *
  * \param transfer a transfer
- * \returns pointer to the first byte of the data section
+ * \returns pointer to the first ::u8 of the data section
  */
 static inline unsigned char *libusb_control_transfer_get_data(
 	struct libusb_transfer *transfer)
@@ -1469,7 +1469,7 @@ static inline struct libusb_control_setup *libusb_control_transfer_get_setup(
 /** \ingroup libusb_asyncio
  * Helper function to populate the setup packet (first 8 bytes of the data
  * buffer) for a control transfer. The wIndex, wValue and wLength values should
- * be given in host-endian byte order.
+ * be given in host-endian ::u8 order.
  *
  * \param buffer buffer to output the setup packet into
  * This pointer must be aligned to at least 2 bytes boundary.

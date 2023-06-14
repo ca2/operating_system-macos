@@ -263,9 +263,9 @@ namespace acme_macos
 ////      if(m_iPutCharacterBack >= 0)
 ////      {
 ////
-////         auto p = (byte *) lpBuf;
+////         auto p = (::u8 *) lpBuf;
 ////
-////         *p = (::byte) m_iPutCharacterBack;
+////         *p = (::u8) m_iPutCharacterBack;
 ////
 ////         nCount--;
 ////
@@ -299,7 +299,7 @@ namespace acme_macos
 //
 //         readNow = (size_t) minimum(0x7fffffff, nCount);
 //
-//         auto iRead = ::read(m_iFile, &((byte *)lpBuf)[pos], readNow);
+//         auto iRead = ::read(m_iFile, &((::u8 *)lpBuf)[pos], readNow);
 //
 //         if(iRead < 0)
 //         {
@@ -372,7 +372,7 @@ namespace acme_macos
 //      while(nCount > 0)
 //      {
 //
-//         auto iWrite = ::write(m_iFile, &((const byte *)lpBuf)[pos], (size_t) minimum(0x7fffffff, nCount));
+//         auto iWrite = ::write(m_iFile, &((const ::u8 *)lpBuf)[pos], (size_t) minimum(0x7fffffff, nCount));
 //
 //         if(iWrite < 0)
 //         {

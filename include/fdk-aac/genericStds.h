@@ -562,7 +562,7 @@ UINT FDKfwrite_EL(const void *ptrf, INT size, UINT nmemb, FDKFILE *fp);
 
 /**
  * \brief        Read variable of size "size" as little endian. Convert
- * automatically to host endianess. 4-byte alignment is enforced for 24 bit
+ * automatically to host endianess. 4-::u8 alignment is enforced for 24 bit
  * data, at 32 bit full scale.
  * \param dst    Pointer to memory where to store data into.
  * \param size   Size of each item to be read.

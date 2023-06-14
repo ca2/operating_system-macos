@@ -162,7 +162,7 @@ FT_BEGIN_HEADER
    * @output:
    *   adata ::
    *     A structure describing the returned glyph data bytes (which will be
-   *     accessed as a read-only byte block).
+   *     accessed as a read-only ::u8 block).
    *
    * @return:
    *   FreeType error code.  0~means success.
@@ -198,7 +198,7 @@ FT_BEGIN_HEADER
    *
    *   data ::
    *     A structure describing the glyph data bytes (which will be accessed
-   *     as a read-only byte block).
+   *     as a read-only ::u8 block).
    *
    */
   typedef void

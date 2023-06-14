@@ -123,7 +123,7 @@ int av_fifo_generic_read(AVFifoBuffer *f, void *dest, int buf_size, void (*func)
  * the second is dest_buf, the third is dest_buf_size.
  * func must return the number of bytes written to dest_buf, or <= 0 to
  * indicate no more data available to write.
- * If func is NULL, src is interpreted as a simple byte array for source data.
+ * If func is NULL, src is interpreted as a simple ::u8 array for source data.
  * @return the number of bytes written to the FIFO
  */
 int av_fifo_generic_write(AVFifoBuffer *f, void *src, int size, int (*func)(void*, void*, int));

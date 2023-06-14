@@ -49,7 +49,7 @@ int av_aes_init(struct AVAES *a, const uint8_t *key, int key_bits, int decrypt);
 
 /**
  * Encrypt or decrypt a buffer using a previously initialized context.
- * @param count number of 16 byte blocks
+ * @param count number of 16 ::u8 blocks
  * @param dst destination array, can be equal to src
  * @param src source array, can be equal to dst
  * @param iv initialization vector for CBC mode, if NULL then ECB will be used

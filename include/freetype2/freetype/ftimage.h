@@ -139,11 +139,11 @@ FT_BEGIN_HEADER
    *   FT_PIXEL_MODE_MONO ::
    *     A monochrome bitmap, using 1~bit per pixel.  Note that pixels are
    *     stored in most-significant order (MSB), which means that the
-   *     left-most pixel in a byte has value 128.
+   *     left-most pixel in a ::u8 has value 128.
    *
    *   FT_PIXEL_MODE_GRAY ::
    *     An 8-bit bitmap, generally used to represent anti-aliased glyph
-   *     images.  Each pixel is stored in one byte.  Note that the number of
+   *     images.  Each pixel is stored in one ::u8.  Note that the number of
    *     'gray' levels is stored in the `num_grays` field of the @FT_Bitmap
    *     structure (it generally is 256).
    *
@@ -231,7 +231,7 @@ FT_BEGIN_HEADER
    *     In all cases, the pitch is an offset to add to a bitmap pointer in
    *     order to go down one row.
    *
-   *     Note that 'padding' means the alignment of a bitmap to a byte
+   *     Note that 'padding' means the alignment of a bitmap to a ::u8
    *     border, and FreeType functions normally align to the smallest
    *     possible integer value.
    *
@@ -1174,7 +1174,7 @@ FT_BEGIN_HEADER
    *     A handle to the new raster object.
    *
    *   mode ::
-   *     A 4-byte tag used to name the mode or property.
+   *     A 4-::u8 tag used to name the mode or property.
    *
    *   args ::
    *     A pointer to the new mode/property to use.

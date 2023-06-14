@@ -2,7 +2,7 @@
 
 
 
-//#define LOG(format, ...) TRACE(format, __VA_ARGS__)
+//#define LOG(format, ...) information(format, __VA_ARGS__)
 
 
 

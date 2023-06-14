@@ -83,7 +83,7 @@ enum AVFrameSideDataType {
      */
     AV_FRAME_DATA_DISPLAYMATRIX,
     /**
-     * Active Format Description data consisting of a single byte as specified
+     * Active Format Description data consisting of a single ::u8 as specified
      * in ETSI TS 101 154 using AVActiveFormatDescription enum.
      */
     AV_FRAME_DATA_AFD,
@@ -304,7 +304,7 @@ typedef struct AVFrame {
 #define AV_NUM_DATA_POINTERS 8
     /**
      * pointer to the picture/channel planes.
-     * This might be different from the first allocated byte
+     * This might be different from the first allocated ::u8
      *
      * Some decoders access areas outside 0,0 - width,height, please
      * see avcodec_align_dimensions2(). Some filters and swscale can read

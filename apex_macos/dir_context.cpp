@@ -612,7 +612,7 @@ namespace apex_macos
 //////               FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM, nullptr, dwError, 0, (char *) &pszError, 8, nullptr);
 ////                              FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, nullptr, dwError, 0, (char *) &pszError, 8, nullptr);
 ////
-////               //TRACE("dir_context::mk CreateDirectoryW last error(%d)=%s", dwError, pszError);
+////               //information("dir_context::mk CreateDirectoryW last error(%d)=%s", dwError, pszError);
 ////               // xxx               ::LocalFree(pszError);
 ////               //m_isdirmap.set(stra[i], false);
 ////            }
@@ -1511,7 +1511,7 @@ namespace apex_macos
    //   VERIFY(FindClose(hFind));
 
    //   // strip attribute of NORMAL bit, our API doesn't have a "normal" bit.
-   //   rStatus.m_attribute = (byte)(findFileData.dwFileAttributes & ~FILE_ATTRIBUTE_NORMAL);
+   //   rStatus.m_attribute = (::u8)(findFileData.dwFileAttributes & ~FILE_ATTRIBUTE_NORMAL);
 
    //   // get just the low ::u32 of the file size_i32
    //   ASSERT(findFileData.nFileSizeHigh == 0);

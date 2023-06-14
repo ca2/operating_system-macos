@@ -20,7 +20,7 @@
 
 /**
  * @file
- * byte swapping routines
+ * ::u8 swapping routines
  */
 
 #ifndef AVUTIL_BSWAP_H

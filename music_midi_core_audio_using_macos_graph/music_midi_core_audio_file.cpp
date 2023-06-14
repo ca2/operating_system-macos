@@ -76,7 +76,7 @@ namespace music
 //         }
 //         catch(memory_exception * pe)
 //         {
-//            TRACE( "smfOpenFile: No primitive::memory for image! [%08lX]", cbImage);
+//            information( "smfOpenFile: No primitive::memory for image! [%08lX]", cbImage);
 //            smfrc = ::music::midi::file::ENoMemory;
 //            delete pe;
 //            goto smf_Open_File_Cleanup;
@@ -375,7 +375,7 @@ namespace music
 //
 //         if (tkOffset > m_tkLength)
 //         {
-//            TRACE( "sTTM: Clipping ticks to file length!");
+//            information( "sTTM: Clipping ticks to file length!");
 //            tkOffset = m_tkLength;
 //         }
 //
@@ -506,7 +506,7 @@ namespace music
 //
 //         if (tkOffset > m_tkLength)
 //         {
-//            TRACE( "sMTT: Clipping ticks to file length!");
+//            information( "sMTT: Clipping ticks to file length!");
 //            tkOffset = m_tkLength;
 //         }
 //
@@ -750,7 +750,7 @@ namespace music
 //         smfrc = InsertParmData(tkDelta, lpmh);
 //         if (::music::midi::Success != smfrc)
 //         {
-//            TRACE( "smfInsertParmData[2] %u", (uint32_t)smfrc);
+//            information( "smfInsertParmData[2] %u", (uint32_t)smfrc);
 //            return smfrc;
 //         }
 //         return smfrc;
@@ -765,7 +765,7 @@ namespace music
 //      {
 //         UNREFERENCED_PARAMETER(tkMax);
 //         UNREFERENCED_PARAMETER(cbPrerollNominalMax);
-//         //   TRACE("file::StreamEvent tkDelta %d\n", tkDelta);
+//         //   information("file::StreamEvent tkDelta %d\n", tkDelta);
 //
 //         uint32_t                   dwTempo;
 //         LPDWORD                 lpdw;
@@ -782,7 +782,7 @@ namespace music
 //            {
 //               int32_t iTrack = pEvent->GetTrack();
 //               int32_t iProgramChange = pEvent->GetChB1();
-//               m_keyframe.rbProgram[iTrack] = (byte) iProgramChange;
+//               m_keyframe.rbProgram[iTrack] = (::u8) iProgramChange;
 //               //if(iProgramChange == 54)
 //               //{
 //               // pEvent->SetChB1(62);
@@ -791,7 +791,7 @@ namespace music
 //            if(pEvent->GetTrack() == 9 ||
 //               pEvent->GetTrack() == 15)
 //            {
-//               //         TRACE("ReadEvents Track %d Program %d", pEvent->GetTrack(), m_keyframe.rbProgram[pEvent->GetTrack()]);
+//               //         information("ReadEvents Track %d Program %d", pEvent->GetTrack(), m_keyframe.rbProgram[pEvent->GetTrack()]);
 //            }
 //            if((pEvent->get_type() == ::music::midi::NoteOn ||
 //               pEvent->get_type() == ::music::midi::NoteOff)
@@ -810,7 +810,7 @@ namespace music
 //               {
 //                  iNotePitch += 12;
 //               }
-//               pEvent->SetNotePitch((byte) iNotePitch);
+//               pEvent->SetNotePitch((::u8) iNotePitch);
 //            }
 //
 //            *lpdw++ = (uint32_t)tkDelta;
@@ -834,7 +834,7 @@ namespace music
 //         {
 //            if (pEvent->GetParamSize() != 3)
 //            {
-//               TRACE( "smfReadEvents: Corrupt tempo event");
+//               information( "smfReadEvents: Corrupt tempo event");
 //               return ::music::midi::file::EInvalidFile;
 //            }
 //            dwTempo = (((uint32_t)pEvent->GetParam()[0])<<16)|
@@ -875,7 +875,7 @@ namespace music
 //         //         smfrc = smfInsertParmData(pSmf, pEvent->tkDelta, lpmh);
 //         //            if (::music::midi::Success != smfrc)
 //         //            {
-//         //                TRACE( "smfInsertParmData[2] %u", (uint32_t)smfrc);
+//         //                information( "smfInsertParmData[2] %u", (uint32_t)smfrc);
 //         //                return smfrc;
 //         //            }
 //
@@ -885,7 +885,7 @@ namespace music
 //         //smfrc = smfInsertParmData(pSmf, pEvent->tkDelta, lpmh);
 //         //if (::music::midi::Success != smfrc)
 //         //{
-//         //    TRACE( "smfInsertParmData[2] %u", (uint32_t)smfrc);
+//         //    information( "smfInsertParmData[2] %u", (uint32_t)smfrc);
 //         //    return smfrc;
 //         //}
 //         //         _CrtSetReportFile(_CRT_WARN, debugFile);
@@ -929,7 +929,7 @@ namespace music
 //            smfrc = InsertParmData(tkDelta, lpmh);
 //            if (::music::midi::Success != smfrc)
 //            {
-//               TRACE( "smfInsertParmData[2] %u", (uint32_t)smfrc);
+//               information( "smfInsertParmData[2] %u", (uint32_t)smfrc);
 //               return smfrc;
 //            }
 //
@@ -1008,7 +1008,7 @@ namespace music
 //            smfrc = InsertParmData((imedia_time)0, lpmh);
 //            if (::music::midi::Success != smfrc)
 //            {
-//               TRACE( "smfInsertParmData() -> %u", (uint32_t)smfrc);
+//               information( "smfInsertParmData() -> %u", (uint32_t)smfrc);
 //               return smfrc;
 //            }
 //         }
@@ -1017,7 +1017,7 @@ namespace music
 //         //      smfrc = InsertLyricEvents(NULL, lpmh);
 //         //        if (::music::midi::Success != smfrc)
 //         //      {
-//         //        TRACE( "smfInsertParmData() -> %u", (uint32_t)smfrc);
+//         //        information( "smfInsertParmData() -> %u", (uint32_t)smfrc);
 //         //      return smfrc;
 //         //}
 //         //}
@@ -1092,7 +1092,7 @@ namespace music
 //            m_fdwSMF |= FlagEof;
 //            }
 //
-//            TRACE( "smfReadEvents: ReadEvents() -> %u", (uint32_t)smfrc);
+//            information( "smfReadEvents: ReadEvents() -> %u", (uint32_t)smfrc);
 //            break;
 //            }*/
 //            iTrackFound = -1;
@@ -1149,9 +1149,9 @@ namespace music
 //            #ifdef _DEBUG
 //            //         if(pEventsV1->m_iType == 1)
 //            //         {
-//            //            TRACE("ReadEvents pEventsV1->m_iCurrentToken = %d\n", pEventsV1->m_iCurrentToken);
-//            //            TRACE("ReadEvents pEventsV1->m_iType = %d\n", pEventsV1->m_iType);
-//            //            TRACE("ReadEvents m_ptracks->m_tkPosition = %d\n", m_ptracks->m_tkPosition);
+//            //            information("ReadEvents pEventsV1->m_iCurrentToken = %d\n", pEventsV1->m_iCurrentToken);
+//            //            information("ReadEvents pEventsV1->m_iType = %d\n", pEventsV1->m_iType);
+//            //            information("ReadEvents m_ptracks->m_tkPosition = %d\n", m_ptracks->m_tkPosition);
 //            //         }
 //            #endif
 //            tkDelta = tkMin - m_ptracks->m_tkPosition;
@@ -1172,7 +1172,7 @@ namespace music
 //            else if (::music::midi::Success != smfrc)
 //            {
 //
-//            TRACE( "smfInsertLyricEvent %u", (uint32_t)smfrc);
+//            information( "smfInsertLyricEvent %u", (uint32_t)smfrc);
 //            return smfrc;
 //            }
 //            lpdw = (LPDWORD)(lpmh->lpData + lpmh->dwBytesRecorded);
@@ -1202,7 +1202,7 @@ namespace music
 //            }
 //            else if (::music::midi::Success != smfrc)
 //            {
-//            TRACE( "smfInsertLyricEvent %u", (uint32_t)smfrc);
+//            information( "smfInsertLyricEvent %u", (uint32_t)smfrc);
 //            return smfrc;
 //            }
 //            lpdw = (LPDWORD)(lpmh->lpData + lpmh->dwBytesRecorded);
@@ -1229,7 +1229,7 @@ namespace music
 //                  GetFlags().signalize(::music::midi::file::EndOfFile);
 //               }
 //
-//               TRACE( "smfReadEvents: ReadEvents() -> %u", (uint32_t)smfrc);
+//               information( "smfReadEvents: ReadEvents() -> %u", (uint32_t)smfrc);
 //               break;
 //            }
 //            ::music::e_result vmsr;
@@ -1325,7 +1325,7 @@ namespace music
 //         /* If we got here with a real delta, that means smfReadEvents screwed
 //         ** up calculating left space and we should flag it somehow.
 //         */
-//         /*        TRACE( "Can't fit initial piece of SysEx into buffer!");
+//         /*        information( "Can't fit initial piece of SysEx into buffer!");
 //         return ::music::midi::file::EInvalidFile;
 //         }
 //
@@ -1421,7 +1421,7 @@ namespace music
 //            /* If we got here with a real delta, that means smfReadEvents screwed
 //            ** up calculating left space and we should flag it somehow.
 //            */
-//            TRACE( "Can't fit initial piece of SysEx into buffer!");
+//            information( "Can't fit initial piece of SysEx into buffer!");
 //            return ::music::midi::file::EInvalidFile;
 //         }
 //
@@ -1520,7 +1520,7 @@ namespace music
 //            /* If we got here with a real delta, that means smfReadEvents screwed
 //            ** up calculating left space and we should flag it somehow.
 //            */
-//            TRACE( "Can't fit initial piece of SysEx into buffer!");
+//            information( "Can't fit initial piece of SysEx into buffer!");
 //            return ::music::midi::file::EInvalidFile;
 //         }
 //
@@ -1547,10 +1547,10 @@ namespace music
 //
 //         if (dwLength & 0x80000000L)
 //         {
-//            TRACE( "dwLength %08lX  dwBytesRecorded %08lX  dwBufferLength %08lX", dwLength, lpmh->dwBytesRecorded, lpmh->dwBufferLength);
-//            TRACE( "cbPendingUserEvent %08lX  dwPendingUserEvent %08lX dwRounded %08lX", m_cbPendingUserEvent, m_dwPendingUserEvent, dwRounded);
-//            TRACE( "offset into MIDI image %08lX", (uint32_t)(m_hpbPendingUserEvent - GetImage()));
-//            TRACE( "!hmemcpy is about to fault");
+//            information( "dwLength %08lX  dwBytesRecorded %08lX  dwBufferLength %08lX", dwLength, lpmh->dwBytesRecorded, lpmh->dwBufferLength);
+//            information( "cbPendingUserEvent %08lX  dwPendingUserEvent %08lX dwRounded %08lX", m_cbPendingUserEvent, m_dwPendingUserEvent, dwRounded);
+//            information( "offset into MIDI image %08lX", (uint32_t)(m_hpbPendingUserEvent - GetImage()));
+//            information( "!hmemcpy is about to fault");
 //         }
 //
 //         memcpy(lpdw, m_hpbPendingUserEvent, dwLength);
@@ -1648,7 +1648,7 @@ namespace music
 //                  if (pevent->GetParamSize() != sizeof(m_keyframe.rbTempo))
 //                     return ::music::midi::file::EInvalidFile;
 //
-//                  memcpy((byte *)m_keyframe.rbTempo, pevent->GetParam(), pevent->GetParamSize());
+//                  memcpy((::u8 *)m_keyframe.rbTempo, pevent->GetParam(), pevent->GetParamSize());
 //               }
 //            }
 //            if((bEvent & 0xF0) == ::music::midi::ProgramChange)
@@ -1837,8 +1837,8 @@ namespace music
 //         UNALIGNED CHUNKHDR *       pCh;
 //         int32_t                        iLeft;
 //         int32_t                        iLeftInitial;
-//         byte *                     hpbImage;
-//         byte *                     hpbImageInitial;
+//         ::u8 *                     hpbImage;
+//         ::u8 *                     hpbImageInitial;
 //         uint32_t                      dwLength;
 //         //   track_base *            pTrk = NULL;
 //        ::music::midi::track *                pTrkMidi;
@@ -1955,7 +1955,7 @@ namespace music
 //
 //         if (pTrkMidi->m_smti.m_cbLength > (uint32_t) iLeft)
 //         {
-//         TRACE("Track longer than file!");
+//         information("Track longer than file!");
 //         return ::music::midi::file::EInvalidFile;
 //         }
 //
@@ -2117,7 +2117,7 @@ namespace music
 //         BYTE *            pData[])
 //      {
 //         uint32_t               len;
-//         byte *                  hpbImage;
+//         ::u8 *                  hpbImage;
 //         uint32_t index;
 //
 //         ASSERT(pSmf != NULL);
@@ -2164,7 +2164,7 @@ namespace music
 //            return ::music::midi::file::ENoMemory;
 //         }
 //
-//         byte * hpbDest, * hpbSrc;
+//         ::u8 * hpbDest, * hpbSrc;
 //
 //         hpbDest = GetImage();
 //
@@ -2245,13 +2245,13 @@ namespace music
 //         hmmio = mmioOpen(lpFilePath, &mmioinfo, MMIO_WRITE |MMIO_ALLOCBUF);
 //         if ((HMMIO)NULL == hmmio)
 //         {
-//            TRACE(_T( "smfOpenFile: mmioOpen failed!"));
+//            information(_T( "smfOpenFile: mmioOpen failed!"));
 //            return ::music::midi::file::ESaveFailed;
 //         }
 //
 //         if(mmioWrite(hmmio, (char _huge* ) GetImage(), GetImageSize()) != (int32_t) GetImageSize())
 //         {
-//            TRACE(_T( "smfOpenFile: mmioOpen failed!"));
+//            information(_T( "smfOpenFile: mmioOpen failed!"));
 //            return ::music::midi::file::ESaveFailed;
 //         }
 //
@@ -2382,8 +2382,8 @@ namespace music
 //      track * pTrack = m_ptracks->GetEventTrack(pEventOld);
 //      if(pTrack == NULL)
 //      return TrackNotFound;
-//      byte * hpbImage = pEventOld->GetImage();
-//      byte * hpbFileImage = m_hpbImage;
+//      ::u8 * hpbImage = pEventOld->GetImage();
+//      ::u8 * hpbFileImage = m_hpbImage;
 //      if(pEventOld->GetImageSize() != pEventNew->m_cbImage)
 //      {
 //      int32_t iAddUp = pEventNew->m_cbImage - pEventOld->GetImageSize();
@@ -2409,8 +2409,8 @@ namespace music
 //      track * pTrack = m_ptracks->GetEventTrack(pEventOld);
 //      if(pTrack == NULL)
 //      return TrackNotFound;
-//      byte * hpbImage = pEventOld->GetImage();
-//      byte * hpbFileImage = m_hpbImage;
+//      ::u8 * hpbImage = pEventOld->GetImage();
+//      ::u8 * hpbFileImage = m_hpbImage;
 //      if(pEventOld->GetImageSize() != pEventNew->m_cbImage)
 //      {
 //      int32_t iAddUp = pEventNew->m_cbImage - pEventOld->GetImageSize();
@@ -2446,7 +2446,7 @@ namespace music
 //      imedia_time tkOldDelta;
 //      uint32_t dwGetUsed = ::music::midi::event_base::GetVDWord(pEvent->GetImage(), 256, &tkOldDelta);
 //      ASSERT(tkOldDelta == pEvent->_GetDelta());
-//      byte * hpbImage = pEvent->GetImage();
+//      ::u8 * hpbImage = pEvent->GetImage();
 //      if(dwSetUsed != dwGetUsed)
 //      {
 //      int32_t iAddUp = dwSetUsed - dwGetUsed;
@@ -2454,7 +2454,7 @@ namespace music
 //      {
 //      if(!allocate(m_cbImage + iAddUp))
 //      {
-//      TRACE("DeleteEvent No Memory for deleting\n");
+//      information("DeleteEvent No Memory for deleting\n");
 //      return ::music::midi::file::ENoMemory;
 //      }
 //      }
@@ -2677,7 +2677,7 @@ namespace music
 //            smfrc = InsertParmData((imedia_time)0, lpmh);
 //            if(::music::midi::Success != smfrc)
 //            {
-//               TRACE( "smfInsertParmData() -> %u", (uint32_t)smfrc);
+//               information( "smfInsertParmData() -> %u", (uint32_t)smfrc);
 //               return smfrc;
 //            }
 //         }
@@ -2740,7 +2740,7 @@ namespace music
 //               //
 //               return smfrc;
 //
-//               TRACE( "smfReadEvents: ReadEvents() -> %u", (uint32_t)smfrc);
+//               information( "smfReadEvents: ReadEvents() -> %u", (uint32_t)smfrc);
 //               break;
 //            }
 //
@@ -2815,14 +2815,14 @@ namespace music
 //               }
 //               /*         if(pevent->get_type() == NoteOn)
 //               {
-//               TRACE("WorkStreamRender: NoteOn     position %d Delta %d Track %d\n",
+//               information("WorkStreamRender: NoteOn     position %d Delta %d Track %d\n",
 //               m_ptracks->get_position(),
 //               tkDelta,
 //               pevent->GetTrack());
 //               }
 //               else
 //               {
-//               TRACE("WorkStreamRender: Type Other position %d Delta %d\n",
+//               information("WorkStreamRender: Type Other position %d Delta %d\n",
 //               m_ptracks->get_position(),
 //               tkDelta);
 //               }*/
@@ -3029,7 +3029,7 @@ namespace music
 //                  if (pevent->GetParamSize() != sizeof(m_keyframe.rbTempo))
 //                     return ::music::midi::file::EInvalidFile;
 //
-//                  memcpy((byte *)m_keyframe.rbTempo, pevent->GetParam(), pevent->GetParamSize());
+//                  memcpy((::u8 *)m_keyframe.rbTempo, pevent->GetParam(), pevent->GetParamSize());
 //               }
 //            }
 //            if((bEvent & 0xF0) == ::music::midi::ProgramChange)
@@ -3205,7 +3205,7 @@ namespace music
 //         }
 //         if (0 == m_tempomap.get_size())
 //         {
-//            TRACE("File contains no tempo map! Insert default tempo.");
+//            information("File contains no tempo map! Insert default tempo.");
 //
 //            m_tempomap.size()++;
 //

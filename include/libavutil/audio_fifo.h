@@ -42,7 +42,7 @@
 /**
  * Context for an Audio FIFO Buffer.
  *
- * - Operates at the sample level rather than the byte level.
+ * - Operates at the sample level rather than the ::u8 level.
  * - Supports multiple channels with either planar or packed sample format.
  * - Automatic reallocation when writing to a full buffer.
  */

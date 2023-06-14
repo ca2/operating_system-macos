@@ -387,11 +387,11 @@ int av_escape(char **dst, const char *src, const char *special_chars,
 
 /**
  * Read and decode a single UTF-8 code point (character) from the
- * buffer in *buf, and update *buf to point to the next byte to
+ * buffer in *buf, and update *buf to point to the next ::u8 to
  * decode.
  *
- * In case of an invalid byte sequence, the pointer will be updated to
- * the next byte after the invalid sequence and the function will
+ * In case of an invalid ::u8 sequence, the pointer will be updated to
+ * the next ::u8 after the invalid sequence and the function will
  * return an error code.
  *
  * Depending on the specified flags, the function will also fail in
@@ -402,11 +402,11 @@ int av_escape(char **dst, const char *src, const char *special_chars,
  *
  * @param codep   pointer used to return the parsed code in case of success.
  *                The value in *codep is set even in case the range check fails.
- * @param bufp    pointer to the address the first byte of the sequence
+ * @param bufp    pointer to the address the first ::u8 of the sequence
  *                to decode, updated by the function to point to the
- *                byte next after the decoded sequence
+ *                ::u8 next after the decoded sequence
  * @param buf_end pointer to the end of the buffer, points to the next
- *                byte past the last in the buffer. This is used to
+ *                ::u8 past the last in the buffer. This is used to
  *                avoid buffer overreads (in case of an unfinished
  *                UTF-8 sequence towards the end of the buffer).
  * @param flags   a collection of AV_UTF8_FLAG_* flags

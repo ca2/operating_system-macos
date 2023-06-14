@@ -41,17 +41,17 @@ typedef struct AVSubsampleEncryptionInfo {
  * The size of this struct is not part of the public ABI.
  */
 typedef struct AVEncryptionInfo {
-    /** The fourcc encryption scheme, in big-endian byte order. */
+    /** The fourcc encryption scheme, in big-endian ::u8 order. */
     uint32_t scheme;
 
     /**
-     * Only used for pattern encryption.  This is the number of 16-byte blocks
+     * Only used for pattern encryption.  This is the number of 16-::u8 blocks
      * that are encrypted.
      */
     uint32_t crypt_byte_block;
 
     /**
-     * Only used for pattern encryption.  This is the number of 16-byte blocks
+     * Only used for pattern encryption.  This is the number of 16-::u8 blocks
      * that are clear.
      */
     uint32_t skip_byte_block;

@@ -180,7 +180,7 @@ int av_find_info_tag(char *arg, int arg_size, const char *tag1, const char *info
  *         call. In case the input string contains more characters than
  *         required by the format string the return value points right after
  *         the last consumed input character. In case the whole input string
- *         is consumed the return value points to the null byte at the end of
+ *         is consumed the return value points to the null ::u8 at the end of
  *         the string. On failure NULL is returned.
  */
 char *av_small_strptime(const char *p, const char *fmt, struct tm *dt);

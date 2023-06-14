@@ -242,7 +242,7 @@ namespace macos
 
          readNow = (size_t) minimum(0x7fffffff, nCount);
 
-         size_t iRead = ::read(m_iFile, &((byte *)lpBuf)[pos], readNow);
+         size_t iRead = ::read(m_iFile, &((::u8 *)lpBuf)[pos], readNow);
 
          if(iRead == ::numeric_info<size_t>::get_allset_value ())
          {
@@ -311,7 +311,7 @@ namespace macos
       while(nCount > 0)
       {
          
-         size_t iWrite = ::write(m_iFile, &((const byte *)lpBuf)[pos], (size_t) minimum(0x7fffffff, nCount));
+         size_t iWrite = ::write(m_iFile, &((const ::u8 *)lpBuf)[pos], (size_t) minimum(0x7fffffff, nCount));
          
          if(iWrite == ::numeric_info<size_t>::get_allset_value ())
          {

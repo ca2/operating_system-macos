@@ -280,7 +280,7 @@ FT_BEGIN_HEADER
    * @input:
    *   base ::
    *     For memory-based streams, this is the address of the first stream
-   *     byte in memory.  This field should always be set to `NULL` for
+   *     ::u8 in memory.  This field should always be set to `NULL` for
    *     disk-based streams.
    *
    *   size ::

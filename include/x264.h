@@ -122,7 +122,7 @@ typedef struct x264_nal_t
     /* Size of payload (including any padding) in bytes. */
     int     i_payload;
     /* If param->b_annexb is set, Annex-B bytestream with startcode.
-     * Otherwise, startcode is replaced with a 4-byte size.
+     * Otherwise, startcode is replaced with a 4-::u8 size.
      * This size is the size used in mp4/similar muxing; it is equal to i_payload-4 */
     uint8_t *p_payload;
 

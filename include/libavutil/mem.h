@@ -482,7 +482,7 @@ char *av_strdup(const char *s) av_malloc_attrib;
  *
  * @param s   String to be duplicated
  * @param len Maximum length of the resulting string (not counting the
- *            terminating byte)
+ *            terminating ::u8)
  * @return Pointer to a newly-allocated string containing a
  *         substring of `s` or `NULL` if the string cannot be allocated
  */

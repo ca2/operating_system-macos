@@ -58,7 +58,7 @@ int av_cast5_init(struct AVCAST5 *ctx, const uint8_t *key, int key_bits);
   * @param ctx an AVCAST5 context
   * @param dst destination array, can be equal to src
   * @param src source array, can be equal to dst
-  * @param count number of 8 byte blocks
+  * @param count number of 8 ::u8 blocks
   * @param decrypt 0 for encryption, 1 for decryption
  */
 void av_cast5_crypt(struct AVCAST5 *ctx, uint8_t *dst, const uint8_t *src, int count, int decrypt);
@@ -69,7 +69,7 @@ void av_cast5_crypt(struct AVCAST5 *ctx, uint8_t *dst, const uint8_t *src, int c
   * @param ctx an AVCAST5 context
   * @param dst destination array, can be equal to src
   * @param src source array, can be equal to dst
-  * @param count number of 8 byte blocks
+  * @param count number of 8 ::u8 blocks
   * @param iv initialization vector for CBC mode, NULL for ECB mode
   * @param decrypt 0 for encryption, 1 for decryption
  */

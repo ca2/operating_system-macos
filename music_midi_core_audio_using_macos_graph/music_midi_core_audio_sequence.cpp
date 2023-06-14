@@ -754,7 +754,7 @@ namespace music
           
           if(::music::success != smfrc && ::music::SEndOfFile != smfrc)
           {
-          TRACE( "SFP: smfReadEvents() -> %u", (uint32_t)smfrc);
+          information( "SFP: smfReadEvents() -> %u", (uint32_t)smfrc);
           mmrc = ::music::translate(smfrc);
           /*if(bThrow)
           {
@@ -777,7 +777,7 @@ namespace music
          /*         mmrc = m_buffera.midiOutPrepareHeader((HMIDIOUT) m_hstream);
           if (mmrc != ::multimedia::result_success)
           {
-          TRACE( "midiOutPrepare(preroll) -> %lu!", (uint32_t)mmrc);
+          information( "midiOutPrepare(preroll) -> %lu!", (uint32_t)mmrc);
           mmrc = MCIERR_DEVICE_NOT_READY;
           if(bThrow)
           {
@@ -843,7 +843,7 @@ namespace music
          if (::music::midi::sequence::status_pre_rolled != GetState())
          {
             
-            TRACE( "seqStart(): State is wrong! [%u]", GetState());
+            information( "seqStart(): State is wrong! [%u]", GetState());
             
             return ::music::translate(::music::EFunctionNotSupported);
             
@@ -1050,7 +1050,7 @@ namespace music
             
             /*if(seq_init_tempo(m_pseq, m_dwTimeDivision, 120, 1) < 0)
              {
-             TRACE( "midiStreamProperty() -> %04X", (WORD)mmrc);
+             information( "midiStreamProperty() -> %04X", (WORD)mmrc);
              seq_free_context(m_pseq);
              //               m_hstream = NULL;
              //               mmrc = MCIERR_DEVICE_NOT_READY;
@@ -1291,7 +1291,7 @@ namespace music
     //        seq_stop_timer(m_pseq);
       //      if(::multimedia::result_success != m_mmrcLastErr)
         //    {
-          //     TRACE( "::music::midi::sequence::Stop() -> midiOutStop() returned %lu in seqStop()!\n", (uint32_t)m_mmrcLastErr);
+          //     information( "::music::midi::sequence::Stop() -> midiOutStop() returned %lu in seqStop()!\n", (uint32_t)m_mmrcLastErr);
             //   m_flags.unsignalize(FlagWaiting);
               // return ::multimedia::result_not_ready;
             //}
@@ -1346,7 +1346,7 @@ namespace music
              ::music::midi::sequence::status_opened != GetState() &&
              ::music::midi::sequence::status_stopping != GetState())
          {
-            TRACE( "seqTime(): State wrong! [is %u]", GetState());
+            information( "seqTime(): State wrong! [is %u]", GetState());
             return ::music::translate(::music::EFunctionNotSupported);
          }
          
@@ -1434,7 +1434,7 @@ namespace music
 //               snd_seq_tick_time_t ticks;
   //             if(m_pseq == NULL)
     //           {
-      //            TRACE("m_hmidi == NULL!!!!");
+      //            information("m_hmidi == NULL!!!!");
         //          return ::multimedia::result_not_ready;
           //     }
             //   else
@@ -1491,7 +1491,7 @@ namespace music
              status_opened != GetState() &&
              status_stopping != GetState())
          {
-            TRACE( "seqTime(): State wrong! [is %u]", GetState());
+            information( "seqTime(): State wrong! [is %u]", GetState());
             return ::music::translate(::music::EFunctionNotSupported);
          }
          
@@ -1543,7 +1543,7 @@ namespace music
                //          slStream.lock();
     //           if(m_pseq == NULL)
   //             {
-      //            TRACE("m_hmidi == NULL!!!!");
+      //            information("m_hmidi == NULL!!!!");
         //          return ::multimedia::result_not_ready;
           //     }
             //   else
@@ -1667,7 +1667,7 @@ namespace music
             if(bSpecialModeV001End)
             {
                m_flags.unsignalize(FlagSpecialModeV001End);
-               TRACE("void CALLBACK ::music::midi::sequence::MidiOutProc m_flags.is_signalized(FlagSpecialModeV001End\n");
+               information("void CALLBACK ::music::midi::sequence::MidiOutProc m_flags.is_signalized(FlagSpecialModeV001End\n");
                pthread->PostMidiSequenceEvent(
                                               this,
                                               ::music::midi::sequence::EventSpecialModeV001End,
@@ -1677,7 +1677,7 @@ namespace music
             {
                /*               if(m_uBuffersInMMSYSTEM == 0)
                 {
-                TRACE("void CALLBACK ::music::midi::sequence::MidiOutProc status_stopping == pSeq->GetState()\n");
+                information("void CALLBACK ::music::midi::sequence::MidiOutProc status_stopping == pSeq->GetState()\n");
                 pthread->PostMidiSequenceEvent(
                 this,
                 ::music::midi::sequence::EventStopped,
@@ -1688,7 +1688,7 @@ namespace music
             {
                if(m_flags.is_signalized(FlagEOF))
                {
-                  TRACE("void CALLBACK ::music::midi::sequence::MidiOutProc m_flags.is_signalized(FlagEOF\n");
+                  information("void CALLBACK ::music::midi::sequence::MidiOutProc m_flags.is_signalized(FlagEOF\n");
                }
                //       if (lpmidihdr != m_lpmhPreroll)
                //     {
@@ -2042,7 +2042,7 @@ namespace music
          
          //         if(0 == m_uBuffersInMMSYSTEM)
          {
-            TRACE( "seqBufferDone: normal sequencer shutdown.");
+            information( "seqBufferDone: normal sequencer shutdown.");
             
             /* Totally done! Free device and notify.
              */
@@ -2051,7 +2051,7 @@ namespace music
                /*if((mmrc = m_buffera.midiOutUnprepareHeader((HMIDIOUT) m_hstream))
                 != ::multimedia::result_success)
                 {
-                TRACE( "midiOutUnprepareHeader failed in seqBufferDone! (%lu)", (uint32_t)mmrc);
+                information( "midiOutUnprepareHeader failed in seqBufferDone! (%lu)", (uint32_t)mmrc);
   //              }*/
     //           seq_free_context(m_pseq);
       //         m_pseq = NULL;
@@ -2109,7 +2109,7 @@ namespace music
                 
                 if(IsInSpecialModeV001())
                 {
-                TRACE("::music::midi::sequence::OnEvent EventMidiStreamOut IsInSpecialModeV001");
+                information("::music::midi::sequence::OnEvent EventMidiStreamOut IsInSpecialModeV001");
                 }
                 else
                 {
@@ -2133,7 +2133,7 @@ namespace music
                 default:
                 
                 
-                TRACE( "smfReadEvents returned %lu in callback!", (uint32_t)mmrc);
+                information( "smfReadEvents returned %lu in callback!", (uint32_t)mmrc);
                 
                 SetState(status_stopping);
                 
@@ -2168,7 +2168,7 @@ namespace music
                 else
                 {
                 
-                TRACE("seqBufferDone(): midiStreamOut() returned %lu!", (uint32_t)mmrc);
+                information("seqBufferDone(): midiStreamOut() returned %lu!", (uint32_t)mmrc);
                 
                 SetState(::music::midi::sequence::status_stopping);
                 

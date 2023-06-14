@@ -453,7 +453,7 @@ static av_always_inline av_const int av_parity_c(uint32_t v)
  * Convert a UTF-8 character (up to 4 bytes) to its 32-bit UCS-4 encoded form.
  *
  * @param val      Output value, must be an lvalue of type uint32_t.
- * @param GET_BYTE Expression reading one byte from the input.
+ * @param GET_BYTE Expression reading one ::u8 from the input.
  *                 Evaluated up to 7 times (4 for the currently
  *                 assigned Unicode range).  With a memory buffer
  *                 input, this could be *ptr++, or if you want to make sure
@@ -488,7 +488,7 @@ static av_always_inline av_const int av_parity_c(uint32_t v)
  *
  * @param val       Output value, must be an lvalue of type uint32_t.
  * @param GET_16BIT Expression returning two bytes of UTF-16 data converted
- *                  to native byte order.  Evaluated one or two times.
+ *                  to native ::u8 order.  Evaluated one or two times.
  * @param ERROR     Expression to be evaluated on invalid input,
  *                  typically a goto statement.
  */
@@ -514,7 +514,7 @@ static av_always_inline av_const int av_parity_c(uint32_t v)
  * represents an intermediate value during conversion that is to be
  * output by PUT_BYTE.
  * @param PUT_BYTE writes the converted UTF-8 bytes to any proper destination.
- * It could be a function or a statement, and uses tmp as the input byte.
+ * It could be a function or a statement, and uses tmp as the input ::u8.
  * For example, PUT_BYTE could be "*output++ = tmp;" PUT_BYTE will be
  * executed up to 4 times for values in the valid UTF-8 range and up to
  * 7 times in the general case, depending on the length of the converted
@@ -551,7 +551,7 @@ static av_always_inline av_const int av_parity_c(uint32_t v)
  * output by PUT_16BIT.
  * @param PUT_16BIT writes the converted UTF-16 data to any proper destination
  * in desired endianness. It could be a function or a statement, and uses tmp
- * as the input byte.  For example, PUT_BYTE could be "*output++ = tmp;"
+ * as the input ::u8.  For example, PUT_BYTE could be "*output++ = tmp;"
  * PUT_BYTE will be executed 1 or 2 times depending on input character.
  */
 #define PUT_UTF16(val, tmp, PUT_16BIT)\

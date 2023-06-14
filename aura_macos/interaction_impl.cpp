@@ -1001,7 +1001,7 @@ namespace aura_macos
       if (m_puserinteraction->is_message_only_window())
       {
 
-         TRACE("good : opt out!");
+         information("good : opt out!");
 
       }
       else
@@ -2630,7 +2630,7 @@ namespace aura_macos
 //      //      msg.lparam = lparam;
 //      //
 //      //      //lResult = __process_window_procedure_exception(pe, &msg);
-//      //      //      TRACE(::ca2::trace::category_AppMsg, 0, "Warning: Uncaught exception in __activation_window_procedure (returning %ld).\n",
+//      //      //      information(::ca2::trace::category_AppMsg, 0, "Warning: Uncaught exception in __activation_window_procedure (returning %ld).\n",
 //      //      //       lResult);
 //      //      ::exception_pointer esp(pe);
 //      //   }

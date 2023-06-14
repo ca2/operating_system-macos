@@ -120,7 +120,7 @@ namespace multimedia
           
           if(::multimedia::result_success != (mmr =  waveOutPrepareHeader(m_Queue, create_new_WAVEHDR(wave_out_get_buffer(), i), sizeof(WAVEHDR))))
           {
-          TRACE("ERROR OPENING Preparing INPUT DEVICE buffer");
+          information("ERROR OPENING Preparing INPUT DEVICE buffer");
           return mmr;
           }
           
@@ -291,7 +291,7 @@ namespace multimedia
           
           if(0 != (status = AudioQueueAllocateBuffer (m_Queue, wave_out_get_buffer_size(), &buf))
           {
-          TRACE("ERROR OPENING Preparing INPUT DEVICE buffer");
+          information("ERROR OPENING Preparing INPUT DEVICE buffer");
           return ::multimedia::result_error;
           }
           
@@ -421,7 +421,7 @@ namespace multimedia
           
           if(::multimedia::result_success != (mmr =  waveOutPrepareHeader(m_Queue, create_new_WAVEHDR(wave_out_get_buffer(), i), sizeof(WAVEHDR))))
           {
-          TRACE("ERROR OPENING Preparing INPUT DEVICE buffer");
+          information("ERROR OPENING Preparing INPUT DEVICE buffer");
           return mmr;
           }
           
@@ -519,7 +519,7 @@ namespace multimedia
          if(wave_out_get_state() != state_playing)
          {
             
-            TRACE("ERROR wave_out::BufferReady while wave_out_get_state() != state_playing");
+            information("ERROR wave_out::BufferReady while wave_out_get_state() != state_playing");
             
             return;
             
