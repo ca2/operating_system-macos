@@ -1152,8 +1152,8 @@ namespace apex_macos
 //   ::file::path dir_context::time_square(const string & strPrefix,const string & strSuffix)
 //   {
 //
-//      __UNREFERENCED_PARAMETER(strPrefix);
-//      __UNREFERENCED_PARAMETER(strSuffix);
+//      UNREFERENCED_PARAMETER(strPrefix);
+//      UNREFERENCED_PARAMETER(strSuffix);
 //
 //      return time() / "time";
 //

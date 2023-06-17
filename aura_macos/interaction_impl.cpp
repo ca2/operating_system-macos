@@ -605,7 +605,7 @@ namespace aura_macos
    void interaction_impl::_001OnShowWindow(::message::message * pmessage)
    {
 
-      __UNREFERENCED_PARAMETER(pmessage);
+      UNREFERENCED_PARAMETER(pmessage);
 
 //      do_show_flags();
 //
@@ -708,7 +708,7 @@ namespace aura_macos
    void interaction_impl::_001OnDestroy(::message::message * pmessage)
    {
 
-      __UNREFERENCED_PARAMETER(pmessage);
+      UNREFERENCED_PARAMETER(pmessage);
       
       auto pwindowing = m_pwindowing;
 
@@ -891,7 +891,7 @@ namespace aura_macos
    void interaction_impl::pre_translate_message(::message::message * pmessage)
    {
       
-      __UNREFERENCED_PARAMETER(pmessage);
+      UNREFERENCED_PARAMETER(pmessage);
       
       // no default processing
       
@@ -994,7 +994,7 @@ namespace aura_macos
    void interaction_impl::on_message_create(::message::message * pmessage)
    {
 
-      __UNREFERENCED_PARAMETER(pmessage);
+      UNREFERENCED_PARAMETER(pmessage);
 
       default_message_handler(pmessage);
 
@@ -1025,7 +1025,7 @@ namespace aura_macos
    void interaction_impl::_001OnProdevianSynch(::message::message * pmessage)
    {
       
-      __UNREFERENCED_PARAMETER(pmessage);
+      UNREFERENCED_PARAMETER(pmessage);
       
    }
 
