@@ -248,7 +248,7 @@ namespace windowing_macos
 
       puserinteraction->set_size(rectangle.size(), ::user::e_layout_window);
       
-      auto & layoutWindow = puserinteraction->const_layout().window();
+      //auto & layoutWindow = puserinteraction->const_layout().window();
       
       //auto & sizeWindow = layoutWindow.m_size;
       
