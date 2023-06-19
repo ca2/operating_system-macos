@@ -170,7 +170,7 @@ namespace windowing_macos
 
       //CGRect rectangle_i32;
 
-      rectangle_i32 rectParam;
+//      rectangle_i32 rectParam;
 
    //      rectParam.left = m_pusersystem->m_createstruct.x;
    //      rectParam.top = pusersystem->m_createstruct.y;
@@ -199,7 +199,7 @@ namespace windowing_macos
 
          }
       
-         auto rectangle = puserinteraction-> window_rectangle();
+         auto rectangle = puserinteraction-> const_layout().sketch().parent_raw_rectangle();
       
          CGRect cgrect;
       
@@ -244,9 +244,13 @@ namespace windowing_macos
 
       pwindowing->m_nsmap[m_pnswindow] = this;
       
-      puserinteraction->set_position(::top_left(rectParam), ::user::e_layout_window);
+      puserinteraction->set_position(rectangle.top_left(), ::user::e_layout_window);
 
-      puserinteraction->set_size(rectParam.size(), ::user::e_layout_window);
+      puserinteraction->set_size(rectangle.size(), ::user::e_layout_window);
+      
+      auto & layoutWindow = puserinteraction->const_layout().window();
+      
+      //auto & sizeWindow = layoutWindow.m_size;
       
       auto ptask = ::get_task();
       
@@ -1282,7 +1286,7 @@ pmessage->m_atom = emessage
 
       //atom id = e_message_mouse_wheel;
 
-      pwheel->m_greekdelta = deltaY * WHEEL_DELTA / 3.0;
+      pwheel->m_Δ = deltaY * WHEEL_DELTA / 3.0;
 
       //wparam wparam = pwheel-delta << 16;
 
@@ -1302,42 +1306,57 @@ pmessage->m_atom = emessage
       
       {
       
-         _NEW_MESSAGE(preposition, ::message::reposition, e_message_reposition);
-         preposition->m_point.x() = rectangle.origin.x;
-         preposition->m_point.y() = rectangle.origin.y;
-
+         auto p = m_puserinteractionimpl->m_puserinteraction->const_layout().window().origin();
          
-//         atom id = e_message_reposition;
-//
-//         wparam wparam = 0;
-//
-//         lparam lparam = __MAKE_LPARAM(rectangle.origin.x, rectangle.origin.y);
-//
-//         auto pmove  = __create_new < ::message::reposition > ();
-//
-//         pmove->set(this, this, id, wparam, lparam);
-
-         post_message(preposition);
+         if(p.x() != rectangle.origin.x || p.y() != rectangle.origin.y)
+         {
+            
+            _NEW_MESSAGE(preposition, ::message::reposition, e_message_reposition);
+            preposition->m_point.x() = rectangle.origin.x;
+            preposition->m_point.y() = rectangle.origin.y;
+            
+            
+            //         atom id = e_message_reposition;
+            //
+            //         wparam wparam = 0;
+            //
+            //         lparam lparam = __MAKE_LPARAM(rectangle.origin.x, rectangle.origin.y);
+            //
+            //         auto pmove  = __create_new < ::message::reposition > ();
+            //
+            //         pmove->set(this, this, id, wparam, lparam);
+            
+            post_message(preposition);
+            
+         }
          
       }
       
       {
 
-         _NEW_MESSAGE(psize, ::message::size, e_message_size);
-         psize->m_size.cx() = rectangle.size.width;
-         psize->m_size.cy() = rectangle.size.height;
-
-//         atom id = e_message_size;
-//
-//         wparam wparam = 0;
-//
-//         lparam lparam = __MAKE_LPARAM(rectangle.size.width, rectangle.size.height);
-//
-//         auto psize  = __create_new < ::message::size > ();
-//
-//         psize->set(this, this, id, wparam, lparam);
-
-         post_message(psize);
+         auto s = m_puserinteractionimpl->m_puserinteraction->const_layout().window().size();
+         
+         if(s.cx() != rectangle.size.width || s.cy() != rectangle.size.height)
+         {
+            
+            _NEW_MESSAGE(psize, ::message::size, e_message_size);
+            psize->m_size.cx() = rectangle.size.width;
+            psize->m_size.cy() = rectangle.size.height;
+            
+            //         atom id = e_message_size;
+            //
+            //         wparam wparam = 0;
+            //
+            //         lparam lparam = __MAKE_LPARAM(rectangle.size.width, rectangle.size.height);
+            //
+            //         auto psize  = __create_new < ::message::size > ();
+            //
+            //         psize->set(this, this, id, wparam, lparam);
+            
+            post_message(psize);
+            
+            
+         }
          
       }
 
