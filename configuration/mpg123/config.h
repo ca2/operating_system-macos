@@ -478,6 +478,10 @@
 /* Define to `unsigned long' if <sys/types.h> does not define. */
 #undef uintptr_t
 
+
+
+
+
 #ifdef _UWP
 #define HAVE_STRING_H 1
 #define HAVE_STRERROR 1
@@ -568,5 +572,11 @@
 #define HAVE_UNISTD_H 1
 
 
+
+
+#if defined(__APPLE__)
+#define _write write
+#define _read read
+#endif
 
 
