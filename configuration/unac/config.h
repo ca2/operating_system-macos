@@ -79,7 +79,7 @@
 #undef DEBUG
 #ifndef _DEBUG
 #define _DEBUG
-#define // _DEBUG
+#endif // _DEBUG
 #endif
 
 
