@@ -726,7 +726,7 @@ namespace windowing_macos
       
       synchronous_lock sl1(pitem->m_pmutex);
 
-      ::image_pointer & imageBuffer2 = pitem->m_pimage;
+      ::image_pointer & imageBuffer2 = pitem->m_pimage2;
 
       if (!imageBuffer2)
       {
