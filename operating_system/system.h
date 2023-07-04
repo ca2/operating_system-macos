@@ -30,18 +30,18 @@
 #define wait __ancient_bsd_source_wait
 
 
-#include <time.h>
-#include <sys/wait.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <errno.h>
-#include <strings.h>
-#include <string.h>
-#include <sys/time.h>
-#include <wchar.h>
-#include <xlocale.h>
+//#include <time.h>
+//#include <sys/wait.h>
+//#include <stdlib.h>
+//#include <stdio.h>
+//#include <stdarg.h>
+//#include <stddef.h>
+//#include <errno.h>
+//#include <strings.h>
+//#include <string.h>
+//#include <sys/time.h>
+//#include <wchar.h>
+//#include <xlocale.h>
 
 #define platform_char char
 
@@ -192,24 +192,24 @@ typedef ::std::type_info std_type_info;
 
 #endif
 
-
-#include <stddef.h>
-#include <limits.h>
-#include <malloc/malloc.h>
-
-#include <sys/types.h>
+//
+//#include <stddef.h>
+//#include <limits.h>
+//#include <malloc/malloc.h>
+//
+//#include <sys/types.h>
 //#include <time.h>
 
-#define __time_t time_t
+//#define __time_t time_t
 
 
-#include <netinet/in.h>
+//#include <netinet/in.h>
 
 
-#define timespec_get mach_timespec_get
+//#define timespec_get mach_timespec_get
 
 
-int mach_timespec_get(struct timespec * ptimespec, int);
+//int mach_timespec_get(struct timespec * ptimespec, int);
 
 
 #define INFINITE_TIMEOUT UINT_MAX
