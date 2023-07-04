@@ -33,6 +33,9 @@
 
 #define DEFAULT_DIR_SEPARATOR "/"
 
+#define _POSIX_C_SOURCE 200809L
+#define _DARWIN_C_SOURCE
+
 // #if defined(_DEBUG) && !defined(DEBUG)
 // #define DEBUG 1
 // #endif
