@@ -191,7 +191,7 @@ namespace acme_macos
 //      if(hFile == hFileNull)
 //      {
 //
-//         int iErrNo = errno;
+//         auto cerrornumber = c_error_number();
 //
 //         m_estatus = errno_status(iErrNo);
 //
@@ -308,7 +308,7 @@ namespace acme_macos
 //
 //            auto errorcode = errno_error_code(iErrNo);
 //
-//            auto estatus = errno_status(iErrNo);
+//            auto estatus = cerrornumber.estatus();
 //
 //            if(iErrNo == EAGAIN)
 //            {
@@ -381,7 +381,7 @@ namespace acme_macos
 //
 //            auto errorcode = errno_error_code(iErrNo);
 //
-//            auto estatus = errno_status(iErrNo);
+//            auto estatus = cerrornumber.estatus();
 //
 //            throw ::file::exception(estatus, errorcode, m_path, "::write < 0");
 //
@@ -406,7 +406,7 @@ namespace acme_macos
 //
 //         auto errorcode = errno_error_code(iErrNo);
 //
-//         auto estatus = errno_status(iErrNo);
+//         auto estatus = cerrornumber.estatus();
 //
 //         throw ::file::exception(estatus, errorcode, m_path, "m_iFile == hFileNull");
 //
@@ -432,7 +432,7 @@ namespace acme_macos
 //
 //         auto errorcode = errno_error_code(iErrNo);
 //
-//         auto estatus = errno_status(iErrNo);
+//         auto estatus = cerrornumber.estatus();
 //
 //         throw ::file::exception(estatus, errorcode, m_path, "lseek < 0");
 //
@@ -461,7 +461,7 @@ namespace acme_macos
 //
 //         auto errorcode = errno_error_code(iErrNo);
 //
-//         auto estatus = errno_status(iErrNo);
+//         auto estatus = cerrornumber.estatus();
 //
 //         throw ::file::exception(estatus, errorcode, m_path, "lseek < 0");
 //
@@ -505,7 +505,7 @@ namespace acme_macos
 //
 //         auto errorcode = errno_error_code(iErrNo);
 //
-//         auto estatus = errno_status(iErrNo);
+//         auto estatus = cerrornumber.estatus();
 //
 //         throw ::file::exception(estatus, errorcode, m_path, "close != 0");
 //
@@ -550,7 +550,7 @@ namespace acme_macos
 //
 //         auto errorcode = errno_error_code(iErrNo);
 //
-//         auto estatus = errno_status(iErrNo);
+//         auto estatus = cerrornumber.estatus();
 //
 //         throw ::file::exception(estatus, errorcode, m_path, "ftruncate != 0");
 //
