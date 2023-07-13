@@ -9,7 +9,7 @@
 #include "_library.h"
 #include "aura/_defer.h"
 #endif
-#include "acme/operating_system/apple/_apple_no_templates.h"
+#include "acme/operating_system/apple/_apple.h"
 
 
 void ns_monitor_cgrect(int i, CGRect * p);
