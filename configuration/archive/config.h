@@ -7,7 +7,7 @@
 
 
 
-#include "configuration/config.h"
+#include "common/config.h"
 
 #ifdef MACOS_MONTEREY
 #undef HAVE_LINKAT

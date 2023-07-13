@@ -11,6 +11,7 @@
 
 #include <unistd.h>
 #include <signal.h>
+#include <errno.h>
 
 
 void macos_folder_dialog(::file::folder_dialog * pdialog);
@@ -805,7 +806,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
       char *   exec_path_name;
       char *   cmd_line;
 
-      cmd_line = (char *) ::malloc(strlen(_cmd_line ) + 1 );
+      cmd_line = (char *) ::malloc(ansi_len(_cmd_line ) + 1 );
 
       if(cmd_line == nullptr)
          return 0;
@@ -828,14 +829,14 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 
          if( cmd_line != nullptr && *cmd_line != '\0' )
          {
-            pArg = strtok_r(cmd_line, " ", (char **) &pPtr);
+            pArg = ansi_tok_r(cmd_line, " ", (char **) &pPtr);
             while( pArg != nullptr )
             {
                argv[argc] = pArg;
                argc++;
                if( argc >= 1024 )
                   break;
-               pArg = strtok_r(nullptr, " ", (char **) &pPtr);
+               pArg = ansi_tok_r(nullptr, " ", (char **) &pPtr);
             }
          }
          argv[argc] = nullptr;

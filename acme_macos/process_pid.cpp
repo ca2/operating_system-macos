@@ -16,7 +16,7 @@
 
 #include <libproc.h>
 
-
+#include <string.h>
 
 extern int ansi_count_compare(const char * sz1, const char * sz2, iptr iLen);
 

@@ -77,16 +77,11 @@ namespace acme_macos
 
       int status = posix_spawn(&pid, argv[0], nullptr, nullptr, argv, envp);
 
-      int iError = errno;
+      c_error_number cerrornumber = c_error_number();
 
-      char * pszError = strerror(iError);
+      auto strError = cerrornumber.get_error_description();
       
-      if(pszError)
-      {
-      
-         ::output_debug_string(pszError);
-         
-      }
+      error(strError);
 
       if (status == 0)
       {

@@ -7,6 +7,7 @@
 #include "framework.h"
 #include "quit.h"
 
+#include <pthread.h>
 
 void ns_app_terminate();
 

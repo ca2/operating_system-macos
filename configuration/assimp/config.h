@@ -59,6 +59,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef AI_CONFIG_H_INC
 #define AI_CONFIG_H_INC
 
+
+#ifdef AI_OPENGEX_IMPORTER_H
+#undef ASSIMP_USE_HUNTER
+#endif
+
+#ifdef __APPLE__
+#define ASSIMP_BUILD_NO_C4D_IMPORTER
+#endif
+
 // ###########################################################################
 // LIBRARY SETTINGS
 // General, global settings
