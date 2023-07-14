@@ -33,6 +33,8 @@
 
 #define DEFAULT_DIR_SEPARATOR "/"
 
+#define HAVE_UNISTD_H 1
+
 #define _POSIX_C_SOURCE 200809L
 #define _DARWIN_C_SOURCE
 
