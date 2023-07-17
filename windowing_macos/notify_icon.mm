@@ -7,7 +7,7 @@
 //
 
 #include "framework.h"
-#include "apex/user/notify_icon_bridge.h"
+#include "apex/user/user/notify_icon_bridge.h"
 #include "notify_icon_mm.h"
 
 

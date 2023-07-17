@@ -13,7 +13,7 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 #import <ApplicationServices/ApplicationServices.h>
-#include "apex/user/notify_icon_bridge.h"
+#include "apex/user/user/notify_icon_bridge.h"
 
 
 class user_notify_icon_bridge;
