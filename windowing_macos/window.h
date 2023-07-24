@@ -67,7 +67,7 @@ namespace windowing_macos
       
       bool _has_keyboard_focus() const;
 
-      void window_show() override;
+//      void _window_request_presentation() override;
       
       void show_window(const ::e_display &edisplay, const ::e_activation &eactivation) override;
       
@@ -81,8 +81,9 @@ namespace windowing_macos
 
       void get_cursor_position(::point_i32 * ppoint) override;
       
-      void update_screen() override;
-      
+      void window_update_screen_buffer() override;
+      void _window_request_presentation() override;
+
       
       void set_window_text(const ::scoped_string & scopedstr) override;
       ::string get_window_text() override;

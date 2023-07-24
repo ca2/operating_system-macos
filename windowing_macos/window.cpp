@@ -420,13 +420,22 @@ namespace windowing_macos
    }
 
 
-   void window::window_show()
+//   void window::window_show()
+//   {
+//
+//      //macos_window_show();
+//
+//      ::windowing::window::window_show();
+//
+//   }
+
+   void window::_window_request_presentation()
    {
-      
+
       //macos_window_show();
-      
-      ::windowing::window::window_show();
-      
+
+      ::windowing::window::_window_request_presentation();
+
    }
 
 
@@ -599,7 +608,7 @@ namespace windowing_macos
    }
 
 
-   void window::update_screen()
+   void window::window_update_screen_buffer()
    {
       
       macos_window_redraw();

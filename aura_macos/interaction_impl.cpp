@@ -1408,19 +1408,19 @@ namespace aura_macos
    }
 
 
-   void interaction_impl::_001UpdateScreen()
-   {
-
-
-
-      if (m_puserinteraction->is_window_visible())
-      {
-
-         //aura_window_redraw();
-
-      }
-
-   }
+//   void interaction_impl::_001UpdateScreen()
+//   {
+//
+//
+//
+//      if (m_puserinteraction->is_window_visible())
+//      {
+//
+//         //aura_window_redraw();
+//
+//      }
+//
+//   }
 
 
 //   bool interaction_impl::DrawAnimatedRects(i32 idAni, const RECTANGLE_I32 *lprcFrom, const RECTANGLE_I32 * lprcTo)

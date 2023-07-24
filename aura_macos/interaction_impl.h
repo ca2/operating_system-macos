@@ -216,7 +216,7 @@ namespace aura_macos
       virtual void LockWindowUpdate() override;
       virtual void UnlockWindowUpdate() override;
 //        virtual bool RedrawWindow(const ::rectangle_i32 & rectUpdate = nullptr, ::draw2d::region* prgnUpdate = nullptr, ::u32 flags = RDW_INVALIDATE | RDW_ERASE);
-      virtual void _001UpdateScreen() override;
+//       void window_update_screen_buffer() override;
       //virtual votru8id _001UpdateWindow(bool bUpdateBuffer = false) override;
       // xxx      virtual bool EnableScrollBar(i32 nSBFlags, ::u32 nArrowFlags = ESB_ENABLE_BOTH);
 
