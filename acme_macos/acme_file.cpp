@@ -55,7 +55,7 @@ namespace acme_macos
       if(__builtin_available(macOS 10.13, *))
       {
          
-         int fd = ::open(path, O_WRONLY|O_CREAT, 0666);
+         int fd = ::open(path, O_WRONLY|O_CREAT | O_CLOEXEC, 0666);
          
          if (fd < 0)
          {

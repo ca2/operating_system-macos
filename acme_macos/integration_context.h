@@ -2,17 +2,17 @@
 #pragma once
 
 
-#include "apex/platform/integration_context.h"
+#include "acme/platform/integration_context.h"
 
 
-namespace apex_macos
+namespace acme_macos
 {
 
    namespace integration
    {
 
 
-      class CLASS_DECL_APEX context :
+      class CLASS_DECL_ACME context :
          virtual public ::integration::context
    {
       public:
@@ -71,7 +71,7 @@ namespace apex_macos
 
       void prepare_linking_script(::string &str) override;
 
-      int command_system(const ::scoped_string &scopedstr) override;
+      ::i32 command_system(const ::scoped_string &scopedstr) override;
 
       void clean() override;
 
@@ -79,7 +79,9 @@ namespace apex_macos
 
       void git_clone() override;
 
-      void bash(const ::scoped_string &scopedstr) override;
+      ::i32 bash(const ::scoped_string &scopedstr) override;
+      
+      ::i32 zsh(const ::scoped_string &scopedstr) override;
 
       ::string prepare_path(const ::file::path &path) override;
 
@@ -91,7 +93,7 @@ namespace apex_macos
 
 
 
-} // namespace apex_macos
+} // namespace acme_macos
 
 
 

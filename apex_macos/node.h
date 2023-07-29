@@ -35,9 +35,7 @@ namespace apex_macos
       string app_id_to_executable_name(const string & strAppId) override;
 
       
-      void integration_factory() override;
-      
-
+    
    };
 
 
