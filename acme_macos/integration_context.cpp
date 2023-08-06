@@ -5,20 +5,19 @@
 #include "acme/filesystem/file/file.h"
 #include "acme/filesystem/file/memory_file.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
+#include "acme/platform/application.h"
 #include "acme/platform/node.h"
 #include "acme/platform/system.h"
 #include "acme/primitive/primitive/url.h"
-#include "apex/filesystem/filesystem/file_context.h"
-#include "apex/networking/http/context.h"
-#include "apex/platform/application.h"
-#include "apex/platform/system.h"
+#include "acme/filesystem/filesystem/acme_file.h"
+//#include "apex/networking/http/context.h"
+//#include "acme/platform/system.h"
 
 
 #include "acme/_operating_system.h"
 
 
-
-namespace apex_macos
+namespace acme_macos
 {
 
 
@@ -54,11 +53,13 @@ namespace apex_macos
       void context::prepare()
       {
 
-         m_path = m_strName / m_strRelease / m_strPlatform / m_strConfiguration;
+         m_pathBase = m_strName / m_strRelease;
+         
+         m_pathPlatformConfiguration = m_strPlatform / m_strConfiguration;
 
-         m_pathSource2 = m_pathFolder / m_path / "source";
+         m_pathSource = m_pathFolder / m_pathBase / m_pathPlatformConfiguration / "source";
 
-         acmedirectory()->create(m_pathSource2);
+         acmedirectory()->create(m_pathSource);
 
       }
 
@@ -172,6 +173,8 @@ namespace apex_macos
 
       int context::command_system(const ::scoped_string &scopedstrCommand)
       {
+         
+         information() << scopedstrCommand;
 
          auto iExitCode = acmenode()->command_system(scopedstrCommand, ::std_inline_log());
 
@@ -187,7 +190,7 @@ namespace apex_macos
 
             string strPath;
 
-            strPath = this->prepare_path(m_pathFolder / m_path / "source");
+            strPath = this->prepare_path(m_pathFolder / m_pathBase / m_pathPlatformConfiguration / "source");
 
             if (strPath.length() > 20)
             {
@@ -246,7 +249,7 @@ namespace apex_macos
 
             auto url = m_pathDownloadURL;
 
-            acmeapplication()->m_papexapplication->http().download(url, pmemoryFileTarGz, set);
+            acmesystem()->http_download(pmemoryFileTarGz, url, set);
 
             //auto pathTar = m_pathFolder / m_path / (m_strName + ".tar");
 
@@ -258,7 +261,7 @@ namespace apex_macos
 
             pmemoryFileTar->seek_to_begin();
 
-            this->untar(m_pathFolder / m_path, pmemoryFileTar, 1);
+            this->untar(m_pathFolder / m_pathBase / m_pathPlatformConfiguration, pmemoryFileTar, 1);
 
          }
 
@@ -267,42 +270,113 @@ namespace apex_macos
 
       void context::git_clone()
       {
+         
+         information() << "Current Directory: " << acmedirectory()->get_current();
 
          command_system("git clone " + m_pathDownloadURL + " .");
 
       }
 
 
-      void context::bash(const ::scoped_string &scopedstr)
+      ::i32 context::bash(const ::scoped_string &scopedstr)
       {
 
          string strEscaped = scopedstr;
 
          ::string strCommand;
 
-         if (m_bMsys)
+//         if (m_bMsys)
+//         {
+//
+//            strCommand = "\"C:\\msys64\\usr\\bin\\bash.exe\" -c \'" + strEscaped + "\'";
+//
+//         }
+//         else
          {
+            
+            strEscaped.find_replace("\"", "\\\"");
+            
+#ifdef __APPLE__
+            
+            if(strEscaped.contains("shopt"))
+            {
+               
+               strCommand = "/bin/bash -l -o braceexpand -o hashall -o interactive-comments -c \"" + strEscaped + "\"";
+               
+            }
+            else
+            {
+               
+               strCommand = "/bin/zsh -l -o braceexpand -o hashall -o interactive_comments -c \"" + strEscaped + "\"";
 
-            strCommand = "\"C:\\msys64\\usr\\bin\\bash.exe\" -c \'" + strEscaped + "\'";
+               
+            }
+            
+#else
+            
+            strCommand = "/bin/bash -l -o braceexpand -o hashall -o interactive-comments -c \"" + strEscaped + "\"";
+            
+#endif
+            
+            //strCommand = "/bin/bash -c " + strEscaped;
 
+            //information() << strCommand;
+            
+            
          }
-         else
-         {
-
-            strCommand = "\"C:\\Program Files\\Git\\bin\\bash.exe\" -c \'" + strEscaped + "\'";
-
-         }
+//         int iExitCode1 = command_system("/bin/bash -c \'echo $PATH\'");
 
          //
 
-         command_system(strCommand);
+         int iExitCode = command_system(strCommand);
 
          ///command_system("cmd.exe -c \"C:\\msys64\\msys2_shell.cmd\" \"" + strEscaped + "\"");
 
+         return iExitCode;
 
       }
 
 
+      ::i32 context::zsh(const ::scoped_string &scopedstr)
+      {
+
+         string strEscaped = scopedstr;
+
+         ::string strCommand;
+
+   //         if (m_bMsys)
+   //         {
+   //
+   //            strCommand = "\"C:\\msys64\\usr\\bin\\bash.exe\" -c \'" + strEscaped + "\'";
+   //
+   //         }
+   //         else
+         {
+            
+            strEscaped.find_replace("\"", "\\\"");
+            
+
+            strCommand = "/bin/zsh -o braceexpand -o hashall -o interactive_comments -l -c \"" + strEscaped + "\"";
+            
+            //strCommand = "/bin/bash -c " + strEscaped;
+
+            //information() << strCommand;
+            
+            
+         }
+   //         int iExitCode1 = command_system("/bin/bash -c \'echo $PATH\'");
+
+         //
+
+         int iExitCode = command_system(strCommand);
+
+         ///command_system("cmd.exe -c \"C:\\msys64\\msys2_shell.cmd\" \"" + strEscaped + "\"");
+
+         return iExitCode;
+
+      }
+
+   
       ::string context::prepare_path(const ::file::path &path)
       {
 
@@ -317,7 +391,7 @@ namespace apex_macos
    void node::integration_factory()
    {
 
-      acmesystem()->m_psubsystem->m_pfactory->add_factory_item<::apex_macos::integration::context, ::integration::context>();
+      acmesystem()->m_psubsystem->m_pfactory->add_factory_item<::acme_macos::integration::context, ::integration::context>();
 
    }
 

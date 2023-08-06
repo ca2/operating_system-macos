@@ -181,7 +181,7 @@ namespace macos
 
       i32 hFile;
 
-      hFile = ::open(m_strFileName, dwFlags, dwPermission);
+      hFile = ::open(m_strFileName, dwFlags | O_CLOEXEC, dwPermission);
 
       if(hFile == hFileNull)
       {
