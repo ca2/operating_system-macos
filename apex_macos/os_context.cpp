@@ -849,14 +849,14 @@ void os_context::set_dark_mode(bool bDark)
 //   }
 
 
-   ::pointer < ::file::link > os_context::resolve_link(const ::file::path & path, ::file::e_link elink)
-   {
-
-      auto plink = apex_darwin::os_context::resolve_link(path, elink);
-      
-      return plink;
-
-   }
+//   ::pointer < ::file::link > os_context::resolve_link(const ::file::path & path, ::file::e_link elink)
+//   {
+//
+//      auto plink = apex_darwin::os_context::resolve_link(path, elink);
+//      
+//      return plink;
+//
+//   }
 
 
    void os_context::raise_exception( ::u32 dwExceptionCode, ::u32 dwExceptionFlags)

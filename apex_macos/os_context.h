@@ -68,8 +68,6 @@ namespace apex_macos
 
       //bool resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder = nullptr, string * pstrParams = nullptr, string * pstrIconLocation = nullptr, int * piIcon = nullptr) override;
 
-      ::pointer < ::file::link > resolve_link(const ::file::path & path, ::file::e_link elink = ::file::e_link_all) override;
-
       
       void raise_exception( ::u32 dwExceptionCode, ::u32 dwExceptionFlags);
 
