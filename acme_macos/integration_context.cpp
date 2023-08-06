@@ -296,8 +296,27 @@ namespace acme_macos
             
             strEscaped.find_replace("\"", "\\\"");
             
+#ifdef __APPLE__
+            
+            if(strEscaped.contains("shopt"))
+            {
+               
+               strCommand = "/bin/bash -l -o braceexpand -o hashall -o interactive-comments -c \"" + strEscaped + "\"";
+               
+            }
+            else
+            {
+               
+               strCommand = "/bin/zsh -l -o braceexpand -o hashall -o interactive_comments -c \"" + strEscaped + "\"";
 
-            strCommand = "/bin/bash  -o braceexpand -o hashall -o interactive-comments -c \"" + strEscaped + "\"";
+               
+            }
+            
+#else
+            
+            strCommand = "/bin/bash -l -o braceexpand -o hashall -o interactive-comments -c \"" + strEscaped + "\"";
+            
+#endif
             
             //strCommand = "/bin/bash -c " + strEscaped;
 
