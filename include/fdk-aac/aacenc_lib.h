@@ -1,7 +1,7 @@
 /* -----------------------------------------------------------------------------
 Software License for The Fraunhofer FDK AAC Codec Library for Android
 
-© Copyright  1995 - 2019 Fraunhofer-Gesellschaft zur Förderung der angewandten
+© Copyright  1995 - 2021 Fraunhofer-Gesellschaft zur Förderung der angewandten
 Forschung e.V. All rights reserved.
 
  1.    INTRODUCTION
@@ -938,7 +938,7 @@ to be used to get the same audio quality as with an enabled bit reservoir.
 
 For mp3 by the way, the same bit reservoir technique exists, but there each bit
 stream frame has a constant length for a given bit rate (ignoring the
-padding ::u8). In mp3 there is a so-called "back pointer" which tells
+padding byte). In mp3 there is a so-called "back pointer" which tells
 the decoder which bits belong to the current mp3 frame - and in general some or
 many bits have been transmitted in an earlier mp3 frame. Basically this leads to
 the same "bit exchange between mp3 frames" as in AAC but with virtually constant
@@ -1379,7 +1379,7 @@ typedef enum {
                    Setting the peak bitrate equal to ::AACENC_BITRATE does not
                  necessarily mean that the audio frames will be of constant
                  size. Since the peak bitate is in bits/second, the frame sizes
-                 can vary by one ::u8 in one or the other direction over various
+                 can vary by one byte in one or the other direction over various
                  frames. However, it is not recommended to reduce the peak
                  pitrate to ::AACENC_BITRATE - it would disable the
                  bitreservoir, which would affect the audio quality by a large
@@ -1647,7 +1647,7 @@ AACENC_ERROR aacEncEncode(const HANDLE_AACENCODER hAacEncoder,
  *
  * \return
  *          - AACENC_OK, on succes.
- *          - AACENC_INIT_ERROR, on failure.
+ *          - AACENC_INVALID_HANDLE, AACENC_INIT_ERROR, on failure.
  */
 AACENC_ERROR aacEncInfo(const HANDLE_AACENCODER hAacEncoder,
                         AACENC_InfoStruct *pInfo);

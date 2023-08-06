@@ -7,7 +7,7 @@
  *
  *   This is _not_ used to retrieve glyph names!
  *
- * Copyright (C) 1996-2021 by
+ * Copyright (C) 1996-2023 by
  * David Turner, Robert Wilhelm, and Werner Lemberg.
  *
  * This file is part of the FreeType project, and may only be used,
@@ -95,7 +95,7 @@ FT_BEGIN_HEADER
    *   string ::
    *     The 'name' string.  Note that its format differs depending on the
    *     (platform,encoding) pair, being either a string of bytes (without a
-   *     terminating `NULL` ::u8) or containing UTF-16BE entities.
+   *     terminating `NULL` byte) or containing UTF-16BE entities.
    *
    *   string_len ::
    *     The length of `string` in bytes.

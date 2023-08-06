@@ -5,7 +5,7 @@
  *   Basic SFNT/TrueType tables definitions and interface
  *   (specification only).
  *
- * Copyright (C) 1996-2021 by
+ * Copyright (C) 1996-2023 by
  * David Turner, Robert Wilhelm, and Werner Lemberg.
  *
  * This file is part of the FreeType project, and may only be used,
@@ -424,8 +424,8 @@ FT_BEGIN_HEADER
 
     /* only version 5 and higher: */
 
-    FT_UShort  usLowerOpticalPointSize;       /* in twips (1/20th points) */
-    FT_UShort  usUpperOpticalPointSize;       /* in twips (1/20th points) */
+    FT_UShort  usLowerOpticalPointSize;       /* in twips (1/20 points) */
+    FT_UShort  usUpperOpticalPointSize;       /* in twips (1/20 points) */
 
   } TT_OS2;
 
@@ -700,7 +700,7 @@ FT_BEGIN_HEADER
    *     A handle to the source face.
    *
    *   tag ::
-   *     The four-::u8 tag of the table to load.  Use value~0 if you want to
+   *     The four-byte tag of the table to load.  Use value~0 if you want to
    *     access the whole font file.  Otherwise, you can use one of the
    *     definitions found in the @FT_TRUETYPE_TAGS_H file, or forge a new
    *     one with @FT_MAKE_TAG.

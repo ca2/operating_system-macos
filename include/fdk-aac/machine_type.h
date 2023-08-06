@@ -122,52 +122,52 @@ typedef unsigned long long uint64_t;
 
 /* for doxygen the following docu parts must be separated */
 /** \var  SCHAR
- *        Data type representing at least 1 ::u8 signed integer on all supported
+ *        Data type representing at least 1 byte signed integer on all supported
  * platforms.
  */
 /** \var  UCHAR
- *        Data type representing at least 1 ::u8 unsigned integer on all
+ *        Data type representing at least 1 byte unsigned integer on all
  * supported platforms.
  */
 /** \var  INT
- *        Data type representing at least 4 ::u8 signed integer on all supported
+ *        Data type representing at least 4 byte signed integer on all supported
  * platforms.
  */
 /** \var  UINT
- *        Data type representing at least 4 ::u8 unsigned integer on all
+ *        Data type representing at least 4 byte unsigned integer on all
  * supported platforms.
  */
 /** \var  LONG
- *        Data type representing 4 ::u8 signed integer on all supported
+ *        Data type representing 4 byte signed integer on all supported
  * platforms.
  */
 /** \var  ULONG
- *        Data type representing 4 ::u8 unsigned integer on all supported
+ *        Data type representing 4 byte unsigned integer on all supported
  * platforms.
  */
 /** \var  SHORT
- *        Data type representing 2 ::u8 signed integer on all supported
+ *        Data type representing 2 byte signed integer on all supported
  * platforms.
  */
 /** \var  USHORT
- *        Data type representing 2 ::u8 unsigned integer on all supported
+ *        Data type representing 2 byte unsigned integer on all supported
  * platforms.
  */
 /** \var  INT64
- *        Data type representing 8 ::u8 signed integer on all supported
+ *        Data type representing 8 byte signed integer on all supported
  * platforms.
  */
 /** \var  UINT64
- *        Data type representing 8 ::u8 unsigned integer on all supported
+ *        Data type representing 8 byte unsigned integer on all supported
  * platforms.
  */
 /** \def  SHORT_BITS
  *        Number of bits the data type short represents. sizeof() is not suited
- * to get this info, because a ::u8 is not always defined as 8 bits.
+ * to get this info, because a byte is not always defined as 8 bits.
  */
 /** \def  CHAR_BITS
  *        Number of bits the data type char represents. sizeof() is not suited
- * to get this info, because a ::u8 is not always defined as 8 bits.
+ * to get this info, because a byte is not always defined as 8 bits.
  */
 /** \var  INT_PCM
  *        Data type representing the width of input and output PCM samples.
@@ -176,7 +176,7 @@ typedef unsigned long long uint64_t;
 typedef signed int INT;
 typedef unsigned int UINT;
 #ifdef __LP64__
-/* force FDK long-datatypes to 4 ::u8  */
+/* force FDK long-datatypes to 4 byte  */
 /* Use defines to avoid type alias problems on 64 bit machines. */
 #define LONG INT
 #define ULONG UINT

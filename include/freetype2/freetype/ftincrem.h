@@ -4,7 +4,7 @@
  *
  *   FreeType incremental loading (specification).
  *
- * Copyright (C) 2002-2021 by
+ * Copyright (C) 2002-2023 by
  * David Turner, Robert Wilhelm, and Werner Lemberg.
  *
  * This file is part of the FreeType project, and may only be used,
@@ -162,7 +162,7 @@ FT_BEGIN_HEADER
    * @output:
    *   adata ::
    *     A structure describing the returned glyph data bytes (which will be
-   *     accessed as a read-only ::u8 block).
+   *     accessed as a read-only byte block).
    *
    * @return:
    *   FreeType error code.  0~means success.
@@ -198,7 +198,7 @@ FT_BEGIN_HEADER
    *
    *   data ::
    *     A structure describing the glyph data bytes (which will be accessed
-   *     as a read-only ::u8 block).
+   *     as a read-only byte block).
    *
    */
   typedef void

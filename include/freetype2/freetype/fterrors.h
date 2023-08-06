@@ -4,7 +4,7 @@
  *
  *   FreeType error code handling (specification).
  *
- * Copyright (C) 1996-2021 by
+ * Copyright (C) 1996-2023 by
  * David Turner, Robert Wilhelm, and Werner Lemberg.
  *
  * This file is part of the FreeType project, and may only be used,
@@ -29,14 +29,14 @@
    *
    * @description:
    *   The header file `fterrors.h` (which is automatically included by
-   *   `freetype.h` defines the handling of FreeType's enumeration
+   *   `freetype.h`) defines the handling of FreeType's enumeration
    *   constants.  It can also be used to generate error message strings
    *   with a small macro trick explained below.
    *
    *   **Error Formats**
    *
    *   The configuration macro `FT_CONFIG_OPTION_USE_MODULE_ERRORS` can be
-   *   defined in `ftoption.h` in order to make the higher ::u8 indicate the
+   *   defined in `ftoption.h` in order to make the higher byte indicate the
    *   module where the error has happened (this is not compatible with
    *   standard builds of FreeType~2, however).  See the file `ftmoderr.h`
    *   for more details.
