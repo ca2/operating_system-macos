@@ -58,8 +58,8 @@ int av_twofish_init(struct AVTWOFISH *ctx, const uint8_t *key, int key_bits);
   * @param ctx an AVTWOFISH context
   * @param dst destination array, can be equal to src
   * @param src source array, can be equal to dst
-  * @param count number of 16 ::u8 blocks
-  * @paran iv initialization vector for CBC mode, NULL for ECB mode
+  * @param count number of 16 byte blocks
+  * @param iv initialization vector for CBC mode, NULL for ECB mode
   * @param decrypt 0 for encryption, 1 for decryption
  */
 void av_twofish_crypt(struct AVTWOFISH *ctx, uint8_t *dst, const uint8_t *src, int count, uint8_t* iv, int decrypt);

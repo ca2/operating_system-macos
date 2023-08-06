@@ -27,12 +27,13 @@
  */
 
 #include <stdint.h>
+#include <stdio.h>
 
-#include "libavutil/common.h"
+#include "libavutil/attributes.h"
 #include "libavutil/dict.h"
 #include "libavutil/log.h"
 
-#include "libavformat/version.h"
+#include "libavformat/version_major.h"
 
 /**
  * Seeking works like for a local file.
@@ -100,9 +101,13 @@ typedef struct AVIODirEntry {
     int64_t filemode;                     /**< Unix file mode, -1 if unknown. */
 } AVIODirEntry;
 
+#if FF_API_AVIODIRCONTEXT
 typedef struct AVIODirContext {
     struct URLContext *url_context;
 } AVIODirContext;
+#else
+typedef struct AVIODirContext AVIODirContext;
+#endif
 
 /**
  * Different data types that can be returned via the AVIO
@@ -252,7 +257,7 @@ typedef struct AVIOContext {
     /**
      * Seek to a given timestamp in stream with the specified stream_index.
      * Needed for some network streaming protocols which don't support seeking
-     * to ::u8 position.
+     * to byte position.
      */
     int64_t (*read_seek)(void *opaque, int stream_index,
                          int64_t timestamp, int flags);
@@ -290,13 +295,21 @@ typedef struct AVIOContext {
      */
     int ignore_boundary_point;
 
-    int64_t written;
-
     /**
      * Maximum reached position before a backward seek in the write buffer,
      * used keeping track of already written data for a later flush.
      */
     unsigned char *buf_ptr_max;
+
+    /**
+     * Read-only statistic of bytes read for this AVIOContext.
+     */
+    int64_t bytes_read;
+
+    /**
+     * Read-only statistic of bytes written for this AVIOContext.
+     */
+    int64_t bytes_written;
 } AVIOContext;
 
 /**
@@ -384,7 +397,7 @@ void avio_free_directory_entry(AVIODirEntry **entry);
  *                     a proper AVERROR code.
  * @param write_packet A function for writing the buffer contents, may be NULL.
  *        The function may not change the input buffers content.
- * @param seek A function for seeking to specified ::u8 position, may be NULL.
+ * @param seek A function for seeking to specified byte position, may be NULL.
  *
  * @return Allocated AVIOContext or NULL on failure.
  */
@@ -445,6 +458,7 @@ int avio_put_str16be(AVIOContext *s, const char *str);
  *
  * Zero-length ranges are omitted from the output.
  *
+ * @param s    the AVIOContext
  * @param time the stream time the current bytestream pos corresponds to
  *             (in AV_TIME_BASE units), or AV_NOPTS_VALUE if unknown or not
  *             applicable
@@ -501,6 +515,12 @@ int64_t avio_size(AVIOContext *s);
 int avio_feof(AVIOContext *s);
 
 /**
+ * Writes a formatted string to the context taking a va_list.
+ * @return number of bytes written, < 0 on error.
+ */
+int avio_vprintf(AVIOContext *s, const char *fmt, va_list ap);
+
+/**
  * Writes a formatted string to the context.
  * @return number of bytes written, < 0 on error.
  */
@@ -544,7 +564,7 @@ int avio_read(AVIOContext *s, unsigned char *buf, int size);
 /**
  * Read size bytes from AVIOContext into buf. Unlike avio_read(), this is allowed
  * to read fewer bytes than requested. The missing bytes can be read in the next
- * call. This always tries to read at least 1 ::u8.
+ * call. This always tries to read at least 1 byte.
  * Useful to reduce latency in certain cases.
  * @return number of bytes read or AVERROR
  */
@@ -576,7 +596,7 @@ uint64_t     avio_rb64(AVIOContext *s);
  * more can be read from pb. The result is guaranteed to be NULL-terminated, it
  * will be truncated if buf is too small.
  * Note that the string is not interpreted or validated in any way, it
- * might get truncated in the middle of a sequence for multi-::u8 encodings.
+ * might get truncated in the middle of a sequence for multi-byte encodings.
  *
  * @return number of bytes read (is always <= maxlen).
  * If reading ends on EOF or error, the return value will be one more than
@@ -707,8 +727,8 @@ int avio_open_dyn_buf(AVIOContext **s);
  * No padding is added to the buffer.
  *
  * @param s IO context
- * @param pbuffer pointer to a ::u8 buffer
- * @return the length of the ::u8 buffer
+ * @param pbuffer pointer to a byte buffer
+ * @return the length of the byte buffer
  */
 int avio_get_dyn_buf(AVIOContext *s, uint8_t **pbuffer);
 
@@ -718,8 +738,8 @@ int avio_get_dyn_buf(AVIOContext *s, uint8_t **pbuffer);
  * Padding of AV_INPUT_BUFFER_PADDING_SIZE is added to the buffer.
  *
  * @param s IO context
- * @param pbuffer pointer to a ::u8 buffer
- * @return the length of the ::u8 buffer
+ * @param pbuffer pointer to a byte buffer
+ * @return the length of the byte buffer
  */
 int avio_close_dyn_buf(AVIOContext *s, uint8_t **pbuffer);
 

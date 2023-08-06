@@ -28,8 +28,9 @@
 #include "libavutil/buffer.h"
 #include "libavutil/dict.h"
 #include "libavutil/rational.h"
+#include "libavutil/version.h"
 
-#include "libavcodec/version.h"
+#include "libavcodec/version_major.h"
 
 /**
  * @defgroup lavc_packet AVPacket
@@ -160,7 +161,7 @@ enum AVPacketSideDataType {
      * the packet may contain "dual mono" audio specific to Japanese DTV
      * and if it is true, recommends only the selected channel to be used.
      * @code
-     * u8    selected channels (0=mail/left, 1=sub/right, 2=both)
+     * u8    selected channels (0=main/left, 1=sub/right, 2=both)
      * @endcode
      */
     AV_PKT_DATA_JP_DUALMONO,
@@ -185,7 +186,7 @@ enum AVPacketSideDataType {
     /**
      * Data found in BlockAdditional element of matroska container. There is
      * no end marker for the data, so it is required to rely on the side data
-     * size to recognize the end. 8 ::u8 id (as found in BlockAddId) followed
+     * size to recognize the end. 8 byte id (as found in BlockAddId) followed
      * by data.
      */
     AV_PKT_DATA_MATROSKA_BLOCKADDITIONAL,
@@ -255,7 +256,7 @@ enum AVPacketSideDataType {
     AV_PKT_DATA_ENCRYPTION_INFO,
 
     /**
-     * Active Format Description data consisting of a single ::u8 as specified
+     * Active Format Description data consisting of a single byte as specified
      * in ETSI TS 101 154 using AVActiveFormatDescription enum.
      */
     AV_PKT_DATA_AFD,
@@ -390,7 +391,7 @@ typedef struct AVPacket {
      */
     int64_t duration;
 
-    int64_t pos;                            ///< ::u8 position in stream, -1 if unknown
+    int64_t pos;                            ///< byte position in stream, -1 if unknown
 
     /**
      * for some private data of the user
@@ -410,6 +411,9 @@ typedef struct AVPacket {
 
     /**
      * Time base of the packet's timestamps.
+     * In the future, this field may be set on packets output by encoders or
+     * demuxers, but its value will be by default ignored on input to decoders
+     * or muxers.
      */
     AVRational time_base;
 } AVPacket;
@@ -444,8 +448,13 @@ typedef struct AVPacketList {
 #define AV_PKT_FLAG_DISPOSABLE 0x0010
 
 enum AVSideDataParamChangeFlags {
+#if FF_API_OLD_CHANNEL_LAYOUT
+    /**
+     * @deprecated those are not used by any decoder
+     */
     AV_SIDE_DATA_PARAM_CHANGE_CHANNEL_COUNT  = 0x0001,
     AV_SIDE_DATA_PARAM_CHANGE_CHANNEL_LAYOUT = 0x0002,
+#endif
     AV_SIDE_DATA_PARAM_CHANGE_SAMPLE_RATE    = 0x0004,
     AV_SIDE_DATA_PARAM_CHANGE_DIMENSIONS     = 0x0008,
 };

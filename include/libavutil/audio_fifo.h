@@ -27,8 +27,7 @@
 #ifndef AVUTIL_AUDIO_FIFO_H
 #define AVUTIL_AUDIO_FIFO_H
 
-#include "avutil.h"
-#include "fifo.h"
+#include "attributes.h"
 #include "samplefmt.h"
 
 /**
@@ -42,7 +41,7 @@
 /**
  * Context for an Audio FIFO Buffer.
  *
- * - Operates at the sample level rather than the ::u8 level.
+ * - Operates at the sample level rather than the byte level.
  * - Supports multiple channels with either planar or packed sample format.
  * - Automatic reallocation when writing to a full buffer.
  */

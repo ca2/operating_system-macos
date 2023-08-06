@@ -49,7 +49,7 @@
  * @par
  * When the pixel format is palettized RGB32 (AV_PIX_FMT_PAL8), the palettized
  * image data is stored in AVFrame.data[0]. The palette is transported in
- * AVFrame.data[1], is 1024 bytes long (256 4-::u8 entries) and is
+ * AVFrame.data[1], is 1024 bytes long (256 4-byte entries) and is
  * formatted the same as in AV_PIX_FMT_RGB32 described above (i.e., it is
  * also endian-specific). Note also that the individual RGB32 palette
  * components stored in AVFrame.data[1] should be in the range 0..255.
@@ -72,8 +72,8 @@ enum AVPixelFormat {
     AV_PIX_FMT_YUV410P,   ///< planar YUV 4:1:0,  9bpp, (1 Cr & Cb sample per 4x4 Y samples)
     AV_PIX_FMT_YUV411P,   ///< planar YUV 4:1:1, 12bpp, (1 Cr & Cb sample per 4x1 Y samples)
     AV_PIX_FMT_GRAY8,     ///<        Y        ,  8bpp
-    AV_PIX_FMT_MONOWHITE, ///<        Y        ,  1bpp, 0 is white, 1 is black, in each ::u8 pixels are ordered from the msb to the lsb
-    AV_PIX_FMT_MONOBLACK, ///<        Y        ,  1bpp, 0 is black, 1 is white, in each ::u8 pixels are ordered from the msb to the lsb
+    AV_PIX_FMT_MONOWHITE, ///<        Y        ,  1bpp, 0 is white, 1 is black, in each byte pixels are ordered from the msb to the lsb
+    AV_PIX_FMT_MONOBLACK, ///<        Y        ,  1bpp, 0 is black, 1 is white, in each byte pixels are ordered from the msb to the lsb
     AV_PIX_FMT_PAL8,      ///< 8 bits with AV_PIX_FMT_RGB32 palette
     AV_PIX_FMT_YUVJ420P,  ///< planar YUV 4:2:0, 12bpp, full scale (JPEG), deprecated in favor of AV_PIX_FMT_YUV420P and setting color_range
     AV_PIX_FMT_YUVJ422P,  ///< planar YUV 4:2:2, 16bpp, full scale (JPEG), deprecated in favor of AV_PIX_FMT_YUV422P and setting color_range
@@ -81,12 +81,12 @@ enum AVPixelFormat {
     AV_PIX_FMT_UYVY422,   ///< packed YUV 4:2:2, 16bpp, Cb Y0 Cr Y1
     AV_PIX_FMT_UYYVYY411, ///< packed YUV 4:1:1, 12bpp, Cb Y0 Y1 Cr Y2 Y3
     AV_PIX_FMT_BGR8,      ///< packed RGB 3:3:2,  8bpp, (msb)2B 3G 3R(lsb)
-    AV_PIX_FMT_BGR4,      ///< packed RGB 1:2:1 bitstream,  4bpp, (msb)1B 2G 1R(lsb), a ::u8 contains two pixels, the first pixel in the ::u8 is the one composed by the 4 msb bits
+    AV_PIX_FMT_BGR4,      ///< packed RGB 1:2:1 bitstream,  4bpp, (msb)1B 2G 1R(lsb), a byte contains two pixels, the first pixel in the byte is the one composed by the 4 msb bits
     AV_PIX_FMT_BGR4_BYTE, ///< packed RGB 1:2:1,  8bpp, (msb)1B 2G 1R(lsb)
     AV_PIX_FMT_RGB8,      ///< packed RGB 3:3:2,  8bpp, (msb)2R 3G 3B(lsb)
-    AV_PIX_FMT_RGB4,      ///< packed RGB 1:2:1 bitstream,  4bpp, (msb)1R 2G 1B(lsb), a ::u8 contains two pixels, the first pixel in the ::u8 is the one composed by the 4 msb bits
+    AV_PIX_FMT_RGB4,      ///< packed RGB 1:2:1 bitstream,  4bpp, (msb)1R 2G 1B(lsb), a byte contains two pixels, the first pixel in the byte is the one composed by the 4 msb bits
     AV_PIX_FMT_RGB4_BYTE, ///< packed RGB 1:2:1,  8bpp, (msb)1R 2G 1B(lsb)
-    AV_PIX_FMT_NV12,      ///< planar YUV 4:2:0, 12bpp, 1 plane for Y and 1 plane for the UV components, which are interleaved (first ::u8 U and the following ::u8 V)
+    AV_PIX_FMT_NV12,      ///< planar YUV 4:2:0, 12bpp, 1 plane for Y and 1 plane for the UV components, which are interleaved (first byte U and the following byte V)
     AV_PIX_FMT_NV21,      ///< as above, but U and V bytes are swapped
 
     AV_PIX_FMT_ARGB,      ///< packed ARGB 8:8:8:8, 32bpp, ARGBARGB...
@@ -99,8 +99,8 @@ enum AVPixelFormat {
     AV_PIX_FMT_YUV440P,   ///< planar YUV 4:4:0 (1 Cr & Cb sample per 1x2 Y samples)
     AV_PIX_FMT_YUVJ440P,  ///< planar YUV 4:4:0 full scale (JPEG), deprecated in favor of AV_PIX_FMT_YUV440P and setting color_range
     AV_PIX_FMT_YUVA420P,  ///< planar YUV 4:2:0, 20bpp, (1 Cr & Cb sample per 2x2 Y & A samples)
-    AV_PIX_FMT_RGB48BE,   ///< packed RGB 16:16:16, 48bpp, 16R, 16G, 16B, the 2-::u8 value for each R/G/B component is stored as big-endian
-    AV_PIX_FMT_RGB48LE,   ///< packed RGB 16:16:16, 48bpp, 16R, 16G, 16B, the 2-::u8 value for each R/G/B component is stored as little-endian
+    AV_PIX_FMT_RGB48BE,   ///< packed RGB 16:16:16, 48bpp, 16R, 16G, 16B, the 2-byte value for each R/G/B component is stored as big-endian
+    AV_PIX_FMT_RGB48LE,   ///< packed RGB 16:16:16, 48bpp, 16R, 16G, 16B, the 2-byte value for each R/G/B component is stored as little-endian
 
     AV_PIX_FMT_RGB565BE,  ///< packed RGB 5:6:5, 16bpp, (msb)   5R 6G 5B(lsb), big-endian
     AV_PIX_FMT_RGB565LE,  ///< packed RGB 5:6:5, 16bpp, (msb)   5R 6G 5B(lsb), little-endian
@@ -135,8 +135,8 @@ enum AVPixelFormat {
     AV_PIX_FMT_Y400A = AV_PIX_FMT_YA8, ///< alias for AV_PIX_FMT_YA8
     AV_PIX_FMT_GRAY8A= AV_PIX_FMT_YA8, ///< alias for AV_PIX_FMT_YA8
 
-    AV_PIX_FMT_BGR48BE,   ///< packed RGB 16:16:16, 48bpp, 16B, 16G, 16R, the 2-::u8 value for each R/G/B component is stored as big-endian
-    AV_PIX_FMT_BGR48LE,   ///< packed RGB 16:16:16, 48bpp, 16B, 16G, 16R, the 2-::u8 value for each R/G/B component is stored as little-endian
+    AV_PIX_FMT_BGR48BE,   ///< packed RGB 16:16:16, 48bpp, 16B, 16G, 16R, the 2-byte value for each R/G/B component is stored as big-endian
+    AV_PIX_FMT_BGR48LE,   ///< packed RGB 16:16:16, 48bpp, 16B, 16G, 16R, the 2-byte value for each R/G/B component is stored as little-endian
 
     /**
      * The following 12 formats have the disadvantage of needing 1 format for each bit depth.
@@ -186,16 +186,16 @@ enum AVPixelFormat {
 
     AV_PIX_FMT_VDPAU,     ///< HW acceleration through VDPAU, Picture.data[3] contains a VdpVideoSurface
 
-    AV_PIX_FMT_XYZ12LE,      ///< packed XYZ 4:4:4, 36 bpp, (msb) 12X, 12Y, 12Z (lsb), the 2-::u8 value for each X/Y/Z is stored as little-endian, the 4 lower bits are set to 0
-    AV_PIX_FMT_XYZ12BE,      ///< packed XYZ 4:4:4, 36 bpp, (msb) 12X, 12Y, 12Z (lsb), the 2-::u8 value for each X/Y/Z is stored as big-endian, the 4 lower bits are set to 0
+    AV_PIX_FMT_XYZ12LE,      ///< packed XYZ 4:4:4, 36 bpp, (msb) 12X, 12Y, 12Z (lsb), the 2-byte value for each X/Y/Z is stored as little-endian, the 4 lower bits are set to 0
+    AV_PIX_FMT_XYZ12BE,      ///< packed XYZ 4:4:4, 36 bpp, (msb) 12X, 12Y, 12Z (lsb), the 2-byte value for each X/Y/Z is stored as big-endian, the 4 lower bits are set to 0
     AV_PIX_FMT_NV16,         ///< interleaved chroma YUV 4:2:2, 16bpp, (1 Cr & Cb sample per 2x1 Y samples)
     AV_PIX_FMT_NV20LE,       ///< interleaved chroma YUV 4:2:2, 20bpp, (1 Cr & Cb sample per 2x1 Y samples), little-endian
     AV_PIX_FMT_NV20BE,       ///< interleaved chroma YUV 4:2:2, 20bpp, (1 Cr & Cb sample per 2x1 Y samples), big-endian
 
-    AV_PIX_FMT_RGBA64BE,     ///< packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-::u8 value for each R/G/B/A component is stored as big-endian
-    AV_PIX_FMT_RGBA64LE,     ///< packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-::u8 value for each R/G/B/A component is stored as little-endian
-    AV_PIX_FMT_BGRA64BE,     ///< packed RGBA 16:16:16:16, 64bpp, 16B, 16G, 16R, 16A, the 2-::u8 value for each R/G/B/A component is stored as big-endian
-    AV_PIX_FMT_BGRA64LE,     ///< packed RGBA 16:16:16:16, 64bpp, 16B, 16G, 16R, 16A, the 2-::u8 value for each R/G/B/A component is stored as little-endian
+    AV_PIX_FMT_RGBA64BE,     ///< packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as big-endian
+    AV_PIX_FMT_RGBA64LE,     ///< packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as little-endian
+    AV_PIX_FMT_BGRA64BE,     ///< packed RGBA 16:16:16:16, 64bpp, 16B, 16G, 16R, 16A, the 2-byte value for each R/G/B/A component is stored as big-endian
+    AV_PIX_FMT_BGRA64LE,     ///< packed RGBA 16:16:16:16, 64bpp, 16B, 16G, 16R, 16A, the 2-byte value for each R/G/B/A component is stored as little-endian
 
     AV_PIX_FMT_YVYU422,   ///< packed YUV 4:2:2, 16bpp, Y0 Cr Y1 Cb
 
@@ -206,8 +206,36 @@ enum AVPixelFormat {
     AV_PIX_FMT_GBRAP16BE,    ///< planar GBRA 4:4:4:4 64bpp, big-endian
     AV_PIX_FMT_GBRAP16LE,    ///< planar GBRA 4:4:4:4 64bpp, little-endian
     /**
-     *  HW acceleration through QSV, data[3] contains a pointer to the
-     *  mfxFrameSurface1 structure.
+     * HW acceleration through QSV, data[3] contains a pointer to the
+     * mfxFrameSurface1 structure.
+     *
+     * Before FFmpeg 5.0:
+     * mfxFrameSurface1.Data.MemId contains a pointer when importing
+     * the following frames as QSV frames:
+     *
+     * VAAPI:
+     * mfxFrameSurface1.Data.MemId contains a pointer to VASurfaceID
+     *
+     * DXVA2:
+     * mfxFrameSurface1.Data.MemId contains a pointer to IDirect3DSurface9
+     *
+     * FFmpeg 5.0 and above:
+     * mfxFrameSurface1.Data.MemId contains a pointer to the mfxHDLPair
+     * structure when importing the following frames as QSV frames:
+     *
+     * VAAPI:
+     * mfxHDLPair.first contains a VASurfaceID pointer.
+     * mfxHDLPair.second is always MFX_INFINITE.
+     *
+     * DXVA2:
+     * mfxHDLPair.first contains IDirect3DSurface9 pointer.
+     * mfxHDLPair.second is always MFX_INFINITE.
+     *
+     * D3D11:
+     * mfxHDLPair.first contains a ID3D11Texture2D pointer.
+     * mfxHDLPair.second contains the texture array index of the frame if the
+     * ID3D11Texture2D is an array texture, or always MFX_INFINITE if it is a
+     * normal texture.
      */
     AV_PIX_FMT_QSV,
     /**
@@ -260,7 +288,9 @@ enum AVPixelFormat {
     AV_PIX_FMT_BAYER_GRBG16LE, ///< bayer, GRGR..(odd line), BGBG..(even line), 16-bit samples, little-endian
     AV_PIX_FMT_BAYER_GRBG16BE, ///< bayer, GRGR..(odd line), BGBG..(even line), 16-bit samples, big-endian
 
+#if FF_API_XVMC
     AV_PIX_FMT_XVMC,///< XVideo Motion Acceleration via common packet passing
+#endif
 
     AV_PIX_FMT_YUV440P10LE, ///< planar YUV 4:4:0,20bpp, (1 Cr & Cb sample per 1x2 Y samples), little-endian
     AV_PIX_FMT_YUV440P10BE, ///< planar YUV 4:4:0,20bpp, (1 Cr & Cb sample per 1x2 Y samples), big-endian
@@ -335,7 +365,7 @@ enum AVPixelFormat {
     AV_PIX_FMT_YUVA444P12BE, ///< planar YUV 4:4:4,36bpp, (1 Cr & Cb sample per 1x1 Y samples), 12b alpha, big-endian
     AV_PIX_FMT_YUVA444P12LE, ///< planar YUV 4:4:4,36bpp, (1 Cr & Cb sample per 1x1 Y samples), 12b alpha, little-endian
 
-    AV_PIX_FMT_NV24,      ///< planar YUV 4:4:4, 24bpp, 1 plane for Y and 1 plane for the UV components, which are interleaved (first ::u8 U and the following ::u8 V)
+    AV_PIX_FMT_NV24,      ///< planar YUV 4:4:4, 24bpp, 1 plane for Y and 1 plane for the UV components, which are interleaved (first byte U and the following byte V)
     AV_PIX_FMT_NV42,      ///< as above, but U and V bytes are swapped
 
     /**
@@ -350,6 +380,52 @@ enum AVPixelFormat {
 
     AV_PIX_FMT_X2RGB10LE, ///< packed RGB 10:10:10, 30bpp, (msb)2X 10R 10G 10B(lsb), little-endian, X=unused/undefined
     AV_PIX_FMT_X2RGB10BE, ///< packed RGB 10:10:10, 30bpp, (msb)2X 10R 10G 10B(lsb), big-endian, X=unused/undefined
+    AV_PIX_FMT_X2BGR10LE, ///< packed BGR 10:10:10, 30bpp, (msb)2X 10B 10G 10R(lsb), little-endian, X=unused/undefined
+    AV_PIX_FMT_X2BGR10BE, ///< packed BGR 10:10:10, 30bpp, (msb)2X 10B 10G 10R(lsb), big-endian, X=unused/undefined
+
+    AV_PIX_FMT_P210BE,      ///< interleaved chroma YUV 4:2:2, 20bpp, data in the high bits, big-endian
+    AV_PIX_FMT_P210LE,      ///< interleaved chroma YUV 4:2:2, 20bpp, data in the high bits, little-endian
+
+    AV_PIX_FMT_P410BE,      ///< interleaved chroma YUV 4:4:4, 30bpp, data in the high bits, big-endian
+    AV_PIX_FMT_P410LE,      ///< interleaved chroma YUV 4:4:4, 30bpp, data in the high bits, little-endian
+
+    AV_PIX_FMT_P216BE,      ///< interleaved chroma YUV 4:2:2, 32bpp, big-endian
+    AV_PIX_FMT_P216LE,      ///< interleaved chroma YUV 4:2:2, 32bpp, little-endian
+
+    AV_PIX_FMT_P416BE,      ///< interleaved chroma YUV 4:4:4, 48bpp, big-endian
+    AV_PIX_FMT_P416LE,      ///< interleaved chroma YUV 4:4:4, 48bpp, little-endian
+
+    AV_PIX_FMT_VUYA,        ///< packed VUYA 4:4:4, 32bpp, VUYAVUYA...
+
+    AV_PIX_FMT_RGBAF16BE,   ///< IEEE-754 half precision packed RGBA 16:16:16:16, 64bpp, RGBARGBA..., big-endian
+    AV_PIX_FMT_RGBAF16LE,   ///< IEEE-754 half precision packed RGBA 16:16:16:16, 64bpp, RGBARGBA..., little-endian
+
+    AV_PIX_FMT_VUYX,        ///< packed VUYX 4:4:4, 32bpp, Variant of VUYA where alpha channel is left undefined
+
+    AV_PIX_FMT_P012LE,      ///< like NV12, with 12bpp per component, data in the high bits, zeros in the low bits, little-endian
+    AV_PIX_FMT_P012BE,      ///< like NV12, with 12bpp per component, data in the high bits, zeros in the low bits, big-endian
+
+    AV_PIX_FMT_Y212BE,      ///< packed YUV 4:2:2 like YUYV422, 24bpp, data in the high bits, zeros in the low bits, big-endian
+    AV_PIX_FMT_Y212LE,      ///< packed YUV 4:2:2 like YUYV422, 24bpp, data in the high bits, zeros in the low bits, little-endian
+
+    AV_PIX_FMT_XV30BE,      ///< packed XVYU 4:4:4, 32bpp, (msb)2X 10V 10Y 10U(lsb), big-endian, variant of Y410 where alpha channel is left undefined
+    AV_PIX_FMT_XV30LE,      ///< packed XVYU 4:4:4, 32bpp, (msb)2X 10V 10Y 10U(lsb), little-endian, variant of Y410 where alpha channel is left undefined
+
+    AV_PIX_FMT_XV36BE,      ///< packed XVYU 4:4:4, 48bpp, data in the high bits, zeros in the low bits, big-endian, variant of Y412 where alpha channel is left undefined
+    AV_PIX_FMT_XV36LE,      ///< packed XVYU 4:4:4, 48bpp, data in the high bits, zeros in the low bits, little-endian, variant of Y412 where alpha channel is left undefined
+
+    AV_PIX_FMT_RGBF32BE,    ///< IEEE-754 single precision packed RGB 32:32:32, 96bpp, RGBRGB..., big-endian
+    AV_PIX_FMT_RGBF32LE,    ///< IEEE-754 single precision packed RGB 32:32:32, 96bpp, RGBRGB..., little-endian
+
+    AV_PIX_FMT_RGBAF32BE,   ///< IEEE-754 single precision packed RGBA 32:32:32:32, 128bpp, RGBARGBA..., big-endian
+    AV_PIX_FMT_RGBAF32LE,   ///< IEEE-754 single precision packed RGBA 32:32:32:32, 128bpp, RGBARGBA..., little-endian
+
+    AV_PIX_FMT_P212BE,      ///< interleaved chroma YUV 4:2:2, 24bpp, data in the high bits, big-endian
+    AV_PIX_FMT_P212LE,      ///< interleaved chroma YUV 4:2:2, 24bpp, data in the high bits, little-endian
+
+    AV_PIX_FMT_P412BE,      ///< interleaved chroma YUV 4:4:4, 36bpp, data in the high bits, big-endian
+    AV_PIX_FMT_P412LE,      ///< interleaved chroma YUV 4:4:4, 36bpp, data in the high bits, little-endian
+
     AV_PIX_FMT_NB         ///< number of pixel formats, DO NOT USE THIS if you want to link with shared libav* because the number of formats might differ between versions
 };
 
@@ -436,10 +512,27 @@ enum AVPixelFormat {
 #define AV_PIX_FMT_NV20       AV_PIX_FMT_NE(NV20BE,  NV20LE)
 #define AV_PIX_FMT_AYUV64     AV_PIX_FMT_NE(AYUV64BE, AYUV64LE)
 #define AV_PIX_FMT_P010       AV_PIX_FMT_NE(P010BE,  P010LE)
+#define AV_PIX_FMT_P012       AV_PIX_FMT_NE(P012BE,  P012LE)
 #define AV_PIX_FMT_P016       AV_PIX_FMT_NE(P016BE,  P016LE)
 
 #define AV_PIX_FMT_Y210       AV_PIX_FMT_NE(Y210BE,  Y210LE)
+#define AV_PIX_FMT_Y212       AV_PIX_FMT_NE(Y212BE,  Y212LE)
+#define AV_PIX_FMT_XV30       AV_PIX_FMT_NE(XV30BE,  XV30LE)
+#define AV_PIX_FMT_XV36       AV_PIX_FMT_NE(XV36BE,  XV36LE)
 #define AV_PIX_FMT_X2RGB10    AV_PIX_FMT_NE(X2RGB10BE, X2RGB10LE)
+#define AV_PIX_FMT_X2BGR10    AV_PIX_FMT_NE(X2BGR10BE, X2BGR10LE)
+
+#define AV_PIX_FMT_P210       AV_PIX_FMT_NE(P210BE, P210LE)
+#define AV_PIX_FMT_P410       AV_PIX_FMT_NE(P410BE, P410LE)
+#define AV_PIX_FMT_P212       AV_PIX_FMT_NE(P212BE, P212LE)
+#define AV_PIX_FMT_P412       AV_PIX_FMT_NE(P412BE, P412LE)
+#define AV_PIX_FMT_P216       AV_PIX_FMT_NE(P216BE, P216LE)
+#define AV_PIX_FMT_P416       AV_PIX_FMT_NE(P416BE, P416LE)
+
+#define AV_PIX_FMT_RGBAF16    AV_PIX_FMT_NE(RGBAF16BE, RGBAF16LE)
+
+#define AV_PIX_FMT_RGBF32     AV_PIX_FMT_NE(RGBF32BE, RGBF32LE)
+#define AV_PIX_FMT_RGBAF32    AV_PIX_FMT_NE(RGBAF32BE, RGBAF32LE)
 
 /**
   * Chromaticity coordinates of the source primaries.

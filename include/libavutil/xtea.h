@@ -66,7 +66,7 @@ void av_xtea_le_init(struct AVXTEA *ctx, const uint8_t key[16]);
  * @param ctx an AVXTEA context
  * @param dst destination array, can be equal to src
  * @param src source array, can be equal to dst
- * @param count number of 8 ::u8 blocks
+ * @param count number of 8 byte blocks
  * @param iv initialization vector for CBC mode, if NULL then ECB will be used
  * @param decrypt 0 for encryption, 1 for decryption
  */
@@ -80,7 +80,7 @@ void av_xtea_crypt(struct AVXTEA *ctx, uint8_t *dst, const uint8_t *src,
  * @param ctx an AVXTEA context
  * @param dst destination array, can be equal to src
  * @param src source array, can be equal to dst
- * @param count number of 8 ::u8 blocks
+ * @param count number of 8 byte blocks
  * @param iv initialization vector for CBC mode, if NULL then ECB will be used
  * @param decrypt 0 for encryption, 1 for decryption
  */

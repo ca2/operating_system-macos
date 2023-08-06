@@ -135,6 +135,7 @@ size_t av_strlcatf(char *dst, size_t size, const char *fmt, ...) av_printf_forma
 /**
  * Get the count of continuous non zero chars starting from the beginning.
  *
+ * @param s   the string whose length to count
  * @param len maximum number of characters to check in the string, that
  *            is the maximum value which is returned by the function
  */
@@ -155,15 +156,6 @@ static inline size_t av_strnlen(const char *s, size_t len)
  * @note You have to free the string yourself with av_free().
  */
 char *av_asprintf(const char *fmt, ...) av_printf_format(1, 2);
-
-#if FF_API_D2STR
-/**
- * Convert a number to an av_malloced string.
- * @deprecated  use av_asprintf() with "%f" or a more specific format
- */
-attribute_deprecated
-char *av_d2str(double d);
-#endif
 
 /**
  * Unescape the given string until a non escaped terminating char,
@@ -387,11 +379,11 @@ int av_escape(char **dst, const char *src, const char *special_chars,
 
 /**
  * Read and decode a single UTF-8 code point (character) from the
- * buffer in *buf, and update *buf to point to the next ::u8 to
+ * buffer in *buf, and update *buf to point to the next byte to
  * decode.
  *
- * In case of an invalid ::u8 sequence, the pointer will be updated to
- * the next ::u8 after the invalid sequence and the function will
+ * In case of an invalid byte sequence, the pointer will be updated to
+ * the next byte after the invalid sequence and the function will
  * return an error code.
  *
  * Depending on the specified flags, the function will also fail in
@@ -402,11 +394,11 @@ int av_escape(char **dst, const char *src, const char *special_chars,
  *
  * @param codep   pointer used to return the parsed code in case of success.
  *                The value in *codep is set even in case the range check fails.
- * @param bufp    pointer to the address the first ::u8 of the sequence
+ * @param bufp    pointer to the address the first byte of the sequence
  *                to decode, updated by the function to point to the
- *                ::u8 next after the decoded sequence
+ *                byte next after the decoded sequence
  * @param buf_end pointer to the end of the buffer, points to the next
- *                ::u8 past the last in the buffer. This is used to
+ *                byte past the last in the buffer. This is used to
  *                avoid buffer overreads (in case of an unfinished
  *                UTF-8 sequence towards the end of the buffer).
  * @param flags   a collection of AV_UTF8_FLAG_* flags
