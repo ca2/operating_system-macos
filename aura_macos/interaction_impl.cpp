@@ -1093,76 +1093,76 @@ namespace aura_macos
 //   }
 
 
-   void interaction_impl::UpdateWindow()
-   {
-
-      throw ::exception(error_not_implemented);
-
-   }
-
-
-   void interaction_impl::SetRedraw(bool bRedraw)
-   {
-
-      throw ::exception(error_not_implemented);;
-
-   }
-
-
-//   bool interaction_impl::GetUpdateRect(RECTANGLE_I32 * lpRect, bool bErase)
+//   void interaction_impl::UpdateWindow()
 //   {
 //
 //      throw ::exception(error_not_implemented);
 //
 //   }
-
-
-   i32 interaction_impl::GetUpdateRgn(::draw2d::region* pRgn, bool bErase)
-   {
-
-      throw ::exception(error_not_implemented);
-
-   }
-
-
-   void interaction_impl::Invalidate(bool bErase)
-   {\
-
-      m_bNeedsUpdate = true;
-
-   }
-
-
-   void interaction_impl::InvalidateRect(const ::rectangle_i32 & rectangle, bool bErase)
-   {
-
-      throw ::exception(error_not_implemented);;
-
-   }
-
-
-   void interaction_impl::InvalidateRgn(::draw2d::region* pRgn, bool bErase)
-   {
-
-      throw ::exception(error_not_implemented);;
-
-   }
-
-
-   void interaction_impl::ValidateRect(const ::rectangle_i32 & rectangle)
-   {
-
-      throw ::exception(error_not_implemented);;
-
-   }
-
-
-   void interaction_impl::ValidateRgn(::draw2d::region* pRgn)
-   {
-
-      throw ::exception(error_not_implemented);;
-
-   }
+//
+//
+//   void interaction_impl::SetRedraw(bool bRedraw)
+//   {
+//
+//      throw ::exception(error_not_implemented);;
+//
+//   }
+//
+//
+////   bool interaction_impl::GetUpdateRect(RECTANGLE_I32 * lpRect, bool bErase)
+////   {
+////
+////      throw ::exception(error_not_implemented);
+////
+////   }
+//
+//
+//   i32 interaction_impl::GetUpdateRgn(::draw2d::region* pRgn, bool bErase)
+//   {
+//
+//      throw ::exception(error_not_implemented);
+//
+//   }
+//
+//
+//   void interaction_impl::Invalidate(bool bErase)
+//   {\
+//
+//      m_bNeedsUpdate = true;
+//
+//   }
+//
+//
+//   void interaction_impl::InvalidateRect(const ::rectangle_i32 & rectangle, bool bErase)
+//   {
+//
+//      throw ::exception(error_not_implemented);;
+//
+//   }
+//
+//
+//   void interaction_impl::InvalidateRgn(::draw2d::region* pRgn, bool bErase)
+//   {
+//
+//      throw ::exception(error_not_implemented);;
+//
+//   }
+//
+//
+//   void interaction_impl::ValidateRect(const ::rectangle_i32 & rectangle)
+//   {
+//
+//      throw ::exception(error_not_implemented);;
+//
+//   }
+//
+//
+//   void interaction_impl::ValidateRgn(::draw2d::region* pRgn)
+//   {
+//
+//      throw ::exception(error_not_implemented);;
+//
+//   }
 
 
 //   bool interaction_impl::window_impl_is_visible()
@@ -1206,12 +1206,12 @@ namespace aura_macos
 //   }
 
 
-   void interaction_impl::ShowOwnedPopups(bool bShow)
-   {
-
-      throw ::exception(error_not_implemented);;
-
-   }
+//   void interaction_impl::ShowOwnedPopups(bool bShow)
+//   {
+//
+//      throw ::exception(error_not_implemented);;
+//
+//   }
 
 
 //   void interaction_impl::send_message_to_descendants(const ::id & id, wparam wparam, lparam lparam, bool bDeep, bool bOnlyPerm)
