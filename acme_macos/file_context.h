@@ -7,15 +7,15 @@
 #pragma once
 
 
-#include "apex_apple/file_context.h"
+#include "acme_apple/file_context.h"
 
 
-namespace apex_macos
+namespace acme_macos
 {
 
 
-   class CLASS_DECL_APEX file_context :
-      virtual public ::apex_apple::file_context
+   class CLASS_DECL_ACME file_context :
+      virtual public ::acme_apple::file_context
    {
    public:
 
@@ -43,7 +43,7 @@ namespace apex_macos
    };
 
 
-} // namespace apex_macos
+} // namespace acme_macos
 
 
 

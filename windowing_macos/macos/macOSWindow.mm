@@ -326,7 +326,7 @@ NSString * __nsstring(const char * psz);
       
       point.y = [[NSScreen mainScreen] frame].size.height - (rect.origin.y + rect.size.height);
       
-      m_pmacoswindow->macos_window_moved(point);
+      m_pmacoswindow->macos_window_repositioned(point);
       
    }
    catch (...)

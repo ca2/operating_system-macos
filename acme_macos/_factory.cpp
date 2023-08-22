@@ -1,15 +1,17 @@
 #include "framework.h"
-#include "acme/filesystem/filesystem/acme_directory.h"
-#include "acme/filesystem/filesystem/acme_file.h"
-#include "acme/filesystem/filesystem/acme_path.h"
 #include "acme_directory.h"
 #include "acme_file.h"
 #include "acme_path.h"
+#include "dir_context.h"
+#include "dir_system.h"
+#include "file_context.h"
+#include "file_system.h"
 #include "main_window.h"
 #include "application.h"
 #include <libunwind.h>
 //#include "address_to_line.h"
 #include "acme_posix/pipe.h"
+#include "FileSystemEvents/watcher.h"
 ////#include "copydesk.h"
 ////#include "file_os_watcher.h"
 ////#include "acme/node/posix/pipe.h"
@@ -53,7 +55,15 @@ __FACTORY_EXPORT void acme_macos_factory(::factory::factory * pfactory)
    pfactory->add_factory_item < ::acme_macos::acme_path, ::acme_path > ();
    pfactory->add_factory_item < ::acme_macos::acme_file, ::acme_file > ();
 
-   
+   pfactory->add_factory_item < ::FileSystemEvents::watcher, ::file::watcher > ();
+
+   pfactory->add_factory_item < ::FileSystemEvents::watch, ::file::watch > ();
+
+   pfactory->add_factory_item < ::acme_macos::file_context, ::file_context > ();
+   pfactory->add_factory_item < ::acme_macos::dir_context, ::dir_context > ();
+   pfactory->add_factory_item < ::acme_macos::file_system, ::file_system > ();
+   pfactory->add_factory_item < ::acme_macos::dir_system, ::dir_system > ();
+
    pfactory->add_factory_item < ::acme_macos::node, ::acme::node > ();
 
    pfactory->add_factory_item < ::acme_macos::main_window, ::operating_system::main_window > ();

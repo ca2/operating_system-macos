@@ -1,14 +1,14 @@
 #pragma once
 
 
-#include "apex/filesystem/filesystem/file_system.h"
+#include "acme/filesystem/filesystem/file_system.h"
 
 
-namespace apex_macos
+namespace acme_macos
 {
 
 
-   class CLASS_DECL_APEX file_system :
+   class CLASS_DECL_ACME_MACOS file_system :
       virtual public ::file_system
    {
    public:
@@ -33,7 +33,7 @@ namespace apex_macos
    };
 
 
-} // namespace apex_macos
+} // namespace acme_macos
 
 
 

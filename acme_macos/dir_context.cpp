@@ -1,8 +1,10 @@
 #include "framework.h"
+#include "dir_context.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
+#include "acme/filesystem/filesystem/dir_system.h"
 #include "acme/filesystem/filesystem/listing.h"
 #include "acme/parallelization/task_flag.h"
-#include "apex/platform/system.h"
+#include "acme/platform/system.h"
 #include "acme/primitive/string/international.h"
 //#include "apex/os/_.h"
 //#include "apex/os/_os.h"
@@ -19,7 +21,7 @@ char * ns_user_local_image_folder();
 char * ns_user_local_video_folder();
 
 
-namespace apex_macos
+namespace acme_macos
 {
 
 
@@ -51,7 +53,7 @@ namespace apex_macos
 //
 //      }
       
-      auto psystem = acmesystem()->m_papexsystem;
+      auto psystem = acmesystem();
       
       //estatus =
       
@@ -1093,7 +1095,7 @@ namespace apex_macos
    ::file::path dir_context::time()
    {
       
-      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData / "time";
+      return acmesystem()->m_pdirsystem->m_pathAppData / "time";
       
    }
 
@@ -1118,7 +1120,7 @@ namespace apex_macos
    ::file::path dir_context::netseed()
    {
       
-      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathHome / "netnodenet/net/seed";
+      return acmesystem()->m_pdirsystem->m_pathHome / "netnodenet/net/seed";
       
    }
 
@@ -1342,7 +1344,7 @@ namespace apex_macos
    ::file::path dir_context::appdata(const string & strAppId)
    {
       
-      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData / strAppId;
+      return acmesystem()->m_pdirsystem->m_pathAppData / strAppId;
       
 //      auto psystem = m_psystem;
 //
@@ -1356,7 +1358,7 @@ namespace apex_macos
    ::file::path dir_context::commonappdata_root()
    {
 
-      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData;
+      return acmesystem()->m_pdirsystem->m_pathAppData;
 
    }
 
@@ -1364,7 +1366,7 @@ namespace apex_macos
    ::file::path dir_context::commonappdata()
    {
 
-      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData;
+      return acmesystem()->m_pdirsystem->m_pathAppData;
 
    }
 
@@ -1427,7 +1429,7 @@ namespace apex_macos
    ::file::path dir_context::userquicklaunch()
    {
 
-      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData / "Microsoft\\Internet Explorer\\Quick Launch";
+      return acmesystem()->m_pdirsystem->m_pathAppData / "Microsoft\\Internet Explorer\\Quick Launch";
 
    }
 
@@ -1435,7 +1437,7 @@ namespace apex_macos
    ::file::path dir_context::userprograms()
    {
 
-      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData;
+      return acmesystem()->m_pdirsystem->m_pathAppData;
 
    }
 
@@ -1443,7 +1445,7 @@ namespace apex_macos
    ::file::path dir_context::commonprograms()
    {
 
-      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathAppData;
+      return acmesystem()->m_pdirsystem->m_pathAppData;
 
    }
 
@@ -1535,7 +1537,7 @@ namespace apex_macos
    ::file::path dir_context::home()
    {
 
-      return acmesystem()->m_papexsystem->m_pdirsystem->m_pathHome;
+      return acmesystem()->m_pdirsystem->m_pathHome;
 
    }
 
@@ -1589,7 +1591,7 @@ namespace apex_macos
    }
 
 
-} // namespace apex_macos
+} // namespace acme_macos
 
 
 

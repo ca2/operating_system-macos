@@ -5,7 +5,8 @@
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 28/02/20.
 //
 #include "framework.h"
-#include "apex/platform/system.h"
+#include "file_context.h"
+#include "acme/platform/system.h"
 #include <sys/stat.h>
 #include <ctype.h>
 #include <mach-o/dyld.h>
@@ -26,7 +27,7 @@ struct PROCESS_INFO_t
 };
 
 
-namespace apex_macos
+namespace acme_macos
 {
 
 
@@ -77,7 +78,7 @@ namespace apex_macos
 //
 //      }
 //
-      auto psystem = acmesystem()->m_papexsystem;
+      auto psystem = acmesystem();
 
        m_pdirsystem = psystem->m_pdirsystem;
       
@@ -164,7 +165,7 @@ namespace apex_macos
    }
 
 
-} // namespace apex_macos
+} // namespace acme_macos
 
 
 char * ns_resource_folder();

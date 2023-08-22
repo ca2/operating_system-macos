@@ -1,14 +1,14 @@
 #pragma once
 
 
-#include "apex/filesystem/filesystem/dir_context.h"
+#include "acme/filesystem/filesystem/dir_context.h"
 
 
-namespace apex_macos
+namespace acme_macos
 {
 
 
-   class CLASS_DECL_APEX dir_context :
+   class CLASS_DECL_ACME_MACOS dir_context :
       virtual public ::dir_context
    {
    public:
@@ -90,7 +90,7 @@ namespace apex_macos
    };
 
 
-} // namespace apex_macos
+} // namespace acme_macos
 
 
 

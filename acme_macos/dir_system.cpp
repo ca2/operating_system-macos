@@ -5,7 +5,7 @@
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 28/02/20.
 //
 #include "framework.h"
-
+#include "dir_system.h"
 //#include "apex/os/_.h"
 //#include "apex/os/_os.h"
 //#include "apex/xml/_.h"
@@ -19,7 +19,7 @@ char * ns_user_local_image_folder();
 char * ns_user_local_video_folder();
 
 
-namespace apex_macos
+namespace acme_macos
 {
 
 
@@ -84,5 +84,5 @@ namespace apex_macos
    }
 
 
-} // namespace apex_macos
+} // namespace acme_macos
 

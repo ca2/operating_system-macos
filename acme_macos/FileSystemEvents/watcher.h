@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include "apex/filesystem/file/watch.h"
-#include "apex/filesystem/file/watcher.h"
+#include "acme/filesystem/watcher/watch.h"
+#include "acme/filesystem/watcher/watcher.h"
 #include <CoreServices/CoreServices.h>
 
 
@@ -10,7 +10,7 @@ namespace FileSystemEvents
 {
    
    
-   class CLASS_DECL_APEX watch :
+   class CLASS_DECL_ACME_MACOS watch :
       virtual public ::file::watch
    {
    public:
@@ -45,7 +45,7 @@ namespace FileSystemEvents
    };
    
 
-   class CLASS_DECL_APEX watcher :
+   class CLASS_DECL_ACME_MACOS watcher :
       virtual public ::file::watcher
    {
    public:

@@ -7,14 +7,14 @@
 #pragma once
 
 
-#include "apex/filesystem/filesystem/dir_system.h"
+#include "acme/filesystem/filesystem/dir_system.h"
 
 
-namespace apex_macos
+namespace acme_macos
 {
 
 
-   class CLASS_DECL_APEX dir_system :
+   class CLASS_DECL_ACME dir_system :
       virtual public ::dir_system
    {
    public:
@@ -40,7 +40,7 @@ namespace apex_macos
    };
 
 
-} // namespace apex_macos
+} // namespace acme_macos
 
 
 

@@ -145,7 +145,7 @@
    
    int y = point.y;
    
-   p->macos_window_mouse_moved(x, y, [NSEvent pressedMouseButtons]);
+   p->macos_window_mouse_repositioned(x, y, [NSEvent pressedMouseButtons]);
    
    return;
    

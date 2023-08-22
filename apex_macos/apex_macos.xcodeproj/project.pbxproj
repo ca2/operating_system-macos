@@ -15,7 +15,6 @@
 		9A46D24526784388000B22D0 /* libacme_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A46D24426784388000B22D0 /* libacme_posix.dylib */; };
 		9A46D24726784394000B22D0 /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A46D24626784394000B22D0 /* libapex.dylib */; };
 		9A46D24926784394000B22D0 /* libapex_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A46D24826784394000B22D0 /* libapex_posix.dylib */; };
-		9A5D760D274E4FF300403BC3 /* file.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7C264EF104003DF8A0 /* file.mm */; };
 		9A7862A0265023D30034A0E1 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78629D265023D30034A0E1 /* CoreServices.framework */; };
 		9A7862A2265024F50034A0E1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7862A1265024F40034A0E1 /* IOKit.framework */; };
 		9A7862A6265025940034A0E1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7862A5265025940034A0E1 /* AppKit.framework */; };
@@ -27,42 +26,28 @@
 		9A787EE2264EE881003DF8A0 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787EE0264EE881003DF8A0 /* node.cpp */; };
 		9A787EE3264EE881003DF8A0 /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787EE1264EE881003DF8A0 /* node.h */; };
 		9A787F87264EF105003DF8A0 /* application.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F63264EF103003DF8A0 /* application.h */; };
-		9A787F8B264EF105003DF8A0 /* file_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F67264EF103003DF8A0 /* file_context.cpp */; };
-		9A787F8C264EF105003DF8A0 /* dir_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F68264EF103003DF8A0 /* dir_system.h */; };
 		9A787F8D264EF105003DF8A0 /* launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F69264EF103003DF8A0 /* launcher.cpp */; };
 		9A787F8E264EF105003DF8A0 /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6A264EF103003DF8A0 /* application.cpp */; };
 		9A787F91264EF105003DF8A0 /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F6D264EF103003DF8A0 /* _mm.h */; };
 		9A787F92264EF105003DF8A0 /* interprocess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6E264EF103003DF8A0 /* interprocess.cpp */; };
-		9A787F93264EF105003DF8A0 /* file_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6F264EF103003DF8A0 /* file_system.cpp */; };
 		9A787F95264EF105003DF8A0 /* user.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F71264EF104003DF8A0 /* user.h */; };
 		9A787F96264EF105003DF8A0 /* app.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F72264EF104003DF8A0 /* app.mm */; };
-		9A787F98264EF105003DF8A0 /* file_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F74264EF104003DF8A0 /* file_context.h */; };
 		9A787F9B264EF105003DF8A0 /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F77264EF104003DF8A0 /* keyboard.cpp */; };
 		9A787F9C264EF105003DF8A0 /* os_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F78264EF104003DF8A0 /* os_context.h */; };
-		9A787F9E264EF105003DF8A0 /* dir_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7A264EF104003DF8A0 /* dir_context.cpp */; };
-		9A787F9F264EF105003DF8A0 /* dir_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7B264EF104003DF8A0 /* dir_system.cpp */; };
 		9A787FA2264EF105003DF8A0 /* os_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7E264EF105003DF8A0 /* os_context.cpp */; };
-		9A787FA4264EF105003DF8A0 /* file_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F80264EF105003DF8A0 /* file_system.h */; };
 		9A787FA6264EF105003DF8A0 /* keyboard_mm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F82264EF105003DF8A0 /* keyboard_mm.mm */; };
 		9A787FA7264EF105003DF8A0 /* shell_macos_mm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F83264EF105003DF8A0 /* shell_macos_mm.mm */; };
 		9A787FA8264EF105003DF8A0 /* user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F84264EF105003DF8A0 /* user.cpp */; };
-		9A787FA9264EF105003DF8A0 /* dir_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F85264EF105003DF8A0 /* dir_context.h */; };
 		9A787FAC264EF342003DF8A0 /* interprocess.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787FAB264EF342003DF8A0 /* interprocess.h */; };
 		9A787FAE264F0F3B003DF8A0 /* launcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787FAD264F0F3B003DF8A0 /* launcher.h */; };
 		9A788033264F1130003DF8A0 /* shell_launcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788032264F1130003DF8A0 /* shell_launcher.h */; };
-		9A788037264F1ECA003DF8A0 /* watcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788035264F1ECA003DF8A0 /* watcher.h */; };
-		9A788038264F1ECA003DF8A0 /* watcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A788036264F1ECA003DF8A0 /* watcher.cpp */; };
 		9A865EE9299298AC0042465F /* libapex_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A865EE8299298AC0042465F /* libapex_darwin.dylib */; };
 		9A865FBE29661798000C82F0 /* libacme_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A865FBD29661798000C82F0 /* libacme_darwin.dylib */; };
 		9ABC54B726DAEE2700718C0D /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17EB264A325700B5CC33 /* libacme_macos.dylib */; };
 		9ABC54B826DAEE5100718C0D /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5EF264B54EE0080670E /* libapex_apple.dylib */; };
 		9AC97E7A2A71B26600B1BCF3 /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787E92264ED593003DF8A0 /* _.h */; };
-		9AC97E7B2A71B26600B1BCF3 /* file_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F74264EF104003DF8A0 /* file_context.h */; };
-		9AC97E7C2A71B26600B1BCF3 /* dir_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F68264EF103003DF8A0 /* dir_system.h */; };
 		9AC97E7D2A71B26600B1BCF3 /* os_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F78264EF104003DF8A0 /* os_context.h */; };
 		9AC97E7E2A71B26600B1BCF3 /* user.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F71264EF104003DF8A0 /* user.h */; };
-		9AC97E7F2A71B26600B1BCF3 /* dir_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F85264EF105003DF8A0 /* dir_context.h */; };
-		9AC97E802A71B26600B1BCF3 /* file_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F80264EF105003DF8A0 /* file_system.h */; };
 		9AC97E812A71B26600B1BCF3 /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F6D264EF103003DF8A0 /* _mm.h */; };
 		9AC97E822A71B26600B1BCF3 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A0C1766264A2DFA00B5CC33 /* framework.h */; };
 		9AC97E832A71B26600B1BCF3 /* shell_launcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788032264F1130003DF8A0 /* shell_launcher.h */; };
@@ -70,24 +55,17 @@
 		9AC97E862A71B26600B1BCF3 /* launcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787FAD264F0F3B003DF8A0 /* launcher.h */; };
 		9AC97E872A71B26600B1BCF3 /* interprocess.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787FAB264EF342003DF8A0 /* interprocess.h */; };
 		9AC97E882A71B26600B1BCF3 /* _library.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787E9D264ED5BA003DF8A0 /* _library.h */; };
-		9AC97E892A71B26600B1BCF3 /* watcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788035264F1ECA003DF8A0 /* watcher.h */; };
 		9AC97E8A2A71B26600B1BCF3 /* application.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F63264EF103003DF8A0 /* application.h */; };
-		9AC97E8C2A71B26600B1BCF3 /* dir_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7B264EF104003DF8A0 /* dir_system.cpp */; };
 		9AC97E8D2A71B26600B1BCF3 /* NSPasteboard++.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A1D5F712751C033003D9B5F /* NSPasteboard++.mm */; };
 		9AC97E8E2A71B26600B1BCF3 /* shell_macos_mm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F83264EF105003DF8A0 /* shell_macos_mm.mm */; };
 		9AC97E8F2A71B26600B1BCF3 /* launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F69264EF103003DF8A0 /* launcher.cpp */; };
 		9AC97E902A71B26600B1BCF3 /* interprocess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6E264EF103003DF8A0 /* interprocess.cpp */; };
-		9AC97E922A71B26600B1BCF3 /* dir_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7A264EF104003DF8A0 /* dir_context.cpp */; };
-		9AC97E932A71B26600B1BCF3 /* file.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7C264EF104003DF8A0 /* file.mm */; };
 		9AC97E942A71B26600B1BCF3 /* os_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7E264EF105003DF8A0 /* os_context.cpp */; };
 		9AC97E952A71B26600B1BCF3 /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F77264EF104003DF8A0 /* keyboard.cpp */; };
 		9AC97E962A71B26600B1BCF3 /* app.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F72264EF104003DF8A0 /* app.mm */; };
 		9AC97E972A71B26600B1BCF3 /* user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F84264EF105003DF8A0 /* user.cpp */; };
 		9AC97E982A71B26600B1BCF3 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C1755264A2DFA00B5CC33 /* framework.cpp */; };
-		9AC97E992A71B26600B1BCF3 /* file_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6F264EF103003DF8A0 /* file_system.cpp */; };
-		9AC97E9A2A71B26600B1BCF3 /* watcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A788036264F1ECA003DF8A0 /* watcher.cpp */; };
 		9AC97E9B2A71B26600B1BCF3 /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6A264EF103003DF8A0 /* application.cpp */; };
-		9AC97E9C2A71B26600B1BCF3 /* file_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F67264EF103003DF8A0 /* file_context.cpp */; };
 		9AC97E9D2A71B26600B1BCF3 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787E9E264ED5BA003DF8A0 /* _factory.cpp */; };
 		9AC97E9E2A71B26600B1BCF3 /* user.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7862AB265029FA0034A0E1 /* user.mm */; };
 		9AC97E9F2A71B26600B1BCF3 /* keyboard_mm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F82264EF105003DF8A0 /* keyboard_mm.mm */; };
@@ -186,33 +164,22 @@
 		9A787EE0264EE881003DF8A0 /* node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		9A787EE1264EE881003DF8A0 /* node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
 		9A787F63264EF103003DF8A0 /* application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = application.h; sourceTree = "<group>"; };
-		9A787F67264EF103003DF8A0 /* file_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_context.cpp; sourceTree = "<group>"; };
-		9A787F68264EF103003DF8A0 /* dir_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dir_system.h; sourceTree = "<group>"; };
 		9A787F69264EF103003DF8A0 /* launcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = launcher.cpp; sourceTree = "<group>"; };
 		9A787F6A264EF103003DF8A0 /* application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = application.cpp; sourceTree = "<group>"; };
 		9A787F6D264EF103003DF8A0 /* _mm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
 		9A787F6E264EF103003DF8A0 /* interprocess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interprocess.cpp; sourceTree = "<group>"; };
-		9A787F6F264EF103003DF8A0 /* file_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_system.cpp; sourceTree = "<group>"; };
 		9A787F71264EF104003DF8A0 /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
 		9A787F72264EF104003DF8A0 /* app.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = app.mm; sourceTree = "<group>"; };
-		9A787F74264EF104003DF8A0 /* file_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_context.h; sourceTree = "<group>"; };
 		9A787F77264EF104003DF8A0 /* keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keyboard.cpp; sourceTree = "<group>"; };
 		9A787F78264EF104003DF8A0 /* os_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_context.h; sourceTree = "<group>"; };
-		9A787F7A264EF104003DF8A0 /* dir_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dir_context.cpp; sourceTree = "<group>"; };
-		9A787F7B264EF104003DF8A0 /* dir_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dir_system.cpp; sourceTree = "<group>"; };
-		9A787F7C264EF104003DF8A0 /* file.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = file.mm; sourceTree = "<group>"; };
 		9A787F7E264EF105003DF8A0 /* os_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = os_context.cpp; sourceTree = "<group>"; };
 		9A787F7F264EF105003DF8A0 /* shell_launcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shell_launcher.cpp; sourceTree = "<group>"; };
-		9A787F80264EF105003DF8A0 /* file_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_system.h; sourceTree = "<group>"; };
 		9A787F82264EF105003DF8A0 /* keyboard_mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = keyboard_mm.mm; sourceTree = "<group>"; };
 		9A787F83264EF105003DF8A0 /* shell_macos_mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = shell_macos_mm.mm; sourceTree = "<group>"; };
 		9A787F84264EF105003DF8A0 /* user.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user.cpp; sourceTree = "<group>"; };
-		9A787F85264EF105003DF8A0 /* dir_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dir_context.h; sourceTree = "<group>"; };
 		9A787FAB264EF342003DF8A0 /* interprocess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interprocess.h; sourceTree = "<group>"; };
 		9A787FAD264F0F3B003DF8A0 /* launcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = launcher.h; sourceTree = "<group>"; };
 		9A788032264F1130003DF8A0 /* shell_launcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shell_launcher.h; sourceTree = "<group>"; };
-		9A788035264F1ECA003DF8A0 /* watcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = watcher.h; sourceTree = "<group>"; };
-		9A788036264F1ECA003DF8A0 /* watcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = watcher.cpp; sourceTree = "<group>"; };
 		9A865EE8299298AC0042465F /* libapex_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A865FBD29661798000C82F0 /* libacme_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA74F5728482348009BB762 /* libaura_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,7 +233,6 @@
 		9A0C1749264A2DFA00B5CC33 /* apex_macos */ = {
 			isa = PBXGroup;
 			children = (
-				9A788034264F1ECA003DF8A0 /* FileSystemEvents */,
 				9A787E92264ED593003DF8A0 /* _.h */,
 				9A787E9E264ED5BA003DF8A0 /* _factory.cpp */,
 				9A787E9D264ED5BA003DF8A0 /* _library.h */,
@@ -275,15 +241,6 @@
 				9A787F6A264EF103003DF8A0 /* application.cpp */,
 				9A787F63264EF103003DF8A0 /* application.h */,
 				9A03B80D2A25BE0600A0E33E /* _____debug.xcconfig */,
-				9A787F7A264EF104003DF8A0 /* dir_context.cpp */,
-				9A787F85264EF105003DF8A0 /* dir_context.h */,
-				9A787F7B264EF104003DF8A0 /* dir_system.cpp */,
-				9A787F68264EF103003DF8A0 /* dir_system.h */,
-				9A787F67264EF103003DF8A0 /* file_context.cpp */,
-				9A787F74264EF104003DF8A0 /* file_context.h */,
-				9A787F6F264EF103003DF8A0 /* file_system.cpp */,
-				9A787F80264EF105003DF8A0 /* file_system.h */,
-				9A787F7C264EF104003DF8A0 /* file.mm */,
 				9A0C1755264A2DFA00B5CC33 /* framework.cpp */,
 				9A0C1766264A2DFA00B5CC33 /* framework.h */,
 				9A787F6E264EF103003DF8A0 /* interprocess.cpp */,
@@ -347,15 +304,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9A788034264F1ECA003DF8A0 /* FileSystemEvents */ = {
-			isa = PBXGroup;
-			children = (
-				9A788035264F1ECA003DF8A0 /* watcher.h */,
-				9A788036264F1ECA003DF8A0 /* watcher.cpp */,
-			);
-			path = FileSystemEvents;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -364,12 +312,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A787E9C264ED595003DF8A0 /* _.h in Headers */,
-				9A787F98264EF105003DF8A0 /* file_context.h in Headers */,
-				9A787F8C264EF105003DF8A0 /* dir_system.h in Headers */,
 				9A787F9C264EF105003DF8A0 /* os_context.h in Headers */,
 				9A787F95264EF105003DF8A0 /* user.h in Headers */,
-				9A787FA9264EF105003DF8A0 /* dir_context.h in Headers */,
-				9A787FA4264EF105003DF8A0 /* file_system.h in Headers */,
 				9A787F91264EF105003DF8A0 /* _mm.h in Headers */,
 				9A0C1785264A2DFA00B5CC33 /* framework.h in Headers */,
 				9A788033264F1130003DF8A0 /* shell_launcher.h in Headers */,
@@ -377,7 +321,6 @@
 				9A787FAE264F0F3B003DF8A0 /* launcher.h in Headers */,
 				9A787FAC264EF342003DF8A0 /* interprocess.h in Headers */,
 				9A787E9F264ED5BB003DF8A0 /* _library.h in Headers */,
-				9A788037264F1ECA003DF8A0 /* watcher.h in Headers */,
 				9A787F87264EF105003DF8A0 /* application.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,12 +330,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC97E7A2A71B26600B1BCF3 /* _.h in Headers */,
-				9AC97E7B2A71B26600B1BCF3 /* file_context.h in Headers */,
-				9AC97E7C2A71B26600B1BCF3 /* dir_system.h in Headers */,
 				9AC97E7D2A71B26600B1BCF3 /* os_context.h in Headers */,
 				9AC97E7E2A71B26600B1BCF3 /* user.h in Headers */,
-				9AC97E7F2A71B26600B1BCF3 /* dir_context.h in Headers */,
-				9AC97E802A71B26600B1BCF3 /* file_system.h in Headers */,
 				9AC97E812A71B26600B1BCF3 /* _mm.h in Headers */,
 				9AC97E822A71B26600B1BCF3 /* framework.h in Headers */,
 				9AC97E832A71B26600B1BCF3 /* shell_launcher.h in Headers */,
@@ -400,7 +339,6 @@
 				9AC97E862A71B26600B1BCF3 /* launcher.h in Headers */,
 				9AC97E872A71B26600B1BCF3 /* interprocess.h in Headers */,
 				9AC97E882A71B26600B1BCF3 /* _library.h in Headers */,
-				9AC97E892A71B26600B1BCF3 /* watcher.h in Headers */,
 				9AC97E8A2A71B26600B1BCF3 /* application.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,22 +469,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A787F9F264EF105003DF8A0 /* dir_system.cpp in Sources */,
 				9A1D5F722751C033003D9B5F /* NSPasteboard++.mm in Sources */,
 				9A787FA7264EF105003DF8A0 /* shell_macos_mm.mm in Sources */,
 				9A787F8D264EF105003DF8A0 /* launcher.cpp in Sources */,
 				9A787F92264EF105003DF8A0 /* interprocess.cpp in Sources */,
-				9A787F9E264EF105003DF8A0 /* dir_context.cpp in Sources */,
-				9A5D760D274E4FF300403BC3 /* file.mm in Sources */,
 				9A787FA2264EF105003DF8A0 /* os_context.cpp in Sources */,
 				9A787F9B264EF105003DF8A0 /* keyboard.cpp in Sources */,
 				9A787F96264EF105003DF8A0 /* app.mm in Sources */,
 				9A787FA8264EF105003DF8A0 /* user.cpp in Sources */,
 				9A0C1779264A2DFA00B5CC33 /* framework.cpp in Sources */,
-				9A787F93264EF105003DF8A0 /* file_system.cpp in Sources */,
-				9A788038264F1ECA003DF8A0 /* watcher.cpp in Sources */,
 				9A787F8E264EF105003DF8A0 /* application.cpp in Sources */,
-				9A787F8B264EF105003DF8A0 /* file_context.cpp in Sources */,
 				9A787EA0264ED5BB003DF8A0 /* _factory.cpp in Sources */,
 				9A7862AC265029FA0034A0E1 /* user.mm in Sources */,
 				9A787FA6264EF105003DF8A0 /* keyboard_mm.mm in Sources */,
@@ -558,22 +490,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC97E8C2A71B26600B1BCF3 /* dir_system.cpp in Sources */,
 				9AC97E8D2A71B26600B1BCF3 /* NSPasteboard++.mm in Sources */,
 				9AC97E8E2A71B26600B1BCF3 /* shell_macos_mm.mm in Sources */,
 				9AC97E8F2A71B26600B1BCF3 /* launcher.cpp in Sources */,
 				9AC97E902A71B26600B1BCF3 /* interprocess.cpp in Sources */,
-				9AC97E922A71B26600B1BCF3 /* dir_context.cpp in Sources */,
-				9AC97E932A71B26600B1BCF3 /* file.mm in Sources */,
 				9AC97E942A71B26600B1BCF3 /* os_context.cpp in Sources */,
 				9AC97E952A71B26600B1BCF3 /* keyboard.cpp in Sources */,
 				9AC97E962A71B26600B1BCF3 /* app.mm in Sources */,
 				9AC97E972A71B26600B1BCF3 /* user.cpp in Sources */,
 				9AC97E982A71B26600B1BCF3 /* framework.cpp in Sources */,
-				9AC97E992A71B26600B1BCF3 /* file_system.cpp in Sources */,
-				9AC97E9A2A71B26600B1BCF3 /* watcher.cpp in Sources */,
 				9AC97E9B2A71B26600B1BCF3 /* application.cpp in Sources */,
-				9AC97E9C2A71B26600B1BCF3 /* file_context.cpp in Sources */,
 				9AC97E9D2A71B26600B1BCF3 /* _factory.cpp in Sources */,
 				9AC97E9E2A71B26600B1BCF3 /* user.mm in Sources */,
 				9AC97E9F2A71B26600B1BCF3 /* keyboard_mm.mm in Sources */,

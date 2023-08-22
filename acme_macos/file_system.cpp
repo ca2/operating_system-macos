@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "file_system.h"
 #include "acme/platform/application.h"
 #include "acme/platform/system.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
@@ -19,7 +20,7 @@ struct PROCESS_INFO_t
 };
 
 
-namespace apex_macos
+namespace acme_macos
 {
 
 
@@ -100,7 +101,7 @@ namespace apex_macos
 //   }
 
 
-} // namespace apex_macos
+} // namespace acme_macos
 
 
 

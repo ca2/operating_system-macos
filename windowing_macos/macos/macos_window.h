@@ -47,7 +47,7 @@ public:
    virtual void macos_window_draw(CGContextRef cgc, CGSize sizeWindow) = 0;
    virtual void macos_window_mouse_down(int iButton, double x, double y) = 0;
    virtual void macos_window_mouse_up(int iButton, double x, double y) = 0;
-   virtual void macos_window_mouse_moved(double x, double y, unsigned long ulAppleMouseButton) = 0;
+   virtual void macos_window_mouse_repositioned(double x, double y, unsigned long ulAppleMouseButton) = 0;
    virtual void macos_window_mouse_dragged(double x, double y, unsigned long ulAppleMouseButton) = 0;
    virtual void macos_window_mouse_wheel(double deltaY, double x, double y) = 0;
    virtual void macos_window_double_click(int iButton, double x, double y) = 0;
@@ -57,7 +57,7 @@ public:
    //virtual bool macos_window_key_up(unsigned int uiKeyCode) = 0;
    
    virtual void macos_window_resized(CGRect rectangle_i32) = 0;
-   virtual void macos_window_moved(CGPoint point_i32) = 0;
+   virtual void macos_window_repositioned(CGPoint point_i32) = 0;
    
    virtual void macos_window_iconified() = 0;
    virtual void macos_window_deiconified() = 0;

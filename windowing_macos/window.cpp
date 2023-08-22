@@ -10,7 +10,7 @@
 #include "acme/constant/message.h"
 #include "acme/parallelization/mutex.h"
 #include "acme/parallelization/synchronous_lock.h"
-#include "aura/user/user/interaction_prodevian.h"
+#include "aura/user/user/interaction_graphics_thread.h"
 #include "aura/user/user/interaction_impl.h"
 #include "aura/user/user/box.h"
 #include "aura/message/user.h"
@@ -936,7 +936,8 @@ pmessage->m_atom = emessage
 
       }
 
-      post_message(pkey);
+      //post_message(pkey);
+      send_message(pkey);
     
       if(::is_set(pszUtf8) && ansi_len(pszUtf8) > 0)
       {
@@ -946,7 +947,8 @@ pmessage->m_atom = emessage
            
          pkey->m_strText = pszUtf8;
            
-         post_message(pkey);
+         //post_message(pkey);
+         send_message(pkey);
 
       }
     
@@ -1013,7 +1015,8 @@ pmessage->m_atom = emessage
                pactivate->m_wparam = make_u32(e_activate_click_active, 0);
                pactivate->m_lparam = 0;
 
-               post_message(pactivate);
+               //post_message(pactivate);
+               send_message(pactivate);
 
             }
 
@@ -1037,7 +1040,8 @@ pmessage->m_atom = emessage
             _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_down);
             pmouse->m_point.x() = x;
             pmouse->m_point.y() = y;
-            post_message(pmouse);
+            //post_message(pmouse);
+            send_message(pmouse);
 
          }
          else
@@ -1046,7 +1050,8 @@ pmessage->m_atom = emessage
             _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_down);
             pmouse->m_point.x() = x;
             pmouse->m_point.y() = y;
-            post_message(pmouse);
+            //post_message(pmouse);
+            send_message(pmouse);
          }
          
 //         pmouse->set(this, this, id, 0, __MAKE_LPARAM(x, y));
@@ -1074,7 +1079,8 @@ pmessage->m_atom = emessage
          _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_up);
          pmouse->m_point.x() = x;
          pmouse->m_point.y() = y;
-         post_message(pmouse);
+         //post_message(pmouse);
+         send_message(pmouse);
 
       }
       else
@@ -1083,7 +1089,8 @@ pmessage->m_atom = emessage
          _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_up);
          pmouse->m_point.x() = x;
          pmouse->m_point.y() = y;
-         post_message(pmouse);
+         //post_message(pmouse);
+         send_message(pmouse);
 
 
       }
@@ -1108,7 +1115,8 @@ pmessage->m_atom = emessage
          _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_double_click);
          pmouse->m_point.x() = x;
          pmouse->m_point.y() = y;
-         post_message(pmouse);
+         //post_message(pmouse);
+         send_message(pmouse);
 
          //id = e_message_right_button_double_click;
 
@@ -1119,7 +1127,8 @@ pmessage->m_atom = emessage
          _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_double_click);
          pmouse->m_point.x() = x;
          pmouse->m_point.y() = y;
-         post_message(pmouse);
+         //post_message(pmouse);
+         send_message(pmouse);
          //id = e_message_left_button_double_click;
 
       }
@@ -1131,7 +1140,7 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::macos_window_mouse_moved(double x, double y, unsigned long ulAppleMouseButton)
+   void window::macos_window_mouse_repositioned(double x, double y, unsigned long ulAppleMouseButton)
    {
       
 //      if(is_destroying())
@@ -1262,7 +1271,9 @@ pmessage->m_atom = emessage
 //
 //      pmouse->set(this, this, id, wparam, lparam);
 
-      post_message(pmouse);
+      //post_message(pmouse);
+      
+      send_message(pmouse);
       
    }
 
@@ -1299,7 +1310,9 @@ pmessage->m_atom = emessage
 //
 //      pmouse->set(this, this, id, wparam, lparam);
 
-      post_message(pmouse);
+      //post_message(pmouse);
+      
+      send_message(pmouse);
 
    }
 
@@ -1324,7 +1337,9 @@ pmessage->m_atom = emessage
       
       //pwheel->set(this, this, id, wparam, lparam);
 
-      post_message(pwheel);
+      //post_message(pwheel);
+      
+      send_message(pwheel);
 
    }
 
@@ -1354,7 +1369,8 @@ pmessage->m_atom = emessage
             //
             //         pmove->set(this, this, id, wparam, lparam);
             
-            post_message(preposition);
+            //post_message(preposition);
+            send_message(preposition);
             
          }
          
@@ -1381,7 +1397,8 @@ pmessage->m_atom = emessage
             //
             //         psize->set(this, this, id, wparam, lparam);
             
-            post_message(psize);
+            //post_message(psize);
+            send_message(psize);
             
             
          }
@@ -1509,9 +1526,8 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::macos_window_moved(CGPoint point)
+   void window::macos_window_repositioned(CGPoint point)
    {
-      
       
       if(m_puserinteractionimpl->m_bEatMoveEvent)
       {
@@ -1523,6 +1539,8 @@ pmessage->m_atom = emessage
       }
 
       {
+         
+         m_puserinteractionimpl->m_puserinteraction->set_position({point.x, point.y}, ::user::e_layout_window);
 
          _NEW_MESSAGE(preposition, ::message::reposition, e_message_reposition);
          preposition->m_point.x() = point.x;
@@ -1538,7 +1556,9 @@ pmessage->m_atom = emessage
 //
 //         pmove->set(this, this, id, wparam, lparam);
 
-         post_message(preposition);
+         //post_message(preposition);
+         
+         send_message(preposition);
          
       }
    //      if(puserinteraction == nullptr)
@@ -1762,16 +1782,16 @@ pmessage->m_atom = emessage
          
       }
       
-      auto pprodevian = pimpl2->m_pprodevian;
+      auto pgraphicsthread = pimpl2->m_pgraphicsthread;
       
-      if(::is_null(pprodevian))
+      if(::is_null(pgraphicsthread))
       {
        
          return;
          
       }
       
-      pprodevian->profiling_on_before_update_screen();
+      pgraphicsthread->profiling_on_before_update_screen();
 
    }
 
@@ -1797,7 +1817,7 @@ pmessage->m_atom = emessage
          
       }
       
-      auto pprodevian = pimpl2->m_pprodevian;
+      auto pprodevian = pimpl2->m_pgraphicsthread;
       
       if(::is_null(pprodevian))
       {

@@ -2,6 +2,7 @@
 #include "acme/filesystem/filesystem/acme_directory.h"
 #include "acme/filesystem/filesystem/acme_path.h"
 #include "acme/filesystem/filesystem/acme_file.h"
+#include "acme/filesystem/filesystem/dir_context.h"
 #include "acme/platform/acme.h"
 #include "acme/handler/request.h"
 #include "apex/filesystem/file/set.h"
@@ -1007,7 +1008,7 @@ void os_context::set_dark_mode(bool bDark)
       
       auto pcontext = m_pcontext;
 
-      if(pcontext->m_papexcontext->dir()->is(strAppReturn))
+      if(pcontext->dir()->is(strAppReturn))
       {
 
          return strAppReturn;
