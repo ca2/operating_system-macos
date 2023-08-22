@@ -134,23 +134,6 @@ namespace windowing_macos
    }
 
 
-   void windowing::release_mouse_capture()
-   {
-      
-      auto pwindowCapture = m_pwindowCapture;
-
-      m_pwindowCapture.release();
-
-      if(pwindowCapture)
-      {
-         
-         pwindowCapture->m_puserinteractionimpl->m_puserinteractionMouseCapture.release();
-         
-      }
-   
-      //return ::success;
-      
-   }
 
 
 //   bool windowing::post_ui_message(const MESSAGE &message)
@@ -267,7 +250,31 @@ namespace windowing_macos
    }
 
 
+   ::windowing::window * windowing::get_mouse_capture(::thread *)
+   {
+      
+      return m_pwindowCapture;
 
+   }
+
+
+   void windowing::release_mouse_capture()
+   {
+      
+      auto pwindowCapture = m_pwindowCapture;
+
+      m_pwindowCapture.release();
+
+      if(pwindowCapture)
+      {
+         
+         pwindowCapture->m_puserinteractionimpl->m_puserinteractionMouseCapture.release();
+         
+      }
+
+      //return ::success;
+      
+   }
 
 
    void windowing::_defer_dock_application(int_bool bDock)

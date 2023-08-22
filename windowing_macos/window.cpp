@@ -524,12 +524,12 @@ namespace windowing_macos
          
       }
       
-      if (ns_get_cached_cursor() == pcursor)
-      {
-
-         return;
-
-      }
+//      if (ns_get_cached_cursor() == pcursor)
+//      {
+//
+//         return;
+//
+//      }
 
       ns_set_cursor(pcursor);
 

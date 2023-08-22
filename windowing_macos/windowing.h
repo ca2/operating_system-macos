@@ -68,9 +68,12 @@ namespace windowing_macos
 
       //virtual bool post_ui_message(::message::base * pbase);
 
+      ::windowing::window * get_keyboard_focus(::thread *) override;
+      
+      ::windowing::window * get_mouse_capture(::thread *) override;
+      
       void release_mouse_capture() override;
 
-      ::windowing::window * get_keyboard_focus(::thread *) override;
 
 
       //void get_cursor_position(POINT_I32 * ppoint) override;
