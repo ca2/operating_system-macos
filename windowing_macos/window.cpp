@@ -1377,6 +1377,10 @@ pmessage->m_atom = emessage
       }
       
       {
+         
+         m_puserinteractionimpl->m_puserinteraction->set_position({rectangle.origin.x, rectangle.origin.y}, ::user::e_layout_window);
+         
+         m_puserinteractionimpl->m_puserinteraction->set_size({rectangle.size.width, rectangle.size.height}, ::user::e_layout_window);
 
          auto s = m_puserinteractionimpl->m_puserinteraction->const_layout().window().size();
          
@@ -1883,15 +1887,17 @@ pmessage->m_atom = emessage
       
       if(m_puserinteractionimpl->m_puserbox)
       {
+         
+         auto & edisplayPrevious = m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious;
 
-         if(m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious == ::e_display_iconic)
+         if(edisplayPrevious == ::e_display_iconic)
          {
 
-            m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious = ::e_display_normal;
+            edisplayPrevious = ::e_display_normal;
 
          }
          
-         puserinteraction->_001OnDeiconify(m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious);
+         puserinteraction->_001OnDeiconify(edisplayPrevious);
          
       }
 
