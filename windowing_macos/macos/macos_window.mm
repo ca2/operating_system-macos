@@ -49,7 +49,7 @@ void * new_macos_window(macos_window * pmacoswindow, CGRect rect, unsigned int u
    
    //__block RoundWindow * proundwindow;
    
-   ns_main_sync(^()
+   ns_main_async(^()
    {
                    
       auto id = [pmacoswindow->m_pmacoswindow initWithContentRect : rect styleMask : uStyle backing : NSBackingStoreBuffered defer : YES];
