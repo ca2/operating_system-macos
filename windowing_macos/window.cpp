@@ -429,40 +429,28 @@ namespace windowing_macos
 //
 //   }
 
-   void window::_window_request_presentation()
-   {
+//   void window::_window_request_presentation()
+//   {
+//
+//      //macos_window_show();
+//
+//      ::windowing::window::_window_request_presentation();
+//
+//   }
 
-      //macos_window_show();
-
-      ::windowing::window::_window_request_presentation();
-
-   }
-
-
-   void window::show_window(const ::e_display &edisplay, const ::e_activation &eactivation)
-   {
-
-      //windowing_output_debug_string("\n::windowing_macos::window::show_window 1");
-      
-      if(edisplay == e_display_iconic)
-      {
-       
-         macos_window_miniaturize();
-         
-      }
-      else if(equivalence_sink(edisplay) == e_display_normal)
-      {
-         
-         macos_window_show();
-       
-         macos_window_make_key_window_and_order_front();
-         
-         macos_window_make_main_window();
-         
-         nsapp_activate_ignoring_other_apps(1);
-         
-      }
-//      else if(edisplay == e_display_normal)
+//
+//   void window::show_window(const ::e_display &edisplay, const ::e_activation &eactivation)
+//   {
+//
+//      //windowing_output_debug_string("\n::windowing_macos::window::show_window 1");
+//
+//      if(edisplay == e_display_iconic)
+//      {
+//
+//         macos_window_miniaturize();
+//
+//      }
+//      else if(equivalence_sink(edisplay) == e_display_normal)
 //      {
 //
 //         macos_window_show();
@@ -474,18 +462,30 @@ namespace windowing_macos
 //         nsapp_activate_ignoring_other_apps(1);
 //
 //      }
-      else if(edisplay == e_display_none || edisplay == e_display_hide)
-      {
-         
-         macos_window_resign_key();
-         macos_window_hide();
-         
-      }
-
-      //return ::success;
-
-   }
-
+////      else if(edisplay == e_display_normal)
+////      {
+////
+////         macos_window_show();
+////
+////         macos_window_make_key_window_and_order_front();
+////
+////         macos_window_make_main_window();
+////
+////         nsapp_activate_ignoring_other_apps(1);
+////
+////      }
+//      else if(edisplay == e_display_none || edisplay == e_display_hide)
+//      {
+//
+//         macos_window_resign_key();
+//         macos_window_hide();
+//
+//      }
+//
+//      //return ::success;
+//
+//   }
+//
 
    void window::set_mouse_cursor(::windowing::cursor * pcursorParam)
    {
@@ -543,22 +543,86 @@ namespace windowing_macos
       
    }
    
- void window::_window_request_presentation_set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide)
-{
-    
-    set_window_position(zorder, x, y, cx, cy, eactivation, bNoZorder, bNoMove,
-                        bNoSize, bShow, bHide);
-    
- }
+// void window::_window_request_presentation_set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide)
+//{
+//
+//    set_window_position(zorder, x, y, cx, cy, eactivation, bNoZorder, bNoMove,
+//                        bNoSize, bShow, bHide);
+//
+// }
 
 
-   bool window::set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide)
+   bool window::_configure_window_unlocked(const class ::zorder& zorder, const ::e_activation& eactivation, bool bNoZorder, ::e_display edisplay)
    {
+      
+      
+      ns_main_async(^(){
+         
+         if(edisplay == e_display_iconic)
+         {
+          
+            macos_window_miniaturize();
+            
+         }
+         else if(equivalence_sink(edisplay) == e_display_normal)
+         {
+            
+            macos_window_show();
+          
+            macos_window_make_key_window_and_order_front();
+            
+            macos_window_make_main_window();
+            
+            nsapp_activate_ignoring_other_apps(1);
+            
+            macos_window_defer_show();
+            
+         }
+   //      else if(edisplay == e_display_normal)
+   //      {
+   //
+   //         macos_window_show();
+   //
+   //         macos_window_make_key_window_and_order_front();
+   //
+   //         macos_window_make_main_window();
+   //
+   //         nsapp_activate_ignoring_other_apps(1);
+   //
+   //      }
+         else if(edisplay == e_display_none || edisplay == e_display_hide)
+         {
+            
+            macos_window_resign_key();
+            macos_window_hide();
+            
+         }
+
+         //return ::success;
+         
+         //bool bShow = windowing()->is_screen_visible(edisplay);
+         
+         //if(bShow)
+         {
+            
+            macos_window_defer_show();
+            
+         }
+         
+      });
+
+      return true;
+      
+   }
+
+   bool window::_strict_set_window_position_unlocked(i32 x, i32 y, i32 cx, i32 cy, bool bNoMove, bool bNoSize)
+   {
+      
       
       ns_main_async(^(){
          
          CGRect r;
-
+         
          macos_window_get_frame(&r);
          
          if(!bNoMove)
@@ -583,29 +647,90 @@ namespace windowing_macos
          
          if(!bNoSize)
          {
-         
+            
             r.size.width = cx;
-         
+            
             r.size.height = cy;
             
          }
-            
+         
          macos_window_set_frame(r);
          
-         if(bShow)
-         {
-          
-            macos_window_defer_show();
-            
-         }
+         m_puserinteractionimpl->m_puserinteraction->layout().m_statea[::user::e_layout_window].origin().x() = r.origin.x;
+         m_puserinteractionimpl->m_puserinteraction->layout().m_statea[::user::e_layout_window].origin().y() = r.origin.y;
+         m_puserinteractionimpl->m_puserinteraction->layout().m_statea[::user::e_layout_window].size().cx() = r.size.width;
+         m_puserinteractionimpl->m_puserinteraction->layout().m_statea[::user::e_layout_window].size().cy() = r.size.height;
 
-      }
-                    
-      );
-
+         //         if(bShow)
+         //         {
+         //
+         //            macos_window_defer_show();
+         //
+         //         }
+         
+         //}
+         
+      });
+      
       return true;
 
    }
+
+
+//   bool window::set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide)
+//   {
+//
+//      ns_main_async(^(){
+//
+//         CGRect r;
+//
+//         macos_window_get_frame(&r);
+//
+//         if(!bNoMove)
+//         {
+//
+//            if(x > 0)
+//            {
+//
+//               r.origin.x = x;
+//
+//               r.origin.y = y;
+//
+//            }
+//            else{
+//               r.origin.x = x;
+//
+//               r.origin.y = y;
+//
+//
+//            }
+//         }
+//
+//         if(!bNoSize)
+//         {
+//
+//            r.size.width = cx;
+//
+//            r.size.height = cy;
+//
+//         }
+//
+//         macos_window_set_frame(r);
+//
+//         if(bShow)
+//         {
+//
+//            macos_window_defer_show();
+//
+//         }
+//
+//      }
+//
+//      );
+//
+//      return true;
+//
+//   }
 
 
    void window::set_mouse_capture()
@@ -633,6 +758,52 @@ namespace windowing_macos
       macos_window_redraw();
       
    }
+
+
+   void window::window_do_update_screen()
+  {
+
+     //      if(m_interlockedPostedScreenUpdate > 0)
+     //      {
+     //
+     //         return;
+     //
+     //      }
+     //
+     //      m_interlockedPostedScreenUpdate++;
+
+           //windowing()->windowing_post([this]()
+             //                          {
+
+     {
+
+        //_synchronous_lock synchronouslock(user_synchronization());
+
+        //display_lock displayLock(x11_display()->Display());
+
+        auto pimpl = m_puserinteractionimpl;
+
+        //configure_window_unlocked();
+        
+        configure_window_unlocked();
+        
+        strict_set_window_position_unlocked();
+
+        window_update_screen_buffer();
+
+        //pbuffer->_update_screen_lesser_lock();
+
+     }
+
+     auto pimpl = m_puserinteractionimpl;
+
+     pimpl->m_pgraphicsthread->on_graphics_thread_iteration_end();
+
+     //                                  });
+
+           //m_interlockedPostedScreenUpdate--;
+
+  }
 
 
    void window::set_window_text(const ::scoped_string & scopedstr)

@@ -701,10 +701,10 @@ rectangle_i32_array cg_get_window_rect_list_above(CGWindowID windowid)
 
             ::rectangle_i32 rectCopy;
 
-            rectCopy.left = rect.origin.x;
-            rectCopy.top = rMainScreen.height() - (rect.origin.y + rect.size.height);
-            rectCopy.bottom = rectCopy.top + rect.size.height;
-            rectCopy.right = rect.origin.x + rect.size.width;
+            rectCopy.left() = rect.origin.x;
+            rectCopy.top() = rMainScreen.height() - (rect.origin.y + rect.size.height);
+            rectCopy.bottom() = rectCopy.top() + rect.size.height;
+            rectCopy.right() = rect.origin.x + rect.size.width;
 
             recta.add(rectCopy);
 
@@ -978,10 +978,10 @@ rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
 
                   ::rectangle_i32 rectCopy;
 
-                  rectCopy.left = rect.origin.x;
-                  rectCopy.right = rect.origin.x + rect.size.width;
-                  rectCopy.top = rect.origin.y;
-                  rectCopy.bottom = rect.origin.y + rect.size.height;
+                  rectCopy.left() = rect.origin.x;
+                  rectCopy.right() = rect.origin.x + rect.size.width;
+                  rectCopy.top() = rect.origin.y;
+                  rectCopy.bottom() = rect.origin.y + rect.size.height;
 
                   recta.add(rectCopy);
 
@@ -1193,10 +1193,10 @@ void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > &
          //rectCopy.bottom = rectCopy.top + rectangle.size.height;
          //rectCopy.right = rectangle.origin.x + rectangle.size.width;
 
-         rectCopy.left = rect.origin.x;
-         rectCopy.right = rect.origin.x + rect.size.width;
-         rectCopy.top = rect.origin.y;
-         rectCopy.bottom = rect.origin.y + rect.size.height;
+         rectCopy.left() = rect.origin.x;
+         rectCopy.right() = rect.origin.x + rect.size.width;
+         rectCopy.top() = rect.origin.y;
+         rectCopy.bottom() = rect.origin.y + rect.size.height;
 
          recta.add(rectCopy);
          windowida.add(iWindowId);

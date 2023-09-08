@@ -6,6 +6,7 @@
 #include "acme/filesystem/file/memory_file.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
 #include "acme/platform/application.h"
+#include "acme/platform/nano_http.h"
 #include "acme/platform/node.h"
 #include "acme/platform/system.h"
 #include "acme/primitive/primitive/url.h"
@@ -249,7 +250,7 @@ namespace acme_macos
 
             auto url = m_pathDownloadURL;
 
-            acmesystem()->http_download(pmemoryFileTarGz, url, set);
+            acmesystem()->http_download(m_pcontext, pmemoryFileTarGz, url, set);
 
             //auto pathTar = m_pathFolder / m_path / (m_strName + ".tar");
 

@@ -69,20 +69,28 @@ namespace windowing_macos
 
 //      void _window_request_presentation() override;
       
-      void show_window(const ::e_display &edisplay, const ::e_activation &eactivation) override;
+      //void show_window(const ::e_display &edisplay, const ::e_activation &eactivation) override;
       
       void set_mouse_cursor(::windowing::cursor * pcursor) override;
       
       ::point_i32 get_mouse_cursor_position() override;
-      void _window_request_presentation_set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
-      bool set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
+//      void _set_window_position_unlocked(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
+      
+      bool _configure_window_unlocked(const class ::zorder& zorder, const ::e_activation& eactivation, bool bNoZorder, ::e_display edisplay) override;
+      bool _strict_set_window_position_unlocked(i32 x, i32 y, i32 cx, i32 cy, bool bNoMove, bool bNoSize) override;
+
+      
+      void window_do_update_screen() override;
+      
+      
+      //bool set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
 
       void set_mouse_capture() override;
 
       void get_cursor_position(::point_i32 * ppoint) override;
       
       void window_update_screen_buffer() override;
-      void _window_request_presentation() override;
+      //void _window_request_presentation() override;
 
       
       void set_window_text(const ::scoped_string & scopedstr) override;
