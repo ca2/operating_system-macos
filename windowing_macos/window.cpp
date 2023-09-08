@@ -927,7 +927,7 @@ namespace windowing_macos
 
       ::image_pointer & imageBuffer2 = pitem->m_pimage2;
 
-      if (!imageBuffer2)
+      if (!imageBuffer2.ok())
       {
 
          output_debug_string("NOT DRAWING? <<---- search and bp here !imageBuffer2 ");
