@@ -35,7 +35,8 @@ namespace windowing_macos
       void *                           m_pNSCursorLast;
       class windowing *                m_pmacoswindowing;
       ::windowing::window *            m_pwindowCapture;
-      ::point_i32                      m_pointMouseCursor;
+      ::point_i32                      m_pointMouseCursorHost;
+      ::point_i32                      m_pointMouseCursorAbsolute;
       ::pointer < ::windowing::cursor >   m_pcursor;
       
       
@@ -73,7 +74,11 @@ namespace windowing_macos
       
       void set_mouse_cursor(::windowing::cursor * pcursor) override;
       
-      ::point_i32 get_mouse_cursor_position() override;
+      ::point_i32 get_mouse_cursor_host_position() override;
+      
+      ::point_i32 get_mouse_cursor_absolute_position() override;
+      
+      
 //      void _set_window_position_unlocked(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
       
       bool _configure_window_unlocked(const class ::zorder& zorder, const ::e_activation& eactivation, bool bNoZorder, ::e_display edisplay) override;
@@ -98,12 +103,12 @@ namespace windowing_macos
       
 
       virtual void macos_window_draw(CGContextRef cgc, CGSize sizeWindow) override;
-      virtual void macos_window_mouse_down(int iButton, double x, double y) override;
-      virtual void macos_window_mouse_up(int iButton, double x, double y) override;
-      virtual void macos_window_mouse_repositioned(double x, double y, unsigned long ulAppleMouseButton) override;
-      virtual void macos_window_mouse_dragged(double x, double y, unsigned long iAppleMouseButton) override;
-      virtual void macos_window_mouse_wheel(double deltaY, double x, double y) override;
-      virtual void macos_window_double_click(int iButton, double x, double y) override;
+      virtual void macos_window_mouse_down(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute) override;
+      virtual void macos_window_mouse_up(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute) override;
+      virtual void macos_window_mouse_repositioned(double xHost, double yHost, double xAbsolute, double yAbsolute, unsigned long ulAppleMouseButton) override;
+      virtual void macos_window_mouse_dragged(double xHost, double yHost, double xAbsolute, double yAbsolute, unsigned long iAppleMouseButton) override;
+      virtual void macos_window_mouse_wheel(double deltaY, double xHost, double yHost, double xAbsolute, double yAbsolute) override;
+      virtual void macos_window_double_click(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute) override;
       virtual bool macos_window_key_down(unsigned int vk, unsigned int scan, const char * pszUtf8) override;
       virtual bool macos_window_key_up(unsigned int vk, unsigned int scan) override;
 //      virtual bool macos_window_key_down(unsigned int uiKeyCode) override;

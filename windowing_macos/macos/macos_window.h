@@ -45,12 +45,12 @@ public:
    virtual void macos_window_dec_ref() = 0;
    
    virtual void macos_window_draw(CGContextRef cgc, CGSize sizeWindow) = 0;
-   virtual void macos_window_mouse_down(int iButton, double x, double y) = 0;
-   virtual void macos_window_mouse_up(int iButton, double x, double y) = 0;
-   virtual void macos_window_mouse_repositioned(double x, double y, unsigned long ulAppleMouseButton) = 0;
-   virtual void macos_window_mouse_dragged(double x, double y, unsigned long ulAppleMouseButton) = 0;
-   virtual void macos_window_mouse_wheel(double deltaY, double x, double y) = 0;
-   virtual void macos_window_double_click(int iButton, double x, double y) = 0;
+   virtual void macos_window_mouse_down(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute) = 0;
+   virtual void macos_window_mouse_up(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute) = 0;
+   virtual void macos_window_mouse_repositioned(double xHost, double yHost, double xAbsolute, double yAbsolutey, unsigned long ulAppleMouseButton) = 0;
+   virtual void macos_window_mouse_dragged(double xHost, double yHost, double xAbsolute, double yAbsolute, unsigned long ulAppleMouseButton) = 0;
+   virtual void macos_window_mouse_wheel(double deltaY, double xHost, double yHost, double xAbsolute, double yAbsolute) = 0;
+   virtual void macos_window_double_click(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute) = 0;
    virtual bool macos_window_key_down(unsigned int vk, unsigned int scan, const char * pszUtf8) = 0;
    virtual bool macos_window_key_up(unsigned int vk, unsigned int scan) = 0;
    //virtual bool macos_window_key_down(unsigned int uiKeyCode) = 0;

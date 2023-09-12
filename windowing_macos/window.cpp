@@ -536,13 +536,22 @@ namespace windowing_macos
    }
 
 
-   ::point_i32 window::get_mouse_cursor_position()
+   ::point_i32 window::get_mouse_cursor_host_position()
    {
       
-      return m_pointMouseCursor;
+      return m_pointMouseCursorHost;
       
    }
-   
+
+
+   ::point_i32 window::get_mouse_cursor_absolute_position()
+   {
+      
+      return m_pointMouseCursorHost;
+      
+   }
+
+
 // void window::_window_request_presentation_set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide)
 //{
 //
@@ -1147,6 +1156,7 @@ pmessage->m_atom = emessage
       _NEW_MESSAGE(pkey, ::message::key, e_message_key_up);
 
       pkey->m_iVirtualKey = virtualKey;
+      
       pkey->m_nScanCode = scan;
       
       ::pointer < keyboard > pkeyboard = windowing()->keyboard();
@@ -1160,12 +1170,16 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::macos_window_mouse_down(int iButton, double x, double y)
+   void window::macos_window_mouse_down(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute)
    {
       
-      m_pointMouseCursor.x() = x;
+      m_pointMouseCursorHost.x() = xHost;
       
-      m_pointMouseCursor.y() = y;
+      m_pointMouseCursorHost.y() = yHost;
+
+      m_pointMouseCursorAbsolute.x() = xAbsolute;
+      
+      m_pointMouseCursorAbsolute.y() = yAbsolute;
 
       //::pointer < ::user::message > spbase;
 
@@ -1213,8 +1227,10 @@ pmessage->m_atom = emessage
          {
             
             _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_down);
-            pmouse->m_point.x() = x;
-            pmouse->m_point.y() = y;
+            pmouse->m_pointHost.x() = xHost;
+            pmouse->m_pointHost.y() = yHost;
+            pmouse->m_pointAbsolute.x() = xAbsolute;
+            pmouse->m_pointAbsolute.y() = yAbsolute;
             //post_message(pmouse);
             send_message(pmouse);
 
@@ -1223,8 +1239,10 @@ pmessage->m_atom = emessage
          {
 
             _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_down);
-            pmouse->m_point.x() = x;
-            pmouse->m_point.y() = y;
+            pmouse->m_pointHost.x() = xHost;
+            pmouse->m_pointHost.y() = yHost;
+            pmouse->m_pointAbsolute.x() = xAbsolute;
+            pmouse->m_pointAbsolute.y() = yAbsolute;
             //post_message(pmouse);
             send_message(pmouse);
          }
@@ -1237,13 +1255,17 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::macos_window_mouse_up(int iButton, double x, double y)
+   void window::macos_window_mouse_up(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute)
    {
       
-      m_pointMouseCursor.x() = x;
+      m_pointMouseCursorHost.x() = xHost;
       
-      m_pointMouseCursor.y() = y;
+      m_pointMouseCursorHost.y() = yHost;
+
+      m_pointMouseCursorAbsolute.x() = xAbsolute;
       
+      m_pointMouseCursorAbsolute.y() = yAbsolute;
+
       //auto pmouse = __create_new < ::message::mouse >();
 
       //::atom id;
@@ -1252,8 +1274,10 @@ pmessage->m_atom = emessage
       {
 
          _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_up);
-         pmouse->m_point.x() = x;
-         pmouse->m_point.y() = y;
+         pmouse->m_pointHost.x() = xHost;
+         pmouse->m_pointHost.y() = yHost;
+         pmouse->m_pointAbsolute.x() = xAbsolute;
+         pmouse->m_pointAbsolute.y() = yAbsolute;
          //post_message(pmouse);
          send_message(pmouse);
 
@@ -1262,8 +1286,10 @@ pmessage->m_atom = emessage
       {
 
          _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_up);
-         pmouse->m_point.x() = x;
-         pmouse->m_point.y() = y;
+         pmouse->m_pointHost.x() = xHost;
+         pmouse->m_pointHost.y() = yHost;
+         pmouse->m_pointAbsolute.x() = xAbsolute;
+         pmouse->m_pointAbsolute.y() = yAbsolute;
          //post_message(pmouse);
          send_message(pmouse);
 
@@ -1277,8 +1303,16 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::macos_window_double_click(int iButton, double x, double y)
+   void window::macos_window_double_click(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute)
    {
+
+      m_pointMouseCursorHost.x() = xHost;
+      
+      m_pointMouseCursorHost.y() = yHost;
+
+      m_pointMouseCursorAbsolute.x() = xAbsolute;
+      
+      m_pointMouseCursorAbsolute.y() = yAbsolute;
 
       //auto pmouse = __create_new < ::message::mouse >();
       
@@ -1315,8 +1349,18 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::macos_window_mouse_repositioned(double x, double y, unsigned long ulAppleMouseButton)
+   void window::macos_window_mouse_repositioned(double xHost, double yHost, double xAbsolute, double yAbsolute, unsigned long ulAppleMouseButton)
    {
+      
+      
+      m_pointMouseCursorHost.x() = xHost;
+      
+      m_pointMouseCursorHost.y() = yHost;
+
+      m_pointMouseCursorAbsolute.x() = xAbsolute;
+      
+      m_pointMouseCursorAbsolute.y() = yAbsolute;
+
       
 //      if(is_destroying())
 //      {
@@ -1325,9 +1369,9 @@ pmessage->m_atom = emessage
 //
 //      }
       
-      m_pointMouseCursor.x() = x;
-      
-      m_pointMouseCursor.y() = y;
+//      m_pointMouseCursor.x() = x;
+//
+//      m_pointMouseCursor.y() = y;
       
       bool bOk = true;
 
@@ -1453,7 +1497,7 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::macos_window_mouse_dragged(double x, double y, unsigned long ulAppleMouseButton)
+   void window::macos_window_mouse_dragged(double xHost, double yHost, double xAbsolute, double yAbsolute, unsigned long ulAppleMouseButton)
    {
       
       _NEW_MESSAGE(pmouse, ::message::mouse, e_message_mouse_move);
@@ -1492,7 +1536,7 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::macos_window_mouse_wheel(double deltaY, double x, double y)
+   void window::macos_window_mouse_wheel(double deltaY, double xHost, double yHost, double xAbsolute, double yAbsolute)
    {
 
       
