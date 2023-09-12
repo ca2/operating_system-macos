@@ -46,6 +46,14 @@ namespace windowing_macos
    window::window()
    {
       
+      
+      int iMouseMoveTriggerDistance = 10;
+      m_mouserepositionthrottling.m_iMouseMoveSkipSquareDistance = iMouseMoveTriggerDistance * iMouseMoveTriggerDistance;
+      m_mouserepositionthrottling.m_timeMouseMoveIgnore = 20_ms;
+      m_mouserepositionthrottling.m_iMouseMoveSkipCount = 0;
+      m_mouserepositionthrottling.m_timeMouseMovePeriod = 5_ms;
+
+      
       m_pWindow4 = this;
       m_pmacoswindowing = nullptr;
       m_pNSCursorLast = nullptr;
@@ -1322,8 +1330,10 @@ pmessage->m_atom = emessage
       {
 
          _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_double_click);
-         pmouse->m_point.x() = x;
-         pmouse->m_point.y() = y;
+         pmouse->m_pointHost.x() = xHost;
+         pmouse->m_pointHost.y() = yHost;
+         pmouse->m_pointAbsolute.x() = xAbsolute;
+         pmouse->m_pointAbsolute.y() = yAbsolute;
          //post_message(pmouse);
          send_message(pmouse);
 
@@ -1334,8 +1344,10 @@ pmessage->m_atom = emessage
       {
 
          _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_double_click);
-         pmouse->m_point.x() = x;
-         pmouse->m_point.y() = y;
+         pmouse->m_pointHost.x() = xHost;
+         pmouse->m_pointHost.y() = yHost;
+         pmouse->m_pointAbsolute.x() = xAbsolute;
+         pmouse->m_pointAbsolute.y() = yAbsolute;
          //post_message(pmouse);
          send_message(pmouse);
          //id = e_message_left_button_double_click;
@@ -1375,16 +1387,16 @@ pmessage->m_atom = emessage
       
       bool bOk = true;
 
-      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
-
-      if(!puserinteraction)
-      {
-
-         return;
-
-      }
+//      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
+//
+//      if(!puserinteraction)
+//      {
+//
+//         return;
+//
+//      }
       
-      if(puserinteraction->m_timeMouseMove.elapsed() < puserinteraction->m_timeMouseMoveIgnore)
+      if(m_mouserepositionthrottling.m_timeMouseMove.elapsed() < m_mouserepositionthrottling.m_timeMouseMoveIgnore)
       {
          
          //printf("mouse_move_ignored %f, %f\n", x, y);
@@ -1398,11 +1410,11 @@ pmessage->m_atom = emessage
 
 //            printf("mouse_move_\"accepted\" %f, %f\n", x, y);
 
-         puserinteraction->m_timeMouseMove.Now();
+         m_mouserepositionthrottling.m_timeMouseMove.Now();
 
-         puserinteraction->m_pointMouseMove.x() = x;
+         m_mouserepositionthrottling.m_pointMouseMove.x() = xAbsolute;
 
-         puserinteraction->m_pointMouseMove.y() = y;
+         m_mouserepositionthrottling.m_pointMouseMove.y() = yAbsolute;
 
 //            if(false)
 //            {
@@ -1463,9 +1475,11 @@ pmessage->m_atom = emessage
       
       
       _NEW_MESSAGE(pmouse, ::message::mouse, e_message_mouse_move);
-      pmouse->m_point.x() = x;
-      pmouse->m_point.y() = y;
-      
+      pmouse->m_pointHost.x() = xHost;
+      pmouse->m_pointHost.y() = yHost;
+      pmouse->m_pointAbsolute.x() = xAbsolute;
+      pmouse->m_pointAbsolute.y() = yAbsolute;
+
       //::atom id = e_message_mouse_move;
       
       //wparam wparam = 0;
@@ -1501,8 +1515,10 @@ pmessage->m_atom = emessage
    {
       
       _NEW_MESSAGE(pmouse, ::message::mouse, e_message_mouse_move);
-      pmouse->m_point.x() = x;
-      pmouse->m_point.y() = y;
+      pmouse->m_pointHost.x() = xHost;
+      pmouse->m_pointHost.y() = yHost;
+      pmouse->m_pointAbsolute.x() = xAbsolute;
+      pmouse->m_pointAbsolute.y() = yAbsolute;
 
       
 //      atom id = e_message_mouse_move;
@@ -1541,8 +1557,10 @@ pmessage->m_atom = emessage
 
       
       _NEW_MESSAGE(pwheel, ::message::mouse_wheel, e_message_mouse_wheel);
-      pwheel->m_point.x() = x;
-      pwheel->m_point.y() = y;
+      pwheel->m_pointHost.x() = xHost;
+      pwheel->m_pointHost.y() = yHost;
+      pwheel->m_pointAbsolute.x() = xAbsolute;
+      pwheel->m_pointAbsolute.y() = yAbsolute;
 
       //atom id = e_message_mouse_wheel;
 
