@@ -99,6 +99,28 @@
    
 }
 
+
+- (NSPoint) flippedLocationInWindow: (NSEvent *) event
+{
+   
+   NSPoint point = [event locationInWindow];
+   
+   if([event window] != nil)
+   {
+      
+      CGRect rectWindow = [[event window] frame];
+      
+      point.y = rectWindow.size.height - point.y - 1;
+      
+   }
+   
+   //point.y = (int) [[NSScreen mainScreen] frame].size.height - point.y;
+
+   return point;
+   
+}
+
+
 - (void) mouseUp: (NSEvent *) event
 {
 
@@ -107,7 +129,11 @@
    if(p == NULL)
       return;
     
-   NSPoint point = [self screenLocationEx: event];
+   //NSPoint point = [self screenLocationEx: event];
+   
+   //NSPoint point = [event locationInWindow];
+   
+   NSPoint point = [self flippedLocationInWindow: event];
    
    int x = point.x;
    
@@ -139,7 +165,11 @@
    if(p == NULL)
       return;
    
-   NSPoint point = [self screenLocationEx: event];
+   //NSPoint point = [self screenLocationEx: event];
+   
+   //NSPoint point = [event locationInWindow];
+   
+   NSPoint point = [self flippedLocationInWindow: event];
    
    int x = point.x;
    
@@ -160,7 +190,11 @@
    if(p == NULL)
       return;
    
-   NSPoint point = [self screenLocationEx: event];
+   //NSPoint point = [self screenLocationEx: event];
+   
+   //NSPoint point = [event locationInWindow];
+   
+   NSPoint point = [self flippedLocationInWindow: event];
    
    int x = point.x;
    
@@ -191,7 +225,11 @@
    if(p == NULL)
       return;
    
-   NSPoint point = [self screenLocationEx: event];
+   //NSPoint point = [self screenLocationEx: event];
+   
+   //NSPoint point = [event locationInWindow];
+   
+   NSPoint point = [self flippedLocationInWindow: event];
    
    int x = point.x;
    
@@ -214,7 +252,11 @@
    if(p == NULL)
       return;
    
-   NSPoint point = [self screenLocationEx: event];
+   //NSPoint point = [self screenLocationEx: event];
+   
+   //NSPoint point = [event locationInWindow];
+   
+   NSPoint point = [self flippedLocationInWindow: event];
    
    int x = point.x;
    
@@ -237,7 +279,11 @@
    if(p == NULL)
       return;
    
-   NSPoint point = [self screenLocationEx: event];
+   //NSPoint point = [self screenLocationEx: event];
+   
+   //NSPoint point = [event locationInWindow];
+   
+   NSPoint point = [self flippedLocationInWindow: event];
    
    int x = point.x;
    
@@ -260,7 +306,11 @@
    if(p == NULL)
       return;
    
-   NSPoint point = [self screenLocationEx: event];
+   //NSPoint point = [self screenLocationEx: event];
+   
+   //NSPoint point = [event locationInWindow];
+   
+   NSPoint point = [self flippedLocationInWindow: event];
    
    int x = point.x;
    
