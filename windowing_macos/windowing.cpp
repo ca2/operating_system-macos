@@ -277,6 +277,27 @@ namespace windowing_macos
    }
 
 
+   void windowing::set_mouse_cursor(::windowing::cursor * pcursor)
+   {
+      
+      if(m_pwindowCapture)
+      {
+       
+         m_pwindowCapture->set_mouse_cursor(pcursor);
+         
+      }
+      else if(m_pwindowActive)
+      {
+       
+         m_pwindowActive->set_mouse_cursor(pcursor);
+         
+      }
+      
+   }
+
+
+
+
    void windowing::_defer_dock_application(int_bool bDock)
    {
 

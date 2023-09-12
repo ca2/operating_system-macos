@@ -74,7 +74,7 @@ namespace windowing_macos
       
       void release_mouse_capture() override;
 
-
+      void set_mouse_cursor(::windowing::cursor * pcursor) override;
 
       //void get_cursor_position(POINT_I32 * ppoint) override;
 
