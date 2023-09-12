@@ -787,7 +787,11 @@ namespace windowing_macos
         
         configure_window_unlocked();
         
-        strict_set_window_position_unlocked();
+        bool bChangedPosition = false;
+        
+        bool bChangedSize = false;
+        
+        strict_set_window_position_unlocked(bChangedPosition, bChangedSize);
 
         window_update_screen_buffer();
 
