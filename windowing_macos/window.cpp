@@ -544,20 +544,20 @@ namespace windowing_macos
    }
 
 
-   ::point_i32 window::get_mouse_cursor_host_position()
-   {
-      
-      return m_pointMouseCursorHost;
-      
-   }
-
-
-   ::point_i32 window::get_mouse_cursor_absolute_position()
-   {
-      
-      return m_pointMouseCursorHost;
-      
-   }
+//   ::point_i32 window::get_mouse_cursor_host_position()
+//   {
+//      
+//      return m_pointMouseCursorHost;
+//      
+//   }
+//
+//
+//   ::point_i32 window::get_mouse_cursor_absolute_position()
+//   {
+//      
+//      return m_pointMouseCursorHost;
+//      
+//   }
 
 
 // void window::_window_request_presentation_set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide)
@@ -2556,12 +2556,6 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::get_cursor_position(::point_i32 * ppoint)
-   {
-      
-      macos_get_cursor_position(ppoint);
-      
-   }
 
 
 } // namespace windowing_macos

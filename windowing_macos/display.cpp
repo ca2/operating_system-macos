@@ -11,9 +11,11 @@
 #endif
 
 
+bool macos_get_cursor_position(::point_i32 * ppointCursor);
 int ns_monitor_count();
 char * ns_get_wallpaper();
 void ns_set_wallpaper(const char *psz);
+
 
 namespace windowing_macos
 {
@@ -82,6 +84,18 @@ namespace windowing_macos
       ns_set_wallpaper(strWallpaper);
       
       return true;
+      
+   }
+
+
+   ::point_i32 display::_get_mouse_cursor_position()
+   {
+      
+      ::point_i32 p;
+      
+      macos_get_cursor_position(&p);
+      
+      return p;
       
    }
 

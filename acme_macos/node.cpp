@@ -14,6 +14,9 @@
 #include <errno.h>
 
 
+void main_asynchronous(const ::procedure & procedure);
+
+
 void macos_folder_dialog(::file::folder_dialog * pdialog);
 void macos_file_dialog(::file::file_dialog * pdialog);
 
@@ -631,7 +634,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 
 
 
-   void node::node_quit()
+   void node::user_post_quit()
    {
        
       m_peventReadyToTerminateApp = __new(manual_reset_event);

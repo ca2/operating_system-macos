@@ -58,7 +58,7 @@ namespace windowing_macos
 
       void initialize(::particle * pparticle) override;
 
-      void windowing_post(const ::procedure & procedure) override;
+      //void windowing_post(const ::procedure & procedure) override;
 
       ::windowing::window * window(oswindow oswindow) override;
 
@@ -72,8 +72,10 @@ namespace windowing_macos
       
       ::windowing::window * get_mouse_capture(::thread *) override;
       
-      void release_mouse_capture() override;
+      void release_mouse_capture(::thread * pthread) override;
 
+      bool defer_release_mouse_capture(::thread * pthread, ::windowing::window * pwindow) override;
+      
       void set_mouse_cursor(::windowing::cursor * pcursor) override;
 
       //void get_cursor_position(POINT_I32 * ppoint) override;
@@ -93,14 +95,14 @@ namespace windowing_macos
 //
 //      void element_quit_post_quit() override;
 
-      ::e_status is_keyboard_hook_enabled(::user::interaction * puserinteractionEnablePrompt) override;
-
-
-      void install_keyboard_hook(::matter * pmatterListener) override;
-      void uninstall_keyboard_hook(::matter * pmatterListener) override;
-
-      void install_mouse_hook(::matter * pmatterListener) override;
-      void uninstall_mouse_hook(::matter * pmatterListener) override;
+//      ::e_status is_keyboard_hook_enabled(::user::interaction * puserinteractionEnablePrompt) override;
+//
+//
+//      void install_keyboard_hook(::matter * pmatterListener) override;
+//      void uninstall_keyboard_hook(::matter * pmatterListener) override;
+//
+//      void install_mouse_hook(::matter * pmatterListener) override;
+//      void uninstall_mouse_hook(::matter * pmatterListener) override;
 
    };
       

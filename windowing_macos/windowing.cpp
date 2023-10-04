@@ -93,21 +93,21 @@ namespace windowing_macos
    }
 
 
-   void windowing::windowing_post(const ::procedure & procedure)
-   {
-      
-      auto routineLocal = procedure;
-
-      ns_main_async(^
-                    {
-         
-         routineLocal();
-         
-      });
-      
-      //return success;
-
-   }
+//   void windowing::windowing_post(const ::procedure & procedure)
+//   {
+//      
+//      auto routineLocal = procedure;
+//
+//      ns_main_async(^
+//                    {
+//         
+//         routineLocal();
+//         
+//      });
+//      
+//      //return success;
+//
+//   }
 
 
    ::windowing::window * windowing::window(oswindow oswindow)
@@ -258,7 +258,7 @@ namespace windowing_macos
    }
 
 
-   void windowing::release_mouse_capture()
+   void windowing::release_mouse_capture(::thread * pthread)
    {
       
       auto pwindowCapture = m_pwindowCapture;
@@ -275,6 +275,26 @@ namespace windowing_macos
       //return ::success;
       
    }
+
+
+bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::window * pwindow)
+{
+   
+   if(pwindow != m_pwindowCapture)
+   {
+      
+      information() << "Not releasing pwindow != m_pwindowCapture";
+      
+      return false;
+      
+   }
+   
+   release_mouse_capture(pthread);
+   
+   return true;
+   
+}
+
 
 
    void windowing::set_mouse_cursor(::windowing::cursor * pcursor)
@@ -440,228 +460,72 @@ namespace windowing_macos
 //   }
 //
 
-   ::e_status windowing::is_keyboard_hook_enabled(::user::interaction * puserinteractionEnablePrompt)
-   {
-      
-      auto estatus = ::keyboard_hook::is_enabled(false);
-
-      if(::is_null(puserinteractionEnablePrompt) || estatus == ::success)
-      {
-         
-         return estatus;
-         
-      }
-      
-      manual_reset_event ev;
-      
-      auto psequencer = puserinteractionEnablePrompt->message_box("You gonna be prompted to enable Accessibility for \""+acmeapplication()->m_strAppName+"\" to enable keyboard monitoring.",
-                                                                                   "Aura Click", e_message_box_ok);
-      
-      psequencer->then(
-                                                           [this, &ev,puserinteractionEnablePrompt](auto & sequence)
-                                                           {
-                        
-                        auto estatus = ::keyboard_hook::is_enabled(true);
-                        
-                        if(estatus.succeeded())
-                        {
-                           
-                           ev.set_event();
-                           
-                           return;
-                            
-                        }
-                        else
-                        {
-                           
-                           while(estatus == error_need_restart_application_to_activate_feature)
-                           {
-                              
-                              ::preempt(1_s);
-                              
-                              estatus = ::keyboard_hook::is_enabled(false);
-                              
-                              //output_debug_string("todo restart application");
-                              
-                              //m_psystem->m_papplicationMain->_001TryCloseApplication();
-                              
-                           }
-                              
-                        }
-                        
-                        output_debug_string("loop ended");
-                        
-                        ev.set_event();
-                        
-                     });
-
-      psequencer->do_synchronously(5_minute);
-      //}
-      
-      psequencer->do_asynchronously();
-
-      //ev.wait();
-      
-      estatus = ::keyboard_hook::is_enabled(false);
-      
-      return estatus;
-      
-   //      auto estatus = keyboard_hook::check_system_permission(::is_set(puserinteractionEnablePrompt));
-   //
-   //      if(estatus == error_need_restart_application_to_activate_feature)
-   //      {
-   //
-   //         message_box(puserinteractionEnablePrompt, "Restart Aura Click?\n\nIf you have just enabled Accessibility and want the setting to be effective, Aura Click should be restarted.",
-   //                     "Aura Click", e_message_box_yes_no).then(
-   //                                                           [](auto & sequence)
-   //                                                           {
-   //
-   //                        output_debug_string("todo restart application");
-   //
-   //                     });
-   //
-   //      }
-      
-   }
-
-
-   void windowing::install_keyboard_hook(::matter * pmatterListener)
-   {
-      
-      //auto estatus =
-      
-      ::keyboard_hook::install(pmatterListener);
-      
-   //      if(!estatus)
-   //      {
-   //
-   //         return estatus;
-   //
-   //      }
-   //
-   //      return estatus;
-      
-   }
-
-
-   void windowing::uninstall_keyboard_hook(::matter * pmatterListener)
-   {
-
-      ///auto estatus =
-      
-      ::keyboard_hook::uninstall(pmatterListener);
-
-   //      if(!estatus)
-   //      {
-   //
-   //         return estatus;
-   //
-   //      }
-   //
-   //      return estatus;
-      
-   }
-
-
-   void windowing::install_mouse_hook(::matter * pmatterListener)
-   {
-      
-      //auto estatus =
-      
-      ::mouse_hook::install(pmatterListener);
-      
-   //      if(!estatus)
-   //      {
-   //
-   //         return estatus;
-   //
-   //      }
-   //
-   //      return estatus;
-      
-   }
-
-
-   void windowing::uninstall_mouse_hook(::matter * pmatterListener)
-   {
-
-      //auto estatus =
-      
-      ::mouse_hook::uninstall(pmatterListener);
-
-   //      if(!estatus)
-   //      {
-   //
-   //         return estatus;
-   //
-   //      }
-   //
-   //      return estatus;
-      
-   }
-
-
 //   ::e_status windowing::is_keyboard_hook_enabled(::user::interaction * puserinteractionEnablePrompt)
 //   {
-//
+//      
 //      auto estatus = ::keyboard_hook::is_enabled(false);
 //
 //      if(::is_null(puserinteractionEnablePrompt) || estatus == ::success)
 //      {
-//
+//         
 //         return estatus;
-//
+//         
 //      }
-//
+//      
 //      manual_reset_event ev;
-//
-//      puserinteractionEnablePrompt->message_box("You gonna be prompted to enable Accessibility for \""+m_psystem->m_pappMain->m_strAppName+"\" to enable keyboard monitoring.",
-//                     "Aura Click", e_message_box_ok)->then(
+//      
+//      auto psequencer = puserinteractionEnablePrompt->message_box("You gonna be prompted to enable Accessibility for \""+acmeapplication()->m_strAppName+"\" to enable keyboard monitoring.",
+//                                                                                   "Aura Click", e_message_box_ok);
+//      
+//      psequencer->then(
 //                                                           [this, &ev,puserinteractionEnablePrompt](auto & sequence)
 //                                                           {
-//
+//                        
 //                        auto estatus = ::keyboard_hook::is_enabled(true);
-//
+//                        
 //                        if(estatus.succeeded())
 //                        {
-//
+//                           
 //                           ev.set_event();
-//
+//                           
 //                           return;
-//
+//                            
 //                        }
 //                        else
 //                        {
-//
+//                           
 //                           while(estatus == error_need_restart_application_to_activate_feature)
 //                           {
-//
+//                              
 //                              ::preempt(1_s);
-//
+//                              
 //                              estatus = ::keyboard_hook::is_enabled(false);
-//
+//                              
 //                              //output_debug_string("todo restart application");
-//
+//                              
 //                              //m_psystem->m_papplicationMain->_001TryCloseApplication();
-//
+//                              
 //                           }
-//
+//                              
 //                        }
-//
+//                        
 //                        output_debug_string("loop ended");
-//
+//                        
 //                        ev.set_event();
-//
+//                        
 //                     });
 //
+//      psequencer->do_synchronously(5_minute);
 //      //}
+//      
+//      psequencer->do_asynchronously();
 //
-//      ev.wait();
-//
+//      //ev.wait();
+//      
 //      estatus = ::keyboard_hook::is_enabled(false);
-//
+//      
 //      return estatus;
-//
+//      
 //   //      auto estatus = keyboard_hook::check_system_permission(::is_set(puserinteractionEnablePrompt));
 //   //
 //   //      if(estatus == error_need_restart_application_to_activate_feature)
@@ -677,17 +541,17 @@ namespace windowing_macos
 //   //                     });
 //   //
 //   //      }
-//
+//      
 //   }
 //
 //
 //   void windowing::install_keyboard_hook(::matter * pmatterListener)
 //   {
-//
+//      
 //      //auto estatus =
-//
+//      
 //      ::keyboard_hook::install(pmatterListener);
-//
+//      
 //   //      if(!estatus)
 //   //      {
 //   //
@@ -696,7 +560,7 @@ namespace windowing_macos
 //   //      }
 //   //
 //   //      return estatus;
-//
+//      
 //   }
 //
 //
@@ -704,7 +568,7 @@ namespace windowing_macos
 //   {
 //
 //      ///auto estatus =
-//
+//      
 //      ::keyboard_hook::uninstall(pmatterListener);
 //
 //   //      if(!estatus)
@@ -715,17 +579,17 @@ namespace windowing_macos
 //   //      }
 //   //
 //   //      return estatus;
-//
+//      
 //   }
 //
 //
 //   void windowing::install_mouse_hook(::matter * pmatterListener)
 //   {
-//
+//      
 //      //auto estatus =
-//
+//      
 //      ::mouse_hook::install(pmatterListener);
-//
+//      
 //   //      if(!estatus)
 //   //      {
 //   //
@@ -734,7 +598,7 @@ namespace windowing_macos
 //   //      }
 //   //
 //   //      return estatus;
-//
+//      
 //   }
 //
 //
@@ -742,7 +606,7 @@ namespace windowing_macos
 //   {
 //
 //      //auto estatus =
-//
+//      
 //      ::mouse_hook::uninstall(pmatterListener);
 //
 //   //      if(!estatus)
@@ -753,8 +617,164 @@ namespace windowing_macos
 //   //      }
 //   //
 //   //      return estatus;
-//
+//      
 //   }
+//
+//
+////   ::e_status windowing::is_keyboard_hook_enabled(::user::interaction * puserinteractionEnablePrompt)
+////   {
+////
+////      auto estatus = ::keyboard_hook::is_enabled(false);
+////
+////      if(::is_null(puserinteractionEnablePrompt) || estatus == ::success)
+////      {
+////
+////         return estatus;
+////
+////      }
+////
+////      manual_reset_event ev;
+////
+////      puserinteractionEnablePrompt->message_box("You gonna be prompted to enable Accessibility for \""+m_psystem->m_pappMain->m_strAppName+"\" to enable keyboard monitoring.",
+////                     "Aura Click", e_message_box_ok)->then(
+////                                                           [this, &ev,puserinteractionEnablePrompt](auto & sequence)
+////                                                           {
+////
+////                        auto estatus = ::keyboard_hook::is_enabled(true);
+////
+////                        if(estatus.succeeded())
+////                        {
+////
+////                           ev.set_event();
+////
+////                           return;
+////
+////                        }
+////                        else
+////                        {
+////
+////                           while(estatus == error_need_restart_application_to_activate_feature)
+////                           {
+////
+////                              ::preempt(1_s);
+////
+////                              estatus = ::keyboard_hook::is_enabled(false);
+////
+////                              //output_debug_string("todo restart application");
+////
+////                              //m_psystem->m_papplicationMain->_001TryCloseApplication();
+////
+////                           }
+////
+////                        }
+////
+////                        output_debug_string("loop ended");
+////
+////                        ev.set_event();
+////
+////                     });
+////
+////      //}
+////
+////      ev.wait();
+////
+////      estatus = ::keyboard_hook::is_enabled(false);
+////
+////      return estatus;
+////
+////   //      auto estatus = keyboard_hook::check_system_permission(::is_set(puserinteractionEnablePrompt));
+////   //
+////   //      if(estatus == error_need_restart_application_to_activate_feature)
+////   //      {
+////   //
+////   //         message_box(puserinteractionEnablePrompt, "Restart Aura Click?\n\nIf you have just enabled Accessibility and want the setting to be effective, Aura Click should be restarted.",
+////   //                     "Aura Click", e_message_box_yes_no).then(
+////   //                                                           [](auto & sequence)
+////   //                                                           {
+////   //
+////   //                        output_debug_string("todo restart application");
+////   //
+////   //                     });
+////   //
+////   //      }
+////
+////   }
+////
+////
+////   void windowing::install_keyboard_hook(::matter * pmatterListener)
+////   {
+////
+////      //auto estatus =
+////
+////      ::keyboard_hook::install(pmatterListener);
+////
+////   //      if(!estatus)
+////   //      {
+////   //
+////   //         return estatus;
+////   //
+////   //      }
+////   //
+////   //      return estatus;
+////
+////   }
+////
+////
+////   void windowing::uninstall_keyboard_hook(::matter * pmatterListener)
+////   {
+////
+////      ///auto estatus =
+////
+////      ::keyboard_hook::uninstall(pmatterListener);
+////
+////   //      if(!estatus)
+////   //      {
+////   //
+////   //         return estatus;
+////   //
+////   //      }
+////   //
+////   //      return estatus;
+////
+////   }
+////
+////
+////   void windowing::install_mouse_hook(::matter * pmatterListener)
+////   {
+////
+////      //auto estatus =
+////
+////      ::mouse_hook::install(pmatterListener);
+////
+////   //      if(!estatus)
+////   //      {
+////   //
+////   //         return estatus;
+////   //
+////   //      }
+////   //
+////   //      return estatus;
+////
+////   }
+////
+////
+////   void windowing::uninstall_mouse_hook(::matter * pmatterListener)
+////   {
+////
+////      //auto estatus =
+////
+////      ::mouse_hook::uninstall(pmatterListener);
+////
+////   //      if(!estatus)
+////   //      {
+////   //
+////   //         return estatus;
+////   //
+////   //      }
+////   //
+////   //      return estatus;
+////
+////   }
 
 
 } // namespace windowing_macos

@@ -129,9 +129,9 @@ namespace windowing_macos
        case kVK_DownArrow:
           return ::user::e_key_down;
        case kVK_PageUp:
-          return ::user::e_key_prior;
+          return ::user::e_key_page_up;
        case kVK_PageDown:
-          return ::user::e_key_next;
+          return ::user::e_key_page_down;
        case kVK_Home:
           return ::user::e_key_home;
        case kVK_End:

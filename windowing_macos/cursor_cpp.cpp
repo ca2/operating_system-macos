@@ -29,6 +29,8 @@ void * __ns_get_default_system_cursor(enum_cursor ecursor);
 void _locked_ns_cursor_hide();
 void _locked_ns_cursor_show();
 
+void main_asynchronous(const ::procedure & procedure);
+
 
 void ns_set_cursor(::windowing::cursor * pcursorParam)
 {
