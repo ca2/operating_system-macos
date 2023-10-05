@@ -34,7 +34,6 @@
 		9A90675C27F1409F0040B86D /* libbase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675B27F1409F0040B86D /* libbase.dylib */; };
 		9A90675E27F1409F0040B86D /* libbred.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675D27F1409F0040B86D /* libbred.dylib */; };
 		9A90676027F140AF0040B86D /* libcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675F27F140AF0040B86D /* libcore.dylib */; };
-		9A90676227F1581D0040B86D /* libaudio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90676127F1581D0040B86D /* libaudio.dylib */; };
 		9A94EBDB29E32C3100C8C249 /* libaudio_mixer.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A94E7A329E2318F00C8C249 /* libaudio_mixer.dylib */; };
 		9AA1B44A176361950019E812 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA1B449176361950019E812 /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -111,7 +110,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A94EBDB29E32C3100C8C249 /* libaudio_mixer.dylib in Frameworks */,
-				9A90676227F1581D0040B86D /* libaudio.dylib in Frameworks */,
 				9A90676027F140AF0040B86D /* libcore.dylib in Frameworks */,
 				9A90675227F1409E0040B86D /* libacme.dylib in Frameworks */,
 				9A90675427F1409E0040B86D /* libapex.dylib in Frameworks */,
