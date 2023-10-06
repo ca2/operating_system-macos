@@ -1001,10 +1001,13 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
       
       auto psystem = acmesystem();
       
-      psystem->defer_post_initial_request();
-
-      if(::is_null(psystem->m_htask))
+      if(::is_null(psystem->m_htask)
+         || psystem->m_itask == main_user_itask())
       {
+         
+         psystem->m_htask = nullptr;
+         
+         psystem->m_itask = 0;
 
          ///auto estatus =
          
@@ -1024,6 +1027,10 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
          psystem->release();
          
       }
+      
+      psystem->defer_post_initial_request();
+
+
       
    }
 
