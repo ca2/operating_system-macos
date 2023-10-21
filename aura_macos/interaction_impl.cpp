@@ -1001,7 +1001,7 @@ namespace aura_macos
       if (m_puserinteraction->is_message_only_window())
       {
 
-         information("good : opt out!");
+         informationf("good : opt out!");
 
       }
       else

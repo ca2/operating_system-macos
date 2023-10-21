@@ -81,7 +81,7 @@ namespace acme_macos
 
       auto strError = cerrornumber.get_error_description();
       
-      error(strError);
+      errorf(strError);
 
       if (status == 0)
       {

@@ -1,6 +1,7 @@
 #include "framework.h"
-#include "acme/parallelization/synchronous_lock.h"
 #include "acme/constant/message.h"
+#include "acme/constant/user_key.h"
+#include "acme/parallelization/synchronous_lock.h"
 #include "aura/platform/session.h"
 #include "aura/message/user.h"
 

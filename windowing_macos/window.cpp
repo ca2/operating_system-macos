@@ -8,6 +8,7 @@
 #include "framework.h"
 #include "window_impl.h"
 #include "acme/constant/message.h"
+#include "acme/constant/user_key.h"
 #include "acme/parallelization/mutex.h"
 #include "acme/parallelization/synchronous_lock.h"
 #include "aura/user/user/interaction_graphics_thread.h"
@@ -2197,14 +2198,14 @@ pmessage->m_atom = emessage
    //
    //      }
       
-      information("macos::window::macos_window_on_hide");
+      informationf("macos::window::macos_window_on_hide");
 
       auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
       if(::is_null(puserinteraction))
       {
 
-         warning("macos::window::macos_window_on_hide (2) puserinteraction == nullptr");
+         warningf("macos::window::macos_window_on_hide (2) puserinteraction == nullptr");
 
          return;
 
@@ -2285,7 +2286,7 @@ pmessage->m_atom = emessage
          else if(puserinteraction->m_pinteractionimpl && puserinteraction->m_pinteractionimpl->m_timeLastExposureAddUp.elapsed() < 300_ms)
          {
 
-            information("Ignored minituarize request (by toggle intent) because of recent full exposure.");
+            informationf("Ignored minituarize request (by toggle intent) because of recent full exposure.");
 
          }
          else
