@@ -32,7 +32,7 @@ namespace acme_macos
       
       strCommand.find_replace("\"", "\\\"");
       
-      strParams.format("-c \"screen -d -m %s\"", strCommand.c_str());
+      strParams.formatf("-c \"screen -d -m %s\"", strCommand.c_str());
       
       /*auto estatus = */ call_async("/bin/bash", strParams, acmedirectory()->home(), e_display_none, false);
       

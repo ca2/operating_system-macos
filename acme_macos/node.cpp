@@ -787,7 +787,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
       
       string strCommand;
       
-      strCommand.format("open \"%s\" --args %s", pszAppFolder.c_str(), pszArgs.c_str());
+      strCommand.formatf("open \"%s\" --args %s", pszAppFolder.c_str(), pszArgs.c_str());
       
       _launch_command(strCommand);
       
