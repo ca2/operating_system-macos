@@ -261,9 +261,9 @@ namespace windowing_macos
       
       //auto & sizeWindow = layoutWindow.m_size;
       
-      auto ptask = ::get_task();
+      //auto ptask = ::get_task();
       
-      puserinteraction->m_pthreadUserInteraction = ptask;
+      //puserinteraction->m_pthreadUserInteraction = ptask;
 
          //puserinteraction->place(rectParam);
 
