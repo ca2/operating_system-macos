@@ -573,8 +573,8 @@ namespace windowing_macos
    bool window::_configure_window_unlocked(const class ::zorder& zorder, const ::e_activation& eactivation, bool bNoZorder, ::e_display edisplay)
    {
       
-      
-      ns_main_async(^(){
+      ns_main_async(^()
+      {
          
          if(edisplay == e_display_iconic)
          {
@@ -779,7 +779,7 @@ namespace windowing_macos
 
 
    void window::window_do_update_screen()
-  {
+   {
 
      //      if(m_interlockedPostedScreenUpdate > 0)
      //      {
@@ -793,17 +793,17 @@ namespace windowing_macos
            //windowing()->windowing_post([this]()
              //                          {
 
-     {
+      {
 
-        //_synchronous_lock synchronouslock(user_synchronization());
+         //_synchronous_lock synchronouslock(user_synchronization());
 
-        //display_lock displayLock(x11_display()->Display());
+         //display_lock displayLock(x11_display()->Display());
 
-        auto pimpl = m_puserinteractionimpl;
+         auto pimpl = m_puserinteractionimpl;
 
-        //configure_window_unlocked();
+         //configure_window_unlocked();
         
-        configure_window_unlocked();
+         configure_window_unlocked();
         
         bool bChangedPosition = false;
         
@@ -1647,6 +1647,12 @@ pmessage->m_atom = emessage
          
       }
 
+      ::rectangle_i32 rectangleWindow;
+      
+      rectangleWindow = rectangle;
+      
+      _on_configure_notify_unlocked(rectangleWindow);
+      
       //return;
 
    //      if(puserinteraction == nullptr)
@@ -2092,12 +2098,14 @@ pmessage->m_atom = emessage
 
       }
       
-      if(m_puserinteractionimpl->m_puserbox != nullptr)
-      {
-
-         m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious = m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplay;
-         
-      }
+//      if(m_puserinteractionimpl->m_puserbox != nullptr)
+//      {
+//         
+//         auto edisplay =  m_puserinteractionimpl->m_puserbox->m_windowdisplayandlayout.m_edisplay;
+//
+//         m_puserinteractionimpl->m_puserbox->m_windowdisplayandlayout.m_edisplayPrevious = edisplay;
+//         
+//      }
 
       puserinteraction->set_display(::e_display_iconic, ::user::e_layout_window);
 
@@ -2126,7 +2134,7 @@ pmessage->m_atom = emessage
       if(m_puserinteractionimpl->m_puserbox)
       {
          
-         auto & edisplayPrevious = m_puserinteractionimpl->m_puserbox->m_windowrectangle.m_edisplayPrevious;
+         auto & edisplayPrevious = m_puserinteractionimpl->m_puserbox->m_windowdisplayandlayout.m_edisplayPrevious;
 
          if(edisplayPrevious == ::e_display_iconic)
          {
