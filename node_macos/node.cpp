@@ -5,13 +5,18 @@
 //  Created by Camilo Sasuke on 2021-05-19 04:22 BRT <3ThomasBS_!!
 //
 #include "framework.h"
+#include "acme/platform/application.h"
 #include "acme/platform/system.h"
 /////#include "apex/user/menu_shared.h"
 //#include "keyboard_hook.h"
 //#include "mouse_hook.h"
 
 void ns_app_run();
-void defer_create_windowing_application_delegate(void * pApplication);
+void defer_create_windowing_application_delegate(void * pApplication, ::apex::menu * pmenu);
+
+
+void ns_application_handle(long long l, void * p);
+
 
 namespace node_macos
 {
@@ -257,12 +262,20 @@ namespace node_macos
 
       void * pApplication = (void *) (::acme::application *) papp;
 
-      defer_create_windowing_application_delegate(pApplication);
+      defer_create_windowing_application_delegate(pApplication, papp->main_menu());
       
       ns_app_run();
 
       //return psystem->m_estatus;
 
+   }
+
+
+   void node::application_handle(long long l, void * p)
+   {
+   
+      ns_application_handle(l, p);
+      
    }
 
 

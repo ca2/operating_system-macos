@@ -89,7 +89,7 @@ namespace windowing_macos
       void os_menu_item_enable(void * pitem, bool bEnable) override;
       void os_menu_item_check(void * pitem, bool bCheck) override;
 
-      void defer_create_main_menu(const string_array & straParent, const string_array & straMenu, const string_array & straId) override;
+      //void defer_create_main_menu(const string_array & straParent, const string_array & straMenu, const string_array & straId) override;
 
 //      void _will_finish_launching() override;
 //

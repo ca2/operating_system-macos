@@ -10,13 +10,14 @@
 #include "macOSApp.h"
 #include "acme/constant/id.h"
 #include "aura/_.h"
-#include "aura/user/menu/shared.h"
+#include "apex/user/menu/menu.h"
+//#include "aura/user/menu/shared.h"
 #include "aura_macos/_c_mm.h"
 #include "acme/operating_system/argcargv.h"
 
 bool application_get_bool(void * pApplication, const char * pszItem);
 void ns_main_async(dispatch_block_t block);
-
+NSMenu * ns_create_menu(::apex::menu * pmenu);
 
 NSString * __nsstring(const char * psz);
 //#include "apex/user/menu_shared.h"
@@ -34,6 +35,9 @@ void * application_system(void * pApplication);
 
 void system_id_update(void* pSystem, ::i64 iUpdate, ::i64 iPayload);
 
+
+//void ns_application_update(::i64 iUpdate, void * p);
+
 void node_will_finish_launching(void * pSystem);
 void system_on_open_untitled_file(void * pSystem);
 void system_on_open_file(void * pSystem, const char * pszFile);
@@ -44,95 +48,19 @@ void macos_on_app_changed_occlusion_state();
 
 void set_apex_system_as_thread();
 
+
 @implementation macOSApp
 
 
 //@synthesize windowcontroller;
-- (id)init
+- (id)initWithMainMenu:(::apex::menu *) pmenuMain
 {
 
    self = [super init];
    
-   m_menu = [[NSMenu alloc] initWithTitle:@"menubar_menu"];
+   m_pmenuMain = pmenuMain;
    
-   m_menuitema = [[NSMutableArray alloc] init];
-   
-   m_menuida = [[NSMutableArray alloc] init];
-   
-   // Monitor menu/dock theme changes...
-//   [NSDistributedNotificationCenter.defaultCenter addObserver:self selector:@selector(themeChanged:) name:@"AppleInterfaceThemeChangedNotification" object: nil];
-
-   //int iCount = pbridge->_get_notification_area_action_count();
-   
-   int iCount = 1;
-   
-   for(int i = 0; i < iCount; i++)
-   {
-      
-      //      char * pszName = NULL;
-      //      char * pszId = NULL;
-      //      char * pszLabel = NULL;
-      //      char * pszAccelerator = NULL;
-      //      char * pszDescription = NULL;
-      //
-      //      pbridge->_get_notification_area_action_info(&pszName, &pszId, &pszLabel, &pszAccelerator, &pszDescription, i);
-      
-      char * pszName = strdup("TransparentFxxx");
-      char * pszId = strdup("transparent_frame");
-      char * pszLabel = strdup("TransparentFxxx");
-      char * pszAccelerator = strdup("TransparentFxxx");
-      char * pszDescription = strdup("TransparentFxxx");
-      NSString * strTitle = NULL;
-      
-      NSString * strId = NULL;
-      
-      NSMenuItem * item = NULL;
-      
-      if(strcasecmp(pszName, "separator") == 0)
-      {
-         
-         strTitle = [[NSString alloc] initWithUTF8String: pszName];
-         
-         strId = [[NSString alloc] initWithUTF8String: pszName];
-         
-         item = [NSMenuItem separatorItem];
-         
-      }
-      else
-      {
-         
-         strTitle = [[NSString alloc] initWithUTF8String: pszName];
-         
-         strId = [[NSString alloc] initWithUTF8String: pszId];
-         
-         item = [[NSMenuItem alloc] initWithTitle:  strTitle action: @selector(on_os_menu_item:) keyEquivalent:@"" ];
-         
-      }
-      
-      [item setTarget:self];
-      
-      [m_menu addItem:item];
-      
-      [m_menuitema addObject: item];
-      
-      [m_menuida addObject: strId];
-      
-      if(pszName) free(pszName);
-      if(pszId) free(pszId);
-      if(pszLabel) free(pszLabel);
-      if(pszAccelerator) free(pszAccelerator);
-      if(pszDescription) free(pszDescription);
-   }
-   
-   [m_menu setDelegate:self];
-   
-
-      [[[NSWorkspace sharedWorkspace] notificationCenter]
-       addObserver:self
-       selector:@selector(applicationActivity:)
-       name:NSWorkspaceActiveSpaceDidChangeNotification
-       object:nil];
-   
+   //[ self application_menu_update ];
    
 
 
@@ -152,6 +80,110 @@ void set_apex_system_as_thread();
    
 }
 
+
+-(void)application_handle: (long long) l withPointer :(void *) p
+{
+   
+   if(l == id_application_menu_update)
+   {
+      
+      [self application_menu_update ];
+      
+   }
+   
+}
+
+
+-(void)application_menu_update
+{
+   
+   m_menu = ns_create_menu(m_pmenuMain);
+      
+   [ NSApp setMainMenu: m_menu];
+   
+//   m_menu = [[NSMenu alloc] initWithTitle:@"menubar_menu"];
+//   m_menuitema = [[NSMutableArray alloc] init];
+//   
+//   m_menuida = [[NSMutableArray alloc] init];
+//   
+//   // Monitor menu/dock theme changes...
+//   //   [NSDistributedNotificationCenter.defaultCenter addObserver:self selector:@selector(themeChanged:) name:@"AppleInterfaceThemeChangedNotification" object: nil];
+//   
+//   //int iCount = pbridge->_get_notification_area_action_count();
+//   
+//   //int iCount = 1;
+//   
+//   for(int i = 0; i < m_papplicationmenu->get_count(); i++)
+//   {
+//      
+//      //      char * pszName = NULL;
+//      //      char * pszId = NULL;
+//      //      char * pszLabel = NULL;
+//      //      char * pszAccelerator = NULL;
+//      //      char * pszDescription = NULL;
+//      //
+//      //      pbridge->_get_notification_area_action_info(&pszName, &pszId, &pszLabel, &pszAccelerator, &pszDescription, i);
+//      
+//      auto & menuitem = m_papplicationmenu->element_at(i);
+//      
+//      char * pszName = strdup(menuitem.m_strName);
+//      char * pszId = strdup(menuitem.m_strId);
+//      char * pszLabel = strdup(menuitem.m_strName);
+//      char * pszAccelerator = strdup(menuitem.m_strMacosAccelerator);
+//      char * pszDescription = strdup(menuitem.m_strDescription);
+//      NSString * strTitle = NULL;
+//      
+//      NSString * strId = NULL;
+//      
+//      NSMenuItem * item = NULL;
+//      
+//      if(strcasecmp(pszName, "separator") == 0)
+//      {
+//         
+//         strTitle = [[NSString alloc] initWithUTF8String: pszName];
+//         
+//         strId = [[NSString alloc] initWithUTF8String: pszName];
+//         
+//         item = [NSMenuItem separatorItem];
+//         
+//      }
+//      else
+//      {
+//         
+//         strTitle = [[NSString alloc] initWithUTF8String: pszName];
+//         
+//         strId = [[NSString alloc] initWithUTF8String: pszId];
+//         
+//         item = [[NSMenuItem alloc] initWithTitle:  strTitle action: @selector(on_os_menu_item:) keyEquivalent:@"" ];
+//         
+//      }
+//      
+//      [item setTarget:self];
+//      
+//      [m_menu addItem:item];
+//      
+//      [m_menuitema addObject: item];
+//      
+//      [m_menuida addObject: strId];
+//      
+//      if(pszName) free(pszName);
+//      if(pszId) free(pszId);
+//      if(pszLabel) free(pszLabel);
+//      if(pszAccelerator) free(pszAccelerator);
+//      if(pszDescription) free(pszDescription);
+//   }
+//   
+//   [m_menu setDelegate:self];
+//   
+//   [ NSApp setMainMenu: m_menu];
+
+      [[[NSWorkspace sharedWorkspace] notificationCenter]
+       addObserver:self
+       selector:@selector(applicationActivity:)
+       name:NSWorkspaceActiveSpaceDidChangeNotification
+       object:nil];
+
+}
 
 -(void)continueInitialization
 {
@@ -213,24 +245,21 @@ void set_apex_system_as_thread();
    
 }
 
+
 - (void)on_command:(id)sender
 {
    
    NSMenuItem * pitem = (NSMenuItem *) sender;
    
    NSString * str = (NSString *)[pitem representedObject];
-if(str != nil)
-{
-         const char * psz = [str UTF8String];
+   
+   if(str != nil)
+   {
          
-         //m_pbridge->notification_area_action(psz);
+      const char * psz = [str UTF8String];
          
-         application_on_menu_action(m_pApplication, psz);
+      application_on_menu_action(m_pApplication, psz);
          
-         return;
-         
-      //}
-      
    }
    
 }
@@ -487,52 +516,52 @@ if(str != nil)
    return m_menu;
    
 }
-
-
-- (void) ns_add_menu :(NSMenu *) menuParent withParent: (const char *) pszParent  withSharedMenu : (menu_shared *) pmenushared
-{
-   
-   if(!pmenushared)
-   {
-      
-      return;
-      
-   }
-
-      for(int i = 0; i < pmenushared->m_iCount; i++)
-      {
-
-         if(!strcmp("separator", pmenushared->m_ppszId[i]))
-         {
-            
-            NSMenuItem * menuitem = [NSMenuItem separatorItem];
-            
-            [menuParent addItem: menuitem];
-
-         }
-         else if(!strcmp(pszParent, pmenushared->m_ppszParent[i]))
-         {
-         
-            NSString * strTitle = [[NSString alloc] initWithUTF8String:pmenushared->m_ppszMenu[i]];
-
-            NSMenuItem * menuitem = [[NSMenuItem alloc] initWithTitle:strTitle action:@selector(on_command:) keyEquivalent:@""];
-      
-            NSString * strId = [[NSString alloc] initWithUTF8String:pmenushared->m_ppszId[i]];
-
-            pmenushared->m_ositema[i] = (__bridge void * )menuitem;
-            
-            [menuitem setTarget: self];
-
-            [menuitem setRepresentedObject: strId];
-         
-            [menuParent addItem: menuitem];
-
-         }
-
-      }
-
-
-}
+//
+//
+//- (void) ns_add_menu :(NSMenu *) menuParent withParent: (const char *) pszParent  withSharedMenu : (menu_shared *) pmenushared
+//{
+//   
+//   if(!pmenushared)
+//   {
+//      
+//      return;
+//      
+//   }
+//
+//      for(int i = 0; i < pmenushared->m_iCount; i++)
+//      {
+//
+//         if(!strcmp("separator", pmenushared->m_ppszId[i]))
+//         {
+//            
+//            NSMenuItem * menuitem = [NSMenuItem separatorItem];
+//            
+//            [menuParent addItem: menuitem];
+//
+//         }
+//         else if(!strcmp(pszParent, pmenushared->m_ppszParent[i]))
+//         {
+//         
+//            NSString * strTitle = [[NSString alloc] initWithUTF8String:pmenushared->m_ppszMenu[i]];
+//
+//            NSMenuItem * menuitem = [[NSMenuItem alloc] initWithTitle:strTitle action:@selector(on_command:) keyEquivalent:@""];
+//      
+//            NSString * strId = [[NSString alloc] initWithUTF8String:pmenushared->m_ppszId[i]];
+//
+//            pmenushared->m_ositema[i] = (__bridge void * )menuitem;
+//            
+//            [menuitem setTarget: self];
+//
+//            [menuitem setRepresentedObject: strId];
+//         
+//            [menuParent addItem: menuitem];
+//
+//         }
+//
+//      }
+//
+//
+//}
 
 
 - (void)play:(id)sender
@@ -618,83 +647,83 @@ void os_menu_item_check(void * pitem, bool bCheck)
 }
 
 
-NSMenu * _ns_create_main_menu(menu_shared * pmenushared)
-{
-   
-   id menuMain = [NSMenu alloc];
-   
-   macOSApp * papp = (macOSApp *) [[NSApplication sharedApplication] delegate ];
-   
-   {
-      
-      id menuitemApp = [NSMenuItem alloc];
-      
-      [menuMain addItem: menuitemApp];
-      
-      id strAppName = __nsstring(pmenushared->application_name());
-      
-      id menuApp = [[NSMenu alloc] initWithTitle: strAppName];
-      
-      [menuitemApp setSubmenu: menuApp];
-      
-      id strQuitTitle = __nsstring("Quit " +  pmenushared->application_name());
-      
-      id menuitemQuit = [[NSMenuItem alloc] initWithTitle:strQuitTitle
-                                                   action:@selector(terminate:) keyEquivalent:@"q"];
-
-      [ papp ns_add_menu : menuApp withParent: "" withSharedMenu: pmenushared];
-
-      [menuApp addItem: menuitemQuit];
-      
-   }
-   
-   {
-      
-      id menuitemView = [NSMenuItem alloc];
-      
-      [menuMain addItem: menuitemView];
-      
-      id menuView = [[NSMenu alloc] initWithTitle:__nsstring("View")];
-      
-      [menuView setDelegate: [ [NSApplication sharedApplication] delegate ] ];
-      
-      [menuitemView setSubmenu: menuView];
-      
-      id strFxxTitle = __nsstring("Transparent Frame");
-      
-      NSMenuItem * menuitemFxx = [[NSMenuItem alloc] initWithTitle:strFxxTitle
-                                                            action:@selector(on_command:) keyEquivalent:@"f"];
-      
-      [ papp ns_add_menu : menuView withParent: "view" withSharedMenu: pmenushared];
-
-      [menuitemFxx setRepresentedObject: @"transparent_frame"];
-      
-      [menuView addItem: menuitemFxx];
-      
-   }
-
-   return menuMain;
-   
-}
-
-
-void ns_create_main_menu(menu_shared * pmenushared)
-{
-
-   menu_shared_increment_reference_count(pmenushared);
-
-   ns_main_async(
-   ^{
-      
-      NSMenu * menuMain = _ns_create_main_menu(pmenushared);
-   
-      [NSApp setMainMenu:menuMain];
-      
-      menu_shared_release(pmenushared);
-      
-   });
-   
-}
+//NSMenu * _ns_create_main_menu(menu_shared * pmenushared)
+//{
+//   
+//   id menuMain = [NSMenu alloc];
+//   
+//   macOSApp * papp = (macOSApp *) [[NSApplication sharedApplication] delegate ];
+//   
+//   {
+//      
+//      id menuitemApp = [NSMenuItem alloc];
+//      
+//      [menuMain addItem: menuitemApp];
+//      
+//      id strAppName = __nsstring(pmenushared->application_name());
+//      
+//      id menuApp = [[NSMenu alloc] initWithTitle: strAppName];
+//      
+//      [menuitemApp setSubmenu: menuApp];
+//      
+//      id strQuitTitle = __nsstring("Quit " +  pmenushared->application_name());
+//      
+//      id menuitemQuit = [[NSMenuItem alloc] initWithTitle:strQuitTitle
+//                                                   action:@selector(terminate:) keyEquivalent:@"q"];
+//
+//      [ papp ns_add_menu : menuApp withParent: "" withSharedMenu: pmenushared];
+//
+//      [menuApp addItem: menuitemQuit];
+//      
+//   }
+//   
+//   {
+//      
+//      id menuitemView = [NSMenuItem alloc];
+//      
+//      [menuMain addItem: menuitemView];
+//      
+//      id menuView = [[NSMenu alloc] initWithTitle:__nsstring("View")];
+//      
+//      [menuView setDelegate: [ [NSApplication sharedApplication] delegate ] ];
+//      
+//      [menuitemView setSubmenu: menuView];
+//      
+//      id strFxxTitle = __nsstring("Transparent Frame");
+//      
+//      NSMenuItem * menuitemFxx = [[NSMenuItem alloc] initWithTitle:strFxxTitle
+//                                                            action:@selector(on_command:) keyEquivalent:@"f"];
+//      
+//      [ papp ns_add_menu : menuView withParent: "view" withSharedMenu: pmenushared];
+//
+//      [menuitemFxx setRepresentedObject: @"transparent_frame"];
+//      
+//      [menuView addItem: menuitemFxx];
+//      
+//   }
+//
+//   return menuMain;
+//   
+//}
+//
+//
+//void ns_create_main_menu(menu_shared * pmenushared)
+//{
+//
+//   menu_shared_increment_reference_count(pmenushared);
+//
+//   ns_main_async(
+//   ^{
+//      
+//      NSMenu * menuMain = _ns_create_main_menu(pmenushared);
+//   
+//      [NSApp setMainMenu:menuMain];
+//      
+//      menu_shared_release(pmenushared);
+//      
+//   });
+//   
+//}
 
 
 void os_begin_system();
@@ -705,7 +734,7 @@ void ns_app_run();
 void ns_apple_set_application_delegate(void * pApplication, macos_app * pappdelegate);
 void * apple_get_application_delegate(void * pApplication);
 
-void defer_create_windowing_application_delegate(void * pApplication)
+void defer_create_windowing_application_delegate(void * pApplication, ::apex::menu * pmenuMain)
 {
    
    macos_app * pappdelegate = (__bridge macos_app *) apple_get_application_delegate(pApplication);
@@ -713,7 +742,7 @@ void defer_create_windowing_application_delegate(void * pApplication)
    if(pappdelegate == nullptr)
    {
       
-      pappdelegate = [ [ macOSApp alloc] init];
+      pappdelegate = [ [ macOSApp alloc] initWithMainMenu: pmenuMain];
       
       ns_apple_set_application_delegate(pApplication, pappdelegate);
       
@@ -991,62 +1020,172 @@ void defer_create_windowing_application_delegate(void * pApplication)
 //
 //@end
 
-
-void ns_create_main_menu()
+NSMenu * ns_create_menu(::apex::menu * pmenu)
 {
    
+   NSMenu * menu = [ [ NSMenu alloc] initWithTitle:__nsstring(pmenu->m_strName)];
    
-   id menuMain = [NSMenu alloc];
-   
+   for(auto pitem : *pmenu)
    {
       
-      id menuitemApp = [NSMenuItem alloc];
+      NSMenuItem * menuitem = nil;
       
-      [menuMain addItem: menuitemApp];
-      
-      id menuApp = [NSMenu alloc];
-      
-      [menuitemApp setSubmenu: menuApp];
-      
-      id strAppName = [[NSProcessInfo processInfo] processName];
-      
-      id strQuitTitle = __nsstring("Quit " + ::string([strAppName UTF8String]));
-      
-      id menuitemQuit = [[NSMenuItem alloc] initWithTitle:strQuitTitle
-                                                   action:@selector(terminate:) keyEquivalent:@"q"];
-      
-      [menuApp addItem: menuitemQuit];
-      
+      if(pitem->has_element())
+      {
+         
+         menuitem = [ NSMenuItem alloc ];
+         
+         id menuSub = ns_create_menu(pitem);
+       
+         [ menuSub setDelegate: [ [NSApplication sharedApplication] delegate ] ];
+         
+         [ menuitem setSubmenu: menuSub];
+
+      }
+      else if(pitem->m_strName == "separator")
+      {
+         
+         menuitem = [NSMenuItem separatorItem];
+         
+      }
+      else
+      {
+         
+         id strTitle = __nsstring(pitem->m_strName);
+         id strAcc = __nsstring(pitem->m_strMacosAccelerator);
+         id strId = __nsstring(pitem->m_strId);
+         
+         menuitem = [[NSMenuItem alloc] initWithTitle:strTitle
+                                                            action:@selector(on_command:) keyEquivalent:strAcc];
+         
+         [menuitem setRepresentedObject: strId];
+         
+      }
+
+      [menu addItem: menuitem];
+
    }
    
-   {
-      
-      id menuitemView = [NSMenuItem alloc];
-      
-      [menuMain addItem: menuitemView];
-      
-      id menuView = [[NSMenu alloc] initWithTitle:__nsstring("View")];
-      
-      [menuView setDelegate: [ [NSApplication sharedApplication] delegate ] ];
-      
-      [menuitemView setSubmenu: menuView];
-      
-      id strFxxTitle = __nsstring("Trasparentt(snowballeffect_smallerror>>>)Fxx");
-      
-      NSMenuItem * menuitemFxx = [[NSMenuItem alloc] initWithTitle:strFxxTitle
-                                                            action:@selector(on_command:) keyEquivalent:@"f"];
-      
-      [menuitemFxx setRepresentedObject: @"transparent_frame"];
-      
-      [menuView addItem: menuitemFxx];
-      
-   }
-   
-   [NSApp setMainMenu:menuMain];
-   
+   return menu;
    
 }
 
+
+//NSMenu * ns_create_application_menu(application_menu * pmenu)
+//{
+//   
+//   
+//   id menu = [NSMenu alloc];
+//   
+////   {
+////      
+////      id menuitemApp = [NSMenuItem alloc];
+////      
+////      [menuMain addItem: menuitemApp];
+////      
+////      id menuApp = [NSMenu alloc];
+////      
+////      [menuitemApp setSubmenu: menuApp];
+////      
+////      id strAppName = [[NSProcessInfo processInfo] processName];
+////      
+////      id strQuitTitle = __nsstring("Quit " + ::string([strAppName UTF8String]));
+////      
+////      id menuitemQuit = [[NSMenuItem alloc] initWithTitle:strQuitTitle
+////                                                   action:@selector(terminate:) keyEquivalent:@"q"];
+////      
+////      [menuApp addItem: menuitemQuit];
+////      
+////   }
+//
+//   for(auto & item : *papplicationmenu)
+//   {
+//      
+//      id menuitem = [ NSMenuItem alloc ];
+//      
+//      [ menu addItem: menuitem];
+//      
+//      if(item.has_element())
+//      {
+//      
+//         id menuView = [[NSMenu alloc] initWithTitle:__nsstring(item."View")];
+//      
+//      [menuView setDelegate: [ [NSApplication sharedApplication] delegate ] ];
+//      
+//      [menuitemView setSubmenu: menuView];
+//      
+//      id strFxxTitle = __nsstring("Trasparentt(snowballeffect_smallerror>>>)Fxx");
+//      
+//      NSMenuItem * menuitemFxx = [[NSMenuItem alloc] initWithTitle:strFxxTitle
+//                                                            action:@selector(on_command:) keyEquivalent:@"f"];
+//      
+//      [menuitemFxx setRepresentedObject: @"transparent_frame"];
+//      
+//      [menuView addItem: menuitemFxx];
+//      
+//   }
+//   
+//   [NSApp setMainMenu:menuMain];
+//   
+//   
+//}
+
+
+//void ns_create_main_menu()
+//{
+//   
+//   
+//   id menuMain = [NSMenu alloc];
+//   
+//   {
+//      
+//      id menuitemApp = [NSMenuItem alloc];
+//      
+//      [menuMain addItem: menuitemApp];
+//      
+//      id menuApp = [NSMenu alloc];
+//      
+//      [menuitemApp setSubmenu: menuApp];
+//      
+//      id strAppName = [[NSProcessInfo processInfo] processName];
+//      
+//      id strQuitTitle = __nsstring("Quit " + ::string([strAppName UTF8String]));
+//      
+//      id menuitemQuit = [[NSMenuItem alloc] initWithTitle:strQuitTitle
+//                                                   action:@selector(terminate:) keyEquivalent:@"q"];
+//      
+//      [menuApp addItem: menuitemQuit];
+//      
+//   }
+//   
+//   {
+//      
+//      id menuitemView = [NSMenuItem alloc];
+//      
+//      [menuMain addItem: menuitemView];
+//      
+//      id menuView = [[NSMenu alloc] initWithTitle:__nsstring("View")];
+//      
+//      [menuView setDelegate: [ [NSApplication sharedApplication] delegate ] ];
+//      
+//      [menuitemView setSubmenu: menuView];
+//      
+//      id strFxxTitle = __nsstring("Trasparentt(snowballeffect_smallerror>>>)Fxx");
+//      
+//      NSMenuItem * menuitemFxx = [[NSMenuItem alloc] initWithTitle:strFxxTitle
+//                                                            action:@selector(on_command:) keyEquivalent:@"f"];
+//      
+//      [menuitemFxx setRepresentedObject: @"transparent_frame"];
+//      
+//      [menuView addItem: menuitemFxx];
+//      
+//   }
+//   
+//   [NSApp setMainMenu:menuMain];
+//   
+//   
+//}
+//
 
 
 
@@ -1140,4 +1279,22 @@ void ns_create_main_menu()
 //   [NSApp run];
 //
 //}
+
+
+void ns_application_handle(long long l, void * p)
+{
+   
+   ns_main_async(^{
+
+      macOSApp * papp = nullptr;
+      
+      papp = [ [NSApplication sharedApplication] delegate ] ;
+      
+      [papp application_handle: l withPointer:p];
+
+   });
+   
+}
+
+
 

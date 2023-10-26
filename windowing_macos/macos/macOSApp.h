@@ -22,6 +22,7 @@
 
 
 #include "acme/operating_system/macos/nano/app.h"
+#include "apex/user/menu/menu.h"
 
 
 class menu_shared;
@@ -34,6 +35,7 @@ class menu_shared;
    NSMenu *             m_menu;
    NSMutableArray *     m_menuitema;
    NSMutableArray *     m_menuida;
+   ::apex::menu *       m_pmenuMain;
 
 }
 
@@ -41,5 +43,8 @@ class menu_shared;
 - (void)play:(id)sender;
 -(void)continueInitialization;
 - (void) ns_add_menu :(NSMenu *) menuParent withParent: (const char *) pszParent  withSharedMenu : (menu_shared *) pmenushared;
+-(void)application_menu_update;
+- (id)initWithMainMenu:(::apex::menu *) pmenu;
+-(void)application_handle: (long long) l withPointer :(void *) p;
 
 @end

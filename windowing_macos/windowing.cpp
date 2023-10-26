@@ -8,7 +8,8 @@
 #include "acme/parallelization/manual_reset_event.h"
 #include "acme/platform/application.h"
 #include "acme/platform/sequencer.h"
-#include "aura/user/menu/shared.h"
+#include "apex/user/menu/menu.h"
+//#include "aura/user/menu/shared.h"
 #include "aura/user/user/interaction_impl.h"
 #include "keyboard_hook.h"
 #include "mouse_hook.h"
@@ -24,13 +25,13 @@ void * ns_get_key_window();
 //void os_post_quit(::element * pelementQuit);
 
 
-::pointer < menu_shared > create_menu_shared(::particle * pparticle, const string_array & straParent, const string_array & straMenu, const string_array & straId);
+//::pointer < menu_shared > create_menu_shared(::particle * pparticle, const string_array & straParent, const string_array & straMenu, const string_array & straId);
 
 
 //void defer_create_windowing_application_delegate(void * pApplication, int argc, char *argv[]);
 
-
-void ns_create_main_menu(menu_shared * pmenushared);
+//
+//void ns_create_main_menu(menu_shared * pmenushared);
 
 
 void os_menu_item_enable(void * pitem, bool bEnable);
@@ -389,23 +390,23 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::win
    }
 
 
-   void windowing::defer_create_main_menu(const string_array & straMenuParent, const string_array & straMenuName, const string_array & straMenuId)
-   {
-      
-      auto pmenushared =
-         create_menu_shared(
-                            this,
-                            straMenuParent,
-                            straMenuName,
-                            straMenuId
-                            
-                            );
-
-      ns_create_main_menu(pmenushared);
-      
-      //return success;
-      
-   }
+//   void windowing::defer_create_main_menu(const string_array & straMenuParent, const string_array & straMenuName, const string_array & straMenuId)
+//   {
+//      
+//      auto pmenushared =
+//         create_menu_shared(
+//                            this,
+//                            straMenuParent,
+//                            straMenuName,
+//                            straMenuId
+//                            
+//                            );
+//
+//      ns_create_main_menu(pmenushared);
+//      
+//      //return success;
+//      
+//   }
 
 
 //   void windowing::implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem)
