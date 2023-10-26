@@ -15,9 +15,15 @@
 #include "aura_macos/_c_mm.h"
 #include "acme/operating_system/argcargv.h"
 
+
 bool application_get_bool(void * pApplication, const char * pszItem);
+
 void ns_main_async(dispatch_block_t block);
-NSMenu * ns_create_menu(::apex::menu * pmenu);
+
+
+NSMenu * ns_create_menu(::apex::menu * pmenu, bool bMainMenu);
+
+void ns_create_menu(NSMenu * menu, ::apex::menu * pmenu, bool bMainMenu);
 
 NSString * __nsstring(const char * psz);
 //#include "apex/user/menu_shared.h"
@@ -97,9 +103,13 @@ void set_apex_system_as_thread();
 -(void)application_menu_update
 {
    
-   m_menu = ns_create_menu(m_pmenuMain);
+   m_menu = [ NSApp mainMenu ];
+   
+   [ m_menu removeAllItems ];
+   
+   ns_create_menu(m_menu, m_pmenuMain, true);
       
-   [ NSApp setMainMenu: m_menu];
+//   [ NSApp setMainMenu: m_menu];
    
 //   m_menu = [[NSMenu alloc] initWithTitle:@"menubar_menu"];
 //   m_menuitema = [[NSMutableArray alloc] init];
@@ -269,6 +279,9 @@ void set_apex_system_as_thread();
 {
    
    //macos_calc_dark_mode();
+   
+   [ self application_menu_update ];
+   
    
    [ super applicationWillFinishLaunching: notification];
    
@@ -1020,22 +1033,91 @@ void defer_create_windowing_application_delegate(void * pApplication, ::apex::me
 //
 //@end
 
-NSMenu * ns_create_menu(::apex::menu * pmenu)
+
+void ensure_edit_menu(::apex::menu * pmenu)
 {
    
-   NSMenu * menu = [ [ NSMenu alloc] initWithTitle:__nsstring(pmenu->m_strName)];
+   auto iEdit = pmenu->find_child_with_name("Edit");
+   
+   if(iEdit >= 0)
+   {
+    
+      return;
+      
+   }
+
+   auto iFile = pmenu->find_child_with_name("File");
+   
+   if(iFile >= 0)
+   {
+      
+      iEdit = iFile + 1;
+      
+   }
+   else if(pmenu->has_element())
+   {
+      
+      iEdit = 1;
+      
+   }
+   else
+   {
+    
+      iEdit = 0;
+      
+   }
+    
+   pmenu->insert_at(iEdit, __new(::apex::menu("Edit", popup_flag_t{})));
+      
+}
+
+
+NSMenu * ns_create_menu(::apex::menu * pmenu, bool bMainMenu)
+{
+   
+   NSMenu * menu = nil;
+   
+   if(pmenu->m_strName.has_char())
+   {
+      
+      menu = [ [ NSMenu alloc ] initWithTitle:__nsstring(pmenu->m_strName)];
+      
+   }
+   else
+   {
+      
+      menu = [ NSMenu alloc ];
+      
+   }
+   
+   ns_create_menu(menu, pmenu, bMainMenu);
+   
+   return menu;
+   
+}
+
+
+void ns_create_menu(NSMenu * menu, ::apex::menu * pmenu, bool bMainMenu)
+{
+   
+//   if(bMainMenu)
+//   {
+//      
+//      ensure_edit_menu(pmenu);
+//      
+//   }
    
    for(auto pitem : *pmenu)
    {
       
       NSMenuItem * menuitem = nil;
       
-      if(pitem->has_element())
+      if(pitem->is_popup())
       {
          
          menuitem = [ NSMenuItem alloc ];
          
-         id menuSub = ns_create_menu(pitem);
+         id menuSub = ns_create_menu(pitem, false);
        
          [ menuSub setDelegate: [ [NSApplication sharedApplication] delegate ] ];
          
@@ -1065,8 +1147,6 @@ NSMenu * ns_create_menu(::apex::menu * pmenu)
       [menu addItem: menuitem];
 
    }
-   
-   return menu;
    
 }
 
