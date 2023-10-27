@@ -12,25 +12,24 @@
 //  Copyright (c) 2015 Camilo Sasuke Tsumanuma. All rights reserved.
 //
 #include "framework.h"
-
-
 #include "acme/constant/message.h"
+#include "apex/input/mouse_hook.h"
 
 
-namespace mouse_hook
+namespace input_appkit
 {
    
 
-   static ::particle * g_pparticleListener = NULL;
+   static ::input::mouse_hook * g_pmousehook = NULL;
 
 
    static id g_idEventMonitor;
    
    
-   ::e_status install(::particle * pparticleListener)
+   ::e_status install_mouse_hook(::input::mouse_hook * pmousehook)
    {
       
-      g_pparticleListener = pparticleListener;
+      g_pmousehook = pmousehook;
 
       g_idEventMonitor = [ NSEvent addGlobalMonitorForEventsMatchingMask:
                  
@@ -44,32 +43,32 @@ namespace mouse_hook
                                                          //NSWindow *targetWindowForEvent = //[incomingEvent window];
                                                          
          if ([incomingEvent type] == NSEventTypeLeftMouseDown) {
-                                                            g_pparticleListener->call(e_message_left_button_down);
+            g_pmousehook->mouse_proc(e_message_left_button_down);
                                                             
                                                             
                                                          }
          else if ([incomingEvent type] == NSEventTypeLeftMouseUp) {
-                                                            g_pparticleListener->call(e_message_left_button_up);
+            g_pmousehook->mouse_proc(e_message_left_button_up);
                        
                        
                     }
          else if ([incomingEvent type] == NSEventTypeRightMouseDown) {
-                       g_pparticleListener->call(e_message_right_button_down);
+            g_pmousehook->mouse_proc(e_message_right_button_down);
                        
                        
                     }
          else if ([incomingEvent type] == NSEventTypeRightMouseUp) {
-                       g_pparticleListener->call(e_message_right_button_up);
+            g_pmousehook->mouse_proc(e_message_right_button_up);
                        
                        
                     }
          else if ([incomingEvent type] == NSEventTypeOtherMouseDown) {
-                       g_pparticleListener->call(e_message_middle_button_down);
+            g_pmousehook->mouse_proc(e_message_middle_button_down);
                        
                        
                     }
                     else if ([incomingEvent type] == NSEventTypeOtherMouseUp) {
-                       g_pparticleListener->call(e_message_middle_button_up);
+                       g_pmousehook->mouse_proc(e_message_middle_button_up);
                        
                        
                     }
@@ -81,7 +80,7 @@ namespace mouse_hook
    }
    
 
-   ::e_status uninstall(::particle * pparticleListener)
+   ::e_status uninstall_mouse_hook(::input::mouse_hook * pmousehook)
    {
       
       [NSEvent removeMonitor:g_idEventMonitor ];
@@ -91,7 +90,7 @@ namespace mouse_hook
    }
 
 
-} // namespace mouse_hook
+} // namespace input_appkit
 
 
 

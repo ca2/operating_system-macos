@@ -16,13 +16,10 @@
 		9A1D5EDB2751B037003D9B5F /* icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA80242266558E000A6B449 /* icon.cpp */; };
 		9A1D5EDC2751B037003D9B5F /* imm_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A42D7F42665B61E0011645D /* imm_client.cpp */; };
 		9A1D5EDD2751B037003D9B5F /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A42D7FF2665C5850011645D /* keyboard.cpp */; };
-		9A1D5EDE2751B037003D9B5F /* keyboard_hook.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A59A4AF26F02FBC00096562 /* keyboard_hook.mm */; };
-		9A1D5EDF2751B037003D9B5F /* keyboard_hook_authorization.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A62EC0526F05C7300EA958E /* keyboard_hook_authorization.mm */; };
 		9A1D5EE02751B037003D9B5F /* windowing_keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A440A4B26548C38000C490B /* windowing_keyboard.cpp */; };
 		9A1D5EE12751B037003D9B5F /* windowing_keyboard.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AA802482665706600A6B449 /* windowing_keyboard.mm */; };
 		9A1D5EE22751B037003D9B5F /* monitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C109266058D20074030F /* monitor.cpp */; };
 		9A1D5EE32751B037003D9B5F /* monitor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C10E266062940074030F /* monitor.mm */; };
-		9A1D5EE42751B037003D9B5F /* mouse_hook.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A59A4AB26F02F7E00096562 /* mouse_hook.mm */; };
 		9A1D5EE62751B037003D9B5F /* notify_icon_mm_bridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A79BE2426645D9B009E6C44 /* notify_icon_mm_bridge.mm */; };
 		9A1D5EE72751B037003D9B5F /* notify_icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A79BE2826645D9C009E6C44 /* notify_icon.cpp */; };
 		9A1D5EE82751B037003D9B5F /* notify_icon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A79BE2A26645D9C009E6C44 /* notify_icon.mm */; };
@@ -41,10 +38,8 @@
 		9A1D5EFB2751B129003D9B5F /* icon.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AA80245266558E000A6B449 /* icon.h */; };
 		9A1D5EFC2751B129003D9B5F /* imm_client.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A42D7F92665B61F0011645D /* imm_client.h */; };
 		9A1D5EFD2751B129003D9B5F /* keyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A42D7FE2665C5850011645D /* keyboard.h */; };
-		9A1D5EFE2751B129003D9B5F /* keyboard_hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A59A4B526F0328400096562 /* keyboard_hook.h */; };
 		9A1D5EFF2751B129003D9B5F /* windowing_keyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A4226548C38000C490B /* windowing_keyboard.h */; };
 		9A1D5F012751B129003D9B5F /* monitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A64C10A266058D20074030F /* monitor.h */; };
-		9A1D5F022751B129003D9B5F /* mouse_hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A59A4B626F032A800096562 /* mouse_hook.h */; };
 		9A1D5F042751B129003D9B5F /* notify_icon_mm_bridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A79BE2526645D9B009E6C44 /* notify_icon_mm_bridge.h */; };
 		9A1D5F052751B129003D9B5F /* notify_icon_mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A79BE2726645D9C009E6C44 /* notify_icon_mm.h */; };
 		9A1D5F062751B129003D9B5F /* notify_icon.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A79BE2B26645D9C009E6C44 /* notify_icon.h */; };
@@ -139,10 +134,6 @@
 		9A440A692654DD22000C490B /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
 		9A440A6A2654DD63000C490B /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
 		9A440A762654F440000C490B /* _library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _library.h; sourceTree = "<group>"; };
-		9A59A4AB26F02F7E00096562 /* mouse_hook.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = mouse_hook.mm; sourceTree = "<group>"; };
-		9A59A4AF26F02FBC00096562 /* keyboard_hook.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = keyboard_hook.mm; sourceTree = "<group>"; };
-		9A59A4B526F0328400096562 /* keyboard_hook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keyboard_hook.h; sourceTree = "<group>"; };
-		9A59A4B626F032A800096562 /* mouse_hook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mouse_hook.h; sourceTree = "<group>"; };
 		9A5D738A26561AAA00D5C39E /* _factory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
 		9A5D738D2656240A00D5C39E /* windowing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = windowing.cpp; sourceTree = "<group>"; };
 		9A5D738E2656240A00D5C39E /* windowing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = windowing.h; sourceTree = "<group>"; };
@@ -160,7 +151,6 @@
 		9A5D73AA265701F400D5C39E /* libaura_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5D73B226570CAE00D5C39E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		9A62EBFF26F04B7B00EA958E /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
-		9A62EC0526F05C7300EA958E /* keyboard_hook_authorization.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = keyboard_hook_authorization.mm; sourceTree = "<group>"; };
 		9A62EC0726F05CC100EA958E /* SBSystemPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSystemPreferences.h; sourceTree = "<group>"; };
 		9A64C105266057F00074030F /* display.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = display.cpp; sourceTree = "<group>"; };
 		9A64C106266057F00074030F /* display.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = display.h; sourceTree = "<group>"; };
@@ -274,16 +264,11 @@
 				9AA80245266558E000A6B449 /* icon.h */,
 				9A42D7F42665B61E0011645D /* imm_client.cpp */,
 				9A42D7F92665B61F0011645D /* imm_client.h */,
-				9A62EC0526F05C7300EA958E /* keyboard_hook_authorization.mm */,
-				9A59A4B526F0328400096562 /* keyboard_hook.h */,
-				9A59A4AF26F02FBC00096562 /* keyboard_hook.mm */,
 				9A42D7FF2665C5850011645D /* keyboard.cpp */,
 				9A42D7FE2665C5850011645D /* keyboard.h */,
 				9A64C109266058D20074030F /* monitor.cpp */,
 				9A64C10A266058D20074030F /* monitor.h */,
 				9A64C10E266062940074030F /* monitor.mm */,
-				9A59A4B626F032A800096562 /* mouse_hook.h */,
-				9A59A4AB26F02F7E00096562 /* mouse_hook.mm */,
 				9A79BE2526645D9B009E6C44 /* notify_icon_mm_bridge.h */,
 				9A79BE2426645D9B009E6C44 /* notify_icon_mm_bridge.mm */,
 				9A79BE2726645D9C009E6C44 /* notify_icon_mm.h */,
@@ -367,10 +352,8 @@
 				9A1D5EFC2751B129003D9B5F /* imm_client.h in Headers */,
 				9AF2844A27FBC96400D4C1A8 /* macOSWindowController.h in Headers */,
 				9A1D5EFD2751B129003D9B5F /* keyboard.h in Headers */,
-				9A1D5EFE2751B129003D9B5F /* keyboard_hook.h in Headers */,
 				9A1D5EFF2751B129003D9B5F /* windowing_keyboard.h in Headers */,
 				9A1D5F012751B129003D9B5F /* monitor.h in Headers */,
-				9A1D5F022751B129003D9B5F /* mouse_hook.h in Headers */,
 				9AF2844527FBC96400D4C1A8 /* macos_window.h in Headers */,
 				9A1D5F042751B129003D9B5F /* notify_icon_mm_bridge.h in Headers */,
 				9AF2845727FBCA7100D4C1A8 /* macOSApp.h in Headers */,
@@ -491,13 +474,10 @@
 				9AF2844E27FBC96400D4C1A8 /* macOSWindowController.mm in Sources */,
 				9A93B0F827FCFC380042D6C8 /* cursor_cpp.cpp in Sources */,
 				9A1D5EDD2751B037003D9B5F /* keyboard.cpp in Sources */,
-				9A1D5EDE2751B037003D9B5F /* keyboard_hook.mm in Sources */,
-				9A1D5EDF2751B037003D9B5F /* keyboard_hook_authorization.mm in Sources */,
 				9A1D5EE02751B037003D9B5F /* windowing_keyboard.cpp in Sources */,
 				9A1D5EE12751B037003D9B5F /* windowing_keyboard.mm in Sources */,
 				9A1D5EE22751B037003D9B5F /* monitor.cpp in Sources */,
 				9A1D5EE32751B037003D9B5F /* monitor.mm in Sources */,
-				9A1D5EE42751B037003D9B5F /* mouse_hook.mm in Sources */,
 				9A1D5EE62751B037003D9B5F /* notify_icon_mm_bridge.mm in Sources */,
 				9A1D5EE72751B037003D9B5F /* notify_icon.cpp in Sources */,
 				9A1D5EE82751B037003D9B5F /* notify_icon.mm in Sources */,

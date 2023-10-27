@@ -103,6 +103,10 @@ namespace windowing_macos
 //
 //      void install_mouse_hook(::matter * pmatterListener) override;
 //      void uninstall_mouse_hook(::matter * pmatterListener) override;
+      
+      
+      ::pointer < ::input::input > get_input() override;
+      
 
    };
       
