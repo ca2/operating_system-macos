@@ -79,6 +79,9 @@
 #define MACOS
 #endif
 
+#if !defined(BSD_UNIX)
+#define BSD_UNIX 1
+#endif
 
 
 
