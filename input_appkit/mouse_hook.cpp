@@ -14,9 +14,9 @@ namespace input_appkit
 
 
    bool           mouse_hook::s_bMouseHook = false;
-   mouse_hook *   mouse_hook::s_pmousehook = nullptr;
-   ::task_pointer mouse_hook::s_ptaskMouse;
-   HHOOK          mouse_hook::s_hhookMouse = nullptr;
+   //mouse_hook *   mouse_hook::s_pmousehook = nullptr;
+   //::task_pointer mouse_hook::s_ptaskMouse;
+   //HHOOK          mouse_hook::s_hhookMouse = nullptr;
 
 
    mouse_hook::mouse_hook()
@@ -45,7 +45,7 @@ namespace input_appkit
 
       s_bMouseHook = true;
 
-      s_pmousehook = this;
+      ::input_appkit::install_mouse_hook(this);
 
       //if (g_hhook != nullptr)
       //{
@@ -56,12 +56,12 @@ namespace input_appkit
 
       //}
 
-      s_ptaskMouse = app_fork([this]()
-      {
-
-         _mouse_hook_task();
-
-      });
+//      s_ptaskMouse = app_fork([this]()
+//      {
+//
+//         _mouse_hook_task();
+//
+//      });
 
    }
 
@@ -69,12 +69,13 @@ namespace input_appkit
    void mouse_hook::uninstall_mouse_hook()
    {
 
-      if (s_ptaskMouse)
-      {
-
-         s_ptaskMouse->set_finish();
-
-      }
+      ::input_appkit::uninstall_mouse_hook(this);
+      //if (s_ptaskMouse)
+//      {
+//
+//         s_ptaskMouse->set_finish();
+//
+//      }
 
    }
 
@@ -87,107 +88,107 @@ namespace input_appkit
    }
 
 
-   LRESULT CALLBACK mouse_hook::LowLevelMouseProc(int nCode, WPARAM wParam, LPARAM lParam)
-   {
+//   LRESULT CALLBACK mouse_hook::LowLevelMouseProc(int nCode, WPARAM wParam, LPARAM lParam)
+//   {
+//
+//      if (nCode == 0)
+//      {
+//
+//         if (wParam == e_message_left_button_down
+//            || wParam == e_message_left_button_up
+//            || wParam == e_message_middle_button_down
+//            || wParam == e_message_middle_button_up
+//            || wParam == e_message_right_button_down
+//            || wParam == e_message_right_button_up
+//            )
+//         {
+//
+//            enum_message emessage = (enum_message)wParam;
+//
+//            s_pmousehook->mouse_proc(emessage);
+//
+//         }
+//
+//      }
+//
+//      return ::CallNextHookEx(s_hhookMouse, nCode, wParam, lParam);
+//
+//   }
 
-      if (nCode == 0)
-      {
 
-         if (wParam == e_message_left_button_down
-            || wParam == e_message_left_button_up
-            || wParam == e_message_middle_button_down
-            || wParam == e_message_middle_button_up
-            || wParam == e_message_right_button_down
-            || wParam == e_message_right_button_up
-            )
-         {
-
-            enum_message emessage = (enum_message)wParam;
-
-            s_pmousehook->mouse_proc(emessage);
-
-         }
-
-      }
-
-      return ::CallNextHookEx(s_hhookMouse, nCode, wParam, lParam);
-
-   }
-
-
-   void mouse_hook::_mouse_hook_task()
-   {
-
-      //auto ptask = get_task();
-
-      //auto pthread = ptask->m_pthread;
-
-      //pthread->m_bMessageThread = true;
-
-  /*    if (!_install())
-      {
-
-         return error_failed;
-
-      }*/
-
-      // g_hhook = nullptr;
-
-      //g_itask = ::GetCurrentThreadId();
-
-      try
-      {
-
-         MSG msg;
-
-         ::PeekMessage(&msg, nullptr, 0, 0xffffffff, false);
-
-         s_hhookMouse = SetWindowsHookEx(WH_MOUSE_LL, LowLevelMouseProc, ::LoadLibraryW(L"app_core_auraclick.dll"), 0);
-
-         while (task_get_run())
-         {
-
-            int iRet = ::GetMessage(&msg, 0, 0, 0xffffffff);
-
-            if (iRet == 0)
-            {
-
-               break;
-
-            }
-
-            ::TranslateMessage(&msg);
-
-            ::DispatchMessage(&msg);
-
-         }
-
-      }
-      catch (...)
-      {
-
-      }
-
-      try
-      {
-
-         UnhookWindowsHookEx(s_hhookMouse);
-
-      }
-      catch (...)
-      {
-
-      }
-
-      s_hhookMouse = nullptr;
-
-      s_bMouseHook = false;
-
-      s_pmousehook = nullptr;
-
-      s_ptaskMouse.release();
-
-   }
+//   void mouse_hook::_mouse_hook_task()
+//   {
+//
+//      //auto ptask = get_task();
+//
+//      //auto pthread = ptask->m_pthread;
+//
+//      //pthread->m_bMessageThread = true;
+//
+//  /*    if (!_install())
+//      {
+//
+//         return error_failed;
+//
+//      }*/
+//
+//      // g_hhook = nullptr;
+//
+//      //g_itask = ::GetCurrentThreadId();
+//
+//      try
+//      {
+//
+//         MSG msg;
+//
+//         ::PeekMessage(&msg, nullptr, 0, 0xffffffff, false);
+//
+//         s_hhookMouse = SetWindowsHookEx(WH_MOUSE_LL, LowLevelMouseProc, ::LoadLibraryW(L"app_core_auraclick.dll"), 0);
+//
+//         while (task_get_run())
+//         {
+//
+//            int iRet = ::GetMessage(&msg, 0, 0, 0xffffffff);
+//
+//            if (iRet == 0)
+//            {
+//
+//               break;
+//
+//            }
+//
+//            ::TranslateMessage(&msg);
+//
+//            ::DispatchMessage(&msg);
+//
+//         }
+//
+//      }
+//      catch (...)
+//      {
+//
+//      }
+//
+//      try
+//      {
+//
+//         UnhookWindowsHookEx(s_hhookMouse);
+//
+//      }
+//      catch (...)
+//      {
+//
+//      }
+//
+//      s_hhookMouse = nullptr;
+//
+//      s_bMouseHook = false;
+//
+//      s_pmousehook = nullptr;
+//
+//      s_ptaskMouse.release();
+//
+//   }
 
 
    void mouse_hook::mouse_proc(enum_message emessage)

@@ -41,7 +41,7 @@ namespace input_appkit
 
 
       static bool                s_bKeyboardHook;
-      static ::task_pointer      s_ptaskKeyboard;
+      //static ::task_pointer      s_ptaskKeyboard;
 
       keyboard_hook();
       ~keyboard_hook() override;
@@ -53,7 +53,7 @@ namespace input_appkit
 
       virtual bool is_keyboard_hook_installed();
 
-      virtual void _keyboard_hook_task();
+      //virtual void _keyboard_hook_task();
 
 
 //      static LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam);
@@ -62,6 +62,15 @@ namespace input_appkit
 
 
    };
+
+
+   ::e_status install_keyboard_hook(::input::keyboard_hook * pkeyboardhook);
+
+
+   ::e_status uninstall_keyboard_hook(::input::keyboard_hook * pkeyboardhook);
+
+
+   ::e_status is_keyboard_hook_enabled(bool bPrompt);
 
 
 } // namespace input_appkit

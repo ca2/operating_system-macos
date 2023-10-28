@@ -9,7 +9,7 @@
 #include "acme/primitive/primitive/particle.h"
 #include "acme/_operating_system.h"
 #include "aura/message/user.h"
-
+#include <Carbon/Carbon.h>
 
 //::input::keyboard_hook *     s_pkeyboardhook;
 
@@ -20,8 +20,8 @@ namespace input_appkit
 
    bool              keyboard_hook::s_bKeyboardHook = false;
 //   keyboard_hook *   keyboard_hook::s_pkeyboardhook = nullptr;
-   ::task_pointer    keyboard_hook::s_ptaskKeyboard;
-   HHOOK             keyboard_hook::s_hhookKeyboard = nullptr;
+   //::task_pointer    keyboard_hook::s_ptaskKeyboard;
+   //HHOOK             keyboard_hook::s_hhookKeyboard = nullptr;
 
 
    keyboard_hook::keyboard_hook()
@@ -49,15 +49,17 @@ namespace input_appkit
       }
 
       s_bKeyboardHook = true;
+      
+      ::input_appkit::install_keyboard_hook(this);
 
-      s_pkeyboardhook = this;
-
-      s_ptaskKeyboard = app_fork([this]()
-      {
-
-         _keyboard_hook_task();
-
-      });
+//      s_pkeyboardhook = this;
+//
+//      s_ptaskKeyboard = app_fork([this]()
+//      {
+//
+//         _keyboard_hook_task();
+//
+//      });
 
    }
 
@@ -70,150 +72,150 @@ namespace input_appkit
    }
 
    
-   LRESULT CALLBACK keyboard_hook::LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
-   {
-
-      if (nCode == 0)
-      {
-
-         LPKBDLLHOOKSTRUCT pk = (LPKBDLLHOOKSTRUCT)lParam;
-
-         if (wParam == e_message_key_down || wParam == e_message_sys_key_down)
-         {
-
-            auto emessage = (enum_message)wParam;
-
-            s_pkeyboardhook->keyboard_proc(emessage, pk->vkCode, pk->scanCode);
-
-            //output_debug_string("X");
-
-            //if (pk->vkCode == VK_MENU)
-            //{
-
-            //   alt = 1;
-
-            //}
-            //else if (pk->vkCode == '0')
-            //{
-
-            //   if (GetAsyncKeyState(VK_CONTROL) & 0x8000)
-            //   {
-
-            //      INPUT inputa[2];
-
-            //      zero(inputa);
-
-            //      inputa[0].type = INPUT_KEYBOARD;
-            //      inputa[0].ki.dwFlags = KEYEVENTF_UNICODE;
-            //      inputa[0].ki.wScan = 0xb7;
-
-            //      inputa[1].type = INPUT_KEYBOARD;
-            //      inputa[1].ki.dwFlags = KEYEVENTF_UNICODE | KEYEVENTF_KEYUP;
-            //      inputa[1].ki.wScan = 0xb7;
-
-            //      ::SendInput(2, inputa, sizeof(INPUT));
-
-            //   }
-
-            //}
-
-         }
-         else if (wParam == e_message_key_up || wParam == e_message_sys_key_up)
-         {
-
-            auto emessage = (enum_message)wParam;
-
-            s_pkeyboardhook->keyboard_proc(emessage, pk->vkCode, pk->scanCode);
-
-            //output_debug_string("Y");
-
-            //if (pk->vkCode == VK_MENU)
-            //{
-
-            //   alt = 0;
-
-            //}
-
-         }
-
-      }
-
-      return ::CallNextHookEx(s_hhookKeyboard, nCode, wParam, lParam);
-
-   }
-
-
-   void keyboard_hook::_keyboard_hook_task()
-   {
-
-      ::parallelization::set_priority(::e_priority_time_critical);
-
-      MSG msg;
-
-      ::PeekMessage(&msg, nullptr, 0, 0xffffffff, false);
-
-      s_hhookKeyboard = SetWindowsHookEx(WH_KEYBOARD_LL, LowLevelKeyboardProc, ::LoadLibraryW(L"app_core_auratype.dll"), 0);
-
-      SetTimer(NULL, NULL, 250, NULL);
-
-      while (::task_get_run())
-      {
-
-         int iRet = ::GetMessage(&msg, 0, 0, 0xffffffff);
-
-         if (iRet == 0)
-         {
-
-            break;
-
-         }
-
-         ::TranslateMessage(&msg);
-
-         ::DispatchMessage(&msg);
-
-      }
-
-      try
-      {
-
-         UnhookWindowsHookEx(s_hhookKeyboard);
-
-      }
-      catch (...)
-      {
-
-
-      }
-
-      s_hhookKeyboard = nullptr;
-
-      s_bKeyboardHook = false;
-
-      s_ptaskKeyboard = nullptr;
-
-      s_ptaskKeyboard.release();
-
-   }
-
-
-   void install(::particle * pparticle)
-   {
-
-
-   }
+//   LRESULT CALLBACK keyboard_hook::LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
+//   {
+//
+//      if (nCode == 0)
+//      {
+//
+//         LPKBDLLHOOKSTRUCT pk = (LPKBDLLHOOKSTRUCT)lParam;
+//
+//         if (wParam == e_message_key_down || wParam == e_message_sys_key_down)
+//         {
+//
+//            auto emessage = (enum_message)wParam;
+//
+//            s_pkeyboardhook->keyboard_proc(emessage, pk->vkCode, pk->scanCode);
+//
+//            //output_debug_string("X");
+//
+//            //if (pk->vkCode == VK_MENU)
+//            //{
+//
+//            //   alt = 1;
+//
+//            //}
+//            //else if (pk->vkCode == '0')
+//            //{
+//
+//            //   if (GetAsyncKeyState(VK_CONTROL) & 0x8000)
+//            //   {
+//
+//            //      INPUT inputa[2];
+//
+//            //      zero(inputa);
+//
+//            //      inputa[0].type = INPUT_KEYBOARD;
+//            //      inputa[0].ki.dwFlags = KEYEVENTF_UNICODE;
+//            //      inputa[0].ki.wScan = 0xb7;
+//
+//            //      inputa[1].type = INPUT_KEYBOARD;
+//            //      inputa[1].ki.dwFlags = KEYEVENTF_UNICODE | KEYEVENTF_KEYUP;
+//            //      inputa[1].ki.wScan = 0xb7;
+//
+//            //      ::SendInput(2, inputa, sizeof(INPUT));
+//
+//            //   }
+//
+//            //}
+//
+//         }
+//         else if (wParam == e_message_key_up || wParam == e_message_sys_key_up)
+//         {
+//
+//            auto emessage = (enum_message)wParam;
+//
+//            s_pkeyboardhook->keyboard_proc(emessage, pk->vkCode, pk->scanCode);
+//
+//            //output_debug_string("Y");
+//
+//            //if (pk->vkCode == VK_MENU)
+//            //{
+//
+//            //   alt = 0;
+//
+//            //}
+//
+//         }
+//
+//      }
+//
+//      return ::CallNextHookEx(s_hhookKeyboard, nCode, wParam, lParam);
+//
+//   }
+//
+//
+//   void keyboard_hook::_keyboard_hook_task()
+//   {
+//
+//      ::parallelization::set_priority(::e_priority_time_critical);
+//
+//      MSG msg;
+//
+//      ::PeekMessage(&msg, nullptr, 0, 0xffffffff, false);
+//
+//      s_hhookKeyboard = SetWindowsHookEx(WH_KEYBOARD_LL, LowLevelKeyboardProc, ::LoadLibraryW(L"app_core_auratype.dll"), 0);
+//
+//      SetTimer(NULL, NULL, 250, NULL);
+//
+//      while (::task_get_run())
+//      {
+//
+//         int iRet = ::GetMessage(&msg, 0, 0, 0xffffffff);
+//
+//         if (iRet == 0)
+//         {
+//
+//            break;
+//
+//         }
+//
+//         ::TranslateMessage(&msg);
+//
+//         ::DispatchMessage(&msg);
+//
+//      }
+//
+//      try
+//      {
+//
+//         UnhookWindowsHookEx(s_hhookKeyboard);
+//
+//      }
+//      catch (...)
+//      {
+//
+//
+//      }
+//
+//      s_hhookKeyboard = nullptr;
+//
+//      s_bKeyboardHook = false;
+//
+//      s_ptaskKeyboard = nullptr;
+//
+//      s_ptaskKeyboard.release();
+//
+//   }
+//
+//
+//   void install(::particle * pparticle)
+//   {
+//
+//
+//   }
 
 
    void keyboard_hook::uninstall_keyboard_hook()
    {
 
-      if (s_ptaskKeyboard)
-      {
-
-         s_ptaskKeyboard->set_finish();
-
-      }
-
+//      if (s_ptaskKeyboard)
+//      {
+//
+//         s_ptaskKeyboard->set_finish();
+//
+//      }
+      ::input_appkit::uninstall_keyboard_hook(this);
    }
 
 
@@ -224,13 +226,13 @@ namespace input_appkit
 
       pkeyboard->m_atom = emessage;
 
-      if (iVirtualKeyCode == VK_RETURN)
+      if (iVirtualKeyCode == kVK_Return)
       {
 
          pkeyboard->m_ekey = ::user::e_key_return;
 
       }
-      else if (iVirtualKeyCode == VK_SPACE)
+      else if (iVirtualKeyCode == kVK_Space)
       {
 
          pkeyboard->m_ekey = ::user::e_key_space;

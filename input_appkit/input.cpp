@@ -31,7 +31,7 @@
 //wparam MapLeftRightKeys(wparam vk, lparam lParam);
 
 
-namespace input_win32
+namespace input_appkit
 {
 
 
@@ -1566,7 +1566,7 @@ namespace input_win32
    }
 
 
-} // namespace input_win32
+} // namespace input_appkit
 
 
 

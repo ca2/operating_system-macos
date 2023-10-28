@@ -11,7 +11,7 @@ namespace input_appkit
 {
 
 
-   class CLASS_DECL_INPUT_WIN32 input :
+   class CLASS_DECL_INPUT_APPKIT input :
       virtual public ::input::input,
       virtual public keyboard_hook,
       virtual public mouse_hook

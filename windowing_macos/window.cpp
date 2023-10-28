@@ -1172,7 +1172,7 @@ pmessage->m_atom = emessage
 
       pkey->m_ekey = pkeyboard->virtual_key_to_user_key(virtualKey);
 
-      puserinteraction->send(pkey);
+      puserinteraction->send_message(pkey);
 
       return true;
 
@@ -2352,7 +2352,7 @@ pmessage->m_atom = emessage
 
       }
       
-      puserinteraction->post(pmessage);
+      puserinteraction->post_message(pmessage);
 
       //::thread * pthread = nullptr;
 
@@ -2449,7 +2449,7 @@ pmessage->m_atom = emessage
 
       }
       
-      puserinteraction->send(pmessage);
+      puserinteraction->send_message(pmessage);
 
       //::thread * pthread = nullptr;
 

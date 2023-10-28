@@ -6,11 +6,11 @@
 //
 
 
-namespace keyboard_hook
+namespace input_appkit
 {
 
 
-   ::e_status is_enabled(bool bPrompt)
+   ::e_status is_keyboard_hook_enabled(bool bPrompt)
    {
       
       NSDictionary * options;

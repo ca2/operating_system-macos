@@ -56,6 +56,9 @@ namespace node_macos
       void application_handle(long long l, void * p) override;
       
       
+      ::pointer < ::input::input > get_input() override;
+      
+      
 
    };
 

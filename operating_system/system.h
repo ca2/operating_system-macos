@@ -48,6 +48,7 @@
 
 #define DEBUG_BREAK __builtin_debugtrap()
 
+
 #ifdef __cplusplus
 
 
@@ -56,6 +57,13 @@
 #include <concepts>
 
 #include <compare>
+
+#undef __STD_FORMAT__
+
+
+#ifdef __STD_FORMAT__
+#include <format>
+#endif
 
 
 #endif

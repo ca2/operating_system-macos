@@ -40,7 +40,7 @@ namespace input_appkit
 
       static bool                s_bMouseHook;
 //      static mouse_hook *        s_pmousehook;
-      static ::task_pointer      s_ptaskMouse;
+//      static ::task_pointer      s_ptaskMouse;
 //      static HHOOK               s_hhookMouse;
 
       
@@ -54,7 +54,7 @@ namespace input_appkit
 
       virtual bool is_mouse_hook_installed();
 
-      virtual void _mouse_hook_task();
+      //virtual void _mouse_hook_task();
 
 //      static LRESULT CALLBACK LowLevelMouseProc(int nCode, WPARAM wParam, LPARAM lParam);
 

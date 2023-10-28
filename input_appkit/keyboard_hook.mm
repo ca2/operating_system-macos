@@ -77,7 +77,14 @@ namespace input_appkit
    ::e_status install_keyboard_hook(::input::keyboard_hook * pkeyboardhook)
    {
    
-      auto estatus = is_enabled(false);
+      if(g_pkeyboardhook != nullptr)
+      {
+         
+         return error_resource;
+         
+      }
+      
+      auto estatus = is_keyboard_hook_enabled(false);
       
       if(!estatus)
       {
@@ -160,19 +167,19 @@ namespace input_appkit
             if([incomingEvent keyCode] == kVK_Return)
             {
                
-               g_pkeyboardhook->keyboard_proc(e_message_key_down, kVK_Return);
+               g_pkeyboardhook->keyboard_proc(e_message_key_down, kVK_Return, 0);
                
             }
             else if([incomingEvent keyCode] == kVK_Space)
             {
                
-               g_pkeyboardhook->keyboard_proc((e_message_key_down, kVK_Space);
+               g_pkeyboardhook->keyboard_proc(e_message_key_down, kVK_Space, 0);
                
             }
             else
             {
                
-               g_pkeyboardhook->keyboard_proc(e_message_key_down, kVK_ANSI_A);
+               g_pkeyboardhook->keyboard_proc(e_message_key_down, kVK_ANSI_A, 0);
                
             }
             
@@ -183,19 +190,19 @@ namespace input_appkit
             if([incomingEvent keyCode] == kVK_Return)
             {
                
-               g_pkeyboardhook->keyboard_proc(e_message_key_up, kVK_Return);
+               g_pkeyboardhook->keyboard_proc(e_message_key_up, kVK_Return, 0);
                
             }
             else if([incomingEvent keyCode] == kVK_Space)
             {
                
-               g_pkeyboardhook->keyboard_proc(e_message_key_up, kVK_Space);
+               g_pkeyboardhook->keyboard_proc(e_message_key_up, kVK_Space, 0);
                
             }
             else
             {
                
-               g_pkeyboardhook->keyboard_proc(e_message_key_up, kVK_ANSI_A);
+               g_pkeyboardhook->keyboard_proc(e_message_key_up, kVK_ANSI_A, 0);
                
             }
             

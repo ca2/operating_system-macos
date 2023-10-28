@@ -778,16 +778,7 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::win
 ////   }
    
 
-   ::pointer < ::input::input > windowing::get_input()
-   {
 
-      auto & pfactory = acmesystem()->factory("input", "libinput");
-
-      pfactory->merge_to_global_factory();
-
-      return windowing_posix::windowing::get_input();
-
-   }
 
 
 } // namespace windowing_macos
