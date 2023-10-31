@@ -7,8 +7,11 @@
 //
 
 #include "framework.h"
-#include "apex/user/user/notify_icon_bridge.h"
+#include "apex/platform/application_menu_callback.h"
 #include "notify_icon_mm.h"
+
+
+NSMenu * ns_create_menu(::application_menu * pmenu, bool bMainMenu);
 
 
 NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
@@ -35,7 +38,7 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
 @implementation user_notify_icon
 
 
-- (id) initIconImageFileData:(const void *) pdata withSize: (int) size withBridge: (::user_notify_icon_bridge *) pbridge
+- (id) initIconImageFileData:(const void *) pdata withSize: (int) size withApplicationMenu: (::application_menu *) papplicationmenu
 {
 
    NSData * data = [NSData dataWithBytes:pdata length:size];
@@ -49,15 +52,15 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
    
    NSImage * pimage = [[NSImage alloc] initWithData: data];
 
-   return [ self initIconImage: pimage withBridge:pbridge ];
+   return [ self initIconImage: pimage withApplicationMenu : papplicationmenu ];
 
 }
 
 
-- (id)initIconImage:(NSImage *)pimage withBridge:(::user_notify_icon_bridge *)pbridge
+- (id)initIconImage:(NSImage *)pimage withApplicationMenu:(::application_menu *)papplicationmenu
 {
    
-   m_pnotifyiconbridge = pbridge;
+   m_papplicationmenu = papplicationmenu;
    
    // http://stackoverflow.com/questions/3409985/how-to-create-a-menubar-application-for-mac
    m_statusitem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
@@ -93,73 +96,75 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
       
 //   }
    
-   m_menu = [[NSMenu alloc] initWithTitle:@"menubar_menu"];
+   //m_menu =  [[NSMenu alloc] initWithTitle:@"menubar_menu"];
    
-   m_menuitema = [[NSMutableArray alloc] init];
+   m_menu = ns_create_menu(m_papplicationmenu, false);
    
-   m_menuida = [[NSMutableArray alloc] init];
-   
-   int iCount = pbridge->_get_notification_area_action_count();
-   
-   for(int i = 0; i < iCount; i++)
-   {
-      
-      //char * pszName = NULL;
-//      char * pszId = NULL;
-//      char * pszLabel = NULL;
-//      char * pszAccelerator = NULL;
-//      char * pszDescription = NULL;
+//   m_menuitema = [[NSMutableArray alloc] init];
+//   
+//   m_menuida = [[NSMutableArray alloc] init];
+//   
+//   int iCount = pbridge->_get_notification_area_action_count();
+//   
+//   for(int i = 0; i < iCount; i++)
+//   {
+//      
+//      //char * pszName = NULL;
+////      char * pszId = NULL;
+////      char * pszLabel = NULL;
+////      char * pszAccelerator = NULL;
+////      char * pszDescription = NULL;
+////
+////      pbridge->_get_notification_area_action_info(&pszName, &pszId, &pszLabel, &pszAccelerator, &pszDescription, i);
+//      
+//      auto pszName = pbridge->_get_notification_area_action_name(i);
+//      
+//      auto pszId = pbridge->_get_notification_area_action_id(i);
+//      
+//      NSString * strTitle = NULL;
+//      
+//      NSString * strId = NULL;
+//      
+//      NSMenuItem * item = NULL;
 //
-//      pbridge->_get_notification_area_action_info(&pszName, &pszId, &pszLabel, &pszAccelerator, &pszDescription, i);
-      
-      auto pszName = pbridge->_get_notification_area_action_name(i);
-      
-      auto pszId = pbridge->_get_notification_area_action_id(i);
-      
-      NSString * strTitle = NULL;
-      
-      NSString * strId = NULL;
-      
-      NSMenuItem * item = NULL;
-
-      if(strcasecmp(pszName, "separator") == 0)
-      {
-         
-         strTitle = [[NSString alloc] initWithUTF8String: pszName];
-         
-         strId = [[NSString alloc] initWithUTF8String: pszName];
-         
-         item = [NSMenuItem separatorItem];
-         
-      }
-      else
-      {
-         
-         strTitle = [[NSString alloc] initWithUTF8String: pszName];
-         
-         strId = [NSString stringWithFormat:@"menu_item_%s",  pszId];
-         
-         item = [[NSMenuItem alloc] initWithTitle:  strTitle action: @selector(on_item_action:) keyEquivalent:@"" ];
-         
-         item.identifier = strId;
-         
-      }
-      
-      [item setTarget:self];
-      
-      [m_menu addItem:item];
-      
-      //[m_menuitema addObject: item];
-      
-      //[m_menuida addObject: strId];
-      
-//      if(pszName) free(pszName);
-//      if(pszId) free(pszId);
-//      if(pszLabel) free(pszLabel);
-//      if(pszAccelerator) free(pszAccelerator);
-//      if(pszDescription) free(pszDescription);
-
-   }
+//      if(strcasecmp(pszName, "separator") == 0)
+//      {
+//         
+//         strTitle = [[NSString alloc] initWithUTF8String: pszName];
+//         
+//         strId = [[NSString alloc] initWithUTF8String: pszName];
+//         
+//         item = [NSMenuItem separatorItem];
+//         
+//      }
+//      else
+//      {
+//         
+//         strTitle = [[NSString alloc] initWithUTF8String: pszName];
+//         
+//         strId = [NSString stringWithFormat:@"menu_item_%s",  pszId];
+//         
+//         item = [[NSMenuItem alloc] initWithTitle:  strTitle action: @selector(on_item_action:) keyEquivalent:@"" ];
+//         
+//         item.identifier = strId;
+//         
+//      }
+//      
+//      [item setTarget:self];
+//      
+//      [m_menu addItem:item];
+//      
+//      //[m_menuitema addObject: item];
+//      
+//      //[m_menuida addObject: strId];
+//      
+////      if(pszName) free(pszName);
+////      if(pszId) free(pszId);
+////      if(pszLabel) free(pszLabel);
+////      if(pszAccelerator) free(pszAccelerator);
+////      if(pszDescription) free(pszDescription);
+//
+//   }
    
    [m_menu setDelegate:self];
    
@@ -179,17 +184,17 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
 - (void)dealloc
 {
    
-   m_pnotifyiconbridge = NULL;
+   m_papplicationmenu = NULL;
    
 }
 
 
-- (void) on_item_action :(id)sender
+- (void) on_application_menu_action: (id)sender
 {
    
    NSMenuItem * pitem = (NSMenuItem *) sender;
    
-   if(m_pnotifyiconbridge == NULL)
+   if(m_papplicationmenu == NULL)
    {
       
       return;
@@ -207,7 +212,7 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
    
       const char * psz = [strId UTF8String];
          
-      m_pnotifyiconbridge->call_notification_area_action(psz);
+      m_papplicationmenucallback->on_application_menu_action(psz);
          
       return;
       

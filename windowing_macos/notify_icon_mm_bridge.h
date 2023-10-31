@@ -9,7 +9,8 @@
 #pragma once
 
 
-class user_notify_icon_bridge;
+class application_menu;
+class application_menu_callback;
 
 
 class user_notify_icon_mm_bridge
@@ -18,13 +19,17 @@ public:
 
 
    void *                              m_pnotifyicon;
-   ::user_notify_icon_bridge *         m_pnotifyiconbridge;
+   //::user_notify_icon_bridge *         m_pnotifyiconbridge;
    
 
    //virtual void notify_icon_mm_initialize(const void * pdata, int cx, int cy, int scan);
    
    virtual void notify_icon_mm_initialize(const void * pdataImageFile, int size);
    
+   
+   virtual ::application_menu * menu() = 0;
+   
+   virtual ::application_menu_callback * callback() = 0;
    
    virtual void notify_icon_mm_finalize();
 

@@ -21,9 +21,9 @@ bool application_get_bool(void * pApplication, const char * pszItem);
 void ns_main_async(dispatch_block_t block);
 
 
-NSMenu * ns_create_menu(::apex::menu * pmenu, bool bMainMenu);
+NSMenu * ns_create_menu(::application_menu * papplicationmenu, bool bMainMenu);
 
-void ns_create_menu(NSMenu * menu, ::apex::menu * pmenu, bool bMainMenu);
+void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool bMainMenu);
 
 NSString * __nsstring(const char * psz);
 //#include "apex/user/menu_shared.h"
@@ -230,46 +230,75 @@ void set_apex_system_as_thread();
 }
 
 
-- (void)on_os_menu_item:(id)sender
+//- (void)on_os_menu_item:(id)sender
+//{
+//   
+//   NSMenuItem * pitem = (NSMenuItem *) sender;
+//   
+//   for(int i = 0; i < [m_menuitema count]; i++)
+//   {
+//      
+//      if(pitem == [m_menuitema objectAtIndex:i])
+//      {
+//         
+//         const char * psz = [[m_menuida objectAtIndex:i] UTF8String];
+//         
+//         //m_pbridge->notification_area_action(psz);
+//         
+//         application_on_menu_action(m_pApplication, psz);
+//         
+//         return;
+//         
+//      }
+//      
+//   }
+//   
+//}
+
+
+- (void)on_application_menu_action:(id)sender
+//{
+//   
+//   NSMenuItem * pitem = (NSMenuItem *) sender;
+//   
+//   NSString * str = (NSString *)[pitem representedObject];
+//   
+//   if(str != nil)
+//   {
+//         
+//      const char * psz = [str UTF8String];
+//         
+//      application_on_menu_action(m_pApplication, psz);
+//         
+//   }
+//   
+//}
 {
    
    NSMenuItem * pitem = (NSMenuItem *) sender;
    
-   for(int i = 0; i < [m_menuitema count]; i++)
+//   if(m_papplicationmenu == NULL)
+//   {
+//      
+//      return;
+//      
+//   }
+   
+   NSString * prefixToRemove = @"menu_item_";
+   
+   NSString * strId = [pitem.identifier copy];
+   
+   if ([pitem.identifier hasPrefix:prefixToRemove])
    {
       
-      if(pitem == [m_menuitema objectAtIndex:i])
-      {
+      strId = [pitem.identifier substringFromIndex:[prefixToRemove length]];
+   
+      const char * psz = [strId UTF8String];
          
-         const char * psz = [[m_menuida objectAtIndex:i] UTF8String];
+      m_papplicationmenucallback->on_application_menu_action(psz);
          
-         //m_pbridge->notification_area_action(psz);
-         
-         application_on_menu_action(m_pApplication, psz);
-         
-         return;
-         
-      }
+      return;
       
-   }
-   
-}
-
-
-- (void)on_command:(id)sender
-{
-   
-   NSMenuItem * pitem = (NSMenuItem *) sender;
-   
-   NSString * str = (NSString *)[pitem representedObject];
-   
-   if(str != nil)
-   {
-         
-      const char * psz = [str UTF8String];
-         
-      application_on_menu_action(m_pApplication, psz);
-         
    }
    
 }
@@ -747,7 +776,7 @@ void ns_app_run();
 void ns_apple_set_application_delegate(void * pApplication, macos_app * pappdelegate);
 void * apple_get_application_delegate(void * pApplication);
 
-void defer_create_windowing_application_delegate(void * pApplication, ::apex::menu * pmenuMain)
+void defer_create_windowing_application_delegate(void * pApplication, ::application_menu * papplicationmenu)
 {
    
    macos_app * pappdelegate = (__bridge macos_app *) apple_get_application_delegate(pApplication);
@@ -755,7 +784,7 @@ void defer_create_windowing_application_delegate(void * pApplication, ::apex::me
    if(pappdelegate == nullptr)
    {
       
-      pappdelegate = [ [ macOSApp alloc] initWithMainMenu: pmenuMain];
+      pappdelegate = [ [ macOSApp alloc] initWithApplicationMenu: papplicationmenu];
       
       ns_apple_set_application_delegate(pApplication, pappdelegate);
       
@@ -1097,7 +1126,7 @@ NSMenu * ns_create_menu(::apex::menu * pmenu, bool bMainMenu)
 }
 
 
-void ns_create_menu(NSMenu * menu, ::apex::menu * pmenu, bool bMainMenu)
+void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool bMainMenu)
 {
    
 //   if(bMainMenu)
@@ -1124,7 +1153,7 @@ void ns_create_menu(NSMenu * menu, ::apex::menu * pmenu, bool bMainMenu)
          [ menuitem setSubmenu: menuSub];
 
       }
-      else if(pitem->m_strName == "separator")
+      else if(pitem->is_separator())
       {
          
          menuitem = [NSMenuItem separatorItem];
@@ -1135,10 +1164,15 @@ void ns_create_menu(NSMenu * menu, ::apex::menu * pmenu, bool bMainMenu)
          
          id strTitle = __nsstring(pitem->m_strName);
          id strAcc = __nsstring(pitem->m_strMacosAccelerator);
-         id strId = __nsstring(pitem->m_strId);
+         
+         ::string strMenuItemId;
+         
+         strMenuItemId = "menu_item_" + pitem->m_strId;
+         
+         id strId = __nsstring(strMenuItemId);
          
          menuitem = [[NSMenuItem alloc] initWithTitle:strTitle
-                                                            action:@selector(on_command:) keyEquivalent:strAcc];
+                                                            action:@selector(on_application_menu_action:) keyEquivalent:strAcc];
          
          [menuitem setRepresentedObject: strId];
          

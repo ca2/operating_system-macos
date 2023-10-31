@@ -26,7 +26,7 @@ namespace windowing_macos
 
       m_bCreated = false;
       
-      m_pnotifyiconbridge = this;
+      //m_pnotifyiconbridge = this;
       
    }
 

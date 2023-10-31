@@ -279,14 +279,14 @@ namespace node_macos
    }
 
 
-   ::pointer < ::input::input > node::get_input()
+   ::pointer < ::input::input > node::create_input()
    {
 
       auto & pfactory = acmesystem()->factory("input", "appkit");
 
-      pfactory->merge_to_global_factory();
+      auto pinput = pfactory->create < ::input::input >(this);
 
-      return ::aura_macos::node::get_input();
+      return pinput;
 
    }
 
