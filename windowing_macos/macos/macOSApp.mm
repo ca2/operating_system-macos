@@ -10,8 +10,8 @@
 #include "macOSApp.h"
 #include "acme/constant/id.h"
 #include "aura/_.h"
-#include "apex/user/menu/menu.h"
-//#include "aura/user/menu/shared.h"
+#include "apex/platform/application_menu.h"
+#include "acme/platform/application_menu_callback.h"
 #include "aura_macos/_c_mm.h"
 #include "acme/operating_system/argcargv.h"
 
@@ -59,12 +59,14 @@ void set_apex_system_as_thread();
 
 
 //@synthesize windowcontroller;
-- (id)initWithMainMenu:(::apex::menu *) pmenuMain
+- (id)initWithApplicationMenu:(::application_menu *) papplicationmenu andItsCallback:(::application_menu_callback *)papplicationmenucallback
 {
 
    self = [super init];
    
-   m_pmenuMain = pmenuMain;
+   m_papplicationmenu = papplicationmenu;
+   
+   m_papplicationmenucallback = papplicationmenucallback;
    
    //[ self application_menu_update ];
    
@@ -107,7 +109,7 @@ void set_apex_system_as_thread();
    
    [ m_menu removeAllItems ];
    
-   ns_create_menu(m_menu, m_pmenuMain, true);
+   ns_create_menu(m_menu, m_papplicationmenu, true);
       
 //   [ NSApp setMainMenu: m_menu];
    
@@ -606,30 +608,30 @@ void set_apex_system_as_thread();
 //}
 
 
-- (void)play:(id)sender
-{
-   
-   NSMenuItem * pitem = (NSMenuItem *) sender;
-   
-   for(int i = 0; i < [m_menuitema count]; i++)
-   {
-      
-      if(pitem == [m_menuitema objectAtIndex:i])
-      {
-         
-         const char * psz = [[m_menuida objectAtIndex:i] UTF8String];
-         
-         //m_pbridge->notification_area_action(psz);
-         
-         application_on_menu_action(m_pApplication, psz);
-         
-         return;
-         
-      }
-      
-   }
-   
-}
+//- (void)play:(id)sender
+//{
+//   
+//   NSMenuItem * pitem = (NSMenuItem *) sender;
+//   
+//   for(int i = 0; i < [m_menuitema count]; i++)
+//   {
+//      
+//      if(pitem == [m_menuitema objectAtIndex:i])
+//      {
+//         
+//         const char * psz = [[m_menuida objectAtIndex:i] UTF8String];
+//         
+//         //m_pbridge->notification_area_action(psz);
+//         
+//         application_on_menu_action(m_pApplication, psz);
+//         
+//         return;
+//         
+//      }
+//      
+//   }
+//   
+//}
 
 
 
@@ -776,7 +778,7 @@ void ns_app_run();
 void ns_apple_set_application_delegate(void * pApplication, macos_app * pappdelegate);
 void * apple_get_application_delegate(void * pApplication);
 
-void defer_create_windowing_application_delegate(void * pApplication, ::application_menu * papplicationmenu)
+void defer_create_windowing_application_delegate(void * pApplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
 {
    
    macos_app * pappdelegate = (__bridge macos_app *) apple_get_application_delegate(pApplication);
@@ -784,7 +786,7 @@ void defer_create_windowing_application_delegate(void * pApplication, ::applicat
    if(pappdelegate == nullptr)
    {
       
-      pappdelegate = [ [ macOSApp alloc] initWithApplicationMenu: papplicationmenu];
+      pappdelegate = [ [ macOSApp alloc] initWithApplicationMenu: papplicationmenu andItsCallback: papplicationmenucallback];
       
       ns_apple_set_application_delegate(pApplication, pappdelegate);
       
@@ -1063,10 +1065,10 @@ void defer_create_windowing_application_delegate(void * pApplication, ::applicat
 //@end
 
 
-void ensure_edit_menu(::apex::menu * pmenu)
+void ensure_edit_menu(::application_menu * papplicationmenu)
 {
    
-   auto iEdit = pmenu->find_child_with_name("Edit");
+   auto iEdit = papplicationmenu->find_child_with_name("Edit");
    
    if(iEdit >= 0)
    {
@@ -1075,7 +1077,7 @@ void ensure_edit_menu(::apex::menu * pmenu)
       
    }
 
-   auto iFile = pmenu->find_child_with_name("File");
+   auto iFile = papplicationmenu->find_child_with_name("File");
    
    if(iFile >= 0)
    {
@@ -1083,7 +1085,7 @@ void ensure_edit_menu(::apex::menu * pmenu)
       iEdit = iFile + 1;
       
    }
-   else if(pmenu->has_element())
+   else if(papplicationmenu->has_element())
    {
       
       iEdit = 1;
@@ -1096,20 +1098,20 @@ void ensure_edit_menu(::apex::menu * pmenu)
       
    }
     
-   pmenu->insert_at(iEdit, __new(::apex::menu("Edit", popup_flag_t{})));
+   papplicationmenu->popup_at(iEdit, "Edit");
       
 }
 
 
-NSMenu * ns_create_menu(::apex::menu * pmenu, bool bMainMenu)
+NSMenu * ns_create_menu(::application_menu * papplicationmenu, bool bMainMenu)
 {
    
    NSMenu * menu = nil;
    
-   if(pmenu->m_strName.has_char())
+   if(papplicationmenu->m_strName.has_char())
    {
       
-      menu = [ [ NSMenu alloc ] initWithTitle:__nsstring(pmenu->m_strName)];
+      menu = [ [ NSMenu alloc ] initWithTitle:__nsstring(papplicationmenu->m_strName)];
       
    }
    else
@@ -1119,7 +1121,7 @@ NSMenu * ns_create_menu(::apex::menu * pmenu, bool bMainMenu)
       
    }
    
-   ns_create_menu(menu, pmenu, bMainMenu);
+   ns_create_menu(menu, papplicationmenu, bMainMenu);
    
    return menu;
    
@@ -1136,7 +1138,7 @@ void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool b
 //      
 //   }
    
-   for(auto pitem : *pmenu)
+   for(auto pitem : *papplicationmenu)
    {
       
       NSMenuItem * menuitem = nil;
@@ -1163,11 +1165,11 @@ void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool b
       {
          
          id strTitle = __nsstring(pitem->m_strName);
-         id strAcc = __nsstring(pitem->m_strMacosAccelerator);
+         id strAcc = __nsstring(pitem->m_strAccelerator);
          
          ::string strMenuItemId;
          
-         strMenuItemId = "menu_item_" + pitem->m_strId;
+         strMenuItemId = "menu_item_" + pitem->m_atom.as_string();
          
          id strId = __nsstring(strMenuItemId);
          
@@ -1402,7 +1404,7 @@ void ns_application_handle(long long l, void * p)
 
       macOSApp * papp = nullptr;
       
-      papp = [ [NSApplication sharedApplication] delegate ] ;
+      papp = (macOSApp *) [ [NSApplication sharedApplication] delegate ] ;
       
       [papp application_handle: l withPointer:p];
 

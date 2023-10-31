@@ -45,6 +45,20 @@ namespace windowing_macos
 
    }
 
+::application_menu * notify_icon::menu()
+{
+ 
+   return ::user::notify_icon::menu();
+   
+}
+
+
+::application_menu_callback * notify_icon::callback()
+{
+   
+   return this;
+   
+}
 
    void notify_icon::create_notify_icon(const ::atom & atom, ::user::interaction * puserinteractionNotify, ::windowing::icon * pwindowingicon)
    {

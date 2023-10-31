@@ -7,7 +7,7 @@
 //
 
 #include "framework.h"
-#include "apex/platform/application_menu_callback.h"
+#include "acme/platform/application_menu_callback.h"
 #include "notify_icon_mm.h"
 
 
@@ -38,7 +38,7 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
 @implementation user_notify_icon
 
 
-- (id) initIconImageFileData:(const void *) pdata withSize: (int) size withApplicationMenu: (::application_menu *) papplicationmenu
+- (id) initWithIconImageFileData:(const void *) pdata size: (int) size applicationMenu: (::application_menu *) papplicationmenu andItsCallback:(::application_menu_callback *) papplicationmenucallback
 {
 
    NSData * data = [NSData dataWithBytes:pdata length:size];
@@ -52,15 +52,17 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
    
    NSImage * pimage = [[NSImage alloc] initWithData: data];
 
-   return [ self initIconImage: pimage withApplicationMenu : papplicationmenu ];
+   return [ self initWithIconImage: pimage applicationMenu : papplicationmenu andItsCallback : papplicationmenucallback ];
 
 }
 
 
-- (id)initIconImage:(NSImage *)pimage withApplicationMenu:(::application_menu *)papplicationmenu
+- (id)initWithIconImage:(NSImage *)pimage applicationMenu:(::application_menu *)papplicationmenu andItsCallback:(::application_menu_callback *) papplicationmenucallback
 {
    
    m_papplicationmenu = papplicationmenu;
+   
+   m_papplicationmenucallback = papplicationmenucallback;
    
    // http://stackoverflow.com/questions/3409985/how-to-create-a-menubar-application-for-mac
    m_statusitem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];

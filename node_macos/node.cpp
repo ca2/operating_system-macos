@@ -7,12 +7,13 @@
 #include "framework.h"
 #include "acme/platform/application.h"
 #include "acme/platform/system.h"
+#include "apex/input/input.h"
 /////#include "apex/user/menu_shared.h"
 //#include "keyboard_hook.h"
 //#include "mouse_hook.h"
 
 void ns_app_run();
-void defer_create_windowing_application_delegate(void * pApplication, ::application_menu * papplicationmenu);
+void defer_create_windowing_application_delegate(void * pApplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);
 
 
 void ns_application_handle(long long l, void * p);
@@ -262,7 +263,7 @@ namespace node_macos
 
       void * pApplication = (void *) (::acme::application *) papp;
 
-      defer_create_windowing_application_delegate(pApplication, papp->application_menu());
+      defer_create_windowing_application_delegate(pApplication, papp->application_menu(), papp);
       
       ns_app_run();
 

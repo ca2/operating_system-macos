@@ -43,7 +43,7 @@ class application_menu_callback;
 }
 
 -(NSMenu *) applicationDockMenu:(NSApplication*)sender;
-- (void)play:(id)sender;
+//- (void)play:(id)sender;
 -(void)continueInitialization;
 //- (void) ns_add_menu :(NSMenu *) menuParent withParent: (const char *) pszParent  withSharedMenu : (menu_shared *) pmenushared;
 -(void)application_menu_update;

@@ -19,6 +19,9 @@ namespace windowing_macos
       notify_icon();
       ~notify_icon() override;
 
+      ::application_menu * menu() override;
+      
+      ::application_menu_callback * callback() override;
 
       void add_hidden_window(::user::interaction * puserinteraction) override;
 
@@ -36,7 +39,7 @@ namespace windowing_macos
 
       bool step() override;
       //virtual void notify_icon_play(const char * action) override;
-
+      
       
    };
 
