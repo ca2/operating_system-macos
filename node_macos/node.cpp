@@ -12,7 +12,7 @@
 //#include "mouse_hook.h"
 
 void ns_app_run();
-void defer_create_windowing_application_delegate(void * pApplication, ::apex::menu * pmenu);
+void defer_create_windowing_application_delegate(void * pApplication, ::application_menu * papplicationmenu);
 
 
 void ns_application_handle(long long l, void * p);
@@ -262,7 +262,7 @@ namespace node_macos
 
       void * pApplication = (void *) (::acme::application *) papp;
 
-      defer_create_windowing_application_delegate(pApplication, papp->main_menu());
+      defer_create_windowing_application_delegate(pApplication, papp->application_menu());
       
       ns_app_run();
 
