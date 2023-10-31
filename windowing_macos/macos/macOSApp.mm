@@ -288,12 +288,12 @@ void set_apex_system_as_thread();
    
    NSString * prefixToRemove = @"menu_item_";
    
-   NSString * strId = [pitem.identifier copy];
+   NSString * strId = [pitem.representedObject copy];
    
-   if ([pitem.identifier hasPrefix:prefixToRemove])
+   if ([strId hasPrefix:prefixToRemove])
    {
       
-      strId = [pitem.identifier substringFromIndex:[prefixToRemove length]];
+      strId = [strId substringFromIndex:[prefixToRemove length]];
    
       const char * psz = [strId UTF8String];
          
