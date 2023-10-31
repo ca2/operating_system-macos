@@ -131,6 +131,8 @@ NSString * __nsstring(const char * psz);
    
    m_pmacoswindow->macos_window_add_ref();
    
+   m_pmacoswindow->macos_window_on_create();
+   
    return self;
    
 }
