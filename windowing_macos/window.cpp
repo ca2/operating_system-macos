@@ -37,7 +37,7 @@ void ns_set_cursor(::windowing::cursor * pwindowingcursor);
 
 #define WHEEL_DELTA 120
 
-void * new_macos_window(macos_window * papexwindow, CGRect rect, unsigned int uStyle);
+void create_macos_nswindow(macos_window * papexwindow, CGRect rect, unsigned int uStyle);
 
 
 namespace windowing_macos
@@ -245,85 +245,8 @@ namespace windowing_macos
       
       pimpl->m_pwindowing = pwindowing;
 
-         auto pNSWindow = new_macos_window(this, cgrect, uStyle);
+      create_macos_nswindow(this, cgrect, uStyle);
       
-         set_os_data(pNSWindow);
-      
-      set_oswindow(this);
-
-      pwindowing->m_nsmap[m_pnswindow] = this;
-      
-      puserinteraction->set_position(rectangle.top_left(), ::user::e_layout_window);
-
-      puserinteraction->set_size(rectangle.size(), ::user::e_layout_window);
-      
-      //auto & layoutWindow = puserinteraction->const_layout().window();
-      
-      //auto & sizeWindow = layoutWindow.m_size;
-      
-      //auto ptask = ::get_task();
-      
-      //puserinteraction->m_pthreadUserInteraction = ptask;
-
-         //puserinteraction->place(rectParam);
-
-
-
-         //oswindow_assign(m_oswindow, this);
-
-      //}
-
-      auto lresult = puserinteraction->send_message(e_message_create); //
-      //, 0, //(lparam)&cs);
-
-      bool bOk = true;
-
-      //if (!unhook_window_create() || lresult == -1)
-      if (lresult == -1)
-      {
-
-         bOk = false;
-         
-         set_finish();
-
-         //children_post_quit();
-
-         //children_wait_quit(one_minute());
-
-         //PostNcDestroy();        // cleanup if CreateWindowEx fails too soon
-         
-         throw exception(error_resource);
-
-      }
-
-      //if(pusersystem->m_createstruct.style & WS_VISIBLE)
-      //if(pusersystem->m_.style & WS_VISIBLE)
-      if(puserinteraction->const_layout().design().is_screen_visible())
-      {
-
-         puserinteraction->display();
-
-         puserinteraction->set_need_redraw();
-
-         puserinteraction->post_redraw();
-
-         //;//macos_window_show();
-
-      }
-
-      puserinteraction->set_need_layout();
-
-      puserinteraction->increment_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "native_create_window"));
-
-      puserinteraction->m_ewindowflag |= e_window_flag_window_created;
-      
-      if(!bOk)
-      {
-         
-         throw ::exception(error_resource);
-         
-      }
-
    }
 
 
@@ -573,6 +496,13 @@ namespace windowing_macos
    bool window::_configure_window_unlocked(const class ::zorder& zorder, const ::e_activation& eactivation, bool bNoZorder, ::e_display edisplay)
    {
       
+      if(edisplay == e_display_none)
+      {
+         
+         information() << "window::_configure_window_unlocked";
+         
+      }
+      
       ns_main_async(^()
       {
          
@@ -615,7 +545,12 @@ namespace windowing_macos
             macos_window_hide();
             
          }
-
+         else
+         {
+            
+            macos_window_defer_show();
+            
+         }
          //return ::success;
          
          //bool bShow = windowing()->is_screen_visible(edisplay);
@@ -770,7 +705,7 @@ namespace windowing_macos
    }
 
 
-   void window::window_update_screen_buffer()
+   void window::__update_graphics_buffer()
    {
       
       macos_window_redraw();
@@ -778,7 +713,7 @@ namespace windowing_macos
    }
 
 
-   void window::window_do_update_screen()
+   void window::window_update_screen()
    {
 
      //      if(m_interlockedPostedScreenUpdate > 0)
@@ -811,7 +746,7 @@ namespace windowing_macos
         
         strict_set_window_position_unlocked(bChangedPosition, bChangedSize);
 
-        window_update_screen_buffer();
+        __update_graphics_buffer();
 
         //pbuffer->_update_screen_lesser_lock();
 
@@ -2146,6 +2081,95 @@ pmessage->m_atom = emessage
          puserinteraction->_001OnDeiconify(edisplayPrevious);
          
       }
+
+   }
+
+
+   void window::macos_window_on_create()
+   {
+      
+      set_os_data(m_pnswindow);
+      
+      set_oswindow(this);
+      
+      auto pwindowing = this->windowing();
+
+      pwindowing->m_nsmap[m_pnswindow] = this;
+      
+      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
+      
+      auto rectangle = puserinteraction-> const_layout().sketch().parent_raw_rectangle();
+   
+      puserinteraction->set_position(rectangle.top_left(), ::user::e_layout_window);
+
+      puserinteraction->set_size(rectangle.size(), ::user::e_layout_window);
+      
+      //auto & layoutWindow = puserinteraction->const_layout().window();
+      
+      //auto & sizeWindow = layoutWindow.m_size;
+      
+      //auto ptask = ::get_task();
+      
+      //puserinteraction->m_pthreadUserInteraction = ptask;
+
+         //puserinteraction->place(rectParam);
+
+
+
+         //oswindow_assign(m_oswindow, this);
+
+      //}
+
+      auto lresult = puserinteraction->send_message(e_message_create); //
+      //, 0, //(lparam)&cs);
+
+      ///bool bOk = true;
+
+      //if (!unhook_window_create() || lresult == -1)
+      if (lresult == -1)
+      {
+
+         //bOk = false;
+         
+         set_finish();
+
+         //children_post_quit();
+
+         //children_wait_quit(one_minute());
+
+         //PostNcDestroy();        // cleanup if CreateWindowEx fails too soon
+         
+         throw exception(error_resource);
+
+      }
+
+//      //if(pusersystem->m_createstruct.style & WS_VISIBLE)
+//      //if(pusersystem->m_.style & WS_VISIBLE)
+//      if(puserinteraction->const_layout().sketch().is_screen_visible())
+//      {
+//
+//         puserinteraction->display();
+//
+//         puserinteraction->set_need_redraw();
+//
+//         puserinteraction->post_redraw();
+//
+//         //;//macos_window_show();
+//
+//      }
+
+      puserinteraction->set_need_layout();
+
+      puserinteraction->increment_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "native_create_window"));
+      
+      puserinteraction->on_finished_window_creation();
+
+//      if(!bOk)
+//      {
+//         
+//         throw ::exception(error_resource);
+//         
+//      }
 
    }
 

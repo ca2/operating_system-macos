@@ -7,7 +7,8 @@
 //
 #include "framework.h"
 #include "macos_window.h"
-#include "macOSWindow.h"
+#include "macos_nswindow.h"
+
 
 void ns_set_main_window(NSWindow * pnswindow);
 void ns_main_async(dispatch_block_t block);
@@ -16,7 +17,7 @@ void ns_main_async(dispatch_block_t block);
 void ns_main_sync(dispatch_block_t block);
 
 
-void * new_macos_window(macos_window * pmacoswindow, CGRect rect, unsigned int uStyle)
+void create_macos_nswindow(macos_window * pmacoswindow, CGRect rect, unsigned int uStyle)
 {
    
    // rect.origin.x        = 0;
@@ -35,24 +36,18 @@ void * new_macos_window(macos_window * pmacoswindow, CGRect rect, unsigned int u
  
 */
    
-   macOSWindow * pmacOSWindow = [macOSWindow alloc];
+   macos_nswindow * pnswindow = [macos_nswindow alloc];
    
-   NSWindow * pNSWindow = pmacOSWindow;
+   ns_set_main_window(pnswindow);
    
-   ns_set_main_window(pNSWindow);
+   pmacoswindow->m_pnswindow = pnswindow;
    
-   pmacoswindow->m_pmacoswindow = pmacOSWindow;
-   
-   pmacoswindow->m_pnswindow = pmacOSWindow;
-   
-   pmacoswindow->m_pmacoswindow->m_pmacoswindow = pmacoswindow;
-   
-   //__block RoundWindow * proundwindow;
+   pmacoswindow->m_pnswindow->m_pmacoswindow = pmacoswindow;
    
    ns_main_async(^()
    {
                    
-      auto id = [pmacoswindow->m_pmacoswindow initWithContentRect : rect styleMask : uStyle backing : NSBackingStoreBuffered defer : YES];
+      auto id = [pmacoswindow->m_pnswindow initWithContentRect : rect styleMask : uStyle backing : NSBackingStoreBuffered defer : YES];
       
       if(!id)
       {
@@ -60,10 +55,12 @@ void * new_macos_window(macos_window * pmacoswindow, CGRect rect, unsigned int u
          NSLog(@"window wasn't created");
       
       }
+      
+      //pmacoswindow->macos_window_on_create();
                    
    });
    
-   return (__bridge_retained void *) pNSWindow;
+   //return (__bridge_retained void *) pNSWindow;
    
 }
 
@@ -81,7 +78,7 @@ macos_window::macos_window()
 macos_window::~macos_window()
 {
    
-   m_pmacoswindow = nullptr;
+   m_pnswindow = nullptr;
    
 }
 
@@ -103,7 +100,7 @@ void macos_window::macos_window_set_title(const char * pszTitle)
    
    NSString * str = [NSString stringWithUTF8String:pszText];
    
-   [m_pmacoswindow setTitle:str];
+   [m_pnswindow setTitle:str];
                     ::free((void *)pszText);
                     
                  });
@@ -124,7 +121,7 @@ void macos_window::macos_window_get_title(char * pszTitle, int iSize)
    ns_main_sync(^
                 {
                    
-                  NSString * str = [m_pmacoswindow title];
+                  NSString * str = [m_pnswindow title];
                   
                   strncpy(pszTitle, [str UTF8String], iSize);
                    
@@ -137,24 +134,24 @@ void macos_window::macos_window_get_title(char * pszTitle, int iSize)
 void macos_window::macos_window_destroy()
 {
    
-   if(m_pmacoswindow == NULL)
+   if(m_pnswindow == NULL)
    {
       
       return;
       
    }
    
-   [[NSNotificationCenter defaultCenter] removeObserver: m_pmacoswindow];
+   [[NSNotificationCenter defaultCenter] removeObserver: m_pnswindow];
 
-   [m_pmacoswindow setReleasedWhenClosed: YES];
+   [m_pnswindow setReleasedWhenClosed: YES];
    
-   m_pmacoswindow->m_pmacoswindow = NULL;
+   m_pnswindow->m_pmacoswindow = NULL;
    
-   [m_pmacoswindow close];
+   [m_pnswindow close];
    
    m_pnswindow = nullptr;
    
-   m_pmacoswindow = nullptr;
+   m_pnswindow = nullptr;
 
 }
 
@@ -172,9 +169,9 @@ void macos_window::macos_window_show()
    ns_main_async(^
    {
       
-      [m_pmacoswindow->m_pwindowcontroller showWindow : m_pmacoswindow];
+      [m_pnswindow->m_pwindowcontroller showWindow : m_pnswindow];
       
-      [m_pmacoswindow windowDidExpose:nil];
+      [m_pnswindow windowDidExpose:nil];
 
    });
    
@@ -194,12 +191,12 @@ void macos_window::macos_window_defer_show()
    ns_main_async(^
    {
       
-      if(![m_pmacoswindow isVisible])
+      if(![m_pnswindow isVisible])
       {
       
-         [m_pmacoswindow->m_pwindowcontroller showWindow : m_pmacoswindow];
+         [m_pnswindow->m_pwindowcontroller showWindow : m_pnswindow];
       
-         [m_pmacoswindow windowDidExpose:nil];
+         [m_pnswindow windowDidExpose:nil];
          
       }
 
@@ -221,14 +218,14 @@ void macos_window::macos_window_hide()
    ns_main_async(^
               {
                  
-                 if(m_pmacoswindow)
+                 if(m_pnswindow)
                  {
                  
-                    [m_pmacoswindow orderOut : nil];
+                    [m_pnswindow orderOut : nil];
                     
                  }
                  
-                 if(m_pmacoswindow)
+                 if(m_pnswindow)
                  {
                     
                     macos_window_on_hide();
@@ -253,22 +250,22 @@ void macos_window::macos_window_miniaturize()
    ns_main_async(^
                  {
                     
-                    if([m_pmacoswindow styleMask] & NSWindowStyleMaskMiniaturizable)
+                    if([m_pnswindow styleMask] & NSWindowStyleMaskMiniaturizable)
                     {
                     
-                       [m_pmacoswindow performMiniaturize: nil];
+                       [m_pnswindow performMiniaturize: nil];
                        
                     }
                     else
                     {
                      
-                       [m_pmacoswindow orderOut : nil];
+                       [m_pnswindow orderOut : nil];
                        
                        macos_window_iconified();
                        
                     }
                     
-                    if(m_pmacoswindow->m_pmacoswindow == NULL)
+                    if(m_pnswindow->m_pmacoswindow == NULL)
                     {
                        
                        return;
@@ -296,7 +293,7 @@ void macos_window::macos_window_order_front()
    ns_main_async(^
               {
                  
-                 [m_pmacoswindow orderFront : m_pmacoswindow];
+                 [m_pnswindow orderFront : m_pnswindow];
                  
               });
    
@@ -316,7 +313,7 @@ void macos_window::macos_window_make_first_responder()
    ns_main_async(^
               {
                  
-                 [m_pmacoswindow makeFirstResponder:nullptr];
+                 [m_pnswindow makeFirstResponder:nullptr];
                  
               });
    
@@ -336,7 +333,7 @@ void macos_window::macos_window_resign_key()
    ns_main_async(^
               {
                  
-                 [m_pmacoswindow resignKeyWindow];
+                 [m_pnswindow resignKeyWindow];
                  
               });
    
@@ -357,7 +354,7 @@ void macos_window::macos_window_make_key_window()
    ns_main_async(^
               {
                  
-                 [m_pmacoswindow makeKeyWindow];
+                 [m_pnswindow makeKeyWindow];
                  
               });
    
@@ -379,7 +376,7 @@ bool macos_window::macos_window_is_key_window() const
    ns_main_sync(^
    {
                  
-      bKeyWindow =  [m_pmacoswindow isKeyWindow];
+      bKeyWindow =  [m_pnswindow isKeyWindow];
                  
    });
    
@@ -401,7 +398,7 @@ void macos_window::macos_window_make_key_window_and_order_front()
    ns_main_async(^
               {
                  
-                 [m_pmacoswindow makeKeyAndOrderFront: m_pmacoswindow];
+                 [m_pnswindow makeKeyAndOrderFront: m_pnswindow];
                  
               });
    
@@ -421,7 +418,7 @@ void macos_window::macos_window_make_main_window()
    ns_main_async(^
               {
                  
-                 [m_pmacoswindow makeMainWindow];
+                 [m_pnswindow makeMainWindow];
                  
               });
    
@@ -438,7 +435,7 @@ void macos_window::macos_window_redraw()
       
    }
    
-   auto proundwindow = m_pmacoswindow;
+   auto proundwindow = m_pnswindow;
    
    if(proundwindow)
    {
@@ -475,7 +472,7 @@ void macos_window::macos_window_redraw_sync()
    ns_main_sync(^
                  {
                     
-                    [m_pmacoswindow display];
+                    [m_pnswindow display];
                     
                  });
    
@@ -504,7 +501,7 @@ void macos_window::macos_window_set_frame(CGRect r)
       rect.origin.y     = rectScreen.size.height    -     r.origin.y - r.size.height;
       rect.size   = r.size;
       
-      [m_pmacoswindow setFrame : rect display: TRUE];
+      [m_pnswindow setFrame : rect display: TRUE];
 
    });
    
@@ -536,7 +533,7 @@ void macos_window::macos_window_get_frame(CGRect *pr)
       
       NSRect rectScreen = [[[NSScreen screens] objectAtIndex:0] frame];
       
-      rect = [m_pmacoswindow frame];
+      rect = [m_pnswindow frame];
 
       
       pr->origin.x     = rect.origin.x;
@@ -562,7 +559,7 @@ void macos_window::macos_window_invalidate()
    ns_main_async(^
    {
       
-      [m_pmacoswindow setViewsNeedDisplay : TRUE];
+      [m_pnswindow setViewsNeedDisplay : TRUE];
       
    });
    

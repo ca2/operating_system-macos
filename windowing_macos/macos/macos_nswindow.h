@@ -21,17 +21,17 @@ unsigned int event_key_code(NSEvent * event);
 class macos_window;
 
 
-@interface macOSWindow : NSWindow
+@interface macos_nswindow : NSWindow
 {
 @public
    
    
-   bool                       m_bNoActivate;
-   macos_window *              m_pmacoswindow;
+   bool                    m_bNoActivate;
+   macos_window *          m_pmacoswindow;
    
    
-	NSView *                   m_pviewChildContent;
-   NSWindowController *       m_pwindowcontroller;
+	NSView *                m_pviewChildContent;
+   NSWindowController *    m_pwindowcontroller;
    
    
 }

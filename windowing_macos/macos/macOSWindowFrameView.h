@@ -25,7 +25,7 @@ struct mf_context
 };
 
 
-@class macOSWindow;
+@class macos_nswindow;
 
 
 @interface macOSWindowFrameView : NSView
@@ -33,7 +33,7 @@ struct mf_context
    @public
 //   mf_context* mfc;
    //APPLE_KEYBOARD_TYPE appleKeyboardType;
-   macOSWindow * m_pmacoswindow;
+   macos_nswindow * m_pnswindow;
    NSTrackingArea * trackingArea;
    bool m_bLShift;
    bool m_bRShift;
@@ -47,6 +47,6 @@ struct mf_context
    
 }
 
-- (id)initWithFrame:(NSRect)frame andmacOSWindow:(macOSWindow*)apexwindow;
+- (id)initWithFrame:(NSRect)frame and_macos_nswindow:(macos_nswindow*)pnswindow;
 
 @end

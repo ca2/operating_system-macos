@@ -11,7 +11,7 @@
 
 //#include "app/axis/user/user/user_key_enum.h"
 #ifdef __OBJC__
-@class macOSWindow;
+@class macos_nswindow;
 #endif
 
 class macos_window
@@ -20,13 +20,11 @@ public:
    
 #ifdef __OBJC__
    
-   macOSWindow * m_pmacoswindow;
-   NSWindow *     m_pnswindow;
+   macos_nswindow *  m_pnswindow;
    
 #else
    
-   void * m_pmacoswindow; // cast to macOSWindow * to use it
-   void * m_pnswindow;
+   void *            m_pnswindow;
    
 #endif
 
@@ -55,6 +53,8 @@ public:
    virtual bool macos_window_key_up(unsigned int vk, unsigned int scan) = 0;
    //virtual bool macos_window_key_down(unsigned int uiKeyCode) = 0;
    //virtual bool macos_window_key_up(unsigned int uiKeyCode) = 0;
+   
+   virtual void macos_window_on_create() = 0;
    
    virtual void macos_window_resized(CGRect rectangle_i32) = 0;
    virtual void macos_window_repositioned(CGPoint point_i32) = 0;

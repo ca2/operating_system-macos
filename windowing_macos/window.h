@@ -67,6 +67,8 @@ namespace windowing_macos
       bool _is_active_window() const;
       
       bool _has_keyboard_focus() const;
+      
+      class windowing * windowing() { return m_pmacoswindowing; }
 
 //      void _window_request_presentation() override;
       
@@ -85,16 +87,16 @@ namespace windowing_macos
       bool _strict_set_window_position_unlocked(i32 x, i32 y, i32 cx, i32 cy, bool bNoMove, bool bNoSize) override;
 
       
-      void window_do_update_screen() override;
-      
+      void window_update_screen() override;
+      void __update_graphics_buffer() override;
+      //void _window_request_presentation() override;
+
       
       //bool set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
 
       void set_mouse_capture() override;
 
       
-      void window_update_screen_buffer() override;
-      //void _window_request_presentation() override;
 
       
       void set_window_text(const ::scoped_string & scopedstr) override;
@@ -133,7 +135,7 @@ namespace windowing_macos
       virtual void macos_window_deiconified() override;
 
 
-
+      void macos_window_on_create() override;
 
 
       virtual void macos_window_on_show() override;

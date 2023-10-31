@@ -12,7 +12,7 @@
 //  appreciated but not required.
 //
 #include "framework.h"
-#include "macOSWindow.h"
+#include "macos_nswindow.h"
 #include "macos_window.h"
 #include "macOSWindowFrameView.h"
 #include "_c_mm.h"
@@ -48,7 +48,7 @@ NSString * __nsstring(const char * psz);
 
 
 
-@implementation macOSWindow
+@implementation macos_nswindow
 
 
 //
@@ -75,7 +75,7 @@ NSString * __nsstring(const char * psz);
       
    }
    
-   macOSWindow * pmacoswindow = self;
+   macos_nswindow * pnswindow = self;
    
 	[self setOpaque:NO];
    
@@ -105,27 +105,27 @@ NSString * __nsstring(const char * psz);
 
    [self setIgnoresMouseEvents : NO];
    
-   m_pwindowcontroller = [[NSWindowController alloc] initWithWindow: pmacoswindow];
+   m_pwindowcontroller = [[NSWindowController alloc] initWithWindow: pnswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidBecomeKey:) name: NSWindowDidBecomeKeyNotification object: pmacoswindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidBecomeKey:) name: NSWindowDidBecomeKeyNotification object: pnswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidResignKey:) name: NSWindowDidResignKeyNotification object: pmacoswindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidResignKey:) name: NSWindowDidResignKeyNotification object: pnswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidBecomeMain:) name: NSWindowDidBecomeMainNotification object: pmacoswindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidBecomeMain:) name: NSWindowDidBecomeMainNotification object: pnswindow];
    
-   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidResignMain:) name: NSWindowDidResignMainNotification object: pmacoswindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidResignMain:) name: NSWindowDidResignMainNotification object: pnswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidResize:) name: NSWindowDidResizeNotification object: pmacoswindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidResize:) name: NSWindowDidResizeNotification object: pnswindow];
    
-   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector (windowDidMove:) name: NSWindowDidMoveNotification object: pmacoswindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector (windowDidMove:) name: NSWindowDidMoveNotification object: pnswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowWillClose:) name: NSWindowWillCloseNotification object: pmacoswindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowWillClose:) name: NSWindowWillCloseNotification object: pnswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidExpose:) name: NSWindowDidExposeNotification object: pmacoswindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidExpose:) name: NSWindowDidExposeNotification object: pnswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidMiniaturize:) name: NSWindowDidMiniaturizeNotification object: pmacoswindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidMiniaturize:) name: NSWindowDidMiniaturizeNotification object: pnswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: pmacoswindow selector: @selector(windowDidDeminiaturize:) name: NSWindowDidDeminiaturizeNotification object: pmacoswindow];
+   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidDeminiaturize:) name: NSWindowDidDeminiaturizeNotification object: pnswindow];
    
    [self create_view];
    
@@ -224,7 +224,7 @@ NSString * __nsstring(const char * psz);
 	
    bounds.origin = NSZeroPoint;
 
-	macOSWindowFrameView * pframeview = [[macOSWindowFrameView alloc] initWithFrame: bounds andmacOSWindow: self];
+	macOSWindowFrameView * pframeview = [[macOSWindowFrameView alloc] initWithFrame: bounds and_macos_nswindow: self];
    
    m_pviewChildContent = pframeview;
    
