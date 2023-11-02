@@ -21,7 +21,7 @@ namespace acme_macos
 //      bool m_bMsys;
 //
 //
-//      ::file::path m_pathProjectDir;
+//      ::file::path m_pathProjectFolder;
 //
 //
 //      ::string m_strVs;

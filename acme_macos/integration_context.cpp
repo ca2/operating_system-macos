@@ -94,7 +94,7 @@ namespace acme_macos
          // introjection/compiler
          //str.find_replace("%VS_VARS%", m_strContext);
          //str.find_replace("%VS_VARS_PLAT2%", m_strPlat2);
-         //str.find_replace("%PROJECT_DIR%", m_pathProjectDir);
+         //str.find_replace("%PROJECT_DIR%", m_pathProjectFolder);
          //str.find_replace("%PLATFORM%",m_strPlatform);
          //str.find_replace("%STAGEPLATFORM%",m_strStagePlatform);
 
@@ -105,7 +105,7 @@ namespace acme_macos
          // programming/compiler
 //      str.find_replace("%VS_VARS%", m_strContext);
 //      str.find_replace("%VS_VARS_PLAT2%", m_strPlat2);
-//      str.find_replace("%PROJECT_DIR%", m_pathProjectDir);
+//      str.find_replace("%PROJECT_DIR%", m_pathProjectFolder);
 //      str.find_replace("%SDK1%", m_strSdk1);
 
 
@@ -130,7 +130,7 @@ namespace acme_macos
 
 //      str.find_replace("%VS_VARS%",m_strContext);
 //      str.find_replace("%VS_VARS_PLAT2%",m_strPlat2);
-//      str.find_replace("%PROJECT_DIR%", m_pathProjectDir);
+//      str.find_replace("%PROJECT_DIR%", m_pathProjectFolder);
 //      str.find_replace("%PLATFORM%",m_strPlatform);
 //      str.find_replace("%STAGEPLATFORM%",m_strStagePlatform);
 //      //      str.find_replace("%LIBPLATFORM%", m_strLibPlatform);
