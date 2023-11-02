@@ -43,6 +43,8 @@
 		9A788033264F1130003DF8A0 /* shell_launcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A788032264F1130003DF8A0 /* shell_launcher.h */; };
 		9A865EE9299298AC0042465F /* libapex_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A865EE8299298AC0042465F /* libapex_darwin.dylib */; };
 		9A865FBE29661798000C82F0 /* libacme_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A865FBD29661798000C82F0 /* libacme_darwin.dylib */; };
+		9ABBE3C82AF2594D0032EAD3 /* NSBundle+OBCodeSigningInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBE3C72AF2594D0032EAD3 /* NSBundle+OBCodeSigningInfo.mm */; };
+		9ABBE3CA2AF25CD30032EAD3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ABBE3C92AF25CD30032EAD3 /* Security.framework */; };
 		9ABC54B726DAEE2700718C0D /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17EB264A325700B5CC33 /* libacme_macos.dylib */; };
 		9ABC54B826DAEE5100718C0D /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5EF264B54EE0080670E /* libapex_apple.dylib */; };
 		9AC97E7A2A71B26600B1BCF3 /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787E92264ED593003DF8A0 /* _.h */; };
@@ -183,6 +185,9 @@
 		9A865EE8299298AC0042465F /* libapex_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A865FBD29661798000C82F0 /* libacme_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA74F5728482348009BB762 /* libaura_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9ABBE3C52AF258D10032EAD3 /* NSBundle+OBCodeSigningInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+OBCodeSigningInfo.h"; sourceTree = "<group>"; };
+		9ABBE3C72AF2594D0032EAD3 /* NSBundle+OBCodeSigningInfo.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSBundle+OBCodeSigningInfo.mm"; sourceTree = "<group>"; };
+		9ABBE3C92AF25CD30032EAD3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9AC97EB22A71B26600B1BCF3 /* libstatic_apex_macos.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libstatic_apex_macos.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -195,6 +200,7 @@
 				9A7862AA2650292A0034A0E1 /* Carbon.framework in Frameworks */,
 				9A7862A6265025940034A0E1 /* AppKit.framework in Frameworks */,
 				9A7862A2265024F50034A0E1 /* IOKit.framework in Frameworks */,
+				9ABBE3CA2AF25CD30032EAD3 /* Security.framework in Frameworks */,
 				9A7862A0265023D30034A0E1 /* CoreServices.framework in Frameworks */,
 				9A46D24126784388000B22D0 /* libacme.dylib in Frameworks */,
 				9A46D24526784388000B22D0 /* libacme_posix.dylib in Frameworks */,
@@ -261,6 +267,8 @@
 				9A787F84264EF105003DF8A0 /* user.cpp */,
 				9A787F71264EF104003DF8A0 /* user.h */,
 				9A7862AB265029FA0034A0E1 /* user.mm */,
+				9ABBE3C52AF258D10032EAD3 /* NSBundle+OBCodeSigningInfo.h */,
+				9ABBE3C72AF2594D0032EAD3 /* NSBundle+OBCodeSigningInfo.mm */,
 			);
 			name = apex_macos;
 			sourceTree = "<group>";
@@ -287,6 +295,7 @@
 		9A787ED8264EE773003DF8A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9ABBE3C92AF25CD30032EAD3 /* Security.framework */,
 				9A865EE8299298AC0042465F /* libapex_darwin.dylib */,
 				9A865FBD29661798000C82F0 /* libacme_darwin.dylib */,
 				9AA74F5728482348009BB762 /* libaura_apple.dylib */,
@@ -470,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A1D5F722751C033003D9B5F /* NSPasteboard++.mm in Sources */,
+				9ABBE3C82AF2594D0032EAD3 /* NSBundle+OBCodeSigningInfo.mm in Sources */,
 				9A787FA7264EF105003DF8A0 /* shell_macos_mm.mm in Sources */,
 				9A787F8D264EF105003DF8A0 /* launcher.cpp in Sources */,
 				9A787F92264EF105003DF8A0 /* interprocess.cpp in Sources */,

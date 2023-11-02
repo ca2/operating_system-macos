@@ -6,7 +6,7 @@
 //  Copyright © 2020 Camilo Sasuke Tsumanuma. All rights reserved.
 //
 #import "framework.h"
-
+#import "NSBundle+OBCodeSigningInfo.h"
 
 bool nsapp_activation_policy_is_regular()
 {
@@ -153,4 +153,35 @@ bool ns_set_dark_mode(bool bDark)
    
    return error == nil;
    
+}
+
+bool ns_is_sandboxed()
+{
+   
+   return [[NSBundle mainBundle]ob_isSandboxed];
+   
+}
+
+char * bundleSeedID()
+{
+    NSString *tempAccountName = @"bundleSeedID";
+    NSDictionary *query = @{
+        (__bridge NSString *)kSecClass : (__bridge NSString *)kSecClassGenericPassword,
+        (__bridge NSString *)kSecAttrAccount : tempAccountName,
+        (__bridge NSString *)kSecAttrService : @"",
+        (__bridge NSString *)kSecReturnAttributes: (__bridge NSNumber *)kCFBooleanTrue,
+    };
+    CFDictionaryRef result = nil;
+    OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&result);
+    if (status == errSecItemNotFound)
+        status = SecItemAdd((__bridge CFDictionaryRef)query, (CFTypeRef *)&result);
+    if (status != errSecSuccess) {
+        return nil;
+    }
+    status = SecItemDelete((__bridge CFDictionaryRef)query); // remove temp item
+    NSDictionary *dict = (__bridge_transfer NSDictionary *)result;
+    NSString *accessGroup = dict[(__bridge NSString *)kSecAttrAccessGroup];
+    NSArray *components = [accessGroup componentsSeparatedByString:@"."];
+    NSString *bundleSeedID = [[components objectEnumerator] nextObject];
+    return strdup([bundleSeedID UTF8String]);
 }

@@ -4,6 +4,9 @@
 #include "acme/_operating_system.h"
 #include "acme/operating_system/ansi/_pthread.h"
 
+::string ns_bundle_seed_id();
+
+bool ns_is_sandboxed();
 
 namespace apex_macos
 {
@@ -46,11 +49,20 @@ namespace apex_macos
       //SInt32 messageID = 0x1111; // Arbitrary
 
       //CFTimeInterval timeout = 10.0;
-
-      CFStringRef name = CFStringCreateWithCString(nullptr,  (string("com.ca2.app.port.server.") + strChannel), kCFStringEncodingUTF8);
-
+      //CFStringRef name = nil;
+      ::string strPrefix;
+      if(ns_is_sandboxed())
+      {
+         strPrefix =  ns_bundle_seed_id();
+      }
+      
+      ::string str2(strChannel);
+      //str2.find_replace("/", ".");
+      //str2.find_replace("-", ".");
+      //::string str =strPrefix + string("com.") + str2;
+      ::string str =strPrefix + str2;
+      CFStringRef name = CFStringCreateWithCString(NULL, str, kCFStringEncodingUTF8);
       m_port =        CFMessagePortCreateRemote(nil,name);
-
       CFRelease(name);
 
       //return true;
@@ -196,7 +208,7 @@ namespace apex_macos
    }
 
 
-   CFDataRef Callback(CFMessagePortRef port,
+   CFDataRef CFMessagePortCreateLocal_Callback(CFMessagePortRef port,
                       SInt32 messageID,
                       CFDataRef data,
                       void *info)
@@ -238,15 +250,36 @@ namespace apex_macos
    void interprocess_target::create(const ::string & strChannel)
    {
 
-      CFMessagePortContext c = {};
+      CFMessagePortContext messageportcontext{};
 
-      c.info = this;
+      messageportcontext.info = this;
 
-      CFStringRef kungfuck = CFStringCreateWithCString(nullptr,  (string("com.ca2.app.port.server.") + strChannel), kCFStringEncodingUTF8);
+      ::string strPrefix;
+      if(ns_is_sandboxed())
+      {
+         strPrefix = ns_bundle_seed_id();
+      }
+//      ::string str2(strChannel);
+//      str2.find_replace("/", ".");
+//      str2.find_replace("-", ".");
+//      
+      //::string str =strPrefix + ns_bundle_id();
+      Boolean bShouldFreeInfo = false;
+      CFStringRef strName = CFStringCreateWithCString(NULL, strChannel, kCFStringEncodingUTF8);
 
-      Boolean b = false;
+//      m_port = CFMessagePortCreateLocal(kCFAllocatorDefault, CFSTR(str.c_str()), Callback, &c, &b);
+      m_port = CFMessagePortCreateLocal(nullptr, strName, &CFMessagePortCreateLocal_Callback, &messageportcontext, &bShouldFreeInfo);
+      CFRelease(strName);
+      
+      information() << "CFMessagePortCreateLocal returned " << (iptr) m_port;
+      information() << "bShouldFreeInfo is " << (iptr) bShouldFreeInfo;
 
-      m_port = CFMessagePortCreateLocal(nil, kungfuck, Callback, &c, &b);
+      if(bShouldFreeInfo || !m_port)
+      {
+       
+         throw ::exception(error_resource);
+         
+      }
 
       start_receiving();
 
@@ -567,3 +600,11 @@ namespace apex_macos
 
 
 
+char * bundleSeedID();
+
+::string ns_bundle_seed_id()
+{
+   
+   return ::string_from_strdup(bundleSeedID());
+   
+}
