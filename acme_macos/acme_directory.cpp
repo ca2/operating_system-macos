@@ -161,33 +161,33 @@ namespace acme_macos
    }
 
 
-   #ifdef _UWP
-
-
-   ::file::path acme_directory::app_relative()
-   {
-
-      return "";
-
-   }
-
-
-   #else
-
-
-   ::string acme_directory::appid()
-   {
-
-      ::file::path path = acmefile()->module();
-
-      path = relative(path);
-
-      return ::transfer(path);
-
-   }
-
-
-   #endif
+//   #ifdef _UWP
+//
+//
+//   ::file::path acme_directory::app_relative()
+//   {
+//
+//      return "";
+//
+//   }
+//
+//
+//   #else
+//
+//
+//   ::string acme_directory::appid()
+//   {
+//
+//      ::file::path path = acmefile()->module();
+//
+//      path = relative(path);
+//
+//      return ::transfer(path);
+//
+//   }
+//
+//
+//   #endif
 
 
 

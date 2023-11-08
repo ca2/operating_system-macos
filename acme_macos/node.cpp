@@ -13,6 +13,12 @@
 #include <signal.h>
 #include <errno.h>
 
+#include <pthread.h>
+
+
+void ns_app_terminate();
+
+
 
 void main_asynchronous(const ::procedure & procedure);
 
@@ -637,23 +643,61 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    void node::user_post_quit()
    {
        
-      m_peventReadyToTerminateApp = __new(manual_reset_event);
-       
-      m_peventReadyToTerminateApp->ResetEvent();
-       
-      // element_quit * pelementquit = new element_quit(this);
-
-      //m_psystem->windowing_post_quit();
       
-      main_asynchronous(m_pparticleQuit);
-//           {
-//         
-//         m_pelementQuit
-//         
-//      }
-//           )
+
+
+//namespace acme_macos
+//{
+//
+//
+//   void quit::run()
+//   {
+
+      
+      main_asynchronous([this]()
+                        {
+         
+         //m_peventReadyToTerminateApp->set_event();
+         
+         auto htaskSystem = (pthread_t) acmesystem()->m_htask;
+         
+         acmesystem()->post_quit();
+
+         pthread_join(htaskSystem, nullptr);
        
-      m_peventReadyToTerminateApp->_wait();
+         ns_app_terminate();
+
+      });
+
+////
+////      delete this;
+//
+//   //         return ::success;
+//   //
+//   }
+//
+//
+//} // namespace acme_macos
+//
+//
+//
+//      m_peventReadyToTerminateApp = __new(manual_reset_event);
+//       
+//      m_peventReadyToTerminateApp->ResetEvent();
+//       
+//      // element_quit * pelementquit = new element_quit(this);
+//
+//      //m_psystem->windowing_post_quit();
+//      
+//      main_asynchronous(m_pparticleQuit);
+////           {
+////         
+////         m_pelementQuit
+////         
+////      }
+////           )
+//       
+//      m_peventReadyToTerminateApp->_wait();
        
    }
 
@@ -973,9 +1017,9 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
       
       apple_defer_nano_application_create(psystem);
 
-//      auto argc = psystem->m_psubsystem->m_argc;
+//      auto argc = psystem->m_pplatform->m_argc;
 //
-//      auto argv = psystem->m_psubsystem->m_argv;
+//      auto argv = psystem->m_pplatform->m_argv;
 //
 //      auto papp = psystem->m_pacmeapplication;
 //
@@ -988,12 +1032,12 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   ::pointer < ::particle > node::create_quit_particle(::pointer < ::acme::node > & pnode, ::pointer < ::acme::system > & psystem)
-   {
-      
-      return __new(quit(pnode, psystem));
-      
-   }
+//   ::pointer < ::particle > node::create_quit_particle(::pointer < ::acme::node > & pnode, ::pointer < ::acme::system > & psystem)
+//   {
+//      
+//      return __new(quit(pnode, psystem));
+//      
+//   }
 
    
    void node::_will_finish_launching()

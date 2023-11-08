@@ -95,10 +95,10 @@ namespace apex_macos
       
       ::string strCommandLine;
       
-      for(int i = 0; i < ::acme::acme::g_pacme->m_psubsystem->m_argc; i++)
+      for(int i = 0; i < ::acme::acme::g_pacme->m_pplatform->m_argc; i++)
       {
          
-         auto psz = ::acme::acme::g_pacme->m_psubsystem->m_argv[i];
+         auto psz = ::acme::acme::g_pacme->m_pplatform->m_argv[i];
          
          ::string strArg(psz);
          
