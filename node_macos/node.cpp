@@ -255,11 +255,11 @@ namespace node_macos
    void node::acme_application_main(class ::acme::system * psystem)
    {
 
-//      auto argc = psystem->m_psubsystem->m_argc;
+//      auto argc = psystem->m_pplatform->m_argc;
 //
-//      auto argv = psystem->m_psubsystem->m_argv;
+//      auto argv = psystem->m_pplatform->m_argv;
 
-      auto papp = psystem->m_psubsystem->acmeapplication();
+      auto papp = psystem->m_pplatform->acmeapplication();
 
       void * pApplication = (void *) (::acme::application *) papp;
 

@@ -105,7 +105,7 @@ namespace acme_macos
       void acme_application_main(class ::acme::system * psystem) override;
       
       
-      ::pointer < ::particle > create_quit_particle(::pointer < ::acme::node > & pnode, ::pointer < ::acme::system > & psystem) override;
+//      ::pointer < ::particle > create_quit_particle(::pointer < ::acme::node > & pnode, ::pointer < ::acme::system > & psystem) override;
   
 
 //      void implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem) override;
