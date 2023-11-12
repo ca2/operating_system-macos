@@ -121,7 +121,11 @@ namespace acme_macos
       
       void integration_factory() override;
       
+      bool is_application_running_good_effort(const ::scoped_string & scopedstrRepos, const ::scoped_string & scopedstrApp) override;
 
+
+      virtual bool __ns_is_application_running(const ::scoped_string & scopedstrRepos, const ::scoped_string & scopedstrApp);
+      
       
    };
 

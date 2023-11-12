@@ -18,7 +18,7 @@
 
 void ns_app_terminate();
 
-
+int ns_running_application_count_by_bundle_identifier(const char * pszBundleIdentifier);
 
 void main_asynchronous(const ::procedure & procedure);
 
@@ -907,9 +907,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    ::file::path_array node::process_identifier_modules_paths(::process_identifier processID)
    {
 
-      throw interface_only();
-
-      return {};
+      return ::acme_apple::node::process_identifier_modules_paths(processID);
 
    }
 
@@ -1114,6 +1112,30 @@ void node::_node_folder_dialog(::file::folder_dialog * pdialog)
    return nullptr;
 
 }
+
+
+bool node::is_application_running_good_effort(const ::scoped_string & scopedstrRepos, const ::scoped_string & scopedstrApp)
+{
+   
+   return __ns_is_application_running(scopedstrRepos, scopedstrApp);
+   
+}
+
+
+bool node::__ns_is_application_running(const ::scoped_string & scopedstrRepos, const ::scoped_string & scopedstrApp)
+{
+   
+   ::string strBundleIdentifier;
+   
+   strBundleIdentifier = ::string(scopedstrRepos) + "." + ::string(scopedstrApp);
+   
+   auto c = ns_running_application_count_by_bundle_identifier(strBundleIdentifier);
+   
+   return c > 0;
+   
+   
+}
+
 
 
 } // namespace acme_macos

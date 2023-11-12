@@ -455,3 +455,13 @@ void show_accessibility_preferences_page()
 
 
 
+
+
+int ns_running_application_count_by_bundle_identifier(const char * pszBundleIdentifier)
+{
+   
+   NSString * pstr = [[NSString alloc] initWithUTF8String:pszBundleIdentifier];
+   
+   return [[NSRunningApplication runningApplicationsWithBundleIdentifier:pstr] count];
+   
+}
