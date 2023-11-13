@@ -95,10 +95,10 @@ namespace apex_macos
       
       ::string strCommandLine;
       
-      for(int i = 0; i < ::acme::acme::g_pacme->m_pplatform->m_argc; i++)
+      for(int i = 0; i < platform()->m_argc; i++)
       {
          
-         auto psz = ::acme::acme::g_pacme->m_pplatform->m_argv[i];
+         auto psz = platform()->m_argv[i];
          
          ::string strArg(psz);
          
@@ -1041,7 +1041,7 @@ void os_context::set_dark_mode(bool bDark)
 
          ::file::path p;
          
-         auto psystem = acmesystem();
+         auto psystem = system();
          
          auto pacmedirectory = psystem->m_pacmedirectory;
 
@@ -1081,7 +1081,7 @@ void os_context::set_dark_mode(bool bDark)
 
             }
 
-            acmesystem()->m_pacmefile->put_contents(p, "open -a \""+strApp(0, iFind + strlen(".app")) + "\"");
+            acmefile()->put_contents(p, "open -a \""+strApp(0, iFind + strlen(".app")) + "\"");
 
             chmod(p, 0777);
 

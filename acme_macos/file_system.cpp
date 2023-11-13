@@ -52,7 +52,7 @@ namespace acme_macos
       
       string str = getenv("HOME");
       
-      auto psystem = acmesystem();
+      auto psystem = system();
       
       auto pacmedirectory = psystem->m_pacmedirectory;
 

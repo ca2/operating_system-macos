@@ -240,7 +240,7 @@ namespace acme_macos
 
             property_set set;
 
-            acmesystem()->url()->defer_raw_http(set);
+            system()->url()->defer_raw_http(set);
 
             set["disable_common_name_cert_check"] = true;
 
@@ -258,7 +258,7 @@ namespace acme_macos
 
             auto pmemoryFileTar = create_memory_file();
 
-            acmesystem()->uncompress(pmemoryFileTar, pmemoryFileTarGz, "zlib");
+            system()->uncompress(pmemoryFileTar, pmemoryFileTarGz, "zlib");
 
             pmemoryFileTar->seek_to_begin();
 
@@ -392,7 +392,7 @@ namespace acme_macos
    void node::integration_factory()
    {
 
-      acmesystem()->m_pplatform->m_pfactory->add_factory_item<::acme_macos::integration::context, ::integration::context>();
+      system()->m_pplatform->m_pfactory->add_factory_item<::acme_macos::integration::context, ::integration::context>();
 
    }
 

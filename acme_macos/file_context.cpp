@@ -78,7 +78,7 @@ namespace acme_macos
 //
 //      }
 //
-      auto psystem = acmesystem();
+      auto psystem = system();
 
        m_pdirsystem = psystem->m_pdirsystem;
       

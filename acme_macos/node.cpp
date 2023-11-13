@@ -659,9 +659,9 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
          
          //m_peventReadyToTerminateApp->set_event();
          
-         auto htaskSystem = (pthread_t) acmesystem()->m_htask;
+         auto htaskSystem = (pthread_t) system()->m_htask;
          
-         acmesystem()->post_quit();
+         system()->post_quit();
 
          pthread_join(htaskSystem, nullptr);
        
@@ -1041,7 +1041,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    void node::_will_finish_launching()
    {
       
-      auto psystem = acmesystem();
+      auto psystem = system();
       
       if(::is_null(psystem->m_htask)
          || psystem->m_itask == main_user_itask())

@@ -53,7 +53,7 @@ namespace acme_macos
 //
 //      }
       
-      auto psystem = acmesystem();
+      auto psystem = system();
       
       //estatus =
       
@@ -119,7 +119,7 @@ namespace acme_macos
 
       }
 
-      auto psystem = acmesystem();
+      auto psystem = system();
       
       auto pacmedirectory = psystem->m_pacmedirectory;
 
@@ -226,7 +226,7 @@ namespace acme_macos
          
       }
       
-      auto pacmedirectory = acmesystem()->m_pacmedirectory;
+      auto pacmedirectory = system()->m_pacmedirectory;
       
       if(!pacmedirectory->enumerate(listing))
       {
@@ -1095,7 +1095,7 @@ namespace acme_macos
    ::file::path dir_context::time()
    {
       
-      return acmesystem()->m_pdirsystem->m_pathAppData / "time";
+      return system()->m_pdirsystem->m_pathAppData / "time";
       
    }
 
@@ -1120,7 +1120,7 @@ namespace acme_macos
    ::file::path dir_context::netseed()
    {
       
-      return acmesystem()->m_pdirsystem->m_pathHome / "netnodenet/net/seed";
+      return system()->m_pdirsystem->m_pathHome / "netnodenet/net/seed";
       
    }
 
@@ -1138,7 +1138,7 @@ namespace acme_macos
    ::file::path dir_context::module()
    {
 
-      return acmesystem()->acmedirectory()->module();
+      return system()->acmedirectory()->module();
 
    }
 
@@ -1344,7 +1344,7 @@ namespace acme_macos
    ::file::path dir_context::appdata(const string & strAppId)
    {
       
-      return acmesystem()->m_pdirsystem->m_pathAppData / strAppId;
+      return system()->m_pdirsystem->m_pathAppData / strAppId;
       
 //      auto psystem = m_psystem;
 //
@@ -1358,7 +1358,7 @@ namespace acme_macos
    ::file::path dir_context::commonappdata_root()
    {
 
-      return acmesystem()->m_pdirsystem->m_pathAppData;
+      return system()->m_pdirsystem->m_pathAppData;
 
    }
 
@@ -1366,7 +1366,7 @@ namespace acme_macos
    ::file::path dir_context::commonappdata()
    {
 
-      return acmesystem()->m_pdirsystem->m_pathAppData;
+      return system()->m_pdirsystem->m_pathAppData;
 
    }
 
@@ -1429,7 +1429,7 @@ namespace acme_macos
    ::file::path dir_context::userquicklaunch()
    {
 
-      return acmesystem()->m_pdirsystem->m_pathAppData / "Microsoft\\Internet Explorer\\Quick Launch";
+      return system()->m_pdirsystem->m_pathAppData / "Microsoft\\Internet Explorer\\Quick Launch";
 
    }
 
@@ -1437,7 +1437,7 @@ namespace acme_macos
    ::file::path dir_context::userprograms()
    {
 
-      return acmesystem()->m_pdirsystem->m_pathAppData;
+      return system()->m_pdirsystem->m_pathAppData;
 
    }
 
@@ -1445,7 +1445,7 @@ namespace acme_macos
    ::file::path dir_context::commonprograms()
    {
 
-      return acmesystem()->m_pdirsystem->m_pathAppData;
+      return system()->m_pdirsystem->m_pathAppData;
 
    }
 
@@ -1537,7 +1537,7 @@ namespace acme_macos
    ::file::path dir_context::home()
    {
 
-      return acmesystem()->m_pdirsystem->m_pathHome;
+      return system()->m_pdirsystem->m_pathHome;
 
    }
 

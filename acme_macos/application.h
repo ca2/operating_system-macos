@@ -26,11 +26,15 @@ namespace acme_macos
 
       void post_close() override;
       
+      void post_exit() override;
+      
       ::string name() override;
       
       ::string main_window_title() override;
 
       ::count window_count() const override;
+      
+      virtual ::string __ns_get_bundle_identifier() const;
 
    };
 

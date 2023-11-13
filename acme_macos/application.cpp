@@ -8,6 +8,10 @@
 void show_accessibility_preferences_page();
 
 
+bool ns_running_application_hide_by_bundle_identifier(const char * pszBundleIdentifier);
+bool ns_running_application_terminate_by_bundle_identifier(const char * pszBundleIdentifier);
+
+
 namespace acme_macos
 {
 
@@ -17,13 +21,6 @@ namespace acme_macos
 
       m_processidentifier = -1;
       
-      if(!AXIsProcessTrusted())
-      {
-         
-         show_accessibility_preferences_page();
-         
-      }
-
    }
 
    
@@ -44,33 +41,101 @@ namespace acme_macos
          
          m_processidentifier = processesidentifiers.first();
          
+         if(!AXIsProcessTrusted())
+         {
+            
+            show_accessibility_preferences_page();
+            
+         }
+
       }
 
+   }
+
+
+   ::string application::__ns_get_bundle_identifier() const
+   {
+      
+      if(m_strRepos.has_char() && m_strApp.has_char())
+      {
+         
+         return m_strRepos + "." + m_strApp;
+         
+      }
+      
+      return "";
+   
    }
 
 
    void application::post_close()
    {
       
-      auto axuielement = AXUIElementCreateApplication((pid_t) m_processidentifier);
-      
-      try
+      if(m_processidentifier > 0)
+      {
+         
+         
+         auto axuielement = AXUIElementCreateApplication((pid_t) m_processidentifier);
+         
+         try
+         {
+            
+            axuielement_post_close(axuielement);
+            
+         }
+         catch (...)
+         {
+            
+         }
+         
+         CFRelease(axuielement);
+         
+      }
+      else if(m_strRepos.has_char() && m_strApp.has_char())
+      {
+         
+         ::string strBundleIdentifier = __ns_get_bundle_identifier();
+         
+         ns_running_application_hide_by_bundle_identifier(strBundleIdentifier);
+         
+      }
+      else
       {
       
-         axuielement_post_close(axuielement);
-
+         throw ::exception(error_wrong_state);
+         
       }
-      catch (...)
-      {
-      
-      }
-      
-      CFRelease(axuielement);
-
 
    }
 
    
+   void application::post_exit()
+   {
+      
+      if(m_processidentifier > 0)
+      {
+         
+         ::operating_system::application::post_exit();
+         
+      }
+      else if(m_strRepos.has_char() && m_strApp.has_char())
+      {
+         
+         ::string strBundleIdentifier = __ns_get_bundle_identifier();
+         
+         ns_running_application_terminate_by_bundle_identifier(strBundleIdentifier);
+         
+      }
+      else
+      {
+      
+         throw ::exception(error_wrong_state);
+         
+      }
+      
+   }
+
+
    ::string application::name()
    {
       

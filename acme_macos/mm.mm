@@ -454,14 +454,72 @@ void show_accessibility_preferences_page()
 }
 
 
+NSArray<NSRunningApplication *> * ns_running_applications_by_bundle_identifier(const char * pszBundleIdentifier)
+{
+   
+   NSString * pstr = [ [ NSString alloc ] initWithUTF8String: pszBundleIdentifier];
+   
+   return [ NSRunningApplication runningApplicationsWithBundleIdentifier:pstr];
 
+}
 
 
 int ns_running_application_count_by_bundle_identifier(const char * pszBundleIdentifier)
 {
    
-   NSString * pstr = [[NSString alloc] initWithUTF8String:pszBundleIdentifier];
-   
-   return [[NSRunningApplication runningApplicationsWithBundleIdentifier:pstr] count];
+   NSArray<NSRunningApplication *> * prunningapplications = ns_running_applications_by_bundle_identifier(pszBundleIdentifier);
+
+   return (int) [ prunningapplications count ];
    
 }
+
+
+bool ns_running_application_hide_by_bundle_identifier(const char * pszBundleIdentifier)
+{
+   
+   NSArray<NSRunningApplication *> * prunningapplications = ns_running_applications_by_bundle_identifier(pszBundleIdentifier);
+   
+   bool bOk = true;
+   
+   for(int i = 0; i < [ prunningapplications count ]; i++)
+   {
+      
+      if(![ [ prunningapplications objectAtIndex: i ] hide ])
+      {
+         
+         bOk = false;
+         
+      }
+      
+   }
+   
+   return bOk;
+
+}
+
+
+bool ns_running_application_terminate_by_bundle_identifier(const char * pszBundleIdentifier)
+{
+   
+   NSArray<NSRunningApplication *> * prunningapplications = ns_running_applications_by_bundle_identifier(pszBundleIdentifier);
+   
+   bool bOk = true;
+   
+   for(int i = 0; i < [ prunningapplications count ]; i++)
+   {
+      
+      if(![ [ prunningapplications objectAtIndex: i ] terminate ])
+      {
+       
+         bOk = false;
+         
+      }
+
+   }
+   
+   return bOk;
+
+}
+
+
+

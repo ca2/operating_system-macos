@@ -259,7 +259,7 @@ namespace node_macos
 //
 //      auto argv = psystem->m_pplatform->m_argv;
 
-      auto papp = psystem->m_pplatform->acmeapplication();
+      auto papp = platform()->application();
 
       void * pApplication = (void *) (::acme::application *) papp;
 
@@ -283,7 +283,7 @@ namespace node_macos
    ::pointer < ::input::input > node::create_input()
    {
 
-      auto & pfactory = acmesystem()->factory("input", "appkit");
+      auto & pfactory = platform()->factory("input", "appkit");
 
       auto pinput = pfactory->create < ::input::input >(this);
 

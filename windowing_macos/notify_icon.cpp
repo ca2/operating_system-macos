@@ -142,9 +142,9 @@ namespace windowing_macos
 //      }
    
    
-      ::file::path pathFolder = acmesystem()->m_pacmedirectory->ca2roaming() / "matter/icon/128";
+      ::file::path pathFolder = system()->m_pacmedirectory->ca2roaming() / "matter/icon/128";
 
-      string strIconName = acmeapplication()->m_strAppId;
+      string strIconName = application()->m_strAppId;
 
       strIconName.find_replace("/", "_");
       strIconName.find_replace("-", "_");
