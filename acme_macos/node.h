@@ -53,6 +53,8 @@ namespace acme_macos
 
       void initialize(::particle * pparticle) override;
       
+      void on_start_system() override;
+      
       void user_post_quit() override;
       
       void install_sigchld_handler() override;

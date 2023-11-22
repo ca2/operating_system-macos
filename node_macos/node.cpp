@@ -252,24 +252,24 @@ namespace node_macos
 
 
 
-   void node::acme_application_main(class ::acme::system * psystem)
-   {
-
-//      auto argc = psystem->m_pplatform->m_argc;
+//   void node::acme_application_main(class ::acme::system * psystem)
+//   {
 //
-//      auto argv = psystem->m_pplatform->m_argv;
-
-      auto papp = platform()->application();
-
-      void * pApplication = (void *) (::acme::application *) papp;
-
-      defer_create_windowing_application_delegate(pApplication, papp->application_menu(), papp);
-      
-      ns_app_run();
-
-      //return psystem->m_estatus;
-
-   }
+////      auto argc = psystem->m_pplatform->m_argc;
+////
+////      auto argv = psystem->m_pplatform->m_argv;
+//
+//      auto papp = platform()->application();
+//
+//      void * pApplication = (void *) (::acme::application *) papp;
+//
+//      defer_create_windowing_application_delegate(pApplication, papp->application_menu(), papp);
+//      
+//      ns_app_run();
+//
+//      //return psystem->m_estatus;
+//
+//   }
 
 
    void node::application_handle(long long l, void * p)
@@ -288,6 +288,20 @@ namespace node_macos
       auto pinput = pfactory->create < ::input::input >(this);
 
       return pinput;
+
+   }
+
+
+   void node::on_system_main()
+   {
+      
+      auto papp = platform()->application();
+
+      void * pApplication = (void *) (::acme::application *) papp;
+
+      defer_create_windowing_application_delegate(pApplication, papp->application_menu(), papp);
+      
+      ns_app_run();
 
    }
 

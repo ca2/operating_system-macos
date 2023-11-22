@@ -1136,6 +1136,12 @@ bool node::__ns_is_application_running(const ::scoped_string & scopedstrRepos, c
    
 }
 
+   void node::on_start_system()
+   {
+      
+      system()->on_branch_system_from_main_thread_startup();
+      
+   }
 
 
 } // namespace acme_macos
