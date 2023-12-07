@@ -273,14 +273,14 @@ namespace aura_macos
    void interaction_impl::update_graphics_resources()
    {
       
-      if(m_pgraphics.is_null())
+      if(m_pgraphicsgraphics.is_null())
       {
    
 //         auto estatus = __compose(m_pgraphics, __new(::graphics::multiple_buffer));
   
          //auto estatus =
          
-         m_pgraphics = __new(::graphics::double_buffer);
+         m_pgraphicsgraphics = __allocate < ::graphics::double_buffer >();
          
 //         if(!estatus)
 //         {
@@ -291,7 +291,7 @@ namespace aura_macos
 
          //estatus =
          
-         m_pgraphics->initialize_graphics_graphics(this);
+         m_pgraphicsgraphics->initialize_graphics_graphics(this);
       
 //         if(!estatus)
 //         {
@@ -1017,7 +1017,7 @@ namespace aura_macos
    void interaction_impl::release_graphics_resources()
    {
 
-      m_pgraphics.release();
+      m_pgraphicsgraphics.release();
 
    }
 

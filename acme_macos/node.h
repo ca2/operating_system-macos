@@ -128,7 +128,8 @@ namespace acme_macos
 
       virtual bool __ns_is_application_running(const ::scoped_string & scopedstrRepos, const ::scoped_string & scopedstrApp);
       
-      
+      ::enum_id key_command(::user::enum_key ekey, ::user::key_state* pkeystate) override;
+
    };
 
 

@@ -6,15 +6,6 @@
 #include "acme/_start.h"
 
 
-#ifdef __OBJC__
-
-
-#include "_mm.h"
-
-
-#else
-
-
 #include "_.h"
 
 
@@ -24,13 +15,7 @@
 #include "_library.h"
 
 
-#endif
-
-//
-//#include "acme/_defer.h"
-//
-
-#endif
+#endif // BROAD_PRECOMPILED_HEADER
 
 
 

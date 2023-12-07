@@ -3,11 +3,13 @@
 //
 #include "framework.h"
 #include "quit.h"
+#include "acme/constant/id.h"
+#include "acme/constant/user_key.h"
 #include "acme/exception/interface_only.h"
 #include "acme/filesystem/filesystem/file_dialog.h"
 #include "acme/filesystem/filesystem/folder_dialog.h"
 #include "acme/platform/system.h"
-
+#include "acme/user/user/key_state.h"
 
 #include <unistd.h>
 #include <signal.h>
@@ -1142,7 +1144,37 @@ bool node::__ns_is_application_running(const ::scoped_string & scopedstrRepos, c
       system()->on_branch_system_from_main_thread_startup();
       
    }
+::enum_id node::key_command(::user::enum_key ekey, ::user::key_state* pkeystate)
+   {
 
+      if (ekey == ::user::e_key_a && pkeystate->is_key_pressed(::user::e_key_command))
+      {
+
+         return ::id_edit_select_all;
+
+      }
+      else if (ekey == ::user::e_key_c && pkeystate->is_key_pressed(::user::e_key_command))
+      {
+
+         return ::id_edit_copy;
+
+      }
+      else if (ekey == ::user::e_key_v && pkeystate->is_key_pressed(::user::e_key_command))
+      {
+
+         return ::id_edit_paste;
+
+      }
+      else if (ekey == ::user::e_key_x && pkeystate->is_key_pressed(::user::e_key_command))
+      {
+
+         return ::id_edit_cut;
+
+      }
+
+      return ::id_none;
+
+   }
 
 } // namespace acme_macos
 
@@ -1189,7 +1221,7 @@ void macos_folder_dialog(::file::folder_dialog * pdialog)
    auto functionHere = [pdialog](const char * psz)
    {
       
-      ::pointer < ::file::folder_dialog > pdialogHold(e_pointer_transfer, pdialog);
+      ::pointer < ::file::folder_dialog > pdialogHold(transfer_t{}, pdialog);
       
       if(::is_set(psz))
       {

@@ -7,7 +7,7 @@
 #pragma once
 
 
-#include "acme_posix/acme_file.h"
+#include "acme_apple/acme_file.h"
 
 
 namespace acme_macos
@@ -15,7 +15,7 @@ namespace acme_macos
 
 
    class CLASS_DECL_ACME_MACOS acme_file :
-      virtual public ::acme_posix::acme_file
+      virtual public ::acme_apple::acme_file
    {
    public:
       

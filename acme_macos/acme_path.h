@@ -3,7 +3,7 @@
 #pragma once
 
 
-#include "acme_posix/acme_path.h"
+#include "acme_apple/acme_path.h"
 
 
 namespace acme_macos
@@ -11,7 +11,7 @@ namespace acme_macos
 
 
    class CLASS_DECL_ACME_MACOS acme_path :
-      virtual public ::acme_posix::acme_path
+      virtual public ::acme_apple::acme_path
    {
    public:
 
