@@ -266,12 +266,12 @@ namespace windowing_macos
 
    void window::macos_window_add_ref()
    {
-
-      increment_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "macos_window_add_ref"));
+      
+      increment_reference_count();
       
       auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
-      puserinteraction->increment_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "macos_window_add_ref"));
+      puserinteraction->increment_reference_count();
 
    }
 
@@ -281,9 +281,9 @@ namespace windowing_macos
       
       auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
 
-      puserinteraction->decrement_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "macos_window_dec_ref"));
+      puserinteraction->decrement_reference_count();
 
-      decrement_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "macos_window_dec_ref"));
+      decrement_reference_count();
 
    }
 
@@ -850,7 +850,7 @@ namespace windowing_macos
 
       critical_section_lock slDisplay(m_puserinteractionimpl->cs_display());
 
-      ::pointer < ::graphics::graphics > pbuffer = m_puserinteractionimpl->m_pgraphics;
+      ::pointer < ::graphics::graphics > pbuffer = m_puserinteractionimpl->m_pgraphicsgraphics;
 
       if(!pbuffer)
       {
@@ -2160,7 +2160,7 @@ pmessage->m_atom = emessage
 
       puserinteraction->set_need_layout();
 
-      puserinteraction->increment_reference_count(OBJECT_REFERENCE_COUNT_DEBUG_P_NOTE(this, "native_create_window"));
+      puserinteraction->increment_reference_count();
       
       puserinteraction->on_finished_window_creation();
 

@@ -1221,7 +1221,7 @@ void macos_folder_dialog(::file::folder_dialog * pdialog)
    auto functionHere = [pdialog](const char * psz)
    {
       
-      ::pointer < ::file::folder_dialog > pdialogHold(e_pointer_transfer, pdialog);
+      ::pointer < ::file::folder_dialog > pdialogHold(transfer_t{}, pdialog);
       
       if(::is_set(psz))
       {
