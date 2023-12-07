@@ -7,4 +7,8 @@
 #endif // _DEBUG
 
 
+#define MEMDLEAK 0
+#define MEMDLEAK_DEFAULT 0
 
+
+#define REFERENCING_DEBUGGING 0

@@ -30,6 +30,7 @@ public:
 
    bool                    m_bDestroying;
    bool                    m_bDirty;
+   bool                    m_bTest123;
    
    ::i64                   m_iNanosecondLastUpdateBeg;
    ::i64                   m_iNanosecondLastUpdateEnd;

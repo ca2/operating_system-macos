@@ -72,6 +72,8 @@ macos_window::macos_window()
    
    m_bDestroying = false;
    
+   m_bTest123 = false;
+   
 }
 
 

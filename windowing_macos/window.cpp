@@ -541,6 +541,13 @@ namespace windowing_macos
          else if(edisplay == e_display_none || edisplay == e_display_hide)
          {
             
+            if(m_bTest123)
+            {
+               
+               printf("m_bTest123");
+               
+            }
+            
             macos_window_resign_key();
             macos_window_hide();
             
@@ -737,6 +744,13 @@ namespace windowing_macos
          auto pimpl = m_puserinteractionimpl;
 
          //configure_window_unlocked();
+         
+         if(pimpl->m_pgraphicsthread->get_message_queue()->m_eflagElement & (1ll<<36))
+         {
+            
+            m_bTest123 = true;
+            
+         }
         
          configure_window_unlocked();
         
