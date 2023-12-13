@@ -7,6 +7,11 @@
 #endif // _DEBUG
 
 
+//#ifndef NDEBUG
+//#define NDEBUG
+//#endif // NDEBUG
+
+
 #define MEMDLEAK 0
 #define MEMDLEAK_DEFAULT 0
 
