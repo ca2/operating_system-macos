@@ -2,9 +2,11 @@
 #pragma once
 
 
-#ifndef _DEBUG
-#define _DEBUG
-#endif // _DEBUG
+//#ifndef _DEBUG
+//#define _DEBUG
+//#endif // _DEBUG
+
+#define NDEBUG
 
 
 //#ifndef NDEBUG
