@@ -392,7 +392,7 @@ namespace acme_macos
    void node::integration_factory()
    {
 
-      system()->m_pplatform->m_pfactory->add_factory_item<::acme_macos::integration::context, ::integration::context>();
+      platform()->m_pfactory->add_factory_item<::acme_macos::integration::context, ::integration::context>();
 
    }
 
