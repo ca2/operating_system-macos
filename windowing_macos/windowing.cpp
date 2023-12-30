@@ -201,7 +201,7 @@ namespace windowing_macos
 //
 //      }
 //
-//      synchronous_lock ml(pmq->mutex());
+//      _synchronous_lock ml(pmq->mutex());
 //
 //      if (message.m_id == e_message_quit)
 //      {

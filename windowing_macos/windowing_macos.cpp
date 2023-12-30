@@ -26,7 +26,7 @@ RECTANGLE_I32 get_main_screen_rectangle();
 //int oswindow_find(NSWindow * window)
 //{
 //
-//   synchronous_lock synchronouslock(g_pmutexOsWindowData);
+//   _synchronous_lock synchronouslock(g_pmutexOsWindowData);
 //
 //   for(int i = 0; i < g_poswindowdataptra->get_count(); i++)
 //   {
@@ -43,7 +43,7 @@ RECTANGLE_I32 get_main_screen_rectangle();
 //oswindow_data * oswindow_get(nswindow window)
 //{
 //
-//   synchronous_lock synchronouslock(g_pmutexOsWindowData);
+//   _synchronous_lock synchronouslock(g_pmutexOsWindowData);
 //
 //   iptr iFind = oswindow_find(window);
 //
@@ -123,7 +123,7 @@ RECTANGLE_I32 get_main_screen_rectangle();
 //bool oswindow_erase(nswindow window)
 //{
 //
-//   synchronous_lock synchronouslock(g_pmutexOsWindowData);
+//   _synchronous_lock synchronouslock(g_pmutexOsWindowData);
 //
 //   iptr iFind = oswindow_find(window);
 //
@@ -430,7 +430,7 @@ RECTANGLE_I32 get_main_screen_rectangle();
 //void deactivate_window(oswindow window)
 //{
 //
-//   synchronous_lock synchronouslock(g_pmutexOsWindowData);
+//   _synchronous_lock synchronouslock(g_pmutexOsWindowData);
 //
 //   if(g_oswindowActive != window)
 //   {
@@ -450,7 +450,7 @@ RECTANGLE_I32 get_main_screen_rectangle();
 //oswindow set_active_window(oswindow window)
 //{
 //
-//   synchronous_lock synchronouslock(g_pmutexOsWindowData);
+//   _synchronous_lock synchronouslock(g_pmutexOsWindowData);
 //
 //   oswindow windowOld(g_oswindowActive);
 //

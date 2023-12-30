@@ -890,11 +890,11 @@ namespace windowing_macos
 
       g->set_alpha_mode(::draw2d::e_alpha_mode_set);
 
-      synchronous_lock slGraphics(pbuffer->synchronization());
+      _synchronous_lock slGraphics(pbuffer->synchronization());
       
       auto pitem = pbuffer->get_screen_item();
       
-      synchronous_lock sl1(pitem->m_pmutex);
+      _synchronous_lock sl1(pitem->m_pmutex);
 
       ::image_pointer & imageBuffer2 = pitem->m_pimage2;
 
@@ -1646,7 +1646,7 @@ pmessage->m_atom = emessage
    ////
    ////      {
    ////
-   ////         synchronous_lock synchronouslock(puserinteraction->mutex());
+   ////         _synchronous_lock synchronouslock(puserinteraction->mutex());
    ////
    ////         if (pt != puserinteraction->m_rectParentClient.top_left())
    ////         {
@@ -2431,7 +2431,7 @@ pmessage->m_atom = emessage
 //
 //      }
 //
-//      synchronous_lock ml(pmq->mutex());
+//      _synchronous_lock ml(pmq->mutex());
 //
 //      if (message.m_id == e_message_quit)
 //      {
@@ -2528,7 +2528,7 @@ pmessage->m_atom = emessage
    //
    //      }
    //
-   //      synchronous_lock ml(pmq->mutex());
+   //      _synchronous_lock ml(pmq->mutex());
    //
    //      if (message.m_id == e_message_quit)
    //      {
