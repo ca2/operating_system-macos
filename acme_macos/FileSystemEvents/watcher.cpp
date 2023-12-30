@@ -98,7 +98,7 @@ namespace FileSystemEvents
    }
    
    
-   bool watch::step()
+   bool watch::file_watch_step()
    {
       
       return true;
@@ -198,7 +198,7 @@ namespace FileSystemEvents
    }
    
 
-   bool watcher::step()
+   bool watcher::file_watcher_step()
    {
       
       //bool done = false;
@@ -226,7 +226,7 @@ namespace FileSystemEvents
          
       //}
       
-      auto estatus = ::file::watcher::step();
+      auto estatus = ::file::watcher::file_watcher_step();
       
       if(!estatus)
       {

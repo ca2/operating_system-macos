@@ -39,7 +39,7 @@ namespace FileSystemEvents
       void addAll();
       void eraseAll();
 
-      bool step() override;
+      bool file_watch_step() override;
       
 
    };
@@ -55,7 +55,7 @@ namespace FileSystemEvents
       ~watcher() override;
 
       
-      bool step() override;
+      bool file_watcher_step() override;
       
 
    };

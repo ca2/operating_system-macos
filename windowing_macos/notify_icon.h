@@ -37,7 +37,7 @@ namespace windowing_macos
       //DECL_GEN_SIGNAL(_001OnNotifyIconMessage);
       //DECL_GEN_SIGNAL(_001OnDestroy);
 
-      bool step() override;
+      bool notify_icon_step() override;
       //virtual void notify_icon_play(const char * action) override;
       
       
