@@ -247,6 +247,8 @@ namespace windowing_macos
 
       create_macos_nswindow(this, cgrect, uStyle);
       
+      puserinteraction->post_message(e_message_pos_create);
+      
    }
 
 
