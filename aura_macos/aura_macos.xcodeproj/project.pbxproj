@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07B657CA190F3CBF002DAADE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B657BA190F3CBF002DAADE /* Foundation.framework */; };
-		07B657CF190F3CBF002DAADE /* libios_aura_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B657B8190F3CBF002DAADE /* libios_aura_macos.a */; };
-		07B657D5190F3CBF002DAADE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B657D3190F3CBF002DAADE /* InfoPlist.strings */; };
-		07B657D7190F3CBF002DAADE /* music_midi_core_audio_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B657D6190F3CBF002DAADE /* music_midi_core_audio_iosTests.m */; };
 		9A00E60D26616C9C00517464 /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E60C26616C9C00517464 /* libacme.dylib */; };
 		9A00E61126616C9C00517464 /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61026616C9C00517464 /* libacme_macos.dylib */; };
 		9A00E61526616CB800517464 /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A00E61426616CB800517464 /* libapex_apple.dylib */; };
@@ -44,13 +40,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		07B657CD190F3CBF002DAADE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1CFD76F154F5EA7007447E2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 07B657B7190F3CBF002DAADE;
-			remoteInfo = music_midi_core_audio_ios;
-		};
 		9A413D54266EDEA500C3FF0E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A64C0FF26604FB50074030F /* apex_macos.xcodeproj */;
@@ -93,31 +82,10 @@
 			remoteGlobalIDString = 9A15A5AC264B54430080670E;
 			remoteInfo = aura_apple;
 		};
-		9AC2CFB62653DADC00CC8096 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AC2CFB02653DAD200CC8096 /* aura_apple.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A15A5AB264B54430080670E;
-			remoteInfo = aura_apple;
-		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		07B657B6190F3CBF002DAADE /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		07B657B8190F3CBF002DAADE /* libios_aura_macos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libios_aura_macos.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B657BA190F3CBF002DAADE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		07B657C7190F3CBF002DAADE /* music_midi_core_audio_iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = music_midi_core_audio_iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B657D2190F3CBF002DAADE /* music_midi_core_audio_iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "music_midi_core_audio_iosTests-Info.plist"; sourceTree = "<group>"; };
 		07B657D4190F3CBF002DAADE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		07B657D6190F3CBF002DAADE /* music_midi_core_audio_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = music_midi_core_audio_iosTests.m; sourceTree = "<group>"; };
@@ -161,22 +129,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		07B657B5190F3CBF002DAADE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		07B657C4190F3CBF002DAADE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				07B657CF190F3CBF002DAADE /* libios_aura_macos.a in Frameworks */,
-				07B657CA190F3CBF002DAADE /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A1CFD775154F5EAA007447E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -305,8 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				A1CFD778154F5EAA007447E2 /* libaura_macos.dylib */,
-				07B657B8190F3CBF002DAADE /* libios_aura_macos.a */,
-				07B657C7190F3CBF002DAADE /* music_midi_core_audio_iosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -330,42 +280,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		07B657B7190F3CBF002DAADE /* ios_aura_macos */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 07B657DC190F3CBF002DAADE /* Build configuration list for PBXNativeTarget "ios_aura_macos" */;
-			buildPhases = (
-				07B657B4190F3CBF002DAADE /* Sources */,
-				07B657B5190F3CBF002DAADE /* Frameworks */,
-				07B657B6190F3CBF002DAADE /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9AC2CFB72653DADC00CC8096 /* PBXTargetDependency */,
-			);
-			name = ios_aura_macos;
-			productName = music_midi_core_audio_ios;
-			productReference = 07B657B8190F3CBF002DAADE /* libios_aura_macos.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		07B657C6190F3CBF002DAADE /* music_midi_core_audio_iosTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 07B657DD190F3CBF002DAADE /* Build configuration list for PBXNativeTarget "music_midi_core_audio_iosTests" */;
-			buildPhases = (
-				07B657C3190F3CBF002DAADE /* Sources */,
-				07B657C4190F3CBF002DAADE /* Frameworks */,
-				07B657C5190F3CBF002DAADE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				07B657CE190F3CBF002DAADE /* PBXTargetDependency */,
-			);
-			name = music_midi_core_audio_iosTests;
-			productName = music_midi_core_audio_iosTests;
-			productReference = 07B657C7190F3CBF002DAADE /* music_midi_core_audio_iosTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		A1CFD777154F5EAA007447E2 /* aura_macos */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1CFD77C154F5EAA007447E2 /* Build configuration list for PBXNativeTarget "aura_macos" */;
@@ -394,11 +308,6 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "ca2 Desenvolvimento de Sofware Ltda.";
-				TargetAttributes = {
-					07B657C6190F3CBF002DAADE = {
-						TestTargetID = A1CFD777154F5EAA007447E2;
-					};
-				};
 			};
 			buildConfigurationList = A1CFD772154F5EA7007447E2 /* Build configuration list for PBXProject "aura_macos" */;
 			compatibilityVersion = "Xcode 13.0";
@@ -424,8 +333,6 @@
 			projectRoot = "";
 			targets = (
 				A1CFD777154F5EAA007447E2 /* aura_macos */,
-				07B657B7190F3CBF002DAADE /* ios_aura_macos */,
-				07B657C6190F3CBF002DAADE /* music_midi_core_audio_iosTests */,
 			);
 		};
 /* End PBXProject section */
@@ -461,33 +368,7 @@
 		};
 /* End PBXReferenceProxy section */
 
-/* Begin PBXResourcesBuildPhase section */
-		07B657C5190F3CBF002DAADE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				07B657D5190F3CBF002DAADE /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		07B657B4190F3CBF002DAADE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		07B657C3190F3CBF002DAADE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				07B657D7190F3CBF002DAADE /* music_midi_core_audio_iosTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A1CFD774154F5EAA007447E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -505,11 +386,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		07B657CE190F3CBF002DAADE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 07B657B7190F3CBF002DAADE /* ios_aura_macos */;
-			targetProxy = 07B657CD190F3CBF002DAADE /* PBXContainerItemProxy */;
-		};
 		9A440A6D2654E36C000C490B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = aura_apple;
@@ -519,11 +395,6 @@
 			isa = PBXTargetDependency;
 			name = apex_macos;
 			targetProxy = 9A5FE2042689E27D003682E6 /* PBXContainerItemProxy */;
-		};
-		9AC2CFB72653DADC00CC8096 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = aura_apple;
-			targetProxy = 9AC2CFB62653DADC00CC8096 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -539,100 +410,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		07B657D8190F3CBF002DAADE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				EXECUTABLE_EXTENSION = a;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MACH_O_TYPE = staticlib;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		07B657D9190F3CBF002DAADE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				ENABLE_NS_ASSERTIONS = NO;
-				EXECUTABLE_EXTENSION = a;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MACH_O_TYPE = staticlib;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		07B657DA190F3CBF002DAADE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/libmusic_midi_core_audio.dylib";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "music_midi_core_audio_ios/music_midi_core_audio_ios-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "music_midi_core_audio_iosTests/music_midi_core_audio_iosTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				PRODUCT_BUNDLE_IDENTIFIER = "ca2.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		07B657DB190F3CBF002DAADE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/libmusic_midi_core_audio.dylib";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				ENABLE_NS_ASSERTIONS = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "music_midi_core_audio_ios/music_midi_core_audio_ios-Prefix.pch";
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "music_midi_core_audio_iosTests/music_midi_core_audio_iosTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				PRODUCT_BUNDLE_IDENTIFIER = "ca2.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 		A1CFD77A154F5EAA007447E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A03B80C2A25BDC500A0E33E /* _____debug.xcconfig */;
@@ -680,9 +457,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = framework.h;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -838,24 +613,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		07B657DC190F3CBF002DAADE /* Build configuration list for PBXNativeTarget "ios_aura_macos" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				07B657D8190F3CBF002DAADE /* Debug */,
-				07B657D9190F3CBF002DAADE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		07B657DD190F3CBF002DAADE /* Build configuration list for PBXNativeTarget "music_midi_core_audio_iosTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				07B657DA190F3CBF002DAADE /* Debug */,
-				07B657DB190F3CBF002DAADE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		A1CFD772154F5EA7007447E2 /* Build configuration list for PBXProject "aura_macos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
