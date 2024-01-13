@@ -13,7 +13,7 @@
       control::control()
       {
 
-         m_pmixersource = NULL;
+         //m_pmixersource = NULL;
          //m_mixercontrol.cbStruct = sizeof(MIXERCONTROL);
          //m_mixercontroldetails.cbStruct = sizeof(MIXERCONTROLDETAILS);
          //m_mixercontroldetails.paDetails = NULL;

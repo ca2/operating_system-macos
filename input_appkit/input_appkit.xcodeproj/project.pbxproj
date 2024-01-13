@@ -290,6 +290,7 @@
 /* Begin XCBuildConfiguration section */
 		9A2751982AEBDB8000611C1D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A2751CA2AEBDC1700611C1D /* _____debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -337,9 +338,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = framework.h;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -390,6 +389,7 @@
 		};
 		9A2751992AEBDB8000611C1D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A2751D42AEBDC1700611C1D /* _____release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

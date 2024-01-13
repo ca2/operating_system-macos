@@ -29,11 +29,6 @@
 		9A90675227F1409E0040B86D /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675127F1409E0040B86D /* libacme.dylib */; };
 		9A90675427F1409E0040B86D /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675327F1409E0040B86D /* libapex.dylib */; };
 		9A90675627F1409E0040B86D /* libaqua.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675527F1409E0040B86D /* libaqua.dylib */; };
-		9A90675827F1409E0040B86D /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675727F1409E0040B86D /* libaura.dylib */; };
-		9A90675A27F1409F0040B86D /* libaxis.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675927F1409E0040B86D /* libaxis.dylib */; };
-		9A90675C27F1409F0040B86D /* libbase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675B27F1409F0040B86D /* libbase.dylib */; };
-		9A90675E27F1409F0040B86D /* libbred.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675D27F1409F0040B86D /* libbred.dylib */; };
-		9A90676027F140AF0040B86D /* libcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90675F27F140AF0040B86D /* libcore.dylib */; };
 		9A94EBDB29E32C3100C8C249 /* libaudio_mixer.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A94E7A329E2318F00C8C249 /* libaudio_mixer.dylib */; };
 		9AA1B44A176361950019E812 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA1B449176361950019E812 /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +96,8 @@
 		9A90676127F1581D0040B86D /* libaudio.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaudio.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A94E79A29E2318E00C8C249 /* audio_mixer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = audio_mixer.xcodeproj; path = "../../../source/audio-system/audio_mixer/audio_mixer.xcodeproj"; sourceTree = "<group>"; };
 		9AA1B449176361950019E812 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		9AA3AD9E2B51F77B004F2C29 /* _____release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "_____release.xcconfig"; sourceTree = "<group>"; };
+		9AA3AD9F2B51F77B004F2C29 /* _____debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "_____debug.xcconfig"; sourceTree = "<group>"; };
 		A1CFD778154F5EAA007447E2 /* libaudio_mixer_core_audio.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libaudio_mixer_core_audio.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -110,14 +107,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A94EBDB29E32C3100C8C249 /* libaudio_mixer.dylib in Frameworks */,
-				9A90676027F140AF0040B86D /* libcore.dylib in Frameworks */,
 				9A90675227F1409E0040B86D /* libacme.dylib in Frameworks */,
 				9A90675427F1409E0040B86D /* libapex.dylib in Frameworks */,
 				9A90675627F1409E0040B86D /* libaqua.dylib in Frameworks */,
-				9A90675827F1409E0040B86D /* libaura.dylib in Frameworks */,
-				9A90675A27F1409F0040B86D /* libaxis.dylib in Frameworks */,
-				9A90675C27F1409F0040B86D /* libbase.dylib in Frameworks */,
-				9A90675E27F1409F0040B86D /* libbred.dylib in Frameworks */,
 				9AA1B44A176361950019E812 /* Cocoa.framework in Frameworks */,
 				9A8997BD177D0E7F00C7761E /* Carbon.framework in Frameworks */,
 			);
@@ -175,6 +167,8 @@
 		A1CFD896154FB715007447E2 /* audio_mixer_core_audio */ = {
 			isa = PBXGroup;
 			children = (
+				9AA3AD9F2B51F77B004F2C29 /* _____debug.xcconfig */,
+				9AA3AD9E2B51F77B004F2C29 /* _____release.xcconfig */,
 				9A90675027F13DB90040B86D /* _.h */,
 				9A8EAF5417C563D300C458D1 /* _audio_mixer_core_audio.h */,
 				9A90672E27F13D850040B86D /* _factory.cpp */,
@@ -326,8 +320,10 @@
 /* Begin XCBuildConfiguration section */
 		A1CFD77A154F5EAA007447E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AA3AD9F2B51F77B004F2C29 /* _____debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_DEADCODE_DEADSTORES = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
@@ -354,7 +350,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -368,9 +363,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = framework.h;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -423,8 +416,10 @@
 		};
 		A1CFD77B154F5EAA007447E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AA3AD9E2B51F77B004F2C29 /* _____release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_DEADCODE_DEADSTORES = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
@@ -451,7 +446,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -515,7 +509,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				EXECUTABLE_EXTENSION = dylib;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -529,7 +522,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				EXECUTABLE_EXTENSION = dylib;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

@@ -44,7 +44,7 @@ void create_macos_nswindow(macos_window * pmacoswindow, CGRect rect, unsigned in
    
    pmacoswindow->m_pnswindow->m_pmacoswindow = pmacoswindow;
    
-   ns_main_async(^()
+   ns_main_sync(^()
    {
                    
       auto id = [pmacoswindow->m_pnswindow initWithContentRect : rect styleMask : uStyle backing : NSBackingStoreBuffered defer : YES];
