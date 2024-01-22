@@ -23,7 +23,7 @@ bool nsapp_activation_policy_is_regular()
 }
 
 
-bool nsapp_activation_policy_is_accessory()
+int nsapp_activation_policy_is_accessory()
 {
    
    if(NSApp.activationPolicy == NSApplicationActivationPolicyAccessory)
@@ -184,4 +184,55 @@ char * bundleSeedID()
     NSArray *components = [accessGroup componentsSeparatedByString:@"."];
     NSString *bundleSeedID = [[components objectEnumerator] nextObject];
     return strdup([bundleSeedID UTF8String]);
+}
+
+
+
+BOOL macos_launch_on_login()
+{
+    LSSharedFileListRef loginItemsListRef = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    CFArrayRef snapshotRef = LSSharedFileListCopySnapshot(loginItemsListRef, NULL);
+    NSArray* loginItems = (__bridge_transfer NSArray *)snapshotRef;
+    NSURL *bundleURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    for (id item in loginItems) {
+        LSSharedFileListItemRef itemRef = (__bridge_retained LSSharedFileListItemRef)item;
+        CFURLRef itemURLRef;
+        if (LSSharedFileListItemResolve(itemRef, 0, &itemURLRef, NULL) == noErr) {
+            NSURL *itemURL = (__bridge_transfer NSURL *)itemURLRef;
+            if ([itemURL isEqual:bundleURL]) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
+void macos_set_launch_on_login(int launchOnLogin)
+{
+    NSURL *bundleURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    LSSharedFileListRef loginItemsListRef = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+
+    if (launchOnLogin) {
+        NSDictionary *properties;
+        properties = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"com.apple.loginitem.HideOnLaunch"];
+        LSSharedFileListItemRef itemRef = LSSharedFileListInsertItemURL(loginItemsListRef, kLSSharedFileListItemLast, NULL, NULL, (__bridge_retained CFURLRef)bundleURL, (__bridge_retained CFDictionaryRef)properties,NULL);
+        if (itemRef) {
+            CFRelease(itemRef);
+        }
+    } else {
+        LSSharedFileListRef loginItemsListRef = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+        CFArrayRef snapshotRef = LSSharedFileListCopySnapshot(loginItemsListRef, NULL);
+        NSArray* loginItems = (__bridge_transfer NSArray* )snapshotRef;
+
+        for (id item in loginItems) {
+            LSSharedFileListItemRef itemRef = (__bridge_retained LSSharedFileListItemRef)item;
+            CFURLRef itemURLRef;
+            if (LSSharedFileListItemResolve(itemRef, 0, &itemURLRef, NULL) == noErr) {
+                NSURL *itemURL = (__bridge_transfer NSURL *)itemURLRef;
+                if ([itemURL isEqual:bundleURL]) {
+                    LSSharedFileListItemRemove(loginItemsListRef, itemRef);
+                }
+            }
+        }
+    }
 }

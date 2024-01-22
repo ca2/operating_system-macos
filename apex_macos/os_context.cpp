@@ -11,6 +11,10 @@
 #include <sys/stat.h>
 #endif
 
+int macos_launch_on_login();
+void macos_set_launch_on_login(int launchOnLogin);
+
+
 void ns_main_async(dispatch_block_t block);
 
 
@@ -1359,6 +1363,44 @@ void os_context::set_dark_mode(bool bDark)
       setMyselfAsDefaultApplicationForFileExtension(strFormattedExtension);
       
    }
+void os_context::register_user_auto_start(const string & strAppId, const ::file::path & pathExecutable, const string & strArguments,
+                              bool bRegister) 
+{
+
+   if(strAppId == application()->m_strAppId)
+  
+   {
+      
+      macos_set_launch_on_login(bRegister);
+      
+   }
+   else
+   {
+      
+      apex_posix::os_context::register_user_auto_start(strAppId, pathExecutable, strAppId, bRegister);
+      
+   }
+
+}
+
+bool os_context::is_user_auto_start(const string & strAppId)
+{
+   
+   if(strAppId == application()->m_strAppId)
+  
+   {
+      
+      return macos_launch_on_login();
+      
+   }
+   else
+   {
+      
+      return apex_posix::os_context::is_user_auto_start(strAppId);
+      
+   }
+   
+}
 
 
 } // namespace apex_macos
