@@ -1812,7 +1812,9 @@ pmessage->m_atom = emessage
    ////      }
    ////
    ////      puserinteraction->m_point = point;
-
+      ///
+      _on_reposition_notify_unlocked(::point_i32(point.x, point.y))
+      ;
    }
 
 

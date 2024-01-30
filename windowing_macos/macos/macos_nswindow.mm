@@ -133,6 +133,10 @@ NSString * __nsstring(const char * psz);
    
    m_pmacoswindow->macos_window_on_create();
    
+   [self on_window_move];
+   
+   [self on_window_size];
+   
    return self;
    
 }
@@ -306,17 +310,10 @@ NSString * __nsstring(const char * psz);
    
 }
 
-
-- (void)windowDidMove: (NSNotification *) notification
+-(void) on_window_move
 {
    
    
-   if([self isMiniaturized])
-   {
-      
-      return;
-      
-   }
    try
    {
       
@@ -335,19 +332,29 @@ NSString * __nsstring(const char * psz);
    {
       
    }
+
    
 }
 
-
-- (void) windowDidResize: (NSNotification *) notification
+- (void)windowDidMove: (NSNotification *) notification
 {
-
+   
+   
    if([self isMiniaturized])
    {
       
       return;
       
    }
+   
+   [self on_window_move];
+   
+   
+}
+
+
+-(void) on_window_size
+{
    
    try
    {
@@ -364,6 +371,20 @@ NSString * __nsstring(const char * psz);
       
    }
 
+}
+
+- (void) windowDidResize: (NSNotification *) notification
+{
+
+   if([self isMiniaturized])
+   {
+      
+      return;
+      
+   }
+
+   [ self on_window_size ];
+   
 }
 
 
