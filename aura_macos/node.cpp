@@ -11,9 +11,9 @@
 #include "aura/graphics/image/context_image.h"
 #include "aura/platform/context.h"
 
-
-bool macos_get_file_image(::image * pimage, const char * pszFilePath);
-bool macos_get_file_image_by_type_identifier(::image * pimage, const char * pszTypeIdentifier);
+//
+//bool macos_get_file_image(::image * pimage, const char * pszFilePath);
+//bool macos_get_file_image_by_type_identifier(::image * pimage, const char * pszTypeIdentifier);
 
 
 namespace aura_macos
@@ -60,46 +60,46 @@ namespace aura_macos
 //         return estatus;
          
       }
-
-   
-      ::image_pointer node::get_file_image_by_type_identifier(int iSize, const ::scoped_string & scopedstrTypeIdentifier)
-      {
-
-         auto pimage = m_pcontext->m_pauracontext->create_image( { iSize, iSize } );
-
-         synchronous_lock synchronouslock(this->synchronization());
-
-         if(!macos_get_file_image_by_type_identifier(pimage, scopedstrTypeIdentifier))
-         {
-
-            return nullptr;
-
-         }
-
-         return pimage;
-
-      }
-
-   
-      ::image_pointer node::get_file_image(int iSize, const ::file::path & path)
-      {
-         
-
-         auto pimage = m_pcontext->m_pauracontext->create_image( { iSize, iSize } );
-
-         synchronous_lock synchronouslock(this->synchronization());
-
-         if(!macos_get_file_image(pimage, path))
-         {
-
-            return nullptr;
-
-         }
-
-         return pimage;
-
-      }
-
+//
+//   
+//      ::image_pointer node::get_file_image_by_type_identifier(int iSize, const ::scoped_string & scopedstrTypeIdentifier)
+//      {
+//
+//         auto pimage = m_pcontext->m_pauracontext->create_image( { iSize, iSize } );
+//
+//         synchronous_lock synchronouslock(this->synchronization());
+//
+//         if(!macos_get_file_image_by_type_identifier(pimage, scopedstrTypeIdentifier))
+//         {
+//
+//            return nullptr;
+//
+//         }
+//
+//         return pimage;
+//
+//      }
+//
+//   
+//      ::image_pointer node::get_file_image(int iSize, const ::file::path & path)
+//      {
+//         
+//
+//         auto pimage = m_pcontext->m_pauracontext->create_image( { iSize, iSize } );
+//
+//         synchronous_lock synchronouslock(this->synchronization());
+//
+//         if(!macos_get_file_image(pimage, path))
+//         {
+//
+//            return nullptr;
+//
+//         }
+//
+//         return pimage;
+//
+//      }
+//
 
 
 } // namespace aura_macos

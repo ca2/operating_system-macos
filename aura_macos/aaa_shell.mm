@@ -13,7 +13,7 @@
 bool GetImagePixelData(unsigned int * pcr, int cx, int cy, int iScan, CGImageRef inImage);
 
 
-bool mm2_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const char * pszFilePath)
+bool apple_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const char * pszFilePath)
 {
    
    NSString * strFilePath = [NSString stringWithUTF8String:pszFilePath];
