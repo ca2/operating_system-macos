@@ -191,7 +191,7 @@ namespace acme_macos
 
             string strPath;
 
-            strPath = this->prepare_path(m_pathFolder / m_pathBase / m_pathPlatformConfiguration / "source");
+            strPath = this->prepare_path(m_pathSource);
 
             if (strPath.length() > 20)
             {
@@ -262,7 +262,7 @@ namespace acme_macos
 
             pmemoryFileTar->seek_to_begin();
 
-            this->untar(m_pathFolder / m_pathBase / m_pathPlatformConfiguration, pmemoryFileTar, 1);
+            this->untar(m_pathSource, pmemoryFileTar, 1);
 
          }
 

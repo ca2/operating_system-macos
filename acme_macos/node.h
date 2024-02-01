@@ -130,6 +130,10 @@ namespace acme_macos
       
       ::enum_id key_command(::user::enum_key ekey, ::user::key_state* pkeystate) override;
 
+//
+//      ::process_identifier_array processes_identifiers() override;
+      
+
    };
 
 
