@@ -15,6 +15,7 @@
 namespace acme_macos
 {
 
+
    class CLASS_DECL_ACME node :
       virtual public ::acme_apple::node
    {

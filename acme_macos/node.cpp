@@ -1179,49 +1179,49 @@ bool node::__ns_is_application_running(const ::scoped_string & scopedstrRepos, c
 
    }
 
-::process_identifier_array node::processes_identifiers()
-{
-
-   int  iDoubleKernMaxProc = kern_max_proc() * 2;
-
-   ::memory memory;
-
-   memory.set_size(sizeof(pid_t) * iDoubleKernMaxProc);
-
-   pid_t * pids = (pid_t *) memory.data();
-
-   const int pidcount = proc_listallpids(pids, (int) memory.size());
-
-   process_identifier_array a;
-
-   a.set_size(pidcount);
-
-   for(int i = 0; i < pidcount; i++)
-   {
-      
-      a[i] = pids[i];
-      
-   }
-
-   //  throw ::exception(error_not_implemented);;
-   return transfer(a);
-
-   /*
-    dwa.set_size(0);
-    ::u32 cbNeeded = 0;
-    while(cbNeeded == natural(dwa.get_count()))
-    {
-    dwa.set_size(dwa.get_count() + 1024);
-    if(!EnumProcesses(
-    dwa.get_data(),
-    (::u32) (dwa.get_count() * sizeof(::u32)),
-    &cbNeeded))
-    {
-    return;
-    }
-    dwa.set_size(cbNeeded / sizeof(::u32));
-    }*/
-}
+//::process_identifier_array node::processes_identifiers()
+//{
+//
+//   int  iDoubleKernMaxProc = kern_max_proc() * 2;
+//
+//   ::memory memory;
+//
+//   memory.set_size(sizeof(pid_t) * iDoubleKernMaxProc);
+//
+//   pid_t * pids = (pid_t *) memory.data();
+//
+//   const int pidcount = proc_listallpids(pids, (int) memory.size());
+//
+//   process_identifier_array a;
+//
+//   a.set_size(pidcount);
+//
+//   for(int i = 0; i < pidcount; i++)
+//   {
+//      
+//      a[i] = pids[i];
+//      
+//   }
+//
+//   //  throw ::exception(error_not_implemented);;
+//   return transfer(a);
+//
+//   /*
+//    dwa.set_size(0);
+//    ::u32 cbNeeded = 0;
+//    while(cbNeeded == natural(dwa.get_count()))
+//    {
+//    dwa.set_size(dwa.get_count() + 1024);
+//    if(!EnumProcesses(
+//    dwa.get_data(),
+//    (::u32) (dwa.get_count() * sizeof(::u32)),
+//    &cbNeeded))
+//    {
+//    return;
+//    }
+//    dwa.set_size(cbNeeded / sizeof(::u32));
+//    }*/
+//}
 
 
 } // namespace acme_macos

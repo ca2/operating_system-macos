@@ -19,7 +19,6 @@
 		9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC2CFB52653DAD200CC8096 /* libaura_apple.dylib */; };
 		9A5A897226D2CA88004AF957 /* shell.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A5A897026D2CA88004AF957 /* shell.h */; };
 		9A5A897326D2CA88004AF957 /* shell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A897126D2CA88004AF957 /* shell.cpp */; };
-		9A5A897526D2CC6E004AF957 /* shell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A897426D2CC6E004AF957 /* shell.mm */; };
 		9A5A897726D304B4004AF957 /* UniformTypeIdentifiers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5A897626D304B4004AF957 /* UniformTypeIdentifiers.framework */; };
 		9A5D73912656D1DC00D5C39E /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D738F2656D1DC00D5C39E /* node.cpp */; };
 		9A5D73922656D1DC00D5C39E /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A5D73902656D1DC00D5C39E /* node.h */; };
@@ -103,7 +102,6 @@
 		9A03B80C2A25BDC500A0E33E /* _____debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "_____debug.xcconfig"; sourceTree = "<group>"; };
 		9A5A897026D2CA88004AF957 /* shell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shell.h; sourceTree = "<group>"; };
 		9A5A897126D2CA88004AF957 /* shell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shell.cpp; sourceTree = "<group>"; };
-		9A5A897426D2CC6E004AF957 /* shell.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = shell.mm; sourceTree = "<group>"; };
 		9A5A897626D304B4004AF957 /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
 		9A5D738F2656D1DC00D5C39E /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		9A5D73902656D1DC00D5C39E /* node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 				9A5D73902656D1DC00D5C39E /* node.h */,
 				9A5A897126D2CA88004AF957 /* shell.cpp */,
 				9A5A897026D2CA88004AF957 /* shell.h */,
-				9A5A897426D2CC6E004AF957 /* shell.mm */,
 			);
 			name = aura_macos;
 			sourceTree = "<group>";
@@ -376,7 +373,6 @@
 				9AC2D1D226542FBA00CC8096 /* _factory.cpp in Sources */,
 				9AC2D1CF26542FBA00CC8096 /* framework.cpp in Sources */,
 				9A5A897326D2CA88004AF957 /* shell.cpp in Sources */,
-				9A5A897526D2CC6E004AF957 /* shell.mm in Sources */,
 				9A5D73912656D1DC00D5C39E /* node.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
