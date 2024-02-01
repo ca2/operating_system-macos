@@ -59,7 +59,13 @@ namespace node_macos
       ::pointer < ::input::input > create_input() override;
       
       
-      void on_system_main() override;
+      //void on_system_main() override;
+      
+      
+      void defer_create_windowing_application_delegate(void * pApplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback) override;
+
+
+      void ns_app_run() override;
       
 
    };
