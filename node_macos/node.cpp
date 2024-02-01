@@ -292,18 +292,18 @@ namespace node_macos
    }
 
 
-   void node::on_system_main()
-   {
-      
-      auto papp = platform()->application();
-
-      void * pApplication = (void *) (::acme::application *) papp;
-
-      defer_create_windowing_application_delegate(pApplication, papp->application_menu(), papp);
-      
-      ns_app_run();
-
-   }
+//   void node::on_system_main()
+//   {
+//      
+//      auto papp = platform()->application();
+//
+//      void * pApplication = (void *) (::acme::application *) papp;
+//
+//      defer_create_windowing_application_delegate(pApplication, papp->application_menu(), papp);
+//      
+//      ns_app_run();
+//
+//   }
 
 
 } // namespace node_macos
