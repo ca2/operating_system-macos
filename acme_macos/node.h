@@ -133,6 +133,12 @@ namespace acme_macos
 
 //
 //      ::process_identifier_array processes_identifiers() override;
+
+      ::i32 unix_shell_command(const ::scoped_string &scopedstr, const trace_function & tracefunction = nullptr) override;
+
+      
+      virtual ::i32 zsh(const ::scoped_string &scopedstr, const trace_function & tracefunction = nullptr);
+
       
 
    };

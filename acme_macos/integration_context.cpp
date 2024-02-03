@@ -273,8 +273,17 @@ namespace acme_macos
       {
          
          information() << "Current Directory: " << acmedirectory()->get_current();
+         
+         ::string strBranchAddUp;
+         
+         if(m_strGitCloneBranch.has_char())
+         {
+            
+            strBranchAddUp += "--branch " + m_strGitCloneBranch + " ";
+            
+         }
 
-         command_system("git clone " + m_pathDownloadURL + " .");
+         command_system("git clone " + strBranchAddUp + m_pathDownloadURL + " .");
 
       }
 

@@ -1224,6 +1224,54 @@ bool node::__ns_is_application_running(const ::scoped_string & scopedstrRepos, c
 //}
 
 
+   ::i32 node::unix_shell_command(const ::scoped_string &scopedstr, const trace_function & tracefunction)
+   {
+   
+      return zsh(scopedstr, tracefunction);
+      
+   }
+
+
+   ::i32 node::zsh(const ::scoped_string &scopedstr, const trace_function & tracefunction)
+   {
+
+      string strEscaped = scopedstr;
+
+      ::string strCommand;
+
+   //         if (m_bMsys)
+   //         {
+   //
+   //            strCommand = "\"C:\\msys64\\usr\\bin\\bash.exe\" -c \'" + strEscaped + "\'";
+   //
+   //         }
+   //         else
+      //{
+         
+         strEscaped.find_replace("\"", "\\\"");
+         
+
+         strCommand = "/bin/zsh -o braceexpand -o hashall -o interactive_comments -l -c \"" + strEscaped + "\"";
+         
+         //strCommand = "/bin/bash -c " + strEscaped;
+
+         //information() << strCommand;
+         
+         
+      //}
+   //         int iExitCode1 = command_system("/bin/bash -c \'echo $PATH\'");
+
+      //
+
+      int iExitCode = command_system(strCommand, tracefunction);
+
+      ///command_system("cmd.exe -c \"C:\\msys64\\msys2_shell.cmd\" \"" + strEscaped + "\"");
+
+      return iExitCode;
+
+   }
+
+
 } // namespace acme_macos
 
 
