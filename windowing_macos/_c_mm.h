@@ -7,7 +7,7 @@
 #pragma once
 
 
-#if defined(__MM)
+#if defined(__OBJECTIVE_CPP__)
 
 void ns_screen_translate(CGRect * prect, int iIndex = -1);
 

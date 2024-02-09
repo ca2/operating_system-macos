@@ -11,7 +11,7 @@
 #include "acme_macos/_library.h"
 
 
-#if !defined(__MM)
+#if !defined(__OBJECTIVE_CPP__)
 
 
 //#include "dir_system.h"
@@ -37,7 +37,7 @@
 #include "node.h"
 
 
-#endif // !defined __MM
+#endif // !defined __OBJECTIVE_CPP__
 
 
 
