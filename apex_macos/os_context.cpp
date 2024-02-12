@@ -301,7 +301,7 @@ namespace apex_macos
    ::file::path os_context::process_identifier_module_path(::process_identifier processidentifier)
    {
       
-      return acmenode()->process_identifier_module_path(processidentifier);
+      return node()->process_identifier_module_path(processidentifier);
 
    }
 
@@ -888,7 +888,7 @@ void os_context::set_dark_mode(bool bDark)
    ::process_identifier os_context::current_process_identifier()
    {
 
-      return acmenode()->current_process_identifier();
+      return node()->current_process_identifier();
 
    }
 

@@ -1271,6 +1271,26 @@ bool node::__ns_is_application_running(const ::scoped_string & scopedstrRepos, c
 
    }
 
+bool node::defer_consume_main_arguments(int argc, char ** argv, int & iArgument)
+{
+   
+   information() << " argv[" << iArgument << "] : " << argv[iArgument];
+   const char * pszArgument = argv[iArgument];
+   ::string strArgument(pszArgument);
+   if(strArgument == "-NSDocumentRevisionsDebugMode")
+   {
+    
+      iArgument++;
+      
+      iArgument++;
+      
+      return true;
+   }
+
+   return false;
+   
+}
+
 
 } // namespace acme_macos
 

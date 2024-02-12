@@ -27,6 +27,7 @@ namespace windowing_macos
    class windowing;
    class display;
    class monitor;
+   class window;
 
 
 } // namespace windowing_macos

@@ -1060,7 +1060,7 @@ namespace aura_macos
       if(bShow)
       {
 
-         acmenode()->m_pauranode->defer_dock_application(true);
+         node()->m_pauranode->defer_dock_application(true);
 
          m_puserinteraction->set_need_layout();
 
@@ -1070,7 +1070,7 @@ namespace aura_macos
       else
       {
 
-         acmenode()->m_pauranode->defer_dock_application(false);
+         node()->m_pauranode->defer_dock_application(false);
 
       }
 

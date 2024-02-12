@@ -14,7 +14,7 @@
 #include "acme/platform/application_menu_callback.h"
 #include "aura_macos/_c_mm.h"
 #include "acme/operating_system/argcargv.h"
-
+#import <StoreKit/StoreKit.h>
 
 bool application_get_bool(void * pApplication, const char * pszItem);
 
@@ -647,6 +647,43 @@ void set_apex_system_as_thread();
 //}
 
 
+- (void)checkStoreKitPermissions {
+  NSString *mg;
+  SKCloudServiceAuthorizationStatus status = SKCloudServiceController.authorizationStatus;
+  switch (status) {
+    case SKCloudServiceAuthorizationStatusNotDetermined:{
+      // Not determined: ask for permission.
+      [SKCloudServiceController requestAuthorization:^(SKCloudServiceAuthorizationStatus status) {
+        [self checkStoreKitPermissions];
+      }];
+      break;
+    }
+    case SKCloudServiceAuthorizationStatusAuthorized:
+      // Authorized: proceed.
+      NSLog(@"YES SUBSCRIBED!!!!");
+      [self getUserStorefrontID];
+      break;
+    default:
+      // Denied or restricted: do not proceed.
+      NSLog(@"NOT SUBSCRIBED!!!!");
+//      NSString * strMessage = [NSString stringWithFormat:@"It appears that you are not currently      subscribed to Apple Music.  Please subscribe to Apple Music and then re-open this App.  This App will close when you touch OK."];
+//      [self msgOKend:strMessage];
+      break;
+  }
+}
+- (void) getUserStorefrontID{
+  SKCloudServiceController *controller = [SKCloudServiceController new];
+  [controller requestStorefrontIdentifierWithCompletionHandler:^(NSString * _Nullable storefrontIdentifier, NSError * _Nullable error) 
+   {
+//    if (error != nil) {
+//      userStoreFrontID= nil;
+//      NSLog(@"ERROR-no storefrontID");
+//    } else {
+//      userStoreFrontID= storefrontIdentifier;
+//      NSLog(@"Got storefrontID = %@ ", userStoreFrontID);
+//    }
+  }];
+}
 @end
 
 

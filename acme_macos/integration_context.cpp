@@ -46,7 +46,7 @@ namespace acme_macos
 
          ::particle::initialize(pparticle);
 
-         m_pmutexLines = acmenode()->create_mutex();
+         m_pmutexLines = node()->create_mutex();
 
       }
 
@@ -177,7 +177,7 @@ namespace acme_macos
          
          information() << scopedstrCommand;
 
-         auto iExitCode = acmenode()->command_system(scopedstrCommand, ::std_inline_log());
+         auto iExitCode = node()->command_system(scopedstrCommand, ::std_inline_log());
 
          return iExitCode;
 
@@ -249,8 +249,10 @@ namespace acme_macos
             auto pmemoryFileTarGz = create_memory_file();
 
             auto url = m_pathDownloadURL;
+            
+            ::particle * pparticle = this;
 
-            acmecontext()->http_download(pmemoryFileTarGz, url, set);
+            pparticle->context()->http_download(pmemoryFileTarGz, url, set);
 
             //auto pathTar = m_pathFolder / m_path / (m_strName + ".tar");
 

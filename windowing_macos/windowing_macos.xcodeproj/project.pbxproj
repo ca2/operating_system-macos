@@ -64,6 +64,7 @@
 		9A1D5F6D2751BE22003D9B5F /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73B226570CAE00D5C39E /* AppKit.framework */; };
 		9A1D5F702751BF50003D9B5F /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8024A266571D600A6B449 /* Carbon.framework */; };
 		9A22739827CF00E20042BAC2 /* windowing.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22739727CF00E20042BAC2 /* windowing.mm */; };
+		9A869DCD2B79A56B00937A3C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A869DCC2B79A56A00937A3C /* StoreKit.framework */; };
 		9A93B0F827FCFC380042D6C8 /* cursor_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A93B0F727FCFC380042D6C8 /* cursor_cpp.cpp */; };
 		9AF2844527FBC96400D4C1A8 /* macos_window.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AF2843B27FBC96400D4C1A8 /* macos_window.h */; };
 		9AF2844627FBC96400D4C1A8 /* macos_nswindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AF2843C27FBC96400D4C1A8 /* macos_nswindow.h */; };
@@ -91,20 +92,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = A1CFD778154F5EAA007447E2;
 			remoteInfo = aura_macos;
-		};
-		9A440A2926548C17000C490B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A440A2126548C17000C490B /* aura_macos.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 07B657B8190F3CBF002DAADE;
-			remoteInfo = ios_aura_macos;
-		};
-		9A440A2B26548C17000C490B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A440A2126548C17000C490B /* aura_macos.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 07B657C7190F3CBF002DAADE;
-			remoteInfo = music_midi_core_audio_iosTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -166,6 +153,7 @@
 		9A79BE2826645D9C009E6C44 /* notify_icon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = notify_icon.cpp; sourceTree = "<group>"; };
 		9A79BE2A26645D9C009E6C44 /* notify_icon.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = notify_icon.mm; sourceTree = "<group>"; };
 		9A79BE2B26645D9C009E6C44 /* notify_icon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = notify_icon.h; sourceTree = "<group>"; };
+		9A869DCC2B79A56A00937A3C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9A93B0F727FCFC380042D6C8 /* cursor_cpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cursor_cpp.cpp; sourceTree = "<group>"; };
 		9A9E4AD62751A3F40094A04C /* libwindowing_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libwindowing_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA80242266558E000A6B449 /* icon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = icon.cpp; sourceTree = "<group>"; };
@@ -192,6 +180,7 @@
 				9A1D5F672751BD80003D9B5F /* libapex_apple.dylib in Frameworks */,
 				9A1D5F682751BE0B003D9B5F /* libapex_macos.dylib in Frameworks */,
 				9A1D5F692751BE0B003D9B5F /* libapex_posix.dylib in Frameworks */,
+				9A869DCD2B79A56B00937A3C /* StoreKit.framework in Frameworks */,
 				9A1D5F702751BF50003D9B5F /* Carbon.framework in Frameworks */,
 				9A1D5F6D2751BE22003D9B5F /* AppKit.framework in Frameworks */,
 				9A1D5F622751BD4F003D9B5F /* libaqua.dylib in Frameworks */,
@@ -232,8 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				9A440A2826548C17000C490B /* libaura_macos.dylib */,
-				9A440A2A26548C17000C490B /* libios_aura_macos.a */,
-				9A440A2C26548C17000C490B /* music_midi_core_audio_iosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -294,6 +281,7 @@
 		9A5D7393265700D200D5C39E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A869DCC2B79A56A00937A3C /* StoreKit.framework */,
 				9A1D5F6E2751BE47003D9B5F /* CoreText.framework */,
 				9A62EBFF26F04B7B00EA958E /* ScriptingBridge.framework */,
 				9AA8024A266571D600A6B449 /* Carbon.framework */,
@@ -434,20 +422,6 @@
 			remoteRef = 9A440A2726548C17000C490B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9A440A2A26548C17000C490B /* libios_aura_macos.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libios_aura_macos.a;
-			remoteRef = 9A440A2926548C17000C490B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9A440A2C26548C17000C490B /* music_midi_core_audio_iosTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = music_midi_core_audio_iosTests.xctest;
-			remoteRef = 9A440A2B26548C17000C490B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -544,9 +518,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = framework.h;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

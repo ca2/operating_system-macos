@@ -17,7 +17,7 @@
 //
 //#endif
 
-
+#include "macos/macos_window.h"
 #include "aura/windowing/window.h"
 
 
@@ -44,8 +44,11 @@ namespace windowing_macos
       ~window() override;
       
       
-      void create_window(::user::interaction_impl * pimpl) override;
+      //void create_window(::user::interaction_impl * pimpl) override;
       
+      
+      void create_window() override;
+            
 
       void macos_window_add_ref() override;
       void macos_window_dec_ref() override;

@@ -47,6 +47,10 @@ namespace acme_macos
      
 
       virtual int node_init_check(int * pi, char *** ppz) override;
+      
+      
+      bool defer_consume_main_arguments(int argc, char ** argv, int & iArgument) override;
+
 
       //virtual ::e_status start_node();
 

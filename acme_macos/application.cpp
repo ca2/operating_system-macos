@@ -34,7 +34,7 @@ namespace acme_macos
    void application::open_by_module_path(const ::scoped_string & scopedstr)
    {
 
-      auto processesidentifiers = acmenode()->module_path_processes_identifiers(scopedstr, false);
+      auto processesidentifiers = node()->module_path_processes_identifiers(scopedstr, false);
       
       if(processesidentifiers.has_element())
       {
