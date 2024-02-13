@@ -209,7 +209,7 @@ namespace acme_macos
 
       listing.defer_add(path);
 
-      listing.m_straTitle.add("File ::apex::get_system()");
+      listing.m_straTitle.add("File System");
 
       return listing;
 
