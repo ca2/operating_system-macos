@@ -322,26 +322,26 @@ void myDeleteFile (NSString* path){
 
 }
 
-static void CheckResult(OSStatus result, const char *operation)
-{
-
-    if (result == noErr) return;
-
-    char errorString[20];
-    // see if it appears to be a 4-char-code
-    *(UInt32 *)(errorString + 1) = CFSwapInt32HostToBig(result);
-    if (isprint(errorString[1]) && isprint(errorString[2]) && isprint(errorString[3]) && isprint(errorString[4])) {
-        errorString[0] = errorString[5] = '\'';
-        errorString[6] = '\0';
-    } else
-        // no, format it as an integer
-        sprintf(errorString, "%d", (int)result);
-
-    fprintf(stderr, "Error: %s (%s)\n", operation, errorString);
-
-    //exit(1);
-
-}
+//static void CheckResult(OSStatus result, const char *operation)
+//{
+//
+//    if (result == noErr) return;
+//
+//    char errorString[20];
+//    // see if it appears to be a 4-char-code
+//    *(UInt32 *)(errorString + 1) = CFSwapInt32HostToBig(result);
+//    if (isprint(errorString[1]) && isprint(errorString[2]) && isprint(errorString[3]) && isprint(errorString[4])) {
+//        errorString[0] = errorString[5] = '\'';
+//        errorString[6] = '\0';
+//    } else
+//        // no, format it as an integer
+//        sprintf(errorString, "%d", (int)result);
+//
+//    fprintf(stderr, "Error: %s (%s)\n", operation, errorString);
+//
+//    //exit(1);
+//
+//}
 
 //#pragma mark core audio test
 

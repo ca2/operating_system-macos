@@ -142,17 +142,17 @@ void macos_clipboard_set_filea(const char ** psza, long c)
    
    NSPasteboard * pasteboard = [NSPasteboard generalPasteboard];
    
-   if (@available(macOS 10.13, *))
-   {
+//   if (@available(macOS 10.13, *))
+//   {
       [pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeFileURL] owner:nil];
       [pasteboard writeObjects: filea];
-   }
-   else
-   {
-         
-         [pasteboard setPropertyList:filea forType:NSFilenamesPboardType];
-      
-   }
+//   }
+//   else
+//   {
+//         
+//         [pasteboard setPropertyList:filea forType:NSFilenamesPboardType];
+//      
+//   }
 
          
 }
