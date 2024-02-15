@@ -2,7 +2,7 @@
 // Created by camilo on 19/01/2021. --<33ThomasBS!!
 //
 #include "framework.h"
-
+#include "node.h"
 
 void os_post_quit();
 

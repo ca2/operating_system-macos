@@ -1,6 +1,9 @@
 #include "framework.h"
 #include "apex/platform/launcher.h"
 #include "launcher.h"
+#include "os_context.h"
+#include "interprocess.h"
+#include "node.h"
 //#include "FileSystemEvents/watcher.h"
 
 

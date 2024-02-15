@@ -1,4 +1,5 @@
 #include "framework.h"
+#include "interprocess.h"
 #include <sys/ipc.h>
 #include <sys/msg.h>
 #include "acme/_operating_system.h"
