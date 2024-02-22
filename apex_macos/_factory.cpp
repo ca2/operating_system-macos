@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "apex/platform/launcher.h"
 #include "launcher.h"
-#include "os_context.h"
+//#include "os_context.h"
 #include "interprocess.h"
 #include "node.h"
 //#include "FileSystemEvents/watcher.h"
@@ -27,7 +27,7 @@ void apex_macos_factory(::factory::factory * pfactory)
    pfactory->add_factory_item < ::apex_macos::node, ::acme::node > ();
 
 
-   pfactory->add_factory_item < ::apex_macos::os_context, ::os_context > ();
+//   pfactory->add_factory_item < ::apex_macos::os_context, ::os_context > ();
    
    pfactory->add_factory_item < ::apex_macos::interprocess_base, ::interprocess::base >();
    pfactory->add_factory_item < ::apex_macos::interprocess_target, ::interprocess::target >();

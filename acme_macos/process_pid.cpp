@@ -136,7 +136,7 @@ namespace acme_macos
    // https://astojanov.wordpress.com/2011/11/16/mac-os-x-resolve-absolute-path-using-process-pid/
 
 
-   string node::process_identifier_module_path(::process_identifier uiPid)
+   ::file::path node::process_identifier_module_path(::process_identifier uiPid)
    {
 
       pid_t pid = (pid_t) uiPid;

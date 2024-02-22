@@ -33,8 +33,6 @@
 		9A787F95264EF105003DF8A0 /* user.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F71264EF104003DF8A0 /* user.h */; };
 		9A787F96264EF105003DF8A0 /* app.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F72264EF104003DF8A0 /* app.mm */; };
 		9A787F9B264EF105003DF8A0 /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F77264EF104003DF8A0 /* keyboard.cpp */; };
-		9A787F9C264EF105003DF8A0 /* os_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F78264EF104003DF8A0 /* os_context.h */; };
-		9A787FA2264EF105003DF8A0 /* os_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7E264EF105003DF8A0 /* os_context.cpp */; };
 		9A787FA6264EF105003DF8A0 /* keyboard_mm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F82264EF105003DF8A0 /* keyboard_mm.mm */; };
 		9A787FA7264EF105003DF8A0 /* shell_macos_mm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F83264EF105003DF8A0 /* shell_macos_mm.mm */; };
 		9A787FA8264EF105003DF8A0 /* user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F84264EF105003DF8A0 /* user.cpp */; };
@@ -48,7 +46,6 @@
 		9ABC54B726DAEE2700718C0D /* libacme_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C17EB264A325700B5CC33 /* libacme_macos.dylib */; };
 		9ABC54B826DAEE5100718C0D /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A15A5EF264B54EE0080670E /* libapex_apple.dylib */; };
 		9AC97E7A2A71B26600B1BCF3 /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787E92264ED593003DF8A0 /* _.h */; };
-		9AC97E7D2A71B26600B1BCF3 /* os_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F78264EF104003DF8A0 /* os_context.h */; };
 		9AC97E7E2A71B26600B1BCF3 /* user.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F71264EF104003DF8A0 /* user.h */; };
 		9AC97E812A71B26600B1BCF3 /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787F6D264EF103003DF8A0 /* _mm.h */; };
 		9AC97E822A71B26600B1BCF3 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A0C1766264A2DFA00B5CC33 /* framework.h */; };
@@ -62,7 +59,6 @@
 		9AC97E8E2A71B26600B1BCF3 /* shell_macos_mm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F83264EF105003DF8A0 /* shell_macos_mm.mm */; };
 		9AC97E8F2A71B26600B1BCF3 /* launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F69264EF103003DF8A0 /* launcher.cpp */; };
 		9AC97E902A71B26600B1BCF3 /* interprocess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F6E264EF103003DF8A0 /* interprocess.cpp */; };
-		9AC97E942A71B26600B1BCF3 /* os_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F7E264EF105003DF8A0 /* os_context.cpp */; };
 		9AC97E952A71B26600B1BCF3 /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F77264EF104003DF8A0 /* keyboard.cpp */; };
 		9AC97E962A71B26600B1BCF3 /* app.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F72264EF104003DF8A0 /* app.mm */; };
 		9AC97E972A71B26600B1BCF3 /* user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787F84264EF105003DF8A0 /* user.cpp */; };
@@ -173,8 +169,8 @@
 		9A787F71264EF104003DF8A0 /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
 		9A787F72264EF104003DF8A0 /* app.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = app.mm; sourceTree = "<group>"; };
 		9A787F77264EF104003DF8A0 /* keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keyboard.cpp; sourceTree = "<group>"; };
-		9A787F78264EF104003DF8A0 /* os_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_context.h; sourceTree = "<group>"; };
-		9A787F7E264EF105003DF8A0 /* os_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = os_context.cpp; sourceTree = "<group>"; };
+		9A787F78264EF104003DF8A0 /* aaa_os_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aaa_os_context.h; sourceTree = "<group>"; };
+		9A787F7E264EF105003DF8A0 /* aaa_os_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aaa_os_context.cpp; sourceTree = "<group>"; };
 		9A787F7F264EF105003DF8A0 /* shell_launcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shell_launcher.cpp; sourceTree = "<group>"; };
 		9A787F82264EF105003DF8A0 /* keyboard_mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = keyboard_mm.mm; sourceTree = "<group>"; };
 		9A787F83264EF105003DF8A0 /* shell_macos_mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = shell_macos_mm.mm; sourceTree = "<group>"; };
@@ -258,8 +254,8 @@
 				9A787EE0264EE881003DF8A0 /* node.cpp */,
 				9A787EE1264EE881003DF8A0 /* node.h */,
 				9A1D5F712751C033003D9B5F /* NSPasteboard++.mm */,
-				9A787F7E264EF105003DF8A0 /* os_context.cpp */,
-				9A787F78264EF104003DF8A0 /* os_context.h */,
+				9A787F7E264EF105003DF8A0 /* aaa_os_context.cpp */,
+				9A787F78264EF104003DF8A0 /* aaa_os_context.h */,
 				9A03B8102A25BE0600A0E33E /* _____release.xcconfig */,
 				9A787F7F264EF105003DF8A0 /* shell_launcher.cpp */,
 				9A788032264F1130003DF8A0 /* shell_launcher.h */,
@@ -321,7 +317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A787E9C264ED595003DF8A0 /* _.h in Headers */,
-				9A787F9C264EF105003DF8A0 /* os_context.h in Headers */,
 				9A787F95264EF105003DF8A0 /* user.h in Headers */,
 				9A787F91264EF105003DF8A0 /* _mm.h in Headers */,
 				9A0C1785264A2DFA00B5CC33 /* framework.h in Headers */,
@@ -339,7 +334,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC97E7A2A71B26600B1BCF3 /* _.h in Headers */,
-				9AC97E7D2A71B26600B1BCF3 /* os_context.h in Headers */,
 				9AC97E7E2A71B26600B1BCF3 /* user.h in Headers */,
 				9AC97E812A71B26600B1BCF3 /* _mm.h in Headers */,
 				9AC97E822A71B26600B1BCF3 /* framework.h in Headers */,
@@ -483,7 +477,6 @@
 				9A787FA7264EF105003DF8A0 /* shell_macos_mm.mm in Sources */,
 				9A787F8D264EF105003DF8A0 /* launcher.cpp in Sources */,
 				9A787F92264EF105003DF8A0 /* interprocess.cpp in Sources */,
-				9A787FA2264EF105003DF8A0 /* os_context.cpp in Sources */,
 				9A787F9B264EF105003DF8A0 /* keyboard.cpp in Sources */,
 				9A787F96264EF105003DF8A0 /* app.mm in Sources */,
 				9A787FA8264EF105003DF8A0 /* user.cpp in Sources */,
@@ -504,7 +497,6 @@
 				9AC97E8E2A71B26600B1BCF3 /* shell_macos_mm.mm in Sources */,
 				9AC97E8F2A71B26600B1BCF3 /* launcher.cpp in Sources */,
 				9AC97E902A71B26600B1BCF3 /* interprocess.cpp in Sources */,
-				9AC97E942A71B26600B1BCF3 /* os_context.cpp in Sources */,
 				9AC97E952A71B26600B1BCF3 /* keyboard.cpp in Sources */,
 				9AC97E962A71B26600B1BCF3 /* app.mm in Sources */,
 				9AC97E972A71B26600B1BCF3 /* user.cpp in Sources */,

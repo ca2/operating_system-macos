@@ -83,7 +83,7 @@ namespace acme_macos
       
       ::process_identifier_array module_path_processes_identifiers(const ::string & pszModulePath, bool bModuleNameIsPropertyFormatted = false) override;
       
-      string process_identifier_module_path(::process_identifier pid) override;
+      ::file::path process_identifier_module_path(::process_identifier pid) override;
       
       string process_identifier_command_line(::process_identifier pid) override;
 //
