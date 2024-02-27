@@ -53,6 +53,13 @@
 			remoteGlobalIDString = 9A4DDE6A2B775A1E00477878;
 			remoteInfo = media_apple;
 		};
+		9A651A842B8DA3920052C31B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A4DE8462B7972C200477878 /* windowing_macos.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A9E4AD52751A3F40094A04C;
+			remoteInfo = windowing_macos;
+		};
 		9A8F51852B7774C4007EDC5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A20EC7C2B7715A9008A08A2 /* media_apple.xcodeproj */;
@@ -223,6 +230,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9A651A852B8DA3920052C31B /* PBXTargetDependency */,
 				9A4DE84E2B79732000477878 /* PBXTargetDependency */,
 			);
 			name = media_macos;
@@ -319,6 +327,11 @@
 			isa = PBXTargetDependency;
 			name = media_apple;
 			targetProxy = 9A4DE84D2B79732000477878 /* PBXContainerItemProxy */;
+		};
+		9A651A852B8DA3920052C31B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = windowing_macos;
+			targetProxy = 9A651A842B8DA3920052C31B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
