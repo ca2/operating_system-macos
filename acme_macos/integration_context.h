@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include "acme/platform/integration_context.h"
+#include "acme_posix/integration_context.h"
 
 
 namespace acme_macos
@@ -13,7 +13,7 @@ namespace acme_macos
 
 
       class CLASS_DECL_ACME context :
-         virtual public ::integration::context
+         virtual public ::acme_posix::integration::context
    {
       public:
 
