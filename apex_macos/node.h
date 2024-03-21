@@ -80,7 +80,7 @@ namespace apex_macos
 
       void stop_service() override;
       
-      
+      bool dark_mode() const override;
       void set_dark_mode(bool bDark) override;
 
       //bool resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder = nullptr, string * pstrParams = nullptr, string * pstrIconLocation = nullptr, int * piIcon = nullptr) override;

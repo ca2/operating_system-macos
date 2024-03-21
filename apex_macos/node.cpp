@@ -23,7 +23,7 @@ void macos_set_launch_on_login(int launchOnLogin);
 
 void ns_main_async(dispatch_block_t block);
 
-
+bool ns_get_dark_mode();
 void ns_set_dark_mode(bool bDark);
 
 void setMyselfAsDefaultApplicationForFileExtension(const char * pszExtension);
@@ -842,6 +842,14 @@ void node::stop_service()
 
     return bOk != false;
     */
+}
+
+
+bool node::dark_mode() const
+{
+ 
+   return ns_get_dark_mode();
+   
 }
 
 void node::set_dark_mode(bool bDark)

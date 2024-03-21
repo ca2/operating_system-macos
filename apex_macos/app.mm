@@ -125,6 +125,7 @@ NSAppleScript * ns_get_lite_mode_script()
    return [[NSAppleScript alloc] initWithSource :@"tell app \"System Events\" to tell appearance preferences to set dark mode to false"];
 }
 
+
 // Don't forget to:
 // add NSAppleEventsUsageDescription to Info.plist with System Events usage description
 // add Apple Events Hardened Runtime entitlement

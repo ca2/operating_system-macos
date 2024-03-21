@@ -177,11 +177,7 @@ namespace acme_macos
          
          information() << scopedstrCommand;
 
-         ::trace_function tracefunction = ::std_inline_log();
-         
-         tracefunction.m_timeTimeout = timeOut;
-         
-         auto iExitCode = node()->command_system(scopedstrCommand, tracefunction);
+         auto iExitCode = node()->command_system(scopedstrCommand, ::std_inline_log());
 
          return iExitCode;
 
@@ -204,7 +200,7 @@ namespace acme_macos
 
                   ::string strCommand = "shopt -s dotglob; rm -Rf " + strPath + "/*";
 
-                  this->bash(strCommand);
+                  this->bash(strCommand, 5_min);
 
                }
 
@@ -225,7 +221,7 @@ namespace acme_macos
 
                   ::string strCommand = "shopt -s dotglob; rm -Rf " + strPath + "/*";
 
-                  this->bash(strCommand);
+                  this->bash(strCommand, 5_min);
 
                }
 
@@ -289,12 +285,12 @@ namespace acme_macos
             
          }
 
-         command_system("git clone " + strBranchAddUp + m_pathDownloadURL + " .", 30_minutes);
+         command_system("git clone " + strBranchAddUp + m_pathDownloadURL + " .", 30_min);
 
       }
 
 
-      ::i32 context::bash(const ::scoped_string &scopedstr)
+      ::i32 context::bash(const ::scoped_string &scopedstr, const class ::time & timeTimeout)
       {
 
          string strEscaped = scopedstr;
@@ -344,7 +340,7 @@ namespace acme_macos
 
          //
 
-         int iExitCode = command_system(strCommand, 12_hours);
+         int iExitCode = command_system(strCommand, timeTimeout);
 
          ///command_system("cmd.exe -c \"C:\\msys64\\msys2_shell.cmd\" \"" + strEscaped + "\"");
 
@@ -353,7 +349,7 @@ namespace acme_macos
       }
 
 
-      ::i32 context::zsh(const ::scoped_string &scopedstr)
+      ::i32 context::zsh(const ::scoped_string &scopedstr, const class ::time & timeTimeout)
       {
 
          string strEscaped = scopedstr;
@@ -384,7 +380,7 @@ namespace acme_macos
 
          //
 
-         int iExitCode = command_system(strCommand, 12_hours);
+         int iExitCode = command_system(strCommand, timeTimeout);
 
          ///command_system("cmd.exe -c \"C:\\msys64\\msys2_shell.cmd\" \"" + strEscaped + "\"");
 

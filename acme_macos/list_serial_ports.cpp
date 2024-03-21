@@ -196,7 +196,7 @@ string rtrim(const string& str)
 
    auto p = result.skip_any_character_in(whitespace);
    
-   auto found = result.index_of(p);
+   auto found = result.index_of(p.begin());
 
    if (::found(found))
    {
