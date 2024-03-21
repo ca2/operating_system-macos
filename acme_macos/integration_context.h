@@ -71,7 +71,7 @@ namespace acme_macos
 
       void prepare_linking_script(::string &str) override;
 
-      ::i32 command_system(const ::scoped_string &scopedstr) override;
+      ::i32 command_system(const ::scoped_string &scopedstr, const class ::time & timeOut) override;
 
       void clean() override;
 
