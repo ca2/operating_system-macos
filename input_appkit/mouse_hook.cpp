@@ -198,7 +198,7 @@ namespace input_appkit
 
       pmouse->m_atom = emessage;
 
-      handle(pmouse);
+      handle_message(pmouse);
 
    }
 

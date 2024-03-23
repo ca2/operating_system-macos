@@ -3,7 +3,7 @@
 Open Asset Import Library (assimp)
 ---------------------------------------------------------------------------
 
-Copyright (c) 2006-2022, assimp team
+Copyright (c) 2006-2024, assimp team
 
 All rights reserved.
 
@@ -58,15 +58,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #pragma once
 #ifndef AI_CONFIG_H_INC
 #define AI_CONFIG_H_INC
-
-
-#ifdef AI_OPENGEX_IMPORTER_H
-#undef ASSIMP_USE_HUNTER
-#endif
-
-#ifdef __APPLE__
-#define ASSIMP_BUILD_NO_C4D_IMPORTER
-#endif
 
 // ###########################################################################
 // LIBRARY SETTINGS
@@ -224,6 +215,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define AI_CONFIG_PP_PTV_ADD_ROOT_TRANSFORMATION    \
     "PP_PTV_ADD_ROOT_TRANSFORMATION"
 
+// ---------------------------------------------------------------------------
+/** @brief Configures the #aiProcess_PreTransformVertices step to use
+ *  a users defined matrix as the scene root node transformation before
+ *  transforming vertices. This property correspond to the 'a1' component
+ *  of the transformation matrix.
+ *  Property type: aiMatrix4x4.
+ */
+#define AI_CONFIG_PP_PTV_ROOT_TRANSFORMATION    \
+    "PP_PTV_ROOT_TRANSFORMATION"
 
 // ---------------------------------------------------------------------------
 /** @brief Set epsilon to check the identity of the matrix 4x4.
@@ -239,16 +239,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #if (!defined AI_CONFIG_CHECK_IDENTITY_MATRIX_EPSILON_DEFAULT)
 #   define AI_CONFIG_CHECK_IDENTITY_MATRIX_EPSILON_DEFAULT 10e-3f
 #endif
-
-// ---------------------------------------------------------------------------
-/** @brief Configures the #aiProcess_PreTransformVertices step to use
- *  a users defined matrix as the scene root node transformation before
- *  transforming vertices. This property correspond to the 'a1' component
- *  of the transformation matrix.
- *  Property type: aiMatrix4x4.
- */
-#define AI_CONFIG_PP_PTV_ROOT_TRANSFORMATION    \
-    "PP_PTV_ROOT_TRANSFORMATION"
 
 // ---------------------------------------------------------------------------
 /** @brief Configures the #aiProcess_FindDegenerates step to
@@ -1060,7 +1050,6 @@ enum aiComponent
  */
 #define AI_CONFIG_IMPORT_COLLADA_IGNORE_UP_DIRECTION "IMPORT_COLLADA_IGNORE_UP_DIRECTION"
 
-
 // ---------------------------------------------------------------------------
 /** @brief Specifies whether the Collada loader will ignore the provided unit size.
  *
@@ -1069,7 +1058,6 @@ enum aiComponent
  * Property type: Bool. Default value: false.
  */
 #define AI_CONFIG_IMPORT_COLLADA_IGNORE_UNIT_SIZE "IMPORT_COLLADA_IGNORE_UNIT_SIZE"
-
 
 // ---------------------------------------------------------------------------
 /** @brief Specifies whether the Collada loader should use Collada names.
@@ -1125,6 +1113,16 @@ enum aiComponent
 #define AI_CONFIG_EXPORT_GLTF_UNLIMITED_SKINNING_BONES_PER_VERTEX \
         "USE_UNLIMITED_BONES_PER VERTEX"
 
+/** @brief Specifies whether to write the value referenced to opacity in TransparencyFactor of each material. 
+ *
+ * When this flag is not defined, the TransparencyFactor value of each meterial is 1.0.
+ * By enabling this flag, the value is 1.0 - opacity;
+
+ * Property type: Bool. Default value: false.
+ */
+#define AI_CONFIG_EXPORT_FBX_TRANSPARENCY_FACTOR_REFER_TO_OPACITY \
+        "EXPORT_FBX_TRANSPARENCY_FACTOR_REFER_TO_OPACITY"
+
 /**
  * @brief Specifies the blob name, assimp uses for exporting.
  * 
@@ -1165,6 +1163,6 @@ enum aiComponent
  * Property type: Bool. Default value: undefined.
  */
 
-/* #undef ASSIMP_DOUBLE_PRECISION */
+//#define ASSIMP_DOUBLE_PRECISION 1
 
 #endif // !! AI_CONFIG_H_INC

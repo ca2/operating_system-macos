@@ -211,7 +211,7 @@ namespace input_appkit
       //void set_mouse_cursor(::windowing::cursor* pcursor) override;
 
 
-      void handle(::message::message * pmessage) override;
+      void handle_message(::message::message * pmessage) override;
 
 
    };

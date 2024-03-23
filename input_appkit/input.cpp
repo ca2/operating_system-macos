@@ -1530,7 +1530,7 @@ namespace input_appkit
    }
 
 
-   void input::handle(::message::message * pmessage)
+   void input::handle_message(::message::message * pmessage)
    {
 
       if (pmessage->m_atom.m_etype == atom::e_type_message)
@@ -1543,7 +1543,7 @@ namespace input_appkit
             for (auto & pparticle : m_particleaMouseHandler)
             {
 
-               pparticle->handle(pmessage);
+               pparticle->handle_message(pmessage);
 
             }
 
@@ -1555,7 +1555,7 @@ namespace input_appkit
             for (auto & pparticle : m_particleaKeyboardHandler)
             {
 
-               pparticle->handle(pmessage);
+               pparticle->handle_message(pmessage);
 
             }
 

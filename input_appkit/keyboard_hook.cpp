@@ -245,7 +245,7 @@ namespace input_appkit
 
       }
 
-      handle(pkeyboard);
+      handle_message(pkeyboard);
 
    }
 
