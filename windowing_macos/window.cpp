@@ -1900,7 +1900,24 @@ pmessage->m_atom = emessage
       
       auto pwindowing = m_pwindowing;
       
-      auto puserinteraction = m_puserinteractionimpl->m_puserinteraction;
+      
+      auto puserinteractionimpl = m_puserinteractionimpl;
+      
+      if(!puserinteractionimpl)
+      {
+       
+         return;
+         
+      }
+      
+      auto puserinteraction = puserinteractionimpl->m_puserinteraction;
+      
+      if(!puserinteraction)
+      {
+       
+         return;
+         
+      }
       
 //      auto pwindowActive = pwindowing->get_active_window(puserinteraction->m_pthreadUserInteraction);
 //
