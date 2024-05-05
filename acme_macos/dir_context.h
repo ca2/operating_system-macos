@@ -30,7 +30,7 @@ namespace acme_macos
       bool enumerate(::file::listing & path) override;
 
 
-      virtual bool  is(const ::file::path & path) override;
+      //virtual bool  is(const ::file::path & path) override;
       virtual bool  is_inside(const ::file::path & pathFolder,const ::file::path & path) override;
       virtual bool  is_inside_time(const ::file::path & path) override;
       virtual bool  name_is(const ::file::path & path) override;

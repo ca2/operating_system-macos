@@ -13,7 +13,7 @@
 void axuielement_post_close(AXUIElementRef axuielement);
 ::string axuielement_first_window_title(AXUIElementRef axuielement);
 ::string axuielement_application_name(AXUIElementRef axuielement);
-::count axuielement_application_window_count(AXUIElementRef axuielement);
-AXUIElementRef axuielement_menu_bar_item_menu_item_with(AXUIElementRef axuielement, ::index i, const char * psz);
+::raw::count axuielement_application_window_count(AXUIElementRef axuielement);
+AXUIElementRef axuielement_menu_bar_item_menu_item_with(AXUIElementRef axuielement, ::raw::index i, const char * psz);
 AXUIElementRef axuielement_menu_bar(AXUIElementRef axuielement);
 

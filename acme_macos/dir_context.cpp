@@ -205,7 +205,7 @@ namespace acme_macos
       
       path = "/";
       
-      path.m_iDir = 1;
+      path.m_etype = ::file::e_type_existent_folder;
 
       listing.defer_add(path);
 
@@ -369,28 +369,28 @@ namespace acme_macos
    }
 
 
-   bool dir_context::is(const ::file::path & pathParam)
-   {
-
-      return ::dir_context::is(pathParam);
-//      ::file::path path;
+//   bool dir_context::is(const ::file::path & pathParam)
+//   {
 //
-//      auto pcontext = m_pcontext;
+//      return ::dir_context::is(pathParam);
+////      ::file::path path;
+////
+////      auto pcontext = m_pcontext;
+////
+////      path = pcontext->m_papexcontext->defer_process_path(pathParam);
+////
+////      if(::dir_context::is(path))
+////      {
+////
+////         return true;
+////
+////      }
+////
+////      auto pacmedirectory = m_psystem->m_pacmedirectory;
+////
+////      return pacmedirectory->_is(path);
 //
-//      path = pcontext->m_papexcontext->defer_process_path(pathParam);
-//
-//      if(::dir_context::is(path))
-//      {
-//
-//         return true;
-//
-//      }
-//
-//      auto pacmedirectory = m_psystem->m_pacmedirectory;
-//
-//      return pacmedirectory->_is(path);
-
-   }
+//   }
 
 
 //   bool dir_context::is(const string & strPath)

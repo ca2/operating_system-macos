@@ -7,6 +7,7 @@
 #include "framework.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
 #include "acme/platform/system.h"
+#include "acme/operating_system/shared_posix/c_error_number.h"
 #include <spawn.h>
 
 

@@ -172,12 +172,12 @@ namespace acme_macos
       }
 
 
-      int context::command_system(const ::scoped_string &scopedstrCommand, const class ::time & timeOut)
+      int context::command_system(const ::scoped_string &scopedstrCommand, const class ::time & timeOut, const ::file::path & pathWorkingDirectory, ::e_display edisplay)
       {
          
          information() << scopedstrCommand;
 
-         auto iExitCode = node()->command_system(scopedstrCommand, ::std_inline_log());
+         auto iExitCode = node()->command_system(scopedstrCommand, ::std_inline_log(), pathWorkingDirectory, edisplay);
 
          return iExitCode;
 

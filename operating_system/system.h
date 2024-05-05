@@ -53,16 +53,28 @@
 
 
 #include <new>
-
+#ifdef   _STDIO_H_
+#error "already included?!?! _____ (After including <new>)"
+#endif
 #include <concepts>
+#ifdef   _STDIO_H_
+#error "already included?!?! _____ (After including <concepts>)"
+#endif
 
 #include <compare>
+#ifdef   _STDIO_H_
+#error "already included?!?! _____ (After including <compare>)"
+#endif
 
 #undef __STD_FORMAT__
 
 
 #ifdef __STD_FORMAT__
 #include <format>
+#ifdef   _STDIO_H_
+#error "already included?!?! _____ (After including <format>)"
+#endif
+
 #endif
 
 
@@ -88,12 +100,19 @@ typedef struct gdi_object * HGDIOBJ;
 // #endif
 
 
-#ifdef __OBJC__
-
-#include <Foundation/Foundation.h>
-#include <Cocoa/Cocoa.h>
-
-#endif
+//#ifdef __OBJC__
+//
+//#include <Foundation/Foundation.h>
+//#ifdef   _STDIO_H_
+//#error "already included?!?! _____ (After including <Foundation>)"
+//#endif
+//
+//#include <Cocoa/Cocoa.h>
+//#ifdef   _STDIO_H_
+//#error "already included?!?! _____ (After including <Cocoa>)"
+//#endif
+//
+//#endif
 
 
 ////#include <Carbon/Carbon.h>
@@ -193,7 +212,15 @@ typedef wchar_t            unichar32;
 
 
 #include <typeinfo>
+#ifdef   _STDIO_H_
+#error "already included?!?! _____ (After including <typeinfo>)"
+#endif
+
 #include <initializer_list>
+#ifdef   _STDIO_H_
+#error "already included?!?! _____ (After including <initializer_list>)"
+#endif
+
 
 typedef ::std::type_info std_type_info;
 

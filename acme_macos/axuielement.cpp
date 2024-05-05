@@ -117,7 +117,7 @@ AXUIElementRef axuielement_menu_bar(AXUIElementRef axuielement)
 }
 
 
-AXUIElementRef axuielement_menu_bar_item(AXUIElementRef axuielement, ::index i)
+AXUIElementRef axuielement_menu_bar_item(AXUIElementRef axuielement, ::raw::index i)
 {
    
    AXUIElementRef menubar = axuielement_menu_bar(axuielement);
@@ -161,7 +161,7 @@ AXUIElementRef axuielement_menu_bar_item(AXUIElementRef axuielement, ::index i)
 }
 
 
-AXUIElementRef axuielement_menu_bar_item_menu(AXUIElementRef axuielement, ::index i)
+AXUIElementRef axuielement_menu_bar_item_menu(AXUIElementRef axuielement, ::raw::index i)
 {
    
    AXUIElementRef menubaritem = axuielement_menu_bar_item(axuielement, i);
@@ -205,7 +205,7 @@ AXUIElementRef axuielement_menu_bar_item_menu(AXUIElementRef axuielement, ::inde
 }
 
 
-AXUIElementRef axuielement_menu_bar_item_menu_item_with(AXUIElementRef axuielement, ::index i, const char * psz)
+AXUIElementRef axuielement_menu_bar_item_menu_item_with(AXUIElementRef axuielement, ::raw::index i, const char * psz)
 {
    
    AXUIElementRef menu = axuielement_menu_bar_item_menu(axuielement, i);
@@ -238,7 +238,7 @@ AXUIElementRef axuielement_menu_bar_item_menu_item_with(AXUIElementRef axuieleme
    
    AXUIElementRef itemRef = nil;
    
-   for(::index i = 0; i < count; i++)
+   for(::raw::index i = 0; i < count; i++)
    {
       
       AXUIElementRef menuitemChild = (AXUIElementRef) CFArrayGetValueAtIndex(children, i);
@@ -315,7 +315,7 @@ AXUIElementRef axuielement_first_window(AXUIElementRef axuielement)
 }
 
 
-::count axuielement_application_window_count(AXUIElementRef axuielement)
+::raw::count axuielement_application_window_count(AXUIElementRef axuielement)
 {
    
    CFArrayRef windowArray = nil;

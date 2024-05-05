@@ -186,14 +186,14 @@ namespace acme_macos
    }
 
 
-   ::count application::window_count() const
+   ::raw::count application::window_count() const
    {
       
       ::string strTitle;
 
       auto axuielement = AXUIElementCreateApplication((pid_t) m_processidentifier);
       
-      ::count c = 0;
+      ::raw::count c = 0;
       
       try
       {
