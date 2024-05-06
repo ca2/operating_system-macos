@@ -12,7 +12,7 @@
 //  appreciated but not required.
 //
 
-
+#import <Cocoa/Cocoa.h>
 #include "macOSWindowController.h"
 
 unsigned int event_key_code(NSEvent * event);

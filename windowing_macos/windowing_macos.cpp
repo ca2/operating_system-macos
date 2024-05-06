@@ -810,7 +810,7 @@ rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
    
 #endif
    
-   for(index i = c - 1; i >= 0; i--)
+   for(::raw::index i = c - 1; i >= 0; i--)
    {
       
 #ifdef FUNCTION_TRACE
@@ -1312,7 +1312,7 @@ int_bool point_is_window_origin(::point_i32 pointHitTest, oswindow oswindowExclu
    
    ::rectangle_i32 rectTest;
 
-   for(index i = 0; i < recta.get_size(); i++)
+   for(::raw::index i = 0; i < recta.get_size(); i++)
    {
    
       int wid = windowida[i];

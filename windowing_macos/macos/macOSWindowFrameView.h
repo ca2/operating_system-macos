@@ -23,6 +23,7 @@ struct mf_context
 //   enum APPLE_KEYBOARD_TYPE appleKeyboardType;
    
 };
+#import <Cocoa/Cocoa.h>
 
 
 @class macos_nswindow;

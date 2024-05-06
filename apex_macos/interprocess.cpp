@@ -100,7 +100,7 @@ namespace apex_macos
          
       }
 
-      ::count c = ansi_length(strMessage);
+      ::raw::count c = ansi_length(strMessage);
 
       //::count cSend;
 

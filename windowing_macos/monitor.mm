@@ -6,6 +6,9 @@
 //
 #include "framework.h"
 
+#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
+
 void ns_main_async(dispatch_block_t block);
 
 

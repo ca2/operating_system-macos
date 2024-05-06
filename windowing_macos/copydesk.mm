@@ -7,6 +7,8 @@
 //
 #include "framework.h"
 
+#include <Cocoa/Cocoa.h>
+
 
 NSImage * nsimage_from_image_data(const void * pdata, int cx, int cy, int scan);
 

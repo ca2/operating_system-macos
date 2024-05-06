@@ -6,6 +6,7 @@
 //
 #include "framework.h"
 
+#import <Cocoa/Cocoa.h>
 
 NSWindow * __nswindow(oswindow oswindow);
 

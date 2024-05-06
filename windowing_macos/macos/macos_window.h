@@ -8,9 +8,9 @@
 
 #pragma once
 
-
 //#include "app/axis/user/user/user_key_enum.h"
 #ifdef __OBJC__
+#import <Cocoa/Cocoa.h>
 @class macos_nswindow;
 #endif
 

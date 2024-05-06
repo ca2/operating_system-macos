@@ -9,6 +9,8 @@
 
 #if defined(__OBJECTIVE_CPP__)
 
+#import <Cocoa/Cocoa.h>
+
 void ns_screen_translate(CGRect * prect, int iIndex = -1);
 
 void ns_main_monitor_cgrect(CGRect * prect);

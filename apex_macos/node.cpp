@@ -1389,11 +1389,11 @@ void node::set_this_application_as_default_for_file_extension(const ::string& st
    setMyselfAsDefaultApplicationForFileExtension(strFormattedExtension);
    
 }
-void node::register_user_auto_start(const string & strAppId, const ::file::path & pathExecutable, const string & strArguments,
+void node::register_user_auto_start(::acme::application * papplication, const string & strArguments,
                            bool bRegister)
 {
 
-if(strAppId == application()->m_strAppId)
+if(papplication->m_strAppId == application()->m_strAppId)
 
 {
    
@@ -1403,7 +1403,7 @@ if(strAppId == application()->m_strAppId)
 else
 {
    
-   apex_posix::node::register_user_auto_start(strAppId, pathExecutable, strAppId, bRegister);
+   apex_posix::node::register_user_auto_start(papplication, strArguments, bRegister);
    
 }
 
