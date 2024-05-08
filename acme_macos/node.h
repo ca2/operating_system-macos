@@ -138,7 +138,7 @@ namespace acme_macos
 //
 //      ::process_identifier_array processes_identifiers() override;
 
-      ::i32 unix_shell_command(const ::scoped_string &scopedstr, const trace_function & tracefunction = nullptr) override;
+      ::i32 posix_shell_command(const ::scoped_string& scopedstrCommand, enum_posix_shell eposixshell = e_posix_shell_system_default, const trace_function& tracefunction = nullptr) override;
 
       
       virtual ::i32 zsh(const ::scoped_string &scopedstr, const trace_function & tracefunction = nullptr);

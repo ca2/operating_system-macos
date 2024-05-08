@@ -1224,10 +1224,21 @@ bool node::__ns_is_application_running(const ::scoped_string & scopedstrRepos, c
 //}
 
 
-   ::i32 node::unix_shell_command(const ::scoped_string &scopedstr, const trace_function & tracefunction)
+   ::i32 node::posix_shell_command(const ::scoped_string& scopedstrCommand, enum_posix_shell eposixshell, const trace_function& tracefunction)
    {
-   
-      return zsh(scopedstr, tracefunction);
+      
+      if(eposixshell == e_posix_shell_system_default)
+      {
+         
+         return zsh(scopedstrCommand, tracefunction);
+         
+      }
+      else
+      {
+         
+         return zsh(scopedstrCommand, tracefunction);
+         
+      }
       
    }
 
