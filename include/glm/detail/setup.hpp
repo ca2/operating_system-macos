@@ -610,7 +610,7 @@ namespace glm
 			return N;
 		}
 	}//namespace glm
-#	define GLM_COUNTOF(arr) glm::countof(arr)
+#	define GLM_COUNTOF(arr) glm::collection::countof(arr)
 #elif defined(_MSC_VER)
 #	define GLM_CONFIG_CONSTEXP GLM_DISABLE
 

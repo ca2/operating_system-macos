@@ -596,7 +596,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    //
    //                              synchronous_lock slSession(psession->mutex());
    //
-   //                              ::count iMonitorCount = gdk_display_get_n_monitors(pdisplay);
+   //                              ::collection::count iMonitorCount = gdk_display_get_n_monitors(pdisplay);
    //
    //                              psession->m_rectaWorkspace.set_size(iMonitorCount);
    //

@@ -133,7 +133,7 @@ void main_window::post_close()
 }
 
 
-   ::string main_window::indexed_get_window_text(const ::iptr_array & idPath)
+   ::string main_window::collection::indexed_get_window_text(const ::iptr_array & idPath)
    {
       
       ::string str;

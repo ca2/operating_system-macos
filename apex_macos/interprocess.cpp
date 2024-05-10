@@ -100,9 +100,9 @@ namespace apex_macos
          
       }
 
-      ::raw::count c = ansi_length(strMessage);
+      ::collection::collection::count c = ansi_length(strMessage);
 
-      //::count cSend;
+      //::collection::count cSend;
 
       memory m;
 
@@ -160,9 +160,9 @@ namespace apex_macos
 //
 //      memory m(pdata, len);
 //
-//      //::count c = len;
+//      //::collection::count c = len;
 //
-//      //::count cSend;
+//      //::collection::count cSend;
 //
 //
 //      SInt32 status =
