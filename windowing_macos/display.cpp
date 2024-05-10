@@ -36,7 +36,7 @@ namespace windowing_macos
    }
 
 
-   ::collection::collection::count display::get_monitor_count()
+   ::collection::count display::get_monitor_count()
    {
     
       return ns_monitor_count();
@@ -44,7 +44,7 @@ namespace windowing_macos
    }
 
 
-   string display::impl_get_wallpaper(::collection::collection::index iScreen)
+   string display::impl_get_wallpaper(::collection::index iScreen)
    {
       
       auto psz = ns_get_wallpaper();
@@ -67,7 +67,7 @@ namespace windowing_macos
    }
 
 
-   bool display::impl_set_wallpaper(::collection::collection::index iScreen, string strWallpaper)
+   bool display::impl_set_wallpaper(::collection::index iScreen, string strWallpaper)
    {
       
 //      if(!strWallpaper.case_insensitive_begins("file://"))
