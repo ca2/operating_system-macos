@@ -78,9 +78,9 @@ namespace interprocess_communication
       if(m_port == nullptr)
          return false;
 
-      ::count c = ansi_length(pszMessage);
+      ::collection::count c = ansi_length(pszMessage);
 
-      ::count cSend;
+      ::collection::count cSend;
 
       memory m;
 
@@ -131,9 +131,9 @@ namespace interprocess_communication
 
       memory m(pdata, len);
 
-      ::count c = len;
+      ::collection::count c = len;
 
-      ::count cSend;
+      ::collection::count cSend;
 
 
       SInt32 status =

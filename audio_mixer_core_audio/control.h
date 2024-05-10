@@ -44,7 +44,7 @@
          ::pointer < ::audio_mixer::control_data > GetWindowData(int32_t iType) override;
          void OnMixerControlChange() override;
 //         ::pointer < ::audio_mixer::user::control > GetControl(int32_t iType) override;
-//         ::pointer < ::audio_mixer::user::control > GetControlByIndex(::index iIndex) override;
+//         ::pointer < ::audio_mixer::user::control > GetControlByIndex(::collection::index iIndex) override;
          void Prepare() override;
          bool CreateWindowsVolumeV001(::user::interaction * pParent, uint32_t nStartID, uint32_t * nNextID);
 
