@@ -32,7 +32,7 @@ namespace acme_macos
       
       ::string main_window_title() override;
 
-      ::raw::count window_count() const override;
+      ::collection::count window_count() const override;
       
       virtual ::string __ns_get_bundle_identifier() const;
 
