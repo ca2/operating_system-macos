@@ -14,7 +14,7 @@
 #include "framework.h"
 #include "acme/constant/message.h"
 #include "apex/input/mouse_hook.h"
-
+#import <Cocoa/Cocoa.h>
 
 namespace input_appkit
 {

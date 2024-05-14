@@ -9,6 +9,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 //
 //// Have to add this framework
 //
