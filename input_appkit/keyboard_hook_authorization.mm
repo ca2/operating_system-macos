@@ -5,6 +5,7 @@
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 14/09/21.
 //
 
+#import <Cocoa/Cocoa.h>
 
 namespace input_appkit
 {
