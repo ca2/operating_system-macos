@@ -778,7 +778,10 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::win
 ////   }
    
 
+void windowing::clear_active_window(::thread *, ::windowing::window *)
+{
 
+}
 
 
 } // namespace windowing_macos

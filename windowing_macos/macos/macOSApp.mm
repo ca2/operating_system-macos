@@ -105,13 +105,15 @@ void set_apex_system_as_thread();
 -(void)application_menu_update
 {
    
-   m_menu = [ NSApp mainMenu ];
+   //m_menu = [ NSApp mainMenu ];
    
-   [ m_menu removeAllItems ];
+   auto m = [[NSMenu alloc] init];
    
-   ns_create_menu(m_menu, m_papplicationmenu, true);
+   [ m removeAllItems ];
+   
+   ns_create_menu(m, m_papplicationmenu, true);
       
-//   [ NSApp setMainMenu: m_menu];
+   [ NSApp setMainMenu: m];
    
 //   m_menu = [[NSMenu alloc] initWithTitle:@"menubar_menu"];
 //   m_menuitema = [[NSMutableArray alloc] init];

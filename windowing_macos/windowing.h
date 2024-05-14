@@ -107,7 +107,9 @@ namespace windowing_macos
       
       //::pointer < ::input::input > get_input() override;
       
-
+      void clear_active_window(::thread *, ::windowing::window *) override;
+      
+      
    };
       
 

@@ -6,7 +6,7 @@
 #include "acme/filesystem/file/memory_file.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
 #include "acme/platform/application.h"
-#include "acme/platform/nano_http.h"
+#include "acme/nano/http/http.h"
 #include "acme/platform/node.h"
 #include "acme/platform/system.h"
 #include "acme/primitive/primitive/url.h"
@@ -44,9 +44,7 @@ namespace acme_macos
       void context::initialize(::particle *pparticle)
       {
 
-         ::particle::initialize(pparticle);
-
-         m_pmutexLines = node()->create_mutex();
+         ::integration::context::initialize(pparticle);
 
       }
 
@@ -234,39 +232,41 @@ namespace acme_macos
 
       void context::download_and_uncompress()
       {
+         
+         ::integration::context::download_and_uncompress();
 
-         if (m_pathDownloadURL.case_insensitive_ends(".tar.gz"))
-         {
-
-            property_set set;
-
-            system()->url()->defer_raw_http(set);
-
-            set["disable_common_name_cert_check"] = true;
-
-            //auto path = m_pathFolder / m_path / (m_strName + ".tar.gz");
-
-            auto pmemoryFileTarGz = create_memory_file();
-
-            auto url = m_pathDownloadURL;
-            
-            ::particle * pparticle = this;
-
-            pparticle->context()->http_download(pmemoryFileTarGz, url, set);
-
-            //auto pathTar = m_pathFolder / m_path / (m_strName + ".tar");
-
-            pmemoryFileTarGz->seek_to_begin();
-
-            auto pmemoryFileTar = create_memory_file();
-
-            system()->uncompress(pmemoryFileTar, pmemoryFileTarGz, "zlib");
-
-            pmemoryFileTar->seek_to_begin();
-
-            this->untar(m_pathSource, pmemoryFileTar, 1);
-
-         }
+//         if (m_pathDownloadURL.case_insensitive_ends(".tar.gz"))
+//         {
+//
+//            property_set set;
+//
+//            system()->url()->defer_raw_http(set);
+//
+//            set["disable_common_name_cert_check"] = true;
+//
+//            //auto path = m_pathFolder / m_path / (m_strName + ".tar.gz");
+//
+//            auto pmemoryFileTarGz = create_memory_file();
+//
+//            auto url = m_pathDownloadURL;
+//            
+//            ::particle * pparticle = this;
+//
+//            pparticle->context()->http_download(pmemoryFileTarGz, url, set);
+//
+//            //auto pathTar = m_pathFolder / m_path / (m_strName + ".tar");
+//
+//            pmemoryFileTarGz->seek_to_begin();
+//
+//            auto pmemoryFileTar = create_memory_file();
+//
+//            system()->uncompress(pmemoryFileTar, pmemoryFileTarGz, "zlib");
+//
+//            pmemoryFileTar->seek_to_begin();
+//
+//            this->untar(m_pathSource, pmemoryFileTar, 1);
+//
+//         }
 
       }
 

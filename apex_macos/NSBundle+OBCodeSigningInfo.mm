@@ -36,20 +36,22 @@
 
 - (BOOL)ob_isSandboxed
 {
-    BOOL isSandboxed = NO;
-    if ([self ob_codeSignState] == OBCodeSignStateSignatureValid)
-    {
-        SecStaticCodeRef staticCode = [self ob_createStaticCode];
-        SecRequirementRef sandboxRequirement = [self ob_sandboxRequirement];
-        if (staticCode && sandboxRequirement) {
-            OSStatus codeCheckResult = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSBasicValidateOnly, sandboxRequirement, NULL);
-            if (codeCheckResult == errSecSuccess) {
-                isSandboxed = YES;
-            }
-            CFRelease(staticCode);
-        }
-    }
-    return isSandboxed;
+   auto sandboxId = [[NSProcessInfo processInfo] environment][@"APP_SANDBOX_CONTAINER_ID"];
+   return sandboxId != nil;
+//    BOOL isSandboxed = NO;
+//    if ([self ob_codeSignState] == OBCodeSignStateSignatureValid)
+//    {
+//        SecStaticCodeRef staticCode = [self ob_createStaticCode];
+//        SecRequirementRef sandboxRequirement = [self ob_sandboxRequirement];
+//        if (staticCode && sandboxRequirement) {
+//            OSStatus codeCheckResult = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSBasicValidateOnly, sandboxRequirement, NULL);
+//            if (codeCheckResult == errSecSuccess) {
+//                isSandboxed = YES;
+//            }
+//            CFRelease(staticCode);
+//        }
+//    }
+//    return isSandboxed;
 }
 
 
