@@ -17,6 +17,7 @@
 #include "apex/input/keyboard_hook.h"
 //#import <ApplicationServices/ApplicationServices.h>
 #include <Carbon/Carbon.h>
+#import <Cocoa/Cocoa.h>
 //#import <ScriptingBridge/ScriptingBridge.h>
 
 //#define VK_CLEAR          0x0C
