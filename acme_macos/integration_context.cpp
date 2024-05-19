@@ -68,8 +68,6 @@ namespace acme_macos
 
          ::integration::context::change_to_source_directory(scopedstrRelative);
          
-         //acmedirectory()->change_current(m_pathSource2);
-
       }
 
 

@@ -1303,12 +1303,20 @@ bool node::defer_consume_main_arguments(int argc, char ** argv, int & iArgument)
 }
 
 
-::file::path node::get_default_base_integration_folder()
-{
-   
-   return acmedirectory()->home() / "integration/_____";
-   
-}
+   ::file::path node::get_default_base_integration_folder()
+   {
+      
+      return acmedirectory()->home() / "integration/_____";
+      
+   }
+
+
+   // int node::performance_core_count()
+   // {
+      
+   //    return
+      
+   // }
 
 
 } // namespace acme_macos

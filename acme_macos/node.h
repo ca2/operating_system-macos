@@ -144,7 +144,7 @@ namespace acme_macos
       virtual ::i32 zsh(const ::scoped_string &scopedstr, const trace_function & tracefunction = nullptr);
 
       ::file::path get_default_base_integration_folder() override;
-      
+
 
    };
 
