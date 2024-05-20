@@ -61,7 +61,7 @@ namespace acme_macos
       override;
 
 
-      void prepare() override;
+      void prepare(const ::scoped_string & scopedstrOperatingSystem) override;
 
       void change_to_source_directory(const ::scoped_string & scopedstrRelative) override;
 
