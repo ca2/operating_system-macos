@@ -120,7 +120,7 @@ string node::get_command_line()
    for(int i = 0; i < platform()->m_argc; i++)
    {
       
-      auto psz = platform()->m_argv[i];
+      auto psz = platform()->m_args[i];
       
       ::string strArg(psz);
       
