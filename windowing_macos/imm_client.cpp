@@ -106,7 +106,7 @@ void imm_client::_011OnChar(::message::message * pmessage)
       //if (!::str::case_insensitive_begins_eat(m_strImeComposition, strChar))
       //{
 
-      m_puserinteraction->plain_edit_insert_text(strChar, false, e_source_user);
+      m_puserinteraction->insert_text(strChar, false, e_source_user);
 
       //}
 
@@ -115,10 +115,10 @@ void imm_client::_011OnChar(::message::message * pmessage)
 }
 
 
-void imm_client::plain_edit_insert_text(const ::scoped_string & scopedstr, bool bForceNewStep, const ::action_context & context)
+void imm_client::insert_text(const ::scoped_string & scopedstr, bool bForceNewStep, const ::action_context & context)
 {
 
-   text_composition_client::plain_edit_insert_text(scopedstr, bForceNewStep, context);
+   text_composition_client::insert_text(scopedstr, bForceNewStep, context);
 
 }
 
