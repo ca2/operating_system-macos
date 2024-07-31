@@ -965,6 +965,13 @@ namespace windowing_macos
       ::rectangle_f64 rectangleTarget(sizeMin);
       
       image_drawing_options imagedrawingoptions(rectangleTarget);
+       
+      if(m_dOpacity < 1.0)
+      {
+          
+          imagedrawingoptions.m_opacity = m_dOpacity;
+          
+      }
       
       image_drawing imagedrawing(imagedrawingoptions, imagesource);
 
@@ -2627,6 +2634,12 @@ pmessage->m_atom = emessage
    }
 
 
+    void window::set_opacity(double dOpacity)
+    {
+        
+        macos_window_set_opacity(minimum_maximum(dOpacity, 0.0, 1.0));
+        
+    }
 
 
 } // namespace windowing_macos

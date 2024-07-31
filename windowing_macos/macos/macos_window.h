@@ -28,6 +28,7 @@ public:
    
 #endif
 
+    double                  m_dOpacity;
    bool                    m_bDestroying;
    bool                    m_bDirty;
    bool                    m_bTest123;
@@ -104,6 +105,8 @@ public:
    virtual void macos_window_get_title(char * pszTitle, int iSize);
    
    virtual void macos_window_destroy();
+    
+    virtual void macos_window_set_opacity(double dOpacity);
    
    //virtual void ns_main_async(dispatch_block_t block) = 0;
    

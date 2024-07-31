@@ -30,7 +30,6 @@ NSString * __nsstring(const char * psz);
 
 //void on_start_system(void * pSystem);
 
-//void macos_calc_dark_mode();
 void os_system_start();
 int file_put_contents(const char * path, const char * contents);
 void file_add_contents_raw(const char * path, const char * psz);
@@ -311,12 +310,7 @@ void set_apex_system_as_thread();
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
    
-
-   //macos_calc_dark_mode();
-   
-
    [ self application_menu_update ];
-   
    
    [ super applicationWillFinishLaunching: notification];
    
@@ -639,18 +633,6 @@ void set_apex_system_as_thread();
 
 
 
-
-
-//-(void) fetch_dark_mode
-//{
-//   NSString *interfaceStyle = [NSUserDefaults.standardUserDefaults valueForKey:@"AppleInterfaceStyle"];
-//   int iDarkMode = [interfaceStyle isEqualToString:@"Dark"];
-//
-//   system_id_update(application_system(m_pApplication), id_set_dark_mode, iDarkMode);
-//
-//}
-
-
 - (void)checkStoreKitPermissions {
 //  NSString *mg;
 //  SKCloudServiceAuthorizationStatus status = SKCloudServiceController.authorizationStatus;
@@ -835,32 +817,6 @@ void defer_create_windowing_application_delegate(void * pApplication, ::applicat
    
 }
    
-//}
-//
-//void windowing_macos_application_main(void * pApplication, int argc, char *argv[])
-//{
-   
-//   NSApplication * application = [NSApplication sharedApplication];
-//
-//
-//
-//   appDelegate->m_pApplication = pApplication;
-//
-//   [ application setDelegate:appDelegate];
-//
-//   [ appDelegate continueInitialization ];
-//
-//   [appDelegate fetch_dark_mode];
-   
-   //[m_statusitem setEnabled:YES];
-   
-   //[NSApplication sharedApplication];
-   
-   
-   
-   //[NSApp run];
-   
-//}
 
 
 //-(void)applicationActivity:(NSNotification *)notification
@@ -1383,59 +1339,6 @@ void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool b
 //
 
 
-//
-//namespace user
-//{
-//
-//
-//
-//
-//   bool is_dark_mode()
-//   {
-//      
-//         
-//      return g_bMacosDarkMode;
-//      
-//   }
-//
-//
-//} // namespace user
-
-
-
-
-
-//void windowing_macos_application_main(void * pApplication, int argc, char *argv[])
-//{
-//
-//   NSApplication * application = [NSApplication sharedApplication];
-//
-//   macos_app * appDelegate = [[macos_app alloc] init];
-//
-//   appDelegate->m_pApp = pApplication;
-//
-//   [application setDelegate:appDelegate];
-//
-//   [appDelegate fetch_dark_mode];
-//
-//   //[m_statusitem setEnabled:YES];
-//
-//   [NSApplication sharedApplication];
-//
-//   bool bNoDock = argcargv_contains_parameter(argc, argv, "no_dock");
-////
-////   if(bNoDock)
-////   {
-////
-////      nsapp_activation_policy_accessory();
-////
-////   }
-//
-//   [NSApp activateIgnoringOtherApps:YES];
-//
-//   [NSApp run];
-//
-//}
 
 
 void ns_application_handle(long long l, void * p)

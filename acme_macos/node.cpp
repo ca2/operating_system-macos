@@ -722,28 +722,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    //
    //   }
 
-   //   bool node::should_launch_on_node(::subject::subject * psubject)
-   //   {
-   //
-   //      if(::is_null(psubject))
-   //      {
-   //
-   //         return false;
-   //
-   //      }
-   //
-   //      if(psubject->m_id == id_os_dark_mode)
-   //      {
-   //
-   //         return false;
-   //
-   //      }
-   //
-   //      return false;
-   //
-   //   }
-   //
-   //
+   
    //   bool node::launch_on_node(::subject::subject * psubject)
    //   {
    //

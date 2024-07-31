@@ -8,6 +8,7 @@
 #include "framework.h"
 #include "macos_window.h"
 #include "macos_nswindow.h"
+#include "macOSWindowFrameView.h"
 
 
 void ns_set_main_window(NSWindow * pnswindow);
@@ -67,6 +68,8 @@ void create_macos_nswindow(macos_window * pmacoswindow, CGRect rect, unsigned in
 
 macos_window::macos_window()
 {
+    
+    m_dOpacity = 1.;
    
    m_bDirty = false;
    
@@ -567,6 +570,31 @@ void macos_window::macos_window_invalidate()
    
 }
 
+
+
+void macos_window::macos_window_set_opacity(double dOpacity)
+{
+  
+    if(dOpacity <= 0.)
+    {
+        
+        m_dOpacity = 0.;
+        
+    }
+    else if(dOpacity >= 1.)
+    {
+        
+        m_dOpacity = 1.;
+        
+    }
+    else
+    {
+        
+        m_dOpacity = dOpacity;
+        
+    }
+   
+}
 
 //NSWindow * get_os_window_ns_window(oswindow hwnd)
 //{

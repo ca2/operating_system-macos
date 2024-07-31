@@ -159,7 +159,9 @@ namespace windowing_macos
       
       
       void bring_to_front() override;
-      
+
+       
+       void set_opacity(double dOpacity) override;
 
    };
 
