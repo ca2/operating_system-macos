@@ -493,7 +493,7 @@
    }
    
    p->profiling_on_start_draw_rectangle();
-   
+//#define REDRAW_HINTING
    CGContextRef cgc = nullptr;
    if (@available(macOS 10.10, *))
    {
@@ -547,14 +547,33 @@
       
       rectArtifact2.size.height /= 4;
       
-      rectArtifact2.origin.x = rect.size.width - rectArtifact2.size.width;
+      //rectArtifact2.origin.x = rect.size.width - rectArtifact2.size.width;
       
       rectArtifact2.origin.y = rect.size.height - rectArtifact2.size.height;
 
       CGContextFillRect(cgc, rectArtifact2);
       
    }
-   
+    {
+    
+       CGContextSetBlendMode(cgc, kCGBlendModeCopy);
+
+       CGContextSetRGBFillColor(cgc, 0.4f, 0.f, 0.f, 8.f / 255.f);
+       
+       auto rectArtifact2 = rect;
+       
+       rectArtifact2.size.width /= 4;
+       
+       rectArtifact2.size.height /= 4;
+       
+       rectArtifact2.origin.x = rect.size.width - rectArtifact2.size.width;
+       
+       rectArtifact2.origin.y = rect.size.height - rectArtifact2.size.height;
+
+       CGContextFillRect(cgc, rectArtifact2);
+       
+    }
+
 #endif
    
 }

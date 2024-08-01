@@ -78,7 +78,7 @@ NSString * __nsstring(const char * psz);
    macos_nswindow * pnswindow = self;
    
 	[self setOpaque:NO];
-   
+    [self setHasShadow:NO];
    //	[self setOpaque:YES];
 
    [self setBackgroundColor:[NSColor clearColor]];

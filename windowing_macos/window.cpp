@@ -974,6 +974,8 @@ namespace windowing_macos
       }
       
       image_drawing imagedrawing(imagedrawingoptions, imagesource);
+       
+       g->set_alpha_mode(draw2d::e_alpha_mode_set);
 
       g->draw(imagedrawing);
       
