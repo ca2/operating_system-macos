@@ -14,8 +14,8 @@ __FACTORY_EXPORT void audio_mixer_core_audio_factory(::factory::factory * pfacto
    pfactory->add_factory_item < ::audio_mixer_core_audio::control, ::audio_mixer::control                  > ();
       //System.factory().creatable_small < control_data                >  (System.type_info < ::audio_mixer::control_data             > ());
    pfactory->add_factory_item < ::audio_mixer_core_audio::destination, ::audio_mixer::destination                  > ();
-   pfactory->add_factory_item < ::audio_mixer_core_audio::device, ::audio_mixer::device                  > ();         pfactory->add_factory_item < ::audio_mixer_core_audio::line_info, ::audio_mixer::line_info                  > ();
-   pfactory->add_factory_item < ::audio_mixer_core_audio::audio_mixer, ::audio_mixer::audio_mixer                  > ();
+   pfactory->add_factory_item < ::audio_mixer_core_audio::device, ::audio_mixer::device                  > ();     pfactory->add_factory_item < ::audio_mixer_core_audio::line_info, ::audio_mixer::line_info                  > ();
+   pfactory->add_factory_item < ::audio_mixer_core_audio::audio_mixer, ::aqua::audio_mixer                  > ();
       //System.factory().cloneable_large < section                   >  (System.type_info < ::audio_mixer::font                     > ());
    pfactory->add_factory_item < ::audio_mixer_core_audio::source, ::audio_mixer::source                  > ();      //System.factory().creatable_small < thread                      >  (System.type_info < ::audio_mixer::thread                   > ());
       /*System.factory().creatable_small < user::label                 >  (System.type_info < ::audio_mixer::user::label              > ());
