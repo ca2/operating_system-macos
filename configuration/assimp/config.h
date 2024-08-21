@@ -659,7 +659,7 @@ enum aiComponent
  * Property type: bool
  */
 #define AI_CONFIG_IMPORT_FBX_EMBEDDED_TEXTURES_LEGACY_NAMING \
-	"AI_CONFIG_IMPORT_FBX_EMBEDDED_TEXTURES_LEGACY_NAMING"
+    "AI_CONFIG_IMPORT_FBX_EMBEDDED_TEXTURES_LEGACY_NAMING"
 
 // ---------------------------------------------------------------------------
 /** @brief  Set wether the importer shall not remove empty bones.
@@ -724,6 +724,12 @@ enum aiComponent
  */
 #define AI_CONFIG_IMPORT_MDL_HL1_READ_ANIMATION_EVENTS "IMPORT_MDL_HL1_READ_ANIMATION_EVENTS"
 
+// ---------------------------------------------------------------------------
+/** @brief Set whether you want to convert the HS1 coordinate system in a special way.
+ * The default value is true (S1)
+ * Property type: bool
+ */
+#define AI_CONFIG_IMPORT_MDL_HL1_TRANSFORM_COORD_SYSTEM "TRANSFORM COORDSYSTEM FOR HS! MODELS"
 // ---------------------------------------------------------------------------
 /** @brief Set whether the MDL (HL1) importer will read blend controllers.
  * \note This property requires AI_CONFIG_IMPORT_MDL_HL1_READ_ANIMATIONS to be set to true.
@@ -1090,7 +1096,7 @@ enum aiComponent
 #define AI_CONFIG_EXPORT_POINT_CLOUDS "EXPORT_POINT_CLOUDS"
 
 /** @brief Specifies whether to use the deprecated KHR_materials_pbrSpecularGlossiness extension
- * 
+ *
  * When this flag is undefined any material with specularity will use the new KHR_materials_specular
  * extension. Enabling this flag will revert to the deprecated extension. Note that exporting
  * KHR_materials_pbrSpecularGlossiness with extensions other than KHR_materials_unlit is unsupported,
@@ -1113,7 +1119,7 @@ enum aiComponent
 #define AI_CONFIG_EXPORT_GLTF_UNLIMITED_SKINNING_BONES_PER_VERTEX \
         "USE_UNLIMITED_BONES_PER VERTEX"
 
-/** @brief Specifies whether to write the value referenced to opacity in TransparencyFactor of each material. 
+/** @brief Specifies whether to write the value referenced to opacity in TransparencyFactor of each material.
  *
  * When this flag is not defined, the TransparencyFactor value of each meterial is 1.0.
  * By enabling this flag, the value is 1.0 - opacity;
@@ -1125,16 +1131,16 @@ enum aiComponent
 
 /**
  * @brief Specifies the blob name, assimp uses for exporting.
- * 
- * Some formats require auxiliary files to be written, that need to be linked back into 
+ *
+ * Some formats require auxiliary files to be written, that need to be linked back into
  * the original file. For example, OBJ files export materials to a separate MTL file and
  * use the `mtllib` keyword to reference this file.
- * 
+ *
  * When exporting blobs using #ExportToBlob, assimp does not know the name of the blob
- * file and thus outputs `mtllib $blobfile.mtl`, which might not be desired, since the 
- * MTL file might be called differently. 
- * 
- * This property can be used to give the exporter a hint on how to use the magic 
+ * file and thus outputs `mtllib $blobfile.mtl`, which might not be desired, since the
+ * MTL file might be called differently.
+ *
+ * This property can be used to give the exporter a hint on how to use the magic
  * `$blobfile` keyword. If the exporter detects the keyword and is provided with a name
  * for the blob, it instead uses this name.
  */
