@@ -55,7 +55,7 @@
 		9A865FD129663287000C82F0 /* libacme_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AB1608429A8A24700DFDF90 /* libapex_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AB1608629A8A26600DFDF90 /* libaura_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AC2D16F26542E1000CC8096 /* libnode_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libnode_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AC2D16F26542E1000CC8096 /* node_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = node_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC2D18E26542EA800CC8096 /* framework.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9AC2D19326542EA800CC8096 /* _factory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
 		9AC2D19926542EA800CC8096 /* framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		9AC2D17026542E1000CC8096 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9AC2D16F26542E1000CC8096 /* libnode_macos.dylib */,
+				9AC2D16F26542E1000CC8096 /* node_macos.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 			);
 			name = node_macos;
 			productName = node_macos;
-			productReference = 9AC2D16F26542E1000CC8096 /* libnode_macos.dylib */;
+			productReference = 9AC2D16F26542E1000CC8096 /* node_macos.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -458,16 +458,30 @@
 		9AC2D17926542E1000CC8096 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L8N5V6TZE5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				EXECUTABLE_EXTENSION = dylib;
+				MACH_O_TYPE = mh_dylib;
 				PLATFORM_MODIFIER = macos;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		9AC2D17A26542E1000CC8096 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L8N5V6TZE5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				EXECUTABLE_EXTENSION = dylib;
+				MACH_O_TYPE = mh_dylib;
 				PLATFORM_MODIFIER = macos;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

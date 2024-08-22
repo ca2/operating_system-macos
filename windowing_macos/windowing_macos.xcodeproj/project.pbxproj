@@ -155,7 +155,7 @@
 		9A79BE2B26645D9C009E6C44 /* notify_icon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = notify_icon.h; sourceTree = "<group>"; };
 		9A869DCC2B79A56A00937A3C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9A93B0F727FCFC380042D6C8 /* cursor_cpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cursor_cpp.cpp; sourceTree = "<group>"; };
-		9A9E4AD62751A3F40094A04C /* libwindowing_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libwindowing_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A9E4AD62751A3F40094A04C /* windowing_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = windowing_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA80242266558E000A6B449 /* icon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = icon.cpp; sourceTree = "<group>"; };
 		9AA80245266558E000A6B449 /* icon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = icon.h; sourceTree = "<group>"; };
 		9AA802482665706600A6B449 /* windowing_keyboard.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = windowing_keyboard.mm; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 		9A440A1626548BE4000C490B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A9E4AD62751A3F40094A04C /* libwindowing_macos.dylib */,
+				9A9E4AD62751A3F40094A04C /* windowing_macos.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -373,7 +373,7 @@
 			);
 			name = windowing_macos;
 			productName = windowing_macos;
-			productReference = 9A9E4AD62751A3F40094A04C /* libwindowing_macos.dylib */;
+			productReference = 9A9E4AD62751A3F40094A04C /* windowing_macos.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -658,16 +658,30 @@
 		9A9E4AD82751A3F40094A04C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L8N5V6TZE5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				EXECUTABLE_EXTENSION = dylib;
+				MACH_O_TYPE = mh_dylib;
 				PLATFORM_MODIFIER = macos;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		9A9E4AD92751A3F40094A04C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L8N5V6TZE5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				EXECUTABLE_EXTENSION = dylib;
+				MACH_O_TYPE = mh_dylib;
 				PLATFORM_MODIFIER = macos;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
