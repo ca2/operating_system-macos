@@ -22,7 +22,7 @@
 		9A5A897726D304B4004AF957 /* UniformTypeIdentifiers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5A897626D304B4004AF957 /* UniformTypeIdentifiers.framework */; };
 		9A5D73912656D1DC00D5C39E /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D738F2656D1DC00D5C39E /* node.cpp */; };
 		9A5D73922656D1DC00D5C39E /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A5D73902656D1DC00D5C39E /* node.h */; };
-		9A5FE2062689E57A003682E6 /* apex_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A413D55266EDEA500C3FF0E /* apex_macos.dylib */; };
+		9A5FE2062689E57A003682E6 /* libapex_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A413D55266EDEA500C3FF0E /* libapex_macos.dylib */; };
 		9A865FCD296629DA000C82F0 /* libacme_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A865FCC296629DA000C82F0 /* libacme_darwin.dylib */; };
 		9A8997BD177D0E7F00C7761E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8997BC177D0E7D00C7761E /* Carbon.framework */; };
 		9AA1B44A176361950019E812 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA1B449176361950019E812 /* Cocoa.framework */; };
@@ -133,7 +133,7 @@
 				9AB1608329A8A1ED00DFDF90 /* libaura_darwin.dylib in Frameworks */,
 				9AB1608029A8A1C800DFDF90 /* libapex_darwin.dylib in Frameworks */,
 				9A5A897726D304B4004AF957 /* UniformTypeIdentifiers.framework in Frameworks */,
-				9A5FE2062689E57A003682E6 /* apex_macos.dylib in Frameworks */,
+				9A5FE2062689E57A003682E6 /* libapex_macos.dylib in Frameworks */,
 				9A00E62026616D1400517464 /* libaura.dylib in Frameworks */,
 				9A440A6B2654E34A000C490B /* libaura_apple.dylib in Frameworks */,
 				9A00E62226616D1400517464 /* libaura_posix.dylib in Frameworks */,
@@ -197,7 +197,7 @@
 		9A413D51266EDEA500C3FF0E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A413D55266EDEA500C3FF0E /* apex_macos.dylib */,
+				9A413D55266EDEA500C3FF0E /* libapex_macos.dylib */,
 				9ABBDF882AF095C80032EAD3 /* libstatic_apex_macos.a */,
 			);
 			name = Products;
@@ -334,10 +334,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		9A413D55266EDEA500C3FF0E /* apex_macos.dylib */ = {
+		9A413D55266EDEA500C3FF0E /* libapex_macos.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			path = apex_macos.dylib;
+			path = libapex_macos.dylib;
 			remoteRef = 9A413D54266EDEA500C3FF0E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -493,7 +493,6 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
-				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
@@ -611,7 +610,6 @@
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/$(CONFIGURATION)/library",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;

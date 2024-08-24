@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A5D7389265619C000D5C39E /* windowing_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73862656198300D5C39E /* windowing_macos.dylib */; };
+		9A5D7389265619C000D5C39E /* libwindowing_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73862656198300D5C39E /* libwindowing_macos.dylib */; };
 		9A5FE1FC2689E0E7003682E6 /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1A526542EA800CC8096 /* _.h */; };
 		9A5FE1FD2689E0F0003682E6 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D19926542EA800CC8096 /* framework.h */; };
 		9A865FD229663287000C82F0 /* libacme_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A865FD129663287000C82F0 /* libacme_darwin.dylib */; };
@@ -99,7 +99,7 @@
 				9AE382BF28B18B17007EA867 /* libaura_apple.dylib in Frameworks */,
 				9AE382C128B18B17007EA867 /* libaura_macos.dylib in Frameworks */,
 				9AE382C328B18B17007EA867 /* libaura_posix.dylib in Frameworks */,
-				9A5D7389265619C000D5C39E /* windowing_macos.dylib in Frameworks */,
+				9A5D7389265619C000D5C39E /* libwindowing_macos.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +109,7 @@
 		9A5D73802656198200D5C39E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A5D73862656198300D5C39E /* windowing_macos.dylib */,
+				9A5D73862656198300D5C39E /* libwindowing_macos.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -242,10 +242,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		9A5D73862656198300D5C39E /* windowing_macos.dylib */ = {
+		9A5D73862656198300D5C39E /* libwindowing_macos.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			path = windowing_macos.dylib;
+			path = libwindowing_macos.dylib;
 			remoteRef = 9A5D73852656198300D5C39E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -359,7 +359,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
-				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
@@ -475,7 +474,6 @@
 				);
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "-all_load";
-				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
