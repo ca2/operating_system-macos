@@ -38,7 +38,8 @@ namespace input_appkit
    public:
 
 
-      static bool                s_bMouseHook;
+      bool              m_bMouseHook;
+      CFTypeRef         m_typeref;
 //      static mouse_hook *        s_pmousehook;
 //      static ::task_pointer      s_ptaskMouse;
 //      static HHOOK               s_hhookMouse;
@@ -63,10 +64,10 @@ namespace input_appkit
    };
 
 
-   ::e_status install_mouse_hook(::input::mouse_hook * pmousehook);
+   ::e_status install_mouse_hook(::input_appkit::mouse_hook * pmousehook);
 
 
-   ::e_status uninstall_mouse_hook(::input::mouse_hook * pmousehook);
+   ::e_status uninstall_mouse_hook(::input_appkit::mouse_hook * pmousehook);
 
 
 } // namespace input_win32

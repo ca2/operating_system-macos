@@ -2,8 +2,8 @@
 #pragma once
 
 
-#include "apex_apple/_.h"
-#include "acme_macos/_.h"
+#include "operating_system-apple/apex_apple/_.h"
+#include "operating_system-macos/acme_macos/_.h"
 
 
 #if defined(_APEX_MACOS_LIBRARY)

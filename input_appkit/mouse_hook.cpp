@@ -13,7 +13,7 @@ namespace input_appkit
 {
 
 
-   bool           mouse_hook::s_bMouseHook = false;
+//   bool           mouse_hook::s_bMouseHook = false;
    //mouse_hook *   mouse_hook::s_pmousehook = nullptr;
    //::task_pointer mouse_hook::s_ptaskMouse;
    //HHOOK          mouse_hook::s_hhookMouse = nullptr;
@@ -43,7 +43,7 @@ namespace input_appkit
 
       }
 
-      s_bMouseHook = true;
+      m_bMouseHook = true;
 
       ::input_appkit::install_mouse_hook(this);
 
@@ -83,7 +83,7 @@ namespace input_appkit
    bool mouse_hook::is_mouse_hook_installed()
    {
 
-      return s_bMouseHook;
+      return m_bMouseHook;
 
    }
 

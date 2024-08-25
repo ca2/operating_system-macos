@@ -13,7 +13,7 @@
 //
 #include "framework.h"
 #include "acme/constant/message.h"
-#include "apex/input/mouse_hook.h"
+#include "mouse_hook.h"
 #import <Cocoa/Cocoa.h>
 
 namespace input_appkit
@@ -26,12 +26,11 @@ namespace input_appkit
    static id g_idEventMonitor;
    
    
-   ::e_status install_mouse_hook(::input::mouse_hook * pmousehook)
+   ::e_status install_mouse_hook(::input_appkit::mouse_hook * pmousehook)
    {
       
-      g_pmousehook = pmousehook;
 
-      g_idEventMonitor = [ NSEvent addGlobalMonitorForEventsMatchingMask:
+      pmousehook->m_typeref = (__bridge_retained CFTypeRef) [ NSEvent addGlobalMonitorForEventsMatchingMask:
                  
                           (NSEventMaskLeftMouseDown | NSEventMaskRightMouseDown | NSEventMaskOtherMouseDown)
                  
@@ -43,32 +42,43 @@ namespace input_appkit
                                                          //NSWindow *targetWindowForEvent = //[incomingEvent window];
                                                          
          if ([incomingEvent type] == NSEventTypeLeftMouseDown) {
-            g_pmousehook->mouse_proc(e_message_left_button_down);
-                                                            
+            
+            if(!pmousehook->m_bLeftPressed)
+            {
+               pmousehook->m_bLeftPressed = true;
+               pmousehook->mouse_proc(e_message_left_button_down);
+               
+            }
                                                             
                                                          }
          else if ([incomingEvent type] == NSEventTypeLeftMouseUp) {
-            g_pmousehook->mouse_proc(e_message_left_button_up);
+            
+            if(pmousehook->m_bLeftPressed)
+            {
+               pmousehook->m_bLeftPressed = false;
+               pmousehook->mouse_proc(e_message_left_button_up);
+               
+            }
                        
                        
                     }
          else if ([incomingEvent type] == NSEventTypeRightMouseDown) {
-            g_pmousehook->mouse_proc(e_message_right_button_down);
+            pmousehook->mouse_proc(e_message_right_button_down);
                        
                        
                     }
          else if ([incomingEvent type] == NSEventTypeRightMouseUp) {
-            g_pmousehook->mouse_proc(e_message_right_button_up);
+            pmousehook->mouse_proc(e_message_right_button_up);
                        
                        
                     }
          else if ([incomingEvent type] == NSEventTypeOtherMouseDown) {
-            g_pmousehook->mouse_proc(e_message_middle_button_down);
+            pmousehook->mouse_proc(e_message_middle_button_down);
                        
                        
                     }
                     else if ([incomingEvent type] == NSEventTypeOtherMouseUp) {
-                       g_pmousehook->mouse_proc(e_message_middle_button_up);
+                       pmousehook->mouse_proc(e_message_middle_button_up);
                        
                        
                     }
@@ -80,10 +90,19 @@ namespace input_appkit
    }
    
 
-   ::e_status uninstall_mouse_hook(::input::mouse_hook * pmousehook)
+   ::e_status uninstall_mouse_hook(::input_appkit::mouse_hook * pmousehook)
    {
       
-      [NSEvent removeMonitor:g_idEventMonitor ];
+      auto typeref = pmousehook->m_typeref;
+      
+      pmousehook->m_typeref = nil;
+      
+      if(typeref)
+      {
+         
+         [ NSEvent removeMonitor : (__bridge_transfer id) pmousehook->m_typeref ];
+         
+      }
       
       return ::success;
       
