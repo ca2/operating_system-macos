@@ -10,6 +10,8 @@
 
 //void * new_iosAudioPickerViewController_as_UIViewController();
 
+void macos_av_session_initialize();
+
 
 namespace media_macos
 {
@@ -27,6 +29,16 @@ namespace media_macos
       
    }
 
+
+   void media_macos::on_initialize_particle()
+   {
+      
+      ::particle::on_initialize_particle();
+      
+      macos_av_session_initialize();
+      
+      
+   }
 
    // "iosAudioPickerViewController as UIViewController"
    void * media_macos::new_object(const char * psz)

@@ -1,5 +1,6 @@
 // Created by camilo on 2024-02-09 20:50 <3ThomasBorregaardSorensen!!
 #include <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 //#import <MediaPlayer/MediaPlayer.h>
 //
 //void ns_main_async(dispatch_block_t block);
@@ -29,5 +30,20 @@ void macos_play_media_item(void * pMPMediaItem)
 //   
 //});
 }
+
+
+
+
+void macos_av_session_initialize()
+{
+ 
+   NSError *setCategoryErr = nil;
+   NSError *activationErr  = nil;
+   //[[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error:&setCategoryErr];
+   //[[AVAudioSession sharedInstance] setActive:YES error:&activationErr];
+   
+}
+
+
 
 

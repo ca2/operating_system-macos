@@ -22,6 +22,9 @@ namespace media_macos
       
       media_macos();
       ~media_macos() override;
+   
+      
+      void on_initialize_particle() override;
       
    
       // "iosAudioPickerViewController as UIViewController"
