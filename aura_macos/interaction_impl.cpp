@@ -280,7 +280,7 @@ namespace aura_macos
   
          //auto estatus =
          
-         m_pgraphicsgraphics = __allocate < ::graphics::double_buffer >();
+         m_pgraphicsgraphics = ::place(new ::graphics::double_buffer());
          
 //         if(!estatus)
 //         {
