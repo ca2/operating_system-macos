@@ -31,7 +31,7 @@ namespace windowing_macos
 
       void _load_default_cursor();
 
-      void _create_from_image(const ::image * pimage, int xHotSpot, int yHotSpot);
+      void _create_from_image(const ::image::image * pimage, int xHotSpot, int yHotSpot);
 
       
    };

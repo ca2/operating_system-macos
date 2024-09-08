@@ -9,7 +9,7 @@
 #include "acme/platform/application.h"
 #include "acme/filesystem/filesystem/acme_directory.h"
 #include "aura/graphics/image/icon.h"
-#include "aura/graphics/image/context_image.h"
+#include "aura/graphics/image/context.h"
 
 
 static ::user::notify_icon * g_pnotifyiconLast = nullptr;
@@ -169,7 +169,7 @@ namespace windowing_macos
    }
 
 
-   bool notify_icon::ModifyIcon(::pointer < ::draw2d::icon > hicon, bool bForce)
+   bool notify_icon::ModifyIcon(::pointer < ::image::icon > hicon, bool bForce)
    {
 
       if(!m_bCreated)

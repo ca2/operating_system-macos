@@ -234,7 +234,7 @@ namespace windowing_macos
    }
 
 
-   bool copydesk::_desk_to_image(::image * pimage)
+   bool copydesk::_desk_to_image(::image::image * pimage)
    {
 
       int w = 0;
@@ -282,7 +282,7 @@ namespace windowing_macos
    }
 
 
-   bool copydesk::_image_to_desk(const ::image * pimage)
+   bool copydesk::_image_to_desk(const ::image::image * pimage)
    {
 
       bool bOk = macos_clipboard_set_image(

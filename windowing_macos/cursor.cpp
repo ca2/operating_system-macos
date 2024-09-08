@@ -11,7 +11,7 @@
 
 
 void * ns_get_default_system_cursor(enum_cursor ecursor);
-CGImageRef cgimageref_from_image(const ::image * pimage);
+CGImageRef cgimageref_from_image(const ::image::image * pimage);
 void * nscursor_from_cgimageref(CGImageRef image, int cx, int cy, int xHotSpot, int yHotSpot);
 void ns_cursor_free(void * pNSCursor);
 
@@ -94,7 +94,7 @@ namespace windowing_macos
    }
 
 
-   void cursor::_create_from_image(const ::image * pimage, int xHotSpot, int yHotSpot)
+   void cursor::_create_from_image(const ::image::image * pimage, int xHotSpot, int yHotSpot)
    {
       
       if(m_pNSCursor)

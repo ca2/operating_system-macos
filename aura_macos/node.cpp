@@ -8,7 +8,7 @@
 #include "framework.h"
 #include "node.h"
 #include "acme/parallelization/synchronous_lock.h"
-#include "aura/graphics/image/context_image.h"
+#include "aura/graphics/image/context.h"
 #include "aura/platform/context.h"
 
 //

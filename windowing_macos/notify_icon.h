@@ -29,7 +29,7 @@ namespace windowing_macos
       virtual bool DestroyWindow();
 
 
-      bool ModifyIcon(::pointer < ::draw2d::icon > picon, bool bForce = false);
+      bool ModifyIcon(::pointer < ::image::icon > picon, bool bForce = false);
 
 
       void create_notify_icon(const ::atom & atom, ::user::interaction * puserinteractionNotify, ::windowing::icon * picon) override;

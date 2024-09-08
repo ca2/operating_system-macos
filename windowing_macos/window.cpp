@@ -901,7 +901,7 @@ namespace windowing_macos
       
       _synchronous_lock sl1(pitem->m_pmutex);
 
-      ::image_pointer & imageBuffer2 = pitem->m_pimage2;
+      ::image::image_pointer & imageBuffer2 = pitem->m_pimage2;
 
       if (!imageBuffer2.ok())
       {
@@ -960,11 +960,11 @@ namespace windowing_macos
       
       ::rectangle_f64 rectangleSource(sizeMin);
       
-      image_source imagesource(imageBuffer2, rectangleSource);
+      ::image::image_source imagesource(imageBuffer2, rectangleSource);
       
       ::rectangle_f64 rectangleTarget(sizeMin);
       
-      image_drawing_options imagedrawingoptions(rectangleTarget);
+      ::image::image_drawing_options imagedrawingoptions(rectangleTarget);
        
       if(m_dOpacity < 1.0)
       {
@@ -973,7 +973,7 @@ namespace windowing_macos
           
       }
       
-      image_drawing imagedrawing(imagedrawingoptions, imagesource);
+      ::image::image_drawing imagedrawing(imagedrawingoptions, imagesource);
        
        g->set_alpha_mode(draw2d::e_alpha_mode_set);
 

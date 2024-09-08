@@ -943,7 +943,7 @@ namespace aura_macos
 //      return false;
 //   }
 
-   void interaction_impl::_002OnDraw(::image * pimage)
+   void interaction_impl::_002OnDraw(::image::image * pimage)
    {
 
       //      ::CallWindowProc(*GetSuperWndProcAddr(), get_handle(), WM_PRINT, (WPARAM)((dynamic_cast<::draw2d_quartz2d::graphics * >(pgraphics))->get_handle()), (LPARAM)(PRF_CHILDREN | PRF_CLIENT));

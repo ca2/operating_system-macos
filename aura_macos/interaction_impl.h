@@ -61,7 +61,7 @@ namespace aura_macos
 //
 //      virtual void on_control_event(::user::control_event * pevent) override;
 
-      void _002OnDraw(::image * pimage);
+      void _002OnDraw(::image::image * pimage);
 
 //
 //      virtual bool has_focus() override;
