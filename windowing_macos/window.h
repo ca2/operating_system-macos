@@ -59,6 +59,9 @@ namespace windowing_macos
       
       void install_message_routing(channel * pchannel) override;
       
+      ::oswindow oswindow() const override;
+      void _set_oswindow(::oswindow oswindow) override;
+      
       void set_keyboard_focus() override;
       
       void set_active_window() override;

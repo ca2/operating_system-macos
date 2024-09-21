@@ -1043,7 +1043,7 @@ namespace windowing_macos
 
 #define _NEW_MESSAGE(pmessage, type, emessage) \
 auto pmessage = __create_new < type >(); \
-pmessage->m_oswindow = m_oswindow; \
+pmessage->m_oswindow = this->oswindow(); \
 pmessage->m_pwindow = this; \
 pmessage->m_atom = emessage
 
@@ -2131,6 +2131,18 @@ pmessage->m_atom = emessage
 
    }
 
+   ::oswindow window::oswindow() const
+   {
+   
+      return (::oswindow) this;
+      
+   }
+
+
+   void window::_set_oswindow(::oswindow oswindow)
+   {
+
+   }
 
    void window::macos_window_on_create()
    {

@@ -279,6 +279,26 @@ namespace node_macos
       
    }
 
+   
+   void node::do_windowing_system_factory()
+   {
+
+      auto pfactory = system()->factory("windowing_system", "appkit");
+
+      pfactory->merge_to_global_factory();
+
+   }
+
+
+   void node::defer_innate_ui()
+   {
+   
+      auto & pfactory = platform()->factory("innate_ui", "appkit");
+   
+      pfactory->merge_to_global_factory();
+   
+   }
+
 
    ::pointer < ::input::input > node::create_input()
    {

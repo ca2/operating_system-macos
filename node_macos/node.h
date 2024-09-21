@@ -59,6 +59,9 @@ namespace node_macos
       ::pointer < ::input::input > create_input() override;
       
       
+      void do_windowing_system_factory() override;
+      
+      void defer_innate_ui() override;
       //void on_system_main() override;
       
       

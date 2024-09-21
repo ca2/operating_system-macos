@@ -298,7 +298,7 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::win
 
 
 
-   void windowing::set_mouse_cursor(::windowing::cursor * pcursor)
+   void windowing::set_mouse_cursor2(::windowing::cursor * pcursor)
    {
       
       if(m_pwindowCapture)

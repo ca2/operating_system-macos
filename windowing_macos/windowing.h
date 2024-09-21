@@ -76,7 +76,7 @@ namespace windowing_macos
 
       bool defer_release_mouse_capture(::thread * pthread, ::windowing::window * pwindow) override;
       
-      void set_mouse_cursor(::windowing::cursor * pcursor) override;
+      void set_mouse_cursor2(::windowing::cursor * pcursor) override;
 
       //void get_cursor_position(POINT_I32 * ppoint) override;
 
