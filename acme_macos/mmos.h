@@ -3,9 +3,9 @@
 
 
 
-#include "acme/primitive/primitive/atomic.h"
-#include "acme/primitive/primitive/interlocked_count.h"
-//#include "acme/primitive/primitive/matter.h"
+#include "acme/prototype/prototype/atomic.h"
+#include "acme/prototype/prototype/interlocked_count.h"
+//#include "acme/prototype/prototype/matter.h"
 
 
 @interface mmos : NSObject

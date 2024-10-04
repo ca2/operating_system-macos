@@ -58,6 +58,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A5A3BAC2CAD02AA00C3B107 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9A7E175E2C9DFBB600EE8CA6 = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +167,10 @@
 			productRefGroup = 9A7E17682C9DFBB600EE8CA6 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 9A5A3BAC2CAD02AA00C3B107 /* Products */;
+					ProjectRef = 9A7E178F2C9DFE4200EE8CA6 /* acme.xcodeproj */;
+				},
 				{
 					ProductGroup = 9A7E17932C9DFE4D00EE8CA6 /* Products */;
 					ProjectRef = 9A7E17922C9DFE4D00EE8CA6 /* acme.xcodeproj */;

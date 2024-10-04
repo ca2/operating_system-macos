@@ -259,7 +259,7 @@ namespace windowing_macos
       if(pimage->image32() != nullptr)
       {
       
-         ::_001ProperCopyColorref(pimage->image32(), w, h, pimage->scan_size(), pcolorref, iScan);
+         pimage->image32()->_001ProperCopyColorref(w, h, pimage->scan_size(), pcolorref, iScan);
          
       }
 //      else if(pimage->m_pframea->is_set())

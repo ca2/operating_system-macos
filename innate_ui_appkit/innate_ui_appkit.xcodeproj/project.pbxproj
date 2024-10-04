@@ -151,6 +151,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9A31A5992CAD02DC00D4B667 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9A7E173E2C9DF5E700EE8CA6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +245,10 @@
 			productRefGroup = 9A2FCE062C9D3ADC000CF701 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 9A31A5992CAD02DC00D4B667 /* Products */;
+					ProjectRef = 9A7E172D2C9DF5C900EE8CA6 /* apex.xcodeproj */;
+				},
 				{
 					ProductGroup = 9A7E17452C9DF64500EE8CA6 /* Products */;
 					ProjectRef = 9A7E17442C9DF64400EE8CA6 /* apex.xcodeproj */;

@@ -2507,7 +2507,7 @@ pmessage->m_atom = emessage
    }
 
 
-   bool window::send_message(::message::message * pmessage)
+   lresult window::send_message(::message::message * pmessage)
    {
 
    //      oswindow oswindow = message.oswindow;

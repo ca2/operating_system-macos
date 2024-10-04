@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "acme/filesystem/filesystem/path_array.h"
-#include "acme/primitive/collection/str_array.h"
+#include "acme/prototype/collection/str_array.h"
 #include <Carbon/Carbon.h>
 
 

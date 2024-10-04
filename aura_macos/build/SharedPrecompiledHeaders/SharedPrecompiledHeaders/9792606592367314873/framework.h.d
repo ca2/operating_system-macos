@@ -58,7 +58,7 @@ dependencies: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_wchar_t.h \
   /Users/camilo/solution/main/source/app/include/_aura_type.h \
   /Users/camilo/solution/main/source/app/include/_aura_integer.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/numeric/types.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/numeric/types.h \
   /Users/camilo/solution/main/source/app/acme/include/_macro.h \
   /Users/camilo/solution/main/source/app/acme/platform/object_reference_count_debug.h \
   /Users/camilo/solution/main/source/app/acme/constant/memory_heap.h \
@@ -1376,8 +1376,8 @@ dependencies: \
   /Users/camilo/solution/main/source/app/acme/include/_c.h \
   /Users/camilo/solution/main/source/app/acme/platform/_c.h \
   /Users/camilo/solution/main/source/app/acme/exception/_c.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/comparison/_c.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/_c_memory.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/comparison/_c.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/_c_memory.h \
   /Users/camilo/solution/main/source/app/acme/include/_c_bridge.h \
   /Users/camilo/solution/main/source/app/acme/include/objc.h \
   /Users/camilo/solution/main/source/app/acme/operating_system/macos/_mm.h \
@@ -1411,22 +1411,22 @@ dependencies: \
   /Users/camilo/solution/main/source/app/acme/include/_structures.h \
   /Users/camilo/solution/main/source/app/acme/include/_initial_concepts.h \
   /Users/camilo/solution/main/source/app/acme/include/_template_forward_declaration.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/enumeration.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/enumeration.h \
   /Users/camilo/solution/main/source/app/acme/include/_template_structures.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/u32hash.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/u32hash.h \
   /Users/camilo/solution/main/source/app/acme/include/_enumeration.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/file/_constant.h \
   /Users/camilo/solution/main/source/app/acme/include/_function_declarations.h \
   /Users/camilo/solution/main/source/app/acme/include/_template_function_declarations.h \
   /Users/camilo/solution/main/source/app/acme/exception/debug.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/e_status.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/e_status.h \
   /Users/camilo/solution/main/source/app/acme/include/_inline_functions.h \
   /Users/camilo/solution/main/source/app/acme/include/_template_inline_functions.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/pair.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/transfer.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/mathematics/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/mathematics/natural.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/mathematics/number_limits.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/pair.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/transfer.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/mathematics/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/mathematics/natural.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/mathematics/number_limits.h \
   /Users/camilo/solution/main/source/app/acme/exception/_.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/_.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/file/_.h \
@@ -1437,20 +1437,20 @@ dependencies: \
   /Users/camilo/solution/main/source/app/acme/graphics/draw2d/_system_color.h \
   /Users/camilo/solution/main/source/app/acme/graphics/image/_.h \
   /Users/camilo/solution/main/source/app/acme/parallelization/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/_generic_map.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/datetime/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/geometry2d/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/geometry2d/_struct.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/geometry2d/_i32.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/geometry2d/_i64.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/geometry2d/_f32.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/geometry2d/_f64.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/data/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/_generic_map.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/datetime/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/geometry2d/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/geometry2d/_struct.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/geometry2d/_i32.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/geometry2d/_i64.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/geometry2d/_f32.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/geometry2d/_f64.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/data/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/_.h \
   /Users/camilo/solution/main/source/app/acme/user/user/_constant.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/unit.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/unit.h \
   /Users/camilo/solution/main/source/app/acme/user/_.h \
   /Users/camilo/solution/main/source/app/acme/user/user/_.h \
   /Users/camilo/solution/main/source/app/acme/user/user/_style.h \
@@ -1460,7 +1460,7 @@ dependencies: \
   /Users/camilo/solution/main/source/app/acme/parallelization/common.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/semaphore.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/sys/semaphore.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/time/_structures.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/time/_structures.h \
   /Users/camilo/solution/main/source/app/acme/memory/allocation.h \
   /Users/camilo/solution/main/source/app/acme/platform/object_type_counter.h \
   /Users/camilo/solution/main/source/app/acme/memory/memory_allocate.h \
@@ -1475,196 +1475,196 @@ dependencies: \
   /Users/camilo/solution/main/source/app/acme/parallelization/critical_section.h \
   /Users/camilo/solution/main/source/app/acme/platform/display.h \
   /Users/camilo/solution/main/source/app/acme/platform/lparam.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/ptr.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/comparison/compare.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/mathematics/numeric_info.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/ptr.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/comparison/compare.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/mathematics/numeric_info.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/memory.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/logic/tristate.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/e_check.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/logic/tristate.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/e_check.h \
   /Users/camilo/solution/main/source/app/acme/constant/check.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/logic.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/mathematics/c_number.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/e_flag.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/time/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/string.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/logic.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/mathematics/c_number.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/e_flag.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/time/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/string.h \
   /Users/camilo/solution/main/source/app/acme/memory/malloc.h \
   /Users/camilo/solution/main/source/app/acme/memory/del.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/block.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/block.h \
   /Users/camilo/solution/main/source/app/acme/memory/_memory.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/array_range.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/iterator.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/range.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/mathematics/numeric.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/__begin.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/ancient/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/ancient/ansi.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/ancient/wd16.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/ancient/wd32.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/coupling.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/encoding.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/x/x_charcategory.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/x/x_defines.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/x/x_tables.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/extension/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/extension/ansi.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/extension/wd16.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/extension/wd32.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/unicode.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/sz/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/sz/ansi.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/sz/wd16.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/sz/wd32.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/utf8_character.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/inline_string.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/string_base.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/string_iterator.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/string_meta_data.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/natural_pointer.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/array_range.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/iterator.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/range.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/mathematics/numeric.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/__begin.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/ancient/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/ancient/ansi.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/ancient/wd16.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/ancient/wd32.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/coupling.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/encoding.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/x/x_charcategory.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/x/x_defines.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/x/x_tables.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/extension/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/extension/ansi.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/extension/wd16.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/extension/wd32.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/unicode.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/sz/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/sz/ansi.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/sz/wd16.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/sz/wd32.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/utf8_character.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/inline_string.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/string_base.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/string_iterator.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/string_meta_data.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/natural_pointer.h \
   /Users/camilo/solution/main/source/app/acme/memory/memory_allocator.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/interlocked_count.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/atomic.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/interlocked_count.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/atomic.h \
   /Users/camilo/solution/main/source/app/acme/memory/string_memory_allocator.h \
   /Users/camilo/solution/main/source/app/acme/memory/string_memory_allocate.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/string_range.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/comparable_eq_range.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/comparable_range.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/null_terminated_iterator.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/null_terminated_range.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/__end.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/unicode.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/_impl_prio.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/payload.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/type.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/atom.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/_u32hash.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/comparison/equals.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/comparison/hash.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/datetime/earth_time.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/datetime/earth_time_shift.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/time/time.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/time/integral/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/time/floating/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/time/time/_.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/time/time/time.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/time/time/unit.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/datetime/earth_time_span.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/datetime/file_time.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/datetime/file_time_span.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/string_range.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/comparable_eq_range.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/comparable_range.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/null_terminated_iterator.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/null_terminated_range.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/__end.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/unicode.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/_impl_prio.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/payload.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/type.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/atom.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/_u32hash.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/comparison/equals.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/comparison/hash.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/datetime/earth_time.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/datetime/earth_time_shift.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/time/time.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/time/integral/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/time/floating/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/time/time/_.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/time/time/time.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/time/time/unit.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/datetime/earth_time_span.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/datetime/file_time.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/datetime/file_time_span.h \
   /Users/camilo/solution/main/source/app/acme/graphics/draw2d/color.h \
   /Users/camilo/solution/main/source/app/acme/graphics/draw2d/color32.h \
   /Users/camilo/solution/main/source/app/acme/graphics/draw2d/opacity.h \
   /Users/camilo/solution/main/source/app/acme/memory/memory.h \
   /Users/camilo/solution/main/source/app/acme/platform/procedure.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/function.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/particle.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/function.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/particle.h \
   /Users/camilo/solution/main/source/app/acme/platform/tracer.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/file/text_stream.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/file/string_buffer.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/file/stream.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/particle_flags.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/particle_flags.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/file/write_text_stream.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/file/read_sz_stream.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/numeric_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/raw_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/array_base.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/_iterator.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/tiny_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/allocator.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/numeric_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/raw_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/array_base.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/_iterator.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/tiny_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/allocator.h \
   /Users/camilo/solution/main/source/app/acme/platform/common.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/comparable_eq_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/comparable_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/comparable_raw_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/compare_predicate.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/numeric_array_range.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/sort.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/comparison/less.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/comparable_eq_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/comparable_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/comparable_raw_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/compare_predicate.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/numeric_array_range.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/sort.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/comparison/less.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/filesystem/path_object.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/pointer.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/pointer.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/filesystem/path.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/filesystem/file_path.h \
   /Users/camilo/solution/main/source/app/acme/constant/path.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/filesystem/path_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/string_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/copy_elements.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/address_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/sz.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/__payload_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/__payload_reference.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/__property_set.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/__property.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/string_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/copy_elements.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/address_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/sz.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/__payload_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/__payload_reference.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/__property_set.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/__property.h \
   /Users/camilo/solution/main/source/app/acme/memory/property_memory_allocate.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/ptr_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/pointer_array_process.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/auto_ptr_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/object.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/object_meta.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/map.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/set.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/hash_table.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/set_node.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/list_iterator.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/single.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/property_object.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/matter.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/factory.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/atom_map.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/linked_property.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/ptr_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/pointer_array_process.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/auto_ptr_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/object.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/object_meta.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/map.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/set.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/hash_table.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/set_node.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/list_iterator.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/single.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/property_object.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/matter.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/factory.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/atom_map.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/linked_property.h \
   /Users/camilo/solution/main/source/app/acme/parallelization/create_task_attributes.h \
   /Users/camilo/solution/main/source/app/acme/operating_system/security_attributes.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/pointer_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/pointer_array.h \
   /Users/camilo/solution/main/source/app/acme/exception/exception.h \
   /Users/camilo/solution/main/source/app/acme/operating_system/error_code.h \
   /Users/camilo/solution/main/source/app/acme/platform/class.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/scoped_string_base.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/mathematics/_string.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/scoped_string_base.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/mathematics/_string.h \
   /Users/camilo/solution/main/source/app/acme/include/_string.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/_impl_string_array.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/tokenizer.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/_impl_atom.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/_impl_factory.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/_impl_payload.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/__payload_cast.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/_impl_type.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/_impl_string_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/tokenizer.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/_impl_atom.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/_impl_factory.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/_impl_payload.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/__payload_cast.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/_impl_type.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/file/_impl_write_text_stream.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/filesystem/_impl_path.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/_impl.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/file/_impl.h \
   /Users/camilo/solution/main/source/app/acme/filesystem/filesystem/_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/datetime/_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/datetime/_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/_impl.h \
   /Users/camilo/solution/main/source/app/acme/exception/no_memory.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/_impl_pointer.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/primitive/_impl_primitive.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/_string_range_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/_impl_string_base.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/ancient/_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/ancient/ansi_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/ancient/wd16_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/ancient/wd32_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/coupling_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/encoding_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/extension/_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/extension/ansi_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/extension/wd16_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/extension/wd32_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/c/unicode_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/sz/_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/sz/ansi_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/sz/wd16_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/sz/wd32_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/unicode_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/string/_conv.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/_impl_pointer.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/prototype/_impl_primitive.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/_string_range_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/_impl_string_base.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/ancient/_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/ancient/ansi_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/ancient/wd16_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/ancient/wd32_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/coupling_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/encoding_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/extension/_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/extension/ansi_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/extension/wd16_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/extension/wd32_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/c/unicode_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/sz/_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/sz/ansi_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/sz/wd16_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/sz/wd32_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/unicode_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/string/_conv.h \
   /Users/camilo/solution/main/source/app/acme/include/_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/time/_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/mathematics/_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/_impl.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/_impl_generic_map.h \
-  /Users/camilo/solution/main/source/app/acme/primitive/collection/_impl_numeric_array.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/time/_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/mathematics/_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/_impl.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/_impl_generic_map.h \
+  /Users/camilo/solution/main/source/app/acme/prototype/collection/_impl_numeric_array.h \
   /Users/camilo/solution/main/source/app/acme/memory/_impl.h \
   /Users/camilo/solution/main/source/app/acme/include/objcpp.h \
   /Users/camilo/solution/main/source/app/apex/include/_include.h \

@@ -155,7 +155,7 @@ namespace windowing_macos
 
 
       bool post_message(::message::message * pmessage);
-      bool send_message(::message::message * pmessage);
+      lresult send_message(::message::message * pmessage) override;
 
       
       void destroy_window() override;

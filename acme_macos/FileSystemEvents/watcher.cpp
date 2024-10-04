@@ -123,9 +123,9 @@ namespace FileSystemEvents
 
       ::file::action action;
 
-      action.m_pwatch = pwatch;
+      action.m_pfilewatch = pwatch;
 
-      action.m_watchid = pwatch->m_watchid;
+      //action.m_watchid = pwatch->m_watchid;
 
       action.m_pathFolder = pwatch->m_pathFolder;
 

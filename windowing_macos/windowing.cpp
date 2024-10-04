@@ -259,7 +259,7 @@ namespace windowing_macos
    }
 
 
-   void windowing::release_mouse_capture(::thread * pthread)
+   void windowing::release_mouse_capture(::thread * pthread, ::windowing::window * pwindow)
    {
       
       auto pwindowCapture = m_pwindowCapture;
@@ -290,7 +290,7 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::win
       
    }
    
-   release_mouse_capture(pthread);
+   release_mouse_capture(pthread, pwindow);
    
    return true;
    

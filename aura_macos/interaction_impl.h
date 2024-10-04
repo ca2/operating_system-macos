@@ -18,7 +18,7 @@ namespace aura_macos
 
 
       string                           m_strWindowText;
-      ::user::primitive *              m_pbasewnd;
+      //::user::primitive *              m_pbasewnd;
       bool                             m_bNeedsUpdate;
       rectangle_i64                    m_rectLastOsPlacement;
       bool                             m_bEnabled;

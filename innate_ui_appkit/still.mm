@@ -176,7 +176,7 @@ namespace innate_ui_appkit
       
       NSString * pstr = [[NSString alloc] initWithUTF8String:pszText];
    
-      NSTextField * label = m_pnsview;
+      NSTextField * label = (NSTextField *) m_pnsview;
       
 //      NSTextField *label = [[NSTextField alloc] initWithFrame:NSMakeRect(100, 80, 200, 24)];
       [label setStringValue:pstr];
@@ -187,7 +187,7 @@ namespace innate_ui_appkit
 void still::__set_icon(::innate_ui_appkit::icon * picon)
 {
    
-   NSImageView * pnsimageview = m_pnsview;
+   NSImageView * pnsimageview = (NSImageView *) m_pnsview;
    
    [pnsimageview setImage:picon->m_pnsimage];
    
