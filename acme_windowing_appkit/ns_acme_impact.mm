@@ -20,24 +20,24 @@
 //  appreciated but not required.
 //
 #include "framework.h"
-#include "window_bridge.h"
-#include "nswindow.h"
-#include "nsimpact.h"
+#include "acme_window_bridge.h"
+#include "ns_acme_window.h"
+#include "ns_acme_impact.h"
 #include "acme/operating_system/macos/keyboard.h"
 #include "acme/operating_system/winpr_input.h"
 #include <Carbon/Carbon.h>
 
 
-@implementation ns_nano_impact
+@implementation ns_acme_impact
 
 
-- (id) initWithFrame: (NSRect) frame and_nano_window_bridge: (nano_window_bridge *) pnanowindowbridge
+- (id) initWithFrame: (NSRect) frame and_acme_window_bridge: (acme_window_bridge *) pnanowindowbridge
 {
 
    self                 = [super initWithFrame:frame];
    
    
-   m_pnanowindowbridge  = pnanowindowbridge;
+   m_pacmewindowbridge  = pnanowindowbridge;
    
    m_bLShift            = false;
    m_bRShift            = false;
@@ -131,7 +131,7 @@
 - (void) mouseUp: (NSEvent *) event
 {
 
-   nano_window_bridge * p = m_pnanowindowbridge;
+   acme_window_bridge * p = m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -160,7 +160,7 @@
 - (void) mouseMoved: (NSEvent *) event
 {
 
-   nano_window_bridge * p = m_pnanowindowbridge;
+   acme_window_bridge * p = m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -191,7 +191,7 @@
 - (void) mouseDragged: (NSEvent *) event
 {
 
-   nano_window_bridge * p = m_pnanowindowbridge;
+   acme_window_bridge * p = m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -220,7 +220,7 @@
 - (void) mouseDown: (NSEvent *) event
 {
    
-   nano_window_bridge * p = m_pnanowindowbridge;
+   acme_window_bridge * p = m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -249,7 +249,7 @@
 - (void) rightMouseUp: (NSEvent *) event
 {
 
-   nano_window_bridge * p = m_pnanowindowbridge;
+   acme_window_bridge * p = m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -278,7 +278,7 @@
 - (void) rightMouseDown: (NSEvent *) event
 {
    
-   nano_window_bridge * p = m_pnanowindowbridge;
+   acme_window_bridge * p = m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -325,11 +325,13 @@
 
 #define REDRAW_HINTING
 #undef REDRAW_HINTING
+//#define REDRAW_HINTING
+
 
 - (void) drawRect: (NSRect) rect
 {
 
-   nano_window_bridge * p = m_pnanowindowbridge;
+   acme_window_bridge * p = m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -407,10 +409,10 @@
       
    }
    
-//   if(![m_pnanowindowbridge isKeyWindow])
+//   if(![m_pacmewindowbridge isKeyWindow])
 //   {
 //      
-//      [m_pnanowindowbridge makeKeyWindow];
+//      [m_pacmewindowbridge makeKeyWindow];
 //      
 //   }
    
@@ -448,7 +450,7 @@ m_f = true; \
 - (void)keyDown:(NSEvent *)event
 {
 
-   nano_window_bridge * p = m_pnanowindowbridge;
+   acme_window_bridge * p = m_pacmewindowbridge;
      
    if(p == NULL)
    {
@@ -539,7 +541,7 @@ m_f = true; \
    
    NSString * characters;
    
-   nano_window_bridge * p = m_pnanowindowbridge;
+   acme_window_bridge * p = m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -564,7 +566,7 @@ m_f = true; \
 - (void)flagsChanged:(NSEvent *)event
 {
 
-   nano_window_bridge * p = m_pnanowindowbridge;
+   acme_window_bridge * p = m_pacmewindowbridge;
    
    if(p == NULL)
    {

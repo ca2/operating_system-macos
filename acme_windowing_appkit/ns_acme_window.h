@@ -10,18 +10,20 @@
 
 #include <Cocoa/Cocoa.h>
 
-class nano_window_bridge;
-@class ns_nano_impact;
+class acme_window_bridge;
+@class ns_acme_impact;
 
 
-@interface ns_nano_window : NSWindow
+@interface ns_acme_window : NSWindow
 {
 @public
    
-   nano_window_bridge *       m_pnanowindowbridge;
-   ns_nano_impact *           m_pnsnanoimpact;
+   acme_window_bridge *       m_pacmewindowbridge;
+   ns_acme_impact *           m_pnsacmeimpact;
    //NSWindowController *       m_pwindowcontroller;
 
 }
+-(instancetype) init: (NSRect) rectangle with_acme_window_bridge:(acme_window_bridge * )pacmewindowbridge;
+
 @end
  

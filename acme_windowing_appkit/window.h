@@ -4,26 +4,26 @@
 #pragma once
 
 
-#include "acme/windowing/window_base.h"
+#include "acme/windowing/window.h"
+#include <Carbon/Carbon.h>
+
+class acme_window_bridge;
 
 
-class nano_window_bridge;
-
-
-namespace macos
+namespace appkit
 {
 
 
-   namespace nano
+   namespace acme
    {
 
 
-      namespace user
+      namespace windowing
       {
 
 
-   class CLASS_DECL_ACME window :
-      virtual public ::windowing::window_base
+   class CLASS_DECL_ACME_WINDOWING_APPKIT window :
+      virtual public ::acme::windowing::window
    {
    public:
 
@@ -32,7 +32,7 @@ namespace macos
       //Display *                        m_pdisplay;
       //Window                           m_window;
       //cairo_surface_t *                m_psurface;
-      ::pointer<nano_window_bridge>   m_pwindowbridge;
+      ::pointer<acme_window_bridge>   m_pacmewindowbridge;
       ::pointer<::nano::graphics::device>          m_pnanodevice;
       //::pointer<::nano::graphics::font>         m_pfont;
       //color32_t                     m_colorText;
@@ -66,6 +66,8 @@ namespace macos
       void on_initialize_particle() override;
 
       void create_window() override;
+      
+      void _create_window() override;
 
       void destroy_window() override;
 
@@ -77,15 +79,15 @@ namespace macos
 
       virtual void _update_window();
 
-      void message_loop() override;
+      //void message_loop() override;
 
       virtual bool message_loop_step();
 
-      virtual void _draw(::nano::graphics::device * pnanodevice);
+      virtual void _draw(CGContextRef cgcontextref);
 
       //virtual void on_draw(::nano::graphics::device * pnanodevice);
 
-      void on_char(int iChar) override;
+      //void on_char(int iChar) override;
 
       bool is_active_window() override;
 
@@ -137,28 +139,32 @@ namespace macos
 
       //virtual void _wm_nodecorations(int iMap);
       
-      void _run_modal_loop() override;
+      ::payload wait_for_dialog_result(const class ::time & timeTimeout = ::time::infinity()) override;
       
-      
-      ::size_i32 get_main_screen_size() override;
+//      ::size_i32 get_main_screen_size() override;
       
       
       virtual ::payload do_synchronously();
       
       void handle(::topic* ptopic, ::context* pcontext) override;
       
+      virtual void macos_window_become_main();
+      virtual void macos_window_resign_main();
       
+      virtual void macos_window_become_key();
+      virtual void macos_window_resign_key();
+
       
    };
 
 
-      } //namespace user
+      } //namespace windowing
 
 
-   } //namespace nano
+   } //namespace acme
 
 
-} // namespace macos
+} // namespace appkit
 
 
 

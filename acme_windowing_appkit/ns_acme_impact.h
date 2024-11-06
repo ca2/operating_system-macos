@@ -34,16 +34,16 @@ struct mf_context
 };
 
 
-@class ns_nano_window;
+@class ns_acme_window;
 
 
-@interface ns_nano_impact : NSView
+@interface ns_acme_impact : NSView
 {
    @public
 //   mf_context* mfc;
    //APPLE_KEYBOARD_TYPE appleKeyboardType;
    //ns_nano_window * m_pnanowindow;
-   nano_window_bridge * m_pnanowindowbridge;
+   acme_window_bridge * m_pacmewindowbridge;
    NSTrackingArea * trackingArea;
    bool m_bLShift;
    bool m_bRShift;
@@ -57,6 +57,6 @@ struct mf_context
    
 }
 
-- (id)initWithFrame:(NSRect)frame and_nano_window_bridge:(nano_window_bridge*)pnanowindowbridge;
+- (id)initWithFrame:(NSRect)frame and_acme_window_bridge:(acme_window_bridge*)pnanowindowbridge;
 
 @end

@@ -22,22 +22,26 @@
 #pragma once
 
 
-#include "notification_callback.h"
+#include "acme_notification_callback.h"
+
 
 @interface macos_app : NSObject < NSApplicationDelegate >
 {
 @public
 
-   void *               m_pApplication;
+   ::platform::application *              m_papplication;
    
-   NSMutableArray *     m_windowcontrollera;
+   NSMutableArray *                       m_windowcontrollera;
    
-   nano_notification_callback *      m_pnanonotificationcallback;
+   acme_notification_callback *           m_pacmenotificationcallback;
 
 }
 
+-(void)application_menu_update;
 -(NSWindowController *) addWindow:(NSWindow*)window;
 -(void) removeWindowController:(NSWindowController*)pwindowcontroller;
--(void)continueInitialization;
+-(void) continueInitialization;
+-(void) show_about_box;
+-(void) try_close_application;
 
 @end

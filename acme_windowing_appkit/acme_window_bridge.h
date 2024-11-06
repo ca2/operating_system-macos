@@ -11,7 +11,7 @@
 
 #ifdef __OBJC__
 
-@class ns_nano_window;
+@class ns_acme_window;
 
 #endif
 
@@ -28,32 +28,34 @@ class window;
 #include <CoreFoundation/CoreFoundation.h>
 #include <CoreGraphics/CoreGraphics.h>
 
-namespace macos{
-namespace nano{
-namespace user{
+namespace appkit{
+namespace acme{
+namespace windowing{
 class window;
 }
 }
 }
 
-class nano_window_bridge :
+class acme_window_bridge :
    virtual public ::particle
 {
 public:
 
    bool m_bRunningAppMainLoop;
-   ::macos::nano::user::interchange *     m_pwindow;
-   CFTypeRef                  m_pnsnanowindow;
+   ::appkit::acme::windowing::window *     m_pwindow;
+   CFTypeRef                  m_pnsacmewindow;
    
    
-   nano_window_bridge();
-   ~nano_window_bridge() override;
+   acme_window_bridge();
+   ~acme_window_bridge() override;
    
-   void create_ns_nano_window(CGRect cgrect);
+   void create_ns_acme_window(CGRect cgrect);
    
    void display();
    
    void hide();
+   
+   void do_tasks();
    
    virtual void on_left_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute);
 
@@ -71,12 +73,23 @@ public:
    
    virtual void redraw();
 
-   virtual void stop();
+   //virtual void stop();
    
-   virtual void move_to(int x, int y);
+   virtual void close();
+   
+   virtual void set_position(int x, int y);
 
    virtual void on_layout(int x, int y, int w, int h);
    
+   virtual void macos_window_become_main();
+   
+   virtual void macos_window_resign_main();
+   
+   virtual void macos_window_become_key();
+   
+   virtual void macos_window_resign_key();
+   
+   virtual CGRect get_frame();
    
    virtual void _run_modal_loop();
    

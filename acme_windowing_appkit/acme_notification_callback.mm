@@ -6,26 +6,26 @@
 //  Copyright © 2023 Camilo Sasuke Tsumanuma. All rights reserved.
 //
 #include "framework.h"
-#include "app.h"
+#include "macos_app.h"
 #include "acme/constant/id.h"
 #include "acme/operating_system/argcargv.h"
 bool ns_get_dark_mode();
 
-void system_id_update(void* pSystem, ::i64 iUpdate, ::i64 iPayload);
+void system_id_update(::platform::system * psystem, ::i64 iUpdate, ::i64 iPayload);
 
-void * application_system(void * pApplication);
+::platform::system * application_system(::platform::application * papplication);
 
 //#import <Foundation/Foundation.h>
-void ns_main_async(dispatch_block_t block);
-void ns_main_sync(dispatch_block_t block);
+void ns_main_post(dispatch_block_t block);
+void ns_main_send(dispatch_block_t block);
 
-@implementation nano_notification_callback
+@implementation acme_notification_callback
 
 
 - (id)init
 {
 
-//   ns_main_async(^{
+//   ns_main_post(^{
       
    [ [ NSDistributedNotificationCenter defaultCenter ] addObserver:self selector:@selector(themeChanged:) name:@"AppleInterfaceThemeChangedNotification" object: nil];
    //});
@@ -58,7 +58,7 @@ void ns_main_sync(dispatch_block_t block);
    
    int iDarkMode = [interfaceStyle isEqualToString:@"Dark"];
 
-   system_id_update(application_system(m_pApplication), id_get_operating_system_dark_mode_reply, iDarkMode);
+   system_id_update(application_system(m_papplication), id_get_operating_system_dark_mode_reply, iDarkMode);
 
 }
 
@@ -74,7 +74,7 @@ bool ns_get_dark_mode()
    
    __block BOOL dark = FALSE;
    
-   ns_main_sync(^()
+   ns_main_send(^()
                 {
       
       NSAppearance* appearance = NSApp.effectiveAppearance;

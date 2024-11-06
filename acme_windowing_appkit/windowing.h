@@ -17,7 +17,7 @@ namespace windowing
 {
 
 
-class CLASS_DECL_WINDOWING_SYSTEM_APPKIT windowing :
+class CLASS_DECL_ACME_WINDOWING_APPKIT windowing :
 virtual public ::acme::windowing::windowing
 {
 public:
@@ -41,7 +41,15 @@ public:
     //   void x11_async(const ::procedure & procedure) override;
     //   void x11_display_error_trap_push(int i) override;
     //   void x11_display_error_trap_pop_ignored(int i) override;
-    
+   
+   
+   void windowing_application_main_loop() override;
+   void run() override;
+   void windowing_post_quit() override;
+   
+   
+   bool handle_messages() override;
+   
     
 };
 
