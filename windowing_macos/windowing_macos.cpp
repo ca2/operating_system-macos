@@ -632,10 +632,10 @@ void mm_init_workspace_rect();
 
 
 // front first
-rectangle_i32_array cg_get_window_rect_list_above(CGWindowID windowid)
+rectangle_int_array cg_get_window_rect_list_above(CGWindowID windowid)
 {
    
-   rectangle_i32_array recta;
+   rectangle_int_array recta;
    
    CFArrayRef windowa = CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenAboveWindow, windowid);
 
@@ -759,7 +759,7 @@ string MYCFStringCopyUTF8String(CFStringRef aString)
 #undef FUNCTION_TRACE
 
 
-rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
+rectangle_int_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
 {
    
    bool bFound = false;
@@ -774,7 +774,7 @@ rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
 
 #endif
    
-   rectangle_i32_array recta;
+   rectangle_int_array recta;
    
    CFArrayRef windowa = CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly, kCGNullWindowID);
 
@@ -1028,7 +1028,7 @@ end1:
 #undef FUNCTION_TRACE
 
 
-void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > & windowida)
+void cg_get_window_rect_list(rectangle_int_array & recta, array < CGWindowID > & windowida)
 {
 
    //bool bFound = false;
@@ -1260,7 +1260,7 @@ int_bool is_window_occluded(oswindow oswindow)
 
    }
 
-   rectangle_i32_array recta = cg_get_window_rect_list_intersect_above(windowid);
+   rectangle_int_array recta = cg_get_window_rect_list_intersect_above(windowid);
 
 
    if(recta.is_empty())
@@ -1297,14 +1297,14 @@ int_bool is_window_occluded(oswindow oswindow)
 
 }
 
-void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > & windowida);
+void cg_get_window_rect_list(rectangle_int_array & recta, array < CGWindowID > & windowida);
 
 int_bool point_is_window_origin(::point_i32 pointHitTest, oswindow oswindowExclude, int iMargin)
 {
    
    CGWindowID windowidExclude = get_os_window_window_number(oswindowExclude);
    
-   rectangle_i32_array recta;
+   rectangle_int_array recta;
    
    array < CGWindowID > windowida;
    

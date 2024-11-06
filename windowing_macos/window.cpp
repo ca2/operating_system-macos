@@ -2416,7 +2416,7 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::non_top_most_upper_window_rects(::rectangle_i32_array & recta)
+   void window::non_top_most_upper_window_rects(::rectangle_int_array & recta)
    {
       
       

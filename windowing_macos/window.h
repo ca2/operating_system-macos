@@ -151,7 +151,7 @@ namespace windowing_macos
       void frame_toggle_restore() override;
       
       
-      void non_top_most_upper_window_rects(::rectangle_i32_array & recta) override;
+      void non_top_most_upper_window_rects(::rectangle_int_array & recta) override;
 
 
       void post_message(::message::message * pmessage) override;
