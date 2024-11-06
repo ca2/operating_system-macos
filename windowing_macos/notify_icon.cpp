@@ -7,7 +7,7 @@
 #include "acme/filesystem/filesystem/file_context.h"
 #include "apex/platform/context.h"
 #include "acme/platform/application.h"
-#include "acme/filesystem/filesystem/acme_directory.h"
+#include "acme/filesystem/filesystem/directory_system.h"
 #include "aura/graphics/image/icon.h"
 #include "aura/graphics/image/context.h"
 
@@ -142,14 +142,14 @@ namespace windowing_macos
 //      }
    
    
-      ::file::path pathFolder = system()->m_pacmedirectory->ca2roaming() / "matter/icon/128";
+       ::file::path pathFolder = system()->directory_system()->ca2roaming() / "matter/icon/128";
 
       string strIconName = application()->m_strAppId;
 
       strIconName.find_replace("/", "_");
       strIconName.find_replace("-", "_");
 
-      auto pcontext = m_pcontext->m_papexcontext;
+      auto pcontext = application();
 
       auto memoryIconImage = pcontext->file()->safe_get_memory("matter://main/menubar-icon-22.png");
       

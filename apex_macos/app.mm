@@ -56,7 +56,7 @@ bool nsapp_activation_policy_is_prohibited()
 void nsapp_activation_policy_regular()
 {
    
-   ns_main_async(^{
+   ns_main_post(^{
    
       [NSApp  setActivationPolicy:NSApplicationActivationPolicyRegular];
    
@@ -67,7 +67,7 @@ void nsapp_activation_policy_regular()
 
 void nsapp_activation_policy_accessory()
 {
-   ns_main_async(^{
+   ns_main_post(^{
       
       [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
        
@@ -79,7 +79,7 @@ void nsapp_activation_policy_accessory()
 void nsapp_activation_policy_prohibited()
 {
   
-   ns_main_async(^{
+   ns_main_post(^{
    
       [NSApp setActivationPolicy:NSApplicationActivationPolicyProhibited];
    
@@ -91,7 +91,7 @@ void nsapp_activation_policy_prohibited()
 void nsapp_activate_ignoring_other_apps(int i)
 {
    
-   ns_main_async(^{
+   ns_main_post(^{
       
       if(i)
       {

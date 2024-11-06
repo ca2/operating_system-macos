@@ -962,7 +962,7 @@ namespace input_appkit
    //
    //      ::windows::hwnd_array hwnda;
    //
-   //      for (i32 i = 0; i < primitivepointera.primitive_count(); i++)
+   //      for (int i = 0; i < primitivepointera.primitive_count(); i++)
    //      {
    //
    //         ::pointer<::user::interaction>puserinteraction = primitivepointera.primitive_at(i);
@@ -987,7 +987,7 @@ namespace input_appkit
    //
    //      ::windows::window_util::SortByZOrder(hwnda);
    //
-   //      for (i32 i = 0; i < hwnda.get_count(); i++)
+   //      for (int i = 0; i < hwnda.get_count(); i++)
    //      {
    //
    //         auto puieWindow = uia.find_first(__oswindow(hwnda[i]));

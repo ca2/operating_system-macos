@@ -102,8 +102,8 @@ enum AVFrameSideDataType {
      * @code
      * u32le number of samples to skip from start of this packet
      * u32le number of samples to skip from end of this packet
-     * u8    reason for start skip
-     * u8    reason for end   skip (0=padding silence, 1=convergence)
+     * unsigned char    reason for start skip
+     * unsigned char    reason for end   skip (0=padding silence, 1=convergence)
      * @endcode
      */
     AV_FRAME_DATA_SKIP_SAMPLES,

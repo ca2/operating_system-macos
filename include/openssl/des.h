@@ -43,7 +43,7 @@ typedef struct DES_ks {
     union {
         DES_cblock cblock;
         /*
-         * make sure things are correct size on machines with 8 ::u8 longs
+         * make sure things are correct size on machines with 8 unsigned char longs
          */
         DES_LONG deslong[2];
     } ks[16];

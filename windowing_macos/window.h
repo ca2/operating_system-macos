@@ -33,7 +33,7 @@ namespace windowing_macos
       
       
       void *                           m_pNSCursorLast;
-      class windowing *                m_pmacoswindowing;
+      //class windowing *                m_pmacoswindowing;
       ::windowing::window *            m_pwindowCapture;
       ::point_i32                      m_pointMouseCursorHost;
       ::point_i32                      m_pointMouseCursorAbsolute;
@@ -47,7 +47,7 @@ namespace windowing_macos
       //void create_window(::user::interaction_impl * pimpl) override;
       
       
-      void create_window() override;
+      void _create_window() override;
             
 
       void macos_window_add_ref() override;
@@ -74,8 +74,8 @@ namespace windowing_macos
       
       bool _has_keyboard_focus() const;
       
-      class windowing * windowing() { return m_pmacoswindowing; }
-
+       class windowing * macos_windowing() ;
+      void _main_send(const ::procedure & procedure);
 //      void _window_request_presentation() override;
       
       //void show_window(const ::e_display &edisplay, const ::e_activation &eactivation) override;
@@ -87,10 +87,10 @@ namespace windowing_macos
       //::point_i32 get_mouse_cursor_absolute_position() override;
       
       
-//      void _set_window_position_unlocked(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
+//      void _set_window_position_unlocked(const class ::zorder& zorder, int x, int y, int cx, int cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
       
       bool _configure_window_unlocked(const class ::zorder& zorder, const ::e_activation& eactivation, bool bNoZorder, ::e_display edisplay) override;
-      bool _strict_set_window_position_unlocked(i32 x, i32 y, i32 cx, i32 cy, bool bNoMove, bool bNoSize) override;
+      bool _strict_set_window_position_unlocked(int x, int y, int cx, int cy, bool bNoMove, bool bNoSize) override;
 
       
       void window_update_screen() override;
@@ -98,7 +98,7 @@ namespace windowing_macos
       //void _window_request_presentation() override;
 
       
-      //bool set_window_position(const class ::zorder& zorder, i32 x, i32 y, i32 cx, i32 cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
+      //bool set_window_position(const class ::zorder& zorder, int x, int y, int cx, int cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
 
       void set_mouse_capture() override;
 
@@ -154,7 +154,7 @@ namespace windowing_macos
       void non_top_most_upper_window_rects(::rectangle_i32_array & recta) override;
 
 
-      bool post_message(::message::message * pmessage);
+      void post_message(::message::message * pmessage) override;
       lresult send_message(::message::message * pmessage) override;
 
       

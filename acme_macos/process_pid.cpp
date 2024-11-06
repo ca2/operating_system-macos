@@ -205,7 +205,7 @@ namespace acme_macos
 //
 //      }
 //
-//      ::file::path path = module_path_from_pid(pid.i32());
+//      ::file::path path = module_path_from_pid(pid.int());
 //
 //      if(path.title() == strApp || path == path1)
 //      {
@@ -216,7 +216,7 @@ namespace acme_macos
 //      else
 //      {
 //
-//         string_array straCmdLine = cmdline_from_pid(pid.i32());
+//         string_array straCmdLine = cmdline_from_pid(pid.int());
 //
 //         string strCmdLine;
 //

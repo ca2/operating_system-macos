@@ -29,7 +29,7 @@
 //
 //   
 //   class CLASS_DECL_ACME application :
-//      virtual public ::acme::application
+//      virtual public ::platform::application
 //   {
 //   public:
 //
@@ -63,7 +63,7 @@
 //      virtual bool init1();
 //      virtual bool init2();
 //      virtual bool init3();
-//      virtual i32  term_instance() override;
+//      virtual int  term_instance() override;
 //      
 //      
 //      

@@ -737,7 +737,7 @@ namespace aura_macos
 
       ::user::interaction_impl::post_non_client_destroy();
 
-//      ns_main_async(^()
+//      ns_main_post(^()
 //      {
 //      
 //         aura_window_destroy();
@@ -1117,7 +1117,7 @@ namespace aura_macos
 ////   }
 //
 //
-//   i32 interaction_impl::GetUpdateRgn(::draw2d::region* pRgn, bool bErase)
+//   int interaction_impl::GetUpdateRgn(::draw2d::region* pRgn, bool bErase)
 //   {
 //
 //      throw ::exception(error_not_implemented);
@@ -1423,7 +1423,7 @@ namespace aura_macos
 //   }
 
 
-//   bool interaction_impl::DrawAnimatedRects(i32 idAni, const RECTANGLE_I32 *lprcFrom, const RECTANGLE_I32 * lprcTo)
+//   bool interaction_impl::DrawAnimatedRects(int idAni, const RECTANGLE_I32 *lprcFrom, const RECTANGLE_I32 * lprcTo)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1563,10 +1563,10 @@ namespace aura_macos
 //
 //
 //   // Helper for radio buttons
-//   i32 interaction_impl::GetCheckedRadioButton(i32 nIDFirstButton, i32 nIDLastButton)
+//   int interaction_impl::GetCheckedRadioButton(int nIDFirstButton, int nIDLastButton)
 //   {
 //
-//      for (i32 nID = nIDFirstButton; nID <= nIDLastButton; nID++)
+//      for (int nID = nIDFirstButton; nID <= nIDLastButton; nID++)
 //      {
 //
 //         if (IsDlgButtonChecked(nID))
@@ -1583,7 +1583,7 @@ namespace aura_macos
 //   }
 //
 //
-//   void interaction_impl::CheckDlgButton(i32 nIDButton, ::u32 nCheck)
+//   void interaction_impl::CheckDlgButton(int nIDButton, ::u32 nCheck)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1591,7 +1591,7 @@ namespace aura_macos
 //   }
 //
 //
-//   void interaction_impl::CheckRadioButton(i32 nIDFirstButton, i32 nIDLastButton, i32 nIDCheckButton)
+//   void interaction_impl::CheckRadioButton(int nIDFirstButton, int nIDLastButton, int nIDCheckButton)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1599,7 +1599,7 @@ namespace aura_macos
 //   }
 //
 //
-//   i32 interaction_impl::DlgDirList(char * lpPathSpec, i32 nIDListBox, i32 nIDStaticPath, ::u32 nFileType)
+//   int interaction_impl::DlgDirList(char * lpPathSpec, int nIDListBox, int nIDStaticPath, ::u32 nFileType)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1607,7 +1607,7 @@ namespace aura_macos
 //   }
 //
 //
-//   i32 interaction_impl::DlgDirListComboBox(char * lpPathSpec, i32 nIDComboBox, i32 nIDStaticPath, ::u32 nFileType)
+//   int interaction_impl::DlgDirListComboBox(char * lpPathSpec, int nIDComboBox, int nIDStaticPath, ::u32 nFileType)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1615,7 +1615,7 @@ namespace aura_macos
 //   }
 //
 //
-//   bool interaction_impl::DlgDirSelect(char * lpString, i32 nSize, i32 nIDListBox)
+//   bool interaction_impl::DlgDirSelect(char * lpString, int nSize, int nIDListBox)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1623,7 +1623,7 @@ namespace aura_macos
 //   }
 //
 //
-//   bool interaction_impl::DlgDirSelectComboBox(char * lpString, i32 nSize, i32 nIDComboBox)
+//   bool interaction_impl::DlgDirSelectComboBox(char * lpString, int nSize, int nIDComboBox)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1647,7 +1647,7 @@ namespace aura_macos
 //   }
 //
 //
-//   ::u32 interaction_impl::IsDlgButtonChecked(i32 nIDButton) const
+//   ::u32 interaction_impl::IsDlgButtonChecked(int nIDButton) const
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1655,7 +1655,7 @@ namespace aura_macos
 //   }
 //
 //
-//   LPARAM interaction_impl::SendDlgItemMessage(i32 nID, const ::id & id, wparam wparam, lparam lparam)
+//   LPARAM interaction_impl::SendDlgItemMessage(int nID, const ::id & id, wparam wparam, lparam lparam)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1663,7 +1663,7 @@ namespace aura_macos
 //   }
 //
 //
-//   void interaction_impl::SetDlgItemInt(i32 nID, ::u32 nValue, bool bSigned)
+//   void interaction_impl::SetDlgItemInt(int nID, ::u32 nValue, bool bSigned)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1671,7 +1671,7 @@ namespace aura_macos
 //   }
 //
 //
-//   void interaction_impl::SetDlgItemText(i32 nID, const char * lpszString)
+//   void interaction_impl::SetDlgItemText(int nID, const char * lpszString)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1679,7 +1679,7 @@ namespace aura_macos
 //   }
 //
 //
-//   i32 interaction_impl::ScrollWindowEx(i32 Δx, i32 Δy, const RECTANGLE_I32 * lpRectScroll, const RECTANGLE_I32 * lpRectClip, ::draw2d::region* prgnUpdate, RECTANGLE_I32 * lpRectUpdate, ::u32 flags)
+//   int interaction_impl::ScrollWindowEx(int Δx, int Δy, const RECTANGLE_I32 * lpRectScroll, const RECTANGLE_I32 * lpRectClip, ::draw2d::region* prgnUpdate, RECTANGLE_I32 * lpRectUpdate, ::u32 flags)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -2011,7 +2011,7 @@ namespace aura_macos
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnMove(i32, i32)
+//   void interaction_impl::OnMove(int, int)
 //   {
 //      Default();
 //   }
@@ -2059,7 +2059,7 @@ namespace aura_macos
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnSize(::u32, i32, i32)
+//   void interaction_impl::OnSize(::u32, int, int)
 //   {
 //      Default();
 //   }
@@ -2231,9 +2231,9 @@ namespace aura_macos
 //   {
 //      Default();
 //   }
-//   i32 interaction_impl::OnMouseActivate(::user::interaction *, ::u32, ::u32)
+//   int interaction_impl::OnMouseActivate(::user::interaction *, ::u32, ::u32)
 //   {
-//      return (i32)Default();
+//      return (int)Default();
 //   }
 //   void interaction_impl::OnMouseMove(::u32, point_i32)
 //   {
@@ -2338,9 +2338,9 @@ namespace aura_macos
 //      Default();
 //   }
    // Win4 support
-   //   void interaction_impl::OnStyleChanged(i32, LPSTYLESTRUCT)
+   //   void interaction_impl::OnStyleChanged(int, LPSTYLESTRUCT)
    //   { Default(); }
-   //   void interaction_impl::OnStyleChanging(i32, LPSTYLESTRUCT)
+   //   void interaction_impl::OnStyleChanging(int, LPSTYLESTRUCT)
    //   { Default(); }
 //   void interaction_impl::OnSizing(::u32, RECTANGLE_I32 *)
 //   {
@@ -2448,7 +2448,7 @@ namespace aura_macos
 //   }
 //
 //
-//   LRESULT CALLBACK __cbt_filter_hook(i32 code, wparam wparam, lparam lparam)
+//   LRESULT CALLBACK __cbt_filter_hook(int code, wparam wparam, lparam lparam)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -2691,10 +2691,10 @@ namespace aura_macos
 //   }
 
 
-//   void interaction_impl::ns_main_async(dispatch_block_t block)
+//   void interaction_impl::ns_main_post(dispatch_block_t block)
 //   {
 //
-//      ::ns_main_async(block);
+//      ::ns_main_post(block);
 //
 //   }
 

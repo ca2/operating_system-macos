@@ -64,6 +64,7 @@
 		9A1D5F6D2751BE22003D9B5F /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73B226570CAE00D5C39E /* AppKit.framework */; };
 		9A1D5F702751BF50003D9B5F /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8024A266571D600A6B449 /* Carbon.framework */; };
 		9A22739827CF00E20042BAC2 /* windowing.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22739727CF00E20042BAC2 /* windowing.mm */; };
+		9A5243442CD49A0C006ED868 /* libacme_windowing_appkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5243432CD49A0C006ED868 /* libacme_windowing_appkit.dylib */; };
 		9A869DCD2B79A56B00937A3C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A869DCC2B79A56A00937A3C /* StoreKit.framework */; };
 		9A93B0F827FCFC380042D6C8 /* cursor_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A93B0F727FCFC380042D6C8 /* cursor_cpp.cpp */; };
 		9AF2844527FBC96400D4C1A8 /* macos_window.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AF2843B27FBC96400D4C1A8 /* macos_window.h */; };
@@ -121,6 +122,7 @@
 		9A440A692654DD22000C490B /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
 		9A440A6A2654DD63000C490B /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
 		9A440A762654F440000C490B /* _library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _library.h; sourceTree = "<group>"; };
+		9A5243432CD49A0C006ED868 /* libacme_windowing_appkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_windowing_appkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5D738A26561AAA00D5C39E /* _factory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
 		9A5D738D2656240A00D5C39E /* windowing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = windowing.cpp; sourceTree = "<group>"; };
 		9A5D738E2656240A00D5C39E /* windowing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = windowing.h; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5243442CD49A0C006ED868 /* libacme_windowing_appkit.dylib in Frameworks */,
 				9A1D5F672751BD80003D9B5F /* libapex_apple.dylib in Frameworks */,
 				9A1D5F682751BE0B003D9B5F /* libapex_macos.dylib in Frameworks */,
 				9A1D5F692751BE0B003D9B5F /* libapex_posix.dylib in Frameworks */,
@@ -281,6 +284,7 @@
 		9A5D7393265700D200D5C39E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A5243432CD49A0C006ED868 /* libacme_windowing_appkit.dylib */,
 				9A869DCC2B79A56A00937A3C /* StoreKit.framework */,
 				9A1D5F6E2751BE47003D9B5F /* CoreText.framework */,
 				9A62EBFF26F04B7B00EA958E /* ScriptingBridge.framework */,
@@ -383,7 +387,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					9A9E4AD52751A3F40094A04C = {
 						CreatedOnToolsVersion = 13.1;

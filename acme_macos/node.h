@@ -22,7 +22,7 @@ namespace acme_macos
    public:
 
       
-      //__creatable_from_library(node, ::acme::node, "acme_macos");
+      //__creatable_from_library(node, ::platform::node, "acme_macos");
       
       
        
@@ -39,7 +39,7 @@ namespace acme_macos
       
       
       void call_async(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, bool bPrivileged, unsigned int * puiPid = nullptr) override;
-      void call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const class ::time & durationTimeout, ::property_set & set, ::i32 * piExitCode) override;
+      void call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const class ::time & durationTimeout, ::property_set & set, int * piExitCode) override;
 
       //virtual ::color::color get_system_color(enum_system_color esystemcolor) override;
       
@@ -107,15 +107,15 @@ namespace acme_macos
 
       void shell_open(const ::file::path & pathFile, const ::string & strParams = "", const ::file::path & pathFolder = "") override;
       
-      //void implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem);
+      //void implement(::pointer < ::platform::node > & pnode, __pointer(class ::system) & psystem);
       
-      void acme_application_main(class ::acme::system * psystem) override;
+//      void acme_application_main(class ::platform::system * psystem) override;
       
       
-//      ::pointer < ::particle > create_quit_particle(::pointer < ::acme::node > & pnode, ::pointer < ::acme::system > & psystem) override;
+//      ::pointer < ::particle > create_quit_particle(::pointer < ::platform::node > & pnode, ::pointer < ::platform::system > & psystem) override;
   
 
-//      void implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem) override;
+//      void implement(::pointer < ::platform::node > & pnode, __pointer(class ::system) & psystem) override;
 
 
       void _will_finish_launching() override;
@@ -138,10 +138,10 @@ namespace acme_macos
 //
 //      ::process_identifier_array processes_identifiers() override;
 
-      ::i32 posix_shell_command(const ::scoped_string& scopedstrCommand, enum_posix_shell eposixshell = e_posix_shell_system_default, const trace_function& tracefunction = nullptr) override;
+      int posix_shell_command(const ::scoped_string& scopedstrCommand, enum_posix_shell eposixshell = e_posix_shell_system_default, const trace_function& tracefunction = nullptr) override;
 
       
-      virtual ::i32 zsh(const ::scoped_string &scopedstr, const trace_function & tracefunction = nullptr);
+      virtual int zsh(const ::scoped_string &scopedstr, const trace_function & tracefunction = nullptr);
 
       ::file::path get_default_base_integration_folder() override;
 

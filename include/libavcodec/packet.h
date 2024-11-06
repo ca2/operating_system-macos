@@ -82,13 +82,13 @@ enum AVPacketSideDataType {
      * Each MB info structure is 12 bytes, and is laid out as follows:
      * @code
      * u32le bit offset from the start of the packet
-     * u8    current quantizer at the start of the macroblock
-     * u8    GOB number
+     * unsigned char    current quantizer at the start of the macroblock
+     * unsigned char    GOB number
      * u16le macroblock address within the GOB
-     * u8    horizontal MV predictor
-     * u8    vertical MV predictor
-     * u8    horizontal MV predictor for block number 3
-     * u8    vertical MV predictor for block number 3
+     * unsigned char    horizontal MV predictor
+     * unsigned char    vertical MV predictor
+     * unsigned char    horizontal MV predictor for block number 3
+     * unsigned char    vertical MV predictor for block number 3
      * @endcode
      */
     AV_PKT_DATA_H263_MB_INFO,
@@ -124,8 +124,8 @@ enum AVPacketSideDataType {
      * This side data contains quality related information from the encoder.
      * @code
      * u32le quality factor of the compressed frame. Allowed range is between 1 (good) and FF_LAMBDA_MAX (bad).
-     * u8    picture type
-     * u8    error count
+     * unsigned char    picture type
+     * unsigned char    error count
      * u16   reserved
      * u64le[error count] sum of squared differences between encoder in and output
      * @endcode
@@ -150,8 +150,8 @@ enum AVPacketSideDataType {
      * @code
      * u32le number of samples to skip from start of this packet
      * u32le number of samples to skip from end of this packet
-     * u8    reason for start skip
-     * u8    reason for end   skip (0=padding silence, 1=convergence)
+     * unsigned char    reason for start skip
+     * unsigned char    reason for end   skip (0=padding silence, 1=convergence)
      * @endcode
      */
     AV_PKT_DATA_SKIP_SAMPLES,
@@ -161,7 +161,7 @@ enum AVPacketSideDataType {
      * the packet may contain "dual mono" audio specific to Japanese DTV
      * and if it is true, recommends only the selected channel to be used.
      * @code
-     * u8    selected channels (0=main/left, 1=sub/right, 2=both)
+     * unsigned char    selected channels (0=main/left, 1=sub/right, 2=both)
      * @endcode
      */
     AV_PKT_DATA_JP_DUALMONO,

@@ -76,7 +76,7 @@
 ENSURE(hWndCtrl);
  ENSURE(lpszNew);
 
- i32 nNewLen = lstrlen(lpszNew);
+ int nNewLen = lstrlen(lpszNew);
  char szOld[256]="";
  // fast check to see if text really changes (reduces flash in controls)
  if (nNewLen > _countof(szOld) ||

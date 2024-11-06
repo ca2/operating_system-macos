@@ -1,6 +1,6 @@
 #include "framework.h"
-#include "dir_context.h"
-#include "acme/filesystem/filesystem/directory_system.h"
+#include "directory_context.h"
+#include "file_system.h"
 #include "acme/filesystem/filesystem/directory_system.h"
 #include "acme/filesystem/filesystem/listing.h"
 #include "acme/parallelization/task_flag.h"
@@ -25,26 +25,26 @@ namespace acme_macos
 {
 
 
-   dir_context::dir_context()
+   directory_context::directory_context()
    {
 
 
    }
 
 
-   dir_context::~dir_context()
+   directory_context::~directory_context()
    {
    
    
    }
 
 
-   void dir_context::initialize(::particle * pparticle)
+   void directory_context::initialize(::particle * pparticle)
    {
       
       //auto estatus =
       
-      ::dir_context::initialize(pparticle);
+      ::directory_context::initialize(pparticle);
       
 //      if(!estatus)
 //      {
@@ -57,7 +57,7 @@ namespace acme_macos
       
       //estatus =
       
-//      __refer(m_psystem->m_papexsystem->m_pdirsystem, psystem->m_psystem->m_papexsystem->m_pdirsystem);
+//      __refer(m_psystem->m_papexsystem->directory_system(), psystem->m_psystem->m_papexsystem->directory_system());
       
 //      if(!estatus)
 //      {
@@ -82,12 +82,12 @@ namespace acme_macos
    }
 
 
-   void dir_context::init_system()
+   void directory_context::init_system()
    {
       
       //auto estatus =
       
-      ::dir_context::init_system();
+      ::directory_context::init_system();
       
 //      if(!estatus)
 //      {
@@ -125,7 +125,7 @@ namespace acme_macos
 
       auto strRelative = pdirectorysystem->install();
       
-      //m_psystem->m_papexsystem->m_pdirsystem->m_strCommonAppData = str / strRelative / "commonappdata";
+      //m_psystem->m_papexsystem->directory_system()->m_strCommonAppData = str / strRelative / "commonappdata";
 
 //      xml::document doc;
 //
@@ -139,31 +139,31 @@ namespace acme_macos
 //         if(doc.root()->get_name() == "directory_configuration")
 //         {
 //
-//            m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder = doc.root()->get_child_value("time");
+//            m_psystem->m_papexsystem->directory_system()->m_strTimeFolder = doc.root()->get_child_value("time");
 //
-//            m_psystem->m_papexsystem->m_pdirsystem->m_strNetSeedFolder = doc.root()->get_child_value("netseed");
+//            m_psystem->m_papexsystem->directory_system()->m_strNetSeedFolder = doc.root()->get_child_value("netseed");
 //
 //         }
 //
 //      }
 
-//      if(m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder.is_empty())
+//      if(m_psystem->m_papexsystem->directory_system()->m_strTimeFolder.is_empty())
 //      {
 //
-//         m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder = ::file::path(getenv("HOME")) /"Library" / "ca2"/"time";
+//         m_psystem->m_papexsystem->directory_system()->m_strTimeFolder = ::file::path(getenv("HOME")) /"Library" / "ca2"/"time";
 //
 //      }
 
-//      if(m_psystem->m_papexsystem->m_pdirsystem->m_strNetSeedFolder.is_empty())
+//      if(m_psystem->m_papexsystem->directory_system()->m_strNetSeedFolder.is_empty())
 //      {
 //
-//         m_psystem->m_papexsystem->m_pdirsystem->m_strNetSeedFolder = pdirectorysystem->install() / "net";
+//         m_psystem->m_papexsystem->directory_system()->m_strNetSeedFolder = pdirectorysystem->install() / "net";
 //
 //      }
       
-//      pdirectorysystem->create(m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder);
+//      pdirectorysystem->create(m_psystem->m_papexsystem->directory_system()->m_strTimeFolder);
 //
-//      if(!pdirectorysystem->is(m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder))
+//      if(!pdirectorysystem->is(m_psystem->m_papexsystem->directory_system()->m_strTimeFolder))
 //      {
 //
 //         throw exception(error_resource);
@@ -172,7 +172,7 @@ namespace acme_macos
 //
 //      ::file::path strTime;
 //
-//      strTime = m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder;
+//      strTime = m_psystem->m_papexsystem->directory_system()->m_strTimeFolder;
 //
 //      strTime /= "time";
 //
@@ -187,18 +187,18 @@ namespace acme_macos
 
       //str = "/usr/bin";
 
-      //m_psystem->m_papexsystem->m_pdirsystem->m_pathPrograms = str;
+      //m_psystem->m_papexsystem->directory_system()->m_pathPrograms = str;
 
       //str = "/usr/share/";
 
-      //m_psystem->m_papexsystem->m_pdirsystem->m_pathCommonAppData = str;
+      //m_psystem->m_papexsystem->directory_system()->m_pathCommonAppData = str;
       
       //return estatus;
 
    }
 
 
-   ::file::listing & dir_context::root_ones(::file::listing & listing)
+   ::file::listing & directory_context::root_ones(::file::listing & listing)
    {
       
       ::file::path path;
@@ -216,10 +216,10 @@ namespace acme_macos
    }
 
 
-   bool dir_context::enumerate(::file::listing & listing)
+   bool directory_context::enumerate(::file::listing & listing)
    {
       
-      if(::dir_context::enumerate(listing))
+      if(::directory_context::enumerate(listing))
       {
          
          return true;
@@ -251,7 +251,7 @@ namespace acme_macos
 //
 //            __scoped_restore(listing.m_eextract);
 //
-//            if(::dir_context::ls(listing))
+//            if(::directory_context::ls(listing))
 //            {
 //
 //               return true;
@@ -262,16 +262,16 @@ namespace acme_macos
 //
 //            get_app()->m_papplication->dir().ls_dir(dira, listing.m_pathFinal);
 //
-//            for(i32 i = 0; i < dira.get_count(); i++)
+//            for(int i = 0; i < dira.get_count(); i++)
 //            {
 //
-//               ::file::path dir_context = dira[i];
+//               ::file::path directory_context = dira[i];
 //
-//               if(dir_context == listing.m_pathFinal)
+//               if(directory_context == listing.m_pathFinal)
 //                  continue;
 //
 //               listing.m_pathUser.Empty();
-//               listing.m_pathFinal = dir_context;
+//               listing.m_pathFinal = directory_context;
 //
 //               if(listing.m_eextract != extract_all)
 //               {
@@ -326,7 +326,7 @@ namespace acme_macos
 //      else
 //      {
 //
-//         if(::dir_context::ls(listing))
+//         if(::directory_context::ls(listing))
 //         {
 //
 //            return true;
@@ -369,17 +369,17 @@ namespace acme_macos
    }
 
 
-//   bool dir_context::is(const ::file::path & pathParam)
+//   bool directory_context::is(const ::file::path & pathParam)
 //   {
 //
-//      return ::dir_context::is(pathParam);
+//      return ::directory_context::is(pathParam);
 ////      ::file::path path;
 ////
 ////      auto papplication = application();
 ////
 ////      path = papplication->defer_process_path(pathParam);
 ////
-////      if(::dir_context::is(path))
+////      if(::directory_context::is(path))
 ////      {
 ////
 ////         return true;
@@ -393,7 +393,7 @@ namespace acme_macos
 //   }
 
 
-//   bool dir_context::is(const string & strPath)
+//   bool directory_context::is(const string & strPath)
 //   {
 //
 //      if(::file::system_dir::is(strPath, papp))
@@ -435,7 +435,7 @@ namespace acme_macos
 //         }
 //      }
 //
-//      bIsDir = ::dir_context::is(::str::international::unicode_to_utf8(wstrPath));
+//      bIsDir = ::directory_context::is(::str::international::unicode_to_utf8(wstrPath));
 //
 //      m_isdirmap.set(strPath, bIsDir, bIsDir ? 0 : ::get_last_error());
 //
@@ -443,7 +443,7 @@ namespace acme_macos
 //   }
 
 
-   bool dir_context::name_is(const ::file::path & str)
+   bool directory_context::name_is(const ::file::path & str)
    {
       //output_debug_string(str);
       strsize iLast = str.length() - 1;
@@ -509,7 +509,7 @@ namespace acme_macos
 //         }
 //      }
 
-      bIsDir = ::dir_context::is(unicode_to_utf8(wstrPath));
+      bIsDir = ::directory_context::is(unicode_to_utf8(wstrPath));
 
       //m_isdirmap.set(str.Left(iLast + 1), bIsDir, bIsDir ? //0 : ::get_last_error());
 
@@ -517,7 +517,7 @@ namespace acme_macos
    }
 
 
-//   void dir_context::create(const ::file::path & pcsz)
+//   void directory_context::create(const ::file::path & pcsz)
 //   {
 //
 //      if(is(pcsz))
@@ -531,7 +531,7 @@ namespace acme_macos
 //
 //      pcsz.ascendants_path(stra);
 //
-//      for(i32 i = 0; i < stra.get_size(); i++)
+//      for(int i = 0; i < stra.get_size(); i++)
 //      {
 //
 //         if(!is(stra[i]))
@@ -614,7 +614,7 @@ namespace acme_macos
 //////               FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM, nullptr, dwError, 0, (char *) &pszError, 8, nullptr);
 ////                              FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, nullptr, dwError, 0, (char *) &pszError, 8, nullptr);
 ////
-////               //information("dir_context::mk CreateDirectoryW last error(%d)=%s", dwError, pszError);
+////               //information("directory_context::mk CreateDirectoryW last error(%d)=%s", dwError, pszError);
 ////               // xxx               ::LocalFree(pszError);
 ////               //m_isdirmap.set(stra[i], false);
 ////            }
@@ -644,14 +644,14 @@ namespace acme_macos
 //   }
 
 
-//   bool dir_context::rm(::object * const ::file::path & psz, bool bRecursive)
+//   bool directory_context::rm(::object * const ::file::path & psz, bool bRecursive)
 //   {
 //      if(bRecursive)
 //      {
 //         string_array straPath;
 //         string_array straTitle;
 //         ls(papp, psz, &straPath, &straTitle);
-//         for(i32 i = 0; i < straPath.get_count(); i++)
+//         for(int i = 0; i < straPath.get_count(); i++)
 //         {
 //            if(is(straPath[i], papp))
 //            {
@@ -667,7 +667,7 @@ namespace acme_macos
 //   }
 //
 //
-//   string dir_context::name(const char * path1)
+//   string directory_context::name(const char * path1)
 //   {
 //      const char * psz = path1 + strlen(path1) - 1;
 //      while(psz >= path1)
@@ -699,7 +699,7 @@ namespace acme_macos
 //      }
 //   }
 //
-//   string dir_context::name(const string & str)
+//   string directory_context::name(const string & str)
 //   {
 //
 //      strsize iLast = str.get_length() - 1;
@@ -733,14 +733,14 @@ namespace acme_macos
 //   }
 //
 //
-//   class ::file::path & dir_context::path()
+//   class ::file::path & directory_context::path()
 //   {
 //      return m_path;
 //   }
 
 
 
-   ::file::path dir_context::trash_that_is_not_trash(const ::file::path & path)
+   ::file::path directory_context::trash_that_is_not_trash(const ::file::path & path)
    {
       
       if(path.is_empty())
@@ -785,31 +785,31 @@ namespace acme_macos
 
 
 
-//   string dir_context::usersystemappdata(::object * const char * lpcszPrefix, const char * pcsz, const char * lpcsz2)
+//   string directory_context::usersystemappdata(::object * const char * lpcszPrefix, const char * pcsz, const char * lpcsz2)
 //   {
 //      UNREFERENCED_PARAMETER(pobject);
 //      return path(appdata(lpcszPrefix), pcsz, lpcsz2);
 //   }
 //
-//   string dir_context::appdata(::object * const char * pcsz, const char * lpcsz2)
+//   string directory_context::appdata(::object * const char * pcsz, const char * lpcsz2)
 //   {
 //      return path(userfolder(papp, "appdata"), pcsz, lpcsz2);
 //   }
 //
-//   string dir_context::userdata(::object * const char * pcsz, const char * lpcsz2)
+//   string directory_context::userdata(::object * const char * pcsz, const char * lpcsz2)
 //   {
 //      return path(userfolder(papp, "data"), pcsz, lpcsz2);
 //   }
 
-//   ::file::path dir_context::userfolder(::object * pobject)
+//   ::file::path directory_context::userfolder(::object * pobject)
 //   {
 //
-//      return App(papp).dir_context().userfolder();
+//      return App(papp).directory_context().userfolder();
 //
 //   }
 
 
-//   ::file::path dir_context::default_os_user_path_prefix(::object * pobject)
+//   ::file::path directory_context::default_os_user_path_prefix(::object * pobject)
 //   {
 //
 //      return ::getlogin();
@@ -817,17 +817,17 @@ namespace acme_macos
 //   }
 
 
-//   string dir_context::default_userappdata(::object * const char * lpcszPrefix, const char * lpcszLogin, const char * pszRelativePath)
+//   string directory_context::default_userappdata(::object * const char * lpcszPrefix, const char * lpcszLogin, const char * pszRelativePath)
 //   {
 //      return path(default_userfolder(papp, lpcszPrefix, lpcszLogin, "appdata"), pszRelativePath);
 //   }
 //
-//   string dir_context::default_userdata(::object * const char * lpcszPrefix, const char * lpcszLogin, const char * pszRelativePath)
+//   string directory_context::default_userdata(::object * const char * lpcszPrefix, const char * lpcszLogin, const char * pszRelativePath)
 //   {
 //      return path(default_userfolder(papp, lpcszPrefix, lpcszLogin, "data"), pszRelativePath);
 //   }
 //
-//   string dir_context::default_userfolder(::object * const char * lpcszPrefix, const char * lpcszLogin, const char * pszRelativePath)
+//   string directory_context::default_userfolder(::object * const char * lpcszPrefix, const char * lpcszLogin, const char * pszRelativePath)
 //   {
 //
 //      return userfolder(papp, pszRelativePath);
@@ -842,7 +842,7 @@ namespace acme_macos
 //       return path(path(str, "ca2\\user", lpcszPrefix), lpcszLogin, pszRelativePath);*/
 //   }
 //
-//   string dir_context::userquicklaunch(::object * const char * lpcszRelativePath, const char * lpcsz2)
+//   string directory_context::userquicklaunch(::object * const char * lpcszRelativePath, const char * lpcsz2)
 //   {
 //      UNREFERENCED_PARAMETER(pobject);
 //      string str;
@@ -855,7 +855,7 @@ namespace acme_macos
 //      return path(str, lpcszRelativePath, lpcsz2);
 //   }
 
-//   string dir_context::userprograms(::object * const char * lpcszRelativePath, const char * lpcsz2)
+//   string directory_context::userprograms(::object * const char * lpcszRelativePath, const char * lpcsz2)
 //   {
 //      UNREFERENCED_PARAMETER(pobject);
 //      string str;
@@ -869,7 +869,7 @@ namespace acme_macos
 //      return path(str, lpcszRelativePath, lpcsz2);
 //   }
 //
-//   string dir_context::commonprograms(const char * lpcszRelativePath, const char * lpcsz2)
+//   string directory_context::commonprograms(const char * lpcszRelativePath, const char * lpcsz2)
 //   {
 //      string str;
 //      /*      SHGetSpecialFolderPath(
@@ -881,22 +881,22 @@ namespace acme_macos
 //      return path(str, lpcszRelativePath, lpcsz2);
 //   }
 
-//   bool dir_context::is_inside_time(const char * pszPath)
+//   bool directory_context::is_inside_time(const char * pszPath)
 //   {
 //      return is_inside(time(), pszPath, papp);
 //   }
 //
-//   bool dir_context::is_inside(const char * pszDir, const char * pszPath)
+//   bool directory_context::is_inside(const char * pszDir, const char * pszPath)
 //   {
 //      return ::str::case_insensitive_begins(pszDir, pszPath);
 //   }
 //
 
 
-   bool dir_context::has_subdir(const ::file::path & pathFolder)
+   bool directory_context::has_subdir(const ::file::path & pathFolder)
    {
       
-      return ::dir_context::has_subdir(pathFolder);
+      return ::directory_context::has_subdir(pathFolder);
 
 //      ::file::listing stra;
 //
@@ -910,7 +910,7 @@ namespace acme_macos
 
 
 
-//    bool dir_context::is(const ::file::path & lpcszPath)
+//    bool directory_context::is(const ::file::path & lpcszPath)
 //    {
 //
 //        if(::file::system_dir::is(lpcszPath, papp))
@@ -949,7 +949,7 @@ namespace acme_macos
 //    }
 
 
-   //bool dir_context::is(const ::file::path & strPath)
+   //bool directory_context::is(const ::file::path & strPath)
    //{
    //
    //   if(::file::system_dir::is(strPath, papp))
@@ -998,7 +998,7 @@ namespace acme_macos
    //   return bIsDir;
    //}
 
-//    bool dir_context::name_is(const ::file::path & str)
+//    bool directory_context::name_is(const ::file::path & str)
 //    {
 //        //output_debug_string(str);
 //        strsize iLast = str.get_length() - 1;
@@ -1037,7 +1037,7 @@ namespace acme_macos
 //
 //        u32 uiLastError;
 //
-//        if(m_isdirmap.lookup(str, bIsDir, uiLastError, (i32) iLast))
+//        if(m_isdirmap.lookup(str, bIsDir, uiLastError, (int) iLast))
 //        {
 //            if(!bIsDir)
 //            {
@@ -1092,15 +1092,15 @@ namespace acme_macos
 //    }
 
 
-   ::file::path dir_context::time()
+   ::file::path directory_context::time()
    {
       
-      return system()->m_pdirsystem->m_pathAppData / "time";
+      return system()->directory_system()->m_pathAppData / "time";
       
    }
 
 
-   ::file::path dir_context::stage()
+   ::file::path directory_context::stage()
    {
       
       
@@ -1109,7 +1109,7 @@ namespace acme_macos
    }
 
 
-   ::file::path dir_context::stageapp()
+   ::file::path directory_context::stageapp()
    {
       
       return stage() / "basis";
@@ -1117,25 +1117,25 @@ namespace acme_macos
    }
 
 
-   ::file::path dir_context::netseed()
+   ::file::path directory_context::netseed()
    {
       
-      return system()->m_pdirsystem->m_pathHome / "netnodenet/net/seed";
+      return system()->directory_system()->m_pathHome / "netnodenet/net/seed";
       
    }
 
 //   // stage in ca2os spalib
-//   ::file::path dir_context::install()
+//   ::file::path directory_context::install()
 //   {
 //
 //      single_lock synchronouslock(mutex(), true);
 //
-//      return m_psystem->m_papexsystem->m_pdirsystem->m_pathCa2;
+//      return m_psystem->m_papexsystem->directory_system()->m_pathCa2;
 //
 //   }
 
 
-   ::file::path dir_context::module()
+   ::file::path directory_context::module()
    {
 
       return system()->directory_system()->module();
@@ -1143,15 +1143,15 @@ namespace acme_macos
    }
 
 
-//   ::file::path dir_context::ca2module()
+//   ::file::path directory_context::ca2module()
 //   {
 //
-//      return m_psystem->m_papexsystem->m_pdirsystem->m_pathCa2Module;
+//      return m_psystem->m_papexsystem->directory_system()->m_pathCa2Module;
 //
 //   }
 
 
-//   ::file::path dir_context::time_square(const string & strPrefix,const string & strSuffix)
+//   ::file::path directory_context::time_square(const string & strPrefix,const string & strSuffix)
 //   {
 //
 //      UNREFERENCED_PARAMETER(strPrefix);
@@ -1162,7 +1162,7 @@ namespace acme_macos
 //   }
 
 
-//   ::file::path dir_context::time_log()
+//   ::file::path directory_context::time_log()
 //   {
 //
 //      return appdata() / "log";
@@ -1170,7 +1170,7 @@ namespace acme_macos
 //   }
 
 
-//   void dir_context::erase(const ::file::path & psz, bool bRecursive)
+//   void directory_context::erase(const ::file::path & psz, bool bRecursive)
 //   {
 //
 //      if(bRecursive)
@@ -1214,7 +1214,7 @@ namespace acme_macos
 //   }
 
 
-   //::file::path dir_context::name(const ::file::path & path1)
+   //::file::path directory_context::name(const ::file::path & path1)
    //{
    //   const char * psz = path1 + strlen(path1) - 1;
    //   while(psz >= path1)
@@ -1246,7 +1246,7 @@ namespace acme_macos
    //   }
    //}
 
-//   ::file::path dir_context::name(const ::file::path & str)
+//   ::file::path directory_context::name(const ::file::path & str)
 //   {
 //
 //      strsize iLast = str.get_length() - 1;
@@ -1280,7 +1280,7 @@ namespace acme_macos
 //   }
 
 
-   //class ::file::file_path & dir_context::path()
+   //class ::file::file_path & directory_context::path()
    //{
    //   return m_path;
    //}
@@ -1311,7 +1311,7 @@ namespace acme_macos
 
 
 
-//    ::file::path dir_context::trash_that_is_not_trash(const ::file::path & psz)
+//    ::file::path directory_context::trash_that_is_not_trash(const ::file::path & psz)
 //    {
 //        if(psz.is_empty())
 //            return "";
@@ -1341,10 +1341,10 @@ namespace acme_macos
 //        return "";
 //    }
 
-   ::file::path dir_context::appdata(const string & strAppId)
+   ::file::path directory_context::appdata(const string & strAppId)
    {
       
-      return system()->m_pdirsystem->m_pathAppData / strAppId;
+      return system()->directory_system()->m_pathAppData / strAppId;
       
 //      auto psystem = m_psystem;
 //
@@ -1355,46 +1355,46 @@ namespace acme_macos
    }
 
 
-   ::file::path dir_context::commonappdata_root()
+   ::file::path directory_context::commonappdata_root()
    {
 
-      return system()->m_pdirsystem->m_pathAppData;
+      return system()->directory_system()->m_pathAppData;
 
    }
 
 
-   ::file::path dir_context::commonappdata()
+   ::file::path directory_context::commonappdata()
    {
 
-      return system()->m_pdirsystem->m_pathAppData;
+      return system()->directory_system()->m_pathAppData;
 
    }
 
 
-//    ::file::path dir_context::usersystemappdata(::object * pobject,const char * lpcszPrefix)
+//    ::file::path directory_context::usersystemappdata(::object * pobject,const char * lpcszPrefix)
 //    {
 //        UNREFERENCED_PARAMETER(pobject);
 //        return appdata() / lpcszPrefix;
 //    }
 //
-//    ::file::path dir_context::appdata(::object * pobject)
+//    ::file::path directory_context::appdata(::object * pobject)
 //    {
 //        return userfolder(pobject) / "appdata";
 //    }
 //
-//    ::file::path dir_context::userdata(::object * pobject)
+//    ::file::path directory_context::userdata(::object * pobject)
 //    {
 //        return userfolder(pobject) / "data";
 //    }
 
-//    ::file::path dir_context::userfolder(::object * pobject)
+//    ::file::path directory_context::userfolder(::object * pobject)
 //    {
 //
 //
 //
 //    }
 //
-//    ::file::path dir_context::default_os_user_path_prefix(::object * pobject)
+//    ::file::path directory_context::default_os_user_path_prefix(::object * pobject)
 //    {
 //        UNREFERENCED_PARAMETER(pobject);
 //        unichar buf[MAX_PATH];
@@ -1409,48 +1409,48 @@ namespace acme_macos
 //        return ::str::international::unicode_to_utf8(buf);
 //    }
 
-//    ::file::path dir_context::default_userappdata(::object * pobject,const string & lpcszPrefix,const string & lpcszLogin)
+//    ::file::path directory_context::default_userappdata(::object * pobject,const string & lpcszPrefix,const string & lpcszLogin)
 //    {
 //        return default_userfolder(papp, lpcszPrefix, lpcszLogin) /  "appdata" ;
 //    }
 //
-//    ::file::path dir_context::default_userdata(::object * pobject,const string & lpcszPrefix,const string & lpcszLogin)
+//    ::file::path directory_context::default_userdata(::object * pobject,const string & lpcszPrefix,const string & lpcszLogin)
 //    {
 //        return default_userfolder(papp, lpcszPrefix, lpcszLogin) / "data";
 //    }
 //
-//    ::file::path dir_context::default_userfolder(::object * pobject,const string & lpcszPrefix,const string & lpcszLogin)
+//    ::file::path directory_context::default_userfolder(::object * pobject,const string & lpcszPrefix,const string & lpcszLogin)
 //    {
 //
 //        return userfolder(pobject);
 //
 //    }
 
-   ::file::path dir_context::userquicklaunch()
+   ::file::path directory_context::userquicklaunch()
    {
 
-      return system()->m_pdirsystem->m_pathAppData / "Microsoft\\Internet Explorer\\Quick Launch";
+      return system()->directory_system()->m_pathAppData / "Microsoft\\Internet Explorer\\Quick Launch";
 
    }
 
 
-   ::file::path dir_context::userprograms()
+   ::file::path directory_context::userprograms()
    {
 
-      return system()->m_pdirsystem->m_pathAppData;
+      return system()->directory_system()->m_pathAppData;
 
    }
 
 
-   ::file::path dir_context::commonprograms()
+   ::file::path directory_context::commonprograms()
    {
 
-      return system()->m_pdirsystem->m_pathAppData;
+      return system()->directory_system()->m_pathAppData;
 
    }
 
 
-   bool dir_context::is_inside_time(const ::file::path & pszPath)
+   bool directory_context::is_inside_time(const ::file::path & pszPath)
    {
 
       return is_inside(time(), pszPath);
@@ -1458,7 +1458,7 @@ namespace acme_macos
    }
 
 
-   bool dir_context::is_inside(const ::file::path & pathLonger, const ::file::path & pathShorter)
+   bool directory_context::is_inside(const ::file::path & pathLonger, const ::file::path & pathShorter)
    {
 
       return pathLonger.case_insensitive_begins(pathShorter);
@@ -1466,7 +1466,7 @@ namespace acme_macos
    }
 
 
-//    bool dir_context::has_subdir(::object * const ::file::path & pszDir)
+//    bool directory_context::has_subdir(::object * const ::file::path & pszDir)
 //    {
 //
 //        file_find file_find;
@@ -1513,11 +1513,11 @@ namespace acme_macos
    //   VERIFY(FindClose(hFind));
 
    //   // strip attribute of NORMAL bit, our API doesn't have a "normal" bit.
-   //   rStatus.m_attribute = (::u8)(findFileData.dwFileAttributes & ~FILE_ATTRIBUTE_NORMAL);
+   //   rStatus.m_attribute = (unsigned char)(findFileData.dwFileAttributes & ~FILE_ATTRIBUTE_NORMAL);
 
    //   // get just the low ::u32 of the file size_i32
    //   ASSERT(findFileData.nFileSizeHigh == 0);
-   //   rStatus.m_size = (::i32)findFileData.nFileSizeLow;
+   //   rStatus.m_size = (int)findFileData.nFileSizeLow;
 
    //   // convert times as appropriate
    //   rStatus.m_ctime = ::datetime::time(findFileData.ftCreationTime);
@@ -1534,15 +1534,15 @@ namespace acme_macos
    //}
 
 
-   ::file::path dir_context::home()
+   ::file::path directory_context::home()
    {
 
-      return system()->m_pdirsystem->m_pathHome;
+      return system()->directory_system()->m_pathHome;
 
    }
 
 
-   ::file::path dir_context::desktop()
+   ::file::path directory_context::desktop()
    {
 
       return ::string_from_strdup(ns_user_local_desktop_folder());
@@ -1551,7 +1551,7 @@ namespace acme_macos
    }
 
 
-   ::file::path dir_context::document()
+   ::file::path directory_context::document()
    {
 
       return ::string_from_strdup(ns_user_local_documents_folder());
@@ -1559,7 +1559,7 @@ namespace acme_macos
 
    }
 
-   ::file::path dir_context::download()
+   ::file::path directory_context::download()
    {
 
       return ::string_from_strdup(ns_user_local_downloads_folder());
@@ -1567,7 +1567,7 @@ namespace acme_macos
    }
 
 
-   ::file::path dir_context::music()
+   ::file::path directory_context::music()
    {
 
       return ::string_from_strdup(ns_user_local_music_folder());
@@ -1575,7 +1575,7 @@ namespace acme_macos
    }
 
 
-   ::file::path dir_context::video()
+   ::file::path directory_context::video()
    {
 
       return ::string_from_strdup(ns_user_local_video_folder());
@@ -1583,7 +1583,7 @@ namespace acme_macos
    }
 
 
-   ::file::path dir_context::image()
+   ::file::path directory_context::image()
    {
 
       return ::string_from_strdup(ns_user_local_image_folder());

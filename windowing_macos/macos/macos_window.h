@@ -108,7 +108,7 @@ public:
     
     virtual void macos_window_set_opacity(double dOpacity);
    
-   //virtual void ns_main_async(dispatch_block_t block) = 0;
+   //virtual void ns_main_post(dispatch_block_t block) = 0;
    
 };
 

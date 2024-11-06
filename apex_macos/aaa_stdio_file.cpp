@@ -36,7 +36,7 @@ namespace macos
       if ((nOpenFlags & ::file::e_open_defer_create_directory) && (nOpenFlags & ::file::e_open_write))
       {
          
-         pcontext->m_papexcontext->dir().mk(::file::path(lpszFileName).folder());
+         papplication->dir().mk(::file::path(lpszFileName).folder());
          
       }
 
@@ -48,7 +48,7 @@ namespace macos
       // ASSERT(m_bCloseOnDelete);
 
       char szMode[4]; // C-runtime open string
-      i32 nMode = 0;
+      int nMode = 0;
 
       // determine read/write mode depending on ::ca2::filesp mode
       if (nOpenFlags & ::file::e_open_create)
@@ -72,7 +72,7 @@ namespace macos
       }
 
       // will be inverted if not necessary
-      i32 nFlags = O_RDONLY;
+      int nFlags = O_RDONLY;
       if (nOpenFlags & (::file::e_open_write | ::file::e_open_read_write))
          nFlags ^= O_RDONLY;
 
@@ -83,7 +83,7 @@ namespace macos
       szMode[nMode++] = '\0';
 
       // open a C-runtime low-level file handle
-      //i32 nHandle = _open_osfhandle(m_hFile, nFlags);
+      //int nHandle = _open_osfhandle(m_hFile, nFlags);
 
       // open a C-runtime stream from that handle
       //if (nHandle != -1)
@@ -125,7 +125,7 @@ namespace macos
 
       size_t nRead = 0;
 
-      if ((nRead = fread(lpBuf, sizeof(::u8), nCount, m_pStream)) == 0 && !feof(m_pStream))
+      if ((nRead = fread(lpBuf, sizeof(unsigned char), nCount, m_pStream)) == 0 && !feof(m_pStream))
          throw ::file::exception(error_file, -1, errno, m_strFileName);
       if (ferror(m_pStream))
       {
@@ -141,7 +141,7 @@ namespace macos
       ASSERT(m_pStream != nullptr);
       //   ASSERT(fx_is_valid_address(lpBuf, nCount, false));
 
-      if (fwrite(lpBuf, sizeof(::u8), nCount, m_pStream) != nCount)
+      if (fwrite(lpBuf, sizeof(unsigned char), nCount, m_pStream) != nCount)
          throw ::file::exception(error_file, -1, errno, m_strFileName);
    }
 
@@ -178,7 +178,7 @@ namespace macos
 
       //rString = &afxWchNil;    // is_empty string without deallocating
       rString.Empty();
-      const i32 nMaxSize = 128;
+      const int nMaxSize = 128;
       char * lpsz = rString.get_buffer(nMaxSize);
       char * lpszResult;
       strsize nLen = 0;
@@ -233,7 +233,7 @@ namespace macos
       ASSERT(eseek == ::e_seek_set || eseek== ::e_seek_from_end || eseek== ::e_seek_current);
       ASSERT(m_pStream != nullptr);
 
-      i32 nFrom;
+      int nFrom;
       switch(eseek)
       {
       case ::e_seek_set:
@@ -283,7 +283,7 @@ namespace macos
       ASSERT_VALID(this);
       ASSERT(m_pStream != nullptr);
 
-      i32 nErr = 0;
+      int nErr = 0;
 
       if (m_pStream != nullptr)
          nErr = fclose(m_pStream);

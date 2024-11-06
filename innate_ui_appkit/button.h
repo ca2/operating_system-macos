@@ -35,7 +35,7 @@ namespace innate_ui_appkit
       ~button() override;
 
       
-      virtual void __create();
+      virtual void __create_button();
 
       void _create_child(window * pwindowParent) override;
 

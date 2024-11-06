@@ -24,7 +24,7 @@ void apex_macos_factory(::factory::factory * pfactory)
    
    acme_macos_factory(pfactory);
 
-   pfactory->add_factory_item < ::apex_macos::node, ::acme::node > ();
+   pfactory->add_factory_item < ::apex_macos::node, ::platform::node > ();
 
 
 //   pfactory->add_factory_item < ::apex_macos::os_context, ::os_context > ();

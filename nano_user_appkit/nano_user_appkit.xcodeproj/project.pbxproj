@@ -117,6 +117,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9A3865942CD381330027E907 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9A7E173E2C9DF5E700EE8CA6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +222,10 @@
 			productRefGroup = 9A2FCE062C9D3ADC000CF701 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 9A3865942CD381330027E907 /* Products */;
+					ProjectRef = 9AA828F32CAF881300DA11E9 /* acme_macos.xcodeproj */;
+				},
 				{
 					ProductGroup = 9AA829172CAF88AC00DA11E9 /* Products */;
 					ProjectRef = 9AA829162CAF88AC00DA11E9 /* acme_macos.xcodeproj */;

@@ -1,10 +1,10 @@
 // Create on 2021-03-21 20:00 <3ThomasBS_ // for Linux(question)
 // Recreated on 2021-05-16 15:05 <3ThomasBS_ // for macOS
 #include "framework.h"
+#include "directory_system.h"
 #include "acme/filesystem/filesystem/directory_system.h"
 #include "acme/filesystem/filesystem/path_system.h"
 #include "acme/filesystem/filesystem/file_system.h"
-#include "acme_directory.h"
 
 
 ::string macos_get_home();
@@ -13,7 +13,7 @@ namespace acme_macos
 {
 
    
-   acme_directory::acme_directory()
+   directory_system::directory_system()
    {
 
       m_pplatformdir = this;
@@ -21,14 +21,66 @@ namespace acme_macos
    }
 
 
-   acme_directory::~acme_directory()
+   directory_system::~directory_system()
    {
 
 
    }
 
 
-   string acme_directory::dir_root()
+   void directory_system::initialize(::particle * pparticle)
+   {
+      
+      //auto estatus =
+      
+      ::directory_system::initialize(pparticle);
+      
+   //      if(!estatus)
+   //      {
+   //
+   //         return estatus;
+   //
+   //      }
+   //
+   //      return estatus;
+
+   }
+
+
+   void directory_system::init_system()
+   {
+
+      //auto estatus =
+      
+      ::directory_system::init_system();
+      
+   //      if(!estatus)
+   //      {
+   //
+   //         return estatus;
+   //
+   //      }
+   //
+   //      auto psystem= m_psystem->m_papexsystem;
+      
+   //      ::file::path pathModule = psystem->m_pfilesystem->m_pathModule;
+      
+      m_pathHome = getenv("HOME");
+      
+   //      auto pathCa2 = pathModule - 2;
+   //
+   //      ::str::case_insensitive_ends_eat(pathCa2, ".app");
+   //
+   //      m_pathCa2 = pathCa2;
+      
+      m_pathCa2Config = m_pathHome / "Library/Application Support/ca2";
+
+      //return estatus;
+      
+   }
+
+
+   string directory_system::dir_root()
    {
 
       return home() / ".config/ca2";
@@ -36,7 +88,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::get_memory_map_base_folder_path() 
+   ::file::path directory_system::get_memory_map_base_folder_path() 
    {
 
       return home() / ".config/ca2/memory_map";
@@ -44,7 +96,7 @@ namespace acme_macos
    }
 
 
-//   ::file::path acme_directory::home()
+//   ::file::path directory_system::home()
 //   {
 //
 //      return getenv("HOME");
@@ -52,7 +104,7 @@ namespace acme_macos
 //   }
 
 
-   ::file::path acme_directory::program_data()
+   ::file::path directory_system::program_data()
    {
 
       return home() / "application";
@@ -60,7 +112,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::roaming()
+   ::file::path directory_system::roaming()
    {
       
       auto pathHome = this->home();
@@ -70,7 +122,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::appdata()
+   ::file::path directory_system::appdata()
    {
 
       return roaming() / appid();
@@ -78,15 +130,15 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::public_system()
-   {
+//   ::file::path directory_system::public_system()
+//   {
+//
+//      return public_root() / "system";
+//
+//   }
 
-      return public_root() / "system";
 
-   }
-
-
-   ::file::path acme_directory::system()
+   ::file::path directory_system::userconfig()
    {
 
       return ca2roaming() / "system";
@@ -94,7 +146,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::config()
+   ::file::path directory_system::config()
    {
 
       return ca2roaming() / "config";
@@ -102,7 +154,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::local()
+   ::file::path directory_system::local()
    {
 
       return ca2roaming() / "local";
@@ -110,7 +162,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::sensitive()
+   ::file::path directory_system::sensitive()
    {
 
    #ifdef LINUX
@@ -131,7 +183,7 @@ namespace acme_macos
 
 
 
-   string acme_directory::system_short_name()
+   string directory_system::system_short_name()
    {
 
    #ifdef _UWP
@@ -149,7 +201,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::relative(::file::path path)
+   ::file::path directory_system::relative(::file::path path)
    {
 
       path.find_replace(":", "");
@@ -164,7 +216,7 @@ namespace acme_macos
 //   #ifdef _UWP
 //
 //
-//   ::file::path acme_directory::app_relative()
+//   ::file::path directory_system::app_relative()
 //   {
 //
 //      return "";
@@ -175,7 +227,7 @@ namespace acme_macos
 //   #else
 //
 //
-//   ::string acme_directory::appid()
+//   ::string directory_system::appid()
 //   {
 //
 //      ::file::path path = file_system()->module();
@@ -191,7 +243,7 @@ namespace acme_macos
 
 
 
-   ::file::path acme_directory::inplace_install(string strAppId, string strPlatform, string strConfiguration)
+   ::file::path directory_system::inplace_install(string strAppId, string strPlatform, string strConfiguration)
    {
 
    #ifdef LINUX_DESKTOP
@@ -247,7 +299,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::inplace_matter_install(string strAppId, string strPlatform, string strConfiguration)
+   ::file::path directory_system::inplace_matter_install(string strAppId, string strPlatform, string strConfiguration)
    {
 
    #ifdef LINUX_DESKTOP
@@ -278,7 +330,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::install()
+   ::file::path directory_system::install()
    {
 
       if (m_pathInstallFolder.is_empty())
@@ -293,7 +345,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::default_install()
+   ::file::path directory_system::default_install()
    {
 
    #ifdef ANDROID
@@ -313,7 +365,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::beforeca2()
+   ::file::path directory_system::beforeca2()
    {
 
       return file_path_folder(install());
@@ -331,7 +383,7 @@ namespace acme_macos
    #include <Shlobj.h>
 
 
-   ::file::path acme_directory::program_files_x86()
+   ::file::path directory_system::program_files_x86()
    {
 
       wstring wstrModuleFolder(get_buffer, sizeof(unichar) * 8);
@@ -356,7 +408,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::program_files()
+   ::file::path directory_system::program_files()
    {
 
       wstring wstrModuleFolder(get_buffer, sizeof(unichar) * 8);
@@ -386,7 +438,7 @@ namespace acme_macos
    #else
 
 
-   ::file::path acme_directory::program_files_x86()
+   ::file::path directory_system::program_files_x86()
    {
 
       ::file::path path("/opt/ca2");
@@ -396,7 +448,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::program_files()
+   ::file::path directory_system::program_files()
    {
 
       ::file::path path("/opt/ca2");
@@ -409,7 +461,7 @@ namespace acme_macos
    #endif
 
 
-   ::file::path acme_directory::stage(string strAppId, string strPlatform, string strConfiguration)
+   ::file::path directory_system::stage(string strAppId, string strPlatform, string strConfiguration)
    {
 
       return inplace_install(strAppId, strPlatform, strConfiguration) / "time" / node()->time_binary_platform(strPlatform) / strConfiguration;
@@ -420,7 +472,7 @@ namespace acme_macos
 //   #ifdef LINUX
 
 
-   ::file::path acme_directory::home()
+   ::file::path directory_system::home()
    {
 
       return macos_get_home();
@@ -434,7 +486,7 @@ namespace acme_macos
    #if defined(_UWP) || defined(__APPLE__) || defined(LINUX) || defined(ANDROID)
 
 
-//   ::file::path acme_directory::bookmark()
+//   ::file::path directory_system::bookmark()
 //   {
 //
 //      auto psystem = m_psystem;
@@ -452,7 +504,7 @@ namespace acme_macos
    #ifdef _UWP
 
 
-   ::file::path acme_directory::home()
+   ::file::path directory_system::home()
    {
 
       return "";
@@ -465,7 +517,7 @@ namespace acme_macos
 
 
 
-   void acme_directory::set_path_install_folder(const ::string & strPath)
+   void directory_system::set_path_install_folder(const ::string & strPath)
    {
 
       m_pathInstallFolder = strPath;
@@ -473,7 +525,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::bookmark()
+   ::file::path directory_system::bookmark()
    {
 
       return localconfig() / "bookmark";
@@ -484,7 +536,7 @@ namespace acme_macos
 
 
 
-   ::file::path acme_directory::sys_temp()
+   ::file::path directory_system::sys_temp()
    {
 
       return appdata() / "time";
@@ -492,7 +544,7 @@ namespace acme_macos
    }
 
 
-   //::string acme_directory::dir_root()
+   //::string directory_system::dir_root()
    //{
 
    //   return "";
@@ -500,7 +552,7 @@ namespace acme_macos
    //}
 
 
-   //::file::path acme_directory::home()
+   //::file::path directory_system::home()
    //{
 
    //   return "";
@@ -508,7 +560,7 @@ namespace acme_macos
    //}
 
 
-   //::file::path acme_directory::program_data()
+   //::file::path directory_system::program_data()
    //{
 
    //   return "";
@@ -516,7 +568,7 @@ namespace acme_macos
    //}
 
 
-   ::file::path acme_directory::ca2appdata()
+   ::file::path directory_system::ca2appdata()
    {
 
       return ca2roaming() / "appdata";
@@ -525,14 +577,14 @@ namespace acme_macos
 
 
 
-   ::file::path acme_directory::public_root()
+   ::file::path directory_system::public_root()
    {
 
       return program_data() / "ca2";
 
    }
 
-   ::file::path acme_directory::ca2roaming()
+   ::file::path directory_system::ca2roaming()
    {
 
       return roaming() / "ca2";
@@ -540,7 +592,7 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::localconfig()
+   ::file::path directory_system::localconfig()
    {
 
       return ca2roaming() / "localconfig";
@@ -548,15 +600,15 @@ namespace acme_macos
    }
 
 
-   ::file::path acme_directory::module()
+   ::file::path directory_system::module()
    {
 
-      return ::acme_directory::module();
+      return ::directory_system::module();
 
    }
 
    //
-   //::file::path acme_directory::base_module()
+   //::file::path directory_system::base_module()
    //{
    //
    //   return "";
@@ -564,23 +616,14 @@ namespace acme_macos
    //}
    //
 
-   //::file::path acme_directory::ca2_module()
+   //::file::path directory_system::ca2_module()
    //{
    //
    //   return "";
    //
    //}
    //
-   ::file::path acme_directory::archive()
-   {
-
-      return "";
-
-   }
-
-
-
-   ::file::path acme_directory::tool()
+   ::file::path directory_system::archive()
    {
 
       return "";
@@ -588,7 +631,16 @@ namespace acme_macos
    }
 
 
-   //::file::path acme_directory::roaming()
+
+   ::file::path directory_system::tool()
+   {
+
+      return "";
+
+   }
+
+
+   //::file::path directory_system::roaming()
    //{
 
    //   return "";
@@ -596,7 +648,7 @@ namespace acme_macos
    //}
 
 
-   ::file::path acme_directory::pathfind(const string& pszEnv, const string& pszTopic, const string& pszMode)
+   ::file::path directory_system::pathfind(const string& pszEnv, const string& pszTopic, const string& pszMode)
    {
 
       ::file::path_array stra;
@@ -605,7 +657,7 @@ namespace acme_macos
 
       string strCandidate;
 
-      for (i32 i = 0; i < stra.get_count(); i++)
+      for (int i = 0; i < stra.get_count(); i++)
       {
 
          strCandidate = stra[i] / pszTopic;
@@ -625,7 +677,7 @@ namespace acme_macos
    }
 
 
-   //::file::path acme_directory::get_memory_map_base_folder_path()
+   //::file::path directory_system::get_memory_map_base_folder_path()
    //{
 
    //   return "";
@@ -633,7 +685,7 @@ namespace acme_macos
    //}
 
 
-   ::file::path acme_directory::user_appdata_local()
+   ::file::path directory_system::user_appdata_local()
    {
 
       //return _shell_get_special_folder_path(CSIDL_LOCAL_APPDATA);

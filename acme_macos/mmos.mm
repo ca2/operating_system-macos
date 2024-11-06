@@ -25,23 +25,23 @@ void ns_set_main_window(NSWindow * pnswindow)
 
 void millis_sleep(::u64 uMillis);
 
-void system_id_update(void * pSystem, ::i64 iUpdate, ::i64 iPayload);
+void system_id_update(::platform::system * psystem, ::i64 iUpdate, ::i64 iPayload);
 //void system_call_update_wallpaper_changed();
 
 bool apple_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const char * psz);
 
-void * get_system_mmos(void * pSystem);
-void set_system_mmos(void * pSystem, void * pmmos);
+void * get_system_mmos(::platform::system * psystem);
+void set_system_mmos(::platform::system * psystem, void * pmmos);
 
 
-void init_mmos(void * pSystem)
+void init_mmos(::platform::system * psystem)
 {
 
    auto pmmos = ([[mmos alloc] init]);
 
-   set_system_mmos(pSystem, (__bridge_retained void *) pmmos);
+   set_system_mmos(psystem, (__bridge_retained void *) pmmos);
 
-   pmmos->m_pSystem = pSystem;
+   pmmos->m_psystem = psystem;
    
    pmmos->theLock = [[NSRecursiveLock alloc] init];
    
@@ -59,17 +59,17 @@ void init_mmos(void * pSystem)
    
 }
 
-void term_mmos(void * pSystem)
+void term_mmos(::platform::system * psystem)
 {
    
-   auto pmmos = (__bridge_transfer mmos *) get_system_mmos(pSystem);
+   auto pmmos = (__bridge_transfer mmos *) get_system_mmos(psystem);
    
    [pmmos dd_fake];
    
 }
 
 //
-//void ns_main_async(dispatch_block_t block)
+//void ns_main_post(dispatch_block_t block)
 //{
 //   
 //   //   dispatch_block_t block = ^{
@@ -196,7 +196,7 @@ void term_mmos(void * pSystem)
 //
 //   }
    
-   return (__bridge mmos *) get_system_mmos(m_pSystem);
+   return (__bridge mmos *) get_system_mmos(m_psystem);
    
 }
 
@@ -254,7 +254,7 @@ void term_mmos(void * pSystem)
 - (void)desktopImageChanged:(NSNotification *)notification
 {
 
-   system_id_update(m_pSystem, id_wallpaper_changed, 0);
+   system_id_update(m_psystem, id_wallpaper_changed, 0);
 
 }
 
@@ -267,7 +267,7 @@ void term_mmos(void * pSystem)
    if([app.localizedName isEqualToString:@"ScreenSaverEngine"])
    {
       
-      system_id_update(m_pSystem, id_wallpaper_changed, 0);
+      system_id_update(m_psystem, id_wallpaper_changed, 0);
       
    }
    
@@ -307,7 +307,7 @@ void term_mmos(void * pSystem)
 -(void)runRunnable:(matter *)prunnable
 {
    
-   __call({use_t{}, prunnable});
+   __call(prunnable);
    
 }
 
@@ -399,10 +399,10 @@ void term_mmos(void * pSystem)
 @end
 
 
-bool mm1a_get_file_image(void * pSystem, unsigned int * pcr, int cx, int cy, int iScan, const char * psz)
+bool mm1a_get_file_image(::platform::system * psystem, unsigned int * pcr, int cx, int cy, int iScan, const char * psz)
 {
    
-   auto pmmos = (__bridge mmos *) get_system_mmos(pSystem);
+   auto pmmos = (__bridge mmos *) get_system_mmos(psystem);
    
    if(pmmos->m_iIcon == 0)
    {
@@ -459,7 +459,7 @@ void ns_log(const char * pszLog)
 }
 
 
-void ns_main_async(dispatch_block_t block);
+void ns_main_post(dispatch_block_t block);
 
 
 void mm_folder_dialog(::function < void(const char *) > functionParameter, const char * pszStartFolder, bool bCanCreateDirectories)
@@ -476,7 +476,7 @@ void mm_folder_dialog(::function < void(const char *) > functionParameter, const
       
    }
 
-   ns_main_async(^
+   ns_main_post(^
    {
 
       //mmos * pos = (__bridge mmos *) get_system_mmos(pSystem);
@@ -530,7 +530,7 @@ void mm_file_dialog(::file::file_dialog * pdialogParam)
 
    ::pointer < ::file::file_dialog > pdialog(pdialogParam);
 
-   ns_main_async(^()
+   ns_main_post(^()
    {
 
       NSURL * urlStartFolder = nil;

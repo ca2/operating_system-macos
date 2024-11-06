@@ -14,7 +14,7 @@
 #include "acme/platform/system.h"
 #include "acme/parallelization/manual_reset_event.h"
 #include "acme/prototype/geometry2d/size.h"
-#include "acme/operating_system/windows/nano/user/user.h"
+//#include "acme/operating_system/windows/nano/user/user.h"
 #include "acme/platform/node.h"
 
 
@@ -175,7 +175,7 @@ namespace innate_ui_appkit
    void __impact::create()
    {
 
-      sync([this]()
+      main_send([this]()
          {
 
             //_register_class();
@@ -308,7 +308,7 @@ namespace innate_ui_appkit
 
       ::pointer< window > pwindowImpl = pwindow;
 
-      sync([this, pwindowImpl]()
+      main_send([this, pwindowImpl]()
       {
 
          _create_child(pwindowImpl);
@@ -473,7 +473,7 @@ namespace innate_ui_appkit
    void __impact::center()
    {
 
-      sync([this]()
+      main_send([this]()
       {
 
             //gtk_window_set_position(GTK_WINDOW(m_pgtkwidget), GTK_WIN_POS_CENTER);

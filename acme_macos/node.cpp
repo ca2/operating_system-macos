@@ -32,11 +32,11 @@ void macos_folder_dialog(::file::folder_dialog * pdialog);
 void macos_file_dialog(::file::file_dialog * pdialog);
 
 
-void apple_defer_nano_application_create(::acme::system * psystem);
-void acme_macos_application_init(void * pApplication, int argc, char *argv[]);
+void apple_defer_nano_application_create(::platform::system * psystem);
+void acme_macos_application_init(::platform::application * papplication, int argc, char *argv[]);
 void ns_launch_app(const char * psz, const char
                    ** argv, int iFlags);
-void acme_macos_application_main(void * pApplication, int argc, char *argv[]);
+void acme_macos_application_main(::platform::application * papplication, int argc, char *argv[]);
 string macos_get_type_identifier(const char * str);
 
 bool ns_is_system_dark_mode();
@@ -128,7 +128,7 @@ unsigned int * puiPid)
 }
 
 
-void node::call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const class ::time & timeTimeout, ::property_set & set, ::i32 * piExitCode)
+void node::call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const class ::time & timeTimeout, ::property_set & set, int * piExitCode)
 {
 
    string strCmdLine;
@@ -303,7 +303,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 
       ::acme_apple::node::initialize(pparticle);
       
-//         auto estatus = ::acme::node::initialize(pobject);
+//         auto estatus = ::platform::node::initialize(pobject);
 //
 //         if(!estatus)
 //         {
@@ -356,7 +356,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    //
    //      bool bOk2 = true;
    //
-   //      //if(m_psystem->m_pacmedirectory->system_short_name().contains_ci("manjaro"))
+   //      //if(m_psystem->directory_system()->system_short_name().contains_ci("manjaro"))
    //      {
    //
    //         bOk2 = ::node_gnome::gsettings_set("org.gnome.desktop.wm.preferences", "theme", strUserTheme);
@@ -994,27 +994,27 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   void node::acme_application_main(class ::acme::system * psystem)
-   {
+//    void node::acme_application_main(class ::platform::system * psystem)
+//    {
       
-      apple_defer_nano_application_create(psystem);
+//       apple_defer_nano_application_create(psystem);
 
-//      auto argc = psystem->m_pplatform->m_argc;
-//
-//      auto argv = psystem->m_pplatform->m_argv;
-//
-//      auto papp = psystem->m_pacmeapplication;
-//
-//      void * pApplication = (void *) (::acme::application *) papp;
-//
-//      acme_macos_application_main(pApplication, argc, argv);
+// //      auto argc = psystem->m_pplatform->m_argc;
+// //
+// //      auto argv = psystem->m_pplatform->m_argv;
+// //
+// //      auto papp = psystem->m_pacmeapplication;
+// //
+// //      ::platform::application * papplication = (void *) (::platform::application *) papp;
+// //
+// //      acme_macos_application_main(pApplication, argc, argv);
 
-      //return psystem->m_estatus;
+//       //return psystem->m_estatus;
 
-   }
+//    }
 
 
-//   ::pointer < ::particle > node::create_quit_particle(::pointer < ::acme::node > & pnode, ::pointer < ::acme::system > & psystem)
+//   ::pointer < ::particle > node::create_quit_particle(::pointer < ::platform::node > & pnode, ::pointer < ::platform::system > & psystem)
 //   {
 //      
 //      return __new(quit(pnode, psystem));
@@ -1028,7 +1028,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
       auto psystem = system();
       
       if(::is_null(psystem->m_htask)
-         || psystem->m_itask == main_user_itask())
+         || psystem->m_itask == main_itask())
       {
          
          psystem->m_htask = nullptr;
@@ -1203,7 +1203,7 @@ bool node::__ns_is_application_running(const ::scoped_string & scopedstrRepos, c
 //}
 
 
-   ::i32 node::posix_shell_command(const ::scoped_string& scopedstrCommand, enum_posix_shell eposixshell, const trace_function& tracefunction)
+   int node::posix_shell_command(const ::scoped_string& scopedstrCommand, enum_posix_shell eposixshell, const trace_function& tracefunction)
    {
       
       if(eposixshell == e_posix_shell_system_default)
@@ -1222,7 +1222,7 @@ bool node::__ns_is_application_running(const ::scoped_string & scopedstrRepos, c
    }
 
 
-   ::i32 node::zsh(const ::scoped_string &scopedstr, const trace_function & tracefunction)
+   int node::zsh(const ::scoped_string &scopedstr, const trace_function & tracefunction)
    {
 
       string strEscaped = scopedstr;
@@ -1285,7 +1285,7 @@ bool node::defer_consume_main_arguments(int argc, char ** argv, int & iArgument)
    ::file::path node::get_default_base_integration_folder()
    {
       
-      return acmedirectory()->home() / "integration/_____";
+      return directory_system()->home() / "integration/_____";
       
    }
 
@@ -1301,21 +1301,17 @@ bool node::defer_consume_main_arguments(int argc, char ** argv, int & iArgument)
 } // namespace acme_macos
 
 
-void * get_system_mmos(void * pSystem)
+void * get_system_mmos(::platform::system * psystem)
 {
-   
-   auto psystem = (class ::acme::system *) pSystem;
    
    return psystem->m_pmmos;
    
 }
 
 
-void set_system_mmos(void * pSystem, void * pmmos)
+void set_system_mmos(::platform::system * psystem, void * pmmos)
 {
    
-   auto psystem = (class ::acme::system *) pSystem;
-
    psystem->m_pmmos = pmmos;
    
 }

@@ -9,7 +9,7 @@
 #include "notify_icon_mm_bridge.h"
 #include "notify_icon_mm.h"
 
-void ns_main_sync(dispatch_block_t block);;
+void ns_main_send(dispatch_block_t block);;
 
 
 NSImage * nsimage_from_image_data(const void * pdata, int cx, int cy, int scan);
@@ -22,7 +22,7 @@ void user_notify_icon_mm_bridge::notify_icon_mm_initialize(const void * pdata, i
 //   NSString * str = [[NSString alloc] initWithCString:strIconFile encoding:NSUTF8StringEncoding];
    
    
-   ns_main_sync(^()
+   ns_main_send(^()
                 {
 
    m_pnotifyicon = (__bridge_retained void *) [[user_notify_icon alloc] initWithIconImageFileData: pdata size: size applicationMenu: this->menu() andItsCallback: this->callback() ];
@@ -35,7 +35,7 @@ void user_notify_icon_mm_bridge::notify_icon_mm_initialize(const void * pdata, i
 void user_notify_icon_mm_bridge::notify_icon_mm_finalize()
 {
    
-   ns_main_sync(^()
+   ns_main_send(^()
                 {
       
             auto pnotifyicon = (__bridge_transfer user_notify_icon *) m_pnotifyicon;

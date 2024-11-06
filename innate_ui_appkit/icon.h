@@ -29,7 +29,7 @@ namespace innate_ui_appkit
 
 
       void _create() override;
-      virtual void __create();
+      virtual void __create_icon();
       
       void __icon_release();
 

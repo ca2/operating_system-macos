@@ -71,7 +71,7 @@ namespace acme_macos
 
       void prepare_linking_script(::string &str) override;
 
-      ::i32 command_system(const ::scoped_string &scopedstr, const class ::time & timeout, const ::file::path & pathWorkingDirectory = {}, ::e_display edisplay = e_display_none) override;
+      int command_system(const ::scoped_string &scopedstr, const class ::time & timeout, const ::file::path & pathWorkingDirectory = {}, ::e_display edisplay = e_display_none) override;
 
       void clean() override;
 
@@ -79,9 +79,9 @@ namespace acme_macos
 
       void git_clone() override;
 
-      ::i32 bash(const ::scoped_string &scopedstr, const class ::time & timeTimeout) override;
+      int bash(const ::scoped_string &scopedstr, const class ::time & timeTimeout) override;
       
-      ::i32 zsh(const ::scoped_string &scopedstr, const class ::time & timeTimeout) override;
+      int zsh(const ::scoped_string &scopedstr, const class ::time & timeTimeout) override;
 
       ::string prepare_path(const ::file::path &path) override;
 

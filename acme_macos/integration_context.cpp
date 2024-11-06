@@ -4,13 +4,13 @@
 #include "integration_context.h"
 #include "acme/filesystem/file/file.h"
 #include "acme/filesystem/file/memory_file.h"
-#include "acme/filesystem/filesystem/acme_directory.h"
+#include "acme/filesystem/filesystem/directory_system.h"
 #include "acme/platform/application.h"
 #include "acme/nano/http/http.h"
 #include "acme/platform/node.h"
 #include "acme/platform/system.h"
 #include "acme/prototype/prototype/url.h"
-#include "acme/filesystem/filesystem/acme_file.h"
+#include "acme/filesystem/filesystem/file_system.h"
 //#include "apex/networking/http/context.h"
 //#include "acme/platform/system.h"
 
@@ -58,7 +58,7 @@ namespace acme_macos
 
          m_pathSource = m_pathFolder / m_pathBase / m_pathPlatformConfiguration / "source";
 
-         acmedirectory()->create(m_pathSource);
+         directory_system()->create(m_pathSource);
 
       }
 
@@ -77,7 +77,7 @@ namespace acme_macos
          if (m_pathPrefix.has_char())
          {
 
-            acmedirectory()->create(m_pathPrefix);
+            directory_system()->create(m_pathPrefix);
 
          }
 
@@ -272,7 +272,7 @@ namespace acme_macos
       void context::git_clone()
       {
          
-         information() << "Current Directory: " << acmedirectory()->get_current();
+         information() << "Current Directory: " << directory_system()->get_current();
          
          ::string strBranchAddUp;
          
@@ -288,7 +288,7 @@ namespace acme_macos
       }
 
 
-      ::i32 context::bash(const ::scoped_string &scopedstr, const class ::time & timeTimeout)
+      int context::bash(const ::scoped_string &scopedstr, const class ::time & timeTimeout)
       {
 
          string strEscaped = scopedstr;
@@ -347,7 +347,7 @@ namespace acme_macos
       }
 
 
-      ::i32 context::zsh(const ::scoped_string &scopedstr, const class ::time & timeTimeout)
+      int context::zsh(const ::scoped_string &scopedstr, const class ::time & timeTimeout)
       {
 
          string strEscaped = scopedstr;

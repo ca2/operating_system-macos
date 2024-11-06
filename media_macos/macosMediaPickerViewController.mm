@@ -17,7 +17,7 @@
 #include "windowing_macos/macos/macos_nswindow.h"
 //#include "windowing_macos/macos/macosViewController.h"
 #include "macos_media_picker.h"
-void ns_main_async(dispatch_block_t block);
+void ns_main_post(dispatch_block_t block);
 
 
 @implementation macosMediaPickerViewController

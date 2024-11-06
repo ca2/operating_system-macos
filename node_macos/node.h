@@ -30,10 +30,10 @@ namespace node_macos
 //      void defer_create_main_menu(const string_array & straParent, const string_array & straMenu, const string_array & straId) override;
       
       
-      //::pointer < ::element > create_quit_element(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem) override;
+      //::pointer < ::element > create_quit_element(::pointer < ::platform::node > & pnode, __pointer(class ::system) & psystem) override;
   
 
-//      void implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem) override;
+//      void implement(::pointer < ::platform::node > & pnode, __pointer(class ::system) & psystem) override;
 
 
       //void _will_finish_launching() override;
@@ -50,7 +50,7 @@ namespace node_macos
 //
 //
 
-      //void acme_application_main(class ::acme::system * psystem) override;
+      //void acme_application_main(class ::platform::system * psystem) override;
       
       
       void application_handle(long long l, void * p) override;
@@ -59,13 +59,13 @@ namespace node_macos
       ::pointer < ::input::input > create_input() override;
       
       
-      void do_windowing_system_factory() override;
+      //void do_windowing_factory() override;
       
       void defer_innate_ui() override;
       //void on_system_main() override;
       
       
-      void defer_create_windowing_application_delegate(void * pApplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback) override;
+      void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback) override;
 
 
       void ns_app_run() override;

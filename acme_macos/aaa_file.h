@@ -22,8 +22,8 @@ namespace acme_macos
 
 
       //string         m_strFileName;
-      //i32            m_iFile;
-      //i32            m_iPutCharacterBack;
+      //int            m_iFile;
+      //int            m_iPutCharacterBack;
 
 
       file();

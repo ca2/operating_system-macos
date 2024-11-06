@@ -3,11 +3,11 @@
 #import <AVFoundation/AVFoundation.h>
 //#import <MediaPlayer/MediaPlayer.h>
 //
-//void ns_main_async(dispatch_block_t block);
+//void ns_main_post(dispatch_block_t block);
 //
 void macos_play_media_item(void * pMPMediaItem)
 {
-//ns_main_async(^()
+//ns_main_post(^()
 //              {
 //   
 //   

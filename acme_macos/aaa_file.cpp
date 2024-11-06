@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "acme/filesystem/file/exception.h"
 #include "acme/filesystem/file/status.h"
-#include "acme/filesystem/filesystem/acme_directory.h"
+#include "acme/filesystem/filesystem/directory_system.h"
 
 
 #include "acme/_operating_system.h"
@@ -116,7 +116,7 @@ namespace acme_macos
 //      if ((eopen & ::file::e_open_defer_create_directory) && (eopen & ::file::e_open_write))
 //      {
 //
-//         acmedirectory()->create(path.folder());
+//         directory_system()->create(path.folder());
 //
 //      }
 //
@@ -184,7 +184,7 @@ namespace acme_macos
 //      dwPermission |= S_IRGRP | S_IWGRP | S_IXGRP;
 //      dwPermission |= S_IROTH | S_IXOTH;
 //
-//      i32 hFile;
+//      int hFile;
 //
 //      hFile = ::open(m_path, dwFlags, dwPermission);
 //
@@ -233,7 +233,7 @@ namespace acme_macos
 //
 //      }
 //
-//      m_iFile = (i32)hFile;
+//      m_iFile = (int)hFile;
 //
 //      m_eopen = eopen;
 //
@@ -263,9 +263,9 @@ namespace acme_macos
 ////      if(m_iPutCharacterBack >= 0)
 ////      {
 ////
-////         auto p = (::u8 *) lpBuf;
+////         auto p = (unsigned char *) lpBuf;
 ////
-////         *p = (::u8) m_iPutCharacterBack;
+////         *p = (unsigned char) m_iPutCharacterBack;
 ////
 ////         nCount--;
 ////
@@ -299,12 +299,12 @@ namespace acme_macos
 //
 //         readNow = (size_t) minimum(0x7fffffff, nCount);
 //
-//         auto iRead = ::read(m_iFile, &((::u8 *)lpBuf)[pos], readNow);
+//         auto iRead = ::read(m_iFile, &((unsigned char *)lpBuf)[pos], readNow);
 //
 //         if(iRead < 0)
 //         {
 //
-//            i32 iErrNo = errno;
+//            int iErrNo = errno;
 //
 //            auto errorcode = errno_error_code(iErrNo);
 //
@@ -372,12 +372,12 @@ namespace acme_macos
 //      while(nCount > 0)
 //      {
 //
-//         auto iWrite = ::write(m_iFile, &((const ::u8 *)lpBuf)[pos], (size_t) minimum(0x7fffffff, nCount));
+//         auto iWrite = ::write(m_iFile, &((const unsigned char *)lpBuf)[pos], (size_t) minimum(0x7fffffff, nCount));
 //
 //         if(iWrite < 0)
 //         {
 //
-//            i32 iErrNo = errno;
+//            int iErrNo = errno;
 //
 //            auto errorcode = errno_error_code(iErrNo);
 //
@@ -402,7 +402,7 @@ namespace acme_macos
 //      if(m_iFile == (::u32)hFileNull)
 //      {
 //
-//         i32 iErrNo = errno;
+//         int iErrNo = errno;
 //
 //         auto errorcode = errno_error_code(iErrNo);
 //
@@ -420,7 +420,7 @@ namespace acme_macos
 //
 //      ASSERT(::e_seek_set == SEEK_SET && ::e_seek_from_end == SEEK_END && ::e_seek_current == SEEK_CUR);
 //
-//      ::i32 lLoOffset = offset & 0xffffffff;
+//      int lLoOffset = offset & 0xffffffff;
 //
 //      filesize posNew = ::lseek(m_iFile, lLoOffset, (::u32)nFrom);
 //
@@ -428,7 +428,7 @@ namespace acme_macos
 //      {
 //
 //
-//         i32 iErrNo = errno;
+//         int iErrNo = errno;
 //
 //         auto errorcode = errno_error_code(iErrNo);
 //
@@ -450,14 +450,14 @@ namespace acme_macos
 //
 //      ASSERT(m_iFile != (::u32)hFileNull);
 //
-//      ::i32 lLoOffset = 0;
+//      int lLoOffset = 0;
 //
 //      filesize pos = ::lseek(m_iFile, lLoOffset, SEEK_CUR);
 //
 //      if(pos < 0)
 //      {
 //
-//         i32 iErrNo = errno;
+//         int iErrNo = errno;
 //
 //         auto errorcode = errno_error_code(iErrNo);
 //
@@ -501,7 +501,7 @@ namespace acme_macos
 //      if (bError)
 //      {
 //
-//         i32 iErrNo = errno;
+//         int iErrNo = errno;
 //
 //         auto errorcode = errno_error_code(iErrNo);
 //
@@ -546,7 +546,7 @@ namespace acme_macos
 //      if(iFtruncateResult != 0)
 //      {
 //
-//         i32 iErrNo = errno;
+//         int iErrNo = errno;
 //
 //         auto errorcode = errno_error_code(iErrNo);
 //

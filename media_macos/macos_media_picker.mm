@@ -11,7 +11,7 @@
 #include "macosMediaPickerViewController.h"
 
 
-void ns_main_async(dispatch_block_t block);
+void ns_main_post(dispatch_block_t block);
 
 
 macos_media_picker::macos_media_picker()
@@ -25,7 +25,7 @@ macos_media_picker::macos_media_picker()
 void macos_media_picker::macos_media_picker_pick_media(const char * pszMediaType, macos_window * pmacoswindow)
 {
    
-   ns_main_async(^{
+   ns_main_post(^{
       [ m_pmacoscontroller pickMedia : pszMediaType window:pmacoswindow->m_pnswindow ];
       
    });

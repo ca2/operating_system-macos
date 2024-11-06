@@ -16,9 +16,9 @@
 #include "acme/operating_system/argcargv.h"
 #import <StoreKit/StoreKit.h>
 
-bool application_get_bool(void * pApplication, const char * pszItem);
+bool application_get_bool(::platform::application * papplication, const char * pszItem);
 
-void ns_main_async(dispatch_block_t block);
+void ns_main_post(dispatch_block_t block);
 
 
 NSMenu * ns_create_menu(::application_menu * papplicationmenu, bool bMainMenu);
@@ -28,24 +28,24 @@ void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool b
 NSString * __nsstring(const char * psz);
 //#include "apex/user/menu_shared.h"
 
-//void on_start_system(void * pSystem);
+//void on_start_system(::platform::system * psystem);
 
 void os_system_start();
 int file_put_contents(const char * path, const char * contents);
 void file_add_contents_raw(const char * path, const char * psz);
 
-void application_on_menu_action(void * pApplication, const char * pszCommand);
-void * application_system(void * pApplication);
+void application_on_menu_action(::platform::application * papplication, const char * pszCommand);
+void * application_system(::platform::application * papplication);
 
 
-void system_id_update(void* pSystem, ::i64 iUpdate, ::i64 iPayload);
+void system_id_update(::platform::system * psystem, ::i64 iUpdate, ::i64 iPayload);
 
 
 //void ns_application_update(::i64 iUpdate, void * p);
 
-void node_will_finish_launching(void * pSystem);
-void system_on_open_untitled_file(void * pSystem);
-void system_on_open_file(void * pSystem, const char * pszFile);
+void node_will_finish_launching(::platform::system * psystem);
+void system_on_open_untitled_file(::platform::system * psystem);
+void system_on_open_file(::platform::system * psystem, const char * pszFile);
 
 
 //void system_call_update_app_activated();
@@ -190,12 +190,6 @@ void set_apex_system_as_thread();
 //   
 //   [ NSApp setMainMenu: m_menu];
 
-      [[[NSWorkspace sharedWorkspace] notificationCenter]
-       addObserver:self
-       selector:@selector(applicationActivity:)
-       name:NSWorkspaceActiveSpaceDidChangeNotification
-       object:nil];
-
 }
 
 -(void)continueInitialization
@@ -310,6 +304,12 @@ void set_apex_system_as_thread();
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
    
+   [[[NSWorkspace sharedWorkspace] notificationCenter]
+       addObserver:self
+       selector:@selector(applicationActivity:)
+       name:NSWorkspaceActiveSpaceDidChangeNotification
+       object:nil];
+
    [ self application_menu_update ];
    
    [ super applicationWillFinishLaunching: notification];
@@ -678,7 +678,7 @@ void os_menu_item_enable(void * pitem, bool bEnable)
 
    NSMenuItem * pmenuitem = (__bridge NSMenuItem *) pitem;
 
-   ns_main_async(^()
+   ns_main_post(^()
    {
 
       [pmenuitem setEnabled: bEnable];
@@ -693,7 +693,7 @@ void os_menu_item_check(void * pitem, bool bCheck)
 
    NSMenuItem * pmenuitem = (__bridge NSMenuItem *) pitem;
 
-   ns_main_async(^()
+   ns_main_post(^()
    {
       
       if(bCheck)
@@ -779,7 +779,7 @@ void os_menu_item_check(void * pitem, bool bCheck)
 //
 //   menu_shared_increment_reference_count(pmenushared);
 //
-//   ns_main_async(
+//   ns_main_post(
 //   ^{
 //      
 //      NSMenu * menuMain = _ns_create_main_menu(pmenushared);
@@ -798,10 +798,10 @@ void os_begin_system();
 
 void ns_app_run();
 
-void ns_apple_set_application_delegate(void * pApplication, macos_app * pappdelegate);
-void * apple_get_application_delegate(void * pApplication);
+void ns_apple_set_application_delegate(::platform::application * papplication, macos_app * pappdelegate);
+void * apple_get_application_delegate(::platform::application * papplication);
 
-void defer_create_windowing_application_delegate(void * pApplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
+void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
 {
    
    macos_app * pappdelegate = (__bridge macos_app *) apple_get_application_delegate(pApplication);
@@ -1344,7 +1344,7 @@ void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool b
 void ns_application_handle(long long l, void * p)
 {
    
-   ns_main_async(^{
+   ns_main_post(^{
 
       macOSApp * papp = nullptr;
       

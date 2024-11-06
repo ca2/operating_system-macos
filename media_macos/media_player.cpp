@@ -13,7 +13,7 @@
 #include <dispatch/dispatch.h>
 
 
-void ns_main_async(dispatch_block_t block);
+void ns_main_post(dispatch_block_t block);
 
 void macos_play_media_item(void * pMPMediaItem);
 
@@ -64,7 +64,7 @@ void media_player::post_command(::aqua::media_player_command* pcommand)
 {
    
    pcommand->increment_reference_count();
- ns_main_async(^()
+ ns_main_post(^()
                {
     
     player_command_procedure(pcommand);

@@ -111,10 +111,6 @@ NSString * __nsstring(const char * psz);
 
    [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidResignKey:) name: NSWindowDidResignKeyNotification object: pnswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidBecomeMain:) name: NSWindowDidBecomeMainNotification object: pnswindow];
-   
-   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidResignMain:) name: NSWindowDidResignMainNotification object: pnswindow];
-
    [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidResize:) name: NSWindowDidResizeNotification object: pnswindow];
    
    [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector (windowDidMove:) name: NSWindowDidMoveNotification object: pnswindow];
@@ -197,23 +193,6 @@ NSString * __nsstring(const char * psz);
 }
 
 
-- (void)windowDidBecomeMain:(NSNotification *)aNotification
-{
-   
-   printf("windowDidBecomeMain\n");
-   
-   m_pmacoswindow->macos_window_on_activate();
-   
-}
-
-- (void)windowDidResignMain:(NSNotification *)aNotification
-{
-   
-   printf("windowDidResignMain\n");
-   
-   m_pmacoswindow->macos_window_on_deactivate();
-   
-}
 
 //
 // setContentView:

@@ -67,7 +67,7 @@ namespace windowing_macos
 //
 //      auto pcontext = get_context();
 //
-//      string strPath = pcontext->m_papexcontext->dir().matter(strMatter);
+//      string strPath = papplication->dir().matter(strMatter);
 //
 //      if (!load_file(strPath))
 //      {

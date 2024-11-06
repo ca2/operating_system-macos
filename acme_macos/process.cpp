@@ -5,7 +5,7 @@
 //  Created by Camilo Sasuke on 2021-05-14 08:14 BRT <3ThomasBS_!!
 //
 #include "framework.h"
-#include "acme/filesystem/filesystem/acme_directory.h"
+#include "acme/filesystem/filesystem/directory_system.h"
 #include "acme/platform/system.h"
 #include "acme/operating_system/shared_posix/c_error_number.h"
 #include <spawn.h>
@@ -35,7 +35,7 @@ namespace acme_macos
       
       strParams.formatf("-c \"screen -d -m %s\"", strCommand.c_str());
       
-      /*auto estatus = */ call_async("/bin/bash", strParams, acmedirectory()->home(), e_display_none, false);
+      /*auto estatus = */ call_async("/bin/bash", strParams, directory_system()->home(), e_display_none, false);
       
 //         if(!estatus)
 //         {

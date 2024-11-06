@@ -90,9 +90,9 @@ void UI_free(UI *ui);
    characters to mean OK and to mean Cancel.  The two last strings are checked
    to make sure they don't have common characters.  Additionally, the same
    flag argument as for the string input is taken, as well as a result buffer.
-   The result buffer is required to be at least one ::u8 long.  Depending on
+   The result buffer is required to be at least one unsigned char long.  Depending on
    the answer, the first character from the OK or the Cancel character strings
-   will be stored in the first ::u8 of the result buffer.  No NUL will be
+   will be stored in the first unsigned char of the result buffer.  No NUL will be
    added, so the result is *not* a string.
 
    On success, the all return an index of the added information.  That index

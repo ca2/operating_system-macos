@@ -15,7 +15,7 @@
 /* Define if .balign is present. */
 #undef ASMALIGN_BALIGN
 
-/* Define if .align just takes ::u8 count. */
+/* Define if .align just takes unsigned char count. */
 #undef ASMALIGN_BYTE
 
 /* Define if .align takes 3 for alignment of 2^3=8 bytes instead of 8. */
@@ -414,7 +414,7 @@
 #undef WINVER
 
 /* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
-   significant ::u8 first (like Motorola and SPARC, unlike Intel). */
+   significant unsigned char first (like Motorola and SPARC, unlike Intel). */
 #if defined AC_APPLE_UNIVERSAL_BUILD
 # if defined __BIG_ENDIAN__
 #  define WORDS_BIGENDIAN 1

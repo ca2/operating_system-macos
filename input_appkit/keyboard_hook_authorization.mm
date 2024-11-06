@@ -67,7 +67,7 @@ namespace input_appkit
 //      NSString *urlString = @"x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility";
 //      [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
    //
-   //      //ns_main_sync(^{
+   //      //ns_main_send(^{
 //       SBSystemPreferencesApplication * systempreferences =
 //        [SBApplication applicationWithBundleIdentifier:@"com.apple.systempreferences"];
 //
@@ -108,7 +108,7 @@ namespace input_appkit
 //               {
 //
 //                  //[NSApp finishLaunching];
-//      ns_main_sync(^{
+//      ns_main_send(^{
 //
 //
 //

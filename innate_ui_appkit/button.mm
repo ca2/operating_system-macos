@@ -75,7 +75,7 @@ namespace innate_ui_appkit
    //
    // }
 
-   void button::__create()
+   void button::__create_button()
    {
 
       //__create();

@@ -17,10 +17,10 @@
 //   public:
 //      
 //      
-//      ::pointer < ::acme::node > & m_pnode;
-//      ::pointer < ::acme::system > & m_psystem;
+//      ::pointer < ::platform::node > & m_pnode;
+//      ::pointer < ::platform::system > & m_psystem;
 //
-//      quit(::pointer < ::acme::node > & pnode, ::pointer < ::acme::system > & psystem) :
+//      quit(::pointer < ::platform::node > & pnode, ::pointer < ::platform::system > & psystem) :
 //      m_pnode(pnode),m_psystem(psystem)
 //      {
 //

@@ -9,7 +9,7 @@ __FACTORY_EXPORT void node_macos_factory(::factory::factory * pfactory)
    
 
    windowing_macos_factory(pfactory);
-   pfactory->add_factory_item < node_macos::node, ::acme::node > ();
+   pfactory->add_factory_item < node_macos::node, ::platform::node > ();
    
 }
 

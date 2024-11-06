@@ -16,7 +16,7 @@ namespace innate_ui_appkit
 
 
 
-void icon::__create()
+void icon::__create_icon()
 {
    
    auto buffer = m_memory.data();

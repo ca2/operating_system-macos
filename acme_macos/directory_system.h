@@ -3,25 +3,39 @@
 #pragma once
 
 
-#include "acme_apple/acme_directory.h"
+#include "acme_apple/directory_system.h"
 
 
 namespace acme_macos
 {
 
 
-   class CLASS_DECL_ACME_MACOS acme_directory :
-      virtual public ::acme_apple::acme_directory
+   class CLASS_DECL_ACME_MACOS directory_system :
+      virtual public ::acme_apple::directory_system
    {
    public:
 
 
-      //__creatable_from_library(acme_directory, ::acme_directory, "acme_macos");
+       ::file::path            m_strTimeFolder;
+       ::file::path            m_strNetSeedFolder;
+
+       ::file::path            m_strCommonAppData;
+       ::file::path            m_strAppData;
+       ::file::path            m_strPrograms;
+       ::file::path            m_strCommonPrograms;
+
+       
+      //__creatable_from_library(directory_system, ::directory_system, "acme_macos");
       
 
-      acme_directory();
-      ~acme_directory() override;
+      directory_system();
+      ~directory_system() override;
 
+
+      void initialize(::particle * pparticle) override;
+
+      void init_system() override;
+       
 
       virtual ::file::path install() override;
       virtual ::file::path default_install() override;
@@ -32,8 +46,8 @@ namespace acme_macos
       virtual ::file::path appdata() override; // appdata
       virtual ::file::path archive() override;
       virtual ::file::path tool() override;
-      virtual ::file::path public_system() override;
-      virtual ::file::path system() override;
+      //virtual ::file::path public_system() override;
+      virtual ::file::path userconfig() override;
       virtual ::file::path config() override;
       virtual ::file::path local() override;
       virtual ::file::path sensitive() override;
@@ -70,8 +84,8 @@ namespace acme_macos
 
       virtual void set_path_install_folder(const ::string & strPath) override;
 
-      //virtual  bool        _shell_get_special_folder_path(HWND hwnd, ::file::path& str, i32 csidl, bool fCreate);
-      //virtual ::file::path _shell_get_special_folder_path(i32 csidl, bool fCreate = true, ::windowing::window* pwindow = nullptr);
+      //virtual  bool        _shell_get_special_folder_path(HWND hwnd, ::file::path& str, int csidl, bool fCreate);
+      //virtual ::file::path _shell_get_special_folder_path(int csidl, bool fCreate = true, ::windowing::window* pwindow = nullptr);
       //virtual ::file::path _get_known_folder(REFKNOWNFOLDERID kfid);
 
       //virtual ::file::path pathfind(const string& pszEnv, const string& pszTopic, const string& pszMode) override;

@@ -10,7 +10,7 @@
 #include "acme/platform/system.h"
 #include "acme/parallelization/manual_reset_event.h"
 #include "acme/prototype/geometry2d/size.h"
-#include "acme/operating_system/windows/nano/user/user.h"
+//#include "acme/operating_system/windows/nano/user/user.h"
 #include "acme/platform/node.h"
 
 
@@ -171,7 +171,7 @@ namespace innate_ui_appkit
    void window::create()
    {
 
-      sync([this]()
+      main_send([this]()
          {
 
             //_register_class();
@@ -345,7 +345,7 @@ namespace innate_ui_appkit
 
       }
 
-      sync([this]()
+      main_send([this]()
            {
        
          __destroy_window();
@@ -394,7 +394,7 @@ namespace innate_ui_appkit
    void window::hide()
    {
 
-      sync([this]()
+      main_send([this]()
            {
          
          __hide();
@@ -410,7 +410,7 @@ namespace innate_ui_appkit
 
       auto point = pointParam;
 
-      sync([this, point]()
+      main_send([this, point]()
       {
 
          auto p = point;

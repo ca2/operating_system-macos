@@ -116,7 +116,7 @@ namespace apex_macos
       
       void set_this_application_as_default_for_file_extension(const ::string& strExtension) override;
 
-      void register_user_auto_start(::acme::application * papplication, const string & strArguments,
+      void register_user_auto_start(::platform::application * papplication, const string & strArguments,
                                     bool bRegister) override;
 
       bool is_user_auto_start(const string & strAppId) override;

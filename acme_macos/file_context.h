@@ -20,12 +20,12 @@ namespace acme_macos
    public:
 
       
-      ::pointer < dir_system >       m_pdirsystem;
-      ::pointer < file_system >      m_pfilesystem;
+      ::pointer < ::acme_macos::directory_system >       m_pdirsystem;
+      ::pointer < ::acme_macos::file_system >      m_pfilesystem;
 
 
       file_context();
-      virtual ~file_context();
+      ~file_context() override;
       
       
       void initialize(::particle * pparticle) override;

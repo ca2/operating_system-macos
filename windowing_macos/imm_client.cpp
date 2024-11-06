@@ -73,7 +73,7 @@ void imm_client::_011OnChar(::message::message * pmessage)
    if (pmessage->m_atom == e_message_char)
    {
 
-      auto psession = m_puserinteraction->get_session();
+      auto psession = session();
 
       if (psession->is_key_pressed(::user::e_key_control)
          || psession->is_key_pressed(::user::e_key_alt))
@@ -641,8 +641,8 @@ int imm_client::on_text_composition_message(int iMessage)
 
       //_001GetSel(iBeg, iEnd);
 
-      //i32 x;
-      //i32 iLine = SelToLineX(iEnd, x);
+      //int x;
+      //int iLine = SelToLineX(iEnd, x);
 
 
 

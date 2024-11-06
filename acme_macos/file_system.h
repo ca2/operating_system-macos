@@ -1,5 +1,5 @@
 //
-//  acme_file.hpp
+//  file_system.hpp
 //  acme_macos
 //
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 18/08/21.
@@ -7,26 +7,31 @@
 #pragma once
 
 
-#include "acme_apple/acme_file.h"
+#include "acme_apple/file_system.h"
 
 
 namespace acme_macos
 {
 
 
-   class CLASS_DECL_ACME_MACOS acme_file :
-      virtual public ::acme_apple::acme_file
+   class CLASS_DECL_ACME_MACOS file_system :
+      virtual public ::acme_apple::file_system
    {
    public:
       
       
-      //__creatable_from_library(acme_file, ::acme_file, "acme_macos");
+       ::file::path            m_strUserFolder;
+
+      //__creatable_from_library(file_system, ::file_system, "acme_macos");
       
       
-      acme_file();
-      ~acme_file() override;
+       file_system();
+      ~file_system() override;
 
       
+      void initialize(::particle * pparticle) override;
+
+      void init_system() override;
       ::file::path module() override;
 
       

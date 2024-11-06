@@ -52,7 +52,7 @@ namespace macos
 
       
       string         m_strFileName;
-      i32            m_iFile;
+      int            m_iFile;
 
 
       file();

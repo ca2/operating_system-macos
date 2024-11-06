@@ -3,10 +3,10 @@
 //
 #include "framework.h"
 #include "node.h"
-#include "acme/filesystem/filesystem/acme_directory.h"
-#include "acme/filesystem/filesystem/acme_path.h"
-#include "acme/filesystem/filesystem/acme_file.h"
-#include "acme/filesystem/filesystem/dir_context.h"
+#include "acme/filesystem/filesystem/directory_system.h"
+#include "acme/filesystem/filesystem/path_system.h"
+#include "acme/filesystem/filesystem/file_system.h"
+#include "acme/filesystem/filesystem/directory_context.h"
 #include "acme/platform/acme.h"
 #include "acme/platform/node.h"
 #include "acme/handler/request.h"
@@ -21,7 +21,7 @@ int macos_launch_on_login();
 void macos_set_launch_on_login(int launchOnLogin);
 
 
-void ns_main_async(dispatch_block_t block);
+void ns_main_post(dispatch_block_t block);
 
 bool ns_get_dark_mode();
 void ns_set_dark_mode(bool bDark);
@@ -36,7 +36,7 @@ void ns_fork(const ::procedure & procedure)
    
    routineHold->increment_reference_count();
  
-   ns_main_async(^
+   ns_main_post(^
                  {
       
       routineHold();
@@ -52,13 +52,13 @@ void ns_fork(const ::procedure & procedure)
 #undef USERNAME_LENGTH // mysql one
 
 bool ns_open_file(const char * );
-void ns_main_async(dispatch_block_t block);
+void ns_main_post(dispatch_block_t block);
 void ns_create_alias(const char * pszTarget, const char * pszSource);
 //::string & ns_get_default_browser_path();
 void ns_set_this_process_binary_default_browser();
 
-//string apple_browse_folder(class ::acme::system * psystem, ::operating_system_folder_dialog * pdialog);
-//string_array apple_browse_file_open(class ::acme::system * psystem, const char ** pszStartDir, bool bAllowsMultipleSelection);
+//string apple_browse_folder(class ::platform::system * psystem, ::operating_system_folder_dialog * pdialog);
+//string_array apple_browse_file_open(class ::platform::system * psystem, const char ** pszStartDir, bool bAllowsMultipleSelection);
 
 
 
@@ -275,7 +275,7 @@ void node::terminate_processes_by_title(const ::string & pszName)
 
    ::process_identifier_array processidentifiera;
 
-   for(i32 i = 0; i < dwa.get_count(); i++)
+   for(int i = 0; i < dwa.get_count(); i++)
    {
       
       if(process_identifier_module_path(dwa[i]).case_insensitive_equals(pszName))
@@ -299,7 +299,7 @@ void node::terminate_processes_by_title(const ::string & pszName)
 
    ::process_identifier_array processidentifiera;
    
-   for(i32 i = 0; i < dwa.get_count(); i++)
+   for(int i = 0; i < dwa.get_count(); i++)
    {
       
       if(process_identifier_module_path(dwa[i]).title().case_insensitive_equals(pszName))
@@ -346,7 +346,7 @@ void node::terminate_processes_by_title(const ::string & pszName)
 
     key1.QueryValue("DefaultConnectionSettings", mem);
 
-    bool bAutoDetect = (((::u8 *) mem.get_data())[8] & 0x08) != 0;
+    bool bAutoDetect = (((unsigned char *) mem.get_data())[8] & 0x08) != 0;
 
     return bAutoDetect;
     */
@@ -461,7 +461,7 @@ void node::defer_register_ca2_plugin_for_mozilla()
     keyPlugin.SetValue("Path", ::apex::get_system()->m_strCa2Module("npca2.dll"));
     keyPlugin.SetValue("ProductName", "ca2 plugin for NPAPI");
     keyPlugin.SetValue("Vendor", "ca2 Desenvolvimento de Software Ltda.");
-    keyPlugin.SetValue("Version", get_application()->file_as_string(pcontext->m_papexcontext->dir().ca2("appdata/x86/ca2_build.txt")));
+    keyPlugin.SetValue("Version", get_application()->file_as_string(papplication->dir().ca2("appdata/x86/ca2_build.txt")));
 
     registry::Key keyApplicationCa2;
 
@@ -844,20 +844,20 @@ void node::stop_service()
     */
 }
 
-
-bool node::dark_mode() const
-{
- 
-   return ns_get_dark_mode();
-   
-}
-
-void node::set_dark_mode(bool bDark)
-{
-
-ns_set_dark_mode(bDark);
-
-}
+//
+//bool node::dark_mode() const
+//{
+// 
+//   return ns_get_dark_mode();
+//   
+//}
+//
+//void node::set_dark_mode(bool bDark)
+//{
+//
+//ns_set_dark_mode(bDark);
+//
+//}
 
 //   bool node::resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder, string * pstrParams, string * pstrIconLocation, int * piIcon)
 //   {
@@ -935,7 +935,7 @@ void node::initialize_wallpaper_fileset(::file::set * pfileset, bool bAddSearch)
    {
 
       //string strDir;
-      //strDir = pcontext->m_papexcontext->dir().path(getenv("HOME"), "Pictures");
+      //strDir = papplication->dir().path(getenv("HOME"), "Pictures");
       //imagefileset.add_search(strDir);
       string strDir;
       strDir = "/Library/Desktop Pictures";
@@ -1036,9 +1036,9 @@ void node::set_default_browser()
 
    }
    
-   auto pcontext = m_pcontext;
+    auto pcontext = application();
 
-   if(pcontext->dir()->is(strAppReturn))
+   if(pcontext->directory()->is(strAppReturn))
    {
 
       return strAppReturn;
@@ -1073,13 +1073,13 @@ void node::on_process_request(::request * prequest)
       
       auto psystem = system();
       
-      auto pacmedirectory = psystem->m_pacmedirectory;
+      auto pdirectorysystem = psystem->directory_system();
 
-      p = pacmedirectory->ca2roaming();
+      p = pdirectorysystem->ca2roaming();
 
       p /= "mypath" / prequest->payload("app").as_string() + ".txt";
 
-      psystem->m_pacmefile->put_contents(p, prequest->m_strExe);
+      psystem->file_system()->put_contents(p, prequest->m_strExe);
 
       string strApp = prequest->m_strExe;
 
@@ -1088,30 +1088,30 @@ void node::on_process_request(::request * prequest)
       if(iFind > 0)
       {
 
-         p = pacmedirectory->ca2roaming();
+         p = pdirectorysystem->ca2roaming();
 
          p /= "mypath" / prequest->payload("app").as_string() + "-app";
 
          ::file::path p2;
 
-         p2 = pacmedirectory->ca2roaming();
+         p2 = pdirectorysystem->ca2roaming();
 
          p2 /= "mypath" / ::file::path(prequest->payload("app").as_string()).folder()/ ::file::path(strApp(0, iFind + strlen(".app"))).name();
 
          ns_create_alias(p2, strApp(0, iFind + strlen(".app")));
 
-         if(pacmedirectory->is(pacmedirectory->localconfig() / "monitor-0/desk/2desk"))
+         if(pdirectorysystem->is(pdirectorysystem->localconfig() / "monitor-0/desk/2desk"))
          {
 
             ::file::path p3;
 
-            p3 = pacmedirectory->localconfig() / "monitor-0/desk/2desk" / ::file::path(strApp(0, iFind + strlen(".app"))).name();
+            p3 = pdirectorysystem->localconfig() / "monitor-0/desk/2desk" / ::file::path(strApp(0, iFind + strlen(".app"))).name();
 
             ns_create_alias(p3, strApp(0, iFind + strlen(".app")));
 
          }
 
-         acmefile()->put_contents(p, "open -a \""+strApp(0, iFind + strlen(".app")) + "\"");
+         file_system()->put_contents(p, "open -a \""+strApp(0, iFind + strlen(".app")) + "\"");
 
          chmod(p, 0777);
 
@@ -1138,7 +1138,7 @@ void node::on_process_request(::request * prequest)
 ////      if((wAttr = windows_get_file_attributes(wstr)) == (::u32)-1L)
 ////      {
 ////
-////         ::windows::file_exception::throw_os_error( (::i32)get_last_error());
+////         ::windows::file_exception::throw_os_error( (int)get_last_error());
 ////
 ////      }
 ////
@@ -1152,7 +1152,7 @@ void node::on_process_request(::request * prequest)
 ////         if (!SetFileAttributesW(wstr, (::u32)status.m_attribute))
 ////         {
 ////
-////            ::windows::file_exception::throw_os_error( (::i32)get_last_error());
+////            ::windows::file_exception::throw_os_error( (int)get_last_error());
 ////
 ////         }
 ////
@@ -1193,21 +1193,21 @@ void node::on_process_request(::request * prequest)
 ////      if(hFile == INVALID_HANDLE_VALUE)
 ////      {
 ////
-////         ::windows::file_exception::throw_os_error( (::i32)::get_last_error());
+////         ::windows::file_exception::throw_os_error( (int)::get_last_error());
 ////
 ////      }
 ////
 ////      if(!SetFileTime((HANDLE)hFile, lpCreationTime, lpLastAccessTime, lpLastWriteTime))
 ////      {
 ////
-////         ::windows::file_exception::throw_os_error( (::i32)::get_last_error());
+////         ::windows::file_exception::throw_os_error( (int)::get_last_error());
 ////
 ////      }
 ////
 ////      if(!::CloseHandle(hFile))
 ////      {
 ////
-////         ::windows::file_exception::throw_os_error( (::i32)::get_last_error());
+////         ::windows::file_exception::throw_os_error( (int)::get_last_error());
 ////
 ////      }
 ////
@@ -1217,7 +1217,7 @@ void node::on_process_request(::request * prequest)
 ////         if (!::SetFileAttributesW(wstr, (::u32)status.m_attribute))
 ////         {
 ////
-////            ::windows::file_exception::throw_os_error( (::i32)get_last_error());
+////            ::windows::file_exception::throw_os_error( (int)get_last_error());
 ////
 ////         }
 ////
@@ -1229,15 +1229,15 @@ void node::on_process_request(::request * prequest)
 void node::file_open(const ::file::path & pathParam, const ::string & strParams, const ::file::path & pathFolder)
 {
    
-   auto pcontext = m_pcontext;
+   auto papplication = application();
 
-   auto path = pcontext->m_papexcontext->defer_process_path(pathParam);
+   auto path = papplication->defer_process_path(pathParam);
    
 //      // pretend actually gonna open the file here to trigger
 //      // asking for file access permission
 //
 //      auto psystem = m_psystem->m_papexsystem;
-//
+//pcontext->m_papexcontext->
 //      auto preader = psystem->file().get_reader(path);
 
    ns_fork([path]()
@@ -1259,7 +1259,7 @@ void node::open_url_link_at_system_browser(const ::string & strUrl, const ::stri
    
    string strProfieCopy(strProfile);
 
-   ns_main_async(^
+   ns_main_post(^
    {
 
       ns_open_url(strUrlCopy.c_str());
@@ -1389,7 +1389,7 @@ void node::set_this_application_as_default_for_file_extension(const ::string& st
    setMyselfAsDefaultApplicationForFileExtension(strFormattedExtension);
    
 }
-void node::register_user_auto_start(::acme::application * papplication, const string & strArguments,
+void node::register_user_auto_start(::platform::application * papplication, const string & strArguments,
                            bool bRegister)
 {
 

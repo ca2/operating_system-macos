@@ -5,7 +5,9 @@
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 28/02/20.
 //
 #include "framework.h"
+#include "directory_system.h"
 #include "file_context.h"
+#include "file_system.h"
 #include "acme/platform/system.h"
 #include <sys/stat.h>
 #include <ctype.h>
@@ -80,7 +82,7 @@ namespace acme_macos
 //
       auto psystem = system();
 
-       m_pdirsystem = psystem->m_pdirsystem;
+       m_pdirsystem = psystem->directory_system();
       
 //      if(!estatus)
 //      {

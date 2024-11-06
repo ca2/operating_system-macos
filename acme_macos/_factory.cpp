@@ -1,9 +1,8 @@
 #include "framework.h"
-#include "acme_directory.h"
-#include "acme_file.h"
-#include "acme_path.h"
-#include "dir_context.h"
-#include "dir_system.h"
+#include "directory_system.h"
+#include "file_system.h"
+#include "path_system.h"
+#include "directory_context.h"
 #include "file_context.h"
 #include "file_system.h"
 #include "main_window.h"
@@ -51,20 +50,20 @@ __FACTORY_EXPORT void acme_macos_factory(::factory::factory * pfactory)
    //pfactory->add_factory_item < ::acme_macos::stdio_file, ::file::text_file > ();
    //pfactory->add_factory_item < ::acme_macos::file, ::file::file > ();
    
-   pfactory->add_factory_item < ::acme_macos::acme_directory, ::acme_directory > ();
-   pfactory->add_factory_item < ::acme_macos::acme_path, ::acme_path > ();
-   pfactory->add_factory_item < ::acme_macos::acme_file, ::acme_file > ();
+   pfactory->add_factory_item < ::acme_macos::directory_system, ::directory_system > ();
+   pfactory->add_factory_item < ::acme_macos::path_system, ::path_system > ();
+   pfactory->add_factory_item < ::acme_macos::file_system, ::file_system > ();
 
    pfactory->add_factory_item < ::FileSystemEvents::watcher, ::file::watcher > ();
 
    pfactory->add_factory_item < ::FileSystemEvents::watch, ::file::watch > ();
 
    pfactory->add_factory_item < ::acme_macos::file_context, ::file_context > ();
-   pfactory->add_factory_item < ::acme_macos::dir_context, ::dir_context > ();
+   pfactory->add_factory_item < ::acme_macos::directory_context, ::directory_context > ();
    pfactory->add_factory_item < ::acme_macos::file_system, ::file_system > ();
-   pfactory->add_factory_item < ::acme_macos::dir_system, ::dir_system > ();
+   pfactory->add_factory_item < ::acme_macos::directory_system, ::directory_system > ();
 
-   pfactory->add_factory_item < ::acme_macos::node, ::acme::node > ();
+   pfactory->add_factory_item < ::acme_macos::node, ::platform::node > ();
 
    pfactory->add_factory_item < ::acme_macos::main_window, ::operating_system::main_window > ();
    pfactory->add_factory_item < ::acme_macos::application, ::operating_system::application > ();
@@ -76,9 +75,9 @@ __FACTORY_EXPORT void acme_macos_factory(::factory::factory * pfactory)
    
 //   pfactory->add_factory_item < ::acme_posix::pipe               , ::operating_system::pipe    > ();
 //
-   //create_factory < ::macos::dir_system         , ::dir_system       > ();
+   //create_factory < ::macos::directory_system         , ::directory_system       > ();
    //create_factory < ::macos::file_system        , ::file_system      > ();
-   //create_factory < ::macos::dir_context        , ::dir_context      > ();
+   //create_factory < ::macos::directory_context        , ::directory_context      > ();
    //create_factory < ::macos::file_context       , ::file_context     > ();
    //create_factory < ::macos::interaction_impl   , ::user::interaction_impl > ();
    

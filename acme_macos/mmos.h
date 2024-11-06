@@ -20,7 +20,7 @@
    @public   int m_iScanIcon;
    @public  const char * m_pszIcon;
    @public NSRecursiveLock *theLock;
-   @public void * m_pSystem;
+   @public ::platform::system * m_psystem;
 
    
 }

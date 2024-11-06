@@ -65,7 +65,7 @@ namespace windowing_macos
       m_ds = CreateDispatchTimer(secondsToFire, queue, ^ { _os_step(); });
 
       
-      ns_main_sync(^()
+      ns_main_send(^()
       {
          _on_os_clipboard_changed();
       });
@@ -133,7 +133,7 @@ namespace windowing_macos
    bool copydesk::_set_filea(const ::file::path_array & patha, enum_op eop)
    {
 
-      ns_main_sync(^
+      ns_main_send(^
       {
          macos_clipboard_set_filea(patha);
       });
@@ -334,7 +334,7 @@ namespace windowing_macos
    void copydesk::_os_step()
    {
       
-      ns_main_async(^()
+      ns_main_post(^()
       {
          
          if(_os_clipboard_has_changed())

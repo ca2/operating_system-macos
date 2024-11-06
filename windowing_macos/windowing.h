@@ -25,10 +25,10 @@ namespace windowing_macos
 //      {
 //      public:
 //
-//         ::pointer < ::acme::node > & m_pnode;
+//         ::pointer < ::platform::node > & m_pnode;
 //         __pointer(class ::system) & m_psystem;
 //
-//         element_quit(::pointer < ::acme::node > & pnode,__pointer(class ::system) & psystem
+//         element_quit(::pointer < ::platform::node > & pnode,__pointer(class ::system) & psystem
 //               
 //               ) :
 //         m_pnode(pnode),m_psystem(psystem)
@@ -42,7 +42,7 @@ namespace windowing_macos
 //      };
 
 
-      ::pointer < ::windowing::display >           m_pdisplay;
+      //::pointer < ::windowing::display >           m_pdisplay;
 
       ::pointer < class window >                   m_pwindowActive;
 
@@ -62,7 +62,7 @@ namespace windowing_macos
 
       ::windowing::window * window(oswindow oswindow) override;
 
-      ::windowing::display * display() override;
+      //::windowing::display * display() override;
 
       ::windowing::window * get_active_window(::thread * pthread) override;
 

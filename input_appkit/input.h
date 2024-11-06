@@ -174,8 +174,8 @@ namespace input_appkit
       //virtual bool _windows_register_with_icon(WNDCLASSEXW* puserinteractionclass, const unichar* pszClassName, ::u32 nIDIcon);
 
       //virtual void _window_create_caret(HWND hwnd, HBITMAP hbitmap);
-      //virtual void _window_create_solid_caret(HWND hwnd, i32 nWidth, i32 nHeight);
-      //virtual void _window_create_gray_caret(HWND hwnd, i32 nWidth, i32 nHeight);
+      //virtual void _window_create_solid_caret(HWND hwnd, int nWidth, int nHeight);
+      //virtual void _window_create_gray_caret(HWND hwnd, int nWidth, int nHeight);
 
 
       ////template < typename PRED >

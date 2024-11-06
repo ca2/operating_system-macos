@@ -55,7 +55,7 @@ namespace innate_ui_appkit
 //         m_pqwidget = new QLabel(pappkitwindowParent->m_pqwidget);
          //gtk_label_set_xalign(GTK_LABEL(m_pgtkwidget), 0.0);
          
-         __create();
+         __create_still();
 
       }
 
@@ -105,7 +105,7 @@ m_bIcon = true;
 
       ::pointer <::innate_ui_appkit::icon > picon = piconParam;
 
-      sync([this, picon]()
+      main_send([this, picon]()
       {
 
          //gtk_image_set_from_paintable(GTK_IMAGE(m_pqgtkwidget), picon->m_pgdkpaintable);

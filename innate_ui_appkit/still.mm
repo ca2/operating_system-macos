@@ -75,7 +75,7 @@ namespace innate_ui_appkit
    //
    // }
 
-   void still::__create()
+   void still::__create_still()
    {
 
       //__create();

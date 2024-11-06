@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
-void ns_main_async(dispatch_block_t block);
+void ns_main_post(dispatch_block_t block);
 
 
-void ns_main_sync(dispatch_block_t block);
+void ns_main_send(dispatch_block_t block);
 
 void ns_monitor_cgrect(int i, CGRect * prect);
 void __ns_monitor_cgrect(int i, CGRect * prect);
@@ -132,7 +132,7 @@ void ns_set_wallpaper(const char * pszUrl)
    
    auto p = strdup(pszUrl);
    
-   ns_main_async(^()
+   ns_main_post(^()
    {
       
       NSString * strUrl = [ [ NSString alloc ] initWithUTF8String: p ];
@@ -209,7 +209,7 @@ char * ns_get_wallpaper()
    
    __block char * p = nullptr;
    
-   ns_main_sync(^()
+   ns_main_send(^()
    {
 
       NSScreen * pmainscreen = [ NSScreen mainScreen ];

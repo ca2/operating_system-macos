@@ -110,7 +110,7 @@ namespace macos
       if ((eopen & ::file::e_open_defer_create_directory) && (eopen & ::file::e_open_write))
       {
          
-         pcontext->m_papexcontext->dir().mk(::file::path(lpszFileName).folder());
+         papplication->dir().mk(::file::path(lpszFileName).folder());
          
       }
 
@@ -179,7 +179,7 @@ namespace macos
       dwPermission |= S_IRGRP | S_IWGRP | S_IXGRP;
       dwPermission |= S_IROTH | S_IXOTH;
 
-      i32 hFile;
+      int hFile;
 
       hFile = ::open(m_strFileName, dwFlags | O_CLOEXEC, dwPermission);
 
@@ -206,7 +206,7 @@ namespace macos
 
       }
 
-      m_iFile = (i32)hFile;
+      m_iFile = (int)hFile;
 
       return ::success;
 
@@ -242,12 +242,12 @@ namespace macos
 
          readNow = (size_t) minimum(0x7fffffff, nCount);
 
-         size_t iRead = ::read(m_iFile, &((::u8 *)lpBuf)[pos], readNow);
+         size_t iRead = ::read(m_iFile, &((unsigned char *)lpBuf)[pos], readNow);
 
          if(iRead == ::numeric_info<size_t>::get_allset_value ())
          {
 
-            i32 iError = errno;
+            int iError = errno;
 
             if(iError == EAGAIN)
             {
@@ -311,7 +311,7 @@ namespace macos
       while(nCount > 0)
       {
          
-         size_t iWrite = ::write(m_iFile, &((const ::u8 *)lpBuf)[pos], (size_t) minimum(0x7fffffff, nCount));
+         size_t iWrite = ::write(m_iFile, &((const unsigned char *)lpBuf)[pos], (size_t) minimum(0x7fffffff, nCount));
          
          if(iWrite == ::numeric_info<size_t>::get_allset_value ())
          {
@@ -347,7 +347,7 @@ namespace macos
       
       ASSERT(::e_seek_set == SEEK_SET && ::e_seek_from_end == SEEK_END && ::e_seek_current == SEEK_CUR);
 
-      ::i32 lLoOffset = lOff & 0xffffffff;
+      int lLoOffset = lOff & 0xffffffff;
 
       filesize posNew = ::lseek(m_iFile, lLoOffset, (::u32)nFrom);
 
@@ -370,7 +370,7 @@ namespace macos
 
       ASSERT(m_iFile != (::u32)hFileNull);
 
-      ::i32 lLoOffset = 0;
+      int lLoOffset = 0;
 
       filesize pos = ::lseek(m_iFile, lLoOffset, SEEK_CUR);
 

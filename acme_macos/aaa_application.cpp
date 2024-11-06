@@ -139,7 +139,7 @@ namespace acme
 //      set_os_data(nullptr);
 //
 //
-//  //    i32 iRet = ::acme::application::term_instance();
+//  //    int iRet = ::platform::application::term_instance();
 //
 //       int iRet = 0;
 //
@@ -290,14 +290,14 @@ namespace acme
 //   bool application::os_on_start_application()
 //   {
 //
-//      ::file::path path = pcontext->m_papexcontext->file().module();
+//      ::file::path path = papplication->file().module();
 //
 //      path -= 3;
 //
 //      if(::dir::is(path))
 //      {
 //
-//         ::file::path path2 = pacmedirectory->localconfig() / "monitor-0/desk/2desk" / path.name();
+//         ::file::path path2 = pdirectorysystem->localconfig() / "monitor-0/desk/2desk" / path.name();
 //
 //         if(::file_exists(path2))
 //         {

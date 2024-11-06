@@ -3,24 +3,24 @@
 #pragma once
 
 
-#include "acme_apple/acme_path.h"
+#include "acme_apple/path_system.h"
 
 
 namespace acme_macos
 {
 
 
-   class CLASS_DECL_ACME_MACOS acme_path :
-      virtual public ::acme_apple::acme_path
+   class CLASS_DECL_ACME_MACOS path_system :
+      virtual public ::acme_apple::path_system
    {
    public:
 
 
-      //__creatable_from_library(acme_path, ::acme_path, "acme_macos");
+      //__creatable_from_library(path_system, ::path_system, "acme_macos");
 
 
-      acme_path();
-      ~acme_path() override;
+       path_system();
+      ~path_system() override;
 
       
       void create_symbolic_link(const ::scoped_string & scopedstrLink, const ::scoped_string & scopedstrSource) override;

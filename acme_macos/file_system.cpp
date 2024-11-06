@@ -1,13 +1,13 @@
 //
-//  acme_file.cpp
+//  file_system.cpp
 //  acme_macos
 //
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 18/08/21.
 //
 
 #include "framework.h"
-#include "acme/filesystem/filesystem/file_system.h"
-#include "acme_file.h"
+#include "file_system.h"
+#include "acme/platform/application.h"
 
 
 #include <unistd.h>
@@ -22,7 +22,7 @@ namespace acme_macos
 {
 
    
-   acme_file::acme_file()
+   file_system::file_system()
    {
 
       m_pplatformfile = this;
@@ -30,14 +30,66 @@ namespace acme_macos
    }
 
 
-   acme_file::~acme_file()
+   file_system::~file_system()
    {
 
 
    }
 
 
-   ::file::path acme_file::module()
+   void file_system::initialize(::particle * pparticle)
+   {
+      
+      //auto estatus =
+      
+      ::acme_apple::file_system::initialize(pparticle);
+      
+   //      if(!estatus)
+   //      {
+   //
+   //         return estatus;
+   //
+   //      }
+
+   }
+
+
+void file_system::init_system()
+{
+   
+   ::acme_apple::file_system::init_system();
+   
+   string str = getenv("HOME");
+   
+   auto psystem = system();
+   
+   auto pdirectorysystem = psystem->directory_system();
+
+   ::file::path strRelative = pdirectorysystem->install();
+
+   string strUserFolderShift;
+
+   if(psystem->has_property("user_folder_relative_path"))
+   {
+
+      strUserFolderShift = strRelative / get_app()->payload("user_folder_relative_path").as_string();
+
+   }
+   else
+   {
+
+      strUserFolderShift = strRelative;
+
+   }
+
+   m_strUserFolder = str / "ca2" / strUserFolderShift;
+
+   //return true;
+
+}
+
+
+   ::file::path file_system::module()
    {
 
       ::file::path path = apple_app_module_path();
@@ -47,7 +99,7 @@ namespace acme_macos
    }
 
 
-   void acme_file::touch(const ::file::path & path)
+   void file_system::touch(const ::file::path & path)
    {
 
       ::e_status estatus = ::success;
@@ -83,7 +135,7 @@ namespace acme_macos
       else
       {
          
-         acme_posix::acme_file::touch(path);
+         acme_posix::file_system::touch(path);
          
       }
       

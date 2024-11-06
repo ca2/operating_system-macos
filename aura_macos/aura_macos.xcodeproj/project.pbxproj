@@ -29,10 +29,8 @@
 		9AB1608029A8A1C800DFDF90 /* libapex_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB1607F29A8A1C800DFDF90 /* libapex_darwin.dylib */; };
 		9AB1608329A8A1ED00DFDF90 /* libaura_darwin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB1608229A8A1ED00DFDF90 /* libaura_darwin.dylib */; };
 		9AC2D1CF26542FBA00CC8096 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1BB26542FBA00CC8096 /* framework.cpp */; };
-		9AC2D1D126542FBA00CC8096 /* interaction_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1C026542FBA00CC8096 /* interaction_impl.h */; };
 		9AC2D1D226542FBA00CC8096 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1C126542FBA00CC8096 /* _factory.cpp */; };
 		9AC2D1D426542FBA00CC8096 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1C726542FBA00CC8096 /* framework.h */; };
-		9AC2D1D526542FBA00CC8096 /* interaction_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2D1C826542FBA00CC8096 /* interaction_impl.cpp */; };
 		9AC2D1DC265431BD00CC8096 /* aaa_library.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1DB265431BD00CC8096 /* aaa_library.h */; };
 		9AC2D1F426543C7E00CC8096 /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2D1F326543C7E00CC8096 /* _mm.h */; };
 /* End PBXBuildFile section */
@@ -114,6 +112,8 @@
 		9A00E62126616D1400517464 /* libaura_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A03B80A2A25BDC500A0E33E /* _____release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "_____release.xcconfig"; sourceTree = "<group>"; };
 		9A03B80C2A25BDC500A0E33E /* _____debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "_____debug.xcconfig"; sourceTree = "<group>"; };
+		9A523E3A2CD3B4C5006ED868 /* aaa_interaction_impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aaa_interaction_impl.h; sourceTree = "<group>"; };
+		9A523E3B2CD3B4C5006ED868 /* aaa_interaction_impl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = aaa_interaction_impl.cpp; sourceTree = "<group>"; };
 		9A5A897026D2CA88004AF957 /* shell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shell.h; sourceTree = "<group>"; };
 		9A5A897126D2CA88004AF957 /* shell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shell.cpp; sourceTree = "<group>"; };
 		9A5A897626D304B4004AF957 /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
@@ -129,10 +129,8 @@
 		9AB1608229A8A1ED00DFDF90 /* libaura_darwin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura_darwin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC2CFB02653DAD200CC8096 /* aura_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = aura_apple.xcodeproj; path = "../../operating_system-apple/aura_apple/aura_apple.xcodeproj"; sourceTree = "<group>"; };
 		9AC2D1BB26542FBA00CC8096 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
-		9AC2D1C026542FBA00CC8096 /* interaction_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interaction_impl.h; sourceTree = "<group>"; };
 		9AC2D1C126542FBA00CC8096 /* _factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
 		9AC2D1C726542FBA00CC8096 /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
-		9AC2D1C826542FBA00CC8096 /* interaction_impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interaction_impl.cpp; sourceTree = "<group>"; };
 		9AC2D1DA2654309000CC8096 /* _.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
 		9AC2D1DB265431BD00CC8096 /* aaa_library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aaa_library.h; sourceTree = "<group>"; };
 		9AC2D1F326543C7E00CC8096 /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
@@ -238,6 +236,8 @@
 		9AC2D1B926542FBA00CC8096 /* aura_macos */ = {
 			isa = PBXGroup;
 			children = (
+				9A523E3A2CD3B4C5006ED868 /* aaa_interaction_impl.h */,
+				9A523E3B2CD3B4C5006ED868 /* aaa_interaction_impl.cpp */,
 				9A03B80C2A25BDC500A0E33E /* _____debug.xcconfig */,
 				9A03B80A2A25BDC500A0E33E /* _____release.xcconfig */,
 				9AC2D1DA2654309000CC8096 /* _.h */,
@@ -248,8 +248,6 @@
 				9A6E49A526D327AC00D1845E /* aaa_file_image.cpp */,
 				9AC2D1BB26542FBA00CC8096 /* framework.cpp */,
 				9AC2D1C726542FBA00CC8096 /* framework.h */,
-				9AC2D1C826542FBA00CC8096 /* interaction_impl.cpp */,
-				9AC2D1C026542FBA00CC8096 /* interaction_impl.h */,
 				9A5D738F2656D1DC00D5C39E /* node.cpp */,
 				9A5D73902656D1DC00D5C39E /* node.h */,
 				9A5A897126D2CA88004AF957 /* shell.cpp */,
@@ -289,7 +287,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC2D1F426543C7E00CC8096 /* _mm.h in Headers */,
-				9AC2D1D126542FBA00CC8096 /* interaction_impl.h in Headers */,
 				9AC2D1DC265431BD00CC8096 /* aaa_library.h in Headers */,
 				9A5A897226D2CA88004AF957 /* shell.h in Headers */,
 				9AC2D1D426542FBA00CC8096 /* framework.h in Headers */,
@@ -405,7 +402,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC2D1D526542FBA00CC8096 /* interaction_impl.cpp in Sources */,
 				9AC2D1D226542FBA00CC8096 /* _factory.cpp in Sources */,
 				9AC2D1CF26542FBA00CC8096 /* framework.cpp in Sources */,
 				9A5A897326D2CA88004AF957 /* shell.cpp in Sources */,

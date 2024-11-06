@@ -78,10 +78,10 @@
 //bool windows_find_is_dots(WIN32_FIND_DATAW & data);
 //
 //
-//CLASS_DECL_ACME inline i32 muldiv32(i32 a, i32 b, i32 ca)
+//CLASS_DECL_ACME inline int muldiv32(int a, int b, int ca)
 //{
 //
-//   return (i32) ::MulDiv((i32)a, (i32)b, (i32)ca);
+//   return (int) ::MulDiv((int)a, (int)b, (int)ca);
 //
 //}
 //
@@ -159,8 +159,8 @@ namespace acme_windows
 {
 
 
-   class dir_context;
-   class dir_system;
+   class directory_context;
+   class directory_system;
 
    class file_context;
    class file_system;

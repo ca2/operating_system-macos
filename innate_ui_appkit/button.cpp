@@ -72,7 +72,7 @@ namespace innate_ui_appkit
       ::pointer < ::innate_ui_appkit::window > pappkitwindowParent = pwindowParent;
 
       
-      __create();
+      __create_button();
       //m_pqwidget = new QPushButton(pappkitwindowParent->m_pqwidget);
 
       //gtk_widget_set_visible(m_pgtkwidget, true);
@@ -110,7 +110,7 @@ namespace innate_ui_appkit
 
       ::pointer <icon > picon = piconParam;
 
-      sync([this, picon]()
+      main_send([this, picon]()
       {
 
          //::SendMessage(m_hwnd, BM_SETICON, (WPARAM) picon->m_hicon, 0);

@@ -24,7 +24,7 @@ namespace windowing_macos
    display::display()
    {
    
-      m_pDisplay2 = this;
+      //m_pDisplay2 = this;
    
    }
 

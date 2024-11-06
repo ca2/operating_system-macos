@@ -13,7 +13,7 @@
 //#include "mouse_hook.h"
 
 void ns_app_run();
-void defer_create_windowing_application_delegate(void * pApplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);
+void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);
 
 
 void ns_application_handle(long long l, void * p);
@@ -38,7 +38,7 @@ namespace node_macos
 
 
 
-//   void node::implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem)
+//   void node::implement(::pointer < ::platform::node > & pnode, __pointer(class ::system) & psystem)
 //   {
 //       
 //      m_pelementquit = new element_quit(pnode, psystem);
@@ -49,7 +49,7 @@ namespace node_macos
 //      
 //      auto papp = psystem->m_pappStartup;
 //      
-//      void * pApplication = (void *) (::app *) papp;
+//      ::platform::application * papplication = (void *) (::app *) papp;
 //      
 //      windowing_macos_application_main(pApplication, argc, argv);
 //      
@@ -252,7 +252,7 @@ namespace node_macos
 
 
 
-//   void node::acme_application_main(class ::acme::system * psystem)
+//   void node::acme_application_main(class ::platform::system * psystem)
 //   {
 //
 ////      auto argc = psystem->m_pplatform->m_argc;
@@ -261,7 +261,7 @@ namespace node_macos
 //
 //      auto papp = platform()->application();
 //
-//      void * pApplication = (void *) (::acme::application *) papp;
+//      ::platform::application * papplication = (void *) (::platform::application *) papp;
 //
 //      defer_create_windowing_application_delegate(pApplication, papp->application_menu(), papp);
 //      
@@ -279,15 +279,15 @@ namespace node_macos
       
    }
 
-   
-   void node::do_windowing_system_factory()
-   {
-
-      auto pfactory = system()->factory("windowing_system", "appkit");
-
-      pfactory->merge_to_global_factory();
-
-   }
+//   
+//   void node::do_windowing_system_factory()
+//   {
+//
+//      auto pfactory = system()->factory("windowing_system", "appkit");
+//
+//      pfactory->merge_to_global_factory();
+//
+//   }
 
 
    void node::defer_innate_ui()
@@ -317,7 +317,7 @@ namespace node_macos
 //      
 //      auto papp = platform()->application();
 //
-//      void * pApplication = (void *) (::acme::application *) papp;
+//      ::platform::application * papplication = (void *) (::platform::application *) papp;
 //
 //      defer_create_windowing_application_delegate(pApplication, papp->application_menu(), papp);
 //      
@@ -326,7 +326,7 @@ namespace node_macos
 //   }
 
 
-void node::defer_create_windowing_application_delegate(void * pApplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
+void node::defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
 {
    
    ::defer_create_windowing_application_delegate(

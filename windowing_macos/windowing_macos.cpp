@@ -21,7 +21,7 @@ RECTANGLE_I32 get_main_screen_rectangle();
 //
 //::mutex * g_pmutexOsWindowData = nullptr;
 //
-//void ns_main_async(dispatch_block_t block);
+//void ns_main_post(dispatch_block_t block);
 //
 //int oswindow_find(NSWindow * window)
 //{
@@ -512,7 +512,7 @@ RECTANGLE_I32 get_main_screen_rectangle();
 //   else
 //   {
 //
-//      ns_main_async(^()
+//      ns_main_post(^()
 //      {
 //
 //         w->m_pimpl->call_message_handler(e_message_destroy, 0, 0);
@@ -576,7 +576,7 @@ string keyboard_input_source()
 }
 
 
-CLASS_DECL_AURA ::user::interaction_impl * oswindow_get(oswindow oswindow)
+CLASS_DECL_AURA ::windowing::window * oswindow_get(oswindow oswindow)
 {
 
    if(oswindow == nullptr)
@@ -586,7 +586,7 @@ CLASS_DECL_AURA ::user::interaction_impl * oswindow_get(oswindow oswindow)
 
    }
 
-   return oswindow->m_puserinteractionimpl;
+   return oswindow;
 
 }
 
@@ -840,7 +840,7 @@ rectangle_i32_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
       
       if (!window_id) continue;
       
-      ::i32 iWindowId = -1;
+      int iWindowId = -1;
          
       CFNumberGetValue(window_id, kCFNumberSInt32Type, &iWindowId);
          
@@ -1098,7 +1098,7 @@ void cg_get_window_rect_list(rectangle_i32_array & recta, array < CGWindowID > &
       
       if (!window_id) continue;
       
-      ::i32 iWindowId = -1;
+      int iWindowId = -1;
       
       CFNumberGetValue(window_id, kCFNumberSInt32Type, &iWindowId);
       

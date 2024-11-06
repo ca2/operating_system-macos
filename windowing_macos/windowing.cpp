@@ -7,16 +7,16 @@
 #include "framework.h"
 #include "acme/parallelization/manual_reset_event.h"
 #include "acme/platform/application.h"
-#include "acme/platform/sequencer.h"
+//#include "acme/platform/sequencer.h"
 #include "apex/platform/application_menu.h"
 //#include "aura/user/menu/shared.h"
-#include "aura/user/user/interaction_impl.h"
+//#include "aura/user/user/interaction_impl.h"
 //#include "keyboard_hook.h"
 //#include "mouse_hook.h"
 #include <Carbon/Carbon.h>
 
 
-void ns_main_async(dispatch_block_t block);
+void ns_main_post(dispatch_block_t block);
 
 
 void * ns_get_key_window();
@@ -28,7 +28,7 @@ void * ns_get_key_window();
 //::pointer < menu_shared > create_menu_shared(::particle * pparticle, const string_array & straParent, const string_array & straMenu, const string_array & straId);
 
 
-//void defer_create_windowing_application_delegate(void * pApplication, int argc, char *argv[]);
+//void defer_create_windowing_application_delegate(::platform::application * papplication, int argc, char *argv[]);
 
 //
 //void ns_create_main_menu(menu_shared * pmenushared);
@@ -46,7 +46,7 @@ namespace windowing_macos
    windowing::windowing()
    {
       
-      m_pWindowing4 = this;
+      //m_pWindowing4 = this;
       
       m_pwindowCapture = nullptr;
        
@@ -78,7 +78,7 @@ namespace windowing_macos
       
       //estatus =
       
-      __construct(m_pdisplay);
+      //__construct(m_pdisplay);
       
 //      if(!estatus)
 //      {
@@ -87,7 +87,7 @@ namespace windowing_macos
 //
 //      }
 //
-      m_pdisplay->m_pwindowing = this;
+      //m_pdisplay->m_pwindowing = this;
          
       //return estatus;
       
@@ -99,7 +99,7 @@ namespace windowing_macos
 //      
 //      auto routineLocal = procedure;
 //
-//      ns_main_async(^
+//      ns_main_post(^
 //                    {
 //         
 //         routineLocal();
@@ -119,12 +119,12 @@ namespace windowing_macos
    }
 
 
-   ::windowing::display * windowing::display()
-   {
-
-      return m_pdisplay;
-
-   }
+//   ::windowing::display * windowing::display()
+//   {
+//
+//      return m_pdisplay;
+//
+//   }
 
 
    ::windowing::window * windowing::get_active_window(::thread * pthread)
@@ -269,7 +269,7 @@ namespace windowing_macos
       if(pwindowCapture)
       {
          
-         pwindowCapture->m_puserinteractionimpl->m_puserinteractionMouseCapture.release();
+         pwindowCapture->m_puserinteractionMouseCapture.release();
          
       }
 
@@ -330,7 +330,7 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::win
    
             nsapp_activation_policy_regular();
             
-            ns_main_async(^()
+            ns_main_post(^()
                           {
 
             ProcessSerialNumber psn = { 0, kCurrentProcess };
@@ -349,7 +349,7 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::win
    
             nsapp_activation_policy_accessory();
             
-            ns_main_async(^()
+            ns_main_post(^()
                           {
             //hide icon on Dock
             ProcessSerialNumber psn = { 0, kCurrentProcess };
@@ -409,7 +409,7 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::win
 //   }
 
 
-//   void windowing::implement(::pointer < ::acme::node > & pnode, __pointer(class ::system) & psystem)
+//   void windowing::implement(::pointer < ::platform::node > & pnode, __pointer(class ::system) & psystem)
 //   {
 //
 //      m_pelementquit = new element_quit(pnode, psystem);
@@ -420,7 +420,7 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::win
 //
 //      auto papp = psystem->m_pappStartup;
 //
-//      void * pApplication = (void *) (::app *) papp;
+//      ::platform::application * papplication = (void *) (::app *) papp;
 //
 //      windowing_macos_application_main(pApplication, argc, argv);
 //
