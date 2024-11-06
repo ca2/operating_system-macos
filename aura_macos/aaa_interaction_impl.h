@@ -88,7 +88,7 @@ namespace aura_macos
       // subclassing/unsubclassing functions
 //      virtual void pre_subclass_window() override;
 //      bool SubclassWindow(oswindow hWnd);
-//      //bool SubclassDlgItem(::u32 nID, ::interaction_impl * pParent);
+//      //bool SubclassDlgItem(unsigned int nID, ::interaction_impl * pParent);
 //      oswindow UnsubclassWindow();
 
 //      // handling of RT_DLGINIT resource (extension to RT_DIALOG)
@@ -98,7 +98,7 @@ namespace aura_macos
 //      virtual bool ShowWindow(int iShow) override;
       //// for child windows, views, panes etc
 //
-//      virtual bool create_window(::user::interaction * pinteraction, const char * lpszClassName, const char * lpszWindowName, u32 uStyle, const ::rectangle_i32 & prectangle, ::user::interaction * puiParent, id id, ::create * pcreate = nullptr) override;
+//      virtual bool create_window(::user::interaction * pinteraction, const char * lpszClassName, const char * lpszWindowName, unsigned int uStyle, const ::rectangle_i32 & prectangle, ::user::interaction * puiParent, id id, ::create * pcreate = nullptr) override;
 //
 
       //virtual ::e_status native_create_host() override;
@@ -124,7 +124,7 @@ namespace aura_macos
 
 //      // Advanced: virtual AdjustWindowRect
 //      enum AdjustType { adjustBorder = 0, adjustOutside = 1 };
-//      virtual void CalcWindowRect(RECTANGLE_I32 * lpClientRect, ::u32 nAdjustType = adjustBorder) override;
+//      virtual void CalcWindowRect(RECTANGLE_I32 * lpClientRect, unsigned int nAdjustType = adjustBorder) override;
 //
 
 
@@ -159,8 +159,8 @@ namespace aura_macos
       //int GetWindowRgn(HRGN hRgn);
 
 
-      //virtual bool set_window_position(iptr z, int x, int y, int cx, int cy, ::u32 nFlags);
-      //virtual ::u32 ArrangeIconicWindows() override;
+      //virtual bool set_window_position(iptr z, int x, int y, int cx, int cy, unsigned int nFlags);
+      //virtual unsigned int ArrangeIconicWindows() override;
       //virtual void BringToTop(::e_display edisplay) override;
       //virtual bool BringWindowToTop() override;
 //      using ::user::interaction_impl::window_rectangle;
@@ -181,14 +181,14 @@ namespace aura_macos
       //virtual bool GetWindowPlacement(WINDOWPLACEMENT* lpuserinteractionpl);
       //virtual bool SetWindowPlacement(const WINDOWPLACEMENT* lpuserinteractionpl);
 
-      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo, POINT_I32 * lpPoint, ::u32 nCount);
+      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo, POINT_I32 * lpPoint, unsigned int nCount);
       //virtual void MapWindowPoints(::user::interaction * puserinteractionTo, RECTANGLE_I32 * lpRect);
 
       //virtual ::draw2d::graphics * GetDC();
       //virtual ::draw2d::graphics * GetWindowDC();
       //virtual bool ReleaseDC(::draw2d::graphics_pointer & pgraphics);
-      //virtual void Print(::draw2d::graphics_pointer & pgraphics, ::u32 dwFlags) const override;
-      //virtual void PrintClient(::draw2d::graphics_pointer & pgraphics, ::u32 dwFlags) const override;
+      //virtual void Print(::draw2d::graphics_pointer & pgraphics, unsigned int dwFlags) const override;
+      //virtual void PrintClient(::draw2d::graphics_pointer & pgraphics, unsigned int dwFlags) const override;
 
 //      virtual void UpdateWindow() override;
 //      virtual void SetRedraw(bool bRedraw = true) override;
@@ -212,20 +212,20 @@ namespace aura_macos
       void offset_viewport_org(RECTANGLE_I32 * lprectScreen);
 
 
-      //virtual ::draw2d::graphics * GetDCEx(::draw2d::region* prgnClip, ::u32 flags) override;
+      //virtual ::draw2d::graphics * GetDCEx(::draw2d::region* prgnClip, unsigned int flags) override;
       virtual void LockWindowUpdate() override;
       virtual void UnlockWindowUpdate() override;
-//        virtual bool RedrawWindow(const ::rectangle_i32 & rectUpdate = nullptr, ::draw2d::region* prgnUpdate = nullptr, ::u32 flags = RDW_INVALIDATE | RDW_ERASE);
+//        virtual bool RedrawWindow(const ::rectangle_i32 & rectUpdate = nullptr, ::draw2d::region* prgnUpdate = nullptr, unsigned int flags = RDW_INVALIDATE | RDW_ERASE);
 //       void window_update_screen_buffer() override;
       //virtual votru8id _001UpdateWindow(bool bUpdateBuffer = false) override;
-      // xxx      virtual bool EnableScrollBar(int nSBFlags, ::u32 nArrowFlags = ESB_ENABLE_BOTH);
+      // xxx      virtual bool EnableScrollBar(int nSBFlags, unsigned int nArrowFlags = ESB_ENABLE_BOTH);
 
       //virtual bool DrawAnimatedRects(int idAni, const RECTANGLE_I32 *lprcFrom, const RECTANGLE_I32 *lprcTo) override;
-//      void DrawCaption(::draw2d::graphics_pointer & pgraphics, const ::rectangle_i32 & rectangle, ::u32 uFlags) override;
+//      void DrawCaption(::draw2d::graphics_pointer & pgraphics, const ::rectangle_i32 & rectangle, unsigned int uFlags) override;
 
 
       // Timer Functions
-//      virtual bool SetTimer(uptr uEvent, ::u32 nElapse, PFN_TIMER pfnTimer) override;
+//      virtual bool SetTimer(uptr uEvent, unsigned int nElapse, PFN_TIMER pfnTimer) override;
 //      virtual bool KillTimer(uptr uEvent) override;
 
       // oswindow State Functions
@@ -250,24 +250,24 @@ namespace aura_macos
 //      virtual void CloseWindow() override;
 //      virtual bool OpenIcon() override;
 //
-//      virtual void CheckDlgButton(int nIDButton, ::u32 nCheck) override;
+//      virtual void CheckDlgButton(int nIDButton, unsigned int nCheck) override;
 //      virtual void CheckRadioButton(int nIDFirstButton, int nIDLastButton, int nIDCheckButton) override;
 //      virtual int GetCheckedRadioButton(int nIDFirstButton, int nIDLastButton) override;
 //      virtual int DlgDirList(char * lpPathSpec, int nIDListBox,
-//                             int nIDStaticPath, ::u32 nFileType) override;
+//                             int nIDStaticPath, unsigned int nFileType) override;
 //      virtual int DlgDirListComboBox(char * lpPathSpec, int nIDComboBox,
-//                                     int nIDStaticPath, ::u32 nFileType) override;
+//                                     int nIDStaticPath, unsigned int nFileType) override;
 //      virtual bool DlgDirSelect(char * lpString, int nSize, int nIDListBox) override;
 //      virtual bool DlgDirSelectComboBox(char * lpString, int nSize, int nIDComboBox) override;
 
-      //virtual ::u32 GetChildByIdInt(int nID, bool * lpTrans = nullptr, bool bSigned = true) const;
+      //virtual unsigned int GetChildByIdInt(int nID, bool * lpTrans = nullptr, bool bSigned = true) const;
       //virtual int GetChildByIdText(int nID, char * lpStr, int nMaxCount) const;
       //virtual int GetChildByIdText(int nID, string & rectString) const;
 //      virtual ::user::interaction * GetNextDlgGroupItem(::user::interaction * pWndCtl, bool bPrevious = false) const;
 //      virtual ::user::interaction * GetNextDlgTabItem(::user::interaction * pWndCtl, bool bPrevious = false) const;
-//      virtual ::u32 IsDlgButtonChecked(int nIDButton) const override;
+//      virtual unsigned int IsDlgButtonChecked(int nIDButton) const override;
 //      virtual LRESUlresultLT SendDlgItemMessage(int nID, const ::id & id, WPARAM wParam = 0, LPARAM lParam = 0) override;
-//      virtual void SetDlgItemInt(int nID, ::u32 nValue, bool bSigned = true) override;
+//      virtual void SetDlgItemInt(int nID, unsigned int nValue, bool bSigned = true) override;
 //      virtual void SetDlgItemText(int nID, const char * lpszString) override;
 //
 //      // Scrolling Functions
@@ -279,28 +279,28 @@ namespace aura_macos
 //      virtual int SetScrollPos(int nBar, int nPos, bool bRedraw = true) override;
 //      virtual void SetScrollRange(int nBar, int nMinPos, int nMaxPos,
 //                                  bool bRedraw = true) override;
-//      virtual void ShowScrollBar(::u32 nBar, bool bShow = true) override;
+//      virtual void ShowScrollBar(unsigned int nBar, bool bShow = true) override;
 //      virtual void EnableScrollBarCtrl(int nBar, bool bEnable = true) override;
 ////      virtual CScrollBar* GetScrollBarCtrl(int nBar) const;
 //      // return sibling scrollbar control (or nullptr if none)
 //
 //      virtual int ScrollWindowEx(int Δx, int Δy,
 //                                 const RECTANGLE_I32 * prectScroll, const RECTANGLE_I32 * lprectClip,
-//                                 ::draw2d::region* prgnUpdate, RECTANGLE_I32 * lpRectUpdate, ::u32 flags) override;
+//                                 ::draw2d::region* prgnUpdate, RECTANGLE_I32 * lpRectUpdate, unsigned int flags) override;
 //      //xxx      virtual bool SetScrollInfo(int nBar, LPSCROLLINFO lpScrollInfo,
 //      //xxx         bool bRedraw = true);
-//      //xxx      virtual bool GetScrollInfo(int nBar, LPSCROLLINFO lpScrollInfo, ::u32 nMask = SIF_ALL);
+//      //xxx      virtual bool GetScrollInfo(int nBar, LPSCROLLINFO lpScrollInfo, unsigned int nMask = SIF_ALL);
 //      virtual int GetScrollLimit(int nBar) override;
 //
 //
       // oswindow Access Functions
 //      virtual ::user::interaction *  ChildWindowFromPoint(const ::point_i32 & point) override;
-//      virtual ::user::interaction *  ChildWindowFromPoint(const ::point_i32 & point, ::u32 nFlags) override;
+//      virtual ::user::interaction *  ChildWindowFromPoint(const ::point_i32 & point, unsigned int nFlags) override;
 //
-//      virtual ::user::interaction *  GetNextWindow(::u32 nFlag = GW_HWNDNEXT);
+//      virtual ::user::interaction *  GetNextWindow(unsigned int nFlag = GW_HWNDNEXT);
 //      virtual ::user::interaction *  GetTopWindow() override;
 //
-//      virtual ::user::interaction *  GetWindow(::u32 nCmd);
+//      virtual ::user::interaction *  GetWindow(unsigned int nCmd);
 //      virtual ::user::interaction *  GetLastActivePopup() override;
 //
 //      virtual bool IsChild(::user::interaction *    pWnd);
@@ -312,7 +312,7 @@ namespace aura_macos
 //
 //      bool FlashWindow(bool bInvert);
 //
-      //virtual int message_box(const char * lpszText, const char * lpszCaption = nullptr, ::u32 nType = e_message_box_ok) override;
+      //virtual int message_box(const char * lpszText, const char * lpszCaption = nullptr, unsigned int nType = e_message_box_ok) override;
 
 
 //c
@@ -329,8 +329,8 @@ namespace aura_macos
 //      virtual HICON GetIcon(bool bBigIcon) const;
 //
 //      // Context Help Functions
-//      virtual bool SetWindowContextHelpId(::u32 dwContextHelpId) override;
-//      virtual ::u32 GetWindowContextHelpId() const override;
+//      virtual bool SetWindowContextHelpId(unsigned int dwContextHelpId) override;
+//      virtual unsigned int GetWindowContextHelpId() const override;
 
       // Dialog Data support
       //virtual bool update_data(bool bSaveAndValidate = true);
@@ -345,8 +345,8 @@ namespace aura_macos
 //      void UpdateDialogControls(channel * pTarget, bool bDisableIfNoHndler) override;
 //      void CenterWindow(::user::interaction * pAlternateOwner = nullptr) override;
 //
-//      void OnActivate(::u32 nState, ::user::interaction * pWndOther, bool bMinimized);
-//      void OnActivateApp(bool bActive, ::u32 dwThreadID);
+//      void OnActivate(unsigned int nState, ::user::interaction * pWndOther, bool bMinimized);
+//      void OnActivateApp(bool bActive, unsigned int dwThreadID);
 //      LRESULT OnActivateTopLevel(WPARAM, LPARAM);
 //      void OnCancelMode();
 //      void OnChildActivate();
@@ -359,19 +359,19 @@ namespace aura_macos
       DECLARE_MESSAGE_HANDLER(_001OnShowWindow);
 
 
-//      HBRUSH OnCtlColor(::draw2d::graphics_pointer & pgraphics, ::user::interaction * pWnd, ::u32 nCtlColor);
+//      HBRUSH OnCtlColor(::draw2d::graphics_pointer & pgraphics, ::user::interaction * pWnd, unsigned int nCtlColor);
 
       DECLARE_MESSAGE_HANDLER(_001OnDestroy);
 //      void OnEnable(bool bEnable);
 //      void OnEndSession(bool bEnding);
-//      void OnEnterIdle(::u32 nWhy, ::user::interaction * pWho);
+//      void OnEnterIdle(unsigned int nWhy, ::user::interaction * pWho);
 //      bool OnEraseBkgnd(::draw2d::graphics_pointer & pgraphics);
 //      void OnGetMinMaxInfo(MINMAXINFO* lpMMI);
 //      //xxx bool OnHelpInfo(HELPINFO* lpHelpInfo);
 //      void OnIconEraseBkgnd(::draw2d::graphics_pointer & pgraphics);
 //      void OnKillFocus(::user::interaction * pNewWnd);
-//      LRESULT OnMenuChar(::u32 nChar, ::u32 nFlags, ::user::menu* pMenu);
-//      void OnMenuSelect(::u32 nItemID, ::u32 nFlags, HMENU hSysMenu);
+//      LRESULT OnMenuChar(unsigned int nChar, unsigned int nFlags, ::user::menu* pMenu);
+//      void OnMenuSelect(unsigned int nItemID, unsigned int nFlags, HMENU hSysMenu);
 //      void OnMove(int x, int y);
       DECLARE_MESSAGE_HANDLER(_001OnPaint);
       DECLARE_MESSAGE_HANDLER(_001OnPrint);
@@ -381,15 +381,15 @@ namespace aura_macos
 //      bool OnQueryNewPalette();
 //      bool OnQueryOpen();
 //      void OnSetFocus(::user::interaction * pOldWnd);
-//      void OnShowWindow(bool bShow, ::u32 nStatus);
-//      void OnSize(::u32 nType, int cx, int cy);
-//      void OnTCard(::u32 idAction, ::u32 dwActionData);
+//      void OnShowWindow(bool bShow, unsigned int nStatus);
+//      void OnSize(unsigned int nType, int cx, int cy);
+//      void OnTCard(unsigned int idAction, unsigned int dwActionData);
 //      void OnWindowPosChanging(WINDOWPOS* lpuserinteractionpos);
 //      void OnWindowPosChanged(WINDOWPOS* lpuserinteractionpos);
 //
-//      void OnChangeUIState(::u32 nAction, ::u32 nUIElement);
-//      void OnUpdateUIState(::u32 nAction, ::u32 nUIElement);
-//      ::u32 OnQueryUIState();
+//      void OnChangeUIState(unsigned int nAction, unsigned int nUIElement);
+//      void OnUpdateUIState(unsigned int nAction, unsigned int nUIElement);
+//      unsigned int OnQueryUIState();
 
       // Nonclient-Area message handler member functions
 //      bool OnNcActivate(bool bActive);
@@ -397,80 +397,80 @@ namespace aura_macos
 //      bool OnNcCreate(::user::system * lpCreateStruct);
 
 //      LRESULT OnNcHitTest(::point_i32 point);
-//      void OnNcLButtonDblClk(::u32 nHitTest, const ::point_i32 & point);
-//      void OnNcLButtonDown(::u32 nHitTest, const ::point_i32 & point);
-//      void OnNcLButtonUp(::u32 nHitTest, const ::point_i32 & point);
-//      void OnNcMButtonDblClk(::u32 nHitTest, const ::point_i32 & point);
-//      void OnNcMButtonDown(::u32 nHitTest, const ::point_i32 & point);
-//      void OnNcMButtonUp(::u32 nHitTest, const ::point_i32 & point);
-//      void OnNcMouseMove(::u32 nHitTest, const ::point_i32 & point);
+//      void OnNcLButtonDblClk(unsigned int nHitTest, const ::point_i32 & point);
+//      void OnNcLButtonDown(unsigned int nHitTest, const ::point_i32 & point);
+//      void OnNcLButtonUp(unsigned int nHitTest, const ::point_i32 & point);
+//      void OnNcMButtonDblClk(unsigned int nHitTest, const ::point_i32 & point);
+//      void OnNcMButtonDown(unsigned int nHitTest, const ::point_i32 & point);
+//      void OnNcMButtonUp(unsigned int nHitTest, const ::point_i32 & point);
+//      void OnNcMouseMove(unsigned int nHitTest, const ::point_i32 & point);
 //      void OnNcPaint();
-//      void OnNcRButtonDblClk(::u32 nHitTest, const ::point_i32 & point);
-//      void OnNcRButtonDown(::u32 nHitTest, const ::point_i32 & point);
-//      void OnNcRButtonUp(::u32 nHitTest, const ::point_i32 & point);
+//      void OnNcRButtonDblClk(unsigned int nHitTest, const ::point_i32 & point);
+//      void OnNcRButtonDown(unsigned int nHitTest, const ::point_i32 & point);
+//      void OnNcRButtonUp(unsigned int nHitTest, const ::point_i32 & point);
 
       // ::aura::get_system() message handler member functions
 //      void OnDropFiles(HDROP hDropInfo);
 //      void OnPaletteIsChanging(::user::interaction * pRealizeWnd);
-//      void OnSysChar(::u32 nChar, ::u32 nRepCnt, ::u32 nFlags);
-//      void OnSysCommand(::u32 nID, LPARAM lParam);
-//      void OnSysDeadChar(::u32 nChar, ::u32 nRepCnt, ::u32 nFlags);
-//      void OnSysKeyDown(::u32 nChar, ::u32 nRepCnt, ::u32 nFlags);
-//      void OnSysKeyUp(::u32 nChar, ::u32 nRepCnt, ::u32 nFlags);
-//      void OnCompacting(::u32 nCpuTime);
+//      void OnSysChar(unsigned int nChar, unsigned int nRepCnt, unsigned int nFlags);
+//      void OnSysCommand(unsigned int nID, LPARAM lParam);
+//      void OnSysDeadChar(unsigned int nChar, unsigned int nRepCnt, unsigned int nFlags);
+//      void OnSysKeyDown(unsigned int nChar, unsigned int nRepCnt, unsigned int nFlags);
+//      void OnSysKeyUp(unsigned int nChar, unsigned int nRepCnt, unsigned int nFlags);
+//      void OnCompacting(unsigned int nCpuTime);
 //      void OnDevModeChange(char * lpDeviceName);
 //      void OnFontChange();
 //      void OnPaletteChanged(::user::interaction * pFocusWnd);
-//      void OnSpoolerStatus(::u32 nStatus, ::u32 nJobs);
+//      void OnSpoolerStatus(unsigned int nStatus, unsigned int nJobs);
 //      void OnSysColorChange();
 //      void OnTimeChange();
-//      void OnSettingChange(::u32 uFlags, const char * lpszSection);
+//      void OnSettingChange(unsigned int uFlags, const char * lpszSection);
 //      void OnWinIniChange(const char * lpszSection);
 
 //      // Input message handler member functions
-//      void OnChar(::u32 nChar, ::u32 nRepCnt, ::u32 nFlags);
-//      void OnDeadChar(::u32 nChar, ::u32 nRepCnt, ::u32 nFlags);
-////      void OnHScroll(::u32 nSBCode, ::u32 nPos, CScrollBar* pScrollBar);
-//      //    void OnVScroll(::u32 nSBCode, ::u32 nPos, CScrollBar* pScrollBar);
-//      void OnKeyDown(::u32 nChar, ::u32 nRepCnt, ::u32 nFlags);
-//      void OnKeyUp(::u32 nChar, ::u32 nRepCnt, ::u32 nFlags);
-//      void OnLButtonDblClk(::u32 nFlags, const ::point_i32 & point);
-//      void OnLButtonDown(::u32 nFlags, const ::point_i32 & point);
-//      void OnLButtonUp(::u32 nFlags, const ::point_i32 & point);
-//      void OnMButtonDblClk(::u32 nFlags, const ::point_i32 & point);
-//      void OnMButtonDown(::u32 nFlags, const ::point_i32 & point);
-//      void OnMButtonUp(::u32 nFlags, const ::point_i32 & point);
-//      int OnMouseActivate(::user::interaction * pDesktopWnd, ::u32 nHitTest, const ::id & id);
-//      void OnMouseMove(::u32 nFlags, const ::point_i32 & point);
-//      bool OnMouseWheel(::u32 nFlags, short zDelta, const ::point_i32 & point);
+//      void OnChar(unsigned int nChar, unsigned int nRepCnt, unsigned int nFlags);
+//      void OnDeadChar(unsigned int nChar, unsigned int nRepCnt, unsigned int nFlags);
+////      void OnHScroll(unsigned int nSBCode, unsigned int nPos, CScrollBar* pScrollBar);
+//      //    void OnVScroll(unsigned int nSBCode, unsigned int nPos, CScrollBar* pScrollBar);
+//      void OnKeyDown(unsigned int nChar, unsigned int nRepCnt, unsigned int nFlags);
+//      void OnKeyUp(unsigned int nChar, unsigned int nRepCnt, unsigned int nFlags);
+//      void OnLButtonDblClk(unsigned int nFlags, const ::point_i32 & point);
+//      void OnLButtonDown(unsigned int nFlags, const ::point_i32 & point);
+//      void OnLButtonUp(unsigned int nFlags, const ::point_i32 & point);
+//      void OnMButtonDblClk(unsigned int nFlags, const ::point_i32 & point);
+//      void OnMButtonDown(unsigned int nFlags, const ::point_i32 & point);
+//      void OnMButtonUp(unsigned int nFlags, const ::point_i32 & point);
+//      int OnMouseActivate(::user::interaction * pDesktopWnd, unsigned int nHitTest, const ::id & id);
+//      void OnMouseMove(unsigned int nFlags, const ::point_i32 & point);
+//      bool OnMouseWheel(unsigned int nFlags, short zDelta, const ::point_i32 & point);
 //      LRESULT OnRegisteredMouseWheel(WPARAM wParam, LPARAM lParam);
-//      void OnRButtonDblClk(::u32 nFlags, const ::point_i32 & point);
-//      void OnRButtonDown(::u32 nFlags, const ::point_i32 & point);
-//      void OnRButtonUp(::u32 nFlags, const ::point_i32 & point);
+//      void OnRButtonDblClk(unsigned int nFlags, const ::point_i32 & point);
+//      void OnRButtonDown(unsigned int nFlags, const ::point_i32 & point);
+//      void OnRButtonUp(unsigned int nFlags, const ::point_i32 & point);
 //      DECLARE_MESSAGE_HANDLER(_001OnSetCursor);
 //      void OnTimer(uptr uEvent);
 
       // Initialization message handler member functions
 //      void OnInitMenu(::user::menu* pMenu);
-//      void OnInitMenuPopup(::user::menu* pPopupMenu, ::u32 nIndex, bool bSysMenu);
+//      void OnInitMenuPopup(::user::menu* pPopupMenu, unsigned int nIndex, bool bSysMenu);
 
       // Clipboard message handler member functions
-//      void OnAskCbFormatName(::u32 nMaxCount, char * lpszString);
+//      void OnAskCbFormatName(unsigned int nMaxCount, char * lpszString);
 //      void OnChangeCbChain(oswindow hWndRemove, oswindow hWndAfter);
 //      void OnDestroyClipboard();
 //      void OnDrawClipboard();
-//      void OnHScrollClipboard(::user::interaction * pClipAppWnd, ::u32 nSBCode, ::u32 nPos);
+//      void OnHScrollClipboard(::user::interaction * pClipAppWnd, unsigned int nSBCode, unsigned int nPos);
 //      void OnPaintClipboard(::user::interaction * pClipAppWnd, HGLOBAL hPaintStruct);
 //      void OnRenderAllFormats();
-//      void OnRenderFormat(::u32 nFormat);
+//      void OnRenderFormat(unsigned int nFormat);
 //      void OnSizeClipboard(::user::interaction * pClipAppWnd, HGLOBAL hRect);
-//      void OnVScrollClipboard(::user::interaction * pClipAppWnd, ::u32 nSBCode, ::u32 nPos);
+//      void OnVScrollClipboard(::user::interaction * pClipAppWnd, unsigned int nSBCode, unsigned int nPos);
 
       // control message handler member functions
       //xxx      int OnCompareItem(int nIDCtl, LPCOMPAREITEMSTRUCT lpCompareItemStruct);
       //xxx      void OnDeleteItem(int nIDCtl, LPDELETEITEMSTRUCT lpDeleteItemStruct);
       //xxx      void OnDrawItem(int nIDCtl, LPDRAWITEMSTRUCT lpDrawItemStruct);
-//      ::u32 OnGetDlgCode();
+//      unsigned int OnGetDlgCode();
       //xxx      void OnMeasureItem(int nIDCtl, LPMEASUREITEMSTRUCT lpMeasureItemStruct);
 
       // MDI message handler member functions
@@ -484,10 +484,10 @@ namespace aura_macos
       // Win4 messages
       //xxx      void OnStyleChanged(int nStyleType, LPSTYLESTRUCT lpStyleStruct);
       //xxx      void OnStyleChanging(int nStyleType, LPSTYLESTRUCT lpStyleStruct);
-//      void OnSizing(::u32 nSide, RECTANGLE_I32 * lpRect);
-//      void OnMoving(::u32 nSide, RECTANGLE_I32 * lpRect);
+//      void OnSizing(unsigned int nSide, RECTANGLE_I32 * lpRect);
+//      void OnMoving(unsigned int nSide, RECTANGLE_I32 * lpRect);
 //      void OnCaptureChanged(::user::interaction * pWnd);
-//      bool OnDeviceChange(::u32 nEventType, uptr dwData);
+//      bool OnDeviceChange(unsigned int nEventType, uptr dwData);
 
       // Overridables and other helpers (for implementation of derived classes)
       // for deriving from a standard control

@@ -58,7 +58,7 @@ namespace acme_macos
 //      void close() override;
 //
 //      bool is_opened() const override;
-////      virtual u64 GetBufferPtr(::u32 nCommand, u64 nCount = 0, void ** ppBufStart = nullptr, void ** ppBufMax = nullptr);
+////      virtual u64 GetBufferPtr(unsigned int nCommand, u64 nCount = 0, void ** ppBufStart = nullptr, void ** ppBufMax = nullptr);
 //
 //      //int put_byteer_back(int iCharacter) override;
       

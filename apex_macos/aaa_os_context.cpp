@@ -208,7 +208,7 @@ namespace apex_macos
        if (!ExitWindowsEx(EWX_REBOOT | EWX_FORCE,
        SHTDN_REASON_MAJOR_SOFTWARE | SHTDN_REASON_MINOR_INSTALLATION))
        {
-       ::u32 dwLastError = ::get_last_error();
+       unsigned int dwLastError = ::get_last_error();
        return false;
        }*/
       //reset the previlages
@@ -225,13 +225,13 @@ namespace apex_macos
 //      throw ::exception(error_not_implemented);;
       return;
 
-      /*      ::u32 dwPid;
+      /*      unsigned int dwPid;
        while(get_pid_by_title(pszName, dwPid))
        {
        HANDLE hProcess = OpenProcess( PROCESS_QUERY_INFORMATION |
        PROCESS_VM_READ,
        false, dwPid );
-       TerminateProcess(hProcess, (::u32) -1);
+       TerminateProcess(hProcess, (unsigned int) -1);
        CloseHandle(hProcess);
        ::EnumWindows((WNDENUMPROC)
        CKillProcessHelper::TerminateAppEnum,
@@ -866,7 +866,7 @@ void os_context::set_dark_mode(bool bDark)
 //   }
 
 
-   void os_context::raise_exception( ::u32 dwExceptionCode, ::u32 dwExceptionFlags)
+   void os_context::raise_exception( unsigned int dwExceptionCode, unsigned int dwExceptionFlags)
    {
 
       throw ::exception(error_not_implemented);;
@@ -1101,7 +1101,7 @@ void os_context::set_dark_mode(bool bDark)
 //   {
 //
 //
-////      ::u32 wAttr;
+////      unsigned int wAttr;
 ////      FILETIME creationTime;
 ////      FILETIME lastAccessTime;
 ////      FILETIME lastWriteTime;
@@ -1111,21 +1111,21 @@ void os_context::set_dark_mode(bool bDark)
 ////
 ////      wstring wstr(lpszFileName);
 ////
-////      if((wAttr = windows_get_file_attributes(wstr)) == (::u32)-1L)
+////      if((wAttr = windows_get_file_attributes(wstr)) == (unsigned int)-1L)
 ////      {
 ////
 ////         ::windows::file_exception::throw_os_error( (int)get_last_error());
 ////
 ////      }
 ////
-////      if ((::u32)status.m_attribute != wAttr && (wAttr & ::windows::file::readOnly))
+////      if ((unsigned int)status.m_attribute != wAttr && (wAttr & ::windows::file::readOnly))
 ////      {
 ////
 ////         // set file attribute, only if currently readonly.
 ////         // This way we will be able to modify the time assuming the
 ////         // caller changed the file from readonly.
 ////
-////         if (!SetFileAttributesW(wstr, (::u32)status.m_attribute))
+////         if (!SetFileAttributesW(wstr, (unsigned int)status.m_attribute))
 ////         {
 ////
 ////            ::windows::file_exception::throw_os_error( (int)get_last_error());
@@ -1187,10 +1187,10 @@ void os_context::set_dark_mode(bool bDark)
 ////
 ////      }
 ////
-////      if ((::u32)status.m_attribute != wAttr && !(wAttr & ::windows::file::readOnly))
+////      if ((unsigned int)status.m_attribute != wAttr && !(wAttr & ::windows::file::readOnly))
 ////      {
 ////
-////         if (!::SetFileAttributesW(wstr, (::u32)status.m_attribute))
+////         if (!::SetFileAttributesW(wstr, (unsigned int)status.m_attribute))
 ////         {
 ////
 ////            ::windows::file_exception::throw_os_error( (int)get_last_error());

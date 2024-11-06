@@ -401,7 +401,7 @@ namespace acme_macos
 //
 //      bool bIsDir;
 //
-//      ::u32 dwLastError;
+//      unsigned int dwLastError;
 //
 //      if(m_isdirmap.lookup(strPath, bIsDir, dwLastError))
 //      {
@@ -479,7 +479,7 @@ namespace acme_macos
 
       bool bIsDir;
 
-      //::u32 dwLastError;
+      //unsigned int dwLastError;
 
       if(::task_flag().is_set(e_task_flag_compress_is_dir) && iLast >= 3  && !case_insensitive_ansi_count_compare(&((const char *) str)[iLast - 3], ".zip", 4))
       {
@@ -936,7 +936,7 @@ namespace acme_macos
 //
 //        }
 //
-//        ::u32 dwAttrib;
+//        unsigned int dwAttrib;
 //
 //        dwAttrib = windows_get_file_attributes(::str::international::utf8_to_unicode(strPath));
 //
@@ -957,7 +957,7 @@ namespace acme_macos
 
    //   bool bIsDir;
 
-   //   u32 uiLastError;
+   //   unsigned int uiLastError;
 
    //   if(m_isdirmap.lookup(strPath, bIsDir, uiLastError))
    //   {
@@ -984,7 +984,7 @@ namespace acme_macos
    //         ::str::begin(wstrPath, L"\\\\?\\");
    //      }
    //   }
-   //   ::u32 dwAttrib;
+   //   unsigned int dwAttrib;
    //   dwAttrib = windows_get_file_attributes(wstrPath);
    //   /*if(dwAttrib == INVALID_FILE_ATTRIBUTES)
    //   {
@@ -1035,7 +1035,7 @@ namespace acme_macos
 //        bool bIsDir;
 //
 //
-//        u32 uiLastError;
+//        unsigned int uiLastError;
 //
 //        if(m_isdirmap.lookup(str, bIsDir, uiLastError, (int) iLast))
 //        {
@@ -1077,7 +1077,7 @@ namespace acme_macos
 //                ::str::begin(wstrPath, L"\\\\?\\");
 //            }
 //        }
-//        ::u32 dwAttrib;
+//        unsigned int dwAttrib;
 //        dwAttrib = windows_get_file_attributes(wstrPath);
 //        /*if(dwAttrib == INVALID_FILE_ATTRIBUTES)
 //         {
@@ -1515,7 +1515,7 @@ namespace acme_macos
    //   // strip attribute of NORMAL bit, our API doesn't have a "normal" bit.
    //   rStatus.m_attribute = (unsigned char)(findFileData.dwFileAttributes & ~FILE_ATTRIBUTE_NORMAL);
 
-   //   // get just the low ::u32 of the file size_i32
+   //   // get just the low unsigned int of the file size_i32
    //   ASSERT(findFileData.nFileSizeHigh == 0);
    //   rStatus.m_size = (int)findFileData.nFileSizeLow;
 

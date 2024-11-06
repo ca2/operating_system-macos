@@ -184,7 +184,7 @@ namespace acme
 //
 //      // get path of executable
 //      /*   char szBuff[_MAX_PATH];
-//      ::u32 dwRet = ::GetModuleFileName(m_hInstance, szBuff, _MAX_PATH);
+//      unsigned int dwRet = ::GetModuleFileName(m_hInstance, szBuff, _MAX_PATH);
 //      ASSERT( dwRet != 0 && dwRet != _MAX_PATH );
 //      if( dwRet == 0 || dwRet == _MAX_PATH )
 //      throw ::exception(user_exception());;*/

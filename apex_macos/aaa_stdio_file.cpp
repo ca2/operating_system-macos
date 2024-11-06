@@ -30,7 +30,7 @@ namespace macos
    }
 
 
-   ::extended::status stdio_file::open(const ::file::path & lpszFileName, ::u32 nOpenFlags)
+   ::extended::status stdio_file::open(const ::file::path & lpszFileName, unsigned int nOpenFlags)
    {
 
       if ((nOpenFlags & ::file::e_open_defer_create_directory) && (nOpenFlags & ::file::e_open_write))
@@ -154,7 +154,7 @@ namespace macos
          throw ::file::exception(error_disk_full, -1, errno, m_strFileName);
    }
 
-   char * stdio_file::read_string(char * lpsz, ::u32 nMax)
+   char * stdio_file::read_string(char * lpsz, unsigned int nMax)
    {
       ASSERT(lpsz != nullptr);
       //   ASSERT(fx_is_valid_address(lpsz, nMax));
@@ -288,7 +288,7 @@ namespace macos
       if (m_pStream != nullptr)
          nErr = fclose(m_pStream);
 
-      //   m_hFile = (::u32) hFileNull;
+      //   m_hFile = (unsigned int) hFileNull;
 //      m_bCloseOnDelete = false;
       m_pStream = nullptr;
 
@@ -304,7 +304,7 @@ namespace macos
 //      if (m_pStream != nullptr && m_bCloseOnDelete)
       if (m_pStream != nullptr)
          fclose(m_pStream);  // close but ignore errors
-      //   m_hFile = (::u32) hFileNull;
+      //   m_hFile = (unsigned int) hFileNull;
       m_pStream = nullptr;
 //      m_bCloseOnDelete = false;
    }

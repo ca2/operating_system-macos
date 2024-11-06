@@ -20,7 +20,7 @@ namespace user
    }
 
 
-   void notify_icon_listener::OnNotifyIconMessage(::u32 uNotifyIcon, ::u32 message)
+   void notify_icon_listener::OnNotifyIconMessage(unsigned int uNotifyIcon, unsigned int message)
    {
 
       switch(message)
@@ -48,7 +48,7 @@ namespace user
    }
 
 
-   void notify_icon_listener::OnNotifyIconContextMenu(::u32 uNotifyIcon)
+   void notify_icon_listener::OnNotifyIconContextMenu(unsigned int uNotifyIcon)
    {
 
       UNREFERENCED_PARAMETER(uNotifyIcon);
@@ -56,7 +56,7 @@ namespace user
    }
 
 
-   void notify_icon_listener::OnNotifyIconLButtonDblClk(::u32 uNotifyIcon)
+   void notify_icon_listener::OnNotifyIconLButtonDblClk(unsigned int uNotifyIcon)
    {
 
       UNREFERENCED_PARAMETER(uNotifyIcon);
@@ -64,7 +64,7 @@ namespace user
    }
 
 
-   void notify_icon_listener::OnNotifyIconLButtonDown(::u32 uNotifyIcon)
+   void notify_icon_listener::OnNotifyIconLButtonDown(unsigned int uNotifyIcon)
    {
 
       UNREFERENCED_PARAMETER(uNotifyIcon);

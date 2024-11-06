@@ -551,7 +551,7 @@ RECTANGLE_I32 get_main_screen_rectangle();
 #include <CoreFoundation/CoreFoundation.h>
 
 //
-//int_bool set_need_redraw(oswindow hWnd, const RECTANGLE_I32 * pcrect, HRGN hrgnUpdate, ::u32 flags)
+//int_bool set_need_redraw(oswindow hWnd, const RECTANGLE_I32 * pcrect, HRGN hrgnUpdate, unsigned int flags)
 //{
 //
 //   return true;

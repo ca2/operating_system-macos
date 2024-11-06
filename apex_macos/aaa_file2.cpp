@@ -71,7 +71,7 @@ namespace macos
    file::file()
    {
 
-      m_iFile = (::u32) hFileNull;
+      m_iFile = (unsigned int) hFileNull;
 
    }
 
@@ -114,7 +114,7 @@ namespace macos
          
       }
 
-      m_iFile = (::u32)hFileNull;
+      m_iFile = (unsigned int)hFileNull;
       
       m_strFileName.Empty();
 
@@ -126,7 +126,7 @@ namespace macos
       // ::collection::map read/write mode
       ASSERT((::file::e_open_read|::file::e_open_write|::file::e_open_read_write) == 3);
       
-      ::u32 dwFlags =  0;
+      unsigned int dwFlags =  0;
       
       switch (eopen & 3)
       {
@@ -173,7 +173,7 @@ namespace macos
          
       }
 
-      ::u32 dwPermission = 0;
+      unsigned int dwPermission = 0;
 
       dwPermission |= S_IRUSR | S_IWUSR | S_IXUSR;
       dwPermission |= S_IRGRP | S_IWGRP | S_IXGRP;
@@ -186,7 +186,7 @@ namespace macos
       if(hFile == hFileNull)
       {
 
-         ::u32 dwLastError = translate_unix_error(errno);
+         unsigned int dwLastError = translate_unix_error(errno);
 
          if(dwLastError != ERROR_FILE_NOT_FOUND && dwLastError != ERROR_PATH_NOT_FOUND)
          {
@@ -198,7 +198,7 @@ namespace macos
          if (hFile == -1)
          {
 
-            ::u32 dwLastError = ::get_last_error();
+            unsigned int dwLastError = ::get_last_error();
 
             return ::error_io;
 
@@ -218,7 +218,7 @@ namespace macos
       
       ASSERT_VALID(this);
       
-      ASSERT(m_iFile != (::u32)hFileNull);
+      ASSERT(m_iFile != (unsigned int)hFileNull);
 
       if (nCount == 0)
       {
@@ -293,7 +293,7 @@ namespace macos
       
       ASSERT_VALID(this);
       
-      ASSERT(m_iFile != (::u32)hFileNull);
+      ASSERT(m_iFile != (unsigned int)hFileNull);
 
       if (nCount == 0)
       {
@@ -332,7 +332,7 @@ namespace macos
    filesize file::seek(filesize lOff, ::enum_seek nFrom)
    {
 
-      if(m_iFile == (::u32)hFileNull)
+      if(m_iFile == (unsigned int)hFileNull)
       {
          
          throw ::file::exception(errno_to_status(errno), -1, errno,m_strFileName);
@@ -341,7 +341,7 @@ namespace macos
 
       ASSERT_VALID(this);
       
-      ASSERT(m_iFile != (::u32)hFileNull);
+      ASSERT(m_iFile != (unsigned int)hFileNull);
       
       ASSERT(nFrom == ::e_seek_set || nFrom == ::e_seek_from_end || nFrom == ::e_seek_current);
       
@@ -349,7 +349,7 @@ namespace macos
 
       int lLoOffset = lOff & 0xffffffff;
 
-      filesize posNew = ::lseek(m_iFile, lLoOffset, (::u32)nFrom);
+      filesize posNew = ::lseek(m_iFile, lLoOffset, (unsigned int)nFrom);
 
       if(posNew  == (filesize)-1)
       {
@@ -368,7 +368,7 @@ namespace macos
 
       ASSERT_VALID(this);
 
-      ASSERT(m_iFile != (::u32)hFileNull);
+      ASSERT(m_iFile != (unsigned int)hFileNull);
 
       int lLoOffset = 0;
 
@@ -397,18 +397,18 @@ namespace macos
       
       ASSERT_VALID(this);
       
-      ASSERT(m_iFile != (::u32)hFileNull);
+      ASSERT(m_iFile != (unsigned int)hFileNull);
 
       bool bError = false;
       
-      if (m_iFile != (::u32)hFileNull)
+      if (m_iFile != (unsigned int)hFileNull)
       {
          
          bError = ::close(m_iFile) != 0;
          
       }
 
-      m_iFile = (::u32) hFileNull;
+      m_iFile = (unsigned int) hFileNull;
       
       m_strFileName.Empty();
 
@@ -427,7 +427,7 @@ namespace macos
       
       ASSERT_VALID(this);
 
-      ASSERT(m_iFile != (::u32)hFileNull);
+      ASSERT(m_iFile != (unsigned int)hFileNull);
 
    }
 
@@ -437,7 +437,7 @@ namespace macos
       
       ASSERT_VALID(this);
 
-      ASSERT(m_iFile != (::u32)hFileNull);
+      ASSERT(m_iFile != (unsigned int)hFileNull);
 
    }
 
@@ -447,7 +447,7 @@ namespace macos
 
       ASSERT_VALID(this);
 
-      ASSERT(m_iFile != (::u32)hFileNull);
+      ASSERT(m_iFile != (unsigned int)hFileNull);
 
       if (::ftruncate(m_iFile, dwNewLen) == -1)
       {
@@ -498,7 +498,7 @@ namespace macos
 
       ::file::file::dump(dumpcontext);
 
-      dumpcontext << "with handle " << (::u32)m_iFile;
+      dumpcontext << "with handle " << (unsigned int)m_iFile;
       dumpcontext << " and name \"" << m_strFileName << "\"";
       dumpcontext << "\n";
 

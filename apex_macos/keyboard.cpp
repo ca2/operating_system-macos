@@ -169,24 +169,24 @@ extern "C" {
     * Functions
     */
    
-   char* GetVirtualKeyName(::u32 vkcode);
-   ::u32 GetVirtualKeyCodeFromName(const char* vkname);
-   ::u32 GetVirtualKeyCodeFromXkbKeyName(const char* xkbname);
+   char* GetVirtualKeyName(unsigned int vkcode);
+   unsigned int GetVirtualKeyCodeFromName(const char* vkname);
+   unsigned int GetVirtualKeyCodeFromXkbKeyName(const char* xkbname);
    
-   ::u32 GetVirtualKeyCodeFromVirtualScanCode(::u32 scancode, ::u32 dwKeyboardType);
-   ::u32 GetVirtualScanCodeFromVirtualKeyCode(::u32 vkcode, ::u32 dwKeyboardType);
+   unsigned int GetVirtualKeyCodeFromVirtualScanCode(unsigned int scancode, unsigned int dwKeyboardType);
+   unsigned int GetVirtualScanCodeFromVirtualKeyCode(unsigned int vkcode, unsigned int dwKeyboardType);
    
 #define KEYCODE_TYPE_APPLE      0x00000001
 #define KEYCODE_TYPE_EVDEV      0x00000002
    
-   ::u32 GetVirtualKeyCodeFromKeycode(::u32 keycode, ::u32 dwFlags);
-   ::u32 GetKeycodeFromVirtualKeyCode(::u32 keycode, ::u32 dwFlags);
+   unsigned int GetVirtualKeyCodeFromKeycode(unsigned int keycode, unsigned int dwFlags);
+   unsigned int GetKeycodeFromVirtualKeyCode(unsigned int keycode, unsigned int dwFlags);
    
 #ifdef __cplusplus
 }
 #endif
 
-::u32 fixKeyCode(::u32 keyCode, unichar keyChar, enum APPLE_KEYBOARD_TYPE type)
+unsigned int fixKeyCode(unsigned int keyCode, unichar keyChar, enum APPLE_KEYBOARD_TYPE type)
 {
    /**
     * In 99% of cases, the given key code is truly keyboard independent.

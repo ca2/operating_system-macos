@@ -386,7 +386,7 @@ namespace input_appkit
    //   }
    //
    //
-   //   void windowing::__synthesizes_creates_styles(::user::interaction* pinteraction, ::u32& nExStyle, ::u32& nStyle)
+   //   void windowing::__synthesizes_creates_styles(::user::interaction* pinteraction, unsigned int& nExStyle, unsigned int& nStyle)
    //   {
    //
    //      if (pinteraction->m_bCompositedFrameWindow)
@@ -607,7 +607,7 @@ namespace input_appkit
    //   void windowing::set(message::key* pkey, oswindow oswindow, ::windowing::window* pwindow, const ::atom& atom, wparam wparam, ::lparam lparam)
    //   {
    //
-   //      pkey->m_nChar = static_cast<::u32>(wparam);
+   //      pkey->m_nChar = static_cast<unsigned int>(wparam);
    //
    //      pkey->m_nRepCnt = LOWORD(lparam);
    //
@@ -1196,7 +1196,7 @@ namespace input_appkit
    ////                  ::color::color crCustColors[16];
    ////
    ////                  // init-int this array did not affect the mouse problem
-   ////                  // ::u32 idx ;
+   ////                  // unsigned int idx ;
    ////                  // for (idx=0; idx<16; idx++) {
    ////                  // crCustColors[idx] = rgb(idx, idx, idx) ;
    ////                  // }
@@ -1231,7 +1231,7 @@ namespace input_appkit
    ////      ::color::color crCustColors[16];
    ////
    ////      // init-int this array did not affect the mouse problem
-   ////      // ::u32 idx ;
+   ////      // unsigned int idx ;
    ////      // for (idx=0; idx<16; idx++) {
    ////      // crCustColors[idx] = rgb(idx, idx, idx) ;
    ////      // }

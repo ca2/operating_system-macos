@@ -86,7 +86,7 @@ namespace apex_macos
       //bool resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder = nullptr, string * pstrParams = nullptr, string * pstrIconLocation = nullptr, int * piIcon = nullptr) override;
 
       
-      void raise_exception( ::u32 dwExceptionCode, ::u32 dwExceptionFlags);
+      void raise_exception( unsigned int dwExceptionCode, unsigned int dwExceptionFlags);
 
       virtual bool is_remote_session() override;
 

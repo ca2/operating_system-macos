@@ -71,7 +71,7 @@ namespace acme_macos
       void launch_app(const ::string & psz, const char ** argv, int iFlags) override;
       
       
-      virtual int _create_process2(const char * _cmd_line, u32 * pprocessId);
+      virtual int _create_process2(const char * _cmd_line, unsigned int * pprocessId);
       
       ::process_identifier create_process(const ::string & pszCommandLine) override;
       
@@ -95,7 +95,7 @@ namespace acme_macos
 
       ::process_identifier_array shared_library_process(string_array& straProcesses, const ::string & pszLibrary) override;
 
-//         int_bool is_process_running(::u32 pid) override;
+//         int_bool is_process_running(unsigned int pid) override;
       
       string get_environment_variable(const ::scoped_string & scopedstrEnvironmentVariable) override;
       

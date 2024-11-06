@@ -832,7 +832,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
    
-   int node::_create_process2(const char * _cmd_line, u32 * pprocessId)
+   int node::_create_process2(const char * _cmd_line, unsigned int * pprocessId)
    {
       char *   exec_path_name;
       char *   cmd_line;
@@ -922,7 +922,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 //   }
 
 //
-//   string node::module_path_from_pid(u32 pid)
+//   string node::module_path_from_pid(unsigned int pid)
 //   {
 //
 //      return "";
@@ -968,7 +968,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-//   int_bool node::is_process_running(::u32 pid)
+//   int_bool node::is_process_running(unsigned int pid)
 //   {
 //
 //      throw interface_only();
@@ -1187,18 +1187,18 @@ bool node::__ns_is_application_running(const ::scoped_string & scopedstrRepos, c
 //
 //   /*
 //    dwa.set_size(0);
-//    ::u32 cbNeeded = 0;
+//    unsigned int cbNeeded = 0;
 //    while(cbNeeded == natural(dwa.get_count()))
 //    {
 //    dwa.set_size(dwa.get_count() + 1024);
 //    if(!EnumProcesses(
 //    dwa.get_data(),
-//    (::u32) (dwa.get_count() * sizeof(::u32)),
+//    (unsigned int) (dwa.get_count() * sizeof(unsigned int)),
 //    &cbNeeded))
 //    {
 //    return;
 //    }
-//    dwa.set_size(cbNeeded / sizeof(::u32));
+//    dwa.set_size(cbNeeded / sizeof(unsigned int));
 //    }*/
 //}
 

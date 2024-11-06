@@ -8,7 +8,7 @@
 
 
 //
-//string get_error_message(::u32 dwError);
+//string get_error_message(unsigned int dwError);
 //
 //
 ////::platform::application *     macos_instantiate_application(::platform::application * pappSystem, const char * pszId);
@@ -24,8 +24,8 @@
 //
 ////CLASS_DECL_ACME void __trace_message(const char * lpszPrefix, ::message::message * pmessage);
 ////CLASS_DECL_ACME void __trace_message(const char * lpszPrefix, MESSAGE * lpmsg);
-//int_bool mq_peek_message(MESSAGE * lpMsg,oswindow hWnd,::u32 wMsgFilterMin,::u32 wMsgFilterMax,::u32 wRemoveMsg);
-//int_bool mq_get_message(MESSAGE * lpMsg,oswindow hWnd,::u32 wMsgFilterMin,::u32 wMsgFilterMax);
+//int_bool mq_peek_message(MESSAGE * lpMsg,oswindow hWnd,unsigned int wMsgFilterMin,unsigned int wMsgFilterMax,unsigned int wRemoveMsg);
+//int_bool mq_get_message(MESSAGE * lpMsg,oswindow hWnd,unsigned int wMsgFilterMin,unsigned int wMsgFilterMax);
 //int CLASS_DECL_ACME __mac_main(int argc, char * argv[]);
 //CLASS_DECL_ACME void vfxThrowFileException(::matter * pobject, const ::e_status & estatus, int lOsError, const char * lpszFileName = nullptr);
 //

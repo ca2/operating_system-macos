@@ -134,6 +134,13 @@
 			remoteGlobalIDString = 9AC14D56297B3488006D9BD3;
 			remoteInfo = _acme_macos;
 		};
+		9AA326592CDB16FD00A2B1C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A5243502CD4B09B006ED868 /* nano_graphics_quartz2d.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A2FCE052C9D3ADC000CF701;
+			remoteInfo = nano_graphics_quartz2d;
+		};
 		9AA74F5A28482348009BB762 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A15A5EA264B54EE0080670E /* apex_apple.xcodeproj */;
@@ -359,6 +366,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9AA326552CDB16FD00A2B1C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AA3265A2CDB16FD00A2B1C0 /* libnano_graphics_quartz2d.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -480,6 +495,10 @@
 					ProductGroup = 9A5243542CD4B0C2006ED868 /* Products */;
 					ProjectRef = 9A5243532CD4B0C2006ED868 /* nano_graphics_quartz2d.xcodeproj */;
 				},
+				{
+					ProductGroup = 9AA326552CDB16FD00A2B1C0 /* Products */;
+					ProjectRef = 9A5243502CD4B09B006ED868 /* nano_graphics_quartz2d.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -507,7 +526,7 @@
 		9A523E372CD3A6E4006ED868 /* libwindowing_system_appkit.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			path = libwindowing_system_appkit.dylib;
+			path = libacme_windowing_appkit.dylib;
 			remoteRef = 9A523E362CD3A6E4006ED868 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -523,6 +542,13 @@
 			fileType = "compiled.mach-o.dylib";
 			path = libstatic_acme_macos.a;
 			remoteRef = 9A865EEC299298AC0042465F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AA3265A2CDB16FD00A2B1C0 /* libnano_graphics_quartz2d.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libnano_graphics_quartz2d.dylib;
+			remoteRef = 9AA326592CDB16FD00A2B1C0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		9AA74F5B28482348009BB762 /* libios_apex_apple.a */ = {
