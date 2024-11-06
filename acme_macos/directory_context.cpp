@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "dir_context.h"
-#include "acme/filesystem/filesystem/acme_directory.h"
-#include "acme/filesystem/filesystem/dir_system.h"
+#include "acme/filesystem/filesystem/directory_system.h"
+#include "acme/filesystem/filesystem/directory_system.h"
 #include "acme/filesystem/filesystem/listing.h"
 #include "acme/parallelization/task_flag.h"
 #include "acme/platform/system.h"
@@ -121,9 +121,9 @@ namespace acme_macos
 
       auto psystem = system();
       
-      auto pacmedirectory = psystem->m_pacmedirectory;
+      auto pdirectorysystem = psystem->directory_system();
 
-      auto strRelative = pacmedirectory->install();
+      auto strRelative = pdirectorysystem->install();
       
       //m_psystem->m_papexsystem->m_pdirsystem->m_strCommonAppData = str / strRelative / "commonappdata";
 
@@ -131,7 +131,7 @@ namespace acme_macos
 //
 //      string strPath = ::dir::appdata() / "configuration\\directory.xml";
 //
-//      string strDocument = pcontext->m_papexcontext->file().as_string(strPath);
+//      string strDocument = papplication->file().as_string(strPath);
 //
 //      if(doc.load(strDocument))
 //      {
@@ -157,13 +157,13 @@ namespace acme_macos
 //      if(m_psystem->m_papexsystem->m_pdirsystem->m_strNetSeedFolder.is_empty())
 //      {
 //
-//         m_psystem->m_papexsystem->m_pdirsystem->m_strNetSeedFolder = pacmedirectory->install() / "net";
+//         m_psystem->m_papexsystem->m_pdirsystem->m_strNetSeedFolder = pdirectorysystem->install() / "net";
 //
 //      }
       
-//      pacmedirectory->create(m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder);
+//      pdirectorysystem->create(m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder);
 //
-//      if(!pacmedirectory->is(m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder))
+//      if(!pdirectorysystem->is(m_psystem->m_papexsystem->m_pdirsystem->m_strTimeFolder))
 //      {
 //
 //         throw exception(error_resource);
@@ -176,9 +176,9 @@ namespace acme_macos
 //
 //      strTime /= "time";
 //
-//      pacmedirectory->create(strTime);
+//      pdirectorysystem->create(strTime);
 //
-//      if(!pacmedirectory->is(strTime))
+//      if(!pdirectorysystem->is(strTime))
 //      {
 //
 //         throw ::exception(error_resource);
@@ -226,9 +226,9 @@ namespace acme_macos
          
       }
       
-      auto pacmedirectory = system()->m_pacmedirectory;
+      auto pdirectorysystem = system()->directory_system();
       
-      if(!pacmedirectory->enumerate(listing))
+      if(!pdirectorysystem->enumerate(listing))
       {
        
          return false;
@@ -288,9 +288,9 @@ namespace acme_macos
 //
 //         ::file::path_array  straPath;
 //
-//         auto pacmedirectory = m_psystem->m_pacmedirectory;
+//         auto pdirectorysystem = m_psystem->directory_system();
 //
-//         pacmedirectory->ls(straPath, listing.m_pathFinal);
+//         pdirectorysystem->ls(straPath, listing.m_pathFinal);
 //
 ////            file_find file_find;
 //
@@ -335,9 +335,9 @@ namespace acme_macos
 //
 //         ::file::path_array  straPath;
 //
-//         auto pacmedirectory = m_psystem->m_pacmedirectory;
+//         auto pdirectorysystem = m_psystem->directory_system();
 //
-//         pacmedirectory->ls(straPath, listing.m_pathFinal);
+//         pdirectorysystem->ls(straPath, listing.m_pathFinal);
 //
 //         // file_find file_find;
 //
@@ -375,9 +375,9 @@ namespace acme_macos
 //      return ::dir_context::is(pathParam);
 ////      ::file::path path;
 ////
-////      auto pcontext = m_pcontext;
+////      auto papplication = application();
 ////
-////      path = pcontext->m_papexcontext->defer_process_path(pathParam);
+////      path = papplication->defer_process_path(pathParam);
 ////
 ////      if(::dir_context::is(path))
 ////      {
@@ -386,9 +386,9 @@ namespace acme_macos
 ////
 ////      }
 ////
-////      auto pacmedirectory = m_psystem->m_pacmedirectory;
+////      auto pdirectorysystem = m_psystem->directory_system();
 ////
-////      return pacmedirectory->_is(path);
+////      return pdirectorysystem->_is(path);
 //
 //   }
 
@@ -537,12 +537,12 @@ namespace acme_macos
 //         if(!is(stra[i]))
 //         {
 //            
-//            auto pacmedirectory = m_psystem->m_pacmedirectory;
+//            auto pdirectorysystem = m_psystem->directory_system();
 //            
 //            try
 //            {
 //               
-//               pacmedirectory->create(stra[i]);
+//               pdirectorysystem->create(stra[i]);
 //               
 //            }
 //            catch (exception & e)
@@ -559,9 +559,9 @@ namespace acme_macos
 //                  try
 //                  {
 //                     
-//                     auto pcontext = m_pcontext;
+//                     auto papplication = application();
 //
-//                     pcontext->m_papexcontext->file().erase(str);
+//                     papplication->file().erase(str);
 //
 //                  }
 //                  catch(...)
@@ -576,9 +576,9 @@ namespace acme_macos
 //                  try
 //                  {
 //                     
-//                     auto pcontext = m_pcontext;
+//                     auto papplication = application();
 //
-//                     pcontext->m_papexcontext->file().erase(str);
+//                     papplication->file().erase(str);
 //
 //                  }
 //                  catch(...)
@@ -588,9 +588,9 @@ namespace acme_macos
 //
 //                  //if(::CreateDirectory(::str::international::utf8_to_unicode("\\\\?\\" + stra[i]), nullptr))
 //                  
-//                  auto pacmedirectory = m_psystem->m_pacmedirectory;
+//                  auto pdirectorysystem = m_psystem->directory_system();
 //
-//                  pacmedirectory->create(stra[i]);
+//                  pdirectorysystem->create(stra[i]);
 ////                  {
 ////
 ////                     //m_isdirmap.set(stra[i], true, 0);
@@ -1138,7 +1138,7 @@ namespace acme_macos
    ::file::path dir_context::module()
    {
 
-      return system()->acmedirectory()->module();
+      return system()->directory_system()->module();
 
    }
 
@@ -1348,9 +1348,9 @@ namespace acme_macos
       
 //      auto psystem = m_psystem;
 //
-//      auto pacmedirectory = psystem->m_pacmedirectory;
+//      auto pdirectorysystem = psystem->directory_system();
 //
-//      return pacmedirectory->appdata();
+//      return pdirectorysystem->appdata();
 
    }
 

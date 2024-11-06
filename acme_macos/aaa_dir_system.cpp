@@ -1,11 +1,11 @@
 //
-//  dir_system.cpp
+//  directory_system.cpp
 //  apex
 //
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 28/02/20.
 //
 #include "framework.h"
-#include "dir_system.h"
+#include "directory_system.h"
 //#include "apex/os/_.h"
 //#include "apex/os/_os.h"
 //#include "apex/xml/_.h"
@@ -23,7 +23,7 @@ namespace acme_macos
 {
 
 
-   dir_system::dir_system()
+   directory_system::directory_system()
    {
 
 
@@ -32,12 +32,12 @@ namespace acme_macos
 
 
 
-   void dir_system::initialize(::particle * pparticle)
+   void directory_system::initialize(::particle * pparticle)
    {
       
       //auto estatus =
       
-      ::dir_system::initialize(pparticle);
+      ::directory_system::initialize(pparticle);
       
 //      if(!estatus)
 //      {
@@ -51,12 +51,12 @@ namespace acme_macos
    }
 
 
-   void dir_system::init_system()
+   void directory_system::init_system()
    {
 
       //auto estatus =
       
-      ::dir_system::init_system();
+      ::directory_system::init_system();
       
 //      if(!estatus)
 //      {

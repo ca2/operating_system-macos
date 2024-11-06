@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "acme/filesystem/filesystem/dir_context.h"
+#include "acme/filesystem/filesystem/directory_system.h"
 
 
 namespace acme_macos
@@ -14,7 +14,7 @@ namespace acme_macos
    public:
       
 
-      pointer < dir_system >      m_pdirsystem;
+      pointer < directory_system >      m_pdirsystem;
       pointer < file_system >     m_pfilesystem;
 
       

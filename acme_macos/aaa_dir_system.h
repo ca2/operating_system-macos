@@ -1,5 +1,5 @@
 //
-//  dir_system.h
+//  directory_system.h
 //  apex
 //
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 28/02/20.
@@ -7,15 +7,15 @@
 #pragma once
 
 
-#include "acme/filesystem/filesystem/dir_system.h"
+#include "acme/filesystem/filesystem/directory_system.h"
 
 
 namespace acme_macos
 {
 
 
-   class CLASS_DECL_ACME dir_system :
-      virtual public ::dir_system
+   class CLASS_DECL_ACME directory_system :
+      virtual public ::directory_system
    {
    public:
 
@@ -29,7 +29,7 @@ namespace acme_macos
       ::file::path            m_strCommonPrograms;
 
       
-      dir_system();
+      directory_system();
 
 
       void initialize(::particle * pparticle) override;

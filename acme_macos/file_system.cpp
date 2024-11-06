@@ -1,107 +1,107 @@
+//
+//  acme_file.cpp
+//  acme_macos
+//
+//  Created by Camilo Sasuke Thomas Borregaard Sørensen on 18/08/21.
+//
+
 #include "framework.h"
-#include "file_system.h"
-#include "acme/platform/application.h"
-#include "acme/platform/system.h"
-#include "acme/filesystem/filesystem/acme_directory.h"
+#include "acme/filesystem/filesystem/file_system.h"
+#include "acme_file.h"
 
+
+#include <unistd.h>
 #include <sys/stat.h>
-#include <ctype.h>
-#include <mach-o/dyld.h>
+#include <fcntl.h>
 
 
-struct PROCESS_INFO_t
-{
-   
-   
-   string csProcess;
-   u32 dwImageListIndex;
-   
-   
-};
+string apple_app_module_path();
 
 
 namespace acme_macos
 {
 
-
-   file_system::file_system()
+   
+   acme_file::acme_file()
    {
+
+      m_pplatformfile = this;
 
    }
 
 
-   file_system::~file_system()
+   acme_file::~acme_file()
    {
+
 
    }
 
 
-   void file_system::initialize(::particle * pparticle)
+   ::file::path acme_file::module()
    {
-      
-      //auto estatus =
-      
-      ::file_system::initialize(pparticle);
-      
-//      if(!estatus)
-//      {
-//
-//         return estatus;
-//
-//      }
-      
-      string str = getenv("HOME");
-      
-      auto psystem = system();
-      
-      auto pacmedirectory = psystem->m_pacmedirectory;
 
-      ::file::path strRelative = pacmedirectory->install();
+      ::file::path path = apple_app_module_path();
 
-      string strUserFolderShift;
+      return path;
 
-      if(psystem->has_property("user_folder_relative_path"))
+   }
+
+
+   void acme_file::touch(const ::file::path & path)
+   {
+
+      ::e_status estatus = ::success;
+
+      if(__builtin_available(macOS 10.13, *))
       {
+         
+         int fd = ::open(path, O_WRONLY|O_CREAT | O_CLOEXEC, 0666);
+         
+         if (fd < 0)
+         {
+            
+            estatus = error_io;
+            
+         }
+         else
+         {
 
-         strUserFolderShift = strRelative / get_app()->payload("user_folder_relative_path").as_string();
+            int rc = ::futimens(fd, nullptr);
+            
+            if (rc)
+            {
+            
+               estatus = error_failed;
+
+            }
+            
+            ::close(fd);
+            
+         }
 
       }
       else
       {
-
-         strUserFolderShift = strRelative;
-
+         
+         acme_posix::acme_file::touch(path);
+         
       }
-
-      m_strUserFolder = str / "ca2" / strUserFolderShift;
-
-      //return true;
-
+      
    }
-
-
-//   ::e_status file_system::update_module_path()
-//   {
-//      
-//      auto estatus = ::file_system::update_module_path();
-//      
-//      if(!estatus)
-//      {
-//         
-//         return estatus;
-//         
-//      }
-//
-//      m_pathModule = apple_app_module_path();
-//
-//      m_pathCa2Module = apple_app_module_path();
-//
-//      return estatus;
-//
-//   }
-
+    
 
 } // namespace acme_macos
 
+
+//char * ns_get_executable_path();
+
+
+//string apple_app_module_path()
+//{
+//
+//   return ::string_from_strdup(ns_get_executable_path());
+//
+//}
+//
 
 

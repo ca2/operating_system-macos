@@ -1,34 +1,36 @@
+//
+//  acme_file.hpp
+//  acme_macos
+//
+//  Created by Camilo Sasuke Thomas Borregaard Sørensen on 18/08/21.
+//
 #pragma once
 
 
-#include "acme/filesystem/filesystem/file_system.h"
+#include "acme_apple/acme_file.h"
 
 
 namespace acme_macos
 {
 
 
-   class CLASS_DECL_ACME_MACOS file_system :
-      virtual public ::file_system
+   class CLASS_DECL_ACME_MACOS acme_file :
+      virtual public ::acme_apple::acme_file
    {
    public:
-
-
-      ::file::path            m_strUserFolder;
-
-
-      file_system();
-      ~file_system() override;
       
       
-      void initialize(::particle * pparticle) override;
+      //__creatable_from_library(acme_file, ::acme_file, "acme_macos");
+      
+      
+      acme_file();
+      ~acme_file() override;
 
+      
+      ::file::path module() override;
 
-
-      //virtual ::e_status update_module_path() override;
-
-
-
+      
+      void touch(const ::file::path & path) override;
 
    };
 
