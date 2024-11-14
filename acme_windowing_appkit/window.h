@@ -41,8 +41,8 @@ namespace appkit
       //string                        m_strTitle;
       //bool                          m_bNcActive;
 
-      //rectangle_i32                 m_rectangle;
-      //rectangle_i32                 m_rectangleX;
+      //int_rectangle                 m_rectangle;
+      //int_rectangle                 m_rectangleX;
 
       //pointer_array < ::nano::user::child >   m_childa;
       //::atom                          m_atomLeftButtonDown;
@@ -57,9 +57,9 @@ namespace appkit
 
 #ifdef _DEBUG
 
-   virtual i64 increment_reference_count() override;
-   virtual i64 decrement_reference_count() override;
-   virtual i64 release() override;
+   virtual huge_integer increment_reference_count() override;
+   virtual huge_integer decrement_reference_count() override;
+   virtual huge_integer release() override;
 
 #endif
 
@@ -125,13 +125,13 @@ namespace appkit
 
       //virtual LRESULT window_procedure(UINT message, WPARAM wparam, LPARAM lparam);
 
-      void set_position_unlocked(const ::point_i32 & point) override;
+      void set_position_unlocked(const ::int_point & point) override;
 
       void redraw() override;
 
-      //void get_client_rectangle(::rectangle_i32 & rectangle) override;
+      //void get_client_rectangle(::int_rectangle & rectangle) override;
 
-      ::rectangle_i32 get_window_rectangle_unlocked() override;
+      ::int_rectangle get_window_rectangle_unlocked() override;
 
       void set_capture() override;
 
@@ -141,7 +141,7 @@ namespace appkit
       
       ::payload wait_for_dialog_result(const class ::time & timeTimeout = ::time::infinity()) override;
       
-//      ::size_i32 get_main_screen_size() override;
+//      ::int_size get_main_screen_size() override;
       
       
       virtual ::payload do_synchronously();

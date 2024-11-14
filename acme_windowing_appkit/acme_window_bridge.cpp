@@ -23,11 +23,11 @@ void ns_app_stop();
 
 CLASS_DECL_ACME void ns_get_main_screen_size(int & cx, int & cy);
 
-void screen_coordinates_aware_copy(CGRect & rect, const ::rectangle_i32 &rectangle);
+void screen_coordinates_aware_copy(CGRect & rect, const ::int_rectangle &rectangle);
 
-void screen_coordinates_aware_copy(CGPoint & cgpoint, const ::point_i32 & point);
+void screen_coordinates_aware_copy(CGPoint & cgpoint, const ::int_point & point);
 
-void screen_coordinates_aware_copy(::point_i32 & point, const CGPoint & cgpoint);
+void screen_coordinates_aware_copy(::int_point & point, const CGPoint & cgpoint);
 
 
 void acme_window_bridge::on_left_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute)
@@ -132,7 +132,7 @@ void acme_window_bridge::_on_draw_frame(CGContextRef cg, CGSize sizeFrame)
 void acme_window_bridge::on_layout(int x, int y, int w, int h)
 {
    
-   ::rectangle_i32 r;
+   ::int_rectangle r;
    r.left() = x;
    r.top() = y;
    r.right() = x+w;

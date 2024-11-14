@@ -709,7 +709,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 
 
 
-   //   void * node::node_wrap_window(void * pvoidDisplay, i64 window)
+   //   void * node::node_wrap_window(void * pvoidDisplay, huge_integer window)
    //   {
    //
    //      Display * pdisplay = (Display *) pvoidDisplay;

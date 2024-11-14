@@ -28,10 +28,10 @@ namespace windowing_macos
 //      virtual ::e_status set_tray_icon_name(const string & strTrayIconName);
 //
 //
-//      virtual void get_sizes(array < concrete < ::size_i32 > > & a);
+//      virtual void get_sizes(array < concrete < ::int_size > > & a);
 //
 //
-//      virtual void * get_os_data(const ::size_i32 & size) const;
+//      virtual void * get_os_data(const ::int_size & size) const;
 //
 //
 //      virtual ::e_status load_matter(string strPath);
@@ -39,7 +39,7 @@ namespace windowing_macos
 //      virtual ::e_status load_file(string strPath);
 //
 //
-//      virtual image_pointer get_image(const concrete < ::size_i32 > & size);
+//      virtual image_pointer get_image(const concrete < ::int_size > & size);
 
       
    };

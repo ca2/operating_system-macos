@@ -181,7 +181,7 @@ namespace macos
       const int nMaxSize = 128;
       char * lpsz = rString.get_buffer(nMaxSize);
       char * lpszResult;
-      strsize nLen = 0;
+      character_count nLen = 0;
       for (;;)
       {
          

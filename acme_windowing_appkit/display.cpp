@@ -13,7 +13,7 @@
 
 CLASS_DECL_ACME void ns_get_main_screen_size(int & cx, int & cy);
 
-bool macos_get_cursor_position(::point_i32 * ppointCursor);
+bool macos_get_cursor_position(::int_point * ppointCursor);
 int ns_monitor_count();
 char * ns_get_wallpaper();
 void ns_set_wallpaper(const char *psz);
@@ -45,7 +45,7 @@ namespace appkit
    }
    
    
-   ::size_i32 display::get_main_screen_size()
+   ::int_size display::get_main_screen_size()
    {
       
       int cx = 800;
@@ -111,10 +111,10 @@ namespace appkit
    //   }
    //
    //
-   //   ::point_i32 display::_get_mouse_cursor_position()
+   //   ::int_point display::_get_mouse_cursor_position()
    //   {
    //
-   //      ::point_i32 p;
+   //      ::int_point p;
    //
    //      macos_get_cursor_position(&p);
    //

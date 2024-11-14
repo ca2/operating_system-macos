@@ -33,7 +33,7 @@
 
 struct _APPLE_KEYBOARD_DESC
 {
-   u32 ProductId;
+   unsigned int ProductId;
    enum APPLE_KEYBOARD_TYPE Type;
 };
 typedef struct _APPLE_KEYBOARD_DESC APPLE_KEYBOARD_DESC;
@@ -151,7 +151,7 @@ APPLE_KEYBOARD_DESC APPLE_KEYBOARDS[] =
    { 0x26A, APPLE_KEYBOARD_TYPE_ANSI }
 };
 
-enum APPLE_KEYBOARD_TYPE mac_identify_keyboard_type(u32 vendorID, u32 productID)
+enum APPLE_KEYBOARD_TYPE mac_identify_keyboard_type(unsigned int vendorID, unsigned int productID)
 {
    enum APPLE_KEYBOARD_TYPE type = APPLE_KEYBOARD_TYPE_ANSI;
    
@@ -205,9 +205,9 @@ enum APPLE_KEYBOARD_TYPE mac_detect_keyboard_type()
    for (deviceIndex = 0; deviceIndex < deviceCount; deviceIndex++)
    {
       CFTypeRef tCFTypeRef;
-      u32 vendorID = 0;
-      u32 productID = 0;
-      u32 countryCode = 0;
+      unsigned int vendorID = 0;
+      unsigned int productID = 0;
+      unsigned int countryCode = 0;
       enum APPLE_KEYBOARD_TYPE ltype;
       
       if (!tIOHIDDeviceRefs[deviceIndex])

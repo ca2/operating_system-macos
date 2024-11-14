@@ -1059,7 +1059,7 @@ void os_context::set_dark_mode(bool bDark)
 
          string strApp = prequest->m_strExe;
 
-         strsize iFind = strApp.case_insensitive_find_index(".app/");
+         character_count iFind = strApp.case_insensitive_find_index(".app/");
 
          if(iFind > 0)
          {

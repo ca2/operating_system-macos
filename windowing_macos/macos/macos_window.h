@@ -33,8 +33,8 @@ public:
    bool                    m_bDirty;
    bool                    m_bTest123;
    
-   ::i64                   m_iNanosecondLastUpdateBeg;
-   ::i64                   m_iNanosecondLastUpdateEnd;
+   ::huge_integer                   m_iNanosecondLastUpdateBeg;
+   ::huge_integer                   m_iNanosecondLastUpdateEnd;
 
    
    macos_window();
@@ -58,8 +58,8 @@ public:
    
    virtual void macos_window_on_create() = 0;
    
-   virtual void macos_window_resized(CGRect rectangle_i32) = 0;
-   virtual void macos_window_repositioned(CGPoint point_i32) = 0;
+   virtual void macos_window_resized(CGRect int_rectangle) = 0;
+   virtual void macos_window_repositioned(CGPoint int_point) = 0;
    
    virtual void macos_window_iconified() = 0;
    virtual void macos_window_deiconified() = 0;

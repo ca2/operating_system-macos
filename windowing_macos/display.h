@@ -29,7 +29,7 @@ namespace windowing_macos
       string impl_get_wallpaper(::collection::index iScreen) override;
       bool impl_set_wallpaper(::collection::index iScreen, string strWallpaper) override;
 
-      ::point_i32 _get_mouse_cursor_position() override;
+      ::int_point _get_mouse_cursor_position() override;
 
    };
 

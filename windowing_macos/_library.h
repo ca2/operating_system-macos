@@ -16,7 +16,7 @@
 #include "acme/prototype/geometry2d/_collection.h"
 
 
-rectangle_int_array cg_get_window_rect_list_intersect_above(CGWindowID windowid);
+int_rectangle_array cg_get_window_rect_list_intersect_above(CGWindowID windowid);
 CGWindowID ns_get_window_id(void * pnswindow);
 
 

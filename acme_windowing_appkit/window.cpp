@@ -23,11 +23,11 @@ void ns_app_stop();
 
 CLASS_DECL_ACME void ns_get_main_screen_size(int & cx, int & cy);
 
-void screen_coordinates_aware_copy(CGRect & rect, const ::rectangle_i32 &rectangle);
+void screen_coordinates_aware_copy(CGRect & rect, const ::int_rectangle &rectangle);
 
-void screen_coordinates_aware_copy(CGPoint & cgpoint, const ::point_i32 & point);
+void screen_coordinates_aware_copy(CGPoint & cgpoint, const ::int_point & point);
 
-void screen_coordinates_aware_copy(::point_i32 & point, const CGPoint & cgpoint);
+void screen_coordinates_aware_copy(::int_point & point, const CGPoint & cgpoint);
 
 //void macos_defer_initialize_nano_callbacks();
 namespace appkit
@@ -63,7 +63,7 @@ namespace appkit
 #ifdef _DEBUG
       
       
-      i64 window::increment_reference_count()
+      huge_integer window::increment_reference_count()
       {
          
          return ::acme::windowing::window::increment_reference_count();
@@ -71,7 +71,7 @@ namespace appkit
       }
       
       
-      i64 window::decrement_reference_count()
+      huge_integer window::decrement_reference_count()
       {
          
          return ::acme::windowing::window::decrement_reference_count();
@@ -79,7 +79,7 @@ namespace appkit
       }
       
       
-      i64 window::release()
+      huge_integer window::release()
       {
          
          return ::acme::windowing::window::release();
@@ -386,7 +386,7 @@ namespace appkit
       //   }
       
       
-      void window::set_position_unlocked(const ::point_i32 & point)
+      void window::set_position_unlocked(const ::int_point & point)
       {
          
          m_pacmewindowbridge->set_position(point.x(), point.y());
@@ -406,18 +406,18 @@ namespace appkit
       }
       
       
-      ::rectangle_i32 window::get_window_rectangle_unlocked()
+      ::int_rectangle window::get_window_rectangle_unlocked()
       {
          
          auto cgrect = m_pacmewindowbridge->get_frame();
-         ::rectangle_i32 r;
+         ::int_rectangle r;
          copy(r, cgrect);
          return r;
          
       }
       
       //
-      //   void window::get_window_rectangle(::rectangle_i32 & rectangle)
+      //   void window::get_window_rectangle(::int_rectangle & rectangle)
       //   {
       //
       //   }
@@ -444,7 +444,7 @@ namespace appkit
       }
       
       
-      //   ::size_i32 window::get_main_screen_size()
+      //   ::int_size window::get_main_screen_size()
       //   {
       //
       //      int cx = 800;

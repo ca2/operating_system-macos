@@ -51,7 +51,7 @@ bool oswindow_data::show_window(int iShow)
 bool oswindow_data::_001ClientToScreen(POINT_I32 *lppoint)
 {
 
-   RECTANGLE_I32 rectangle_i32;
+   RECTANGLE_I32 int_rectangle;
    
    get_nswindow_rect(this, &rectangle);
    
@@ -67,7 +67,7 @@ bool oswindow_data::_001ClientToScreen(POINT_I32 *lppoint)
 bool oswindow_data::_001ScreenToClient(POINT_I32 *lppoint)
 {
    
-   RECTANGLE_I32 rectangle_i32;
+   RECTANGLE_I32 int_rectangle;
    
    get_nswindow_rect(this, &rectangle);
    

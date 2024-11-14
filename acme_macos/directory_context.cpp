@@ -420,7 +420,7 @@ namespace acme_macos
 //
 //      wstring wstrPath;
 //
-//      //strsize iLen = ::str::international::utf8_to_unicode_count(strPath);
+//      //character_count iLen = ::str::international::utf8_to_unicode_count(strPath);
 //      //wstrPath.alloc(iLen + 32);
 //      wstrPath = ::str::international::utf8_to_unicode(strPath);
 //      if(wstrPath.get_length() >= MAX_PATH)
@@ -446,7 +446,7 @@ namespace acme_macos
    bool directory_context::name_is(const ::file::path & str)
    {
       //output_debug_string(str);
-      strsize iLast = str.length() - 1;
+      character_count iLast = str.length() - 1;
       while(iLast >= 0)
       {
          if(str[iLast] != '\\' && str[iLast] != '/' && str[iLast] != ':')
@@ -489,7 +489,7 @@ namespace acme_macos
 
       wstring wstrPath;
 
-      //strsize iLen = ::str::international::utf8_to_unicode_count(str, iLast + 1);
+      //character_count iLen = ::str::international::utf8_to_unicode_count(str, iLast + 1);
 
       //wstrPath.alloc(iLen + 32);
 
@@ -702,7 +702,7 @@ namespace acme_macos
 //   string directory_context::name(const string & str)
 //   {
 //
-//      strsize iLast = str.get_length() - 1;
+//      character_count iLast = str.get_length() - 1;
 //
 //      while(iLast >= 0)
 //      {
@@ -970,7 +970,7 @@ namespace acme_macos
 
    //   wstring wstrPath;
    //
-   //   //strsize iLen = ::str::international::utf8_to_unicode_count(strPath);
+   //   //character_count iLen = ::str::international::utf8_to_unicode_count(strPath);
    //   //wstrPath.alloc(iLen + 32);
    //   wstrPath = ::str::international::utf8_to_unicode(strPath);
    //   if(wstrPath.get_length() >= MAX_PATH)
@@ -1001,7 +1001,7 @@ namespace acme_macos
 //    bool directory_context::name_is(const ::file::path & str)
 //    {
 //        //output_debug_string(str);
-//        strsize iLast = str.get_length() - 1;
+//        character_count iLast = str.get_length() - 1;
 //        while(iLast >= 0)
 //        {
 //            if(str.m_pszData[iLast] != '\\' && str.m_pszData[iLast] != '/' && str.m_pszData[iLast] != ':')
@@ -1058,7 +1058,7 @@ namespace acme_macos
 //
 //        wstring wstrPath;
 //
-//        //strsize iLen = ::str::international::utf8_to_unicode_count(str, iLast + 1);
+//        //character_count iLen = ::str::international::utf8_to_unicode_count(str, iLast + 1);
 //
 //        //wstrPath.alloc(iLen + 32);
 //
@@ -1249,7 +1249,7 @@ namespace acme_macos
 //   ::file::path directory_context::name(const ::file::path & str)
 //   {
 //
-//      strsize iLast = str.get_length() - 1;
+//      character_count iLast = str.get_length() - 1;
 //
 //      while(iLast >= 0)
 //      {
@@ -1515,7 +1515,7 @@ namespace acme_macos
    //   // strip attribute of NORMAL bit, our API doesn't have a "normal" bit.
    //   rStatus.m_attribute = (unsigned char)(findFileData.dwFileAttributes & ~FILE_ATTRIBUTE_NORMAL);
 
-   //   // get just the low unsigned int of the file size_i32
+   //   // get just the low unsigned int of the file int_size
    //   ASSERT(findFileData.nFileSizeHigh == 0);
    //   rStatus.m_size = (int)findFileData.nFileSizeLow;
 

@@ -204,8 +204,8 @@ bool shell::_get_file_image(_get_file_image_ & getfileimage)
 //      }
 //      // try to find "uifs:// http:// ftp:// like addresses"
 //      // then should show icon by extension or if is folder
-//      strsize iFind = ::str::find_ci("://", imagekey.m_strPath);
-//      strsize iFind2 = ::str::find_ci(":", imagekey.m_strPath);
+//      character_count iFind = ::str::find_ci("://", imagekey.m_strPath);
+//      character_count iFind2 = ::str::find_ci(":", imagekey.m_strPath);
 //      if (iFind >= 0 || iFind2 >= 2)
 //      {
 //         string strProtocol = string(imagekey.m_strPath).Left(maximum(iFind, iFind2));

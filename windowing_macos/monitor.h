@@ -24,8 +24,8 @@ namespace windowing_macos
       ~monitor() override;
       
       
-      ::rectangle_i32 monitor_rectangle() override;
-      ::rectangle_i32 workspace_rectangle() override;
+      ::int_rectangle monitor_rectangle() override;
+      ::int_rectangle workspace_rectangle() override;
 
       
    };

@@ -632,14 +632,14 @@ void mm_init_workspace_rect();
 
 
 // front first
-rectangle_int_array cg_get_window_rect_list_above(CGWindowID windowid)
+int_rectangle_array cg_get_window_rect_list_above(CGWindowID windowid)
 {
    
-   rectangle_int_array recta;
+   int_rectangle_array recta;
    
    CFArrayRef windowa = CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenAboveWindow, windowid);
 
-   ::rectangle_i32 rMainScreen = get_main_screen_rectangle();
+   ::int_rectangle rMainScreen = get_main_screen_rectangle();
 
    long c = CFArrayGetCount(windowa);
 
@@ -699,7 +699,7 @@ rectangle_int_array cg_get_window_rect_list_above(CGWindowID windowid)
          if(rect.size.width > 0 && rect.size.height > 0)
          {
 
-            ::rectangle_i32 rectCopy;
+            ::int_rectangle rectCopy;
 
             rectCopy.left() = rect.origin.x;
             rectCopy.top() = rMainScreen.height() - (rect.origin.y + rect.size.height);
@@ -759,7 +759,7 @@ string MYCFStringCopyUTF8String(CFStringRef aString)
 #undef FUNCTION_TRACE
 
 
-rectangle_int_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
+int_rectangle_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
 {
    
    bool bFound = false;
@@ -774,13 +774,13 @@ rectangle_int_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
 
 #endif
    
-   rectangle_int_array recta;
+   int_rectangle_array recta;
    
    CFArrayRef windowa = CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly, kCGNullWindowID);
 
    CGRect rect1 = {};
    
-   //rectangle_i32 rMainScreen;
+   //int_rectangle rMainScreen;
    
    //get_main_screen_rectangle(rMainScreen);
    
@@ -976,7 +976,7 @@ rectangle_int_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
                if(CGRectIntersectsRect(rect1, rect))
                {
 
-                  ::rectangle_i32 rectCopy;
+                  ::int_rectangle rectCopy;
 
                   rectCopy.left() = rect.origin.x;
                   rectCopy.right() = rect.origin.x + rect.size.width;
@@ -1028,7 +1028,7 @@ end1:
 #undef FUNCTION_TRACE
 
 
-void cg_get_window_rect_list(rectangle_int_array & recta, array < CGWindowID > & windowida)
+void cg_get_window_rect_list(int_rectangle_array & recta, array < CGWindowID > & windowida)
 {
 
    //bool bFound = false;
@@ -1049,7 +1049,7 @@ void cg_get_window_rect_list(rectangle_int_array & recta, array < CGWindowID > &
    
    //CGRect rect1={};
    
-   //rectangle_i32 rMainScreen;
+   //int_rectangle rMainScreen;
 
    string strName;
    
@@ -1186,7 +1186,7 @@ void cg_get_window_rect_list(rectangle_int_array & recta, array < CGWindowID > &
          
          CGRectMakeWithDictionaryRepresentation(dictRect, &rect);
          
-         ::rectangle_i32 rectCopy;
+         ::int_rectangle rectCopy;
          
          //rectCopy.left = rectangle.origin.x;
          //rectCopy.top = rMainScreen.height() - (rectangle.origin.y + rectangle.size.height);
@@ -1260,7 +1260,7 @@ int_bool is_window_occluded(oswindow oswindow)
 
    }
 
-   rectangle_int_array recta = cg_get_window_rect_list_intersect_above(windowid);
+   int_rectangle_array recta = cg_get_window_rect_list_intersect_above(windowid);
 
 
    if(recta.is_empty())
@@ -1272,11 +1272,11 @@ int_bool is_window_occluded(oswindow oswindow)
    
    return true;
 
-//   ::rectangle_i32 rectangle;
+//   ::int_rectangle rectangle;
 //
 //   rectangle = oswindow->m_pimpl->m_puserinteraction->parent_client_rect();
 //
-//   ::rectangle_i32 rectTest;
+//   ::int_rectangle rectTest;
 //
 //   for(int i = 0; i < recta.get_size(); i++)
 //   {
@@ -1297,20 +1297,20 @@ int_bool is_window_occluded(oswindow oswindow)
 
 }
 
-void cg_get_window_rect_list(rectangle_int_array & recta, array < CGWindowID > & windowida);
+void cg_get_window_rect_list(int_rectangle_array & recta, array < CGWindowID > & windowida);
 
-int_bool point_is_window_origin(::point_i32 pointHitTest, oswindow oswindowExclude, int iMargin)
+int_bool point_is_window_origin(::int_point pointHitTest, oswindow oswindowExclude, int iMargin)
 {
    
    CGWindowID windowidExclude = get_os_window_window_number(oswindowExclude);
    
-   rectangle_int_array recta;
+   int_rectangle_array recta;
    
    array < CGWindowID > windowida;
    
    cg_get_window_rect_list(recta, windowida);
    
-   ::rectangle_i32 rectTest;
+   ::int_rectangle rectTest;
 
    for(::collection::index i = 0; i < recta.get_size(); i++)
    {

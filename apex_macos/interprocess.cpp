@@ -336,7 +336,7 @@ namespace apex_macos
 //      {
 //      }
 //
-//      void rx::receiver::on_post(rx * ptarget,i64 a,i64 b)
+//      void rx::receiver::on_post(rx * ptarget,huge_integer a,huge_integer b)
 //      {
 //      }
 
@@ -376,7 +376,7 @@ namespace apex_macos
 //   }
 //
 //
-//   void * interprocess_target::on_interprocess_post(::interprocess_communication::rx * ptarget,i64 a,i64 b)
+//   void * interprocess_target::on_interprocess_post(::interprocess_communication::rx * ptarget,huge_integer a,huge_integer b)
 //   {
 //
 //      if(m_preceiver != nullptr)
@@ -460,7 +460,7 @@ namespace apex_macos
 //
 //            data_struct data;
 //
-//            /* The length is essentially the size_i32 of the structure minus sizeof(mtype) */
+//            /* The length is essentially the int_size of the structure minus sizeof(mtype) */
 //            length = sizeof(data) - sizeof(data.message);
 //
 //            memory mem;
@@ -487,15 +487,15 @@ namespace apex_macos
 //
 //               }
 //
-//               mem.append(data.data,data.size_i32);
+//               mem.append(data.data,data.int_size);
 //
 //
-//               if(data.size_i32 < 512)
+//               if(data.int_size < 512)
 //                  break;
 //
 //            } while(true);
 //
-//            if(data.size_i32 > 0)
+//            if(data.int_size > 0)
 //            {
 //            if(data.request == 5)
 //            {

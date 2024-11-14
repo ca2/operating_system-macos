@@ -276,7 +276,7 @@ namespace interprocess_communication
 //      {
 //      }
 //
-//      void rx::receiver::on_post(rx * prx,i64 a,i64 b)
+//      void rx::receiver::on_post(rx * prx,huge_integer a,huge_integer b)
 //      {
 //      }
 
@@ -323,7 +323,7 @@ namespace interprocess_communication
    }
 
 
-   void * rx::on_ipc_post(rx * prx,i64 a,i64 b)
+   void * rx::on_ipc_post(rx * prx,huge_integer a,huge_integer b)
    {
 
       if(m_preceiver != nullptr)

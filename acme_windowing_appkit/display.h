@@ -31,7 +31,7 @@ public:
    ~display() override;
    
    
-   ::size_i32 get_main_screen_size() override;
+   ::int_size get_main_screen_size() override;
    
 };
 

@@ -35,8 +35,8 @@ namespace windowing_macos
       void *                           m_pNSCursorLast;
       //class windowing *                m_pmacoswindowing;
       ::windowing::window *            m_pwindowCapture;
-      ::point_i32                      m_pointMouseCursorHost;
-      ::point_i32                      m_pointMouseCursorAbsolute;
+      ::int_point                      m_pointMouseCursorHost;
+      ::int_point                      m_pointMouseCursorAbsolute;
       ::pointer < ::windowing::cursor >   m_pcursor;
       
       
@@ -82,9 +82,9 @@ namespace windowing_macos
       
       void set_mouse_cursor(::windowing::cursor * pcursor) override;
       
-      //::point_i32 get_mouse_cursor_host_position() override;
+      //::int_point get_mouse_cursor_host_position() override;
       
-      //::point_i32 get_mouse_cursor_absolute_position() override;
+      //::int_point get_mouse_cursor_absolute_position() override;
       
       
 //      void _set_window_position_unlocked(const class ::zorder& zorder, int x, int y, int cx, int cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
@@ -135,8 +135,8 @@ namespace windowing_macos
       void profiling_on_end_draw_rectangle() override;
 
       
-      virtual void macos_window_resized(CGRect rectangle_i32) override;
-      virtual void macos_window_repositioned(CGPoint point_i32) override;
+      virtual void macos_window_resized(CGRect int_rectangle) override;
+      virtual void macos_window_repositioned(CGPoint int_point) override;
       virtual void macos_window_iconified() override;
       virtual void macos_window_deiconified() override;
 
@@ -151,7 +151,7 @@ namespace windowing_macos
       void frame_toggle_restore() override;
       
       
-      void non_top_most_upper_window_rects(::rectangle_int_array & recta) override;
+      void non_top_most_upper_window_rects(::int_rectangle_array & recta) override;
 
 
       void post_message(::message::message * pmessage) override;

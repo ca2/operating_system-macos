@@ -158,10 +158,10 @@ namespace windowing_macos
 //
 //      }
 
-      //    if(!m_p->CreateEx(0, ::aura::get_system()->RegisterWndClass(0), nullptr, 0, rectangle_i32(0, 0, 0, 0), nullptr, id()))
+      //    if(!m_p->CreateEx(0, ::aura::get_system()->RegisterWndClass(0), nullptr, 0, int_rectangle(0, 0, 0, 0), nullptr, id()))
       //     return false;
 
-//      if(!m_p->CreateEx(0, nullptr, nullptr, 0, rectangle_i32(0, 0, 0, 0), nullptr, id()))
+//      if(!m_p->CreateEx(0, nullptr, nullptr, 0, int_rectangle(0, 0, 0, 0), nullptr, id()))
       //       return false;
 
       //return estatus;
