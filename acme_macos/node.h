@@ -8,7 +8,7 @@
 #pragma once
 
 
-#include "acme/parallelization/manual_reset_event.h"
+#include "acme/parallelization/manual_reset_happening.h"
 #include "acme_apple/node.h"
 
 
@@ -29,7 +29,7 @@ namespace acme_macos
       //gpointer m_pGtkSettingsDefault;
       string m_strTheme;
 
-      ::pointer < manual_reset_event > m_peventReadyToTerminateApp;
+      ::pointer < manual_reset_happening > m_peventReadyToTerminateApp;
 
       node();
       ~node() override;

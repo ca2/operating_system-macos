@@ -116,7 +116,7 @@ string imm_context::get_candidate()
 
       string str = _get_candidate((int)i);
 
-      if (str.has_char())
+      if (str.has_character())
       {
 
          return str;

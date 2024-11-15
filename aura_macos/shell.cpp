@@ -301,10 +301,10 @@ bool shell::_get_file_image(_get_file_image_ & getfileimage)
 //
 //      }
 //
-//      if (strIcon16.has_char() || strIcon48.has_char())
+//      if (strIcon16.has_character() || strIcon48.has_character())
 //      {
 //
-//         if(strIcon16.has_char())
+//         if(strIcon16.has_character())
 //         {
 //
 //            getfileimage.m_imagekey.m_strPath = strIcon16;
@@ -321,7 +321,7 @@ bool shell::_get_file_image(_get_file_image_ & getfileimage)
 //            }
 //
 //         }
-//         else if(strIcon48.has_char())
+//         else if(strIcon48.has_character())
 //         {
 //
 //            getfileimage.m_imagekey.m_strPath = strIcon48;

@@ -5,7 +5,7 @@
 #include "windowing.h"
 #include "acme/nano/nano.h"
 //#include "acme/nano/user/user.h"
-#include "acme/parallelization/manual_reset_event.h"
+#include "acme/parallelization/manual_reset_happening.h"
 #include "acme/platform/node.h"
 #include "acme/platform/system.h"
 #include "acme/windowing/display.h"
@@ -138,14 +138,14 @@ void windowing::_main_send(const ::procedure & procedure)
     //      CLASS_DECL_ACME bool main_synchronous(const class time & time, const ::procedure & function)
     //      {
     
-    auto pevent = __allocate manual_reset_event();
+    auto pevent = __allocate manual_reset_happening();
     
     user_post([ procedure, pevent ]
               {
         
         procedure();
         
-        pevent->SetEvent();
+        pevent->set_happening();
         
     });
     

@@ -686,9 +686,9 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 //
 //
 //
-//      m_peventReadyToTerminateApp = __new(manual_reset_event);
+//      m_peventReadyToTerminateApp = __new(manual_reset_happening);
 //       
-//      m_peventReadyToTerminateApp->ResetEvent();
+//      m_peventReadyToTerminateApp->reset_happening();
 //       
 //      // element_quit * pelementquit = new element_quit(this);
 //

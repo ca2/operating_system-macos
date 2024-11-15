@@ -56,7 +56,7 @@ namespace acme_macos
    ::string application::__ns_get_bundle_identifier() const
    {
       
-      if(m_strRepos.has_char() && m_strApp.has_char())
+      if(m_strRepos.has_character() && m_strApp.has_character())
       {
          
          return m_strRepos + "." + m_strApp;
@@ -91,7 +91,7 @@ namespace acme_macos
          CFRelease(axuielement);
          
       }
-      else if(m_strRepos.has_char() && m_strApp.has_char())
+      else if(m_strRepos.has_character() && m_strApp.has_character())
       {
          
          ::string strBundleIdentifier = __ns_get_bundle_identifier();
@@ -118,7 +118,7 @@ namespace acme_macos
          ::operating_system::application::post_exit();
          
       }
-      else if(m_strRepos.has_char() && m_strApp.has_char())
+      else if(m_strRepos.has_character() && m_strApp.has_character())
       {
          
          ::string strBundleIdentifier = __ns_get_bundle_identifier();

@@ -63,7 +63,7 @@ int mfreerdp_client_stop(rdpContext* context)
 	
 	if (mfc->thread)
 	{
-		SetEvent(mfc->stopEvent);
+		set_happening(mfc->stopEvent);
 		WaitForSingleObject(mfc->thread, INFINITE);
 		CloseHandle(mfc->thread);
 		mfc->thread = NULL;

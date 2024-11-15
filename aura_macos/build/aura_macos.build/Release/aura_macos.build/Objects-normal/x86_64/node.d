@@ -424,7 +424,7 @@ dependencies: \
   /Users/camilo/solution/main/operating-system/operating-system-darwin/acme_darwin/node.h \
   /Users/camilo/solution/main/operating-system/operating-system-macos/apex_macos/node.h \
   /Users/camilo/solution/main/operating-system/operating-system-macos/acme_macos/node.h \
-  /Users/camilo/solution/main/source/app/acme/parallelization/manual_reset_event.h \
+  /Users/camilo/solution/main/source/app/acme/parallelization/manual_reset_happening.h \
   /Users/camilo/solution/main/source/app/acme/parallelization/event.h \
   /Users/camilo/solution/main/source/app/acme/parallelization/synchronous_lock.h \
   /Users/camilo/solution/main/source/app/acme/parallelization/single_lock.h \

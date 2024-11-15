@@ -932,7 +932,7 @@ void window::_main_send(const ::procedure & procedure)
 
    #ifdef EXTRALOG
 
-      if(strSize.has_char())
+      if(strSize.has_character())
       {
 
          s_iLastExact = -1;

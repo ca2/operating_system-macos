@@ -237,7 +237,7 @@ void main_window::post_close()
          
          str = cf_get_string_value(value);
          
-         if(str.has_char())
+         if(str.has_character())
          {
             
             if(str == "Ready")

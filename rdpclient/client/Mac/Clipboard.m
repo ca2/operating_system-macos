@@ -95,7 +95,7 @@ int mac_cliprdr_send_client_format_data_request(CliprdrClientContext* cliprdr, U
 	
 	formatDataRequest.requestedFormatId = formatId;
 	mfc->requestedFormatId = formatId;
-	ResetEvent(mfc->clipboardRequestEvent);
+	reset_happening(mfc->clipboardRequestEvent);
 	
 	cliprdr->ClientFormatDataRequest(cliprdr, &formatDataRequest);
 	
@@ -316,7 +316,7 @@ UINT mac_cliprdr_server_format_data_response(CliprdrClientContext* cliprdr, CLIP
 	
 	if (formatDataResponse->msgFlags & CB_RESPONSE_FAIL)
 	{
-		SetEvent(mfc->clipboardRequestEvent);
+		set_happening(mfc->clipboardRequestEvent);
 		return ERROR_INTERNAL_ERROR;
 	}
 	
@@ -328,7 +328,7 @@ UINT mac_cliprdr_server_format_data_response(CliprdrClientContext* cliprdr, CLIP
 	
 	if (!format)
 	{
-		SetEvent(mfc->clipboardRequestEvent);
+		set_happening(mfc->clipboardRequestEvent);
 		return ERROR_INTERNAL_ERROR;
 	}
 	
@@ -341,7 +341,7 @@ UINT mac_cliprdr_server_format_data_response(CliprdrClientContext* cliprdr, CLIP
 	
 	ClipboardSetData(mfc->clipboard, formatId, formatDataResponse->requestedFormatData, size);
 	
-	SetEvent(mfc->clipboardRequestEvent);
+	set_happening(mfc->clipboardRequestEvent);
 	
 	if ((formatId == CF_TEXT) || (formatId == CF_OEMTEXT) || (formatId == CF_UNICODETEXT))
 	{

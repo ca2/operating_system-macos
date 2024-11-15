@@ -1105,7 +1105,7 @@ NSMenu * ns_create_menu(::application_menu * papplicationmenu, bool bMainMenu)
    
    NSMenu * menu = nil;
    
-   if(papplicationmenu->m_strName.has_char())
+   if(papplicationmenu->m_strName.has_character())
    {
       
       menu = [ [ NSMenu alloc ] initWithTitle:__nsstring(papplicationmenu->m_strName)];

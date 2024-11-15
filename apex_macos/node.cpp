@@ -131,7 +131,7 @@ string node::get_command_line()
          
       }
       
-      if(strCommandLine.has_char())
+      if(strCommandLine.has_character())
       {
          
          strCommandLine += " ";

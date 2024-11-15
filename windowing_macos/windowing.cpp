@@ -5,7 +5,7 @@
 //  Created by Camilo Sasuke on 2021-05-21 02:00 <3ThomasBS_!!
 //
 #include "framework.h"
-#include "acme/parallelization/manual_reset_event.h"
+#include "acme/parallelization/manual_reset_happening.h"
 #include "acme/platform/application.h"
 //#include "acme/platform/sequencer.h"
 #include "apex/platform/application_menu.h"
@@ -473,7 +473,7 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::win
 //         
 //      }
 //      
-//      manual_reset_event ev;
+//      manual_reset_happening ev;
 //      
 //      auto psequencer = puserinteractionEnablePrompt->message_box("You gonna be prompted to enable Accessibility for \""+acmeapplication()->m_strAppName+"\" to enable keyboard monitoring.",
 //                                                                                   "Aura Click", e_message_box_ok);
@@ -634,7 +634,7 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::win
 ////
 ////      }
 ////
-////      manual_reset_event ev;
+////      manual_reset_happening ev;
 ////
 ////      puserinteractionEnablePrompt->message_box("You gonna be prompted to enable Accessibility for \""+m_psystem->m_pappMain->m_strAppName+"\" to enable keyboard monitoring.",
 ////                     "Aura Click", e_message_box_ok)->then(

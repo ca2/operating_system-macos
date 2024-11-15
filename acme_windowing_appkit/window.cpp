@@ -485,7 +485,7 @@ namespace appkit
          //      //
          //      //   atom idResult;
          //      //
-         //      //   manual_reset_event event;
+         //      //   manual_reset_happening event;
          //      //
          //      //   pmessagebox->display(pszMessage, pszTitle, emessagebox, pszDetails);
          //      //
@@ -494,7 +494,7 @@ namespace appkit
          //      //
          //      //      idResult = pwindow->m_atomResult;
          //      //
-         //      //      event.SetEvent();
+         //      //      event.set_happening();
          //      //
          //      //   };
          //      //

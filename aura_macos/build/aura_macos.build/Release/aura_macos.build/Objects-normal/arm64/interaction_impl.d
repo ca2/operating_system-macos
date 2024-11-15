@@ -472,7 +472,7 @@ dependencies: \
   /Users/camilo/solution/main/source/app/aura/platform/message_queue.h \
   /Users/camilo/solution/main/source/app/acme/parallelization/message_queue.h \
   /Users/camilo/solution/main/source/app/acme/operating_system/message.h \
-  /Users/camilo/solution/main/source/app/acme/parallelization/manual_reset_event.h \
+  /Users/camilo/solution/main/source/app/acme/parallelization/manual_reset_happening.h \
   /Users/camilo/solution/main/source/app/acme/parallelization/event.h \
   /Users/camilo/solution/main/source/app/aura/graphics/draw2d/graphics.h \
   /Users/camilo/solution/main/source/app/aura/platform/draw_context2.h \

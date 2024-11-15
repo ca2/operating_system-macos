@@ -849,7 +849,7 @@ namespace music
             
          }
          
-         m_evMmsgDone.ResetEvent();
+         m_evMmsgDone.reset_happening();
          
          ::multimedia::e_result mmrc = ::multimedia::result_success;
          
@@ -1228,7 +1228,7 @@ namespace music
             return ::music::translate(::music::EFunctionNotSupported);
          
          SetState(status_playing);
-         m_evMmsgDone.ResetEvent();
+         m_evMmsgDone.reset_happening();
          
          OSStatus oss = MusicPlayerStop(m_player);
          
@@ -1280,7 +1280,7 @@ namespace music
          SetState(status_stopping);
          m_flags.signalize(::music::midi::sequence::FlagWaiting);
          
-         m_eventMidiPlaybackEnd.ResetEvent();
+         m_eventMidiPlaybackEnd.reset_happening();
          
          
          MusicPlayerStop(m_player);
@@ -1638,7 +1638,7 @@ namespace music
          
          /*         if(m_uBuffersInMMSYSTEM <= 0)
           {
-          m_evBuffersZero.SetEvent();
+          m_evBuffersZero.set_happening();
           }*/
   /*
          if (status_reset == GetState())
@@ -2060,7 +2060,7 @@ namespace music
             m_mmrcLastErr = ::multimedia::result_success;
             m_flags.unsignalize(FlagWaiting);
             
-            m_evMmsgDone.SetEvent();
+            m_evMmsgDone.set_happening();
          }
       }
       

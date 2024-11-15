@@ -115,7 +115,7 @@ namespace apex_macos
             
          }
          
-         if(strCommandLine.has_char())
+         if(strCommandLine.has_character())
          {
             
             strCommandLine += " ";

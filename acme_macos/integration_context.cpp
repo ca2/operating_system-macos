@@ -74,7 +74,7 @@ namespace acme_macos
       void context::prepare_compile_and_link_environment()
       {
 
-         if (m_pathPrefix.has_char())
+         if (m_pathPrefix.has_character())
          {
 
             directory_system()->create(m_pathPrefix);
@@ -276,7 +276,7 @@ namespace acme_macos
          
          ::string strBranchAddUp;
          
-         if(m_strGitCloneBranch.has_char())
+         if(m_strGitCloneBranch.has_character())
          {
             
             strBranchAddUp += "--branch " + m_strGitCloneBranch + " ";

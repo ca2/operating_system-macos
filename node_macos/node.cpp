@@ -107,7 +107,7 @@ namespace node_macos
 //         
 //      }
 //      
-//      manual_reset_event ev;
+//      manual_reset_happening ev;
 //      
 //      puserinteractionEnablePrompt->message_box("You gonna be prompted to enable Accessibility for \""+m_psystem->m_pappMain->m_strAppName+"\" to enable keyboard monitoring.",
 //                     "Aura Click", e_message_box_ok)->then(
