@@ -1,6 +1,7 @@
 #define default_node node_android
 #define default_windowing windowing_android
 #define default_draw2d draw2d_cairo
+#define default_operating_ambient operating_ambient_macos
 #define default_write_text write_text_android
 #define default_imaging imaging_freeimage
 #define default_text_to_speech text_to_speech_google

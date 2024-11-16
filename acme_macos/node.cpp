@@ -342,7 +342,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    //
    //      // indirect wall-changer sourceforge.net contribution
    //
-   //      auto edesktop = psystem->get_edesktop();
+   //      auto edesktop = psystem->get_eoperating_ambient();
    //
    //      switch (edesktop)
    //      {
@@ -423,7 +423,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    //
    //      auto pnode = Node;
    //
-   //      auto edesktop = psystem->get_edesktop();
+   //      auto edesktop = psystem->get_eoperating_ambient();
    //
    //      switch (edesktop)
    //      {
@@ -471,7 +471,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    //   void node::enable_wallpaper_change_notification()
    //   {
    //
-   //      auto edesktop = psystem->get_edesktop();
+   //      auto edesktop = psystem->get_eoperating_ambient();
    //
    //      switch (edesktop)
    //      {
