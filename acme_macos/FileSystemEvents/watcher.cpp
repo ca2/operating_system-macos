@@ -243,7 +243,7 @@ namespace FileSystemEvents
    watcher::watcher()
    {
 
-      m_pThis = this;
+      //m_pThis = this;
       
    }
 
