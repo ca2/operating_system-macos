@@ -903,7 +903,7 @@ void window::_main_send(const ::procedure & procedure)
 
       }
          
-      auto g = __create < ::draw2d::graphics >();
+      auto g = __øcreate < ::draw2d::graphics >();
 
       g->attach(cgc);
       
@@ -1189,7 +1189,7 @@ pmessage->m_atom = emessage
 
                _NEW_MESSAGE(pactivate, ::message::activate, e_message_activate);
 
-               pactivate->m_wparam = make_u32(e_activate_click_active, 0);
+               pactivate->m_wparam = make_unsigned_int(e_activate_click_active, 0);
                pactivate->m_lparam = 0;
 
                //post_message(pactivate);

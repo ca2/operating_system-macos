@@ -58,20 +58,20 @@ namespace music
       }
       
       
-      bool sequence_thread::PostMidiSequenceEvent(::music::midi::sequence * pseq, ::music::midi::sequence::e_event eevent)
+      bool sequence_thread::PostMidiSequenceEvent(::music::midi::sequence * pseq, ::music::midi::sequence::e_happening ehappening)
       {
          
-         return post_object(::music::midi::sequence::message_event,  (WPARAM) pseq, pseq->create_new_event(eevent));
+         return post_object(::music::midi::sequence::message_event,  (WPARAM) pseq, pseq->create_new_event(ehappening));
          
       }
       
       
-      bool sequence_thread::PostMidiSequenceEvent(::music::midi::sequence * pseq, ::music::midi::sequence::e_event eevent, LPMIDIHDR lpmh)
+      bool sequence_thread::PostMidiSequenceEvent(::music::midi::sequence * pseq, ::music::midi::sequence::e_happening ehappening, LPMIDIHDR lpmh)
       {
          
          sp(sequence) seq = pseq;
          
-         return post_object(::music::midi::sequence::message_event,  (WPARAM) pseq, seq->create_new_event(eevent, lpmh));
+         return post_object(::music::midi::sequence::message_event,  (WPARAM) pseq, seq->create_new_event(ehappening, lpmh));
          
       }
       
@@ -81,13 +81,13 @@ namespace music
          
          SCAST_PTR(::message::base, pbase, pmessage);
          
-         sp(::music::midi::sequence::event) pevent(pbase->m_lparam);
+         sp(::music::midi::sequence::happening) pevent(pbase->m_lparam);
          
          sp(::music::midi_core_midi::sequence) pseq = pevent->m_psequence;
          
          pseq->OnEvent(pevent);
          
-         switch(pevent->m_eevent)
+         switch(pevent->m_ehappening)
          {
             case ::music::midi::sequence::EventStopped:
             {
@@ -197,7 +197,7 @@ namespace music
          
       }
       
-      void sequence_thread::PostNotifyEvent(::music::midi::player::enum_notify_event eevent)
+      void sequence_thread::PostNotifyEvent(::music::midi::player::enum_notify_happening ehappening)
       {
          
          if(m_pplayer != NULL)
@@ -205,9 +205,9 @@ namespace music
             
             ::music::midi::player::notify_event * pdata = canew(::music::midi::player::notify_event);
             
-            pdata->m_enotifyevent = eevent;
+            pdata->m_enotifyevent = ehappening;
             
-            m_pplayer->post_object(::music::midi::player::message_notify_event, 0, pdata);
+            m_pplayer->post_object(::music::midi::player::message_notify_happening, 0, pdata);
             
          }
          

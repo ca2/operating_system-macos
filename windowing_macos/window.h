@@ -75,7 +75,7 @@ namespace windowing_macos
       bool _has_keyboard_focus() const;
       
        class windowing * macos_windowing() ;
-      void _main_send(const ::procedure & procedure);
+      void _main_send(const ::procedure & procedure) override;
 //      void _window_request_presentation() override;
       
       //void show_window(const ::e_display &edisplay, const ::e_activation &eactivation) override;

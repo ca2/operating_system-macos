@@ -19,7 +19,7 @@
 //   void quit::run()
 //   {
 //
-//      m_pnode->m_pAcmePlatform->m_peventReadyToTerminateApp->set_event();
+//      m_pnode->m_pAcmePlatform->m_phappeningReadyToTerminateApp->set_event();
 //
 //      auto htaskSystem = (pthread_t) m_pnode->m_htaskSystem;
 //

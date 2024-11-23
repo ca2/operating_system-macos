@@ -662,7 +662,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
       main_asynchronous([this]()
                         {
          
-         //m_peventReadyToTerminateApp->set_event();
+         //m_phappeningReadyToTerminateApp->set_event();
          
          auto htaskSystem = (pthread_t) system()->m_htask;
          
@@ -686,9 +686,9 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 //
 //
 //
-//      m_peventReadyToTerminateApp = __new(manual_reset_happening);
+//      m_phappeningReadyToTerminateApp = __new(manual_reset_happening);
 //       
-//      m_peventReadyToTerminateApp->reset_happening();
+//      m_phappeningReadyToTerminateApp->reset_happening();
 //       
 //      // element_quit * pelementquit = new element_quit(this);
 //
@@ -702,7 +702,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 ////      }
 ////           )
 //       
-//      m_peventReadyToTerminateApp->_wait();
+//      m_phappeningReadyToTerminateApp->_wait();
        
    }
 

@@ -29,7 +29,7 @@ namespace acme_macos
       //gpointer m_pGtkSettingsDefault;
       string m_strTheme;
 
-      ::pointer < manual_reset_happening > m_peventReadyToTerminateApp;
+      ::pointer < manual_reset_happening > m_phappeningReadyToTerminateApp;
 
       node();
       ~node() override;

@@ -78,7 +78,7 @@ namespace windowing_macos
       
       //estatus =
       
-      //__construct(m_pdisplay);
+      //__øconstruct(m_pdisplay);
       
 //      if(!estatus)
 //      {

@@ -110,7 +110,7 @@ void windowing::initialize_windowing()
         //
         //      return m_pvoidX11Display;
         
-        __construct(m_pacmedisplay);
+        __øconstruct(m_pacmedisplay);
         
         m_pacmedisplay->open_display();
         

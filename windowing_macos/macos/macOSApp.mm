@@ -35,7 +35,7 @@ int file_put_contents(const char * path, const char * contents);
 void file_add_contents_raw(const char * path, const char * psz);
 
 void application_on_menu_action(::platform::application * papplication, const char * pszCommand);
-void * application_system(::platform::application * papplication);
+::platform::system * application_system(::platform::application * papplication);
 
 
 void system_id_update(::platform::system * psystem, ::huge_integer iUpdate, ::huge_integer iPayload);
@@ -197,7 +197,7 @@ void set_apex_system_as_thread();
  
    [ super continueInitialization ];
    
-   bool bNoDock = application_get_bool(m_pApplication, "no_dock");
+   bool bNoDock = application_get_bool(m_papplication, "no_dock");
    
    if(bNoDock)
    {
@@ -242,7 +242,7 @@ void set_apex_system_as_thread();
 //         
 //         //m_pbridge->notification_area_action(psz);
 //         
-//         application_on_menu_action(m_pApplication, psz);
+//         application_on_menu_action(m_papplication, psz);
 //         
 //         return;
 //         
@@ -265,7 +265,7 @@ void set_apex_system_as_thread();
 //         
 //      const char * psz = [str UTF8String];
 //         
-//      application_on_menu_action(m_pApplication, psz);
+//      application_on_menu_action(m_papplication, psz);
 //         
 //   }
 //   
@@ -314,7 +314,7 @@ void set_apex_system_as_thread();
    
    [ super applicationWillFinishLaunching: notification];
    
-//   node_will_finish_launching(application_system(m_pApplication));
+//   node_will_finish_launching(application_system(m_papplication));
 //
 //   NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
 //
@@ -339,7 +339,7 @@ void set_apex_system_as_thread();
    
    //MessageBox(NULL, "applicationShouldHandleReopen", "applicationShouldHandleReopen", e_message_box_ok);
    
-   system_id_update(application_system(m_pApplication), id_app_activated, 0);
+   system_id_update(application_system(m_papplication), id_app_activated, 0);
 
    return NO;
    
@@ -358,7 +358,7 @@ void set_apex_system_as_thread();
    
    //file_put_contents("/eco/001.txt", "applicationOpenUntitledFile");
    
-   system_on_open_untitled_file(application_system(m_pApplication));
+   system_on_open_untitled_file(application_system(m_papplication));
    
    return YES;
    
@@ -371,7 +371,7 @@ void set_apex_system_as_thread();
    
    //file_put_contents("/Users/camilo/debug/open_file.txt", [filename UTF8String]);
 
-   system_on_open_file(application_system(m_pApplication), [filename UTF8String]);
+   system_on_open_file(application_system(m_papplication), [filename UTF8String]);
    
    return true;
    
@@ -401,7 +401,7 @@ void set_apex_system_as_thread();
       
       const char * psz = [[filenames objectAtIndex:ul] UTF8String];
       
-      system_on_open_file(application_system(m_pApplication), psz);
+      system_on_open_file(application_system(m_papplication), psz);
       
       //psza[ul] = psz;
       
@@ -424,7 +424,7 @@ void set_apex_system_as_thread();
    
    //MessageBox(NULL, "application: openFile", "application: openFile", e_message_box_ok);
    
-   system_on_open_file(application_system(m_pApplication), [[url absoluteString] UTF8String]);
+   system_on_open_file(application_system(m_papplication), [[url absoluteString] UTF8String]);
    
 }
 
@@ -443,7 +443,7 @@ void set_apex_system_as_thread();
    
    //MessageBox(NULL, "application: openFile", "application: openFile", e_message_box_ok);
    
-   system_on_open_file(application_system(m_pApplication), [filename UTF8String]);
+   system_on_open_file(application_system(m_papplication), [filename UTF8String]);
    
    return TRUE;
    
@@ -475,7 +475,7 @@ void set_apex_system_as_thread();
       
       //file_add_contents_raw("/Users/camilo/debug/open_urls.txt", psz);
       //file_add_contents_raw("/Users/camilo/debug/open_urls.txt", "\n");
-      system_on_open_file(application_system(m_pApplication), psz);
+      system_on_open_file(application_system(m_papplication), psz);
       
       //free
       
@@ -547,7 +547,7 @@ void set_apex_system_as_thread();
    //file_put_contents("/Users/camilo/debug/handleGetURLEvent.txt", [url  UTF8String]);
 
 
-   system_on_open_file(application_system(m_pApplication), [url UTF8String]);
+   system_on_open_file(application_system(m_papplication), [url UTF8String]);
    
 }
 
@@ -621,7 +621,7 @@ void set_apex_system_as_thread();
 //         
 //         //m_pbridge->notification_area_action(psz);
 //         
-//         application_on_menu_action(m_pApplication, psz);
+//         application_on_menu_action(m_papplication, psz);
 //         
 //         return;
 //         
@@ -804,14 +804,14 @@ void * apple_get_application_delegate(::platform::application * papplication);
 void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
 {
    
-   macos_app * pappdelegate = (__bridge macos_app *) apple_get_application_delegate(pApplication);
+   macos_app * pappdelegate = (__bridge macos_app *) apple_get_application_delegate(papplication);
    
    if(pappdelegate == nullptr)
    {
       
       pappdelegate = [ [ macOSApp alloc] initWithApplicationMenu: papplicationmenu andItsCallback: papplicationmenucallback];
       
-      ns_apple_set_application_delegate(pApplication, pappdelegate);
+      ns_apple_set_application_delegate(papplication, pappdelegate);
       
    }
    

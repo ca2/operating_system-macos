@@ -34,7 +34,7 @@ namespace media_macos
    void media_picker::macos_media_picker_did_pick_platform_media_item(platform_media_item_t * pplatformmediaitem)
    {
       
-      auto papplemediaitem = ::place(new ::media_apple::media_item());
+      auto papplemediaitem = __allocate ::media_apple::media_item();
       
       papplemediaitem->initialize(this);
       

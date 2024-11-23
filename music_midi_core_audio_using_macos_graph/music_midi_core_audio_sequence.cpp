@@ -2031,7 +2031,7 @@ namespace music
          }
       }
       
-      void sequence::OnMidiPlaybackEnd(::music::midi::sequence::event * pevent)
+      void sequence::OnMidiPlaybackEnd(::music::midi::sequence::happening * pevent)
       {
          UNREFERENCED_PARAMETER(pevent);
          single_lock sl(&m_mutex, TRUE);
@@ -2064,9 +2064,9 @@ namespace music
          }
       }
       
-      void sequence::OnEvent(::music::midi::sequence::event * pevent)
+      void sequence::OnEvent(::music::midi::sequence::happening * pevent)
       {
-         switch(pevent->m_eevent)
+         switch(pevent->m_ehappening)
          {
             case EventSpecialModeV001End:
             {
@@ -2094,7 +2094,7 @@ namespace music
                 
                 single_lock sl(&m_mutex, TRUE);
                 
-                ::music::midi_core_midi::sequence::event * pev = (::music::midi_core_midi::sequence::event *) pevent;
+                ::music::midi_core_midi::sequence::happening * pev = (::music::midi_core_midi::sequence::happening *) pevent;
                 
                 if(m_flags.is_signalized(FlagEOF))
                 {
@@ -3013,14 +3013,14 @@ namespace music
          return m_uiState;
       }
       
-      ::music::midi::sequence::event * sequence::create_new_event(::music::midi::sequence::e_event eevent, LPMIDIHDR lpmidihdr)
+      ::music::midi::sequence::happening * sequence::create_new_event(::music::midi::sequence::e_happening ehappening, LPMIDIHDR lpmidihdr)
       {
          
          ASSERT(this != NULL);
          
          event * pevent          = canew(event());
          
-         pevent->m_eevent        = eevent;
+         pevent->m_ehappening        = ehappening;
          pevent->m_psequence     = this;
          pevent->m_lpmh          = lpmidihdr;
          

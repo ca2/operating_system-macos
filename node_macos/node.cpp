@@ -305,7 +305,7 @@ namespace node_macos
 
       auto & pfactory = platform()->factory("input", "appkit");
 
-      auto pinput = __create < ::input::input >(pfactory);
+      auto pinput = __øcreate < ::input::input >(pfactory);
 
       return pinput;
 
@@ -330,7 +330,7 @@ void node::defer_create_windowing_application_delegate(::platform::application *
 {
    
    ::defer_create_windowing_application_delegate(
-                                                 pApplication,
+                                                 papplication,
                                                  papplicationmenu, papplicationmenucallback);
    
 }

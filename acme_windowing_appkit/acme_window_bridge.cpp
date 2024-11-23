@@ -10,6 +10,7 @@
 //#include "acme/platform/sequencer.h"
 #include "acme/platform/node.h"
 #include "acme/user/micro/elemental.h"
+#include "acme/user/user/frame_interaction.h"
 #include "acme/user/user/mouse.h"
 #include <CoreGraphics/CoreGraphics.h>
 
@@ -146,18 +147,18 @@ void acme_window_bridge::on_layout(int x, int y, int w, int h)
 bool acme_window_bridge::_is_top_most() const
 {
    
-   return m_pwindow->m_pacmeuserinteraction->m_bTopMost;
+//   return m_pwindow->m_pacmeuserinteraction->m_bTopMost;
    
-//   ::cast<::micro::elemental> pelemental = m_pwindow->m_pacmeuserinteraction;
-//   
-//   if(!pelemental)
-//   {
-//    
-//      return false;
-//      
-//   }
-//   
-//   return pelemental->m_bTopMost;
+   ::cast<::acme::user::frame_interaction> pelemental = m_pwindow->m_pacmeuserinteraction;
+   
+   if(!pelemental)
+   {
+    
+      return false;
+      
+   }
+   
+   return pelemental->m_bTopMost;
    
 }
 
