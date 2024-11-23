@@ -146,7 +146,7 @@ void acme_window_bridge::on_layout(int x, int y, int w, int h)
 bool acme_window_bridge::_is_top_most() const
 {
    
-   return m_pwindow->m_bTopMost;
+   return m_pwindow->m_puserinteraction->m_bTopMost;
    
 //   ::cast<::micro::elemental> pelemental = m_pwindow->m_pacmeuserinteraction;
 //   
