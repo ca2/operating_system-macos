@@ -64,7 +64,6 @@
 		9AC2D1A526542EA800CC8096 /* _.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
 		9AE3828228B14BEB007EA867 /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		9AE3828328B14BEB007EA867 /* node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
-		9AE3828528B14CB4007EA867 /* _library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _library.h; sourceTree = "<group>"; };
 		9AE382B228B18B17007EA867 /* libacme_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE382B428B18B17007EA867 /* libacme_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE382B628B18B17007EA867 /* libacme_posix.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_posix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,7 +141,6 @@
 				9A03B8052A25BB6900A0E33E /* _____release.xcconfig */,
 				9AC2D1A526542EA800CC8096 /* _.h */,
 				9AC2D19326542EA800CC8096 /* _factory.cpp */,
-				9AE3828528B14CB4007EA867 /* _library.h */,
 				9AC2D18E26542EA800CC8096 /* framework.cpp */,
 				9AC2D19926542EA800CC8096 /* framework.h */,
 				9AE3828228B14BEB007EA867 /* node.cpp */,
@@ -214,7 +212,8 @@
 		9AC2D16726542E1000CC8096 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1420;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					9AC2D16E26542E1000CC8096 = {
 						CreatedOnToolsVersion = 12.5;

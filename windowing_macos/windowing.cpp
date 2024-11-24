@@ -8,7 +8,7 @@
 #include "acme/parallelization/manual_reset_happening.h"
 #include "acme/platform/application.h"
 //#include "acme/platform/sequencer.h"
-#include "apex/platform/application_menu.h"
+//#include "apex/platform/application_menu.h"
 //#include "aura/user/menu/shared.h"
 //#include "aura/user/user/interaction_impl.h"
 //#include "keyboard_hook.h"
@@ -20,6 +20,10 @@ void ns_main_post(dispatch_block_t block);
 
 
 void * ns_get_key_window();
+
+
+void aura_defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);
+
 
 
 //void os_post_quit(::element * pelementQuit);
@@ -90,6 +94,32 @@ namespace windowing_macos
       //m_pdisplay->m_pwindowing = this;
          
       //return estatus;
+      
+   }
+
+
+   void windowing::initialize_windowing()
+   {
+      
+      ::windowing::windowing::initialize_windowing();
+      
+      ::appkit::acme::windowing::windowing::initialize_windowing();
+      
+   }
+
+
+   void windowing::windowing_application_main_loop()
+   {
+    
+      ::appkit::acme::windowing::windowing::windowing_application_main_loop();
+      
+   }
+
+
+   void windowing::windowing_post_quit()
+   {
+      
+      ::appkit::acme::windowing::windowing::windowing_post_quit();
       
    }
 
@@ -783,6 +813,12 @@ void windowing::clear_active_window(::thread *, ::windowing::window *)
 
 }
 
+void windowing::defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
+{
+   
+   aura_defer_create_windowing_application_delegate(papplication, papplicationmenu, papplicationmenucallback);
+   
+}
 
 } // namespace windowing_macos
 

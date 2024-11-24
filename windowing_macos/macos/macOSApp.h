@@ -25,20 +25,18 @@
 //#include "apex/platform/menu/menu.h"
 
 
-class menu_shared;
-class application_menu;
-class application_menu_callback;
+//class menu_shared;
+//class application_menu;
+//class application_menu_callback;
 
 
 @interface macOSApp : macos_app < NSMenuDelegate >
 {
 @public
 
-   NSMenu *                         m_menu;
+   //NSMenu *                         m_menu;
    //NSMutableArray *     m_menuitema;
    //NSMutableArray *     m_menuida;
-   ::application_menu *             m_papplicationmenu;
-   ::application_menu_callback *    m_papplicationmenucallback;
 
 }
 
@@ -46,8 +44,6 @@ class application_menu_callback;
 //- (void)play:(id)sender;
 -(void)continueInitialization;
 //- (void) ns_add_menu :(NSMenu *) menuParent withParent: (const char *) pszParent  withSharedMenu : (menu_shared *) pmenushared;
--(void)application_menu_update;
 - (id)initWithApplicationMenu:(::application_menu *) papplicationmenu andItsCallback: (::application_menu_callback *) papplicationmenucallback;
--(void)application_handle: (long long) l withPointer :(void *) p;
 
 @end

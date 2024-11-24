@@ -5,18 +5,19 @@
 //  Created by Camilo Sasuke on 2021-05-19 04:22 BRT <3ThomasBS_!!
 //
 #include "framework.h"
+#include "node.h"
 #include "acme/platform/application.h"
 #include "acme/platform/system.h"
 #include "apex/input/input.h"
 /////#include "apex/user/menu_shared.h"
 //#include "keyboard_hook.h"
 //#include "mouse_hook.h"
+//
+////void ns_app_run();
+//void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);
+//
 
-void ns_app_run();
-void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);
-
-
-void ns_application_handle(long long l, void * p);
+//void ns_application_handle(long long l, void * p);
 
 
 namespace node_macos
@@ -272,12 +273,12 @@ namespace node_macos
 //   }
 
 
-   void node::application_handle(long long l, void * p)
-   {
-   
-      ns_application_handle(l, p);
-      
-   }
+//   void node::application_handle(long long l, void * p)
+//   {
+//   
+//      ns_application_handle(l, p);
+//      
+//   }
 
 //   
 //   void node::do_windowing_system_factory()
@@ -326,22 +327,22 @@ namespace node_macos
 //   }
 
 
-void node::defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
-{
-   
-   ::defer_create_windowing_application_delegate(
-                                                 papplication,
-                                                 papplicationmenu, papplicationmenucallback);
-   
-}
+//void node::defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
+//{
+//   
+//   ::defer_create_windowing_application_delegate(
+//                                                 papplication,
+//                                                 papplicationmenu, papplicationmenucallback);
+//   
+//}
 
 
-void node::ns_app_run()
-{
- 
-   ::ns_app_run();
-   
-}
+//void node::ns_app_run()
+//{
+// 
+//   ::ns_app_run();
+//   
+//}
 
 
 } // namespace node_macos

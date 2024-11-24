@@ -14,7 +14,7 @@ namespace node_macos
 {
 
 
-   class CLASS_DECL_WINDOWING_MACOS node :
+   class CLASS_DECL_NODE_MACOS node :
       virtual public ::aura_macos::node
    {
    public:
@@ -53,7 +53,7 @@ namespace node_macos
       //void acme_application_main(class ::platform::system * psystem) override;
       
       
-      void application_handle(long long l, void * p) override;
+      //void application_handle(long long l, void * p) override;
       
       
       ::pointer < ::input::input > create_input() override;
@@ -65,10 +65,10 @@ namespace node_macos
       //void on_system_main() override;
       
       
-      void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback) override;
+//      void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback) override;
 
 
-      void ns_app_run() override;
+      //void ns_app_run() override;
       
 
    };

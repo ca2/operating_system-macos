@@ -20,6 +20,7 @@ void ns_app_do_tasks();
 void ns_app_stop();
 void ns_main_post(dispatch_block_t block);
 
+void acme_defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);
 
 
 void apple_defer_nano_application_create(::platform::system * psystem);
@@ -284,6 +285,16 @@ void windowing::display_error_trap_pop_ignored(int i)
 //
 //
 //    }
+
+void windowing::defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
+{
+
+   ::acme_defer_create_windowing_application_delegate(
+                                                 papplication,
+                                                 papplicationmenu, papplicationmenucallback);
+
+}
+
 
 } // namespace windowing
 

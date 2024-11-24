@@ -10,8 +10,6 @@
 #include "macOSApp.h"
 #include "acme/constant/id.h"
 #include "aura/_.h"
-#include "apex/platform/application_menu.h"
-#include "acme/platform/application_menu_callback.h"
 #include "aura_macos/_c_mm.h"
 #include "acme/operating_system/argcargv.h"
 #import <StoreKit/StoreKit.h>
@@ -21,9 +19,6 @@ bool application_get_bool(::platform::application * papplication, const char * p
 void ns_main_post(dispatch_block_t block);
 
 
-NSMenu * ns_create_menu(::application_menu * papplicationmenu, bool bMainMenu);
-
-void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool bMainMenu);
 
 NSString * __nsstring(const char * psz);
 //#include "apex/user/menu_shared.h"
@@ -88,109 +83,13 @@ void set_apex_system_as_thread();
 }
 
 
--(void)application_handle: (long long) l withPointer :(void *) p
-{
-   
-   if(l == id_application_menu_update)
-   {
-      
-      [self application_menu_update ];
-      
-   }
-   
-}
+//-(void)application_handle: (long long) l withPointer :(void *) p
+//{
+//   
+//   [ super application_handle:l withPointer:<#p#>];
+//   
+//}
 
-
--(void)application_menu_update
-{
-   
-   //m_menu = [ NSApp mainMenu ];
-   
-   auto m = [[NSMenu alloc] init];
-   
-   [ m removeAllItems ];
-   
-   ns_create_menu(m, m_papplicationmenu, true);
-      
-   [ NSApp setMainMenu: m];
-   
-//   m_menu = [[NSMenu alloc] initWithTitle:@"menubar_menu"];
-//   m_menuitema = [[NSMutableArray alloc] init];
-//   
-//   m_menuida = [[NSMutableArray alloc] init];
-//   
-//   // Monitor menu/dock theme changes...
-//   //   [NSDistributedNotificationCenter.defaultCenter addObserver:self selector:@selector(themeChanged:) name:@"AppleInterfaceThemeChangedNotification" object: nil];
-//   
-//   //int iCount = pbridge->_get_notification_area_action_count();
-//   
-//   //int iCount = 1;
-//   
-//   for(int i = 0; i < m_papplicationmenu->get_count(); i++)
-//   {
-//      
-//      //      char * pszName = NULL;
-//      //      char * pszId = NULL;
-//      //      char * pszLabel = NULL;
-//      //      char * pszAccelerator = NULL;
-//      //      char * pszDescription = NULL;
-//      //
-//      //      pbridge->_get_notification_area_action_info(&pszName, &pszId, &pszLabel, &pszAccelerator, &pszDescription, i);
-//      
-//      auto & menuitem = m_papplicationmenu->element_at(i);
-//      
-//      char * pszName = strdup(menuitem.m_strName);
-//      char * pszId = strdup(menuitem.m_strId);
-//      char * pszLabel = strdup(menuitem.m_strName);
-//      char * pszAccelerator = strdup(menuitem.m_strMacosAccelerator);
-//      char * pszDescription = strdup(menuitem.m_strDescription);
-//      NSString * strTitle = NULL;
-//      
-//      NSString * strId = NULL;
-//      
-//      NSMenuItem * item = NULL;
-//      
-//      if(strcasecmp(pszName, "separator") == 0)
-//      {
-//         
-//         strTitle = [[NSString alloc] initWithUTF8String: pszName];
-//         
-//         strId = [[NSString alloc] initWithUTF8String: pszName];
-//         
-//         item = [NSMenuItem separatorItem];
-//         
-//      }
-//      else
-//      {
-//         
-//         strTitle = [[NSString alloc] initWithUTF8String: pszName];
-//         
-//         strId = [[NSString alloc] initWithUTF8String: pszId];
-//         
-//         item = [[NSMenuItem alloc] initWithTitle:  strTitle action: @selector(on_os_menu_item:) keyEquivalent:@"" ];
-//         
-//      }
-//      
-//      [item setTarget:self];
-//      
-//      [m_menu addItem:item];
-//      
-//      [m_menuitema addObject: item];
-//      
-//      [m_menuida addObject: strId];
-//      
-//      if(pszName) free(pszName);
-//      if(pszId) free(pszId);
-//      if(pszLabel) free(pszLabel);
-//      if(pszAccelerator) free(pszAccelerator);
-//      if(pszDescription) free(pszDescription);
-//   }
-//   
-//   [m_menu setDelegate:self];
-//   
-//   [ NSApp setMainMenu: m_menu];
-
-}
 
 -(void)continueInitialization
 {
@@ -252,53 +151,6 @@ void set_apex_system_as_thread();
 //   
 //}
 
-
-- (void)on_application_menu_action:(id)sender
-//{
-//   
-//   NSMenuItem * pitem = (NSMenuItem *) sender;
-//   
-//   NSString * str = (NSString *)[pitem representedObject];
-//   
-//   if(str != nil)
-//   {
-//         
-//      const char * psz = [str UTF8String];
-//         
-//      application_on_menu_action(m_papplication, psz);
-//         
-//   }
-//   
-//}
-{
-   
-   NSMenuItem * pitem = (NSMenuItem *) sender;
-   
-//   if(m_papplicationmenu == NULL)
-//   {
-//      
-//      return;
-//      
-//   }
-   
-   NSString * prefixToRemove = @"menu_item_";
-   
-   NSString * strId = [pitem.representedObject copy];
-   
-   if ([strId hasPrefix:prefixToRemove])
-   {
-      
-      strId = [strId substringFromIndex:[prefixToRemove length]];
-   
-      const char * psz = [strId UTF8String];
-         
-      m_papplicationmenucallback->on_application_menu_action(psz);
-         
-      return;
-      
-   }
-   
-}
 
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
@@ -801,7 +653,7 @@ void ns_app_run();
 void ns_apple_set_application_delegate(::platform::application * papplication, macos_app * pappdelegate);
 void * apple_get_application_delegate(::platform::application * papplication);
 
-void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
+void aura_defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
 {
    
    macos_app * pappdelegate = (__bridge macos_app *) apple_get_application_delegate(papplication);
@@ -1061,127 +913,6 @@ void defer_create_windowing_application_delegate(::platform::application * pappl
 //
 //@end
 
-
-void ensure_edit_menu(::application_menu * papplicationmenu)
-{
-   
-   auto iEdit = papplicationmenu->find_child_with_name("Edit");
-   
-   if(iEdit >= 0)
-   {
-    
-      return;
-      
-   }
-
-   auto iFile = papplicationmenu->find_child_with_name("File");
-   
-   if(iFile >= 0)
-   {
-      
-      iEdit = iFile + 1;
-      
-   }
-   else if(papplicationmenu->has_element())
-   {
-      
-      iEdit = 1;
-      
-   }
-   else
-   {
-    
-      iEdit = 0;
-      
-   }
-    
-   papplicationmenu->popup_at(iEdit, "Edit");
-      
-}
-
-
-NSMenu * ns_create_menu(::application_menu * papplicationmenu, bool bMainMenu)
-{
-   
-   NSMenu * menu = nil;
-   
-   if(papplicationmenu->m_strName.has_character())
-   {
-      
-      menu = [ [ NSMenu alloc ] initWithTitle:__nsstring(papplicationmenu->m_strName)];
-      
-   }
-   else
-   {
-      
-      menu = [ NSMenu alloc ];
-      
-   }
-   
-   ns_create_menu(menu, papplicationmenu, bMainMenu);
-   
-   return menu;
-   
-}
-
-
-void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool bMainMenu)
-{
-   
-//   if(bMainMenu)
-//   {
-//      
-//      ensure_edit_menu(pmenu);
-//      
-//   }
-   
-   for(auto pitem : *papplicationmenu)
-   {
-      
-      NSMenuItem * menuitem = nil;
-      
-      if(pitem->is_popup())
-      {
-         
-         menuitem = [ NSMenuItem alloc ];
-         
-         id menuSub = ns_create_menu(pitem, false);
-       
-         [ menuSub setDelegate: [ [NSApplication sharedApplication] delegate ] ];
-         
-         [ menuitem setSubmenu: menuSub];
-
-      }
-      else if(pitem->is_separator())
-      {
-         
-         menuitem = [NSMenuItem separatorItem];
-         
-      }
-      else
-      {
-         
-         id strTitle = __nsstring(pitem->m_strName);
-         id strAcc = __nsstring(pitem->m_strAccelerator);
-         
-         ::string strMenuItemId;
-         
-         strMenuItemId = "menu_item_" + pitem->m_atom.as_string();
-         
-         id strId = __nsstring(strMenuItemId);
-         
-         menuitem = [[NSMenuItem alloc] initWithTitle:strTitle
-                                                            action:@selector(on_application_menu_action:) keyEquivalent:strAcc];
-         
-         [menuitem setRepresentedObject: strId];
-         
-      }
-
-      [menu addItem: menuitem];
-
-   }
-   
-}
 
 
 //NSMenu * ns_create_application_menu(application_menu * pmenu)

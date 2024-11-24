@@ -23,25 +23,33 @@
 
 
 #include "acme_notification_callback.h"
-
+class application_menu_callback;
 
 @interface macos_app : NSObject < NSApplicationDelegate >
 {
 @public
+   
+   
+   NSMenu *                         m_menu;
 
    ::platform::application *              m_papplication;
    
    NSMutableArray *                       m_windowcontrollera;
    
    acme_notification_callback *           m_pacmenotificationcallback;
+   ::application_menu *                   m_papplicationmenu;
+   ::application_menu_callback *          m_papplicationmenucallback;
 
 }
 
--(void)application_menu_update;
+//-(void)application_menu_update;
 -(NSWindowController *) addWindow:(NSWindow*)window;
 -(void) removeWindowController:(NSWindowController*)pwindowcontroller;
 -(void) continueInitialization;
 -(void) show_about_box;
 -(void) try_close_application;
+-(id) initWithApplicationMenu:(::application_menu *) papplicationmenu andItsCallback: (::application_menu_callback *) papplicationmenucallback;
+-(void) application_menu_update;
+-(void) application_handle: (long long) l withPointer :(void *) p;
 
 @end

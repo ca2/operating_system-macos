@@ -7,6 +7,7 @@
 #pragma once
 
 
+#include "acme_windowing_appkit/windowing.h"
 #include "aura/windowing/windowing.h"
 
 
@@ -15,7 +16,8 @@ namespace windowing_macos
 
 
    class CLASS_DECL_WINDOWING_MACOS windowing :
-   virtual public ::windowing::windowing
+   virtual public ::windowing::windowing,
+virtual public ::appkit::acme::windowing::windowing
    {
    public:
 
@@ -57,6 +59,9 @@ namespace windowing_macos
 
 
       void initialize(::particle * pparticle) override;
+      
+      
+      void initialize_windowing() override;
 
       //void windowing_post(const ::procedure & procedure) override;
 
@@ -109,7 +114,14 @@ namespace windowing_macos
       
       void clear_active_window(::thread *, ::windowing::window *) override;
       
+      void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback) override;
       
+      
+      void windowing_application_main_loop() override;
+      void windowing_post_quit() override;
+      
+      
+
    };
       
 
