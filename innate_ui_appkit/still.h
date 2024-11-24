@@ -19,6 +19,8 @@ class icon;
    public:
 
       //GtkWidget * m_pgtkwidget;
+      
+      ::pointer <::innate_ui_appkit::icon > m_picon;
 
       bool m_bIcon;
 

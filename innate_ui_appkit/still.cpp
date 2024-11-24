@@ -103,14 +103,14 @@ m_bIcon = true;
    void still::set_icon(::innate_ui::icon * piconParam)
    {
 
-      ::pointer <::innate_ui_appkit::icon > picon = piconParam;
+      m_picon = piconParam;
 
-      main_send([this, picon]()
+      main_send([this]()
       {
 
          //gtk_image_set_from_paintable(GTK_IMAGE(m_pqgtkwidget), picon->m_pgdkpaintable);
          //::SendMessage(m_hwnd, STM_SETICON, (WPARAM) picon->m_hicon, 0);
-         __set_icon(picon);
+         __set_icon(m_picon);
 //         auto plabel = dynamic_cast<QLabel*>(m_pqwidget);
 //
 //         if(plabel)

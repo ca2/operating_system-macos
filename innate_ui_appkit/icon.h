@@ -19,11 +19,7 @@ namespace innate_ui_appkit
 
       //GdkPaintable *  m_pgdkpaintable;
       //QPixmap *m_pqpixmap;
-#ifdef __OBJC__
-      NSImage * m_pnsimage;
-#else
       void * m_pNSImage;
-#endif
       icon();
       ~icon() override;
 

@@ -50,7 +50,8 @@ public:
    void run() override;
    void windowing_post_quit() override;
    
-   
+   void application_handle(huge_integer l, void* p) override;
+
    bool handle_messages() override;
    
    virtual void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);

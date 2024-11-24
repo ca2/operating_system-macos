@@ -76,7 +76,7 @@ namespace innate_ui_appkit
 //
 //
 
-      main_post([this](){__create_icon();});
+      main_send([this](){__create_icon();});
 
    }
 

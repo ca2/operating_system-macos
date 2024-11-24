@@ -8,14 +8,14 @@
 
 
 
-void defer_create_acme_application_delegate(::platform::application * papplication);
-
-
-void apple_defer_nano_application_create(class ::platform::system * psystem)
-{
-
-   auto papplication = psystem->m_papplication;
-
-   defer_create_acme_application_delegate(papplication);
-
-}
+//void defer_create_acme_application_delegate(::platform::application * papplication);
+//
+//
+//void apple_defer_nano_application_create(class ::platform::system * psystem)
+//{
+//
+//   auto papplication = psystem->m_papplication;
+//
+//   defer_create_acme_application_delegate(papplication);
+//
+//}

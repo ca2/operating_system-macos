@@ -367,7 +367,7 @@ namespace innate_ui_appkit
    void window::show()
    {
 
-      post([this]()
+      main_post([this]()
       {
 
          //m_pqwidget->show();

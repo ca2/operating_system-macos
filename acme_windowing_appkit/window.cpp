@@ -11,6 +11,7 @@
 #include "acme/platform/node.h"
 #include "acme/user/micro/elemental.h"
 #include "acme/user/user/mouse.h"
+#include "acme/windowing/windowing.h"
 #include <CoreGraphics/CoreGraphics.h>
 
 void ns_main_post(dispatch_block_t block);
@@ -305,6 +306,14 @@ namespace appkit
       {
          
          //m_pacmewindowbridge->set
+         
+      }
+      
+      
+      void window::_main_post(const ::procedure & procedure)
+      {
+         
+         system()->acme_windowing()->_main_post(procedure);
          
       }
       

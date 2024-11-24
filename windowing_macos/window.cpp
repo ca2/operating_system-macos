@@ -70,6 +70,46 @@ namespace windowing_macos
    }
 
 
+#ifdef _DEBUG
+      
+      
+   huge_integer window::increment_reference_count()
+   {
+      
+      return ::acme::windowing::window::increment_reference_count();
+      
+   }
+   
+   
+   huge_integer window::decrement_reference_count()
+   {
+      
+      return ::acme::windowing::window::decrement_reference_count();
+      
+   }
+   
+   
+   huge_integer window::release()
+   {
+      
+      return ::acme::windowing::window::release();
+      
+   }
+
+
+   void window::on_initialize_particle()
+   {
+      
+      ::windowing::window::on_initialize_particle();
+      
+      ::appkit::acme::windowing::window::on_initialize_particle();
+      
+   }
+      
+      
+#endif
+
+
    void window::on_message_create(::message::message * pmessage)
    {
       
@@ -106,6 +146,13 @@ void window::_main_send(const ::procedure & procedure)
 
    //m_puserinteraction->_main_send(procedure);
 
+}
+
+void window::_main_post(const ::procedure & procedure)
+{
+ 
+   ::appkit::acme::windowing::window::_main_post(procedure);
+   
 }
 
    void window::install_message_routing(channel * pchannel)
@@ -151,6 +198,14 @@ void window::_main_send(const ::procedure & procedure)
 
       //MESSAGE_LINK(e_message_create, pchannel, pimpl, &::user::interaction_impl::_001OnPrioCreate);
 
+   }
+
+
+   void window::create_window()
+   {
+      
+      ::windowing::window::create_window();
+      
    }
 
 
@@ -354,7 +409,7 @@ void window::_main_send(const ::procedure & procedure)
    }
 
 
-   bool window::_is_active_window() const
+   bool window::is_active_window()
    {
 
       return macos_window_is_key_window();
@@ -362,7 +417,7 @@ void window::_main_send(const ::procedure & procedure)
    }
 
    
-   bool window::_has_keyboard_focus() const
+   bool window::has_keyboard_focus()
    {
       
       bool bHasKeyboardFocus = macos_window_is_key_window();
@@ -568,7 +623,7 @@ void window::_main_send(const ::procedure & procedure)
                
             }
             
-            macos_window_resign_key();
+            macos_window::macos_window_resign_key();
             macos_window_hide();
             
          }
@@ -911,11 +966,11 @@ void window::_main_send(const ::procedure & procedure)
 
       g->set_alpha_mode(::draw2d::e_alpha_mode_set);
 
-      _synchronous_lock slGraphics(pbuffer->synchronization());
+      synchronous_lock slGraphics(pbuffer->synchronization());
       
       auto pitem = pbuffer->get_screen_item();
       
-      _synchronous_lock sl1(pitem->m_pmutex);
+      synchronous_lock sl1(pitem->m_pmutex);
 
       ::image::image_pointer & imageBuffer2 = pitem->m_pimage2;
 

@@ -6,6 +6,7 @@
 #include "acme/nano/nano.h"
 //#include "acme/nano/user/user.h"
 #include "acme/parallelization/manual_reset_happening.h"
+#include "acme/platform/application.h"
 #include "acme/platform/node.h"
 #include "acme/platform/system.h"
 #include "acme/windowing/display.h"
@@ -23,7 +24,9 @@ void ns_main_post(dispatch_block_t block);
 void acme_defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);
 
 
-void apple_defer_nano_application_create(::platform::system * psystem);
+//void apple_defer_nano_application_create(::platform::system * psystem);
+
+void ns_application_handle(long long l, void * p);
 
 
 namespace appkit
@@ -40,7 +43,8 @@ namespace windowing
 windowing::windowing()
 {
     
-    
+   m_bMessageThread = true;
+   
 }
 
 
@@ -171,13 +175,7 @@ void windowing::_main_send(const ::procedure & procedure)
 void windowing::windowing_application_main_loop()
 {
    
-   apple_defer_nano_application_create(system());
-   
-  
-   system()->defer_post_initial_request();
-   
    main();
-   //ns_app_run();
    
 }
 
@@ -208,7 +206,23 @@ bool windowing::handle_messages()
 void  windowing::run()
 {
    
+   //apple_defer_nano_application_create(system());
+   
+   defer_create_windowing_application_delegate(
+                                               application(),
+                                               application()->application_menu(),
+                                               application());
+  
+   system()->defer_post_initial_request();
+   
    ns_app_run();
+   
+   if(::system()->m_pmanualresethappeningMainLoopEnd)
+   {
+
+      ::system()->m_pmanualresethappeningMainLoopEnd->set_happening();
+
+   }
    
 }
 
@@ -293,6 +307,13 @@ void windowing::defer_create_windowing_application_delegate(::platform::applicat
                                                  papplication,
                                                  papplicationmenu, papplicationmenucallback);
 
+}
+
+
+void windowing::application_handle(huge_integer l, void* p)
+{
+   ns_application_handle(l, p);
+   
 }
 
 

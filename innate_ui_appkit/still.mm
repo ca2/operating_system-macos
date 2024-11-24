@@ -189,7 +189,7 @@ void still::__set_icon(::innate_ui_appkit::icon * picon)
    
    NSImageView * pnsimageview = (NSImageView *) m_pnsview;
    
-   [pnsimageview setImage:picon->m_pnsimage];
+   [pnsimageview setImage:(__bridge NSImage *) picon->m_pNSImage];
    
 }
 

@@ -52,7 +52,7 @@ namespace innate_ui_appkit
 
       ::string str(scopedstr);
       
-      post([this, str]
+      main_post([this, str]
       ()
          {
 

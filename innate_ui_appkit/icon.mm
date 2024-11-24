@@ -27,7 +27,7 @@ void icon::__create_icon()
    // Create NSImage from NSData
    NSImage *image = [[NSImage alloc] initWithData:imageData];
    
-   m_pnsimage = image;
+   m_pNSImage = (__bridge_retained void *) image;
    
 }
 
@@ -35,7 +35,11 @@ void icon::__create_icon()
 void icon::__icon_release()
 {
  
-   m_pnsimage = nil;
+   NSImage * pnsimage = (__bridge_transfer NSImage *) m_pNSImage;
+   
+   m_pNSImage = nullptr;
+   
+   pnsimage = nil;
    
 }
 

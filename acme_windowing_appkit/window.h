@@ -57,9 +57,9 @@ namespace appkit
 
 #ifdef _DEBUG
 
-   virtual huge_integer increment_reference_count() override;
-   virtual huge_integer decrement_reference_count() override;
-   virtual huge_integer release() override;
+      huge_integer increment_reference_count() override;
+      huge_integer decrement_reference_count() override;
+      huge_integer release() override;
 
 #endif
 
@@ -76,6 +76,8 @@ namespace appkit
       void hide_window() override;
 
       //virtual void _on_event(XEvent *pevent);
+      
+      void _main_post(const ::procedure & procedure) override;
 
       virtual void _update_window();
 

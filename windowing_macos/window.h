@@ -17,6 +17,8 @@
 //
 //#endif
 
+
+#include "acme_windowing_appkit/window.h"
 #include "macos/macos_window.h"
 #include "aura/windowing/window.h"
 
@@ -27,7 +29,8 @@ namespace windowing_macos
 
     class CLASS_DECL_WINDOWING_MACOS window :
       virtual public ::windowing::window,
-      virtual public ::macos_window
+      virtual public ::macos_window,
+      virtual public ::appkit::acme::windowing::window
    {
    public:
       
@@ -44,8 +47,20 @@ namespace windowing_macos
       ~window() override;
       
       
+#ifdef _DEBUG
+
+      huge_integer increment_reference_count() override;
+      huge_integer decrement_reference_count() override;
+      huge_integer release() override;
+
+#endif
+      
+      void on_initialize_particle() override;
+
       //void create_window(::user::interaction_impl * pimpl) override;
       
+      
+      void create_window() override;
       
       void _create_window() override;
             
@@ -70,12 +85,14 @@ namespace windowing_macos
       
       void set_tool_window(bool bSet) override;
       
-      bool _is_active_window() const;
+      bool is_active_window() override;
       
-      bool _has_keyboard_focus() const;
+      bool has_keyboard_focus() override;
       
-       class windowing * macos_windowing() ;
+      class windowing * macos_windowing() ;
+      
       void _main_send(const ::procedure & procedure) override;
+      void _main_post(const ::procedure & procedure) override;
 //      void _window_request_presentation() override;
       
       //void show_window(const ::e_display &edisplay, const ::e_activation &eactivation) override;

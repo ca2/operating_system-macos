@@ -1072,20 +1072,6 @@ void aura_defer_create_windowing_application_delegate(::platform::application * 
 
 
 
-void ns_application_handle(long long l, void * p)
-{
-   
-   ns_main_post(^{
-
-      macOSApp * papp = nullptr;
-      
-      papp = (macOSApp *) [ [NSApplication sharedApplication] delegate ] ;
-      
-      [papp application_handle: l withPointer:p];
-
-   });
-   
-}
 
 
 

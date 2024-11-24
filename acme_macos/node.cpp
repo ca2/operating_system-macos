@@ -32,7 +32,7 @@ void macos_folder_dialog(::file::folder_dialog * pdialog);
 void macos_file_dialog(::file::file_dialog * pdialog);
 
 
-void apple_defer_nano_application_create(::platform::system * psystem);
+//void apple_defer_nano_application_create(::platform::system * psystem);
 void acme_macos_application_init(::platform::application * papplication, int argc, char *argv[]);
 void ns_launch_app(const char * psz, const char
                    ** argv, int iFlags);

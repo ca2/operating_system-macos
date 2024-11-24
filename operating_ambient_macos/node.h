@@ -64,9 +64,9 @@ namespace operating_ambient_macos
       void defer_innate_ui() override;
       //void on_system_main() override;
       
-      
-      void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback) override;
-
+//      
+//      void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback) override;
+//
 
       //void ns_app_run() override;
       

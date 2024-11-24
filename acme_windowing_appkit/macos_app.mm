@@ -1020,21 +1020,21 @@ void ns_apple_set_application_delegate(::platform::application * papplication, m
 void * apple_get_application_delegate(::platform::application * papplication);
 
 
-void defer_create_acme_application_delegate(::platform::application * papplication)
-{
-   
-   macos_app * pappdelegate = (__bridge macos_app *) apple_get_application_delegate(papplication);
-
-   if(pappdelegate == nullptr)
-   {
-      
-      pappdelegate = [ [ macos_app alloc ] init ];
-      
-      ns_apple_set_application_delegate(papplication, pappdelegate);
-      
-   }
-   
-}
+//void defer_create_acme_application_delegate(::platform::application * papplication)
+//{
+//   
+//   macos_app * pappdelegate = (__bridge macos_app *) apple_get_application_delegate(papplication);
+//
+//   if(pappdelegate == nullptr)
+//   {
+//      
+//      pappdelegate = [ [ macos_app alloc ] init ];
+//      
+//      ns_apple_set_application_delegate(papplication, pappdelegate);
+//      
+//   }
+//   
+//}
 
 
 //
@@ -1707,3 +1707,18 @@ void ensure_edit_menu(::application_menu * papplicationmenu)
 
 
 
+
+void ns_application_handle(long long l, void * p)
+{
+   
+   ns_main_post(^{
+
+      macos_app * papp = nullptr;
+      
+      papp = (macos_app *) [ [NSApplication sharedApplication] delegate ] ;
+      
+      [papp application_handle: l withPointer:p];
+
+   });
+   
+}
