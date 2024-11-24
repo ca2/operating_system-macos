@@ -78,7 +78,7 @@ namespace windowing_macos
       
       void set_mouse_cursor2(::windowing::cursor * pcursor) override;
 
-      //void get_cursor_position(POINT_I32 * ppoint) override;
+      //void get_cursor_position(INT_POINT * ppoint) override;
 
       void _defer_dock_application(int_bool bDock);
 

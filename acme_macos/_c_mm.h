@@ -27,10 +27,10 @@ char * __strdup(NSString * str);
 
 #ifdef MM
 
-void copy(NSRect & rectangle, const RECTANGLE_I32 * lpcrect);
-void copy(RECTANGLE_I32 * lprect, const NSRect & rectSrc);
-void screen_coordinates_aware_copy(NSRect & rectangle, const RECTANGLE_I32 * lpcrect);
-void screen_coordinates_aware_copy(RECTANGLE_I32 * lprect, const NSRect & rectSrc);
+void copy(NSRect & rectangle, const INT_RECTANGLE * lpcrect);
+void copy(INT_RECTANGLE * lprect, const NSRect & rectSrc);
+void screen_coordinates_aware_copy(NSRect & rectangle, const INT_RECTANGLE * lpcrect);
+void screen_coordinates_aware_copy(INT_RECTANGLE * lprect, const NSRect & rectSrc);
 
 #endif
 

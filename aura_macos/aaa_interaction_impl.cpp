@@ -91,9 +91,9 @@ namespace aura_macos
 
    CLASS_DECL_AURA bool unhook_window_create();
 
-   void CLASS_DECL_AURA __pre_init_dialog(::user::interaction * pWnd, RECTANGLE_I32 * lpRectOld, unsigned int* pdwStyleOld);
+   void CLASS_DECL_AURA __pre_init_dialog(::user::interaction * pWnd, INT_RECTANGLE * lpRectOld, unsigned int* pdwStyleOld);
 
-//   void CLASS_DECL_AURA __post_init_dialog(::user::interaction * pWnd, const RECTANGLE_I32& rectOld, unsigned int dwStyleOld);
+//   void CLASS_DECL_AURA __post_init_dialog(::user::interaction * pWnd, const INT_RECTANGLE& rectOld, unsigned int dwStyleOld);
 //
 //   LRESULT CALLBACK __activation_window_procedure(oswindow hWnd, unsigned int nMsg, wparam wparam, lparam lparam);
 ////
@@ -391,7 +391,7 @@ namespace aura_macos
 //
 //      CGRect int_rectangle;
 //
-//      RECTANGLE_I32 rectParam;
+//      INT_RECTANGLE rectParam;
 //
 ////      rectParam.left = m_pusersystem->m_createstruct.x;
 ////      rectParam.top = pusersystem->m_createstruct.y;
@@ -1109,7 +1109,7 @@ namespace aura_macos
 //   }
 //
 //
-////   bool interaction_impl::GetUpdateRect(RECTANGLE_I32 * lpRect, bool bErase)
+////   bool interaction_impl::GetUpdateRect(INT_RECTANGLE * lpRect, bool bErase)
 ////   {
 ////
 ////      throw ::exception(error_not_implemented);
@@ -1423,7 +1423,7 @@ namespace aura_macos
 //   }
 
 
-//   bool interaction_impl::DrawAnimatedRects(int idAni, const RECTANGLE_I32 *lprcFrom, const RECTANGLE_I32 * lprcTo)
+//   bool interaction_impl::DrawAnimatedRects(int idAni, const INT_RECTANGLE *lprcFrom, const INT_RECTANGLE * lprcTo)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1679,7 +1679,7 @@ namespace aura_macos
 //   }
 //
 //
-//   int interaction_impl::ScrollWindowEx(int Δx, int Δy, const RECTANGLE_I32 * lpRectScroll, const RECTANGLE_I32 * lpRectClip, ::draw2d::region* prgnUpdate, RECTANGLE_I32 * lpRectUpdate, unsigned int flags)
+//   int interaction_impl::ScrollWindowEx(int Δx, int Δy, const INT_RECTANGLE * lpRectScroll, const INT_RECTANGLE * lpRectClip, ::draw2d::region* prgnUpdate, INT_RECTANGLE * lpRectUpdate, unsigned int flags)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1774,7 +1774,7 @@ namespace aura_macos
 //   }
 //
 //
-//   ::user::interaction * PASCAL interaction_impl::oswindowFromPoint(POINT_I32 int_point)
+//   ::user::interaction * PASCAL interaction_impl::oswindowFromPoint(INT_POINT int_point)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1849,11 +1849,11 @@ namespace aura_macos
 //
 //      throw ::exception(error_not_implemented);;
 //      //      ::int_point point;
-//      //      ::GetCaretPos((POINT_I32 *)&point); return point;
+//      //      ::GetCaretPos((INT_POINT *)&point); return point;
 //
 //   }
 //
-//   void PASCAL interaction_impl::SetCaretPos(POINT_I32 int_point)
+//   void PASCAL interaction_impl::SetCaretPos(INT_POINT int_point)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -2342,11 +2342,11 @@ namespace aura_macos
    //   { Default(); }
    //   void interaction_impl::OnStyleChanging(int, LPSTYLESTRUCT)
    //   { Default(); }
-//   void interaction_impl::OnSizing(unsigned int, RECTANGLE_I32 *)
+//   void interaction_impl::OnSizing(unsigned int, INT_RECTANGLE *)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnMoving(unsigned int, RECTANGLE_I32 *)
+//   void interaction_impl::OnMoving(unsigned int, INT_RECTANGLE *)
 //   {
 //      Default();
 //   }
@@ -2640,7 +2640,7 @@ namespace aura_macos
 //   }
 
 
-   void interaction_impl::offset_viewport_org(RECTANGLE_I32 * lprectScreen)
+   void interaction_impl::offset_viewport_org(INT_RECTANGLE * lprectScreen)
    {
 
    }

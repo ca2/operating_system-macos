@@ -72,7 +72,7 @@ namespace windowing_macos
 
 // void ns_main_monitor_cgrect(CGRect * p);
 
-// int get_main_screen_rectangle(RECTANGLE_I32 * pr)
+// int get_main_screen_rectangle(INT_RECTANGLE * pr)
 // {
    
 //    CGRect r;

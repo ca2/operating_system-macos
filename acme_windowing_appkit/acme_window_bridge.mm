@@ -335,7 +335,7 @@ bool apple_is_action_key(int i)
 }
 
 
-void ns_screen_copy(CGRect & rect, const ::RECTANGLE_I32 & rectangle)
+void ns_screen_copy(CGRect & rect, const ::INT_RECTANGLE & rectangle)
 {
    
    NSScreen * pscreenMain = [ NSScreen mainScreen ];
@@ -353,7 +353,7 @@ void ns_screen_copy(CGRect & rect, const ::RECTANGLE_I32 & rectangle)
 }
 
 
-void ns_screen_copy(::RECTANGLE_I32 & rectangle, CGRect & rect)
+void ns_screen_copy(::INT_RECTANGLE & rectangle, CGRect & rect)
 {
    
    NSScreen * pscreenMain = [ NSScreen mainScreen ];

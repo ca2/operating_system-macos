@@ -124,7 +124,7 @@ namespace aura_macos
 
 //      // Advanced: virtual AdjustWindowRect
 //      enum AdjustType { adjustBorder = 0, adjustOutside = 1 };
-//      virtual void CalcWindowRect(RECTANGLE_I32 * lpClientRect, unsigned int nAdjustType = adjustBorder) override;
+//      virtual void CalcWindowRect(INT_RECTANGLE * lpClientRect, unsigned int nAdjustType = adjustBorder) override;
 //
 
 
@@ -169,20 +169,20 @@ namespace aura_macos
 //      virtual bool client_rectangle(RECTANGLE_I64 * lpRect) override;
 
       //virtual double_point client_screen_top_left() override;
-//        virtual bool _001ClientToScreen(RECTANGLE_I32 * lprect) override;
-//        virtual bool _001ClientToScreen(POINT_I32 * lppoint) override;
+//        virtual bool _001ClientToScreen(INT_RECTANGLE * lprect) override;
+//        virtual bool _001ClientToScreen(INT_POINT * lppoint) override;
 //        virtual bool _001ClientToScreen(RECTANGLE_I64 * lprect) override;
 //        virtual bool _001ClientToScreen(POINT_I64 * lppoint) override;
-//        virtual bool _001ScreenToClient(RECTANGLE_I32 * lprect) override;
-//        virtual bool _001ScreenToClient(POINT_I32 * lppoint) override;
+//        virtual bool _001ScreenToClient(INT_RECTANGLE * lprect) override;
+//        virtual bool _001ScreenToClient(INT_POINT * lppoint) override;
 //        virtual bool _001ScreenToClient(RECTANGLE_I64 * lprect) override;
 //        virtual bool _001ScreenToClient(POINT_I64 * lppoint) override;
 
       //virtual bool GetWindowPlacement(WINDOWPLACEMENT* lpuserinteractionpl);
       //virtual bool SetWindowPlacement(const WINDOWPLACEMENT* lpuserinteractionpl);
 
-      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo, POINT_I32 * lpPoint, unsigned int nCount);
-      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo, RECTANGLE_I32 * lpRect);
+      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo, INT_POINT * lpPoint, unsigned int nCount);
+      //virtual void MapWindowPoints(::user::interaction * puserinteractionTo, INT_RECTANGLE * lpRect);
 
       //virtual ::draw2d::graphics * GetDC();
       //virtual ::draw2d::graphics * GetWindowDC();
@@ -192,7 +192,7 @@ namespace aura_macos
 
 //      virtual void UpdateWindow() override;
 //      virtual void SetRedraw(bool bRedraw = true) override;
-//      //virtual bool GetUpdateRect(RECTANGLE_I32 * lpRect, bool bErase = false) override;
+//      //virtual bool GetUpdateRect(INT_RECTANGLE * lpRect, bool bErase = false) override;
 //      virtual int GetUpdateRgn(::draw2d::region* pRgn, bool bErase = false) override;
 //      virtual void Invalidate(bool bErase = true) override;
 //      virtual void InvalidateRect(const ::int_rectangle &rectangle, bool bErase = true) override;
@@ -209,7 +209,7 @@ namespace aura_macos
 
 
       void set_origin(::draw2d::graphics_pointer & pgraphics) override;
-      void offset_viewport_org(RECTANGLE_I32 * lprectScreen);
+      void offset_viewport_org(INT_RECTANGLE * lprectScreen);
 
 
       //virtual ::draw2d::graphics * GetDCEx(::draw2d::region* prgnClip, unsigned int flags) override;
@@ -220,7 +220,7 @@ namespace aura_macos
       //virtual votru8id _001UpdateWindow(bool bUpdateBuffer = false) override;
       // xxx      virtual bool EnableScrollBar(int nSBFlags, unsigned int nArrowFlags = ESB_ENABLE_BOTH);
 
-      //virtual bool DrawAnimatedRects(int idAni, const RECTANGLE_I32 *lprcFrom, const RECTANGLE_I32 *lprcTo) override;
+      //virtual bool DrawAnimatedRects(int idAni, const INT_RECTANGLE *lprcFrom, const INT_RECTANGLE *lprcTo) override;
 //      void DrawCaption(::draw2d::graphics_pointer & pgraphics, const ::int_rectangle & rectangle, unsigned int uFlags) override;
 
 
@@ -274,8 +274,8 @@ namespace aura_macos
 //      virtual int GetScrollPos(int nBar) const override;
 //      virtual void GetScrollRange(int nBar, LPINT lpMinPos, LPINT lpMaxPos) const override;
 //      virtual void ScrollWindow(int xAmount, int yAmount,
-//                                const RECTANGLE_I32 * prectangle = nullptr,
-//                                const RECTANGLE_I32 * lpClipRect = nullptr) override;
+//                                const INT_RECTANGLE * prectangle = nullptr,
+//                                const INT_RECTANGLE * lpClipRect = nullptr) override;
 //      virtual int SetScrollPos(int nBar, int nPos, bool bRedraw = true) override;
 //      virtual void SetScrollRange(int nBar, int nMinPos, int nMaxPos,
 //                                  bool bRedraw = true) override;
@@ -285,8 +285,8 @@ namespace aura_macos
 //      // return sibling scrollbar control (or nullptr if none)
 //
 //      virtual int ScrollWindowEx(int Δx, int Δy,
-//                                 const RECTANGLE_I32 * prectScroll, const RECTANGLE_I32 * lprectClip,
-//                                 ::draw2d::region* prgnUpdate, RECTANGLE_I32 * lpRectUpdate, unsigned int flags) override;
+//                                 const INT_RECTANGLE * prectScroll, const INT_RECTANGLE * lprectClip,
+//                                 ::draw2d::region* prgnUpdate, INT_RECTANGLE * lpRectUpdate, unsigned int flags) override;
 //      //xxx      virtual bool SetScrollInfo(int nBar, LPSCROLLINFO lpScrollInfo,
 //      //xxx         bool bRedraw = true);
 //      //xxx      virtual bool GetScrollInfo(int nBar, LPSCROLLINFO lpScrollInfo, unsigned int nMask = SIF_ALL);
@@ -484,8 +484,8 @@ namespace aura_macos
       // Win4 messages
       //xxx      void OnStyleChanged(int nStyleType, LPSTYLESTRUCT lpStyleStruct);
       //xxx      void OnStyleChanging(int nStyleType, LPSTYLESTRUCT lpStyleStruct);
-//      void OnSizing(unsigned int nSide, RECTANGLE_I32 * lpRect);
-//      void OnMoving(unsigned int nSide, RECTANGLE_I32 * lpRect);
+//      void OnSizing(unsigned int nSide, INT_RECTANGLE * lpRect);
+//      void OnMoving(unsigned int nSide, INT_RECTANGLE * lpRect);
 //      void OnCaptureChanged(::user::interaction * pWnd);
 //      bool OnDeviceChange(unsigned int nEventType, uptr dwData);
 

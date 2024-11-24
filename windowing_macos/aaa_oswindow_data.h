@@ -28,7 +28,7 @@ public:
    iptr_to_iptr *          m_plongmap;
 
    bool                          m_bNsWindowRect;
-   RECTANGLE_I32                          m_rectNsWindow;
+   INT_RECTANGLE                          m_rectNsWindow;
 
 
    oswindow_data();
@@ -99,9 +99,9 @@ public:
    bool show_window(int iShow);
    iptr get_window_long_ptr(iptr nIndex);
    iptr set_window_long_ptr(iptr nIndex, iptr l);
-   bool _001ClientToScreen(POINT_I32 * ppoint);
+   bool _001ClientToScreen(INT_POINT * ppoint);
 
-   bool _001ScreenToClient(POINT_I32 * ppoint);
+   bool _001ScreenToClient(INT_POINT * ppoint);
 
 
 
@@ -154,14 +154,14 @@ bool oswindow_erase(nswindow window);
 //   return (int) window->set_window_long(nIndex, l);
 //}
 //
-//inline int _001ClientToScreen(::oswindow window, POINT_I32 * ppoint)
+//inline int _001ClientToScreen(::oswindow window, INT_POINT * ppoint)
 
 //{
 //   return window->_001ClientToScreen(ppoint);
 
 //}
 //
-//inline int _001ScreenToClient(::oswindow window, POINT_I32 * ppoint)
+//inline int _001ScreenToClient(::oswindow window, INT_POINT * ppoint)
 
 //{
 //   return window->_001ScreenToClient(ppoint);

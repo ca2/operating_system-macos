@@ -47,7 +47,7 @@
  return ::AfxInvariantStrICmp(szTemp, lpszClassName) == 0;
  }
 
- oswindow CLASS_DECL_lnx _AfxChildWindowFromPoint(oswindow hWnd, POINT_I32 int_point)
+ oswindow CLASS_DECL_lnx _AfxChildWindowFromPoint(oswindow hWnd, INT_POINT int_point)
  {
  ASSERT(hWnd != nullptr);
 
