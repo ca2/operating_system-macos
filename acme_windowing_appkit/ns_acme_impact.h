@@ -43,7 +43,7 @@ struct mf_context
 //   mf_context* mfc;
    //APPLE_KEYBOARD_TYPE appleKeyboardType;
    //ns_nano_window * m_pnanowindow;
-   acme_window_bridge * m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * m_pacmewindowbridge;
    NSTrackingArea * trackingArea;
    bool m_bLShift;
    bool m_bRShift;

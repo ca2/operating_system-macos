@@ -10,7 +10,10 @@
 
 #include <Cocoa/Cocoa.h>
 
+namespace appkit
+{
 class acme_window_bridge;
+}
 @class ns_acme_impact;
 
 
@@ -18,12 +21,15 @@ class acme_window_bridge;
 {
 @public
    
-   acme_window_bridge *       m_pacmewindowbridge;
+   ::appkit::acme_window_bridge *       m_pacmewindowbridge;
    ns_acme_impact *           m_pnsacmeimpact;
    //NSWindowController *       m_pwindowcontroller;
 
 }
--(instancetype) init: (NSRect) rectangle with_acme_window_bridge:(acme_window_bridge * )pacmewindowbridge;
+
+-(instancetype) init: (NSRect) rectangle;
+
+-(void)setBridge:(::appkit::acme_window_bridge *) pacmewindowbridge;
 
 @end
  

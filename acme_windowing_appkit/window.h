@@ -7,11 +7,11 @@
 #include "acme/windowing/window.h"
 #include <Carbon/Carbon.h>
 
-class acme_window_bridge;
-
 
 namespace appkit
 {
+
+class acme_window_bridge;
 
 
    namespace acme
@@ -32,7 +32,7 @@ namespace appkit
       //Display *                        m_pdisplay;
       //Window                           m_window;
       //cairo_surface_t *                m_psurface;
-      ::pointer<acme_window_bridge>   m_pacmewindowbridge;
+      ::pointer<::appkit::acme_window_bridge>   m_pacmewindowbridge;
       ::pointer<::nano::graphics::device>          m_pnanodevice;
       //::pointer<::nano::graphics::font>         m_pfont;
       //color32_t                     m_colorText;

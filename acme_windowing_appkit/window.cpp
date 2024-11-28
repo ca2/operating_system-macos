@@ -125,7 +125,9 @@ namespace appkit
             if (pelemental)
             {
                
-               pelemental->draw(m_pnanodevice);
+               pelemental->draw_foreground(m_pnanodevice);
+               
+               pelemental->draw_background(m_pnanodevice);
                
             }
             

@@ -33,10 +33,8 @@ void ns_main_send(dispatch_block_t block);
 // and grows bigger from bottom as farther from bottom of screen.
 
 
--(instancetype) init: (NSRect) rectangle with_acme_window_bridge:(acme_window_bridge * )pacmewindowbridge
+-(instancetype) init: (NSRect) rectangle
 {
-   
-   m_pacmewindowbridge = pacmewindowbridge;
    
    self = [ super
       initWithContentRect : rectangle
@@ -82,6 +80,13 @@ void ns_main_send(dispatch_block_t block);
    [ self create_impact ];
    
    return self;
+   
+}
+
+-(void)setBridge:(::appkit::acme_window_bridge * ) pacmewindowbridge
+{
+ 
+   m_pacmewindowbridge = pacmewindowbridge;
    
 }
 
