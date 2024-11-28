@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A1CC40B2CF2DBE5004A00CB /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1CC40A2CF2DBE5004A00CB /* libacme_apple.dylib */; };
+		9A3E32262CF82558007DC9EE /* libacme_windowing_kit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3E32232CF8253E007DC9EE /* libacme_windowing_kit.dylib */; };
 		9A523E0E2CD3A5E5006ED868 /* window.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A523E0C2CD3A5E5006ED868 /* window.h */; };
 		9A523E0F2CD3A5E5006ED868 /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A523E0D2CD3A5E5006ED868 /* window.cpp */; };
 		9A523E282CD3A619006ED868 /* ns_acme_impact.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A523E212CD3A619006ED868 /* ns_acme_impact.h */; };
@@ -42,6 +43,20 @@
 			remoteGlobalIDString = 9A0C165E264A290E00B5CC33;
 			remoteInfo = acme_macos;
 		};
+		9A3E321E2CF8253D007DC9EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A3E321B2CF8253D007DC9EE /* acme_windowing_kit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AC3F2A32CF81EBF0061DCC0;
+			remoteInfo = acme_windowing_kit;
+		};
+		9A3E32222CF8253E007DC9EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A3E321B2CF8253D007DC9EE /* acme_windowing_kit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9AC3F2A42CF81EBF0061DCC0;
+			remoteInfo = acme_windowing_kit;
+		};
 		9A7E179A2C9DFE4D00EE8CA6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A7E17922C9DFE4D00EE8CA6 /* acme.xcodeproj */;
@@ -55,6 +70,8 @@
 		9A1CC3FC2CF2DBBE004A00CB /* acme_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_macos.xcodeproj; path = ../acme_macos/acme_macos.xcodeproj; sourceTree = "<group>"; };
 		9A1CC3FF2CF2DBCD004A00CB /* acme_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_macos.xcodeproj; path = "/Users/camilo/workspace/main/operating_system/operating_system-macos/acme_macos/acme_macos.xcodeproj"; sourceTree = "<absolute>"; };
 		9A1CC40A2CF2DBE5004A00CB /* libacme_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A3E32062CF8251B007DC9EE /* acme_windowing_kit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_windowing_kit.xcodeproj; path = "/Users/camilo/workspace/main/operating_system/operating_system-apple/acme_windowing_kit/acme_windowing_kit.xcodeproj"; sourceTree = "<absolute>"; };
+		9A3E321B2CF8253D007DC9EE /* acme_windowing_kit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_windowing_kit.xcodeproj; path = "/Users/camilo/workspace/main/operating_system/operating_system-apple/acme_windowing_kit/acme_windowing_kit.xcodeproj"; sourceTree = "<absolute>"; };
 		9A523E0C2CD3A5E5006ED868 /* window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = window.h; sourceTree = "<group>"; };
 		9A523E0D2CD3A5E5006ED868 /* window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
 		9A523E1F2CD3A619006ED868 /* acme_notification_callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = acme_notification_callback.h; sourceTree = "<group>"; };
@@ -92,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A3E32262CF82558007DC9EE /* libacme_windowing_kit.dylib in Frameworks */,
 				9A1CC40B2CF2DBE5004A00CB /* libacme_apple.dylib in Frameworks */,
 				9A5243482CD4AA59006ED868 /* AppKit.framework in Frameworks */,
 				9A7E17A12C9DFE6200EE8CA6 /* libacme.dylib in Frameworks */,
@@ -115,10 +133,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9A3E321C2CF8253D007DC9EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A3E32232CF8253E007DC9EE /* libacme_windowing_kit.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9A7E175E2C9DFBB600EE8CA6 = {
 			isa = PBXGroup;
 			children = (
 				9A1CC3FC2CF2DBBE004A00CB /* acme_macos.xcodeproj */,
+				9A3E32062CF8251B007DC9EE /* acme_windowing_kit.xcodeproj */,
 				9A7E17682C9DFBB600EE8CA6 /* Products */,
 				9A7E17892C9DFCD900EE8CA6 /* _____debug.xcconfig */,
 				9A7E178A2C9DFCD900EE8CA6 /* _____release.xcconfig */,
@@ -150,6 +177,7 @@
 				9A7E17922C9DFE4D00EE8CA6 /* acme.xcodeproj */,
 				9A7E17A02C9DFE6200EE8CA6 /* Frameworks */,
 				9A1CC3FF2CF2DBCD004A00CB /* acme_macos.xcodeproj */,
+				9A3E321B2CF8253D007DC9EE /* acme_windowing_kit.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -210,6 +238,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9A3E321F2CF8253D007DC9EE /* PBXTargetDependency */,
 				9A1CC4032CF2DBCD004A00CB /* PBXTargetDependency */,
 			);
 			name = acme_windowing_appkit;
@@ -258,6 +287,10 @@
 					ProductGroup = 9A1CC4002CF2DBCD004A00CB /* Products */;
 					ProjectRef = 9A1CC3FF2CF2DBCD004A00CB /* acme_macos.xcodeproj */;
 				},
+				{
+					ProductGroup = 9A3E321C2CF8253D007DC9EE /* Products */;
+					ProjectRef = 9A3E321B2CF8253D007DC9EE /* acme_windowing_kit.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -267,6 +300,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		9A3E32232CF8253E007DC9EE /* libacme_windowing_kit.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libacme_windowing_kit.dylib;
+			remoteRef = 9A3E32222CF8253E007DC9EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9A7E179B2C9DFE4D00EE8CA6 /* libacme.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
@@ -305,6 +345,11 @@
 			isa = PBXTargetDependency;
 			name = acme_macos;
 			targetProxy = 9A1CC4022CF2DBCD004A00CB /* PBXContainerItemProxy */;
+		};
+		9A3E321F2CF8253D007DC9EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = acme_windowing_kit;
+			targetProxy = 9A3E321E2CF8253D007DC9EE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

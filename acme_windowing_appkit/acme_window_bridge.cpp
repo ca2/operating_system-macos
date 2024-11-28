@@ -30,85 +30,86 @@ void screen_coordinates_aware_copy(CGPoint & cgpoint, const ::int_point & point)
 
 void screen_coordinates_aware_copy(::int_point & point, const CGPoint & cgpoint);
 
-
-void acme_window_bridge::on_left_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute)
+namespace appkit
 {
-   
-   auto pmouse = m_pwindow->__create_new <::user::mouse>();
-   
-   pmouse->m_pointHost = {xHost, yHost};
-   
-   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
-   
-   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
-   
-   pelemental->on_left_button_up(pmouse);
-   
-}
-
-
-void acme_window_bridge::on_left_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute)
-{
-   
-   auto pmouse = m_pwindow->__create_new <::user::mouse>();
-   
-   pmouse->m_pointHost = {xHost, yHost};
-   
-   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
-
-   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
-   
-   pelemental->on_left_button_down(pmouse);
-   
-}
-
-
-void acme_window_bridge::on_right_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute)
-{
-   
-   auto pmouse = m_pwindow->__create_new <::user::mouse>();
-   
-   pmouse->m_pointHost = {xHost, yHost};
-   
-   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
-   
-   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
-
-   pelemental->on_right_button_up(pmouse);
-   
-}
-
-
-void acme_window_bridge::on_right_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute)
-{
-   
-   auto pmouse = m_pwindow->__create_new <::user::mouse>();
-   
-   pmouse->m_pointHost = {xHost, yHost};
-   
-   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
-   
-   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
-
-   pelemental->on_right_button_down(pmouse);
-   
-}
-
-
-void acme_window_bridge::on_mouse_move(int xHost, int yHost, int xAbsolute, int yAbsolute)
-{
-   
-   auto pmouse = m_pwindow->__create_new <::user::mouse>();
-   
-   pmouse->m_pointHost = {xHost, yHost};
-   
-   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
-   
-   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
-
-   pelemental->on_mouse_move(pmouse);
-   
-}
+//void acme_window_bridge::on_left_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute)
+//{
+//
+//   auto pmouse = m_pwindow->__create_new <::user::mouse>();
+//
+//   pmouse->m_pointHost = {xHost, yHost};
+//
+//   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
+//
+//   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
+//
+//   pelemental->on_left_button_up(pmouse);
+//
+//}
+//
+//
+//void acme_window_bridge::on_left_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute)
+//{
+//
+//   auto pmouse = m_pwindow->__create_new <::user::mouse>();
+//
+//   pmouse->m_pointHost = {xHost, yHost};
+//
+//   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
+//
+//   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
+//
+//   pelemental->on_left_button_down(pmouse);
+//
+//}
+//
+//
+//void acme_window_bridge::on_right_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute)
+//{
+//
+//   auto pmouse = m_pwindow->__create_new <::user::mouse>();
+//
+//   pmouse->m_pointHost = {xHost, yHost};
+//
+//   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
+//
+//   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
+//
+//   pelemental->on_right_button_up(pmouse);
+//
+//}
+//
+//
+//void acme_window_bridge::on_right_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute)
+//{
+//
+//   auto pmouse = m_pwindow->__create_new <::user::mouse>();
+//
+//   pmouse->m_pointHost = {xHost, yHost};
+//
+//   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
+//
+//   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
+//
+//   pelemental->on_right_button_down(pmouse);
+//
+//}
+//
+//
+//void acme_window_bridge::on_mouse_move(int xHost, int yHost, int xAbsolute, int yAbsolute)
+//{
+//
+//   auto pmouse = m_pwindow->__create_new <::user::mouse>();
+//
+//   pmouse->m_pointHost = {xHost, yHost};
+//
+//   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
+//
+//   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
+//
+//   pelemental->on_mouse_move(pmouse);
+//
+//}
 
 
 void acme_window_bridge::on_char(int iChar)
@@ -138,7 +139,7 @@ void acme_window_bridge::on_layout(int x, int y, int w, int h)
    r.top() = y;
    r.right() = x+w;
    r.bottom() = y+h;
-
+   
    m_pwindow->m_pacmeuserinteraction->set_rectangle(r);
    
 }
@@ -147,13 +148,13 @@ void acme_window_bridge::on_layout(int x, int y, int w, int h)
 bool acme_window_bridge::_is_top_most() const
 {
    
-//   return m_pwindow->m_pacmeuserinteraction->m_bTopMost;
+   //   return m_pwindow->m_pacmeuserinteraction->m_bTopMost;
    
    ::cast<::acme::user::frame_interaction> pelemental = m_pwindow->m_pacmeuserinteraction;
    
    if(!pelemental)
    {
-    
+      
       return false;
       
    }
@@ -173,7 +174,7 @@ bool acme_window_bridge::_is_popup_window() const
 
 void acme_window_bridge::macos_window_become_main()
 {
- 
+   
    return m_pwindow->macos_window_become_main();
    
 }
@@ -181,7 +182,7 @@ void acme_window_bridge::macos_window_become_main()
 
 void acme_window_bridge::macos_window_resign_main()
 {
- 
+   
    return m_pwindow->macos_window_resign_main();
    
 }
@@ -189,7 +190,7 @@ void acme_window_bridge::macos_window_resign_main()
 
 void acme_window_bridge::macos_window_become_key()
 {
- 
+   
    return m_pwindow->macos_window_become_key();
    
 }
@@ -197,7 +198,7 @@ void acme_window_bridge::macos_window_become_key()
 
 void acme_window_bridge::macos_window_resign_key()
 {
- 
+   
    return m_pwindow->macos_window_resign_key();
    
 }
@@ -209,6 +210,9 @@ void acme_window_bridge::do_tasks()
    ::task_run();
    
 }
+
+
+} // namespace appkit
 
 
 
