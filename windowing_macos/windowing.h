@@ -50,7 +50,7 @@ virtual public ::appkit::acme::windowing::windowing
 
       ::pointer < class window >                   m_pwindowCapture;
 
-      map < void *, ::pointer < class window > >   m_nsmap;
+      //map < void *, ::pointer < class window > >   m_nsmap;
 
       //::pointer < element_quit >                   m_pelementquit;
 

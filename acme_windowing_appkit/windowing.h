@@ -23,8 +23,14 @@ namespace windowing
 class CLASS_DECL_ACME_WINDOWING_APPKIT windowing :
 virtual public ::acme::windowing::windowing
 {
+protected:
+   
+   
+   /// map NSWindow * (bridge casted to void *) to a ::acme::windowing::window *
+  map < void *, ::pointer < ::acme::windowing::window > > m_windowmap;
+
+
 public:
-    
     
     
     windowing();
@@ -56,7 +62,8 @@ public:
    
    virtual void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);
 
-   
+   virtual void set_osdata_acme_windowing_window(void *, ::acme::windowing::window *);
+   virtual ::acme::windowing::window * osdata_acme_windowing_window(void *);
     
 };
 

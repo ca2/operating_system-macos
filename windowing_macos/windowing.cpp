@@ -265,18 +265,20 @@ namespace windowing_macos
    ::windowing::window * windowing::get_keyboard_focus(::thread *)
    {
       
-      void * pnswindow = ns_get_key_window();
+      void * osdataKeyWindow = ns_get_key_window();
       
-      if(::is_null(pnswindow))
+      if(::is_null(osdataKeyWindow))
       {
          
          return nullptr;
          
       }
       
-      auto pwindowFocus = m_nsmap[pnswindow];
+      auto pacmewindowingwindowFocus = osdata_acme_windowing_window(osdataKeyWindow);
 
-      return pwindowFocus;
+      ::cast < ::windowing::window > pwindowingwindowFocus = pacmewindowingwindowFocus;
+      
+      return pwindowingwindowFocus;
 
    }
 

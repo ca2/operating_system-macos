@@ -8,33 +8,22 @@
 
 #pragma once
 
+#include "acme_windowing_appkit/acme_window_bridge.h"
 //#include "app/axis/user/user/user_key_enum.h"
-#ifdef __OBJC__
-#import <Cocoa/Cocoa.h>
-@class macos_nswindow;
-#endif
 
-class macos_window
+class macos_window :
+   virtual public appkit::acme_window_bridge
 {
 public:
    
-#ifdef __OBJC__
-   
-   macos_nswindow *  m_pnswindow;
-   
-#else
-   
-   void *            m_pnswindow;
-   
-#endif
 
-    double                  m_dOpacity;
-   bool                    m_bDestroying;
-   bool                    m_bDirty;
-   bool                    m_bTest123;
+   double                        m_dOpacity;
+   bool                          m_bDestroying;
+   bool                          m_bDirty;
+   bool                          m_bTest123;
    
-   ::huge_integer                   m_iNanosecondLastUpdateBeg;
-   ::huge_integer                   m_iNanosecondLastUpdateEnd;
+   ::huge_integer                m_iNanosecondLastUpdateBeg;
+   ::huge_integer                m_iNanosecondLastUpdateEnd;
 
    
    macos_window();

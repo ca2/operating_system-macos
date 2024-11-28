@@ -20,11 +20,11 @@
 //  this copyright and permission notice. Attribution in compiled projects is
 //  appreciated but not required.
 //
-
+#pragma once
 
 #define NS_ROUND_WINDOW_FRAME_PADDING 0
 
-//#include "keyboard.h"
+#include <AppKit/AppKit.h>
 
 struct mf_context
 {

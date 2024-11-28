@@ -12,42 +12,42 @@
 //  appreciated but not required.
 //
 
-
+#include "acme_windowing_appkit/ns_acme_impact.h"
 #define NS_ROUND_WINDOW_FRAME_PADDING 0
 
 //#include "keyboard.h"
 
-struct mf_context
-{
-
-//   enum APPLE_KEYBOARD_TYPE appleKeyboardType;
-   
-};
+//struct mf_context
+//{
+//
+////   enum APPLE_KEYBOARD_TYPE appleKeyboardType;
+//   
+//};
 #import <Cocoa/Cocoa.h>
 
 
-@class macos_nswindow;
+@class macOSWindow;
 
 
-@interface macOSWindowFrameView : NSView
+@interface macOSImpact : ns_acme_impact
 {
    @public
 //   mf_context* mfc;
    //APPLE_KEYBOARD_TYPE appleKeyboardType;
-   macos_nswindow * m_pnswindow;
-   NSTrackingArea * trackingArea;
-   bool m_bLShift;
-   bool m_bRShift;
-   bool m_bLControl;
-   bool m_bRControl;
-   bool m_bLAlt;
-   bool m_bRAlt;
-   bool m_bLCommand; // In Windows, the Windows Key
-   bool m_bRCommand; // In Windows, the Windows Key
-   unsigned int kbdModFlags;
+   //macOSWindow * m_pnsmacoswindow;
+   //NSTrackingArea * trackingArea;
+   //bool m_bLShift;
+   //bool m_bRShift;
+   //bool m_bLControl;
+   //bool m_bRControl;
+   //bool m_bLAlt;
+   //bool m_bRAlt;
+   //bool m_bLCommand; // In Windows, the Windows Key
+   //bool m_bRCommand; // In Windows, the Windows Key
+   //unsigned int kbdModFlags;
    
 }
 
-- (id)initWithFrame:(NSRect)frame and_macos_nswindow:(macos_nswindow*)pnswindow;
+- (id)initWithFrame:(NSRect)frame andWindow:(ns_acme_window*)pnsacmewindow;
 
 @end

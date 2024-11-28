@@ -11,6 +11,8 @@
 //  this copyright and permission notice. Attribution in compiled projects is
 //  appreciated but not required.
 //
+#pragma once
+
 
 #import <Cocoa/Cocoa.h>
 #include "macOSWindowController.h"
@@ -20,10 +22,10 @@ unsigned int event_key_code(NSEvent * event);
 
 
 class macos_window;
-@class macOSWindowFrameView;
+@class macOSImpact;
 
 
-@interface macos_nswindow : ns_acme_window
+@interface macOSWindow : ns_acme_window
 {
 @public
    
@@ -32,7 +34,7 @@ class macos_window;
    macos_window *          m_pmacoswindow;
    
    
-    macOSWindowFrameView *                m_pviewChildContent;
+   //macOSImpact *           m_pimpactChildContent;
    NSWindowController *    m_pwindowcontroller;
    
    

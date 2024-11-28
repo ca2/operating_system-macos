@@ -27,6 +27,9 @@
 #include <CoreGraphics/CoreGraphics.h>
 
 
+void * __nsacmewindow_osdata(CFTypeRef pnsacmewindow);
+
+
 bool macos_get_cursor_position(::int_point * ppointCursor);
 
 
@@ -2215,16 +2218,26 @@ pmessage->m_atom = emessage
 
    }
 
+
+   void * window::get_os_data() const
+   {
+   
+      return __nsacmewindow_osdata((CFTypeRef) m_pnsacmewindow);
+   
+   }
+
    void window::macos_window_on_create()
    {
       
-      set_os_data(m_pnswindow);
+      //set_os_data(m_pnswindow);
       
       set_oswindow(this);
       
-       auto pwindowing = macos_windowing();
+      auto pwindowing = macos_windowing();
+      
+      auto osdata = __nsacmewindow_osdata(m_pnsacmewindow);
 
-      pwindowing->m_nsmap[m_pnswindow] = this;
+      pwindowing->set_osdata_acme_windowing_window(osdata, this);
       
       auto puserinteraction = m_puserinteraction;
       
@@ -2474,9 +2487,9 @@ pmessage->m_atom = emessage
    void window::non_top_most_upper_window_rects(::int_rectangle_array & recta)
    {
       
+      auto osdata = __nsacmewindow_osdata(m_pnsacmewindow);
       
-      recta = cg_get_window_rect_list_intersect_above(ns_get_window_id(m_pnswindow));
-      
+      recta = cg_get_window_rect_list_intersect_above(ns_get_window_id(osdata));
       
    }
 

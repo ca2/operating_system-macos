@@ -12,28 +12,29 @@
 //  appreciated but not required.
 //
 #include "framework.h"
-#include "macOSWindowFrameView.h"
+#include "macOSImpact.h"
+#include "macOSWindow.h"
 #include "macos_window.h"
-#include "macos_nswindow.h"
+#include "macOSWindow.h"
 #include "acme/operating_system/macos/keyboard.h"
 #import "acme/operating_system/winpr_input.h"
 #include <Carbon/Carbon.h>
 //NSCursor * g_pcurrentNscursor = nullptr;
 
-@implementation macOSWindowFrameView
+@implementation macOSImpact
 
 
-- (id) initWithFrame: (NSRect) frame and_macos_nswindow: (macos_nswindow *) pnswindow
+- (id) initWithFrame: (NSRect) frame andWindow: (ns_acme_window *) pnsacmewindow
 {
 
-   self                 = [super initWithFrame:frame];
+   self                 = [super initWithFrame:frame andWindow:pnsacmewindow];
    
    //[self setWantsLayer : YES];
    //[self setLayerContentsRedrawPolicy: NSViewLayerContentsRedrawOnSetNeedsDisplay];
    
 //   appleKeyboardType    = mac_detect_keyboard_type();
    
-   m_pnswindow          = pnswindow;
+   //pnsmacoswindow          = (macOSWindow *) pnsacmewindow;
    
    m_bLShift            = false;
    m_bRShift            = false;
@@ -123,8 +124,10 @@
 
 - (void) mouseUp: (NSEvent *) event
 {
+   
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
 
-   macos_window * p = m_pnswindow->m_pmacoswindow;
+   macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -163,8 +166,10 @@
 
 - (void) mouseMoved: (NSEvent *) event
 {
+   
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
 
-   macos_window * p = m_pnswindow->m_pmacoswindow;
+   macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -192,8 +197,10 @@
 
 - (void) mouseDragged: (NSEvent *) event
 {
+   
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
 
-   macos_window * p = m_pnswindow->m_pmacoswindow;
+   macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -232,7 +239,9 @@
 - (void) mouseDown: (NSEvent *) event
 {
    
-   macos_window * p = m_pnswindow->m_pmacoswindow;
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   
+   macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -262,7 +271,9 @@
 - (void)rightMouseUp:(NSEvent *)event
 {
    
-   macos_window * p = m_pnswindow->m_pmacoswindow;
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   
+   macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -293,7 +304,9 @@
 - (void)rightMouseDown:(NSEvent *)event
 {
    
-   macos_window * p = m_pnswindow->m_pmacoswindow;
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   
+   macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
       return;
@@ -323,7 +336,9 @@
 - (void)scrollWheel:(NSEvent *)event
 {
    
-   macos_window * p = m_pnswindow->m_pmacoswindow;
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   
+   macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
    {
@@ -482,8 +497,10 @@
 
 - (void) drawRect: (NSRect) rect
 {
+   
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
 
-   macos_window * p = m_pnswindow->m_pmacoswindow;
+   macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
    {
@@ -599,10 +616,12 @@
       
    }
    
-   if(![m_pnswindow isKeyWindow])
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   
+   if(![pnsmacoswindow isKeyWindow])
    {
       
-      [m_pnswindow makeKeyWindow];
+      [pnsmacoswindow makeKeyWindow];
       
    }
    
@@ -690,8 +709,10 @@ m_f = true; \
 
 - (void)keyDown:(NSEvent *)event
 {
+   
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
 
-   macos_window * p = m_pnswindow->m_pmacoswindow;
+   macos_window * p = pnsmacoswindow->m_pmacoswindow;
      
    if(p == NULL)
    {
@@ -802,7 +823,9 @@ m_f = true; \
    
    NSString * characters;
    
-   macos_window * p = m_pnswindow->m_pmacoswindow;
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   
+   macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
    {
@@ -856,8 +879,10 @@ m_f = true; \
 
 - (void)flagsChanged:(NSEvent *)event
 {
+   
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
 
-   macos_window * p = m_pnswindow->m_pmacoswindow;
+   macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
    if(p == NULL)
    {
@@ -983,12 +1008,12 @@ m_f = true; \
    
    NSCursor * pcursor = nullptr;
    
-   auto pnswindow = m_pnswindow;
+   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
    
-   if(pnswindow)
+   if(pnsmacoswindow)
    {
       
-      auto pmacoswindow = pnswindow->m_pmacoswindow;
+      auto pmacoswindow = pnsmacoswindow->m_pmacoswindow;
       
       if(pmacoswindow)
       {

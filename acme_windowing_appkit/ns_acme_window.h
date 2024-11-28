@@ -21,8 +21,8 @@ class acme_window_bridge;
 {
 @public
    
-   ::appkit::acme_window_bridge *       m_pacmewindowbridge;
-   ns_acme_impact *           m_pnsacmeimpact;
+   ::appkit::acme_window_bridge *      m_pacmewindowbridge;
+   ns_acme_impact *                    m_pnsacmeimpact;
    //NSWindowController *       m_pwindowcontroller;
 
 }

@@ -2,10 +2,12 @@
 // Created by camilo on 2024-05-26 22:03 <3ThomasBorregaardSorensen!!
 //
 #include "framework.h"
+#include "window.h"
 #include "windowing.h"
 #include "acme/nano/nano.h"
 //#include "acme/nano/user/user.h"
 #include "acme/parallelization/manual_reset_happening.h"
+#include "acme/parallelization/synchronous_lock.h"
 #include "acme/platform/application.h"
 #include "acme/platform/node.h"
 #include "acme/platform/system.h"
@@ -313,6 +315,37 @@ void windowing::defer_create_windowing_application_delegate(::platform::applicat
 void windowing::application_handle(huge_integer l, void* p)
 {
    ns_application_handle(l, p);
+   
+}
+
+
+void windowing::set_osdata_acme_windowing_window(void * posdata, ::acme::windowing::window * pacmewindowingwindow)
+{
+   
+   _synchronous_lock synchronouslock(this->synchronization());
+   
+   if(::is_null(pacmewindowingwindow))
+   {
+      
+      m_windowmap.erase_item(posdata);
+      
+   }
+   else
+   {
+    
+      m_windowmap.set_at(posdata, pacmewindowingwindow);
+      
+   }
+      
+}
+
+
+::acme::windowing::window * windowing::osdata_acme_windowing_window(void * posdata)
+{
+   
+   _synchronous_lock synchronouslock(this->synchronization());
+
+   return m_windowmap[posdata];
    
 }
 

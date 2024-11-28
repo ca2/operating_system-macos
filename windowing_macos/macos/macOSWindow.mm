@@ -12,7 +12,7 @@
 //  appreciated but not required.
 //
 #include "framework.h"
-#include "macos_nswindow.h"
+#include "macOSWindow.h"
 #include "macos_window.h"
 #include "macOSImpact.h"
 #include "_c_mm.h"
@@ -50,7 +50,7 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
 
 
 
-@implementation macos_nswindow
+@implementation macOSWindow
 
 
 //
@@ -77,7 +77,7 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
       
    }
    
-   macos_nswindow * pnswindow = self;
+   macOSWindow * pnswindow = self;
    
 	[self setOpaque:NO];
     [self setHasShadow:NO];
@@ -125,7 +125,7 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
 
    [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidDeminiaturize:) name: NSWindowDidDeminiaturizeNotification object: pnswindow];
    
-   [self create_view];
+   [self create_impact];
    
    m_pmacoswindow->macos_window_add_ref();
    
@@ -202,22 +202,22 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
 // Keep our frame view as the content view and make the specified "aView"
 // the child of that.
 //
-- (void)create_view
+- (void)create_impact
 {
 
 	NSRect bounds = [self frame];
 	
    bounds.origin = NSZeroPoint;
 
-	macOSWindowFrameView * pframeview = [[macOSWindowFrameView alloc] initWithFrame: bounds and_macos_nswindow: self];
+	macOSImpact * pnsmacosimpact = [[macOSImpact alloc] initWithFrame: bounds andWindow: self];
    
-   m_pviewChildContent = pframeview;
+   m_pnsacmeimpact = (ns_acme_impact *)pnsmacosimpact;
    
-	[super setContentView: pframeview];
+	[super setContentView: pnsmacosimpact];
    
-	[pframeview setFrame: bounds];
+	[pnsmacosimpact setFrame: bounds];
    
-	[pframeview setAutoresizingMask: 0];
+	[pnsmacosimpact setAutoresizingMask: 0];
    
 }
 
