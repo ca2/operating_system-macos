@@ -23,7 +23,7 @@ namespace innate_ui_appkit
       dialog();
       ~dialog() override;
 
-
+      void create() override;
       virtual void __create_dialog();
       void _create() override;
       //void _get_class(WNDCLASSEXW & wcex);

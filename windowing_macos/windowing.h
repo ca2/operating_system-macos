@@ -77,9 +77,9 @@ virtual public ::appkit::acme::windowing::windowing
       
       ::windowing::window * get_mouse_capture(::thread *) override;
       
-      void release_mouse_capture(::thread * pthread, ::windowing::window * pwindow) override;
+      void release_mouse_capture(::thread * pthread, ::acme::windowing::window * pwindow) override;
 
-      bool defer_release_mouse_capture(::thread * pthread, ::windowing::window * pwindow) override;
+      bool defer_release_mouse_capture(::thread * pthread, ::acme::windowing::window * pwindow) override;
       
       void set_mouse_cursor2(::windowing::cursor * pcursor) override;
 

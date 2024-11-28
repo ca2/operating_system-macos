@@ -576,7 +576,7 @@ string keyboard_input_source()
 }
 
 
-CLASS_DECL_AURA ::windowing::window * oswindow_get(oswindow oswindow)
+CLASS_DECL_AURA ::acme::windowing::window * oswindow_get(oswindow oswindow)
 {
 
    if(oswindow == nullptr)

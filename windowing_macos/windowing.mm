@@ -8,31 +8,22 @@
 
 #import <Cocoa/Cocoa.h>
 
-NSWindow * __nswindow(oswindow oswindow);
+//NSWindow * __nswindow(oswindow oswindow);
 
 
-NSWindow * get_os_window_ns_window(oswindow hwnd);
+//NSWindow * get_os_window_ns_window(oswindow hwnd);
 
 
-NSWindow * get_os_window_ns_window(oswindow hwnd)
+//NSWindow * get_os_window_ns_window(oswindow hwnd)
+//{
+//
+//   return __nswindow(hwnd);
+//
+//}
+
+
+CGWindowID nswindow_window_number(NSWindow * window)
 {
-
-   return __nswindow(hwnd);
-
-}
-
-
-CGWindowID get_os_window_window_number(oswindow oswindow)
-{
-
-   if(oswindow == NULL)
-   {
-
-      return 0;
-
-   }
-
-   NSWindow * window = get_os_window_ns_window(oswindow);
 
    if(window == NULL)
    {
@@ -41,7 +32,6 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
 
    }
 
-   
    return (CGWindowID)[window windowNumber];
    
 }

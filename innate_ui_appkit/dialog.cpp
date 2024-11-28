@@ -49,6 +49,11 @@ namespace innate_ui_appkit
    //
    // }
 
+void dialog::create()
+{
+   ::innate_ui_appkit::window::create();
+   
+}
    void dialog::_create()
    {
 

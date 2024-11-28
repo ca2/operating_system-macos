@@ -212,7 +212,25 @@ void acme_window_bridge::do_tasks()
 }
 
 
+::acme::windowing::window * acme_window_bridge::acme_windowing_window()
+{
+ 
+   return m_pwindow;
+   
+}
+
 } // namespace appkit
 
+void * __nsacmewindow_osdata(CFTypeRef typeref);
 
+void * oswindow_osdata(oswindow hwnd)
+{
+ 
+   auto pappkitacmewindowingwindow = dynamic_cast < ::appkit::acme::windowing::window * >(hwnd);
+   
+   auto pacmewindowbridge = pappkitacmewindowingwindow->m_pacmewindowbridge;
+   
+   return __nsacmewindow_osdata(pacmewindowbridge->m_pnsacmewindow);
+   
+}
 

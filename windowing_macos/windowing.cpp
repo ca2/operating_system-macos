@@ -144,7 +144,7 @@ namespace windowing_macos
    ::windowing::window * windowing::window(oswindow oswindow)
    {
 
-      return oswindow;
+      return dynamic_cast < ::windowing::window * >(oswindow);
 
    }
 
@@ -289,7 +289,7 @@ namespace windowing_macos
    }
 
 
-   void windowing::release_mouse_capture(::thread * pthread, ::windowing::window * pwindow)
+   void windowing::release_mouse_capture(::thread * pthread, ::acme::windowing::window * pwindow)
    {
       
       auto pwindowCapture = m_pwindowCapture;
@@ -308,7 +308,7 @@ namespace windowing_macos
    }
 
 
-bool windowing::defer_release_mouse_capture(::thread * pthread, ::windowing::window * pwindow)
+bool windowing::defer_release_mouse_capture(::thread * pthread, ::acme::windowing::window * pwindow)
 {
    
    if(pwindow != m_pwindowCapture)

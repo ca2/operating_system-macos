@@ -57,15 +57,15 @@ public:
    
    void do_tasks();
    
-   virtual void on_left_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute);
-   
-   virtual void on_left_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute);
-   
-   virtual void on_right_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute);
-   
-   virtual void on_right_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute);
-   
-   virtual void on_mouse_move(int xHost, int yHost, int xAbsolute, int yAbsolute);
+//   virtual void on_left_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute);
+//   
+//   virtual void on_left_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute);
+//   
+//   virtual void on_right_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute);
+//   
+//   virtual void on_right_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute);
+//   
+//   virtual void on_mouse_move(int xHost, int yHost, int xAbsolute, int yAbsolute);
    
    virtual void on_char(int iChar);
    
@@ -96,6 +96,8 @@ public:
    virtual bool _is_top_most() const;
    
    virtual bool _is_popup_window() const;
+   
+   ::acme::windowing::window * acme_windowing_window() override;
    
 };
 

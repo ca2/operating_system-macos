@@ -26,7 +26,6 @@
 
 namespace innate_ui_appkit
 {
-   
 
    void dialog::__create_dialog()
    {

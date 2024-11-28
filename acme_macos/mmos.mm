@@ -55,16 +55,21 @@ void init_mmos(::platform::system * psystem)
    
    [pmmos monitorIconForFile];
    
-   [[pmmos dd_invokeOnMainThreadAndWaitUntilDone: TRUE] deferWallpaper:NULL];
+   ns_main_send(^{
+      
+      [pmmos deferWallpaper:NULL];
+      
+   });
    
 }
+
 
 void term_mmos(::platform::system * psystem)
 {
    
    auto pmmos = (__bridge_transfer mmos *) get_system_mmos(psystem);
    
-   [pmmos dd_fake];
+   pmmos = nil;
    
 }
 
@@ -299,7 +304,11 @@ void term_mmos(::platform::system * psystem)
 -(void)runRunnableOnMainThread:(matter *)prunnable
 {
    
-   [[self dd_invokeOnMainThread] runRunnable: prunnable];
+   ns_main_post(^{
+      [self runRunnable: prunnable];
+   });
+   
+   
    
 }
 

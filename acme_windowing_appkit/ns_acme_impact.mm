@@ -31,13 +31,13 @@
 @implementation ns_acme_impact
 
 
-- (id) initWithFrame: (NSRect) frame and_acme_window_bridge: (acme_window_bridge *) pnanowindowbridge
+- (id) initWithFrame: (NSRect) frame andWindow: (ns_acme_window *) pnsacmewindow
 {
 
    self                 = [super initWithFrame:frame];
    
    
-   m_pacmewindowbridge  = pnanowindowbridge;
+   m_pnsacmewindow      = pnsacmewindow;
    
    m_bLShift            = false;
    m_bRShift            = false;
@@ -131,7 +131,7 @@
 - (void) mouseUp: (NSEvent *) event
 {
 
-   acme_window_bridge * p = m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -160,7 +160,7 @@
 - (void) mouseMoved: (NSEvent *) event
 {
 
-   acme_window_bridge * p = m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -191,7 +191,7 @@
 - (void) mouseDragged: (NSEvent *) event
 {
 
-   acme_window_bridge * p = m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -220,7 +220,7 @@
 - (void) mouseDown: (NSEvent *) event
 {
    
-   acme_window_bridge * p = m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -249,7 +249,7 @@
 - (void) rightMouseUp: (NSEvent *) event
 {
 
-   acme_window_bridge * p = m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -278,7 +278,7 @@
 - (void) rightMouseDown: (NSEvent *) event
 {
    
-   acme_window_bridge * p = m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -331,7 +331,7 @@
 - (void) drawRect: (NSRect) rect
 {
 
-   acme_window_bridge * p = m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -450,7 +450,7 @@ m_f = true; \
 - (void)keyDown:(NSEvent *)event
 {
 
-   acme_window_bridge * p = m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
      
    if(p == NULL)
    {
@@ -541,7 +541,7 @@ m_f = true; \
    
    NSString * characters;
    
-   acme_window_bridge * p = m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
    
    if(p == NULL)
    {
@@ -566,7 +566,7 @@ m_f = true; \
 - (void)flagsChanged:(NSEvent *)event
 {
 
-   acme_window_bridge * p = m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
    
    if(p == NULL)
    {

@@ -21,30 +21,32 @@
 NSString * __nsstring(const char * psz);
 
 
-//NSWindow * get_os_window_ns_window(oswindow hwnd);
+void * oswindow_osdata(oswindow hwnd);
 
-//CGWindowID get_os_window_window_number(oswindow oswindow)
-//{
-//
-//      if(oswindow == NULL)
-//      {
-//
-//return 0;
-//
-//      }
-//
-//
-//      NSWindow * window = get_os_window_ns_window(oswindow);
-//
-//      if(window == NULL)
-//      {
-//
-//return 0;
-//
-//      }
-//
-//      return (CGWindowID)[window windowNumber];
-//}
+CGWindowID get_os_window_window_number(oswindow oswindow)
+{
+
+   if(oswindow == NULL)
+   {
+
+      return 0;
+
+   }
+   
+   void * posdata = oswindow_osdata(oswindow);
+
+   NSWindow * window = (__bridge NSWindow *) posdata;
+
+   if(window == NULL)
+   {
+
+      return 0;
+
+   }
+
+   return (CGWindowID)[window windowNumber];
+   
+}
 
 
 

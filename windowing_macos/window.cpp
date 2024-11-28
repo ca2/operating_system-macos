@@ -2735,13 +2735,5 @@ class windowing * window::macos_windowing()
 } // namespace windowing_macos
 
 
-struct NSWindow;
-
-NSWindow * __nswindow(oswindow oswindow)
-{
-
-   return (NSWindow *) oswindow->get_os_data();
-
-}
 
 

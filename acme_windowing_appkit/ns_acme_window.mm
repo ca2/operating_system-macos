@@ -239,7 +239,7 @@ void ns_main_send(dispatch_block_t block);
    
    bounds.origin = NSZeroPoint;
 
-   m_pnsacmeimpact = [ [ ns_acme_impact alloc ] initWithFrame: bounds and_acme_window_bridge: m_pacmewindowbridge ];
+   m_pnsacmeimpact = [ [ ns_acme_impact alloc ] initWithFrame: bounds andWindow:self ];
    
    //m_pimpactChild = pimpact;
    
@@ -258,3 +258,15 @@ void ns_main_send(dispatch_block_t block);
 
 
 
+void * __nsacmewindow_osdata(CFTypeRef typeref)
+{
+ 
+   ns_acme_window * pnsacmewindow = (__bridge ns_acme_window *) typeref;
+   
+   NSWindow * pnswindow = (NSWindow *) pnsacmewindow;
+   
+   void * posdata = (__bridge_retained void *) pnswindow;
+   
+   return posdata;
+   
+}
