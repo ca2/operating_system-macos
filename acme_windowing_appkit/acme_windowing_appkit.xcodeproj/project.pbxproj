@@ -101,6 +101,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A191D292CF3D880001239A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9A1CC4002CF2DBCD004A00CB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +249,10 @@
 				{
 					ProductGroup = 9A7E17932C9DFE4D00EE8CA6 /* Products */;
 					ProjectRef = 9A7E17922C9DFE4D00EE8CA6 /* acme.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A191D292CF3D880001239A6 /* Products */;
+					ProjectRef = 9A1CC3FC2CF2DBBE004A00CB /* acme_macos.xcodeproj */;
 				},
 				{
 					ProductGroup = 9A1CC4002CF2DBCD004A00CB /* Products */;
