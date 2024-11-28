@@ -9,11 +9,8 @@
 #pragma once
 
 
-#ifdef __OBJC__
+#include "acme_windowing_kit/acme_window_bridge.h"
 
-@class ns_acme_window;
-
-#endif
 
 namespace macos
 {
@@ -36,11 +33,14 @@ class window;
 }
 }
 
+namespace appkit
+{
+
 class acme_window_bridge :
-   virtual public ::particle
+virtual public ::apple_kit::acme_window_bridge
 {
 public:
-
+   
    bool m_bRunningAppMainLoop;
    ::appkit::acme::windowing::window *     m_pwindow;
    CFTypeRef                  m_pnsacmewindow;
@@ -58,13 +58,13 @@ public:
    void do_tasks();
    
    virtual void on_left_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute);
-
+   
    virtual void on_left_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute);
-
+   
    virtual void on_right_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute);
-
+   
    virtual void on_right_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute);
-
+   
    virtual void on_mouse_move(int xHost, int yHost, int xAbsolute, int yAbsolute);
    
    virtual void on_char(int iChar);
@@ -72,13 +72,13 @@ public:
    virtual void _on_draw_frame(CGContextRef cg, CGSize sizeFrame);
    
    virtual void redraw();
-
+   
    //virtual void stop();
    
    virtual void close();
    
    virtual void set_position(int x, int y);
-
+   
    virtual void on_layout(int x, int y, int w, int h);
    
    virtual void macos_window_become_main();
@@ -98,6 +98,9 @@ public:
    virtual bool _is_popup_window() const;
    
 };
+
+
+} // namespace appkit
 
 
 
