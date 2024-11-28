@@ -14,7 +14,7 @@
 #include "framework.h"
 #include "macos_nswindow.h"
 #include "macos_window.h"
-#include "macOSWindowFrameView.h"
+#include "macOSImpact.h"
 #include "_c_mm.h"
 
 
