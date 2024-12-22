@@ -206,6 +206,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9AA1F6E92D18B90C00DB0C45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -286,6 +293,10 @@
 				{
 					ProductGroup = 9A1CC4002CF2DBCD004A00CB /* Products */;
 					ProjectRef = 9A1CC3FF2CF2DBCD004A00CB /* acme_macos.xcodeproj */;
+				},
+				{
+					ProductGroup = 9AA1F6E92D18B90C00DB0C45 /* Products */;
+					ProjectRef = 9A3E32062CF8251B007DC9EE /* acme_windowing_kit.xcodeproj */;
 				},
 				{
 					ProductGroup = 9A3E321C2CF8253D007DC9EE /* Products */;

@@ -168,6 +168,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9AA1F6E72D18B90C00DB0C45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -234,6 +241,10 @@
 				{
 					ProductGroup = 9A1CC3B52CF2C017004A00CB /* Products */;
 					ProjectRef = 9A1CC3B42CF2C017004A00CB /* node_macos.xcodeproj */;
+				},
+				{
+					ProductGroup = 9AA1F6E72D18B90C00DB0C45 /* Products */;
+					ProjectRef = 9A1CC3882CF2BE7A004A00CB /* node_macos.xcodeproj */;
 				},
 			);
 			projectRoot = "";

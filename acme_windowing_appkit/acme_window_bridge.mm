@@ -137,19 +137,18 @@ void acme_window_bridge::display()
 void acme_window_bridge::hide()
 {
    
-   auto pnsacmewindow =  (__bridge ns_acme_window *) m_pnsacmewindow;
-   
-   if(!pnsacmewindow)
-   {
-      
-      return;
-      
-   }
-   
    ns_main_send(^()
                 {
       
+      auto pnsacmewindow =  (__bridge ns_acme_window *) m_pnsacmewindow;
       
+      if(!pnsacmewindow)
+      {
+         
+         return;
+         
+      }
+
       //[ pnsacmewindow resignKeyWindow];
       //[ pnsacmewindow resignMainWindow ];
       [ pnsacmewindow orderOut: pnsacmewindow ];
