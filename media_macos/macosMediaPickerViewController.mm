@@ -14,7 +14,7 @@
 //@interface UploadAudioViewController ()
 //
 //@end
-#include "windowing_macos/macos/macos_nswindow.h"
+#include "windowing_macos/macos/macos_window.h"
 //#include "windowing_macos/macos/macosViewController.h"
 #include "macos_media_picker.h"
 void ns_main_post(dispatch_block_t block);
@@ -99,7 +99,7 @@ void ns_main_post(dispatch_block_t block);
 //}
 
 
--(void) pickMedia : (const char *) pszType window :(macos_nswindow *) pmacoswindow
+-(void) pickMedia : (const char *) pszType window :(macOSWindow *) pmacoswindow
 {
    
 //   self->m_bForOpeningFile = false;

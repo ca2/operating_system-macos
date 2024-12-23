@@ -8,6 +8,7 @@
 
 #include "macos_media_picker.h"
 #include "windowing_macos/macos/macos_window.h"
+#include "windowing_macos/macos/macOSWindow.h"
 #include "macosMediaPickerViewController.h"
 
 
@@ -26,7 +27,7 @@ void macos_media_picker::macos_media_picker_pick_media(const char * pszMediaType
 {
    
    ns_main_post(^{
-      [ m_pmacoscontroller pickMedia : pszMediaType window:pmacoswindow->m_pnswindow ];
+      [ m_pmacoscontroller pickMedia : pszMediaType window:(macOSWindow *) (__bridge ns_acme_window *) pmacoswindow->m_pnsacmewindow ];
       
    });
    

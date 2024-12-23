@@ -32,7 +32,7 @@
 //
 
 class macos_media_picker;
-@class macos_nswindow;
+@class macOSWindow;
 
 
 @interface macosMediaPickerViewController : NSViewController // <MPMediaPickerControllerDelegate>
@@ -51,7 +51,7 @@ class macos_media_picker;
 
 //@property (nonatomic, strong)iosMediaPickerViewController * mediapickerHold;
 
--(void) pickMedia : (const char *) pszType window :(macos_nswindow *) pmacoswindow;
+-(void) pickMedia : (const char *) pszType window :(macOSWindow *) pmacoswindow;
 
 @end
 
