@@ -41,6 +41,9 @@ virtual public ::apple_kit::acme_window_bridge
 {
 public:
    
+   
+   bool                             m_bIsActiveCached;
+
    bool m_bRunningAppMainLoop;
    ::appkit::acme::windowing::window *     m_pwindow;
    CFTypeRef                  m_pnsacmewindow;

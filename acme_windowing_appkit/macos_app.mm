@@ -10,7 +10,7 @@
 #include "acme/constant/id.h"
 #include "acme/operating_system/argcargv.h"
 #include "acme/platform/application_menu.h"
-#include "acme/platform/application_menu_callback.h"
+#include "acme/handler/command_handler.h"
 #include <Foundation/Foundation.h>
 
 
@@ -22,7 +22,7 @@ void ns_main_post(dispatch_block_t block);
 
 void os_system_start();
 
-void application_on_menu_action(::platform::application * papplication, const char * pszCommand);
+void application_handle_command(::platform::application * papplication, const char * pszCommand, ::user::activation_token * puseractivationtoken);
 
 ::platform::system * application_system(::platform::application * papplication);
 
@@ -43,7 +43,7 @@ void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool b
 void ns_apple_set_application_delegate(::platform::application * papplication, macos_app * pappdelegate);
 void * apple_get_application_delegate(::platform::application * papplication);
 
-void acme_defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
+void acme_defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::command_handler * pcommandhandler)
 {
    
    macos_app * pappdelegate = (__bridge macos_app *) apple_get_application_delegate(papplication);
@@ -51,7 +51,7 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
    if(pappdelegate == nullptr)
    {
       
-      pappdelegate = [ [ macos_app alloc] initWithApplicationMenu: papplicationmenu andItsCallback: papplicationmenucallback];
+      pappdelegate = [ [ macos_app alloc] initWithApplicationMenu: papplicationmenu andCommandHandler: pcommandhandler];
       
       ns_apple_set_application_delegate(papplication, pappdelegate);
       
@@ -62,7 +62,8 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
 
 @implementation macos_app
 
-- (id)initWithApplicationMenu:(::application_menu *) papplicationmenu andItsCallback:(::application_menu_callback *)papplicationmenucallback
+
+- (id)initWithApplicationMenu:(::application_menu *) papplicationmenu andCommandHandler:(::command_handler *)pcommandhandler
 {
 
    [NSApplication sharedApplication];
@@ -90,7 +91,7 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
 
    m_papplicationmenu = papplicationmenu;
    
-   m_papplicationmenucallback = papplicationmenucallback;
+   m_pcommandhandler = pcommandhandler;
    
    [self application_menu_update];
 
@@ -250,7 +251,7 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
 -(void)show_about_box
 {
    
-   application_on_menu_action(m_papplication, "show_about_box");
+   application_handle_command(m_papplication, "show_about_box", nullptr);
    
 }
 
@@ -258,7 +259,7 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
 -(void)try_close_application
 {
    
-   application_on_menu_action(m_papplication, "try_close_application");
+   application_handle_command(m_papplication, "try_close_application", nullptr);
    
 }
 
@@ -843,7 +844,7 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
    
       const char * psz = [strId UTF8String];
          
-      m_papplicationmenucallback->on_application_menu_action(psz);
+      m_pcommandhandler->handle_command(psz, nullptr);
          
       return;
       
@@ -1555,7 +1556,7 @@ void ns_app_do_tasks()
    
    //auto runloop = [ prun getCFRunLoop ];
    
-   CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0., false);
+   ///CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0., false);
    
    NSLog(@"123");
    //[ prun run ];

@@ -114,7 +114,7 @@ virtual public ::appkit::acme::windowing::windowing
       
       void clear_active_window(::thread *, ::windowing::window *) override;
       
-      void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback) override;
+      void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::command_handler * pcommandhandler) override;
       
       
       void windowing_application_main_loop() override;

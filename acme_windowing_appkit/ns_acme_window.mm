@@ -33,14 +33,15 @@ void ns_main_send(dispatch_block_t block);
 // and grows bigger from bottom as farther from bottom of screen.
 
 
--(instancetype) init: (NSRect) rectangle
+- (id)initWithContentRect: (NSRect) rectangle styleMask: (NSUInteger) windowStyle backing:(NSBackingStoreType) bufferingType defer: (BOOL) deferCreation
+
 {
    
    self = [ super
       initWithContentRect : rectangle
-      styleMask : 0
-      backing : NSBackingStoreBuffered
-      defer : YES ];
+      styleMask : windowStyle // it was 0
+      backing : bufferingType // it was  NSBackingStoreBuffered
+      defer : deferCreation ]; // it was YES
    
    if(!self)
    {

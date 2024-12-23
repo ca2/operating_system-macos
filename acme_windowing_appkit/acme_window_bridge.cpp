@@ -191,6 +191,7 @@ void acme_window_bridge::macos_window_resign_main()
 void acme_window_bridge::macos_window_become_key()
 {
    
+   m_bIsActiveCached = true;
    return m_pwindow->macos_window_become_key();
    
 }
@@ -198,7 +199,7 @@ void acme_window_bridge::macos_window_become_key()
 
 void acme_window_bridge::macos_window_resign_key()
 {
-   
+   m_bIsActiveCached = false;
    return m_pwindow->macos_window_resign_key();
    
 }

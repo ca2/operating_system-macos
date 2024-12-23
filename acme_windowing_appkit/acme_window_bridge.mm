@@ -63,7 +63,8 @@ void acme_window_bridge::create_ns_acme_window(CGRect cgrect)
    ns_main_send(^()
                 {
       
-      auto pnsacmewindow=[ [ ns_acme_window alloc ] init: cgrect];
+      auto pnsacmewindow=[ [ ns_acme_window alloc ] initWithContentRect: cgrect
+                          styleMask : 0 backing:NSBackingStoreBuffered  defer:YES];
       
       m_pnsacmewindow = (__bridge_retained CFTypeRef) pnsacmewindow;
       

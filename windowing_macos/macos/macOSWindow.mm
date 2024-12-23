@@ -109,9 +109,9 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
    
    m_pwindowcontroller = [[NSWindowController alloc] initWithWindow: pnswindow];
 
-   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidBecomeKey:) name: NSWindowDidBecomeKeyNotification object: pnswindow];
-
-   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidResignKey:) name: NSWindowDidResignKeyNotification object: pnswindow];
+//   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidBecomeKey:) name: NSWindowDidBecomeKeyNotification object: pnswindow];
+//
+//   [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidResignKey:) name: NSWindowDidResignKeyNotification object: pnswindow];
 
    [[NSNotificationCenter defaultCenter] addObserver: pnswindow selector: @selector(windowDidResize:) name: NSWindowDidResizeNotification object: pnswindow];
    
@@ -176,23 +176,23 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
 // mainWindowChanged:
 //
 //
-- (void)windowDidBecomeKey:(NSNotification *)aNotification
-{
-
-   printf("windowDidBecomeKey\n");
-
-   m_pmacoswindow->macos_window_did_become_key();
-   
-}
-
-- (void)windowDidResignKey:(NSNotification *)aNotification
-{
-   
-   printf("windowDidResignKey\n");
-   
-   m_pmacoswindow->macos_window_did_resign_key();
-   
-}
+//- (void)windowDidBecomeKey:(NSNotification *)aNotification
+//{
+//
+//   printf("windowDidBecomeKey\n");
+//
+//   m_pmacoswindow->macos_window_did_become_key();
+//   
+//}
+//
+//- (void)windowDidResignKey:(NSNotification *)aNotification
+//{
+//   
+//   printf("windowDidResignKey\n");
+//   
+//   m_pmacoswindow->macos_window_did_resign_key();
+//   
+//}
 
 
 

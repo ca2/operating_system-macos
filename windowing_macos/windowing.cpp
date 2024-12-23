@@ -22,7 +22,7 @@ void ns_main_post(dispatch_block_t block);
 void * ns_get_key_window();
 
 
-void aura_defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);
+void aura_defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::command_handler * pcommandhandler);
 
 
 
@@ -810,17 +810,19 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::acme::windowin
 ////   }
    
 
-void windowing::clear_active_window(::thread *, ::windowing::window *)
-{
+   void windowing::clear_active_window(::thread *, ::windowing::window *)
+   {
 
-}
+   }
 
-void windowing::defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
-{
-   
-   aura_defer_create_windowing_application_delegate(papplication, papplicationmenu, papplicationmenucallback);
-   
-}
+
+   void windowing::defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::command_handler * pcommandhandler)
+   {
+      
+      aura_defer_create_windowing_application_delegate(papplication, papplicationmenu, pcommandhandler);
+      
+   }
+
 
 } // namespace windowing_macos
 

@@ -7,7 +7,7 @@
 //
 
 #include "framework.h"
-#include "acme/platform/application_menu_callback.h"
+#include "acme/handler/command_handler.h"
 #include "notify_icon_mm.h"
 
 
@@ -38,7 +38,7 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
 @implementation user_notify_icon
 
 
-- (id) initWithIconImageFileData:(const void *) pdata size: (int) size applicationMenu: (::application_menu *) papplicationmenu andItsCallback:(::application_menu_callback *) papplicationmenucallback
+- (id) initWithIconImageFileData:(const void *) pdata size: (int) size applicationMenu: (::application_menu *) papplicationmenu andCommandHandler:(::command_handler *) pcommandhandler
 {
 
    NSData * data = [NSData dataWithBytes:pdata length:size];
@@ -52,17 +52,17 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
    
    NSImage * pimage = [[NSImage alloc] initWithData: data];
 
-   return [ self initWithIconImage: pimage applicationMenu : papplicationmenu andItsCallback : papplicationmenucallback ];
+   return [ self initWithIconImage: pimage applicationMenu : papplicationmenu andCommandHandler : pcommandhandler ];
 
 }
 
 
-- (id)initWithIconImage:(NSImage *)pimage applicationMenu:(::application_menu *)papplicationmenu andItsCallback:(::application_menu_callback *) papplicationmenucallback
+- (id)initWithIconImage:(NSImage *)pimage applicationMenu:(::application_menu *)papplicationmenu andCommandHandler:(::command_handler *) pcommandhandler
 {
    
    m_papplicationmenu = papplicationmenu;
    
-   m_papplicationmenucallback = papplicationmenucallback;
+   m_pcommandhandler = pcommandhandler;
    
    // http://stackoverflow.com/questions/3409985/how-to-create-a-menubar-application-for-mac
    m_statusitem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
@@ -214,7 +214,7 @@ NSImage * image_resize(NSImage* sourceImage, NSSize newSize)
    
       const char * psz = [strId UTF8String];
          
-      m_papplicationmenucallback->on_application_menu_action(psz);
+      m_pcommandhandler->handle_command(psz, nullptr);
          
       return;
       

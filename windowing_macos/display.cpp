@@ -67,7 +67,7 @@ namespace windowing_macos
    }
 
 
-   bool display::impl_set_wallpaper(::collection::index iScreen, string strWallpaper)
+   void display::impl_set_wallpaper(::collection::index iScreen, const ::scoped_string & strWallpaper)
    {
       
 //      if(!strWallpaper.case_insensitive_begins("file://"))

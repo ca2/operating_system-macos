@@ -25,7 +25,7 @@ void user_notify_icon_mm_bridge::notify_icon_mm_initialize(const void * pdata, i
    ns_main_send(^()
                 {
 
-   m_pnotifyicon = (__bridge_retained void *) [[user_notify_icon alloc] initWithIconImageFileData: pdata size: size applicationMenu: this->menu() andItsCallback: this->callback() ];
+   m_pnotifyicon = (__bridge_retained void *) [[user_notify_icon alloc] initWithIconImageFileData: pdata size: size applicationMenu: this->menu() andCommandHandler: this->command_handler() ];
       
    });
 

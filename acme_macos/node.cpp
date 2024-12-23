@@ -60,7 +60,7 @@ namespace acme_macos
    node::node()
    {
 
-      m_pAcmePlatform = this;
+      //m_pAcmePlatform = this;
 
    }
 
@@ -989,7 +989,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    string node::expand_environment_variables(const ::scoped_string & scopedstr)
    {
 
-      return "";
+      return ::acme_apple::node::expand_environment_variables(scopedstr);
 
    }
 

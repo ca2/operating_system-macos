@@ -21,7 +21,7 @@ namespace windowing_macos
 
       ::application_menu * menu() override;
       
-      ::application_menu_callback * callback() override;
+      ::command_handler * command_handler() override;
 
       void add_hidden_window(::user::interaction * puserinteraction) override;
 

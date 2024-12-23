@@ -347,6 +347,31 @@ void macos_window::macos_window_order_front()
    
 }
 
+void macos_window::macos_window_order_relative_to(macos_window * pmacoswindow)
+{
+   
+   if(m_bDestroying)
+   {
+      
+      return;
+      
+   }
+   
+   ns_main_post(^
+              {
+      
+      ns_acme_window * pnsacmewindow = (__bridge ns_acme_window *) m_pnsacmewindow;
+      ns_acme_window * pnsacmewindowRelative = (__bridge ns_acme_window *) pmacoswindow->m_pnsacmewindow;
+      
+      macOSWindow * pnsmacoswindow = (macOSWindow *) pnsacmewindow;
+
+      
+                 [pnsmacoswindow orderWindow : NSWindowAbove relativeTo: (NSInteger)[pnsacmewindowRelative windowNumber] ];
+                 
+              });
+   
+}
+
 
 void macos_window::macos_window_make_first_responder()
 {

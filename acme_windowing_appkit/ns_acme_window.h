@@ -27,7 +27,7 @@ class acme_window_bridge;
 
 }
 
--(instancetype) init: (NSRect) rectangle;
+//-(instancetype) init: (NSRect) rectangle;
 
 -(void)setBridge:(::appkit::acme_window_bridge *) pacmewindowbridge;
 

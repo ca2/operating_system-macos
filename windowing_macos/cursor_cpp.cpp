@@ -40,22 +40,26 @@ void ns_set_cursor(::windowing::cursor * pcursorParam)
    main_asynchronous([pcursor]()
    {
 
-      _synchronous_lock lock(pcursor->system()->synchronization());
-      
-      auto pNSCursor = pcursor->get_os_data();
-      
-      if(is_null(pNSCursor))
       {
          
-         //_locked_ns_cursor_hide();
+         _synchronous_lock lock(pcursor->system()->synchronization());
          
-      }
-      else
-      {
-
-         __ns_set_cursor(pNSCursor);
+         auto pNSCursor = pcursor->get_os_data();
          
-         _locked_ns_cursor_show();
+         if(is_null(pNSCursor))
+         {
+            
+            //_locked_ns_cursor_hide();
+            
+         }
+         else
+         {
+            
+            __ns_set_cursor(pNSCursor);
+            
+            _locked_ns_cursor_show();
+            
+         }
          
       }
 

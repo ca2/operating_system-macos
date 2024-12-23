@@ -17,7 +17,7 @@
 
 
 class application_menu;
-class application_menu_callback;
+class command_handler;
 
 
 @interface user_notify_icon :  NSObject < NSMenuDelegate> {
@@ -25,7 +25,7 @@ class application_menu_callback;
    
    
    ::application_menu *                m_papplicationmenu;
-   ::application_menu_callback *       m_papplicationmenucallback;
+   ::command_handler *                 m_pcommandhandler;
    
    
    // http://stackoverflow.com/questions/3409985/how-to-create-a-menubar-application-for-mac
@@ -37,9 +37,9 @@ class application_menu_callback;
    
 }
 
-- (id) initWithIconImageFileData:(const void *) pdata size: (int) size applicationMenu: (::application_menu *) papplicationmenu andItsCallback: (::application_menu_callback *) papplicationmenucallback;
+- (id) initWithIconImageFileData:(const void *) pdata size: (int) size applicationMenu: (::application_menu *) papplicationmenu andCommandHandler: (::command_handler *) pcommandhandler;
 
-- (id)initWithIconImage:(NSImage *)pimage applicationMenu: (::application_menu *) papplicationmenu andItsCallback: (::application_menu_callback *) papplicationmenucallback;
+- (id)initWithIconImage:(NSImage *)pimage applicationMenu: (::application_menu *) papplicationmenu andCommandHandler: (::command_handler *) pcommandhandler;
 
 
 - (void) on_application_menu_action : (id)sender;

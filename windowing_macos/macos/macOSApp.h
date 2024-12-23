@@ -44,6 +44,6 @@
 //- (void)play:(id)sender;
 -(void)continueInitialization;
 //- (void) ns_add_menu :(NSMenu *) menuParent withParent: (const char *) pszParent  withSharedMenu : (menu_shared *) pmenushared;
-- (id)initWithApplicationMenu:(::application_menu *) papplicationmenu andItsCallback: (::application_menu_callback *) papplicationmenucallback;
+- (id)initWithApplicationMenu:(::application_menu *) papplicationmenu andCommandHandler: (::command_handler *) pcommandhandler;
 
 @end

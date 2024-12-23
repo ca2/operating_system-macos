@@ -84,7 +84,7 @@ namespace apex_macos
       node::node()
       {
 
-         m_pApexPlatform = this;
+         //m_pApexPlatform = this;
 
       }
 

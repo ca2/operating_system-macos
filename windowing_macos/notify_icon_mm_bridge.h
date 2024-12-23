@@ -10,7 +10,7 @@
 
 
 class application_menu;
-class application_menu_callback;
+class command_handler;
 
 
 class user_notify_icon_mm_bridge
@@ -29,7 +29,7 @@ public:
    
    virtual ::application_menu * menu() = 0;
    
-   virtual ::application_menu_callback * callback() = 0;
+   virtual ::command_handler * command_handler() = 0;
    
    virtual void notify_icon_mm_finalize();
 

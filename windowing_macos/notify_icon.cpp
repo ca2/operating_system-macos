@@ -53,7 +53,7 @@ namespace windowing_macos
 }
 
 
-::application_menu_callback * notify_icon::callback()
+::command_handler * notify_icon::command_handler()
 {
    
    return this;

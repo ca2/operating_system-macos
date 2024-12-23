@@ -7,7 +7,7 @@
 #include "acme/windowing/windowing.h"
 
 
-class application_menu_callback;
+class command_handler;
 
 
 namespace appkit
@@ -60,7 +60,7 @@ public:
 
    bool handle_messages() override;
    
-   virtual void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);
+   virtual void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::command_handler * pcommandhandler);
 
    virtual void set_osdata_acme_windowing_window(void *, ::acme::windowing::window *);
    virtual ::acme::windowing::window * osdata_acme_windowing_window(void *);

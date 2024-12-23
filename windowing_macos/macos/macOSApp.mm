@@ -53,14 +53,14 @@ void set_apex_system_as_thread();
 
 
 //@synthesize windowcontroller;
-- (id)initWithApplicationMenu:(::application_menu *) papplicationmenu andItsCallback:(::application_menu_callback *)papplicationmenucallback
+- (id)initWithApplicationMenu:(::application_menu *) papplicationmenu andCommandHandler:(::command_handler *)pcommandhandler
 {
 
    self = [super init];
    
    m_papplicationmenu = papplicationmenu;
    
-   m_papplicationmenucallback = papplicationmenucallback;
+   m_pcommandhandler = pcommandhandler;
    
    //[ self application_menu_update ];
    
@@ -653,7 +653,7 @@ void ns_app_run();
 void ns_apple_set_application_delegate(::platform::application * papplication, macos_app * pappdelegate);
 void * apple_get_application_delegate(::platform::application * papplication);
 
-void aura_defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback)
+void aura_defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::command_handler * pcommandhandler)
 {
    
    macos_app * pappdelegate = (__bridge macos_app *) apple_get_application_delegate(papplication);
@@ -661,7 +661,7 @@ void aura_defer_create_windowing_application_delegate(::platform::application * 
    if(pappdelegate == nullptr)
    {
       
-      pappdelegate = [ [ macOSApp alloc] initWithApplicationMenu: papplicationmenu andItsCallback: papplicationmenucallback];
+      pappdelegate = [ [ macOSApp alloc] initWithApplicationMenu: papplicationmenu andCommandHandler: pcommandhandler];
       
       ns_apple_set_application_delegate(papplication, pappdelegate);
       

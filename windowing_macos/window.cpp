@@ -49,8 +49,9 @@ namespace windowing_macos
 
    window::window()
    {
-      
-      
+      m_pacmewindowbridge = this;
+      m_pwindow = this;
+      m_bIsActiveCached = false;
       int iMouseMoveTriggerDistance = 10;
       m_mouserepositionthrottling.m_iMouseMoveSkipSquareDistance = iMouseMoveTriggerDistance * iMouseMoveTriggerDistance;
       m_mouserepositionthrottling.m_timeMouseMoveIgnore = 20_ms;
@@ -321,6 +322,19 @@ void window::_main_post(const ::procedure & procedure)
    
       create_macos_nswindow(this, cgrect, uStyle);
       
+      if(m_pacmeuserinteractionOwner)
+      {
+         
+         ::cast < ::windowing_macos::window > pwindowRelative = m_pacmeuserinteractionOwner->window();
+         
+         ::cast < macos_window > pmacoswindow = pwindowRelative->m_pacmewindowbridge;
+       
+         pmacoswindow->macos_window_order_front();
+
+         macos_window_order_relative_to(pmacoswindow);
+         
+      }
+      
 //      puserinteraction->post_message(e_message_pos_create);
 //      
    }
@@ -383,7 +397,6 @@ void window::_main_post(const ::procedure & procedure)
       
       ///auto pwindowing = (::windowing_macos::windowing *) m_pwindowing->m_pWindowing4;
       
-      macos_windowing()->m_pwindowActive = this;
 
       //return ::success;
 
@@ -395,14 +408,18 @@ void window::_main_post(const ::procedure & procedure)
       
 //      auto pwindowing = (::windowing_macos::windowing *) m_pwindowing->m_pWindowing4;
       
-       macos_windowing()->_defer_dock_application(!bSet);
+      if(m_pacmeuserinteraction == get_app()->m_puserinteractionMain)
+      {
+         macos_windowing()->_defer_dock_application(!bSet);
+         
+      }
 
       //return ::success;
       
    }
 
 
-   void window::set_foreground_window()
+   void window::set_foreground_window(::user::activation_token * puseractivationtoken)
    {
       
       macos_window_order_front();
@@ -415,7 +432,7 @@ void window::_main_post(const ::procedure & procedure)
    bool window::is_active_window()
    {
 
-      return macos_window_is_key_window();
+      return m_bIsActiveCached;
 
    }
 
@@ -423,7 +440,9 @@ void window::_main_post(const ::procedure & procedure)
    bool window::has_keyboard_focus()
    {
       
-      bool bHasKeyboardFocus = macos_window_is_key_window();
+      //bool bHasKeyboardFocus = macos_window_is_key_window();
+      
+      bool bHasKeyboardFocus = m_bIsActiveCached;
    
       return bHasKeyboardFocus;
    
@@ -571,7 +590,7 @@ void window::_main_post(const ::procedure & procedure)
 // }
 
 
-   bool window::_configure_window_unlocked(const class ::zorder& zorder, const ::e_activation& eactivation, bool bNoZorder, ::e_display edisplay)
+   bool window::_configure_window_unlocked(const class ::zorder& zorder, const ::user::activation& activationParam, bool bNoZorder, ::e_display edisplay)
    {
       
       if(edisplay == e_display_none)
@@ -580,6 +599,8 @@ void window::_main_post(const ::procedure & procedure)
          information() << "window::_configure_window_unlocked";
          
       }
+      
+      auto activation = activationParam;
       
       ns_main_post(^()
       {
@@ -594,14 +615,19 @@ void window::_main_post(const ::procedure & procedure)
          {
             
             macos_window_show();
-          
-            macos_window_make_key_window_and_order_front();
             
-            macos_window_make_main_window();
-            
-            nsapp_activate_ignoring_other_apps(1);
-            
-            macos_window_defer_show();
+            if(activation.m_eactivation & ::user::e_activation_set_foreground)
+            {
+               
+               macos_window_make_key_window_and_order_front();
+               
+//               macos_window_make_main_window();
+//               
+//               nsapp_activate_ignoring_other_apps(1);
+//               
+//               macos_window_defer_show();
+               
+            }
             
          }
    //      else if(edisplay == e_display_normal)
@@ -1904,7 +1930,7 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::macos_window_did_become_key()
+   void window::macos_window_become_key()
    {
 
 //      if(is_destroying())
@@ -1914,6 +1940,10 @@ pmessage->m_atom = emessage
 //
 //      }
       
+      m_bIsActiveCached = true;
+      
+      macos_windowing()->m_pwindowActive = this;
+      
       m_timeLastExposureAddUp.Now();
       
       window_on_set_keyboard_focus();
@@ -1921,9 +1951,17 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::macos_window_did_resign_key()
-   {
+   void window::macos_window_resign_key()
+{
+      
+      if(macos_windowing()->m_pwindowActive == this)
+      {
+         
+         macos_windowing()->m_pwindowActive = this;
+         
+      }
 
+      m_bIsActiveCached = false;
    //      if(is_destroying())
    //      {
    //
@@ -2199,7 +2237,7 @@ pmessage->m_atom = emessage
 
          }
          
-         puserinteraction->_001OnDeiconify(edisplayPrevious);
+         puserinteraction->_001OnDeiconify(nullptr, edisplayPrevious);
          
       }
 
@@ -2431,7 +2469,7 @@ pmessage->m_atom = emessage
    }
 
 
-   void window::frame_toggle_restore()
+void window::frame_toggle_restore(::user::activation_token * puseractivationtoken)
 {
       
       ns_main_post(^()
@@ -2455,7 +2493,7 @@ pmessage->m_atom = emessage
 
             puserinteraction->order(::e_zorder_top);
 
-            puserinteraction->display(e_display_default, e_activation_set_foreground);
+            puserinteraction->display(e_display_default, {::user::e_activation_set_foreground, puseractivationtoken});
 
          }
          else if(m_timeLastExposureAddUp.elapsed() < 300_ms)
@@ -2467,7 +2505,7 @@ pmessage->m_atom = emessage
          else
          {
 
-            puserinteraction->display(e_display_iconic, e_activation_no_activate);
+            puserinteraction->display(e_display_iconic, {::user::e_activation_no_activate});
 
          }
 
@@ -2616,7 +2654,7 @@ pmessage->m_atom = emessage
 
       }
       
-      puserinteraction->send_message(pmessage);
+      puserinteraction->message_handler(pmessage);
 
       //::thread * pthread = nullptr;
 

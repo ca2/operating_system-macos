@@ -84,7 +84,7 @@ namespace windowing_macos
       
       void set_active_window() override;
       
-      void set_foreground_window() override;
+      void set_foreground_window(::user::activation_token * puseractivationtoken) override;
       
       void set_tool_window(bool bSet) override;
       
@@ -109,7 +109,7 @@ namespace windowing_macos
       
 //      void _set_window_position_unlocked(const class ::zorder& zorder, int x, int y, int cx, int cy, const ::e_activation& eactivation, bool bNoZorder, bool bNoMove, bool bNoSize, bool bShow, bool bHide) override;
       
-      bool _configure_window_unlocked(const class ::zorder& zorder, const ::e_activation& eactivation, bool bNoZorder, ::e_display edisplay) override;
+      bool _configure_window_unlocked(const class ::zorder& zorder, const ::user::activation& eactivation, bool bNoZorder, ::e_display edisplay) override;
       bool _strict_set_window_position_unlocked(int x, int y, int cx, int cy, bool bNoMove, bool bNoSize) override;
 
       
@@ -142,10 +142,10 @@ namespace windowing_macos
 //      virtual bool macos_window_key_up(unsigned int uiKeyCode) override;
       
       
-      virtual void macos_window_did_become_key() override;
-      virtual void macos_window_did_resign_key() override;
-      virtual void macos_window_on_activate() override;
-      virtual void macos_window_on_deactivate() override;
+      void macos_window_become_key() override;
+      void macos_window_resign_key() override;
+      void macos_window_on_activate() override;
+      void macos_window_on_deactivate() override;
 
       
       void * macos_window_get_mouse_cursor() override;
@@ -168,7 +168,7 @@ namespace windowing_macos
       virtual void macos_window_on_hide() override;
       virtual void macos_window_on_miniaturize() override;
 
-      void frame_toggle_restore() override;
+      void frame_toggle_restore(::user::activation_token * puseractivationtoken) override;
       
       
       void non_top_most_upper_window_rects(::int_rectangle_array & recta) override;

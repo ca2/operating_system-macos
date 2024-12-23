@@ -57,8 +57,8 @@ public:
    virtual void macos_window_on_hide() = 0;
    virtual void macos_window_on_miniaturize() = 0;
    
-   virtual void macos_window_did_become_key() = 0;
-   virtual void macos_window_did_resign_key() = 0;
+   //virtual void macos_window_did_become_key() = 0;
+   //virtual void macos_window_did_resign_key() = 0;
 
    virtual void macos_window_on_activate() = 0;
    virtual void macos_window_on_deactivate() = 0;
@@ -86,6 +86,7 @@ public:
    virtual void macos_window_resign_key();
    
    virtual void macos_window_order_front();
+   virtual void macos_window_order_relative_to(macos_window * pmacoswindow);
    virtual void macos_window_make_key_window();
    virtual void macos_window_make_key_window_and_order_front();
    virtual void macos_window_make_main_window();
