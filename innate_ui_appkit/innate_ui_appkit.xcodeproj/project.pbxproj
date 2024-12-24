@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,7 +26,6 @@
 		9A7E172C2C9DEE2E00EE8CA6 /* dialog.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E172B2C9DEE2700EE8CA6 /* dialog.mm */; };
 		9A7E17402C9DF5E700EE8CA6 /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7E173F2C9DF5E700EE8CA6 /* libacme.dylib */; };
 		9A7E17432C9DF5F700EE8CA6 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7E17422C9DF5F700EE8CA6 /* AppKit.framework */; };
-		9A7E17522C9DF64E00EE8CA6 /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7E174D2C9DF64500EE8CA6 /* libapex.dylib */; };
 		9A7E17A32C9E005400EE8CA6 /* button.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17A22C9E004A00EE8CA6 /* button.mm */; };
 		9A7E17A52C9E006A00EE8CA6 /* still.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17A42C9E006200EE8CA6 /* still.mm */; };
 		9A7E17A72C9E074300EE8CA6 /* window.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17A62C9E073400EE8CA6 /* window.mm */; };
@@ -39,19 +38,33 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9A7E17472C9DF64500EE8CA6 /* PBXContainerItemProxy */ = {
+		9A39808C2D1A4EC5007A31B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A7E17442C9DF64400EE8CA6 /* apex.xcodeproj */;
+			containerPortal = 9A7E172D2C9DF5C900EE8CA6 /* apex.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 9A68A445251143F8008DABD2;
 			remoteInfo = apex;
 		};
-		9A7E174C2C9DF64500EE8CA6 /* PBXContainerItemProxy */ = {
+		9A70C50D2D1A3E59003B16FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A7E17442C9DF64400EE8CA6 /* apex.xcodeproj */;
+			containerPortal = 9A7E172D2C9DF5C900EE8CA6 /* apex.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 9A68A446251143F8008DABD2;
 			remoteInfo = apex;
+		};
+		9A70C50F2D1A3E59003B16FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A7E172D2C9DF5C900EE8CA6 /* apex.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9AD695C2251A754800C0EBD7;
+			remoteInfo = ios_apex;
+		};
+		9A70C5112D1A3E59003B16FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A7E172D2C9DF5C900EE8CA6 /* apex.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9AC980872A71B39E00B1BCF3;
+			remoteInfo = static_apex;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -74,10 +87,9 @@
 		9A2FCFCE2C9D3C3F000CF701 /* dialog.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dialog.cpp; sourceTree = "<group>"; };
 		9A2FCFCF2C9D3C3F000CF701 /* framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
 		9A7E172B2C9DEE2700EE8CA6 /* dialog.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = dialog.mm; sourceTree = "<group>"; };
-		9A7E172D2C9DF5C900EE8CA6 /* apex.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = apex.xcodeproj; path = ../../../source/app/apex/apex.xcodeproj; sourceTree = "<group>"; };
+		9A7E172D2C9DF5C900EE8CA6 /* apex.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = apex.xcodeproj; path = ../../../source/app/apex/apex.xcodeproj; sourceTree = SOURCE_ROOT; };
 		9A7E173F2C9DF5E700EE8CA6 /* libacme.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7E17422C9DF5F700EE8CA6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		9A7E17442C9DF64400EE8CA6 /* apex.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = apex.xcodeproj; path = /Users/camilo/workspace/main/source/app/apex/apex.xcodeproj; sourceTree = "<absolute>"; };
 		9A7E17532C9DF6E400EE8CA6 /* _____debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "_____debug.xcconfig"; sourceTree = "<group>"; };
 		9A7E17542C9DF6E400EE8CA6 /* _____release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "_____release.xcconfig"; sourceTree = "<group>"; };
 		9A7E17A22C9E004A00EE8CA6 /* button.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = button.mm; sourceTree = "<group>"; };
@@ -96,7 +108,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A7E17522C9DF64E00EE8CA6 /* libapex.dylib in Frameworks */,
 				9A7E17432C9DF5F700EE8CA6 /* AppKit.framework in Frameworks */,
 				9A7E17402C9DF5E700EE8CA6 /* libacme.dylib in Frameworks */,
 			);
@@ -139,7 +150,6 @@
 				9A2FCFBE2C9D3C0A000CF701 /* window.cpp */,
 				9A7E17A62C9E073400EE8CA6 /* window.mm */,
 				9A7E173E2C9DF5E700EE8CA6 /* Frameworks */,
-				9A7E17442C9DF64400EE8CA6 /* apex.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +164,9 @@
 		9A31A5992CAD02DC00D4B667 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				9A70C50E2D1A3E59003B16FA /* libapex.dylib */,
+				9A70C5102D1A3E59003B16FA /* libios_apex.a */,
+				9A70C5122D1A3E59003B16FA /* libstatic_apex.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,14 +178,6 @@
 				9A7E173F2C9DF5E700EE8CA6 /* libacme.dylib */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9A7E17452C9DF64500EE8CA6 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9A7E174D2C9DF64500EE8CA6 /* libapex.dylib */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +214,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				9A7E17482C9DF64500EE8CA6 /* PBXTargetDependency */,
+				9A39808D2D1A4EC5007A31B5 /* PBXTargetDependency */,
 			);
 			name = innate_ui_appkit;
 			packageProductDependencies = (
@@ -233,6 +238,7 @@
 				};
 			};
 			buildConfigurationList = 9A2FCE002C9D3ADC000CF701 /* Build configuration list for PBXProject "innate_ui_appkit" */;
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -240,18 +246,12 @@
 				Base,
 			);
 			mainGroup = 9A2FCDFC2C9D3ADC000CF701;
-			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 9A2FCE062C9D3ADC000CF701 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
 				{
 					ProductGroup = 9A31A5992CAD02DC00D4B667 /* Products */;
 					ProjectRef = 9A7E172D2C9DF5C900EE8CA6 /* apex.xcodeproj */;
-				},
-				{
-					ProductGroup = 9A7E17452C9DF64500EE8CA6 /* Products */;
-					ProjectRef = 9A7E17442C9DF64400EE8CA6 /* apex.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -262,11 +262,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		9A7E174D2C9DF64500EE8CA6 /* libapex.dylib */ = {
+		9A70C50E2D1A3E59003B16FA /* libapex.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
 			path = libapex.dylib;
-			remoteRef = 9A7E174C2C9DF64500EE8CA6 /* PBXContainerItemProxy */;
+			remoteRef = 9A70C50D2D1A3E59003B16FA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A70C5102D1A3E59003B16FA /* libios_apex.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libios_apex.a;
+			remoteRef = 9A70C50F2D1A3E59003B16FA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A70C5122D1A3E59003B16FA /* libstatic_apex.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libstatic_apex.a;
+			remoteRef = 9A70C5112D1A3E59003B16FA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -298,10 +312,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9A7E17482C9DF64500EE8CA6 /* PBXTargetDependency */ = {
+		9A39808D2D1A4EC5007A31B5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = apex;
-			targetProxy = 9A7E17472C9DF64500EE8CA6 /* PBXContainerItemProxy */;
+			targetProxy = 9A39808C2D1A4EC5007A31B5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -62,7 +62,7 @@
 		9A7E17542C9DF6E400EE8CA6 /* _____release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "_____release.xcconfig"; sourceTree = "<group>"; };
 		9A7E17B02C9E3B2700EE8CA6 /* ProcedureCaller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProcedureCaller.h; sourceTree = "<group>"; };
 		9A7E17B22C9E3B8800EE8CA6 /* ProcedureCaller.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ProcedureCaller.mm; sourceTree = "<group>"; };
-		9AA828F32CAF881300DA11E9 /* acme_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_macos.xcodeproj; path = ../acme_macos/acme_macos.xcodeproj; sourceTree = "<group>"; };
+		9AA828F32CAF881300DA11E9 /* acme_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_macos.xcodeproj; path = ../acme_macos/acme_macos.xcodeproj; sourceTree = SOURCE_ROOT; };
 		9AA829162CAF88AC00DA11E9 /* acme_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_macos.xcodeproj; path = "/Users/camilo/workspace/main/operating_system/operating_system-macos/acme_macos/acme_macos.xcodeproj"; sourceTree = "<absolute>"; };
 		9AA829342CAF8A9800DA11E9 /* nano_graphics_quartz2d.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = nano_graphics_quartz2d.xcodeproj; path = "/Users/camilo/workspace/main/operating_system/operating_system-apple/nano_graphics_quartz2d/nano_graphics_quartz2d.xcodeproj"; sourceTree = "<absolute>"; };
 		9AA8293E2CAF8CB500DA11E9 /* nswindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nswindow.h; sourceTree = "<group>"; };

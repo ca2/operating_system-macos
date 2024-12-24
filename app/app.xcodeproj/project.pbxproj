@@ -59,7 +59,7 @@
 
 /* Begin PBXFileReference section */
 		07FDD48F1C9CEA6A00DB2A99 /* app */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = app; sourceTree = BUILT_PRODUCTS_DIR; };
-		07FDD4CC1C9CEB5100DB2A99 /* core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = core.xcodeproj; path = ../../app/core/core.xcodeproj; sourceTree = "<group>"; };
+		07FDD4CC1C9CEB5100DB2A99 /* core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = core.xcodeproj; path = ../../app/core/core.xcodeproj; sourceTree = SOURCE_ROOT; };
 		07FDD4DA1C9CEB6800DB2A99 /* libaura.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaura.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libaura.dylib"; sourceTree = "<group>"; };
 		07FDD4DC1C9CEB6F00DB2A99 /* libaxis.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaxis.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libaxis.dylib"; sourceTree = "<group>"; };
 		07FDD4DE1C9CEB7500DB2A99 /* libbase.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbase.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libbase.dylib"; sourceTree = "<group>"; };

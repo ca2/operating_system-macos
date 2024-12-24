@@ -71,7 +71,7 @@
 
 /* Begin PBXFileReference section */
 		9A20EC642B77153F008A08A2 /* libmedia_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libmedia_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A20EC7C2B7715A9008A08A2 /* media_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = media_apple.xcodeproj; path = "../../operating_system-apple/media_apple/media_apple.xcodeproj"; sourceTree = "<group>"; };
+		9A20EC7C2B7715A9008A08A2 /* media_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = media_apple.xcodeproj; path = "../../operating_system-apple/media_apple/media_apple.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		9A20EC8B2B7715BD008A08A2 /* _____debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "_____debug.xcconfig"; sourceTree = "<group>"; };
 		9A20EC8C2B7715BD008A08A2 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9A20ECA42B7715BD008A08A2 /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		9A20ED332B772398008A08A2 /* media_picker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = media_picker.h; sourceTree = "<group>"; };
 		9A20ED362B772E0E008A08A2 /* macos_media_picker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macos_media_picker.h; sourceTree = "<group>"; };
 		9A4DDE182B7734D200477878 /* macos_media_picker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = macos_media_picker.mm; sourceTree = "<group>"; };
-		9A4DE8462B7972C200477878 /* windowing_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = windowing_macos.xcodeproj; path = ../windowing_macos/windowing_macos.xcodeproj; sourceTree = "<group>"; };
+		9A4DE8462B7972C200477878 /* windowing_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = windowing_macos.xcodeproj; path = ../windowing_macos/windowing_macos.xcodeproj; sourceTree = SOURCE_ROOT; };
 		9A869F332B79B01500937A3C /* media_player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = media_player.cpp; sourceTree = "<group>"; };
 		9A869F362B79B01600937A3C /* media_player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = media_player.h; sourceTree = "<group>"; };
 		9A869F392B79B0B000937A3C /* media.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = media.mm; sourceTree = "<group>"; };
