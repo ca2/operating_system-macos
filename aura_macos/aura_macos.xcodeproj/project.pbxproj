@@ -325,7 +325,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
-				ORGANIZATIONNAME = "ca2 Desenvolvimento de Sofware Ltda.";
+				ORGANIZATIONNAME = "ca2 Software Development";
 			};
 			buildConfigurationList = A1CFD772154F5EA7007447E2 /* Build configuration list for PBXProject "aura_macos" */;
 			compatibilityVersion = "Xcode 12.0";

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -216,6 +216,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1610;
+				ORGANIZATIONNAME = "ca2 Software Development";
 				TargetAttributes = {
 					9A7E17662C9DFBB600EE8CA6 = {
 						CreatedOnToolsVersion = 16.0;
@@ -223,6 +224,7 @@
 				};
 			};
 			buildConfigurationList = 9A7E17622C9DFBB600EE8CA6 /* Build configuration list for PBXProject "acme_windowing_appkit" */;
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -231,7 +233,6 @@
 			);
 			mainGroup = 9A7E175E2C9DFBB600EE8CA6;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 9A7E17682C9DFBB600EE8CA6 /* Products */;
 			projectDirPath = "";
 			projectReferences = (

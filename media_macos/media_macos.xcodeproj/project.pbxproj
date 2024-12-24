@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -246,6 +246,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1540;
+				ORGANIZATIONNAME = "ca2 Software Development";
 				TargetAttributes = {
 					9A20EC632B77153F008A08A2 = {
 						CreatedOnToolsVersion = 15.2;
@@ -253,7 +254,7 @@
 				};
 			};
 			buildConfigurationList = 9A20EC5F2B77153F008A08A2 /* Build configuration list for PBXProject "media_macos" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

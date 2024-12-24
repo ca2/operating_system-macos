@@ -31,7 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9A70C4F72D1A3A10003B16FA /* PBXContainerItemProxy */ = {
+		9A0CCDCF2D1A89B6001FD7FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A198E3C2D1A395D00D91B0C /* node_macos.xcodeproj */;
 			proxyType = 1;
@@ -183,7 +183,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				9A70C4F82D1A3A10003B16FA /* PBXTargetDependency */,
+				9A0CCDD02D1A89B6001FD7FE /* PBXTargetDependency */,
 			);
 			name = operating_ambient_macos;
 			packageProductDependencies = (
@@ -200,6 +200,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1610;
+				ORGANIZATIONNAME = "ca2 Software Development";
 				TargetAttributes = {
 					9A1CC36B2CF2BE37004A00CB = {
 						CreatedOnToolsVersion = 16.1;
@@ -245,10 +246,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9A70C4F82D1A3A10003B16FA /* PBXTargetDependency */ = {
+		9A0CCDD02D1A89B6001FD7FE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = node_macos;
-			targetProxy = 9A70C4F72D1A3A10003B16FA /* PBXContainerItemProxy */;
+			targetProxy = 9A0CCDCF2D1A89B6001FD7FE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
