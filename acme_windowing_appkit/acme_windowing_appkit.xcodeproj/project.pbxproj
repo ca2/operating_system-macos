@@ -31,6 +31,8 @@
 		9A7E178C2C9DFDA300EE8CA6 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17862C9DFC8F00EE8CA6 /* _factory.cpp */; };
 		9A7E178D2C9DFDA300EE8CA6 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17882C9DFCA000EE8CA6 /* framework.cpp */; };
 		9A7E178E2C9DFDA300EE8CA6 /* windowing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17832C9DFC6E00EE8CA6 /* windowing.cpp */; };
+		9AEC3FEF2D1ABF9800F9E621 /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEC3FEE2D1ABF9800F9E621 /* libacme.dylib */; };
+		9AEC3FFA2D1ABFCB00F9E621 /* libacme_windowing_kit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEC3FF72D1ABF9800F9E621 /* libacme_windowing_kit.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,13 @@
 			containerPortal = 9AA03ECA2D1A4B320079C423 /* acme_windowing_kit.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 9AC3F2A32CF81EBF0061DCC0;
+			remoteInfo = acme_windowing_kit;
+		};
+		9AEC3FF62D1ABF9800F9E621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AA03ECA2D1A4B320079C423 /* acme_windowing_kit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9AC3F2A42CF81EBF0061DCC0;
 			remoteInfo = acme_windowing_kit;
 		};
 /* End PBXContainerItemProxy section */
@@ -83,6 +92,7 @@
 		9A7E17892C9DFCD900EE8CA6 /* _____debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "_____debug.xcconfig"; sourceTree = "<group>"; };
 		9A7E178A2C9DFCD900EE8CA6 /* _____release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "_____release.xcconfig"; sourceTree = "<group>"; };
 		9AA03ECA2D1A4B320079C423 /* acme_windowing_kit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_windowing_kit.xcodeproj; path = "../../operating_system-apple/acme_windowing_kit/acme_windowing_kit.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		9AEC3FEE2D1ABF9800F9E621 /* libacme.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +100,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AEC3FFA2D1ABFCB00F9E621 /* libacme_windowing_kit.dylib in Frameworks */,
+				9AEC3FEF2D1ABF9800F9E621 /* libacme.dylib in Frameworks */,
 				9A1CC40B2CF2DBE5004A00CB /* libacme_apple.dylib in Frameworks */,
 				9A5243482CD4AA59006ED868 /* AppKit.framework in Frameworks */,
 			);
@@ -108,6 +120,7 @@
 		9A39807A2D1A4D69007A31B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				9AEC3FF72D1ABF9800F9E621 /* libacme_windowing_kit.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,6 +173,7 @@
 		9A7E17A02C9DFE6200EE8CA6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AEC3FEE2D1ABF9800F9E621 /* libacme.dylib */,
 				9A1CC40A2CF2DBE5004A00CB /* libacme_apple.dylib */,
 				9A5243472CD4AA59006ED868 /* AppKit.framework */,
 			);
@@ -251,6 +265,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9AEC3FF72D1ABF9800F9E621 /* libacme_windowing_kit.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libacme_windowing_kit.dylib;
+			remoteRef = 9AEC3FF62D1ABF9800F9E621 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9A7E17642C9DFBB600EE8CA6 /* Sources */ = {

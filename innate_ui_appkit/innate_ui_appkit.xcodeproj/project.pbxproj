@@ -35,6 +35,7 @@
 		9A7E17AF2C9E257E00EE8CA6 /* icon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17AE2C9E257400EE8CA6 /* icon.mm */; };
 		9A7E17B12C9E3B3000EE8CA6 /* ProcedureCaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A7E17B02C9E3B2700EE8CA6 /* ProcedureCaller.h */; };
 		9A7E17B32C9E3D4700EE8CA6 /* ProcedureCaller.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17B22C9E3B8800EE8CA6 /* ProcedureCaller.mm */; };
+		9AEC3FED2D1ABDD700F9E621 /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A70C50E2D1A3E59003B16FA /* libapex.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AEC3FED2D1ABDD700F9E621 /* libapex.dylib in Frameworks */,
 				9A7E17432C9DF5F700EE8CA6 /* AppKit.framework in Frameworks */,
 				9A7E17402C9DF5E700EE8CA6 /* libacme.dylib in Frameworks */,
 			);
