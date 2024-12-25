@@ -101,6 +101,8 @@ namespace windowing_macos
    }
 
 
+#endif
+
    void window::on_initialize_particle()
    {
       
@@ -110,9 +112,6 @@ namespace windowing_macos
       
    }
       
-      
-#endif
-
 
    void window::on_message_create(::message::message * pmessage)
    {
