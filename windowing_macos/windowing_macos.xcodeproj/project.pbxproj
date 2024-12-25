@@ -124,6 +124,7 @@
 		9A440A692654DD22000C490B /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
 		9A440A6A2654DD63000C490B /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
 		9A440A762654F440000C490B /* _library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _library.h; sourceTree = "<group>"; };
+		9A4C42D52D1BBAC7007F9D7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9A5243432CD49A0C006ED868 /* libacme_windowing_appkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_windowing_appkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5D738A26561AAA00D5C39E /* _factory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
 		9A5D738D2656240A00D5C39E /* windowing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = windowing.cpp; sourceTree = "<group>"; };
@@ -287,6 +288,7 @@
 		9A5D7393265700D200D5C39E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A4C42D52D1BBAC7007F9D7F /* Foundation.framework */,
 				9A3E325E2CF8B62F007DC9EE /* libacme_windowing_kit.dylib */,
 				9A5243432CD49A0C006ED868 /* libacme_windowing_appkit.dylib */,
 				9A869DCC2B79A56A00937A3C /* StoreKit.framework */,
