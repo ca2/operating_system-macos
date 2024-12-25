@@ -88,6 +88,8 @@ namespace windowing_macos
       
       void set_tool_window(bool bSet) override;
       
+      void show_task(bool bShowTask) override;
+      
       bool is_active_window() override;
       
       bool has_keyboard_focus() override;

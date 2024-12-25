@@ -419,6 +419,15 @@ void window::_main_post(const ::procedure & procedure)
    }
 
 
+   void window::show_task(bool bShowTask)
+   {
+      
+      
+   }
+      
+      
+
+
    void window::set_foreground_window(::user::activation_token * puseractivationtoken)
    {
       

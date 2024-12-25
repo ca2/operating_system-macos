@@ -516,7 +516,9 @@ void mm_folder_dialog(::function < void(const char *) > functionParameter, const
       
       }
       
-      if ([panel runModal] != NSModalResponseOK)
+      auto response = [panel runModal];
+      
+      if (response != NSModalResponseOK)
       {
          
          function({});
@@ -525,7 +527,15 @@ void mm_folder_dialog(::function < void(const char *) > functionParameter, const
       else
       {
          
-         function([[[[panel URLs] lastObject] absoluteString] UTF8String ]);
+         auto urls = [panel URLs];
+         
+         auto last_url = [ urls lastObject];
+         
+         auto str =  [last_url absoluteString];
+         
+         auto psz = [ str UTF8String];
+         
+         function(psz);
          
       }
 

@@ -405,7 +405,7 @@ namespace innate_ui_appkit
 [this, point]()
       {
 
-         auto p = point;
+         //auto p = point;
 
 //         ::pointer < dialog > pdialog = m_pwindowParent;
 //
@@ -444,7 +444,7 @@ namespace innate_ui_appkit
    void __impact::adjust_for_client_size(const ::int_size & sizeParam)
    {
 
-      auto size = sizeParam;
+      //auto size = sizeParam;
 
       set_size(sizeParam + ::int_size(8, 40));
 

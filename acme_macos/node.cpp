@@ -1334,6 +1334,8 @@ void mm_folder_dialog(::function < void(const char * psz) > function, const char
 void macos_folder_dialog(::file::folder_dialog * pdialog)
 {
    
+   __refdbg_add_referer;
+   
    pdialog->increment_reference_count();
    
    auto functionHere = [pdialog](const char * psz)
