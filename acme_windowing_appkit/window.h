@@ -157,6 +157,9 @@ class acme_window_bridge;
       virtual void macos_window_resign_key();
 
       
+      virtual void _on_layout(int x, int y, int w, int h);
+      
+      
    };
 
 

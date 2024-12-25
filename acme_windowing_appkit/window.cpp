@@ -116,7 +116,7 @@ namespace appkit
             
             __øconstruct(m_pnanodevice);
             
-            m_pnanodevice->attach(cgcontextref);
+            m_pnanodevice->attach(cgcontextref, m_sizeWindow);
             
             ::pointer < ::micro::elemental > pelemental;
             
@@ -559,6 +559,27 @@ namespace appkit
       {
          
          
+      }
+      
+      
+      void window::_on_layout(int x, int y, int w, int h)
+      {
+         
+         m_pointWindow.x() = x;
+         m_pointWindow.y() = y;
+         
+         m_sizeWindow.cx() = w;
+         m_sizeWindow.cy() = h;
+         
+         ::int_rectangle r;
+         
+         r.left() = x;
+         r.top() = y;
+         r.right() = x + w;
+         r.bottom() = y + h;
+         
+         m_pacmeuserinteraction->set_rectangle(r);
+
       }
 
 

@@ -134,13 +134,7 @@ void acme_window_bridge::_on_draw_frame(CGContextRef cg, CGSize sizeFrame)
 void acme_window_bridge::on_layout(int x, int y, int w, int h)
 {
    
-   ::int_rectangle r;
-   r.left() = x;
-   r.top() = y;
-   r.right() = x+w;
-   r.bottom() = y+h;
-   
-   m_pwindow->m_pacmeuserinteraction->set_rectangle(r);
+   m_pwindow->_on_layout(x, y, w, h);
    
 }
 

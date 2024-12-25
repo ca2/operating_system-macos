@@ -70,6 +70,8 @@ void acme_window_bridge::create_ns_acme_window(CGRect cgrect)
       
       [ pnsacmewindow setBridge:this ];
       
+      on_layout(cgrect.origin.x, cgrect.origin.y, cgrect.size.width, cgrect.size.height);
+      
    });
    
 }
@@ -283,6 +285,8 @@ void acme_window_bridge::set_position(int x, int y)
    point.y = (int) [[NSScreen mainScreen] frame].size.height - point.y - h;
    
    [ pnsacmewindow setFrameOrigin:point ];
+   
+   on_layout(x, y, w, h);
    
 }
 
