@@ -1558,7 +1558,7 @@ void ns_app_do_tasks()
    
    ///CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0., false);
    
-   NSLog(@"123");
+   //NSLog(@"123");
    //[ prun run ];
    
 //
