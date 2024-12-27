@@ -1657,7 +1657,9 @@ void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool b
          menuitem = [[NSMenuItem alloc] initWithTitle:strTitle
                                                             action:@selector(on_application_menu_action:) keyEquivalent:strAcc];
          
-         [menuitem setRepresentedObject: strId];
+         [ menuitem setTarget: [ [NSApplication sharedApplication] delegate ] ];
+
+         [ menuitem setRepresentedObject: strId ];
          
       }
 

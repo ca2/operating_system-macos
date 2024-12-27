@@ -407,7 +407,7 @@ void window::_main_post(const ::procedure & procedure)
       
 //      auto pwindowing = (::windowing_macos::windowing *) m_pwindowing->m_pWindowing4;
       
-      if(m_pacmeuserinteraction == get_app()->m_puserinteractionMain)
+      if(m_pacmeuserinteraction == get_app()->m_pacmeuserinteractionMain)
       {
          macos_windowing()->_defer_dock_application(!bSet);
          
@@ -629,11 +629,16 @@ void window::_main_post(const ::procedure & procedure)
                
                macos_window_make_key_window_and_order_front();
                
-//               macos_window_make_main_window();
-//               
-//               nsapp_activate_ignoring_other_apps(1);
-//               
-//               macos_window_defer_show();
+               if(m_pacmeuserinteraction == get_app()->m_pacmeuserinteractionMain)
+               {
+                  
+                  macos_window_make_main_window();
+                  
+                  nsapp_activate_ignoring_other_apps(1);
+                  
+               }
+               
+               macos_window_defer_show();
                
             }
             
