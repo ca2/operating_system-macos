@@ -1184,4 +1184,8 @@ enum aiComponent
 
 //#cmakedefine ASSIMP_DOUBLE_PRECISION 1
 
+
+#define ASSIMP_BUILD_NO_VRML_IMPORTER 1
+
+
 #endif // !! AI_CONFIG_H_INC
