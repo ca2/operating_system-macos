@@ -165,7 +165,7 @@ void window::_main_post(const ::procedure & procedure)
 
       MESSAGE_LINK(e_message_create, pchannel, this, &window::on_message_create);
 
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       auto pimpl = this;
 
@@ -302,7 +302,7 @@ void window::_main_post(const ::procedure & procedure)
 
       unsigned uStyle = 0;
       
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       if(puserinteraction->m_ewindowflag & ::e_window_flag_miniaturizable)
       {
@@ -321,10 +321,12 @@ void window::_main_post(const ::procedure & procedure)
    
       create_macos_nswindow(this, cgrect, uStyle);
       
-      if(m_pacmeuserinteractionOwner)
+      auto puserinteractionOwner = owner_interaction();
+      
+      if(puserinteractionOwner)
       {
          
-         ::cast < ::windowing_macos::window > pwindowRelative = m_pacmeuserinteractionOwner->window();
+         ::cast < ::windowing_macos::window > pwindowRelative = puserinteractionOwner->window();
          
          ::cast < macos_window > pmacoswindow = pwindowRelative->m_pacmewindowbridge;
        
@@ -360,7 +362,7 @@ void window::_main_post(const ::procedure & procedure)
       
       increment_reference_count();
       
-//      auto puserinteraction = m_puserinteraction;
+//      auto puserinteraction = user_interaction();
 //
 //      puserinteraction->increment_reference_count();
 
@@ -370,7 +372,7 @@ void window::_main_post(const ::procedure & procedure)
    void window::macos_window_dec_ref()
    {
       
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       puserinteraction->decrement_reference_count();
 
@@ -733,10 +735,12 @@ void window::_main_post(const ::procedure & procedure)
          
          macos_window_set_frame(r);
          
-         m_puserinteraction->layout().m_statea[::user::e_layout_window].origin().x() = r.origin.x;
-         m_puserinteraction->layout().m_statea[::user::e_layout_window].origin().y() = r.origin.y;
-         m_puserinteraction->layout().m_statea[::user::e_layout_window].size().cx() = r.size.width;
-         m_puserinteraction->layout().m_statea[::user::e_layout_window].size().cy() = r.size.height;
+         auto puserinteraction = user_interaction();
+         
+         puserinteraction->layout().m_statea[::user::e_layout_window].origin().x() = r.origin.x;
+         puserinteraction->layout().m_statea[::user::e_layout_window].origin().y() = r.origin.y;
+         puserinteraction->layout().m_statea[::user::e_layout_window].size().cx() = r.size.width;
+         puserinteraction->layout().m_statea[::user::e_layout_window].size().cy() = r.size.height;
 
          //         if(bShow)
          //         {
@@ -991,7 +995,7 @@ void window::_main_post(const ::procedure & procedure)
 
       }
       
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
       
       if(!puserinteraction)
       {
@@ -1102,7 +1106,7 @@ void window::_main_post(const ::procedure & procedure)
 //   bool window::macos_window_key_down(unsigned int uiKeyCode)
 //   {
 //
-//      auto puserinteraction = m_puserinteraction;
+//      auto puserinteraction = user_interaction();
 //
 //      if(puserinteraction == nullptr)
 //      {
@@ -1139,7 +1143,7 @@ void window::_main_post(const ::procedure & procedure)
 //
 //      spbase = pkey;
 //
-//      auto puserinteraction = m_puserinteraction;
+//      auto puserinteraction = user_interaction();
 //
 //      if(puserinteraction == nullptr)
 //      {
@@ -1229,7 +1233,7 @@ pmessage->m_atom = emessage
    bool window::macos_window_key_up(unsigned int virtualKey, unsigned int scan)
    {
 
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       if(puserinteraction == nullptr)
       {
@@ -1464,7 +1468,7 @@ pmessage->m_atom = emessage
       
       bool bOk = true;
 
-//      auto puserinteraction = m_puserinteraction;
+//      auto puserinteraction = user_interaction();
 //
 //      if(!puserinteraction)
 //      {
@@ -1662,8 +1666,10 @@ pmessage->m_atom = emessage
    {
       
       {
+         
+         auto puserinteraction = user_interaction();
       
-         auto p = m_puserinteraction->const_layout().window().origin();
+         auto p = puserinteraction->const_layout().window().origin();
          
          if(p.x() != rectangle.origin.x || p.y() != rectangle.origin.y)
          {
@@ -1692,11 +1698,13 @@ pmessage->m_atom = emessage
       
       {
          
-         m_puserinteraction->set_position({rectangle.origin.x, rectangle.origin.y}, ::user::e_layout_window);
+         auto puserinteraction = user_interaction();
          
-         m_puserinteraction->set_size({rectangle.size.width, rectangle.size.height}, ::user::e_layout_window);
+         puserinteraction->set_position({rectangle.origin.x, rectangle.origin.y}, ::user::e_layout_window);
+         
+         puserinteraction->set_size({rectangle.size.width, rectangle.size.height}, ::user::e_layout_window);
 
-         auto s = m_puserinteraction->const_layout().window().size();
+         auto s = puserinteraction->const_layout().window().size();
          
          if(s.cx() != rectangle.size.width || s.cy() != rectangle.size.height)
          {
@@ -1864,7 +1872,9 @@ pmessage->m_atom = emessage
 
       {
          
-         m_puserinteraction->set_position({point.x, point.y}, ::user::e_layout_window);
+         auto puserinteraction = user_interaction();
+         
+         puserinteraction->set_position({point.x, point.y}, ::user::e_layout_window);
 
          _NEW_MESSAGE(preposition, ::message::reposition, e_message_reposition);
          preposition->m_point.x() = point.x;
@@ -2003,7 +2013,7 @@ pmessage->m_atom = emessage
       
       //this->set_active_window();
 
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       if(::is_null(puserinteraction))
       {
@@ -2044,7 +2054,7 @@ pmessage->m_atom = emessage
 //         
 //      }
       
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
       
       if(!puserinteraction)
       {
@@ -2196,7 +2206,7 @@ pmessage->m_atom = emessage
          
       }
       
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       if(::is_null(puserinteraction))
       {
@@ -2229,7 +2239,7 @@ pmessage->m_atom = emessage
          
       }
       
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       if(puserinteraction == nullptr)
       {
@@ -2290,7 +2300,7 @@ pmessage->m_atom = emessage
 
       pwindowing->set_osdata_acme_windowing_window(osdata, this);
       
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
       
       auto rectangle = puserinteraction-> const_layout().sketch().parent_raw_rectangle();
    
@@ -2378,7 +2388,7 @@ pmessage->m_atom = emessage
          
       }
       
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       if(puserinteraction == nullptr)
       {
@@ -2426,7 +2436,7 @@ pmessage->m_atom = emessage
       
       informationf("macos::window::macos_window_on_hide");
 
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       if(::is_null(puserinteraction))
       {
@@ -2466,7 +2476,7 @@ pmessage->m_atom = emessage
          
       }
       
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       if(::is_null(puserinteraction))
       {
@@ -2488,7 +2498,7 @@ void window::frame_toggle_restore(::user::activation_token * puseractivationtoke
       ns_main_post(^()
                      {
          
-         auto puserinteraction = m_puserinteraction;
+         auto puserinteraction = user_interaction();
 
       if(puserinteraction->get_parent() == nullptr && puserinteraction->get_owner() == nullptr)
       {
@@ -2561,7 +2571,7 @@ void window::frame_toggle_restore(::user::activation_token * puseractivationtoke
 //
 //      }
 
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       if(::is_null(puserinteraction))
       {
@@ -2658,7 +2668,7 @@ void window::frame_toggle_restore(::user::activation_token * puseractivationtoke
    //
    //      }
 
-      auto puserinteraction = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       if(::is_null(puserinteraction))
       {
@@ -2742,13 +2752,12 @@ void window::frame_toggle_restore(::user::activation_token * puseractivationtoke
    void window::destroy_window()
    {
 
-
-      ::pointer < ::user::interaction > puiThis = m_puserinteraction;
+      auto puserinteraction = user_interaction();
 
       try
       {
 
-         puiThis->send_message(e_message_destroy);
+         puserinteraction->send_message(e_message_destroy);
 
       }
       catch (...)
@@ -2759,7 +2768,7 @@ void window::frame_toggle_restore(::user::activation_token * puseractivationtoke
       try
       {
 
-         puiThis->send_message(e_message_non_client_destroy);
+         puserinteraction->send_message(e_message_non_client_destroy);
 
       }
       catch (...)
