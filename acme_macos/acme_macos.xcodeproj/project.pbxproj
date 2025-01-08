@@ -16,6 +16,7 @@
 		9A15A625264B56770080670E /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A613264B56750080670E /* _.h */; };
 		9A15A62B264B56770080670E /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A15A619264B56760080670E /* _mm.h */; };
 		9A15A62F264B56770080670E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A61D264B56760080670E /* main.cpp */; };
+		9A2049F42D2CCB4000C43F75 /* file.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A71E26CEC02A00F98012 /* file.mm */; };
 		9A239CB626CDEF9300F98012 /* file_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A239CB426CDEF9300F98012 /* file_system.cpp */; };
 		9A239CB726CDEF9300F98012 /* file_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A239CB526CDEF9300F98012 /* file_system.h */; };
 		9A23A71F26CEC02A00F98012 /* file.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A71E26CEC02A00F98012 /* file.mm */; };
@@ -80,7 +81,6 @@
 		9AC14D45297B3488006D9BD3 /* list_serial_ports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */; };
 		9AC14D46297B3488006D9BD3 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6543FD2666F2A400F8A254 /* image.cpp */; };
 		9AC14D47297B3488006D9BD3 /* directory_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A92314A27EAE30D00B5A78D /* directory_system.cpp */; };
-		9AC14D48297B3488006D9BD3 /* file.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A71E26CEC02A00F98012 /* file.mm */; };
 		9AC14D49297B3488006D9BD3 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A15A612264B56750080670E /* _factory.cpp */; };
 		9AC14D4A297B3488006D9BD3 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787C63264BD87E003DF8A0 /* node.cpp */; };
 		9AC2CB3D26531C6200CC8096 /* list_serial_ports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */; };
@@ -519,6 +519,7 @@
 				9AC14D41297B3488006D9BD3 /* main.cpp in Sources */,
 				9AC14D42297B3488006D9BD3 /* path_system.cpp in Sources */,
 				9AC14D43297B3488006D9BD3 /* quit.cpp in Sources */,
+				9A2049F42D2CCB4000C43F75 /* file.mm in Sources */,
 				9AC14D44297B3488006D9BD3 /* mm.mm in Sources */,
 				9AC14D45297B3488006D9BD3 /* list_serial_ports.cpp in Sources */,
 				9A7725022A259E3B00B9A835 /* main_window.cpp in Sources */,
@@ -527,7 +528,6 @@
 				9AC14D47297B3488006D9BD3 /* directory_system.cpp in Sources */,
 				9A7724FF2A259DC700B9A835 /* application.cpp in Sources */,
 				9AA3F95B2A9495E5004283CA /* watcher.cpp in Sources */,
-				9AC14D48297B3488006D9BD3 /* file.mm in Sources */,
 				9AC14D49297B3488006D9BD3 /* _factory.cpp in Sources */,
 				9AA3F9562A9495D6004283CA /* file_context.cpp in Sources */,
 				9AC14D4A297B3488006D9BD3 /* node.cpp in Sources */,
@@ -806,7 +806,7 @@
 		9AC14D54297B3488006D9BD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEAD_CODE_STRIPPING = YES;
+				DEAD_CODE_STRIPPING = NO;
 				EXECUTABLE_EXTENSION = "$(STATIC_LIBRARY_EXTENSION:default=a)";
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -823,7 +823,7 @@
 		9AC14D55297B3488006D9BD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEAD_CODE_STRIPPING = YES;
+				DEAD_CODE_STRIPPING = NO;
 				EXECUTABLE_EXTENSION = "$(STATIC_LIBRARY_EXTENSION:default=a)";
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREPROCESSOR_DEFINITIONS = CUBE;
