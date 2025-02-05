@@ -88,7 +88,7 @@ virtual public ::appkit::acme::windowing::windowing
       void _defer_dock_application(int_bool bDock);
 
 
-      void clear_keyboard_focus(::user::element* pelementGainingFocusIfAny) override;
+//      void clear_keyboard_focus(::user::element* pelementGainingFocusIfAny) override;
 
 
       void os_menu_item_enable(void * pitem, bool bEnable) override;

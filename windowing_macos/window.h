@@ -124,7 +124,7 @@ namespace windowing_macos
 
       void set_mouse_capture() override;
 
-      
+      void release_mouse_capture() override;
 
       
       void set_window_text(const ::scoped_string & scopedstr) override;

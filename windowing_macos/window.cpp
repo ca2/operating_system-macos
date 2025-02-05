@@ -832,6 +832,30 @@ void window::_main_post(const ::procedure & procedure)
    }
 
 
+   void window::release_mouse_capture()
+   {
+
+      auto pwindowing = macos_windowing();
+      
+      if(!pwindowing)
+      {
+         
+         throw exception(error_wrong_state);
+         
+      }
+      
+      if(pwindowing->m_pwindowCapture == this)
+      {
+         
+         pwindowing->m_pwindowCapture.release();
+         
+      }
+
+      //return ::success;
+
+   }
+
+
    void window::__update_graphics_buffer()
    {
       
@@ -1162,7 +1186,7 @@ void window::_main_post(const ::procedure & procedure)
 auto pmessage = __create_new < type >(); \
 pmessage->m_oswindow = this->oswindow(); \
 pmessage->m_pwindow = this; \
-pmessage->m_atom = emessage
+pmessage->m_emessage = emessage
 
    bool window::macos_window_key_down(unsigned int virtualKey, unsigned int scanCode, const char * pszUtf8)
    {

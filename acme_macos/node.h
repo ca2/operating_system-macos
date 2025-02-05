@@ -60,7 +60,7 @@ namespace acme_macos
       
       //void on_start_system() override;
       
-      void user_post_quit() override;
+      //void user_post_quit() override;
       
       void install_sigchld_handler() override;
 

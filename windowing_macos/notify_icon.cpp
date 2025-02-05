@@ -76,7 +76,7 @@ namespace windowing_macos
 
       m_strId = "ca2-" + pwindowingicon->get_tray_icon_name() + "-" + m_strId;
 
-      m_atom                       = atom;
+      this->id() = atom;
 
       m_puserinteractionNotify   = puserinteractionNotify;
 

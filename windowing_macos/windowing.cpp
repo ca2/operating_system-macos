@@ -396,10 +396,10 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::acme::windowin
    }
 
 
-   void windowing::clear_keyboard_focus(::user::element* pelementGainingFocusIfAny)
-   {
-
-   }
+//   void windowing::clear_keyboard_focus(::user::element* pelementGainingFocusIfAny)
+//   {
+//
+//   }
 
 
 

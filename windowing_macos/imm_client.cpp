@@ -70,7 +70,7 @@ void imm_client::_011OnChar(::message::message * pmessage)
 
    ::pointer < ::user::message > pusermessage(pmessage);
 
-   if (pmessage->m_atom == e_message_char)
+   if (pmessage->m_emessage == e_message_char)
    {
 
       auto psession = session();
