@@ -26,7 +26,7 @@ void application_handle_command(::platform::application * papplication, const ch
 
 ::platform::system * application_system(::platform::application * papplication);
 
-void system_id_update(::platform::system * psystem, ::huge_integer iUpdate, ::huge_integer iPayload);
+void system_id_update(::platform::system * psystem, long long iUpdate, long long iPayload);
 
 void node_will_finish_launching(::platform::system * psystem);
 void system_on_open_untitled_file(::platform::system * psystem);
@@ -1650,7 +1650,7 @@ void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool b
          
          ::string strMenuItemId;
          
-         strMenuItemId = "menu_item_" + pitem->m_atom.as_string();
+         strMenuItemId = "menu_item_" + pitem->m_atomMenu.as_string();
          
          id strId = __nsstring(strMenuItemId);
          

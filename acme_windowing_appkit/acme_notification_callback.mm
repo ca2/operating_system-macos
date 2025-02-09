@@ -11,7 +11,7 @@
 #include "acme/operating_system/argcargv.h"
 bool ns_get_dark_mode();
 
-void system_id_update(::platform::system * psystem, ::huge_integer iUpdate, ::huge_integer iPayload);
+void system_id_update(::platform::system * psystem, long long iUpdate, long long iPayload);
 
 ::platform::system * application_system(::platform::application * papplication);
 

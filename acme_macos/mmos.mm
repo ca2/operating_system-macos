@@ -23,9 +23,9 @@ void ns_set_main_window(NSWindow * pnswindow)
 }
 
 
-void millis_sleep(::huge_natural uMillis);
+void millis_sleep(unsigned long long uMillis);
 
-void system_id_update(::platform::system * psystem, ::huge_integer iUpdate, ::huge_integer iPayload);
+void system_id_update(::platform::system * psystem, long long iUpdate, long long iPayload);
 //void system_call_update_wallpaper_changed();
 
 bool apple_get_file_image(unsigned int * pcr, int cx, int cy, int iScan, const char * psz);

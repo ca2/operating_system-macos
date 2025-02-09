@@ -219,12 +219,12 @@ void  windowing::run()
    
    ns_app_run();
    
-   if(::system()->m_pmanualresethappeningMainLoopEnd)
-   {
-
-      ::system()->m_pmanualresethappeningMainLoopEnd->set_happening();
-
-   }
+//   if(::system()->m_pmanualresethappeningMainLoopEnd)
+//   {
+//
+//      ::system()->m_pmanualresethappeningMainLoopEnd->set_happening();
+//
+//   }
    
 }
 
@@ -312,7 +312,7 @@ void windowing::defer_create_windowing_application_delegate(::platform::applicat
 }
 
 
-void windowing::application_handle(huge_integer l, void* p)
+void windowing::application_handle(long long l, void* p)
 {
    ns_application_handle(l, p);
    

@@ -1533,11 +1533,11 @@ namespace input_appkit
    void input::handle_message(::message::message * pmessage)
    {
 
-      if (pmessage->m_atom.m_etype == atom::e_type_message)
+      //if (pmessage->m_atom.m_etype == atom::e_type_message)
       {
 
-         if (pmessage->m_atom.m_emessage >= e_message_mouse_first
-            && pmessage->m_atom.m_emessage <= e_message_mouse_last)
+         if (pmessage->m_emessage >= e_message_mouse_first
+            && pmessage->m_emessage <= e_message_mouse_last)
          {
 
             for (auto & pparticle : m_particleaMouseHandler)
@@ -1548,8 +1548,8 @@ namespace input_appkit
             }
 
          }
-         else if (pmessage->m_atom.m_emessage >= e_message_key_first
-            && pmessage->m_atom.m_emessage <= e_message_key_last)
+         else if (pmessage->m_emessage >= e_message_key_first
+            && pmessage->m_emessage <= e_message_key_last)
          {
 
             for (auto & pparticle : m_particleaKeyboardHandler)

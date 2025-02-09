@@ -56,7 +56,7 @@ public:
    void run() override;
    void windowing_post_quit() override;
    
-   void application_handle(huge_integer l, void* p) override;
+   void application_handle(long long l, void* p) override;
 
    bool handle_messages() override;
    

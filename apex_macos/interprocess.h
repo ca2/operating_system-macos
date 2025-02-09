@@ -84,7 +84,7 @@ namespace apex_macos
 
 //      void on_interprocess_receive(::string && strMessage) override;
 //      void on_interprocess_receive(int message, memory && memory) override;
-//      void on_interprocess_post(huge_integer a, huge_integer b) override;
+//      void on_interprocess_post(long long a, long long b) override;
 
 
       virtual bool on_idle() override;
