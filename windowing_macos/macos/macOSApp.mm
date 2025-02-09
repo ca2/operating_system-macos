@@ -33,7 +33,7 @@ void application_on_menu_action(::platform::application * papplication, const ch
 ::platform::system * application_system(::platform::application * papplication);
 
 
-void system_id_update(::platform::system * psystem, long long iUpdate, long long iPayload);
+void system_id_update(::platform::system * psystem, int iUpdate, long long iPayload);
 
 
 //void ns_application_update(long long iUpdate, void * p);
