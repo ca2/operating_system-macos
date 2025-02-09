@@ -705,11 +705,11 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 ////      m_phappeningReadyToTerminateApp->_wait();
 //       
 //   }
+//
 
 
 
-
-   //   void * node::node_wrap_window(void * pvoidDisplay, huge_integer window)
+   //   void * node::node_wrap_window(void * pvoidDisplay, long long window)
    //   {
    //
    //      Display * pdisplay = (Display *) pvoidDisplay;

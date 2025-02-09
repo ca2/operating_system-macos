@@ -224,7 +224,7 @@ namespace input_appkit
 
       auto pkeyboard = __create_new < ::message::key >();
 
-      pkeyboard->m_atom = emessage;
+      pkeyboard->m_emessage = emessage;
 
       if (iVirtualKeyCode == kVK_Return)
       {

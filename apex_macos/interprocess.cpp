@@ -194,7 +194,7 @@ namespace apex_macos
    interprocess_target::interprocess_target()
    {
 
-      m_atom = "::interprocess_communication::rx";
+      m_atomMatterId = "::interprocess_communication::rx";
    
       m_runloop = nullptr;
 
@@ -336,7 +336,7 @@ namespace apex_macos
 //      {
 //      }
 //
-//      void rx::receiver::on_post(rx * ptarget,huge_integer a,huge_integer b)
+//      void rx::receiver::on_post(rx * ptarget,long long a,long long b)
 //      {
 //      }
 
@@ -376,7 +376,7 @@ namespace apex_macos
 //   }
 //
 //
-//   void * interprocess_target::on_interprocess_post(::interprocess_communication::rx * ptarget,huge_integer a,huge_integer b)
+//   void * interprocess_target::on_interprocess_post(::interprocess_communication::rx * ptarget,long long a,long long b)
 //   {
 //
 //      if(m_preceiver != nullptr)

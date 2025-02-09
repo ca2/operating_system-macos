@@ -64,7 +64,7 @@ namespace appkit
 #ifdef _DEBUG
       
       
-      huge_integer window::increment_reference_count()
+      long long window::increment_reference_count()
       {
          
          return ::acme::windowing::window::increment_reference_count();
@@ -72,7 +72,7 @@ namespace appkit
       }
       
       
-      huge_integer window::decrement_reference_count()
+      long long window::decrement_reference_count()
       {
          
          return ::acme::windowing::window::decrement_reference_count();
@@ -80,7 +80,7 @@ namespace appkit
       }
       
       
-      huge_integer window::release()
+      long long window::release()
       {
          
          return ::acme::windowing::window::release();
@@ -218,7 +218,7 @@ namespace appkit
       void window::handle(::topic* ptopic, ::context* pcontext)
       {
          
-         if (ptopic->m_atom == id_set_application_dark_mode)
+         if (ptopic->id() == id_set_application_dark_mode)
          {
             
             //update_drawing_objects();
@@ -405,13 +405,13 @@ namespace appkit
       }
       
       
-      void window::set_capture()
+      void window::set_mouse_capture()
       {
          
       }
       
       
-      void window::release_capture()
+      void window::release_mouse_capture()
       {
          
       }

@@ -473,7 +473,7 @@ namespace macos
       
       dwLen = pFile->seek_to_end();
       
-      if(dwCur != (huge_natural)pFile->seek((filesize) dwCur, ::e_seek_set))
+      if(dwCur != (unsigned long long)pFile->seek((filesize) dwCur, ::e_seek_set))
       {
 
          throw ::exception(io_exception("failed to seek back to the original position on get_length"));;

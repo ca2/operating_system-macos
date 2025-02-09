@@ -43,7 +43,7 @@ namespace aura_macos
 {
 
 
-   huge_integer g_iMouseMove = 0;
+   long long g_iMouseMove = 0;
 
 
    ::aura::application * g_pappPreTranslateMouseMessage = nullptr;
@@ -968,13 +968,13 @@ namespace aura_macos
 //      if (pfnWndProc == nullptr)
 //      {
 //
-//         lresult = ::DefWindowProcW(m_oswindow, pmessage->m_atom.huge_integer(), pmessage->m_wparam, pmessage->m_lparam);
+//         lresult = ::DefWindowProcW(m_oswindow, pmessage->m_atom.long_long, pmessage->m_wparam, pmessage->m_lparam);
 //
 //      }
 //      else
 //      {
 //
-//         lresult = ::CallWindowProc(pfnWndProc, m_oswindow, pmessage->m_atom.huge_integer(), pmessage->m_wparam, pmessage->m_lparam);
+//         lresult = ::CallWindowProc(pfnWndProc, m_oswindow, pmessage->m_atom.long_long, pmessage->m_wparam, pmessage->m_lparam);
 //
 //      }
       

@@ -74,8 +74,8 @@ namespace macos
 
       //virtual bool PASCAL GetStatus(const char * lpszFileName, ::file::file_status& rStatus);
 
-      //huge_natural ReadHuge(void * lpBuffer, huge_natural dwCount);
-      //void WriteHuge(const void * lpBuffer, huge_natural dwCount);
+      //unsigned long long ReadHuge(void * lpBuffer, unsigned long long dwCount);
+      //void WriteHuge(const void * lpBuffer, unsigned long long dwCount);
 
       //virtual ::pointer < ::file::file > Duplicate() const;
 
@@ -94,7 +94,7 @@ namespace macos
       virtual void close() override;
 
       virtual bool is_opened() const override;
-//      virtual huge_natural GetBufferPtr(unsigned int nCommand, huge_natural nCount = 0, void ** ppBufStart = nullptr, void ** ppBufMax = nullptr);
+//      virtual unsigned long long GetBufferPtr(unsigned int nCommand, unsigned long long nCount = 0, void ** ppBufStart = nullptr, void ** ppBufMax = nullptr);
 
 
    };

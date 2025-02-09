@@ -77,7 +77,7 @@ namespace windowing_macos
 #ifdef _DEBUG
       
       
-   huge_integer window::increment_reference_count()
+   long long window::increment_reference_count()
    {
       
       return ::acme::windowing::window::increment_reference_count();
@@ -85,7 +85,7 @@ namespace windowing_macos
    }
    
    
-   huge_integer window::decrement_reference_count()
+   long long window::decrement_reference_count()
    {
       
       return ::acme::windowing::window::decrement_reference_count();
@@ -93,7 +93,7 @@ namespace windowing_macos
    }
    
    
-   huge_integer window::release()
+   long long window::release()
    {
       
       return ::acme::windowing::window::release();
@@ -1799,7 +1799,7 @@ pmessage->m_emessage = emessage
    //
    ////      ::int_size sz;
    ////
-   ////      huge_integer_point pt(rectangle.origin.x, rectangle.origin.y);
+   ////      long_long_point pt(rectangle.origin.x, rectangle.origin.y);
    ////
    ////      bool bMove = false;
    ////
