@@ -645,66 +645,66 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 
 
 
-   void node::user_post_quit()
-   {
-       
-      
-
-
-//namespace acme_macos
-//{
-//
-//
-//   void quit::run()
+//   void node::user_post_quit()
 //   {
-
-      
-      main_asynchronous([this]()
-                        {
-         
-         //m_phappeningReadyToTerminateApp->set_event();
-         
-         auto htaskSystem = (pthread_t) system()->m_htask;
-         
-         system()->post_quit();
-
-         pthread_join(htaskSystem, nullptr);
-       
-         ns_app_terminate();
-
-      });
-
-////
-////      delete this;
-//
-//   //         return ::success;
-//   //
-//   }
-//
-//
-//} // namespace acme_macos
-//
-//
-//
-//      m_phappeningReadyToTerminateApp = __new(manual_reset_happening);
 //       
-//      m_phappeningReadyToTerminateApp->reset_happening();
-//       
-//      // element_quit * pelementquit = new element_quit(this);
-//
-//      //m_psystem->windowing_post_quit();
 //      
-//      main_asynchronous(m_pparticleQuit);
-////           {
-////         
-////         m_pelementQuit
-////         
-////      }
-////           )
+//
+//
+////namespace acme_macos
+////{
+////
+////
+////   void quit::run()
+////   {
+//
+//      
+//      main_asynchronous([this]()
+//                        {
+//         
+//         //m_phappeningReadyToTerminateApp->set_event();
+//         
+//         auto htaskSystem = (pthread_t) system()->m_htask;
+//         
+//         system()->post_quit();
+//
+//         pthread_join(htaskSystem, nullptr);
 //       
-//      m_phappeningReadyToTerminateApp->_wait();
-       
-   }
+//         ns_app_terminate();
+//
+//      });
+//
+//////
+//////      delete this;
+////
+////   //         return ::success;
+////   //
+////   }
+////
+////
+////} // namespace acme_macos
+////
+////
+////
+////      m_phappeningReadyToTerminateApp = __new(manual_reset_happening);
+////       
+////      m_phappeningReadyToTerminateApp->reset_happening();
+////       
+////      // element_quit * pelementquit = new element_quit(this);
+////
+////      //m_psystem->windowing_post_quit();
+////      
+////      main_asynchronous(m_pparticleQuit);
+//////           {
+//////         
+//////         m_pelementQuit
+//////         
+//////      }
+//////           )
+////       
+////      m_phappeningReadyToTerminateApp->_wait();
+//       
+//   }
 
 
 
@@ -1027,7 +1027,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
       
       auto psystem = system();
       
-      if(::is_null(psystem->m_htask)
+      if(psystem->m_htask.is_null()
          || psystem->m_itask == main_itask())
       {
          
