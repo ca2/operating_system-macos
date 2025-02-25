@@ -26,8 +26,8 @@ namespace windowing_macos
       
       ::collection::count get_monitor_count() override;
    
-      string impl_get_wallpaper(::collection::index iScreen) override;
-      void impl_set_wallpaper(::collection::index iScreen, const ::scoped_string & strWallpaper) override;
+      string _get_wallpaper(::collection::index iScreen) override;
+      void _set_wallpaper(::collection::index iScreen, const ::scoped_string & strWallpaper) override;
 
       ::int_point _get_mouse_cursor_position() override;
 

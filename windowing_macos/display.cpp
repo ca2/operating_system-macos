@@ -44,7 +44,7 @@ namespace windowing_macos
    }
 
 
-   string display::impl_get_wallpaper(::collection::index iScreen)
+   string display::_get_wallpaper(::collection::index iScreen)
    {
       
       auto psz = ns_get_wallpaper();
@@ -67,7 +67,7 @@ namespace windowing_macos
    }
 
 
-   void display::impl_set_wallpaper(::collection::index iScreen, const ::scoped_string & strWallpaper)
+   void display::_set_wallpaper(::collection::index iScreen, const ::scoped_string & strWallpaper)
    {
       
 //      if(!strWallpaper.case_insensitive_begins("file://"))
