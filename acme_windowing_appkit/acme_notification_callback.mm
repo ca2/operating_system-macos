@@ -69,20 +69,3 @@ void ns_main_send(dispatch_block_t block);
 
 
 
-bool ns_get_dark_mode()
-{
-   
-   __block BOOL dark = FALSE;
-   
-   ns_main_send(^()
-                {
-      
-      NSAppearance* appearance = NSApp.effectiveAppearance;
-      NSString* name = appearance.name;
-      dark = [appearance bestMatchFromAppearancesWithNames:@[NSAppearanceNameAqua, NSAppearanceNameDarkAqua]] == NSAppearanceNameDarkAqua;
-      
-   });
-   
-   return !!dark;
-   
-}

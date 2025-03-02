@@ -120,7 +120,7 @@ virtual public ::appkit::acme::windowing::windowing
       void windowing_application_main_loop() override;
       void windowing_post_quit() override;
       
-      
+      void set_dark_mode(bool bDarkMode) override;
 
    };
       

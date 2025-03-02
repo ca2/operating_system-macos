@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A039BF72D73E0C0008E9D7D /* windowing.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A039BEE2D73E0B0008E9D7D /* windowing.mm */; };
 		9A1CC40B2CF2DBE5004A00CB /* libacme_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1CC40A2CF2DBE5004A00CB /* libacme_apple.dylib */; };
 		9A523E0E2CD3A5E5006ED868 /* window.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A523E0C2CD3A5E5006ED868 /* window.h */; };
 		9A523E0F2CD3A5E5006ED868 /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A523E0D2CD3A5E5006ED868 /* window.cpp */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A039BEE2D73E0B0008E9D7D /* windowing.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = windowing.mm; sourceTree = "<group>"; };
 		9A1CC3FC2CF2DBBE004A00CB /* acme_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_macos.xcodeproj; path = ../acme_macos/acme_macos.xcodeproj; sourceTree = SOURCE_ROOT; };
 		9A1CC40A2CF2DBE5004A00CB /* libacme_apple.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_apple.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A523E0C2CD3A5E5006ED868 /* window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = window.h; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				9A523E0D2CD3A5E5006ED868 /* window.cpp */,
 				9A7E17822C9DFC6E00EE8CA6 /* windowing.h */,
 				9A7E17832C9DFC6E00EE8CA6 /* windowing.cpp */,
+				9A039BEE2D73E0B0008E9D7D /* windowing.mm */,
 				9A7E17A02C9DFE6200EE8CA6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				9A52434D2CD4AC97006ED868 /* macos_app.cpp in Sources */,
 				9A7E178B2C9DFDA300EE8CA6 /* _.cpp in Sources */,
 				9A52437E2CD4C63E006ED868 /* display.cpp in Sources */,
+				9A039BF72D73E0C0008E9D7D /* windowing.mm in Sources */,
 				9A523E2D2CD3A619006ED868 /* ns_acme_impact.mm in Sources */,
 				9A523E2E2CD3A619006ED868 /* ns_acme_window.mm in Sources */,
 				9A5244212CD6C28A006ED868 /* acme_window_bridge.mm in Sources */,

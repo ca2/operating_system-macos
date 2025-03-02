@@ -824,6 +824,15 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::acme::windowin
    }
 
 
+void windowing::set_dark_mode(bool bDarkMode)
+{
+   
+   return ::appkit::acme::windowing::windowing::set_dark_mode(bDarkMode);
+   
+   
+}
+
+
 } // namespace windowing_macos
 
 

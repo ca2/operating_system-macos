@@ -22,7 +22,8 @@ void ns_app_run();
 void ns_app_do_tasks();
 void ns_app_stop();
 void ns_main_post(dispatch_block_t block);
-
+bool ns_get_dark_mode();
+bool ns_set_dark_mode(bool bDarkMode);
 void acme_defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::command_handler * pcommandhandler);
 
 
@@ -350,6 +351,26 @@ void windowing::set_osdata_acme_windowing_window(void * posdata, ::acme::windowi
 }
 
 
+bool windowing::dark_mode()
+{
+ 
+   return ns_get_dark_mode();
+   
+}
+
+
+// Don't forget to:
+// add NSAppleEventsUsageDescription to Info.plist with System Events usage description
+// add Apple Events Hardened Runtime entitlement
+
+void windowing::set_dark_mode(bool bDarkMode)
+{
+
+   ns_set_dark_mode(bDarkMode);
+   
+}
+
+
 } // namespace windowing
 
 
@@ -357,6 +378,11 @@ void windowing::set_osdata_acme_windowing_window(void * posdata, ::acme::windowi
 
 
 } // namespace windowing_appkit
+
+
+
+
+
 
 
 

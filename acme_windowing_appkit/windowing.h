@@ -64,6 +64,9 @@ public:
 
    virtual void set_osdata_acme_windowing_window(void *, ::acme::windowing::window *);
    virtual ::acme::windowing::window * osdata_acme_windowing_window(void *);
+   
+   bool dark_mode() override;
+   void set_dark_mode(bool bDarkMode) override;
     
 };
 
