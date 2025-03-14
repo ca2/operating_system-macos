@@ -44,7 +44,7 @@
 			remoteGlobalIDString = 9A0C165E264A290E00B5CC33;
 			remoteInfo = acme_macos;
 		};
-		9A39808A2D1A4DA0007A31B5 /* PBXContainerItemProxy */ = {
+		9A9979A62D84B61C00A1FC11 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AA03ECA2D1A4B320079C423 /* acme_windowing_kit.xcodeproj */;
 			proxyType = 1;
@@ -216,7 +216,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				9A39808B2D1A4DA0007A31B5 /* PBXTargetDependency */,
+				9A9979A72D84B61C00A1FC11 /* PBXTargetDependency */,
 				9A3980892D1A4D77007A31B5 /* PBXTargetDependency */,
 			);
 			name = acme_windowing_appkit;
@@ -334,10 +334,10 @@
 			name = acme_macos;
 			targetProxy = 9A3980882D1A4D77007A31B5 /* PBXContainerItemProxy */;
 		};
-		9A39808B2D1A4DA0007A31B5 /* PBXTargetDependency */ = {
+		9A9979A72D84B61C00A1FC11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = acme_windowing_kit;
-			targetProxy = 9A39808A2D1A4DA0007A31B5 /* PBXContainerItemProxy */;
+			targetProxy = 9A9979A62D84B61C00A1FC11 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
