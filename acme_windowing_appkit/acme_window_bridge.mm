@@ -56,6 +56,15 @@ acme_window_bridge::~acme_window_bridge()
    
 }
 
+ int acme_window_bridge::control_box_right_when_at_left() const
+{
+   
+   auto pnsacmewindow =  (__bridge ns_acme_window *) m_pnsacmewindow;
+   
+   return [ pnsacmewindow control_box_right_when_at_left ];
+
+   
+}
 
 void acme_window_bridge::create_ns_acme_window(CGRect cgrect)
 {

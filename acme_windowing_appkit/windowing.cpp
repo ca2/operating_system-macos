@@ -20,7 +20,7 @@
 
 void ns_app_run();
 void ns_app_do_tasks();
-void ns_app_stop();
+void ns_app_post_quit();
 void ns_main_post(dispatch_block_t block);
 bool ns_get_dark_mode();
 bool ns_set_dark_mode(bool bDarkMode);
@@ -186,12 +186,7 @@ void windowing::windowing_application_main_loop()
 void windowing::windowing_post_quit()
 {
  
-   ns_main_post(^()
-                 {
-      ns_app_stop();
-      
-   }
-      );
+      ns_app_post_quit();
    
 }
 

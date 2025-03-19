@@ -25,3 +25,4 @@
 //
 //
 //#import "RoundWindowApp.h"
+NSImage * ns_image_from_file(const char * pszMatter);

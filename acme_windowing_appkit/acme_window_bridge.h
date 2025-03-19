@@ -60,6 +60,12 @@ public:
    
    void do_tasks();
    
+   virtual int control_box_right_when_at_left() const;
+   
+   virtual void on_control_box_close();
+   virtual void on_control_box_minimize();
+   virtual void on_control_box_zoom();
+   
 //   virtual void on_left_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute);
 //   
 //   virtual void on_left_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute);
@@ -101,6 +107,8 @@ public:
    virtual bool _is_popup_window() const;
    
    ::acme::windowing::window * acme_windowing_window() override;
+   
+   virtual bool should_use_desktop_ambient_like_control_box() const;
    
 };
 

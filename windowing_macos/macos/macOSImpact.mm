@@ -14,19 +14,22 @@
 #include "framework.h"
 #include "macOSImpact.h"
 #include "macOSWindow.h"
+#include "macOSControlBox.h"
 #include "macos_window.h"
 #include "macOSWindow.h"
+#include <Carbon/Carbon.h>
 #include "acme/operating_system/macos/keyboard.h"
 #import "acme/operating_system/winpr_input.h"
-#include <Carbon/Carbon.h>
-//NSCursor * g_pcurrentNscursor = nullptr;
 
+//NSCursor * g_pcurrentNscursor = nullptr;
+NSImage * ns_image_from_file(const char * pszMatter);
 @implementation macOSImpact
 
 
 - (id) initWithFrame: (NSRect) frame andWindow: (ns_acme_window *) pnsacmewindow
 {
-
+   m_pmacoscontrolbox = nullptr;
+   m_ptrackingarea = nullptr;
    self                 = [super initWithFrame:frame andWindow:pnsacmewindow];
    
    //[self setWantsLayer : YES];
@@ -44,15 +47,29 @@
    m_bRAlt              = false;
    m_bLCommand          = false;
    m_bRCommand          = false;
-   if (self) {
-      trackingArea = [[NSTrackingArea alloc] initWithRect:[self bounds]
-                                                  options: (NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveInKeyWindow )
-                                                    owner:self userInfo:nil];
-      [self addTrackingArea:trackingArea];
+//   if (self) {
+//      m_ptrackingarea = [[NSTrackingArea alloc] initWithRect:[self bounds]
+//                                                  options: (NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveInKeyWindow )
+//                                                    owner:self userInfo:@{@"name": @"entire_client_area"}];
+//      [self addTrackingArea:m_ptrackingarea];
+//   }
+//
+   
+   if(pnsacmewindow->m_pacmewindowbridge->should_use_desktop_ambient_like_control_box())
+   {
+      
+      m_pmacoscontrolbox = [macOSControlBox alloc];
+      
+      [m_pmacoscontrolbox init: self];
+      
    }
+
+   //[ self createControlBoxButtons ];
+   
    return self;
    
 }
+
 
 
 //
@@ -163,6 +180,20 @@
    
 }
 
+-(void) resizeWithOldSuperviewSize:(NSSize)oldSize
+{
+   
+   [super resizeWithOldSuperviewSize:oldSize];
+   
+   if(m_pmacoscontrolbox)
+   {
+      [m_pmacoscontrolbox layout];
+      
+   }
+   
+
+   
+}
 
 - (void) mouseMoved: (NSEvent *) event
 {
@@ -593,6 +624,8 @@
 
 #endif
    
+   [ super drawRect : rect ];
+   
 }
 
 
@@ -994,10 +1027,24 @@ m_f = true; \
    
 }
 
-- (void)viewWillMoveToWindow:(NSWindow *)newWindow {
-   NSTrackingArea *const trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:(NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveAlways | NSTrackingInVisibleRect) owner:self userInfo:nil];
-   [self addTrackingArea:trackingArea];
-   [self.window invalidateCursorRectsForView:self];
+- (void)viewWillMoveToWindow:(NSWindow *)newWindow
+{
+   
+   if(m_ptrackingarea)
+   {
+      
+      [ self removeTrackingArea : m_ptrackingarea ];
+      
+      m_ptrackingarea = nil;
+      
+   }
+   
+   m_ptrackingarea = [ [NSTrackingArea alloc] initWithRect:NSZeroRect options:(NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveAlways | NSTrackingInVisibleRect) owner:self userInfo:nil];
+   
+   [ self addTrackingArea : m_ptrackingarea ];
+   
+   [ self.window invalidateCursorRectsForView : self ];
+   
 }
 
 
@@ -1029,87 +1076,85 @@ m_f = true; \
 }
 
 
-- (void)mouseEntered:(NSEvent *)theEvent {
-   [super mouseEntered:theEvent];
-   //[g_pcurrentNscursor push];
+- (void)mouseEntered:(NSEvent *)event
+{
+   
+   if(m_pmacoscontrolbox)
+   {
+      
+      if( event.trackingArea == m_pmacoscontrolbox->m_ptrackingareaControlBox)
+      {
+         
+         [ m_pmacoscontrolbox set_hover ];
+         
+      }
+      
+   }
+
+   [super mouseEntered:event];
+
 }
 
-- (void)mouseExited:(NSEvent *)theEvent {
-   [super mouseExited:theEvent];
+
+- (void)mouseExited:(NSEvent *)event
+{
+   
    //[g_pcurrentNscursor pop];
+//   if(m_pmacoscontrolbox)
+//   {
+//      
+//
+//   if(event.trackingArea == m_ptrackingareaControlBox)
+//   {
+//
+//      [ self setControlBoxNormalImages ];
+//      
+//   }
+
+   [ super mouseExited: event ];
+
+}
+-(int) control_box_right_when_at_left
+{
+   
+   if(!m_pmacoscontrolbox)
+   {
+      
+      return -1;
+      
+   }
+   
+   return m_pmacoscontrolbox->m_rightControlBox;
+   
+}
+-(macOSControlBox*)control_box
+{
+   
+   return m_pmacoscontrolbox;
+   
 }
 
+-(void)window_did_become_key :(macOSWindow *) pmacoswindow withNotification:(NSNotification*) notification
+{
+   if(m_pmacoscontrolbox)
+   {
+    
+      [ m_pmacoscontrolbox set_normal ];
+      
+   }
+   
+}
+
+-(void)window_did_resign_key :(macOSWindow *) pmacoswindow withNotification:(NSNotification*) notification
+{
+   if(m_pmacoscontrolbox)
+   {
+    
+      [ m_pmacoscontrolbox set_not_key ];
+      
+   }
+   
+}
 
 @end
-
-
-unsigned int event_num_pad_key_code(NSEvent * event)
-{
-
-   NSString * arrow = [event charactersIgnoringModifiers];
-   
-   if([arrow length] == 1)
-   {
-      
-      unichar key = [arrow characterAtIndex:0];
-      
-      if(key == NSLeftArrowFunctionKey)
-      {
-         
-         return VK_LEFT; //::user::key_left;
-         
-      }
-      else if(key == NSRightArrowFunctionKey)
-      {
-         
-         return VK_RIGHT; //::user::key_right;
-         
-      }
-      else if(key == NSUpArrowFunctionKey)
-      {
-         
-         return VK_UP; // ::user::key_up;
-         
-      }
-      else if(key == NSDownArrowFunctionKey)
-      {
-         
-         return VK_DOWN; // ::user::key_down;
-         
-      }
-      else if(key >= L'0' && key <= L'9')
-      {
-         
-         //return 3000 + key - L'0';
-         
-         return 0;
-         
-      }
-      
-   }
-   
-   return 0;
-
-}
-
-
-unsigned int event_key_code(NSEvent * event)
-{
-
-   unsigned int uiModifierFlags = (unsigned int) [event modifierFlags];
-
-   if(uiModifierFlags & NSEventModifierFlagNumericPad)
-   {
-
-      return event_num_pad_key_code(event);
-   
-   }
-   
-   unsigned int uiKeyCode = [event keyCode];
- 
-   return uiKeyCode;
-   
-}
-
-
 

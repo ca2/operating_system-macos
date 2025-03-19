@@ -581,7 +581,42 @@ namespace appkit
          m_pacmeuserinteraction->set_rectangle(r);
 
       }
+      int window::control_box_right_when_at_left() const{
+         
+         return m_pacmewindowbridge->control_box_right_when_at_left();
+         
+      }
+      
+           
+      void window::on_control_box_close()
+      {
+         
+         ::acme::windowing::window::on_control_box_close();
+         
+      }
 
+
+      void window::on_control_box_minimize()
+      {
+         
+         ::acme::windowing::window::on_control_box_minimize();
+         
+      }
+
+
+      void window::on_control_box_zoom()
+      {
+         
+         ::acme::windowing::window::on_control_box_zoom();
+         
+      }
+      bool window::should_use_desktop_ambient_like_control_box() const
+      {
+         return ::acme::windowing::window::should_use_desktop_ambient_like_control_box();
+         
+      }
+      
+      
 
       } //namespace windowing
 

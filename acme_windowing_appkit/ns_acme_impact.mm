@@ -51,10 +51,10 @@
    if (self)
    {
       
-      trackingArea = [[NSTrackingArea alloc] initWithRect:[self bounds]
+      m_ptrackingarea = [[NSTrackingArea alloc] initWithRect:[self bounds]
                                                   options: (NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveInKeyWindow )
                                                     owner:self userInfo:nil];
-      [self addTrackingArea:trackingArea];
+      [self addTrackingArea:m_ptrackingarea];
       
    }
    

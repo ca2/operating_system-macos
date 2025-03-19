@@ -28,7 +28,7 @@ void * new_macos_window(macos_window * papexwindow, CGRect rectangle, unsigned i
 #import "notify_icon_mm_bridge.h"
 
 
-#import "macos/macOSWindowFrameView.h"
+#import "macos/macOSImpact.h"
 
 
 #import "macos/macOSApp.h"

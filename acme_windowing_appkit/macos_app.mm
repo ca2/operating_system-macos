@@ -1530,20 +1530,25 @@ void ns_app_run()
 }
 
 
-void ns_app_stop()
+void ns_app_post_quit()
 {
    
-   [ [ NSApplication sharedApplication ] stop:nil ];
-   NSEvent* event = [NSEvent otherEventWithType: NSApplicationDefined
-                                                        location: NSMakePoint(0,0)
-                                                  modifierFlags: 0
-                                                      timestamp: 0.0
-                                                   windowNumber: 0
-                                                        context: nil
-                                                        subtype: 0
-                                                          data1: 0
-                                                          data2: 0];
-                   [[ NSApplication sharedApplication ] postEvent: event atStart: FALSE];
+   ns_main_post(^()
+                {
+      
+      [ [ NSApplication sharedApplication ] stop:nil ];
+      //   NSEvent* event = [NSEvent otherEventWithType: NSApplicationDefined
+      //                                                        location: NSMakePoint(0,0)
+      //                                                  modifierFlags: 0
+      //                                                      timestamp: 0.0
+      //                                                   windowNumber: 0
+      //                                                        context: nil
+      //                                                        subtype: 0
+      //                                                          data1: 0
+      //                                                          data2: 0];
+      //                   [[ NSApplication sharedApplication ] postEvent: event atStart: FALSE];
+      
+   });
 }
 
 

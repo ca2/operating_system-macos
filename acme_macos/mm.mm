@@ -523,3 +523,55 @@ bool ns_running_application_terminate_by_bundle_identifier(const char * pszBundl
 
 
 
+CLASS_DECL_ACME void * file_as_memory_dup(long & size, const char *psz);
+NSImage * ns_image_from_file_data(const void * p, long size);
+NSImage * ns_image_from_file(const char * pszMatter)
+{
+ 
+   long size;
+   
+   auto p = file_as_memory_dup(size,pszMatter);
+   NSImage *pnsimage = nil;
+   if(p)
+   {
+      
+      
+      pnsimage = ns_image_from_file_data(p, size);
+      free(p);
+      
+      
+   }
+   
+   return pnsimage;
+
+}
+
+
+NSImage * ns_image_from_file_data(const void * p, long size)
+{
+   NSData *imageData = [[NSData alloc] initWithBytes:p length:size];
+   
+   // Create NSImage from NSData
+   NSImage *pnsimage = [[NSImage alloc] initWithData:imageData];
+   // Assume imageData is an NSData* containing the image in memory
+   //NSImage *image1 = [[NSImage alloc] initWithData:imageData];
+
+   
+   //if (image1) {
+       NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithData:imageData];
+       if (bitmapRep) {
+           // Set new DPI (e.g., 300x300)
+          auto w =bitmapRep.pixelsWide;
+          auto h = bitmapRep.pixelsHigh;
+          pnsimage = [[NSImage alloc] initWithSize:NSMakeSize(w, h)];
+          [pnsimage addRepresentation:bitmapRep];
+//           [bitmapRep setSize:NSMakeSize(w / 300.0, h / 300.0)];
+           
+           // Replace the image's representations
+  //         [image removeRepresentation:[image representations][0]];
+    //       [image addRepresentation:bitmapRep];
+       }
+   //}
+   return pnsimage;
+   
+}

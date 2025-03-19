@@ -214,6 +214,67 @@ void acme_window_bridge::do_tasks()
    
 }
 
+
+void acme_window_bridge::on_control_box_close()
+{
+   
+   auto pwindow = acme_windowing_window();
+   
+   if(::is_set(pwindow))
+   {
+    
+      pwindow->on_control_box_close();
+      
+   }
+   
+}
+
+
+void acme_window_bridge::on_control_box_minimize()
+{
+   
+   auto pwindow = acme_windowing_window();
+   
+   if(::is_set(pwindow))
+   {
+    
+      pwindow->on_control_box_minimize();
+      
+   }
+
+}
+
+
+void acme_window_bridge::on_control_box_zoom()
+{
+   
+   auto pwindow = acme_windowing_window();
+   
+   if(::is_set(pwindow))
+   {
+    
+      pwindow->on_control_box_zoom();
+      
+   }
+
+}
+
+bool acme_window_bridge::should_use_desktop_ambient_like_control_box() const
+{
+   
+   auto pwindow = m_pwindow;
+   
+   if(::is_set(pwindow))
+   {
+    
+      return pwindow->should_use_desktop_ambient_like_control_box();
+      
+   }
+   
+   return false;
+   
+}
+
 } // namespace appkit
 
 void * __nsacmewindow_osdata(CFTypeRef typeref);
@@ -228,4 +289,6 @@ void * oswindow_osdata(oswindow hwnd)
    return __nsacmewindow_osdata(pacmewindowbridge->m_pnsacmewindow);
    
 }
+
+
 

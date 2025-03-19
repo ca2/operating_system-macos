@@ -30,6 +30,8 @@ class acme_window_bridge;
 //-(instancetype) init: (NSRect) rectangle;
 
 -(void)setBridge:(::appkit::acme_window_bridge *) pacmewindowbridge;
-
+- (void)windowDidBecomeKey:(NSNotification *)aNotification;
+- (void)windowDidResignKey:(NSNotification *)aNotification;
+-(int) control_box_right_when_at_left ;
 @end
  

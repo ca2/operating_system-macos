@@ -159,6 +159,16 @@ class acme_window_bridge;
       
       virtual void _on_layout(int x, int y, int w, int h);
       
+        int control_box_right_when_at_left() const override;
+      
+      
+      void on_control_box_close() override;
+      void on_control_box_minimize() override;
+      void on_control_box_zoom() override;
+      
+      
+      bool should_use_desktop_ambient_like_control_box() const override;
+
       
    };
 

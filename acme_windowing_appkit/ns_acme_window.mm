@@ -255,6 +255,13 @@ void ns_main_send(dispatch_block_t block);
 }
 
 
+-(int) control_box_right_when_at_left
+{
+   
+   return -1;
+   
+}
+
 @end
 
 
@@ -271,3 +278,4 @@ void * __nsacmewindow_osdata(CFTypeRef typeref)
    return posdata;
    
 }
+

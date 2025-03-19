@@ -36,8 +36,7 @@ class macos_window;
    
    //macOSImpact *           m_pimpactChildContent;
    NSWindowController *    m_pwindowcontroller;
-   
-   
+  
 }
 
 -(void)dealloc;
@@ -45,5 +44,7 @@ class macos_window;
 -(void)windowDidExpose:(NSNotification*)notification;
 
 -(void)windowWillClose:(NSNotification*)notification;
+
+-(int) control_box_right_when_at_left;
 
 @end

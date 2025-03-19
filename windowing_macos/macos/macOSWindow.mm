@@ -15,9 +15,10 @@
 #include "macOSWindow.h"
 #include "macos_window.h"
 #include "macOSImpact.h"
+#include "macOSControlBox.h"
 #include "_c_mm.h"
-
-
+CLASS_DECL_ACME void * file_as_memory_dup(long & size, const char *pszMatter);
+ 
 NSString * __nsstring(const char * psz);
 
 
@@ -61,6 +62,7 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
 - (id)initWithContentRect: (NSRect) contentRect styleMask: (NSUInteger) windowStyle backing:(NSBackingStoreType) bufferingType defer: (BOOL) deferCreation
 {
    
+   
    m_bNoActivate = false;
    
 	self = [ super
@@ -81,6 +83,7 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
    
 	[self setOpaque:NO];
     [self setHasShadow:NO];
+   [self setTitlebarAppearsTransparent:TRUE];
    //	[self setOpaque:YES];
 
    [self setBackgroundColor:[NSColor clearColor]];
@@ -135,6 +138,8 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
    
    [self on_window_size];
    
+   
+   
    return self;
    
 }
@@ -150,6 +155,37 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
    pwindow->macos_window_dec_ref();
    
 }
+
+
+
+
+//
+//- (void)enableWindowButtons {
+//    NSButton *closeButton = [self standardWindowButton:NSWindowCloseButton];
+//    NSButton *minimizeButton = [self standardWindowButton:NSWindowMiniaturizeButton];
+//    NSButton *zoomButton = [self standardWindowButton:NSWindowZoomButton];
+//
+//    // Make sure the buttons are visible
+//    closeButton.hidden = NO;
+//    minimizeButton.hidden = NO;
+//    zoomButton.hidden = NO;
+//}
+//
+
+
+
+
+//- (void)closeWindow:(id)sender {
+//    [self close];
+//}
+//
+//- (void)minimizeWindow:(id)sender {
+//    [self miniaturize:nil];
+//}
+//
+//- (void)zoomWindow:(id)sender {
+//    [self zoom:nil];
+//}
 
 - (void)performMiniaturize:(id)sender
 {
@@ -175,25 +211,44 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
 //
 // mainWindowChanged:
 //
-//
-//- (void)windowDidBecomeKey:(NSNotification *)aNotification
-//{
-//
-//   printf("windowDidBecomeKey\n");
-//
-//   m_pmacoswindow->macos_window_did_become_key();
-//   
-//}
-//
-//- (void)windowDidResignKey:(NSNotification *)aNotification
-//{
-//   
-//   printf("windowDidResignKey\n");
-//   
-//   m_pmacoswindow->macos_window_did_resign_key();
-//   
-//}
 
+- (void)windowDidBecomeKey:(NSNotification *)notification
+{
+   [super windowDidBecomeKey: notification];
+   //printf("windowDidBecomeKey\n");
+
+   //m_pmacoswindow->macos_window_did_become_key();
+   macOSImpact * pimpact = (macOSImpact *) m_pnsacmeimpact;
+   
+   [ pimpact window_did_become_key : self withNotification : notification ];
+   
+}
+
+
+
+- (void)windowDidResignKey:(NSNotification *)notification
+{
+   
+   [super windowDidResignKey: notification];
+   printf("windowDidResignKey\n");
+   macOSImpact * pimpact =(macOSImpact *) m_pnsacmeimpact;
+   [ pimpact window_did_resign_key : self withNotification : notification ];
+
+   //[ [ pimpact control_box ] set_not_key ];
+   //m_pmacoswindow->macos_window_did_resign_key();
+   
+}
+
+
+
+-(int) control_box_right_when_at_left
+{
+   
+   macOSImpact * pimpact = (macOSImpact *) m_pnsacmeimpact;
+   
+   return [pimpact control_box_right_when_at_left];
+   
+}
 
 
 //
@@ -332,7 +387,6 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
    
    
 }
-
 
 -(void) on_window_size
 {

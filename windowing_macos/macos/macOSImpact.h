@@ -27,6 +27,7 @@
 
 
 @class macOSWindow;
+@class macOSControlBox;
 
 
 @interface macOSImpact : ns_acme_impact
@@ -46,8 +47,13 @@
    //bool m_bRCommand; // In Windows, the Windows Key
    //unsigned int kbdModFlags;
    
+   macOSControlBox *       m_pmacoscontrolbox;
 }
 
 - (id)initWithFrame:(NSRect)frame andWindow:(ns_acme_window*)pnsacmewindow;
+-(int) control_box_right_when_at_left;
+-(macOSControlBox*)control_box;
+-(void)window_did_become_key :(macOSWindow *) pmacoswindow withNotification:(NSNotification*) notification;
+-(void)window_did_resign_key :(macOSWindow *) pmacoswindow withNotification:(NSNotification*) notification;
 
 @end
