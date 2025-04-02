@@ -75,7 +75,7 @@
 
 //#error "test"
 
-#ifdef DEBUG
+#ifdef _DEBUG
 #undef DEBUG
 #ifndef _DEBUG
 #define _DEBUG

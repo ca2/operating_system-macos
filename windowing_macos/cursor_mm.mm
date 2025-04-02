@@ -4,7 +4,8 @@
 //
 //  Created by Camilo Sasuke on 28/05/21.
 //
-#import <AppKit/AppKit.h>
+#include "framework.h"
+//#import <AppKit/AppKit.h>
 #include "acme/constant/cursor.h"
 
 

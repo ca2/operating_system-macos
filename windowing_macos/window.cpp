@@ -6,7 +6,11 @@
 //
 //
 #include "framework.h"
+#include "cursor.h"
+#include "keyboard.h"
+#include "window.h"
 #include "window_impl.h"
+#include "windowing.h"
 #include "acme/constant/message.h"
 #include "acme/constant/user_key.h"
 #include "acme/parallelization/mutex.h"
@@ -25,6 +29,10 @@
 #include "aura/user/user/user.h"
 #include "aura/message/user.h"
 #include <CoreGraphics/CoreGraphics.h>
+
+
+int_rectangle_array cg_get_window_rect_list_intersect_above(CGWindowID windowid);
+CGWindowID ns_get_window_id(void * pnswindow);
 
 
 void * __nsacmewindow_osdata(CFTypeRef pnsacmewindow);

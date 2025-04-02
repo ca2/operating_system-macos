@@ -296,3 +296,24 @@ extern "C" {
 //   return keyCode;
 //   
 //}
+
+
+//#include <Carbon/Carbon.h>
+
+
+const char * mm_keyboard_input_source()
+{
+   
+   TISInputSourceRef source = TISCopyCurrentKeyboardInputSource();
+   CFStringRef s = (CFStringRef)(TISGetInputSourceProperty(source, kTISPropertyInputSourceID));
+   
+   if(!s)
+      return strdup("");
+   auto length = CFStringGetLength(s);
+   auto str = (char *)malloc( length + 1 );
+   CFStringGetCString(s, str, length, kCFStringEncodingUTF8);
+   return str;
+}
+
+
+

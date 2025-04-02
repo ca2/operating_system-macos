@@ -16,7 +16,15 @@
 #include "macos/macos_window.h"
 
 
-#include "_c_mm.h"
+//#if defined(__OBJECTIVE_CPP__)
+
+//#import <Cocoa/Cocoa.h>
+
+void ns_screen_translate(CGRect * prect, int iIndex = -1);
+
+void ns_main_monitor_cgrect(CGRect * prect);
+
+//#endif
 
 
 void * new_macos_window(macos_window * papexwindow, CGRect rectangle, unsigned int uStyle);

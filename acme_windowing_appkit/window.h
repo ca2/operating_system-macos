@@ -148,7 +148,7 @@ class acme_window_bridge;
       
       virtual ::payload do_synchronously();
       
-      void handle(::topic* ptopic, ::context* pcontext) override;
+      void handle(::topic* ptopic, ::handler_context* pcontext) override;
       
       virtual void macos_window_become_main();
       virtual void macos_window_resign_main();

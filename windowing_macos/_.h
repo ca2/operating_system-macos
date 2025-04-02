@@ -10,7 +10,6 @@
 #include "acme_windowing_appkit/_.h"
 #include "aura_macos/_.h"
 #include "acme/_operating_system.h"
-//#include <Carbon/Carbon.h>
 
 
 #if defined(_WINDOWING_MACOS_LIBRARY)
@@ -34,7 +33,6 @@ namespace windowing_macos
 } // namespace windowing_macos
 
 
-#include "_c_mm.h"
 
 
 

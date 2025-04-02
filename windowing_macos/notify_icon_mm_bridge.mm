@@ -5,7 +5,7 @@
 //  Created by Camilo Sasuke Tsumanuma on 3/17/16.
 //  Copyright © 2016 ca2 Desenvolvimento de Sofware Ltda. All rights reserved.
 //
-#import "framework.h"
+#include "framework.h"
 #include "notify_icon_mm_bridge.h"
 #include "notify_icon_mm.h"
 

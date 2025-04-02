@@ -6,7 +6,6 @@
 //  Copyright © 2025 ca2 Software Development. All rights reserved.
 //
 #include <Cocoa/Cocoa.h>
-#include <Carbon/Carbon.h>
 #include "acme/operating_system/macos/keyboard.h"
 #import "acme/operating_system/winpr_input.h"
 

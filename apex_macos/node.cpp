@@ -8,6 +8,7 @@
 #include "acme/filesystem/filesystem/file_system.h"
 #include "acme/filesystem/filesystem/directory_context.h"
 #include "acme/platform/acme.h"
+#include "acme/platform/application.h"
 #include "acme/platform/node.h"
 #include "acme/handler/request.h"
 #include "apex/filesystem/file/set.h"
@@ -1036,7 +1037,7 @@ void node::set_default_browser()
 
    }
    
-    auto pcontext = application();
+   auto pcontext = application();
 
    if(pcontext->directory()->is(strAppReturn))
    {

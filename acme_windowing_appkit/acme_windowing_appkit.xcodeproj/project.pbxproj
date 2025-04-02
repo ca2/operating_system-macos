@@ -418,6 +418,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(WorkspaceDir)/operating_system",
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/$(CONFIGURATION)/library",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -427,6 +428,10 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					"$(WorkspaceDir)/port/_",
+					"$(WorkspaceDir)/port/include",
+				);
 				USER_HEADER_SEARCH_PATHS = (
 					.,
 					"$(WorkspaceDir)/source",
@@ -440,8 +445,6 @@
 					"$(WorkspaceDir)/operating_system/operating_system-apple",
 					"$(WorkspaceDir)/operating_system/operating_system-darwin",
 					"$(WorkspaceDir)/operating_system/operating_system-posix",
-					"$(WorkspaceDir)/port/_",
-					"$(WorkspaceDir)/port/include",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/..",
 					"$(PROJECT_DIR)/../..",
@@ -526,6 +529,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(WorkspaceDir)/operating_system",
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/$(CONFIGURATION)/library",
 				);
 				OTHER_LDFLAGS = "-all_load";
@@ -534,6 +538,10 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					"$(WorkspaceDir)/port/_",
+					"$(WorkspaceDir)/port/include",
+				);
 				USER_HEADER_SEARCH_PATHS = (
 					.,
 					"$(WorkspaceDir)/source",
@@ -547,8 +555,6 @@
 					"$(WorkspaceDir)/operating_system/operating_system-apple",
 					"$(WorkspaceDir)/operating_system/operating_system-darwin",
 					"$(WorkspaceDir)/operating_system/operating_system-posix",
-					"$(WorkspaceDir)/port/_",
-					"$(WorkspaceDir)/port/include",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/..",
 					"$(PROJECT_DIR)/../..",

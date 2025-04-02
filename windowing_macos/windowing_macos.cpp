@@ -9,6 +9,8 @@
 #include "framework.h"
 #include "window_impl.h"
 //#include "oswindow_data.h"
+#include "acme/prototype/geometry2d/rectangle.h"
+#include "acme/prototype/geometry2d/_collection.h"
 #include "acme/parallelization/message_queue.h"
 #include <CoreGraphics/CoreGraphics.h>
 //#include "aura/_defer.h"

@@ -575,3 +575,50 @@ NSImage * ns_image_from_file_data(const void * p, long size)
    return pnsimage;
    
 }
+
+
+#ifdef APPLE_IOS
+#import <UIKit/UIKit.h>
+#else
+#import <AppKit/AppKit.h>
+#endif
+
+
+
+
+
+
+
+#import <Cocoa/Cocoa.h>
+
+//NSWindow * __nswindow(oswindow oswindow);
+
+
+//NSWindow * get_os_window_ns_window(oswindow hwnd);
+
+
+//NSWindow * get_os_window_ns_window(oswindow hwnd)
+//{
+//
+//   return __nswindow(hwnd);
+//
+//}
+
+
+CGWindowID nswindow_window_number(NSWindow * window)
+{
+
+   if(window == NULL)
+   {
+
+      return 0;
+
+   }
+
+   return (CGWindowID)[window windowNumber];
+   
+}
+
+
+
+

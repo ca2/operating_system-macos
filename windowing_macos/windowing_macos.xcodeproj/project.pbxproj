@@ -17,7 +17,6 @@
 		9A1D5EDC2751B037003D9B5F /* imm_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A42D7F42665B61E0011645D /* imm_client.cpp */; };
 		9A1D5EDD2751B037003D9B5F /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A42D7FF2665C5850011645D /* keyboard.cpp */; };
 		9A1D5EE02751B037003D9B5F /* windowing_keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A440A4B26548C38000C490B /* windowing_keyboard.cpp */; };
-		9A1D5EE12751B037003D9B5F /* windowing_keyboard.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AA802482665706600A6B449 /* windowing_keyboard.mm */; };
 		9A1D5EE22751B037003D9B5F /* monitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C109266058D20074030F /* monitor.cpp */; };
 		9A1D5EE32751B037003D9B5F /* monitor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C10E266062940074030F /* monitor.mm */; };
 		9A1D5EE62751B037003D9B5F /* notify_icon_mm_bridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A79BE2426645D9B009E6C44 /* notify_icon_mm_bridge.mm */; };
@@ -28,9 +27,9 @@
 		9A1D5EEC2751B059003D9B5F /* windowing_macos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A440A4E26548C38000C490B /* windowing_macos.cpp */; };
 		9A1D5EED2751B059003D9B5F /* windowing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D738D2656240A00D5C39E /* windowing.cpp */; };
 		9A1D5EF32751B129003D9B5F /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A682654DC66000C490B /* _.h */; };
-		9A1D5EF42751B129003D9B5F /* _c_mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A692654DD22000C490B /* _c_mm.h */; };
+		9A1D5EF42751B129003D9B5F /* _aaa_c_mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A692654DD22000C490B /* _aaa_c_mm.h */; };
 		9A1D5EF52751B129003D9B5F /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A6A2654DD63000C490B /* _mm.h */; };
-		9A1D5EF62751B129003D9B5F /* _library.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A762654F440000C490B /* _library.h */; };
+		9A1D5EF62751B129003D9B5F /* _aaa_library.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A762654F440000C490B /* _aaa_library.h */; };
 		9A1D5EF72751B129003D9B5F /* copydesk.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A440A3026548C38000C490B /* copydesk.h */; };
 		9A1D5EF82751B129003D9B5F /* cursor.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A64C111266099790074030F /* cursor.h */; };
 		9A1D5EF92751B129003D9B5F /* display.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A64C106266057F00074030F /* display.h */; };
@@ -62,11 +61,10 @@
 		9A1D5F6B2751BE0B003D9B5F /* libaura_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A440A2826548C17000C490B /* libaura_macos.dylib */; };
 		9A1D5F6C2751BE0B003D9B5F /* libaura_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73AA265701F400D5C39E /* libaura_posix.dylib */; };
 		9A1D5F6D2751BE22003D9B5F /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D73B226570CAE00D5C39E /* AppKit.framework */; };
-		9A1D5F702751BF50003D9B5F /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8024A266571D600A6B449 /* Carbon.framework */; };
 		9A22739827CF00E20042BAC2 /* windowing.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22739727CF00E20042BAC2 /* windowing.mm */; };
 		9A3E325F2CF8B62F007DC9EE /* libacme_windowing_kit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3E325E2CF8B62F007DC9EE /* libacme_windowing_kit.dylib */; };
 		9A5243442CD49A0C006ED868 /* libacme_windowing_appkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5243432CD49A0C006ED868 /* libacme_windowing_appkit.dylib */; };
-		9A869DCD2B79A56B00937A3C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A869DCC2B79A56A00937A3C /* StoreKit.framework */; };
+		9A58CB632D9CD30D00DE95D0 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8024A266571D600A6B449 /* Carbon.framework */; };
 		9A93B0F827FCFC380042D6C8 /* cursor_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A93B0F727FCFC380042D6C8 /* cursor_cpp.cpp */; };
 		9AC5E9CE2D8A81D000EC2419 /* macOSControlBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC5E9CD2D8A81C400EC2419 /* macOSControlBox.h */; };
 		9AC5E9D02D8A825400EC2419 /* macOSControlBox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5E9CF2D8A824300EC2419 /* macOSControlBox.mm */; };
@@ -124,9 +122,9 @@
 		9A440A4B26548C38000C490B /* windowing_keyboard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = windowing_keyboard.cpp; sourceTree = "<group>"; };
 		9A440A4E26548C38000C490B /* windowing_macos.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = windowing_macos.cpp; sourceTree = "<group>"; };
 		9A440A682654DC66000C490B /* _.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
-		9A440A692654DD22000C490B /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
+		9A440A692654DD22000C490B /* _aaa_c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _aaa_c_mm.h; sourceTree = "<group>"; };
 		9A440A6A2654DD63000C490B /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
-		9A440A762654F440000C490B /* _library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _library.h; sourceTree = "<group>"; };
+		9A440A762654F440000C490B /* _aaa_library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _aaa_library.h; sourceTree = "<group>"; };
 		9A4C42D52D1BBAC7007F9D7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9A5243432CD49A0C006ED868 /* libacme_windowing_appkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_windowing_appkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5D738A26561AAA00D5C39E /* _factory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 		9A9E4AD62751A3F40094A04C /* libwindowing_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libwindowing_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA80242266558E000A6B449 /* icon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = icon.cpp; sourceTree = "<group>"; };
 		9AA80245266558E000A6B449 /* icon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = icon.h; sourceTree = "<group>"; };
-		9AA802482665706600A6B449 /* windowing_keyboard.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = windowing_keyboard.mm; sourceTree = "<group>"; };
 		9AA8024A266571D600A6B449 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		9AC5E9CD2D8A81C400EC2419 /* macOSControlBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macOSControlBox.h; sourceTree = "<group>"; };
 		9AC5E9CF2D8A824300EC2419 /* macOSControlBox.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = macOSControlBox.mm; sourceTree = "<group>"; };
@@ -188,13 +185,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A58CB632D9CD30D00DE95D0 /* Carbon.framework in Frameworks */,
 				9A3E325F2CF8B62F007DC9EE /* libacme_windowing_kit.dylib in Frameworks */,
 				9A5243442CD49A0C006ED868 /* libacme_windowing_appkit.dylib in Frameworks */,
 				9A1D5F672751BD80003D9B5F /* libapex_apple.dylib in Frameworks */,
 				9A1D5F682751BE0B003D9B5F /* libapex_macos.dylib in Frameworks */,
 				9A1D5F692751BE0B003D9B5F /* libapex_posix.dylib in Frameworks */,
-				9A869DCD2B79A56B00937A3C /* StoreKit.framework in Frameworks */,
-				9A1D5F702751BF50003D9B5F /* Carbon.framework in Frameworks */,
 				9A1D5F6D2751BE22003D9B5F /* AppKit.framework in Frameworks */,
 				9A1D5F622751BD4F003D9B5F /* libaqua.dylib in Frameworks */,
 				9A1D5F632751BD4F003D9B5F /* libaura.dylib in Frameworks */,
@@ -245,10 +241,10 @@
 				9A03B8062A25BD8100A0E33E /* _____debug.xcconfig */,
 				9A03B8092A25BD8100A0E33E /* _____release.xcconfig */,
 				9A440A682654DC66000C490B /* _.h */,
-				9A440A692654DD22000C490B /* _c_mm.h */,
+				9A440A692654DD22000C490B /* _aaa_c_mm.h */,
 				9A5D738A26561AAA00D5C39E /* _factory.cpp */,
 				9A440A6A2654DD63000C490B /* _mm.h */,
-				9A440A762654F440000C490B /* _library.h */,
+				9A440A762654F440000C490B /* _aaa_library.h */,
 				9A440A4326548C38000C490B /* copydesk.cpp */,
 				9A440A3026548C38000C490B /* copydesk.h */,
 				9A440A3626548C38000C490B /* copydesk.mm */,
@@ -282,7 +278,6 @@
 				9A440A3126548C38000C490B /* windowing_c.h */,
 				9A440A4B26548C38000C490B /* windowing_keyboard.cpp */,
 				9A440A4226548C38000C490B /* windowing_keyboard.h */,
-				9AA802482665706600A6B449 /* windowing_keyboard.mm */,
 				9A440A4E26548C38000C490B /* windowing_macos.cpp */,
 				9A5D738D2656240A00D5C39E /* windowing.cpp */,
 				9A5D738E2656240A00D5C39E /* windowing.h */,
@@ -346,9 +341,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A1D5EF32751B129003D9B5F /* _.h in Headers */,
-				9A1D5EF42751B129003D9B5F /* _c_mm.h in Headers */,
+				9A1D5EF42751B129003D9B5F /* _aaa_c_mm.h in Headers */,
 				9A1D5EF52751B129003D9B5F /* _mm.h in Headers */,
-				9A1D5EF62751B129003D9B5F /* _library.h in Headers */,
+				9A1D5EF62751B129003D9B5F /* _aaa_library.h in Headers */,
 				9AC5E9CE2D8A81D000EC2419 /* macOSControlBox.h in Headers */,
 				9A1D5EF72751B129003D9B5F /* copydesk.h in Headers */,
 				9A1D5EF82751B129003D9B5F /* cursor.h in Headers */,
@@ -497,7 +492,6 @@
 				9A93B0F827FCFC380042D6C8 /* cursor_cpp.cpp in Sources */,
 				9A1D5EDD2751B037003D9B5F /* keyboard.cpp in Sources */,
 				9A1D5EE02751B037003D9B5F /* windowing_keyboard.cpp in Sources */,
-				9A1D5EE12751B037003D9B5F /* windowing_keyboard.mm in Sources */,
 				9A1D5EE22751B037003D9B5F /* monitor.cpp in Sources */,
 				9A1D5EE32751B037003D9B5F /* monitor.mm in Sources */,
 				9A1D5EE62751B037003D9B5F /* notify_icon_mm_bridge.mm in Sources */,
@@ -598,6 +592,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(WorkspaceDir)/operating_system",
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/$(CONFIGURATION)/library",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -609,6 +604,10 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					"$(WorkspaceDir)/port/_",
+					"$(WorkspaceDir)/port/include",
+				);
 				USER_HEADER_SEARCH_PATHS = (
 					.,
 					"$(WorkspaceDir)/source",
@@ -622,8 +621,6 @@
 					"$(WorkspaceDir)/operating_system/operating_system-apple",
 					"$(WorkspaceDir)/operating_system/operating_system-darwin",
 					"$(WorkspaceDir)/operating_system/operating_system-posix",
-					"$(WorkspaceDir)/port/_",
-					"$(WorkspaceDir)/port/include",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/..",
 					"$(PROJECT_DIR)/../..",
@@ -714,6 +711,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(WorkspaceDir)/operating_system",
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/$(CONFIGURATION)/library",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -724,6 +722,10 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					"$(WorkspaceDir)/port/_",
+					"$(WorkspaceDir)/port/include",
+				);
 				USER_HEADER_SEARCH_PATHS = (
 					.,
 					"$(WorkspaceDir)/source",
@@ -737,8 +739,6 @@
 					"$(WorkspaceDir)/operating_system/operating_system-apple",
 					"$(WorkspaceDir)/operating_system/operating_system-darwin",
 					"$(WorkspaceDir)/operating_system/operating_system-posix",
-					"$(WorkspaceDir)/port/_",
-					"$(WorkspaceDir)/port/include",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/..",
 					"$(PROJECT_DIR)/../..",

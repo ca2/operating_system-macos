@@ -5,14 +5,13 @@
 //  Created by Camilo Sasuke Thomas Borregaard Sørensen on 3/17/16.
 //  Copyright © 2016 ca2 Desenvolvimento de Sofware Ltda. All rights reserved.
 //
-
-#ifndef user_notify_icon_mm_h
-#define user_notify_icon_mm_h
+#pragma once
 
 
-#import <Foundation/Foundation.h>
-#import <Cocoa/Cocoa.h>
-#import <ApplicationServices/ApplicationServices.h>
+#include <AppKit/AppKit.h>
+//#import <Foundation/Foundation.h>
+//#import <Cocoa/Cocoa.h>
+//#import <ApplicationServices/ApplicationServices.h>
 //#include "apex/user/user/notify_icon_bridge.h"
 
 
@@ -51,4 +50,3 @@ class command_handler;
 @end
 
 
-#endif /* user_notify_icon_mm_h */

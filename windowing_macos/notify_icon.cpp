@@ -1,9 +1,7 @@
 #include "framework.h"
+#include "icon.h"
+#include "notify_icon.h"
 #include "acme/platform/system.h"
-#if !BROAD_PRECOMPILED_HEADER
-#include "_library.h"
-#include "aura/_defer.h"
-#endif
 #include "acme/filesystem/filesystem/file_context.h"
 #include "apex/platform/context.h"
 #include "acme/platform/application.h"

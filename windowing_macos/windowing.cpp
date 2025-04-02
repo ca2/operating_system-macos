@@ -5,6 +5,8 @@
 //  Created by Camilo Sasuke on 2021-05-21 02:00 <3ThomasBS_!!
 //
 #include "framework.h"
+#include "window.h"
+#include "windowing.h"
 #include "acme/parallelization/manual_reset_happening.h"
 #include "acme/platform/application.h"
 //#include "acme/platform/sequencer.h"
