@@ -18,11 +18,15 @@
 #define MEMDLEAK_DEFAULT 0
 
 
-#ifdef __ASAN_ON__
+#ifdef __ADDRESS_SANITIZER__
+
+//#error "__ADDRESS_SANITIZER__"
 
 #define REFERENCING_DEBUGGING 0
 
 #else
+
+#error "NO __ADDRESS_SANITIZER__"
 
 #define REFERENCING_DEBUGGING 1
 
