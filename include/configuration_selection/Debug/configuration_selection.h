@@ -18,4 +18,15 @@
 #define MEMDLEAK_DEFAULT 0
 
 
+#ifdef __ASAN_ON__
+
+#define REFERENCING_DEBUGGING 0
+
+#else
+
 #define REFERENCING_DEBUGGING 1
+
+#endif
+
+
+

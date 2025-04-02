@@ -8,7 +8,7 @@
 #pragma once
 
 
-#if defined(DEBUG) && DEBUG > 0
+#if defined(_DEBUG) && _DEBUG > 0
 #ifndef _DEBUG
 #define _DEBUG
 #endif
@@ -38,7 +38,7 @@
 #define _POSIX_C_SOURCE 200809L
 #define _DARWIN_C_SOURCE
 
-// #if defined(_DEBUG) && !defined(DEBUG)
+// #if defined(_DEBUG) && !defined(_DEBUG)
 // #define DEBUG 1
 // #endif
 
