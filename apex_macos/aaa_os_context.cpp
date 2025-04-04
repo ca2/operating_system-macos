@@ -101,10 +101,10 @@ namespace apex_macos
       
       ::string strCommandLine;
       
-      for(int i = 0; i < platform()->m_argc; i++)
+      for(int i = 0; i < ::system()->m_argc; i++)
       {
          
-         auto psz = platform()->m_argv[i];
+         auto psz = ::system()->m_argv[i];
          
          ::string strArg(psz);
          

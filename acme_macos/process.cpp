@@ -72,7 +72,7 @@ namespace acme_macos
 
       argv[argc] = nullptr;
       
-      auto envp = platform()->m_envp;
+      auto envp = ::system()->m_envp;
 
       pid_t pid = 0;
 

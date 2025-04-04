@@ -118,10 +118,10 @@ string node::get_command_line()
    
    ::string strCommandLine;
    
-   for(int i = 0; i < platform()->m_argc; i++)
+   for(int i = 0; i < ::system()->m_argc; i++)
    {
       
-      auto psz = platform()->m_args[i];
+      auto psz = ::system()->m_args[i];
       
       ::string strArg(psz);
       

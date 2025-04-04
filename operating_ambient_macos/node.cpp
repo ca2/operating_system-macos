@@ -260,7 +260,7 @@ namespace operating_ambient_macos
 ////
 ////      auto argv = psystem->m_pplatform->m_argv;
 //
-//      auto papp = platform()->application();
+//      auto papp = ::system()->application();
 //
 //      ::platform::application * papplication = (void *) (::platform::application *) papp;
 //
@@ -294,7 +294,7 @@ namespace operating_ambient_macos
    void node::defer_innate_ui()
    {
    
-      auto & pfactory = platform()->factory("innate_ui", "appkit");
+      auto & pfactory = ::system()->factory("innate_ui", "appkit");
    
       pfactory->merge_to_global_factory();
    
@@ -304,7 +304,7 @@ namespace operating_ambient_macos
    ::pointer < ::input::input > node::create_input()
    {
 
-      auto & pfactory = platform()->factory("input", "appkit");
+      auto & pfactory = ::system()->factory("input", "appkit");
 
       auto pinput = __øcreate < ::input::input >(pfactory);
 
@@ -316,7 +316,7 @@ namespace operating_ambient_macos
 //   void node::on_system_main()
 //   {
 //      
-//      auto papp = platform()->application();
+//      auto papp = ::system()->application();
 //
 //      ::platform::application * papplication = (void *) (::platform::application *) papp;
 //

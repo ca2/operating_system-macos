@@ -6,7 +6,7 @@
 //#define _DEBUG
 //#endif // _DEBUG
 
-#define NDEBUG
+//#define NDEBUG
 
 
 //#ifndef NDEBUG
@@ -26,7 +26,7 @@
 
 #else
 
-#error "NO __ADDRESS_SANITIZER__"
+//#error "NO __ADDRESS_SANITIZER__"
 
 #define REFERENCING_DEBUGGING 1
 
