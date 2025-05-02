@@ -39,6 +39,7 @@ void system_id_update(::platform::system * psystem, int iUpdate, long long iPayl
 //void ns_application_update(long long iUpdate, void * p);
 
 void node_will_finish_launching(::platform::system * psystem);
+void node_did_finish_launching(::platform::system * psystem);
 void system_on_open_untitled_file(::platform::system * psystem);
 void system_on_open_file(::platform::system * psystem, const char * pszFile);
 
@@ -175,12 +176,12 @@ void set_apex_system_as_thread();
 }
 
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
    
    //set_apex_system_as_thread();
    //MessageBox(NULL, "applicationDidFinishLaunching", "applicationDidFinishLaunching", e_message_box_ok);
-   
+   [ super applicationDidFinishLaunching: notification];
    //defer_run_system();
    
 }

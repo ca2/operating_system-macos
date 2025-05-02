@@ -8,6 +8,8 @@
 #include "acme/exception/interface_only.h"
 #include "acme/filesystem/filesystem/file_dialog.h"
 #include "acme/filesystem/filesystem/folder_dialog.h"
+#include "acme/handler/request.h"
+#include "acme/platform/application.h"
 #include "acme/platform/system.h"
 #include "acme/user/user/key_state.h"
 
@@ -1054,25 +1056,82 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
          
       }
       
-      psystem->defer_post_initial_request();
+      //psystem->defer_post_initial_request();
+      
+      auto prequest = __create_new < ::request >();
+      
+      prequest->m_ecommand = e_command_application_start;
+      
+      prequest->m_bPreferSync = true;
+      
+      prequest->m_strAppId = m_papplication->m_strAppId;
 
-
+      psystem->request(prequest);
       
    }
 
 
-void node::_node_file_dialog(::file::file_dialog * pdialog)
-{
-   
-   macos_file_dialog(pdialog);
-   
-}
-void node::_node_folder_dialog(::file::folder_dialog * pdialog)
-{
-   
-   macos_folder_dialog(pdialog);
-   
-}
+   void node::_did_finish_launching()
+   {
+      
+      auto psystem = system();
+      
+//      if(psystem->m_htask.is_null()
+//         || psystem->m_itask == main_itask())
+//      {
+//         
+//         psystem->m_htask = nullptr;
+//         
+//         psystem->m_itask = 0;
+//
+//         ///auto estatus =
+//         
+//         //psystem->branch_synchronously();
+//         
+//         psystem->branch();
+//
+//   //         if(!estatus)
+//   //         {
+//   //
+//   //            return estatus;
+//   //
+//   //         }
+//         
+//         // release the initial allocation from platform_create_system as
+//         // task::begin_synch holds a reference to the running system task.
+//         psystem->release();
+//         
+//      }
+//
+      //psystem->defer_post_initial_request();
+      
+      auto prequest = __create_new < ::request >();
+      
+      prequest->m_ecommand = e_command_application_started;
+      
+      prequest->m_bPreferSync = true;
+      
+      prequest->m_strAppId = m_papplication->m_strAppId;
+
+      psystem->request(prequest);
+      
+   }
+
+
+   void node::_node_file_dialog(::file::file_dialog * pdialog)
+   {
+      
+      macos_file_dialog(pdialog);
+      
+   }
+
+
+   void node::_node_folder_dialog(::file::folder_dialog * pdialog)
+   {
+      
+      macos_folder_dialog(pdialog);
+      
+   }
 
 ::pointer < ::operating_system::application > node::application_predicate(const ::function < bool(::operating_system::application * papplication) > & function)
 {

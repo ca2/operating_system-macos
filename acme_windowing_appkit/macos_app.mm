@@ -29,6 +29,7 @@ void application_handle_command(::platform::application * papplication, const ch
 void system_id_update(::platform::system * psystem, int iUpdate, long long iPayload);
 
 void node_will_finish_launching(::platform::system * psystem);
+void node_did_finish_launching(::platform::system * psystem);
 void system_on_open_untitled_file(::platform::system * psystem);
 void system_on_open_file(::platform::system * psystem, const char * pszFile);
 
@@ -399,8 +400,6 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
   
    [m_pacmenotificationcallback fetch_dark_mode];
    
-
-   
    node_will_finish_launching(application_system(m_papplication));
 
    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
@@ -414,6 +413,9 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
 {
    
    //[self application_menu_update];
+   
+   node_did_finish_launching(application_system(m_papplication));
+
    
    //set_apex_system_as_thread();
    //MessageBox(NULL, "applicationDidFinishLaunching", "applicationDidFinishLaunching", e_message_box_ok);
@@ -537,6 +539,8 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
       return;
       
    }
+   
+   //[NSThread sleepForTimeInterval:30.0];
    
    //char ** psza = (char **) malloc(ulCount * sizeof(char*));
    

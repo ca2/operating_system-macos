@@ -211,7 +211,7 @@ void  windowing::run()
                                                application()->application_menu(),
                                                application());
   
-   system()->defer_post_initial_request();
+   //system()->defer_post_initial_request();
    
    ns_app_run();
    

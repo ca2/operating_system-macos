@@ -745,19 +745,24 @@ void window::_main_post(const ::procedure & procedure)
          
          auto puserinteraction = user_interaction();
          
-         puserinteraction->layout().m_statea[::user::e_layout_window].origin().x() = r.origin.x;
-         puserinteraction->layout().m_statea[::user::e_layout_window].origin().y() = r.origin.y;
-         puserinteraction->layout().m_statea[::user::e_layout_window].size().cx() = r.size.width;
-         puserinteraction->layout().m_statea[::user::e_layout_window].size().cy() = r.size.height;
-
-         //         if(bShow)
-         //         {
-         //
-         //            macos_window_defer_show();
-         //
-         //         }
-         
-         //}
+         if(puserinteraction)
+         {
+            
+            puserinteraction->layout().m_statea[::user::e_layout_window].origin().x() = r.origin.x;
+            puserinteraction->layout().m_statea[::user::e_layout_window].origin().y() = r.origin.y;
+            puserinteraction->layout().m_statea[::user::e_layout_window].size().cx() = r.size.width;
+            puserinteraction->layout().m_statea[::user::e_layout_window].size().cy() = r.size.height;
+            
+            //         if(bShow)
+            //         {
+            //
+            //            macos_window_defer_show();
+            //
+            //         }
+            
+            //}
+            
+         }
          
       });
       
