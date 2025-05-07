@@ -2282,13 +2282,15 @@ pmessage->m_emessage = emessage
       {
 
          return;
-
+         
       }
       
-      if(m_puserbox)
+      ::cast < ::user::box > puserbox = puserinteraction;
+      
+      if(puserbox)
       {
          
-         auto & edisplayPrevious = m_puserbox->m_windowdisplayandlayout.m_edisplayPrevious;
+         auto & edisplayPrevious = puserbox->m_windowdisplayandlayout.m_edisplayPrevious;
 
          if(edisplayPrevious == ::e_display_iconic)
          {
