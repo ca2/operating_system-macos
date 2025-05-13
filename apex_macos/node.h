@@ -106,7 +106,7 @@ namespace apex_macos
 
       void file_open(const ::file::path & path, const ::string & strParams = "", const ::file::path & pathFolder = "") override;
       
-      void open_url_link_at_system_browser(const ::string & strUrl, const ::string & strProfile) override;
+      void open_internet_link(const ::scoped_string & scopedstrUrl, const ::scoped_string & scopedstrProfile, const ::scoped_string & scopedstrTarget) override;
 
 //      void set_file_status(const ::string & lpszFileName, const ::file::file_status& status) override;
 

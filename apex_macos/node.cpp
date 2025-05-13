@@ -1253,17 +1253,19 @@ void node::file_open(const ::file::path & pathParam, const ::string & strParams,
 }
 
 
-void node::open_url_link_at_system_browser(const ::string & strUrl, const ::string & strProfile)
+void node::open_internet_link(const ::scoped_string & scopedstrUrl, const ::scoped_string & scopedstrProfile, const ::scoped_string & scopedstrTarget)
 {
    
-   string strUrlCopy(strUrl);
+   string strUrl(scopedstrUrl);
    
-   string strProfieCopy(strProfile);
+   string strProfile(scopedstrProfile);
+   
+   string strTarget(scopedstrTarget);
 
    ns_main_post(^
    {
 
-      ns_open_url(strUrlCopy.c_str());
+      ns_open_url(strUrl.c_str());
 
    });
 
