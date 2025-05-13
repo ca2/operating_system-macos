@@ -568,7 +568,7 @@ void mm_file_dialog(::file::file_dialog * pdialogParam)
        
          [ psavepanel setExtensionHidden: FALSE ];
 
-         [psavepanel setAllowsOtherFileTypes: TRUE];
+         [psavepanel setShowsContentTypes:TRUE];
 
       }
       else
@@ -596,9 +596,25 @@ void mm_file_dialog(::file::file_dialog * pdialogParam)
                if(strPatternList.begins_eat("*."))
                {
                   
-                  auto strExt = [[NSString alloc]initWithUTF8String:strPatternList.c_str()];
+                  if(strPatternList == "*")
+                  {
+                              [psavepanel setAllowsOtherFileTypes: TRUE];
                   
-                  [uttypea addObject: [UTType typeWithFilenameExtension:strExt]];
+
+//                     auto strExt = [[NSString alloc]initWithUTF8String:"*"];
+//                     
+//                     [uttypea addObject: [UTType typeWithFilenameExtension:strExt]];
+//                     
+                  }
+                  else
+                  {
+                     
+                     auto strExt = [[NSString alloc]initWithUTF8String:strPatternList.c_str()];
+                     
+                     [uttypea addObject: [UTType typeWithFilenameExtension:strExt]];
+
+                     
+                  }
                   
                }
             
@@ -629,6 +645,8 @@ void mm_file_dialog(::file::file_dialog * pdialogParam)
          
          if(pdialog->m_bSave)
          {
+            
+            pdialog->m_strExtension = [[[psavepanel currentContentType] preferredFilenameExtension] UTF8String];
             
             pdialog->m_patha.add([ [ [ psavepanel URL] absoluteString ] UTF8String ]);
             
