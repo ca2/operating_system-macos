@@ -2,7 +2,7 @@
 #include "acme/constant/id.h"
 //#import "save_file_dialog_delegate.h"
 #include "acme/filesystem/filesystem/file_dialog.h"
-
+#import <UniformTypeIdentifiers/UTType.h>
 
 NSWindow * g_pnswindow = nullptr;
 
@@ -565,7 +565,11 @@ void mm_file_dialog(::file::file_dialog * pdialogParam)
       {
          
          psavepanel = [ NSSavePanel savePanel ];
-         
+       
+         [ psavepanel setExtensionHidden: FALSE ];
+
+         [psavepanel setAllowsOtherFileTypes: TRUE];
+
       }
       else
       {
@@ -577,8 +581,31 @@ void mm_file_dialog(::file::file_dialog * pdialogParam)
          [ popenpanel setCanChooseDirectories: NO ];
 
          [ popenpanel setCanChooseFiles: YES];
-
+         
          psavepanel = popenpanel;
+         
+      }
+      
+      if(pdialog->m_filedialogfiltera.has_element())
+      {
+         auto uttypea = [[NSMutableArray alloc]init];
+         for(auto & filter :pdialog->m_filedialogfiltera)
+         {
+            
+            ::string strPatternList = filter.m_strPatternList;
+               if(strPatternList.begins_eat("*."))
+               {
+                  
+                  auto strExt = [[NSString alloc]initWithUTF8String:strPatternList.c_str()];
+                  
+                  [uttypea addObject: [UTType typeWithFilenameExtension:strExt]];
+                  
+               }
+            
+         
+         }
+         
+         [psavepanel setAllowedContentTypes:uttypea];
          
       }
 
