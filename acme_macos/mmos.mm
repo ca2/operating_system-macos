@@ -586,10 +586,10 @@ void mm_file_dialog(::file::file_dialog * pdialogParam)
          
       }
       
-      if(pdialog->m_filedialogfiltera.has_element())
+      if(pdialog->m_filedialogfilter.has_element())
       {
          auto uttypea = [[NSMutableArray alloc]init];
-         for(auto & filter :pdialog->m_filedialogfiltera)
+         for(auto & filter :pdialog->m_filedialogfilter)
          {
             
             ::string strPatternList = filter.m_strPatternList;
@@ -646,7 +646,7 @@ void mm_file_dialog(::file::file_dialog * pdialogParam)
          if(pdialog->m_bSave)
          {
             
-            pdialog->m_strExtension = [[[psavepanel currentContentType] preferredFilenameExtension] UTF8String];
+            pdialog->m_iFilter = pdialog->m_filedialogfilter.find_first_with_extension([[[psavepanel currentContentType] preferredFilenameExtension] UTF8String]);
             
             pdialog->m_patha.add([ [ [ psavepanel URL] absoluteString ] UTF8String ]);
             

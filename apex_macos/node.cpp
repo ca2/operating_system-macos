@@ -517,7 +517,7 @@ void node::file_extension_get_open_with_list_commands(string_array & straCommand
 }
 
 
-void node::file_association_set_default_icon(const ::string & pszExtension, const ::string & pszExtensionNamingClass, const ::string & pszIconPath)
+void node::file_association_set_default_icon(const ::string & pszExtension, const ::string & pszExtensionNamingClass, const ::file::path & pathIcon)
 {
 
    //    throw ::exception(error_not_implemented);;
@@ -535,7 +535,7 @@ void node::file_association_set_default_icon(const ::string & pszExtension, cons
 }
 
 
-void node::file_association_set_shell_open_command(const ::string & pszExtension, const ::string & pszExtensionNamingClass,  const ::string & pszCommand, const ::string & pszParam)
+void node::file_association_set_shell_open_command(const ::string & pszExtension, const ::string & pszExtensionNamingClass,  const ::file::path & pathExecutable, const ::string & pszParam)
 {
    //   throw ::exception(error_not_implemented);;
    return;

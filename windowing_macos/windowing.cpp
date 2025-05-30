@@ -303,7 +303,7 @@ namespace windowing_macos
       if(pwindowCapture)
       {
          
-         pwindowCapture->m_puserinteractionMouseCapture.release();
+         pwindowCapture->m_pacmeuserinteractionMouseCapture.release();
          
       }
 

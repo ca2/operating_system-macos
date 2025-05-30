@@ -177,25 +177,25 @@ void window::_main_post(const ::procedure & procedure)
 
       auto pimpl = this;
 
-      if (!puserinteraction->m_bMessageWindow)
-      {
-
-         //MESSAGE_LINK(e_message_redraw, pchannel, pimpl, &::user::interaction_impl::_001OnRedraw);
-         //MESSAGE_LINK(e_message_apply_visual, pchannel, pimpl, &::user::interaction_impl::_001OnApplyVisual);
-
-
-         //#ifndef LINUX
-         //MESSAGE_LINK(e_message_reposition, pchannel, this, &window::_001OnMove);
-         //MESSAGE_LINK(e_message_size, pchannel, this, &window::_001OnSize);
-         //#endif
-
-
-         //MESSAGE_LINK(e_message_show_window, pchannel, this, &window::_001OnShowWindow);
-         //MESSAGE_LINK(e_message_kill_focus, pchannel, this, &window::_001OnKillFocus);
-         //MESSAGE_LINK(e_message_set_focus, pchannel, this, &window::_001OnSetFocus);
-         //MESSAGE_LINK(e_message_set_cursor, pchannel, this, &window::_001OnSetCursor);
-
-      }
+//      if (!puserinteraction->m_bMessageWindow)
+//      {
+//
+//         //MESSAGE_LINK(e_message_redraw, pchannel, pimpl, &::user::interaction_impl::_001OnRedraw);
+//         //MESSAGE_LINK(e_message_apply_visual, pchannel, pimpl, &::user::interaction_impl::_001OnApplyVisual);
+//
+//
+//         //#ifndef LINUX
+//         //MESSAGE_LINK(e_message_reposition, pchannel, this, &window::_001OnMove);
+//         //MESSAGE_LINK(e_message_size, pchannel, this, &window::_001OnSize);
+//         //#endif
+//
+//
+//         //MESSAGE_LINK(e_message_show_window, pchannel, this, &window::_001OnShowWindow);
+//         //MESSAGE_LINK(e_message_kill_focus, pchannel, this, &window::_001OnKillFocus);
+//         //MESSAGE_LINK(e_message_set_focus, pchannel, this, &window::_001OnSetFocus);
+//         //MESSAGE_LINK(e_message_set_cursor, pchannel, this, &window::_001OnSetCursor);
+//
+//      }
 
       //MESSAGE_LINK(e_message_destroy_window, pchannel, pimpl, &::user::interaction_impl::_001OnDestroyWindow);
 
