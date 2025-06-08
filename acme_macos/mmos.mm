@@ -665,6 +665,8 @@ void mm_file_dialog(::file::file_dialog * pdialogParam)
             
          }
          
+         pdialog->set_ok_flag();
+         
          pdialog->m_function(::transfer(pdialog));
          
       }
