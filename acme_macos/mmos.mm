@@ -568,7 +568,12 @@ void mm_file_dialog(::file::file_dialog * pdialogParam)
        
          [ psavepanel setExtensionHidden: FALSE ];
 
-         [psavepanel setShowsContentTypes:TRUE];
+         if(@available(macOS 15, *))
+         {
+            
+            [psavepanel setShowsContentTypes:TRUE];
+            
+         }
 
       }
       else
@@ -646,7 +651,20 @@ void mm_file_dialog(::file::file_dialog * pdialogParam)
          if(pdialog->m_bSave)
          {
             
-            pdialog->m_iFilter = pdialog->m_filedialogfilter.find_first_with_extension([[[psavepanel currentContentType] preferredFilenameExtension] UTF8String]);
+            if(@available(macOS 15, *))
+            {
+             
+               pdialog->m_iFilter = pdialog->m_filedialogfilter.find_first_with_extension([[[psavepanel currentContentType] preferredFilenameExtension] UTF8String]);
+               
+            }
+            else
+            {
+               
+               ::file::path path =[ [ [ psavepanel URL] absoluteString ] UTF8String ];
+
+               pdialog->m_iFilter = pdialog->m_filedialogfilter.find_first_with_extension(path.final_extension());
+               
+            }
             
             pdialog->m_patha.add([ [ [ psavepanel URL] absoluteString ] UTF8String ]);
             
