@@ -104,10 +104,10 @@ namespace apex_macos
    }
 
    
-      string node::app_id_to_executable_name(const string & strAppId)
+      string node::app_id_to_executable_name(const ::scoped_string & scopedstrAppId)
       {
          
-         string strName = app_id_to_app_name(strAppId);
+         string strName = app_id_to_app_name(scopedstrAppId);
 
          return "_" + strName;
 
@@ -237,7 +237,7 @@ void node::reboot()
 
 }
 
-void node::terminate_processes_by_title(const ::string & pszName)
+void node::terminate_processes_by_title(const ::scoped_string & scopedstrName)
 {
 //      throw ::exception(error_not_implemented);;
    return;
@@ -373,7 +373,7 @@ void node::terminate_processes_by_title(const ::string & pszName)
     */
 }
 
-bool node::local_machine_set_run(const ::string & pszKey, const ::string & pszCommand)
+bool node::local_machine_set_run(const ::scoped_string & scopedstrKey, const ::scoped_string & scopedstrCommand)
 {
 
 //     throw ::exception(error_not_implemented);;
@@ -391,7 +391,7 @@ bool node::local_machine_set_run(const ::string & pszKey, const ::string & pszCo
 }
 
 
-bool node::local_machine_set_run_once(const ::string & pszKey, const ::string & pszCommand)
+bool node::local_machine_set_run_once(const ::scoped_string & scopedstrKey, const ::scoped_string & scopedstrCommand)
 {
 
 
@@ -407,7 +407,7 @@ bool node::local_machine_set_run_once(const ::string & pszKey, const ::string & 
 
 }
 
-bool node::current_user_set_run(const ::string & pszKey, const ::string & pszCommand)
+bool node::current_user_set_run(const ::scoped_string & scopedstrKey, const ::scoped_string & scopedstrCommand)
 {
 
    //   throw ::exception(error_not_implemented);;
@@ -424,7 +424,7 @@ bool node::current_user_set_run(const ::string & pszKey, const ::string & pszCom
 
 }
 
-bool node::current_user_set_run_once(const ::string & pszKey, const ::string & pszCommand)
+bool node::current_user_set_run_once(const ::scoped_string & scopedstrKey, const ::scoped_string & scopedstrCommand)
 {
 
 //    throw ::exception(error_not_implemented);;
@@ -482,7 +482,7 @@ void node::defer_register_ca2_plugin_for_mozilla()
 }
 
 
-void node::file_extension_get_open_with_list_keys(string_array & straKey, const ::string & pszExtension)
+void node::file_extension_get_open_with_list_keys(string_array_base & straKey, const ::scoped_string & scopedstrExtension)
 {
    //   throw ::exception(error_not_implemented);;
    return;
@@ -507,17 +507,17 @@ void node::file_extension_get_open_with_list_keys(string_array & straKey, const 
 }
 
 
-void node::file_extension_get_open_with_list_commands(string_array & straCommand, const ::string & pszExtension)
+void node::file_extension_get_open_with_list_commands(string_array_base & straCommand, const ::scoped_string & scopedstrExtension)
 {
 
-   string_array straKey;
+   string_array_base straKey;
 
-   file_extension_get_open_with_list_keys(straKey, pszExtension);
+   file_extension_get_open_with_list_keys(straKey, scopedstrExtension);
 
 }
 
 
-void node::file_association_set_default_icon(const ::string & pszExtension, const ::string & pszExtensionNamingClass, const ::file::path & pathIcon)
+void node::file_association_set_default_icon(const ::scoped_string & scopedstrExtension, const ::scoped_string & scopedstrExtensionNamingClass, const ::file::path & pathIcon)
 {
 
    //    throw ::exception(error_not_implemented);;
@@ -535,7 +535,7 @@ void node::file_association_set_default_icon(const ::string & pszExtension, cons
 }
 
 
-void node::file_association_set_shell_open_command(const ::string & pszExtension, const ::string & pszExtensionNamingClass,  const ::file::path & pathExecutable, const ::string & pszParam)
+void node::file_association_set_shell_open_command(const ::scoped_string & scopedstrExtension, const ::scoped_string & scopedstrExtensionNamingClass,  const ::file::path & pathExecutable, const ::scoped_string & scopedstrParam)
 {
    //   throw ::exception(error_not_implemented);;
    return;
@@ -568,7 +568,7 @@ void node::file_association_set_shell_open_command(const ::string & pszExtension
 }
 
 
-void node::file_association_get_shell_open_command(const ::string & pszExtension, string & strExtensionNamingClass, string & strCommand, string & strParam)
+void node::file_association_get_shell_open_command(const ::scoped_string & scopedstrExtension, string & strExtensionNamingClass, string & strCommand, string & strParam)
 {
    //    throw ::exception(error_not_implemented);;
    return;
@@ -589,7 +589,7 @@ void node::file_association_get_shell_open_command(const ::string & pszExtension
     if(keyLink.QueryValue(nullptr, strFormat))
     {
 
-    const ::string & psz = strFormat;
+    const ::scoped_string & scopedstr = strFormat;
 
     try
     {
@@ -860,7 +860,7 @@ void node::stop_service()
 //
 //}
 
-//   bool node::resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder, string * pstrParams, string * pstrIconLocation, int * piIcon)
+//   bool node::resolve_link(::file::path & pathTarget, const ::scoped_string & scopedstrSource, string * pstrFolder, string * pstrParams, string * pstrIconLocation, int * piIcon)
 //   {
 //
 //      auto pcontext = m_pcontext->m_papexcontext;
@@ -994,26 +994,26 @@ void node::set_default_browser()
 }
 
 
-::file::path node::get_app_path(const string & strApp)
+::file::path node::get_app_path(const ::scoped_string & scopedstrApp)
 {
 
-   if(strApp.is_empty())
+   if(scopedstrApp.is_empty())
    {
 
       return "";
 
    }
 
-   if(strApp.case_insensitive_begins("/Applications/"))
+   if(scopedstrApp.case_insensitive_begins("/Applications/"))
    {
 
-      return strApp;
+      return scopedstrApp;
 
    }
 
    string strAppReturn;
 
-   if(strApp.case_insensitive_equals("chrome"))
+   if(scopedstrApp.case_insensitive_equals("chrome"))
    {
 
       strAppReturn = "Google Chrome";
@@ -1022,7 +1022,7 @@ void node::set_default_browser()
    else
    {
 
-      strAppReturn = strApp;
+      strAppReturn = scopedstrApp;
 
    }
 
@@ -1046,7 +1046,7 @@ void node::set_default_browser()
 
    }
 
-   strAppReturn = strApp;
+   strAppReturn = scopedstrApp;
 
    strAppReturn = "/Applications/" + strAppReturn;
 
@@ -1227,7 +1227,7 @@ void node::on_process_request(::request * prequest)
 //   }
 
 
-void node::file_open(const ::file::path & pathParam, const ::string & strParams, const ::file::path & pathFolder)
+void node::file_open(const ::file::path & pathParam, const ::scoped_string & scopedstrParams, const ::file::path & pathFolder)
 {
    
    auto papplication = application();
@@ -1374,10 +1374,10 @@ void node::open_internet_link(const ::scoped_string & scopedstrUrl, const ::scop
 //   }
 
 
-void node::set_this_application_as_default_for_file_extension(const ::string& strExtension)
+void node::set_this_application_as_default_for_file_extension(const ::scoped_string & scopedstrExtension)
 {
    
-   string strFormattedExtension(strExtension);
+   string strFormattedExtension(scopedstrExtension);
    
    strFormattedExtension.trim();
    
@@ -1392,7 +1392,7 @@ void node::set_this_application_as_default_for_file_extension(const ::string& st
    setMyselfAsDefaultApplicationForFileExtension(strFormattedExtension);
    
 }
-void node::register_user_auto_start(::platform::application * papplication, const string & strArguments,
+void node::register_user_auto_start(::platform::application * papplication, const ::scoped_string & scopedstrArguments,
                            bool bRegister)
 {
 
@@ -1406,16 +1406,16 @@ if(papplication->m_strAppId == application()->m_strAppId)
 else
 {
    
-   apex_posix::node::register_user_auto_start(papplication, strArguments, bRegister);
+   apex_posix::node::register_user_auto_start(papplication, scopedstrArguments, bRegister);
    
 }
 
 }
 
-bool node::is_user_auto_start(const string & strAppId)
+bool node::is_user_auto_start(const ::scoped_string & scopedstrAppId)
 {
 
-if(strAppId == application()->m_strAppId)
+if(scopedstrAppId == application()->m_strAppId)
 
 {
    
@@ -1425,7 +1425,7 @@ if(strAppId == application()->m_strAppId)
 else
 {
    
-   return apex_posix::node::is_user_auto_start(strAppId);
+   return apex_posix::node::is_user_auto_start(scopedstrAppId);
    
 }
 

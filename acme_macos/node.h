@@ -38,8 +38,8 @@ namespace acme_macos
       ::string get_file_type_identifier(const ::file::path & path) override;
       
       
-      void call_async(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, bool bPrivileged, unsigned int * puiPid = nullptr) override;
-      void call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const class ::time & durationTimeout, ::property_set & set, int * piExitCode) override;
+      void call_async(const ::scoped_string & pszPath, const ::scoped_string & pszParam, const ::scoped_string & pszDir, ::e_display edisplay, bool bPrivileged, unsigned int * puiPid = nullptr) override;
+      void call_sync(const ::scoped_string & pszPath, const ::scoped_string & pszParam, const ::scoped_string & pszDir, ::e_display edisplay, const class ::time & durationTimeout, ::property_set & set, int * piExitCode) override;
 
       //virtual ::color::color get_system_color(enum_system_color esystemcolor) override;
       
@@ -64,24 +64,24 @@ namespace acme_macos
       
       void install_sigchld_handler() override;
 
-      void _launch_macos_app(const ::string & pszAppFolder) override;
+      void _launch_macos_app(const ::scoped_string & scopedstrAppFolder) override;
 
-      void _launch_macos_app_args(const ::string & pszAppFolder, const ::string & pszArgs) override;
+      void _launch_macos_app_args(const ::scoped_string & scopedstrAppFolder, const ::scoped_string & scopedstrArgs) override;
 
-      void launch_app(const ::string & psz, const char ** argv, int iFlags) override;
+      void launch_app(const ::scoped_string & scopedstr, const char ** argv, int iFlags) override;
       
       
       virtual int _create_process2(const char * _cmd_line, unsigned int * pprocessId);
       
-      ::process_identifier create_process(const ::string & pszCommandLine) override;
+      ::process_identifier create_process(const ::scoped_string & scopedstrCommandLine) override;
       
-      ::file::path_array process_identifier_modules_paths(::process_identifier processID) override;
+      ::file::path_array_base process_identifier_modules_paths(::process_identifier processID) override;
 
-      bool load_modules_diff(string_array& straOld, string_array& straNew, const ::string & pszExceptDir) override;
+      bool load_modules_diff(string_array_base& straOld, string_array_base& straNew, const ::scoped_string & scopedstrExceptDir) override;
 
       ::process_identifier_array processes_identifiers() override;
       
-      ::process_identifier_array module_path_processes_identifiers(const ::string & pszModulePath, bool bModuleNameIsPropertyFormatted = false) override;
+      ::process_identifier_array module_path_processes_identifiers(const ::scoped_string & scopedstrModulePath, bool bModuleNameIsPropertyFormatted = false) override;
       
       ::file::path process_identifier_module_path(::process_identifier pid) override;
       
@@ -91,9 +91,9 @@ namespace acme_macos
 //
 //      bool is_shared_library_busy(const string_array& stra) override;
       
-      bool process_contains_module(string& strImage, ::process_identifier processID, const ::string & pszLibrary) override;
+      bool process_contains_module(string& strImage, ::process_identifier processID, const ::scoped_string & scopedstrLibrary) override;
 
-      ::process_identifier_array shared_library_process(string_array& straProcesses, const ::string & pszLibrary) override;
+      ::process_identifier_array shared_library_process(string_array_base& straProcesses, const ::scoped_string & scopedstrLibrary) override;
 
 //         int_bool is_process_running(unsigned int pid) override;
       
@@ -105,7 +105,7 @@ namespace acme_macos
       
       virtual bool _launch_command(const char * const pszCommand);
 
-      void shell_open(const ::file::path & pathFile, const ::string & strParams = "", const ::file::path & pathFolder = "") override;
+      void shell_open(const ::file::path & pathFile, const ::scoped_string & strParams = "", const ::file::path & pathFolder = "") override;
       
       //void implement(::pointer < ::platform::node > & pnode, __pointer(class ::system) & psystem);
       

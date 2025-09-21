@@ -42,7 +42,7 @@ namespace apex_macos
    }
 
 
-   void interprocess_caller::open(const ::string & strChannel,launcher * plauncher)
+   void interprocess_caller::open(const ::scoped_string & strChannel,launcher * plauncher)
    {
 
       //CFDataRef data;
@@ -90,7 +90,7 @@ namespace apex_macos
    }
 
 
-   void interprocess_caller::call(const ::string & strMessage, const class ::time & timeTimeout)
+   void interprocess_caller::call(const ::scoped_string & strMessage, const class ::time & timeTimeout)
    {
 
       if(m_port == nullptr)
@@ -248,7 +248,7 @@ namespace apex_macos
    }
    
 
-   void interprocess_target::create(const ::string & strChannel)
+   void interprocess_target::create(const ::scoped_string & strChannel)
    {
 
       CFMessagePortContext messageportcontext{};

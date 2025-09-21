@@ -32,7 +32,7 @@ namespace apex_macos
 
 
       
-      string app_id_to_executable_name(const string & strAppId) override;
+      string app_id_to_executable_name(const ::scoped_string & scopedstrAppId) override;
 
       
       string get_command_line() override;
@@ -41,7 +41,7 @@ namespace apex_macos
 
       void shutdown(bool bPowerOff) override;
 
-      virtual void terminate_processes_by_title(const ::string & pszName) override;
+      virtual void terminate_processes_by_title(const ::scoped_string & scopedstrName) override;
       //virtual string get_module_path(HMODULE hmodule);
 
       ::process_identifier_array  module_path_processes_identifiers(const ::scoped_string & scopedstrName) override;
@@ -53,22 +53,22 @@ namespace apex_macos
       ::payload connection_settings_get_auto_config_url() override;
 
 
-      virtual bool local_machine_set_run(const ::string & pszKey, const ::string & pszCommand);
-      virtual bool local_machine_set_run_once(const ::string & pszKey, const ::string & pszCommand);
-      virtual bool current_user_set_run(const ::string & pszKey, const ::string & pszCommand);
-      virtual bool current_user_set_run_once(const ::string & pszKey, const ::string & pszCommand);
+      virtual bool local_machine_set_run(const ::scoped_string & scopedstrKey, const ::scoped_string & scopedstrCommand);
+      virtual bool local_machine_set_run_once(const ::scoped_string & scopedstrKey, const ::scoped_string & scopedstrCommand);
+      virtual bool current_user_set_run(const ::scoped_string & scopedstrKey, const ::scoped_string & scopedstrCommand);
+      virtual bool current_user_set_run_once(const ::scoped_string & scopedstrKey, const ::scoped_string & scopedstrCommand);
       virtual void defer_register_ca2_plugin_for_mozilla() override;
 
 
-      void file_extension_get_open_with_list_keys(string_array & straKey, const ::string & pszExtension) override;
+      void file_extension_get_open_with_list_keys(string_array_base & straKey, const ::scoped_string & scopedstrExtension) override;
 
-      void file_extension_get_open_with_list_commands(string_array & straCommand, const ::string & pszExtension) override;
+      void file_extension_get_open_with_list_commands(string_array_base   & straCommand, const ::scoped_string & scopedstrExtension) override;
 
-      void file_association_set_default_icon(const ::string & pszExtension, const ::string & pszExtensionNamingClass, const ::file::path & pathIcon) override;
+      void file_association_set_default_icon(const ::scoped_string & scopedstrExtension, const ::scoped_string & scopedstrExtensionNamingClass, const ::file::path & pathIcon) override;
 
-      void file_association_set_shell_open_command(const ::string & pszExtension, const ::string & pszExtensionNamingClass,  const ::file::path & pathExecutable, const ::string & pszParam) override;
+      void file_association_set_shell_open_command(const ::scoped_string & scopedstrExtension, const ::scoped_string & scopedstrExtensionNamingClass,  const ::file::path & pathExecutable, const ::scoped_string & scopedstrParam) override;
 
-      void file_association_get_shell_open_command(const ::string & pszExtension, string & strExtensionNamingClass, string & strCommand, string & strParam) override;
+      void file_association_get_shell_open_command(const ::scoped_string & scopedstrExtension, string & strExtensionNamingClass, string & strCommand, string & strParam) override;
 
       virtual bool open_in_ie(const ::string & pcsz);
 
@@ -83,7 +83,7 @@ namespace apex_macos
       //bool dark_mode() const override;
       //void set_dark_mode(bool bDark) override;
 
-      //bool resolve_link(::file::path & pathTarget, const string & strSource, string * pstrFolder = nullptr, string * pstrParams = nullptr, string * pstrIconLocation = nullptr, int * piIcon = nullptr) override;
+      //bool resolve_link(::file::path & pathTarget, const ::scoped_string & scopedstrSource, string * pstrFolder = nullptr, string * pstrParams = nullptr, string * pstrIconLocation = nullptr, int * piIcon = nullptr) override;
 
       
       void raise_exception( unsigned int dwExceptionCode, unsigned int dwExceptionFlags);
@@ -100,11 +100,11 @@ namespace apex_macos
 
       void set_default_browser() override;
 
-      ::file::path get_app_path(const string & strApp) override;
+      ::file::path get_app_path(const ::scoped_string & scopedstrApp) override;
 
       void on_process_request(::request * prequest) override;
 
-      void file_open(const ::file::path & path, const ::string & strParams = "", const ::file::path & pathFolder = "") override;
+      void file_open(const ::file::path & path, const ::scoped_string & strParams = "", const ::file::path & pathFolder = "") override;
       
       void open_internet_link(const ::scoped_string & scopedstrUrl, const ::scoped_string & scopedstrProfile, const ::scoped_string & scopedstrTarget) override;
 
@@ -114,12 +114,12 @@ namespace apex_macos
       //void browse_file_open(property_set &set) override;
       
       
-      void set_this_application_as_default_for_file_extension(const ::string& strExtension) override;
+      void set_this_application_as_default_for_file_extension(const ::scoped_string & scopedstrExtension) override;
 
-      void register_user_auto_start(::platform::application * papplication, const string & strArguments,
+      void register_user_auto_start(::platform::application * papplication, const ::scoped_string & scopedstrArguments,
                                     bool bRegister) override;
 
-      bool is_user_auto_start(const string & strAppId) override;
+      bool is_user_auto_start(const ::scoped_string & scopedstrAppId) override;
 
     
    };

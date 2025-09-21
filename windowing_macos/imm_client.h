@@ -34,7 +34,7 @@ public:
 
    virtual void on_text_composition_done() override;
 
-   virtual void on_text_composition(string strMessage) override;
+   virtual void on_text_composition(const ::scoped_string & strMessage) override;
 
    void insert_text(const ::scoped_string & str, bool bForceNewStep, const ::action_context& context) override;
 

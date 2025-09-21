@@ -27,7 +27,7 @@ namespace acme_macos
       void init_system() override;
 
       // rls fetchs should set a meaningful m_iRelative value at each returned path
-      bool enumerate(::file::listing & path) override;
+      bool enumerate(::file::listing_base & path) override;
 
 
       //virtual bool  is(const ::file::path & path) override;
@@ -36,7 +36,7 @@ namespace acme_macos
       virtual bool  name_is(const ::file::path & path) override;
       virtual bool  has_subdir(const ::file::path & path) override;
 
-      virtual ::file::listing & root_ones(::file::listing & listing) override;
+      virtual ::file::listing_base & root_ones(::file::listing_base & listing) override;
       //virtual void create(const ::file::path & path) override;
       //virtual void erase(const ::file::path & path, bool bRecursive = true) override;
 
@@ -60,7 +60,7 @@ namespace acme_macos
 
 
 
-      virtual ::file::path appdata(const string & strAppId = "") override;
+      virtual ::file::path appdata(const ::scoped_string & scopedstrAppId = "") override;
       virtual ::file::path commonappdata_root() override;
       virtual ::file::path commonappdata() override;
 

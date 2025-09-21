@@ -171,7 +171,7 @@ void window::_main_post(const ::procedure & procedure)
 
       ::windowing::window::install_message_routing(pchannel);
 
-      MESSAGE_LINK(e_message_create, pchannel, this, &window::on_message_create);
+      USER_MESSAGE_LINK(::user::e_message_create, pchannel, this, &window::on_message_create);
 
       auto puserinteraction = user_interaction();
 
@@ -180,34 +180,34 @@ void window::_main_post(const ::procedure & procedure)
 //      if (!puserinteraction->m_bMessageWindow)
 //      {
 //
-//         //MESSAGE_LINK(e_message_redraw, pchannel, pimpl, &::user::interaction_impl::_001OnRedraw);
-//         //MESSAGE_LINK(e_message_apply_visual, pchannel, pimpl, &::user::interaction_impl::_001OnApplyVisual);
+//         //USER_MESSAGE_LINK(::user::e_message_redraw, pchannel, pimpl, &::user::interaction_impl::_001OnRedraw);
+//         //USER_MESSAGE_LINK(::user::e_message_apply_visual, pchannel, pimpl, &::user::interaction_impl::_001OnApplyVisual);
 //
 //
 //         //#ifndef LINUX
-//         //MESSAGE_LINK(e_message_reposition, pchannel, this, &window::_001OnMove);
-//         //MESSAGE_LINK(e_message_size, pchannel, this, &window::_001OnSize);
+//         //USER_MESSAGE_LINK(::user::e_message_reposition, pchannel, this, &window::_001OnMove);
+//         //USER_MESSAGE_LINK(::user::e_message_size, pchannel, this, &window::_001OnSize);
 //         //#endif
 //
 //
-//         //MESSAGE_LINK(e_message_show_window, pchannel, this, &window::_001OnShowWindow);
-//         //MESSAGE_LINK(e_message_kill_focus, pchannel, this, &window::_001OnKillFocus);
-//         //MESSAGE_LINK(e_message_set_focus, pchannel, this, &window::_001OnSetFocus);
-//         //MESSAGE_LINK(e_message_set_cursor, pchannel, this, &window::_001OnSetCursor);
+//         //USER_MESSAGE_LINK(::user::e_message_show_window, pchannel, this, &window::_001OnShowWindow);
+//         //USER_MESSAGE_LINK(::user::e_message_kill_focus, pchannel, this, &window::_001OnKillFocus);
+//         //USER_MESSAGE_LINK(::user::e_message_set_focus, pchannel, this, &window::_001OnSetFocus);
+//         //USER_MESSAGE_LINK(::user::e_message_set_cursor, pchannel, this, &window::_001OnSetCursor);
 //
 //      }
 
-      //MESSAGE_LINK(e_message_destroy_window, pchannel, pimpl, &::user::interaction_impl::_001OnDestroyWindow);
+      //USER_MESSAGE_LINK(::user::e_message_destroy_window, pchannel, pimpl, &::user::interaction_impl::_001OnDestroyWindow);
 
-   //   MESSAGE_LINK(WM_ACTIVATE, pchannel, this, &window::_001OnActivate);
-     // MESSAGE_LINK(WM_DWMNCRENDERINGCHANGED, pchannel, this, &window::_001OnDwmNcRenderingChanged);
+   //   USER_MESSAGE_LINK(WM_ACTIVATE, pchannel, this, &window::_001OnActivate);
+     // USER_MESSAGE_LINK(WM_DWMNCRENDERINGCHANGED, pchannel, this, &window::_001OnDwmNcRenderingChanged);
 
       //pimpl->install_message_routing(pchannel);
 
 
-      MESSAGE_LINK(e_message_destroy, pchannel, this, &window::on_message_destroy);
+      USER_MESSAGE_LINK(::user::e_message_destroy, pchannel, this, &window::on_message_destroy);
 
-      //MESSAGE_LINK(e_message_create, pchannel, pimpl, &::user::interaction_impl::_001OnPrioCreate);
+      //USER_MESSAGE_LINK(::user::e_message_create, pchannel, pimpl, &::user::interaction_impl::_001OnPrioCreate);
 
    }
 
@@ -1041,7 +1041,7 @@ void window::_main_post(const ::procedure & procedure)
 
       }
          
-      auto g = __øcreate < ::draw2d::graphics >();
+      auto g = øcreate < ::draw2d::graphics >();
 
       g->attach(cgc);
       
@@ -1152,7 +1152,7 @@ void window::_main_post(const ::procedure & procedure)
 //
 //      }
 //
-//      auto pkey  = __create_new < ::message::key >();
+//      auto pkey  = øcreate_new < ::message::key >();
 //
 //      pkey->m_id = e_message_key_down;
 //
@@ -1196,15 +1196,15 @@ void window::_main_post(const ::procedure & procedure)
 //   }
 
 #define _NEW_MESSAGE(pmessage, type, emessage) \
-auto pmessage = __create_new < type >(); \
+auto pmessage = øcreate_new < type >(); \
 pmessage->m_oswindow = this->oswindow(); \
 pmessage->m_pwindow = this; \
-pmessage->m_emessage = emessage
+pmessage->m_eusermessage = emessage
 
    bool window::macos_window_key_down(unsigned int virtualKey, unsigned int scanCode, const char * pszUtf8)
    {
       
-      _NEW_MESSAGE(pkey, ::message::key, e_message_key_down);
+      _NEW_MESSAGE(pkey, ::message::key, ::user::e_message_key_down);
 
       pkey->m_iVirtualKey = virtualKey;
       pkey->m_nScanCode = scanCode;
@@ -1253,7 +1253,7 @@ pmessage->m_emessage = emessage
       {
 
 
-         _NEW_MESSAGE(pkey, ::message::key, e_message_char);
+         _NEW_MESSAGE(pkey, ::message::key, ::user::e_message_char);
            
          pkey->m_strText = pszUtf8;
            
@@ -1279,7 +1279,7 @@ pmessage->m_emessage = emessage
 
       }
 
-      _NEW_MESSAGE(pkey, ::message::key, e_message_key_up);
+      _NEW_MESSAGE(pkey, ::message::key, ::user::e_message_key_up);
 
       pkey->m_iVirtualKey = virtualKey;
       
@@ -1315,7 +1315,7 @@ pmessage->m_emessage = emessage
          try
          {
 
-            _NEW_MESSAGE(pmouseactivate, ::message::mouse_activate, e_message_mouse_activate);
+            _NEW_MESSAGE(pmouseactivate, ::message::mouse_activate, ::user::e_message_mouse_activate);
 
             pmouseactivate->m_wparam = 0;
             pmouseactivate->m_lparam = 0;
@@ -1325,7 +1325,7 @@ pmessage->m_emessage = emessage
             if (pmouseactivate->m_lresult == e_mouse_activate || pmouseactivate->m_lresult == e_mouse_activate_no_activate_and_eat)
             {
 
-               _NEW_MESSAGE(pactivate, ::message::activate, e_message_activate);
+               _NEW_MESSAGE(pactivate, ::message::activate, ::user::e_message_activate);
 
                pactivate->m_wparam = make_unsigned_int(e_activate_click_active, 0);
                pactivate->m_lparam = 0;
@@ -1345,14 +1345,14 @@ pmessage->m_emessage = emessage
 
       {
 
-//         auto pmouse = __create_new < ::message::mouse > ();
+//         auto pmouse = øcreate_new < ::message::mouse > ();
 
 //         ::atom id;
          
          if (iButton == 1)
          {
             
-            _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_down);
+            _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_right_button_down);
             pmouse->m_pointHost.x() = xHost;
             pmouse->m_pointHost.y() = yHost;
             pmouse->m_pointAbsolute.x() = xAbsolute;
@@ -1364,7 +1364,7 @@ pmessage->m_emessage = emessage
          else
          {
 
-            _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_down);
+            _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_left_button_down);
             pmouse->m_pointHost.x() = xHost;
             pmouse->m_pointHost.y() = yHost;
             pmouse->m_pointAbsolute.x() = xAbsolute;
@@ -1392,14 +1392,14 @@ pmessage->m_emessage = emessage
       
       m_pointMouseCursorAbsolute.y() = yAbsolute;
 
-      //auto pmouse = __create_new < ::message::mouse >();
+      //auto pmouse = øcreate_new < ::message::mouse >();
 
       //::atom id;
 
       if (iButton == 1)
       {
 
-         _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_up);
+         _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_right_button_up);
          pmouse->m_pointHost.x() = xHost;
          pmouse->m_pointHost.y() = yHost;
          pmouse->m_pointAbsolute.x() = xAbsolute;
@@ -1411,7 +1411,7 @@ pmessage->m_emessage = emessage
       else
       {
 
-         _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_up);
+         _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_left_button_up);
          pmouse->m_pointHost.x() = xHost;
          pmouse->m_pointHost.y() = yHost;
          pmouse->m_pointAbsolute.x() = xAbsolute;
@@ -1440,14 +1440,14 @@ pmessage->m_emessage = emessage
       
       m_pointMouseCursorAbsolute.y() = yAbsolute;
 
-      //auto pmouse = __create_new < ::message::mouse >();
+      //auto pmouse = øcreate_new < ::message::mouse >();
       
       //::atom id;
 
       if (iButton == 1)
       {
 
-         _NEW_MESSAGE(pmouse, ::message::mouse, e_message_right_button_double_click);
+         _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_right_button_double_click);
          pmouse->m_pointHost.x() = xHost;
          pmouse->m_pointHost.y() = yHost;
          pmouse->m_pointAbsolute.x() = xAbsolute;
@@ -1461,7 +1461,7 @@ pmessage->m_emessage = emessage
       else
       {
 
-         _NEW_MESSAGE(pmouse, ::message::mouse, e_message_left_button_double_click);
+         _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_left_button_double_click);
          pmouse->m_pointHost.x() = xHost;
          pmouse->m_pointHost.y() = yHost;
          pmouse->m_pointAbsolute.x() = xAbsolute;
@@ -1592,7 +1592,7 @@ pmessage->m_emessage = emessage
       }
       
       
-      _NEW_MESSAGE(pmouse, ::message::mouse, e_message_mouse_move);
+      _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_mouse_move);
       pmouse->m_pointHost.x() = xHost;
       pmouse->m_pointHost.y() = yHost;
       pmouse->m_pointAbsolute.x() = xAbsolute;
@@ -1618,7 +1618,7 @@ pmessage->m_emessage = emessage
 
       }
       
-//      auto pmouse = __create_new < ::message::mouse >();
+//      auto pmouse = øcreate_new < ::message::mouse >();
 //
 //      pmouse->set(this, this, id, wparam, lparam);
 
@@ -1632,7 +1632,7 @@ pmessage->m_emessage = emessage
    void window::macos_window_mouse_dragged(double xHost, double yHost, double xAbsolute, double yAbsolute, unsigned long ulAppleMouseButton)
    {
       
-      _NEW_MESSAGE(pmouse, ::message::mouse, e_message_mouse_move);
+      _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_mouse_move);
       pmouse->m_pointHost.x() = xHost;
       pmouse->m_pointHost.y() = yHost;
       pmouse->m_pointAbsolute.x() = xAbsolute;
@@ -1659,7 +1659,7 @@ pmessage->m_emessage = emessage
 
       }
 //
-//      auto pmouse = __create_new < ::message::mouse >();
+//      auto pmouse = øcreate_new < ::message::mouse >();
 //
 //      pmouse->set(this, this, id, wparam, lparam);
 
@@ -1674,7 +1674,7 @@ pmessage->m_emessage = emessage
    {
 
       
-      _NEW_MESSAGE(pwheel, ::message::mouse_wheel, e_message_mouse_wheel);
+      _NEW_MESSAGE(pwheel, ::message::mouse_wheel, ::user::e_message_mouse_wheel);
       pwheel->m_pointHost.x() = xHost;
       pwheel->m_pointHost.y() = yHost;
       pwheel->m_pointAbsolute.x() = xAbsolute;
@@ -1688,7 +1688,7 @@ pmessage->m_emessage = emessage
 
       //lparam lparam = __MAKE_LPARAM(x, y);
 
-      //auto pwheel  = __create_new < ::message::mouse_wheel > ();
+      //auto pwheel  = øcreate_new < ::message::mouse_wheel > ();
       
       //pwheel->set(this, this, id, wparam, lparam);
 
@@ -1711,7 +1711,7 @@ pmessage->m_emessage = emessage
          if(p.x() != rectangle.origin.x || p.y() != rectangle.origin.y)
          {
             
-            _NEW_MESSAGE(preposition, ::message::reposition, e_message_reposition);
+            _NEW_MESSAGE(preposition, ::message::reposition, ::user::e_message_reposition);
             preposition->m_point.x() = rectangle.origin.x;
             preposition->m_point.y() = rectangle.origin.y;
             
@@ -1722,7 +1722,7 @@ pmessage->m_emessage = emessage
             //
             //         lparam lparam = __MAKE_LPARAM(rectangle.origin.x, rectangle.origin.y);
             //
-            //         auto pmove  = __create_new < ::message::reposition > ();
+            //         auto pmove  = øcreate_new < ::message::reposition > ();
             //
             //         pmove->set(this, this, id, wparam, lparam);
             
@@ -1746,7 +1746,7 @@ pmessage->m_emessage = emessage
          if(s.cx() != rectangle.size.width || s.cy() != rectangle.size.height)
          {
             
-            _NEW_MESSAGE(psize, ::message::size, e_message_size);
+            _NEW_MESSAGE(psize, ::message::size, ::user::e_message_size);
             psize->m_size.cx() = rectangle.size.width;
             psize->m_size.cy() = rectangle.size.height;
             
@@ -1756,7 +1756,7 @@ pmessage->m_emessage = emessage
             //
             //         lparam lparam = __MAKE_LPARAM(rectangle.size.width, rectangle.size.height);
             //
-            //         auto psize  = __create_new < ::message::size > ();
+            //         auto psize  = øcreate_new < ::message::size > ();
             //
             //         psize->set(this, this, id, wparam, lparam);
             
@@ -1913,7 +1913,7 @@ pmessage->m_emessage = emessage
          
          puserinteraction->set_position({point.x, point.y}, ::user::e_layout_window);
 
-         _NEW_MESSAGE(preposition, ::message::reposition, e_message_reposition);
+         _NEW_MESSAGE(preposition, ::message::reposition, ::user::e_message_reposition);
          preposition->m_point.x() = point.x;
          preposition->m_point.y() = point.y;
 
@@ -1923,7 +1923,7 @@ pmessage->m_emessage = emessage
 //
 //         lparam lparam = __MAKE_LPARAM(point.x, point.y);
 //
-//         auto pmove  = __create_new < ::message::reposition > ();
+//         auto pmove  = øcreate_new < ::message::reposition > ();
 //
 //         pmove->set(this, this, id, wparam, lparam);
 
@@ -2060,7 +2060,7 @@ pmessage->m_emessage = emessage
       }
 
 //      puserinteraction->set_need_redraw();
-      puserinteraction->send_message(e_message_activate, 1);
+      puserinteraction->send_message(::user::e_message_activate, 1);
 
    }
 
@@ -2127,7 +2127,7 @@ pmessage->m_emessage = emessage
    //
    //      }
       
-      puserinteraction->send_message(e_message_activate, 0);
+      puserinteraction->send_message(::user::e_message_activate, 0);
 
 //      if(!is_destroying())
 //      {
@@ -2363,7 +2363,7 @@ pmessage->m_emessage = emessage
 
       //}
 
-      auto lresult = puserinteraction->send_message(e_message_create); //
+      auto lresult = puserinteraction->send_message(::user::e_message_create); //
       //, 0, //(lparam)&cs);
 
       ///bool bOk = true;
@@ -2438,7 +2438,7 @@ pmessage->m_emessage = emessage
 
       m_timeLastExposureAddUp.Now();
 
-      puserinteraction->send_message(e_message_show_window, 1);
+      puserinteraction->send_message(::user::e_message_show_window, 1);
 
       //puserinteraction->user_interaction_update_visibility_cache(true);
 
@@ -2500,7 +2500,7 @@ pmessage->m_emessage = emessage
 
       }
       
-      puserinteraction->message_call(e_message_show_window, 0);
+      puserinteraction->message_call(::user::e_message_show_window, 0);
 
    }
 
@@ -2584,7 +2584,7 @@ void window::frame_toggle_restore(::user::activation_token * puseractivationtoke
    }
 
 
-   void window::non_top_most_upper_window_rects(::int_rectangle_array & recta)
+   void window::non_top_most_upper_window_rects(::int_rectangle_array_base & recta)
    {
       
       auto osdata = __nsacmewindow_osdata(m_pnsacmewindow);
@@ -2796,7 +2796,7 @@ void window::frame_toggle_restore(::user::activation_token * puseractivationtoke
       try
       {
 
-         puserinteraction->send_message(e_message_destroy);
+         puserinteraction->send_message(::user::e_message_destroy);
 
       }
       catch (...)
@@ -2807,7 +2807,7 @@ void window::frame_toggle_restore(::user::activation_token * puseractivationtoke
       try
       {
 
-         puserinteraction->send_message(e_message_non_client_destroy);
+         puserinteraction->send_message(::user::e_message_non_client_destroy);
 
       }
       catch (...)

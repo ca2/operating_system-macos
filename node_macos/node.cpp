@@ -306,7 +306,7 @@ namespace node_macos
 
       auto & pfactory = ::system()->factory("input", "appkit");
 
-      auto pinput = __øcreate < ::input::input >(pfactory);
+      auto pinput = øcreate < ::input::input >(pfactory);
 
       return pinput;
 

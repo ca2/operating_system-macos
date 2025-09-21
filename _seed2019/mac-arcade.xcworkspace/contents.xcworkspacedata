@@ -77,7 +77,7 @@
       location = "group:../../app/rdpclient/axisrdpclient.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:../../app/base/base.xcodeproj">
+      location = "container:../../app/berg/berg.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:../../app/core/core.xcodeproj">

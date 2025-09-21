@@ -219,12 +219,12 @@ namespace input_appkit
    }
 
 
-   void keyboard_hook::keyboard_proc(enum_message emessage, int iVirtualKeyCode, int iScanCode)
+   void keyboard_hook::keyboard_proc(::user::enum_message eusermessage, int iVirtualKeyCode, int iScanCode)
    {
 
-      auto pkeyboard = __create_new < ::message::key >();
+      auto pkeyboard = øcreate_new < ::message::key >();
 
-      pkeyboard->m_emessage = emessage;
+      pkeyboard->m_eusermessage = eusermessage;
 
       if (iVirtualKeyCode == kVK_Return)
       {

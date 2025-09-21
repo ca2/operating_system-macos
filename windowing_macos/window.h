@@ -173,7 +173,7 @@ namespace windowing_macos
       void frame_toggle_restore(::user::activation_token * puseractivationtoken) override;
       
       
-      void non_top_most_upper_window_rects(::int_rectangle_array & recta) override;
+      void non_top_most_upper_window_rects(::int_rectangle_array_base & recta) override;
 
 
       void post_message(::message::message * pmessage) override;

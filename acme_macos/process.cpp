@@ -50,12 +50,12 @@ namespace acme_macos
    }
 
    
-   ::process_identifier node::create_process(const ::string & pszCommandLine)
+   ::process_identifier node::create_process(const ::scoped_string & scopedstrCommandLine)
    {
 
       string_array stra;
       
-      stra = get_c_args_for_c(pszCommandLine);
+      stra = get_c_args_for_c(scopedstrCommandLine);
 
       char * argv[1024 + 1];
 

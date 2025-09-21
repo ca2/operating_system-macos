@@ -59,7 +59,7 @@ namespace input_appkit
 
 //      static LRESULT CALLBACK LowLevelMouseProc(int nCode, WPARAM wParam, LPARAM lParam);
 
-      void mouse_proc(enum_message emessage) override;
+      void mouse_proc(::user::enum_message emessage) override;
 
    };
 

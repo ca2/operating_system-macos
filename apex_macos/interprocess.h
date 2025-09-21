@@ -47,11 +47,11 @@ namespace apex_macos
 
 
 
-      void open(const ::string & strChannel, ::launcher * plauncher = nullptr) override;
+      void open(const ::scoped_string & scopedstrChannel, ::launcher * plauncher = nullptr) override;
       void close() override;
 
 
-      void call(const ::string & strMessage, const class ::time & timeTimeout) override;
+      void call(const ::scoped_string & scopedstrMessage, const class ::time & timeTimeout) override;
 //      void send(int message, void * pdata, int len, const class ::time & timeTimeout) override;
 
 
@@ -78,7 +78,7 @@ namespace apex_macos
       ~interprocess_target() override;
 
 
-      void create(const ::string & strChannel) override;
+      void create(const ::scoped_string & scopedstrChannel) override;
       void destroy() override;
 
 

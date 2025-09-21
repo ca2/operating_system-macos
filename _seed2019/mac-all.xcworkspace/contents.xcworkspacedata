@@ -131,7 +131,7 @@
       location = "container:../../app/axis/zlib/axiszlib.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:../../app/base/base.xcodeproj">
+      location = "container:../../app/berg/berg.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../app-core/id3lib/baseid3lib.xcodeproj">

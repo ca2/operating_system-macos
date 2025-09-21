@@ -58,7 +58,7 @@ namespace input_appkit
 
 //      static LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam);
 
-      void keyboard_proc(enum_message emessage, int iVirtualKeyCode, int iScanCode) override;
+      void keyboard_proc(::user::enum_message emessage, int iVirtualKeyCode, int iScanCode) override;
 
 
    };

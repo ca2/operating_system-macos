@@ -46,7 +46,7 @@ namespace input_appkit
             if(!pmousehook->m_bLeftPressed)
             {
                pmousehook->m_bLeftPressed = true;
-               pmousehook->mouse_proc(e_message_left_button_down);
+               pmousehook->mouse_proc(::user::e_message_left_button_down);
                
             }
                                                             
@@ -56,29 +56,29 @@ namespace input_appkit
             if(pmousehook->m_bLeftPressed)
             {
                pmousehook->m_bLeftPressed = false;
-               pmousehook->mouse_proc(e_message_left_button_up);
+               pmousehook->mouse_proc(::user::e_message_left_button_up);
                
             }
                        
                        
                     }
          else if ([incomingEvent type] == NSEventTypeRightMouseDown) {
-            pmousehook->mouse_proc(e_message_right_button_down);
+            pmousehook->mouse_proc(::user::e_message_right_button_down);
                        
                        
                     }
          else if ([incomingEvent type] == NSEventTypeRightMouseUp) {
-            pmousehook->mouse_proc(e_message_right_button_up);
+            pmousehook->mouse_proc(::user::e_message_right_button_up);
                        
                        
                     }
          else if ([incomingEvent type] == NSEventTypeOtherMouseDown) {
-            pmousehook->mouse_proc(e_message_middle_button_down);
+            pmousehook->mouse_proc(::user::e_message_middle_button_down);
                        
                        
                     }
                     else if ([incomingEvent type] == NSEventTypeOtherMouseUp) {
-                       pmousehook->mouse_proc(e_message_middle_button_up);
+                       pmousehook->mouse_proc(::user::e_message_middle_button_up);
                        
                        
                     }

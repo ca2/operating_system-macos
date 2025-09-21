@@ -29,15 +29,15 @@ namespace windowing_macos
       void initialize(::particle * pparticle) override;
       void destroy() override;
 
-      bool _set_filea(const ::file::path_array & stra, enum_op eop) override;
-      bool _get_filea(::file::path_array & stra, enum_op & eop) override;
+      bool _set_filea(const ::file::path_array_base & stra, enum_op eop) override;
+      bool _get_filea(::file::path_array_base & stra, enum_op & eop) override;
       bool _has_filea() override;
 
       virtual bool _os_has_filea();
       
       virtual bool _os_clipboard_has_changed();
 
-      bool _set_plain_text(const string & str) override;
+      bool _set_plain_text(const ::scoped_string & str) override;
       bool _get_plain_text(string & str) override;
       bool _has_plain_text() override;
 

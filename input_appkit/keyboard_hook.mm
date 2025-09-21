@@ -168,19 +168,19 @@ namespace input_appkit
             if([incomingEvent keyCode] == kVK_Return)
             {
                
-               g_pkeyboardhook->keyboard_proc(e_message_key_down, kVK_Return, 0);
+               g_pkeyboardhook->keyboard_proc(::user::e_message_key_down, kVK_Return, 0);
                
             }
             else if([incomingEvent keyCode] == kVK_Space)
             {
                
-               g_pkeyboardhook->keyboard_proc(e_message_key_down, kVK_Space, 0);
+               g_pkeyboardhook->keyboard_proc(::user::e_message_key_down, kVK_Space, 0);
                
             }
             else
             {
                
-               g_pkeyboardhook->keyboard_proc(e_message_key_down, kVK_ANSI_A, 0);
+               g_pkeyboardhook->keyboard_proc(::user::e_message_key_down, kVK_ANSI_A, 0);
                
             }
             
@@ -191,19 +191,19 @@ namespace input_appkit
             if([incomingEvent keyCode] == kVK_Return)
             {
                
-               g_pkeyboardhook->keyboard_proc(e_message_key_up, kVK_Return, 0);
+               g_pkeyboardhook->keyboard_proc(::user::e_message_key_up, kVK_Return, 0);
                
             }
             else if([incomingEvent keyCode] == kVK_Space)
             {
                
-               g_pkeyboardhook->keyboard_proc(e_message_key_up, kVK_Space, 0);
+               g_pkeyboardhook->keyboard_proc(::user::e_message_key_up, kVK_Space, 0);
                
             }
             else
             {
                
-               g_pkeyboardhook->keyboard_proc(e_message_key_up, kVK_ANSI_A, 0);
+               g_pkeyboardhook->keyboard_proc(::user::e_message_key_up, kVK_ANSI_A, 0);
                
             }
             

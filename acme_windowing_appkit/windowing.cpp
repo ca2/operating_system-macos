@@ -118,7 +118,7 @@ void windowing::initialize_windowing()
         //
         //      return m_pvoidX11Display;
         
-        __øconstruct(m_pacmedisplay);
+        øconstruct(m_pacmedisplay);
         
         m_pacmedisplay->open_display();
         
@@ -146,7 +146,7 @@ void windowing::_main_send(const ::procedure & procedure)
     //      CLASS_DECL_ACME bool main_synchronous(const class time & time, const ::procedure & function)
     //      {
     
-    auto pevent = __allocate manual_reset_happening();
+    auto pevent = øallocate manual_reset_happening();
     
     user_post([ procedure, pevent ]
               {
@@ -323,7 +323,7 @@ void windowing::set_osdata_acme_windowing_window(void * posdata, ::acme::windowi
    if(::is_null(pacmewindowingwindow))
    {
       
-      m_windowmap.erase_item(posdata);
+      m_windowmap.erase(posdata);
       
    }
    else

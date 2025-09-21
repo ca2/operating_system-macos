@@ -243,14 +243,14 @@ namespace acme_macos
 
 
 
-   ::file::path directory_system::inplace_install(string strAppId, string strPlatform, string strConfiguration)
+   ::file::path directory_system::inplace_install(const ::scoped_string & scopedstrAppId, const ::scoped_string & scopedstrPlatform, const ::scoped_string & scopedstrConfiguration)
    {
 
    #ifdef LINUX_DESKTOP
 
       ::file::path path;
 
-      string strFolder;
+      const ::scoped_string & scopedstrFolder;
 
       character_count iFind = strAppId.find('/');
 
@@ -299,14 +299,14 @@ namespace acme_macos
    }
 
 
-   ::file::path directory_system::inplace_matter_install(string strAppId, string strPlatform, string strConfiguration)
+   ::file::path directory_system::inplace_matter_install(const ::scoped_string & scopedstrAppId, const ::scoped_string & scopedstrPlatform, const ::scoped_string & scopedstrConfiguration)
    {
 
    #ifdef LINUX_DESKTOP
 
       ::file::path path;
 
-      string strFolder;
+      const ::scoped_string & scopedstrFolder;
 
       character_count iFind = strAppId.find('/');
 
@@ -461,10 +461,10 @@ namespace acme_macos
    #endif
 
 
-   ::file::path directory_system::stage(string strAppId, string strPlatform, string strConfiguration)
+   ::file::path directory_system::stage(const ::scoped_string & scopedstrAppId, const ::scoped_string & scopedstrPlatform, const ::scoped_string & scopedstrConfiguration)
    {
 
-      return inplace_install(strAppId, strPlatform, strConfiguration) / "time" / node()->time_binary_platform(strPlatform) / strConfiguration;
+      return inplace_install(scopedstrAppId, scopedstrPlatform, scopedstrConfiguration) / "time" / node()->time_binary_platform(scopedstrPlatform) / scopedstrConfiguration;
 
    }
 
@@ -517,10 +517,10 @@ namespace acme_macos
 
 
 
-   void directory_system::set_path_install_folder(const ::string & strPath)
+   void directory_system::set_path_install_folder(const ::scoped_string & scopedstrPath)
    {
 
-      m_pathInstallFolder = strPath;
+      m_pathInstallFolder = scopedstrPath;
 
    }
 
@@ -648,19 +648,19 @@ namespace acme_macos
    //}
 
 
-   ::file::path directory_system::pathfind(const string& pszEnv, const string& pszTopic, const string& pszMode)
+   ::file::path directory_system::pathfind(const ::scoped_string & scopedstrEnv, const ::scoped_string & scopedstrTopic, const ::scoped_string & scopedstrMode)
    {
 
       ::file::path_array stra;
 
-      stra.add_tokens(pszEnv, ":", false);
+      stra.add_tokens(scopedstrEnv, ":", false);
 
-      string strCandidate;
+      ::string strCandidate;
 
       for (int i = 0; i < stra.get_count(); i++)
       {
 
-         strCandidate = stra[i] / pszTopic;
+         strCandidate = stra[i] / scopedstrTopic;
 
          //if (m_pcontext->m_papexcontext->file().exists(strCandidate))
          if (file_exists(strCandidate))

@@ -52,7 +52,7 @@ void ns_launch_app(const char * psz, const char ** argv, int iFlags);
 void ansios_sigchld_handler(int sig);
 
 
-void apex_application_run(const ::string & pszAppName, const ::string & pszProgName);
+void apex_application_run(const ::scoped_string & scopedstrAppName, const ::scoped_string & scopedstrProgName);
 
 
 namespace acme_macos
@@ -84,9 +84,9 @@ namespace acme_macos
 
 
  void node::call_async(
-const ::string & pszPath,
-const ::string & pszParam,
-const ::string & pszDir,
+const ::scoped_string & scopedstrPath,
+const ::scoped_string & scopedstrParam,
+const ::scoped_string & scopedstrDir,
 ::e_display edisplay,
 bool bPrivileged,
 unsigned int * puiPid)
@@ -94,20 +94,20 @@ unsigned int * puiPid)
 
    string strCmdLine;
 
-   strCmdLine = pszPath;
+   strCmdLine = scopedstrPath;
 
-   if(ansi_length(pszParam) > 0)
+   if(ansi_length(scopedstrParam) > 0)
    {
 
       strCmdLine +=  " ";
 
-      strCmdLine += pszParam;
+      strCmdLine += scopedstrParam;
 
    }
 
    ::process_identifier processId;
 
-   chdir(pszDir);
+   chdir(scopedstrDir);
     
     processId = create_process(strCmdLine);
 
@@ -130,19 +130,19 @@ unsigned int * puiPid)
 }
 
 
-void node::call_sync(const ::string & pszPath, const ::string & pszParam, const ::string & pszDir, ::e_display edisplay, const class ::time & timeTimeout, ::property_set & set, int * piExitCode)
+void node::call_sync(const ::scoped_string & scopedstrPath, const ::scoped_string & scopedstrParam, const ::scoped_string & scopedstrDir, ::e_display edisplay, const class ::time & timeTimeout, ::property_set & set, int * piExitCode)
 {
 
    string strCmdLine;
 
-   strCmdLine = pszPath;
+   strCmdLine = scopedstrPath;
 
-   if(ansi_length(pszParam) > 0)
+   if(ansi_length(scopedstrParam) > 0)
    {
 
       strCmdLine +=  " ";
       
-      strCmdLine += pszParam;
+      strCmdLine += scopedstrParam;
       
    }
 
@@ -174,7 +174,7 @@ void node::call_sync(const ::string & pszPath, const ::string & pszParam, const 
 }
 
 
-void node::shell_open(const ::file::path & path, const ::string & strParams, const ::file::path & pathFolder)
+void node::shell_open(const ::file::path & path, const ::scoped_string & scopedstrParams, const ::file::path & pathFolder)
 {
    
 //      property_set set;
@@ -519,7 +519,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    //   }
    //
    //
-   //   string node::get_file_icon_path(const ::string & pszPath, int iSize)
+   //   string node::get_file_icon_path(const ::scoped_string & scopedstrPath, int iSize)
    //   {
    //
    //      return ::linux_g_direct_get_file_icon_path(pszPath, iSize);
@@ -527,7 +527,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    //   }
    //
    //
-   //   string node::get_file_content_type(const ::string & pszPath)
+   //   string node::get_file_content_type(const ::scoped_string & scopedstrPath)
    //   {
    //
    //      return ::linux_g_direct_get_file_content_type(pszPath);
@@ -788,27 +788,27 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
    
-   void node::_launch_macos_app(const ::string & pszAppFolder)
+   void node::_launch_macos_app(const ::scoped_string & scopedstrAppFolder)
    {
       
-      if (!pszAppFolder)
+      if (scopedstrAppFolder.is_empty())
       {
          
          throw ::exception(error_invalid_empty_argument);
          
       }
       
-      ns_launch_app(pszAppFolder, nullptr, 0);
+      ns_launch_app(scopedstrAppFolder, nullptr, 0);
 
       //return ::success;
       
    }
 
 
-   void node::_launch_macos_app_args(const ::string & pszAppFolder, const ::string & pszArgs)
+   void node::_launch_macos_app_args(const ::scoped_string & scopedstrAppFolder, const ::scoped_string & scopedstrArgs)
    {
       
-      if (!pszAppFolder)
+      if (scopedstrAppFolder.range<const char *>::is_empty())
       {
          
          throw ::exception(error_exception);
@@ -817,17 +817,17 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
       
       string strCommand;
       
-      strCommand.formatf("open \"%s\" --args %s", pszAppFolder.c_str(), pszArgs.c_str());
+      strCommand.formatf("open \"%s\" --args %s", scopedstrAppFolder.c_str(), scopedstrArgs.c_str());
       
       _launch_command(strCommand);
       
    }
    
 
-   void node::launch_app(const ::string & psz, const char ** argv, int iFlags)
+   void node::launch_app(const ::scoped_string & scopedstr, const char ** argv, int iFlags)
    {
       
-      ::ns_launch_app(psz, argv, iFlags);
+      ::ns_launch_app(scopedstr, argv, iFlags);
       
       //return ::success;
       
@@ -890,7 +890,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   ::file::path_array node::process_identifier_modules_paths(::process_identifier processID)
+   ::file::path_array_base node::process_identifier_modules_paths(::process_identifier processID)
    {
 
       return ::acme_apple::node::process_identifier_modules_paths(processID);
@@ -898,7 +898,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-   bool node::load_modules_diff(string_array& straOld, string_array& straNew, const ::string & pszExceptDir)
+   bool node::load_modules_diff(string_array_base& straOld, string_array_base& straNew, const ::scoped_string & scopedstrExceptDir)
    {
 
       throw interface_only();
@@ -952,7 +952,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 //   }
 
 
-   bool node::process_contains_module(string& strImage, ::process_identifier processID, const ::string & pszLibrary)
+   bool node::process_contains_module(string& strImage, ::process_identifier processID, const ::scoped_string & scopedstrLibrary)
    {
 
       throw interface_only();
@@ -962,7 +962,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
    }
 
 
-::process_identifier_array node::shared_library_process(string_array& straProcesses, const ::string & pszLibrary)
+::process_identifier_array node::shared_library_process(string_array_base& straProcesses, const ::scoped_string & scopedstrLibrary)
    {
 
       throw interface_only();
@@ -1058,7 +1058,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
       
       //psystem->defer_post_initial_request();
       
-      auto prequest = __create_new < ::request >();
+      auto prequest = øcreate_new < ::request >();
       
       prequest->m_ecommand = e_command_application_start;
       
@@ -1105,7 +1105,7 @@ void node::shell_open(const ::file::path & path, const ::string & strParams, con
 //
       //psystem->defer_post_initial_request();
       
-      auto prequest = __create_new < ::request >();
+      auto prequest = øcreate_new < ::request >();
       
       prequest->m_ecommand = e_command_application_started;
       

@@ -198,7 +198,7 @@ namespace acme_macos
    }
 
 
-   ::file::listing & directory_context::root_ones(::file::listing & listing)
+   ::file::listing_base & directory_context::root_ones(::file::listing_base & listing)
    {
       
       ::file::path path;
@@ -216,7 +216,7 @@ namespace acme_macos
    }
 
 
-   bool directory_context::enumerate(::file::listing & listing)
+   bool directory_context::enumerate(::file::listing_base & listing)
    {
       
       if(::directory_context::enumerate(listing))
@@ -1341,10 +1341,10 @@ namespace acme_macos
 //        return "";
 //    }
 
-   ::file::path directory_context::appdata(const string & strAppId)
+   ::file::path directory_context::appdata(const ::scoped_string & scopedstrAppId)
    {
       
-      return system()->directory_system()->m_pathAppData / strAppId;
+      return system()->directory_system()->m_pathAppData / scopedstrAppId;
       
 //      auto psystem = m_psystem;
 //

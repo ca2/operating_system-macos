@@ -270,7 +270,7 @@ namespace acme_macos
     *
     *************************************************************************/
    /*=======================================================================*/
-::process_identifier_array node::module_path_processes_identifiers(const ::string & pszModulePath
+::process_identifier_array node::module_path_processes_identifiers(const ::scoped_string & pszModulePath
                                        , bool bModuleNameIsPropertyFormatted)
    {
       /*=======================================================================*/

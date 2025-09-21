@@ -35,7 +35,7 @@ namespace appkit
 //void acme_window_bridge::on_left_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute)
 //{
 //
-//   auto pmouse = m_pwindow->__create_new <::user::mouse>();
+//   auto pmouse = m_pwindow->øcreate_new <::user::mouse>();
 //
 //   pmouse->m_pointHost = {xHost, yHost};
 //
@@ -51,7 +51,7 @@ namespace appkit
 //void acme_window_bridge::on_left_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute)
 //{
 //
-//   auto pmouse = m_pwindow->__create_new <::user::mouse>();
+//   auto pmouse = m_pwindow->øcreate_new <::user::mouse>();
 //
 //   pmouse->m_pointHost = {xHost, yHost};
 //
@@ -67,7 +67,7 @@ namespace appkit
 //void acme_window_bridge::on_right_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute)
 //{
 //
-//   auto pmouse = m_pwindow->__create_new <::user::mouse>();
+//   auto pmouse = m_pwindow->øcreate_new <::user::mouse>();
 //
 //   pmouse->m_pointHost = {xHost, yHost};
 //
@@ -83,7 +83,7 @@ namespace appkit
 //void acme_window_bridge::on_right_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute)
 //{
 //
-//   auto pmouse = m_pwindow->__create_new <::user::mouse>();
+//   auto pmouse = m_pwindow->øcreate_new <::user::mouse>();
 //
 //   pmouse->m_pointHost = {xHost, yHost};
 //
@@ -99,7 +99,7 @@ namespace appkit
 //void acme_window_bridge::on_mouse_move(int xHost, int yHost, int xAbsolute, int yAbsolute)
 //{
 //
-//   auto pmouse = m_pwindow->__create_new <::user::mouse>();
+//   auto pmouse = m_pwindow->øcreate_new <::user::mouse>();
 //
 //   pmouse->m_pointHost = {xHost, yHost};
 //
