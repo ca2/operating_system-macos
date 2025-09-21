@@ -90,7 +90,7 @@
 		9A90675527F1409E0040B86D /* libaqua.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaqua.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A90675727F1409E0040B86D /* libaura.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A90675927F1409E0040B86D /* libaxis.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaxis.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A90675B27F1409F0040B86D /* libbase.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libbase.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A90675B27F1409F0040B86D /* libberg.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libberg.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A90675D27F1409F0040B86D /* libbred.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libbred.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A90675F27F140AF0040B86D /* libcore.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libcore.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A90676127F1581D0040B86D /* libaudio.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaudio.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +128,7 @@
 				9A90675527F1409E0040B86D /* libaqua.dylib */,
 				9A90675727F1409E0040B86D /* libaura.dylib */,
 				9A90675927F1409E0040B86D /* libaxis.dylib */,
-				9A90675B27F1409F0040B86D /* libbase.dylib */,
+				9A90675B27F1409F0040B86D /* libberg.dylib */,
 				9A90675D27F1409F0040B86D /* libbred.dylib */,
 				9A8997BC177D0E7D00C7761E /* Carbon.framework */,
 				9AA1B449176361950019E812 /* Cocoa.framework */,

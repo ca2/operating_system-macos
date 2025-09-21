@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		07FDD4DB1C9CEB6800DB2A99 /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FDD4DA1C9CEB6800DB2A99 /* libaura.dylib */; };
 		07FDD4DD1C9CEB6F00DB2A99 /* libaxis.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FDD4DC1C9CEB6F00DB2A99 /* libaxis.dylib */; };
-		07FDD4DF1C9CEB7500DB2A99 /* libbase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FDD4DE1C9CEB7500DB2A99 /* libbase.dylib */; };
+		07FDD4DF1C9CEB7500DB2A99 /* libberg.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FDD4DE1C9CEB7500DB2A99 /* libberg.dylib */; };
 		07FDD4E01C9CEB8600DB2A99 /* libcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FDD4D31C9CEB5100DB2A99 /* libcore.dylib */; };
 		07FDD4E21C9CEC9900DB2A99 /* mac_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FDD4E11C9CEC9900DB2A99 /* mac_main.cpp */; };
 /* End PBXBuildFile section */
@@ -62,7 +62,7 @@
 		07FDD4CC1C9CEB5100DB2A99 /* core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = core.xcodeproj; path = ../../app/core/core.xcodeproj; sourceTree = SOURCE_ROOT; };
 		07FDD4DA1C9CEB6800DB2A99 /* libaura.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaura.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libaura.dylib"; sourceTree = "<group>"; };
 		07FDD4DC1C9CEB6F00DB2A99 /* libaxis.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaxis.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libaxis.dylib"; sourceTree = "<group>"; };
-		07FDD4DE1C9CEB7500DB2A99 /* libbase.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbase.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libbase.dylib"; sourceTree = "<group>"; };
+		07FDD4DE1C9CEB7500DB2A99 /* libberg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libberg.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libberg.dylib"; sourceTree = "<group>"; };
 		07FDD4E11C9CEC9900DB2A99 /* mac_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mac_main.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -72,7 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07FDD4E01C9CEB8600DB2A99 /* libcore.dylib in Frameworks */,
-				07FDD4DF1C9CEB7500DB2A99 /* libbase.dylib in Frameworks */,
+				07FDD4DF1C9CEB7500DB2A99 /* libberg.dylib in Frameworks */,
 				07FDD4DD1C9CEB6F00DB2A99 /* libaxis.dylib in Frameworks */,
 				07FDD4DB1C9CEB6800DB2A99 /* libaura.dylib in Frameworks */,
 			);
@@ -84,7 +84,7 @@
 		07FDD4861C9CEA6A00DB2A99 = {
 			isa = PBXGroup;
 			children = (
-				07FDD4DE1C9CEB7500DB2A99 /* libbase.dylib */,
+				07FDD4DE1C9CEB7500DB2A99 /* libberg.dylib */,
 				07FDD4DC1C9CEB6F00DB2A99 /* libaxis.dylib */,
 				07FDD4DA1C9CEB6800DB2A99 /* libaura.dylib */,
 				07FDD4CC1C9CEB5100DB2A99 /* core.xcodeproj */,
