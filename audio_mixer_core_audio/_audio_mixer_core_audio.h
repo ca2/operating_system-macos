@@ -1,9 +1,9 @@
 #pragma once
 
 
-//#include "app-core/multimedia/_library.h"
+//#include "app-multimedia/multimedia/_library.h"
 //#include "core/user/userex/_userex.h"
-//#include "app-core/multimedia/audio_mixer_userbase/_component.h"
+//#include "app-multimedia/multimedia/audio_mixer_userbase/_component.h"
 //
 //
 //#include "window.h"

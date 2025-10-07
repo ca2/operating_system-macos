@@ -113,7 +113,7 @@
       location = "group:../../app-core/irc/irc.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:../../app-core/multimedia/multimedia.xcodeproj">
+      location = "container:../../app-multimedia/multimedia/multimedia.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../app/pcre/pcre.xcodeproj">

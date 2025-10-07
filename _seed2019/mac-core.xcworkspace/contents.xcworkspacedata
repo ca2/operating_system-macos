@@ -149,7 +149,7 @@
       location = "container:../../app-core/mixercom/mixercom.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:../../app-core/multimedia/multimedia.xcodeproj">
+      location = "container:../../app-multimedia/multimedia/multimedia.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:../../app/music_midi_core_midi/music_midi_core_midi.xcodeproj">

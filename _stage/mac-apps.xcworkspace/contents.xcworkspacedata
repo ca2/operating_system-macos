@@ -128,10 +128,10 @@
       location = "group:../../mattigianni/drum_factory/mattigianni_drum_factory.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:../../app-core/multimedia/multimedia.xcodeproj">
+      location = "container:../../app-multimedia/multimedia/multimedia.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app-core/multimedia_playlist_spotify/multimedia_playlist_spotify.xcodeproj">
+      location = "group:../../app-multimedia/multimedia_playlist_spotify/multimedia_playlist_spotify.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:../../music_midi_core_audio/music_midi_core_audio.xcodeproj">

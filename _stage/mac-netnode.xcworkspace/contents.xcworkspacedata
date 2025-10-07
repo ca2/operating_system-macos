@@ -98,10 +98,10 @@
       location = "container:../../app-core/gcom/gcom.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:../../app-core/multimedia/multimedia.xcodeproj">
+      location = "container:../../app-multimedia/multimedia/multimedia.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../app-core/multimedia_playlist_spotify/multimedia_playlist_spotify.xcodeproj">
+      location = "group:../../app-multimedia/multimedia_playlist_spotify/multimedia_playlist_spotify.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../app-core/netnode/netnode.xcodeproj">

@@ -74,6 +74,6 @@
       location = "group:../../app-core/hash_base/hash_base.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:../../app-core/multimedia/multimedia.xcodeproj">
+      location = "container:../../app-multimedia/multimedia/multimedia.xcodeproj">
    </FileRef>
 </Workspace>
