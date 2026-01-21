@@ -1405,17 +1405,17 @@ void macos_folder_dialog(::file::folder_dialog * pdialog)
       if(::is_set(psz))
       {
          
-         pdialog->m_path = psz;
+         pdialog->m_patha.add(psz);
          
       }
       
-      pdialog->m_function(::transfer(pdialogHold));
+      pdialog->m_procedureResponse(::transfer(pdialogHold));
       
    };
 
    mm_folder_dialog(
                     functionHere,
-                    pdialog->m_path,
+                    pdialog->m_patha.first(),
                     pdialog->m_bCanCreateFolders);
 
 }

@@ -272,7 +272,7 @@ namespace acme_macos
       void context::git_clone()
       {
          
-         information() << "Current Directory: " << directory_system()->get_current();
+         information() << "Current Directory: " << directory_system()->current();
          
          ::string strBranchAddUp;
          
