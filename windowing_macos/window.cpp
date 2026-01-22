@@ -263,8 +263,8 @@ void window::_main_post(const ::procedure & procedure)
 //
 //   //      rectParam.left = m_pusersystem->m_createstruct.x;
 //   //      rectParam.top = pusersystem->m_createstruct.y;
-//   //      rectParam.right = pusersystem->m_createstruct.x + pusersystem->m_createstruct.cx();
-//   //      rectParam.bottom = pusersystem->m_createstruct.y + pusersystem->m_createstruct.cy();
+//   //      rectParam.right = pusersystem->m_createstruct.x + pusersystem->m_createstruct.cx;
+//   //      rectParam.bottom = pusersystem->m_createstruct.y + pusersystem->m_createstruct.cy;
 //
 //   //      copy(rectangle, rectParam);
 //   //
@@ -748,10 +748,10 @@ void window::_main_post(const ::procedure & procedure)
          if(puserinteraction)
          {
             
-            puserinteraction->layout().m_statea[::user::e_layout_window].origin().x() = r.origin.x;
-            puserinteraction->layout().m_statea[::user::e_layout_window].origin().y() = r.origin.y;
-            puserinteraction->layout().m_statea[::user::e_layout_window].size().cx() = r.size.width;
-            puserinteraction->layout().m_statea[::user::e_layout_window].size().cy() = r.size.height;
+            puserinteraction->layout().m_statea[::user::e_layout_window].origin().x = r.origin.x;
+            puserinteraction->layout().m_statea[::user::e_layout_window].origin().y = r.origin.y;
+            puserinteraction->layout().m_statea[::user::e_layout_window].size().cx = r.size.width;
+            puserinteraction->layout().m_statea[::user::e_layout_window].size().cy = r.size.height;
             
             //         if(bShow)
             //         {
@@ -977,7 +977,7 @@ void window::_main_post(const ::procedure & procedure)
 
       string strFormat;
 
-      strFormat.Format("|-> window int_size %d, %d", sizeWindow.cx(), sizeWindow.cy());
+      strFormat.Format("|-> window int_size %d, %d", sizeWindow.cx, sizeWindow.cy);
 
       string strSize;
 
@@ -1299,13 +1299,13 @@ pmessage->m_eusermessage = emessage
    void window::macos_window_mouse_down(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute)
    {
       
-      m_pointMouseCursorHost.x() = xHost;
+      m_pointMouseCursorHost.x = xHost;
       
-      m_pointMouseCursorHost.y() = yHost;
+      m_pointMouseCursorHost.y = yHost;
 
-      m_pointMouseCursorAbsolute.x() = xAbsolute;
+      m_pointMouseCursorAbsolute.x = xAbsolute;
       
-      m_pointMouseCursorAbsolute.y() = yAbsolute;
+      m_pointMouseCursorAbsolute.y = yAbsolute;
 
       //::pointer < ::user::message > spbase;
 
@@ -1353,10 +1353,10 @@ pmessage->m_eusermessage = emessage
          {
             
             _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_right_button_down);
-            pmouse->m_pointHost.x() = xHost;
-            pmouse->m_pointHost.y() = yHost;
-            pmouse->m_pointAbsolute.x() = xAbsolute;
-            pmouse->m_pointAbsolute.y() = yAbsolute;
+            pmouse->m_pointHost.x = xHost;
+            pmouse->m_pointHost.y = yHost;
+            pmouse->m_pointAbsolute.x = xAbsolute;
+            pmouse->m_pointAbsolute.y = yAbsolute;
             //post_message(pmouse);
             send_message(pmouse);
 
@@ -1365,10 +1365,10 @@ pmessage->m_eusermessage = emessage
          {
 
             _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_left_button_down);
-            pmouse->m_pointHost.x() = xHost;
-            pmouse->m_pointHost.y() = yHost;
-            pmouse->m_pointAbsolute.x() = xAbsolute;
-            pmouse->m_pointAbsolute.y() = yAbsolute;
+            pmouse->m_pointHost.x = xHost;
+            pmouse->m_pointHost.y = yHost;
+            pmouse->m_pointAbsolute.x = xAbsolute;
+            pmouse->m_pointAbsolute.y = yAbsolute;
             //post_message(pmouse);
             send_message(pmouse);
          }
@@ -1384,13 +1384,13 @@ pmessage->m_eusermessage = emessage
    void window::macos_window_mouse_up(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute)
    {
       
-      m_pointMouseCursorHost.x() = xHost;
+      m_pointMouseCursorHost.x = xHost;
       
-      m_pointMouseCursorHost.y() = yHost;
+      m_pointMouseCursorHost.y = yHost;
 
-      m_pointMouseCursorAbsolute.x() = xAbsolute;
+      m_pointMouseCursorAbsolute.x = xAbsolute;
       
-      m_pointMouseCursorAbsolute.y() = yAbsolute;
+      m_pointMouseCursorAbsolute.y = yAbsolute;
 
       //auto pmouse = øcreate_new < ::message::mouse >();
 
@@ -1400,10 +1400,10 @@ pmessage->m_eusermessage = emessage
       {
 
          _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_right_button_up);
-         pmouse->m_pointHost.x() = xHost;
-         pmouse->m_pointHost.y() = yHost;
-         pmouse->m_pointAbsolute.x() = xAbsolute;
-         pmouse->m_pointAbsolute.y() = yAbsolute;
+         pmouse->m_pointHost.x = xHost;
+         pmouse->m_pointHost.y = yHost;
+         pmouse->m_pointAbsolute.x = xAbsolute;
+         pmouse->m_pointAbsolute.y = yAbsolute;
          //post_message(pmouse);
          send_message(pmouse);
 
@@ -1412,10 +1412,10 @@ pmessage->m_eusermessage = emessage
       {
 
          _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_left_button_up);
-         pmouse->m_pointHost.x() = xHost;
-         pmouse->m_pointHost.y() = yHost;
-         pmouse->m_pointAbsolute.x() = xAbsolute;
-         pmouse->m_pointAbsolute.y() = yAbsolute;
+         pmouse->m_pointHost.x = xHost;
+         pmouse->m_pointHost.y = yHost;
+         pmouse->m_pointAbsolute.x = xAbsolute;
+         pmouse->m_pointAbsolute.y = yAbsolute;
          //post_message(pmouse);
          send_message(pmouse);
 
@@ -1432,13 +1432,13 @@ pmessage->m_eusermessage = emessage
    void window::macos_window_double_click(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute)
    {
 
-      m_pointMouseCursorHost.x() = xHost;
+      m_pointMouseCursorHost.x = xHost;
       
-      m_pointMouseCursorHost.y() = yHost;
+      m_pointMouseCursorHost.y = yHost;
 
-      m_pointMouseCursorAbsolute.x() = xAbsolute;
+      m_pointMouseCursorAbsolute.x = xAbsolute;
       
-      m_pointMouseCursorAbsolute.y() = yAbsolute;
+      m_pointMouseCursorAbsolute.y = yAbsolute;
 
       //auto pmouse = øcreate_new < ::message::mouse >();
       
@@ -1448,10 +1448,10 @@ pmessage->m_eusermessage = emessage
       {
 
          _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_right_button_double_click);
-         pmouse->m_pointHost.x() = xHost;
-         pmouse->m_pointHost.y() = yHost;
-         pmouse->m_pointAbsolute.x() = xAbsolute;
-         pmouse->m_pointAbsolute.y() = yAbsolute;
+         pmouse->m_pointHost.x = xHost;
+         pmouse->m_pointHost.y = yHost;
+         pmouse->m_pointAbsolute.x = xAbsolute;
+         pmouse->m_pointAbsolute.y = yAbsolute;
          //post_message(pmouse);
          send_message(pmouse);
 
@@ -1462,10 +1462,10 @@ pmessage->m_eusermessage = emessage
       {
 
          _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_left_button_double_click);
-         pmouse->m_pointHost.x() = xHost;
-         pmouse->m_pointHost.y() = yHost;
-         pmouse->m_pointAbsolute.x() = xAbsolute;
-         pmouse->m_pointAbsolute.y() = yAbsolute;
+         pmouse->m_pointHost.x = xHost;
+         pmouse->m_pointHost.y = yHost;
+         pmouse->m_pointAbsolute.x = xAbsolute;
+         pmouse->m_pointAbsolute.y = yAbsolute;
          //post_message(pmouse);
          send_message(pmouse);
          //id = e_message_left_button_double_click;
@@ -1483,13 +1483,13 @@ pmessage->m_eusermessage = emessage
    {
       
       
-      m_pointMouseCursorHost.x() = xHost;
+      m_pointMouseCursorHost.x = xHost;
       
-      m_pointMouseCursorHost.y() = yHost;
+      m_pointMouseCursorHost.y = yHost;
 
-      m_pointMouseCursorAbsolute.x() = xAbsolute;
+      m_pointMouseCursorAbsolute.x = xAbsolute;
       
-      m_pointMouseCursorAbsolute.y() = yAbsolute;
+      m_pointMouseCursorAbsolute.y = yAbsolute;
 
       
 //      if(is_destroying())
@@ -1499,9 +1499,9 @@ pmessage->m_eusermessage = emessage
 //
 //      }
       
-//      m_pointMouseCursor.x() = x;
+//      m_pointMouseCursor.x = x;
 //
-//      m_pointMouseCursor.y() = y;
+//      m_pointMouseCursor.y = y;
       
       bool bOk = true;
 
@@ -1530,9 +1530,9 @@ pmessage->m_eusermessage = emessage
 
          m_mouserepositionthrottling.m_timeMouseMove.Now();
 
-         m_mouserepositionthrottling.m_pointMouseMove.x() = xAbsolute;
+         m_mouserepositionthrottling.m_pointMouseMove.x = xAbsolute;
 
-         m_mouserepositionthrottling.m_pointMouseMove.y() = yAbsolute;
+         m_mouserepositionthrottling.m_pointMouseMove.y = yAbsolute;
 
 //            if(false)
 //            {
@@ -1544,7 +1544,7 @@ pmessage->m_eusermessage = emessage
 //                     (pinteraction->m_pointMouseMoveSkip.y - pinteraction->m_pointMouseMove.y));
 //
 //                  if(!pinteraction->m_millisMouseMoveSkip.timeout(pinteraction->m_millisMouseMovePeriod)
-//                     && sizeDistance.cx() * sizeDistance.cx() + sizeDistance.cy() * sizeDistance.cy() < pinteraction->m_iMouseMoveSkipSquareDistance)
+//                     && sizeDistance.cx * sizeDistance.cx + sizeDistance.cy * sizeDistance.cy < pinteraction->m_iMouseMoveSkipSquareDistance)
 //                  {
 //
 //                     pinteraction->m_iMouseMoveSkipCount++;
@@ -1593,10 +1593,10 @@ pmessage->m_eusermessage = emessage
       
       
       _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_mouse_move);
-      pmouse->m_pointHost.x() = xHost;
-      pmouse->m_pointHost.y() = yHost;
-      pmouse->m_pointAbsolute.x() = xAbsolute;
-      pmouse->m_pointAbsolute.y() = yAbsolute;
+      pmouse->m_pointHost.x = xHost;
+      pmouse->m_pointHost.y = yHost;
+      pmouse->m_pointAbsolute.x = xAbsolute;
+      pmouse->m_pointAbsolute.y = yAbsolute;
 
       //::atom id = e_message_mouse_move;
       
@@ -1633,10 +1633,10 @@ pmessage->m_eusermessage = emessage
    {
       
       _NEW_MESSAGE(pmouse, ::message::mouse, ::user::e_message_mouse_move);
-      pmouse->m_pointHost.x() = xHost;
-      pmouse->m_pointHost.y() = yHost;
-      pmouse->m_pointAbsolute.x() = xAbsolute;
-      pmouse->m_pointAbsolute.y() = yAbsolute;
+      pmouse->m_pointHost.x = xHost;
+      pmouse->m_pointHost.y = yHost;
+      pmouse->m_pointAbsolute.x = xAbsolute;
+      pmouse->m_pointAbsolute.y = yAbsolute;
 
       
 //      atom id = e_message_mouse_move;
@@ -1675,10 +1675,10 @@ pmessage->m_eusermessage = emessage
 
       
       _NEW_MESSAGE(pwheel, ::message::mouse_wheel, ::user::e_message_mouse_wheel);
-      pwheel->m_pointHost.x() = xHost;
-      pwheel->m_pointHost.y() = yHost;
-      pwheel->m_pointAbsolute.x() = xAbsolute;
-      pwheel->m_pointAbsolute.y() = yAbsolute;
+      pwheel->m_pointHost.x = xHost;
+      pwheel->m_pointHost.y = yHost;
+      pwheel->m_pointAbsolute.x = xAbsolute;
+      pwheel->m_pointAbsolute.y = yAbsolute;
 
       //atom id = e_message_mouse_wheel;
 
@@ -1708,12 +1708,12 @@ pmessage->m_eusermessage = emessage
       
          auto p = puserinteraction->const_layout().window().origin();
          
-         if(p.x() != rectangle.origin.x || p.y() != rectangle.origin.y)
+         if(p.x != rectangle.origin.x || p.y != rectangle.origin.y)
          {
             
             _NEW_MESSAGE(preposition, ::message::reposition, ::user::e_message_reposition);
-            preposition->m_point.x() = rectangle.origin.x;
-            preposition->m_point.y() = rectangle.origin.y;
+            preposition->m_point.x = rectangle.origin.x;
+            preposition->m_point.y = rectangle.origin.y;
             
             
             //         atom id = e_message_reposition;
@@ -1743,12 +1743,12 @@ pmessage->m_eusermessage = emessage
 
          auto s = puserinteraction->const_layout().window().size();
          
-         if(s.cx() != rectangle.size.width || s.cy() != rectangle.size.height)
+         if(s.cx != rectangle.size.width || s.cy != rectangle.size.height)
          {
             
             _NEW_MESSAGE(psize, ::message::size, ::user::e_message_size);
-            psize->m_size.cx() = rectangle.size.width;
-            psize->m_size.cy() = rectangle.size.height;
+            psize->m_size.cx = rectangle.size.width;
+            psize->m_size.cy = rectangle.size.height;
             
             //         atom id = e_message_size;
             //
@@ -1914,8 +1914,8 @@ pmessage->m_eusermessage = emessage
          puserinteraction->set_position({point.x, point.y}, ::user::e_layout_window);
 
          _NEW_MESSAGE(preposition, ::message::reposition, ::user::e_message_reposition);
-         preposition->m_point.x() = point.x;
-         preposition->m_point.y() = point.y;
+         preposition->m_point.x = point.x;
+         preposition->m_point.y = point.y;
 
 //         atom id = e_message_reposition;
 //

@@ -400,7 +400,7 @@ namespace appkit
       void window::set_position_unlocked(const ::int_point & point)
       {
          
-         m_pacmewindowbridge->set_position(point.x(), point.y());
+         m_pacmewindowbridge->set_position(point.x, point.y);
          
       }
       
@@ -565,18 +565,18 @@ namespace appkit
       void window::_on_layout(int x, int y, int w, int h)
       {
          
-         m_pointWindow.x() = x;
-         m_pointWindow.y() = y;
+         m_pointWindow.x = x;
+         m_pointWindow.y = y;
          
-         m_sizeWindow.cx() = w;
-         m_sizeWindow.cy() = h;
+         m_sizeWindow.cx = w;
+         m_sizeWindow.cy = h;
          
          ::int_rectangle r;
          
-         r.left() = x;
-         r.top() = y;
-         r.right() = x + w;
-         r.bottom() = y + h;
+         r.left = x;
+         r.top = y;
+         r.right = x + w;
+         r.bottom = y + h;
          
          m_pacmeuserinteraction->set_rectangle(r);
 

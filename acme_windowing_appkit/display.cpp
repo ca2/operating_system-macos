@@ -122,6 +122,13 @@ namespace appkit
    //
    //   }
    
+   bool display::is_display_opened() const
+   {
+
+       return true;
+
+   }
+   
       } // namespace windowing
    
    

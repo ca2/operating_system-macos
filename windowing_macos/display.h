@@ -8,6 +8,7 @@
 
 
 #include "aura/windowing/display.h"
+#include "acme_windowing_appkit/display.h"
 
 
 namespace windowing_macos
@@ -15,7 +16,8 @@ namespace windowing_macos
 
 
    class CLASS_DECL_WINDOWING_MACOS display :
-      virtual public ::windowing::display
+      virtual public ::windowing::display,
+virtual public ::appkit::acme::windowing::display
    {
    public:
       
@@ -30,7 +32,7 @@ namespace windowing_macos
       void _set_wallpaper(::collection::index iScreen, const ::scoped_string & strWallpaper) override;
 
       ::int_point _get_mouse_cursor_position() override;
-
+       ::int_size get_main_screen_size() override;
    };
 
 

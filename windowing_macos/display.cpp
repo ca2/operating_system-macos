@@ -96,6 +96,14 @@ namespace windowing_macos
       
    }
 
+::int_size display::get_main_screen_size()
+{
+    
+    return ::appkit::acme::windowing::display::get_main_screen_size();
+    
+}
+
+
 
 } // namespace windowing_macos
 

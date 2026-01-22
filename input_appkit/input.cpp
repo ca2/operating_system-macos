@@ -801,9 +801,9 @@ namespace input_appkit
    //
    //         ::GetCursorPos(&point);
    //
-   //         m_pointCursor.x() = point.x;
+   //         m_pointCursor.x = point.x;
    //
-   //         m_pointCursor.y() = point.y;
+   //         m_pointCursor.y = point.y;
    //
    //      }
    //
@@ -820,7 +820,7 @@ namespace input_appkit
    //   void windowing::set_cursor_position(const ::int_point& point)
    //   {
    //
-   //      if (!::SetCursorPos(point.x(), point.y()))
+   //      if (!::SetCursorPos(point.x, point.y))
    //      {
    //
    //         //return false;

@@ -36,7 +36,7 @@ namespace innate_ui_appkit
 //
 //      qpixmap.loadFromData(m_memory.data(), m_memory.size());
 //
-//      m_pqpixmap = new QPixmap(qpixmap.scaled(m_size.cx(), m_size.cy(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+//      m_pqpixmap = new QPixmap(qpixmap.scaled(m_size.cx, m_size.cy, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 //
 //      // // Example: Simulate reading a JPEG image into a memory buffer (replace with actual data)
 //      // const guchar *jpeg_buffer = m_memory.data();

@@ -51,7 +51,7 @@ namespace windowing_macos
          try
          {
 
-            _create_from_image(m_pimage, m_szHotspotOffset.cx(), m_szHotspotOffset.cy());
+            _create_from_image(m_pimage, m_szHotspotOffset.cx, m_szHotspotOffset.cy);
           
             return;
             
@@ -126,9 +126,9 @@ bool macos_get_cursor_position(::int_point * ppointCursor)
    HIGetMousePosition(space, nullptr, &point);
  
  
-   ppointCursor->x() = point.x;
+   ppointCursor->x = point.x;
  
-   ppointCursor->y() = point.y;
+   ppointCursor->y = point.y;
  
  
  
