@@ -1186,6 +1186,9 @@ enum aiComponent
 
 
 #define ASSIMP_BUILD_NO_VRML_IMPORTER 1
-
+#define ASSIMP_BUILD_NO_USD_IMPORTER 1
 
 #endif // !! AI_CONFIG_H_INC
+
+
+
