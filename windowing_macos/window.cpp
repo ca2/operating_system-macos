@@ -311,17 +311,31 @@ void window::_main_post(const ::procedure & procedure)
       unsigned uStyle = 0;
       
       auto puserinteraction = user_interaction();
-
-      if(puserinteraction->m_ewindowflag & ::e_window_flag_miniaturizable)
+      
+      ::int_rectangle rectangle;
+      
+      if(puserinteraction)
       {
-
+         
+         if(puserinteraction->m_ewindowflag & ::e_window_flag_miniaturizable)
+         {
+            
 #define NSWindowStyleMaskMiniaturizable (1 << 2)
+            
+            uStyle |= NSWindowStyleMaskMiniaturizable;
+            
+         }
 
-         uStyle |= NSWindowStyleMaskMiniaturizable;
+         rectangle = puserinteraction-> const_layout().sketch().parent_raw_rectangle();
 
       }
+      else
+      {
+      
+         rectangle = m_pwindow->m_pacmeuserinteraction->get_rectangle();
+         
+      }
    
-      auto rectangle = puserinteraction-> const_layout().sketch().parent_raw_rectangle();
    
       CGRect cgrect;
    
@@ -1306,6 +1320,25 @@ pmessage->m_eusermessage = emessage
       m_pointMouseCursorAbsolute.x = xAbsolute;
       
       m_pointMouseCursorAbsolute.y = yAbsolute;
+      
+      auto puserinteraction = user_interaction();
+      
+      if(!puserinteraction)
+      {
+         
+         if(iButton == 1)
+         {
+            on_right_button_down( xHost, yHost, xAbsolute, yAbsolute);
+         }
+         else
+         {
+            on_left_button_down( xHost, yHost, xAbsolute, yAbsolute);
+
+         }
+            
+         return;
+         
+      }
 
       //::pointer < ::user::message > spbase;
 
@@ -1392,6 +1425,25 @@ pmessage->m_eusermessage = emessage
       
       m_pointMouseCursorAbsolute.y = yAbsolute;
 
+      
+      auto puserinteraction = user_interaction();
+      
+      if(!puserinteraction)
+      {
+         
+         if(iButton == 1)
+         {
+            on_right_button_up( xHost, yHost, xAbsolute, yAbsolute);
+         }
+         else
+         {
+            on_left_button_up( xHost, yHost, xAbsolute, yAbsolute);
+
+         }
+            
+         return;
+         
+      }
       //auto pmouse = øcreate_new < ::message::mouse >();
 
       //::atom id;
@@ -1490,6 +1542,18 @@ pmessage->m_eusermessage = emessage
       m_pointMouseCursorAbsolute.x = xAbsolute;
       
       m_pointMouseCursorAbsolute.y = yAbsolute;
+      
+      
+      auto puserinteraction = user_interaction();
+      
+      if(!puserinteraction)
+      {
+         
+         on_mouse_move( xHost, yHost, xAbsolute, yAbsolute);
+            
+         return;
+         
+      }
 
       
 //      if(is_destroying())
@@ -1705,29 +1769,34 @@ pmessage->m_eusermessage = emessage
       {
          
          auto puserinteraction = user_interaction();
-      
-         auto p = puserinteraction->const_layout().window().origin();
          
-         if(p.x != rectangle.origin.x || p.y != rectangle.origin.y)
+         if(puserinteraction)
          {
             
-            _NEW_MESSAGE(preposition, ::message::reposition, ::user::e_message_reposition);
-            preposition->m_point.x = rectangle.origin.x;
-            preposition->m_point.y = rectangle.origin.y;
+            auto p = puserinteraction->const_layout().window().origin();
             
-            
-            //         atom id = e_message_reposition;
-            //
-            //         wparam wparam = 0;
-            //
-            //         lparam lparam = __MAKE_LPARAM(rectangle.origin.x, rectangle.origin.y);
-            //
-            //         auto pmove  = øcreate_new < ::message::reposition > ();
-            //
-            //         pmove->set(this, this, id, wparam, lparam);
-            
-            //post_message(preposition);
-            send_message(preposition);
+            if(p.x != rectangle.origin.x || p.y != rectangle.origin.y)
+            {
+               
+               _NEW_MESSAGE(preposition, ::message::reposition, ::user::e_message_reposition);
+               preposition->m_point.x = rectangle.origin.x;
+               preposition->m_point.y = rectangle.origin.y;
+               
+               
+               //         atom id = e_message_reposition;
+               //
+               //         wparam wparam = 0;
+               //
+               //         lparam lparam = __MAKE_LPARAM(rectangle.origin.x, rectangle.origin.y);
+               //
+               //         auto pmove  = øcreate_new < ::message::reposition > ();
+               //
+               //         pmove->set(this, this, id, wparam, lparam);
+               
+               //post_message(preposition);
+               send_message(preposition);
+               
+            }
             
          }
          
@@ -1737,32 +1806,37 @@ pmessage->m_eusermessage = emessage
          
          auto puserinteraction = user_interaction();
          
-         puserinteraction->set_position({rectangle.origin.x, rectangle.origin.y}, ::user::e_layout_window);
-         
-         puserinteraction->set_size({rectangle.size.width, rectangle.size.height}, ::user::e_layout_window);
-
-         auto s = puserinteraction->const_layout().window().size();
-         
-         if(s.cx != rectangle.size.width || s.cy != rectangle.size.height)
+         if(puserinteraction)
          {
             
-            _NEW_MESSAGE(psize, ::message::size, ::user::e_message_size);
-            psize->m_size.cx = rectangle.size.width;
-            psize->m_size.cy = rectangle.size.height;
+            puserinteraction->set_position({rectangle.origin.x, rectangle.origin.y}, ::user::e_layout_window);
             
-            //         atom id = e_message_size;
-            //
-            //         wparam wparam = 0;
-            //
-            //         lparam lparam = __MAKE_LPARAM(rectangle.size.width, rectangle.size.height);
-            //
-            //         auto psize  = øcreate_new < ::message::size > ();
-            //
-            //         psize->set(this, this, id, wparam, lparam);
+            puserinteraction->set_size({rectangle.size.width, rectangle.size.height}, ::user::e_layout_window);
             
-            //post_message(psize);
-            send_message(psize);
+            auto s = puserinteraction->const_layout().window().size();
             
+            if(s.cx != rectangle.size.width || s.cy != rectangle.size.height)
+            {
+               
+               _NEW_MESSAGE(psize, ::message::size, ::user::e_message_size);
+               psize->m_size.cx = rectangle.size.width;
+               psize->m_size.cy = rectangle.size.height;
+               
+               //         atom id = e_message_size;
+               //
+               //         wparam wparam = 0;
+               //
+               //         lparam lparam = __MAKE_LPARAM(rectangle.size.width, rectangle.size.height);
+               //
+               //         auto psize  = øcreate_new < ::message::size > ();
+               //
+               //         psize->set(this, this, id, wparam, lparam);
+               
+               //post_message(psize);
+               send_message(psize);
+               
+               
+            }
             
          }
          
@@ -1911,7 +1985,11 @@ pmessage->m_eusermessage = emessage
          
          auto puserinteraction = user_interaction();
          
-         puserinteraction->set_position({point.x, point.y}, ::user::e_layout_window);
+         if(puserinteraction)
+         {
+            puserinteraction->set_position({point.x, point.y}, ::user::e_layout_window);
+            
+         }
 
          _NEW_MESSAGE(preposition, ::message::reposition, ::user::e_message_reposition);
          preposition->m_point.x = point.x;
@@ -2327,7 +2405,7 @@ pmessage->m_eusermessage = emessage
    }
 
    void window::macos_window_on_create()
-   {
+{
       
       //set_os_data(m_pnswindow);
       
@@ -2336,17 +2414,21 @@ pmessage->m_eusermessage = emessage
       auto pwindowing = macos_windowing();
       
       auto osdata = __nsacmewindow_osdata(m_pnsacmewindow);
-
+      
       pwindowing->set_osdata_acme_windowing_window(osdata, this);
       
       auto puserinteraction = user_interaction();
       
-      auto rectangle = puserinteraction-> const_layout().sketch().parent_raw_rectangle();
-   
-      puserinteraction->set_position(rectangle.top_left(), ::user::e_layout_window);
-
-      puserinteraction->set_size(rectangle.size(), ::user::e_layout_window);
-      
+      if(puserinteraction)
+      {
+         
+         auto rectangle = puserinteraction-> const_layout().sketch().parent_raw_rectangle();
+         
+         puserinteraction->set_position(rectangle.top_left(), ::user::e_layout_window);
+         
+         puserinteraction->set_size(rectangle.size(), ::user::e_layout_window);
+         
+      }
       //auto & layoutWindow = puserinteraction->const_layout().window();
       
       //auto & sizeWindow = layoutWindow.m_size;
@@ -2354,58 +2436,71 @@ pmessage->m_eusermessage = emessage
       //auto ptask = ::get_task();
       
       //puserinteraction->m_pthreadUserInteraction = ptask;
-
-         //puserinteraction->place(rectParam);
-
-
-
-         //oswindow_assign(m_oswindow, this);
-
+      
+      //puserinteraction->place(rectParam);
+      
+      
+      
+      //oswindow_assign(m_oswindow, this);
+      
       //}
-
-      auto lresult = puserinteraction->send_message(::user::e_message_create); //
+      
+      ::lresult lresult = 0;
+      
+      
+      if(puserinteraction)
+      {
+         lresult = puserinteraction->send_message(::user::e_message_create); //
+         
+      }
       //, 0, //(lparam)&cs);
-
+      
       ///bool bOk = true;
-
+      
       //if (!unhook_window_create() || lresult == -1)
       if (lresult == -1)
       {
-
+         
          //bOk = false;
          
          set_finish();
-
+         
          //children_post_quit();
-
+         
          //children_wait_quit(one_minute());
-
+         
          //PostNcDestroy();        // cleanup if CreateWindowEx fails too soon
          
          throw exception(error_resource);
-
+         
       }
-
-//      //if(pusersystem->m_createstruct.style & WS_VISIBLE)
-//      //if(pusersystem->m_.style & WS_VISIBLE)
-//      if(puserinteraction->const_layout().sketch().is_screen_visible())
-//      {
-//
-//         puserinteraction->display();
-//
-//         puserinteraction->set_need_redraw();
-//
-//         puserinteraction->post_redraw();
-//
-//         //;//macos_window_show();
-//
-//      }
-
-      puserinteraction->set_need_layout();
+      
+      //      //if(pusersystem->m_createstruct.style & WS_VISIBLE)
+      //      //if(pusersystem->m_.style & WS_VISIBLE)
+      //      if(puserinteraction->const_layout().sketch().is_screen_visible())
+      //      {
+      //
+      //         puserinteraction->display();
+      //
+      //         puserinteraction->set_need_redraw();
+      //
+      //         puserinteraction->post_redraw();
+      //
+      //         //;//macos_window_show();
+      //
+      //      }
+      
+      if(puserinteraction)
+      {
+         puserinteraction->set_need_layout();
+      }
 
 //      puserinteraction->increment_reference_count();
       
-      puserinteraction->on_finished_window_creation();
+      if(puserinteraction)
+      {
+         puserinteraction->on_finished_window_creation();
+      }
 
 //      if(!bOk)
 //      {
@@ -2795,8 +2890,13 @@ void window::frame_toggle_restore(::user::activation_token * puseractivationtoke
 
       try
       {
-
-         puserinteraction->send_message(::user::e_message_destroy);
+         
+         if(puserinteraction)
+         {
+            
+            puserinteraction->send_message(::user::e_message_destroy);
+            
+         }
 
       }
       catch (...)
@@ -2806,8 +2906,13 @@ void window::frame_toggle_restore(::user::activation_token * puseractivationtoke
 
       try
       {
-
-         puserinteraction->send_message(::user::e_message_non_client_destroy);
+         
+         if(puserinteraction)
+         {
+            
+            puserinteraction->send_message(::user::e_message_non_client_destroy);
+            
+         }
 
       }
       catch (...)
