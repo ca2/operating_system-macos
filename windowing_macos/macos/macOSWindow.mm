@@ -81,7 +81,7 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
    
    macOSWindow * pnswindow = self;
    
-	[self setOpaque:YES];
+	[self setOpaque:NO];
     [self setHasShadow:NO];
    [self setTitlebarAppearsTransparent:TRUE];
    //	[self setOpaque:YES];

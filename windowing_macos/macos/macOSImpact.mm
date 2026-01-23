@@ -93,6 +93,9 @@ NSImage * ns_image_from_file(const char * pszMatter);
          m_glcontext = [[NSOpenGLContext alloc] initWithFormat:pf
                                           shareContext:nil];
       [m_glcontext setView:self];
+      
+      GLint opacity = 0; // 0 for transparent, 1 for opaque
+      [m_glcontext setValues:&opacity forParameter:NSOpenGLCPSurfaceOpacity];
        [m_glcontext makeCurrentContext];
        [m_glcontext update];
 
