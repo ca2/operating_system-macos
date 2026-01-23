@@ -77,8 +77,14 @@ NSImage * ns_image_from_file(const char * pszMatter);
       
       NSOpenGLPixelFormatAttribute attrs[] =
           {
+              NSOpenGLPFAColorSize,
+             (NSOpenGLPixelFormatAttribute) 32,
+             NSOpenGLPFADepthSize,
+            (NSOpenGLPixelFormatAttribute) 24,
+             NSOpenGLPFAStencilSize,
+            (NSOpenGLPixelFormatAttribute) 8,
               NSOpenGLPFAOpenGLProfile,
-              NSOpenGLProfileVersion3_2Core,
+              NSOpenGLProfileVersion4_1Core,
               NSOpenGLPFADoubleBuffer,
               NSOpenGLPFAAccelerated,
               NSOpenGLPFANoRecovery,
