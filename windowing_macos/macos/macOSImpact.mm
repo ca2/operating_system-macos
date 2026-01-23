@@ -129,39 +129,37 @@ NSImage * ns_image_from_file(const char * pszMatter);
 
 - (void)stepRender
 {
-    /* --- make context current on THIS thread --- */
-    [m_glcontext makeCurrentContext];
 
-    /* update drawable if needed (resize, etc.) */
-    [m_glcontext update];
+   [ m_glcontext makeCurrentContext ];
 
-    NSRect backing =
-        [self convertRectToBacking:self.bounds];
+   [ m_glcontext update ];
 
-    int w = (int)backing.size.width;
-    int h = (int)backing.size.height;
+   NSRect backing = [ self convertRectToBacking: self.bounds ];
 
-   //   NSRect backing =
-   //       [[self contentView ] convertRectToBacking:
-   //           self.contentView.bounds];
-   //
+   int w = (int)backing.size.width;
    
+   int h = (int)backing.size.height;
+
    macOSWindow * pwindow = (macOSWindow*) m_pnsacmewindow;
    
+   pwindow->m_pmacoswindow->macos_window_opengl_render_frame(w, h);
+
+   [ m_glcontext flushBuffer ];
    
-   pwindow->m_pmacoswindow->macos_window_opengl_render_frame((int)backing.size.width,
-                   (int)backing.size.height);
-    /* --- present --- */
-    [m_glcontext flushBuffer];
+   [ NSOpenGLContext clearCurrentContext ];
+   
 }
+
 
 - (void)setFrameSize:(NSSize)newSize
 {
-    [super setFrameSize:newSize];
+   
+    [ super setFrameSize:newSize ];
 
-    /* drawable size changed */
-    [m_glcontext update];
+    [ m_glcontext update ];
+   
 }
+
 
 - (BOOL)isOpaque
 {

@@ -3013,6 +3013,7 @@ bool window::is_window()
 {
    
    return has_ok_flag();
+   return has_ok_flag();
    
 }
 
