@@ -714,6 +714,31 @@ void macos_window::macos_window_set_opacity(double dOpacity)
    
 }
 
+void macos_window::macos_window_lock_gpu_context()
+{
+   
+   ns_acme_window * pnsacmewindow = (__bridge ns_acme_window *) m_pnsacmewindow;
+   
+   macOSWindow * pnsmacoswindow = (macOSWindow *) pnsacmewindow;
+   
+   macOSImpact * pimpact = (macOSImpact *) pnsmacoswindow->m_pnsacmeimpact;
+   [pimpact.openGLContext makeCurrentContext];
+
+}
+
+
+void macos_window::macos_window_unlock_gpu_context()
+{
+   
+   ns_acme_window * pnsacmewindow = (__bridge ns_acme_window *) m_pnsacmewindow;
+   
+   macOSWindow * pnsmacoswindow = (macOSWindow *) pnsacmewindow;
+   
+   macOSImpact * pimpact = (macOSImpact *) pnsmacoswindow->m_pnsacmeimpact;
+
+   [pimpact.openGLContext flushBuffer];
+}
+
 //NSWindow * get_os_window_ns_window(oswindow hwnd)
 //{
 //   

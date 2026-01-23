@@ -29,6 +29,9 @@ class macos_window;
 {
 @public
    
+   //NSWindow*          _window;
+   //NSOpenGLContext*        m_glContext;
+   //NSTimer*                m_timer;
    
    bool                    m_bNoActivate;
    macos_window *          m_pmacoswindow;
@@ -40,6 +43,8 @@ class macos_window;
 }
 
 -(void)dealloc;
+
+//-(void)drawFrame;
 
 -(void)windowDidExpose:(NSNotification*)notification;
 

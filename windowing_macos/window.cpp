@@ -15,6 +15,7 @@
 #include "acme/constant/user_key.h"
 #include "acme/parallelization/mutex.h"
 #include "acme/parallelization/synchronous_lock.h"
+#include "apex/gpu/approach.h"
 #include "aura/user/user/interaction_graphics_thread.h"
 //#include "aura/user/user/interaction_impl.h"
 #include "aura/user/user/box.h"
@@ -66,7 +67,8 @@ namespace windowing_macos
       m_mouserepositionthrottling.m_iMouseMoveSkipCount = 0;
       m_mouserepositionthrottling.m_timeMouseMovePeriod = 5_ms;
 
-      
+      set_nok();
+      set_nok();
       //m_pWindow4 = this;
       //m_pmacoswindowing = nullptr;
       m_pNSCursorLast = nullptr;
@@ -307,10 +309,27 @@ void window::_main_post(const ::procedure & procedure)
 //      m_pwindowing = pwindowing;
 //      
 //      pimpl->m_pwindowing = pwindowing;
+      auto puserinteraction = user_interaction();
+      
+
+      if (puserinteraction->is_graphical())
+      {
+
+         if (m_papplication->m_bGpu)
+         {
+
+            auto pgpuapproach = m_papplication->get_gpu_approach();
+
+            pgpuapproach->gpu_on_before_create_window(this);
+
+         }
+
+      }
+
+      //::x11::acme::windowing::window::_create_window();
+
 
       unsigned uStyle = 0;
-      
-      auto puserinteraction = user_interaction();
       
       ::int_rectangle rectangle;
       
@@ -358,6 +377,22 @@ void window::_main_post(const ::procedure & procedure)
          
       }
       
+      
+      if (puserinteraction->is_graphical())
+      {
+
+         if (m_papplication->m_bGpu)
+         {
+
+            auto pgpuapproach = m_papplication->get_gpu_approach();
+
+            pgpuapproach->gpu_on_create_window(this);
+
+         }
+         //draw2d()->on_create_window(this);
+
+      }
+
 //      puserinteraction->post_message(e_message_pos_create);
 //      
    }
@@ -2948,6 +2983,38 @@ class windowing * window::macos_windowing()
     
 }
 
+
+void window::macos_window_opengl_render_frame(int w, int h)
+{
+   
+   on_gpu_context_render_frame(w, h);
+   
+}
+
+
+void window::_lock_window_gpu_context()
+{
+   
+   macos_window_lock_gpu_context();
+   
+}
+
+
+ void  window::_unlock_window_gpu_context()
+{
+    
+    
+    macos_window_unlock_gpu_context();
+    
+ }
+
+
+bool window::is_window()
+{
+   
+   return has_ok_flag();
+   
+}
 
 } // namespace windowing_macos
 

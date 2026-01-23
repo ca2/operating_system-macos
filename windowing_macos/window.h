@@ -152,6 +152,7 @@ namespace windowing_macos
       
       void * macos_window_get_mouse_cursor() override;
 
+      
 
       void profiling_on_start_draw_rectangle() override;
       void profiling_on_end_draw_rectangle() override;
@@ -162,10 +163,10 @@ namespace windowing_macos
       virtual void macos_window_iconified() override;
       virtual void macos_window_deiconified() override;
 
+      virtual void macos_window_opengl_render_frame(int w, int h) override;
 
       void macos_window_on_create() override;
-
-
+      
       virtual void macos_window_on_show() override;
       virtual void macos_window_on_hide() override;
       virtual void macos_window_on_miniaturize() override;
@@ -187,7 +188,14 @@ namespace windowing_macos
 
        
        void set_opacity(double dOpacity) override;
-
+      
+      void _lock_window_gpu_context() override;
+ 
+      
+      void  _unlock_window_gpu_context() override;
+      
+      bool is_window() override;
+      
    };
 
 

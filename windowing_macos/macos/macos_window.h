@@ -57,6 +57,9 @@ public:
    virtual void macos_window_on_hide() = 0;
    virtual void macos_window_on_miniaturize() = 0;
    
+   
+   virtual void macos_window_opengl_render_frame(int w, int h) = 0;
+   
    //virtual void macos_window_did_become_key() = 0;
    //virtual void macos_window_did_resign_key() = 0;
 
@@ -70,6 +73,8 @@ public:
    virtual void profiling_on_start_draw_rectangle() = 0;
    virtual void profiling_on_end_draw_rectangle() = 0;
    
+   virtual void macos_window_lock_gpu_context();
+   virtual void macos_window_unlock_gpu_context();
    
    virtual void macos_window_set_frame(CGRect rect);
    virtual void macos_window_get_frame(CGRect * prect);

@@ -21,10 +21,18 @@
 #include "acme/operating_system/macos/keyboard.h"
 #import "acme/operating_system/winpr_input.h"
 
+
+
+bool platform_application_is_swap_chain(::platform::application * papplication);
+
 //NSCursor * g_pcurrentNscursor = nullptr;
 NSImage * ns_image_from_file(const char * pszMatter);
 @implementation macOSImpact
 
+{
+    NSOpenGLContext* m_glcontext;
+   NSTimer*         m_nstimer;
+}
 
 - (id) initWithFrame: (NSRect) frame andWindow: (ns_acme_window *) pnsacmewindow
 {
@@ -63,13 +71,109 @@ NSImage * ns_image_from_file(const char * pszMatter);
       [m_pmacoscontrolbox init: self];
       
    }
+   macOSWindow * pwindow = (macOSWindow*) m_pnsacmewindow;
+   if(platform_application_is_swap_chain(pwindow->m_pmacoswindow->m_papplication))
+   {
+      
+      NSOpenGLPixelFormatAttribute attrs[] =
+          {
+              NSOpenGLPFAOpenGLProfile,
+              NSOpenGLProfileVersion3_2Core,
+              NSOpenGLPFADoubleBuffer,
+              NSOpenGLPFAAccelerated,
+              NSOpenGLPFANoRecovery,
+              0
+          };
 
+          NSOpenGLPixelFormat* pf =
+              [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
+         //self = [super initWithFrame:frame];
+         //if (!self) return nil;
+
+         m_glcontext = [[NSOpenGLContext alloc] initWithFormat:pf
+                                          shareContext:nil];
+      [m_glcontext setView:self];
+       [m_glcontext makeCurrentContext];
+       [m_glcontext update];
+
+       GLint vsync = 1;
+       [m_glcontext setValues:&vsync
+          forParameter:NSOpenGLContextParameterSwapInterval];
+   }
    //[ self createControlBoxButtons ];
-   
    return self;
    
 }
 
+
+- (void)startRenderTimer
+{
+   
+   if(!m_glcontext)
+   {
+      
+      return;
+      
+   }
+    if (m_nstimer) return;
+
+   m_nstimer = [NSTimer scheduledTimerWithTimeInterval:(1.0 / 60.0)
+                                              target:self
+                                            selector:@selector(stepRender)
+                                            userInfo:nil
+                                             repeats:YES];
+}
+
+- (void)stepRender
+{
+    /* --- make context current on THIS thread --- */
+    [m_glcontext makeCurrentContext];
+
+    /* update drawable if needed (resize, etc.) */
+    [m_glcontext update];
+
+    NSRect backing =
+        [self convertRectToBacking:self.bounds];
+
+    int w = (int)backing.size.width;
+    int h = (int)backing.size.height;
+
+   //   NSRect backing =
+   //       [[self contentView ] convertRectToBacking:
+   //           self.contentView.bounds];
+   //
+   
+   macOSWindow * pwindow = (macOSWindow*) m_pnsacmewindow;
+   
+   
+   pwindow->m_pmacoswindow->macos_window_opengl_render_frame((int)backing.size.width,
+                   (int)backing.size.height);
+    /* --- present --- */
+    [m_glcontext flushBuffer];
+}
+
+- (void)setFrameSize:(NSSize)newSize
+{
+    [super setFrameSize:newSize];
+
+    /* drawable size changed */
+    [m_glcontext update];
+}
+
+- (BOOL)isOpaque
+{
+    return YES;
+}
+
+- (NSOpenGLContext*)openGLContext
+{
+    return m_glcontext;
+}
+
+- (void)present
+{
+    [m_glcontext flushBuffer];
+}
 
 
 //
@@ -406,13 +510,13 @@ NSImage * ns_image_from_file(const char * pszMatter);
    
 }
 
-
-- (BOOL) isOpaque
-{
-   
-   return NO;
-   
-}
+//
+//- (BOOL) isOpaque
+//{
+//   
+//   return YES;
+//   
+//}
 
 
 //- (BOOL) wantsUpdateLayer
@@ -529,6 +633,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
 - (void) drawRect: (NSRect) rect
 {
    
+   
    auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
 
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
@@ -537,6 +642,16 @@ NSImage * ns_image_from_file(const char * pszMatter);
    {
       
       return;
+      
+   }
+   
+   if(platform_application_is_swap_chain(p->m_papplication))
+   {
+      
+      [self stepRender ];
+      
+      return;
+      
       
    }
    

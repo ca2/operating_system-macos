@@ -20,6 +20,7 @@ CLASS_DECL_ACME void * file_as_memory_dup(long & size, const char *pszMatter);
  
 NSString * __nsstring(const char * psz);
 
+bool platform_application_is_swap_chain(::platform::application * papplication);
 
 void * oswindow_osdata(oswindow hwnd);
 
@@ -80,7 +81,7 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
    
    macOSWindow * pnswindow = self;
    
-	[self setOpaque:NO];
+	[self setOpaque:YES];
     [self setHasShadow:NO];
    [self setTitlebarAppearsTransparent:TRUE];
    //	[self setOpaque:YES];
@@ -137,7 +138,7 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
    
    [self on_window_size];
    
-   
+
    
    return self;
    
@@ -271,7 +272,12 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
    
 	[pnsmacosimpact setFrame: bounds];
    
-	[pnsmacosimpact setAutoresizingMask: 0];
+	//[pnsmacosimpact setAutoresizingMask: 0];
+   
+   [pnsmacosimpact setAutoresizingMask:
+       NSViewWidthSizable | NSViewHeightSizable];
+   
+
    
 }
 
@@ -469,6 +475,10 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
          
       }
       
+      macOSImpact * pimpact = (macOSImpact *) m_pnsacmeimpact;
+      
+      [ pimpact startRenderTimer ];
+      
       m_pmacoswindow->macos_window_on_show();
 
    }
@@ -478,7 +488,6 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
    }
    
 }
-
 
 
 -(void)windowWillClose:(NSNotification*)notification
@@ -498,6 +507,24 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
 }
 
 
+//- (void)drawFrame
+//{
+//   
+//   
+//   [m_glContext makeCurrentContext];
+//
+//   [m_glContext update];
+//   
+//   NSRect backing =
+//       [[self contentView ] convertRectToBacking:
+//           self.contentView.bounds];
+//
+//   m_pmacoswindow->macos_window_opengl_render_frame((int)backing.size.width,
+//                (int)backing.size.height);
+//
+//   /* THIS IS THE BUFFER SWAP */
+//   [m_glContext flushBuffer];
+//}
 
 @end
 

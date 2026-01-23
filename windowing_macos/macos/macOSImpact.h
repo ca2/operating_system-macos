@@ -49,11 +49,12 @@
    
    macOSControlBox *       m_pmacoscontrolbox;
 }
-
+- (NSOpenGLContext*)openGLContext;
+- (void)present;
 - (id)initWithFrame:(NSRect)frame andWindow:(ns_acme_window*)pnsacmewindow;
 -(int) control_box_right_when_at_left;
 -(macOSControlBox*)control_box;
 -(void)window_did_become_key :(macOSWindow *) pmacoswindow withNotification:(NSNotification*) notification;
 -(void)window_did_resign_key :(macOSWindow *) pmacoswindow withNotification:(NSNotification*) notification;
-
+- (void)startRenderTimer;
 @end
