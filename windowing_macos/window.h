@@ -196,6 +196,8 @@ namespace windowing_macos
       
       bool is_window() override;
       
+      void * __x11_Display() override;
+      
    };
 
 

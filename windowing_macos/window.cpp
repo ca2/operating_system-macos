@@ -2983,6 +2983,12 @@ class windowing * window::macos_windowing()
     
 }
 
+void * window::__x11_Display()
+{
+
+   return nullptr;
+
+}
 
 void window::macos_window_opengl_render_frame(int w, int h)
 {
