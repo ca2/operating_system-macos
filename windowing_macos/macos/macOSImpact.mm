@@ -148,7 +148,14 @@ NSImage * ns_image_from_file(const char * pszMatter);
 
    macOSWindow * pwindow = (macOSWindow*) m_pnsacmewindow;
    
-   pwindow->m_pmacoswindow->macos_window_opengl_render_frame(w, h);
+   auto pmacoswindow = pwindow->m_pmacoswindow;
+   
+   if(::is_set(pmacoswindow))
+   {
+      
+      pmacoswindow->macos_window_opengl_render_frame(w, h);
+      
+   }
 
    [ m_glcontext flushBuffer ];
    
