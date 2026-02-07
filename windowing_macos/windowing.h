@@ -96,7 +96,7 @@ virtual public ::appkit::acme::windowing::windowing
 
       //void defer_create_main_menu(const string_array & straParent, const string_array & straMenu, const string_array & straId) override;
 
-//      void _will_finish_launching() override;
+//      void _will_aaafinish_launching() override;
 //
 //      void element_quit_post_quit() override;
 

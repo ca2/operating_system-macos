@@ -1058,15 +1058,17 @@ void node::shell_open(const ::file::path & path, const ::scoped_string & scopeds
       
       //psystem->defer_post_initial_request();
       
-      auto prequest = øcreate_new < ::request >();
+      // auto prequest = øcreate_new < ::request >();
       
-      prequest->m_ecommand = e_command_application_start;
+      // prequest->m_ecommand = e_aaa_command_application_start;
       
-      prequest->m_bPreferSync = true;
+      // prequest->m_bPreferSync = true;
       
-      prequest->m_strAppId = m_papplication->m_strAppId;
+      // prequest->m_strAppId = m_papplication->m_strAppId;
 
-      psystem->request(prequest);
+      // psystem->request(prequest);
+
+      psystem->post_application_start();
       
    }
 
@@ -1105,15 +1107,17 @@ void node::shell_open(const ::file::path & path, const ::scoped_string & scopeds
 //
       //psystem->defer_post_initial_request();
       
-      auto prequest = øcreate_new < ::request >();
+      // auto prequest = øcreate_new < ::request >();
       
-      prequest->m_ecommand = e_command_application_started;
+      // prequest->m_ecommand = e_aaa_command_application_started;
       
-      prequest->m_bPreferSync = true;
+      // prequest->m_bPreferSync = true;
       
-      prequest->m_strAppId = m_papplication->m_strAppId;
+      // prequest->m_strAppId = m_papplication->m_strAppId;
 
-      psystem->request(prequest);
+      // psystem->request(prequest);
+
+      psystem->post_application_started();
       
    }
 
