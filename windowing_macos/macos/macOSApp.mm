@@ -167,7 +167,7 @@ void set_apex_system_as_thread();
    
    [ super applicationWillFinishLaunching: notification];
    
-//   node_will_finish_launching(application_system(m_papplication));
+//   node_will_aaafinish_launching(application_system(m_papplication));
 //
 //   NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
 //

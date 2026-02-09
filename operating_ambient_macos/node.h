@@ -36,7 +36,7 @@ namespace operating_ambient_macos
 //      void implement(::pointer < ::platform::node > & pnode, __pointer(class ::system) & psystem) override;
 
 
-      //void _will_finish_launching() override;
+      //void _will_aaafinish_launching() override;
 
 
 //      ::e_status is_keyboard_hook_enabled(::user::interaction * puserinteractionEnablePrompt) override;

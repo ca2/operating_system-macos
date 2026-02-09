@@ -463,7 +463,7 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::acme::windowin
 //   }
 
 
-//   void windowing::_will_finish_launching()
+//   void windowing::_will_aaafinish_launching()
 //   {
 //      
 //      auto psystem = m_psystem->m_papexsystem;

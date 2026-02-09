@@ -64,7 +64,7 @@ namespace operating_ambient_macos
 //
 //
 //
-//   void node::_will_finish_launching()
+//   void node::_will_aaafinish_launching()
 //   {
 //
 //      auto psystem = m_psystem->m_papexsystem;
