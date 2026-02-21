@@ -89,6 +89,14 @@ void ns_main_send(dispatch_block_t block);
  
    m_pacmewindowbridge = pacmewindowbridge;
    
+   // Get the window number (NSInteger) from the NSWindow object.
+   NSInteger windowNumber = [self windowNumber];
+
+   // Cast the NSInteger to CGWindowID.
+   CGWindowID cgwindowid = (CGWindowID)windowNumber;
+   
+   m_pacmewindowbridge->set_cg_window_id(cgwindowid);
+   
 }
 
 -(void)dealloc

@@ -750,7 +750,7 @@ namespace aura_macos
 //   void interaction_impl::assert_ok() const
 //   {
 //
-//      if (oswindow() == nullptr)
+//      if (operating_system_window() == nullptr)
 //      {
 //
 //         return; // null (unattached) windows are valid

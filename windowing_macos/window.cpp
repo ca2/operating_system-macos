@@ -1246,7 +1246,7 @@ void window::_main_post(const ::procedure & procedure)
 
 #define _NEW_MESSAGE(pmessage, type, emessage) \
 auto pmessage = øcreate_new < type >(); \
-pmessage->m_oswindow = this->oswindow(); \
+pmessage->m_operatingsystemwindow = this->operating_system_window(); \
 pmessage->m_pwindow = this; \
 pmessage->m_eusermessage = emessage
 
@@ -2418,18 +2418,18 @@ pmessage->m_eusermessage = emessage
 
    }
 
-   ::oswindow window::oswindow() const
+   ::operating_system::window window::operating_system_window() const
    {
-   
-      return (::oswindow) this;
+      
+      return m_macoswindow.as_operating_system_window();
       
    }
 
 
-   void window::_set_oswindow(::oswindow oswindow)
-   {
-
-   }
+//   void window::_set_oswindow(::oswindow oswindow)
+//   {
+//
+//   }
 
 
    void * window::get_os_data() const
@@ -2444,7 +2444,7 @@ pmessage->m_eusermessage = emessage
       
       //set_os_data(m_pnswindow);
       
-      set_oswindow(this);
+      //set_oswindow(this);
       
       auto pwindowing = macos_windowing();
       
@@ -2983,12 +2983,12 @@ class windowing * window::macos_windowing()
     
 }
 
-void * window::__x11_Display()
-{
-
-   return nullptr;
-
-}
+//void * window::__x11_Display()
+//{
+//
+//   return nullptr;
+//
+//}
 
 void window::macos_window_opengl_render_frame(int w, int h)
 {

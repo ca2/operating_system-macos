@@ -54,11 +54,13 @@ public:
    
    void create_ns_acme_window(CGRect cgrect);
    
-   void display();
+   void set_cg_window_id(CGWindowID cgwindowid);
    
-   void hide();
+   void display() override;
    
-   void do_tasks();
+   void hide() override;
+   
+   void do_tasks() override;
    
    virtual int control_box_right_when_at_left() const;
    
@@ -80,13 +82,13 @@ public:
    
    virtual void _on_draw_frame(CGContextRef cg, CGSize sizeFrame);
    
-   virtual void redraw();
+   void redraw() override;
    
    //virtual void stop();
    
-   virtual void close();
+   void close() override;
    
-   virtual void set_position(int x, int y);
+   void set_position(int x, int y) override;
    
    virtual void on_layout(int x, int y, int w, int h);
    
@@ -98,9 +100,9 @@ public:
    
    virtual void macos_window_resign_key();
    
-   virtual CGRect get_frame();
+   CGRect get_frame() override;
    
-   virtual void _run_modal_loop();
+   void _run_modal_loop() override;
    
    virtual bool _is_top_most() const;
    

@@ -22,32 +22,32 @@ NSString * __nsstring(const char * psz);
 
 bool platform_application_is_swap_chain(::platform::application * papplication);
 
-void * oswindow_osdata(oswindow hwnd);
+//void * oswindow_osdata(oswindow hwnd);
 
-CGWindowID get_os_window_window_number(oswindow oswindow)
-{
-
-   if(oswindow == NULL)
-   {
-
-      return 0;
-
-   }
-   
-   void * posdata = oswindow_osdata(oswindow);
-
-   NSWindow * window = (__bridge NSWindow *) posdata;
-
-   if(window == NULL)
-   {
-
-      return 0;
-
-   }
-
-   return (CGWindowID)[window windowNumber];
-   
-}
+//CGWindowID get_os_window_window_number(oswindow oswindow)
+//{
+//
+//   if(oswindow == NULL)
+//   {
+//
+//      return 0;
+//
+//   }
+//   
+//   void * posdata = oswindow_osdata(oswindow);
+//
+//   NSWindow * window = (__bridge NSWindow *) posdata;
+//
+//   if(window == NULL)
+//   {
+//
+//      return 0;
+//
+//   }
+//
+//   return (CGWindowID)[window windowNumber];
+//   
+//}
 
 
 
@@ -533,10 +533,10 @@ CGWindowID get_os_window_window_number(oswindow oswindow)
 
 
 
-int_bool EnableWindow(oswindow hwnd, int_bool bEnable)
+int_bool EnableWindow(CGWindowID windowid, int_bool bEnable)
 {
    
-   if(hwnd == NULL)
+   if(windowid == 0)
       return FALSE;
    
    

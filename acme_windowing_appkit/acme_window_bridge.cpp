@@ -139,6 +139,14 @@ void acme_window_bridge::on_layout(int x, int y, int w, int h)
 }
 
 
+void acme_window_bridge::set_cg_window_id(CGWindowID cgwindowid)
+{
+   
+   m_pwindow->m_macoswindow.m_struct.m_cgwindowid = cgwindowid;
+   
+}
+
+
 bool acme_window_bridge::_is_top_most() const
 {
    
@@ -259,36 +267,40 @@ void acme_window_bridge::on_control_box_zoom()
 
 }
 
-bool acme_window_bridge::should_use_desktop_ambient_like_control_box() const
-{
    
-   auto pwindow = m_pwindow;
-   
-   if(::is_set(pwindow))
+   bool acme_window_bridge::should_use_desktop_ambient_like_control_box() const
    {
+   
+      auto pwindow = m_pwindow;
+   
+      if(::is_set(pwindow))
+      {
     
-      return pwindow->should_use_desktop_ambient_like_control_box();
+         return pwindow->should_use_desktop_ambient_like_control_box();
       
+      }
+   
+      return false;
+   
    }
-   
-   return false;
-   
-}
+
 
 } // namespace appkit
 
-void * __nsacmewindow_osdata(CFTypeRef typeref);
-
-void * oswindow_osdata(oswindow hwnd)
-{
- 
-   auto pappkitacmewindowingwindow = dynamic_cast < ::appkit::acme::windowing::window * >(hwnd);
-   
-   auto pacmewindowbridge = pappkitacmewindowingwindow->m_pacmewindowbridge;
-   
-   return __nsacmewindow_osdata(pacmewindowbridge->m_pnsacmewindow);
-   
-}
-
-
-
+///// what is osdata
+//void * __ns_acme_window_osdata(CFTypeRef typeref);
+//
+//
+//void * oswindow_osdata(oswindow hwnd)
+//{
+// 
+//   auto pappkitacmewindowingwindow = dynamic_cast < ::appkit::acme::windowing::window * >(hwnd);
+//   
+//   auto pacmewindowbridge = pappkitacmewindowingwindow->m_pacmewindowbridge;
+//   
+//   return __nsacmewindow_osdata(pacmewindowbridge->m_pnsacmewindow);
+//   
+//}
+//
+//
+//

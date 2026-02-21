@@ -74,11 +74,11 @@ namespace windowing_macos
       
       void install_message_routing(channel * pchannel) override;
       
-      ::oswindow oswindow() const override;
+      ::operating_system::window operating_system_window() const override;
       
       void * get_os_data() const override;
       
-      void _set_oswindow(::oswindow oswindow) override;
+      //void _set_CGWindowID(::oswindow oswindow) override;
       
       void set_keyboard_focus() override;
       
@@ -196,7 +196,7 @@ namespace windowing_macos
       
       bool is_window() override;
       
-      void * __x11_Display() override;
+      //::operating_system_window operating_system_window() const override;
       
    };
 

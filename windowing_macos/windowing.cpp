@@ -143,12 +143,12 @@ namespace windowing_macos
 //   }
 
 
-   ::windowing::window * windowing::window(oswindow oswindow)
-   {
-
-      return dynamic_cast < ::windowing::window * >(oswindow);
-
-   }
+//   ::windowing::window * windowing::window(const ::operating_system_window & )
+//   {
+//
+//      return dynamic_cast < ::windowing::window * >(oswindow);
+//
+//   }
 
 
 //   ::windowing::display * windowing::display()

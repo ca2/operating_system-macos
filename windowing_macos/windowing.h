@@ -65,7 +65,7 @@ virtual public ::appkit::acme::windowing::windowing
 
       //void windowing_post(const ::procedure & procedure) override;
 
-      ::windowing::window * window(oswindow oswindow) override;
+      //::windowing::window * window(const ::operating_system_window & operatingsystemwindow) override;
 
       //::windowing::display * display() override;
 

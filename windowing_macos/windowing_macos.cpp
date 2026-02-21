@@ -578,19 +578,19 @@ string keyboard_input_source()
 }
 
 
-CLASS_DECL_AURA ::acme::windowing::window * oswindow_get(oswindow oswindow)
-{
-
-   if(oswindow == nullptr)
-   {
-
-      return nullptr;
-
-   }
-
-   return oswindow;
-
-}
+//CLASS_DECL_AURA ::acme::windowing::window * oswindow_get(oswindow oswindow)
+//{
+//
+//   if(oswindow == nullptr)
+//   {
+//
+//      return nullptr;
+//
+//   }
+//
+//   return oswindow;
+//
+//}
 
 
 //::user::interaction * get_system_window_interaction(::os_system_window * psystemwindow)
@@ -1236,7 +1236,7 @@ end1:;
 
 
 
-CGWindowID get_os_window_window_number(oswindow oswindow);
+//CGWindowID get_os_window_window_number(oswindow oswindow);
 //{
 //   
 //   auto pwindow = (::windowing_macos::window *) oswindow->m_pWindow2;
@@ -1249,11 +1249,10 @@ CGWindowID get_os_window_window_number(oswindow oswindow);
 //   
 //}
 
-int_bool is_window_occluded(oswindow oswindow)
+int_bool is_window_occluded(CGWindowID windowid)
 {
 
-
-   CGWindowID windowid = get_os_window_window_number(oswindow);
+   //CGWindowID windowid = get_os_window_window_number(oswindow);
 
    if(windowid == 0)
    {
@@ -1301,10 +1300,10 @@ int_bool is_window_occluded(oswindow oswindow)
 
 void cg_get_window_rect_list(int_rectangle_array & recta, array < CGWindowID > & windowida);
 
-int_bool point_is_window_origin(::int_point pointHitTest, oswindow oswindowExclude, int iMargin)
+int_bool point_is_window_origin(::int_point pointHitTest, CGWindowID windowidExclude, int iMargin)
 {
    
-   CGWindowID windowidExclude = get_os_window_window_number(oswindowExclude);
+   //CGWindowID windowidExclude = get_os_window_window_number(oswindowExclude);
    
    int_rectangle_array recta;
    
