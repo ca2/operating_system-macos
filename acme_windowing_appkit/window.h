@@ -6,42 +6,42 @@
 
 #include "acme/windowing/window.h"
 #include <Carbon/Carbon.h>
-#include "acme/operating_system/window.h"
+#include "acme/operating_system/macos/window.h"
 
-
-namespace operating_system
-{
-   
-   struct macos_window_t
-   {
-      CGWindowID     m_cgwindowid;
-   };
-
-   struct macos_window :
-   public ::operating_system::a_window < macos_window, e_operating_system_macos, macos_window_t >
-   {
-      
-      macos_window()
-      {
-         
-         
-      }
-      
-      macos_window(CGWindowID cgwindowid)
-      {
-         
-         m_window.Null();
-         
-         m_eoperatingsystem = e_operating_system_macos;
-         this->m_struct.m_cgwindowid = cgwindowid;
-         
-      }
-      
-   };
-
-
-} // namespace operating_system
-
+////
+//namespace operating_system
+//{
+//   
+//   struct macos_window_t
+//   {
+//      CGWindowID     m_cgwindowid;
+//   };
+//
+//   struct macos_window :
+//   public ::operating_system::a_window < macos_window, e_operating_system_macos, macos_window_t >
+//   {
+//      
+//      macos_window()
+//      {
+//         
+//         
+//      }
+//      
+//      macos_window(CGWindowID cgwindowid)
+//      {
+//         
+//         m_window.Null();
+//         
+//         m_eoperatingsystem = e_operating_system_macos;
+//         this->m_struct.m_cgwindowid = cgwindowid;
+//         
+//      }
+//      
+//   };
+//
+//
+//} // namespace operating_system
+//
 
 namespace appkit
 {

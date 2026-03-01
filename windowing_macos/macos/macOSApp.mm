@@ -33,7 +33,8 @@ void application_on_menu_action(::platform::application * papplication, const ch
 ::platform::system * application_system(::platform::application * papplication);
 
 
-void system_id_update(::platform::system * psystem, int iUpdate, long long iPayload);
+//void system_id_update(::platform::system * psystem, int iUpdate, long long iPayload);
+long long system_id_topic(::platform::system* psystem, int iId, long long llWparam, long long llLparam);
 
 
 //void ns_application_update(long long iUpdate, void * p);
@@ -192,7 +193,7 @@ void set_apex_system_as_thread();
    
    //MessageBox(NULL, "applicationShouldHandleReopen", "applicationShouldHandleReopen", e_message_box_ok);
    
-   system_id_update(application_system(m_papplication), id_app_activated, 0);
+   system_id_topic(application_system(m_papplication), id_app_activated, 0, 0);
 
    return NO;
    

@@ -12,7 +12,7 @@
 #endif
 
 CLASS_DECL_ACME void ns_get_main_screen_size(int & cx, int & cy);
-
+CLASS_DECL_ACME float ns_main_screen_scaling_factor();
 bool macos_get_cursor_position(::int_point * ppointCursor);
 int ns_monitor_count();
 char * ns_get_wallpaper();
@@ -55,6 +55,14 @@ namespace appkit
       ns_get_main_screen_size(cx, cy);
       
       return { cx, cy };
+      
+   }
+   
+   
+   float display::get_main_screen_scaling_factor()
+   {
+      
+      return ns_main_screen_scaling_factor();
       
    }
    

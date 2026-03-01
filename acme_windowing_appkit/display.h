@@ -32,7 +32,7 @@ public:
    
    
    ::int_size get_main_screen_size() override;
-   
+   float get_main_screen_scaling_factor() override;
     
     bool is_display_opened() const override;
     

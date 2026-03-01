@@ -142,7 +142,7 @@ void acme_window_bridge::on_layout(int x, int y, int w, int h)
 void acme_window_bridge::set_cg_window_id(CGWindowID cgwindowid)
 {
    
-   m_pwindow->m_macoswindow.m_struct.m_cgwindowid = cgwindowid;
+   m_pwindow->m_macoswindow = cgwindowid;
    
 }
 

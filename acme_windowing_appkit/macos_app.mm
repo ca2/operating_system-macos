@@ -26,7 +26,8 @@ void application_handle_command(::platform::application * papplication, const ch
 
 ::platform::system * application_system(::platform::application * papplication);
 
-void system_id_update(::platform::system * psystem, int iUpdate, long long iPayload);
+//void system_id_update(::platform::system * psystem, int iUpdate, long long iPayload);
+long long system_id_topic(::platform::system* psystem, int iId, long long llWparam, long long llLparam);
 
 void node_will_finish_launching(::platform::system * psystem);
 void node_did_finish_launching(::platform::system * psystem);
@@ -430,7 +431,7 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
    
    //MessageBox(NULL, "applicationShouldHandleReopen", "applicationShouldHandleReopen", e_message_box_ok);
    
-   system_id_update(application_system(m_papplication), id_app_activated, 0);
+   system_id_topic(application_system(m_papplication), id_app_activated, 0, 0);
 
    return NO;
    
@@ -1499,6 +1500,15 @@ CLASS_DECL_ACME void ns_get_main_screen_size(int & cx, int & cy)
    cx = frame.size.width;
    
    cy = frame.size.height;
+   
+}
+
+CLASS_DECL_ACME float ns_main_screen_scaling_factor()
+{
+   
+   CGFloat scale = [[NSScreen mainScreen] backingScaleFactor];
+ 
+   return scale;
    
 }
 

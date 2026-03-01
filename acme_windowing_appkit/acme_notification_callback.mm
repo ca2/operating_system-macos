@@ -11,7 +11,8 @@
 #include "acme/operating_system/argcargv.h"
 bool ns_get_dark_mode();
 
-void system_id_update(::platform::system * psystem, int iUpdate, long long iPayload);
+//void system_id_update(::platform::system * psystem, int iUpdate, long long iPayload);
+long long system_id_topic(::platform::system* psystem, int iId, long long llWparam, long long llLparam);
 
 ::platform::system * application_system(::platform::application * papplication);
 
@@ -58,7 +59,7 @@ void ns_main_send(dispatch_block_t block);
    
    int iDarkMode = [interfaceStyle isEqualToString:@"Dark"];
 
-   system_id_update(application_system(m_papplication), id_get_operating_system_dark_mode_reply, iDarkMode);
+   system_id_topic(application_system(m_papplication), id_get_operating_system_dark_mode_reply, iDarkMode, 0);
 
 }
 
