@@ -1236,18 +1236,7 @@ end1:;
 
 
 
-//CGWindowID get_os_window_window_number(oswindow oswindow);
-//{
-//   
-//   auto pwindow = (::windowing_macos::window *) oswindow->m_pWindow2;
-//   
-//   auto pnswindow = pwindow->m_pnswindow;
-//   
-//   auto windowId = ns_get_window_id(pnswindow);
-//   
-//   return windowId;
-//   
-//}
+
 
 int_bool is_window_occluded(CGWindowID windowid)
 {
