@@ -12,6 +12,7 @@
 #include "aura/_.h"
 #include "aura_macos/_c_mm.h"
 #include "acme/operating_system/argcargv.h"
+#include "windowing_macos/_mm_cpp.h"
 #import <StoreKit/StoreKit.h>
 
 bool application_get_bool(::platform::application * papplication, const char * pszItem);
@@ -1070,6 +1071,7 @@ void aura_defer_create_windowing_application_delegate(::platform::application * 
 //
 //
 //
+
 
 
 

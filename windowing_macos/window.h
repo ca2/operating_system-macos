@@ -21,7 +21,7 @@
 #include "acme_windowing_appkit/window.h"
 #include "macos/macos_window.h"
 #include "aura/windowing/window.h"
-
+#include "windowing_macos/_mm_cpp.h"
 
 namespace windowing_macos
 {
@@ -30,11 +30,12 @@ namespace windowing_macos
     class CLASS_DECL_WINDOWING_MACOS window :
       virtual public ::windowing::window,
       virtual public ::macos_window,
-      virtual public ::appkit::acme::windowing::window
+      virtual public ::appkit::acme::windowing::window,
+      virtual public keyboard_layout_change_t
    {
    public:
       
-      
+      ::task_pointer                   m_ptaskKeyboardLayoutChange;
       void *                           m_pNSCursorLast;
       //class windowing *                m_pmacoswindowing;
       ::windowing::window *            m_pwindowCapture;
@@ -79,6 +80,9 @@ namespace windowing_macos
       void * get_os_data() const override;
       
       //void _set_CGWindowID(::oswindow oswindow) override;
+      
+      void notify_keyboard_layout_change(::user::interaction * puserinteraction) override;
+      void on_keyboard_layout_change(const char * pszKeyboardLayoutId) override;
       
       void set_keyboard_focus() override;
       

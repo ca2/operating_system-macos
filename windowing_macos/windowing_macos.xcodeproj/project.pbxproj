@@ -69,6 +69,9 @@
 		9AC5E9CE2D8A81D000EC2419 /* macOSControlBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC5E9CD2D8A81C400EC2419 /* macOSControlBox.h */; };
 		9AC5E9D02D8A825400EC2419 /* macOSControlBox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5E9CF2D8A824300EC2419 /* macOSControlBox.mm */; };
 		9AC5E9D22D8A838F00EC2419 /* _.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5E9D12D8A838900EC2419 /* _.mm */; };
+		9AEBC4A52F5AB24600855444 /* _mm_cpp.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AEBC4A42F5AB24000855444 /* _mm_cpp.h */; };
+		9AEBC4A72F5AB31100855444 /* KeyboardLayoutObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AEBC4A62F5AB30900855444 /* KeyboardLayoutObserver.h */; };
+		9AEBC4A92F5AB34C00855444 /* KeyboardLayoutObserver.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBC4A82F5AB34000855444 /* KeyboardLayoutObserver.mm */; };
 		9AF2844527FBC96400D4C1A8 /* macos_window.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AF2843B27FBC96400D4C1A8 /* macos_window.h */; };
 		9AF2844627FBC96400D4C1A8 /* macOSWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AF2843C27FBC96400D4C1A8 /* macOSWindow.h */; };
 		9AF2844727FBC96400D4C1A8 /* macOSImpact.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2843D27FBC96400D4C1A8 /* macOSImpact.mm */; };
@@ -168,6 +171,9 @@
 		9AC5E9CD2D8A81C400EC2419 /* macOSControlBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macOSControlBox.h; sourceTree = "<group>"; };
 		9AC5E9CF2D8A824300EC2419 /* macOSControlBox.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = macOSControlBox.mm; sourceTree = "<group>"; };
 		9AC5E9D12D8A838900EC2419 /* _.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = _.mm; sourceTree = "<group>"; };
+		9AEBC4A42F5AB24000855444 /* _mm_cpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm_cpp.h; sourceTree = "<group>"; };
+		9AEBC4A62F5AB30900855444 /* KeyboardLayoutObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardLayoutObserver.h; sourceTree = "<group>"; };
+		9AEBC4A82F5AB34000855444 /* KeyboardLayoutObserver.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = KeyboardLayoutObserver.mm; sourceTree = "<group>"; };
 		9AF2843B27FBC96400D4C1A8 /* macos_window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macos_window.h; sourceTree = "<group>"; };
 		9AF2843C27FBC96400D4C1A8 /* macOSWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macOSWindow.h; sourceTree = "<group>"; };
 		9AF2843D27FBC96400D4C1A8 /* macOSImpact.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = macOSImpact.mm; sourceTree = "<group>"; };
@@ -237,6 +243,7 @@
 		9A440A2F26548C38000C490B /* windowing_macos */ = {
 			isa = PBXGroup;
 			children = (
+				9AEBC4A42F5AB24000855444 /* _mm_cpp.h */,
 				9AF2843A27FBC96400D4C1A8 /* macos */,
 				9A03B8062A25BD8100A0E33E /* _____debug.xcconfig */,
 				9A03B8092A25BD8100A0E33E /* _____release.xcconfig */,
@@ -316,6 +323,8 @@
 		9AF2843A27FBC96400D4C1A8 /* macos */ = {
 			isa = PBXGroup;
 			children = (
+				9AEBC4A82F5AB34000855444 /* KeyboardLayoutObserver.mm */,
+				9AEBC4A62F5AB30900855444 /* KeyboardLayoutObserver.h */,
 				9AC5E9D12D8A838900EC2419 /* _.mm */,
 				9AF2843B27FBC96400D4C1A8 /* macos_window.h */,
 				9AF2844327FBC96400D4C1A8 /* macos_window.mm */,
@@ -360,12 +369,14 @@
 				9AF2844527FBC96400D4C1A8 /* macos_window.h in Headers */,
 				9A1D5F042751B129003D9B5F /* notify_icon_mm_bridge.h in Headers */,
 				9AF2845727FBCA7100D4C1A8 /* macOSApp.h in Headers */,
+				9AEBC4A72F5AB31100855444 /* KeyboardLayoutObserver.h in Headers */,
 				9A1D5F052751B129003D9B5F /* notify_icon_mm.h in Headers */,
 				9A1D5F062751B129003D9B5F /* notify_icon.h in Headers */,
 				9A1D5F082751B12A003D9B5F /* SBSystemPreferences.h in Headers */,
 				9A1D5F092751B12A003D9B5F /* window_impl.h in Headers */,
 				9A1D5F0A2751B12A003D9B5F /* window.h in Headers */,
 				9A1D5F0B2751B12A003D9B5F /* windowing_c.h in Headers */,
+				9AEBC4A52F5AB24600855444 /* _mm_cpp.h in Headers */,
 				9A1D5F0C2751B12A003D9B5F /* windowing.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +506,7 @@
 				9A1D5EE22751B037003D9B5F /* monitor.cpp in Sources */,
 				9A1D5EE32751B037003D9B5F /* monitor.mm in Sources */,
 				9A1D5EE62751B037003D9B5F /* notify_icon_mm_bridge.mm in Sources */,
+				9AEBC4A92F5AB34C00855444 /* KeyboardLayoutObserver.mm in Sources */,
 				9A1D5EE72751B037003D9B5F /* notify_icon.cpp in Sources */,
 				9A1D5EE82751B037003D9B5F /* notify_icon.mm in Sources */,
 			);

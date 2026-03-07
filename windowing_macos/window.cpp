@@ -29,6 +29,7 @@
 #include "aura/platform/session.h"
 #include "aura/user/user/user.h"
 #include "aura/message/user.h"
+#include "_mm_cpp.h"
 #include <CoreGraphics/CoreGraphics.h>
 
 
@@ -437,6 +438,38 @@ void window::main_post(const ::procedure & procedure)
 
    }
 
+
+void window::notify_keyboard_layout_change(::user::interaction * puserinteraction)
+{
+   
+   ::windowing::window::notify_keyboard_layout_change(puserinteraction);
+   
+   if(!m_ptaskKeyboardLayoutChange)
+   {
+      
+      m_ptaskKeyboardLayoutChange = m_papplication->fork([this]()
+                                                         {
+         
+         try {
+            run_keyboard_layout_observer(this);
+         } catch(...) {
+         }
+         m_ptaskKeyboardLayoutChange.release();
+      });
+      
+   }
+   
+   
+   
+}
+
+
+void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
+{
+   
+   ::windowing::window::on_keyboard_layout_change(pszKeyboardLayoutId);
+   
+}
 
    void window::set_keyboard_focus()
    {
@@ -3028,3 +3061,93 @@ bool window::is_window()
 
 
 
+
+
+
+#include <CoreFoundation/CoreFoundation.h>
+#include <Carbon/Carbon.h>
+//#include <stdio.h>
+
+static void keyboard_layout_changed(
+    CFNotificationCenterRef center,
+    void *observer,
+    CFStringRef name,
+    const void *object,
+    CFDictionaryRef userInfo)
+{
+
+    TISInputSourceRef source = TISCopyCurrentKeyboardInputSource();
+
+    if(!source)
+        return;
+
+    CFStringRef layoutName =
+        (CFStringRef)TISGetInputSourceProperty(
+            source,
+            kTISPropertyLocalizedName);
+
+    CFStringRef layoutId =
+        (CFStringRef)TISGetInputSourceProperty(
+            source,
+            kTISPropertyInputSourceID);
+
+    char nameBuffer[256] = {};
+    char idBuffer[256] = {};
+
+    if(layoutName)
+    {
+        CFStringGetCString(
+            layoutName,
+            nameBuffer,
+            sizeof(nameBuffer),
+            kCFStringEncodingUTF8);
+    }
+
+    if(layoutId)
+    {
+        CFStringGetCString(
+            layoutId,
+            idBuffer,
+            sizeof(idBuffer),
+            kCFStringEncodingUTF8);
+    }
+   auto p = (keyboard_layout_change_t *)observer;
+   p->on_keyboard_layout_change(idBuffer);
+    //printf("Keyboard layout changed\n");
+    //printf("Name: %s\n", nameBuffer);
+    //printf("ID: %s\n", idBuffer);
+
+    CFRelease(source);
+}
+
+void install_keyboard_layout_listener(keyboard_layout_change_t * p)
+{
+
+    CFNotificationCenterAddObserver(
+        CFNotificationCenterGetDistributedCenter(),
+        p,
+        keyboard_layout_changed,
+        kTISNotifySelectedKeyboardInputSourceChanged,
+        nullptr,
+        CFNotificationSuspensionBehaviorDeliverImmediately);
+
+}
+
+
+void run_keyboard_layout_observer(keyboard_layout_change_t * p)
+{
+
+    install_keyboard_layout_listener(p);
+
+    printf("Listening for keyboard layout changes...\n");
+
+    while(true)
+    {
+        CFRunLoopRunInMode(
+            kCFRunLoopDefaultMode,
+            1.0,
+            false);
+    }
+
+   
+}
