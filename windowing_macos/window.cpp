@@ -439,10 +439,10 @@ void window::main_post(const ::procedure & procedure)
    }
 
 
-void window::notify_keyboard_layout_change(::user::interaction * puserinteraction)
+void window::add_user_notification_listener(::user::notification_listener *pusernotificationlistener)
 {
    
-   ::windowing::window::notify_keyboard_layout_change(puserinteraction);
+   ::windowing::window::add_user_notification_listener(pusernotificationlistener);
    
    if(!m_ptaskKeyboardLayoutChange)
    {
@@ -451,7 +451,7 @@ void window::notify_keyboard_layout_change(::user::interaction * puserinteractio
                                                          {
          
          try {
-            run_keyboard_layout_observer(this);
+            macos_run_keyboard_layout_change_listener(this);
          } catch(...) {
          }
          m_ptaskKeyboardLayoutChange.release();
@@ -3111,7 +3111,7 @@ static void keyboard_layout_changed(
             sizeof(idBuffer),
             kCFStringEncodingUTF8);
     }
-   auto p = (keyboard_layout_change_t *)observer;
+   auto p = (::user::notification_listener *)observer;
    p->on_keyboard_layout_change(idBuffer);
     //printf("Keyboard layout changed\n");
     //printf("Name: %s\n", nameBuffer);
@@ -3120,7 +3120,7 @@ static void keyboard_layout_changed(
     CFRelease(source);
 }
 
-void install_keyboard_layout_listener(keyboard_layout_change_t * p)
+void install_keyboard_layout_change_listener(::user::notification_listener * p)
 {
 
     CFNotificationCenterAddObserver(
@@ -3134,10 +3134,10 @@ void install_keyboard_layout_listener(keyboard_layout_change_t * p)
 }
 
 
-void run_keyboard_layout_observer(keyboard_layout_change_t * p)
+void macos_run_keyboard_layout_change_listener(::user::notification_listener * p)
 {
 
-    install_keyboard_layout_listener(p);
+    install_keyboard_layout_change_listener(p);
 
     printf("Listening for keyboard layout changes...\n");
 

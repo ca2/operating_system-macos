@@ -8,15 +8,10 @@
 #pragma once
 
 
-
-struct keyboard_layout_change_t
-{
- 
-   virtual void on_keyboard_layout_change(const char * pszKeyboardLayoutId) = 0;
-   
+#include "aura/user/user/notification_listener.h"
 
 
-};
+void macos_run_keyboard_layout_change_listener(::user::notification_listener * p);
 
 
-void run_keyboard_layout_observer(keyboard_layout_change_t * p);
+

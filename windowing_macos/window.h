@@ -31,7 +31,7 @@ namespace windowing_macos
       virtual public ::windowing::window,
       virtual public ::macos_window,
       virtual public ::appkit::acme::windowing::window,
-      virtual public keyboard_layout_change_t
+      virtual public ::user::notification_listener
    {
    public:
       
@@ -81,7 +81,7 @@ namespace windowing_macos
       
       //void _set_CGWindowID(::oswindow oswindow) override;
       
-      void notify_keyboard_layout_change(::user::interaction * puserinteraction) override;
+      void add_user_notification_listener(::user::notification_listener * pusernotificationlistener) override;
       void on_keyboard_layout_change(const char * pszKeyboardLayoutId) override;
       
       void set_keyboard_focus() override;
