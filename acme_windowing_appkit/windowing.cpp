@@ -118,7 +118,7 @@ void windowing::initialize_windowing()
         //
         //      return m_pvoidX11Display;
         
-        øconstruct(m_pacmedisplay);
+        constructø(m_pacmedisplay);
         
         m_pacmedisplay->open_display();
         
@@ -129,7 +129,7 @@ void windowing::initialize_windowing()
 }
 
 
-void windowing::_main_send(const ::procedure & procedure)
+void windowing::main_send(const ::procedure & procedure)
 {
     
     if(::is_main_thread())
@@ -146,7 +146,7 @@ void windowing::_main_send(const ::procedure & procedure)
     //      CLASS_DECL_ACME bool main_synchronous(const class time & time, const ::procedure & function)
     //      {
     
-    auto pevent = øallocate manual_reset_happening();
+    auto pevent = allocateø manual_reset_happening();
     
     user_post([ procedure, pevent ]
               {
@@ -225,7 +225,7 @@ void  windowing::run()
 }
 
 
-void windowing::_main_post(const ::procedure & procedure)
+void windowing::main_post(const ::procedure & procedure)
 {
     
     node()->user_post(procedure);

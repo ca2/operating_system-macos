@@ -114,7 +114,7 @@ namespace appkit
             
             //nano()->graphics();
             
-            øconstruct(m_pnanodevice);
+            constructø(m_pnanodevice);
             
             m_pnanodevice->attach(cgcontextref, m_sizeWindow);
             
@@ -194,7 +194,7 @@ namespace appkit
       void window::_create_window()
       {
          
-         m_pacmewindowbridge = øallocate acme_window_bridge();
+         m_pacmewindowbridge = allocateø acme_window_bridge();
          
          CGRect cgrect;
          
@@ -312,10 +312,10 @@ namespace appkit
       }
       
       
-      void window::_main_post(const ::procedure & procedure)
+      void window::main_post(const ::procedure & procedure)
       {
          
-         system()->acme_windowing()->_main_post(procedure);
+         system()->acme_windowing()->main_post(procedure);
          
       }
       
