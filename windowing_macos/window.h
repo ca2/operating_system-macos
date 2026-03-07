@@ -96,8 +96,8 @@ namespace windowing_macos
       
       class windowing * macos_windowing() ;
       
-      void _main_send(const ::procedure & procedure) override;
-      void _main_post(const ::procedure & procedure) override;
+      void main_send(const ::procedure & procedure) override;
+      void main_post(const ::procedure & procedure) override;
 //      void _window_request_presentation() override;
       
       //void show_window(const ::e_display &edisplay, const ::e_activation &eactivation) override;

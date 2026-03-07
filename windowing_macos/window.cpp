@@ -147,7 +147,7 @@ namespace windowing_macos
       
    }
 
-void window::_main_send(const ::procedure & procedure)
+void window::main_send(const ::procedure & procedure)
 {
 
    __block auto p = procedure
@@ -161,10 +161,10 @@ void window::_main_send(const ::procedure & procedure)
 
 }
 
-void window::_main_post(const ::procedure & procedure)
+void window::main_post(const ::procedure & procedure)
 {
  
-   ::appkit::acme::windowing::window::_main_post(procedure);
+   ::appkit::acme::windowing::window::main_post(procedure);
    
 }
 

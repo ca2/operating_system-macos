@@ -68,7 +68,7 @@ namespace input_appkit
    //
    //      //estatus = 
    //
-   //      øconstruct(m_pdisplay);
+   //      constructø(m_pdisplay);
    //
    //      //if (!estatus)
    //      //{

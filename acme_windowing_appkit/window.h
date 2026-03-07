@@ -113,7 +113,7 @@ class acme_window_bridge;
 
       //virtual void _on_event(XEvent *pevent);
       
-      void _main_post(const ::procedure & procedure) override;
+      void main_post(const ::procedure & procedure) override;
 
       virtual void _update_window();
 
