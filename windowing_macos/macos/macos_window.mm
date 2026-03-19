@@ -23,7 +23,9 @@ void create_macos_nswindow(macos_window * pmacoswindow, CGRect rect, unsigned in
    
    // rect.origin.x        = 0;
    
-   rect.origin.y           = (int) [[NSScreen mainScreen]frame].size.height - (rect.origin.y + rect.size.height);
+   int iScreenHeight = [[NSScreen mainScreen]frame].size.height;
+   
+   rect.origin.y           = (int) iScreenHeight - (rect.origin.y + rect.size.height);
    
    // rect.size.width      = 0;
    // rect.size.height     = 0;

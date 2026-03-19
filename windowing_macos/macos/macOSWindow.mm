@@ -16,40 +16,13 @@
 #include "macos_window.h"
 #include "macOSImpact.h"
 #include "macOSControlBox.h"
+
+
 CLASS_DECL_ACME void * file_as_memory_dup(long & size, const char *pszMatter);
  
 NSString * __nsstring(const char * psz);
 
 bool platform_application_is_swap_chain(::platform::application * papplication);
-
-//void * oswindow_osdata(oswindow hwnd);
-
-//CGWindowID get_os_window_window_number(oswindow oswindow)
-//{
-//
-//   if(oswindow == NULL)
-//   {
-//
-//      return 0;
-//
-//   }
-//   
-//   void * posdata = oswindow_osdata(oswindow);
-//
-//   NSWindow * window = (__bridge NSWindow *) posdata;
-//
-//   if(window == NULL)
-//   {
-//
-//      return 0;
-//
-//   }
-//
-//   return (CGWindowID)[window windowNumber];
-//   
-//}
-
-
 
 @implementation macOSWindow
 
@@ -72,7 +45,7 @@ bool platform_application_is_swap_chain(::platform::application * papplication);
       defer: deferCreation
       ];
 
-	if(self == NULL)
+   if(self == NULL)
    {
     
       return NULL;
