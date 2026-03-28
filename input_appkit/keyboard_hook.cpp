@@ -222,7 +222,7 @@ namespace input_appkit
    void keyboard_hook::keyboard_proc(::user::enum_message eusermessage, int iVirtualKeyCode, int iScanCode)
    {
 
-      auto pkeyboard = øcreate_new < ::message::key >();
+      auto pkeyboard = create_newø < ::message::key >();
 
       pkeyboard->m_eusermessage = eusermessage;
 

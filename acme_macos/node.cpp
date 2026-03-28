@@ -1058,7 +1058,7 @@ void node::shell_open(const ::file::path & path, const ::scoped_string & scopeds
       
       //psystem->defer_post_initial_request();
       
-      // auto prequest = øcreate_new < ::request >();
+      // auto prequest = create_newø < ::request >();
       
       // prequest->m_ecommand = e_aaa_command_application_start;
       
@@ -1107,7 +1107,7 @@ void node::shell_open(const ::file::path & path, const ::scoped_string & scopeds
 //
       //psystem->defer_post_initial_request();
       
-      // auto prequest = øcreate_new < ::request >();
+      // auto prequest = create_newø < ::request >();
       
       // prequest->m_ecommand = e_aaa_command_application_started;
       

@@ -194,7 +194,7 @@ namespace input_appkit
    void mouse_hook::mouse_proc(::user::enum_message eusermessage)
    {
 
-      auto pmouse = øcreate_new < ::message::mouse >();
+      auto pmouse = create_newø < ::message::mouse >();
 
       pmouse->m_eusermessage = eusermessage;
 

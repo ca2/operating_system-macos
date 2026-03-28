@@ -1123,7 +1123,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
 
       }
          
-      auto g = øcreate < ::draw2d::graphics >();
+      auto g = createø < ::draw2d::graphics >();
 
       g->attach(cgc);
       
@@ -1234,7 +1234,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
 //
 //      }
 //
-//      auto pkey  = øcreate_new < ::message::key >();
+//      auto pkey  = create_newø < ::message::key >();
 //
 //      pkey->m_id = e_message_key_down;
 //
@@ -1278,7 +1278,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
 //   }
 
 #define _NEW_MESSAGE(pmessage, type, emessage) \
-auto pmessage = øcreate_new < type >(); \
+auto pmessage = create_newø < type >(); \
 pmessage->m_operatingsystemwindow = this->operating_system_window(); \
 pmessage->m_pwindow = this; \
 pmessage->m_eusermessage = emessage
@@ -1446,7 +1446,7 @@ pmessage->m_eusermessage = emessage
 
       {
 
-//         auto pmouse = øcreate_new < ::message::mouse > ();
+//         auto pmouse = create_newø < ::message::mouse > ();
 
 //         ::atom id;
          
@@ -1512,7 +1512,7 @@ pmessage->m_eusermessage = emessage
          return;
          
       }
-      //auto pmouse = øcreate_new < ::message::mouse >();
+      //auto pmouse = create_newø < ::message::mouse >();
 
       //::atom id;
 
@@ -1560,7 +1560,7 @@ pmessage->m_eusermessage = emessage
       
       m_pointMouseCursorAbsolute.y = yAbsolute;
 
-      //auto pmouse = øcreate_new < ::message::mouse >();
+      //auto pmouse = create_newø < ::message::mouse >();
       
       //::atom id;
 
@@ -1750,7 +1750,7 @@ pmessage->m_eusermessage = emessage
 
       }
       
-//      auto pmouse = øcreate_new < ::message::mouse >();
+//      auto pmouse = create_newø < ::message::mouse >();
 //
 //      pmouse->set(this, this, id, wparam, lparam);
 
@@ -1791,7 +1791,7 @@ pmessage->m_eusermessage = emessage
 
       }
 //
-//      auto pmouse = øcreate_new < ::message::mouse >();
+//      auto pmouse = create_newø < ::message::mouse >();
 //
 //      pmouse->set(this, this, id, wparam, lparam);
 
@@ -1820,7 +1820,7 @@ pmessage->m_eusermessage = emessage
 
       //lparam lparam = __MAKE_LPARAM(x, y);
 
-      //auto pwheel  = øcreate_new < ::message::mouse_wheel > ();
+      //auto pwheel  = create_newø < ::message::mouse_wheel > ();
       
       //pwheel->set(this, this, id, wparam, lparam);
 
@@ -1857,7 +1857,7 @@ pmessage->m_eusermessage = emessage
                //
                //         lparam lparam = __MAKE_LPARAM(rectangle.origin.x, rectangle.origin.y);
                //
-               //         auto pmove  = øcreate_new < ::message::reposition > ();
+               //         auto pmove  = create_newø < ::message::reposition > ();
                //
                //         pmove->set(this, this, id, wparam, lparam);
                
@@ -1896,7 +1896,7 @@ pmessage->m_eusermessage = emessage
                //
                //         lparam lparam = __MAKE_LPARAM(rectangle.size.width, rectangle.size.height);
                //
-               //         auto psize  = øcreate_new < ::message::size > ();
+               //         auto psize  = create_newø < ::message::size > ();
                //
                //         psize->set(this, this, id, wparam, lparam);
                
@@ -2069,7 +2069,7 @@ pmessage->m_eusermessage = emessage
 //
 //         lparam lparam = __MAKE_LPARAM(point.x, point.y);
 //
-//         auto pmove  = øcreate_new < ::message::reposition > ();
+//         auto pmove  = create_newø < ::message::reposition > ();
 //
 //         pmove->set(this, this, id, wparam, lparam);
 
