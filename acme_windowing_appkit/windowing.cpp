@@ -78,9 +78,9 @@ windowing::~windowing()
 void windowing::initialize_windowing()
 {
     
-    informationf("node_gtk3::node::x11_initialize");
+    informationf("appkit::acme::windowing::windowing::initialize_windowing");
     
-    informationf("node_gtk3::node::x11_initialize going to call x11_init_threads");
+    //informationf("node_gtk3::node::x11_initialize going to call x11_init_threads");
     
 //    if (!nano()->user()->init_threads())
 //    {
