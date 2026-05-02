@@ -16,7 +16,7 @@
 //#include "aura/_defer.h"
 
 
-INT_RECTANGLE get_main_screen_rectangle();
+::int_rectangle get_main_screen_rectangle();
 
 
 //oswindow_dataptra * g_poswindowdataptra = nullptr;
