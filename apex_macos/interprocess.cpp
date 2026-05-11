@@ -460,7 +460,7 @@ namespace apex_macos
 //
 //            data_struct data;
 //
-//            /* The length is essentially the int_size of the structure minus sizeof(mtype) */
+//            /* The length is essentially the i32_size of the structure minus sizeof(mtype) */
 //            length = sizeof(data) - sizeof(data.message);
 //
 //            memory mem;
@@ -487,15 +487,15 @@ namespace apex_macos
 //
 //               }
 //
-//               mem.append(data.data,data.int_size);
+//               mem.append(data.data,data.i32_size);
 //
 //
-//               if(data.int_size < 512)
+//               if(data.i32_size < 512)
 //                  break;
 //
 //            } while(true);
 //
-//            if(data.int_size > 0)
+//            if(data.i32_size > 0)
 //            {
 //            if(data.request == 5)
 //            {

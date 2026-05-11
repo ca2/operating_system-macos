@@ -47,8 +47,8 @@ public:
    
    virtual void macos_window_on_create() = 0;
    
-   virtual void macos_window_resized(CGRect int_rectangle) = 0;
-   virtual void macos_window_repositioned(CGPoint int_point) = 0;
+   virtual void macos_window_resized(CGRect i32_rectangle) = 0;
+   virtual void macos_window_repositioned(CGPoint i32_point) = 0;
    
    virtual void macos_window_iconified() = 0;
    virtual void macos_window_deiconified() = 0;

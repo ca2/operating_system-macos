@@ -40,7 +40,7 @@ CGWindowID ns_get_window_id(void * pnswindow);
 void * __nsacmewindow_osdata(CFTypeRef pnsacmewindow);
 
 
-bool macos_get_cursor_position(::int_point * ppointCursor);
+bool macos_get_cursor_position(::i32_point * ppointCursor);
 
 
 void ns_main_post(dispatch_block_t block);
@@ -260,9 +260,9 @@ void window::main_post(const ::procedure & procedure)
 //
 //      //hook_window_create(puserinteraction);
 //
-//      //CGRect int_rectangle;
+//      //CGRect i32_rectangle;
 //
-////      int_rectangle rectParam;
+////      i32_rectangle rectParam;
 //
 //   //      rectParam.left = m_pusersystem->m_createstruct.x;
 //   //      rectParam.top = pusersystem->m_createstruct.y;
@@ -332,7 +332,7 @@ void window::main_post(const ::procedure & procedure)
 
       unsigned uStyle = 0;
       
-      ::int_rectangle rectangle;
+      ::i32_rectangle rectangle;
       
       if(puserinteraction)
       {
@@ -665,7 +665,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
    }
 
 
-//   ::int_point window::get_mouse_cursor_host_position()
+//   ::i32_point window::get_mouse_cursor_host_position()
 //   {
 //      
 //      return m_pointMouseCursorHost;
@@ -673,7 +673,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
 //   }
 //
 //
-//   ::int_point window::get_mouse_cursor_absolute_position()
+//   ::i32_point window::get_mouse_cursor_absolute_position()
 //   {
 //      
 //      return m_pointMouseCursorHost;
@@ -1049,7 +1049,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
    void window::macos_window_draw(CGContextRef cgc, CGSize sizeWindowParam)
    {
 
-      ::int_size sizeWindow(sizeWindowParam.width, sizeWindowParam.height);
+      ::i32_size sizeWindow(sizeWindowParam.width, sizeWindowParam.height);
 
       #ifdef EXTRALOG
 
@@ -1059,7 +1059,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
 
       string strFormat;
 
-      strFormat.Format("|-> window int_size %d, %d", sizeWindow.cx, sizeWindow.cy);
+      strFormat.Format("|-> window i32_size %d, %d", sizeWindow.cx, sizeWindow.cy);
 
       string strSize;
 
@@ -1074,14 +1074,14 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
 
       str += strFormat;
 
-      int_rectangle rect1 = puserinteraction->window_rectangle();
+      i32_rectangle rect1 = puserinteraction->window_rectangle();
 
       if(rect1.size() != rectLast.size())
       {
 
          rectLast = rect1;
 
-         // xxxlog output_debug_string("different window int_rectangle int_size (1)");
+         // xxxlog output_debug_string("different window i32_rectangle i32_size (1)");
 
       }
 
@@ -1192,7 +1192,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
       
    #endif
 
-      ::int_size sizeMin = imageBuffer2->size().minimum(sizeWindow);
+      ::i32_size sizeMin = imageBuffer2->size().minimum(sizeWindow);
       
       ::double_rectangle rectangleSource(sizeMin);
       
@@ -1672,7 +1672,7 @@ pmessage->m_eusermessage = emessage
 //               if(pinteraction->m_millisMouseMovePeriod > 0)
 //               {
 //
-//                  ::int_size sizeDistance((pinteraction->m_pointMouseMoveSkip.x - pinteraction->m_pointMouseMove.x),
+//                  ::i32_size sizeDistance((pinteraction->m_pointMouseMoveSkip.x - pinteraction->m_pointMouseMove.x),
 //                     (pinteraction->m_pointMouseMoveSkip.y - pinteraction->m_pointMouseMove.y));
 //
 //                  if(!pinteraction->m_millisMouseMoveSkip.timeout(pinteraction->m_millisMouseMovePeriod)
@@ -1910,7 +1910,7 @@ pmessage->m_eusermessage = emessage
          
       }
 
-      ::int_rectangle rectangleWindow;
+      ::i32_rectangle rectangleWindow;
       
       rectangleWindow = rectangle;
       
@@ -1937,10 +1937,10 @@ pmessage->m_eusermessage = emessage
    //
    //      }
    //
-   //      if(puserinteraction->m_sizeRequest != rectangle.int_size)
+   //      if(puserinteraction->m_sizeRequest != rectangle.i32_size)
    //      {
    //
-   //         puserinteraction->m_sizeRequest = rectangle.int_size;
+   //         puserinteraction->m_sizeRequest = rectangle.i32_size;
    //
    //         information("window::macos_window_resized effective position is different from requested position");
    //
@@ -1950,11 +1950,11 @@ pmessage->m_eusermessage = emessage
    //
    //      puserinteraction->m_point = rectangle.origin;
    //
-   //      puserinteraction->m_size = rectangle.int_size;
+   //      puserinteraction->m_size = rectangle.i32_size;
    //
-   ////      ::int_size sz;
+   ////      ::i32_size sz;
    ////
-   ////      long_long_point pt(rectangle.origin.x, rectangle.origin.y);
+   ////      i64_point pt(rectangle.origin.x, rectangle.origin.y);
    ////
    ////      bool bMove = false;
    ////
@@ -1971,7 +1971,7 @@ pmessage->m_eusermessage = emessage
    ////
    ////         puserinteraction->m_rectParentClient.move_to(point);
    ////
-   ////         puserinteraction->set_size(rectangle.int_size);
+   ////         puserinteraction->set_size(rectangle.i32_size);
    ////
    ////         sz = puserinteraction->m_rectParentClient.size();
    ////
@@ -2002,11 +2002,11 @@ pmessage->m_eusermessage = emessage
    //
    //      }
    //
-   //      ::int_rectangle rectSize;
+   //      ::i32_rectangle rectSize;
    //
    //      copy(rectSize, rectangle);
    //
-   //      if(puserinteraction->window_state().int_rectangle() != rectSize)
+   //      if(puserinteraction->window_state().i32_rectangle() != rectSize)
    //      {
    //
    //         puserinteraction->window_state().m_point = rectSize.origin();
@@ -2016,7 +2016,7 @@ pmessage->m_eusermessage = emessage
    //      }
    //
    //
-   //      if (puserinteraction->layout().sketch().int_rectangle() != rectSize)
+   //      if (puserinteraction->layout().sketch().i32_rectangle() != rectSize)
    //      {
    //
    //         puserinteraction->place(rectSize);
@@ -2086,7 +2086,7 @@ pmessage->m_eusermessage = emessage
    //      }
    //
    //
-   //      ::int_point pointMove;
+   //      ::i32_point pointMove;
    //
    //      copy(pointMove, point);
    //
@@ -2120,7 +2120,7 @@ pmessage->m_eusermessage = emessage
    //      }
    //
    //
-   ////      if(puserinteraction->m_pointRequest != int_point)
+   ////      if(puserinteraction->m_pointRequest != i32_point)
    ////      {
    ////
    ////         puserinteraction->m_pointRequest = point;
@@ -2131,7 +2131,7 @@ pmessage->m_eusermessage = emessage
    ////
    ////      puserinteraction->m_point = point;
       ///
-      _on_reposition_notify_unlocked(::int_point(point.x, point.y))
+      _on_reposition_notify_unlocked(::i32_point(point.x, point.y))
       ;
    }
 

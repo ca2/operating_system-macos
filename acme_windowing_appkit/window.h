@@ -77,8 +77,8 @@ class acme_window_bridge;
       //string                        m_strTitle;
       //bool                          m_bNcActive;
 
-      //int_rectangle                 m_rectangle;
-      //int_rectangle                 m_rectangleX;
+      //i32_rectangle                 m_rectangle;
+      //i32_rectangle                 m_rectangleX;
 
       //pointer_array < ::nano::user::child >   m_childa;
       //::atom                          m_atomLeftButtonDown;
@@ -163,13 +163,13 @@ class acme_window_bridge;
 
       //virtual LRESULT window_procedure(UINT message, WPARAM wparam, LPARAM lparam);
 
-      void set_position_unlocked(const ::int_point & point) override;
+      void set_position_unlocked(const ::i32_point & point) override;
 
       void redraw() override;
 
-      //void get_client_rectangle(::int_rectangle & rectangle) override;
+      //void get_client_rectangle(::i32_rectangle & rectangle) override;
 
-      ::int_rectangle get_window_rectangle_unlocked() override;
+      ::i32_rectangle get_window_rectangle_unlocked() override;
 
       void set_mouse_capture() override;
 
@@ -179,7 +179,7 @@ class acme_window_bridge;
       
       ::payload wait_for_dialog_result(const class ::time & timeTimeout = ::time::infinity()) override;
       
-//      ::int_size get_main_screen_size() override;
+//      ::i32_size get_main_screen_size() override;
       
       
       virtual ::payload do_synchronously();

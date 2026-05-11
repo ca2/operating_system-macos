@@ -116,7 +116,7 @@ namespace windowing_macos
 } // namespace windowing_macos
 
 
-bool macos_get_cursor_position(::int_point * ppointCursor)
+bool macos_get_cursor_position(::i32_point * ppointCursor)
 {
  
    HIPoint point;

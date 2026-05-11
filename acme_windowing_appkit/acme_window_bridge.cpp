@@ -24,11 +24,11 @@ void ns_app_stop();
 
 CLASS_DECL_ACME void ns_get_main_screen_size(int & cx, int & cy);
 
-void screen_coordinates_aware_copy(CGRect & rect, const ::int_rectangle &rectangle);
+void screen_coordinates_aware_copy(CGRect & rect, const ::i32_rectangle &rectangle);
 
-void screen_coordinates_aware_copy(CGPoint & cgpoint, const ::int_point & point);
+void screen_coordinates_aware_copy(CGPoint & cgpoint, const ::i32_point & point);
 
-void screen_coordinates_aware_copy(::int_point & point, const CGPoint & cgpoint);
+void screen_coordinates_aware_copy(::i32_point & point, const CGPoint & cgpoint);
 
 namespace appkit
 {

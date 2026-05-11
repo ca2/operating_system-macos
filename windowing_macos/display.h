@@ -31,8 +31,8 @@ virtual public ::appkit::acme::windowing::display
       string _get_wallpaper(::collection::index iScreen) override;
       void _set_wallpaper(::collection::index iScreen, const ::scoped_string & strWallpaper) override;
 
-      ::int_point _get_mouse_cursor_position() override;
-       ::int_size get_main_screen_size() override;
+      ::i32_point _get_mouse_cursor_position() override;
+       ::i32_size get_main_screen_size() override;
    };
 
 

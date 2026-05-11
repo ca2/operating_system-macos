@@ -16,7 +16,7 @@
 //#include "aura/_defer.h"
 
 
-::int_rectangle get_main_screen_rectangle();
+::i32_rectangle get_main_screen_rectangle();
 
 
 //oswindow_dataptra * g_poswindowdataptra = nullptr;
@@ -641,7 +641,7 @@ int_rectangle_array cg_get_window_rect_list_above(CGWindowID windowid)
    
    CFArrayRef windowa = CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenAboveWindow, windowid);
 
-   ::int_rectangle rMainScreen = get_main_screen_rectangle();
+   ::i32_rectangle rMainScreen = get_main_screen_rectangle();
 
    long c = CFArrayGetCount(windowa);
 
@@ -701,7 +701,7 @@ int_rectangle_array cg_get_window_rect_list_above(CGWindowID windowid)
          if(rect.size.width > 0 && rect.size.height > 0)
          {
 
-            ::int_rectangle rectCopy;
+            ::i32_rectangle rectCopy;
 
             rectCopy.left = rect.origin.x;
             rectCopy.top = rMainScreen.height() - (rect.origin.y + rect.size.height);
@@ -782,7 +782,7 @@ int_rectangle_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
 
    CGRect rect1 = {};
    
-   //int_rectangle rMainScreen;
+   //i32_rectangle rMainScreen;
    
    //get_main_screen_rectangle(rMainScreen);
    
@@ -978,7 +978,7 @@ int_rectangle_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
                if(CGRectIntersectsRect(rect1, rect))
                {
 
-                  ::int_rectangle rectCopy;
+                  ::i32_rectangle rectCopy;
 
                   rectCopy.left = rect.origin.x;
                   rectCopy.right = rect.origin.x + rect.size.width;
@@ -1051,7 +1051,7 @@ void cg_get_window_rect_list(int_rectangle_array & recta, array < CGWindowID > &
    
    //CGRect rect1={};
    
-   //int_rectangle rMainScreen;
+   //i32_rectangle rMainScreen;
 
    string strName;
    
@@ -1188,7 +1188,7 @@ void cg_get_window_rect_list(int_rectangle_array & recta, array < CGWindowID > &
          
          CGRectMakeWithDictionaryRepresentation(dictRect, &rect);
          
-         ::int_rectangle rectCopy;
+         ::i32_rectangle rectCopy;
          
          //rectCopy.left = rectangle.origin.x;
          //rectCopy.top = rMainScreen.height() - (rectangle.origin.y + rectangle.size.height);
@@ -1262,11 +1262,11 @@ int_bool is_window_occluded(CGWindowID windowid)
    
    return true;
 
-//   ::int_rectangle rectangle;
+//   ::i32_rectangle rectangle;
 //
 //   rectangle = oswindow->m_pimpl->m_puserinteraction->parent_client_rect();
 //
-//   ::int_rectangle rectTest;
+//   ::i32_rectangle rectTest;
 //
 //   for(int i = 0; i < recta.get_size(); i++)
 //   {
@@ -1289,7 +1289,7 @@ int_bool is_window_occluded(CGWindowID windowid)
 
 void cg_get_window_rect_list(int_rectangle_array & recta, array < CGWindowID > & windowida);
 
-int_bool point_is_window_origin(::int_point pointHitTest, CGWindowID windowidExclude, int iMargin)
+int_bool point_is_window_origin(::i32_point pointHitTest, CGWindowID windowidExclude, int iMargin)
 {
    
    //CGWindowID windowidExclude = get_os_window_window_number(oswindowExclude);
@@ -1300,7 +1300,7 @@ int_bool point_is_window_origin(::int_point pointHitTest, CGWindowID windowidExc
    
    cg_get_window_rect_list(recta, windowida);
    
-   ::int_rectangle rectTest;
+   ::i32_rectangle rectTest;
 
    for(::collection::index i = 0; i < recta.get_size(); i++)
    {

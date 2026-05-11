@@ -8,7 +8,7 @@
 #include "display.h"
 
 
-bool macos_get_cursor_position(::int_point * ppointCursor);
+bool macos_get_cursor_position(::i32_point * ppointCursor);
 int ns_monitor_count();
 char * ns_get_wallpaper();
 void ns_set_wallpaper(const char *psz);
@@ -85,10 +85,10 @@ namespace windowing_macos
    }
 
 
-   ::int_point display::_get_mouse_cursor_position()
+   ::i32_point display::_get_mouse_cursor_position()
    {
       
-      ::int_point p;
+      ::i32_point p;
       
       macos_get_cursor_position(&p);
       
@@ -96,7 +96,7 @@ namespace windowing_macos
       
    }
 
-::int_size display::get_main_screen_size()
+::i32_size display::get_main_screen_size()
 {
     
     return ::appkit::acme::windowing::display::get_main_screen_size();
