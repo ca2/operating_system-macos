@@ -95,7 +95,7 @@ namespace acme_macos
 
       ::process_identifier_array shared_library_process(string_array_base& straProcesses, const ::scoped_string & scopedstrLibrary) override;
 
-//         int_bool is_process_running(::u32 pid) override;
+//         ::i32_bool is_process_running(::u32 pid) override;
       
       string get_environment_variable(const ::scoped_string & scopedstrEnvironmentVariable) override;
       

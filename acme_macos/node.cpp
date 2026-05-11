@@ -970,7 +970,7 @@ void node::shell_open(const ::file::path & path, const ::scoped_string & scopeds
    }
 
 
-//   int_bool node::is_process_running(::u32 pid)
+//   ::i32_bool node::is_process_running(::u32 pid)
 //   {
 //
 //      throw interface_only();

@@ -85,7 +85,7 @@ virtual public ::appkit::acme::windowing::windowing
 
       //void get_cursor_position(INT_POINT * ppoint) override;
 
-      void _defer_dock_application(int_bool bDock);
+      void _defer_dock_application(::i32_bool bDock);
 
 
 //      void clear_keyboard_focus(::user::element* pelementGainingFocusIfAny) override;

@@ -136,7 +136,7 @@ namespace input_appkit
 
 
 
-      //virtual int_bool point_is_window_origin(::i32_point ptHitTest, oswindow oswindowExclude, int iMargin);
+      //virtual ::i32_bool point_is_window_origin(::i32_point ptHitTest, oswindow oswindowExclude, int iMargin);
 
       ////virtual void top_windows_by_z_order(hwnd_array & a);
 

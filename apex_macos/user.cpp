@@ -4,7 +4,7 @@
 #include <Carbon/Carbon.h>
 
 
-int_bool GetCursorPos(INT_POINT * ppointCursor)
+::i32_bool GetCursorPos(INT_POINT * ppointCursor)
 {
 
    HIPoint point;

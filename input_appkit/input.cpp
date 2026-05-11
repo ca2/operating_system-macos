@@ -899,7 +899,7 @@ namespace input_appkit
    //   //   }
    //
    //
-   //   int_bool windowing::point_is_window_origin(::i32_point ptHitTest, oswindow oswindowExclude, int iMargin)
+   //   ::i32_bool windowing::point_is_window_origin(::i32_point ptHitTest, oswindow oswindowExclude, int iMargin)
    //   {
    //
    //      HWND hwndExclude = __hwnd(oswindowExclude);

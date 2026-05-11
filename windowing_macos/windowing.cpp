@@ -353,7 +353,7 @@ bool windowing::defer_release_mouse_capture(::thread * pthread, ::acme::windowin
 
 
 
-   void windowing::_defer_dock_application(int_bool bDock)
+   void windowing::_defer_dock_application(::i32_bool bDock)
    {
 
       if (bDock)
