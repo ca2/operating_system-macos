@@ -29,7 +29,7 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
 
 //void apple_defer_nano_application_create(::platform::system * psystem);
 
-void ns_application_handle(long long l, void * p);
+void ns_application_handle(::i64 l, void * p);
 
 
 namespace appkit
@@ -308,7 +308,7 @@ void windowing::defer_create_windowing_application_delegate(::platform::applicat
 }
 
 
-void windowing::application_handle(long long l, void* p)
+void windowing::application_handle(::i64 l, void* p)
 {
    ns_application_handle(l, p);
    

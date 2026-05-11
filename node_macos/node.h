@@ -53,7 +53,7 @@ namespace node_macos
       //void acme_application_main(class ::platform::system * psystem) override;
       
       
-      //void application_handle(long long l, void * p) override;
+      //void application_handle(::i64 l, void * p) override;
       
       
       ::pointer < ::input::input > create_input() override;

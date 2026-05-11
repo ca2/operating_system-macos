@@ -50,6 +50,6 @@ class command_handler;
 -(void) try_close_application;
 -(id) initWithApplicationMenu:(::application_menu *) papplicationmenu andCommandHandler: (::command_handler *) pcommandhandler;
 -(void) application_menu_update;
--(void) application_handle: (long long) l withPointer :(void *) p;
+-(void) application_handle: (::i64) l withPointer :(void *) p;
 
 @end

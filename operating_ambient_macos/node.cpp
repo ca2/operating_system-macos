@@ -17,7 +17,7 @@
 //void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::application_menu_callback * papplicationmenucallback);
 
 
-//void ns_application_handle(long long l, void * p);
+//void ns_application_handle(::i64 l, void * p);
 
 
 namespace operating_ambient_macos
@@ -273,7 +273,7 @@ namespace operating_ambient_macos
 //   }
 
 
-//   void node::application_handle(long long l, void * p)
+//   void node::application_handle(::i64 l, void * p)
 //   {
 //   
 //      ns_application_handle(l, p);

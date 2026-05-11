@@ -243,7 +243,7 @@
 #ifdef Z_SOLO
    typedef unsigned long z_size_t;
 #else
-#  define z_longlong long long
+#  define z_longlong ::i64
 #  if defined(NO_SIZE_T)
      typedef unsigned NO_SIZE_T z_size_t;
 #  elif defined(STDC)
@@ -511,7 +511,7 @@ typedef uLong FAR uLongf;
 #  define z_off64_t off64_t
 #else
 #  if defined(_WIN32) && !defined(__GNUC__) && !defined(Z_SOLO)
-#    define z_off64_t __int64
+#    define z_off64_t ::i64
 #  else
 #    define z_off64_t z_off_t
 #  endif

@@ -336,7 +336,7 @@ namespace apex_macos
 //      {
 //      }
 //
-//      void rx::receiver::on_post(rx * ptarget,long long a,long long b)
+//      void rx::receiver::on_post(rx * ptarget,::i64 a,::i64 b)
 //      {
 //      }
 
@@ -376,7 +376,7 @@ namespace apex_macos
 //   }
 //
 //
-//   void * interprocess_target::on_interprocess_post(::interprocess_communication::rx * ptarget,long long a,long long b)
+//   void * interprocess_target::on_interprocess_post(::interprocess_communication::rx * ptarget,::i64 a,::i64 b)
 //   {
 //
 //      if(m_preceiver != nullptr)
