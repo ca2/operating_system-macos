@@ -225,7 +225,7 @@ void node::reboot()
     if (!ExitWindowsEx(EWX_REBOOT | EWX_FORCE,
     SHTDN_REASON_MAJOR_SOFTWARE | SHTDN_REASON_MINOR_INSTALLATION))
     {
-    unsigned int dwLastError = ::get_last_error();
+    ::u32 dwLastError = ::get_last_error();
     return false;
     }*/
    //reset the previlages
@@ -242,13 +242,13 @@ void node::terminate_processes_by_title(const ::scoped_string & scopedstrName)
 //      throw ::exception(error_not_implemented);;
    return;
 
-   /*      unsigned int dwPid;
+   /*      ::u32 dwPid;
     while(get_pid_by_title(pszName, dwPid))
     {
     HANDLE hProcess = OpenProcess( PROCESS_QUERY_INFORMATION |
     PROCESS_VM_READ,
     false, dwPid );
-    TerminateProcess(hProcess, (unsigned int) -1);
+    TerminateProcess(hProcess, (::u32) -1);
     CloseHandle(hProcess);
     ::EnumWindows((WNDENUMPROC)
     CKillProcessHelper::TerminateAppEnum,
@@ -891,7 +891,7 @@ void node::stop_service()
 //   }
 
 
-void node::raise_exception( unsigned int dwExceptionCode, unsigned int dwExceptionFlags)
+void node::raise_exception( ::u32 dwExceptionCode, ::u32 dwExceptionFlags)
 {
 
    throw ::exception(error_not_implemented);;
@@ -1126,7 +1126,7 @@ void node::on_process_request(::request * prequest)
 //   {
 //
 //
-////      unsigned int wAttr;
+////      ::u32 wAttr;
 ////      FILETIME creationTime;
 ////      FILETIME lastAccessTime;
 ////      FILETIME lastWriteTime;
@@ -1136,21 +1136,21 @@ void node::on_process_request(::request * prequest)
 ////
 ////      wstring wstr(lpszFileName);
 ////
-////      if((wAttr = windows_get_file_attributes(wstr)) == (unsigned int)-1L)
+////      if((wAttr = windows_get_file_attributes(wstr)) == (::u32)-1L)
 ////      {
 ////
 ////         ::windows::file_exception::throw_os_error( (int)get_last_error());
 ////
 ////      }
 ////
-////      if ((unsigned int)status.m_attribute != wAttr && (wAttr & ::windows::file::readOnly))
+////      if ((::u32)status.m_attribute != wAttr && (wAttr & ::windows::file::readOnly))
 ////      {
 ////
 ////         // set file attribute, only if currently readonly.
 ////         // This way we will be able to modify the time assuming the
 ////         // caller changed the file from readonly.
 ////
-////         if (!SetFileAttributesW(wstr, (unsigned int)status.m_attribute))
+////         if (!SetFileAttributesW(wstr, (::u32)status.m_attribute))
 ////         {
 ////
 ////            ::windows::file_exception::throw_os_error( (int)get_last_error());
@@ -1212,10 +1212,10 @@ void node::on_process_request(::request * prequest)
 ////
 ////      }
 ////
-////      if ((unsigned int)status.m_attribute != wAttr && !(wAttr & ::windows::file::readOnly))
+////      if ((::u32)status.m_attribute != wAttr && !(wAttr & ::windows::file::readOnly))
 ////      {
 ////
-////         if (!::SetFileAttributesW(wstr, (unsigned int)status.m_attribute))
+////         if (!::SetFileAttributesW(wstr, (::u32)status.m_attribute))
 ////         {
 ////
 ////            ::windows::file_exception::throw_os_error( (int)get_last_error());

@@ -45,7 +45,7 @@
    //bool m_bRAlt;
    //bool m_bLCommand; // In Windows, the Windows Key
    //bool m_bRCommand; // In Windows, the Windows Key
-   //unsigned int kbdModFlags;
+   //::u32 kbdModFlags;
    
    macOSControlBox *       m_pmacoscontrolbox;
 }

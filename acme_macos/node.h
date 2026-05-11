@@ -38,7 +38,7 @@ namespace acme_macos
       ::string get_file_type_identifier(const ::file::path & path) override;
       
       
-      void call_async(const ::scoped_string & pszPath, const ::scoped_string & pszParam, const ::scoped_string & pszDir, ::e_display edisplay, bool bPrivileged, unsigned int * puiPid = nullptr) override;
+      void call_async(const ::scoped_string & pszPath, const ::scoped_string & pszParam, const ::scoped_string & pszDir, ::e_display edisplay, bool bPrivileged, ::u32 * puiPid = nullptr) override;
       void call_sync(const ::scoped_string & pszPath, const ::scoped_string & pszParam, const ::scoped_string & pszDir, ::e_display edisplay, const class ::time & durationTimeout, ::property_set & set, int * piExitCode) override;
 
       //virtual ::color::color get_system_color(enum_system_color esystemcolor) override;
@@ -71,7 +71,7 @@ namespace acme_macos
       void launch_app(const ::scoped_string & scopedstr, const char ** argv, int iFlags) override;
       
       
-      virtual int _create_process2(const char * _cmd_line, unsigned int * pprocessId);
+      virtual int _create_process2(const char * _cmd_line, ::u32 * pprocessId);
       
       ::process_identifier create_process(const ::scoped_string & scopedstrCommandLine) override;
       
@@ -95,7 +95,7 @@ namespace acme_macos
 
       ::process_identifier_array shared_library_process(string_array_base& straProcesses, const ::scoped_string & scopedstrLibrary) override;
 
-//         int_bool is_process_running(unsigned int pid) override;
+//         int_bool is_process_running(::u32 pid) override;
       
       string get_environment_variable(const ::scoped_string & scopedstrEnvironmentVariable) override;
       

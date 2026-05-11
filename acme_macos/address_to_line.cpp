@@ -118,7 +118,7 @@
 address_to_line::slurp_symtab (bfd *abfd)
    {
       long symcount;
-      unsigned int size;
+      ::u32 size;
       
       if ((bfd_get_file_flags (abfd) & HAS_SYMS) == 0)
          return;
@@ -137,7 +137,7 @@ address_to_line::slurp_symtab (bfd *abfd)
    bfd_vma pc;
    const char *filename;
    const char *functionname;
-   unsigned int line;
+   ::u32 line;
    bfd_boolean found;
    
    /* Look for an address in a section.  This is called via

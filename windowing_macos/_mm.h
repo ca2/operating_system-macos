@@ -27,7 +27,7 @@ void ns_main_monitor_cgrect(CGRect * prect);
 //#endif
 
 
-void * new_macos_window(macos_window * papexwindow, CGRect rectangle, unsigned int uStyle);
+void * new_macos_window(macos_window * papexwindow, CGRect rectangle, ::u32 uStyle);
 
 
 #import "notify_icon_mm.h"

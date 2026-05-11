@@ -50,7 +50,7 @@ void ns_set_cursor(::windowing::cursor * pwindowingcursor);
 
 #define WHEEL_DELTA 120
 
-void create_macos_nswindow(macos_window * papexwindow, CGRect rect, unsigned int uStyle);
+void create_macos_nswindow(macos_window * papexwindow, CGRect rect, ::u32 uStyle);
 
 
 namespace windowing_macos
@@ -1222,7 +1222,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
    }
 
 
-//   bool window::macos_window_key_down(unsigned int uiKeyCode)
+//   bool window::macos_window_key_down(::u32 uiKeyCode)
 //   {
 //
 //      auto puserinteraction = user_interaction();
@@ -1249,7 +1249,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
 //   }
 //
 //
-//   bool window::macos_window_key_up(unsigned int uiKeyCode)
+//   bool window::macos_window_key_up(::u32 uiKeyCode)
 //   {
 //
 //      ::pointer < ::user::message > spbase;
@@ -1283,7 +1283,7 @@ pmessage->m_operatingsystemwindow = this->operating_system_window(); \
 pmessage->m_pwindow = this; \
 pmessage->m_eusermessage = emessage
 
-   bool window::macos_window_key_down(unsigned int virtualKey, unsigned int scanCode, const char * pszUtf8)
+   bool window::macos_window_key_down(::u32 virtualKey, ::u32 scanCode, const char * pszUtf8)
    {
       
       _NEW_MESSAGE(pkey, ::message::key, ::user::e_message_key_down);
@@ -1349,7 +1349,7 @@ pmessage->m_eusermessage = emessage
    }
 
 
-   bool window::macos_window_key_up(unsigned int virtualKey, unsigned int scan)
+   bool window::macos_window_key_up(::u32 virtualKey, ::u32 scan)
    {
 
       auto puserinteraction = user_interaction();

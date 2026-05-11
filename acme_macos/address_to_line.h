@@ -114,7 +114,7 @@ public:
    bfd_vma pc;
    const char *filename;
    const char *functionname;
-   unsigned int line;
+   ::u32 line;
    bfd_boolean found;
    
    /* Look for an address in a section.  This is called via

@@ -28,8 +28,8 @@
 extern "C"
 {
 
-   unsigned int GetVirtualKeyCodeFromKeycode(unsigned int keycode, unsigned int dwFlags);
-   unsigned int GetVirtualScanCodeFromVirtualKeyCode(unsigned int vkcode, unsigned int dwKeyboardType);
+   ::u32 GetVirtualKeyCodeFromKeycode(::u32 keycode, ::u32 dwFlags);
+   ::u32 GetVirtualScanCodeFromVirtualKeyCode(::u32 vkcode, ::u32 dwKeyboardType);
 
 } // extern "C"
 

@@ -14,7 +14,7 @@
    @public  char ** m_ppszWallpaper;
    @public   long long m_llWallpaper;
    @public  int m_iIcon;
-   @public  unsigned int * m_picon;
+   @public  ::u32 * m_picon;
    @public   int m_cxIcon;
    @public   int m_cyIcon;
    @public   int m_iScanIcon;

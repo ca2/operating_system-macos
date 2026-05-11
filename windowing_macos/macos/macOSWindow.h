@@ -18,7 +18,7 @@
 #include "macOSWindowController.h"
 #include "acme_windowing_appkit/ns_acme_window.h"
 
-unsigned int event_key_code(NSEvent * event);
+::u32 event_key_code(NSEvent * event);
 
 
 class macos_window;

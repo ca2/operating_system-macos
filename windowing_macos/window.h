@@ -142,10 +142,10 @@ namespace windowing_macos
       virtual void macos_window_mouse_dragged(double xHost, double yHost, double xAbsolute, double yAbsolute, unsigned long iAppleMouseButton) override;
       virtual void macos_window_mouse_wheel(double deltaY, double xHost, double yHost, double xAbsolute, double yAbsolute) override;
       virtual void macos_window_double_click(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute) override;
-      virtual bool macos_window_key_down(unsigned int vk, unsigned int scan, const char * pszUtf8) override;
-      virtual bool macos_window_key_up(unsigned int vk, unsigned int scan) override;
-//      virtual bool macos_window_key_down(unsigned int uiKeyCode) override;
-//      virtual bool macos_window_key_up(unsigned int uiKeyCode) override;
+      virtual bool macos_window_key_down(::u32 vk, ::u32 scan, const char * pszUtf8) override;
+      virtual bool macos_window_key_up(::u32 vk, ::u32 scan) override;
+//      virtual bool macos_window_key_down(::u32 uiKeyCode) override;
+//      virtual bool macos_window_key_up(::u32 uiKeyCode) override;
       
       
       void macos_window_become_key() override;

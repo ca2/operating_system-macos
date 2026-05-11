@@ -25,7 +25,7 @@ string macos_resource_folder();
 struct PROCESS_INFO_t
 {
    string csProcess;
-   unsigned int dwImageListIndex;
+   ::u32 dwImageListIndex;
 };
 
 

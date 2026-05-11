@@ -181,7 +181,7 @@ CoreMidiOutput::CoreMidiOutput(string driver) : OutputBase()
    
    bool found = false;
    getDestinations();
-   for (unsigned int n = 0; n < g_destinations.size(); n++)
+   for (::u32 n = 0; n < g_destinations.size(); n++)
    {
       if (g_destinations[n].m_name == driver)
       {

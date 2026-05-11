@@ -70,7 +70,7 @@
 //   MIDIPortRef port;
 //   MIDIEndpointRef endpoint;
 //   MIDIEndpointRef destinationId;
-//   unsigned long long lastTime;
+//   ::u64 lastTime;
 //   MIDISysexSendRequest sysexreq;
 //};
 

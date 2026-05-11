@@ -501,13 +501,13 @@ namespace music
       }
       
       /*
-      unsigned int MidiOutCore :: getPortCount()
+      ::u32 MidiOutCore :: getPortCount()
       {
          CFRunLoopRunInMode( kCFRunLoopDefaultMode, 0, false );
          return MIDIGetNumberOfDestinations();
       }
       
-      std::string MidiOutCore :: getPortName( unsigned int portNumber )
+      std::string MidiOutCore :: getPortName( ::u32 portNumber )
       {
          CFStringRef nameRef;
          MIDIEndpointRef portRef;
@@ -531,7 +531,7 @@ namespace music
          return stringName = name;
       }
       
-      void MidiOutCore :: openPort( unsigned int portNumber, const std::string portName )
+      void MidiOutCore :: openPort( ::u32 portNumber, const std::string portName )
       {
          if ( connected_ ) {
             errorString_ = "MidiOutCore::openPort: a valid connection already exists!";
@@ -540,7 +540,7 @@ namespace music
          }
          
          CFRunLoopRunInMode( kCFRunLoopDefaultMode, 0, false );
-         unsigned int nDest = MIDIGetNumberOfDestinations();
+         ::u32 nDest = MIDIGetNumberOfDestinations();
          if (nDest < 1) {
             errorString_ = "MidiOutCore::openPort: no MIDI output destinations found!";
             error( RtMidiError::NO_DEVICES_FOUND, errorString_ );
