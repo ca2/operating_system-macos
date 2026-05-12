@@ -34,7 +34,7 @@
 
 #include "innate_subsystem_macos/gui/NotifyIconWindow.h"
 
-#include <shellapi.h>
+//#include <shellapi.h>
 
 namespace innate_subsystem_macos
 {

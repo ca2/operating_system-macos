@@ -34,6 +34,9 @@
 // #include "innate_subsystem/drawing/Brush.h"
 // #include "innate_subsystem/drawing/Pen.h"
 
+#define WIN32_TRANSPARENT 0
+
+
 namespace innate_subsystem_macos
 {
    class Graphics :

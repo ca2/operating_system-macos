@@ -25,7 +25,7 @@
 #include "framework.h"
 #include "TabControl.h"
 #include "innate_subsystem/gui/Tab.h"
-#include <commctrl.h>
+//#include <commctrl.h>
 
 namespace innate_subsystem_macos
 {
@@ -64,18 +64,18 @@ namespace innate_subsystem_macos
       auto ptab = createø<::innate_subsystem::TabInterface>();
       ptab->initialize_tab(pwindow, caption);
       m_tabContainer.add(ptab);
-      TCITEM tcitem = {0};
-      tcitem.mask = TCIF_TEXT;
-      TCHAR fixedCaption[255];
-      ::wstring wstr(ptab->getCaption());
-      _tcscpy(&fixedCaption[0], wstr.c_str());
-      tcitem.pszText = fixedCaption;
-      if (TabCtrl_InsertItem((HWND) _HWND(), m_tabContainer.size() - 1, &tcitem) == FALSE) {
-         //
-         // Handle error
-         // ...
-         //
-      }
+//      TCITEM tcitem = {0};
+//      tcitem.mask = TCIF_TEXT;
+//      TCHAR fixedCaption[255];
+//      ::wstring wstr(ptab->getCaption());
+//      _tcscpy(&fixedCaption[0], wstr.c_str());
+//      tcitem.pszText = fixedCaption;
+//      if (TabCtrl_InsertItem((HWND) _HWND(), m_tabContainer.size() - 1, &tcitem) == FALSE) {
+//         //
+//         // Handle error
+//         // ...
+//         //
+//      }
    }
 
    void TabControl::showTab(int index)
@@ -84,7 +84,7 @@ namespace innate_subsystem_macos
       if (selectedIndex >= 0) {
          getTab(selectedIndex)->setVisible(false);
       }
-      TabCtrl_SetCurSel((HWND) _HWND(), index);
+//      TabCtrl_SetCurSel((HWND) _HWND(), index);
       getTab(index)->setVisible(true);
    }
 
@@ -96,7 +96,7 @@ namespace innate_subsystem_macos
             return;
          }
       }
-      _ASSERT(FALSE);
+      ASSERT(FALSE);
    }
 
 
@@ -104,23 +104,23 @@ namespace innate_subsystem_macos
    {
 
       ::i32_rectangle rectangle;
-      POINT first, last;
-
-      this->adjustRect(rectangle);
-
-      first.x = rectangle.left;
-      first.y = rectangle.top;
-      last.x = rectangle.right;
-      last.y = rectangle.bottom;
-
-      HWND hwndFrom = ::as_HWND(this->operating_system_window());
-      HWND hwndTo = ::as_HWND(pwindow->operating_system_window());
-
-      MapWindowPoints(hwndFrom, hwndTo, &first, 1);
-      MapWindowPoints(hwndFrom, hwndTo, &last, 1);
-
-      MoveWindow(hwndTo,
-                 first.x, first.y, last.x - first.x, last.y - first.y, true);
+//      POINT first, last;
+//
+//      this->adjustRect(rectangle);
+//
+//      first.x = rectangle.left;
+//      first.y = rectangle.top;
+//      last.x = rectangle.right;
+//      last.y = rectangle.bottom;
+//
+//      HWND hwndFrom = ::as_HWND(this->operating_system_window());
+//      HWND hwndTo = ::as_HWND(pwindow->operating_system_window());
+//
+//      MapWindowPoints(hwndFrom, hwndTo, &first, 1);
+//      MapWindowPoints(hwndFrom, hwndTo, &last, 1);
+//
+//      MoveWindow(hwndTo,
+//                 first.x, first.y, last.x - first.x, last.y - first.y, true);
 
    }
 
@@ -132,7 +132,7 @@ namespace innate_subsystem_macos
       //    delete tab;
       // }
       m_tabContainer.clear();
-      TabCtrl_DeleteAllItems((HWND) _HWND());
+      //TabCtrl_DeleteAllItems((HWND) _HWND());
    }
 
    void TabControl::removeTab(int index)
@@ -142,7 +142,7 @@ namespace innate_subsystem_macos
         // if (i == index) {
             //delete *it;
             m_tabContainer.erase_at(index);
-            TabCtrl_DeleteItem((HWND) _HWND(), index);
+            //TabCtrl_DeleteItem((HWND) _HWND(), index);
         //    break;
          //}
          //i++;
@@ -151,43 +151,44 @@ namespace innate_subsystem_macos
 
    int TabControl::getSelectedTabIndex()
    {
-      int page = TabCtrl_GetCurSel((HWND) _HWND());
-      return page;
+      //int page = TabCtrl_GetCurSel((HWND) _HWND());
+      //return page;
+      return 0;
    }
 
    void TabControl::adjustRect(::i32_rectangle &rect)
    {
-      RECT rc;
-      GetClientRect((HWND) _HWND(), &rc);
-      TabCtrl_AdjustRect((HWND) _HWND(), FALSE, &rc);
-      ::copy(&rect, &rc);
+//      RECT rc;
+//      GetClientRect((HWND) _HWND(), &rc);
+//      TabCtrl_AdjustRect((HWND) _HWND(), FALSE, &rc);
+//      ::copy(&rect, &rc);
 
    }
 
    bool TabControl::on_window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam)
    {
 
-      if (message == WM_APP + 125)
-      {
-
-         int iId = (int) ::GetWindowLongPtr((HWND) this->_HWND(), GWLP_ID);
-
-         ::cast < ::innate_subsystem_macos::Window > pwindowParent = getParent();
-
-         pwindowParent->_setChildControlType(iId, ::innate_subsystem::e_control_tab);
-         pwindowParent->_addChildNotification(iId, TCN_SELCHANGE);
-         pwindowParent->_addChildNotification(iId, TCN_SELCHANGING);
-
-         lresult = 0;
-         return true;
-
-      }
-      else if (message == WM_DESTROY)
-      {
-
-         m_tabContainer.clear();
-
-      }
+//      if (message == WM_APP + 125)
+//      {
+//
+//         int iId = (int) ::GetWindowLongPtr((HWND) this->_HWND(), GWLP_ID);
+//
+//         ::cast < ::innate_subsystem_macos::Window > pwindowParent = getParent();
+//
+//         pwindowParent->_setChildControlType(iId, ::innate_subsystem::e_control_tab);
+//         pwindowParent->_addChildNotification(iId, TCN_SELCHANGE);
+//         pwindowParent->_addChildNotification(iId, TCN_SELCHANGING);
+//
+//         lresult = 0;
+//         return true;
+//
+//      }
+//      else if (message == WM_DESTROY)
+//      {
+//
+//         m_tabContainer.clear();
+//
+//      }
 
       return Control::on_window_procedure(lresult, message, wparam, lparam);
 
@@ -196,34 +197,34 @@ namespace innate_subsystem_macos
 
    bool TabControl::onTabNotification(windows_reflect_notify_t & notify)
    {
-
-      switch (notify.m_lpnmhdr->code)
-   {
-      case TCN_SELCHANGE:
-      {
-         _001OnTabChanged();
-         break;
-      }
-      case TCN_SELCHANGING:
-      {
-
-         bool bOk = true;
-
-         bool bHandled = _001OnTabChanging(bOk);
-
-         if (bHandled)
-         {
-
-            notify.m_lresult = bOk ? TRUE : FALSE;
-
-            notify.m_bHandled = true;
-
-         }
-
-         break;
-      }
-         break;
-   }
+//
+//      switch (notify.m_lpnmhdr->code)
+//   {
+//      case TCN_SELCHANGE:
+//      {
+//         _001OnTabChanged();
+//         break;
+//      }
+//      case TCN_SELCHANGING:
+//      {
+//
+//         bool bOk = true;
+//
+//         bool bHandled = _001OnTabChanging(bOk);
+//
+//         if (bHandled)
+//         {
+//
+//            notify.m_lresult = bOk ? TRUE : FALSE;
+//
+//            notify.m_bHandled = true;
+//
+//         }
+//
+//         break;
+//      }
+//         break;
+//   }
 
 
       return false;
@@ -232,33 +233,33 @@ namespace innate_subsystem_macos
    void TabControl::_000OnNotifyReflect(windows_reflect_notify_t & notify)
    {
 
-      switch (notify.m_lpnmhdr->code)
-      {
-         case TCN_SELCHANGE:
-         {
-            _001OnTabChanged();
-            break;
-         }
-         case TCN_SELCHANGING:
-         {
-
-            bool bOk = true;
-
-            bool bHandled = _001OnTabChanging(bOk);
-
-            if (bHandled)
-            {
-
-               notify.m_lresult = bOk ? TRUE : FALSE;
-
-               notify.m_bHandled = true;
-
-            }
-
-            break;
-         }
-         break;
-        }
+//      switch (notify.m_lpnmhdr->code)
+//      {
+//         case TCN_SELCHANGE:
+//         {
+//            _001OnTabChanged();
+//            break;
+//         }
+//         case TCN_SELCHANGING:
+//         {
+//
+//            bool bOk = true;
+//
+//            bool bHandled = _001OnTabChanging(bOk);
+//
+//            if (bHandled)
+//            {
+//
+//               notify.m_lresult = bOk ? TRUE : FALSE;
+//
+//               notify.m_bHandled = true;
+//
+//            }
+//
+//            break;
+//         }
+//         break;
+//        }
 
    }
 

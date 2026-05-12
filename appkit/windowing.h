@@ -36,7 +36,7 @@ namespace appkit
       ::acme::windowing::window *
       acme_windowing_window(const ::operating_system::window &operatingsystemwindow) override;
    
-      void add_window(::acme::windowing::window * pacmewindowingwindow);
+      void add_window(::acme::windowing::window * pacmewindowingwindow) override;
 
       void each_window(const ::function < void(::acme::windowing::window * pacmewindowingwindow) > & function) override;
 

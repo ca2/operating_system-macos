@@ -28,77 +28,77 @@
 
 #include "innate_subsystem_macos/_common_header.h"
 
-#include <uxtheme.h>
-#include <vssym32.h>
-
-#include "acme/prototype/prototype/memory.h"
-
+////#include <uxtheme.h>
+////#include <vssym32.h>
 //
-// Define type for api functions
+//#include "acme/prototype/prototype/memory.h"
 //
-
-namespace innate_subsystem_macos
-{
-   typedef HRESULT (__stdcall *PFNCLOSETHEMEDATA)(HTHEME hTheme);
-
-   typedef HRESULT (__stdcall *PFNDRAWTHEMEBACKGROUND)(HTHEME hTheme, HDC hdc,
-                                                       int iPartId, int iStateId,
-                                                       const RECT *pRect,
-                                                       const RECT *pClipRect);
-
-   typedef HTHEME (__stdcall *PFNOPENTHEMEDATA)(HWND hwnd, LPCWSTR pszClassList);
-
-   typedef HRESULT (__stdcall *PFNDRAWTHEMETEXT)(HTHEME hTheme, HDC hdc, int iPartId,
-                                                 int iStateId, LPCWSTR pszText,
-                                                 int iCharCount, DWORD dwTextFlags,
-                                                 DWORD dwTextFlags2, const RECT *pRect);
-
-   typedef HRESULT (__stdcall *PFNGETTHEMEBACKGROUNDCONTENTRECT)(HTHEME hTheme,  HDC hdc,
-                                                                 int iPartId, int iStateId,
-                                                                 const RECT *pBoundingRect,
-                                                                 RECT *pContentRect);
-
-   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS ThemeLib :
-   virtual public ::particle
-   {
-   public:
-      ThemeLib();
-      ~ThemeLib();
-
-      static bool initialize();
-      static void deinitialize();
-
-      static bool isLoaded();
-
-      static HRESULT CloseThemeData(HTHEME hTheme);
-
-      static HRESULT DrawThemeBackground(HTHEME hTheme, HDC hdc,
-                                         int iPartId, int iStateId,
-                                         RECT * pRect,
-                                         const RECT * pClipRect);
-
-      static HTHEME OpenThemeData(HWND hwnd, LPCWSTR pszClassList);
-
-      static HRESULT DrawThemeText(HTHEME hTheme, HDC hdc, int iPartId,
-                                   int iStateId, LPCWSTR pszText,
-                                   int iCharCount, DWORD dwTextFlags,
-                                   DWORD dwTextFlags2, const RECT * pRect);
-
-      static HRESULT GetThemeBackgroundContentRect(HTHEME hTheme,  HDC hdc,
-                                                   int iPartId, int iStateId,
-                                                   const RECT * pBoundingRect,
-                                                   RECT * pContentRect);
-
-
-      static bool s_isThemeLibLoaded;
-      static HMODULE s_lib;
-
-      static PFNOPENTHEMEDATA s_OpenThemeData;
-      static PFNDRAWTHEMEBACKGROUND s_DrawThemeBackground;
-      static PFNCLOSETHEMEDATA s_CloseThemeData;
-      static PFNDRAWTHEMETEXT s_DrawThemeText;
-      static PFNGETTHEMEBACKGROUNDCONTENTRECT s_GetThemeBackgroundContentRect;
-   };
-
-
-} // namespace innate_subsystem_macos
+////
+//// Define type for api functions
+////
+//
+//namespace innate_subsystem_macos
+//{
+//   typedef HRESULT (__stdcall *PFNCLOSETHEMEDATA)(HTHEME hTheme);
+//
+//   typedef HRESULT (__stdcall *PFNDRAWTHEMEBACKGROUND)(HTHEME hTheme, HDC hdc,
+//                                                       int iPartId, int iStateId,
+//                                                       const RECT *pRect,
+//                                                       const RECT *pClipRect);
+//
+//   typedef HTHEME (__stdcall *PFNOPENTHEMEDATA)(HWND hwnd, LPCWSTR pszClassList);
+//
+//   typedef HRESULT (__stdcall *PFNDRAWTHEMETEXT)(HTHEME hTheme, HDC hdc, int iPartId,
+//                                                 int iStateId, LPCWSTR pszText,
+//                                                 int iCharCount, DWORD dwTextFlags,
+//                                                 DWORD dwTextFlags2, const RECT *pRect);
+//
+//   typedef HRESULT (__stdcall *PFNGETTHEMEBACKGROUNDCONTENTRECT)(HTHEME hTheme,  HDC hdc,
+//                                                                 int iPartId, int iStateId,
+//                                                                 const RECT *pBoundingRect,
+//                                                                 RECT *pContentRect);
+//
+//   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS ThemeLib :
+//   virtual public ::particle
+//   {
+//   public:
+//      ThemeLib();
+//      ~ThemeLib();
+//
+//      static bool initialize();
+//      static void deinitialize();
+//
+//      static bool isLoaded();
+//
+//      static HRESULT CloseThemeData(HTHEME hTheme);
+//
+//      static HRESULT DrawThemeBackground(HTHEME hTheme, HDC hdc,
+//                                         int iPartId, int iStateId,
+//                                         RECT * pRect,
+//                                         const RECT * pClipRect);
+//
+//      static HTHEME OpenThemeData(HWND hwnd, LPCWSTR pszClassList);
+//
+//      static HRESULT DrawThemeText(HTHEME hTheme, HDC hdc, int iPartId,
+//                                   int iStateId, LPCWSTR pszText,
+//                                   int iCharCount, DWORD dwTextFlags,
+//                                   DWORD dwTextFlags2, const RECT * pRect);
+//
+//      static HRESULT GetThemeBackgroundContentRect(HTHEME hTheme,  HDC hdc,
+//                                                   int iPartId, int iStateId,
+//                                                   const RECT * pBoundingRect,
+//                                                   RECT * pContentRect);
+//
+//
+//      static bool s_isThemeLibLoaded;
+//      static HMODULE s_lib;
+//
+//      static PFNOPENTHEMEDATA s_OpenThemeData;
+//      static PFNDRAWTHEMEBACKGROUND s_DrawThemeBackground;
+//      static PFNCLOSETHEMEDATA s_CloseThemeData;
+//      static PFNDRAWTHEMETEXT s_DrawThemeText;
+//      static PFNGETTHEMEBACKGROUNDCONTENTRECT s_GetThemeBackgroundContentRect;
+//   };
+//
+//
+//} // namespace innate_subsystem_macos

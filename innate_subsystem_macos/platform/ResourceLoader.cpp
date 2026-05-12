@@ -28,6 +28,8 @@
 #include "ResourceLoader.h"
 #include "drawing/Icon.h"
 #include "drawing/Cursor.h"
+#include "operating_system-apple/core_graphics/core_graphics.h"
+#include "operating_system-apple/core_graphics/ns_image.h"
 //#include "acme/operating_system/macos/user.h"
 //#include "util/UnicodeStringStorage.h"
 
@@ -49,11 +51,12 @@ namespace innate_subsystem_macos
 
       auto picon = create_newø<::innate_subsystem_macos::Icon>();
 
-      auto lpcwsz = ::macos::get_system_cursor(ecursor);
+      //auto lpcwsz = ::macos::get_system_cursor(ecursor);
       //return LoadIcon(NULL, iconName);
       // if ((::iptr)iconName < 65536)
       // {
-         picon->m_hicon = ::LoadIcon(NULL, lpcwsz);
+        // picon->m_hicon = ::LoadIcon(NULL, lpcwsz);
+      picon->m_pnsimage = CoreGraphics().load_icon(ecursor);
       //
       // }
       // else

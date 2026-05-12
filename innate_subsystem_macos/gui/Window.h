@@ -109,6 +109,7 @@ namespace innate_subsystem_macos
       ::string       m_strClassName;
       ::string       m_strWindowName;
       //HICON          m_hicon;
+      ::pointer < ::core_graphics::ns_image > m_pnsimageIcon;
       bool           m_bWndCreated;
       //WNDPROC        m_wndprocDefault;
       ::pointer<::innate_subsystem::WindowInterface> m_pwindowDeferredParent;
@@ -166,14 +167,14 @@ namespace innate_subsystem_macos
       ~Window() override;
 
 
-      void * _HWND() const override;
-      void _setHWND(void *) override;
+      operating_ambient_window_t operating_ambient_window() const override;
+      void set_operating_ambient_window(operating_ambient_window_t  operatingambientwindow) override;
 
 
       void * _WNDPROC_default() const override;
 
-      virtual void _setWindowClassGeneric();
-      virtual void _setWindowClassViewer();
+      //virtual void _setWindowClassGeneric();
+      //virtual void _setWindowClassViewer();
 
       // getWindow()
       // Get a handle of the window

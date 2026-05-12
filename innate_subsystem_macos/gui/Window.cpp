@@ -42,7 +42,7 @@
 namespace innate_subsystem_macos
 {
    Window::Window()
-      : // m_windowswindow.as_HWND()(0),
+      : // m_macoswindow.as_HWND()(0),
    //   m_hicon(0),
       m_bWndCreated(false),
    m_sizeIsChanged(false)
@@ -52,8 +52,8 @@ namespace innate_subsystem_macos
 
    Window::~Window()
    {
-      // if (m_bWndCreated && m_windowswindow.as_HWND()) {
-      //    DestroyWindow(m_windowswindow.as_HWND());
+      // if (m_bWndCreated && m_macoswindow.as_HWND()) {
+      //    DestroyWindow(m_macoswindow.as_HWND());
       // }
       // if (m_hicon) {
       //    DeleteObject(m_hicon);
@@ -61,24 +61,31 @@ namespace innate_subsystem_macos
    }
 
 
-   void * Window::_HWND() const
-   {
-
-      return m_windowswindow.as_HWND();
+   operating_ambient_window_t Window::operating_ambient_window() const
+{
+   
+   return {(::uptr)m_macoswindow.as_CGWindowID()};
 
    }
-   void Window::_setHWND(void * p)
+
+
+   void Window::set_operating_ambient_window(operating_ambient_window_t operatingambientwindow)
    {
 
-      m_windowswindow = (HWND) p;
+      m_macoswindow.m_eoperatingambient = ::windowing::e_operating_ambient_macos;
+      m_macoswindow.m_opaque.m_ulla[0] = operatingambientwindow.m_u;
 
    }
 
 
    void *Window::_WNDPROC_default() const
    {
+      
+      throw ::not_implemented();
+      
+      return nullptr;
 
-      return m_wndprocDefault;
+      //return m_wndprocDefault;
 
    }
 
@@ -86,7 +93,7 @@ namespace innate_subsystem_macos
    operating_system::window Window::operating_system_window() const
    {
 
-      return m_windowswindow.as_operating_system_window();
+      return m_macoswindow.as_operating_system_window();
 
    }
 
@@ -94,7 +101,7 @@ namespace innate_subsystem_macos
    void Window::set_operating_system_window(const operating_system::window &operatingsystemwindow)
    {
 
-      m_windowswindow = operatingsystemwindow;
+      m_macoswindow = operatingsystemwindow;
 
    }
 
@@ -131,141 +138,141 @@ namespace innate_subsystem_macos
 
       if (ewindowclass == innate_subsystem::e_window_class_viewer)
       {
-         _setWindowClassViewer();
+         //_setWindowClassViewer();
       }
       else
       {
-         _setWindowClassGeneric();
+         //_setWindowClassGeneric();
 
       }
       //;
       //m_strClassName = scopedstrWindowClassName;
    }
-
-   void Window::_setWindowClassViewer()
-   {
-
-      static bool s_bRegistered = false;
-      static WNDCLASSW s_wndclass{};
-
-      m_strClassName = "innate_subsystem_viewer_window";
-
-      if (!s_bRegistered)
-      {
-
-         s_bRegistered = true;
-
-         ::wstring wstrClassName(m_strClassName);
-         
-         s_wndclass.lpfnWndProc = ::macos::window::s_window_procedure;
-         s_wndclass.hInstance = (HINSTANCE) ::macos::hinstance_from_function(::macos::window::s_window_procedure);
-         s_wndclass.lpszClassName = wstrClassName.c_str();
-         s_wndclass.style = CS_HREDRAW | CS_VREDRAW;
-         s_wndclass.hbrBackground = GetSysColorBrush(COLOR_WINDOW);
-         
-         RegisterClass(&s_wndclass);
-          
-      }
-
-   }
-
-   void Window::_setWindowClassGeneric()
-   {
-
-      static bool s_bRegistered = false;
-      static WNDCLASSW s_wndclass{};
-
-      m_strClassName = "innate_subsystem_window";
-
-      if (!s_bRegistered)
-      {
-
-         s_bRegistered = true;
-
-         ::wstring wstrClassName(m_strClassName);
-
-         s_wndclass.lpfnWndProc = ::macos::window::s_window_procedure;
-         s_wndclass.hInstance = (HINSTANCE)::macos::hinstance_from_function(::macos::window::s_window_procedure);
-         s_wndclass.lpszClassName = wstrClassName.c_str();
-         s_wndclass.style = CS_HREDRAW | CS_VREDRAW;
-         s_wndclass.hbrBackground = GetSysColorBrush(COLOR_WINDOW);
-
-         RegisterClass(&s_wndclass);
-      }
-   }
+//
+//   void Window::_setWindowClassViewer()
+//   {
+//
+//      static bool s_bRegistered = false;
+//      static WNDCLASSW s_wndclass{};
+//
+//      m_strClassName = "innate_subsystem_viewer_window";
+//
+//      if (!s_bRegistered)
+//      {
+//
+//         s_bRegistered = true;
+//
+//         ::wstring wstrClassName(m_strClassName);
+//         
+//         s_wndclass.lpfnWndProc = ::macos::window::s_window_procedure;
+//         s_wndclass.hInstance = (HINSTANCE) ::macos::hinstance_from_function(::macos::window::s_window_procedure);
+//         s_wndclass.lpszClassName = wstrClassName.c_str();
+//         s_wndclass.style = CS_HREDRAW | CS_VREDRAW;
+//         s_wndclass.hbrBackground = GetSysColorBrush(COLOR_WINDOW);
+//         
+//         RegisterClass(&s_wndclass);
+//          
+//      }
+//
+//   }
+//
+//   void Window::_setWindowClassGeneric()
+//   {
+//
+//      static bool s_bRegistered = false;
+//      static WNDCLASSW s_wndclass{};
+//
+//      m_strClassName = "innate_subsystem_window";
+//
+//      if (!s_bRegistered)
+//      {
+//
+//         s_bRegistered = true;
+//
+//         ::wstring wstrClassName(m_strClassName);
+//
+//         s_wndclass.lpfnWndProc = ::macos::window::s_window_procedure;
+//         s_wndclass.hInstance = (HINSTANCE)::macos::hinstance_from_function(::macos::window::s_window_procedure);
+//         s_wndclass.lpszClassName = wstrClassName.c_str();
+//         s_wndclass.style = CS_HREDRAW | CS_VREDRAW;
+//         s_wndclass.hbrBackground = GetSysColorBrush(COLOR_WINDOW);
+//
+//         RegisterClass(&s_wndclass);
+//      }
+//   }
 
 
    bool Window::createWindow(const ::scoped_string & scopedstrWindowName, unsigned int style, const ::operating_system::window & operatingsystemwindowParent,
                                  int xPos, int yPos, int width, int height)
    {
-      if (m_windowswindow.is_set()) {
+      if (m_macoswindow.is_set()) {
          return false;
       }
       ::system()->acme_windowing()->send([&]()
          {
       m_strWindowName = scopedstrWindowName;
-      auto hwndParent = ::as_HWND(operatingsystemwindowParent);
-      HWND hwnd = CreateWindow(::wstring(m_strClassName),
-                            ::wstring(m_strWindowName),
-                            style,
-                            xPos, yPos,
-                            width, height,
-                            hwndParent, 0, (HINSTANCE) ::macos::hinstance_from_function(::macos::window::s_window_procedure),
-                            reinterpret_cast<LPVOID>((::macos::window *)this));
-      m_bWndCreated = (hwnd == 0 ? false : true);
-      if (m_bWndCreated) {
-
-         //m_wndprocDefault = (WNDPROC)GetWindowLongPtr(hwnd, GWLP_WNDPROC);
-         SetWindowLongPtr(hwnd,
-                          GWLP_USERDATA,
-                          reinterpret_cast<LONG_PTR>(this));
-      }
+      auto hwndParent = ::as_u64(operatingsystemwindowParent);
+//      HWND hwnd = CreateWindow(::wstring(m_strClassName),
+//                            ::wstring(m_strWindowName),
+//                            style,
+//                            xPos, yPos,
+//                            width, height,
+//                            hwndParent, 0, (HINSTANCE) ::macos::hinstance_from_function(::macos::window::s_window_procedure),
+//                            reinterpret_cast<LPVOID>((::macos::window *)this));
+//      m_bWndCreated = (hwnd == 0 ? false : true);
+//      if (m_bWndCreated) {
+//
+//         //m_wndprocDefault = (WNDPROC)GetWindowLongPtr(hwnd, GWLP_WNDPROC);
+//         SetWindowLongPtr(hwnd,
+//                          GWLP_USERDATA,
+//                          reinterpret_cast<LONG_PTR>(this));
+//      }
          });
       return true;
    }
 
    void Window::loadIcon(unsigned int id)
    {
-      if (m_hicon) {
-         DeleteObject(m_hicon);
-         m_hicon = 0;
-      }
-      if (IS_INTRESOURCE(id)) {
-         m_hicon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(id));
-         SetClassLongPtr(m_windowswindow.as_HWND(), GCLP_HICON, reinterpret_cast<LONG_PTR>(m_hicon));
-      } else {
-         SetClassLongPtr(m_windowswindow.as_HWND(), GCLP_HICON, static_cast<LONG_PTR>(id));
-      }
+//      if (m_hicon) {
+//         DeleteObject(m_hicon);
+//         m_hicon = 0;
+//      }
+//      if (IS_INTRESOURCE(id)) {
+//         m_hicon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(id));
+//         SetClassLongPtr(m_macoswindow.as_HWND(), GCLP_HICON, reinterpret_cast<LONG_PTR>(m_hicon));
+//      } else {
+//         SetClassLongPtr(m_macoswindow.as_HWND(), GCLP_HICON, static_cast<LONG_PTR>(id));
+//      }
    }
 
    void Window::enableWindow(bool bEnable)
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      EnableWindow(m_windowswindow.as_HWND(), bEnable);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      EnableWindow(m_macoswindow.as_HWND(), bEnable);
    }
 
    void Window::setEnabled(bool enabled)
    {
-      if (enabled) {
-         SendMessage(m_windowswindow.as_HWND(), WM_ENABLE, TRUE, NULL);
-         removeStyle(WS_DISABLED);
-      } else {
-         if (isStyleEnabled(WS_DISABLED)) {
-            return ;
-         } // if already disabled
-         SendMessage(m_windowswindow.as_HWND(), WM_ENABLE, FALSE, NULL);
-         addStyle(WS_DISABLED);
-      }
-      invalidate();
+//      if (enabled) {
+//         SendMessage(m_macoswindow.as_HWND(), WM_ENABLE, TRUE, NULL);
+//         removeStyle(WS_DISABLED);
+//      } else {
+//         if (isStyleEnabled(WS_DISABLED)) {
+//            return ;
+//         } // if already disabled
+//         SendMessage(m_macoswindow.as_HWND(), WM_ENABLE, FALSE, NULL);
+//         addStyle(WS_DISABLED);
+//      }
+//      invalidate();
    }
 
 
    bool Window::destroyWindow()
    {
-      if (m_windowswindow.as_HWND()) {
-         DestroyWindow(m_windowswindow.as_HWND());
-         return true;
-      }
+      //if (m_macoswindow.as_CGWindowID()) {
+//         DestroyWindow(m_macoswindow.as_CGWindowID());
+//         return true;
+//      }
       return false;
    }
 
@@ -308,77 +315,82 @@ namespace innate_subsystem_macos
 
    void Window::show()
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      ShowWindow(m_windowswindow.as_HWND(), SW_SHOW);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ShowWindow(m_macoswindow.as_HWND(), SW_SHOW);
    }
 
    void Window::hide()
    {
-      if (m_windowswindow.as_HWND() != 0)
-      {
-         ShowWindow(m_windowswindow.as_HWND(), SW_HIDE);
-      }
+//      if (m_macoswindow.as_HWND() != 0)
+//      {
+//         ShowWindow(m_macoswindow.as_HWND(), SW_HIDE);
+//      }
    }
 
    bool Window::setSize(const ::i32_size & size)
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      return !!SetWindowPos(m_windowswindow.as_HWND(), 0, 0, 0, size.cx, size.cy,
-                            SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      return !!SetWindowPos(m_macoswindow.as_HWND(), 0, 0, 0, size.cx, size.cy,
+//                            SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+      return false;
    }
 
    bool Window::setPosition(const ::i32_point & point)
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      return !!SetWindowPos(m_windowswindow.as_HWND(), 0, point.x, point.y, 0, 0,
-                            SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      return !!SetWindowPos(m_macoswindow.as_HWND(), 0, point.x, point.y, 0, 0,
+//                            SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+      return false;
    }
 
    bool Window::setPlacement(const ::i32_rectangle & rectangle)
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      return !!SetWindowPos(m_windowswindow.as_HWND(), 0,
-         rectangle.left, rectangle.top,
-         rectangle.width(), rectangle.height(),
-                            SWP_NOZORDER | SWP_NOACTIVATE);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      return !!SetWindowPos(m_macoswindow.as_HWND(), 0,
+//         rectangle.left, rectangle.top,
+//         rectangle.width(), rectangle.height(),
+//                            SWP_NOZORDER | SWP_NOACTIVATE);
+      return false;
    }
 
    void Window::setParent(::innate_subsystem::WindowInterface * pwindow)
    {
-       if (m_windowswindow.as_HWND() == nullptr)
-       {
-
-           m_pwindowDeferredParent = pwindow;
-      }
-       else
-       {
-          if (::is_null(pwindow))
-             SetParent(m_windowswindow.as_HWND(), nullptr);
-          else
-          {
-             auto hwndParent = (HWND)pwindow->_HWND();
-             SetParent(m_windowswindow.as_HWND(), hwndParent);
-          }
-       }
+//       if (m_macoswindow.as_HWND() == nullptr)
+//       {
+//
+//           m_pwindowDeferredParent = pwindow;
+//      }
+//       else
+//       {
+//          if (::is_null(pwindow))
+//             SetParent(m_macoswindow.as_HWND(), nullptr);
+//          else
+//          {
+//             auto hwndParent = (HWND)pwindow->_HWND();
+//             SetParent(m_macoswindow.as_HWND(), hwndParent);
+//          }
+//       }
    }
 
 
    ::operating_system::window Window::dialog_item_operating_system_window(int iDlgItem)
    {
 
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      auto hwndChild = ::GetDlgItem(m_windowswindow.as_HWND(), iDlgItem);
-      return ::as_operating_system_window(hwndChild);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      auto hwndChild = ::GetDlgItem(m_macoswindow.as_HWND(), iDlgItem);
+//      return ::as_operating_system_window(hwndChild);
+      
+      return {};
    }
 
    void Window::subclassControlById(::Particle * pWindowControl, unsigned int id)
    {
 
-       auto pwindow = pWindowControl->impl<innate_subsystem_macos::Window>();
-
-      auto operatingsystemwindow = dialog_item_operating_system_window(id);
-
-      pwindow->subclassWindow(operatingsystemwindow);
+//       auto pwindow = pWindowControl->impl<innate_subsystem_macos::Window>();
+//
+//      auto operatingsystemwindow = dialog_item_operating_system_window(id);
+//
+//      pwindow->subclassWindow(operatingsystemwindow);
 
    }
 
@@ -386,45 +398,45 @@ namespace innate_subsystem_macos
    void Window::subclassWindow(const ::operating_system::window & operatingsystemwindow)
    {
 
-      HWND hwnd = ::as_HWND(operatingsystemwindow);
-       m_windowswindow = hwnd;
-      m_wndprocDefault = (WNDPROC) ::GetWindowLongPtr(hwnd, GWLP_WNDPROC);
-      //::SetWindowLongPtr(hwnd, GWLP_USERDATA, (LPARAM)(::uptr) (::macos::window *) this);
-      ::cast < ::macos::windowing > pwindowing = ::system()->acme_windowing();
-      pwindowing->m_windowmap[hwnd] = this;
-      ::SetWindowLongPtr(hwnd, GWLP_WNDPROC,(LPARAM)(::uptr)(::macos::window::s_window_procedure));
-      ::SendMessage(hwnd, WM_APP + 125, 0, 0);
+//      HWND hwnd = ::as_HWND(operatingsystemwindow);
+//       m_macoswindow = hwnd;
+//      m_wndprocDefault = (WNDPROC) ::GetWindowLongPtr(hwnd, GWLP_WNDPROC);
+//      //::SetWindowLongPtr(hwnd, GWLP_USERDATA, (LPARAM)(::uptr) (::macos::window *) this);
+//      ::cast < ::macos::windowing > pwindowing = ::system()->acme_windowing();
+//      pwindowing->m_windowmap[hwnd] = this;
+//      ::SetWindowLongPtr(hwnd, GWLP_WNDPROC,(LPARAM)(::uptr)(::macos::window::s_window_procedure));
+//      ::SendMessage(hwnd, WM_APP + 125, 0, 0);
    }
 
 
    ::innate_subsystem::WindowInterface * Window::getParent()
    {
 
-      auto hwnd = m_windowswindow.as_HWND();
-
-      auto hwndParent = ::GetParent(hwnd);
-
-      if (!hwndParent)
-      {
-
-         return nullptr;
-
-      }
-
-      ::cast < ::macos::windowing > pwindowing = ::system()->acme_windowing();
-      auto pwindow=pwindowing->m_windowmap[hwndParent];
-
-      ::cast < Window > pwindowSubsystem = pwindow;
-
-      if (!pwindowSubsystem)
-      {
-
-         return nullptr;
-
-      }
-
-      return pwindowSubsystem;
-
+//      auto hwnd = m_macoswindow.as_HWND();
+//
+//      auto hwndParent = ::GetParent(hwnd);
+//
+//      if (!hwndParent)
+//      {
+//
+//         return nullptr;
+//
+//      }
+//
+//      ::cast < ::macos::windowing > pwindowing = ::system()->acme_windowing();
+//      auto pwindow=pwindowing->m_windowmap[hwndParent];
+//
+//      ::cast < Window > pwindowSubsystem = pwindow;
+//
+//      if (!pwindowSubsystem)
+//      {
+//
+//         return nullptr;
+//
+//      }
+//
+//      return pwindowSubsystem;
+      return nullptr;
 
    }
 
@@ -453,48 +465,48 @@ namespace innate_subsystem_macos
    void Window::unsubclassWindow()
    {
 
-      auto hwnd = m_windowswindow.as_HWND();
-      _ASSERT(hwnd != 0);
-
-
-      ::SetWindowLongPtr(hwnd, GWLP_USERDATA, (LPARAM) (::uptr) nullptr);
-      ::SetWindowLongPtr(hwnd, GWLP_WNDPROC, reinterpret_cast<iptr>(m_wndprocDefault));
-
-      m_wndprocDefault = nullptr;
-      m_windowswindow = nullptr;
-
+//      auto hwnd = m_macoswindow.as_HWND();
+//      _ASSERT(hwnd != 0);
+//
+//
+//      ::SetWindowLongPtr(hwnd, GWLP_USERDATA, (LPARAM) (::uptr) nullptr);
+//      ::SetWindowLongPtr(hwnd, GWLP_WNDPROC, reinterpret_cast<iptr>(m_wndprocDefault));
+//
+//      m_wndprocDefault = nullptr;
+//      m_macoswindow = nullptr;
+//
 
    }
 
 
    void Window::setClassStyle(unsigned int style)
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      SetClassLong(m_windowswindow.as_HWND(), GCL_STYLE, style);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      SetClassLong(m_macoswindow.as_HWND(), GCL_STYLE, style);
    }
 
    void Window::setClassCursor(::innate_subsystem::CursorInterface * pcursor)
    {
-      auto hcursor = pcursor->_HCURSOR();
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      SetClassLongPtr(m_windowswindow.as_HWND(), GCLP_HCURSOR, (LONG_PTR)hcursor);
+//      auto hcursor = pcursor->_HCURSOR();
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      SetClassLongPtr(m_macoswindow.as_HWND(), GCLP_HCURSOR, (LONG_PTR)hcursor);
    }
 
    void Window::setClassBackground(::innate_subsystem::BrushInterface *)
    {
-      //auto pbrushWin32 = pbrush->impl<::innate_subsystem_macos::Brush>();
-      //auto hbrush = (HBRUSH) (HGDIOBJ) pbrush->_HGDIOBJ();
-      //auto hbrush = pbrushWin32->m_pbrush->Get
-      auto hbrush = (HBRUSH) ::CreateSolidBrush(::GetSysColor(COLOR_WINDOW));
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      SetClassLongPtr(m_windowswindow.as_HWND(), GCLP_HBRBACKGROUND, (LONG_PTR) hbrush);
+//      //auto pbrushWin32 = pbrush->impl<::innate_subsystem_macos::Brush>();
+//      //auto hbrush = (HBRUSH) (HGDIOBJ) pbrush->_HGDIOBJ();
+//      //auto hbrush = pbrushWin32->m_pbrush->Get
+//      auto hbrush = (HBRUSH) ::CreateSolidBrush(::GetSysColor(COLOR_WINDOW));
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      SetClassLongPtr(m_macoswindow.as_HWND(), GCLP_HBRBACKGROUND, (LONG_PTR) hbrush);
    }
 
    void Window::setClassMenu(::innate_subsystem::MenuInterface * pmenu)
    {
-      auto hmenu = (HMENU) pmenu->_HMENU();
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      SetClassLongPtr(m_windowswindow.as_HWND(), GCLP_MENUNAME,(LONG_PTR) hmenu);
+//      auto hmenu = (HMENU) pmenu->_HMENU();
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      SetClassLongPtr(m_macoswindow.as_HWND(), GCLP_MENUNAME,(LONG_PTR) hmenu);
    }
 
 
@@ -508,15 +520,16 @@ namespace innate_subsystem_macos
 
    long long Window::getStyle()
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      return GetWindowLong(m_windowswindow.as_HWND(), GWL_STYLE);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      return GetWindowLong(m_macoswindow.as_HWND(), GWL_STYLE);
+      return 0;
    }
 
 
    void Window::setStyle(unsigned int style)
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      SetWindowLong(m_windowswindow.as_HWND(), GWL_STYLE, style);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      SetWindowLong(m_macoswindow.as_HWND(), GWL_STYLE, style);
    }
 
 
@@ -529,7 +542,7 @@ namespace innate_subsystem_macos
           return;
 
       }
-      DWORD flags = getStyle();
+      ::u32 flags = getStyle();
       flags |= styleFlag;
       setStyle(flags);
    }
@@ -538,14 +551,14 @@ namespace innate_subsystem_macos
 
    void Window::removeStyle(unsigned int  styleFlag)
    {
-      DWORD flags = getStyle();
+      ::uptr flags =  getStyle();
       flags &= ~styleFlag;
       setStyle(flags);
    }
 
    bool Window::isStyleEnabled(unsigned int  styleFlag)
    {
-      unsigned int  flags = getStyle();
+      ::uptr flags = getStyle();
       return (flags & styleFlag) == styleFlag;
    }
 
@@ -553,14 +566,15 @@ namespace innate_subsystem_macos
 
    long long Window::getExStyle()
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      return GetWindowLong(m_windowswindow.as_HWND(), GWL_EXSTYLE);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      return GetWindowLong(m_macoswindow.as_HWND(), GWL_EXSTYLE);
+      return 0;
    }
 
    void Window::setExStyle(unsigned int exstyle)
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      SetWindowLong(m_windowswindow.as_HWND(), GWL_EXSTYLE, exstyle);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      SetWindowLong(m_macoswindow.as_HWND(), GWL_EXSTYLE, exstyle);
    }
 
 
@@ -575,18 +589,18 @@ namespace innate_subsystem_macos
          return;
 
       }
-      DWORD flags = getExStyle();
+      ::uptr flags = getExStyle();
       flags |= styleFlag;
-      setExStyle(flags);
+      setExStyle((::u32) flags);
    }
 
 
 
    void Window::removeExStyle(unsigned int  styleFlag)
    {
-      DWORD flags = getExStyle();
+      ::uptr flags = getExStyle();
       flags &= ~styleFlag;
-      setExStyle(flags);
+      setExStyle((::u32)flags);
    }
 
    bool Window::isExStyleEnabled(unsigned int  styleFlag)
@@ -598,26 +612,27 @@ namespace innate_subsystem_macos
 
    void Window::updateWindow()
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      UpdateWindow(m_windowswindow.as_HWND());
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      UpdateWindow(m_macoswindow.as_HWND());
    }
 
    void Window::setTimer(::uptr ident, unsigned int time)
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      SetTimer(m_windowswindow.as_HWND(), ident, time, 0);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      SetTimer(m_macoswindow.as_HWND(), ident, time, 0);
    }
 
    void Window::killTimer(::uptr ident)
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-      KillTimer(m_windowswindow.as_HWND(), ident);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      KillTimer(m_macoswindow.as_HWND(), ident);
    }
 
    bool Window::_onWmCommand(::wparam wparam, ::lparam lparam)
    {
 
-      return onCommand(LOWORD(wparam), HIWORD(wparam));
+      //return onCommand(LOWORD(wparam), HIWORD(wparam));
+      return false;
      
 
    }
@@ -669,7 +684,7 @@ namespace innate_subsystem_macos
    // void * Window::_HWND() const
    // {
    //
-   //    return m_windowswindow.as_HWND();
+   //    return m_macoswindow.as_HWND();
    //
    // }
    //
@@ -677,24 +692,24 @@ namespace innate_subsystem_macos
    // void Window::_setHWND(void * p)
    // {
    //
-   //    m_windowswindow = (HWND) p;
+   //    m_macoswindow = (HWND) p;
    //
    // }
    //
    //
    // void Window::_setHen(HWND hwnd)
    // {
-   //    m_windowswindow.as_HWND() = hwnd;
+   //    m_macoswindow.as_HWND() = hwnd;
    // }
    //
    // HWND Window::getHWnd() const
    // {
-   //    return m_windowswindow.as_HWND();
+   //    return m_macoswindow.as_HWND();
    // }
 
    void Window::setWindowText(const ::scoped_string & scopedstr)
    {
-      if (m_windowswindow.is_null())
+      if (m_macoswindow.is_null())
       {
 
          m_strWindowTextOffline = scopedstr;
@@ -702,24 +717,24 @@ namespace innate_subsystem_macos
          return;
 
       }
-      ::wstring wstr(scopedstr);
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-
-      SetWindowText(m_windowswindow.as_HWND(), wstr);
+//      ::wstring wstr(scopedstr);
+//      _ASSERT(m_macoswindow.as_CGWindowID()() != 0);
+//
+//      SetWindowText(m_macoswindow.as_CGWindowID()(), wstr);
    }
 
    void Window::redraw(const ::i32_rectangle &rcArea)
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-
-      if (rcArea == 0) {
-         InvalidateRect(m_windowswindow.as_HWND(), NULL, TRUE);
-      } else {
-
-         RECT rc;
-         ::copy(rc, rcArea);
-         InvalidateRect(m_windowswindow.as_HWND(), &rc, FALSE);
-      }
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//
+//      if (rcArea == 0) {
+//         InvalidateRect(m_macoswindow.as_HWND(), NULL, TRUE);
+//      } else {
+//
+//         RECT rc;
+//         ::copy(rc, rcArea);
+//         InvalidateRect(m_macoswindow.as_HWND(), &rc, FALSE);
+//      }
    }
 
    bool Window::onMouseEx(unsigned int uMessage, int mouseButtons, unsigned short wspeed, const ::i32_point &point,
@@ -753,47 +768,53 @@ namespace innate_subsystem_macos
 
    void Window::setForegroundWindow()
    {
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-
-      SetForegroundWindow(m_windowswindow.as_HWND());
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//
+//      SetForegroundWindow(m_macoswindow.as_HWND());
    }
 
 
    void Window::setFocus()
    {
-      ::SetFocus(m_windowswindow.as_HWND());
+      //::SetFocus(m_macoswindow.as_HWND());
    }
 
    bool Window::hasFocus()
    {
-      return (::GetFocus() == m_windowswindow.as_HWND()) || (GetForegroundWindow() == m_windowswindow.as_HWND());
+//      return (::GetFocus() == m_macoswindow.as_HWND()) || (GetForegroundWindow() == m_macoswindow.as_HWND());
+      return true;
    }
 
    bool Window::setForeground()
    {
-      return SetForegroundWindow(m_windowswindow.as_HWND()) != 0;
+      //return SetForegroundWindow(m_macoswindow.as_HWND()) != 0;
+      return true;
    }
 
    bool Window::isEnabled()
    {
-      return (!isStyleEnabled(WS_DISABLED));
+      //return (!isStyleEnabled(WS_DISABLED));
+      return true;
    }
 
    bool Window::isVisible()
    {
-      return ::IsWindowVisible(m_windowswindow.as_HWND()) != FALSE;
+      //return ::IsWindowVisible(m_macoswindow.as_HWND()) != FALSE;
+      return true;
    }
 
    bool Window::isWindow()
    {
-      return (m_windowswindow.as_HWND() != nullptr)
-      && (m_windowswindow.as_HWND() != INVALID_HANDLE_VALUE)
-      && (::IsWindow(m_windowswindow.as_HWND()) != FALSE);
+//      return (m_macoswindow.as_HWND() != nullptr)
+//      && (m_macoswindow.as_HWND() != INVALID_HANDLE_VALUE)
+//      && (::IsWindow(m_macoswindow.as_HWND()) != FALSE);
+      return true;
    }
 
    bool Window::isIconic()
    {
-      return ::IsIconic(m_windowswindow.as_HWND()) != FALSE;
+      //return ::IsIconic(m_macoswindow.as_HWND()) != FALSE;
+      return false;
    }
 
    bool Window::isMinimized()
@@ -808,37 +829,37 @@ namespace innate_subsystem_macos
 
    void Window::invalidate()
    {
-      InvalidateRect(m_windowswindow.as_HWND(), NULL, TRUE);
+      //InvalidateRect(m_macoswindow.as_HWND(), NULL, TRUE);
    }
 
    ::string Window::getText()
    {
 
-      int length = (int)SendMessage(m_windowswindow.as_HWND(), WM_GETTEXTLENGTH, 0, 0);
-
-      ::wstring wstr;
-
-      GetWindowText(m_windowswindow.as_HWND(), wstr.auto_release_buffer(length), length + 1);
-
-      return wstr;
-
+//      int length = (int)SendMessage(m_macoswindow.as_HWND(), WM_GETTEXTLENGTH, 0, 0);
+//
+//      ::wstring wstr;
+//
+//      GetWindowText(m_macoswindow.as_HWND(), wstr.auto_release_buffer(length), length + 1);
+//
+//      return wstr;
+      return {};
    }
 
 
    void Window::postMessage(unsigned int Msg, ::wparam wparam, ::lparam lparam)
    {
 
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-
-      PostMessage(m_windowswindow.as_HWND(), Msg, wparam, lparam);
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//
+//      PostMessage(m_macoswindow.as_HWND(), Msg, wparam, lparam);
 
    }
 
 
    void Window::post(const ::procedure& procedure)
    {
-
-       postMessage(WM_APP + 876, 0, procedure);
+//
+//       postMessage(WM_APP + 876, 0, procedure);
 
    }
 
@@ -846,17 +867,18 @@ namespace innate_subsystem_macos
    ::i32_rectangle Window::getClientRect()
    {
 
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-
-      RECT rect{};
-
-      GetClientRect(m_windowswindow.as_HWND(), &rect);
-
-      ::i32_rectangle rectangle;
-
-      ::copy(rectangle, rect);
-
-      return rectangle;
+//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//
+//      RECT rect{};
+//
+//      GetClientRect(m_macoswindow.as_HWND(), &rect);
+//
+//      ::i32_rectangle rectangle;
+//
+//      ::copy(rectangle, rect);
+//
+//      return rectangle;
+      return {};
 
    }
 
@@ -865,85 +887,87 @@ namespace innate_subsystem_macos
    {
 
 
-      // Get size of desktop.
-      HMONITOR hmon = MonitorFromWindow(m_windowswindow.as_HWND(), MONITOR_DEFAULTTONEAREST);
-      MONITORINFO mi;
-      mi.cbSize = sizeof(mi);
-
-      RECT fullScreenWindowsRect;
-      if (!!GetMonitorInfo(hmon, &mi)) {
-         fullScreenWindowsRect = mi.rcMonitor;
-      }
-      else {
-         warning("Get monitor info is failed. Use second method (no multi-screen).");
-         GetWindowRect(GetDesktopWindow(), &fullScreenWindowsRect);
-      }
-      ::i32_rectangle fullScreenRect;
-      fullScreenRect = fullScreenWindowsRect;
-
-
-      return fullScreenRect;
+//      // Get size of desktop.
+//      HMONITOR hmon = MonitorFromWindow(m_macoswindow.as_HWND(), MONITOR_DEFAULTTONEAREST);
+//      MONITORINFO mi;
+//      mi.cbSize = sizeof(mi);
+//
+//      RECT fullScreenWindowsRect;
+//      if (!!GetMonitorInfo(hmon, &mi)) {
+//         fullScreenWindowsRect = mi.rcMonitor;
+//      }
+//      else {
+//         warning("Get monitor info is failed. Use second method (no multi-screen).");
+//         GetWindowRect(GetDesktopWindow(), &fullScreenWindowsRect);
+//      }
+//      ::i32_rectangle fullScreenRect;
+//      fullScreenRect = fullScreenWindowsRect;
+//
+//
+//      return fullScreenRect;
+      return {};
    }
 
 
    ::i32_rectangle Window::getScreenWorkArea()
    {
-
-      // Get work area.
-      ::i32_rectangle rectangleScreenWorkArea;
-
-      HMONITOR hmon = MonitorFromWindow(m_windowswindow.as_HWND(), MONITOR_DEFAULTTONEAREST);
-      MONITORINFO mi;
-      mi.cbSize = sizeof(mi);
-
-      if (!!GetMonitorInfo(hmon, &mi)) {
-         rectangleScreenWorkArea = mi.rcWork;
-      } else {
-         debug("Get monitor info is failed. Use second method (no multi-screen).");
-         ::i32_rectangle desktopRc;
-         if (!MainSubsystem().SystemInformation().getDesktopArea(desktopRc)) {
-            MainSubsystem().SystemInformation().getDesktopAllArea(desktopRc);
-         }
-         rectangleScreenWorkArea  = desktopRc;
-      }
-
-
-      return rectangleScreenWorkArea;
-
+//
+//      // Get work area.
+//      ::i32_rectangle rectangleScreenWorkArea;
+//
+//      HMONITOR hmon = MonitorFromWindow(m_macoswindow.as_HWND(), MONITOR_DEFAULTTONEAREST);
+//      MONITORINFO mi;
+//      mi.cbSize = sizeof(mi);
+//
+//      if (!!GetMonitorInfo(hmon, &mi)) {
+//         rectangleScreenWorkArea = mi.rcWork;
+//      } else {
+//         debug("Get monitor info is failed. Use second method (no multi-screen).");
+//         ::i32_rectangle desktopRc;
+//         if (!MainSubsystem().SystemInformation().getDesktopArea(desktopRc)) {
+//            MainSubsystem().SystemInformation().getDesktopAllArea(desktopRc);
+//         }
+//         rectangleScreenWorkArea  = desktopRc;
+//      }
+//
+//
+//      return rectangleScreenWorkArea;
+      return {};
    }
 
    void Window::_setSizeFullScreenWindow()
    {
-      // Save position of window.
-      GetWindowPlacement(m_windowswindow.as_HWND(), &m_windowplacementWorkArea);
-
-      auto fullScreenRect = getFullScreenRect();
-
-      setStyle((getStyle() | WS_MAXIMIZE) & ~(WS_CAPTION | WS_BORDER | WS_THICKFRAME  | WS_MAXIMIZEBOX));
-      setExStyle(getExStyle() | WS_EX_TOPMOST);
-
-      SetWindowPos(m_windowswindow.as_HWND(), 0,
-                   fullScreenRect.left, fullScreenRect.top,
-                   fullScreenRect.width(), fullScreenRect.height(),
-                   SWP_SHOWWINDOW);
+//      // Save position of window.
+//      GetWindowPlacement(m_macoswindow.as_HWND(), &m_windowplacementWorkArea);
+//
+//      auto fullScreenRect = getFullScreenRect();
+//
+//      setStyle((getStyle() | WS_MAXIMIZE) & ~(WS_CAPTION | WS_BORDER | WS_THICKFRAME  | WS_MAXIMIZEBOX));
+//      setExStyle(getExStyle() | WS_EX_TOPMOST);
+//
+//      SetWindowPos(m_macoswindow.as_HWND(), 0,
+//                   fullScreenRect.left, fullScreenRect.top,
+//                   fullScreenRect.width(), fullScreenRect.height(),
+//                   SWP_SHOWWINDOW);
+      
    }
 
 
    void Window::_doRestoreFromFullScreen()
    {
-      // Restore position, style and exstyle of windowed window.
-      setStyle(getStyle() | WS_CAPTION | WS_BORDER | WS_THICKFRAME | WS_MAXIMIZEBOX);
-      setExStyle(getExStyle() & ~WS_EX_TOPMOST);
-      ::i32_rectangle workArea;
-      workArea = m_windowplacementWorkArea.rcNormalPosition;
-      if (m_rectangleNormal.height() == workArea.height() ||
-          m_rectangleNormal.width() == workArea.width()) {
-         SetWindowPlacement(m_windowswindow.as_HWND(), &m_windowplacementWorkArea);
-          } else {
-             setStyle(getStyle() & ~WS_MAXIMIZE);
-             setPlacement(m_rectangleNormal);
-          }
-
+//      // Restore position, style and exstyle of windowed window.
+//      setStyle(getStyle() | WS_CAPTION | WS_BORDER | WS_THICKFRAME | WS_MAXIMIZEBOX);
+//      setExStyle(getExStyle() & ~WS_EX_TOPMOST);
+//      ::i32_rectangle workArea;
+//      workArea = m_windowplacementWorkArea.rcNormalPosition;
+//      if (m_rectangleNormal.height() == workArea.height() ||
+//          m_rectangleNormal.width() == workArea.width()) {
+//         SetWindowPlacement(m_macoswindow.as_HWND(), &m_windowplacementWorkArea);
+//          } else {
+//             setStyle(getStyle() & ~WS_MAXIMIZE);
+//             setPlacement(m_rectangleNormal);
+//          }
+//
 
    }
 
@@ -1066,7 +1090,14 @@ namespace innate_subsystem_macos
 
         //// Restore position, style and exstyle of windowed window.
         //set_style(get_style() | WS_CAPTION | WS_BORDER | WS_THICKFRAME | WS_MAXIMIZEBOX);
-        setExStyle(getExStyle() & ~WS_EX_TOPMOST);
+       
+       
+       
+       
+       //setExStyle(getExStyle() & ~WS_EX_TOPMOST);
+       
+       
+       
         //::i32_rectangle workArea;
         //workArea = m_workArea.rcNormalPosition;
         //if (m_rcNormal.height() == workArea.height() ||
@@ -1101,7 +1132,7 @@ namespace innate_subsystem_macos
          _doMinimizeFromFullScreen();
 
       }
-      ::ShowWindow(m_windowswindow.as_HWND(), SW_MINIMIZE);
+      //::ShowWindow(m_macoswindow.as_HWND(), SW_MINIMIZE);
 
 
    }
@@ -1168,14 +1199,15 @@ namespace innate_subsystem_macos
    ::i32_size Window::getBorderSize()
    {
 
-      _ASSERT(m_windowswindow.as_HWND() != 0);
-
-      auto width = 2 * GetSystemMetrics(SM_CXSIZEFRAME);
-
-      auto height = GetSystemMetrics(SM_CYSIZE) +
-                2 * GetSystemMetrics(SM_CYSIZEFRAME);
-
-      return {width, height};
+      //_ASSERT(m_macoswindow.as_CGWindowID()() != 0);
+//
+//      auto width = 2 * GetSystemMetrics(SM_CXSIZEFRAME);
+//
+//      auto height = GetSystemMetrics(SM_CYSIZE) +
+//                2 * GetSystemMetrics(SM_CYSIZEFRAME);
+//
+//      return {width, height};
+      return {};
 
    }
 
@@ -1199,49 +1231,49 @@ namespace innate_subsystem_macos
 
       }
 
-      if (m_pdevicecontextBuffer && m_sizeBuffer == m_clientArea.size())
-      {
-
-          return;
-      }
-
-      if (m_pdevicecontextBuffer && m_pdevicecontextBuffer->m_pgraphics)
-      {
-         m_pdevicecontextBuffer->destroyDeviceContext();
-          if (m_hbitmapOld)
-          {
-              SelectObject(m_hdcBuffer, m_hbitmapOld);
-          }
-          ::DeleteDC(m_hdcBuffer);
-      }
-
-      m_sizeBuffer = m_clientArea.size();
-
-      m_hdcBuffer = CreateCompatibleDC(m_paintStruct.hdc);
-      void *pBits = nullptr;
-
-      // 2️⃣ Create 32-bit DIB section (alpha preserved)
-      BITMAPINFO bi = {};
-      bi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-      bi.bmiHeader.biWidth = m_sizeBuffer.cx;
-      bi.bmiHeader.biHeight = -m_sizeBuffer.cy; // top-down
-      bi.bmiHeader.biPlanes = 1;
-      bi.bmiHeader.biBitCount = 32;
-      bi.bmiHeader.biCompression = BI_RGB;
-      m_hbitmapBuffer = CreateDIBSection(m_paintStruct.hdc, &bi, DIB_RGB_COLORS, &pBits, nullptr, 0);
-      m_hbitmapOld = (HBITMAP)SelectObject(m_hdcBuffer, m_hbitmapBuffer);
-
-      // 1️⃣ Create memory DC
-      defer_construct_newø(m_pbitmapBuffer);
-      m_pbitmapBuffer->_initialize_bitmap(m_hbitmapBuffer, nullptr);
-
-      defer_construct_newø(m_pdevicecontextBuffer);
-      m_pdevicecontextBuffer->initialize_device_context(m_pbitmapBuffer);
-      auto p = m_pdevicecontextBuffer->impl<::innate_subsystem_macos::DeviceContext>();
-      p->m_hdc2 = m_hdcBuffer;
-      p->m_pgraphics = new Gdiplus::Graphics(p->m_hdc2);
-      // 3️⃣ Clear buffer (transparent black)
-    //  ZeroMemory(pBits, m_sizeBuffer.area() * 4);
+//      if (m_pdevicecontextBuffer && m_sizeBuffer == m_clientArea.size())
+//      {
+//
+//          return;
+//      }
+//
+//      if (m_pdevicecontextBuffer && m_pdevicecontextBuffer->m_pgraphics)
+//      {
+//         m_pdevicecontextBuffer->destroyDeviceContext();
+//          if (m_hbitmapOld)
+//          {
+//              SelectObject(m_hdcBuffer, m_hbitmapOld);
+//          }
+//          ::DeleteDC(m_hdcBuffer);
+//      }
+//
+//      m_sizeBuffer = m_clientArea.size();
+//
+//      m_hdcBuffer = CreateCompatibleDC(m_paintStruct.hdc);
+//      void *pBits = nullptr;
+//
+//      // 2️⃣ Create 32-bit DIB section (alpha preserved)
+//      BITMAPINFO bi = {};
+//      bi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+//      bi.bmiHeader.biWidth = m_sizeBuffer.cx;
+//      bi.bmiHeader.biHeight = -m_sizeBuffer.cy; // top-down
+//      bi.bmiHeader.biPlanes = 1;
+//      bi.bmiHeader.biBitCount = 32;
+//      bi.bmiHeader.biCompression = BI_RGB;
+//      m_hbitmapBuffer = CreateDIBSection(m_paintStruct.hdc, &bi, DIB_RGB_COLORS, &pBits, nullptr, 0);
+//      m_hbitmapOld = (HBITMAP)SelectObject(m_hdcBuffer, m_hbitmapBuffer);
+//
+//      // 1️⃣ Create memory DC
+//      defer_construct_newø(m_pbitmapBuffer);
+//      m_pbitmapBuffer->_initialize_bitmap(m_hbitmapBuffer, nullptr);
+//
+//      defer_construct_newø(m_pdevicecontextBuffer);
+//      m_pdevicecontextBuffer->initialize_device_context(m_pbitmapBuffer);
+//      auto p = m_pdevicecontextBuffer->impl<::innate_subsystem_macos::DeviceContext>();
+//      p->m_hdc2 = m_hdcBuffer;
+//      p->m_pgraphics = new Gdiplus::Graphics(p->m_hdc2);
+//      // 3️⃣ Clear buffer (transparent black)
+//    //  ZeroMemory(pBits, m_sizeBuffer.area() * 4);
    }
 
 
@@ -1257,76 +1289,76 @@ namespace innate_subsystem_macos
    void Window::_doPaint(HDC hdc)
    {
 
-      //m_bIsDraw = true;
-      //DeviceContext dc(this);
-      //onPaint(&dc, &m_paintStruct);
-      //EndPaint(m_hWnd, &m_paintStruct);
-      //m_bIsDraw = false;
-      //return true;
-      ::i32_rectangle paintRect(m_paintStruct.rcPaint);
-
-
-      // 5️⃣ Blit to screen (alpha ignored in normal window)
-
-
-      // Cleanup
-      // SelectObject(hdcMem, hOld);
-      // DeleteObject(hBmp);
-      // DeleteDC(hdcMem);
-
-      // EndPaint(hwnd, &ps);
-      if (paintRect.is_empty())
-      {
-
-         return;
-      }
-
-      m_clientArea = getClientRect();
-
-      if (m_clientArea.is_empty())
-      {
-         return;
-      }
-
-
-      _defer_update_double_buffering();
-
-
-      if (m_pdevicecontextBuffer)
-      {
-         // onDraw(m_hdcBuffer, m_paintStruct.rcPaint);
-
-         ::i32_rectangle r;
-
-         copy(r, m_paintStruct.rcPaint);
-
-         ::innate_subsystem_macos::Graphics g;
-
-         // defer_construct_newø(m_pdevicecontextBuffer);
-
-         g.initialize_graphics(m_pdevicecontextBuffer);
-
-
-         // g.m_pdevicecontext->_attachHDC(hdc);
-
-
-         onDraw(&g, r);
-
-         // g.m_pdevicecontext->_attachHDC(nullptr);
-
-         g.m_pdevicecontext = nullptr;
-      }
-
-      ::BitBlt(
-         m_paintStruct.hdc,
-         m_paintStruct.rcPaint.left,
-         m_paintStruct.rcPaint.top,
-         ::width(m_paintStruct.rcPaint),
-         ::height(m_paintStruct.rcPaint),
-         m_hdcBuffer,
-         m_paintStruct.rcPaint.left,
-         m_paintStruct.rcPaint.top,
-         SRCCOPY);
+//      //m_bIsDraw = true;
+//      //DeviceContext dc(this);
+//      //onPaint(&dc, &m_paintStruct);
+//      //EndPaint(m_hWnd, &m_paintStruct);
+//      //m_bIsDraw = false;
+//      //return true;
+//      ::i32_rectangle paintRect(m_paintStruct.rcPaint);
+//
+//
+//      // 5️⃣ Blit to screen (alpha ignored in normal window)
+//
+//
+//      // Cleanup
+//      // SelectObject(hdcMem, hOld);
+//      // DeleteObject(hBmp);
+//      // DeleteDC(hdcMem);
+//
+//      // EndPaint(hwnd, &ps);
+//      if (paintRect.is_empty())
+//      {
+//
+//         return;
+//      }
+//
+//      m_clientArea = getClientRect();
+//
+//      if (m_clientArea.is_empty())
+//      {
+//         return;
+//      }
+//
+//
+//      _defer_update_double_buffering();
+//
+//
+//      if (m_pdevicecontextBuffer)
+//      {
+//         // onDraw(m_hdcBuffer, m_paintStruct.rcPaint);
+//
+//         ::i32_rectangle r;
+//
+//         copy(r, m_paintStruct.rcPaint);
+//
+//         ::innate_subsystem_macos::Graphics g;
+//
+//         // defer_construct_newø(m_pdevicecontextBuffer);
+//
+//         g.initialize_graphics(m_pdevicecontextBuffer);
+//
+//
+//         // g.m_pdevicecontext->_attachHDC(hdc);
+//
+//
+//         onDraw(&g, r);
+//
+//         // g.m_pdevicecontext->_attachHDC(nullptr);
+//
+//         g.m_pdevicecontext = nullptr;
+//      }
+//
+//      ::BitBlt(
+//         m_paintStruct.hdc,
+//         m_paintStruct.rcPaint.left,
+//         m_paintStruct.rcPaint.top,
+//         ::width(m_paintStruct.rcPaint),
+//         ::height(m_paintStruct.rcPaint),
+//         m_hdcBuffer,
+//         m_paintStruct.rcPaint.left,
+//         m_paintStruct.rcPaint.top,
+//         SRCCOPY);
       
    }
 
@@ -1335,289 +1367,289 @@ namespace innate_subsystem_macos
    //bool Window::on_window_procedure(LRESULT & lresult, HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
    bool Window::on_window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam)
    {
-
-      if (m_pwindowCallback)
-      {
-
-         if (m_pwindowCallback->on_window_procedure(lresult, message, wparam, lparam))
-         {
-
-            return true;
-
-         }
-
-      }
-
-      switch (message)
-      {
-         case WM_SIZING:
-            m_sizeIsChanged = true;
-            return false;
-         case WM_CREATE:
-         {
-
-            if (m_bHasClipboardViewerInterest)
-            {
-
-               m_hwndNextViewer = SetClipboardViewer((HWND)_HWND());
-
-            }
-
-            if (!onCreate((void*)lparam.m_lparam))
-            {
-
-               lresult = -1;
-               return true;
-
-            }
-
-            lresult = 0;
-            //return true;
-         }
-            break;
-         case WM_CHANGECBCHAIN:
-            {
-            if (m_bHasClipboardViewerInterest)
-            {
-               if (wparam == m_hwndNextViewer)
-               {
-                  m_hwndNextViewer = (HWND)lparam.m_lparam;
-               }
-               else if (m_hwndNextViewer != NULL)
-               {
-                  SendMessage(m_hwndNextViewer, message, wparam, lparam);
-               }
-            }
-            return true;
-      }
-         case WM_DRAWCLIPBOARD:
-         {
-            if (m_bHasClipboardViewerInterest)
-            {
-               bool ok = onDrawClipboard();
-               SendMessage(m_hwndNextViewer, message, wparam, lparam);
-               return ok;
-            }
-         }
-break;
-         case WM_PAINT:
-         {
-
-             if (m_bHasOnDrawInterest)
-             {
-
-                auto hwnd = ::as_HWND(operating_system_window());
-                
-                auto hdc = BeginPaint(hwnd, &m_paintStruct);
-                
-                m_bIsDraw = true;
-                // DeviceContext dc(this);
-                
-                //::i32_rectangle r;
-                
-                //copy(r, m_paintStruct.rcPaint);
-                
-                _doPaint(hdc);
-
-                EndPaint(hwnd, &m_paintStruct);
-
-                m_bIsDraw = false;
-                lresult = 0;
-                return true;
-             }
-            else
-            {
-
-               return false;
-
-            }
-
-         }
-         break;
-      case WM_GETDLGCODE:
-         {
-
-            bool bWeWantWMKEYDOWNWhenEnterIsPressed = this->we_want_WM_KEYDOWN_when_enter_is_pressed();
-
-            if (bWeWantWMKEYDOWNWhenEnterIsPressed)
-            {
-
-               lresult = CallWindowProc(m_wndprocDefault, m_windowswindow.as_HWND(), message, wparam, lparam);
-
-               auto pmsg = lparam.raw_cast<MSG*>();
-               // We want WM_KEYDOWN scopedstrMessage when enter is pressed
-               if (pmsg &&
-                  pmsg->message == WM_KEYDOWN &&
-                  pmsg->wParam == VK_RETURN)
-               {
-                  lresult = DLGC_WANTMESSAGE;
-               }
-               return true;
-
-            }
-            return false;
-
-         }
-            case WM_SETCURSOR:
-                //if (m_bShowCursor || m_timeStartDesktopWindow.elapsed() < 8_s)
-                if (m_ecursor == e_cursor_arrow)
-                {
-                    
-                    if (!m_hcursorArrow)
-                    {
-                    
-                        m_hcursorArrow = LoadCursor(nullptr, IDC_ARROW);
-
-                    }
-
-                    ::SetCursor(m_hcursorArrow);
-
-                    lresult = 1;
-
-                    return true;
-
-                }
-                else if (m_ecursor == e_cursor_none)
-                {
-
-                    ::SetCursor(nullptr);
-
-                    lresult = 1;
-
-                    return true;
-
-                }
-
-                lresult = 0;
-
-                break;
-      case WM_COMMAND:
-        return  _onWmCommand(wparam, lparam);
-         
-      case WM_NOTIFY:
-      {
-
-         LPTOOLTIPTEXT toolTipText = reinterpret_cast<LPTOOLTIPTEXT>(lparam.m_lparam);
-         if (toolTipText->hdr.code == TTN_NEEDTEXT)
-         {
-///            ::string strTooltip;
-            if (onGetTooltip(toolTipText->hdr.idFrom, m_strTooltip))
-            {
-               m_wstrToolTip = m_strTooltip;
-               toolTipText->lpszText = const_cast<TCHAR *>(m_wstrToolTip.c_str());
-               return true;
-            }
-         }
-
-         if (_000OnNotify(lresult, wparam, lparam))
-         {
-
-            return true;
-
-         }
-         // auto hwndFrom = lpnmhdr->hwndFrom;
-         //
-         // if (hwndFrom)
-         // {
-         //    lresult = ::SendMessage(hwndFrom, WM_REFLECT_NOTIFY, wparam, lparam);
-         //    return true;
-         // }
-
-      }
-      case WM_SYSCOMMAND:
-         return onSysCommand(wparam, lparam);
-      case WM_SIZE:
-         onSize();
-         return false;
-      case WM_REFLECT_NOTIFY_EX:
-         {
-
-            auto pnotify = lparam.raw_cast<windows_reflect_notify_t *>();
-
-            _000OnNotifyReflect(*pnotify);
-
-            lresult = 0;
-
-            return true;
-
-         }
-         break;
-      case WM_LBUTTONDOWN:
-      case WM_LBUTTONUP:
-      case WM_MBUTTONDOWN:
-      case WM_MBUTTONUP:
-      case WM_RBUTTONDOWN:
-      case WM_RBUTTONUP:
-      case WM_MOUSEWHEEL:
-      case WM_MOUSEMOVE:
-      {
-         unsigned char mouseButtons = 0;
-
-         mouseButtons |= LOWORD(wparam) & MK_RBUTTON ? innate_subsystem::e_mouse_right : 0;
-         mouseButtons |= LOWORD(wparam) & MK_MBUTTON ? innate_subsystem::e_mouse_middle : 0;
-         mouseButtons |= LOWORD(wparam) & MK_LBUTTON ? innate_subsystem::e_mouse_left : 0;
-
-         // Translate position from ::lparam to POINT.
-         POINTS points = MAKEPOINTS(lparam);
-         ::i32_point point;
-         point.x = points.x;
-         point.y = points.y;
-
-         unsigned short wheelSpeed = 0;
-         if (message == WM_MOUSEWHEEL) 
-         {
-            // Get speed wheel and set mouse button.
-            signed short wheelSignedSpeed = static_cast<signed short>(HIWORD(wparam));
-            if (wheelSignedSpeed < 0) {
-               mouseButtons |= ::innate_subsystem::e_mouse_wheel_down;
-               wheelSpeed = -wheelSignedSpeed / WHEEL_DELTA;
-            }
-            else {
-               mouseButtons |= ::innate_subsystem::e_mouse_wheel_up;
-               wheelSpeed = wheelSignedSpeed / WHEEL_DELTA;
-            }
-
-            // In some cases wheelSignedSpeed can be smaller than the WHEEL_DELTA,
-            // then wheelSpeed set to 1, but not 0.
-            if (wheelSpeed == 0) {
-               wheelSpeed = 1;
-            }
-
-            wheelSpeed *= 36;
-
-            // If macos-message is WHEEL, then need to translate screen coordinate to client.
-            POINT p;
-            ::copy(p, point);
-            if (!ScreenToClient(m_windowswindow.as_HWND(), &p)) {
-               p.x = -1;
-               p.y = -1;
-            }
-            ::copy(point, p);
-         }
-
-         bool bDoDefaultProcessing = false;
-
-         if (onMouseEx(message, mouseButtons, wheelSpeed, point, bDoDefaultProcessing))
-         {
-
-             return !bDoDefaultProcessing;
-
-         }
-
-         // Notify window about mouse-event.
-         return onMouse(mouseButtons, static_cast<unsigned short>(wheelSpeed), point);
-      }
-         case WM_CLOSE:
-      {
-         information("received WM_CLOSE");
-         break;
-      }
-         case WM_DESTROY:
-      {
-
-m_windowswindow = nullptr;
-      }break;
-      }
+//
+//      if (m_pwindowCallback)
+//      {
+//
+//         if (m_pwindowCallback->on_window_procedure(lresult, message, wparam, lparam))
+//         {
+//
+//            return true;
+//
+//         }
+//
+//      }
+//
+//      switch (message)
+//      {
+//         case WM_SIZING:
+//            m_sizeIsChanged = true;
+//            return false;
+//         case WM_CREATE:
+//         {
+//
+//            if (m_bHasClipboardViewerInterest)
+//            {
+//
+//               m_hwndNextViewer = SetClipboardViewer((HWND)_HWND());
+//
+//            }
+//
+//            if (!onCreate((void*)lparam.m_lparam))
+//            {
+//
+//               lresult = -1;
+//               return true;
+//
+//            }
+//
+//            lresult = 0;
+//            //return true;
+//         }
+//            break;
+//         case WM_CHANGECBCHAIN:
+//            {
+//            if (m_bHasClipboardViewerInterest)
+//            {
+//               if (wparam == m_hwndNextViewer)
+//               {
+//                  m_hwndNextViewer = (HWND)lparam.m_lparam;
+//               }
+//               else if (m_hwndNextViewer != NULL)
+//               {
+//                  SendMessage(m_hwndNextViewer, message, wparam, lparam);
+//               }
+//            }
+//            return true;
+//      }
+//         case WM_DRAWCLIPBOARD:
+//         {
+//            if (m_bHasClipboardViewerInterest)
+//            {
+//               bool ok = onDrawClipboard();
+//               SendMessage(m_hwndNextViewer, message, wparam, lparam);
+//               return ok;
+//            }
+//         }
+//break;
+//         case WM_PAINT:
+//         {
+//
+//             if (m_bHasOnDrawInterest)
+//             {
+//
+//                auto hwnd = ::as_HWND(operating_system_window());
+//                
+//                auto hdc = BeginPaint(hwnd, &m_paintStruct);
+//                
+//                m_bIsDraw = true;
+//                // DeviceContext dc(this);
+//                
+//                //::i32_rectangle r;
+//                
+//                //copy(r, m_paintStruct.rcPaint);
+//                
+//                _doPaint(hdc);
+//
+//                EndPaint(hwnd, &m_paintStruct);
+//
+//                m_bIsDraw = false;
+//                lresult = 0;
+//                return true;
+//             }
+//            else
+//            {
+//
+//               return false;
+//
+//            }
+//
+//         }
+//         break;
+//      case WM_GETDLGCODE:
+//         {
+//
+//            bool bWeWantWMKEYDOWNWhenEnterIsPressed = this->we_want_WM_KEYDOWN_when_enter_is_pressed();
+//
+//            if (bWeWantWMKEYDOWNWhenEnterIsPressed)
+//            {
+//
+//               lresult = CallWindowProc(m_wndprocDefault, m_macoswindow.as_HWND(), message, wparam, lparam);
+//
+//               auto pmsg = lparam.raw_cast<MSG*>();
+//               // We want WM_KEYDOWN scopedstrMessage when enter is pressed
+//               if (pmsg &&
+//                  pmsg->message == WM_KEYDOWN &&
+//                  pmsg->wParam == VK_RETURN)
+//               {
+//                  lresult = DLGC_WANTMESSAGE;
+//               }
+//               return true;
+//
+//            }
+//            return false;
+//
+//         }
+//            case WM_SETCURSOR:
+//                //if (m_bShowCursor || m_timeStartDesktopWindow.elapsed() < 8_s)
+//                if (m_ecursor == e_cursor_arrow)
+//                {
+//                    
+//                    if (!m_hcursorArrow)
+//                    {
+//                    
+//                        m_hcursorArrow = LoadCursor(nullptr, IDC_ARROW);
+//
+//                    }
+//
+//                    ::SetCursor(m_hcursorArrow);
+//
+//                    lresult = 1;
+//
+//                    return true;
+//
+//                }
+//                else if (m_ecursor == e_cursor_none)
+//                {
+//
+//                    ::SetCursor(nullptr);
+//
+//                    lresult = 1;
+//
+//                    return true;
+//
+//                }
+//
+//                lresult = 0;
+//
+//                break;
+//      case WM_COMMAND:
+//        return  _onWmCommand(wparam, lparam);
+//         
+//      case WM_NOTIFY:
+//      {
+//
+//         LPTOOLTIPTEXT toolTipText = reinterpret_cast<LPTOOLTIPTEXT>(lparam.m_lparam);
+//         if (toolTipText->hdr.code == TTN_NEEDTEXT)
+//         {
+/////            ::string strTooltip;
+//            if (onGetTooltip(toolTipText->hdr.idFrom, m_strTooltip))
+//            {
+//               m_wstrToolTip = m_strTooltip;
+//               toolTipText->lpszText = const_cast<TCHAR *>(m_wstrToolTip.c_str());
+//               return true;
+//            }
+//         }
+//
+//         if (_000OnNotify(lresult, wparam, lparam))
+//         {
+//
+//            return true;
+//
+//         }
+//         // auto hwndFrom = lpnmhdr->hwndFrom;
+//         //
+//         // if (hwndFrom)
+//         // {
+//         //    lresult = ::SendMessage(hwndFrom, WM_REFLECT_NOTIFY, wparam, lparam);
+//         //    return true;
+//         // }
+//
+//      }
+//      case WM_SYSCOMMAND:
+//         return onSysCommand(wparam, lparam);
+//      case WM_SIZE:
+//         onSize();
+//         return false;
+//      case WM_REFLECT_NOTIFY_EX:
+//         {
+//
+//            auto pnotify = lparam.raw_cast<windows_reflect_notify_t *>();
+//
+//            _000OnNotifyReflect(*pnotify);
+//
+//            lresult = 0;
+//
+//            return true;
+//
+//         }
+//         break;
+//      case WM_LBUTTONDOWN:
+//      case WM_LBUTTONUP:
+//      case WM_MBUTTONDOWN:
+//      case WM_MBUTTONUP:
+//      case WM_RBUTTONDOWN:
+//      case WM_RBUTTONUP:
+//      case WM_MOUSEWHEEL:
+//      case WM_MOUSEMOVE:
+//      {
+//         unsigned char mouseButtons = 0;
+//
+//         mouseButtons |= LOWORD(wparam) & MK_RBUTTON ? innate_subsystem::e_mouse_right : 0;
+//         mouseButtons |= LOWORD(wparam) & MK_MBUTTON ? innate_subsystem::e_mouse_middle : 0;
+//         mouseButtons |= LOWORD(wparam) & MK_LBUTTON ? innate_subsystem::e_mouse_left : 0;
+//
+//         // Translate position from ::lparam to POINT.
+//         POINTS points = MAKEPOINTS(lparam);
+//         ::i32_point point;
+//         point.x = points.x;
+//         point.y = points.y;
+//
+//         unsigned short wheelSpeed = 0;
+//         if (message == WM_MOUSEWHEEL) 
+//         {
+//            // Get speed wheel and set mouse button.
+//            signed short wheelSignedSpeed = static_cast<signed short>(HIWORD(wparam));
+//            if (wheelSignedSpeed < 0) {
+//               mouseButtons |= ::innate_subsystem::e_mouse_wheel_down;
+//               wheelSpeed = -wheelSignedSpeed / WHEEL_DELTA;
+//            }
+//            else {
+//               mouseButtons |= ::innate_subsystem::e_mouse_wheel_up;
+//               wheelSpeed = wheelSignedSpeed / WHEEL_DELTA;
+//            }
+//
+//            // In some cases wheelSignedSpeed can be smaller than the WHEEL_DELTA,
+//            // then wheelSpeed set to 1, but not 0.
+//            if (wheelSpeed == 0) {
+//               wheelSpeed = 1;
+//            }
+//
+//            wheelSpeed *= 36;
+//
+//            // If macos-message is WHEEL, then need to translate screen coordinate to client.
+//            POINT p;
+//            ::copy(p, point);
+//            if (!ScreenToClient(m_macoswindow.as_HWND(), &p)) {
+//               p.x = -1;
+//               p.y = -1;
+//            }
+//            ::copy(point, p);
+//         }
+//
+//         bool bDoDefaultProcessing = false;
+//
+//         if (onMouseEx(message, mouseButtons, wheelSpeed, point, bDoDefaultProcessing))
+//         {
+//
+//             return !bDoDefaultProcessing;
+//
+//         }
+//
+//         // Notify window about mouse-event.
+//         return onMouse(mouseButtons, static_cast<unsigned short>(wheelSpeed), point);
+//      }
+//         case WM_CLOSE:
+//      {
+//         information("received WM_CLOSE");
+//         break;
+//      }
+//         case WM_DESTROY:
+//      {
+//
+//m_macoswindow = nullptr;
+//      }break;
+//      }
       return onMessage(message, wparam, lparam);
    }
 
@@ -1625,56 +1657,56 @@ m_windowswindow = nullptr;
    bool notification_handler::_000OnNotify(::lresult &lresult, wparam wparam, lparam lparam)
    {
 
-      auto iControl = LOWORD(wparam);
-
-      auto lpnmhdr = (LPNMHDR) lparam.m_lparam;
-
-      ::cast < ::innate_subsystem_macos::Window > pwindowWin32 = this->get_window_implementation();
-
-      auto &notification = pwindowWin32->m_mapControlNotification[iControl];
-
-      if (notification.m_econtrol != ::innate_subsystem::e_control_none)
-      {
-
-         int iOperatingSystemNotificationCode = lpnmhdr->code;
-
-         if (notification.m_iaNotification.contains(iOperatingSystemNotificationCode))
-         {
-
-            windows_reflect_notify_t notify(lresult, wparam, lparam);
-
-            notify.m_econtrol = notification.m_econtrol;
-
-            _000OnNotify(notify);
-
-         // }
-         //
-         //    bool bHandled = _this->_onNotify(iControl, lpnmhdr);
-            if (!notify.m_bHandled)
-            {
-               // windows_reflect_notify_t notify;
-               // notify.m_bHandled = false;
-               // notify.set_wparam(wparam);
-               // notify.m_lresult = 0;
-               // notify.m_lpnmhdr = lpnmhdr;
-               SendMessage(lpnmhdr->hwndFrom, WM_REFLECT_NOTIFY_EX, 0,(LPARAM) &notify);
-               //if (bHandled && notify.m_bHandled)
-               //{
-                  //bResult = notify.m_lresult;
-               //}
-               //bResult = true;
-            }
-
-            if (notify.m_bHandled)
-            {
-
-               return true;
-
-            }
-
-         }
-
-      }
+//      auto iControl = LOWORD(wparam);
+//
+//      auto lpnmhdr = (LPNMHDR) lparam.m_lparam;
+//
+//      ::cast < ::innate_subsystem_macos::Window > pwindowWin32 = this->get_window_implementation();
+//
+//      auto &notification = pwindowWin32->m_mapControlNotification[iControl];
+//
+//      if (notification.m_econtrol != ::innate_subsystem::e_control_none)
+//      {
+//
+//         int iOperatingSystemNotificationCode = lpnmhdr->code;
+//
+//         if (notification.m_iaNotification.contains(iOperatingSystemNotificationCode))
+//         {
+//
+//            windows_reflect_notify_t notify(lresult, wparam, lparam);
+//
+//            notify.m_econtrol = notification.m_econtrol;
+//
+//            _000OnNotify(notify);
+//
+//         // }
+//         //
+//         //    bool bHandled = _this->_onNotify(iControl, lpnmhdr);
+//            if (!notify.m_bHandled)
+//            {
+//               // windows_reflect_notify_t notify;
+//               // notify.m_bHandled = false;
+//               // notify.set_wparam(wparam);
+//               // notify.m_lresult = 0;
+//               // notify.m_lpnmhdr = lpnmhdr;
+//               SendMessage(lpnmhdr->hwndFrom, WM_REFLECT_NOTIFY_EX, 0,(LPARAM) &notify);
+//               //if (bHandled && notify.m_bHandled)
+//               //{
+//                  //bResult = notify.m_lresult;
+//               //}
+//               //bResult = true;
+//            }
+//
+//            if (notify.m_bHandled)
+//            {
+//
+//               return true;
+//
+//            }
+//
+//         }
+//
+//      }
 
       return false;
 
@@ -1734,35 +1766,35 @@ m_windowswindow = nullptr;
          return false;
 
       }
-
-      switch (notify.m_lpnmhdr->code)
-      {
-         case TCN_SELCHANGE:
-         {
-
-            return pcallback->_002OnTabChanged(notify.m_iControl);
-
-         }
-         case TCN_SELCHANGING:
-         {
-
-            bool bOk = true;
-
-            bool bHandled = pcallback->_002OnTabChanging(notify.m_iControl, bOk);
-
-            if (bHandled)
-            {
-
-               notify.m_lresult = bOk ? TRUE : FALSE;
-
-               notify.m_bHandled = true;
-
-            }
-
-            break;
-         }
-            break;
-      }
+//
+//      switch (notify.m_lpnmhdr->code)
+//      {
+//         case TCN_SELCHANGE:
+//         {
+//
+//            return pcallback->_002OnTabChanged(notify.m_iControl);
+//
+//         }
+//         case TCN_SELCHANGING:
+//         {
+//
+//            bool bOk = true;
+//
+//            bool bHandled = pcallback->_002OnTabChanging(notify.m_iControl, bOk);
+//
+//            if (bHandled)
+//            {
+//
+//               notify.m_lresult = bOk ? TRUE : FALSE;
+//
+//               notify.m_bHandled = true;
+//
+//            }
+//
+//            break;
+//         }
+//            break;
+//      }
 
       return false;
 

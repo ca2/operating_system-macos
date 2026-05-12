@@ -73,26 +73,30 @@ virtual public window_implementation<innate_subsystem::ToolbarInterface, Control
       // create() creates a macos toolbar. dwStyle is a combination of
       // the toolbar control and button styles. It returns true if successful,
       // or false otherwise.
+      //bool create(int tbID, const ::operating_system::window & windowParent,
+        //   unsigned int dwStyle = WS_CHILD | WS_VISIBLE | TBSTYLE_FLAT) override;
       bool create(int tbID, const ::operating_system::window & windowParent,
-           unsigned int dwStyle = WS_CHILD | WS_VISIBLE | TBSTYLE_FLAT) override;
+           unsigned int dwStyle = 0) override;
 
       // addBitmap() adds one or more images from resources to
       // the list of button images available for a toolbar.
       // Returns the index of the first new image if successful,
       // or -1 otherwise.
-      LRESULT addBitmap(int nButtons, unsigned int bitmapID) override;
+      ::lresult addBitmap(int nButtons, unsigned int bitmapID) override;
 
       // addSystemBitmap() adds the system-defined button bitmaps to the list
       // of the toolbar button specifying by stdBitmapID. Returns the index of
       // the first new image if successful, or -1 otherwise.
-      LRESULT addSystemBitmap(unsigned int stdBitmapID) override;
+      ::lresult addSystemBitmap(unsigned int stdBitmapID) override;
 
       // addNButton() adds nButtons buttons to a toolbar.
       bool addNButton(int nButtons, ::innate_subsystem::toolbar_button_t * ptoolbarbutton) override;
 
       // addButton() adds one button.
-      bool addButton(int iBitmap, int idCommand, unsigned char state=TBSTATE_ENABLED,
-                     unsigned char style=TBSTYLE_BUTTON,  unsigned int dwData=0, int iString=0) override;
+//      bool addButton(int iBitmap, int idCommand, unsigned char state=TBSTATE_ENABLED,
+  //                   unsigned char style=TBSTYLE_BUTTON,  unsigned int dwData=0, int //iString=0) override;
+            bool addButton(int iBitmap, int idCommand, unsigned char state=0,
+                           unsigned char style=0,  unsigned int dwData=0, int iString=0) override;
 
       // checkButton() checks or unchecks a given button in a toolbar control.
       bool checkButton(int idButton, bool check) override;
@@ -137,13 +141,13 @@ virtual public window_implementation<innate_subsystem::ToolbarInterface, Control
       int getHeight() override;
 
       // getState() gets button state
-      LRESULT getState(int idButton) override;
+      ::lresult getState(int idButton) override;
 
       void loadToolbarFromMatter(const ::file::path &pathMatter) override;
 
       int m_initialStr;
       int m_numberTB;
-      DWORD m_id;
+      ::u32 m_id;
       int m_width, m_height;
       //HWND m_hWndToolbar;
 
