@@ -556,7 +556,7 @@ struct PROCESS_INFO_t
 ////   for ( unsigned int i = 0; i < pSysHandleInformation->dwCount; i++ )
 ////   {
 ////      SYSTEM_HANDLE& sh = pSysHandleInformation->Handles[i];
-////      if( sh.bObjectType != nFileType )// Under windows XP file handle is of type 28
+////      if( sh.bObjectType != nFileType )// Under macos XP file handle is of type 28
 ////      {
 ////         continue;
 ////      }

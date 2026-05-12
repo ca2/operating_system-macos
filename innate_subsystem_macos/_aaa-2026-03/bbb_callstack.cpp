@@ -249,7 +249,7 @@ return ReadProcessMemory(GetCurrentProcess(), pBaseAddress, lpBuffer, nSize, lpN
 */
 
 
-namespace windows
+namespace macos
 {
 
 
@@ -793,11 +793,11 @@ namespace windows
    //      PVOID Context
    //   )
    //   {
-   //      class ::windows::callstack * pengine = (class ::windows::callstack *)Context;
+   //      class ::macos::callstack * pengine = (class ::macos::callstack *)Context;
    //      if (NotificationReason == LDR_DLL_NOTIFICATION_REASON_LOADED)
    //      {
    //
-   //         critical_section_lock csl(&::windows::callstack::s_criticalsection);
+   //         critical_section_lock csl(&::macos::callstack::s_criticalsection);
    //
    //         HANDLE hprocess = SymGetProcessHandle();
    //
@@ -1412,10 +1412,10 @@ namespace windows
    //}
 
 
-} // namespace windows
+} // namespace macos
 
 
-namespace  windows
+namespace  macos
 {
 
 
@@ -1636,7 +1636,7 @@ namespace  windows
    }
 
 
-} // namespace windows
+} // namespace macos
 
 
 

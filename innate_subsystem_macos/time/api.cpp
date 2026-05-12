@@ -2,7 +2,7 @@
 #include "acme/operating_system.h"
 
 
-namespace windows
+namespace macos
 {
 
 
@@ -23,7 +23,7 @@ namespace windows
    }
 
 
-} // namespace windows
+} // namespace macos
 
 
 

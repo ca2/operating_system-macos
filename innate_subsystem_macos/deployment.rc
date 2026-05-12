@@ -41,7 +41,7 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-			VALUE "CompanyName", "operating_system-windows"
+			VALUE "CompanyName", "operating_system-macos"
 			VALUE "FileDescription", "operating_system_windows_innate_ui_win32"
             VALUE "FileVersion", "2026.0329.1059.00"
             VALUE "LegalCopyright", "Copyright (C) 2026-03-29-10-59-00"

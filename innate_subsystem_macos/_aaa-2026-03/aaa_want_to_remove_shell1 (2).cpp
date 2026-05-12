@@ -1,5 +1,5 @@
 #include "../framework.h"
-#include "acme/node/windows/_windows.h"
+#include "acme/node/macos/_windows.h"
 
 
 /***
@@ -236,7 +236,7 @@ return 0;
 return 1;
 }*/
 
-namespace windows
+namespace macos
 {
 
    shell shell::theWindowsShell;
@@ -807,6 +807,6 @@ namespace windows
    //}
    //*/
 
-} // namespace windows
+} // namespace macos
 
 

@@ -38,7 +38,7 @@
 //   
 //   ::i32_point point(pointParam);
 //   
-//   // check child windows
+//   // check child macos
 //   ::ClientToScreen(hwnd, (POINT *) &point);
 //
 //   HWND oswindow_Child = ::GetWindow(hwnd, GW_CHILD);

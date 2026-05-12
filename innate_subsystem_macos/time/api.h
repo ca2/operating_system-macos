@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace windows
+namespace macos
 {
 
 
@@ -34,7 +34,7 @@ namespace windows
    };
 
 
-} // namespace windows
+} // namespace macos
 
 
 

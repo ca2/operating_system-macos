@@ -34,7 +34,7 @@ namespace innate_subsystem_macos
 
 
    //
-   // Base class to control windows control
+   // Base class to control macos control
    //
 
    class Control :
@@ -109,13 +109,13 @@ namespace innate_subsystem_macos
       //protected:
 
       //
-      // Sets windows style for this control
+      // Sets macos style for this control
       //
 
       //void setStyle(unsigned int styleFlags) override;
 
       //
-      // Gets windows style for this control
+      // Gets macos style for this control
       //
 
       //long long getStyle() override;

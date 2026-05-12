@@ -28,7 +28,7 @@
 #include "drawing/Icon.h"
 #include <shellapi.h>
 
-// namespace windows
+// namespace macos
 // {
 namespace innate_subsystem_macos
 {
@@ -144,4 +144,4 @@ namespace innate_subsystem_macos
       Shell_NotifyIcon(NIM_MODIFY, &m_nid);
    }
 } // namespace innate_subsystem_macos
-//} // namespace windows
+//} // namespace macos

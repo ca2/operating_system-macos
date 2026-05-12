@@ -4,7 +4,7 @@
 //#define WH_SHSTDAPI(type) type
 //
 //
-//namespace windows
+//namespace macos
 //{
 //
 //
@@ -595,7 +595,7 @@
 //   }
 //
 //
-//} // namespace windows
+//} // namespace macos
 
 
 

@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace windows
+namespace macos
 {
 
 
@@ -35,7 +35,7 @@ namespace windows
    };
 
 
-} // namespace windows
+} // namespace macos
 
 
 CLASS_DECL_ACME_WINDOWS void wait_until_mutex_does_not_exist(const ::scoped_string & scopedstrName);

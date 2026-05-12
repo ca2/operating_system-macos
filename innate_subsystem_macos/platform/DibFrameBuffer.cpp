@@ -26,7 +26,7 @@
 // #include "util/Exception.h"
 //
 //
-// namespace windows
+// namespace macos
 // {
 //    namespace subsystem
 //    {
@@ -242,4 +242,4 @@
 //          }
 //       }
 //    } // namespace subsystem
-// } // namespace windows
+// } // namespace macos

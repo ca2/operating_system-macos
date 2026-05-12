@@ -27,7 +27,7 @@
 #include "Cursor.h"
 #include "DeviceContext.h"
 #include "Bitmap.h"
-#include "acme/operating_system/windows/user.h"
+#include "acme/operating_system/macos/user.h"
 
 
 namespace innate_subsystem_macos
@@ -120,7 +120,7 @@ namespace innate_subsystem_macos
     {
        m_bHasOwnCursor = false;
        //HINSTANCE hInstance = GetModuleHandle(NULL);
-       m_hcursor = LoadCursor(nullptr, ::windows::get_system_cursor(ecursor));
+       m_hcursor = LoadCursor(nullptr, ::macos::get_system_cursor(ecursor));
     }
 
 

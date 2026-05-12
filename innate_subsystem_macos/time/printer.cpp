@@ -8,7 +8,7 @@
 #include <Gdiplus.h>
 
 
-namespace windows
+namespace macos
 {
 
 
@@ -78,7 +78,7 @@ namespace windows
       close();
    }
 
-   bool printer::document_properties::initialize(::windows::printer * pprinter, DEVMODE * pdevmode)
+   bool printer::document_properties::initialize(::macos::printer * pprinter, DEVMODE * pdevmode)
    {
       __UNREFERENCED_PARAMETER(pdevmode);
       if(m_pdevmode != nullptr)

@@ -31,7 +31,7 @@
 // #include "util/CommonHeader.h"
 // #include <commctrl.h>
 //
-// namespace windows
+// namespace macos
 // {
 //    /**
 //     * @deprecated, use ToolTip instead.
@@ -61,4 +61,4 @@
 //
 //
 //
-// } // namespace windows
+// } // namespace macos

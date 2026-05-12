@@ -59,7 +59,7 @@ namespace innate_subsystem_macos
 
 
       //
-      // Methods creates windows and show it in nonmodal/modal mode
+      // Methods creates macos and show it in nonmodal/modal mode
       //
 
       void show() override;
@@ -147,7 +147,7 @@ namespace innate_subsystem_macos
       bool onDrawItem(::wparam controlID, ::innate_subsystem::draw_item_t * pdrawitem) override;
 
 
-      virtual bool _onDrawItem(::wparam controlID, LPDRAWITEMSTRUCT pdrawitem);
+      //virtual bool _onDrawItem(::wparam controlID, LPDRAWITEMSTRUCT pdrawitem);
 
 
       //#endif
@@ -158,7 +158,7 @@ namespace innate_subsystem_macos
       // Window message proccessing method
       //
 
-      static INT_PTR CALLBACK dialogProc(HWND hwnd, unsigned int uMsg, WPARAM wparam, LPARAM lparam);
+      //static INT_PTR CALLBACK dialogProc(HWND hwnd, unsigned int uMsg, WPARAM wparam, //LPARAM lparam);
 
       bool dialog_procedure(iptr &iptrResult, unsigned int message, ::wparam wparam, ::lparam lparam) override;
 
@@ -177,7 +177,9 @@ namespace innate_subsystem_macos
       bool m_isModal;
       bool m_isCreated;
 
-      HICON m_hicon;
+      //HICON m_hicon;
+      
+      void * m_hicon;
 
    };
 

@@ -1,7 +1,7 @@
 #include "../framework.h"
 
 
-namespace windows
+namespace macos
 {
 
 
@@ -16,13 +16,13 @@ namespace windows
       //single_lock synchronouslock(&pMap->m_mutex, true);
 
       array < oswindow > oswindowaRemove;
-      array < ::pointer<::windows::window >>wndptraRemove;
+      array < ::pointer<::macos::window >>wndptraRemove;
 
       //POSITION pos = pMap->m_temporaryMap.get_start_position();
       //while (pos != nullptr)
       //{
       //   HANDLE h; // just used for asserts
-      //   ::windows::window * pTemp;
+      //   ::macos::window * pTemp;
       //   pMap->m_temporaryMap.get_next_assoc(pos, h, pTemp);
 
       //   if(!::IsWindow((oswindow) h))
@@ -49,6 +49,6 @@ namespace windows
    }
 
 
-} // namespace windows
+} // namespace macos
 
 

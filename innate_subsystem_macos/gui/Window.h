@@ -27,7 +27,7 @@
 
 #include "acme/operating_system/macos/window.h"
 #include "innate_subsystem/gui/Window.h"
-
+#include "operating_system-macos/appkit/ns_window.h"
 
 #define WM_REFLECT_NOTIFY_EX (105 + 0x2000 + WM_NOTIFY)
 
@@ -97,7 +97,7 @@ namespace innate_subsystem_macos
 
    class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Window :
       virtual public Implementation< ::innate_subsystem::WindowCallback >,
-      virtual public ::appkit::window,
+      virtual public ::appkit::ns_window,
       virtual public notification_handler
    {
    public:
@@ -108,24 +108,24 @@ namespace innate_subsystem_macos
       //HWND           m_hwnd;
       ::string       m_strClassName;
       ::string       m_strWindowName;
-      HICON          m_hicon;
+      //HICON          m_hicon;
       bool           m_bWndCreated;
       //WNDPROC        m_wndprocDefault;
       ::pointer<::innate_subsystem::WindowInterface> m_pwindowDeferredParent;
       bool m_sizeIsChanged;
       ::string m_strTooltip;
-      HCURSOR m_hcursorArrow = nullptr;
+      //HCURSOR m_hcursorArrow = nullptr;
       ::wstring m_wstrToolTip;
       enum_cursor       m_ecursor;
       bool m_bHasClipboardViewerInterest = false;
       bool m_bHasOnDrawInterest = false;
-      HWND m_hwndNextViewer = nullptr;
+      //HWND m_hwndNextViewer = nullptr;
       bool m_bDoubleBuffering = false;
       bool m_bMinimized = false;
       bool m_isFullScr = false;
       bool m_isMinimizedFromFullScreen = false;
       // It's size of work-area in windowed mode. It is necessary for restore size of window.
-      WINDOWPLACEMENT   m_windowplacementWorkArea;
+      //WINDOWPLACEMENT   m_windowplacementWorkArea;
       //WINDOWPLACEMENT m_workArea;
       // It's size of optimal size of work-area in windowed mode.
       ::i32_rectangle m_rectangleNormal;
@@ -133,15 +133,15 @@ namespace innate_subsystem_macos
 
       ::i32_rectangle m_clientArea;
 
-      ::i32_size m_sizeBuffer = {};
-      HDC m_hdcBuffer = nullptr;
-      HBITMAP m_hbitmapOld = nullptr;
-      HBITMAP m_hbitmapBuffer = nullptr;
+      //::i32_size m_sizeBuffer = {};
+      //HDC m_hdcBuffer = nullptr;
+      //HBITMAP m_hbitmapOld = nullptr;
+      //HBITMAP m_hbitmapBuffer = nullptr;
       ::pointer < ::innate_subsystem_macos::Bitmap > m_pbitmapBuffer;
       ::pointer < ::innate_subsystem_macos::DeviceContext > m_pdevicecontextBuffer;
 
       bool m_bIsDraw;
-      PAINTSTRUCT m_paintStruct;
+      //PAINTSTRUCT m_paintStruct;
 
       ::string m_strWindowTextOffline;
       unsigned int m_uAddStyleOffline = 0;
@@ -156,10 +156,10 @@ namespace innate_subsystem_macos
       struct notification
       {
          ::innate_subsystem::enum_control m_econtrol = ::innate_subsystem::e_control_none;
-         int_array   m_iaNotification;
+         i32_array   m_iaNotification;
       };
 
-      ::int_map < notification > m_mapControlNotification;
+      ::i32_map < notification > m_mapControlNotification;
 
       Window();
 

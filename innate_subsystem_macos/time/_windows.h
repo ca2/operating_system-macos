@@ -197,12 +197,12 @@
 
 
 // CLASS_DECL_ACME HANDLE dup_handle(HANDLE h);
-// #include "acme/os/windows/file.h"
+// #include "acme/os/macos/file.h"
 
 
-// #include "acme/os/windows/simple_hold_handle.h"
-// #include "acme/os/windows/process.h"
-// //#include "acme/os/windows/registry.h"
+// #include "acme/os/macos/simple_hold_handle.h"
+// #include "acme/os/macos/process.h"
+// //#include "acme/os/macos/registry.h"
 
 
 // inline comptr < IStream > create_istream(const memory_base & memory)
@@ -229,19 +229,19 @@
 // CLASS_DECL_ACME int_bool read_resource_as_file(const scoped_string & strFile, HINSTANCE hinst, unsigned int nID, LPCTSTR pcszType);
 
 
-// #include "acme/os/windows/exception_engine.h"
+// #include "acme/os/macos/exception_engine.h"
 
 
-// #include "acme/os/windows/dir.h"
+// #include "acme/os/macos/dir.h"
 
 
-// //#include "acme/os/windows/itemidlist.h"
+// //#include "acme/os/macos/itemidlist.h"
 
 
 // //#include "top_level_enum.h"
 
 
-// //#include "acme/os/windows/extract_icon.h"
+// //#include "acme/os/macos/extract_icon.h"
 
 
 // //#include "file_memory_map.h"
@@ -253,18 +253,18 @@
 
 
 
-// #include "acme/os/windows/api.h"
+// #include "acme/os/macos/api.h"
 
 
 
-// namespace windows
+// namespace macos
 // {
 
 
 //    CLASS_DECL_ACME string langid_to_iso(LANGID langid);
 
 
-// } // namespace windows
+// } // namespace macos
 
 
 // namespace path

@@ -26,7 +26,7 @@
 #include "innate_subsystem_macos/_common_header.h"
 #include "innate_subsystem_macos/gui/Control.h"
 
-#include <commctrl.h>
+//#include <commctrl.h>
 
 namespace innate_subsystem_macos
 {
@@ -70,7 +70,7 @@ virtual public window_implementation<innate_subsystem::ToolbarInterface, Control
       // Manual mode procedures
       /////////////////////////////////////////////////////////
 
-      // create() creates a windows toolbar. dwStyle is a combination of
+      // create() creates a macos toolbar. dwStyle is a combination of
       // the toolbar control and button styles. It returns true if successful,
       // or false otherwise.
       bool create(int tbID, const ::operating_system::window & windowParent,

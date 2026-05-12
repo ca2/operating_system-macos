@@ -25,7 +25,7 @@
 #include "framework.h"
 // #include "BalloonTip.h"
 //
-// namespace windows
+// namespace macos
 // {
 //    namespace innate_subsystem_macos
 //    {
@@ -79,4 +79,4 @@
 //          return 0;
 //       }
 //    } // namespace innate_subsystem_macos
-// } //namespace windows
+// } //namespace macos

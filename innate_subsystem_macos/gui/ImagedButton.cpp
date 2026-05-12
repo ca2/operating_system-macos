@@ -29,7 +29,7 @@
 #include "Control.h"
 //#include "util/UnicodeStringStorage.h"
 //#include <crtdbg.h>
-//namespace windows
+//namespace macos
 //{
 namespace innate_subsystem_macos
 {
@@ -289,4 +289,4 @@ namespace innate_subsystem_macos
 } // namespace innate_subsystem_macos
 
 
-//} //namespace windows
+//} //namespace macos

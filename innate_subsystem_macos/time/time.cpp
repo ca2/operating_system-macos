@@ -141,7 +141,7 @@
 //}
 
 
-//namespace windows
+//namespace macos
 //{
 //
 //
@@ -163,7 +163,7 @@
 //      if (!SystemTimeToFileTime((LPSYSTEMTIME)&sysTime, &localTime))
 //      {
 //
-//         auto lasterror = ::windows::get_last_error();
+//         auto lasterror = ::macos::get_last_error();
 //
 //         ::file::throw_os_error(dwLastError);
 //
@@ -173,7 +173,7 @@
 //      if (!LocalFileTimeToFileTime(&localTime, pFileTime))
 //      {
 //
-//         auto lasterror = ::windows::get_last_error();
+//         auto lasterror = ::macos::get_last_error();
 //
 //         ::file::throw_os_error(dwLastError);
 //
@@ -182,7 +182,7 @@
 //   }
 //
 //
-//} // namespace windows
+//} // namespace macos
 
 
 

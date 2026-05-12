@@ -27,7 +27,7 @@
 #include <CommCtrl.h>
 //#include "util/StringParser.h"
 
-// namespace windows
+// namespace macos
 // {
 namespace innate_subsystem_macos
 {
@@ -119,8 +119,8 @@ namespace innate_subsystem_macos
       m_isAutoAccelerationEnabled = enabled;
    }
 
-   void SpinControl::setAutoAccelerationParams(const int_array & limitters,
-                                               const int_array & deltas,
+   void SpinControl::setAutoAccelerationParams(const i32_array & limitters,
+                                               const i32_array & deltas,
                                                int maxDelta)
    {
       m_limitters = limitters;

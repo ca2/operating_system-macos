@@ -6,7 +6,7 @@
 #include <UPnP.h>
 
 
-namespace windows
+namespace macos
 {
 
 

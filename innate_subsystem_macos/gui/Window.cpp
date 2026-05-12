@@ -35,9 +35,9 @@
 #include "drawing/DeviceContext.h"
 #include "drawing/Graphics.h"
 #include "acme/windowing/windowing.h"
-#include "acme/operating_system/windows/windowing.h"
-#include <commctrl.h>
-// namespace windows
+#include "operating_system-macos/appkit/windowing.h"
+//#include <commctrl.h>
+// namespace macos
 // {
 namespace innate_subsystem_macos
 {
@@ -157,8 +157,8 @@ namespace innate_subsystem_macos
 
          ::wstring wstrClassName(m_strClassName);
          
-         s_wndclass.lpfnWndProc = ::windows::window::s_window_procedure;
-         s_wndclass.hInstance = (HINSTANCE) ::windows::hinstance_from_function(::windows::window::s_window_procedure);
+         s_wndclass.lpfnWndProc = ::macos::window::s_window_procedure;
+         s_wndclass.hInstance = (HINSTANCE) ::macos::hinstance_from_function(::macos::window::s_window_procedure);
          s_wndclass.lpszClassName = wstrClassName.c_str();
          s_wndclass.style = CS_HREDRAW | CS_VREDRAW;
          s_wndclass.hbrBackground = GetSysColorBrush(COLOR_WINDOW);
@@ -184,8 +184,8 @@ namespace innate_subsystem_macos
 
          ::wstring wstrClassName(m_strClassName);
 
-         s_wndclass.lpfnWndProc = ::windows::window::s_window_procedure;
-         s_wndclass.hInstance = (HINSTANCE)::windows::hinstance_from_function(::windows::window::s_window_procedure);
+         s_wndclass.lpfnWndProc = ::macos::window::s_window_procedure;
+         s_wndclass.hInstance = (HINSTANCE)::macos::hinstance_from_function(::macos::window::s_window_procedure);
          s_wndclass.lpszClassName = wstrClassName.c_str();
          s_wndclass.style = CS_HREDRAW | CS_VREDRAW;
          s_wndclass.hbrBackground = GetSysColorBrush(COLOR_WINDOW);
@@ -210,8 +210,8 @@ namespace innate_subsystem_macos
                             style,
                             xPos, yPos,
                             width, height,
-                            hwndParent, 0, (HINSTANCE) ::windows::hinstance_from_function(::windows::window::s_window_procedure),
-                            reinterpret_cast<LPVOID>((::windows::window *)this));
+                            hwndParent, 0, (HINSTANCE) ::macos::hinstance_from_function(::macos::window::s_window_procedure),
+                            reinterpret_cast<LPVOID>((::macos::window *)this));
       m_bWndCreated = (hwnd == 0 ? false : true);
       if (m_bWndCreated) {
 
@@ -389,10 +389,10 @@ namespace innate_subsystem_macos
       HWND hwnd = ::as_HWND(operatingsystemwindow);
        m_windowswindow = hwnd;
       m_wndprocDefault = (WNDPROC) ::GetWindowLongPtr(hwnd, GWLP_WNDPROC);
-      //::SetWindowLongPtr(hwnd, GWLP_USERDATA, (LPARAM)(::uptr) (::windows::window *) this);
-      ::cast < ::windows::windowing > pwindowing = ::system()->acme_windowing();
+      //::SetWindowLongPtr(hwnd, GWLP_USERDATA, (LPARAM)(::uptr) (::macos::window *) this);
+      ::cast < ::macos::windowing > pwindowing = ::system()->acme_windowing();
       pwindowing->m_windowmap[hwnd] = this;
-      ::SetWindowLongPtr(hwnd, GWLP_WNDPROC,(LPARAM)(::uptr)(::windows::window::s_window_procedure));
+      ::SetWindowLongPtr(hwnd, GWLP_WNDPROC,(LPARAM)(::uptr)(::macos::window::s_window_procedure));
       ::SendMessage(hwnd, WM_APP + 125, 0, 0);
    }
 
@@ -411,7 +411,7 @@ namespace innate_subsystem_macos
 
       }
 
-      ::cast < ::windows::windowing > pwindowing = ::system()->acme_windowing();
+      ::cast < ::macos::windowing > pwindowing = ::system()->acme_windowing();
       auto pwindow=pwindowing->m_windowmap[hwndParent];
 
       ::cast < Window > pwindowSubsystem = pwindow;
@@ -1585,7 +1585,7 @@ break;
 
             wheelSpeed *= 36;
 
-            // If windows-message is WHEEL, then need to translate screen coordinate to client.
+            // If macos-message is WHEEL, then need to translate screen coordinate to client.
             POINT p;
             ::copy(p, point);
             if (!ScreenToClient(m_windowswindow.as_HWND(), &p)) {
@@ -1830,5 +1830,5 @@ m_windowswindow = nullptr;
    }
 
 } // namespace innate_subsystem_macos
-// } // namespace windows
+// } // namespace macos
 //

@@ -23,7 +23,7 @@
 //
 #include "framework.h"
 #include "ScrollBar.h"
-// namespace windows
+// namespace macos
 // {
 namespace innate_subsystem_macos
 {
@@ -278,4 +278,4 @@ namespace innate_subsystem_macos
       return GetSystemMetrics(SM_CXHSCROLL);
    }
 } // namespace innate_subsystem_macos
-//} // namespace windows
+//} // namespace macos

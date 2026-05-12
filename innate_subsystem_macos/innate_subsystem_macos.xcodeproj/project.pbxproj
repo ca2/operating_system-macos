@@ -229,6 +229,8 @@
 		9A1909262FB29C2D00A3C985 /* framework.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9A1909272FB29C2D00A3C985 /* resource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = resource.h; sourceTree = "<group>"; };
 		9A1909382FB29C8600A3C985 /* innate_subsystem.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = innate_subsystem.xcodeproj; path = ../../../source/app/innate_subsystem/innate_subsystem.xcodeproj; sourceTree = SOURCE_ROOT; };
+		9A282EAE2FB31DD900B79BB5 /* appkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = appkit.xcodeproj; path = ../appkit/appkit.xcodeproj; sourceTree = SOURCE_ROOT; };
+		9A282EAF2FB31DD900B79BB5 /* core_graphics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = core_graphics.xcodeproj; path = "../../operating_system-apple/core_graphics/core_graphics.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		9A612CEE2FB29D0F0025E0AA /* subsystem_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = subsystem_macos.xcodeproj; path = ../subsystem_macos/subsystem_macos.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -243,9 +245,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A09CD452FB3210C00E22155 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A09CD472FB3210C00E22155 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9A19069E2FB29AF200A3C985 = {
 			isa = PBXGroup;
 			children = (
+				9A282EAE2FB31DD900B79BB5 /* appkit.xcodeproj */,
+				9A282EAF2FB31DD900B79BB5 /* core_graphics.xcodeproj */,
 				9A1909382FB29C8600A3C985 /* innate_subsystem.xcodeproj */,
 				9A612CEE2FB29D0F0025E0AA /* subsystem_macos.xcodeproj */,
 				9A1908392FB29BEA00A3C985 /* innate_subsystem_macos */,
@@ -527,6 +545,14 @@
 			productRefGroup = 9A1906A82FB29AF200A3C985 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 9A09CD472FB3210C00E22155 /* Products */;
+					ProjectRef = 9A282EAE2FB31DD900B79BB5 /* appkit.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A09CD452FB3210C00E22155 /* Products */;
+					ProjectRef = 9A282EAF2FB31DD900B79BB5 /* core_graphics.xcodeproj */;
+				},
 				{
 					ProductGroup = 9A612CDE2FB29CEA0025E0AA /* Products */;
 					ProjectRef = 9A1909382FB29C8600A3C985 /* innate_subsystem.xcodeproj */;

@@ -31,7 +31,7 @@
 
 #include "Window.h"
 #include "acme/windowing/windowing.h"
-#include "acme/operating_system/windows/windowing.h"
+#include "acme/operating_system/macos/windowing.h"
 
 namespace innate_subsystem_macos
 {
@@ -223,7 +223,7 @@ void
 
       ::lresult lresult = 0;
 
-      if (::windows::pre_process_window_procedure(lresult, hwnd, uMsg, wparam, lparam))
+      if (::macos::pre_process_window_procedure(lresult, hwnd, uMsg, wparam, lparam))
       {
 
           return lresult;
@@ -234,14 +234,14 @@ void
       if (uMsg == WM_INITDIALOG) {
          _this = (::innate_subsystem_macos::Dialog *)lparam;
          //SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)_this);
-         ::cast < ::windows::windowing > pwindowing = ::system()->acme_windowing();
+         ::cast < ::macos::windowing > pwindowing = ::system()->acme_windowing();
 
          pwindowing->m_windowmap[hwnd] = _this;
          _this->_setHWND(hwnd);
          _this->updateIcon();
       } else {
          //_this = (::innate_subsystem_macos::Dialog *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
-         ::cast < ::windows::windowing > pwindowing = ::system()->acme_windowing();
+         ::cast < ::macos::windowing > pwindowing = ::system()->acme_windowing();
          ::cast < ::innate_subsystem_macos::Dialog > pdialog = pwindowing->m_windowmap[hwnd];
          _this = pdialog;
          if (_this == 0) {
@@ -252,7 +252,7 @@ void
       //if (uMsg == WM_APP + 876)
       //{
 
-      //    ::windows::handle_procedure_message(uMsg, wparam, lparam);
+      //    ::macos::handle_procedure_message(uMsg, wparam, lparam);
 
       //    return TRUE;
 

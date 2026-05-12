@@ -27,7 +27,7 @@
 #include "subsystem/platform/Exception.h"
 //#include "util/CommonHeader.h"
 #include <commctrl.h>
-//namespace windows
+//namespace macos
 //{
    namespace innate_subsystem_macos
    {
@@ -55,4 +55,4 @@
          }
       }
    } // namespace innate_subsystem_macos
-//} // namespace windows
+//} // namespace macos

@@ -4,7 +4,7 @@
 #include "framework.h"
 #include "subsystem.h"
 #include "acme/platform/user_interaction_sink.h"
-#include "acme/operating_system/windows/user.h"
+#include "acme/operating_system/macos/message_box.h"
 #include "innate_subsystem_macos/gui/CommonControlsEx.h"
 
 
@@ -96,33 +96,23 @@ namespace innate_subsystem_macos
     // }
 
 
-    int subsystem::message_box(
+    ::enum_dialog_result subsystem::message_box(
                     const ::user_interaction_sink & userinteractionsink,
                     const ::scoped_string & scopedstrMessage,
                     const ::scoped_string & scopedstrCaption,
-                    unsigned int uType)
+                    ::user::enum_message_box emessagebox)
     {
 
         auto operatingsystemwindow = userinteractionsink.best_effort_operating_system_window();
 
-        auto hwnd = ::as_HWND(operatingsystemwindow);
+        auto hwnd = ::as_u64(operatingsystemwindow);
+       
+       auto edialogresult = ns_message_box(::string(scopedstrCaption), ::string(scopedstrMessage), emessagebox & ::user::e_message_box_yes_no);
 
-        auto iResult = ::MessageBox(hwnd, ::wstring(scopedstrMessage), ::wstring(scopedstrCaption), uType);
+        //auto iResult = ::MessageBox(hwnd, ::wstring(scopedstrMessage), ::wstring(scopedstrCaption), uType);
 
-        return iResult;
+        return edialogresult;
 
-    }
-
-
-    ::user::enum_key subsystem::virtual_key_code_to_user_key(int iVirtualKeyCode)
-    {
-        return ::windows::virtual_key_code_to_user_key(iVirtualKeyCode);
-        //switch (iVirtualKeyCode)
-        //{
-          //  case VK_RETURN:
-
-
-        //}
     }
 
 

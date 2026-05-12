@@ -29,7 +29,7 @@
 #include "innate_subsystem/drawing/GraphicsObject.h"
 #include "subsystem_macos/_common_header.h"
 #ifndef CAPTUREBLT
-#define CAPTUREBLT          (DWORD)0x40000000 /* Include layered windows */
+#define CAPTUREBLT          (DWORD)0x40000000 /* Include layered macos */
 #endif
 
 
@@ -65,25 +65,25 @@ namespace innate_subsystem_macos
 
       // This function copies a block of bits from a source DC (that has been used to create the
       // DIB section) to the DIB section.
-      // Note that this function does not copy any transparent windows.
+      // Note that this function does not copy any transparent macos.
       // This function throwing an exception on a failure.
       virtual void blitToDibSection(const ::i32_rectangle &  rect) override;
 
       // This function copies a block of bits from a source DC (that has been used to create the
       // DIB section) to the DIB section.
-      // Note that this function copies transparent windows too.
+      // Note that this function copies transparent macos too.
       // This function throwing an exception on a failure.
       virtual void blitTransparentToDibSection(const ::i32_rectangle &  rect) override;
 
       // This function copies a block of bits from the DIB section to the source DC
       // (that has been used to create the compatible DIB section).
-      // Note that this function does not copy any transparent windows.
+      // Note that this function does not copy any transparent macos.
       // This function throwing an exception on a failure.
       virtual void blitFromDibSection(const ::i32_rectangle &  rect) override;
 
       // This function copies with strech a block of bits from the DIB section to the source DC
       // (that has been used to create the compatible DIB section).
-      // Note that this function does not copy any transparent windows.
+      // Note that this function does not copy any transparent macos.
       // This function throwing an exception on a failure.
       virtual void stretchFromDibSection(const ::i32_rectangle &  srcRect,const ::i32_rectangle & rectangleTarget) override;
 
@@ -109,11 +109,11 @@ namespace innate_subsystem_macos
       ::pointer < ::innate_subsystem_macos::DeviceContext > m_pdevicecontextMemory;
       ::pointer < ::innate_subsystem_macos::Bitmap > m_pbitmapDib;
       ::pointer < ::innate_subsystem::GraphicsObject > m_pgraphicsobjectDibOld;
-      void &
-       HBITMAP m_hbmOld;
-       HBITMAP m_hbmDIB;
-       HDC m_memDC;
-       HDC m_targetDC;
+      //void &
+       //HBITMAP m_hbmOld;
+       //HBITMAP m_hbmDIB;
+       //HDC m_memDC;
+       //HDC m_targetDC;
        // Coordinates of the source dc can be negative.
        int m_srcOffsetX;
        int m_srcOffsetY;
@@ -150,25 +150,25 @@ namespace innate_subsystem_macos
    //
    //    // This function copies a block of bits from a source DC (that has been used to create the
    //    // DIB section) to the DIB section.
-   //    // Note that this function does not copy any transparent windows.
+   //    // Note that this function does not copy any transparent macos.
    //    // This function throwing an exception on a failure.
    //    void blitToDibSection(const ::i32_rectangle &  rect) override;
    //
    //    // This function copies a block of bits from a source DC (that has been used to create the
    //    // DIB section) to the DIB section.
-   //    // Note that this function copies transparent windows too.
+   //    // Note that this function copies transparent macos too.
    //    // This function throwing an exception on a failure.
    //    void blitTransparentToDibSection(const ::i32_rectangle &  rect) override;
    //
    //    // This function copies a block of bits from the DIB section to the source DC
    //    // (that has been used to create the compatible DIB section).
-   //    // Note that this function does not copy any transparent windows.
+   //    // Note that this function does not copy any transparent macos.
    //    // This function throwing an exception on a failure.
    //    void blitFromDibSection(const ::i32_rectangle &  rect) override;
    //
    //    // This function copies with strech a block of bits from the DIB section to the source DC
    //    // (that has been used to create the compatible DIB section).
-   //    // Note that this function does not copy any transparent windows.
+   //    // Note that this function does not copy any transparent macos.
    //    // This function throwing an exception on a failure.
    //    void stretchFromDibSection(const ::i32_rectangle &  srcRect,const ::i32_rectangle & rectangleTarget) override;
    //

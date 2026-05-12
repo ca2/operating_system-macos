@@ -2,7 +2,7 @@
 #include "../framework.h"
 #include "../icon.h"
 #include "still.h"
-#include "acme/operating_system/windows/windowing.h"
+#include "acme/operating_system/macos/windowing.h"
 
 HFONT CreateScaledFont(HWND hWnd, int pointSize, int weight, const wchar_t *fontFamily)
 {
@@ -128,13 +128,13 @@ namespace innate_ui_win32
       if (m_bIcon)
       {
 
-         ::cast < ::windows::windowing > pwindowing = system()->acme_windowing();
+         ::cast < ::macos::windowing > pwindowing = system()->acme_windowing();
 
          auto hwnd = (HWND) _HWND();
 
          pwindowing->m_windowmap[hwnd] = this;
 
-         SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LPARAM) & ::windows::window_procedure);
+         SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LPARAM) & ::macos::window_procedure);
 
       }
 

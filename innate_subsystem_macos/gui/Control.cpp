@@ -24,7 +24,7 @@
 #include "framework.h"
 #include "Control.h"
 
-//namespace windows
+//namespace macos
 //{
 namespace innate_subsystem_macos
 {
@@ -212,5 +212,5 @@ namespace innate_subsystem_macos
 } // namespace innate_subsystem_macos
 
 
-//} // namespace windows
+//} // namespace macos
 

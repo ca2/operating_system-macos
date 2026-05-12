@@ -39,7 +39,7 @@ typedef struct _IMAGEHLP_LINE64 IMAGEHLP_LINE64, * PIMAGEHLP_LINE64;
 
 
 
-namespace windows
+namespace macos
 {
 
 
@@ -131,7 +131,7 @@ namespace windows
    };
 
 
-} // namespace windows
+} // namespace macos
 
 
 

@@ -265,10 +265,10 @@ namespace innate_subsystem_macos
       return (int) ListView_GetItemCount((HWND) _HWND());
    }
 
-   ::int_array ListView::getSelectedItemsIndexes()
+   ::i32_array ListView::getSelectedItemsIndexes()
    {
       int i = -1;
-      ::int_array ia;
+      ::i32_array ia;
       ia.set_size(getSelectedItemsCount());
       for (auto & iItem : ia)
       {
@@ -410,7 +410,7 @@ namespace innate_subsystem_macos
 break;
          //
          // FIXME: Not better way to call this method at every notification
-         // for ::list_base view control, but windows have no notification for ::list_base view
+         // for ::list_base view control, but macos have no notification for ::list_base view
          // selection changed event. So for now, i didn't found better solution.
          //
         //
@@ -437,7 +437,7 @@ break;
         //
         //         //
         //         // FIXME: Not better way to call this method at every notification
-        //         // for ::list_base view control, but windows have no notification for ::list_base view
+        //         // for ::list_base view control, but macos have no notification for ::list_base view
         //         // selection changed event. So for now, i didn't found better solution.
         //         //
         //

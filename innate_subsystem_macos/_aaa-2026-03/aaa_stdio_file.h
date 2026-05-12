@@ -3,7 +3,7 @@
 
 #define iFileNull ((int)-1)
 
-namespace windows
+namespace macos
 {
 
 
@@ -56,7 +56,7 @@ namespace windows
 
 
 
-} // namespace windows
+} // namespace macos
 
 
 

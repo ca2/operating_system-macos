@@ -932,7 +932,7 @@ unsigned int TerminateGuiApp(unsigned int dwPID, unsigned int tickTimeout)
       return TGA_FAILED;
    }
 
-   // TerminateAppEnum() posts ::user::e_message_close to all windows whose PID
+   // TerminateAppEnum() posts ::user::e_message_close to all macos whose PID
    // matches your process's.
    EnumWindows((WNDENUMPROC)TerminateGuiAppEnum, (LPARAM)dwPID);
 

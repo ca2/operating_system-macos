@@ -24,7 +24,7 @@
 // Adapted by camilo on beginning of 2026-April <3ThomasBorregaardSorensen!!
 #include "framework.h"
 // #include "StringFilter.h"
-// namespace windows
+// namespace macos
 // {
 //    namespace innate_subsystem_macos
 //    {
@@ -33,4 +33,4 @@
 //          return true;
 //       }
 //    } // namespace innate_subsystem_macos
-// } // namespace windows
+// } // namespace macos

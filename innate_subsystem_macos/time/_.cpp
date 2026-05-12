@@ -593,7 +593,7 @@ CLASS_DECL_ACME hinstance get_module_handle(const platform_char * psz)
 
 
 
-namespace windows
+namespace macos
 {
 
    class CLASS_DECL_ACME message_box :
@@ -638,7 +638,7 @@ namespace windows
    };
 
 
-} // namespace windows
+} // namespace macos
 
 
 
@@ -649,7 +649,7 @@ namespace windows
 
 //    wstring wstrTitle(strTitle);
 
-//    auto pmessagebox = allocateø windows::message_box();
+//    auto pmessagebox = allocateø macos::message_box();
 
 //    auto pfuture = pmessagebox->::extended::asynchronous <::conversation>::future();
 

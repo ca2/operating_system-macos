@@ -12,7 +12,7 @@ namespace core_graphics
 {
 
 
-   class CLASS_CORE_GRAPHICS ns_bitmap :
+   class CLASS_DECL_CORE_GRAPHICS ns_bitmap :
       virtual public ::particle
    {
    public:

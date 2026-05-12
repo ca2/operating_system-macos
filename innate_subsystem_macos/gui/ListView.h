@@ -182,7 +182,7 @@ namespace innate_subsystem_macos
       // Sets selected list view index to output indexes array
       //
 
-      virtual ::int_array getSelectedItemsIndexes()override ;
+      virtual ::i32_array getSelectedItemsIndexes()override ;
 
    //protected:
 

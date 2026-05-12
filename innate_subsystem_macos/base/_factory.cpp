@@ -7,14 +7,14 @@
  {
 
 
-    namespace windows
+    namespace macos
     {
 
 
        factory_exchange::factory_exchange()
        {
 
-          add_factory_item < ::windows::print_job, ::user::print_task >();
+          add_factory_item < ::macos::print_job, ::user::print_task >();
 
        }
 
@@ -25,7 +25,7 @@
        }
 
 
-    } // namespace windows
+    } // namespace macos
 
 
  } // namespace base
@@ -34,7 +34,7 @@
  void __node_base_factory(::factory::factory * pfactory)
  {
 
-    ::base::windows::factory_exchange factoryexchange;
+    ::base::macos::factory_exchange factoryexchange;
 
  }
 

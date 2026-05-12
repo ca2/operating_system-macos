@@ -5,7 +5,7 @@ namespace base
 {
 
 
-   namespace windows
+   namespace macos
    {
 
 
@@ -22,7 +22,7 @@ namespace base
       };
 
 
-   } // namespace windows
+   } // namespace macos
 
 
 } // namespace base

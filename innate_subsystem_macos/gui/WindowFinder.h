@@ -28,7 +28,7 @@
 
 #include "innate_subsystem_macos/_common_header.h"
 
-#include "acme/operating_system/windows/_.h"
+#include "acme/operating_system/macos/_.h"
 
 // namespace innate_subsystem_macos
 // {
@@ -39,7 +39,7 @@
 //    public:
 //       static ::comparable_array_base<HWND> findWindowsByClass(const ::string_array_base & straClassNames);
 //
-//       // Find first of windows that name contain the string.
+//       // Find first of macos that name contain the string.
 //       // It is not case sensitive.
 //       static HWND findFirstWindowByName(const ::scoped_string & scopedstrWindowName);
 //

@@ -26,7 +26,7 @@
 #include "Trackbar.h"
 
 
-#include <commctrl.h>
+//#include <commctrl.h>
 
 
 namespace innate_subsystem_macos
@@ -41,17 +41,18 @@ namespace innate_subsystem_macos
 
    void Trackbar::setRange(long min, long max)
    {
-      SendMessage((HWND) _HWND(), TBM_SETRANGEMIN, FALSE, min);
-      SendMessage((HWND) _HWND(), TBM_SETRANGEMAX, TRUE, max);
+      //SendMessage((HWND) _HWND(), TBM_SETRANGEMIN, FALSE, min);
+      //SendMessage((HWND) _HWND(), TBM_SETRANGEMAX, TRUE, max);
    }
 
    void Trackbar::setPos(long pos)
    {
-      SendMessage((HWND) _HWND(), TBM_SETPOS, TRUE, pos);
+      //SendMessage((HWND) _HWND(), TBM_SETPOS, TRUE, pos);
    }
 
    long Trackbar::getPos()
    {
-      return (long)SendMessage((HWND) _HWND(), TBM_GETPOS, 0, 0);
+      //return (long)SendMessage((HWND) _HWND(), TBM_GETPOS, 0, 0);
+      return 0;
    }
 } // namespace innate_subsystem_macos

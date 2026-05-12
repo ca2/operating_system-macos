@@ -1,12 +1,12 @@
 #include "../framework.h"
-#include "acme/node/windows/_windows.h"
+#include "acme/node/macos/_windows.h"
 #include <io.h>
 #include <fcntl.h>
 #include <stdio.h>
 //#include <errno.h>
 
 
-namespace windows
+namespace macos
 {
 
 
@@ -49,7 +49,7 @@ pacmedir->create(::file_path_folder(pszFileName));
       }
 
       m_pStream = nullptr;
-//      if(!::windows::file::open(pszFileName,(eopen & ~::file::e_open_text)))
+//      if(!::macos::file::open(pszFileName,(eopen & ~::file::e_open_text)))
 
       //    {
 
@@ -403,7 +403,7 @@ pacmedir->create(::file_path_folder(pszFileName));
    void stdio_file::dump(dump_context & dumpcontext) const
    {
 
-      //::windows::file::dump(dumpcontext);
+      //::macos::file::dump(dumpcontext);
 
       dumpcontext << "m_iFile = " << m_iFile;
       dumpcontext << "m_pStream = " << (void *)m_pStream;
@@ -443,7 +443,7 @@ pacmedir->create(::file_path_folder(pszFileName));
    }
 
 
-} // namespace windows
+} // namespace macos
 
 
 

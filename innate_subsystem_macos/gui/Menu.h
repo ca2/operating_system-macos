@@ -78,12 +78,13 @@ namespace innate_subsystem_macos
       //
       // private:
       bool _appendMenu(unsigned int uFlags, ::uptr uptrNewItem, const char * lpNewItem);
-      bool _insertMenuItem(unsigned int uItem, BOOL fByPosition, LPCMENUITEMINFO lpmii);
-      bool _modifyMenu(unsigned int uPosition, unsigned int uFlags, LONG_PTR uIDNewItem, const char * lpNewItem);
-      bool _setMenuItem(unsigned int uItem, BOOL fByPosition, LPMENUITEMINFO lpmii);
+//      bool _insertMenuItem(unsigned int uItem, BOOL fByPosition, LPCMENUITEMINFO lpmii);
+//      bool _modifyMenu(unsigned int uPosition, unsigned int uFlags, LONG_PTR uIDNewItem, const char * lpNewItem);
+//      bool _setMenuItem(unsigned int uItem, BOOL fByPosition, LPMENUITEMINFO lpmii);
 
       //protected:
-      HMENU m_hmenu;
+      //HMENU m_hmenu;
+      void * m_hmenu;
       bool m_bCreated;
 
    };

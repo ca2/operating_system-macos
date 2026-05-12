@@ -4,7 +4,7 @@
 // CHandleMap
 //
 //  Note: Do not access the members of this class directly.
-//      Use ::windows::window::from_handle, ::windows::graphics::from_handle, etc.
+//      Use ::macos::window::from_handle, ::macos::graphics::from_handle, etc.
 //      The actual definition is only included because it is
 //      necessary for the definition of WindowsThread.
 //
@@ -67,7 +67,7 @@ inline unsigned int HashKey < HIMAGELIST >(HIMAGELIST key)
 }
 
 
-namespace windows
+namespace macos
 {
 
    class window;
@@ -111,7 +111,7 @@ namespace windows
    typedef handle1 < HGDIOBJ > hgdiobj_handle;
    typedef handle1 < HIMAGELIST > himagelist_handle;
 
-} // namespace windows
+} // namespace macos
 
 
 template<class TYPE>
@@ -177,27 +177,27 @@ public:
 };
 
 class CLASS_DECL_ACME oswindow_map :
-   public handle_map < ::windows::oswindow_handle, ::windows::window >
+   public handle_map < ::macos::oswindow_handle, ::macos::window >
 {
 public:
-   oswindow_map(::matter * pobject) : handle_map < ::windows::oswindow_handle, ::windows::window >(pobject) {}
+   oswindow_map(::matter * pobject) : handle_map < ::macos::oswindow_handle, ::macos::window >(pobject) {}
 };
 
 /*class CLASS_DECL_ACME hdc_map :
-   public handle_map < ::windows::hdc_handle, ::windows::graphics >
+   public handle_map < ::macos::hdc_handle, ::macos::graphics >
 {
 public:
 };*/
 
 /*class hgdiobj_map :
-   public handle_map < ::windows::hgdiobj_handle, ::windows::matter >
+   public handle_map < ::macos::hgdiobj_handle, ::macos::matter >
 {
 public:
 };*/
 
 /*
 class CLASS_DECL_ACME hdc_map :
-   public handle_map < ::windows::hmenu_handle, ::windows::menu >
+   public handle_map < ::macos::hmenu_handle, ::macos::menu >
 {
 public:
 };

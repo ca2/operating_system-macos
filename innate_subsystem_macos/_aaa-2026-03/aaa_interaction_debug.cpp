@@ -39,7 +39,7 @@ bool __windows_message_bypass(::acme::windowing::window * pacmewindowingwindow, 
 }
 
 
-namespace windows
+namespace macos
 {
 
 
@@ -265,7 +265,7 @@ namespace windows
    }
 
 
-} // namespace windows
+} // namespace macos
 
 
 

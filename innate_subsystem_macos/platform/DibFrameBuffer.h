@@ -89,25 +89,25 @@
 //
 //         // This function copies a block of bits from a source DC (that has been used to create the
 //         // DIB section) to the DIB section.
-//         // Note that this function does not copy any transparent windows.
+//         // Note that this function does not copy any transparent macos.
 //         // This function throwing an exception on a failure.
 //         void blitToDibSection(const ::i32_rectangle &rect);
 //
 //         // This function copies a block of bits from a source DC (that has been used to create the
 //         // DIB section) to the DIB section.
-//         // Note that this function copies transparent windows too.
+//         // Note that this function copies transparent macos too.
 //         // This function throwing an exception on a failure.
 //         void blitTransparentToDibSection(const ::i32_rectangle &rect);
 //
 //         // This function copies a block of bits from the DIB section to the source DC
 //         // (that has been used to create the compatible DIB section).
-//         // Note that this function does not copy any transparent windows.
+//         // Note that this function does not copy any transparent macos.
 //         // This function throwing an exception on a failure.
 //         void blitFromDibSection(const ::i32_rectangle &rect);
 //
 //         // This function copies with strech a block of bits from the DIB section to the source DC
 //         // (that has been used to create the compatible DIB section).
-//         // Note that this function does not copy any transparent windows.
+//         // Note that this function does not copy any transparent macos.
 //         // This function throwing an exception on a failure.
 //         void stretchFromDibSection(const ::i32_rectangle &srcRect, const ::i32_rectangle &rectangleTarget);
 //

@@ -28,7 +28,7 @@
 #include <Windowsx.h>
 
 
-//namespace windows
+//namespace macos
 //{
    namespace  innate_subsystem_macos
    {
@@ -123,4 +123,4 @@
       }
    } // namespace subsystem
 //
-//} // namespace windows
+//} // namespace macos
