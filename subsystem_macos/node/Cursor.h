@@ -38,7 +38,7 @@ namespace subsystem_macos
          Cursor();
          ~Cursor() override;
 
-         virtual ::int_point getCursorPos() const = 0;
+         virtual ::i32_point getCursorPos() const = 0;
       };
 
       // class CLASS_DECL_SUBSYSTEM_MACOS Cursor :

@@ -23,9 +23,10 @@
 //
 #include "framework.h"
 #include "Clipboard2.h"
-#include "acme/operating_system/windows/window.h"
+//#include "acme/operating_system/windows/window.h"
 //#include "remoting/node_desktop/NamingDefs.h"
-
+bool Clipboard2_writeToClipBoard(const char * pszText);
+char * Clipboard2_readFromClipBoard();
 
 namespace subsystem_macos
 {
@@ -36,10 +37,10 @@ namespace subsystem_macos
 
    Clipboard2::Clipboard2() :
 
-      m_hwndNextViewer(0),
+      //m_hwndNextViewer(0),
        m_clipboardListener(nullptr), m_plogwriter(nullptr)
    {
-      createMessageWindow(    "subsystem::Clipboard2::MessageWindow");
+      //createMessageWindow(    "subsystem::Clipboard2::MessageWindow");
    //   resume();
    }
    
@@ -60,7 +61,7 @@ namespace subsystem_macos
 
       //initialize_message_window(m_hinst, "subsystem::Clipboard2::MessageWindow");
       
-      m_hwndNextViewer = nullptr;
+      //m_hwndNextViewer = nullptr;
       m_clipboardListener = clipboardListener;
       m_plogwriter = plogwriter;
 
@@ -72,264 +73,74 @@ namespace subsystem_macos
    bool Clipboard2::_writeToClipBoard(const ::scoped_string &scopedstrText)
    {
       ::string clipboard(scopedstrText);
-      if (OpenClipboard((HWND)_HWND()))
-      {
-         EmptyClipboard();
-
-         size_t clipSize = clipboard.length();
-         HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, clipSize);
-         if (hglb)
-         {
-            TCHAR *buff = (TCHAR *)GlobalLock(hglb);
-            memcpy(buff, clipboard, clipSize);
-            GlobalUnlock(hglb);
-
-#ifdef _UNICODE
-            SetClipboardData(CF_UNICODETEXT, hglb);
-#else
-            SetClipboardData(CF_TEXT, hglb);
-
-            // Store locale information in the clipboard as well.
-            HGLOBAL hmemLocale = GlobalAlloc(GMEM_MOVEABLE, sizeof(LCID));
-            if (hmemLocale != NULL)
-            {
-               LCID *pLocale = (LCID *)GlobalLock(hmemLocale);
-               *pLocale = GetSystemDefaultLCID(); // or maybe GetUserDefaultLCID()?
-               GlobalUnlock(hmemLocale);
-               if (SetClipboardData(CF_LOCALE, hmemLocale) == NULL)
-               {
-                  GlobalFree(hmemLocale);
-               }
-            }
-#endif
-         }
-
-         CloseClipboard();
-      }
+      
+      Clipboard2_writeToClipBoard(clipboard);
+//      if (OpenClipboard((HWND)_HWND()))
+//      {
+//         EmptyClipboard();
+//
+//         size_t clipSize = clipboard.length();
+//         HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, clipSize);
+//         if (hglb)
+//         {
+//            TCHAR *buff = (TCHAR *)GlobalLock(hglb);
+//            memcpy(buff, clipboard, clipSize);
+//            GlobalUnlock(hglb);
+//
+//#ifdef _UNICODE
+//            SetClipboardData(CF_UNICODETEXT, hglb);
+//#else
+//            SetClipboardData(CF_TEXT, hglb);
+//
+//            // Store locale information in the clipboard as well.
+//            HGLOBAL hmemLocale = GlobalAlloc(GMEM_MOVEABLE, sizeof(LCID));
+//            if (hmemLocale != NULL)
+//            {
+//               LCID *pLocale = (LCID *)GlobalLock(hmemLocale);
+//               *pLocale = GetSystemDefaultLCID(); // or maybe GetUserDefaultLCID()?
+//               GlobalUnlock(hmemLocale);
+//               if (SetClipboardData(CF_LOCALE, hmemLocale) == NULL)
+//               {
+//                  GlobalFree(hmemLocale);
+//               }
+//            }
+//#endif
+//         }
+//
+//         CloseClipboard();
+//      }
 
       return false;
    }
 
    void Clipboard2::readFromClipBoard(::string &clipDest)
    {
-// NOTE: In non-Unicode version, conversion correctness may depend on current
-//       input language. We should always use Unicode in all programs.
-#ifdef _UNICODE
-      const unsigned int CF_TCTEXT = CF_UNICODETEXT;
-#else
-      const unsigned int CF_TCTEXT = CF_TEXT;
-#endif
-
+      
       clipDest.clear();
-
-      if (!IsClipboardFormatAvailable(CF_TCTEXT) || !OpenClipboard((HWND) _HWND()))
-      {
-
-         return;
-
-      }
-
-      HANDLE hglb = GetClipboardData(CF_TCTEXT);
-
-      if (hglb != NULL)
+      
+      char * p = Clipboard2_readFromClipBoard();
+      
+      if(!p)
       {
          
-         auto psz = (char *)GlobalLock(hglb);
-
-         if (psz != 0)
-         {
-            
-            clipDest = psz;
-            
-            GlobalUnlock(psz);
-
-         }
-
+         return;
       }
-
-      CloseClipboard();
-
-   }
-
-
-   bool Clipboard2::on_window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam)
-   {
       
-      int fake = 3;
-
-      switch (message)
-      {
-         case WM_CREATE:
-         {
-
-            m_hwndNextViewer = SetClipboardViewer(wparam.raw_cast < HWND> ());
-
-         }
-         break;
-         case WM_CHANGECBCHAIN:
-         {
-
-            if (m_hwndNextViewer == wparam.raw_cast < HWND >())
-            {
-
-               m_hwndNextViewer = wparam.raw_cast<HWND>();
-
-            }
-            else if (m_hwndNextViewer != NULL)
-            {
-
-               SendMessage(m_hwndNextViewer, message, wparam, lparam);
-
-            }
-
-         }
-         break;
-
-         case WM_DESTROY:
-         {
-   
-            ChangeClipboardChain((HWND) _HWND(), m_hwndNextViewer);
-
-         }
-         break;
-
-         case WM_DRAWCLIPBOARD: // clipboard contents changed.
-         {
-
-            ::string winClip, rfbClip;
-
-            readFromClipBoard(winClip);
-
-            convertToRfbFormat(winClip, rfbClip);
-
-            m_clipboardListener->onClipboardUpdate(rfbClip);
-
-            SendMessage(m_hwndNextViewer, message, wparam, lparam);
-
-         }
-         break;
-         default:
-            return false; // Message not processing
-      }
-
-      return true;
+      clipDest = p;
+      
+      free(p);
 
    }
 
 
-   void Clipboard2::onTerminate()
-   {
+//
+//   void Clipboard2::onTerminate()
+//   {
+//
+//
+//
+//   }
 
-      if ((HWND) _HWND() != 0)
-      {
-
-         PostMessage((HWND) _HWND(), WM_QUIT, 0, 0);
-
-      }
-
-   }
-
-
-   void Clipboard2::execute()
-   {
-
-      m_plogwriter->information("clipboard thread id = {}", (::iptr) getThreadId());
-
-      // if (!createMessageWindow())
-      // {
-      //
-      //    return;
-      //
-      // }
-      //
-      MSG msg;
-
-      while (!isTerminating())
-      {
-
-         if (GetMessage(&msg, (HWND) _HWND(), 0, 0))
-         {
-
-            DispatchMessage(&msg);
-
-         }
-         else
-         {
-
-            break;
-
-         }
-
-      }
-
-      destroyWindow();
-
-   }
-
-
-   //void Clipboard2::convertToRfbFormat(const ::scoped_string &scopedstrSource, ::string & strDst)
-   //{
-
-   //   ::string strSrcText = scopedstrSource;
-
-   //   auto length = strSrcText.length();
-
-   //   auto rfbText = strDst.get_buffer(length);
-
-   //   character_count j = 0;
-
-   //   for (character_count i = 0; i < length; i++)
-   //   {
-
-   //      if (!(strSrcText[i] == 0x0d && strSrcText[i + 1] == 0x0a))
-   //      {
-
-   //         rfbText[j] = strSrcText[i];
-
-   //         j++;
-
-   //      }
-
-   //   }
-   //   
-   //   rfbText[j] = 0;
-   //   
-   //   strDst.release_buffer();
-   //   
-   //}
-
-
-   //void Clipboard2::convertFromRfbFormat(const ::scoped_string &scopedstrSource, ::string &dest)
-   //{
-   //   // Count of 'LF' symbols.
-   //   character_count lfCount = 0;
-   //   auto sourceLen = scopedstrSource.length();
-   //   for (character_count i = 0; i < sourceLen; i++)
-   //   {
-   //      if (scopedstrSource[i] == 0x0a)
-   //      {
-   //         lfCount++;
-   //      }
-   //   }
-
-   //   auto destLen = sourceLen + lfCount;
-   //   auto destText = dest.get_buffer(destLen);
-   //   int j = 0;
-   //   for (character_count i = 0; i < sourceLen; i++)
-   //   {
-   //      if (scopedstrSource[i] == 0x0a)
-   //      {
-   //         destText[j] = 0x0d;
-   //         j++;
-   //      }
-   //      destText[j] = scopedstrSource[i];
-   //      j++;
-   //   }
-   //   destText[j] = 0;
-
-   //   dest.release_buffer();
-
-   //}
 
 
 } // namespace subsystem_macos

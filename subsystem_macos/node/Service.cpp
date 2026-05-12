@@ -51,7 +51,7 @@ namespace subsystem_macos
 
    void Service::initialize_service(const ::scoped_string & scopedstrName)
       {
-         _ASSERT(Service::g_service == NULL);
+         ASSERT(Service::g_service == NULL);
 
          Service::g_service = this;
 
@@ -60,15 +60,15 @@ namespace subsystem_macos
 
    void Service::run()
       {
-         TCHAR name[1024];
-
-         _tcscpy_s(name, 1024, ::wstring(m_name));
-
-         SERVICE_TABLE_ENTRY dispatchTable[] =  {{name, (LPSERVICE_MAIN_FUNCTION)ServiceMain }, { NULL, NULL }};
-
-         if (!StartServiceCtrlDispatcher(dispatchTable)) {
-            throw ::subsystem::SystemException();
-         }
+//         TCHAR name[1024];
+//
+//         _tcscpy_s(name, 1024, ::wstring(m_name));
+//
+//         SERVICE_TABLE_ENTRY dispatchTable[] =  {{name, (LPSERVICE_MAIN_FUNCTION)ServiceMain }, { NULL, NULL }};
+//
+//         if (!StartServiceCtrlDispatcher(dispatchTable)) {
+//            throw ::subsystem::SystemException();
+//         }
       }
    /**
 * Called from service control manager when service needs to start.
@@ -99,65 +99,67 @@ namespace subsystem_macos
       }
 
 
-   void WINAPI Service::ServiceMain(DWORD dwArgc, LPTSTR *lpszArgv)
+   void Service::ServiceMain(::u32 dwArgc, char * *lpszArgv)
    {
-      g_service->m_statusHandle = RegisterServiceCtrlHandler(::wstring(g_service->m_name),
-                                                             &Service::ServiceControlHandler);
-
-      if (!g_service->m_statusHandle) {
-         throw ::subsystem::SystemException();
-      }
-
-      g_service->m_status.dwServiceType = SERVICE_WIN32_OWN_PROCESS;
-      g_service->m_status.dwServiceSpecificExitCode = 0;
-
-      try {
-         g_service->task_start();
-      } catch (::subsystem::Exception &) {
-         g_service->reportStatus(SERVICE_STOPPED, NO_ERROR, 0);
-         // TODO: Report to ServiceControlManageranager about critical error.
-      }
-
-      g_service->reportStatus(SERVICE_RUNNING, NO_ERROR, 0);
-
-      try {
-         g_service->maintain_task_running_wait_stop_task_signal_and_stop();
-      } catch (::subsystem::Exception &) {
-         g_service->reportStatus(SERVICE_STOPPED, NO_ERROR, 0);
-         // TODO: Report to ServiceControlManageranager about critical error.
-      }
-
-      g_service->reportStatus(SERVICE_STOPPED, NO_ERROR, 0);
+//      g_service->m_statusHandle = RegisterServiceCtrlHandler(::wstring(g_service->m_name),
+//                                                             &Service::ServiceControlHandler);
+//
+//      if (!g_service->m_statusHandle) {
+//         throw ::subsystem::SystemException();
+//      }
+//
+//      g_service->m_status.dwServiceType = SERVICE_WIN32_OWN_PROCESS;
+//      g_service->m_status.dwServiceSpecificExitCode = 0;
+//
+//      try {
+//         g_service->task_start();
+//      } catch (::subsystem::Exception &) {
+//         g_service->reportStatus(SERVICE_STOPPED, NO_ERROR, 0);
+//         // TODO: Report to ServiceControlManageranager about critical error.
+//      }
+//
+//      g_service->reportStatus(SERVICE_RUNNING, NO_ERROR, 0);
+//
+//      try {
+//         g_service->maintain_task_running_wait_stop_task_signal_and_stop();
+//      } catch (::subsystem::Exception &) {
+//         g_service->reportStatus(SERVICE_STOPPED, NO_ERROR, 0);
+//         // TODO: Report to ServiceControlManageranager about critical error.
+//      }
+//
+//      g_service->reportStatus(SERVICE_STOPPED, NO_ERROR, 0);
    }
 
-   void WINAPI Service::ServiceControlHandler(DWORD dwCtrlCode)
+   void Service::ServiceControlHandler(::u32 dwCtrlCode)
    {
-      if (dwCtrlCode == SERVICE_CONTROL_STOP) {
-         Service::g_service->reportStatus(SERVICE_STOP_PENDING, NO_ERROR, 0);
-
-         Service::g_service->signal_task_stop();
-      }
+//      if (dwCtrlCode == SERVICE_CONTROL_STOP) {
+//         Service::g_service->reportStatus(SERVICE_STOP_PENDING, NO_ERROR, 0);
+//
+//         Service::g_service->signal_task_stop();
+//      }
    }
 
-      bool Service::reportStatus(DWORD dwCurrentState, DWORD dwWin32ExitCode, DWORD dwWaitHint)
+      bool Service::reportStatus(::u32 dwCurrentState, ::u32 dwWin32ExitCode, ::u32 dwWaitHint)
       {
-         if (dwCurrentState == SERVICE_START_PENDING) {
-            m_status.dwControlsAccepted = 0;
-         } else {
-            m_status.dwControlsAccepted = SERVICE_ACCEPT_STOP;
-         }
-
-         m_status.dwCurrentState = dwCurrentState;
-         m_status.dwWin32ExitCode = dwWin32ExitCode;
-         m_status.dwWaitHint = dwWaitHint;
-
-         if ((dwCurrentState == SERVICE_RUNNING) || (dwCurrentState == SERVICE_STOPPED)) {
-            m_status.dwCheckPoint = 0;
-         } else {
-            m_status.dwCheckPoint++;
-         }
-
-         return SetServiceStatus(m_statusHandle, &m_status) == TRUE;
+//         if (dwCurrentState == SERVICE_START_PENDING) {
+//            m_status.dwControlsAccepted = 0;
+//         } else {
+//            m_status.dwControlsAccepted = SERVICE_ACCEPT_STOP;
+//         }
+//
+//         m_status.dwCurrentState = dwCurrentState;
+//         m_status.dwWin32ExitCode = dwWin32ExitCode;
+//         m_status.dwWaitHint = dwWaitHint;
+//
+//         if ((dwCurrentState == SERVICE_RUNNING) || (dwCurrentState == SERVICE_STOPPED)) {
+//            m_status.dwCheckPoint = 0;
+//         } else {
+//            m_status.dwCheckPoint++;
+//         }
+//
+//         return SetServiceStatus(m_statusHandle, &m_status) == TRUE;
+         
+         return false;
       }
 
 } // namespace subsystem_macos

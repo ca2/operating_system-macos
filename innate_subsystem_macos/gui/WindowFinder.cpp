@@ -24,7 +24,7 @@
 #include "framework.h"
 #include "WindowFinder.h"
 
-// namespace innate_subsystem_windows
+// namespace innate_subsystem_macos
 // {
 //    struct WindowsParam
 //    {
@@ -112,5 +112,5 @@
 //          return 0;
 //       }
 //    }
-// } // namespace innate_subsystem_windows
+// } // namespace innate_subsystem_macos
 

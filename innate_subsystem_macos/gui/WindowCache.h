@@ -4,11 +4,11 @@
 #pragma once
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS WindowCache :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS WindowCache :
    virtual public ::particle
    {
    public:
@@ -20,7 +20,7 @@ namespace innate_subsystem_windows
    };
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
 

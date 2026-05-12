@@ -5,15 +5,15 @@
 #pragma once
 
 
-#include "subsystem_windows/platform/subsystem.h"
+#include "subsystem_macos/platform/subsystem.h"
 #include "innate_subsystem/platform/subsystem.h"
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS subsystem :
-      virtual public ::subsystem_windows::subsystem,
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS subsystem :
+      virtual public ::subsystem_macos::subsystem,
       virtual public ::innate_subsystem::subsystem
    {
    public:
@@ -43,7 +43,7 @@ namespace innate_subsystem_windows
 
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
 

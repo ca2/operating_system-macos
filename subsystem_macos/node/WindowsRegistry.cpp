@@ -25,24 +25,24 @@
 #include "subsystem_macos/_common_header.h"
 #include "WindowsRegistry.h"
 
-
-namespace subsystem_macos
-{
-   WindowsRegistry::WindowsRegistry()
-   {
-   }
-
-   WindowsRegistry::~WindowsRegistry()
-   {
-   }
-
-   HKEY WindowsRegistry::getCurrentUserKey()
-   {
-      return HKEY_CURRENT_USER;
-   }
-
-   HKEY WindowsRegistry::getCurrentLocalMachineKey()
-   {
-      return HKEY_LOCAL_MACHINE;
-   }
-} // namespace subsystem_macos
+//
+//namespace subsystem_macos
+//{
+//   WindowsRegistry::WindowsRegistry()
+//   {
+//   }
+//
+//   WindowsRegistry::~WindowsRegistry()
+//   {
+//   }
+//
+//   HKEY WindowsRegistry::getCurrentUserKey()
+//   {
+//      return HKEY_CURRENT_USER;
+//   }
+//
+//   HKEY WindowsRegistry::getCurrentLocalMachineKey()
+//   {
+//      return HKEY_LOCAL_MACHINE;
+//   }
+//} // namespace subsystem_macos

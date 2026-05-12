@@ -24,48 +24,50 @@
 
 #pragma once
 
-
-#include "subsystem_macos/_common_header.h"
-
-namespace subsystem_macos
-{
-   class CLASS_DECL_SUBSYSTEM_MACOS WinHandles
-   {
-   public:
-      // This function allows to assign a handle for another process.
-      // @param hSource is the handle that will be assigned for another process
-      // @param hTargetProc is the handle to another process returned by the
-      // winapi OpenProcess() function.
-      // @param If the neededToCloseSource argument set to true then after handle
-      // been returned the source handle will be closed.
-      // @param If the keepCloseRight argument set to true then after handle
-      // been returned it can be closed by current process.
-      // @return The function returns the handle that assigned for another process
-      // @throws ::subsystem::Exception on a fail.
-      static HANDLE assignHandleFor(HANDLE hSource,
-                                    HANDLE hTargetProc,
-                                    bool neededToCloseSource,
-                                    bool keepCloseRight);
-
-      // This function allows to assign a handle for another process.
-      // @param hSource is the handle that will be assigned for another process
-      // @param procId is a target process id.
-      // @param If the neededToCloseSource argument set to true then after handle
-      // been returned the source handle will be closed.
-      // @param If the keepCloseRight argument set to true then after handle
-      // been returned it can be closed by current process.
-      // @return The function returns the handle that assigned for another process
-      // @throws ::subsystem::Exception on a fail.
-      static HANDLE assignHandleFor(HANDLE hSource,
-                                    unsigned int procId,
-                                    bool neededToCloseSource,
-                                    bool keepCloseRight);
-
-   private:
-      WinHandles();
-   };
-
-   //// __WINHANDLES_H__
-} // namespace subsystem_macos
-
-
+//
+//#include "subsystem_macos/_common_header.h"
+//
+//namespace subsystem_macos
+//{
+//
+//
+//   class CLASS_DECL_SUBSYSTEM_MACOS WinHandles
+//   {
+//   public:
+//      // This function allows to assign a handle for another process.
+//      // @param hSource is the handle that will be assigned for another process
+//      // @param hTargetProc is the handle to another process returned by the
+//      // winapi OpenProcess() function.
+//      // @param If the neededToCloseSource argument set to true then after handle
+//      // been returned the source handle will be closed.
+//      // @param If the keepCloseRight argument set to true then after handle
+//      // been returned it can be closed by current process.
+//      // @return The function returns the handle that assigned for another process
+//      // @throws ::subsystem::Exception on a fail.
+//      static HANDLE assignHandleFor(HANDLE hSource,
+//                                    HANDLE hTargetProc,
+//                                    bool neededToCloseSource,
+//                                    bool keepCloseRight);
+//
+//      // This function allows to assign a handle for another process.
+//      // @param hSource is the handle that will be assigned for another process
+//      // @param procId is a target process id.
+//      // @param If the neededToCloseSource argument set to true then after handle
+//      // been returned the source handle will be closed.
+//      // @param If the keepCloseRight argument set to true then after handle
+//      // been returned it can be closed by current process.
+//      // @return The function returns the handle that assigned for another process
+//      // @throws ::subsystem::Exception on a fail.
+//      static HANDLE assignHandleFor(HANDLE hSource,
+//                                    unsigned int procId,
+//                                    bool neededToCloseSource,
+//                                    bool keepCloseRight);
+//
+//   private:
+//      WinHandles();
+//   };
+//
+//   //// __WINHANDLES_H__
+//} // namespace subsystem_macos
+//
+//

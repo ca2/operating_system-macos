@@ -26,17 +26,17 @@
 //#define _SCROLL_BAR_H_
 
 #include "innate_subsystem/gui/ScrollBar.h"
-#include "innate_subsystem_windows/_common_header.h"
-#include "innate_subsystem_windows/gui/Window.h"
+#include "innate_subsystem_macos/_common_header.h"
+#include "innate_subsystem_macos/gui/Window.h"
 
 
-namespace  innate_subsystem_windows
+namespace  innate_subsystem_macos
 {
    // ScrollBar class
    // This class doesn't create any window, it only show/hide that is already
    // contained in existed window.
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS ScrollBar :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS ScrollBar :
    virtual public window_implementation<innate_subsystem::ScrollBarInterface, Window>
    {
    public:

@@ -6,7 +6,7 @@
 #include "drawing/Icon.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
    ImageList::ImageList()
@@ -34,7 +34,7 @@ namespace innate_subsystem_windows
    }
 
 
-   void ImageList::createImageList(const ::int_size & size, int flags, int iInitialSize, int iGrow)
+   void ImageList::createImageList(const ::i32_size & size, int flags, int iInitialSize, int iGrow)
    {
      m_himagelist = ImageList_Create(size.cx,
                            size.cy,
@@ -62,7 +62,7 @@ namespace innate_subsystem_windows
    void ImageList::addIcon(innate_subsystem::IconInterface * picon)
    {
 
-      auto piconWin32 = picon->impl<::innate_subsystem_windows::Icon>();
+      auto piconWin32 = picon->impl<::innate_subsystem_macos::Icon>();
 
       auto hicon = piconWin32->m_hicon;
 
@@ -71,4 +71,4 @@ namespace innate_subsystem_windows
    }
 
 
-}// namespace innate_subsystem_windows
+}// namespace innate_subsystem_macos

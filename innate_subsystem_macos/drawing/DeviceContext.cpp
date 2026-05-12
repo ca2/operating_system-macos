@@ -31,7 +31,7 @@
 #include "innate_subsystem/drawing/GraphicsObject.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
    // class CarrierGraphicsObject :
@@ -145,7 +145,7 @@ namespace innate_subsystem_windows
    {
       destroyDeviceContext();
       m_bHasOwnDC = false;
-      ::cast < ::innate_subsystem_windows::Bitmap > pbitmapWin32 = pbitmap;
+      ::cast < ::innate_subsystem_macos::Bitmap > pbitmapWin32 = pbitmap;
       m_hwnd = nullptr;
       m_hdc2 = nullptr;
       m_pgraphics = new ::Gdiplus::Graphics(pbitmapWin32->m_pbitmap);
@@ -186,7 +186,7 @@ namespace innate_subsystem_windows
    //   destroyDeviceContext();
    //   m_bHasOwnDC = true;
    //   auto pdevicecontextPaint = ppaintwindow->getPaintDeviceContext();
-   //   auto pdevicecontextWin32 = pdevicecontextPaint-> impl<::innate_subsystem_windows::DeviceContext >() ;
+   //   auto pdevicecontextWin32 = pdevicecontextPaint-> impl<::innate_subsystem_macos::DeviceContext >() ;
    //   m_hdc2 = ::CreateCompatibleDC(pdevicecontextWin32->m_hdc2);
    //   m_pgraphics = new ::Gdiplus::Graphics(m_hdc2);
    //}
@@ -199,7 +199,7 @@ namespace innate_subsystem_windows
     ::pointer < ::innate_subsystem::GraphicsObject>DeviceContext::selectObject(::innate_subsystem::GraphicsObject * pgraphicsobjectNew)
     {
    
-       //auto pgraphicsobjectOld = create_newø < ::innate_subsystem_windows::CarrierGraphicsObject >();
+       //auto pgraphicsobjectOld = create_newø < ::innate_subsystem_macos::CarrierGraphicsObject >();
 //   
   //     pgraphicsobjectOld->m_hgdiobj = _selectObject2((HGDIOBJ) pgraphicsobjectNew->_HGDIOBJ());
    //
@@ -208,7 +208,7 @@ namespace innate_subsystem_windows
    
     }
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
 

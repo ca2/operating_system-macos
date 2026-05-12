@@ -24,7 +24,7 @@
 #include "framework.h"
 #include "subsystem_macos/_common_header.h"
 #include "DynamicLibrary.h"
-
+#include <dlfcn.h>
 //#include <crtdbg.h>
 
 
@@ -44,7 +44,7 @@ namespace subsystem_macos
    DynamicLibrary::~DynamicLibrary()
    {
       if (m_module != 0) {
-         FreeLibrary(m_module);
+         dlclose(m_module);
       }
    }
 
@@ -57,7 +57,7 @@ namespace subsystem_macos
 
    void DynamicLibrary::init(const ::scoped_string & scopedstrFilename)
    {
-      m_module = LoadLibrary(::wstring(scopedstrFilename));
+      m_module = ::dlopen(scopedstrFilename, 0);
 
       if (m_module == 0) {
          ::string errMsg;
@@ -70,9 +70,9 @@ namespace subsystem_macos
 
    void * DynamicLibrary::getProcAddress(const char *procName)
    {
-      _ASSERT(m_module != 0);
+      ASSERT(m_module != 0);
 
-      return ::GetProcAddress(m_module, procName);
+      return ::dlsym(m_module, procName);
    }
 }  // namespace subsystem_macos
 

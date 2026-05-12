@@ -30,7 +30,7 @@
 
 //namespace windows
 //{
-   namespace  innate_subsystem_windows
+   namespace  innate_subsystem_macos
    {
       ComboBox::ComboBox()
       {

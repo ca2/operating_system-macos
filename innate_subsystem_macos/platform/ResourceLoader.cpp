@@ -33,7 +33,7 @@
 
 // #include aaa_<crtdbg.h>
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
    //ResourceLoader::ResourceLoader(HINSTANCE appInst)
@@ -47,9 +47,9 @@ namespace innate_subsystem_windows
    ::pointer < innate_subsystem::IconInterface > ResourceLoader::loadStandardIcon(enum_cursor ecursor)
    {
 
-      auto picon = create_newø<::innate_subsystem_windows::Icon>();
+      auto picon = create_newø<::innate_subsystem_macos::Icon>();
 
-      auto lpcwsz = (LPCWSTR)::windows::get_system_cursor(ecursor);
+      auto lpcwsz = ::macos::get_system_cursor(ecursor);
       //return LoadIcon(NULL, iconName);
       // if ((::iptr)iconName < 65536)
       // {
@@ -69,7 +69,7 @@ namespace innate_subsystem_windows
    ::pointer < innate_subsystem::IconInterface > ResourceLoader::loadIcon(const char* iconName)
    {
       //return LoadIcon(m_appInstance, iconName);
-      auto picon = create_newø<::innate_subsystem_windows::Icon>();
+      auto picon = create_newø<::innate_subsystem_macos::Icon>();
       //return LoadIcon(NULL, iconName);
       if ((::iptr)iconName < 65536)
       {
@@ -89,7 +89,7 @@ namespace innate_subsystem_windows
    ::pointer < ::innate_subsystem::IconInterface > ResourceLoader::loadIconByIntResource(int iId)
    {
       //return LoadIcon(m_appInstance, iconName);
-      auto picon = create_newø<::innate_subsystem_windows::Icon>();
+      auto picon = create_newø<::innate_subsystem_macos::Icon>();
       //return LoadIcon(NULL, iconName);
       if ((::iptr)iId < 65536)
       {
@@ -178,7 +178,7 @@ namespace innate_subsystem_windows
    ::pointer <innate_subsystem::CursorInterface> ResourceLoader::loadCursor(unsigned int id)
    {
       //return LoadCursor(m_appInstance, iconName);
-      auto pcursor = create_newø<::innate_subsystem_windows::Cursor>();
+      auto pcursor = create_newø<::innate_subsystem_macos::Cursor>();
       //return LoadCursor(NULL, iconName);
       //if ((::iptr)id < 65536)
       //{

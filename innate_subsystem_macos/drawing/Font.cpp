@@ -27,7 +27,7 @@
 
 //#include <crtdbg.h>
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 //Pen::Pen(int type, int width, const ::color::color & color)
@@ -88,4 +88,4 @@ destroyGraphicsObject();
 //    //
 //    // _ASSERT(m_pen != NULL);
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

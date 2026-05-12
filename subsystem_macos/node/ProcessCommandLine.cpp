@@ -49,7 +49,7 @@
        auto out = m_pcommandlinearguments->getArgs();
 
        for (size_t i = 0; i < out.size(); i++) {
-          if (out[i][0] != _T('-')) {
+          if (out[i][0] != '-') {
              m_strParam.add(out[i]);
           } else {
              optionParser(out[i]);

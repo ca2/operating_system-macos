@@ -27,12 +27,12 @@
 
 
 #include "innate_subsystem/gui/ImagedButton.h"
-#include "innate_subsystem_windows/_common_header.h"
-#include "innate_subsystem_windows/gui/Control.h"
+#include "innate_subsystem_macos/_common_header.h"
+#include "innate_subsystem_macos/gui/Control.h"
 #include <uxtheme.h>
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
     //
     // Owner draw button, that displays button with image and text.
@@ -55,9 +55,9 @@ namespace innate_subsystem_windows
 
         virtual void subclassWindow(const ::operating_system::window & window) override;
 
-        virtual void _setHICON(HICON hicon, const ::int_size & size);
-        //virtual void setIcon(::innate_subsystem::IconInterface * picon, const ::int_size & size, int flags, int iInitialSize = 1, int iGrow = 1) override;
-       virtual void setIcon(::innate_subsystem::IconInterface * picon, const ::int_size & size) override;
+        virtual void _setHICON(HICON hicon, const ::i32_size & size);
+        //virtual void setIcon(::innate_subsystem::IconInterface * picon, const ::i32_size & size, int flags, int iInitialSize = 1, int iGrow = 1) override;
+       virtual void setIcon(::innate_subsystem::IconInterface * picon, const ::i32_size & size) override;
 
     //private:
 
@@ -89,9 +89,9 @@ namespace innate_subsystem_windows
          //Icon to display
 
 
-      ::pointer < ::innate_subsystem_windows::Icon > m_picon;
+      ::pointer < ::innate_subsystem_macos::Icon > m_picon;
 
-       ::int_size m_size;
+       ::i32_size m_size;
       //int m_iconWidth;
       //int m_iconHeight;
   //  private:
@@ -100,6 +100,6 @@ namespace innate_subsystem_windows
    };
 
 //#endif
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 

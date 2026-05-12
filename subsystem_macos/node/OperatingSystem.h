@@ -87,27 +87,27 @@
       // Returns true if success.
        ::string getComputerName() override;
 
-       // Returns true if run under a windows NT family
-       bool isWinNTFamily() override;
-       // Returns true if run under windows XP
-       bool isWin2000() override;
-       // Returns true if run under windows XP
-       bool isWinXP() override;
-       // Returns true if run windows 2003 server.
-       bool isWin2003Server() override;
-       // Returns true if run under Windows Vista or later
-       bool isVistaOrLater() override;
-       // Returns true if run Windows7 or Win2008 R2 server.
-       bool isWin7() override;
-
-       // Simulates the "ctrl + alt + del" combination under WindowsXP.
-       void simulateCtrlAltDel(::subsystem::LogWriter *log) override;
-
-       // Simulates the "ctrl + alt + del" combination by using the "SAS" lib.
-       void simulateCtrlAltDelUnderVista(::subsystem::LogWriter *log) override;
-
-       // Returns true if the Aero is On.
-       bool isAeroOn(::subsystem::LogWriter *log) override;
+//       // Returns true if run under a windows NT family
+//       bool isWinNTFamily() override;
+//       // Returns true if run under windows XP
+//       bool isWin2000() override;
+//       // Returns true if run under windows XP
+//       bool isWinXP() override;
+//       // Returns true if run windows 2003 server.
+//       bool isWin2003Server() override;
+//       // Returns true if run under Windows Vista or later
+//       bool isVistaOrLater() override;
+//       // Returns true if run Windows7 or Win2008 R2 server.
+//       bool isWin7() override;
+//
+//       // Simulates the "ctrl + alt + del" combination under WindowsXP.
+//       void simulateCtrlAltDel(::subsystem::LogWriter *log) override;
+//
+//       // Simulates the "ctrl + alt + del" combination by using the "SAS" lib.
+//       void simulateCtrlAltDelUnderVista(::subsystem::LogWriter *log) override;
+//
+//       // Returns true if the Aero is On.
+//       bool isAeroOn(::subsystem::LogWriter *log) override;
 
        bool isUserAnAdmin() override;
 
@@ -116,7 +116,7 @@
        bool file_canWrite(const ::file::path & path) override;
        bool file_createNewFile(const ::file::path & path) override;
 
-       virtual bool _tryCreateFile(const ::file::path & path, DWORD desiredAccess, DWORD creationDisposition);
+       virtual bool _tryOpenFile(const ::file::path & path, int flags);
 
        ::memory getSharedMemorySnapshot(const ::scoped_string &scopedstrShareMemoryName, memsize size, const class ::time & timeWaitMax) override;
 

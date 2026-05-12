@@ -29,41 +29,43 @@
 namespace subsystem_macos
 {
 
-   void SystemInformation::getDesktopAllArea(int_rectangle & rectangle)
+   void SystemInformation::getDesktopAllArea(i32_rectangle & rectangle)
    {
-      RECT rc;
-      if (GetClientRect(GetDesktopWindow(), &rc))
-      {
-         ::copy(rectangle, rc);
-      }
+//      RECT rc;
+//      if (GetClientRect(GetDesktopWindow(), &rc))
+//      {
+//         ::copy(rectangle, rc);
+//      }
    }
 
-   bool SystemInformation::getDesktopArea(int_rectangle & rectangle)
+   bool SystemInformation::getDesktopArea(i32_rectangle & rectangle)
    {
-      RECT rc;
-      bool bOk = !!SystemParametersInfo(SPI_GETWORKAREA, 0, &rc, 0);
-if (bOk)
-{
-::copy(rectangle, rc);
-
-}
-      return bOk;
+      ///RECT rc;
+//      bool bOk = !!SystemParametersInfo(SPI_GETWORKAREA, 0, &rc, 0);
+//if (bOk)
+//{
+//::copy(rectangle, rc);
+//
+//}
+      //return bOk;
+      return false;
    }
 
-   bool SystemInformation::_isSupportStretchBlt(HDC hdc)
-   {
-      int rasterCaps = GetDeviceCaps(hdc, RASTERCAPS);
-      return !!(rasterCaps & RC_STRETCHBLT);
-   }
-
-   int SystemInformation::_getBitsPixel(HDC hdc)
-   {
-      return GetDeviceCaps(hdc, BITSPIXEL);
-   }
+//   bool SystemInformation::_isSupportStretchBlt(HDC hdc)
+//   {
+//      int rasterCaps = GetDeviceCaps(hdc, RASTERCAPS);
+//      return !!(rasterCaps & RC_STRETCHBLT);
+//   }
+//
+//   int SystemInformation::_getBitsPixel(HDC hdc)
+//   {
+//      return GetDeviceCaps(hdc, BITSPIXEL);
+//   }
 
    int SystemInformation::getMonitorCount()
    {
-      return GetSystemMetrics(SM_CMONITORS);
+      //return GetSystemMetrics(SM_CMONITORS);
+      return 1;
    }
 
 

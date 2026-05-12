@@ -29,21 +29,22 @@ namespace subsystem_macos
 {
    void Keyboard::getState(BYTE state[256])
       {
-         if (!GetKeyboardState(state)) {
-            throw::subsystem::SystemException();
-         }
+//         if (!GetKeyboardState(state)) {
+//            throw::subsystem::SystemException();
+//         }
       }
 
       void Keyboard::setState(BYTE state[256])
       {
-         if (!SetKeyboardState(state)) {
-            throw ::subsystem::SystemException();
-         }
+//         if (!SetKeyboardState(state)) {
+//            throw ::subsystem::SystemException();
+//         }
       }
 
       bool Keyboard::isKeyPressed(BYTE vkCode)
       {
-         return (GetAsyncKeyState(vkCode) & 0x8000) != 0;
+         //return (GetAsyncKeyState(vkCode) & 0x8000) != 0;
+         return false;
       }
 
 } // namespace subsystem_macos

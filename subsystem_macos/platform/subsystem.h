@@ -21,8 +21,8 @@ namespace subsystem_macos
    public:
 
 
-      int m_i_LOADER_CLOSE_CODE;
-      int m_i_SPEC_IPC_CODE;
+//      int m_i_LOADER_CLOSE_CODE;
+//      int m_i_SPEC_IPC_CODE;
 
 
       // ::pointer < ::subsystem::string_table >     m_pstringtable;
@@ -61,6 +61,7 @@ namespace subsystem_macos
       bool DecryptData(const memory & input, ::string& output) override;
 
       pointer<::subsystem::FileInterface> fileFrom_HANDLE(void *pHANDLE) override;
+      pointer<::subsystem::FileInterface> fileFrom_fd(int fd) override;
 
 
       virtual void toString(::string &str, const ::earth::time &time);
@@ -83,7 +84,7 @@ namespace subsystem_macos
 
 
 
-CLASS_DECL_SUBSYSTEM_MACOS ::subsystem_macos::subsystem & WindowsSubsystem();
+CLASS_DECL_SUBSYSTEM_MACOS ::subsystem_macos::subsystem & MacosSubsystem();
 
 
 

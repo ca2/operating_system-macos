@@ -25,19 +25,19 @@
 #pragma once
 
 #include "innate_subsystem/drawing/Font.h"
-#include "subsystem_windows/_common_header.h"
-#include <Gdiplus.h>
+#include "subsystem_macos/_common_header.h"
+//#include <Gdiplus.h>
 
 //#include "util/CommonHeader.h"
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
 
 
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS Font :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Font :
 virtual public Implementation<::innate_subsystem::FontInterface>
    {
    public:
@@ -58,7 +58,11 @@ virtual public Implementation<::innate_subsystem::FontInterface>
       //    HPEN m_pen;
       //
       //    friend class Graphics;
-      Gdiplus::Font * m_pfont;
+      //Gdiplus::Font * m_pfont;
+      ::string m_strFamily;
+      int m_iPixelHeight;
+      int m_iFontWeight;
+      bool m_bItalice;
    };
 
 

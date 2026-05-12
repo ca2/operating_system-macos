@@ -29,9 +29,9 @@
 //#include "Control.h"
 //#include "util/StringStorage.h"
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS Tab :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Tab :
    virtual public ::Implementation<::innate_subsystem::TabInterface>
    {
    public:
@@ -68,4 +68,4 @@ namespace innate_subsystem_windows
    };
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

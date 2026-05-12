@@ -24,79 +24,144 @@
 #include "framework.h"
 #include "GlobalMutex.h"
 #include "subsystem/node/SystemException.h"
-#include <Aclapi.h>
+//#include <Aclapi.h>
 
 
 namespace subsystem_macos
 {
 
-   GlobalMutex::GlobalMutex() :
+GlobalMutex::GlobalMutex() :
+    m_bNamed(false),
+    m_psem(nullptr)
+{
 
-   m_mutex(nullptr)
-   {
-
-
-   }
-
+}
 
 
+GlobalMutex::~GlobalMutex()
+{
+    if (m_bNamed)
+    {
+        if (m_psem != SEM_FAILED && m_psem != nullptr)
+        {
+            sem_close(m_psem);
 
-   GlobalMutex::~GlobalMutex()
-   {
-      CloseHandle(m_mutex);
-   }
+            // Optional:
+            // sem_unlink(m_strName.c_str());
+        }
+    }
+    else
+    {
+        pthread_mutex_destroy(&m_mutex);
+    }
+}
 
 
-   void GlobalMutex::initialize_global_mutex(const ::scoped_string & scopedstrName, bool interSession, bool throwIfExist)
-   {
-      ::string mutexName;
+void GlobalMutex::initialize_global_mutex(
+    const ::scoped_string & scopedstrName,
+    bool interProcess,
+    bool throwIfExist)
+{
+    m_bNamed = interProcess;
 
-      mutexName.format("{}\\{}", interSession ? "Global" :"Local", scopedstrName);
+    if (interProcess)
+    {
 
-      m_mutex = CreateMutex(0, FALSE, ::wstring(mutexName).c_str());
+        //
+        // POSIX named semaphores REQUIRE leading '/'
+        //
+        m_strName = "/";
+        m_strName += scopedstrName;
 
-      if (m_mutex == 0) {
-         throw ::subsystem::SystemException();
-      }
+        int flags = O_CREAT;
 
-      if (GetLastError() != ERROR_ALREADY_EXISTS) {
-         setAccessToAll(m_mutex);
-      } else if (throwIfExist) {
-         CloseHandle(m_mutex);
-         throw ::subsystem::SystemException();
-      }
-   }
+        if (throwIfExist)
+        {
+            flags |= O_EXCL;
+        }
 
-   ::e_status GlobalMutex::lock()
-   {
-      if (WaitForSingleObject(m_mutex, INFINITE) == WAIT_OBJECT_0)
-      {
+        //
+        // Initial value = 1 (mutex behavior)
+        //
+        m_psem = sem_open(
+            m_strName.c_str(),
+            flags,
+            0666,
+            1);
 
-         return ::success;
+        if (m_psem == SEM_FAILED)
+        {
+            throw ::subsystem::SystemException();
+        }
 
-      }
+    }
+    else
+    {
 
-      return error_failed;
+        pthread_mutexattr_t attr;
 
-   }
+        if (pthread_mutexattr_init(&attr) != 0)
+        {
+            throw ::subsystem::SystemException();
+        }
 
-   void GlobalMutex::unlock()
-   {
-      ReleaseMutex(m_mutex);
-   }
+        //
+        // Recursive mutex behaves more like Windows mutex
+        //
+        pthread_mutexattr_settype(
+            &attr,
+            PTHREAD_MUTEX_RECURSIVE);
 
-   void GlobalMutex::setAccessToAll(HANDLE objHandle)
-   {
-      DWORD errorCode = SetSecurityInfo(objHandle, SE_KERNEL_OBJECT,
-                                        DACL_SECURITY_INFORMATION, // Modify DACL
-                                        0,
-                                        0,
-                                        0, // Pointer to DACL (0 = access to all)
-                                        0);
-      if (errorCode != ERROR_SUCCESS) {
-         throw ::subsystem::SystemException(errorCode);
-      }
-   }
+        if (pthread_mutex_init(&m_mutex, &attr) != 0)
+        {
+            pthread_mutexattr_destroy(&attr);
+
+            throw ::subsystem::SystemException();
+        }
+
+        pthread_mutexattr_destroy(&attr);
+
+    }
+}
+
+
+::e_status GlobalMutex::lock()
+{
+    if (m_bNamed)
+    {
+
+        if (sem_wait(m_psem) == 0)
+        {
+            return ::success;
+        }
+
+    }
+    else
+    {
+
+        if (pthread_mutex_lock(&m_mutex) == 0)
+        {
+            return ::success;
+        }
+
+    }
+
+    return error_failed;
+}
+
+
+void GlobalMutex::unlock()
+{
+    if (m_bNamed)
+    {
+        sem_post(m_psem);
+    }
+    else
+    {
+        pthread_mutex_unlock(&m_mutex);
+    }
+}
+
 } // namespace subsystem_macos
 
 

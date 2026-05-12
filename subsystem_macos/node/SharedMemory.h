@@ -24,33 +24,33 @@
 
 #pragma once
 
-
-#include "subsystem_macos/_common_header.h"
-
-namespace subsystem_macos
-{
-
-class CLASS_DECL_SUBSYSTEM_MACOS SharedMemory
-{
-public:
-  // @throw ::subsystem::Exception
-  SharedMemory(const ::scoped_string & scopedstrName, size_t size);
-  virtual ~SharedMemory();
-
-  void *getMemPointer() { return m_memory; }
-
-//protected:
-  // Return true if need to init
-  bool createFile(const ::scoped_string & scopedstrName, size_t size);
-  void mapViewOfFile();
-  void setAllAccess(HANDLE objHandle);
-
-  void freeRes();
-
-  HANDLE m_hToMap;
-  void *m_memory;
-};
-
-//// __SHAREDMEMORY_H__
-///
-} // namespace subsystem_macos
+//
+//#include "subsystem_macos/_common_header.h"
+//
+//namespace subsystem_macos
+//{
+//
+//class CLASS_DECL_SUBSYSTEM_MACOS SharedMemory
+//{
+//public:
+//  // @throw ::subsystem::Exception
+//  SharedMemory(const ::scoped_string & scopedstrName, size_t size);
+//  virtual ~SharedMemory();
+//
+//  void *getMemPointer() { return m_memory; }
+//
+////protected:
+//  // Return true if need to init
+//  bool createFile(const ::scoped_string & scopedstrName, size_t size);
+//  void mapViewOfFile();
+//  //void setAllAccess(HANDLE objHandle);
+//
+//  void freeRes();
+//
+//  //HANDLE m_hToMap;
+//  void *m_memory;
+//};
+//
+////// __SHAREDMEMORY_H__
+/////
+//} // namespace subsystem_macos

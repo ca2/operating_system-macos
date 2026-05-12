@@ -26,11 +26,11 @@
 #pragma once
 
 #include "innate_subsystem/drawing/BitmapGraphics.h"
-#include "innate_subsystem_windows/drawing/Graphics.h"
+#include "innate_subsystem_macos/drawing/Graphics.h"
 
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    //
    // Object that creates bitmap with specified size and allow to
@@ -43,13 +43,13 @@ namespace innate_subsystem_windows
 
       // Creates BitmapGraphics object with bitmap complatible with specified dc and
       // with specified size.
-      //BitmapGraphics(DeviceContext *pdevicecontextCompatible, const ::int_size & size);
+      //BitmapGraphics(DeviceContext *pdevicecontextCompatible, const ::i32_size & size);
       BitmapGraphics();
       // Destroys bitmap and graphics object.
       ~BitmapGraphics() override;
 
 
-      void initialize_bitmap_graphics(innate_subsystem::DeviceContextInterface* pdevicecontextCompatible, const int_size& size) override;
+      void initialize_bitmap_graphics(innate_subsystem::DeviceContextInterface* pdevicecontextCompatible, const i32_size& size) override;
 
       // Returns target bitmap that we paint.
       ::innate_subsystem::BitmapInterface *getBitmap() override;
@@ -59,7 +59,7 @@ namespace innate_subsystem_windows
 
    //protected:
       bool m_isPainting;
-      ::pointer < ::innate_subsystem_windows::Bitmap > m_pbitmap;
+      ::pointer < ::innate_subsystem_macos::Bitmap > m_pbitmap;
       ::pointer < ::innate_subsystem::GraphicsObject > m_pgraphicsobjectOldBitmap;
    };
 
@@ -67,4 +67,4 @@ namespace innate_subsystem_windows
 
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

@@ -30,7 +30,7 @@
 #include "acme/operating_system/windows/user.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    Cursor::Cursor()
    : m_bHasOwnCursor(true), m_hcursor(NULL)
@@ -92,7 +92,7 @@ namespace innate_subsystem_windows
 
    {
       m_bHasOwnCursor = true;
-      auto piconWin32 = pcursor->impl < ::innate_subsystem_windows::Cursor >();
+      auto piconWin32 = pcursor->impl < ::innate_subsystem_macos::Cursor >();
       m_hcursor= piconWin32->m_hcursor;
    }
 
@@ -136,8 +136,8 @@ namespace innate_subsystem_windows
       //
       // memset(&ci, 0, sizeof(ICONINFO));
       //
-      // auto pbitmapWin32 = pbitmap->impl<innate_subsystem_windows::Bitmap>();
-      // auto pbitmapMaskWin32 = pbitmapMask->impl<innate_subsystem_windows::Bitmap>();
+      // auto pbitmapWin32 = pbitmap->impl<innate_subsystem_macos::Bitmap>();
+      // auto pbitmapMaskWin32 = pbitmapMask->impl<innate_subsystem_macos::Bitmap>();
       //
       // pbitmapWin32->m_pbitmap->GetHBITMAP(Gdiplus::Color(0, 0, 0, 0), &ci.hbmColor);
       // pbitmapWin32->m_pbitmap->GetHBITMAP(Gdiplus::Color(0, 0, 0, 0), &ci.hbmMask);
@@ -146,5 +146,5 @@ namespace innate_subsystem_windows
       //
       // m_hcursor = CreateCursorIndirect(&ii);
    }
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 

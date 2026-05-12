@@ -25,15 +25,15 @@
 
 
 #include "innate_subsystem/gui/ListBox.h"
-#include "innate_subsystem_windows/_common_header.h"
-#include "innate_subsystem_windows/gui/Control.h"
+#include "innate_subsystem_macos/_common_header.h"
+#include "innate_subsystem_macos/gui/Control.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS ListBox : public window_implementation<innate_subsystem::ListBoxInterface, Control>
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS ListBox : public window_implementation<innate_subsystem::ListBoxInterface, Control>
    {
    public:
       ListBox();
@@ -55,7 +55,7 @@ namespace innate_subsystem_windows
       int getCount()override ;
       void clear()override ;
    };
-} // innate_subsystem_windows
+} // innate_subsystem_macos
 
    
    

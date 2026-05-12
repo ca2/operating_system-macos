@@ -65,27 +65,27 @@ namespace subsystem_macos
       bool rdSuc = true;
       ::string wrErrText, rdErrText;
       if (::is_ok(m_pfileWrite) && m_neededToClose) {
-         if (CloseHandle(m_pfileWrite->m_handle) == 0) {
-            wrErrText = ::windows::last_error_message("Cannot close anonymous pipe write handle.", ::windows::last_error());
+         if (::close(m_pfileWrite->m_iFd) == 0) {
+            //wrErrText = ::windows::last_error_message("Cannot close anonymous pipe write handle.", ::windows::last_error());
             wrSuc = false;
          }
          m_plogwriter->debug("Closed m_hWrite(%p) AnonymousPipe handle",
-                    m_pfileWrite->m_handle);
+                    m_pfileWrite->m_iFd);
       }
       ::release(m_pfileWrite);
       if (::is_ok(m_pfileRead) && m_neededToClose) {
-         if (CloseHandle(m_pfileRead->m_handle) == 0) {
-            wrErrText = ::windows::last_error_message("Cannot close anonymous pipe read handle.", ::windows::last_error());
+         if (::close(m_pfileRead->m_iFd) == 0) {
+            //wrErrText = ::windows::last_error_message("Cannot close anonymous pipe read handle.", ::windows::last_error());
             rdSuc = false;
          }
          m_plogwriter->debug("Closed m_hRead(%p) AnonymousPipe handle",
-                    m_pfileRead->m_handle);
+                    m_pfileRead->m_iFd);
       }
       ::release(m_pfileRead);
       if (!wrSuc || !rdSuc) {
          ::string errMess;
-         errMess.formatf("AnonymousPipe::close() funciton has failed ({} {})",
-                        wrErrText, rdErrText);
+         //errMess.formatf("AnonymousPipe::close() funciton has failed ({} {})",
+           //             wrErrText, rdErrText);
          throw ::subsystem::Exception(errMess);
       }
    }
@@ -96,7 +96,7 @@ namespace subsystem_macos
          return readByFile(buffer, len, m_pfileRead);
       } catch (...) {
          m_plogwriter->error("AnonymousPipe::read() failed (m_hRead = %p)",
-                    m_pfileRead->m_handle);
+                    m_pfileRead->m_iFd);
          throw;
       }
    }
@@ -107,14 +107,14 @@ namespace subsystem_macos
          return writeByFile(buffer, len, m_pfileWrite);
       } catch (...) {
          m_plogwriter->error("AnonymousPipe::write() failed (m_hWrite = {})",
-                    m_pfileWrite->m_handle);
+                    m_pfileWrite->m_iFd);
          throw;
       }
    }
 
    void AnonymousPipe::checkPipeFile(::subsystem::FileInterface * pfile)
    {
-      if (::is_null(pfile) || ::as_HANDLE(pfile) == INVALID_HANDLE_VALUE || ::as_HANDLE(pfile) == nullptr) {
+      if (::is_null(pfile) || ::as_fd(pfile) <0 ) {
          throw ::io_exception(error_io, "Invalid pipe handle");
       }
    }
@@ -132,49 +132,49 @@ namespace subsystem_macos
    void AnonymousPipe::assignHandlesFor(::subsystem::ProcessHandleInterface * pprocesshandleTarget, bool neededToClose,
                                         bool keepCloseRight)
    {
-      ::cast < ::subsystem_macos::ProcessHandle> pprocesshandleTargetWindows = pprocesshandleTarget;
-      auto hTargetProc = pprocesshandleTargetWindows->m_hProcess;
-      HANDLE hSrcProc = GetCurrentProcess();
-      HANDLE hWrite = 0, hRead = 0;
-      if (DuplicateHandle(hSrcProc, m_pfileWrite->m_handle, hTargetProc, &hWrite, 0, FALSE,
-                          DUPLICATE_CLOSE_SOURCE | DUPLICATE_SAME_ACCESS) == 0) {
-         ::string errText;
-         errText = windows::last_error_message("Cannot dupplicate write"
-                                " handle for the anonymous pipe", ::windows::last_error());
-
-         throw ::subsystem::Exception(errText);
-                          }
-      if (DuplicateHandle(hSrcProc, m_pfileRead->m_handle, hTargetProc, &hRead, 0, FALSE,
-                          DUPLICATE_CLOSE_SOURCE | DUPLICATE_SAME_ACCESS) == 0) {
-         ::string errText;
-         errText = windows::last_error_message("Cannot dupplicate read"
-                                " handle for the anonymous pipe",
-                                ::windows::last_error());
-         throw ::subsystem::Exception(errText);
-                          }
-      // Try keep of the close rights.
-      if (keepCloseRight) {
-         if (DuplicateHandle(hTargetProc, m_pfileWrite, 0, 0, 0, FALSE,
-                             DUPLICATE_CLOSE_SOURCE) == 0) {
-            ::string errText;
-            errText = ::windows::last_error_message("Cannot keep the right to close of the write"
-                                   " handle of the anonymous pipe",
-                                   ::windows::last_error());
-            throw ::subsystem::Exception(errText);
-                             }
-         if (DuplicateHandle(hTargetProc, m_pfileRead->m_handle, 0, 0, 0, FALSE,
-                             DUPLICATE_CLOSE_SOURCE) == 0) {
-            ::string errText;
-            errText = ::windows::last_error_message("Cannot keep the right to close of the read"
-                                   " handle of the anonymous pipe",
-                                   ::windows::last_error());
-            throw ::subsystem::Exception(errText);
-                             }
-         // Now the current process can close the handles.
-      }
-      m_pfileWrite->m_handle= hWrite;
-      m_pfileRead->m_handle = hRead;
-      m_neededToClose = neededToClose;
+//      ::cast < ::subsystem_macos::ProcessHandle> pprocesshandleTargetWindows = pprocesshandleTarget;
+//      auto hTargetProc = pprocesshandleTargetWindows->m_hProcess;
+//      HANDLE hSrcProc = GetCurrentProcess();
+//      HANDLE hWrite = 0, hRead = 0;
+//      if (DuplicateHandle(hSrcProc, m_pfileWrite->m_handle, hTargetProc, &hWrite, 0, FALSE,
+//                          DUPLICATE_CLOSE_SOURCE | DUPLICATE_SAME_ACCESS) == 0) {
+//         ::string errText;
+//         errText = windows::last_error_message("Cannot dupplicate write"
+//                                " handle for the anonymous pipe", ::windows::last_error());
+//
+//         throw ::subsystem::Exception(errText);
+//                          }
+//      if (DuplicateHandle(hSrcProc, m_pfileRead->m_handle, hTargetProc, &hRead, 0, FALSE,
+//                          DUPLICATE_CLOSE_SOURCE | DUPLICATE_SAME_ACCESS) == 0) {
+//         ::string errText;
+//         errText = windows::last_error_message("Cannot dupplicate read"
+//                                " handle for the anonymous pipe",
+//                                ::windows::last_error());
+//         throw ::subsystem::Exception(errText);
+//                          }
+//      // Try keep of the close rights.
+//      if (keepCloseRight) {
+//         if (DuplicateHandle(hTargetProc, m_pfileWrite, 0, 0, 0, FALSE,
+//                             DUPLICATE_CLOSE_SOURCE) == 0) {
+//            ::string errText;
+//            errText = ::windows::last_error_message("Cannot keep the right to close of the write"
+//                                   " handle of the anonymous pipe",
+//                                   ::windows::last_error());
+//            throw ::subsystem::Exception(errText);
+//                             }
+//         if (DuplicateHandle(hTargetProc, m_pfileRead->m_handle, 0, 0, 0, FALSE,
+//                             DUPLICATE_CLOSE_SOURCE) == 0) {
+//            ::string errText;
+//            errText = ::windows::last_error_message("Cannot keep the right to close of the read"
+//                                   " handle of the anonymous pipe",
+//                                   ::windows::last_error());
+//            throw ::subsystem::Exception(errText);
+//                             }
+//         // Now the current process can close the handles.
+//      }
+//      m_pfileWrite->m_handle= hWrite;
+//      m_pfileRead->m_handle = hRead;
+//      m_neededToClose = neededToClose;
    }
 
    void AnonymousPipe::setTimeOut(unsigned int timeOut)

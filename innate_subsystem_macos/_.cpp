@@ -4,8 +4,8 @@
 #include "acme/prototype/string/international.h"
 #include "acme/prototype/string/string.h"
 #include "acme/_library.h"
-#include <shellapi.h>
-#include <shlobj.h>
+//#include <shellapi.h>
+//#include <shlobj.h>
 
 
 //namespace acme_windows

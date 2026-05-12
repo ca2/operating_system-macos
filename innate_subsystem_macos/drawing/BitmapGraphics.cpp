@@ -29,22 +29,22 @@
 #include "DeviceContext.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
-   // BitmapGraphics::BitmapGraphics(DeviceContext *complatibleDC, const ::int_size & size)
+   // BitmapGraphics::BitmapGraphics(DeviceContext *complatibleDC, const ::i32_size & size)
    // : Graphics(complatibleDC), m_isPainting(false)
    // {
    //    m_bitmap = new Bitmap(complatibleDC->m_dc, width, height);
    //    m_dc = new DeviceContext(complatibleDC);
    // }
 
-   // BitmapGraphics::BitmapGraphics(DeviceContext* pdevicecontextCompatible, const int_size& size)
+   // BitmapGraphics::BitmapGraphics(DeviceContext* pdevicecontextCompatible, const i32_size& size)
    // {
    //
    //
    // }
 
-   // BitmapGraphics::BitmapGraphics(DeviceContext* pdevicecontextCompatible, const int_size& size)
+   // BitmapGraphics::BitmapGraphics(DeviceContext* pdevicecontextCompatible, const i32_size& size)
    // {
    //
    //
@@ -65,7 +65,7 @@ namespace innate_subsystem_windows
       //delete m_dc;
    }
 
-   void BitmapGraphics::initialize_bitmap_graphics(::innate_subsystem::DeviceContextInterface *pdevicecontextCompatible, const ::int_size & size)
+   void BitmapGraphics::initialize_bitmap_graphics(::innate_subsystem::DeviceContextInterface *pdevicecontextCompatible, const ::i32_size & size)
 //   : Graphics(complatibleDC), m_isPainting(false)
    {
       constructø(m_pbitmap);
@@ -86,8 +86,8 @@ namespace innate_subsystem_windows
       _ASSERT(!m_isPainting);
 
       m_isPainting = true;
-      //auto pdevicecontextWin32 = this->impl< ::innate_subsystem_windows::DeviceContext>();
-      //auto pbitmapWin32 = m_pbitmap->impl< ::innate_subsystem_windows::Bitmap >();
+      //auto pdevicecontextWin32 = this->impl< ::innate_subsystem_macos::DeviceContext>();
+      //auto pbitmapWin32 = m_pbitmap->impl< ::innate_subsystem_macos::Bitmap >();
       m_pgraphicsobjectOldBitmap = device_context()->selectObject(m_pbitmap);
    }
 
@@ -96,7 +96,7 @@ namespace innate_subsystem_windows
       _ASSERT(m_isPainting);
 
       m_isPainting = false;
-      //auto pdevicecontextWin32 = this->impl< ::innate_subsystem_windows::DeviceContext>();
+      //auto pdevicecontextWin32 = this->impl< ::innate_subsystem_macos::DeviceContext>();
       device_context()->selectObject(m_pgraphicsobjectOldBitmap);
    }
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

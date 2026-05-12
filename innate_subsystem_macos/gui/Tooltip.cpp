@@ -25,7 +25,7 @@
 #include "framework.h"
 #include "Tooltip.h"
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
    {
       Tooltip::Tooltip()
       {
@@ -74,4 +74,4 @@ namespace innate_subsystem_windows
       return ::innate_subsystem::e_tooltip_icon_none;
 
    }
-   } // namespace innate_subsystem_windows
+   } // namespace innate_subsystem_macos

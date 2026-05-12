@@ -27,10 +27,10 @@
 
 
 #include "innate_subsystem/drawing/Pen.h"
-#include "subsystem_windows/_common_header.h"
-#include <Gdiplus.h>
+#include "subsystem_macos/_common_header.h"
+//#include <Gdiplus.h>
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
    class Pen :
@@ -57,11 +57,13 @@ namespace innate_subsystem_windows
 
    // protected:
        //HPEN m_hpen;
-      Gdiplus::Pen * m_ppen;
+      //Gdiplus::Pen * m_ppen;
+      int m_iWidth;
+      ::color::color m_color;
    //
    //    friend class Graphics;
    };
 
 //#endi
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 

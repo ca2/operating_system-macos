@@ -308,7 +308,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="innate_subsystem_windows.def">
+    <None Include="innate_subsystem_macos.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

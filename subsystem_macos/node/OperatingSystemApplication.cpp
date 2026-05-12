@@ -36,8 +36,8 @@ namespace subsystem_macos
    //::comparable_list_base<HWND> OperatingSystemApplication::m_modelessDialogList;
 
    OperatingSystemApplication::OperatingSystemApplication()
-   :
-     m_mainWindow(0)
+//   :
+//     m_mainWindow(0)
 
    {
    }
@@ -49,9 +49,9 @@ namespace subsystem_macos
    void OperatingSystemApplication::initialize_operating_system_application()
    {
 
-      m_appInstance = (HINSTANCE)system()->m_hinstanceThis;
-
-      MainSubsystem().m_hinstanceResource = m_appInstance;
+//      m_appInstance = (HINSTANCE)system()->m_hinstanceThis;
+//
+//      MainSubsystem().m_hinstanceResource = m_appInstance;
 
       MainSubsystem().m_papplicationSubsystem = this;
 
@@ -155,7 +155,7 @@ namespace subsystem_macos
 
    void OperatingSystemApplication::shutdown()
    {
-      PostMessage(m_mainWindow, WM_CLOSE, 0, 0);
+      //PostMessage(m_mainWindow, WM_CLOSE, 0, 0);
    }
 
    //void OperatingSystemApplication::postMessage(UINT scopedstrMessage, WPARAM wParam, LPARAM lParam)
@@ -165,16 +165,16 @@ namespace subsystem_macos
 
    void OperatingSystemApplication::addModelessDialog(const ::operating_system::window & operatingsystemwindow)
    {
-      critical_section_lock l(&m_MDLMutex);
+      //critical_section_lock l(&m_MDLMutex);
 
-      m_modelessDialogList.add(::as_HWND(operatingsystemwindow));
+      //m_modelessDialogList.add(::as_HWND(operatingsystemwindow));
    }
 
    void OperatingSystemApplication::removeModelessDialog(const ::operating_system::window &operatingsystemwindow)
    {
-      critical_section_lock l(&m_MDLMutex);
+      //critical_section_lock l(&m_MDLMutex);
 
-      m_modelessDialogList.erase(::as_HWND(operatingsystemwindow));
+      //m_modelessDialogList.erase(::as_HWND(operatingsystemwindow));
    }
 
    
@@ -193,18 +193,18 @@ namespace subsystem_macos
    
    }
 
-
-   bool OperatingSystemApplication::processDialogMessage(MSG *msg)
-   {
-      critical_section_lock l(&m_MDLMutex);
-      for (::list_base<HWND>::iterator iter = m_modelessDialogList.begin();
-           iter != m_modelessDialogList.end(); iter++) {
-         if (IsDialogMessage(*iter, msg)) {
-            return true;
-         }
-           }
-      return false;
-   }
+//
+//   bool OperatingSystemApplication::processDialogMessage(MSG *msg)
+//   {
+////      critical_section_lock l(&m_MDLMutex);
+////      for (::list_base<HWND>::iterator iter = m_modelessDialogList.begin();
+////           iter != m_modelessDialogList.end(); iter++) {
+////         if (IsDialogMessage(*iter, msg)) {
+////            return true;
+////         }
+////           }
+//      return false;
+//   }
 
    // LRESULT CALLBACK OperatingSystemApplication::wndProc(HWND hWnd, UINT msg, WPARAM wparam, LPARAM lparam)
    // {

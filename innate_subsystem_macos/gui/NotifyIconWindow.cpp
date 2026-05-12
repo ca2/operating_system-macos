@@ -27,7 +27,7 @@
 #include "NotifyIconWindow.h"
 #include "WindowProcHolder.h"
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    NotifyIconWindow::NotifyIconWindow() :
    WM_USER_TASKBAR(RegisterWindowMessage(L"TaskbarCreated"))
@@ -151,4 +151,4 @@ namespace innate_subsystem_windows
       }
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

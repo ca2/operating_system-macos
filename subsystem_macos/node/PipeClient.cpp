@@ -43,45 +43,47 @@ namespace subsystem_macos
 
    ::pointer < ::subsystem::NamedPipeInterface >PipeClient::connect(const ::scoped_string & scopedstrName, unsigned int maxPortionSize)
    {
-      ::string pipeName;
-      pipeName.format("\\\\.\\pipe\\{}", ::string(scopedstrName).c_str());
-
-      auto pfilePipe = create_newø< ::subsystem_macos::File>();
-      HANDLE hPipe;
-      hPipe = CreateFile(::wstring(pipeName),  // pipe name
-                         GENERIC_READ |         // read and write access
-                         GENERIC_WRITE,
-                         0,                     // no sharing
-                         NULL,                  // default security attributes
-                         OPEN_EXISTING,         // opens existing pipe
-                         FILE_FLAG_OVERLAPPED,  // asynchronous mode
-                         NULL);                 // no template file
-
-      if (hPipe == INVALID_HANDLE_VALUE) {
-         int errCode = GetLastError();
-         ::string errMess;
-         errMess.format("Connect to pipe server failed, error code = {}", errCode);
-         throw ::subsystem::Exception(errMess);
-      }
-      pfilePipe->m_handle = hPipe;
-      DWORD dwMode = PIPE_READMODE_BYTE;
-      if (!SetNamedPipeHandleState(hPipe,   // pipe handle
-                                   &dwMode,   // new pipe mode
-                                   NULL,      // don't set maximum bytes
-                                   NULL)      // don't set maximum time
-                                   ) {
-         int errCode = GetLastError();
-         ::string errMess;
-         errMess.formatf("SetNamedPipeHandleState failed, error code = {}", errCode);
-         throw ::subsystem::Exception(errMess);
-                                   }
-
-      auto pnamedpipe = create_newø< ::subsystem_macos::NamedPipe>();
-
-      pnamedpipe->initialize_named_pipe(pfilePipe, maxPortionSize, false);
-
-
-      return pnamedpipe;
+//      ::string pipeName;
+//      pipeName.format("\\\\.\\pipe\\{}", ::string(scopedstrName).c_str());
+//
+//      auto pfilePipe = create_newø< ::subsystem_macos::File>();
+//      HANDLE hPipe;
+//      hPipe = CreateFile(::wstring(pipeName),  // pipe name
+//                         GENERIC_READ |         // read and write access
+//                         GENERIC_WRITE,
+//                         0,                     // no sharing
+//                         NULL,                  // default security attributes
+//                         OPEN_EXISTING,         // opens existing pipe
+//                         FILE_FLAG_OVERLAPPED,  // asynchronous mode
+//                         NULL);                 // no template file
+//
+//      if (hPipe == INVALID_HANDLE_VALUE) {
+//         int errCode = GetLastError();
+//         ::string errMess;
+//         errMess.format("Connect to pipe server failed, error code = {}", errCode);
+//         throw ::subsystem::Exception(errMess);
+//      }
+//      pfilePipe->m_handle = hPipe;
+//      DWORD dwMode = PIPE_READMODE_BYTE;
+//      if (!SetNamedPipeHandleState(hPipe,   // pipe handle
+//                                   &dwMode,   // new pipe mode
+//                                   NULL,      // don't set maximum bytes
+//                                   NULL)      // don't set maximum time
+//                                   ) {
+//         int errCode = GetLastError();
+//         ::string errMess;
+//         errMess.formatf("SetNamedPipeHandleState failed, error code = {}", errCode);
+//         throw ::subsystem::Exception(errMess);
+//                                   }
+//
+//      auto pnamedpipe = create_newø< ::subsystem_macos::NamedPipe>();
+//
+//      pnamedpipe->initialize_named_pipe(pfilePipe, maxPortionSize, false);
+//
+//
+//      return pnamedpipe;
+      
+      return {};
    }
 
 } // namespace subsystem_macos

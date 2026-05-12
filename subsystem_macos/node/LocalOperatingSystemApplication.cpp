@@ -38,24 +38,24 @@ namespace subsystem_macos
    LocalOperatingSystemApplication::LocalOperatingSystemApplication()
    {
 
-      initialize_operating_system_application();
-      //initialize_operating_system_application(hInstance, scopedstrwindowClassName);
-      HWINSTA winSta = 0;
-
-      winSta = OpenWindowStation(L"WinSta0", TRUE, GENERIC_ALL);
-
-      if (winSta == 0)
-      {
-         throw ::subsystem::SystemException();
-      }
-
-      if (SetProcessWindowStation(winSta) == 0)
-      {
-         CloseWindowStation(winSta);
-         throw ::subsystem::SystemException();
-      }
-
-      CloseWindowStation(winSta);
+//      initialize_operating_system_application();
+//      //initialize_operating_system_application(hInstance, scopedstrwindowClassName);
+//      HWINSTA winSta = 0;
+//
+//      winSta = OpenWindowStation(L"WinSta0", TRUE, GENERIC_ALL);
+//
+//      if (winSta == 0)
+//      {
+//         throw ::subsystem::SystemException();
+//      }
+//
+//      if (SetProcessWindowStation(winSta) == 0)
+//      {
+//         CloseWindowStation(winSta);
+//         throw ::subsystem::SystemException();
+//      }
+//
+//      CloseWindowStation(winSta);
 
       // FIXME: why we don't check returning values?
       //DesktopSelector::selectDesktop();

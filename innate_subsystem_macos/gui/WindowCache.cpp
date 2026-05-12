@@ -6,7 +6,7 @@
 #include "Window.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
@@ -19,6 +19,6 @@ namespace innate_subsystem_windows
 
 
 
-} //namespace innate_subsystem_windows
+} //namespace innate_subsystem_macos
 
 

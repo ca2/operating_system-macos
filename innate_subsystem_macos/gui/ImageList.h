@@ -9,11 +9,11 @@
 #include "acme/_operating_system.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS ImageList :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS ImageList :
    virtual public Implementation<::innate_subsystem::ImageListInterface>
    {
    public:
@@ -27,7 +27,7 @@ namespace innate_subsystem_windows
 
       void initializeImageList() override;
 
-      void createImageList(const ::int_size & size, int flags, int iInitialSize, int iGrow) override;
+      void createImageList(const ::i32_size & size, int flags, int iInitialSize, int iGrow) override;
 
       void destroyImageList() override;
 
@@ -36,7 +36,7 @@ namespace innate_subsystem_windows
    };
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
 

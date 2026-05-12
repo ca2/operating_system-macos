@@ -71,23 +71,23 @@ namespace subsystem_macos
 
    void PipeImpersonatedThread::execute()
    {
-      auto handle = ::as_HANDLE(m_pfilePipe);
-
-      auto bOk =ImpersonateNamedPipeClient(handle);
-
-      m_success = bOk != FALSE;
-      if (!m_success) {
-
-         auto dwLastError = ::windows::get_last_error();
-         // Store fault reason
-         m_faultReason = ::windows::last_error_message();
-      }
-      m_impersonationReadyEvent.set_happening();
-
-      while (!isTerminating()) {
-         m_threadSleeper.wait();
-      }
-      RevertToSelf();
+//      auto handle = ::as_fd(m_pfilePipe);
+//
+//      auto bOk =ImpersonateNamedPipeClient(handle);
+//
+//      m_success = bOk != FALSE;
+//      if (!m_success) {
+//
+//         auto dwLastError = ::windows::get_last_error();
+//         // Store fault reason
+//         m_faultReason = ::windows::last_error_message();
+//      }
+//      m_impersonationReadyEvent.set_happening();
+//
+//      while (!isTerminating()) {
+//         m_threadSleeper.wait();
+//      }
+//      RevertToSelf();
    }
 
 

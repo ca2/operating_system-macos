@@ -27,7 +27,7 @@
 #include "ThemeLib.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    PFNOPENTHEMEDATA ThemeLib::s_OpenThemeData = NULL;
    PFNDRAWTHEMEBACKGROUND ThemeLib::s_DrawThemeBackground = NULL;

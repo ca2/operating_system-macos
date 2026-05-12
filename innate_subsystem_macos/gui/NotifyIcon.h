@@ -32,15 +32,15 @@
 
 #include "innate_subsystem/drawing/Icon.h"
 
-#include "innate_subsystem_windows/gui/NotifyIconWindow.h"
+#include "innate_subsystem_macos/gui/NotifyIconWindow.h"
 
 #include <shellapi.h>
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
    // FIXME: Add documentation to class.
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS NotifyIcon :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS NotifyIcon :
       virtual public Implementation< innate_subsystem::NotifyIconInterface, NotifyIconWindow>
    {
    public:
@@ -62,14 +62,14 @@ namespace innate_subsystem_windows
 
 //   protected:
       NOTIFYICONDATA m_nid;
-      ::pointer < ::innate_subsystem_windows::Icon > m_picon;
+      ::pointer < ::innate_subsystem_macos::Icon > m_picon;
       bool m_visible;
 
 
 
    };
 
-}// namespace innate_subsystem_windows
+}// namespace innate_subsystem_macos
 
 
 

@@ -5,7 +5,7 @@
 
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
     KeyboardLayout::KeyboardLayout()
@@ -139,4 +139,4 @@ namespace innate_subsystem_windows
        return false;
     }
 
-   }  // namespace innate_subsystem_windows
+   }  // namespace innate_subsystem_macos

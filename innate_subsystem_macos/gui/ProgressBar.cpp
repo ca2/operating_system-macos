@@ -26,7 +26,7 @@
 #include "ProgressBar.h"
 
 #include <commctrl.h>
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    ProgressBar::ProgressBar()
    {
@@ -45,5 +45,5 @@ namespace innate_subsystem_windows
    {
       SendMessage((HWND) _HWND(), PBM_SETPOS, (::wparam)pos, 0);
    }
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 

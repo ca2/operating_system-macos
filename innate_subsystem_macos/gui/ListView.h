@@ -27,13 +27,13 @@
 
 
 #include "innate_subsystem/gui/ListView.h"
-#include "innate_subsystem_windows/_common_header.h"
+#include "innate_subsystem_macos/_common_header.h"
 
 //
 // TODO: Maybe use class for this?
 //
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    // typedef struct
    // {
@@ -46,7 +46,7 @@ namespace innate_subsystem_windows
    // that view data as report.
    //
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS ListView :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS ListView :
    virtual public window_implementation<innate_subsystem::ListViewCallback, ::innate_subsystem::Control>
    {
    public:
@@ -222,7 +222,7 @@ namespace innate_subsystem_windows
 
    };
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
 

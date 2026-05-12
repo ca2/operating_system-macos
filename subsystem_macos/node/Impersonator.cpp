@@ -44,8 +44,8 @@ namespace subsystem_macos
    // }
    //
    Impersonator::Impersonator()
-   : m_token(INVALID_HANDLE_VALUE),
-     m_dupToken(INVALID_HANDLE_VALUE)
+//   : m_token(INVALID_HANDLE_VALUE),
+//     m_dupToken(INVALID_HANDLE_VALUE)
    {
    }
 
@@ -62,67 +62,69 @@ namespace subsystem_macos
 
    void Impersonator::impersonateAsLoggedUser()
    {
-      HANDLE token = WindowsSubsystem().WTS().queryConsoleUserToken(m_plogwriter);
-      impersonateAsUser(token);
+//      HANDLE token = WindowsSubsystem().WTS().queryConsoleUserToken(m_plogwriter);
+//      impersonateAsUser(token);
    }
 
 
-   void Impersonator::impersonateAsUser(HANDLE token)
-   {
-      if (m_token != INVALID_HANDLE_VALUE) {
-         CloseHandle(m_token);
-      }
-      m_token = token;
-
-      ::string name = WindowsSubsystem().WTS().getTokenUserName(m_token);
-      m_plogwriter->debug("impersonate as user: {}", name);
-
-      if ((!DuplicateToken(m_token, SecurityImpersonation, &m_dupToken))) {
-         throw ::subsystem::SystemException("could not DuplicateToken");
-      }
-      if (!ImpersonateLoggedOnUser(m_dupToken)) {
-         throw ::subsystem::SystemException("could not ImpersonateLoggedOnUser");
-      }
-
-   }
+//   void Impersonator::impersonateAsUser(HANDLE token)
+//   {
+//      if (m_token != INVALID_HANDLE_VALUE) {
+//         CloseHandle(m_token);
+//      }
+//      m_token = token;
+//
+//      ::string name = WindowsSubsystem().WTS().getTokenUserName(m_token);
+//      m_plogwriter->debug("impersonate as user: {}", name);
+//
+//      if ((!DuplicateToken(m_token, SecurityImpersonation, &m_dupToken))) {
+//         throw ::subsystem::SystemException("could not DuplicateToken");
+//      }
+//      if (!ImpersonateLoggedOnUser(m_dupToken)) {
+//         throw ::subsystem::SystemException("could not ImpersonateLoggedOnUser");
+//      }
+//
+//   }
 
 
    void Impersonator::impersonateAsCurrentProcessUser(bool rdpEnabled)
    {
-      HANDLE token = WindowsSubsystem().WTS().duplicateCurrentProcessUserToken(rdpEnabled, m_plogwriter);
-      impersonateAsUser(token);
+//      HANDLE token = WindowsSubsystem().WTS().duplicateCurrentProcessUserToken(rdpEnabled, m_plogwriter);
+//      impersonateAsUser(token);
    }
 
 
    void Impersonator::revertToSelf()
    {
-      if (m_dupToken != INVALID_HANDLE_VALUE) {
-         CloseHandle(m_dupToken);
-      }
-
-      if (m_token != INVALID_HANDLE_VALUE) {
-         CloseHandle(m_token);
-      }
-
-      m_dupToken = INVALID_HANDLE_VALUE;
-      m_token = INVALID_HANDLE_VALUE;
-
-      if (!RevertToSelf()) {
-         throw ::subsystem::SystemException("could not RevertToSelf");
-      }
+//      if (m_dupToken != INVALID_HANDLE_VALUE) {
+//         CloseHandle(m_dupToken);
+//      }
+//
+//      if (m_token != INVALID_HANDLE_VALUE) {
+//         CloseHandle(m_token);
+//      }
+//
+//      m_dupToken = INVALID_HANDLE_VALUE;
+//      m_token = INVALID_HANDLE_VALUE;
+//
+//      if (!RevertToSelf()) {
+//         throw ::subsystem::SystemException("could not RevertToSelf");
+//      }
    }
 
 
    bool Impersonator::sessionIsLocked(bool rdpEnabled)
    {
-      DWORD id = 0;
-      if (rdpEnabled) {
-         id = WindowsSubsystem().WTS().getRdpSessionId(m_plogwriter);
-      }
-      if (id == 0) {
-         id = WindowsSubsystem().WTS().getActiveConsoleSessionId(m_plogwriter);
-      }
-      return WindowsSubsystem().WTS().sessionIsLocked(id, m_plogwriter);
+//      DWORD id = 0;
+//      if (rdpEnabled) {
+//         id = WindowsSubsystem().WTS().getRdpSessionId(m_plogwriter);
+//      }
+//      if (id == 0) {
+//         id = WindowsSubsystem().WTS().getActiveConsoleSessionId(m_plogwriter);
+//      }
+//      return WindowsSubsystem().WTS().sessionIsLocked(id, m_plogwriter);
+      
+      return false;
    }
 
 

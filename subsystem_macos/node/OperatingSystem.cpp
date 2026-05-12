@@ -24,9 +24,12 @@
 #include "framework.h"
 #include "OperatingSystem.h"
 #include "CtrlAltDelSimulator.h"
+#include "acme/filesystem/filesystem/directory_context.h"
+#include "acme/filesystem/filesystem/file_context.h"
 #include "subsystem_macos/platform/subsystem.h"
-#include <shlobj.h>
-#include <VersionHelpers.h>
+#include "acme/operating_system/shared_memory.h"
+//#include <shlobj.h>
+//#include <VersionHelpers.h>
 // #include aaa_<crtdbg.h>
 //#include "remoting/win_system/AutoImpersonator.h"
 //#include "remoting/win_system/WTS.h"
@@ -41,9 +44,13 @@
 //// #include aaa_<vector>
 // #include aaa_<algorithm>
 #pragma warning(suppress : 4996)
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/stat.h>
+
 // OSVERSIONINFO OperatingSystem::m_osVerInfo = { 0 };
-typedef VOID (WINAPI *SendSas)(BOOL asUser);
-typedef HRESULT (WINAPI *DwmIsCompositionEnabled)(BOOL *pfEnabled);
+//typedef VOID (WINAPI *SendSas)(BOOL asUser);
+//typedef HRESULT (WINAPI *DwmIsCompositionEnabled)(BOOL *pfEnabled);
 namespace subsystem_macos
 {
    OperatingSystem::OperatingSystem() {}
@@ -52,43 +59,47 @@ namespace subsystem_macos
 
    ::string OperatingSystem::getErrStr()
    {
-      ::string out;
-      DWORD errCode = GetLastError();
-
-      LPWSTR pBuffer = NULL;
-
-      // 1. Use FORMAT_MESSAGE_ALLOCATE_BUFFER for a dynamic buffer.
-      // 2. Use FORMAT_MESSAGE_MAX_WIDTH_MASK to ignore hard-coded line breaks.
-      DWORD length = FormatMessageW(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM |
-                                      FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_MAX_WIDTH_MASK,
-                                   NULL, errCode, MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US),
-                                   (LPTSTR)&pBuffer, // Cast the address of your pointer
-                                   0, NULL);
-
-      if (length == 0 || pBuffer == NULL)
-      {
-         out.format("<<Cannot get text error describing>> ({})", errCode);
-      }
-      else
-      {
-         // Remove trailing newlines or whitespace manually if still present
-         while (length > 0 &&
-                (pBuffer[length - 1] == _T('\n') || pBuffer[length - 1] == _T('\r') || pBuffer[length - 1] == _T(' ')))
-         {
-            pBuffer[--length] = _T('\0');
-         }
-
-         ::string strMessage;
-
-         strMessage = pBuffer;
-
-         out.format("{} ({})", strMessage, errCode);
-
-         // Crucial: You must free the system-allocated buffer
-         LocalFree(pBuffer);
-      }
-
-      return out;
+      
+      auto lasterrorcode = ::operating_system::last_error_code();
+      
+      return lasterrorcode.get_error_message();
+//      ::string out;
+//      DWORD errCode = GetLastError();
+//
+//      LPWSTR pBuffer = NULL;
+//
+//      // 1. Use FORMAT_MESSAGE_ALLOCATE_BUFFER for a dynamic buffer.
+//      // 2. Use FORMAT_MESSAGE_MAX_WIDTH_MASK to ignore hard-coded line breaks.
+//      DWORD length = FormatMessageW(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM |
+//                                      FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_MAX_WIDTH_MASK,
+//                                   NULL, errCode, MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US),
+//                                   (LPTSTR)&pBuffer, // Cast the address of your pointer
+//                                   0, NULL);
+//
+//      if (length == 0 || pBuffer == NULL)
+//      {
+//         out.format("<<Cannot get text error describing>> ({})", errCode);
+//      }
+//      else
+//      {
+//         // Remove trailing newlines or whitespace manually if still present
+//         while (length > 0 &&
+//                (pBuffer[length - 1] == _T('\n') || pBuffer[length - 1] == _T('\r') || pBuffer[length - 1] == _T(' ')))
+//         {
+//            pBuffer[--length] = _T('\0');
+//         }
+//
+//         ::string strMessage;
+//
+//         strMessage = pBuffer;
+//
+//         out.format("{} ({})", strMessage, errCode);
+//
+//         // Crucial: You must free the system-allocated buffer
+//         LocalFree(pBuffer);
+//      }
+//
+//      return out;
    }
 
    ::string OperatingSystem::getErrStr(const ::scoped_string &scopedstrSpecification)
@@ -110,70 +121,73 @@ namespace subsystem_macos
       switch (specialFolderId)
       {
          case APPLICATION_DATA_SPECIAL_FOLDER:
-            csidl = CSIDL_APPDATA;
-            break;
+            //csidl = CSIDL_APPDATA;
+            return directory()->appdata()();
          case COMMON_APPLICATION_DATA_SPECIAL_FOLDER:
-            csidl = CSIDL_COMMON_APPDATA;
-            break;
+            //csidl = CSIDL_COMMON_APPDATA;
+            return directory()->config()();
          default:
-            _ASSERT(FALSE);
+            ASSERT(FALSE);
             return false;
       } // switch
 
-      bool returnVal = false;
-
-      WCHAR path[MAX_PATH + 1];
-      if (SHGetSpecialFolderPathW(NULL, path, csidl, TRUE) == TRUE)
-      {
-         out = path;
-         returnVal = true;
-      }
-
-      return returnVal;
+//      bool returnVal = false;
+//
+//      WCHAR path[MAX_PATH + 1];
+//      if (SHGetSpecialFolderPathW(NULL, path, csidl, TRUE) == TRUE)
+//      {
+//         out = path;
+//         returnVal = true;
+//      }
+//
+//      return returnVal;
    }
 
    ::string OperatingSystem::getCurrentModulePath()
    {
-      ::wstring buffer;
-      DWORD size = MAX_PATH;
-
-      while (true)
-      {
-         // Allocate buffer
-         auto p = buffer.get_buffer(size);
-         // Try to get file name
-         DWORD ret = GetModuleFileName(NULL, p, size);
-         buffer.release_buffer();
-
-         if (ret == 0)
-         {
-            throw ::exception(error_failed);
-         }
-         else if (ret == size || GetLastError() == ERROR_INSUFFICIENT_BUFFER)
-         {
-            size += 128;
-         }
-         else
-         {
-            break;
-         }
-      } // while
-
-      //out -= &buffer[0];
-
-      return buffer;
+      
+      return file()->module();
+//      ::wstring buffer;
+//      DWORD size = MAX_PATH;
+//
+//      while (true)
+//      {
+//         // Allocate buffer
+//         auto p = buffer.get_buffer(size);
+//         // Try to get file name
+//         DWORD ret = GetModuleFileName(NULL, p, size);
+//         buffer.release_buffer();
+//
+//         if (ret == 0)
+//         {
+//            throw ::exception(error_failed);
+//         }
+//         else if (ret == size || GetLastError() == ERROR_INSUFFICIENT_BUFFER)
+//         {
+//            size += 128;
+//         }
+//         else
+//         {
+//            break;
+//         }
+//      } // while
+//
+//      //out -= &buffer[0];
+//
+//      return buffer;
    } // void
 
    bool OperatingSystem::isItTheSamePathAsCurrent(unsigned int pId)
    {
-      ::string currModulePath, testedModulePath;
-      ProcessHandle pHandle;
-
-      pHandle.openProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, 0, pId);
-      testedModulePath = pHandle.getProcessModulePath();
-      currModulePath = getCurrentModulePath();
-
-      return currModulePath == testedModulePath;
+//      ::string currModulePath, testedModulePath;
+//      ProcessHandle pHandle;
+//
+//      pHandle.openProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, 0, pId);
+//      testedModulePath = pHandle.getProcessModulePath();
+//      currModulePath = getCurrentModulePath();
+//
+//      return currModulePath == testedModulePath;
+      return false;
    }
 
    ::string OperatingSystem::getCurrentModuleFolderPath()
@@ -202,25 +216,27 @@ namespace subsystem_macos
    bool OperatingSystem::getCurrentUserName(::string & strUsername, ::subsystem::LogWriter * plogwriter)
    {
 
-      ::string out;
-      out = WindowsSubsystem().WTS().getCurrentUserName(system()->m_papplication);
-      //return !out->is_empty();
-      return out;
+//      ::string out;
+//      out = WindowsSubsystem().WTS().getCurrentUserName(system()->m_papplication);
+//      //return !out->is_empty();
+//      return out;
+      return false;
    }
 
    ::string OperatingSystem::getComputerName()
    {
-      ::string out;
-      WCHAR compName[MAX_COMPUTERNAME_LENGTH + 1];
-      DWORD length = MAX_COMPUTERNAME_LENGTH + 1;
-      if (GetComputerNameW(compName, &length) == 0)
-      {
-         return {};
-      }
-      out = compName;
-      out.make_lower();
-      //return true;
-      return out;
+//      ::string out;
+//      WCHAR compName[MAX_COMPUTERNAME_LENGTH + 1];
+//      DWORD length = MAX_COMPUTERNAME_LENGTH + 1;
+//      if (GetComputerNameW(compName, &length) == 0)
+//      {
+//         return {};
+//      }
+//      out = compName;
+//      out.make_lower();
+//      //return true;
+//      return out;
+      return {};
    }
 
 
@@ -272,165 +288,158 @@ namespace subsystem_macos
    //   init();
    //   return ((m_osVerInfo.dwMajorVersion == 6) && (m_osVerInfo.dwMinorVersion == 1) && isWinNTFamily());
    //}
-
-   bool OperatingSystem::isWinNTFamily()
-   {
-      // All modern Windows versions (XP and later) are part of the NT family.
-      // VersionHelpers only support XP and later, so this is effectively always true.
-      return IsWindowsXPOrGreater();
-   }
-
-   bool OperatingSystem::isWin2000()
-   {
-      // Windows 2000 is Version 5.0.
-      // VersionHelpers don't have a named function for 2000, so use the generic helper.
-      return IsWindowsVersionOrGreater(5, 0, 0) && !IsWindowsXPOrGreater();
-   }
-
-   bool OperatingSystem::isWinXP()
-   {
-      // Windows XP is Version 5.1.
-      return IsWindowsVersionOrGreater(5, 1, 0) && !IsWindowsVersionOrGreater(5, 2, 0);
-   }
-
-   bool OperatingSystem::isWin2003Server()
-   {
-      // Windows Server 2003 is Version 5.2 and is a Server OS.
-      return IsWindowsVersionOrGreater(5, 2, 0) && IsWindowsServer();
-   }
-
-   bool OperatingSystem::isVistaOrLater()
-   {
-      // Direct replacement using the named helper function.
-      return IsWindowsVistaOrGreater();
-   }
-
-   bool OperatingSystem::isWin7()
-   {
-      // Windows 7 is Version 6.1.
-      return IsWindows7OrGreater() && !IsWindows8OrGreater();
-   }
-   void OperatingSystem::simulateCtrlAltDel(::subsystem::LogWriter *log)
-   {
-      // FIXME: Do not use log here.
-      log->information("Requested Ctrl+Alt+Del simulation");
-
-      // Are we running on Windows NT OS family?
-      if (!isVistaOrLater() && isWinNTFamily())
-      {
-         CtrlAltDelSimulator cadSim;
-         cadSim.wait();
-      }
-   }
-
-   void OperatingSystem::simulateCtrlAltDelUnderVista(::subsystem::LogWriter *log)
-   {
-      // FIXME: Do not use log here.
-      log->information("Requested Ctrl+Alt+Del simulation under Vista or later");
-
-      try
-      {
-         DynamicLibrary sasLib;
-         
-         sasLib.initialize_dynamic_library("sas.dll");
-         SendSas sendSas = (SendSas)sasLib.getProcAddress("SendSAS");
-         if (sendSas == 0)
-         {
-            throw ::subsystem::Exception("The SendSAS function has not been found");
-         }
-         sendSas(FALSE); // Try only under service
-      }
-      catch (::exception &e)
-      {
-         log->error("The simulateCtrlAltDelUnderVista() function failed: {}", e.get_message());
-      }
-   }
-
-   bool OperatingSystem::isAeroOn(::subsystem::LogWriter *log)
-   {
-      try
-      {
-         DynamicLibrary dwmLib;
-         
-         dwmLib.initialize_dynamic_library("Dwmapi.dll");
-         DwmIsCompositionEnabled dwmIsEnabled =
-            (DwmIsCompositionEnabled)dwmLib.getProcAddress("DwmIsCompositionEnabled");
-         if (dwmIsEnabled == 0)
-         {
-            throw ::subsystem::Exception("The DwmIsCompositionEnabled() has not been found in the Dwmapi.dll");
-         }
-         BOOL result = FALSE;
-         HRESULT dwmIsEnabledResult = dwmIsEnabled(&result);
-         if (dwmIsEnabledResult != S_OK)
-         {
-            ::string errMess;
-            errMess.formatf("The DwmIsCompositionEnabled() error code is {}", (int)dwmIsEnabledResult);
-            throw ::subsystem::Exception("");
-         }
-         return result != FALSE;
-      }
-      catch (::exception &e)
-      {
-         log->error("The DwmIsCompositionEnabled() function failed: {}", e.get_message());
-         throw;
-      }
-   }
-
+//
+//   bool OperatingSystem::isWinNTFamily()
+//   {
+//      // All modern Windows versions (XP and later) are part of the NT family.
+//      // VersionHelpers only support XP and later, so this is effectively always true.
+//      return IsWindowsXPOrGreater();
+//   }
+//
+//   bool OperatingSystem::isWin2000()
+//   {
+//      // Windows 2000 is Version 5.0.
+//      // VersionHelpers don't have a named function for 2000, so use the generic helper.
+//      return IsWindowsVersionOrGreater(5, 0, 0) && !IsWindowsXPOrGreater();
+//   }
+//
+//   bool OperatingSystem::isWinXP()
+//   {
+//      // Windows XP is Version 5.1.
+//      return IsWindowsVersionOrGreater(5, 1, 0) && !IsWindowsVersionOrGreater(5, 2, 0);
+//   }
+//
+//   bool OperatingSystem::isWin2003Server()
+//   {
+//      // Windows Server 2003 is Version 5.2 and is a Server OS.
+//      return IsWindowsVersionOrGreater(5, 2, 0) && IsWindowsServer();
+//   }
+//
+//   bool OperatingSystem::isVistaOrLater()
+//   {
+//      // Direct replacement using the named helper function.
+//      return IsWindowsVistaOrGreater();
+//   }
+//
+//   bool OperatingSystem::isWin7()
+//   {
+//      // Windows 7 is Version 6.1.
+//      return IsWindows7OrGreater() && !IsWindows8OrGreater();
+//   }
+//   void OperatingSystem::simulateCtrlAltDel(::subsystem::LogWriter *log)
+//   {
+//      // FIXME: Do not use log here.
+//      log->information("Requested Ctrl+Alt+Del simulation");
+//
+//      // Are we running on Windows NT OS family?
+//      if (!isVistaOrLater() && isWinNTFamily())
+//      {
+//         CtrlAltDelSimulator cadSim;
+//         cadSim.wait();
+//      }
+//   }
+//
+//   void OperatingSystem::simulateCtrlAltDelUnderVista(::subsystem::LogWriter *log)
+//   {
+//      // FIXME: Do not use log here.
+//      log->information("Requested Ctrl+Alt+Del simulation under Vista or later");
+//
+//      try
+//      {
+//         DynamicLibrary sasLib;
+//         
+//         sasLib.initialize_dynamic_library("sas.dll");
+//         SendSas sendSas = (SendSas)sasLib.getProcAddress("SendSAS");
+//         if (sendSas == 0)
+//         {
+//            throw ::subsystem::Exception("The SendSAS function has not been found");
+//         }
+//         sendSas(FALSE); // Try only under service
+//      }
+//      catch (::exception &e)
+//      {
+//         log->error("The simulateCtrlAltDelUnderVista() function failed: {}", e.get_message());
+//      }
+//   }
+//
+//   bool OperatingSystem::isAeroOn(::subsystem::LogWriter *log)
+//   {
+//      try
+//      {
+//         DynamicLibrary dwmLib;
+//         
+//         dwmLib.initialize_dynamic_library("Dwmapi.dll");
+//         DwmIsCompositionEnabled dwmIsEnabled =
+//            (DwmIsCompositionEnabled)dwmLib.getProcAddress("DwmIsCompositionEnabled");
+//         if (dwmIsEnabled == 0)
+//         {
+//            throw ::subsystem::Exception("The DwmIsCompositionEnabled() has not been found in the Dwmapi.dll");
+//         }
+//         BOOL result = FALSE;
+//         HRESULT dwmIsEnabledResult = dwmIsEnabled(&result);
+//         if (dwmIsEnabledResult != S_OK)
+//         {
+//            ::string errMess;
+//            errMess.formatf("The DwmIsCompositionEnabled() error code is {}", (int)dwmIsEnabledResult);
+//            throw ::subsystem::Exception("");
+//         }
+//         return result != FALSE;
+//      }
+//      catch (::exception &e)
+//      {
+//         log->error("The DwmIsCompositionEnabled() function failed: {}", e.get_message());
+//         throw;
+//      }
+//   }
+//
 
    bool OperatingSystem::isUserAnAdmin()
    {
 
-      auto bIsUserAndAdmin = ::IsUserAnAdmin();
-
-      return bIsUserAndAdmin != FALSE;
+//      auto bIsUserAndAdmin = ::IsUserAnAdmin();
+//
+//      return bIsUserAndAdmin != FALSE;
+      return false;
 
    }
 
 
 
+bool OperatingSystem::file_canRead(const ::file::path & path)
+{
+    return access(path.c_str(), R_OK) == 0;
+}
 
-   bool OperatingSystem::file_canRead(const ::file::path & path)
-   {
-      return _tryCreateFile(path, GENERIC_READ, OPEN_EXISTING);
-   }
+bool OperatingSystem::file_canWrite(const ::file::path & path)
+{
+    return access(path.c_str(), W_OK) == 0;
+}
 
-   bool OperatingSystem::file_canWrite(const ::file::path & path)
-   {
-      return _tryCreateFile(path, GENERIC_WRITE, OPEN_EXISTING);
-   }
+bool OperatingSystem::file_createNewFile(const ::file::path & path)
+{
+    return _tryOpenFile(path, O_RDWR | O_CREAT | O_EXCL);
+}
 
-   bool OperatingSystem::file_createNewFile(const ::file::path & path)
-   {
-      return _tryCreateFile(path, GENERIC_READ | GENERIC_WRITE, CREATE_NEW);
-   }
+bool OperatingSystem::_tryOpenFile(const ::file::path & path, int flags)
+{
+    int fd = open(path.c_str(), flags, 0666);
 
-   bool OperatingSystem::_tryCreateFile(const ::file::path & path, DWORD desiredAccess, DWORD creationDisposition)
-   {
+    if (fd < 0)
+    {
+        return false;
+    }
 
-      auto windowspath = path.windows_path();
-      HANDLE hfile = CreateFileW(windowspath,
-                                desiredAccess,
-                                FILE_SHARE_READ,
-                                NULL,
-                                creationDisposition,
-                                FILE_ATTRIBUTE_NORMAL | FILE_FLAG_BACKUP_SEMANTICS,
-                                NULL);
+    close(fd);
 
-      if (hfile == INVALID_HANDLE_VALUE) {
-         return false;
-      }
-
-      ::CloseHandle(hfile);
-
-      return true;
-   }
-
+    return true;
+}
    ::memory OperatingSystem::getSharedMemorySnapshot(const ::scoped_string &scopedstrShareMemoryName, memsize size, const class ::time & timeWaitMax)
    {
       ::memory memory;
       memory.set_size(size);
-   ::subsystem_macos::SharedMemory shMem(scopedstrShareMemoryName, size);
-   unsigned long long *mem = (unsigned long long *)shMem.getMemPointer();
+      ::shared_memory shMem;
+      shMem.Create(scopedstrShareMemoryName, size);
+   unsigned long long *mem = (unsigned long long *)shMem.Data();
 
    class ::time timeStart = ::time::now();
 
@@ -454,16 +463,19 @@ namespace subsystem_macos
    unsigned int OperatingSystem::getActiveConsoleSessionId(::subsystem::LogWriter *plogwriter)
    {
 
-      return WindowsSubsystem().WTS().getActiveConsoleSessionId(plogwriter);
+      //
+      //eturn WindowsSubsystem().WTS().getActiveConsoleSessionId(plogwriter);
+      
+      return 0;
    }
 
 
    void OperatingSystem::duplicatePipeClientToken(::subsystem::FileInterface *pfile)
    {
 
-      ::cast < ::subsystem_macos::File > pfileWindows = pfile;
+      //::cast < ::subsystem_macos::File > pfileWindows = pfile;
 
-      return WindowsSubsystem().WTS().duplicatePipeClientToken(pfileWindows->m_handle);
+      //return WindowsSubsystem().WTS().duplicatePipeClientToken(pfileWindows->m_handle);
    }
 
 } // namespace subsystem_macos

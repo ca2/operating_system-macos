@@ -41,8 +41,8 @@ namespace subsystem_macos
 
    class Clipboard2 : 
       virtual public ::subsystem::Clipboard2,
-      virtual public ::subsystem::GuiThread,
-      virtual public MessageWindow
+      virtual public ::subsystem::GuiThread
+//,      virtual public MessageWindow
    {
    public:
 
@@ -59,21 +59,21 @@ namespace subsystem_macos
       void readFromClipBoard(::string &clipDest) override;
 
    //protected:
-      bool on_window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam) override;
+      //bool on_window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam) override;
 
-      void execute() override;
-      void onTerminate() override;
+      //void execute() override;
+      //void onTerminate() override;
 
       //void convertToRfbFormat(const ::scoped_string &source, ::string &dest);
       //void convertFromRfbFormat(const ::scoped_string &scopedstrSource, ::string &dest);
 
-      HWND m_hwndNextViewer;
+//      HWND m_hwndNextViewer;
 
       ::subsystem::ClipboardListener *m_clipboardListener;
 
       ::subsystem::LogWriter *m_plogwriter;
 
-      static const HINSTANCE m_hinst;
+      //static const HINSTANCE m_hinst;
    };
 
 

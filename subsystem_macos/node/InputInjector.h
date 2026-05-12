@@ -56,14 +56,14 @@ namespace subsystem_macos
           * @param vkCode virtual code of key.
           * @throws SystemException on fail.
           */
-         void injectKeyPress(unsigned char vkCode) override;
+         void injectKeyPress(::user::enum_key euserkey) override;
 
          /**
           * Syntezises key released event.
           * @param vkCode virtual code of key.
           * @throws SystemException on fail.
           */
-         void injectKeyRelease(unsigned char vkCode) override;
+         void injectKeyRelease(::user::enum_key euserkey) override;
 
          /**
           * Syntezises key event (press or release).
@@ -71,7 +71,7 @@ namespace subsystem_macos
           * @param release if true then sybtezises release event, otherwise, press.
           * @throws SystemException on fail.
           */
-         void injectKeyEvent(unsigned char vkCode, bool release, bool extended = false) override;
+         void injectKeyEvent(::user::enum_key euserkey, bool release, bool extended = false) override;
 
          /**
           * Syntezises char press or release event.
@@ -87,38 +87,38 @@ namespace subsystem_macos
          //private:
          // Return true if CapsLock toggled on.
          bool capsToggled() override;
-
-         // Returns true if the vkCode value is a dead key in keyboardLayout layout.
-         virtual bool _isDeadKey(SHORT scanResult, HKL keyboardLayout);
-
-         // Returns true if the printed char can get by one key event sending.
-         // Else returns false e.g. for uppercase french e with ogonek that may be get
-         // only by a sequence keyevenst with a dead char, but the lower case
-         // e can be get by one pressing of the "7" key.
-         virtual bool _isOneKeyEventChar(WCHAR ch, SHORT scanResult, HKL keyboardLayout);
-
-         // Returns true if characters differs when the modifier state is on and off.
-         virtual bool _isDifferentWith(BYTE modifier, BYTE modStateValueOfOn,
-                              BYTE virtKey, HKL keyboardLayout);
-
-         // Return true if key generates the same symbol with pressed the Shift key
-         // and without.
-         virtual bool _isInvariantToShift(BYTE virtKey, HKL keyboardLayout);
-
-         // Return true if the char is the same with the CAPS or without.
-         virtual bool _isResistantToCaps(BYTE virtKey, HKL keyboardLayout);
+//
+//         // Returns true if the vkCode value is a dead key in keyboardLayout layout.
+//         virtual bool _isDeadKey(SHORT scanResult, HKL keyboardLayout);
+//
+//         // Returns true if the printed char can get by one key event sending.
+//         // Else returns false e.g. for uppercase french e with ogonek that may be get
+//         // only by a sequence keyevenst with a dead char, but the lower case
+//         // e can be get by one pressing of the "7" key.
+//         virtual bool _isOneKeyEventChar(WCHAR ch, SHORT scanResult, HKL keyboardLayout);
+//
+//         // Returns true if characters differs when the modifier state is on and off.
+//         virtual bool _isDifferentWith(BYTE modifier, BYTE modStateValueOfOn,
+//                              BYTE virtKey, HKL keyboardLayout);
+//
+//         // Return true if key generates the same symbol with pressed the Shift key
+//         // and without.
+//         virtual bool _isInvariantToShift(BYTE virtKey, HKL keyboardLayout);
+//
+//         // Return true if the char is the same with the CAPS or without.
+//         virtual bool _isResistantToCaps(BYTE virtKey, HKL keyboardLayout);
 
          // Returns true if the ch symbol is a ascii symbol.
          bool isAscii(int ch) override;
 
-         // Returns current kbd layout of an active window.
-         // Throws ::subsystem::Exception on an error.
-         virtual HKL _getCurrentKbdLayout();
-
-         // Searches virtual code in available keyboard layouts and returns the code
-         // if found. If virtual code has not been found throws an ::subsystem::Exception.
-         // Puts current kbd layout to the *hklCurrent argument (if no throwing).
-         virtual SHORT _searchVirtKey(WCHAR ch, HKL hklCurrent);
+//         // Returns current kbd layout of an active window.
+//         // Throws ::subsystem::Exception on an error.
+//         virtual HKL _getCurrentKbdLayout();
+//
+//         // Searches virtual code in available keyboard layouts and returns the code
+//         // if found. If virtual code has not been found throws an ::subsystem::Exception.
+//         // Puts current kbd layout to the *hklCurrent argument (if no throwing).
+//         virtual SHORT _searchVirtKey(WCHAR ch, HKL hklCurrent);
 
          /**
           * Array of extended virtual codes.

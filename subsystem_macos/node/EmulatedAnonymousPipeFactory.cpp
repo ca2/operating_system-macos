@@ -55,31 +55,31 @@ namespace subsystem_macos
    void EmulatedAnonymousPipeFactory::generatePipes(::pointer < ::subsystem::NamedPipeInterface > & serverPipe, bool serverInheritable,
                                                     ::pointer < ::subsystem::NamedPipeInterface > & clientPipe, bool clientInheritable)
    {
-      SecurityAttributes secAttr;
-      secAttr.setInheritable();
-
-      ::string randomName;
-      randomName = getUniqPipeName();
-      PipeServer pipeServer;
-       pipeServer.initialize_pipe_server(randomName, m_bufferSize, 0, 1000);
-      clientPipe = MainSubsystem().PipeClient().connect(randomName, m_bufferSize);
-      serverPipe = pipeServer.accept();
-
-      HANDLE hThisSideWrite = serverPipe->getFile()->_HANDLE();
-      HANDLE hOtherSideRead = clientPipe->getFile()->_HANDLE();
-
-      if (!serverInheritable) {
-         if (SetHandleInformation(hThisSideWrite, HANDLE_FLAG_INHERIT, 0) == 0) {
-            ::string strErrorMessage1 = "Cannot disable inheritance for named pipe(1)";
-            throw ::subsystem::SystemException(strErrorMessage1);
-         }
-      }
-      if (!clientInheritable) {
-         if (SetHandleInformation(hOtherSideRead, HANDLE_FLAG_INHERIT, 0) == 0) {
-            ::string strErrorMessage2 = "Cannot disable inheritance for named pipe(2)";
-            throw ::subsystem::SystemException(strErrorMessage2);
-         }
-      }
+//      SecurityAttributes secAttr;
+//      secAttr.setInheritable();
+//
+//      ::string randomName;
+//      randomName = getUniqPipeName();
+//      PipeServer pipeServer;
+//       pipeServer.initialize_pipe_server(randomName, m_bufferSize, 0, 1000);
+//      clientPipe = MainSubsystem().PipeClient().connect(randomName, m_bufferSize);
+//      serverPipe = pipeServer.accept();
+//
+//      HANDLE hThisSideWrite = serverPipe->getFile()->_HANDLE();
+//      HANDLE hOtherSideRead = clientPipe->getFile()->_HANDLE();
+//
+//      if (!serverInheritable) {
+//         if (SetHandleInformation(hThisSideWrite, HANDLE_FLAG_INHERIT, 0) == 0) {
+//            ::string strErrorMessage1 = "Cannot disable inheritance for named pipe(1)";
+//            throw ::subsystem::SystemException(strErrorMessage1);
+//         }
+//      }
+//      if (!clientInheritable) {
+//         if (SetHandleInformation(hOtherSideRead, HANDLE_FLAG_INHERIT, 0) == 0) {
+//            ::string strErrorMessage2 = "Cannot disable inheritance for named pipe(2)";
+//            throw ::subsystem::SystemException(strErrorMessage2);
+//         }
+//      }
    }
 
    ::string EmulatedAnonymousPipeFactory::getUniqPipeName()

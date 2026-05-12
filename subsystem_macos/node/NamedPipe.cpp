@@ -67,19 +67,19 @@ namespace subsystem_macos
    void NamedPipe::close()
    {
       critical_section_lock al(&m_criticalsectionPipe);
-      if (m_asServer) {
-         if (DisconnectNamedPipe(::as_HANDLE(m_pfilePipe)) == 0) {
-            DWORD errCode = GetLastError();
-            ::string errMess;
-            errMess.formatf("DisconnectNamedPipe failed, error code = %u", errCode);
-            throw ::subsystem::Exception(errMess);
-         }
-      }
-
-      if (::as_HANDLE(m_pfilePipe) != INVALID_HANDLE_VALUE) {
-         CloseHandle(::as_HANDLE(m_pfilePipe));
-         m_pfilePipe = nullptr;
-      }
+//      if (m_asServer) {
+//         if (DisconnectNamedPipe(::as_HANDLE(m_pfilePipe)) == 0) {
+//            DWORD errCode = GetLastError();
+//            ::string errMess;
+//            errMess.formatf("DisconnectNamedPipe failed, error code = %u", errCode);
+//            throw ::subsystem::Exception(errMess);
+//         }
+//      }
+//
+//      if (::as_HANDLE(m_pfilePipe) != INVALID_HANDLE_VALUE) {
+//         CloseHandle(::as_HANDLE(m_pfilePipe));
+//         m_pfilePipe = nullptr;
+//      }
       // Unblock a blocked operation
       //m_readEvent.notify();
       //m_writeEvent.notify();
@@ -112,9 +112,9 @@ namespace subsystem_macos
 
    void NamedPipe::checkPipeFile()
    {
-      if (::is_null(m_pfilePipe) || ::as_HANDLE(m_pfilePipe) == INVALID_HANDLE_VALUE) {
-         throw ::io_exception(error_io, "Invalid pipe handle");
-      }
+//      if (::is_null(m_pfilePipe) || ::as_HANDLE(m_pfilePipe) == INVALID_HANDLE_VALUE) {
+//         throw ::io_exception(error_io, "Invalid pipe handle");
+//      }
    }
 
 } // namespace subsystem_macos

@@ -27,7 +27,7 @@
 //
 // namespace windows
 // {
-//    namespace innate_subsystem_windows
+//    namespace innate_subsystem_macos
 //    {
 //       BalloonTip::BalloonTip(const TCHAR *text, const TCHAR *caption)
 //       {
@@ -78,5 +78,5 @@
 //       {
 //          return 0;
 //       }
-//    } // namespace innate_subsystem_windows
+//    } // namespace innate_subsystem_macos
 // } //namespace windows

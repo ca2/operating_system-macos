@@ -27,7 +27,7 @@
 #include "Control.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
@@ -172,7 +172,7 @@ namespace innate_subsystem_windows
       char *m_resourceName; // Name of dialog resource
       DWORD m_resourceId; // Id of dialog resouce
       //Control m_ctrlThis;           // This dialog control
-      //::pointer<::innate_subsystem_windows::Control> m_pcontrolParent; // Parent dialog or NULL if no parent
+      //::pointer<::innate_subsystem_macos::Control> m_pcontrolParent; // Parent dialog or NULL if no parent
 
       bool m_isModal;
       bool m_isCreated;
@@ -183,7 +183,7 @@ namespace innate_subsystem_windows
 
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
 

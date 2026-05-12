@@ -28,13 +28,13 @@
 
 #include "innate_subsystem/gui/NotifyIconWindow.h"
 #include "subsystem/_common_header.h"
-#include "innate_subsystem_windows/gui/Window.h"
+#include "innate_subsystem_macos/gui/Window.h"
 
 #include "WindowProcHolder.h"
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
-   // class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS NotifyIconWindowInterface :
+   // class CLASS_DECL_INNATE_SUBSYSTEM_MACOS NotifyIconWindowInterface :
    // virtual public ::subsystem::partinterface<NotifyIconWindowInterface>
    // {
    // public:
@@ -83,4 +83,4 @@ namespace innate_subsystem_windows
       //friend class NotifyIcon;
    };
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

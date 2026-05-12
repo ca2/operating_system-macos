@@ -28,13 +28,13 @@
 
 
 #include "innate_subsystem/gui/Menu.h"
-#include "innate_subsystem_windows/_common_header.h"
+#include "innate_subsystem_macos/_common_header.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS Menu :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Menu :
       virtual public Implementation<innate_subsystem::MenuInterface>
    {
       public:
@@ -90,7 +90,7 @@ namespace innate_subsystem_windows
 
 
 
-} //  namespace innate_subsystem_windows
+} //  namespace innate_subsystem_macos
 
 
 

@@ -28,141 +28,74 @@
 #include "subsystem_macos/_common_header.h"
 //#include "critical_section.h"
 //#include "DesktopSelector.h"
+//#pragma once
 
-namespace  subsystem_macos
+#include <pthread.h>
+#include <atomic>
+
+namespace subsystem_macos
 {
-   // /**
-   //  * Thread priority enumeration.
-   //  */
-   // enum THREAD_PRIORITY
-   // {
-   //    PRIORITY_IDLE,
-   //    PRIORITY_LOWEST,
-   //    PRIORITY_BELOW_NORMAL,
-   //    PRIORITY_NORMAL,
-   //    PRIORITY_ABOVE_NORMAL,
-   //    PRIORITY_HIGHEST,
-   //    PRIORITY_TIME_CRITICAL
-   //  };
 
-   /**
-    * Thread class.
-    *
-    * @fixme some of methods return bool instead of raising exceptions.
-    * @fixme some methods seems to be not thread-safe (that uses m_active member).
-    * @fixme member of HDESK type in THREAD class???
-    */
-   class CLASS_DECL_SUBSYSTEM_MACOS Thread :
-   virtual public Implementation<::subsystem::ThreadCallback>
-   {
-   public:
-      /**
-       * Creates new thread.
-       * @remark thread is suspended by default.
-       */
-      Thread();
-      /**
-       * Deletes thread.
-       * @remark does not stops thread execution if it's still running.
-       */
-      virtual ~Thread();
+class Thread :
+virtual public ::subsystem::Thread
 
-      /**
-       * Waits until thread stops.
-       * @return false on error.
-       */
-      ::e_status wait() override;
-      /**
-       * Suspends thread execution.
-       * @return false on error.
-       */
-      bool suspend() override;
-      /**
-       * Resume thread execution.
-       * @return false on error.
-       */
-      bool resume() override;
-      /**
-       * Terminates thread execution.
-       * @remark thread-safe.
-       */
-      virtual void terminate() override;
+{
+public:
 
-      /**
-       * Checks if thread is not dead.
-       * @return true if thread is not dead (still running or suspended).
-       */
-      bool isActive() const override;
+    Thread();
+    ~Thread() override;
 
-      /**
-       * Returns thread id.
-       */
-      ::iptr getThreadId() const override;
+    ::e_status wait() override;
 
-      /**
-       * Sets thread priority.
-       * @param value thread priority.
-       */
-      bool setPriority(::subsystem::THREAD_PRIORITY value) override;
+    bool suspend() override;
+    bool resume() override;
 
-      /**
-       * Suspends the execution of the current thread until the time-out interval elapses.
-       * @param millis time to sleep.
-       */
-      void sleep(const class ::time & time) override;
+    void terminate() override;
 
-      /**
-       * Yield execution to the next ready thread.
-       */
-      void yield() override;
+   bool isActive() const override;
 
-   //protected:
-      /**
-       * Returns true if terminate() method was called.
-       * @remark thread-safe.
-       */
-      bool isTerminating() override;
+    ::iptr getThreadId() const override;
 
-      /**
-       * Slot of terminate() signal.
-       * Method called from terminate() method.
-       * Can be overrided by subclasses to gracefully shutdown thread.
-       */
-      virtual void onTerminate() override;
+    bool setPriority(
+        ::subsystem::THREAD_PRIORITY value) override;
 
-      /**
-       * Thread's runnable body.
-       */
-      virtual void execute() override;
+    void sleep(
+        const class ::time& time) override;
 
-   ////private:
-      /**
-       * WinApi thread func.
-       */
-      static void * threadProc(void * pThread);
+    void yield() override;
 
-      // This function calling before call a derived execute() function to
-      // perform any additional action.
-      virtual void initByDerived() override;
+    bool isTerminating() override;
 
-   //private:
-      /**
-       * Win32 thread handle.
-       */
-      pthread_t m_pthread;
-      /**
-       * Thread ID.
-       */
-      //DWORD m_threadID;
-      /**
-       * Activity flag.
-       */
-      bool m_active;
-      /**
-       * Terminating flag.
-       */
-      volatile bool m_terminated;
-   };
+protected:
 
-   //// __THREAD_H__
-} // namespace subsystem_macos
+    virtual void initByDerived() override;
+    virtual void onTerminate() override;
+    virtual void execute() override;
+
+private:
+
+    static void* threadProc(void* pThread);
+
+    void waitIfSuspended();
+
+protected:
+
+    pthread_t m_thread {};
+
+    pthread_mutex_t m_suspendMutex {};
+    pthread_cond_t  m_suspendCond {};
+
+    std::atomic<bool> m_terminated { false };
+    std::atomic<bool> m_active { false };
+    std::atomic<bool> m_suspended { true };
+
+    ::iptr m_threadID {};
+
+    // your callback object
+    //decltype(m_pthreadCallback) m_pthreadCallback;
+   ::procedure m_procedureCallback;
+};
+
+} //namespace subsystem_macos
+
+

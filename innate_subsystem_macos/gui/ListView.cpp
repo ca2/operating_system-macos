@@ -28,7 +28,7 @@
 #include "innate_subsystem/platform/subsystem.h"
 #include <commctrl.h>
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
    ListView::ListView() :
@@ -448,4 +448,4 @@ break;
 
    }
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

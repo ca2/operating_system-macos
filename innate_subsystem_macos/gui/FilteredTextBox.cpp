@@ -27,7 +27,7 @@
 #include "innate_subsystem/gui/StringFilter.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
@@ -140,4 +140,4 @@ namespace innate_subsystem_windows
    //    }
    //    return CallWindowProc((WNDPROC)_this->m_wndprocOld, hwnd, uMsg,wparam, lparam);
    // }
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

@@ -28,17 +28,17 @@
 
 //#include "util/CommonHeader.h"
 #include "innate_subsystem/gui/Tooltip.h"
-#include "innate_subsystem_windows/gui/Control.h"
+#include "innate_subsystem_macos/gui/Control.h"
 
 //
 // Abstract tooltip class
 //
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
-    class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS Tooltip :
+    class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Tooltip :
     virtual public Implementation<::innate_subsystem::TooltipInterface, Control>
     {
     public:
@@ -59,7 +59,7 @@ namespace innate_subsystem_windows
 
     //#endif
 
-}// namespace innate_subsystem_windows
+}// namespace innate_subsystem_macos
 
 
 

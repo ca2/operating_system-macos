@@ -28,11 +28,11 @@
 
 //#include "acCommonHeader.h"
 #include "innate_subsystem/gui/ComboBox.h"
-#include "innate_subsystem_windows/_common_header.h"
-#include "innate_subsystem_windows/gui/Control.h"
+#include "innate_subsystem_macos/_common_header.h"
+#include "innate_subsystem_macos/gui/Control.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
@@ -86,7 +86,7 @@ namespace innate_subsystem_windows
     };
 
     //#endif
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
 

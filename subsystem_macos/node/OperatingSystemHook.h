@@ -50,13 +50,13 @@ namespace subsystem_macos
 
 
       virtual bool lowLevelKeyboardHook(::lresult & lresult, int nCode,
-                                             WPARAM wParam,
-                                             LPARAM lParam);
+                                             ::wparam wParam,
+                                             ::lparam lParam);
 
       // Hook procedure.
-      static LRESULT CALLBACK s_lowLevelKeyboardHook(int nCode,
-                                                   WPARAM wParam,
-                                                   LPARAM lParam);
+      static ::lresult s_lowLevelKeyboardHook(int nCode,
+                                                   ::wparam wParam,
+                                                   ::lparam lParam);
 
       // Registration of keyboard hook.
       //static void registerKeyboardHook(WindowsHookEventListener *hookEventListener);
@@ -80,7 +80,7 @@ namespace subsystem_macos
 
       //private:
       // Hook object.
-      static HHOOK s_hhook;
+      //static HHOOK s_hhook;
       static OperatingSystemHook * s_poperatingsystemhook;
       // Handler to the processing hooks function.
       //static

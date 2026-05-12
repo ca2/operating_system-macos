@@ -27,14 +27,14 @@
 
 
 #include "innate_subsystem/drawing/Brush.h"
-#include "subsystem_windows/_common_header.h"
-#include <Gdiplus.h>
+#include "subsystem_macos/_common_header.h"
+//#include <Gdiplus.h>
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS Brush :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Brush :
       virtual public Implementation<::innate_subsystem::BrushInterface>
    {
    public:
@@ -53,9 +53,10 @@ namespace innate_subsystem_windows
 
    // protected:
      //HBRUSH m_hbrush;
-      Gdiplus::Brush * m_pbrush;
+      //Gdiplus::Brush * m_pbrush;
+      ::color::color m_color;
    //
    //    friend class Graphics;
    };
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

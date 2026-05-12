@@ -124,19 +124,19 @@ namespace subsystem_macos
           */
          //static LRESULT CALLBACK wndProc(HWND hWnd, UINT msg, WPARAM wparam, LPARAM lparam);
 
-         HINSTANCE m_appInstance;
-         HWND m_mainWindow;
-         ::wstring m_wstrWindowClassName;
+         //HINSTANCE m_appInstance;
+         //HWND m_mainWindow;
+         //::wstring m_wstrWindowClassName;
          //protected:
          /**
           * Helper method to process modeless dialog scopedstrMessage for modal dialog.
           * @param msg scopedstrMessage to process.
           * @return true if don't need to translate and dispatch scopedstrMessage in main scopedstrMessage loop.
           */
-         bool processDialogMessage(MSG *msg);
+         //bool processDialogMessage(MSG *msg);
          //private:
-         critical_section m_MDLMutex; // Modeless dialog ::list_base mutex.
-         ::comparable_list_base<HWND> m_modelessDialogList;
+         //critical_section m_MDLMutex; // Modeless dialog ::list_base mutex.
+         //::comparable_list_base<HWND> m_modelessDialogList;
 
          void onMainThreadMessage(unsigned int message, ::wparam wparam, ::lparam lparam) override;
 

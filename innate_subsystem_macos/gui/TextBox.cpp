@@ -25,7 +25,7 @@
 #include "TextBox.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
    {
 
    TextBox::TextBox()
@@ -81,4 +81,4 @@ namespace innate_subsystem_windows
       {
          tip->showTooltip(this);
       }
-   } // namespace innate_subsystem_windows
+   } // namespace innate_subsystem_macos

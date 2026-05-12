@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A0B90312FB2B16800EEAAE1 /* Clipboard2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B90302FB2B16000EEAAE1 /* Clipboard2.mm */; };
+		9A0B90342FB2C6F800EEAAE1 /* libsubsystem.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0B90332FB2C6F800EEAAE1 /* libsubsystem.dylib */; };
+		9A0B90362FB2C6FD00EEAAE1 /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0B90352FB2C6FD00EEAAE1 /* libacme.dylib */; };
+		9A0B94962FB2C78500EEAAE1 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0B94952FB2C75700EEAAE1 /* libcrypto.dylib */; };
+		9A0B94982FB2C7B600EEAAE1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0B94972FB2C7B600EEAAE1 /* AppKit.framework */; };
+		9A0B949A2FB2C85300EEAAE1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0B94992FB2C85300EEAAE1 /* Security.framework */; };
+		9A0B952B2FB2CEA400EEAAE1 /* libsubsystem_bsd_sockets.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0B952A2FB2CEA400EEAAE1 /* libsubsystem_bsd_sockets.dylib */; };
 		9A1907872FB29BC600A3C985 /* user.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A1907612FB29BC600A3C985 /* user.h */; };
 		9A1907882FB29BC600A3C985 /* ProcessHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A1907242FB29BC600A3C985 /* ProcessHandle.h */; };
 		9A1907892FB29BC600A3C985 /* Keyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A1907072FB29BC600A3C985 /* Keyboard.h */; };
@@ -150,7 +157,30 @@
 		9A1908382FB29BDE00A3C985 /* _common_header.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A19082D2FB29BDE00A3C985 /* _common_header.h */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9A0B94A02FB2CB3D00EEAAE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6EE2172FB29FA4004F9C3A /* subsystem_bsd_sockets.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A6EE20F2FB29F54004F9C3A;
+			remoteInfo = subsystem_bsd_sockets;
+		};
+		9A0B95292FB2CEA400EEAAE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A6EE2172FB29FA4004F9C3A /* subsystem_bsd_sockets.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A6EE2102FB29F54004F9C3A;
+			remoteInfo = subsystem_bsd_sockets;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		9A0B90302FB2B16000EEAAE1 /* Clipboard2.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Clipboard2.mm; sourceTree = "<group>"; };
+		9A0B90332FB2C6F800EEAAE1 /* libsubsystem.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libsubsystem.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0B90352FB2C6FD00EEAAE1 /* libacme.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0B94952FB2C75700EEAAE1 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = "../../../../../code/operating_system/storage-macos/Debug/library/libcrypto.dylib"; sourceTree = "<group>"; };
+		9A0B94972FB2C7B600EEAAE1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9A0B94992FB2C85300EEAAE1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9A1906972FB29AE000A3C985 /* libsubsystem_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsubsystem_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A1906CD2FB29BC600A3C985 /* DibSection.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DibSection.cpp; sourceTree = "<group>"; };
 		9A1906CF2FB29BC600A3C985 /* SecurityAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecurityAttributes.h; sourceTree = "<group>"; };
@@ -309,6 +339,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A0B952B2FB2CEA400EEAAE1 /* libsubsystem_bsd_sockets.dylib in Frameworks */,
+				9A0B94982FB2C7B600EEAAE1 /* AppKit.framework in Frameworks */,
+				9A0B949A2FB2C85300EEAAE1 /* Security.framework in Frameworks */,
+				9A0B90362FB2C6FD00EEAAE1 /* libacme.dylib in Frameworks */,
+				9A0B90342FB2C6F800EEAAE1 /* libsubsystem.dylib in Frameworks */,
+				9A0B94962FB2C78500EEAAE1 /* libcrypto.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,8 +354,21 @@
 		9A0B8FFB2FB29FBE00EEAAE1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				9A0B952A2FB2CEA400EEAAE1 /* libsubsystem_bsd_sockets.dylib */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9A0B90322FB2C6F800EEAAE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A0B94992FB2C85300EEAAE1 /* Security.framework */,
+				9A0B94972FB2C7B600EEAAE1 /* AppKit.framework */,
+				9A0B90352FB2C6FD00EEAAE1 /* libacme.dylib */,
+				9A0B94952FB2C75700EEAAE1 /* libcrypto.dylib */,
+				9A0B90332FB2C6F800EEAAE1 /* libsubsystem.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9A19068E2FB29AE000A3C985 = {
@@ -327,6 +376,7 @@
 			children = (
 				9A6EE2172FB29FA4004F9C3A /* subsystem_bsd_sockets.xcodeproj */,
 				9A1906C92FB29B9D00A3C985 /* subsystem_macos */,
+				9A0B90322FB2C6F800EEAAE1 /* Frameworks */,
 				9A1906982FB29AE000A3C985 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -397,6 +447,7 @@
 				9A1906F12FB29BC600A3C985 /* Clipboard.cpp */,
 				9A1906F22FB29BC600A3C985 /* Clipboard2.h */,
 				9A1906F32FB29BC600A3C985 /* Clipboard2.cpp */,
+				9A0B90302FB2B16000EEAAE1 /* Clipboard2.mm */,
 				9A1906F42FB29BC600A3C985 /* CMakeLists.txt */,
 				9A1906F52FB29BC600A3C985 /* CtrlAltDelSimulator.h */,
 				9A1906F62FB29BC600A3C985 /* CtrlAltDelSimulator.cpp */,
@@ -633,6 +684,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9A0B94A12FB2CB3D00EEAAE1 /* PBXTargetDependency */,
 			);
 			name = subsystem_macos;
 			packageProductDependencies = (
@@ -680,6 +732,16 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		9A0B952A2FB2CEA400EEAAE1 /* libsubsystem_bsd_sockets.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libsubsystem_bsd_sockets.dylib;
+			remoteRef = 9A0B95292FB2CEA400EEAAE1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9A1906942FB29AE000A3C985 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -700,6 +762,7 @@
 				9A1907E92FB29BC600A3C985 /* AnonymousPipeFactory.cpp in Sources */,
 				9A1907EA2FB29BC600A3C985 /* ThemeLib.cpp in Sources */,
 				9A1907EB2FB29BC600A3C985 /* GuiThread.cpp in Sources */,
+				9A0B90312FB2B16800EEAAE1 /* Clipboard2.mm in Sources */,
 				9A1907EE2FB29BC600A3C985 /* WindowsRegistry.cpp in Sources */,
 				9A1907EF2FB29BC600A3C985 /* SharedMemory.cpp in Sources */,
 				9A1907F02FB29BC600A3C985 /* SystemInformation.cpp in Sources */,
@@ -756,6 +819,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9A0B94A12FB2CB3D00EEAAE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = subsystem_bsd_sockets;
+			targetProxy = 9A0B94A02FB2CB3D00EEAAE1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9A1906992FB29AE000A3C985 /* Debug */ = {

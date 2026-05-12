@@ -23,14 +23,14 @@
 //
 
 #include "innate_subsystem/gui/Toolbar.h"
-#include "innate_subsystem_windows/_common_header.h"
-#include "innate_subsystem_windows/gui/Control.h"
+#include "innate_subsystem_macos/_common_header.h"
+#include "innate_subsystem_macos/gui/Control.h"
 
 #include <commctrl.h>
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS Toolbar :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Toolbar :
 virtual public window_implementation<innate_subsystem::ToolbarInterface, Control>
    {
    public:
@@ -105,11 +105,11 @@ virtual public window_implementation<innate_subsystem::ToolbarInterface, Control
       bool pressButton(int idButton, bool press) override;
 
       // getButtonRect() gets the bounding rectangle of a button in a toolbar.
-      bool getButtonRect(int nIndex, ::int_rectangle & rectangle) override;
+      bool getButtonRect(int nIndex, ::i32_rectangle & rectangle) override;
 
       // setButtonSize() sets the size of the buttons to be added to a toolbar.
       // Button size must be largen the button bitmap.
-      bool setButtonsSize(const ::int_size & size) override;
+      bool setButtonsSize(const ::i32_size & size) override;
 
       // autoSize() resizes the toolbar window.
       void autoSize() override;
@@ -149,4 +149,4 @@ virtual public window_implementation<innate_subsystem::ToolbarInterface, Control
 
       iptr_to_iptr m_autoButtons;
    };
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

@@ -24,30 +24,31 @@
 
 #pragma once
 
-
-#include "subsystem_macos/_common_header.h"
-//#include "log_writer/LogWriter.h"
-
-namespace subsystem_macos
-{
-   // This class allow to control the uipi for the current process.
-   class CLASS_DECL_SUBSYSTEM_MACOS UipiControl
-   {
-   public:
-      UipiControl(::subsystem::LogWriter *log);
-      ~UipiControl();
-
-      // This function allow to receive the scopedstrMessage from a lower integrity
-      // level sender. The function will take effect only for an application
-      // running at Windows Vista and later.
-      // @param hwnd - handle to a window that will be to receive the allowed
-      // scopedstrMessage (ignored at Windows Vista or older).
-      // @throws ::subsystem::Exception on a fail (Only for Vista and later).
-      void allowMessage(UINT scopedstrMessage, HWND hwnd);
-
-   //private:
-      ::pointer < ::subsystem::LogWriter > m_plogwriter;
-   };
-
-   //// __UIPICONTROL_H__
-} // namespace subsystem_macos
+//
+//#include "subsystem_macos/_common_header.h"
+////#include "log_writer/LogWriter.h"
+//
+//namespace subsystem_macos
+//{
+//   // This class allow to control the uipi for the current process.
+//   class CLASS_DECL_SUBSYSTEM_MACOS UipiControl
+//   {
+//   public:
+//      UipiControl(::subsystem::LogWriter *log);
+//      ~UipiControl();
+//
+//      // This function allow to receive the scopedstrMessage from a lower integrity
+//      // level sender. The function will take effect only for an application
+//      // running at Windows Vista and later.
+//      // @param hwnd - handle to a window that will be to receive the allowed
+//      // scopedstrMessage (ignored at Windows Vista or older).
+//      // @throws ::subsystem::Exception on a fail (Only for Vista and later).
+//      void allowMessage(UINT scopedstrMessage, HWND hwnd);
+//
+//   //private:
+//      ::pointer < ::subsystem::LogWriter > m_plogwriter;
+//   };
+//
+//   //// __UIPICONTROL_H__
+//} // namespace subsystem_macos
+////

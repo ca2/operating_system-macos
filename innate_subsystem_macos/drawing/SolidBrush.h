@@ -27,15 +27,15 @@
 
 
 #include "innate_subsystem/drawing/SolidBrush.h"
-#include "subsystem_windows/_common_header.h"
-#include "innate_subsystem_windows/drawing/Brush.h"
+#include "subsystem_macos/_common_header.h"
+#include "innate_subsystem_macos/drawing/Brush.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS SolidBrush :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS SolidBrush :
       virtual public Implementation <::innate_subsystem::SolidBrushInterface, Brush>
       //, virtual public Brush
    {
@@ -51,4 +51,4 @@ namespace innate_subsystem_windows
    };
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

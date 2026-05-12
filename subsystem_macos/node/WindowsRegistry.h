@@ -24,26 +24,26 @@
 
 #pragma once
 
-
-#include "subsystem_macos/node/WindowsRegistryKey.h"
-
-namespace subsystem_macos
-{
-   class CLASS_DECL_SUBSYSTEM_MACOS WindowsRegistry
-   {
-   public:
-      const static int STRING_TYPE = REG_SZ;
-      const static int EXPAND_STRING_TYPE = REG_EXPAND_SZ;
-      const static int BINARY_TYPE = REG_BINARY;
-      const static int DWORD_TYPE = REG_DWORD;
-      const static int QWORD_TYPE = REG_QWORD;
-
-   //public:
-      static HKEY getCurrentUserKey();
-      static HKEY getCurrentLocalMachineKey();
-
-   //private:
-      WindowsRegistry();
-      ~WindowsRegistry();
-   };
-} // namespace subsystem_macos
+//
+//#include "subsystem_macos/node/WindowsRegistryKey.h"
+//
+//namespace subsystem_macos
+//{
+//   class CLASS_DECL_SUBSYSTEM_MACOS WindowsRegistry
+//   {
+//   public:
+//      const static int STRING_TYPE = REG_SZ;
+//      const static int EXPAND_STRING_TYPE = REG_EXPAND_SZ;
+//      const static int BINARY_TYPE = REG_BINARY;
+//      const static int DWORD_TYPE = REG_DWORD;
+//      const static int QWORD_TYPE = REG_QWORD;
+//
+//   //public:
+//      static HKEY getCurrentUserKey();
+//      static HKEY getCurrentLocalMachineKey();
+//
+//   //private:
+//      WindowsRegistry();
+//      ~WindowsRegistry();
+//   };
+//} // namespace subsystem_macos

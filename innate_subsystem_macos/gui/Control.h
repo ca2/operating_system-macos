@@ -25,11 +25,11 @@
 #pragma once
 
 #include "innate_subsystem/gui/Control.h"
-#include "innate_subsystem_windows/_common_header.h"
-#include "innate_subsystem_windows/gui/Window.h"
+#include "innate_subsystem_macos/_common_header.h"
+#include "innate_subsystem_macos/gui/Window.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
@@ -39,7 +39,7 @@ namespace innate_subsystem_windows
 
    class Control :
       virtual public window_implementation<::innate_subsystem::ControlInterface, Window>
-      //, virtual public ::innate_subsystem_windows::Window
+      //, virtual public ::innate_subsystem_macos::Window
    {
    public:
 
@@ -178,7 +178,7 @@ namespace innate_subsystem_windows
    };
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
 

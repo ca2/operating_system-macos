@@ -142,11 +142,11 @@ namespace subsystem_macos
        * @return current service state.
        * @throws SystemException on failure.
        */
-      DWORD getServiceState(SC_HANDLE hService) const;
+      //::u32 getServiceState(SC_HANDLE hService) const;
 
    //private:
       /** Service client manager handle. */
-      SC_HANDLE m_managerHandle;
+      //SC_HANDLE m_managerHandle;
    };
 
 

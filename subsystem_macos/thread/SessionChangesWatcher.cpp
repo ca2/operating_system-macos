@@ -56,45 +56,45 @@ namespace subsystem_macos
    {
         m_procedureSessionChanged = procedureSessionChanged;
       m_plogwriter = plogwriter;
-      ProcessIdToSessionId(GetCurrentProcessId(), &m_baseSessionId);
+      //ProcessIdToSessionId(GetCurrentProcessId(), &m_baseSessionId);
       resume();
    }
 
 
    void SessionChangesWatcher::execute()
    {
-      DWORD prevSession = m_baseSessionId;
-      bool isRdp = WindowsSubsystem().WTS().SessionIsRdpSession(prevSession, m_plogwriter);
-      ::string prevDeskName, currDeskName;
-      prevDeskName = MainSubsystem().DesktopSelector().getThreadDesktopName();
-
-      while (!isTerminating())
-      {
-         DWORD currSessionId = prevSession;
-         if (!isRdp)
-         {
-            currSessionId = WindowsSubsystem().WTS().getActiveConsoleSessionId(m_plogwriter);
-         }
-         bool sessionChanged = prevSession != currSessionId;
-         bool desktopInfoIsAvailable = MainSubsystem().DesktopSelector().getCurrentDesktopName(currDeskName);
-         bool desktopChanged = currDeskName != prevDeskName;
-         if (sessionChanged || desktopChanged || !desktopInfoIsAvailable)
-         {
-            m_plogwriter->debug("Session or desktop has been changed."
-                                " The process session = %u, current session = %u"
-                                " The process desktop = {}, current desktop = {}",
-                                (unsigned int)prevSession, (unsigned int)currSessionId, prevDeskName, currDeskName);
-            prevSession = currSessionId;
-            prevDeskName = currDeskName;
-            m_procedureSessionChanged();
-            terminate();
-         }
-         else
-         {
-            // FIXME: Use ::happening instead of Sleep().
-            preempt(100_ms);
-         }
-      }
+//      DWORD prevSession = m_baseSessionId;
+//      bool isRdp = WindowsSubsystem().WTS().SessionIsRdpSession(prevSession, m_plogwriter);
+//      ::string prevDeskName, currDeskName;
+//      prevDeskName = MainSubsystem().DesktopSelector().getThreadDesktopName();
+//
+//      while (!isTerminating())
+//      {
+//         DWORD currSessionId = prevSession;
+//         if (!isRdp)
+//         {
+//            currSessionId = WindowsSubsystem().WTS().getActiveConsoleSessionId(m_plogwriter);
+//         }
+//         bool sessionChanged = prevSession != currSessionId;
+//         bool desktopInfoIsAvailable = MainSubsystem().DesktopSelector().getCurrentDesktopName(currDeskName);
+//         bool desktopChanged = currDeskName != prevDeskName;
+//         if (sessionChanged || desktopChanged || !desktopInfoIsAvailable)
+//         {
+//            m_plogwriter->debug("Session or desktop has been changed."
+//                                " The process session = %u, current session = %u"
+//                                " The process desktop = {}, current desktop = {}",
+//                                (unsigned int)prevSession, (unsigned int)currSessionId, prevDeskName, currDeskName);
+//            prevSession = currSessionId;
+//            prevDeskName = currDeskName;
+//            m_procedureSessionChanged();
+//            terminate();
+//         }
+//         else
+//         {
+//            // FIXME: Use ::happening instead of Sleep().
+//            preempt(100_ms);
+//         }
+//      }
    }
 
 

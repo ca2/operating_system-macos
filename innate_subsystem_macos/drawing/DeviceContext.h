@@ -27,16 +27,16 @@
 
 
 #include "innate_subsystem/drawing/DeviceContext.h"
-#include "subsystem_windows/_common_header.h"
+#include "subsystem_macos/_common_header.h"
 //#include "util/CommonHeader.h"
 //#include "gui/PaintWindow.h"
-#include <Gdiplus.h>
+//#include <Gdiplus.h>
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS DeviceContext :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS DeviceContext :
       virtual public Implementation<::innate_subsystem::DeviceContextInterface>
    {
    public:
@@ -73,13 +73,14 @@ namespace innate_subsystem_windows
       void destroyDeviceContext() override;
 
       // protected:
-      HDC m_hdc2;
-      ::Gdiplus::Graphics * m_pgraphics;
-      HWND m_hwnd;
+      //HDC m_hdc2;
+      //::Gdiplus::Graphics * m_pgraphics;
+      void * m_pgraphics;
+      //HWND m_hwnd;
       bool m_bHasOwnDC;
 
       // friend class Graphics;
       // friend class BitmapGraphics;
    };
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

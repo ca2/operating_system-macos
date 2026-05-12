@@ -31,14 +31,14 @@
 //#include "TabContainer.h"
 
 #include "innate_subsystem/gui/TabControl.h"
-#include "innate_subsystem_windows/_common_header.h"
-#include "innate_subsystem_windows/gui/Control.h"
+#include "innate_subsystem_macos/_common_header.h"
+#include "innate_subsystem_macos/gui/Control.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS TabControl :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS TabControl :
     public window_implementation<innate_subsystem::TabControlInterface, Control>
    {
    public:
@@ -78,9 +78,9 @@ namespace innate_subsystem_windows
 
       //void _000OnNotify(windows_reflect_notify_t & notify) override;
 
-      void adjustRect(::int_rectangle &rect) override;
+      void adjustRect(::i32_rectangle &rect) override;
 
    //protected:
       ::innate_subsystem::TabContainer m_tabContainer;
    };
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

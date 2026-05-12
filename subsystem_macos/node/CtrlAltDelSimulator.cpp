@@ -40,17 +40,17 @@ namespace subsystem_macos
 
    void CtrlAltDelSimulator::execute()
    {
-      // Switch thread desktop to "Winlogon".
-      if (WindowsSubsystem().DesktopSelector().selectDesktop("Winlogon"))
-      {
-         HWND hwndCtrlAltDel = FindWindow(L"SAS window class", L"SAS window");
-         if (hwndCtrlAltDel == NULL)
-         {
-            hwndCtrlAltDel = HWND_BROADCAST;
-         }
-         PostMessage(hwndCtrlAltDel, WM_HOTKEY, 0, MAKELONG(MOD_ALT | MOD_CONTROL, VK_DELETE));
-      }
-      // Do not restore previous desktop.
+//      // Switch thread desktop to "Winlogon".
+//      if (WindowsSubsystem().DesktopSelector().selectDesktop("Winlogon"))
+//      {
+//         HWND hwndCtrlAltDel = FindWindow(L"SAS window class", L"SAS window");
+//         if (hwndCtrlAltDel == NULL)
+//         {
+//            hwndCtrlAltDel = HWND_BROADCAST;
+//         }
+//         PostMessage(hwndCtrlAltDel, WM_HOTKEY, 0, MAKELONG(MOD_ALT | MOD_CONTROL, VK_DELETE));
+//      }
+//      // Do not restore previous desktop.
    }
 
 

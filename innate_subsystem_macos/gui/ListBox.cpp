@@ -23,7 +23,7 @@
 //
 #include "framework.h"
 #include "ListBox.h"
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
    {
       ListBox::ListBox()
       {
@@ -147,4 +147,4 @@ namespace innate_subsystem_windows
       {
          SendMessage((HWND) _HWND(), LB_SETCURSEL, index, NULL);
       }
-   } // namespace innate_subsystem_windows
+   } // namespace innate_subsystem_macos

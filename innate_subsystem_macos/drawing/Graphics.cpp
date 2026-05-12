@@ -32,7 +32,7 @@
 #include "Pen.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    // Graphics::Graphics(DeviceContext *dc)
    // : m_dc(dc)
@@ -166,7 +166,7 @@ return m_pdevicecontext;
    void Graphics::setPen(::innate_subsystem::PenInterface *ppen)
    {
 
-      // ::cast < ::innate_subsystem_windows::Pen > ppenWin32 = ::innate_subsystem::get_implementation(ppen);
+      // ::cast < ::innate_subsystem_macos::Pen > ppenWin32 = ::innate_subsystem::get_implementation(ppen);
       //
       // HGDIOBJ object = ppenWin32 ? ppenWin32->m_hpen : nullptr;
       //
@@ -178,7 +178,7 @@ return m_pdevicecontext;
    void Graphics::setFont(::innate_subsystem::FontInterface *pfont)
    {
 
-      // ::cast < ::innate_subsystem_windows::Pen > ppenWin32 = ::innate_subsystem::get_implementation(ppen);
+      // ::cast < ::innate_subsystem_macos::Pen > ppenWin32 = ::innate_subsystem::get_implementation(ppen);
       //
       // HGDIOBJ object = ppenWin32 ? ppenWin32->m_hpen : nullptr;
       //
@@ -188,14 +188,14 @@ return m_pdevicecontext;
    }
 
 
-   void Graphics::moveTo(const ::int_point & point)
+   void Graphics::moveTo(const ::i32_point & point)
    {
       //MoveToEx(m_pdevicecontext->m_hdc, x, y, NULL);
       m_pointCurrent = point;
       //m_pointCurrent.y = y;
    }
 
-   void Graphics::lineTo(const ::int_point & point)
+   void Graphics::lineTo(const ::i32_point & point)
    {
       //LineTo(m_pdevicecontext->m_hdc, x, y);
       m_pdevicecontext->m_pgraphics->DrawLine(m_ppen->m_ppen, m_pointCurrent.x, m_pointCurrent.y, point.x, point.y);
@@ -204,13 +204,13 @@ return m_pdevicecontext;
 
    }
 
-   void Graphics::fillRect(const ::int_rectangle & rectangle, ::innate_subsystem::BrushInterface *pbrush)
+   void Graphics::fillRect(const ::i32_rectangle & rectangle, ::innate_subsystem::BrushInterface *pbrush)
    {
       Gdiplus::Rect gdiplusrect;
 
       ::copy(gdiplusrect, rectangle);
 
-      auto pbrushWin32 = pbrush->impl<::innate_subsystem_windows::Brush>();
+      auto pbrushWin32 = pbrush->impl<::innate_subsystem_macos::Brush>();
 
       //auto hbrush = (HBRUSH) pbrush->_HGDIOBJ();
 
@@ -220,13 +220,13 @@ m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect)
    }
 
 
-   void Graphics::fillRect(const ::int_rectangle & rectangle, const ::color::color & color)
+   void Graphics::fillRect(const ::i32_rectangle & rectangle, const ::color::color & color)
    {
       Gdiplus::Rect gdiplusrect;
 
       ::copy(gdiplusrect, rectangle);
 
-      //auto pbrushWin32 = pbrush->impl<::innate_subsystem_windows::Brush>();
+      //auto pbrushWin32 = pbrush->impl<::innate_subsystem_macos::Brush>();
       Gdiplus::Color gdipluscolor(color.byte_opacity(), color.byte_red(), color.byte_green(), color.byte_blue());
       Gdiplus::SolidBrush solidbrush(gdipluscolor);
 
@@ -237,7 +237,7 @@ m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect)
 
    }
 
-   void Graphics::ellipse(const ::int_rectangle & rectangle)
+   void Graphics::ellipse(const ::i32_rectangle & rectangle)
    {
       //Ellipse(m_pdevicecontext->m_hdc, l, t, r, b);
       Gdiplus::Rect gdiplusrect;
@@ -250,7 +250,7 @@ m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect)
       m_pdevicecontext->m_pgraphics->DrawEllipse(m_ppen->m_ppen, gdiplusrect);
    }
 
-   void Graphics::rectangle(const ::int_rectangle & rectangle)
+   void Graphics::rectangle(const ::i32_rectangle & rectangle)
    {
       //Rectangle(m_pdevicecontext->m_hdc, l, t, r, b);
       Gdiplus::Rect gdiplusrect;
@@ -264,10 +264,10 @@ m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect)
 
    }
 
-   void Graphics::drawBitmap(::innate_subsystem::BitmapInterface *pbitmap, const ::int_rectangle & rectangle)
+   void Graphics::drawBitmap(::innate_subsystem::BitmapInterface *pbitmap, const ::i32_rectangle & rectangle)
    {
 
-      auto pbitmapWin32 = pbitmap->impl<::innate_subsystem_windows::Bitmap>();
+      auto pbitmapWin32 = pbitmap->impl<::innate_subsystem_macos::Bitmap>();
       //DeviceContext memDC;
 
       //memDC.initialize_device_context(m_pdevicecontext);
@@ -286,10 +286,10 @@ m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect)
    }
 
 
-   void Graphics::drawBitmap(::innate_subsystem::BitmapInterface *pbitmap, const ::int_point & point, const ::int_rectangle & rectangle)
+   void Graphics::drawBitmap(::innate_subsystem::BitmapInterface *pbitmap, const ::i32_point & point, const ::i32_rectangle & rectangle)
    {
 
-      auto pbitmapWin32 = pbitmap->impl<::innate_subsystem_windows::Bitmap>();
+      auto pbitmapWin32 = pbitmap->impl<::innate_subsystem_macos::Bitmap>();
 
       m_pdevicecontext->m_pgraphics->DrawImage(pbitmapWin32->m_pbitmap,
          point.x, point.y,
@@ -327,7 +327,7 @@ m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect)
 
    }
 
-   void Graphics::drawText(const char *text, int cchText, ::int_rectangle &rectangle, unsigned int format, enum_align ealign)
+   void Graphics::drawText(const char *text, int cchText, ::i32_rectangle &rectangle, unsigned int format, enum_align ealign)
    {
 
       ::string str;
@@ -398,6 +398,6 @@ m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect)
    }
 
    
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 

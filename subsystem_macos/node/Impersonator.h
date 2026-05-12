@@ -70,10 +70,10 @@ namespace subsystem_macos
          bool sessionIsLocked(bool rdpEnabled) override;
 
          //protected:
-         virtual void impersonateAsUser(HANDLE token);
+         //virtual void impersonateAsUser(HANDLE token);
 
-         HANDLE m_token;
-         HANDLE m_dupToken;
+         //HANDLE m_token;
+         //HANDLE m_dupToken;
          //
          ::pointer < ::subsystem::LogWriter > m_plogwriter;
       };

@@ -84,19 +84,19 @@ namespace subsystem_macos
           * Win32 API service main function.
           * @see MSDN for details.
           */
-         static void WINAPI ServiceMain(DWORD dwArgc, LPTSTR *lpszArgv);
+         static void ServiceMain(::u32 dwArgc, char **lpszArgv);
          /**
           * Win32 API service control handler.
           * @see MSDN for details.
           */
-         static void WINAPI ServiceControlHandler(DWORD dwCtrlCode);
+         static void ServiceControlHandler(::u32 dwCtrlCode);
 
       //protected:
          /**
           * @fixme add comment to it.
           */
-         bool reportStatus(DWORD dwCurrentState, DWORD dwWin32ExitCode,
-                           DWORD dwWaitHint);
+         bool reportStatus(::u32 dwCurrentState, ::u32 dwWin32ExitCode,
+                           ::u32 dwWaitHint);
 
       //protected:
          /**
@@ -107,11 +107,11 @@ namespace subsystem_macos
          /**
           * Current service status.
           */
-         SERVICE_STATUS m_status;
+         //SERVICE_STATUS m_status;
          /**
           * Service handle.
           */
-         SERVICE_STATUS_HANDLE m_statusHandle;
+         //SERVICE_STATUS_HANDLE m_statusHandle;
 
          /**
           * Flag determinates if service is terminating.

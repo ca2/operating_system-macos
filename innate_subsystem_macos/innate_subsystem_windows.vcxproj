@@ -2689,7 +2689,7 @@
     <ProjectReference Include="..\..\operating_system-windows_common\acme_windows_common\acme_windows_common.vcxproj">
       <Project>{eb9dc9c0-0573-4da0-8700-4dbb371773f1}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\subsystem_windows\subsystem_windows.vcxproj">
+    <ProjectReference Include="..\subsystem_macos\subsystem_macos.vcxproj">
       <Project>{f46e1b15-7a8a-4bbd-8dfa-85c7074e2daa}</Project>
     </ProjectReference>
   </ItemGroup>
@@ -2737,7 +2737,7 @@
     <ClInclude Include="_.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="innate_subsystem_windows.def" />
+    <None Include="innate_subsystem_macos.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

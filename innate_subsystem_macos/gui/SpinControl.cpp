@@ -29,7 +29,7 @@
 
 // namespace windows
 // {
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    SpinControl::SpinControl()
  //  : m_buddy(NULL),
@@ -154,4 +154,4 @@ namespace innate_subsystem_windows
 
    }
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

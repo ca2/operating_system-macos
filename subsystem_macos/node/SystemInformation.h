@@ -36,19 +36,19 @@ namespace subsystem_macos
    public:
 
       // get rectangle of all desktop area
-      void getDesktopAllArea(int_rectangle & rectangle) override;
+      void getDesktopAllArea(i32_rectangle & rectangle) override;
 
       // get rectangle of user desktop area
       // without button 'Start' (only primary monitor).
-      bool getDesktopArea(int_rectangle & rectangle) override;
+      bool getDesktopArea(i32_rectangle & rectangle) override;
 
-      // return true if StretchBlt is used
-      // in provided device
-      virtual bool _isSupportStretchBlt(HDC hdc);
-
-      // return how many bits per pixel
-      // for provided device
-      virtual int _getBitsPixel(HDC hdc);
+//      // return true if StretchBlt is used
+//      // in provided device
+//      virtual bool _isSupportStretchBlt(HDC hdc);
+//
+//      // return how many bits per pixel
+//      // for provided device
+//      virtual int _getBitsPixel(HDC hdc);
 
       // get the number of monitors that plugged
       // into video card

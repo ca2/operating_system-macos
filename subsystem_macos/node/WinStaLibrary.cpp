@@ -22,60 +22,60 @@
 //-------------------------------------------------------------------------
 //
 #include "framework.h"
-#include "subsystem_macos/_common_header.h"
-#include "WinStaLibrary.h"
-#include "DynamicLibrary.h"
-
-namespace subsystem_macos
-{
-
-   WinStaLibrary::WinStaLibrary()
-   : m_winStationConnectW(NULL)
-   {
-      // try {
-      //    construct_newø(m_pdynamiclibraryWinSta);
-      //
-      //    m_pdynamiclibraryWinSta->initialize_dynamic_library("winsta.dll");
-      //
-      //    m_winStationConnectW = (pWinStationConnectW)m_pdynamiclibraryWinSta->getProcAddress("WinStationConnectW");
-      // } catch (...) {
-      //    m_pdynamiclibraryWinSta = nullptr;
-      // }
-   }
-
-   WinStaLibrary::~WinStaLibrary()
-   {
-      //if (m_winStaDll != NULL) {
-        // delete m_winStaDll;
-      //}
-   }
-
-
-   void WinStaLibrary::initialize_winsta_library()
-   {
-   try {
-      construct_newø(m_pdynamiclibraryWinSta);
-
-      m_pdynamiclibraryWinSta->initialize_dynamic_library("winsta.dll");
-
-      m_winStationConnectW = (pWinStationConnectW)m_pdynamiclibraryWinSta->getProcAddress("WinStationConnectW");
-   } catch (...) {
-      m_pdynamiclibraryWinSta = nullptr;
-   }
-}
-
-   BOOL WinStaLibrary::WinStationConnectW(HANDLE server, ULONG connectSessionId,
-                                          ULONG activeSessionId, PCWSTR password,
-                                          ULONG unknown)
-   {
-      if (!m_pdynamiclibraryWinSta || !m_winStationConnectW)
-         {
-         return FALSE;
-      }
-
-      return m_winStationConnectW(server, connectSessionId, activeSessionId, password, unknown);
-   }
-
-} //namespace subsystem_macos
-
-
+//#include "subsystem_macos/_common_header.h"
+//#include "WinStaLibrary.h"
+//#include "DynamicLibrary.h"
+//
+//namespace subsystem_macos
+//{
+//
+//   WinStaLibrary::WinStaLibrary()
+//   : m_winStationConnectW(NULL)
+//   {
+//      // try {
+//      //    construct_newø(m_pdynamiclibraryWinSta);
+//      //
+//      //    m_pdynamiclibraryWinSta->initialize_dynamic_library("winsta.dll");
+//      //
+//      //    m_winStationConnectW = (pWinStationConnectW)m_pdynamiclibraryWinSta->getProcAddress("WinStationConnectW");
+//      // } catch (...) {
+//      //    m_pdynamiclibraryWinSta = nullptr;
+//      // }
+//   }
+//
+//   WinStaLibrary::~WinStaLibrary()
+//   {
+//      //if (m_winStaDll != NULL) {
+//        // delete m_winStaDll;
+//      //}
+//   }
+//
+//
+//   void WinStaLibrary::initialize_winsta_library()
+//   {
+//   try {
+//      construct_newø(m_pdynamiclibraryWinSta);
+//
+//      m_pdynamiclibraryWinSta->initialize_dynamic_library("winsta.dll");
+//
+//      m_winStationConnectW = (pWinStationConnectW)m_pdynamiclibraryWinSta->getProcAddress("WinStationConnectW");
+//   } catch (...) {
+//      m_pdynamiclibraryWinSta = nullptr;
+//   }
+//}
+//
+//   BOOL WinStaLibrary::WinStationConnectW(HANDLE server, ULONG connectSessionId,
+//                                          ULONG activeSessionId, PCWSTR password,
+//                                          ULONG unknown)
+//   {
+//      if (!m_pdynamiclibraryWinSta || !m_winStationConnectW)
+//         {
+//         return FALSE;
+//      }
+//
+//      return m_winStationConnectW(server, connectSessionId, activeSessionId, password, unknown);
+//   }
+//
+//} //namespace subsystem_macos
+//
+//

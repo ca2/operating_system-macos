@@ -66,7 +66,7 @@ namespace subsystem_macos
       ::string m_pipeName;
       //::happening m_winEvent;
       ::happening m_happening;
-      DWORD m_milliseconds;
+      class ::time m_time;
       //::pointer < ::subsystem_macos::SecurityAttributes > m_psecurityattributes;
       ::pointer < ::subsystem_macos::File > m_pfileServerPipe;
       //HANDLE m_serverPipe;

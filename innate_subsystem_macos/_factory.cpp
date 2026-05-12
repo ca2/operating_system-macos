@@ -39,81 +39,81 @@
 #include "platform/subsystem.h"
 
 
-DECLARE_FACTORY(subsystem_windows);
+DECLARE_FACTORY(subsystem_macos);
 
 
-IMPLEMENT_FACTORY(innate_subsystem_windows)
+IMPLEMENT_FACTORY(innate_subsystem_macos)
 {
 
-   subsystem_windows_factory(pfactory);
+   subsystem_macos_factory(pfactory);
 
-   pfactory->add_factory_item<::innate_subsystem_windows::subsystem, ::platform::subsystem>();
+   pfactory->add_factory_item<::innate_subsystem_macos::subsystem, ::platform::subsystem>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::SystemMetrics, ::innate_subsystem::SystemMetrics>();
+   pfactory->add_factory_item<::innate_subsystem_macos::SystemMetrics, ::innate_subsystem::SystemMetrics>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Window, ::innate_subsystem::WindowInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Window, ::innate_subsystem::WindowInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Control, ::innate_subsystem::ControlInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Control, ::innate_subsystem::ControlInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Dialog, ::innate_subsystem::DialogInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Dialog, ::innate_subsystem::DialogInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::CheckBox, ::innate_subsystem::CheckBoxInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::CheckBox, ::innate_subsystem::CheckBoxInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::TextBox, ::innate_subsystem::TextBoxInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::TextBox, ::innate_subsystem::TextBoxInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::SpinControl, ::innate_subsystem::SpinControlInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::SpinControl, ::innate_subsystem::SpinControlInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Trackbar, ::innate_subsystem::TrackbarInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Trackbar, ::innate_subsystem::TrackbarInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::ComboBox, ::innate_subsystem::ComboBoxInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::ComboBox, ::innate_subsystem::ComboBoxInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::NotifyIconWindow, ::innate_subsystem::NotifyIconWindowInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::NotifyIconWindow, ::innate_subsystem::NotifyIconWindowInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::NotifyIcon, ::innate_subsystem::NotifyIconInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::NotifyIcon, ::innate_subsystem::NotifyIconInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Menu, ::innate_subsystem::MenuInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Menu, ::innate_subsystem::MenuInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Toolbar, ::innate_subsystem::ToolbarInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Toolbar, ::innate_subsystem::ToolbarInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::TabControl, ::innate_subsystem::TabControlInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::TabControl, ::innate_subsystem::TabControlInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Tab, ::innate_subsystem::TabInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Tab, ::innate_subsystem::TabInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Tooltip, ::innate_subsystem::TooltipInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Tooltip, ::innate_subsystem::TooltipInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::ListView, ::innate_subsystem::ListViewInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::ListView, ::innate_subsystem::ListViewInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::ListBox, ::innate_subsystem::ListBoxInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::ListBox, ::innate_subsystem::ListBoxInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::ScrollBar, ::innate_subsystem::ScrollBarInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::ScrollBar, ::innate_subsystem::ScrollBarInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::ProgressBar, ::innate_subsystem::ProgressBarInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::ProgressBar, ::innate_subsystem::ProgressBarInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Icon, ::innate_subsystem::IconInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Icon, ::innate_subsystem::IconInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Cursor, ::innate_subsystem::CursorInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Cursor, ::innate_subsystem::CursorInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Pen, ::innate_subsystem::PenInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Pen, ::innate_subsystem::PenInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::SolidBrush, ::innate_subsystem::SolidBrushInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::SolidBrush, ::innate_subsystem::SolidBrushInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Font, ::innate_subsystem::FontInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Font, ::innate_subsystem::FontInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::DibSection, ::innate_subsystem::DibSectionInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::DibSection, ::innate_subsystem::DibSectionInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Bitmap, ::innate_subsystem::BitmapInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Bitmap, ::innate_subsystem::BitmapInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::Graphics, ::innate_subsystem::GraphicsInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::Graphics, ::innate_subsystem::GraphicsInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::DeviceContext, ::innate_subsystem::DeviceContextInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::DeviceContext, ::innate_subsystem::DeviceContextInterface>();
 
-   //pfactory->add_factory_item<::innate_subsystem_windows::PaintWindow, ::innate_subsystem::PaintWindowInterface>();
+   //pfactory->add_factory_item<::innate_subsystem_macos::PaintWindow, ::innate_subsystem::PaintWindowInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::KeyboardLayout, ::innate_subsystem::KeyboardLayoutInterface>();
+   pfactory->add_factory_item<::innate_subsystem_macos::KeyboardLayout, ::innate_subsystem::KeyboardLayoutInterface>();
 
-   pfactory->add_factory_item<::innate_subsystem_windows::ResourceLoader, ::subsystem::ResourceLoader>();
+   pfactory->add_factory_item<::innate_subsystem_macos::ResourceLoader, ::subsystem::ResourceLoader>();
 
-   //pfactory->add_factory_item<::innate_subsystem_windows::OperatingSystemApplication,
+   //pfactory->add_factory_item<::innate_subsystem_macos::OperatingSystemApplication,
      //                         ::subsystem::OperatingSystemApplicationInterface>();
 
 }

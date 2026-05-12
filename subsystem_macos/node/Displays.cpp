@@ -36,39 +36,39 @@ namespace subsystem_macos
    {
    }
 
-   BOOL CALLBACK Displays::monitorEnumProc(HMONITOR hMonitor,
-                                                  HDC hdcMonitor,
-                                                  LPRECT lprcMonitor,
-                                                  LPARAM dwData)
-   {
-      Displays *_this = (Displays *)dwData;
-      ::int_rectangle rect(lprcMonitor->left - _this->m_xVirtualScreen,
-                lprcMonitor->top - _this->m_yVirtualScreen,
-                lprcMonitor->right - _this->m_xVirtualScreen,
-                lprcMonitor->bottom - _this->m_yVirtualScreen);
-      _this->m_displayRects.add(rect);
-      return TRUE;
-   }
+//   BOOL CALLBACK Displays::monitorEnumProc(HMONITOR hMonitor,
+//                                                  HDC hdcMonitor,
+//                                                  LPRECT lprcMonitor,
+//                                                  LPARAM dwData)
+//   {
+//      Displays *_this = (Displays *)dwData;
+//      ::int_rectangle rect(lprcMonitor->left - _this->m_xVirtualScreen,
+//                lprcMonitor->top - _this->m_yVirtualScreen,
+//                lprcMonitor->right - _this->m_xVirtualScreen,
+//                lprcMonitor->bottom - _this->m_yVirtualScreen);
+//      _this->m_displayRects.add(rect);
+//      return TRUE;
+//   }
 
    void Displays::update()
    {
-      //m_pparticleThis->update();
-      if (!isAlreadyUpdated()) {
-         m_displayRects.clear();
-         m_xVirtualScreen = GetSystemMetrics(SM_XVIRTUALSCREEN);
-         m_yVirtualScreen = GetSystemMetrics(SM_YVIRTUALSCREEN);
-
-         // Enumerate only desktop's displays. Skip mirror driver desktops.
-         HDC hdc = GetDC(0);
-         EnumDisplayMonitors(hdc, 0, monitorEnumProc, (LPARAM)this);
-
-         m_latestUpdateTime.Now();
-         ReleaseDC(0, hdc);
-      }
+//      //m_pparticleThis->update();
+//      if (!isAlreadyUpdated()) {
+//         m_displayRects.clear();
+//         m_xVirtualScreen = GetSystemMetrics(SM_XVIRTUALSCREEN);
+//         m_yVirtualScreen = GetSystemMetrics(SM_YVIRTUALSCREEN);
+//
+//         // Enumerate only desktop's displays. Skip mirror driver desktops.
+//         HDC hdc = GetDC(0);
+//         EnumDisplayMonitors(hdc, 0, monitorEnumProc, (LPARAM)this);
+//
+//         m_latestUpdateTime.Now();
+//         ReleaseDC(0, hdc);
+//      }
    }
 
    void Displays::getDisplayCoordinates(unsigned char displayNumber,
-                                               ::int_rectangle & rectangle)
+                                               ::i32_rectangle & rectangle)
    {
      // m_pparticleThis->getDisplayCoordinates(displayNumber, prectangle);
       critical_section_lock al(&m_displayRectsMutex);

@@ -28,7 +28,7 @@
 #include "innate_subsystem/gui/Window.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    Menu::Menu()
    : m_hmenu(0),
@@ -309,7 +309,7 @@ namespace innate_subsystem_windows
 
    }
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
 

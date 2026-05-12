@@ -27,26 +27,28 @@
 
 
 #include "innate_subsystem/drawing/Bitmap.h"
-#include "subsystem_windows/_common_header.h"
-#include <Gdiplus.h>
+#include "subsystem_macos/_common_header.h"
+///#include <Gdiplus.h>
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS Bitmap :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Bitmap :
    virtual public Implementation<innate_subsystem::BitmapInterface>
 
    {
    public:
       // // Creates empty bitmap with specified size.
-      // Bitmap(const ::int_size & size);
+      // Bitmap(const ::i32_size & size);
       // // Creates compatible with dc bitmap with specified size.
-      // Bitmap(HDC dc, const ::int_size & size);
+      // Bitmap(HDC dc, const ::i32_size & size);
       // // Creates bitmap from HBITMAP object.
       // Bitmap(HBITMAP bitmap);
       // // Destroys bitmap object.
-      HBITMAP m_hbitmap;
+      //HBITMAP m_hbitmap;
+      
+      void * m_pbitmap;
 
-      Gdiplus::Bitmap * m_pbitmap;
+      ///Gdiplus::Bitmap * m_pbitmap;
 
 
       Bitmap();
@@ -54,15 +56,16 @@ namespace innate_subsystem_windows
 
 
       // Creates empty bitmap with specified size.
-      void initialize_bitmap(const int_size& size) override;
+      void initialize_bitmap(const i32_size& size) override;
       // Creates compatible with dc bitmap with specified size.
-      void initialize_bitmap(innate_subsystem::DeviceContextInterface* pdevicecontext, const int_size& size) override;
+      void initialize_bitmap(innate_subsystem::DeviceContextInterface* pdevicecontext, const i32_size& size) override;
       // Creates bitmap from HBITMAP object.
       void initialize_bitmap(BitmapInterface* pbitmap) override;
-      virtual void _initialize_bitmap(HBITMAP hbitmap, HPALETTE hpalette);
+      //virtual void _initialize_bitmap(void * pbitmap, HPALETTE hpalette);
+      virtual void _initialize_bitmap(void * pbitmap);
 
       // Returns bitmap width.
-      int_size getSize() const override;
+      i32_size getSize() const override;
       // Returns bitmap height.
       //int getHeight() const;
 
@@ -77,6 +80,6 @@ namespace innate_subsystem_windows
    };
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 

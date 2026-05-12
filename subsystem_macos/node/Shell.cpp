@@ -25,7 +25,7 @@
 #include "subsystem/node/SystemException.h"
 #include "subsystem_macos/_common_header.h"
 #include "Shell.h"
-#include <shellapi.h>
+//#include <shellapi.h>
 
 
 namespace subsystem_macos
@@ -45,37 +45,37 @@ namespace subsystem_macos
 
    void Shell::runAsAdmin(const ::file::path & pathToFile, const ::scoped_string & scopedstrParameters)
    {
-      SHELLEXECUTEINFO sei;
-
-      ZeroMemory(&sei, sizeof(sei));
-
-      ::wstring wstrPath(pathToFile.windows_path());
-      ::wstring wstrArgs(scopedstrParameters);
-
-      sei.cbSize = sizeof(SHELLEXECUTEINFOW);
-      sei.hwnd = 0;
-      sei.fMask = SEE_MASK_FLAG_NO_UI | SEE_MASK_NOCLOSEPROCESS;
-      sei.lpVerb = L"runas";
-      sei.lpFile = wstrPath;
-      sei.lpParameters = wstrArgs;
-      sei.nShow = SW_SHOWNORMAL;
-
-      if (ShellExecuteEx(&sei) == FALSE) {
-         throw ::subsystem::SystemException();
-      }
-
-      WaitForSingleObject(sei.hProcess, INFINITE);
-
-      CloseHandle(sei.hProcess);
+//      SHELLEXECUTEINFO sei;
+//
+//      ZeroMemory(&sei, sizeof(sei));
+//
+//      ::wstring wstrPath(pathToFile.windows_path());
+//      ::wstring wstrArgs(scopedstrParameters);
+//
+//      sei.cbSize = sizeof(SHELLEXECUTEINFOW);
+//      sei.hwnd = 0;
+//      sei.fMask = SEE_MASK_FLAG_NO_UI | SEE_MASK_NOCLOSEPROCESS;
+//      sei.lpVerb = L"runas";
+//      sei.lpFile = wstrPath;
+//      sei.lpParameters = wstrArgs;
+//      sei.nShow = SW_SHOWNORMAL;
+//
+//      if (ShellExecuteEx(&sei) == FALSE) {
+//         throw ::subsystem::SystemException();
+//      }
+//
+//      WaitForSingleObject(sei.hProcess, INFINITE);
+//
+//      CloseHandle(sei.hProcess);
    }
 
    void Shell::open(const ::scoped_string & scopedstrFile, const ::scoped_string & scopedstrParameters, const ::scoped_string & scopedstrworkDirectory)
    {
-      int ret = (int)ShellExecute(0, L"open", ::wstring(scopedstrFile), ::wstring(scopedstrParameters), ::wstring(scopedstrworkDirectory), SW_SHOW);
-
-      if (ret <= 32) {
-         throw ::subsystem::SystemException(ret);
-      }
+//      int ret = (int)ShellExecute(0, L"open", ::wstring(scopedstrFile), ::wstring(scopedstrParameters), ::wstring(scopedstrworkDirectory), SW_SHOW);
+//
+//      if (ret <= 32) {
+//         throw ::subsystem::SystemException(ret);
+//      }
    }
 // } // namespace subsystem_macos
 

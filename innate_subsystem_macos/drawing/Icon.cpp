@@ -28,7 +28,7 @@
 #include "DeviceContext.h"
 #include "Bitmap.h"
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    Icon::Icon()
    : m_bHasOwnIcon(true), m_hicon(NULL)
@@ -82,7 +82,7 @@ namespace innate_subsystem_windows
 
    {
       m_bHasOwnIcon = true;
-      auto piconWin32 = picon->impl<::innate_subsystem_windows::Icon>();
+      auto piconWin32 = picon->impl<::innate_subsystem_macos::Icon>();
       m_hicon = piconWin32->m_hicon;
    }
 
@@ -126,8 +126,8 @@ namespace innate_subsystem_windows
 
       memset(&ii, 0, sizeof(ICONINFO));
 
-      auto pbitmapWin32 = pbitmap->impl<innate_subsystem_windows::Bitmap>();
-      auto pbitmapMaskWin32 = pbitmapMask->impl<innate_subsystem_windows::Bitmap>();
+      auto pbitmapWin32 = pbitmap->impl<innate_subsystem_macos::Bitmap>();
+      auto pbitmapMaskWin32 = pbitmapMask->impl<innate_subsystem_macos::Bitmap>();
 
       pbitmapWin32->m_pbitmap->GetHBITMAP(Gdiplus::Color(0, 0, 0, 0), &ii.hbmColor);
       pbitmapMaskWin32->m_pbitmap->GetHBITMAP(Gdiplus::Color(0, 0, 0, 0), &ii.hbmMask);
@@ -136,5 +136,5 @@ namespace innate_subsystem_windows
 
       m_hicon = CreateIconIndirect(&ii);
    }
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 

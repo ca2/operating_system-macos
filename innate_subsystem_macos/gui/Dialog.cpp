@@ -33,7 +33,7 @@
 #include "acme/windowing/windowing.h"
 #include "acme/operating_system/windows/windowing.h"
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
    Dialog::Dialog()
@@ -146,7 +146,7 @@ void
 
          //window = CreateDialogParam(GetModuleHandle(NULL), (LPCWSTR) getResouceName(),
          window = CreateDialogParam(hinstanceResource, (LPCWSTR)getResouceName(), parentWindow,
-                                    dialogProc, (::lparam)(::uptr)(::innate_subsystem_windows::Dialog *)this);
+                                    dialogProc, (::lparam)(::uptr)(::innate_subsystem_macos::Dialog *)this);
 
          m_isModal = false;
 
@@ -170,7 +170,7 @@ void
             //result = (int)DialogBoxParam(GetModuleHandle(NULL),
             result = (int)DialogBoxParam((HINSTANCE) MainSubsystem().m_hinstanceResource,
                                          (LPCWSTR) getResouceName(), parentWindow,
-                                         dialogProc,(::lparam) (::uptr)(::innate_subsystem_windows::Dialog * )this);
+                                         dialogProc,(::lparam) (::uptr)(::innate_subsystem_macos::Dialog * )this);
 
             information("Dialog box result is {}", result);
          });
@@ -219,7 +219,7 @@ void
 
    INT_PTR CALLBACK Dialog::dialogProc(HWND hwnd, unsigned int uMsg, WPARAM wparam, LPARAM lparam)
    {
-      ::innate_subsystem_windows::Dialog * _this = nullptr;
+      ::innate_subsystem_macos::Dialog * _this = nullptr;
 
       ::lresult lresult = 0;
 
@@ -232,7 +232,7 @@ void
       BOOL bResult = FALSE;
 
       if (uMsg == WM_INITDIALOG) {
-         _this = (::innate_subsystem_windows::Dialog *)lparam;
+         _this = (::innate_subsystem_macos::Dialog *)lparam;
          //SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)_this);
          ::cast < ::windows::windowing > pwindowing = ::system()->acme_windowing();
 
@@ -240,9 +240,9 @@ void
          _this->_setHWND(hwnd);
          _this->updateIcon();
       } else {
-         //_this = (::innate_subsystem_windows::Dialog *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+         //_this = (::innate_subsystem_macos::Dialog *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
          ::cast < ::windows::windowing > pwindowing = ::system()->acme_windowing();
-         ::cast < ::innate_subsystem_windows::Dialog > pdialog = pwindowing->m_windowmap[hwnd];
+         ::cast < ::innate_subsystem_macos::Dialog > pdialog = pwindowing->m_windowmap[hwnd];
          _this = pdialog;
          if (_this == 0) {
             return FALSE;
@@ -363,4 +363,4 @@ void
 
    }
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

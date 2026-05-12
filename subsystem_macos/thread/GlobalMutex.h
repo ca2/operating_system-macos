@@ -29,52 +29,40 @@
 #include "subsystem/thread/GlobalMutex.h"
 #include "subsystem_macos/_common_header.h"
 
-
+#include <pthread.h>
+#include <semaphore.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <errno.h>
 namespace subsystem_macos
 {
-   /**
-    * Global mutex (allows to use mutex between separate processes).
-    *
-    * @author yuri, enikey.
-    */
-   class CLASS_DECL_SUBSYSTEM_MACOS GlobalMutex :
-      virtual public Implementation<::subsystem::GlobalMutexInterface>
-   {
-   public:
-      /**
-       * Creates new global mutex.
-       * @param [optional] name name of mutex.
-       * @param throwIfExsist if flag is set then thows exception if mutex exsists.
-       * @param interSession if set, then mutex can be accessed from separate sessions, if not,
-       * then every session will create it's own mutex.
-       * @remark if name is 0, then mutex will be unnamed.
-       * @throws ::subsystem::Exception when cannot create mutex or when throwIfExist flag is set
-       * and mutex already exist.
-       */
-      GlobalMutex();
 
-      /**
-       * Deletes global mutex.
-       */
-       ~GlobalMutex() override;
 
-      void initialize_global_mutex(const scoped_string& scopedstrName, bool interSession, bool throwIfExist) override;
+class GlobalMutex :
+virtual public ::subsystem::GlobalMutex
+{
+public:
 
-      /**
-       * Inherited from lockable.
-       */
-      ::e_status lock() override;
+    GlobalMutex();
+    ~GlobalMutex() override;
 
-      /**
-       * Inherited from lockable.
-       */
-      virtual void unlock() override;
+    void initialize_global_mutex(
+        const ::scoped_string & scopedstrName,
+        bool interProcess,
+        bool throwIfExist);
 
-   //private:
-      //void setAccessToAll(HANDLE objHandle);
+    ::e_status lock();
+    void unlock();
 
-      pthread_mutex_t m_mutex;
-   };
+//protected:
+
+    bool                m_bNamed;
+    pthread_mutex_t     m_mutex;
+    sem_t *             m_psem;
+    ::string            m_strName;
+
+};
+
 
    //// __GLOBALMUTEX_H__
 } // namespace subsystem_macos

@@ -29,14 +29,14 @@
 //#include "util/CommonHeader.h"
 
 #include "innate_subsystem/drawing/Icon.h"
-#include "subsystem_windows/_common_header.h"
+#include "subsystem_macos/_common_header.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS Icon :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Icon :
       virtual public Implementation<::innate_subsystem::IconInterface>
    {
    public:
@@ -64,11 +64,12 @@ namespace innate_subsystem_windows
       void fromBitmap(::innate_subsystem::BitmapInterface *bitmap, ::innate_subsystem::BitmapInterface *mask) override;
 
    // protected:
-      HICON m_hicon;
+      //HICON m_hicon;
+      void * m_hicon;
       bool m_bHasOwnIcon;
    };
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 

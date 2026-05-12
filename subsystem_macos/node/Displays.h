@@ -53,7 +53,7 @@ namespace subsystem_macos
       ~Displays() override;
 
       // If a display does not exist now the function return an empty rectangle.
-      virtual void getDisplayCoordinates(unsigned char displayNumber, ::int_rectangle & rectangle)override;
+      virtual void getDisplayCoordinates(unsigned char displayNumber, ::i32_rectangle & rectangle)override;
 
       virtual ::int_rectangle_array_base getDisplaysCoords() override;
 
@@ -64,10 +64,10 @@ namespace subsystem_macos
       // Updates internal information to a current state.
       virtual void update() override;
 
-      static BOOL CALLBACK monitorEnumProc(HMONITOR hMonitor,
-                                           HDC hdcMonitor,
-                                           LPRECT lprcMonitor,
-                                           LPARAM dwData);
+//      static BOOL CALLBACK monitorEnumProc(HMONITOR hMonitor,
+//                                           HDC hdcMonitor,
+//                                           LPRECT lprcMonitor,
+//                                           LPARAM dwData);
 
       // Returns true if the update() function has been called lately.
       virtual bool isAlreadyUpdated() override;

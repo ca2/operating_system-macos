@@ -31,7 +31,7 @@
 //#include <crtdbg.h>
 //namespace windows
 //{
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    ImagedButton::ImagedButton()
    : m_mouseOver(false),
@@ -195,7 +195,7 @@ namespace innate_subsystem_windows
       }
    }
 
-   void ImagedButton::_setHICON(HICON hicon, const ::int_size & size)
+   void ImagedButton::_setHICON(HICON hicon, const ::i32_size & size)
    {
       m_picon->m_hicon = hicon;
       m_size = size;
@@ -203,10 +203,10 @@ namespace innate_subsystem_windows
 
 
 
-   void ImagedButton::setIcon(::innate_subsystem::IconInterface * picon, const ::int_size & size)
+   void ImagedButton::setIcon(::innate_subsystem::IconInterface * picon, const ::i32_size & size)
    {
 
-      //auto piconImpl = picon->impl < ::innate_subsystem_windows::Icon >();
+      //auto piconImpl = picon->impl < ::innate_subsystem_macos::Icon >();
 
       m_picon = picon;
       m_size = size;
@@ -286,7 +286,7 @@ namespace innate_subsystem_windows
       // Any messages we don't process must be passed onto the original window function
       return CallWindowProc((WNDPROC)_this->_WNDPROC_default(), hwnd, message, wparam, lparam);
    }
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
 //} //namespace windows

@@ -27,7 +27,7 @@
 
 #include "subsystem/node/ParentProcess.h"
 #include "subsystem_macos/_common_header.h"
-#include <Tlhelp32.h>
+//#include <Tlhelp32.h>
 
 namespace subsystem_macos
 {
@@ -37,7 +37,7 @@ namespace subsystem_macos
       {
       public:
 
-         PROCESSENTRY32 m_parentPe;
+         //PROCESSENTRY32 m_parentPe;
 
          // Is true if the m_parentPe field was successfully initialized.
          bool m_isInitialized;
@@ -53,8 +53,8 @@ namespace subsystem_macos
       //private:
          void init();
          // Returns true and fills the *pe argument if a process entry has been found.
-         bool getProcessEntry(PROCESSENTRY32 *peOut, DWORD Pid,
-                               HANDLE hSnapshot);
+         //bool getProcessEntry(PROCESSENTRY32 *peOut, DWORD Pid,
+           //                    HANDLE hSnapshot);
 
       };
 

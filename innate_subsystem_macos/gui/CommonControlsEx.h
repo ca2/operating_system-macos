@@ -29,9 +29,9 @@
 
 ////#include "util/Exception.h"
 ///
-#include "innate_subsystem_windows/_common_header.h"
+#include "innate_subsystem_macos/_common_header.h"
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
     class CommonControlsEx
     {
@@ -42,4 +42,4 @@ namespace innate_subsystem_windows
         static void init();
 
     };
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

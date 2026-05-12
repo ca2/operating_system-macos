@@ -26,7 +26,7 @@
 #include "framework.h"
 #include "Brush.h"
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    Brush::Brush()
 //   : m_hbrush(nullptr)
@@ -63,4 +63,4 @@ namespace innate_subsystem_windows
 
       }
    }
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

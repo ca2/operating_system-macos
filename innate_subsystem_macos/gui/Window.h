@@ -25,15 +25,21 @@
 #pragma once
 
 
-#include "acme/operating_system/windows/window.h"
+#include "acme/operating_system/macos/window.h"
 #include "innate_subsystem/gui/Window.h"
 
 
 #define WM_REFLECT_NOTIFY_EX (105 + 0x2000 + WM_NOTIFY)
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
+
+   struct notification {
+      ::operating_system::window    m_operatingsystemwindow;
+      ::uptr                        m_idFrom;
+      ::u32                         m_uCode;
+   };
 
    struct windows_reflect_notify_t
    {
@@ -43,24 +49,24 @@ namespace innate_subsystem_windows
       ::innate_subsystem::enum_control m_econtrol;
       int m_iControl;
       ::lparam m_lparam;
-      LPNMHDR m_lpnmhdr;
+      notification * m_pnotification;
       windows_reflect_notify_t(::lresult & lresult, ::wparam wparam, ::lparam lparam):
       m_lresult(lresult)
       {
          m_bHandled = false;
          m_wparam = wparam;
-         m_iControl = LOWORD(m_wparam);
+         m_iControl = m_wparam.loword();
          m_lparam = lparam;
-         m_lpnmhdr = lparam.raw_cast<LPNMHDR>();
+         m_pnotification = lparam.raw_cast<notification *>();
       }
-      template < typename WINDOWS_NOTIFICATION_STRUCT_POINTER >
-      WINDOWS_NOTIFICATION_STRUCT_POINTER * raw_cast()
+      template < typename NOTIFICATION_POINTER >
+      NOTIFICATION_POINTER raw_cast()
       {
-         return m_lparam.raw_cast<WINDOWS_NOTIFICATION_STRUCT_POINTER>();
+         return m_lparam.raw_cast<NOTIFICATION_POINTER>();
       }
    };
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS notification_handler :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS notification_handler :
    virtual public ::innate_subsystem::notification_handler
    {
    public:
@@ -89,9 +95,9 @@ namespace innate_subsystem_windows
    };
 
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS Window :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Window :
       virtual public Implementation< ::innate_subsystem::WindowCallback >,
-      virtual public ::windows::window,
+      virtual public ::appkit::window,
       virtual public notification_handler
    {
    public:
@@ -122,17 +128,17 @@ namespace innate_subsystem_windows
       WINDOWPLACEMENT   m_windowplacementWorkArea;
       //WINDOWPLACEMENT m_workArea;
       // It's size of optimal size of work-area in windowed mode.
-      ::int_rectangle m_rectangleNormal;
+      ::i32_rectangle m_rectangleNormal;
       ::innate_subsystem::enum_control m_econtrol = innate_subsystem::e_control_none;
 
-      ::int_rectangle m_clientArea;
+      ::i32_rectangle m_clientArea;
 
-      ::int_size m_sizeBuffer = {};
+      ::i32_size m_sizeBuffer = {};
       HDC m_hdcBuffer = nullptr;
       HBITMAP m_hbitmapOld = nullptr;
       HBITMAP m_hbitmapBuffer = nullptr;
-      ::pointer < ::innate_subsystem_windows::Bitmap > m_pbitmapBuffer;
-      ::pointer < ::innate_subsystem_windows::DeviceContext > m_pdevicecontextBuffer;
+      ::pointer < ::innate_subsystem_macos::Bitmap > m_pbitmapBuffer;
+      ::pointer < ::innate_subsystem_macos::DeviceContext > m_pdevicecontextBuffer;
 
       bool m_bIsDraw;
       PAINTSTRUCT m_paintStruct;
@@ -144,7 +150,7 @@ namespace innate_subsystem_windows
       unsigned int m_uEraseStyleExOffline = 0xffffffffu;
       //HDC m_hdc;
 
-      ::pointer < ::innate_subsystem_windows::DeviceContext > m_pdevicecontext;
+      ::pointer < ::innate_subsystem_macos::DeviceContext > m_pdevicecontext;
 
 
       struct notification
@@ -210,9 +216,9 @@ namespace innate_subsystem_windows
       void enableWindow(bool bEnable) override;
       void setEnabled(bool bEnable) override;
       void updateWindow() override;
-      bool setSize(const ::int_size & size) override;
-      bool setPosition(const ::int_point & point) override;
-      bool setPlacement(const ::int_rectangle & rectangle) override;
+      bool setSize(const ::i32_size & size) override;
+      bool setPosition(const ::i32_point & point) override;
+      bool setPlacement(const ::i32_rectangle & rectangle) override;
       void setWindowText(const ::scoped_string  & scopedstrText) override;
 
 
@@ -309,7 +315,7 @@ namespace innate_subsystem_windows
       bool isExStyleEnabled(unsigned int styleFlag) override;
 
       // full redraw of window area
-      void redraw(const ::int_rectangle &rcArea ={}) override;
+      void redraw(const ::i32_rectangle &rcArea ={}) override;
 
       // set or kill timer, with identifactor ident
       // and time in milliseconds
@@ -323,10 +329,10 @@ namespace innate_subsystem_windows
       void postMessage(unsigned int Msg, ::wparam wparam = 0, ::lparam lparam = 0) override;
       void post(const ::procedure & procedure) override;
 
-      ::int_rectangle getClientRect() override;
-      ::int_rectangle getFullScreenRect() override;
-      ::int_size getBorderSize() override;
-      ::int_rectangle getScreenWorkArea() override;
+      ::i32_rectangle getClientRect() override;
+      ::i32_rectangle getFullScreenRect() override;
+      ::i32_size getBorderSize() override;
+      ::i32_rectangle getScreenWorkArea() override;
 
 
       //void doRestoreFromFullScreen() override;
@@ -359,8 +365,8 @@ namespace innate_subsystem_windows
       virtual bool onSysCommand(::wparam wparam, ::lparam lparam) override;
       virtual bool onMessage(unsigned int message, ::wparam wparam, ::lparam lparam) override;
       virtual bool onMouseEx(unsigned int uMessage, int iButtonMask, unsigned short wheelSpeed,
-                             const ::int_point &point, bool &bDoDefaultProcessing) override;
-      virtual bool onMouse(unsigned char mouseButtons, unsigned short wheelSpeed, const ::int_point & position) override;
+                             const ::i32_point &point, bool &bDoDefaultProcessing) override;
+      virtual bool onMouse(unsigned char mouseButtons, unsigned short wheelSpeed, const ::i32_point & position) override;
 
       virtual bool onCreate(void * pCreateStruct) override;
 
@@ -370,7 +376,7 @@ namespace innate_subsystem_windows
       virtual void _defer_update_double_buffering();
 
 
-      void onDraw(::innate_subsystem::GraphicsInterface * pgraphics, const ::int_rectangle & rectangle) override;
+      void onDraw(::innate_subsystem::GraphicsInterface * pgraphics, const ::i32_rectangle & rectangle) override;
 
 
       virtual void _doPaint(HDC hdc);
@@ -379,7 +385,7 @@ namespace innate_subsystem_windows
       void onBeforeUnFullScreen(bool bMinimizing) override;
       void onAfterUnFullScreen(bool bMinimizing) override;
       bool onGetTooltip(int iControl, string &strTooltip) override;
-      bool onCalculateDefaultSize(int_rectangle &rectangleDefaultSize) override;
+      bool onCalculateDefaultSize(i32_rectangle &rectangleDefaultSize) override;
       void onAdjustWindowSize() override;
       void onSize() override;
 
@@ -387,6 +393,6 @@ namespace innate_subsystem_windows
 
 
 
-} //  namespace innate_subsystem_windows
+} //  namespace innate_subsystem_macos
 
 

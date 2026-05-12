@@ -30,7 +30,7 @@
 
 // namespace windows
 // {
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    NotifyIcon::NotifyIcon()
    //: NotifyIconWindow(), m_icon(0), m_visible(false)
@@ -143,5 +143,5 @@ namespace innate_subsystem_windows
       m_nid.uTimeout = timeoutMillis;
       Shell_NotifyIcon(NIM_MODIFY, &m_nid);
    }
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 //} // namespace windows

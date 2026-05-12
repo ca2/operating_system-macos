@@ -31,27 +31,27 @@ namespace subsystem_macos
 {
 
       Process::Process()
-      : //m_hProcess(0),
-        m_hThread(0),
-        m_handlesIsInherited(false),
-        m_hStopWait(0),
-        m_stdIn(0),
-        m_stdOut(0),
-        m_stdErr(0)
+//      : //m_hProcess(0),
+//        m_hThread(0),
+//        m_handlesIsInherited(false),
+//        m_hStopWait(0),
+//        m_stdIn(0),
+//        m_stdOut(0),
+//        m_stdErr(0)
       {
          //setFilename(path);
          //setArguments(scopedstrArgs);
 
-         m_hStopWait = CreateEvent(0, FALSE, FALSE, 0);
+         //m_hStopWait = CreateEvent(0, FALSE, FALSE, 0);
       }
 
       Process::~Process()
       {
          cleanup();
 
-         if (m_hStopWait) {
-            CloseHandle(m_hStopWait);
-         }
+//         if (m_hStopWait) {
+//            CloseHandle(m_hStopWait);
+//         }
       }
 
 
@@ -76,9 +76,9 @@ namespace subsystem_macos
 
       void Process::setStandardIoHandles(::subsystem::FileInterface * pfileStdIn, ::subsystem::FileInterface * pfileStdOut, ::subsystem::FileInterface * pfileStdErr)
       {
-         m_stdIn = pfileStdIn;
-         m_stdOut = pfileStdOut;
-         m_stdErr = pfileStdErr;
+//         m_stdIn = pfileStdIn;
+//         m_stdOut = pfileStdOut;
+//         m_stdErr = pfileStdErr;
       }
 
       void Process::setHandleInheritances(bool handlesIsInerited)
@@ -86,67 +86,67 @@ namespace subsystem_macos
          m_handlesIsInherited = handlesIsInerited;
       }
 
-      void Process::_getStartupInfo(STARTUPINFO *sti)
-      {
-         ZeroMemory(sti, sizeof(STARTUPINFO));
-         sti->cb = sizeof(STARTUPINFO);
-         sti->hStdError = m_stdErr;
-         sti->hStdInput = m_stdIn;
-         sti->hStdOutput = m_stdOut;
-         if (sti->hStdError != 0 || sti->hStdInput != 0 || sti->hStdOutput != 0) {
-            sti->dwFlags |= STARTF_USESTDHANDLES;
-         }
-      }
+//      void Process::_getStartupInfo(STARTUPINFO *sti)
+//      {
+////         ZeroMemory(sti, sizeof(STARTUPINFO));
+////         sti->cb = sizeof(STARTUPINFO);
+////         sti->hStdError = m_stdErr;
+////         sti->hStdInput = m_stdIn;
+////         sti->hStdOutput = m_stdOut;
+////         if (sti->hStdError != 0 || sti->hStdInput != 0 || sti->hStdOutput != 0) {
+////            sti->dwFlags |= STARTF_USESTDHANDLES;
+////         }
+//      }
 
       void Process::start()
       {
          cleanup();
 
-         STARTUPINFO sti;
-         _getStartupInfo(&sti);
-         PROCESS_INFORMATION pi;
-
-         ::string commandLine = getCommandLineString();
-
-         _ASSERT(!commandLine.is_empty());
-         if (CreateProcess(NULL, (LPTSTR) ::wstring(commandLine).c_str(),
-                           NULL, NULL, m_handlesIsInherited, NULL, NULL, NULL,
-                           &sti, &pi) == 0) {
-            throw ::subsystem::SystemException();
-                           }
-
-         m_hThread = pi.hThread;
-         m_pprocesshandle = create_newø<ProcessHandle>();
-         m_pprocesshandle->m_hProcess= pi.hProcess;
+//         STARTUPINFO sti;
+//         _getStartupInfo(&sti);
+//         PROCESS_INFORMATION pi;
+//
+//         ::string commandLine = getCommandLineString();
+//
+//         _ASSERT(!commandLine.is_empty());
+//         if (CreateProcess(NULL, (LPTSTR) ::wstring(commandLine).c_str(),
+//                           NULL, NULL, m_handlesIsInherited, NULL, NULL, NULL,
+//                           &sti, &pi) == 0) {
+//            throw ::subsystem::SystemException();
+//                           }
+//
+//         m_hThread = pi.hThread;
+//         m_pprocesshandle = create_newø<ProcessHandle>();
+//         m_pprocesshandle->m_hProcess= pi.hProcess;
       }
 
       void Process::kill()
       {
-         if (TerminateProcess(m_pprocesshandle->m_hProcess, 0) == 0) {
-            throw ::subsystem::SystemException();
-         }
+//         if (TerminateProcess(m_pprocesshandle->m_hProcess, 0) == 0) {
+//            throw ::subsystem::SystemException();
+//         }
       }
 
       void Process::waitForExit()
       {
-         HANDLE handleArray[2] = { m_pprocesshandle->m_hProcess, m_hStopWait };
-
-         WaitForMultipleObjects(2, handleArray, FALSE, INFINITE);
+//         HANDLE handleArray[2] = { m_pprocesshandle->m_hProcess, m_hStopWait };
+//
+//         WaitForMultipleObjects(2, handleArray, FALSE, INFINITE);
       }
 
       void Process::stopWait()
       {
-         SetEvent(m_hStopWait);
+         //SetEvent(m_hStopWait);
       }
 
       unsigned int Process::getExitCode()
       {
-         DWORD dwExitCode;
+         ::u32 dwExitCode = 0;
 
-         if (GetExitCodeProcess(m_pprocesshandle->m_hProcess, &dwExitCode) == 0) {
-            throw ::subsystem::SystemException();
-         }
-
+//         if (GetExitCodeProcess(m_pprocesshandle->m_hProcess, &dwExitCode) == 0) {
+//            throw ::subsystem::SystemException();
+//         }
+//
          return dwExitCode;
       }
 
@@ -171,14 +171,14 @@ namespace subsystem_macos
       void Process::cleanup()
       {
          defer_construct_newø(m_pprocesshandle);
-         if (m_pprocesshandle->m_hProcess) {
-            CloseHandle(m_pprocesshandle->m_hProcess);
-            m_pprocesshandle->m_hProcess = 0;
-         }
-         if (m_hThread) {
-            CloseHandle(m_hThread);
-            m_hThread = 0;
-         }
+//         if (m_pprocesshandle->m_hProcess) {
+//            CloseHandle(m_pprocesshandle->m_hProcess);
+//            m_pprocesshandle->m_hProcess = 0;
+//         }
+//         if (m_hThread) {
+//            CloseHandle(m_hThread);
+//            m_hThread = 0;
+//         }
       }
 
 } // namespace subsystem_macos

@@ -29,12 +29,12 @@
 #pragma once
 
 #include "innate_subsystem/gui/Trackbar.h"
-#include "innate_subsystem_windows/_common_header.h"
-#include "innate_subsystem_windows/gui/Control.h"
+#include "innate_subsystem_macos/_common_header.h"
+#include "innate_subsystem_macos/gui/Control.h"
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS Trackbar : public window_implementation<innate_subsystem::TrackbarInterface, Control>
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Trackbar : public window_implementation<innate_subsystem::TrackbarInterface, Control>
    {
    public:
       Trackbar();
@@ -50,5 +50,5 @@ namespace innate_subsystem_windows
       long getPos();
    };
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 

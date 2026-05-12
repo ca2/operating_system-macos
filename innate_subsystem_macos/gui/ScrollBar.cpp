@@ -25,7 +25,7 @@
 #include "ScrollBar.h"
 // namespace windows
 // {
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    ScrollBar::ScrollBar()
    : //(HWND) _HWND()(0),
@@ -277,5 +277,5 @@ namespace innate_subsystem_windows
    {
       return GetSystemMetrics(SM_CXHSCROLL);
    }
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 //} // namespace windows

@@ -26,7 +26,7 @@
 #pragma once
 
 
-#include "innate_subsystem_windows/_common_header.h"
+#include "innate_subsystem_macos/_common_header.h"
 
 #include <uxtheme.h>
 #include <vssym32.h>
@@ -37,7 +37,7 @@
 // Define type for api functions
 //
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    typedef HRESULT (__stdcall *PFNCLOSETHEMEDATA)(HTHEME hTheme);
 
@@ -58,7 +58,7 @@ namespace innate_subsystem_windows
                                                                  const RECT *pBoundingRect,
                                                                  RECT *pContentRect);
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS ThemeLib :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS ThemeLib :
    virtual public ::particle
    {
    public:
@@ -101,4 +101,4 @@ namespace innate_subsystem_windows
    };
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

@@ -29,7 +29,7 @@
 #include <commctrl.h>
 //namespace windows
 //{
-   namespace innate_subsystem_windows
+   namespace innate_subsystem_macos
    {
       CommonControlsEx::CommonControlsEx()
       {
@@ -54,5 +54,5 @@
             throw ::subsystem::Exception("Cannot initialize common controls ex.");
          }
       }
-   } // namespace innate_subsystem_windows
+   } // namespace innate_subsystem_macos
 //} // namespace windows

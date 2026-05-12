@@ -26,7 +26,7 @@
 
 #include <string.h>
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    PixelFormat::PixelFormat()
    {
@@ -54,4 +54,4 @@ namespace innate_subsystem_windows
              blueShift    == pf.blueShift &&
              bigEndian    == pf.bigEndian;
    }
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

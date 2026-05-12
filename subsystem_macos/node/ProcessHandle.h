@@ -39,7 +39,7 @@ namespace subsystem_macos
       public:
          bool m_bOwned = false;
          ProcessHandle();
-         ProcessHandle(HANDLE handle, bool bOwn = false);
+         //ProcessHandle(HANDLE handle, bool bOwn = false);
          ~ProcessHandle() override;
 
          // @throws ::subsystem::Exception on an error.
@@ -59,6 +59,6 @@ namespace subsystem_macos
          ::string getProcessModulePath() override;
 
          //private:
-         HANDLE m_hProcess;
+         //HANDLE m_hProcess;
       };
 } //namespace subsystem_macos

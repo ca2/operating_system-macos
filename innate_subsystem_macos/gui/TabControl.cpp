@@ -27,7 +27,7 @@
 #include "innate_subsystem/gui/Tab.h"
 #include <commctrl.h>
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    TabControl::TabControl()
    {
@@ -103,7 +103,7 @@ namespace innate_subsystem_windows
    void TabControl::moveWindowToTabControl(innate_subsystem::WindowInterface *pwindow)
    {
 
-      ::int_rectangle rectangle;
+      ::i32_rectangle rectangle;
       POINT first, last;
 
       this->adjustRect(rectangle);
@@ -155,7 +155,7 @@ namespace innate_subsystem_windows
       return page;
    }
 
-   void TabControl::adjustRect(::int_rectangle &rect)
+   void TabControl::adjustRect(::i32_rectangle &rect)
    {
       RECT rc;
       GetClientRect((HWND) _HWND(), &rc);
@@ -172,7 +172,7 @@ namespace innate_subsystem_windows
 
          int iId = (int) ::GetWindowLongPtr((HWND) this->_HWND(), GWLP_ID);
 
-         ::cast < ::innate_subsystem_windows::Window > pwindowParent = getParent();
+         ::cast < ::innate_subsystem_macos::Window > pwindowParent = getParent();
 
          pwindowParent->_setChildControlType(iId, ::innate_subsystem::e_control_tab);
          pwindowParent->_addChildNotification(iId, TCN_SELCHANGE);
@@ -262,4 +262,4 @@ namespace innate_subsystem_windows
 
    }
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

@@ -39,7 +39,7 @@
 #include <commctrl.h>
 // namespace windows
 // {
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    Window::Window()
       : // m_windowswindow.as_HWND()(0),
@@ -320,21 +320,21 @@ namespace innate_subsystem_windows
       }
    }
 
-   bool Window::setSize(const ::int_size & size)
+   bool Window::setSize(const ::i32_size & size)
    {
       _ASSERT(m_windowswindow.as_HWND() != 0);
       return !!SetWindowPos(m_windowswindow.as_HWND(), 0, 0, 0, size.cx, size.cy,
                             SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
    }
 
-   bool Window::setPosition(const ::int_point & point)
+   bool Window::setPosition(const ::i32_point & point)
    {
       _ASSERT(m_windowswindow.as_HWND() != 0);
       return !!SetWindowPos(m_windowswindow.as_HWND(), 0, point.x, point.y, 0, 0,
                             SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
    }
 
-   bool Window::setPlacement(const ::int_rectangle & rectangle)
+   bool Window::setPlacement(const ::i32_rectangle & rectangle)
    {
       _ASSERT(m_windowswindow.as_HWND() != 0);
       return !!SetWindowPos(m_windowswindow.as_HWND(), 0,
@@ -374,7 +374,7 @@ namespace innate_subsystem_windows
    void Window::subclassControlById(::Particle * pWindowControl, unsigned int id)
    {
 
-       auto pwindow = pWindowControl->impl<innate_subsystem_windows::Window>();
+       auto pwindow = pWindowControl->impl<innate_subsystem_macos::Window>();
 
       auto operatingsystemwindow = dialog_item_operating_system_window(id);
 
@@ -482,7 +482,7 @@ namespace innate_subsystem_windows
 
    void Window::setClassBackground(::innate_subsystem::BrushInterface *)
    {
-      //auto pbrushWin32 = pbrush->impl<::innate_subsystem_windows::Brush>();
+      //auto pbrushWin32 = pbrush->impl<::innate_subsystem_macos::Brush>();
       //auto hbrush = (HBRUSH) (HGDIOBJ) pbrush->_HGDIOBJ();
       //auto hbrush = pbrushWin32->m_pbrush->Get
       auto hbrush = (HBRUSH) ::CreateSolidBrush(::GetSysColor(COLOR_WINDOW));
@@ -708,7 +708,7 @@ namespace innate_subsystem_windows
       SetWindowText(m_windowswindow.as_HWND(), wstr);
    }
 
-   void Window::redraw(const ::int_rectangle &rcArea)
+   void Window::redraw(const ::i32_rectangle &rcArea)
    {
       _ASSERT(m_windowswindow.as_HWND() != 0);
 
@@ -722,7 +722,7 @@ namespace innate_subsystem_windows
       }
    }
 
-   bool Window::onMouseEx(unsigned int uMessage, int mouseButtons, unsigned short wspeed, const ::int_point &point,
+   bool Window::onMouseEx(unsigned int uMessage, int mouseButtons, unsigned short wspeed, const ::i32_point &point,
                           bool &bDoDefaultProcessing)
    {
       if (m_pwindowCallback)
@@ -736,7 +736,7 @@ namespace innate_subsystem_windows
       return false;
    }
 
-   bool Window::onMouse(unsigned char mouseButtons, unsigned short wspeed, const ::int_point &point)
+   bool Window::onMouse(unsigned char mouseButtons, unsigned short wspeed, const ::i32_point &point)
    {
        if (m_pwindowCallback)
        {
@@ -843,7 +843,7 @@ namespace innate_subsystem_windows
    }
 
 
-   ::int_rectangle Window::getClientRect()
+   ::i32_rectangle Window::getClientRect()
    {
 
       _ASSERT(m_windowswindow.as_HWND() != 0);
@@ -852,7 +852,7 @@ namespace innate_subsystem_windows
 
       GetClientRect(m_windowswindow.as_HWND(), &rect);
 
-      ::int_rectangle rectangle;
+      ::i32_rectangle rectangle;
 
       ::copy(rectangle, rect);
 
@@ -861,7 +861,7 @@ namespace innate_subsystem_windows
    }
 
 
-   ::int_rectangle Window::getFullScreenRect()
+   ::i32_rectangle Window::getFullScreenRect()
    {
 
 
@@ -878,7 +878,7 @@ namespace innate_subsystem_windows
          warning("Get monitor info is failed. Use second method (no multi-screen).");
          GetWindowRect(GetDesktopWindow(), &fullScreenWindowsRect);
       }
-      ::int_rectangle fullScreenRect;
+      ::i32_rectangle fullScreenRect;
       fullScreenRect = fullScreenWindowsRect;
 
 
@@ -886,11 +886,11 @@ namespace innate_subsystem_windows
    }
 
 
-   ::int_rectangle Window::getScreenWorkArea()
+   ::i32_rectangle Window::getScreenWorkArea()
    {
 
       // Get work area.
-      ::int_rectangle rectangleScreenWorkArea;
+      ::i32_rectangle rectangleScreenWorkArea;
 
       HMONITOR hmon = MonitorFromWindow(m_windowswindow.as_HWND(), MONITOR_DEFAULTTONEAREST);
       MONITORINFO mi;
@@ -900,7 +900,7 @@ namespace innate_subsystem_windows
          rectangleScreenWorkArea = mi.rcWork;
       } else {
          debug("Get monitor info is failed. Use second method (no multi-screen).");
-         ::int_rectangle desktopRc;
+         ::i32_rectangle desktopRc;
          if (!MainSubsystem().SystemInformation().getDesktopArea(desktopRc)) {
             MainSubsystem().SystemInformation().getDesktopAllArea(desktopRc);
          }
@@ -934,7 +934,7 @@ namespace innate_subsystem_windows
       // Restore position, style and exstyle of windowed window.
       setStyle(getStyle() | WS_CAPTION | WS_BORDER | WS_THICKFRAME | WS_MAXIMIZEBOX);
       setExStyle(getExStyle() & ~WS_EX_TOPMOST);
-      ::int_rectangle workArea;
+      ::i32_rectangle workArea;
       workArea = m_windowplacementWorkArea.rcNormalPosition;
       if (m_rectangleNormal.height() == workArea.height() ||
           m_rectangleNormal.width() == workArea.width()) {
@@ -1018,7 +1018,7 @@ namespace innate_subsystem_windows
    {
       // If size isn't changed by user, then adjust size.
       if (!m_sizeIsChanged) {
-         ::int_rectangle defaultSize;
+         ::i32_rectangle defaultSize;
          bool bHasDefaultSize = onCalculateDefaultSize(defaultSize);
 
          bool bDefaultSizeIsChanged = false;
@@ -1067,7 +1067,7 @@ namespace innate_subsystem_windows
         //// Restore position, style and exstyle of windowed window.
         //set_style(get_style() | WS_CAPTION | WS_BORDER | WS_THICKFRAME | WS_MAXIMIZEBOX);
         setExStyle(getExStyle() & ~WS_EX_TOPMOST);
-        //::int_rectangle workArea;
+        //::i32_rectangle workArea;
         //workArea = m_workArea.rcNormalPosition;
         //if (m_rcNormal.height() == workArea.height() ||
         //    m_rcNormal.width() == workArea.width()) {
@@ -1165,7 +1165,7 @@ namespace innate_subsystem_windows
    }
 
 
-   ::int_size Window::getBorderSize()
+   ::i32_size Window::getBorderSize()
    {
 
       _ASSERT(m_windowswindow.as_HWND() != 0);
@@ -1237,7 +1237,7 @@ namespace innate_subsystem_windows
 
       defer_construct_newø(m_pdevicecontextBuffer);
       m_pdevicecontextBuffer->initialize_device_context(m_pbitmapBuffer);
-      auto p = m_pdevicecontextBuffer->impl<::innate_subsystem_windows::DeviceContext>();
+      auto p = m_pdevicecontextBuffer->impl<::innate_subsystem_macos::DeviceContext>();
       p->m_hdc2 = m_hdcBuffer;
       p->m_pgraphics = new Gdiplus::Graphics(p->m_hdc2);
       // 3️⃣ Clear buffer (transparent black)
@@ -1245,7 +1245,7 @@ namespace innate_subsystem_windows
    }
 
 
-   void Window::onDraw(::innate_subsystem::GraphicsInterface * pgraphics, const ::int_rectangle & rectangle)
+   void Window::onDraw(::innate_subsystem::GraphicsInterface * pgraphics, const ::i32_rectangle & rectangle)
    {
 
       m_pwindowCallback->onDraw(pgraphics, rectangle);
@@ -1263,7 +1263,7 @@ namespace innate_subsystem_windows
       //EndPaint(m_hWnd, &m_paintStruct);
       //m_bIsDraw = false;
       //return true;
-      ::int_rectangle paintRect(m_paintStruct.rcPaint);
+      ::i32_rectangle paintRect(m_paintStruct.rcPaint);
 
 
       // 5️⃣ Blit to screen (alpha ignored in normal window)
@@ -1296,11 +1296,11 @@ namespace innate_subsystem_windows
       {
          // onDraw(m_hdcBuffer, m_paintStruct.rcPaint);
 
-         ::int_rectangle r;
+         ::i32_rectangle r;
 
          copy(r, m_paintStruct.rcPaint);
 
-         ::innate_subsystem_windows::Graphics g;
+         ::innate_subsystem_macos::Graphics g;
 
          // defer_construct_newø(m_pdevicecontextBuffer);
 
@@ -1413,7 +1413,7 @@ break;
                 m_bIsDraw = true;
                 // DeviceContext dc(this);
                 
-                //::int_rectangle r;
+                //::i32_rectangle r;
                 
                 //copy(r, m_paintStruct.rcPaint);
                 
@@ -1559,7 +1559,7 @@ break;
 
          // Translate position from ::lparam to POINT.
          POINTS points = MAKEPOINTS(lparam);
-         ::int_point point;
+         ::i32_point point;
          point.x = points.x;
          point.y = points.y;
 
@@ -1629,7 +1629,7 @@ m_windowswindow = nullptr;
 
       auto lpnmhdr = (LPNMHDR) lparam.m_lparam;
 
-      ::cast < ::innate_subsystem_windows::Window > pwindowWin32 = this->get_window_implementation();
+      ::cast < ::innate_subsystem_macos::Window > pwindowWin32 = this->get_window_implementation();
 
       auto &notification = pwindowWin32->m_mapControlNotification[iControl];
 
@@ -1806,7 +1806,7 @@ m_windowswindow = nullptr;
 
 
 
-   bool Window::onCalculateDefaultSize(::int_rectangle & rectangleDefaultSize)
+   bool Window::onCalculateDefaultSize(::i32_rectangle & rectangleDefaultSize)
    {
 
       return m_pwindowCallback->onCalculateDefaultSize(rectangleDefaultSize);
@@ -1829,6 +1829,6 @@ m_windowswindow = nullptr;
 
    }
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 // } // namespace windows
 //

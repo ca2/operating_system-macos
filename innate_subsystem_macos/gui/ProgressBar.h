@@ -27,12 +27,12 @@
 //#define _PROGRESS_BAR_H_
 
 #include "innate_subsystem/gui/ProgressBar.h"
-#include "innate_subsystem_windows/_common_header.h"
-#include "innate_subsystem_windows/gui/Control.h"
+#include "innate_subsystem_macos/_common_header.h"
+#include "innate_subsystem_macos/gui/Control.h"
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
-    class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS ProgressBar :
+    class CLASS_DECL_INNATE_SUBSYSTEM_MACOS ProgressBar :
 
    virtual public  window_implementation<innate_subsystem::ProgressBarInterface, Control >
     {
@@ -45,6 +45,6 @@ namespace innate_subsystem_windows
     };
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 

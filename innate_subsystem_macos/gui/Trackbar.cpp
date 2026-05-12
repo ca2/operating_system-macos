@@ -29,7 +29,7 @@
 #include <commctrl.h>
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    Trackbar::Trackbar()
    {
@@ -54,4 +54,4 @@ namespace innate_subsystem_windows
    {
       return (long)SendMessage((HWND) _HWND(), TBM_GETPOS, 0, 0);
    }
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

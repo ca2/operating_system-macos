@@ -60,49 +60,49 @@ namespace subsystem_macos
    {
       cleanup();
 
-      auto pprocessWindows = impl<::subsystem_macos::Process>();
-
-      m_plogwriter->information("Try to start \"{} {}\" process", pprocessWindows->m_path, pprocessWindows->m_args);
-
-      DWORD uiAccess = 1; // Nonzero enables UI control
-      PROCESS_INFORMATION pi;
-      STARTUPINFO sti;
-      pprocessWindows->_getStartupInfo(&sti);
-
-      m_plogwriter->debug("sti: cb = {}, hStdError = %p, hStdInput = %p,"
-                   " hStdOutput = %p, dwFlags = %u",
-                   (unsigned int)sti.cb, (void *)sti.hStdError, (void *)sti.hStdInput, (void *)sti.hStdOutput,
-                   (unsigned int)sti.dwFlags);
-
-      try
-      {
-         HANDLE userToken = WindowsSubsystem().WTS().duplicateCurrentProcessUserToken(m_connectRdpSession, m_plogwriter);
-
-         ::string commandLine = getCommandLineString();
-
-         m_plogwriter->debug("Try CreateProcessAsUser({} 0, {}, 0, 0, {}, NORMAL_PRIORITY_CLASS, 0, 0,"
-                      " sti, pi)",
-                      (void *)userToken, commandLine, (int)pprocessWindows->m_handlesIsInherited);
-         if (CreateProcessAsUser(userToken, 0, (LPTSTR)::wstring(commandLine).c_str(), 0, 0,
-                                 pprocessWindows->m_handlesIsInherited,
-                                 NORMAL_PRIORITY_CLASS, 0, 0, &sti, &pi) == 0)
-         {
-            throw ::subsystem::SystemException();
-         }
-         m_plogwriter->information("Created \"{}\" process", commandLine);
-         //
-         // FIXME: Leak.
-         //
-         CloseHandle(userToken);
-      }
-      catch (::subsystem::SystemException &sysEx)
-      {
-         m_plogwriter->error("Failed to start process with {} error", sysEx.getErrorCode());
-         throw;
-      }
-
-      pprocessWindows->m_hThread = pi.hThread;
-      pprocessWindows->m_pprocesshandle->m_hProcess      = pi.hProcess;
+//      auto pprocessWindows = impl<::subsystem_macos::Process>();
+//
+//      m_plogwriter->information("Try to start \"{} {}\" process", pprocessWindows->m_path, pprocessWindows->m_args);
+//
+//      DWORD uiAccess = 1; // Nonzero enables UI control
+//      PROCESS_INFORMATION pi;
+//      STARTUPINFO sti;
+//      pprocessWindows->_getStartupInfo(&sti);
+//
+//      m_plogwriter->debug("sti: cb = {}, hStdError = %p, hStdInput = %p,"
+//                   " hStdOutput = %p, dwFlags = %u",
+//                   (unsigned int)sti.cb, (void *)sti.hStdError, (void *)sti.hStdInput, (void *)sti.hStdOutput,
+//                   (unsigned int)sti.dwFlags);
+//
+//      try
+//      {
+//         HANDLE userToken = WindowsSubsystem().WTS().duplicateCurrentProcessUserToken(m_connectRdpSession, m_plogwriter);
+//
+//         ::string commandLine = getCommandLineString();
+//
+//         m_plogwriter->debug("Try CreateProcessAsUser({} 0, {}, 0, 0, {}, NORMAL_PRIORITY_CLASS, 0, 0,"
+//                      " sti, pi)",
+//                      (void *)userToken, commandLine, (int)pprocessWindows->m_handlesIsInherited);
+//         if (CreateProcessAsUser(userToken, 0, (LPTSTR)::wstring(commandLine).c_str(), 0, 0,
+//                                 pprocessWindows->m_handlesIsInherited,
+//                                 NORMAL_PRIORITY_CLASS, 0, 0, &sti, &pi) == 0)
+//         {
+//            throw ::subsystem::SystemException();
+//         }
+//         m_plogwriter->information("Created \"{}\" process", commandLine);
+//         //
+//         // FIXME: Leak.
+//         //
+//         CloseHandle(userToken);
+//      }
+//      catch (::subsystem::SystemException &sysEx)
+//      {
+//         m_plogwriter->error("Failed to start process with {} error", sysEx.getErrorCode());
+//         throw;
+//      }
+//
+//      pprocessWindows->m_hThread = pi.hThread;
+//      pprocessWindows->m_pprocesshandle->m_hProcess      = pi.hProcess;
    }
 
 

@@ -14,7 +14,21 @@
 //#pragma comment (lib, "Crypt32.lib")
 
 
+#include <Security/Security.h>
+#include <CoreFoundation/CoreFoundation.h>
 
+#include <openssl/evp.h>
+#include <openssl/rand.h>
+
+#include <vector>
+#include <string>
+#include <string>
+#include <ctime>
+#include <sstream>
+#include <iomanip>
+
+
+#include <mach/mach.h>
 
 namespace subsystem_macos
 {
@@ -28,8 +42,8 @@ namespace subsystem_macos
    {
 
       g_p = this;
-      m_i_LOADER_CLOSE_CODE = -1;
-      m_i_SPEC_IPC_CODE = -1;
+//      m_i_LOADER_CLOSE_CODE = -1;
+//      m_i_SPEC_IPC_CODE = -1;
 
    }
 
@@ -185,45 +199,363 @@ void subsystem::_parse_macos_command_line_arguments(
 
        strCommandLine = scopedstrCommandLineInWindowsFormat;
 
-       _parse_windows_command_line_arguments(pcommandlinearguments, strCommandLine);
+       _parse_macos_command_line_arguments(pcommandlinearguments, strCommandLine);
 
        return pcommandlinearguments;
 
    }
 
 
-   bool subsystem::EncryptData(const ::string& input, ::memory & output)
-   {
+static const char* kServiceName =
+    "MyApplicationEncryption";
 
-   DATA_BLOB inBlob;
-   DATA_BLOB outBlob;
+static const char* kAccountName =
+    "AES256Key";
 
-   inBlob.pbData = (unsigned char*)input.data();
-   inBlob.cbData = (DWORD)input.size();
 
-   if (!CryptProtectData(&inBlob, nullptr, nullptr, nullptr, nullptr, 0, &outBlob))
-      return false;
+// =====================================================
+// Keychain Helpers
+// =====================================================
 
-   output.assign(outBlob.pbData, outBlob.cbData);
-   LocalFree(outBlob.pbData);
-   return true;
-}
-
-   bool subsystem::DecryptData(const memory & input, ::string& output)
+static bool LoadOrCreateKey(
+    memory & key)
 {
-   DATA_BLOB inBlob;
-   DATA_BLOB outBlob;
+    key.set_size(32);
 
-   inBlob.pbData = (unsigned char*)input.data();
-   inBlob.cbData = (DWORD)input.size();
+    void* data = nullptr;
+    UInt32 length = 0;
 
-   if (!CryptUnprotectData(&inBlob, nullptr, nullptr, nullptr, nullptr, 0, &outBlob))
-      return false;
+    OSStatus status =
+        SecKeychainFindGenericPassword(
+            nullptr,
+            (UInt32)strlen(kServiceName),
+            kServiceName,
+            (UInt32)strlen(kAccountName),
+            kAccountName,
+            &length,
+            &data,
+            nullptr);
 
-   output.assign((char*)outBlob.pbData, outBlob.cbData);
-   LocalFree(outBlob.pbData);
-   return true;
+    if (status == errSecSuccess)
+    {
+        if (length != 32)
+        {
+            SecKeychainItemFreeContent(
+                nullptr,
+                data);
+
+            return false;
+        }
+
+        memcpy(key.data(), data, 32);
+
+        SecKeychainItemFreeContent(
+            nullptr,
+            data);
+
+        return true;
+    }
+
+    // Create new key
+
+    if (RAND_bytes(key.data(), 32) != 1)
+        return false;
+
+    status =
+        SecKeychainAddGenericPassword(
+            nullptr,
+            (UInt32)strlen(kServiceName),
+            kServiceName,
+            (UInt32)strlen(kAccountName),
+            kAccountName,
+            32,
+            key.data(),
+            nullptr);
+
+    return status == errSecSuccess;
 }
+
+
+// =====================================================
+// Encrypt
+// =====================================================
+
+bool subsystem::EncryptData(const ::string& input, ::memory & output)
+{
+    ::memory key;
+
+    if (!LoadOrCreateKey(key))
+        return false;
+
+    EVP_CIPHER_CTX* ctx =
+        EVP_CIPHER_CTX_new();
+
+    if (!ctx)
+        return false;
+
+    const size_t ivSize = 12;
+    const size_t tagSize = 16;
+
+    uint8_t iv[ivSize];
+
+    if (RAND_bytes(iv, ivSize) != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return false;
+    }
+
+    if (EVP_EncryptInit_ex(
+            ctx,
+            EVP_aes_256_gcm(),
+            nullptr,
+            nullptr,
+            nullptr) != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return false;
+    }
+
+    if (EVP_CIPHER_CTX_ctrl(
+            ctx,
+            EVP_CTRL_GCM_SET_IVLEN,
+            ivSize,
+            nullptr) != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return false;
+    }
+
+    if (EVP_EncryptInit_ex(
+            ctx,
+            nullptr,
+            nullptr,
+            key.data(),
+            iv) != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return false;
+    }
+
+   ::memory ciphertext;
+   
+   ciphertext.set_size(   input.size());
+
+    int outLen = 0;
+
+    if (EVP_EncryptUpdate(
+            ctx,
+            ciphertext.data(),
+            &outLen,
+            (const uint8_t*)input.data(),
+            (int)input.size()) != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return false;
+    }
+
+    int finalLen = 0;
+
+    if (EVP_EncryptFinal_ex(
+            ctx,
+            ciphertext.data() + outLen,
+            &finalLen) != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return false;
+    }
+
+    ciphertext.set_size(outLen + finalLen);
+
+    uint8_t tag[tagSize];
+
+    if (EVP_CIPHER_CTX_ctrl(
+            ctx,
+            EVP_CTRL_GCM_GET_TAG,
+            tagSize,
+            tag) != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return false;
+    }
+
+    EVP_CIPHER_CTX_free(ctx);
+
+    // Output format:
+    // [12-byte IV][16-byte TAG][ciphertext]
+
+    output.clear();
+
+    output.append(
+        iv,
+                  ivSize);
+   
+   
+   output.append(
+        tag,
+        tagSize);
+
+    output.append(
+        ciphertext.begin(),
+        ciphertext.size());
+
+    return true;
+}
+
+
+// =====================================================
+// Decrypt
+// =====================================================
+
+bool subsystem::DecryptData(const memory & input, ::string& output)
+{
+    const size_t ivSize = 12;
+    const size_t tagSize = 16;
+
+    if (input.size() < ivSize + tagSize)
+        return false;
+
+    ::memory key;
+
+    if (!LoadOrCreateKey(key))
+        return false;
+
+    const uint8_t* iv =
+        input.data();
+
+    const uint8_t* tag =
+        input.data() + ivSize;
+
+    const uint8_t* ciphertext =
+        input.data() + ivSize + tagSize;
+
+    size_t ciphertextSize =
+        input.size() - ivSize - tagSize;
+
+    EVP_CIPHER_CTX* ctx =
+        EVP_CIPHER_CTX_new();
+
+    if (!ctx)
+        return false;
+
+    if (EVP_DecryptInit_ex(
+            ctx,
+            EVP_aes_256_gcm(),
+            nullptr,
+            nullptr,
+            nullptr) != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return false;
+    }
+
+    if (EVP_CIPHER_CTX_ctrl(
+            ctx,
+            EVP_CTRL_GCM_SET_IVLEN,
+            ivSize,
+            nullptr) != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return false;
+    }
+
+    if (EVP_DecryptInit_ex(
+            ctx,
+            nullptr,
+            nullptr,
+            key.data(),
+            iv) != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return false;
+    }
+
+   ::memory plaintext;
+   
+   plaintext.set_size(
+        ciphertextSize);
+
+    int outLen = 0;
+
+    if (EVP_DecryptUpdate(
+            ctx,
+            plaintext.data(),
+            &outLen,
+            ciphertext,
+            (int)ciphertextSize) != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return false;
+    }
+
+    if (EVP_CIPHER_CTX_ctrl(
+            ctx,
+            EVP_CTRL_GCM_SET_TAG,
+            tagSize,
+            (void*)tag) != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return false;
+    }
+
+    int finalLen = 0;
+
+    int ret =
+        EVP_DecryptFinal_ex(
+            ctx,
+            plaintext.data() + outLen,
+            &finalLen);
+
+    EVP_CIPHER_CTX_free(ctx);
+
+    if (ret != 1)
+    {
+        // Authentication failed
+        return false;
+    }
+
+    plaintext.set_size(outLen + finalLen);
+
+    output.assign(
+        (char*)plaintext.data(),
+        plaintext.size());
+
+    return true;
+}
+
+
+
+//   bool subsystem::EncryptData(const ::string& input, ::memory & output)
+//   {
+//
+////   DATA_BLOB inBlob;
+////   DATA_BLOB outBlob;
+////
+////   inBlob.pbData = (unsigned char*)input.data();
+////   inBlob.cbData = (DWORD)input.size();
+////
+////   if (!CryptProtectData(&inBlob, nullptr, nullptr, nullptr, nullptr, 0, &outBlob))
+////      return false;
+////
+////   output.assign(outBlob.pbData, outBlob.cbData);
+////   LocalFree(outBlob.pbData);
+//   return true;
+//}
+//
+//   bool subsystem::DecryptData(const memory & input, ::string& output)
+//{
+////   DATA_BLOB inBlob;
+////   DATA_BLOB outBlob;
+////
+////   inBlob.pbData = (unsigned char*)input.data();
+////   inBlob.cbData = (DWORD)input.size();
+////
+////   if (!CryptUnprotectData(&inBlob, nullptr, nullptr, nullptr, nullptr, 0, &outBlob))
+////      return false;
+////
+////   output.assign((char*)outBlob.pbData, outBlob.cbData);
+////   LocalFree(outBlob.pbData);
+//   return true;
+//}
 
 
    //int subsystem::get_last_socket_error()
@@ -275,96 +607,109 @@ void subsystem::_parse_macos_command_line_arguments(
 
       pointer<::subsystem::FileInterface> subsystem::fileFrom_HANDLE(void *pHANDLE)
 {
+         
+         throw not_implemented();
+         
+         return nullptr;
 
-   auto pfile = create_newø<::subsystem_macos::File>();
+//   auto pfile = create_newø<::subsystem_macos::File>();
+//
+//   pfile->m_handle = (HANDLE)pHANDLE;
+//
+//   return pfile;
+}
 
-   pfile->m_handle = (HANDLE)pHANDLE;
+pointer<::subsystem::FileInterface> subsystem::fileFrom_fd(int fd)
+{
 
-   return pfile;
+auto pfile = create_newø<::subsystem_macos::File>();
+
+pfile->m_iFd = fd;
+
+return pfile;
 }
 
 
-   memsize subsystem::getCurrentMemoryUsage()
-   {
-   
-      if (!OperatingSystem().isVistaOrLater())
-      {
-      
-         return 0;
 
-      }
+memsize subsystem::getCurrentMemoryUsage()
+{
+    mach_task_basic_info info;
+    mach_msg_type_number_t infoCount = MACH_TASK_BASIC_INFO_COUNT;
 
-      PROCESS_MEMORY_COUNTERS pmc;
+    kern_return_t kr = task_info(
+        mach_task_self(),
+        MACH_TASK_BASIC_INFO,
+        reinterpret_cast<task_info_t>(&info),
+        &infoCount
+    );
 
-      GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc));
-
-      return pmc.WorkingSetSize;
-
+    if (kr != KERN_SUCCESS)
+    {
+        return 0;
     }
 
+    // Resident memory size (similar to WorkingSetSize on Windows)
+    return static_cast<memsize>(info.resident_size);
+}
 
-   void subsystem::toString(::string & str, const ::earth::time & time)
-   {
+void subsystem::toString(::string & str, const ::earth::time & time)
+{
+    // Assuming ::earth::time can convert to time_t
+    time_t rawTime = (time_t)time.m_iSecond;
 
-      auto systemTime = as_SYSTEMTIME(time);
+    // Convert to local time
+    struct tm localTime;
 
-      toLocal_SYSTEMTIME(systemTime);
+#if defined(__APPLE__) || defined(__unix__)
+    localtime_r(&rawTime, &localTime);
+#else
+    localTime = *localtime(&rawTime);
+#endif
 
-      const size_t dateStringMaxLength = 255;
+    // Format using locale-aware date/time representation
+    char buffer[256];
 
-      TCHAR dateString[dateStringMaxLength + 1];
+    // %x = locale date representation
+    // %X = locale time representation
+    if (strftime(buffer, sizeof(buffer), "%x %X", &localTime) > 0)
+    {
+        str = buffer;
+    }
+    else
+    {
+        str = "";
+    }
+}
 
-      if (GetDateFormat(LOCALE_USER_DEFAULT, DATE_SHORTDATE, &systemTime, 0, dateString, dateStringMaxLength) == 0)
-      {
-         // TODO: Process this error.
-      }
-
-      str = dateString;
-      str += ' ';
-
-      const size_t timeStringMaxLength = 255;
-
-      TCHAR timeString[timeStringMaxLength + 1];
-
-      if (GetTimeFormat(LOCALE_USER_DEFAULT, 0, &systemTime, 0, timeString, timeStringMaxLength) == 0)
-      {
-         // TODO: Process this error.
-      }
-
-      str += timeString;
-
-   }
-
-
-   int subsystem::get_LOADER_CLOSE_CODE()
-   {
-
-      if (m_i_LOADER_CLOSE_CODE < 0)
-      {
-
-         m_i_LOADER_CLOSE_CODE = RegisterWindowMessageW(L"TVN.HOOK.LOADER.CLOSE.CODE");
-
-      }
-
-      return m_i_LOADER_CLOSE_CODE;
-
-   }
-
-
-   int subsystem::get_SPEC_IPC_CODE()
-   {
-
-      if (m_i_SPEC_IPC_CODE < 0)
-      {
-
-         m_i_SPEC_IPC_CODE = RegisterWindowMessageW(L"TVN.HOOK.MESSAGE.CODE");
-
-      }
-
-      return m_i_LOADER_CLOSE_CODE;
-
-   }
-   
+//   int subsystem::get_LOADER_CLOSE_CODE()
+//   {
+//
+//      if (m_i_LOADER_CLOSE_CODE < 0)
+//      {
+//
+//         m_i_LOADER_CLOSE_CODE = RegisterWindowMessageW(L"TVN.HOOK.LOADER.CLOSE.CODE");
+//
+//      }
+//
+//      return m_i_LOADER_CLOSE_CODE;
+//
+//   }
+//
+//
+//   int subsystem::get_SPEC_IPC_CODE()
+//   {
+//
+//      if (m_i_SPEC_IPC_CODE < 0)
+//      {
+//
+//         m_i_SPEC_IPC_CODE = RegisterWindowMessageW(L"TVN.HOOK.MESSAGE.CODE");
+//
+//      }
+//
+//      return m_i_LOADER_CLOSE_CODE;
+//
+//   }
+//   
 
    // RegisterWindowMessage("TVN.HOOK.LOADER.CLOSE.CODE");
    // const unsigned int HookDefinitions::SPEC_IPC_CODE =
@@ -374,7 +719,7 @@ void subsystem::_parse_macos_command_line_arguments(
 }//namespace subsystem_macos
 
 
-CLASS_DECL_SUBSYSTEM_MACOS ::subsystem_macos::subsystem & WindowsSubsystem()
+CLASS_DECL_SUBSYSTEM_MACOS ::subsystem_macos::subsystem & MacosSubsystem()
 {
 
    if (!::subsystem_macos::g_p)

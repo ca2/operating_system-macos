@@ -26,14 +26,14 @@
 
 
 
-#include "innate_subsystem_windows/_common_header.h"
+#include "innate_subsystem_macos/_common_header.h"
 
 #include "acme/operating_system/windows/_.h"
 
-// namespace innate_subsystem_windows
+// namespace innate_subsystem_macos
 // {
 //
-//    class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS WindowFinder :
+//    class CLASS_DECL_INNATE_SUBSYSTEM_MACOS WindowFinder :
 //    virtual public ::particle
 //    {
 //    public:
@@ -51,7 +51,7 @@
 //    };
 //
 //
-// } //namespace innate_subsystem_windows
+// } //namespace innate_subsystem_macos
 //
 //
 //

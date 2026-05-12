@@ -29,9 +29,9 @@
 #include "innate_subsystem/drawing/DeviceContext.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
-   // Bitmap::Bitmap(const ::int_size & size)
+   // Bitmap::Bitmap(const ::i32_size & size)
    // : m_bitmap(NULL)
    // {
    //    // Prepare buffer
@@ -45,7 +45,7 @@ namespace innate_subsystem_windows
    //    }
    // }
    //
-   // Bitmap::Bitmap(HDC dc, const ::int_size & size)
+   // Bitmap::Bitmap(HDC dc, const ::i32_size & size)
    // {
    //    m_bitmap = CreateCompatibleBitmap(dc, width, height);
    // }
@@ -71,7 +71,7 @@ namespace innate_subsystem_windows
       // }
    }
 
-   void Bitmap::initialize_bitmap(const ::int_size & size)
+   void Bitmap::initialize_bitmap(const ::i32_size & size)
    {
       destroyGraphicsObject();
       // //;mm_bitmap(NULL)
@@ -91,10 +91,10 @@ namespace innate_subsystem_windows
        m_pbitmap = new Gdiplus::Bitmap(m_hbitmap, nullptr);
    }
 
-   void Bitmap::initialize_bitmap(::innate_subsystem::DeviceContextInterface * pdevicecontext, const ::int_size & size)
+   void Bitmap::initialize_bitmap(::innate_subsystem::DeviceContextInterface * pdevicecontext, const ::i32_size & size)
    {
       destroyGraphicsObject();
-      auto pdevicecontextWin32 = pdevicecontext->impl<::innate_subsystem_windows::DeviceContext>();
+      auto pdevicecontextWin32 = pdevicecontext->impl<::innate_subsystem_macos::DeviceContext>();
       m_hbitmap = CreateCompatibleBitmap(pdevicecontextWin32->m_hdc2, size.cx, size.cy);
       //m_pbitmap = new Gdiplus::Bitmap(size.cx, size.cy, pdevicecontextWin32->m_pgraphics);
       m_pbitmap = new Gdiplus::Bitmap(m_hbitmap, nullptr);
@@ -105,8 +105,8 @@ namespace innate_subsystem_windows
    {
 
       destroyGraphicsObject();
-      auto ppbitmapWin32 = pbitmap->impl<::innate_subsystem_windows::DeviceContext>();
-      auto pbitmapWin32 = pbitmap->impl < ::innate_subsystem_windows::Bitmap>();
+      auto ppbitmapWin32 = pbitmap->impl<::innate_subsystem_macos::DeviceContext>();
+      auto pbitmapWin32 = pbitmap->impl < ::innate_subsystem_macos::Bitmap>();
       m_hbitmap = pbitmapWin32->m_hbitmap;
       m_pbitmap = new Gdiplus::Bitmap(m_hbitmap, nullptr);
       // pbitmapWin32->m_pbitmap->GetWidth(), pbitmapWin32->m_pbitmap->GetHeight(),
@@ -126,7 +126,7 @@ namespace innate_subsystem_windows
 
    }
 
-   ::int_size Bitmap::getSize() const
+   ::i32_size Bitmap::getSize() const
    {
 
       auto w = m_pbitmap->GetWidth();
@@ -161,6 +161,6 @@ namespace innate_subsystem_windows
       }
 
    }
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 

@@ -32,7 +32,7 @@
 //#include "winhdr.h"
 
 //#include "Singleton.h"
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
    /**
     * Loader of resources from resource files linked with application.
@@ -40,7 +40,7 @@ namespace innate_subsystem_windows
     * Singleton without support of "lazy" initialization.
     */
    //class ResourceLoader : public Singleton<ResourceLoader>
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS ResourceLoader : virtual public ::innate_subsystem::ResourceLoader
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS ResourceLoader : virtual public ::innate_subsystem::ResourceLoader
    {
    public:
       /**
@@ -109,7 +109,7 @@ namespace innate_subsystem_windows
    };
 
    //#endif
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
 

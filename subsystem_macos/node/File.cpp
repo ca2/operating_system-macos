@@ -32,19 +32,19 @@
 
       File::File()
       {
-         m_handle=INVALID_HANDLE_VALUE;
+         m_iFd = -1;
          m_bOwned = false;
       }
 
       File::~File()
       {
 
-         if (m_bOwned && m_handle != nullptr && m_handle != INVALID_HANDLE_VALUE)
+         if (m_bOwned && m_iFd != -1)
          {
 
-            auto bOk = ::CloseHandle(m_handle);
+            auto ret = ::close(m_iFd);
 
-            if (!bOk)
+            if (ret)
             {
 
                error("windows::subsystem::File Close Handle failed");
@@ -56,11 +56,19 @@
          }
       }
 
+   void *File::_HANDLE()
+   {
+      
+      throw ::not_implemented();
 
-      void *File::_HANDLE()
+      return nullptr;
+
+   }
+
+      int File::_fd()
       {
 
-         return m_handle;
+         return m_iFd;
 
       }
 
@@ -68,14 +76,14 @@
    } // namespace subsystem_macos
 
 
-CLASS_DECL_SUBSYSTEM_MACOS HANDLE as_HANDLE(::subsystem::FileInterface * pfile)
+CLASS_DECL_SUBSYSTEM_MACOS int as_fd(::subsystem::FileInterface * pfile)
 {
 
-   ::cast < ::subsystem_macos::File > pwindowssubsystemfile = pfile;
+   ::cast < ::subsystem_macos::File > pmacossubsystemfile = pfile;
 
-   auto handle = pwindowssubsystemfile->m_handle;
+   auto fd = pmacossubsystemfile->m_iFd;
 
-   return handle;
+   return fd;
 
 }
 
@@ -89,19 +97,13 @@ CLASS_DECL_SUBSYSTEM_MACOS bool is_ok(const ::subsystem_macos::File * pfile)
 
    }
 
-   if (pfile->m_handle == nullptr)
+   if (pfile->m_iFd < 0)
    {
 
       return false;
 
    }
 
-   if (pfile->m_handle == INVALID_HANDLE_VALUE)
-   {
-
-      return false;
-
-   }
 
    return true;
 

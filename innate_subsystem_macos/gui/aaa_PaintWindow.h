@@ -29,11 +29,11 @@
 #include "Window.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS PaintWindow:
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS PaintWindow:
    virtual public Implementation<::innate_subsystem::PaintWindowCallback, Window>
    //, public Window
    {
@@ -50,21 +50,21 @@ namespace innate_subsystem_windows
       friend class DeviceContext;
 
    //protected:
-      void onPaint(::innate_subsystem::DeviceContextInterface *pdevicecontext, const ::int_rectangle &rectangle) override;
+      void onPaint(::innate_subsystem::DeviceContextInterface *pdevicecontext, const ::i32_rectangle &rectangle) override;
 
       //bool wndProc(unsigned int message, ::wparam wparam, ::lparam lparam);
 
       bool m_bIsDraw;
       PAINTSTRUCT m_paintStruct;
       //HDC m_hdc;
-      ::pointer < ::innate_subsystem_windows::DeviceContext > m_pdevicecontext;
+      ::pointer < ::innate_subsystem_macos::DeviceContext > m_pdevicecontext;
 
       bool on_window_procedure(::lresult &lresult, unsigned int message, ::wparam wparam, ::lparam lparam);
 
    };
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
 

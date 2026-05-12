@@ -81,51 +81,51 @@ namespace subsystem_macos
          pfileSecondSideWrite->m_bOwned = true;
          pfileSecondSideRead->m_bOwned = true;
 
-         ::subsystem_macos::SecurityAttributes secAttr;
-         secAttr.setInheritable();
-
-         try {
-            if (CreatePipe(&pfileFirstSideRead->m_handle, &pfileSecondSideWrite->m_handle,
-                           secAttr._getSecurityAttributes(), m_bufferSize) == 0) {
-               ::subsystem::SystemException("Cannot create anonymous pipe");
-                           }
-            if (CreatePipe(&pfileSecondSideRead->m_handle, &pfileFirstSideWrite->m_handle,
-                           secAttr._getSecurityAttributes(), m_bufferSize) == 0) {
-               ::subsystem::SystemException("Cannot create anonymous pipe");
-                           }
-         } catch (...) {
-//            CloseHandle(hFirstSideWrite);
-  //          CloseHandle(hFirstSideRead);
-    //        CloseHandle(hSecondSideWrite);
-      //      CloseHandle(hSecondSideRead);
-            throw;
-         }
-
-         const ::scoped_string & scopedstrErrMess = "Cannot disable inheritance for anonymous pipe";
-         if (!firstSideIsInheritable) {
-            if (SetHandleInformation(pfileFirstSideWrite->m_handle, HANDLE_FLAG_INHERIT, 0) == 0) {
-               ::subsystem::SystemException(errMess);
-            }
-            if (SetHandleInformation(pfileFirstSideRead->m_handle, HANDLE_FLAG_INHERIT, 0) == 0) {
-               ::subsystem::SystemException(errMess);
-            }
-         }
-         if (!secondSideIsInheritable) {
-            if (SetHandleInformation(pfileSecondSideWrite->m_handle, HANDLE_FLAG_INHERIT, 0) == 0) {
-               ::subsystem::SystemException(errMess);
-            }
-            if (SetHandleInformation(pfileSecondSideRead->m_handle, HANDLE_FLAG_INHERIT, 0) == 0) {
-               ::subsystem::SystemException(errMess);
-            }
-         }
-
-         auto panonymouspipeFirst = create_newø < AnonymousPipe>();
-         panonymouspipeFirst->initialize_anonymous_pipe(pfileFirstSideWrite, pfileFirstSideRead, m_bufferSize, m_plogwriter);
-         firstSide =panonymouspipeFirst;
-         auto panonymouspipeSecond = create_newø < AnonymousPipe>();
-         panonymouspipeSecond->initialize_anonymous_pipe(pfileSecondSideWrite, pfileSecondSideRead, m_bufferSize, m_plogwriter);
-         secondSide = panonymouspipeSecond;
-         secondSide->initialize(this);
+//         ::subsystem_macos::SecurityAttributes secAttr;
+//         secAttr.setInheritable();
+//
+//         try {
+//            if (CreatePipe(&pfileFirstSideRead->m_handle, &pfileSecondSideWrite->m_handle,
+//                           secAttr._getSecurityAttributes(), m_bufferSize) == 0) {
+//               ::subsystem::SystemException("Cannot create anonymous pipe");
+//                           }
+//            if (CreatePipe(&pfileSecondSideRead->m_handle, &pfileFirstSideWrite->m_handle,
+//                           secAttr._getSecurityAttributes(), m_bufferSize) == 0) {
+//               ::subsystem::SystemException("Cannot create anonymous pipe");
+//                           }
+//         } catch (...) {
+////            CloseHandle(hFirstSideWrite);
+//  //          CloseHandle(hFirstSideRead);
+//    //        CloseHandle(hSecondSideWrite);
+//      //      CloseHandle(hSecondSideRead);
+//            throw;
+//         }
+//
+//         const ::scoped_string & scopedstrErrMess = "Cannot disable inheritance for anonymous pipe";
+//         if (!firstSideIsInheritable) {
+//            if (SetHandleInformation(pfileFirstSideWrite->m_handle, HANDLE_FLAG_INHERIT, 0) == 0) {
+//               ::subsystem::SystemException(errMess);
+//            }
+//            if (SetHandleInformation(pfileFirstSideRead->m_handle, HANDLE_FLAG_INHERIT, 0) == 0) {
+//               ::subsystem::SystemException(errMess);
+//            }
+//         }
+//         if (!secondSideIsInheritable) {
+//            if (SetHandleInformation(pfileSecondSideWrite->m_handle, HANDLE_FLAG_INHERIT, 0) == 0) {
+//               ::subsystem::SystemException(errMess);
+//            }
+//            if (SetHandleInformation(pfileSecondSideRead->m_handle, HANDLE_FLAG_INHERIT, 0) == 0) {
+//               ::subsystem::SystemException(errMess);
+//            }
+//         }
+//
+//         auto panonymouspipeFirst = create_newø < AnonymousPipe>();
+//         panonymouspipeFirst->initialize_anonymous_pipe(pfileFirstSideWrite, pfileFirstSideRead, m_bufferSize, m_plogwriter);
+//         firstSide =panonymouspipeFirst;
+//         auto panonymouspipeSecond = create_newø < AnonymousPipe>();
+//         panonymouspipeSecond->initialize_anonymous_pipe(pfileSecondSideWrite, pfileSecondSideRead, m_bufferSize, m_plogwriter);
+//         secondSide = panonymouspipeSecond;
+//         secondSide->initialize(this);
       }
 
 } // namespace subsystem_macos

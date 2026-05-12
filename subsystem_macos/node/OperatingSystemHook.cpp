@@ -29,7 +29,7 @@
 
 namespace subsystem_macos
 {
-          HHOOK OperatingSystemHook::s_hhook = 0;
+//          HHOOK OperatingSystemHook::s_hhook = 0;
       OperatingSystemHook *OperatingSystemHook::s_poperatingsystemhook = nullptr;
 
       OperatingSystemHook::OperatingSystemHook()
@@ -46,74 +46,74 @@ namespace subsystem_macos
       }
 
 
-      LRESULT CALLBACK OperatingSystemHook::s_lowLevelKeyboardHook(int nCode, WPARAM wParam, LPARAM lParam)
+      ::lresult OperatingSystemHook::s_lowLevelKeyboardHook(int nCode, ::wparam wParam, ::lparam lParam)
       {
-
-         if (nCode < 0)
-         {
-
-            return CallNextHookEx(s_hhook, nCode, wParam, lParam);
-
-         }
-
-         ::lresult lresult = 0;
-
-         if (s_poperatingsystemhook->lowLevelKeyboardHook(lresult, nCode, wParam, lParam))
-         {
-            return lresult;
-         }
-
-
-         return CallNextHookEx(s_hhook, nCode, wParam, lParam);
-
+//
+//         if (nCode < 0)
+//         {
+//
+//            return CallNextHookEx(s_hhook, nCode, wParam, lParam);
+//
+//         }
+//
+//         ::lresult lresult = 0;
+//
+//         if (s_poperatingsystemhook->lowLevelKeyboardHook(lresult, nCode, wParam, lParam))
+//         {
+//            return lresult;
+//         }
+//
+//
+//         return CallNextHookEx(s_hhook, nCode, wParam, lParam);
+         return 0;
       }
 
 
-      bool OperatingSystemHook::lowLevelKeyboardHook(::lresult & lresult, int nCode, WPARAM wParam, LPARAM lParam)
+      bool OperatingSystemHook::lowLevelKeyboardHook(::lresult & lresult, int nCode, ::wparam wParam, ::lparam lParam)
       {
-
-         KBDLLHOOKSTRUCT *str = (KBDLLHOOKSTRUCT*) lParam;
-         // Ignoring of CapsLock, NumLock, ScrollLock, ::remoting::Window (Ctrl key), Menu (Alt key), Shift (shift key).
-         // Set the repeat count for the current scopedstrMessage bits.
-         ::lparam newLParam = 1;
-         // Set the scan code bits.
-         newLParam |= (str->scanCode & 0xf) << 16;
-         // Set the extended key bit.
-         newLParam |= (str->flags & LLKHF_EXTENDED) << 24;
-         // Set the context code bit.
-         newLParam |= ((str->flags & LLKHF_ALTDOWN) > 0) << 29;
-         // Set the transition state bit.
-         newLParam |= ((str->flags & LLKHF_UP) > 0) << 31;
-         if (wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN)
-         {
-            if (operating_system_hook_on_keyboard_message(lresult, (::user::enum_message)wParam, str->vkCode, newLParam ))
-            {
-
-               return true;
-
-            }
-            //PostMessage(m_dsktWnd.getHWnd(), wParam, str->vkCode, newLParam);
-         }
-         else if (wParam == WM_KEYUP || wParam == WM_SYSKEYUP)
-         {
-            if (operating_system_hook_on_keyboard_message(lresult, (::user::enum_message)wParam, str->vkCode, newLParam ))
-            {
-               return true;
-
-            }
-            //PostMessage(m_dsktWnd.getHWnd(), wParam, str->vkCode, newLParam);
-         }
-         //       return true;
-         //        } else {
-         //           return false;
-         //        }
-         // }
-
-         // if (s_pwindowshookeventlistener->onHookProc(nCode, wParam, lParam)) {
-         //    // Processing is successful. Don't pass it to the next hook procedure.
-         //    return true;
-         // } else {
-         // Calling the CallNextHookEx function to chain to the next hook procedure.
+//
+//         KBDLLHOOKSTRUCT *str = (KBDLLHOOKSTRUCT*) lParam;
+//         // Ignoring of CapsLock, NumLock, ScrollLock, ::remoting::Window (Ctrl key), Menu (Alt key), Shift (shift key).
+//         // Set the repeat count for the current scopedstrMessage bits.
+//         ::lparam newLParam = 1;
+//         // Set the scan code bits.
+//         newLParam |= (str->scanCode & 0xf) << 16;
+//         // Set the extended key bit.
+//         newLParam |= (str->flags & LLKHF_EXTENDED) << 24;
+//         // Set the context code bit.
+//         newLParam |= ((str->flags & LLKHF_ALTDOWN) > 0) << 29;
+//         // Set the transition state bit.
+//         newLParam |= ((str->flags & LLKHF_UP) > 0) << 31;
+//         if (wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN)
+//         {
+//            if (operating_system_hook_on_keyboard_message(lresult, (::user::enum_message)wParam, str->vkCode, newLParam ))
+//            {
+//
+//               return true;
+//
+//            }
+//            //PostMessage(m_dsktWnd.getHWnd(), wParam, str->vkCode, newLParam);
+//         }
+//         else if (wParam == WM_KEYUP || wParam == WM_SYSKEYUP)
+//         {
+//            if (operating_system_hook_on_keyboard_message(lresult, (::user::enum_message)wParam, str->vkCode, newLParam ))
+//            {
+//               return true;
+//
+//            }
+//            //PostMessage(m_dsktWnd.getHWnd(), wParam, str->vkCode, newLParam);
+//         }
+//         //       return true;
+//         //        } else {
+//         //           return false;
+//         //        }
+//         // }
+//
+//         // if (s_pwindowshookeventlistener->onHookProc(nCode, wParam, lParam)) {
+//         //    // Processing is successful. Don't pass it to the next hook procedure.
+//         //    return true;
+//         // } else {
+//         // Calling the CallNextHookEx function to chain to the next hook procedure.
 
          return false;
 
@@ -132,33 +132,33 @@ namespace subsystem_macos
       {
          //stopKeyboardHook();
 
-         if (s_hhook)
-         {
-
-            throw ::exception(error_wrong_state);
-
-         }
-         //s_pwindowshookeventlistener = hookEventListener;
-         s_poperatingsystemhook = this;
-#ifdef CUBE
-         HINSTANCE hinst = GetModuleHandle(0);
-#else
-         HINSTANCE hinst = GetModuleHandle(L"acme.dll");
-#endif
-         s_hhook = SetWindowsHookEx(WH_KEYBOARD_LL, s_lowLevelKeyboardHook, hinst, 0);
-         if (!s_hhook)
-         {
-            throw ::subsystem::SystemException("Unnable to set hooks");
-         }
+//         if (s_hhook)
+//         {
+//
+//            throw ::exception(error_wrong_state);
+//
+//         }
+//         //s_pwindowshookeventlistener = hookEventListener;
+//         s_poperatingsystemhook = this;
+//#ifdef CUBE
+//         HINSTANCE hinst = GetModuleHandle(0);
+//#else
+//         HINSTANCE hinst = GetModuleHandle(L"acme.dll");
+//#endif
+//         s_hhook = SetWindowsHookEx(WH_KEYBOARD_LL, s_lowLevelKeyboardHook, hinst, 0);
+//         if (!s_hhook)
+//         {
+//            throw ::subsystem::SystemException("Unnable to set hooks");
+//         }
       }
 
       void OperatingSystemHook::stopKeyboardHook()
       {
-         if (s_hhook) {
-            UnhookWindowsHookEx(s_hhook);
-         }
-         s_hhook = nullptr;
-         s_poperatingsystemhook = nullptr;
+//         if (s_hhook) {
+//            UnhookWindowsHookEx(s_hhook);
+//         }
+//         s_hhook = nullptr;
+//         s_poperatingsystemhook = nullptr;
       }
    
 

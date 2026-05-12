@@ -1,4 +1,4 @@
-LIBRARY "innate_subsystem_windows"
+LIBRARY "innate_subsystem_macos"
 
 EXPORTS
 ;acme_windows_factory

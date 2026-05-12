@@ -22,58 +22,58 @@
 //-------------------------------------------------------------------------
 //
 #include "framework.h"
-#include "SecurityDescriptor.h"
-#include <AccCtrl.h>
-#include <Aclapi.h>
-#include <crtdbg.h>
-
-
-namespace subsystem_macos
-{
-   SecurityDescriptor::SecurityDescriptor()
-   {
-      InitializeSecurityDescriptor(&m_sd, SECURITY_DESCRIPTOR_REVISION);
-   }
-
-   SecurityDescriptor::~SecurityDescriptor()
-   {
-   }
-
-   void SecurityDescriptor::setRulesAsDacl(size_t count,
-                                           EXPLICIT_ACCESS *rules)
-   {
-      PACL acl = 0;
-
-      ULONG constrCount = (ULONG)count;
-      _ASSERT(constrCount == count);
-      DWORD ret = SetEntriesInAcl(constrCount, rules, NULL, &acl);
-
-      if (ret != ERROR_SUCCESS) {
-         throw ::subsystem::SystemException(ret);
-      }
-
-      setUserDacl(acl);
-   }
-
-   void SecurityDescriptor::setUserDacl(ACL *acl)
-   {
-      if (SetSecurityDescriptorDacl(&m_sd, TRUE, acl,  FALSE) == FALSE) {
-         throw ::subsystem::SystemException();
-      }
-   }
-
-   void SecurityDescriptor::clearOwner()
-   {
-      SetSecurityDescriptorOwner(&m_sd, 0, TRUE);
-   }
-
-   bool SecurityDescriptor::isValid()
-   {
-      return IsValidSecurityDescriptor(&m_sd) == TRUE;
-   }
-
-   SECURITY_DESCRIPTOR *SecurityDescriptor::getSD()
-   {
-      return &m_sd;
-   }
-} // namespace subsystem_macos
+//#include "SecurityDescriptor.h"
+//#include <AccCtrl.h>
+//#include <Aclapi.h>
+//#include <crtdbg.h>
+//
+//
+//namespace subsystem_macos
+//{
+//   SecurityDescriptor::SecurityDescriptor()
+//   {
+//      InitializeSecurityDescriptor(&m_sd, SECURITY_DESCRIPTOR_REVISION);
+//   }
+//
+//   SecurityDescriptor::~SecurityDescriptor()
+//   {
+//   }
+//
+//   void SecurityDescriptor::setRulesAsDacl(size_t count,
+//                                           EXPLICIT_ACCESS *rules)
+//   {
+//      PACL acl = 0;
+//
+//      ULONG constrCount = (ULONG)count;
+//      _ASSERT(constrCount == count);
+//      DWORD ret = SetEntriesInAcl(constrCount, rules, NULL, &acl);
+//
+//      if (ret != ERROR_SUCCESS) {
+//         throw ::subsystem::SystemException(ret);
+//      }
+//
+//      setUserDacl(acl);
+//   }
+//
+//   void SecurityDescriptor::setUserDacl(ACL *acl)
+//   {
+//      if (SetSecurityDescriptorDacl(&m_sd, TRUE, acl,  FALSE) == FALSE) {
+//         throw ::subsystem::SystemException();
+//      }
+//   }
+//
+//   void SecurityDescriptor::clearOwner()
+//   {
+//      SetSecurityDescriptorOwner(&m_sd, 0, TRUE);
+//   }
+//
+//   bool SecurityDescriptor::isValid()
+//   {
+//      return IsValidSecurityDescriptor(&m_sd) == TRUE;
+//   }
+//
+//   SECURITY_DESCRIPTOR *SecurityDescriptor::getSD()
+//   {
+//      return &m_sd;
+//   }
+//} // namespace subsystem_macos

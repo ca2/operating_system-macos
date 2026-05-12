@@ -115,7 +115,7 @@
          // Fills the STARTUPINFO structure.
          // Before to use the STARTUPINFO structure in this class a function
          // must to call this function.
-         virtual void _getStartupInfo(STARTUPINFO *sti);
+         //virtual void _getStartupInfo(STARTUPINFO *sti);
 
          /**
           * Closes WinAPI handles if their are open.
@@ -126,14 +126,14 @@
          ::string m_args;
 
          ::pointer < ::subsystem_macos::ProcessHandle > m_pprocesshandle;
-         HANDLE m_hThread;
-
-         HANDLE m_hStopWait;
-
-         // Standard in/out/error handles for the child process.
-         HANDLE m_stdIn;
-         HANDLE m_stdOut;
-         HANDLE m_stdErr;
+//         HANDLE m_hThread;
+//
+//         HANDLE m_hStopWait;
+//
+//         // Standard in/out/error handles for the child process.
+//         HANDLE m_stdIn;
+//         HANDLE m_stdOut;
+//         HANDLE m_stdErr;
 
          bool m_handlesIsInherited;
 

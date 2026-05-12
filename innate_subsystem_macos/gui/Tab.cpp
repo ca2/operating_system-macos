@@ -24,7 +24,7 @@
 // Adapted by camilo on beginning of 2026-April <3ThomasBorregaardSorensen!!
 #include "framework.h"
 #include "Tab.h"
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
       Tab::Tab()
       //: m_dialog(NULL)
@@ -68,4 +68,4 @@ namespace innate_subsystem_windows
          }
       }
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos

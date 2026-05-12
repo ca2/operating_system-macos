@@ -5,14 +5,14 @@
 
 
 #include "innate_subsystem/drawing/Cursor.h"
-#include "subsystem_windows/_common_header.h"
+#include "subsystem_macos/_common_header.h"
 
 
-namespace innate_subsystem_windows
+namespace innate_subsystem_macos
 {
 
 
-   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS Cursor :
+   class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Cursor :
       virtual public Implementation<::innate_subsystem::CursorInterface>
    {
    public:
@@ -41,11 +41,12 @@ namespace innate_subsystem_windows
       void fromBitmap(::innate_subsystem::BitmapInterface *bitmap, ::innate_subsystem::BitmapInterface *mask) override;
 
    // protected:
-      HCURSOR m_hcursor;
+      //HCURSOR m_hcursor;
+      void * m_hcursor;
       bool m_bHasOwnCursor;
    };
 
 
-} // namespace innate_subsystem_windows
+} // namespace innate_subsystem_macos
 
 
