@@ -83,7 +83,7 @@ namespace innate_subsystem_macos
 
    void BitmapGraphics::beginPaint()
    {
-      _ASSERT(!m_isPainting);
+      ASSERT(!m_isPainting);
 
       m_isPainting = true;
       //auto pdevicecontextWin32 = this->impl< ::innate_subsystem_macos::DeviceContext>();
@@ -93,7 +93,7 @@ namespace innate_subsystem_macos
 
    void BitmapGraphics::endPaint()
    {
-      _ASSERT(m_isPainting);
+      ASSERT(m_isPainting);
 
       m_isPainting = false;
       //auto pdevicecontextWin32 = this->impl< ::innate_subsystem_macos::DeviceContext>();

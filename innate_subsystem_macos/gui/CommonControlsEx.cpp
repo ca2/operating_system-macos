@@ -26,7 +26,7 @@
 #include "CommonControlsEx.h"
 #include "subsystem/platform/Exception.h"
 //#include "util/CommonHeader.h"
-#include <commctrl.h>
+//#include <commctrl.h>
 //namespace macos
 //{
    namespace innate_subsystem_macos
@@ -41,18 +41,18 @@
 
       void CommonControlsEx::init()
       {
-         INITCOMMONCONTROLSEX iccsex = {0};
-
-         iccsex.dwICC = ICC_LISTVIEW_CLASSES | ICC_NATIVEFNTCTL_CLASS |
-                        ICC_PAGESCROLLER_CLASS | ICC_PROGRESS_CLASS |
-                        ICC_TAB_CLASSES | ICC_TREEVIEW_CLASSES |
-                        ICC_UPDOWN_CLASS | ICC_USEREX_CLASSES;
-
-         iccsex.dwSize = sizeof(INITCOMMONCONTROLSEX);
-
-         if (::InitCommonControlsEx(&iccsex) != TRUE) {
-            throw ::subsystem::Exception("Cannot initialize common controls ex.");
-         }
+//         INITCOMMONCONTROLSEX iccsex = {0};
+//
+//         iccsex.dwICC = ICC_LISTVIEW_CLASSES | ICC_NATIVEFNTCTL_CLASS |
+//                        ICC_PAGESCROLLER_CLASS | ICC_PROGRESS_CLASS |
+//                        ICC_TAB_CLASSES | ICC_TREEVIEW_CLASSES |
+//                        ICC_UPDOWN_CLASS | ICC_USEREX_CLASSES;
+//
+//         iccsex.dwSize = sizeof(INITCOMMONCONTROLSEX);
+//
+//         if (::InitCommonControlsEx(&iccsex) != TRUE) {
+//            throw ::subsystem::Exception("Cannot initialize common controls ex.");
+//         }
       }
    } // namespace innate_subsystem_macos
 //} // namespace macos

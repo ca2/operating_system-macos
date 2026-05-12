@@ -31,14 +31,15 @@ namespace innate_subsystem_macos
 {
   bool CheckBox::isChecked()
   {
-      auto hwnd = ::as_HWND(operating_system_window());
-
-     return (SendMessage(hwnd, BM_GETCHECK, NULL, NULL) != 0);
+//      auto hwnd = ::as_HWND(operating_system_window());
+//
+//     return (SendMessage(hwnd, BM_GETCHECK, NULL, NULL) != 0);
+     return false;
   }
 
   void CheckBox::setChecked(bool checked)
   {
-     auto hwnd = ::as_HWND(operating_system_window());
-     SendMessage(hwnd, BM_SETCHECK, (checked) ? 1 : 0, NULL);
+//     auto hwnd = ::as_HWND(operating_system_window());
+//     SendMessage(hwnd, BM_SETCHECK, (checked) ? 1 : 0, NULL);
   }
 } // namespace innate_subsystem_macos

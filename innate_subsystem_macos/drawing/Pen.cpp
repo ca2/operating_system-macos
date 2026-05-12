@@ -25,7 +25,7 @@
 //
 #include "framework.h"
 #include "Pen.h"
-
+#include "operating_system-apple/core_graphics/core_graphics.h"
 //#include <crtdbg.h>
 
 
@@ -38,12 +38,12 @@ namespace innate_subsystem_macos
    // {
    //    m_pen = CreatePen(type, width, color);
    //
-   //    _ASSERT(m_pen != NULL);
+   //    ASSERT(m_pen != NULL);
    // }
 
-   Pen::Pen():
+   Pen::Pen()//:
 //   m_hpen(nullptr)
-   m_ppen(nullptr)
+   //m_ppen(nullptr)
    {
 
    }
@@ -68,19 +68,23 @@ namespace innate_subsystem_macos
    {
 
       destroyGraphicsObject();
+      
+      m_iWidth = width;
+      
+      m_pcgcolor = CoreGraphics().create_color(color);
 
       //m_hpen = CreatePen((int) epen, width, RGB(color.byte_red(), color.byte_green(), color.byte_blue()));
-
-      Gdiplus::Color gdipluscolor(color.byte_opacity(), color.byte_red(), color.byte_green(), color.byte_blue());
-
-      m_ppen = new Gdiplus::Pen(gdipluscolor, width);
-
-      if (!m_ppen || m_ppen->GetLastStatus() != Gdiplus::Ok)
-      {
-
-         throw ::exception(error_failed);
-
-      }
+//
+//      Gdiplus::Color gdipluscolor(color.byte_opacity(), color.byte_red(), color.byte_green(), color.byte_blue());
+//
+//      m_ppen = new Gdiplus::Pen(gdipluscolor, width);
+//
+//      if (!m_ppen || m_ppen->GetLastStatus() != Gdiplus::Ok)
+//      {
+//
+//         throw ::exception(error_failed);
+//
+//      }
 
    }
 
@@ -88,14 +92,14 @@ namespace innate_subsystem_macos
    void Pen::destroyGraphicsObject()
    {
 
-      if (m_ppen)
-      {
-
-         delete m_ppen;
-
-         m_ppen = nullptr;
-
-      }
+//      if (m_ppen)
+//      {
+//
+//         delete m_ppen;
+//
+//         m_ppen = nullptr;
+//
+//      }
 
       // if (m_hpen)
       // {

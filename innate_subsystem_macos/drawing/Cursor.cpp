@@ -27,7 +27,7 @@
 #include "Cursor.h"
 #include "DeviceContext.h"
 #include "Bitmap.h"
-#include "acme/operating_system/macos/user.h"
+//#include "acme/operating_system/macos/user.h"
 
 
 namespace innate_subsystem_macos
@@ -66,9 +66,9 @@ namespace innate_subsystem_macos
 
    Cursor::~Cursor()
    {
-      if (m_bHasOwnCursor) {
-         DestroyCursor(m_hcursor);
-      }
+//      if (m_bHasOwnCursor) {
+//         DestroyCursor(m_hcursor);
+//      }
    }
 
 
@@ -83,7 +83,7 @@ namespace innate_subsystem_macos
    void Cursor::_setHCURSOR(void * pHCURSOR)
    {
 
-      m_hcursor = (HCURSOR) pHCURSOR;
+      //m_hcursor = (HCURSOR) pHCURSOR;
 
    }
 
@@ -120,7 +120,7 @@ namespace innate_subsystem_macos
     {
        m_bHasOwnCursor = false;
        //HINSTANCE hInstance = GetModuleHandle(NULL);
-       m_hcursor = LoadCursor(nullptr, ::macos::get_system_cursor(ecursor));
+       //m_hcursor = LoadCursor(nullptr, ::macos::get_system_cursor(ecursor));
     }
 
 

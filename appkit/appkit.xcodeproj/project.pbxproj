@@ -11,6 +11,8 @@
 		9A09CD722FB3214D00E22155 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A09CD712FB3214D00E22155 /* AppKit.framework */; };
 		9A09CD7A2FB334E000E22155 /* appkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A09CD782FB334E000E22155 /* appkit.h */; };
 		9A09CD7B2FB334E000E22155 /* appkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A09CD792FB334E000E22155 /* appkit.cpp */; };
+		9A09CE052FB38E7600E22155 /* _mm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A09CE042FB38E7100E22155 /* _mm.h */; };
+		9A09CE072FB38EC000E22155 /* _struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A09CE062FB38EB700E22155 /* _struct.h */; };
 		9A0B957B2FB3139100EEAAE1 /* ns_window.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A0B95782FB3139100EEAAE1 /* ns_window.h */; };
 		9A0B957C2FB3139100EEAAE1 /* ns_window.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B957A2FB3139100EEAAE1 /* ns_window.mm */; };
 		9A0B957D2FB3139100EEAAE1 /* ns_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B95792FB3139100EEAAE1 /* ns_window.cpp */; };
@@ -38,6 +40,8 @@
 		9A09CD732FB324F500E22155 /* windowing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = windowing.h; sourceTree = "<group>"; };
 		9A09CD782FB334E000E22155 /* appkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = appkit.h; sourceTree = "<group>"; };
 		9A09CD792FB334E000E22155 /* appkit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = appkit.cpp; sourceTree = "<group>"; };
+		9A09CE042FB38E7100E22155 /* _mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _mm.h; sourceTree = "<group>"; };
+		9A09CE062FB38EB700E22155 /* _struct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _struct.h; sourceTree = "<group>"; };
 		9A0B95612FB310D900EEAAE1 /* libappkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libappkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0B95712FB3134900EEAAE1 /* _.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
 		9A0B95722FB3134900EEAAE1 /* _.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = _.cpp; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 				9A09CD732FB324F500E22155 /* windowing.h */,
 				9A0B95712FB3134900EEAAE1 /* _.h */,
 				9A0B95722FB3134900EEAAE1 /* _.cpp */,
+				9A09CE042FB38E7100E22155 /* _mm.h */,
+				9A09CE062FB38EB700E22155 /* _struct.h */,
 				9A0B95732FB3134900EEAAE1 /* _____debug.xcconfig */,
 				9A0B95742FB3134900EEAAE1 /* _____release.xcconfig */,
 				9A0B95752FB3134900EEAAE1 /* _factory.cpp */,
@@ -126,8 +132,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A09CE052FB38E7600E22155 /* _mm.h in Headers */,
 				9A0B957B2FB3139100EEAAE1 /* ns_window.h in Headers */,
 				9A09CD7A2FB334E000E22155 /* appkit.h in Headers */,
+				9A09CE072FB38EC000E22155 /* _struct.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

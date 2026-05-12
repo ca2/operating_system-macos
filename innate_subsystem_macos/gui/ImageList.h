@@ -4,7 +4,7 @@
 #pragma once
 //#include <commctrl.h>
 
-#include "subsystem/platform/particle.h"
+#include "subsystem/platform/Particle.h"
 #include "innate_subsystem/gui/ImageList.h"
 #include "acme/_operating_system.h"
 
@@ -19,7 +19,7 @@ namespace innate_subsystem_macos
    public:
 
 
-      HIMAGELIST  m_himagelist;
+      //HIMAGELIST  m_himagelist;
 
 
       ImageList();

@@ -38,6 +38,9 @@ namespace innate_subsystem_macos
       virtual public Implementation<::innate_subsystem::BrushInterface>
    {
    public:
+      
+      
+      ::pointer < ::core_graphics::cg_color > m_pcgcolor;
 
       Brush();
       ~Brush() override;
@@ -54,7 +57,7 @@ namespace innate_subsystem_macos
    // protected:
      //HBRUSH m_hbrush;
       //Gdiplus::Brush * m_pbrush;
-      ::color::color m_color;
+      //::color::color m_color;
    //
    //    friend class Graphics;
    };

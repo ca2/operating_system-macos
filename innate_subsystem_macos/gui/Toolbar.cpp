@@ -66,7 +66,7 @@ namespace innate_subsystem_macos
    {
 //      dwStyle |= WS_CHILD;
 //
-//      //_ASSERT((HWND) _HWND() == 0);
+//      //ASSERT((HWND) _HWND() == 0);
 //      // Create the Toolbar window
 //      _setHWND(CreateWindowEx(0, TOOLBARCLASSNAME, 0, dwStyle,
 //                                     0, 0, 0, 0,

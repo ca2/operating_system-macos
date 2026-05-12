@@ -30,7 +30,7 @@ namespace innate_subsystem_macos
 {
    Brush::Brush()
 //   : m_hbrush(nullptr)
-   : m_pbrush(nullptr)
+   //: m_pbrush(nullptr)
    {
    }
 
@@ -56,11 +56,11 @@ namespace innate_subsystem_macos
       //    ::DeleteObject(m_hbrush);
       //    m_hbrush = nullptr;
       // }
-      if (m_pbrush)
-      {
-         delete m_pbrush;
-         m_pbrush = nullptr;
-
-      }
+//      if (m_pbrush)
+//      {
+//         delete m_pbrush;
+//         m_pbrush = nullptr;
+//
+//      }
    }
 } // namespace innate_subsystem_macos

@@ -29,7 +29,7 @@
 #include "innate_subsystem/gui/ImagedButton.h"
 #include "innate_subsystem_macos/_common_header.h"
 #include "innate_subsystem_macos/gui/Control.h"
-#include <uxtheme.h>
+//#include <uxtheme.h>
 
 
 namespace innate_subsystem_macos
@@ -51,11 +51,11 @@ namespace innate_subsystem_macos
         // This method must be called in WM_DRAWITEM message handler of parent control
         //
 
-        virtual void drawItem(LPDRAWITEMSTRUCT dis);
+        ///virtual void drawItem(LPDRAWITEMSTRUCT dis);
 
         virtual void subclassWindow(const ::operating_system::window & window) override;
 
-        virtual void _setHICON(HICON hicon, const ::i32_size & size);
+        //virtual void _setHICON(HICON hicon, const ::i32_size & size);
         //virtual void setIcon(::innate_subsystem::IconInterface * picon, const ::i32_size & size, int flags, int iInitialSize = 1, int iGrow = 1) override;
        virtual void setIcon(::innate_subsystem::IconInterface * picon, const ::i32_size & size) override;
 
@@ -74,17 +74,17 @@ namespace innate_subsystem_macos
         // OUT imageRect - output image rectangle
         //
 
-        virtual void calcRect(RECT* buttonRect, bool isButtonPressed,
-                      DWORD textWidth, DWORD textHeight,
-                      DWORD imageWidth, DWORD imageHeight,
-                      RECT * textRect, RECT* imageRect);
+        virtual void calcRect(::i32_rectangle* buttonRect, bool isButtonPressed,
+                              ::u32 textWidth, ::u32 textHeight,
+                              ::u32 imageWidth, ::u32 imageHeight,
+                              ::i32_rectangle * textRect, ::i32_rectangle* imageRect);
 
-        virtual void drawIcon(HDC* dc, RECT* imageRect, bool isPressed, bool isDisabled);
+        virtual void drawIcon(::core_graphics::cg_context*pcgcontextdc, ::i32_rectangle* imageRect, bool isPressed, bool isDisabled);
     //protected:
       bool m_isUsingTheme;
       bool m_mouseOver;
-      HTHEME m_theme;
-
+  //    HTHEME m_theme;
+//
 
          //Icon to display
 

@@ -23,7 +23,9 @@ namespace appkit
       
       ~appkit();
    
+      ::pointer < ns_image > load_icon(enum_cursor ecursor);
       
+
    
    };
 
@@ -31,4 +33,4 @@ namespace appkit
 } // namespace appkit
 
 
-CLASS_DECL_CORE_GRAPHICS ::appkit::appkit * AppKit();
+CLASS_DECL_CORE_GRAPHICS ::appkit::appkit & AppKit();

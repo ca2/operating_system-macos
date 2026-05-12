@@ -13,7 +13,7 @@ namespace innate_subsystem_macos
    {
 
 
-      m_himagelist = nullptr;
+      //m_himagelist = nullptr;
 
    }
 
@@ -36,10 +36,10 @@ namespace innate_subsystem_macos
 
    void ImageList::createImageList(const ::i32_size & size, int flags, int iInitialSize, int iGrow)
    {
-     m_himagelist = ImageList_Create(size.cx,
-                           size.cy,
-                                                  flags, iInitialSize,iGrow);
-
+//     m_himagelist = ImageList_Create(size.cx,
+//                           size.cy,
+//                                                  flags, iInitialSize,iGrow);
+//
 
    }
 
@@ -47,14 +47,14 @@ namespace innate_subsystem_macos
    void ImageList::destroyImageList()
    {
 
-      if (!m_himagelist)
-      {
-
-         return;
-
-      }
-      ImageList_Destroy(m_himagelist);
-      m_himagelist = nullptr;
+//      if (!m_himagelist)
+//      {
+//
+//         return;
+//
+//      }
+//      ImageList_Destroy(m_himagelist);
+//      m_himagelist = nullptr;
 
    }
 
@@ -64,9 +64,9 @@ namespace innate_subsystem_macos
 
       auto piconWin32 = picon->impl<::innate_subsystem_macos::Icon>();
 
-      auto hicon = piconWin32->m_hicon;
-
-      ImageList_AddIcon(m_himagelist, hicon);
+//      auto hicon = piconWin32->m_hicon;
+//
+//      ImageList_AddIcon(m_himagelist, hicon);
 
    }
 

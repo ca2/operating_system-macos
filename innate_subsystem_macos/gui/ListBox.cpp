@@ -40,111 +40,118 @@ namespace innate_subsystem_macos
 
       void ListBox::addString(const char *str, void *tag)
       {
-         ::wstring wstr(str);
-         LRESULT lresult = SendMessage((HWND) _HWND(), LB_ADDSTRING, 0, (::lparam)(LPARAM) wstr.c_str());
-         int i = (int)lresult;
-         _ASSERT(i == lresult);
-         setItemData(i, (::lparam)tag);
+//         ::wstring wstr(str);
+//         LRESULT lresult = SendMessage((HWND) _HWND(), LB_ADDSTRING, 0, (::lparam)(LPARAM) wstr.c_str());
+//         int i = (int)lresult;
+//         ASSERT(i == lresult);
+//         setItemData(i, (::lparam)tag);
       }
 
       void ListBox::removeString(int index)
       {
-         int top = getTopIndex();
-         SendMessage((HWND) _HWND(), LB_DELETESTRING, index, NULL);
-         setTopIndex(top);
+//         int top = getTopIndex();
+//         SendMessage((HWND) _HWND(), LB_DELETESTRING, index, NULL);
+//         setTopIndex(top);
       }
 
       int ListBox::getTopIndex()
       {
-         return (int)SendMessage((HWND) _HWND(), LB_GETTOPINDEX, NULL, NULL);
+         //return (int)SendMessage((HWND) _HWND(), LB_GETTOPINDEX, NULL, NULL);
+         return 0;
       }
 
       void ListBox::setTopIndex(int index)
       {
-         SendMessage((HWND) _HWND(), LB_SETTOPINDEX, index, NULL);
+         //SendMessage((HWND) _HWND(), LB_SETTOPINDEX, index, NULL);
       }
 
       ::string ListBox::getItemText(int index)
       {
-         size_t length = SendMessage((HWND) _HWND(), LB_GETTEXTLEN, index, NULL);
-         _ASSERT(length <= 65536);
-         //std::vector<TCHAR> buffer(length + 1);
-         ::wstring wstr;
-         SendMessage((HWND) _HWND(), LB_GETTEXT, index, (LPARAM) (const WCHAR *) wstr.auto_release_buffer(length));
-         ////storage->setString(&buffer.front());
-         return wstr;
+//         size_t length = SendMessage((HWND) _HWND(), LB_GETTEXTLEN, index, NULL);
+//         ASSERT(length <= 65536);
+//         //std::vector<TCHAR> buffer(length + 1);
+//         ::wstring wstr;
+//         SendMessage((HWND) _HWND(), LB_GETTEXT, index, (LPARAM) (const WCHAR *) wstr.auto_release_buffer(length));
+//         ////storage->setString(&buffer.front());
+//         return wstr;
+         return {};
       }
 
       void ListBox::setItemText(int index, const char *str)
       {
-         int si = getSelectedIndex();
-         int top = getTopIndex();
-         LRESULT lresult = SendMessage((HWND) _HWND(), LB_GETTOPINDEX, NULL, NULL);
-         unsigned int topIndex = (unsigned int)lresult;
-         _ASSERT(topIndex == lresult);
-         ::lparam data = getItemData(index);
-         removeString(index);
-         insertString(index, str, data);
-         if (si == index) {
-            setSelectedIndex(si);
-         }
-         setTopIndex(top);
+//         int si = getSelectedIndex();
+//         int top = getTopIndex();
+//         LRESULT lresult = SendMessage((HWND) _HWND(), LB_GETTOPINDEX, NULL, NULL);
+//         unsigned int topIndex = (unsigned int)lresult;
+//         ASSERT(topIndex == lresult);
+//         ::lparam data = getItemData(index);
+//         removeString(index);
+//         insertString(index, str, data);
+//         if (si == index) {
+//            setSelectedIndex(si);
+//         }
+//         setTopIndex(top);
       }
 
       void ListBox::appendString(const char *str, ::lparam data)
       {
-         LRESULT lresult = SendMessage((HWND) _HWND(), LB_ADDSTRING, 0, (LPARAM)::wstring(str).c_str());
-         int index = (int)lresult;
-         _ASSERT(index == lresult);
-         setItemData(index, data);
+//         LRESULT lresult = SendMessage((HWND) _HWND(), LB_ADDSTRING, 0, (LPARAM)::wstring(str).c_str());
+//         int index = (int)lresult;
+//         ASSERT(index == lresult);
+//         setItemData(index, data);
       }
 
       void ListBox::insertString(int index, const char *str)
       {
-         SendMessage((HWND) _HWND(), LB_INSERTSTRING, index, (LPARAM)wstring(str).c_str());
+//         SendMessage((HWND) _HWND(), LB_INSERTSTRING, index, (LPARAM)wstring(str).c_str());
       }
 
       void ListBox::insertString(int index, const char *str, ::lparam data)
       {
-         LRESULT lresult = SendMessage((HWND) _HWND(), LB_INSERTSTRING, index, (LPARAM)::wstring(str).c_str());
-         int i = (int)lresult;
-         _ASSERT(i == lresult);
-         setItemData(i, data);
+//         LRESULT lresult = SendMessage((HWND) _HWND(), LB_INSERTSTRING, index, (LPARAM)::wstring(str).c_str());
+//         int i = (int)lresult;
+//         ASSERT(i == lresult);
+//         setItemData(i, data);
       }
 
       void ListBox::setItemData(int index, ::lparam data)
       {
-         SendMessage((HWND) _HWND(), LB_SETITEMDATA, index, data);
+         //SendMessage((HWND) _HWND(), LB_SETITEMDATA, index, data);
       }
 
       ::lparam ListBox::getItemData(int index)
-      {
-         return SendMessage((HWND) _HWND(), LB_GETITEMDATA, index, NULL);
+{
+         //return SendMessage((HWND) _HWND(), LB_GETITEMDATA, index, NULL);
+         
+         return{};
+         
       }
 
       int ListBox::getCount()
       {
-         LRESULT lresult = SendMessage((HWND) _HWND(), LB_GETCOUNT, NULL, NULL);
-         int result = (int)lresult;
-         _ASSERT(result == lresult);
-         return result;
+//         LRESULT lresult = SendMessage((HWND) _HWND(), LB_GETCOUNT, NULL, NULL);
+//         int result = (int)lresult;
+//         ASSERT(result == lresult);
+//         return result;
+         return 0;
       }
 
       void ListBox::clear()
       {
-         SendMessage((HWND) _HWND(), LB_RESETCONTENT, NULL, NULL);
+         //SendMessage((HWND) _HWND(), LB_RESETCONTENT, NULL, NULL);
       }
 
       int ListBox::getSelectedIndex()
       {
-         LRESULT lresult = SendMessage((HWND) _HWND(), LB_GETCURSEL, NULL, NULL);
-         int index = (int)lresult;
-         _ASSERT(index == lresult);
-         return (index == LB_ERR) ? -1 : index;
+//         LRESULT lresult = SendMessage((HWND) _HWND(), LB_GETCURSEL, NULL, NULL);
+//         int index = (int)lresult;
+//         ASSERT(index == lresult);
+//         return (index == LB_ERR) ? -1 : index;
+         return -1;
       }
 
       void ListBox::setSelectedIndex(int index)
       {
-         SendMessage((HWND) _HWND(), LB_SETCURSEL, index, NULL);
+         //SendMessage((HWND) _HWND(), LB_SETCURSEL, index, NULL);
       }
    } // namespace innate_subsystem_macos

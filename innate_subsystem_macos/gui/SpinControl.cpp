@@ -24,7 +24,7 @@
 // Adapted by camilo on beginning of 2026-April <3ThomasBorregaardSorensen!!
 #include "framework.h"
 #include "SpinControl.h"
-#include <CommCtrl.h>
+//#include <CommCtrl.h>
 //#include "util/StringParser.h"
 
 // namespace macos
@@ -43,28 +43,28 @@ namespace innate_subsystem_macos
 
    void SpinControl::setBuddy(ControlInterface *buddyControl)
    {
-       ::cast < WindowInterface > pwindow = buddyControl;
-      SendMessage((HWND) _HWND(), UDM_SETBUDDY, (WPARAM)pwindow->_HWND(), NULL);
-      m_pcontrolBuddy = buddyControl;
+//       ::cast < WindowInterface > pwindow = buddyControl;
+//      SendMessage((HWND) _HWND(), UDM_SETBUDDY, (WPARAM)pwindow->_HWND(), NULL);
+//      m_pcontrolBuddy = buddyControl;
    }
 
    void SpinControl::setRange(short lower, short upper)
    {
-      SendMessage((HWND) _HWND(), UDM_SETRANGE, NULL, (::lparam)MAKELONG(upper, lower));
+      //SendMessage((HWND) _HWND(), UDM_SETRANGE, NULL, (::lparam)MAKELONG(upper, lower));
    }
 
    void SpinControl::setRange32(int lower, int upper)
    {
-      SendMessage((HWND) _HWND(), UDM_SETRANGE32, lower, upper);
+      //SendMessage((HWND) _HWND(), UDM_SETRANGE32, lower, upper);
    }
 
    void SpinControl::setAccel(unsigned int nSec, unsigned int nInc)
    {
-      UDACCEL accel = {0};
-      accel.nSec = nSec;
-      accel.nInc = nInc;
-
-      SendMessage((HWND) _HWND(), UDM_SETACCEL, 1, (::lparam)&accel);
+//      UDACCEL accel = {0};
+//      accel.nSec = nSec;
+//      accel.nInc = nInc;
+//
+//      SendMessage((HWND) _HWND(), UDM_SETACCEL, 1, (::lparam)&accel);
    }
 
    void SpinControl::autoAccelerationHandler(int & iPos, int & iDelta)
@@ -132,24 +132,24 @@ namespace innate_subsystem_macos
 
    void SpinControl::_000OnNotify(windows_reflect_notify_t & notify)
    {
-
-      switch (notify.m_lpnmhdr->code)
-      {
-         case NM_DBLCLK:
-         {
-            //onAction();
-            notify.m_bHandled= _001OnAction();
-            //onRemoteListViewDoubleClick();
-            break;
-         }
-         case UDN_DELTAPOS:
-         {
-            LPNMUPDOWN lpnmupdown = (LPNMUPDOWN)notify.m_lpnmhdr;
-            notify.m_bHandled = _001OnUpDown(lpnmupdown->iPos, lpnmupdown->iDelta);
-
-         }
-            break;
-      }
+//
+//      switch (notify.m_lpnmhdr->code)
+//      {
+//         case NM_DBLCLK:
+//         {
+//            //onAction();
+//            notify.m_bHandled= _001OnAction();
+//            //onRemoteListViewDoubleClick();
+//            break;
+//         }
+//         case UDN_DELTAPOS:
+//         {
+//            LPNMUPDOWN lpnmupdown = (LPNMUPDOWN)notify.m_lpnmhdr;
+//            notify.m_bHandled = _001OnUpDown(lpnmupdown->iPos, lpnmupdown->iDelta);
+//
+//         }
+//            break;
+//      }
 
 
    }

@@ -31,7 +31,7 @@
 namespace innate_subsystem_macos
 {
    Icon::Icon()
-   : m_bHasOwnIcon(true), m_hicon(NULL)
+   : m_bHasOwnIcon(true) //, m_hicon(NULL)
    {
    }
 
@@ -64,16 +64,18 @@ namespace innate_subsystem_macos
 
    Icon::~Icon()
    {
-      if (m_bHasOwnIcon) {
-         DestroyIcon(m_hicon);
-      }
+//      if (m_bHasOwnIcon) {
+//         DestroyIcon(m_hicon);
+//      }
    }
 
 
    void *Icon::_HICON()
    {
 
-      return m_hicon;
+      //return m_hicon;
+      
+      return nullptr;
 
    }
 
@@ -83,7 +85,7 @@ namespace innate_subsystem_macos
    {
       m_bHasOwnIcon = true;
       auto piconWin32 = picon->impl<::innate_subsystem_macos::Icon>();
-      m_hicon = piconWin32->m_hicon;
+      //m_hicon = piconWin32->m_hicon;
    }
 
    void Icon::initialize_icon(innate_subsystem::BitmapInterface *pbitmap)
@@ -91,7 +93,7 @@ namespace innate_subsystem_macos
    {
       m_bHasOwnIcon = true;
 
-      m_hicon = nullptr;
+      //m_hicon = nullptr;
 
       Bitmap mask;
       mask.initialize_bitmap(pbitmap->getSize());
@@ -102,15 +104,15 @@ namespace innate_subsystem_macos
    //:
    {
       m_bHasOwnIcon = true;
-      m_hicon = nullptr;
+//      m_hicon = nullptr;
       fromBitmap(bitmap, mask);
    }
 
    void Icon::initialize_icon(unsigned int icon)
    {
       m_bHasOwnIcon = false;
-      HINSTANCE hInstance = GetModuleHandle(NULL);
-      m_hicon = LoadIcon(hInstance, MAKEINTRESOURCE(icon));
+//      HINSTANCE hInstance = GetModuleHandle(NULL);
+//      m_hicon = LoadIcon(hInstance, MAKEINTRESOURCE(icon));
    }
 
 
@@ -122,19 +124,19 @@ namespace innate_subsystem_macos
 
    void Icon::fromBitmap(::innate_subsystem::BitmapInterface *pbitmap, ::innate_subsystem::BitmapInterface *pbitmapMask)
    {
-      ICONINFO ii;
-
-      memset(&ii, 0, sizeof(ICONINFO));
-
-      auto pbitmapWin32 = pbitmap->impl<innate_subsystem_macos::Bitmap>();
-      auto pbitmapMaskWin32 = pbitmapMask->impl<innate_subsystem_macos::Bitmap>();
-
-      pbitmapWin32->m_pbitmap->GetHBITMAP(Gdiplus::Color(0, 0, 0, 0), &ii.hbmColor);
-      pbitmapMaskWin32->m_pbitmap->GetHBITMAP(Gdiplus::Color(0, 0, 0, 0), &ii.hbmMask);
-      //ii.hbmColor = (pbitmapWin32 != 0) ?  pbitmapWin32->m_hbitmap: 0;
-      //ii.hbmMask = (pbitmapMaskWin32 != 0) ? pbitmapMaskWin32->m_hbitmap : 0;
-
-      m_hicon = CreateIconIndirect(&ii);
+//      ICONINFO ii;
+//
+//      memset(&ii, 0, sizeof(ICONINFO));
+//
+//      auto pbitmapWin32 = pbitmap->impl<innate_subsystem_macos::Bitmap>();
+//      auto pbitmapMaskWin32 = pbitmapMask->impl<innate_subsystem_macos::Bitmap>();
+//
+//      pbitmapWin32->m_pbitmap->GetHBITMAP(Gdiplus::Color(0, 0, 0, 0), &ii.hbmColor);
+//      pbitmapMaskWin32->m_pbitmap->GetHBITMAP(Gdiplus::Color(0, 0, 0, 0), &ii.hbmMask);
+//      //ii.hbmColor = (pbitmapWin32 != 0) ?  pbitmapWin32->m_hbitmap: 0;
+//      //ii.hbmMask = (pbitmapMaskWin32 != 0) ? pbitmapMaskWin32->m_hbitmap : 0;
+//
+//      m_hicon = CreateIconIndirect(&ii);
    }
 } // namespace innate_subsystem_macos
 

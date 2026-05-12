@@ -55,12 +55,12 @@ namespace innate_subsystem_macos
 
    Dialog::~Dialog()
    {
-      if (m_hicon) {
-         DeleteObject(m_hicon);
-      }
-      if (m_resourceName != 0) {
-         free(m_resourceName);
-      }
+//      if (m_hicon) {
+//         DeleteObject(m_hicon);
+//      }
+//      if (m_resourceName != 0) {
+//         free(m_resourceName);
+//      }
    }
 
    void Dialog::initialize_dialog(unsigned int resourceId)
@@ -93,7 +93,7 @@ void
 
    void Dialog::setDefaultPushButton(unsigned int buttonId)
    {
-      SendMessage((HWND) _HWND(), DM_SETDEFID, buttonId, 0);
+      //SendMessage((HWND) _HWND(), DM_SETDEFID, buttonId, 0);
    }
 
    // void Dialog::setParent(Control *ctrlParent)
@@ -103,13 +103,13 @@ void
 
    void Dialog::show()
    {
-      if ((HWND) _HWND() == NULL) {
-         create();
-      } else {
-         ShowWindow((HWND) _HWND(), SW_SHOW);
-         setForeground();
-      }
-      //return 0;
+//      if ((HWND) _HWND() == NULL) {
+//         create();
+//      } else {
+//         ShowWindow((HWND) _HWND(), SW_SHOW);
+//         setForeground();
+//      }
+//      //return 0;
    }
 
    void Dialog::hide()
@@ -119,85 +119,88 @@ void
 
    void Dialog::closeDialog(int code)
    {
-      // Destroy dialog
-      if (!m_isModal) {
-         DestroyWindow((HWND) _HWND());
-      } else {
-         EndDialog((HWND) _HWND(), code);
-      }
-      // We have no valid hwnd, so forse set hwnd to NULL
-      _setHWND(NULL);
+//      // Destroy dialog
+//      if (!m_isModal) {
+//         DestroyWindow((HWND) _HWND());
+//      } else {
+//         EndDialog((HWND) _HWND(), code);
+//      }
+//      // We have no valid hwnd, so forse set hwnd to NULL
+//      _setHWND(NULL);
    }
 
    void Dialog::create()
    {
-
-      ::system()->acme_windowing()->send([&]()
-      {
-         HWND window, parentWindow = NULL;
-
-         auto pwindow = this->impl<Window>();
-
-         if (pwindow->m_pwindowDeferredParent != NULL) {
-            parentWindow = ::as_HWND(pwindow->m_pwindowDeferredParent->operating_system_window());
-         }
-
-         auto hinstanceResource = (HINSTANCE)MainSubsystem().m_hinstanceResource;
-
-         //window = CreateDialogParam(GetModuleHandle(NULL), (LPCWSTR) getResouceName(),
-         window = CreateDialogParam(hinstanceResource, (LPCWSTR)getResouceName(), parentWindow,
-                                    dialogProc, (::lparam)(::uptr)(::innate_subsystem_macos::Dialog *)this);
-
-         m_isModal = false;
-
-         _ASSERT(window != NULL);
-      });
+//
+//      ::system()->acme_windowing()->send([&]()
+//      {
+//         HWND window, parentWindow = NULL;
+//
+//         auto pwindow = this->impl<Window>();
+//
+//         if (pwindow->m_pwindowDeferredParent != NULL) {
+//            parentWindow = ::as_HWND(pwindow->m_pwindowDeferredParent->operating_system_window());
+//         }
+//
+//         auto hinstanceResource = (HINSTANCE)MainSubsystem().m_hinstanceResource;
+//
+//         //window = CreateDialogParam(GetModuleHandle(NULL), (LPCWSTR) getResouceName(),
+//         window = CreateDialogParam(hinstanceResource, (LPCWSTR)getResouceName(), parentWindow,
+//                                    dialogProc, (::lparam)(::uptr)(::innate_subsystem_macos::Dialog *)this);
+//
+//         m_isModal = false;
+//
+//         ASSERT(window != NULL);
+//      });
    }
 
    int Dialog::showModal()
    {
-      int result = 0;
-      if ((HWND) _HWND() == NULL) {
+//
+//      int result = 0;
+//      if ((HWND) _HWND() == NULL) {
+//
+//         ::system()->acme_windowing()->send([&]()
+//         {
+//            m_isModal = true;
+//            auto pwindow = this->impl<Window>();
+//
+//            HWND parentWindow = (pwindow->m_pwindowDeferredParent != NULL)
+//                                   ? (HWND)pwindow->m_pwindowDeferredParent->_HWND()
+//                                   : (HWND) nullptr;
+//            //result = (int)DialogBoxParam(GetModuleHandle(NULL),
+//            result = (int)DialogBoxParam((HINSTANCE) MainSubsystem().m_hinstanceResource,
+//                                         (LPCWSTR) getResouceName(), parentWindow,
+//                                         dialogProc,(::lparam) (::uptr)(::innate_subsystem_macos::Dialog * )this);
+//
+//            information("Dialog box result is {}", result);
+//         });
+//
+//      } 
+//      else
+//      {
+//         
+//         setVisible(true);
+//         
+//         setForeground();
+//
+//      }
 
-         ::system()->acme_windowing()->send([&]()
-         {
-            m_isModal = true;
-            auto pwindow = this->impl<Window>();
-
-            HWND parentWindow = (pwindow->m_pwindowDeferredParent != NULL)
-                                   ? (HWND)pwindow->m_pwindowDeferredParent->_HWND()
-                                   : (HWND) nullptr;
-            //result = (int)DialogBoxParam(GetModuleHandle(NULL),
-            result = (int)DialogBoxParam((HINSTANCE) MainSubsystem().m_hinstanceResource,
-                                         (LPCWSTR) getResouceName(), parentWindow,
-                                         dialogProc,(::lparam) (::uptr)(::innate_subsystem_macos::Dialog * )this);
-
-            information("Dialog box result is {}", result);
-         });
-
-      } 
-      else
-      {
-         
-         setVisible(true);
-         
-         setForeground();
-
-      }
-
-      return result;
+      //return result;
+      return 0;
 
    }
 
    bool Dialog::isCreated()
    {
-      bool isInit = (HWND) _HWND() != 0;
-
-      if (!isInit) {
-         return false;
-      }
-
-      return !!IsWindow((HWND) _HWND());
+//      bool isInit = (HWND) _HWND() != 0;
+//
+//      if (!isInit) {
+//         return false;
+//      }
+//
+//      return !!IsWindow((HWND) _HWND());
+      return true;
    }
 
    bool Dialog::onDrawItem(::wparam controlID, innate_subsystem::draw_item_t * pdrawitem)
@@ -206,97 +209,99 @@ void
    }
 
 
-   bool Dialog::_onDrawItem(::wparam controlID, LPDRAWITEMSTRUCT pdrawitem)
-   {
-
-      return true;
-
-   }
+//   bool Dialog::_onDrawItem(::wparam controlID, LPDRAWITEMSTRUCT pdrawitem)
+//   {
+//
+//      return true;
+//
+//   }
 
    void Dialog::onMessageReceived(unsigned int uMsg, ::wparam wparam, ::lparam lparam)
    {
    }
 
-   INT_PTR CALLBACK Dialog::dialogProc(HWND hwnd, unsigned int uMsg, WPARAM wparam, LPARAM lparam)
-   {
-      ::innate_subsystem_macos::Dialog * _this = nullptr;
-
-      ::lresult lresult = 0;
-
-      if (::macos::pre_process_window_procedure(lresult, hwnd, uMsg, wparam, lparam))
-      {
-
-          return lresult;
-
-      }
-      BOOL bResult = FALSE;
-
-      if (uMsg == WM_INITDIALOG) {
-         _this = (::innate_subsystem_macos::Dialog *)lparam;
-         //SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)_this);
-         ::cast < ::macos::windowing > pwindowing = ::system()->acme_windowing();
-
-         pwindowing->m_windowmap[hwnd] = _this;
-         _this->_setHWND(hwnd);
-         _this->updateIcon();
-      } else {
-         //_this = (::innate_subsystem_macos::Dialog *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
-         ::cast < ::macos::windowing > pwindowing = ::system()->acme_windowing();
-         ::cast < ::innate_subsystem_macos::Dialog > pdialog = pwindowing->m_windowmap[hwnd];
-         _this = pdialog;
-         if (_this == 0) {
-            return FALSE;
-         }
-      }
-
-      //if (uMsg == WM_APP + 876)
-      //{
-
-      //    ::macos::handle_procedure_message(uMsg, wparam, lparam);
-
-      //    return TRUE;
-
-      //}
-
-      _this->onMessageReceived(uMsg, wparam, lparam);
-
-      switch (uMsg) {
-         case WM_INITDIALOG:
-            bResult = _this->onInitDialog();
-            break;
-         case WM_NOTIFY:
-         {
-            LRESULT lresult = 0;
-            if (_this->_000OnNotify(lresult, wparam, lparam))
-            {
-
-               return lresult;
-
-            }
-         }
-            break;
-         case WM_COMMAND:
-               bResult = _this->onCommand(LOWORD(wparam), HIWORD(wparam));
-            break;
-         case WM_CLOSE:
-            bResult = _this->onClose();
-            break;
-         case WM_DESTROY:
-            bResult = _this->onDestroy();
-            break;
-         case WM_DRAWITEM:
-            bResult = _this->_onDrawItem(wparam, (LPDRAWITEMSTRUCT)lparam);
-            break;
-      }
-
-      return bResult;
-   }
+//   INT_PTR CALLBACK Dialog::dialogProc(HWND hwnd, unsigned int uMsg, WPARAM wparam, LPARAM lparam)
+//   {
+////      ::innate_subsystem_macos::Dialog * _this = nullptr;
+////
+////      ::lresult lresult = 0;
+////
+////      if (::macos::pre_process_window_procedure(lresult, hwnd, uMsg, wparam, lparam))
+////      {
+////
+////          return lresult;
+////
+////      }
+////      BOOL bResult = FALSE;
+////
+////      if (uMsg == WM_INITDIALOG) {
+////         _this = (::innate_subsystem_macos::Dialog *)lparam;
+////         //SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)_this);
+////         ::cast < ::macos::windowing > pwindowing = ::system()->acme_windowing();
+////
+////         pwindowing->m_windowmap[hwnd] = _this;
+////         _this->_setHWND(hwnd);
+////         _this->updateIcon();
+////      } else {
+////         //_this = (::innate_subsystem_macos::Dialog *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+////         ::cast < ::macos::windowing > pwindowing = ::system()->acme_windowing();
+////         ::cast < ::innate_subsystem_macos::Dialog > pdialog = pwindowing->m_windowmap[hwnd];
+////         _this = pdialog;
+////         if (_this == 0) {
+////            return FALSE;
+////         }
+////      }
+////
+////      //if (uMsg == WM_APP + 876)
+////      //{
+////
+////      //    ::macos::handle_procedure_message(uMsg, wparam, lparam);
+////
+////      //    return TRUE;
+////
+////      //}
+////
+////      _this->onMessageReceived(uMsg, wparam, lparam);
+////
+////      switch (uMsg) {
+////         case WM_INITDIALOG:
+////            bResult = _this->onInitDialog();
+////            break;
+////         case WM_NOTIFY:
+////         {
+////            LRESULT lresult = 0;
+////            if (_this->_000OnNotify(lresult, wparam, lparam))
+////            {
+////
+////               return lresult;
+////
+////            }
+////         }
+////            break;
+////         case WM_COMMAND:
+////               bResult = _this->onCommand(LOWORD(wparam), HIWORD(wparam));
+////            break;
+////         case WM_CLOSE:
+////            bResult = _this->onClose();
+////            break;
+////         case WM_DESTROY:
+////            bResult = _this->onDestroy();
+////            break;
+////         case WM_DRAWITEM:
+////            bResult = _this->_onDrawItem(wparam, (LPDRAWITEMSTRUCT)lparam);
+////            break;
+////      }
+////
+////      return bResult;
+//      
+//      return 1;
+//   }
 
    char *Dialog::getResouceName()
    {
-      if (m_resourceId != 0) {
-         return (char *)MAKEINTRESOURCE(m_resourceId);
-      }
+//      if (m_resourceId != 0) {
+//         return (char *)MAKEINTRESOURCE(m_resourceId);
+//      }
       return m_resourceName;
    }
 
@@ -307,17 +312,17 @@ void
 
    void Dialog::updateIcon()
    {
-      if (m_hicon) {
-         SetClassLongPtr((HWND) _HWND(), GCLP_HICON, (LONG_PTR)m_hicon);
-      }
+//      if (m_hicon) {
+//         SetClassLongPtr((HWND) _HWND(), GCLP_HICON, (LONG_PTR)m_hicon);
+//      }
    }
 
    void Dialog::loadIcon(unsigned int id)
    {
-      if (m_hicon) {
-         DeleteObject(m_hicon);
-      }
-      m_hicon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(id));
+//      if (m_hicon) {
+//         DeleteObject(m_hicon);
+//      }
+//      m_hicon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(id));
    }
 
    bool Dialog::setForeground()

@@ -66,7 +66,7 @@ namespace innate_subsystem_macos
    // protected:
       //HICON m_hicon;
       //void * m_hicon;
-      ::pointer < ::core_graphics::ns_image > m_pnsimage;
+      ::pointer < ::appkit::ns_image > m_pnsimage;
       bool m_bHasOwnIcon;
    };
 

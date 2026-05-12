@@ -109,7 +109,7 @@ namespace innate_subsystem_macos
       ::string       m_strClassName;
       ::string       m_strWindowName;
       //HICON          m_hicon;
-      ::pointer < ::core_graphics::ns_image > m_pnsimageIcon;
+      ::pointer < ::appkit::ns_image > m_pnsimageIcon;
       bool           m_bWndCreated;
       //WNDPROC        m_wndprocDefault;
       ::pointer<::innate_subsystem::WindowInterface> m_pwindowDeferredParent;

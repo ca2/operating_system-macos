@@ -25,7 +25,7 @@
 #include "framework.h"
 #include "ComboBox.h"
 
-#include <Windowsx.h>
+//#include <Windowsx.h>
 
 
 //namespace macos
@@ -42,21 +42,23 @@
 
       int ComboBox::addItem(const char *text)
       {
-         auto hwnd = ::as_HWND(operating_system_window());
-         return ComboBox_AddString(hwnd, text);
+//         auto hwnd = ::as_HWND(operating_system_window());
+//         return ComboBox_AddString(hwnd, text);
+         return 0;
       }
 
       int ComboBox::addItem(const char *text, void *tag)
       {
-         int index = addItem(text);
-         setItemData(index, tag);
-         return index;
+//         int index = addItem(text);
+//         setItemData(index, tag);
+//         return index;
+         return 0;
       }
 
       void ComboBox::insertItem(int index, const char *text)
       {
-         auto hwnd = ::as_HWND(operating_system_window());
-         ComboBox_InsertString(hwnd, index, text);
+//         auto hwnd = ::as_HWND(operating_system_window());
+//         ComboBox_InsertString(hwnd, index, text);
       }
 
       void ComboBox::insertItem(int index, const char *text, void *tag)
@@ -67,34 +69,37 @@
 
       int ComboBox::getItemsCount()
       {
-         auto hwnd = ::as_HWND(operating_system_window());
-         return ComboBox_GetCount(hwnd);
+//         auto hwnd = ::as_HWND(operating_system_window());
+//         return ComboBox_GetCount(hwnd);
+         return 0;
       }
 
       void ComboBox::setItemData(int index, void *tag)
       {
-         auto hwnd = ::as_HWND(operating_system_window());
-         ComboBox_SetItemData(hwnd, index, (::lparam)tag);
+//         auto hwnd = ::as_HWND(operating_system_window());
+//         ComboBox_SetItemData(hwnd, index, (::lparam)tag);
       }
 
       void *ComboBox::getItemData(int index)
       {
-         auto hwnd = ::as_HWND(operating_system_window());
-         return (void *)ComboBox_GetItemData(hwnd, index);
+//         auto hwnd = ::as_HWND(operating_system_window());
+//         return (void *)ComboBox_GetItemData(hwnd, index);
       }
 
       ::string ComboBox::getItemText(int index)
       {
 
-         ::wstring wstr;
-
-         auto hwnd = ::as_HWND(operating_system_window());
-
-         size_t length = ComboBox_GetLBTextLen(hwnd, index);
-
-         ComboBox_GetLBText(hwnd, index, wstr.auto_release_buffer(length));
-
-         return wstr;
+//         ::wstring wstr;
+//
+//         auto hwnd = ::as_HWND(operating_system_window());
+//
+//         size_t length = ComboBox_GetLBTextLen(hwnd, index);
+//
+//         ComboBox_GetLBText(hwnd, index, wstr.auto_release_buffer(length));
+//
+//         return wstr;
+         
+         return {};
 
       }
 
@@ -102,24 +107,25 @@
       int ComboBox::getSelectedItemIndex()
       {
 
-         auto hwnd = ::as_HWND(operating_system_window());
-
-         return ComboBox_GetCurSel((HWND) _HWND());
+//         auto hwnd = ::as_HWND(operating_system_window());
+//
+//         return ComboBox_GetCurSel((HWND) _HWND());
+         return 0;
       }
 
       void ComboBox::setSelectedItem(int index)
       {
-         ComboBox_SetCurSel((HWND) _HWND(), index);
+         //ComboBox_SetCurSel((HWND) _HWND(), index);
       }
 
       void ComboBox::deleteItem(int index)
       {
-         ComboBox_DeleteString((HWND) _HWND(), index);
+         //ComboBox_DeleteString((HWND) _HWND(), index);
       }
 
       void ComboBox::removeAllItems()
       {
-         ComboBox_ResetContent((HWND) _HWND());
+         //ComboBox_ResetContent((HWND) _HWND());
       }
    } // namespace subsystem
 //

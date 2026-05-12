@@ -58,8 +58,11 @@ namespace innate_subsystem_macos
    // protected:
        //HPEN m_hpen;
       //Gdiplus::Pen * m_ppen;
+      ::innate_subsystem::enum_pen m_epen;
       int m_iWidth;
-      ::color::color m_color;
+      //::color::color m_color;
+      
+      ::pointer < ::core_graphics::cg_color > m_pcgcolor;
    //
    //    friend class Graphics;
    };

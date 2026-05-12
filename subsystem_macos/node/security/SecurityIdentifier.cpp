@@ -31,8 +31,8 @@
 //#include <winnt.h>
 //
 //
-//   namespace subsystem_macos
-//   {
+   namespace subsystem_macos
+   {
 //      // SecurityIdentifier::SecurityIdentifier(SID *sid)
 //      // {
 //      //    initialize_security_identifier(sid);
@@ -93,47 +93,51 @@
 //      }
 //
 //      // FIXME: refactor this method.
-//      ::pointer < ::subsystem::SecurityIdentifier>ProcessHandle::getProcessOwner()
-//      {
-//
-//         HANDLE processHandle = this->m_hProcess;
-//         HANDLE procToken;
-//
-//         if (OpenProcessToken(processHandle, TOKEN_QUERY, &procToken)) {
-//            try {
-//               char buffer[1024];
-//               DWORD retLen = 0;
-//               if (!GetTokenInformation(procToken, TokenUser, &buffer, sizeof(buffer), &retLen)) {
-//                  throw ::subsystem::SystemException();
-//               }
-//               CloseHandle(procToken);
-//               auto psecurityidentifier = create_newø< SecurityIdentifier>();
-//
-//               psecurityidentifier->initialize_security_identifier((SID *)((TOKEN_USER *)buffer)->User.Sid);
-//
-//               //psecurityidentifier->initialize(this);
-//
-//               return psecurityidentifier;
-//            } catch (...) {
-//               CloseHandle(procToken);
-//               throw;
-//            }
-//            CloseHandle(procToken);
-//         } else {
-//            throw ::subsystem::SystemException();
-//         }
-//      }
-//
-//      ::pointer < ::subsystem::SecurityIdentifier> subsystem::createSidFromString(const ::scoped_string & scopedstr)
-//      {
+      ::pointer < ::subsystem::SecurityIdentifier>ProcessHandle::getProcessOwner()
+      {
+////
+////         HANDLE processHandle = this->m_hProcess;
+////         HANDLE procToken;
+////
+////         if (OpenProcessToken(processHandle, TOKEN_QUERY, &procToken)) {
+////            try {
+////               char buffer[1024];
+////               DWORD retLen = 0;
+////               if (!GetTokenInformation(procToken, TokenUser, &buffer, sizeof(buffer), &retLen)) {
+////                  throw ::subsystem::SystemException();
+////               }
+////               CloseHandle(procToken);
+////               auto psecurityidentifier = create_newø< SecurityIdentifier>();
+////
+////               psecurityidentifier->initialize_security_identifier((SID *)((TOKEN_USER *)buffer)->User.Sid);
+////
+////               //psecurityidentifier->initialize(this);
+////
+////               return psecurityidentifier;
+////            } catch (...) {
+////               CloseHandle(procToken);
+////               throw;
+////            }
+////            CloseHandle(procToken);
+////         } else {
+////            throw ::subsystem::SystemException();
+////         }
+//         
+         return {};
+      }
+
+      ::pointer < ::subsystem::SecurityIdentifier> subsystem::createSidFromString(const ::scoped_string & scopedstr)
+      {
 //         auto psecurityidentifier = create_newø <SecurityIdentifier>();
 //
 //         psecurityidentifier->initialize_security_identifier(scopedstr);
 //
 //         return psecurityidentifier;
-//
-//      }
-//
+         
+         return {};
+
+      }
+
 //      SID *SecurityIdentifier::getSid() const
 //      {
 //         return m_sid;
@@ -148,4 +152,4 @@
 //
 //         _ASSERT(IsValidSid(*sid));
 //      }
-//   } // namespace subsystem_macos
+  } // namespace subsystem_macos

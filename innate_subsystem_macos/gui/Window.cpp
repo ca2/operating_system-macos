@@ -247,7 +247,7 @@ namespace innate_subsystem_macos
 
    void Window::enableWindow(bool bEnable)
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      EnableWindow(m_macoswindow.as_HWND(), bEnable);
    }
 
@@ -315,7 +315,7 @@ namespace innate_subsystem_macos
 
    void Window::show()
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      ShowWindow(m_macoswindow.as_HWND(), SW_SHOW);
    }
 
@@ -329,7 +329,7 @@ namespace innate_subsystem_macos
 
    bool Window::setSize(const ::i32_size & size)
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      return !!SetWindowPos(m_macoswindow.as_HWND(), 0, 0, 0, size.cx, size.cy,
 //                            SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
       return false;
@@ -337,7 +337,7 @@ namespace innate_subsystem_macos
 
    bool Window::setPosition(const ::i32_point & point)
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      return !!SetWindowPos(m_macoswindow.as_HWND(), 0, point.x, point.y, 0, 0,
 //                            SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
       return false;
@@ -345,7 +345,7 @@ namespace innate_subsystem_macos
 
    bool Window::setPlacement(const ::i32_rectangle & rectangle)
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      return !!SetWindowPos(m_macoswindow.as_HWND(), 0,
 //         rectangle.left, rectangle.top,
 //         rectangle.width(), rectangle.height(),
@@ -376,7 +376,7 @@ namespace innate_subsystem_macos
    ::operating_system::window Window::dialog_item_operating_system_window(int iDlgItem)
    {
 
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      auto hwndChild = ::GetDlgItem(m_macoswindow.as_HWND(), iDlgItem);
 //      return ::as_operating_system_window(hwndChild);
       
@@ -466,7 +466,7 @@ namespace innate_subsystem_macos
    {
 
 //      auto hwnd = m_macoswindow.as_HWND();
-//      _ASSERT(hwnd != 0);
+//      ASSERT(hwnd != 0);
 //
 //
 //      ::SetWindowLongPtr(hwnd, GWLP_USERDATA, (LPARAM) (::uptr) nullptr);
@@ -481,14 +481,14 @@ namespace innate_subsystem_macos
 
    void Window::setClassStyle(unsigned int style)
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      SetClassLong(m_macoswindow.as_HWND(), GCL_STYLE, style);
    }
 
    void Window::setClassCursor(::innate_subsystem::CursorInterface * pcursor)
    {
 //      auto hcursor = pcursor->_HCURSOR();
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      SetClassLongPtr(m_macoswindow.as_HWND(), GCLP_HCURSOR, (LONG_PTR)hcursor);
    }
 
@@ -498,14 +498,14 @@ namespace innate_subsystem_macos
 //      //auto hbrush = (HBRUSH) (HGDIOBJ) pbrush->_HGDIOBJ();
 //      //auto hbrush = pbrushWin32->m_pbrush->Get
 //      auto hbrush = (HBRUSH) ::CreateSolidBrush(::GetSysColor(COLOR_WINDOW));
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      SetClassLongPtr(m_macoswindow.as_HWND(), GCLP_HBRBACKGROUND, (LONG_PTR) hbrush);
    }
 
    void Window::setClassMenu(::innate_subsystem::MenuInterface * pmenu)
    {
 //      auto hmenu = (HMENU) pmenu->_HMENU();
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      SetClassLongPtr(m_macoswindow.as_HWND(), GCLP_MENUNAME,(LONG_PTR) hmenu);
    }
 
@@ -520,7 +520,7 @@ namespace innate_subsystem_macos
 
    long long Window::getStyle()
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      return GetWindowLong(m_macoswindow.as_HWND(), GWL_STYLE);
       return 0;
    }
@@ -528,7 +528,7 @@ namespace innate_subsystem_macos
 
    void Window::setStyle(unsigned int style)
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      SetWindowLong(m_macoswindow.as_HWND(), GWL_STYLE, style);
    }
 
@@ -566,14 +566,14 @@ namespace innate_subsystem_macos
 
    long long Window::getExStyle()
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      return GetWindowLong(m_macoswindow.as_HWND(), GWL_EXSTYLE);
       return 0;
    }
 
    void Window::setExStyle(unsigned int exstyle)
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      SetWindowLong(m_macoswindow.as_HWND(), GWL_EXSTYLE, exstyle);
    }
 
@@ -612,19 +612,19 @@ namespace innate_subsystem_macos
 
    void Window::updateWindow()
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      UpdateWindow(m_macoswindow.as_HWND());
    }
 
    void Window::setTimer(::uptr ident, unsigned int time)
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      SetTimer(m_macoswindow.as_HWND(), ident, time, 0);
    }
 
    void Window::killTimer(::uptr ident)
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //      KillTimer(m_macoswindow.as_HWND(), ident);
    }
 
@@ -718,14 +718,14 @@ namespace innate_subsystem_macos
 
       }
 //      ::wstring wstr(scopedstr);
-//      _ASSERT(m_macoswindow.as_CGWindowID()() != 0);
+//      ASSERT(m_macoswindow.as_CGWindowID()() != 0);
 //
 //      SetWindowText(m_macoswindow.as_CGWindowID()(), wstr);
    }
 
    void Window::redraw(const ::i32_rectangle &rcArea)
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //
 //      if (rcArea == 0) {
 //         InvalidateRect(m_macoswindow.as_HWND(), NULL, TRUE);
@@ -768,7 +768,7 @@ namespace innate_subsystem_macos
 
    void Window::setForegroundWindow()
    {
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //
 //      SetForegroundWindow(m_macoswindow.as_HWND());
    }
@@ -849,7 +849,7 @@ namespace innate_subsystem_macos
    void Window::postMessage(unsigned int Msg, ::wparam wparam, ::lparam lparam)
    {
 
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //
 //      PostMessage(m_macoswindow.as_HWND(), Msg, wparam, lparam);
 
@@ -867,7 +867,7 @@ namespace innate_subsystem_macos
    ::i32_rectangle Window::getClientRect()
    {
 
-//      _ASSERT(m_macoswindow.as_HWND() != 0);
+//      ASSERT(m_macoswindow.as_HWND() != 0);
 //
 //      RECT rect{};
 //
@@ -1199,7 +1199,7 @@ namespace innate_subsystem_macos
    ::i32_size Window::getBorderSize()
    {
 
-      //_ASSERT(m_macoswindow.as_CGWindowID()() != 0);
+      //ASSERT(m_macoswindow.as_CGWindowID()() != 0);
 //
 //      auto width = 2 * GetSystemMetrics(SM_CXSIZEFRAME);
 //

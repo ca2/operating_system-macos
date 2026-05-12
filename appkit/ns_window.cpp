@@ -7,8 +7,8 @@
 //
 #include "framework.h"
 #include "ns_window.h"
+#include "_mm.h"
 
-void ns_window_release(void * & pNS);
 
 namespace appkit
 {
@@ -16,7 +16,7 @@ namespace appkit
    ns_window::ns_window()
    {
    
-      m_pNS = nullptr;
+      //m_pNS = nullptr;
       
    }
 
@@ -24,7 +24,7 @@ namespace appkit
    ns_window::~ns_window()
    {
    
-      ns_window_release(m_pNS);
+      ns_window_release(m_nswindow);
    
    }
 

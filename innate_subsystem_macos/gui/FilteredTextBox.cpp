@@ -32,7 +32,7 @@ namespace innate_subsystem_macos
 
 
    FilteredTextBox::FilteredTextBox()
-   : m_wndprocOld(NULL)
+   //: m_wndprocOld(NULL)
    {
       //m_strText.setString(_T(""));
    }
@@ -44,14 +44,14 @@ namespace innate_subsystem_macos
    void FilteredTextBox::setWindow(const ::operating_system::window & operatingsystemwindow)
    {
 
-      auto hwnd = ::as_HWND(operatingsystemwindow);
-      // if (hwnd != NULL) {
-      //    m_wndprocOld = (WNDPROC) SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)&windowProc);
-      //    SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)this);
-      // } else {
-      //    m_wndprocOld = NULL;
-      // }
-      _setHWND(hwnd);
+//      auto hwnd = ::as_HWND(operatingsystemwindow);
+//      // if (hwnd != NULL) {
+//      //    m_wndprocOld = (WNDPROC) SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)&windowProc);
+//      //    SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)this);
+//      // } else {
+//      //    m_wndprocOld = NULL;
+//      // }
+//      _setHWND(hwnd);
    }
 
    void FilteredTextBox::setText(char *text)
@@ -70,7 +70,7 @@ namespace innate_subsystem_macos
       m_pstringfilter = filter;
    }
 
-   LRESULT FilteredTextBox::makeCheck()
+   ::lresult FilteredTextBox::makeCheck()
    {
       ::string updatedText;
       updatedText = TextBox::getText();
@@ -104,7 +104,7 @@ namespace innate_subsystem_macos
    //      other value - otherwise
    //
 
-   LRESULT  FilteredTextBox::onKeyDown(::wparam code, ::lparam params)
+   ::lresult  FilteredTextBox::onKeyDown(::wparam code, ::lparam params)
    {
       return makeCheck();
    }
@@ -113,16 +113,16 @@ namespace innate_subsystem_macos
    bool FilteredTextBox::window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam)
    {
 
-      if (message == WM_CHAR)
-      {
-
-
-         lresult = onKeyDown(wparam, lparam);
-
-         return true;
-
-      }
-
+//      if (message == WM_CHAR)
+//      {
+//
+//
+//         lresult = onKeyDown(wparam, lparam);
+//
+//         return true;
+//
+//      }
+//
 
       return false;
 

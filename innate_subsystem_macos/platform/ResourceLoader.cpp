@@ -29,7 +29,8 @@
 #include "drawing/Icon.h"
 #include "drawing/Cursor.h"
 #include "operating_system-apple/core_graphics/core_graphics.h"
-#include "operating_system-apple/core_graphics/ns_image.h"
+#include "operating_system-apple/core_graphics/cg_image.h"
+#include "operating_system-macos/appkit/appkit.h"
 //#include "acme/operating_system/macos/user.h"
 //#include "util/UnicodeStringStorage.h"
 
@@ -56,7 +57,7 @@ namespace innate_subsystem_macos
       // if ((::iptr)iconName < 65536)
       // {
         // picon->m_hicon = ::LoadIcon(NULL, lpcwsz);
-      picon->m_pnsimage = CoreGraphics().load_icon(ecursor);
+      picon->m_pnsimage = AppKit().load_icon(ecursor);
       //
       // }
       // else
@@ -76,13 +77,14 @@ namespace innate_subsystem_macos
       //return LoadIcon(NULL, iconName);
       if ((::iptr)iconName < 65536)
       {
-         picon->m_hicon = ::LoadIcon((HINSTANCE) MainSubsystem().m_hinstanceResource, (LPCWSTR) iconName);
+         picon->m_pnsimage = {};/*::LoadIcon((HINSTANCE) MainSubsystem().m_hinstanceResource, (LPCWSTR) iconName);*/
 
       }
       else
       {
          ::wstring wstrIconName(iconName);
-         picon->m_hicon = ::LoadIcon((HINSTANCE) MainSubsystem().m_hinstanceResource,  wstrIconName);
+         picon->m_pnsimage = {};
+         //::LoadIcon((HINSTANCE) MainSubsystem().m_hinstanceResource,  wstrIconName);
       }
 
       //throw ::interface_only();
@@ -96,9 +98,10 @@ namespace innate_subsystem_macos
       //return LoadIcon(NULL, iconName);
       if ((::iptr)iId < 65536)
       {
-         auto hinstance = (HINSTANCE) MainSubsystem().m_hinstanceResource;
-         auto hicon = (HICON) ::LoadIconW(hinstance, MAKEINTRESOURCEW(iId));
-         picon->m_hicon = hicon;
+//         auto hinstance = (HINSTANCE) MainSubsystem().m_hinstanceResource;
+//         auto hicon = (HICON) ::LoadIconW(hinstance, MAKEINTRESOURCEW(iId));
+         //picon->m_hicon = hicon;
+         picon->m_pnsimage = {};
 
       }
       // else
@@ -117,7 +120,7 @@ namespace innate_subsystem_macos
 
    bool ResourceLoader::loadString(unsigned int id, ::string & str)
    {
-      //_ASSERT(string != 0);
+      //ASSERT(string != 0);
       str = "(Undef)";
 
       //
@@ -129,44 +132,44 @@ namespace innate_subsystem_macos
       // Strings stored in the UTF16-encoding.
       //
 
-
-      // Id of string-group, based from 0.
-      int resId = (id / 16) + 1;
-      HRSRC resHnd = FindResource((HMODULE) MainSubsystem().m_hinstanceResource,
-         MAKEINTRESOURCE(resId),
-         RT_STRING);
-      if (resHnd != 0) {
-         HGLOBAL hGlobal = LoadResource((HMODULE) MainSubsystem().m_hinstanceResource, resHnd);
-         LPVOID lockRes = LockResource(hGlobal);
-
-         WCHAR* lpStr = reinterpret_cast<WCHAR*>(lockRes);
-         for (unsigned int i = 0; i < (id % 16); i++) {
-            lpStr += 1 + static_cast<UINT16>(lpStr[0]);
-         }
-
-         UINT16 strLen = static_cast<UINT16>(lpStr[0]);
-
-         ::wstring wstr;
-         auto pwsz = wstr.get_buffer(strLen);
-         memcpy(pwsz, lpStr + 1, strLen * sizeof(WCHAR));
-         pwsz[strLen] = L'\0';
-         wstr.release_buffer();
-
-         UnlockResource(lockRes);
-         FreeResource(hGlobal);
-
-         str = wstr;
-         // UnicodeStringStorage unicodeString;
-         // unicodeString.setString(&strBuff.front());
-         // unicodeString.toStringStorage(string);
-      }
+//
+//      // Id of string-group, based from 0.
+//      int resId = (id / 16) + 1;
+//      HRSRC resHnd = FindResource((HMODULE) MainSubsystem().m_hinstanceResource,
+//         MAKEINTRESOURCE(resId),
+//         RT_STRING);
+//      if (resHnd != 0) {
+//         HGLOBAL hGlobal = LoadResource((HMODULE) MainSubsystem().m_hinstanceResource, resHnd);
+//         LPVOID lockRes = LockResource(hGlobal);
+//
+//         WCHAR* lpStr = reinterpret_cast<WCHAR*>(lockRes);
+//         for (unsigned int i = 0; i < (id % 16); i++) {
+//            lpStr += 1 + static_cast<UINT16>(lpStr[0]);
+//         }
+//
+//         UINT16 strLen = static_cast<UINT16>(lpStr[0]);
+//
+//         ::wstring wstr;
+//         auto pwsz = wstr.get_buffer(strLen);
+//         memcpy(pwsz, lpStr + 1, strLen * sizeof(WCHAR));
+//         pwsz[strLen] = L'\0';
+//         wstr.release_buffer();
+//
+//         UnlockResource(lockRes);
+//         FreeResource(hGlobal);
+//
+//         str = wstr;
+//         // UnicodeStringStorage unicodeString;
+//         // unicodeString.setString(&strBuff.front());
+//         // unicodeString.toStringStorage(string);
+//      }
       return true;
    }
 
    void * ResourceLoader::loadAccelerator(unsigned int id)
    {
-      return (void *) (HACCEL) ::LoadAcceleratorsW((HINSTANCE) system()->m_hinstanceMain, (LPCWSTR) MAKEINTRESOURCEW(id));
-
+      //return (void *) (HACCEL) ::LoadAcceleratorsW((HINSTANCE) system()->m_hinstanceMain, (LPCWSTR) MAKEINTRESOURCEW(id));
+      return nullptr;
    //      MAKEINTRESOURCE(id));
       //throw ::interface_only();
       //return nullptr;
@@ -183,10 +186,20 @@ namespace innate_subsystem_macos
       //return LoadCursor(m_appInstance, iconName);
       auto pcursor = create_newø<::innate_subsystem_macos::Cursor>();
       //return LoadCursor(NULL, iconName);
+      
+      
+      
+      
+      
+      
       //if ((::iptr)id < 65536)
-      //{
-         pcursor->m_hcursor = ::LoadCursor((HINSTANCE) MainSubsystem().m_hinstanceResource, (LPCWSTR) MAKEINTRESOURCEW(id));
-
+      ////{
+        // pcursor->m_hcursor = ::LoadCursor((HINSTANCE) //MainSubsystem().m_hinstanceResource, (LPCWSTR) MAKEINTRESOURCEW(id));
+      //pcursor->m_pnsimage;
+      
+      
+      
+      
       // }
       // else
       // {

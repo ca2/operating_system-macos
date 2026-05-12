@@ -31,13 +31,13 @@ namespace innate_subsystem_macos
 {
 
 //Pen::Pen(int type, int width, const ::color::color & color)
-   Font::Font() :
-   m_pfont(nullptr)
+   Font::Font()
+//:   m_pfont(nullptr)
 //: m_pen(NULL)
 {
   // m_pen = CreatePen(type, width, color);
   //
-  // _ASSERT(m_pen != NULL);
+  // ASSERT(m_pen != NULL);
 }
 
 Font::~Font()
@@ -56,11 +56,11 @@ Font::~Font()
    {
 destroyGraphicsObject();
 
-
-      Gdiplus::REAL fontSize =(Gdiplus::REAL) iPixelHeight;
-      m_pfont = new Gdiplus::Font(::wstring(pszFamily), fontSize,
-         iFontWeight >= 500 ? (bItalic ? Gdiplus::FontStyleBoldItalic : Gdiplus::FontStyleBold) :
-         (bItalic ? Gdiplus::FontStyleItalic : Gdiplus::FontStyleRegular));
+//
+//      Gdiplus::REAL fontSize =(Gdiplus::REAL) iPixelHeight;
+//      m_pfont = new Gdiplus::Font(::wstring(pszFamily), fontSize,
+//         iFontWeight >= 500 ? (bItalic ? Gdiplus::FontStyleBoldItalic : Gdiplus::FontStyleBold) :
+//         (bItalic ? Gdiplus::FontStyleItalic : Gdiplus::FontStyleRegular));
 
    }
 
@@ -68,13 +68,13 @@ destroyGraphicsObject();
    void Font::destroyGraphicsObject()
    {
 
-      if (m_pfont)
-      {
-
-         delete m_pfont;
-         m_pfont = nullptr;
-
-      }
+//      if (m_pfont)
+//      {
+//
+//         delete m_pfont;
+//         m_pfont = nullptr;
+//
+//      }
 
    }
 
@@ -86,6 +86,6 @@ destroyGraphicsObject();
 // }
 //    // m_pen = CreatePen(type, width, color);
 //    //
-//    // _ASSERT(m_pen != NULL);
+//    // ASSERT(m_pen != NULL);
 
 } // namespace innate_subsystem_macos

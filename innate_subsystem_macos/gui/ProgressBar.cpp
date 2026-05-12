@@ -25,7 +25,7 @@
 #include "framework.h"
 #include "ProgressBar.h"
 
-#include <commctrl.h>
+//#include <commctrl.h>
 namespace innate_subsystem_macos
 {
    ProgressBar::ProgressBar()
@@ -38,12 +38,12 @@ namespace innate_subsystem_macos
 
    void ProgressBar::setRange(WORD min, WORD max)
    {
-      SendMessage((HWND) _HWND(), PBM_SETRANGE, 0, MAKELPARAM(min, max));
+      //SendMessage((HWND) _HWND(), PBM_SETRANGE, 0, MAKELPARAM(min, max));
    }
 
    void ProgressBar::setPos(WORD pos)
    {
-      SendMessage((HWND) _HWND(), PBM_SETPOS, (::wparam)pos, 0);
+      //SendMessage((HWND) _HWND(), PBM_SETPOS, (::wparam)pos, 0);
    }
 } // namespace innate_subsystem_macos
 

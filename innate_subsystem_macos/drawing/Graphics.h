@@ -35,6 +35,7 @@
 // #include "innate_subsystem/drawing/Pen.h"
 
 #define WIN32_TRANSPARENT 0
+#define WIN32_OPAQUE 1
 
 
 namespace innate_subsystem_macos
@@ -58,7 +59,7 @@ namespace innate_subsystem_macos
       ::pointer < ::innate_subsystem::Brush > m_pbrushText;
       ::color::color m_colorBrushText;
 
-
+      ::pointer < ::core_graphics::cg_context > m_pcgcontext;
 
       // Creates graphics object with specified device context.
       //Graphics(DeviceContext *dc);
@@ -118,6 +119,12 @@ namespace innate_subsystem_macos
 
    ///protected:
 
+      // Sets current brush to the device context.
+      virtual void _set_brush(::innate_subsystem::BrushInterface * pbrush);
+      // Sets current pen to the device context.
+      virtual void _set_pen(::innate_subsystem::PenInterface * ppen);
+      // Sets current font.
+      //void _set_font(::innate_subsystem::FontInterface * pfont) override;
 
    };
 

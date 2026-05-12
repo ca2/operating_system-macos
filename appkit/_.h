@@ -17,6 +17,8 @@ namespace appkit
 
    class ns_window;
 
+   class ns_image;
+
 
 } // namespace core_graphics
 

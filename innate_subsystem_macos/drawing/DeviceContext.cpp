@@ -77,11 +77,12 @@ namespace innate_subsystem_macos
    //    m_dc = pntWnd->getHDCPaint();
    // }
 
-   DeviceContext::DeviceContext() :
-   m_bHasOwnDC(false),
-   m_hwnd(nullptr),
-   m_hdc2(nullptr),
-   m_pgraphics(nullptr)
+   DeviceContext::DeviceContext()
+//:
+//   m_bHasOwnDC(false),
+//   m_hwnd(nullptr),
+//   m_hdc2(nullptr),
+//   m_pgraphics(nullptr)
    {
 
 
@@ -96,25 +97,25 @@ namespace innate_subsystem_macos
 
    void DeviceContext::destroyDeviceContext()
    {
-
-      if (m_pgraphics)
-      {
-
-         delete m_pgraphics;
-
-         m_pgraphics = nullptr;
-
-      }
-
-      if (m_hwnd && m_hdc2) {
-         ReleaseDC(m_hwnd, m_hdc2);
-      }
-      if (m_bHasOwnDC) {
-         DeleteDC(m_hdc2);
-      }
-      m_hwnd = nullptr;
-      m_bHasOwnDC = false;
-      m_hdc2 = nullptr;
+//
+//      if (m_pgraphics)
+//      {
+//
+//         delete m_pgraphics;
+//
+//         m_pgraphics = nullptr;
+//
+//      }
+//
+//      if (m_hwnd && m_hdc2) {
+//         ReleaseDC(m_hwnd, m_hdc2);
+//      }
+//      if (m_bHasOwnDC) {
+//         DeleteDC(m_hdc2);
+//      }
+//      m_hwnd = nullptr;
+//      m_bHasOwnDC = false;
+//      m_hdc2 = nullptr;
 
    }
 
@@ -123,9 +124,9 @@ namespace innate_subsystem_macos
    {
 
       destroyDeviceContext();
-      m_hwnd = ::as_HWND(operatingsystemwindow);
-      m_hdc2 = ::GetDC(m_hwnd);
-      m_pgraphics = new ::Gdiplus::Graphics(m_hdc2);
+//      m_hwnd = ::as_HWND(operatingsystemwindow);
+//      m_hdc2 = ::GetDC(m_hwnd);
+//      m_pgraphics = new ::Gdiplus::Graphics(m_hdc2);
 
    }
 
@@ -133,22 +134,22 @@ namespace innate_subsystem_macos
    void DeviceContext::initialize_device_context(::innate_subsystem::DeviceContextInterface* pdevicecontext)
    {
       destroyDeviceContext();
-      m_bHasOwnDC = true;
-      auto pdevicecontextWin32 = pdevicecontext->impl<DeviceContext>();
-      m_hwnd = nullptr;
-      m_hdc2 = ::CreateCompatibleDC(pdevicecontextWin32->m_hdc2);
-      m_pgraphics = new ::Gdiplus::Graphics(m_hdc2);
+//      m_bHasOwnDC = true;
+//      auto pdevicecontextWin32 = pdevicecontext->impl<DeviceContext>();
+//      m_hwnd = nullptr;
+//      m_hdc2 = ::CreateCompatibleDC(pdevicecontextWin32->m_hdc2);
+//      m_pgraphics = new ::Gdiplus::Graphics(m_hdc2);
    }
 
 
    void DeviceContext::initialize_device_context(::innate_subsystem::BitmapInterface * pbitmap)
    {
       destroyDeviceContext();
-      m_bHasOwnDC = false;
-      ::cast < ::innate_subsystem_macos::Bitmap > pbitmapWin32 = pbitmap;
-      m_hwnd = nullptr;
-      m_hdc2 = nullptr;
-      m_pgraphics = new ::Gdiplus::Graphics(pbitmapWin32->m_pbitmap);
+//      m_bHasOwnDC = false;
+//      ::cast < ::innate_subsystem_macos::Bitmap > pbitmapWin32 = pbitmap;
+//      m_hwnd = nullptr;
+//      m_hdc2 = nullptr;
+//      m_pgraphics = new ::Gdiplus::Graphics(pbitmapWin32->m_pbitmap);
    }
 
 
@@ -156,29 +157,29 @@ namespace innate_subsystem_macos
    {
       destroyDeviceContext();
       m_bHasOwnDC = true;
-      m_hwnd = nullptr;
-      m_hdc2 = ::CreateCompatibleDC(hdc);
-      m_pgraphics = new ::Gdiplus::Graphics(m_hdc2);
+//      m_hwnd = nullptr;
+//      m_hdc2 = ::CreateCompatibleDC(hdc);
+//      m_pgraphics = new ::Gdiplus::Graphics(m_hdc2);
    }
 
    void DeviceContext::_attachHDC(void * pHDC)
    {
-      HDC hdc = (HDC)pHDC;
-      destroyDeviceContext();
-      m_bHasOwnDC = false;
-      m_hwnd = nullptr;
-      if (hdc != nullptr)
-      {
-         m_hdc2 = hdc;
-         m_pgraphics = new ::Gdiplus::Graphics(m_hdc2);
-      }
-      else
-      {
-         m_hdc2 = nullptr;
-         m_pgraphics = nullptr;
-
-
-      }
+//      HDC hdc = (HDC)pHDC;
+//      destroyDeviceContext();
+//      m_bHasOwnDC = false;
+//      m_hwnd = nullptr;
+//      if (hdc != nullptr)
+//      {
+//         m_hdc2 = hdc;
+//         m_pgraphics = new ::Gdiplus::Graphics(m_hdc2);
+//      }
+//      else
+//      {
+//         m_hdc2 = nullptr;
+//         m_pgraphics = nullptr;
+//
+//
+//      }
    }
 
    //void DeviceContext::initialize_device_context(innate_subsystem::PaintWindowInterface* ppaintwindow)

@@ -9,7 +9,7 @@
 #include "appkit.h"
 
 
-static ::appkit::appkit * g_pcoregraphics = nullptr;
+static ::appkit::appkit * g_pappkit = nullptr;
 
 namespace appkit
 {
@@ -35,18 +35,18 @@ namespace appkit
 
 
 
-CLASS_DECL_APPKIT ::appkit::appkit * CoreGraphics()
+CLASS_DECL_APPKIT ::appkit::appkit AppKit()
 {
    
-   if(!g_pcoregraphics)
+   if(!g_pappkit)
    {
       
-      g_pcoregraphics = new ::appkit::appkit();
+      g_pappkit = new ::appkit::appkit();
       
-      g_pcoregraphics->initialize(::system());
+      g_pappkit->initialize(::system());
       
    }
    
-   return g_pcoregraphics;
+   return *g_pappkit;
    
 }

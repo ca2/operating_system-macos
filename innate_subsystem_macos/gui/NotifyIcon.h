@@ -61,7 +61,7 @@ namespace innate_subsystem_macos
       void hide() override;
 
 //   protected:
-      NOTIFYICONDATA m_nid;
+      //NOTIFYICONDATA m_nid;
       ::pointer < ::innate_subsystem_macos::Icon > m_picon;
       bool m_visible;
 

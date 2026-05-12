@@ -22,9 +22,11 @@ namespace innate_subsystem_macos
 
      ::i32_size SystemMetrics::get_small_icon_size_in_pixels()
      {
-         int iSmallIconWidthInPixels = ::GetSystemMetrics(SM_CXSMICON);
-         int iSmallIconHeightInPixels = ::GetSystemMetrics(SM_CYSMICON);
-         return {iSmallIconWidthInPixels, iSmallIconHeightInPixels};
+//         int iSmallIconWidthInPixels = ::GetSystemMetrics(SM_CXSMICON);
+//         int iSmallIconHeightInPixels = ::GetSystemMetrics(SM_CYSMICON);
+//         return {iSmallIconWidthInPixels, iSmallIconHeightInPixels};
+        
+        return {};
      }
 
 

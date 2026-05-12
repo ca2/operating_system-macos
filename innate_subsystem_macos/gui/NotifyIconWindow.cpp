@@ -29,8 +29,8 @@
 
 namespace innate_subsystem_macos
 {
-   NotifyIconWindow::NotifyIconWindow() :
-   WM_USER_TASKBAR(RegisterWindowMessage(L"TaskbarCreated"))
+   NotifyIconWindow::NotifyIconWindow() //:
+   //WM_USER_TASKBAR(RegisterWindowMessage(L"TaskbarCreated"))
    //: m_wph(0)
    {
       //
@@ -64,10 +64,10 @@ namespace innate_subsystem_macos
       //                         NULL, NULL, GetModuleHandle(0), NULL);
       setClass(::innate_subsystem::e_window_class_none);
 
-      createWindow("NotifyIconWindowTitle", WS_OVERLAPPED, {},
-      CW_USEDEFAULT, CW_USEDEFAULT,
-      CW_USEDEFAULT, CW_USEDEFAULT);
-
+//      createWindow("NotifyIconWindowTitle", WS_OVERLAPPED, {},
+//      CW_USEDEFAULT, CW_USEDEFAULT,
+//      CW_USEDEFAULT, CW_USEDEFAULT);
+//
 
       //SetWindowLongPtr(m_window, GWLP_USERDATA, (LONG_PTR)m_pwindowprocholder.m_p);
 
@@ -119,11 +119,11 @@ namespace innate_subsystem_macos
             } // switch (lParam)
             break;
          default:
-            if (message == WM_USER_TASKBAR) {
-               onTaskBarCreated();
-               lresult = 0;
-               return true;
-            }
+//            if (message == WM_USER_TASKBAR) {
+//               onTaskBarCreated();
+//               lresult = 0;
+//               return true;
+//            }
       }
 
             return false;

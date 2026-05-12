@@ -205,3 +205,7 @@ namespace innate_subsystem_macos
 
    //// __DIBSECTION_H__
 } // namespace innate_subsystem_macos
+
+
+
+#define WIN32_SRCCOPY (DWORD)0x00CC0020

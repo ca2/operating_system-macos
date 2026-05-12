@@ -46,7 +46,9 @@ namespace innate_subsystem_macos
       // // Destroys bitmap object.
       //HBITMAP m_hbitmap;
       
-      void * m_pbitmap;
+      //void * m_pbitmap;
+      
+      ::pointer < ::core_graphics::cg_image > m_pcgimage;
 
       ///Gdiplus::Bitmap * m_pbitmap;
 

@@ -16,12 +16,6 @@ namespace appkit
 {
 
 
-   struct ns_window_t
-   {
-      
-      void * m_pNS;
-   
-   };
 
 
    class CLASS_DECL_APPKIT ns_window :

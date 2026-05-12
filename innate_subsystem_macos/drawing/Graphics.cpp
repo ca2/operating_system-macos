@@ -27,10 +27,13 @@
 #include "Graphics.h"
 #include "DeviceContext.h"
 #include "Bitmap.h"
-#include "Brush.h"
+#include "SolidBrush.h"
 #include "Font.h"
 #include "Pen.h"
-
+#include "innate_subsystem/platform/subsystem.h"
+#include "operating_system-apple/core_graphics/core_graphics.h"
+#include "operating_system-apple/core_graphics/cg_context.h"
+//#define WIN32_TRANSPARENT 0
 
 namespace innate_subsystem_macos
 {
@@ -41,7 +44,7 @@ namespace innate_subsystem_macos
 
    Graphics::Graphics()
    {
-m_iBkMode = TRANSPARENT;
+//m_iBkMode = TRANSPARENT;
       //m_pfont = nullptr;
       m_pbrushText = nullptr;
    }
@@ -92,7 +95,7 @@ return m_pdevicecontext;
 
    void Graphics::setBkMode(bool transparent)
    {
-      m_iBkMode = transparent ? TRANSPARENT : OPAQUE;
+      //m_iBkMode = transparent ? WIN32_TRANSPARENT : WIN32_OPAQUE;
 //      SetBkMode(m_pdevicecontext->m_hdc, transparent ? TRANSPARENT : OPAQUE);
 
    }
@@ -100,17 +103,19 @@ return m_pdevicecontext;
 
    void Graphics::setBlendModeOn(bool bSet)
    {
+      
+      m_pcgcontext->set_blend_mode_on(bSet);
 
-      if (bSet)
-      {
-         m_pdevicecontext->m_pgraphics->SetCompositingMode(Gdiplus::CompositingModeSourceOver);
-
-      }
-      else
-      {
-         m_pdevicecontext->m_pgraphics->SetCompositingMode(Gdiplus::CompositingModeSourceCopy);
-
-      }
+//      if (bSet)
+//      {
+//         m_pdevicecontext->m_pgraphics->SetCompositingMode(Gdiplus::CompositingModeSourceOver);
+//
+//      }
+//      else
+//      {
+//         m_pdevicecontext->m_pgraphics->SetCompositingMode(Gdiplus::CompositingModeSourceCopy);
+//
+//      }
 
    }
 
@@ -119,12 +124,14 @@ return m_pdevicecontext;
 
       if (bOn)
       {
-         m_pdevicecontext->m_pgraphics->SetSmoothingMode(Gdiplus::SmoothingModeAntiAlias);
+         
+         m_pcgcontext->set_anti_alias_on(true);       //m_pdevicecontext->m_pgraphics->SetSmoothingMode//(Gdiplus::SmoothingModeAntiAlias);
 
       }
       else
       {
-         m_pdevicecontext->m_pgraphics->SetSmoothingMode(Gdiplus::SmoothingModeNone);
+         m_pcgcontext->set_anti_alias_on(false);
+         //m_pdevicecontext->m_pgraphics->SetSmoothingMode(Gdiplus::SmoothingModeNone);
 
       }
 
@@ -141,7 +148,7 @@ return m_pdevicecontext;
    void Graphics::setTextRenderingHintClearType()
    {
 
-      m_pdevicecontext->m_pgraphics->SetTextRenderingHint(::Gdiplus::TextRenderingHintClearTypeGridFit);
+      //m_pdevicecontext->m_pgraphics->SetTextRenderingHint(::Gdiplus::TextRenderingHintClearTypeGridFit);
 
    }
 
@@ -172,6 +179,9 @@ return m_pdevicecontext;
       //
       //m_pdevicecontext->selectObject(ppen);
       m_ppen = ppen;
+      
+      m_pcgcontext->set_line_width(m_ppen->m_iWidth);
+      m_pcgcontext->set_stroke_color(m_ppen->m_pcgcolor);
 
    }
 
@@ -197,42 +207,78 @@ return m_pdevicecontext;
 
    void Graphics::lineTo(const ::i32_point & point)
    {
-      //LineTo(m_pdevicecontext->m_hdc, x, y);
-      m_pdevicecontext->m_pgraphics->DrawLine(m_ppen->m_ppen, m_pointCurrent.x, m_pointCurrent.y, point.x, point.y);
+      
+      //set_pen(m_ppen);
+      m_pcgcontext->draw_line(m_pointCurrent, point);
       m_pointCurrent = point;
-      //m_pointCurrent.y = y;
+//      //LineTo(m_pdevicecontext->m_hdc, x, y);
+//      m_pdevicecontext->m_pgraphics->DrawLine(m_ppen->m_ppen, m_pointCurrent.x, m_pointCurrent.y, point.x, point.y);
+//      m_pointCurrent = point;
+//      //m_pointCurrent.y = y;
 
    }
 
    void Graphics::fillRect(const ::i32_rectangle & rectangle, ::innate_subsystem::BrushInterface *pbrush)
    {
-      Gdiplus::Rect gdiplusrect;
-
-      ::copy(gdiplusrect, rectangle);
-
-      auto pbrushWin32 = pbrush->impl<::innate_subsystem_macos::Brush>();
+//      Gdiplus::Rect gdiplusrect;
+//
+//      ::copy(gdiplusrect, rectangle);
+//
+      auto pbrushMacos = pbrush->impl<::innate_subsystem_macos::Brush>();
+//      
+      //set
+      
+      m_pcgcontext->set_fill_color(pbrushMacos->m_pcgcolor);
 
       //auto hbrush = (HBRUSH) pbrush->_HGDIOBJ();
+      
+      m_pcgcontext->fill_rect(rectangle);
 
-m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect);
+//m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect);
       //FillRect(m_pdevicecontext->m_hdc, &rect, hbrush);
 
    }
 
+// Sets current brush to the device context.
+void Graphics::_set_brush(::innate_subsystem::BrushInterface * pbrush)
+{
+   
+   auto pbrushMacos = pbrush->impl<::innate_subsystem_macos::Brush>();
+   m_pcgcontext->set_fill_color(pbrushMacos->m_pcgcolor);
+   
+}
+// Sets current pen to the device context.
+void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
+{
+   
+   
+   auto ppenMacos = ppen->impl<::innate_subsystem_macos::Pen>();
+   m_pcgcontext->set_line_width(ppenMacos->m_iWidth);
+   m_pcgcontext->set_stroke_color(ppenMacos->m_pcgcolor);
+}
+
+
 
    void Graphics::fillRect(const ::i32_rectangle & rectangle, const ::color::color & color)
    {
-      Gdiplus::Rect gdiplusrect;
+      //Gdiplus::Rect gdiplusrect;
 
-      ::copy(gdiplusrect, rectangle);
+     // ::copy(gdiplusrect, rectangle);
 
-      //auto pbrushWin32 = pbrush->impl<::innate_subsystem_macos::Brush>();
-      Gdiplus::Color gdipluscolor(color.byte_opacity(), color.byte_red(), color.byte_green(), color.byte_blue());
-      Gdiplus::SolidBrush solidbrush(gdipluscolor);
+      //auto pbrushMacos = create_newø<::innate_subsystem_macos::Brush>();
+      
+      auto pcgcolor = CoreGraphics().create_color(color);
+      
+      //Gdiplus::Color gdipluscolor(color.byte_opacity(), color.byte_red(), color.byte_green(), color.byte_blue());
+      //Gdiplus::SolidBrush solidbrush(gdipluscolor);
+      
+      m_pcgcontext->set_fill_color(pcgcolor);
+      
 
       //auto hbrush = (HBRUSH) pbrush->_HGDIOBJ();
 
-      m_pdevicecontext->m_pgraphics->FillRectangle(&solidbrush, gdiplusrect);
+      m_pcgcontext->fill_rect(rectangle);
+      //m_pdevicecontext->m_pgraphics->FillRectangle(&solidbrush, gdiplusrect);
       //FillRect(m_pdevicecontext->m_hdc, &rect, hbrush);
 
    }
@@ -240,45 +286,66 @@ m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect)
    void Graphics::ellipse(const ::i32_rectangle & rectangle)
    {
       //Ellipse(m_pdevicecontext->m_hdc, l, t, r, b);
-      Gdiplus::Rect gdiplusrect;
-
-      ::copy(gdiplusrect, rectangle);
-      // gdiplusrect.X = t;
-      // gdiplusrect.Y = l;
-      // gdiplusrect.Width = r-l;
-      m_pdevicecontext->m_pgraphics->FillEllipse(m_pbrush->m_pbrush, gdiplusrect);
-      m_pdevicecontext->m_pgraphics->DrawEllipse(m_ppen->m_ppen, gdiplusrect);
+//      Gdiplus::Rect gdiplusrect;
+//
+//      ::copy(gdiplusrect, rectangle);
+//      // gdiplusrect.X = t;
+//      // gdiplusrect.Y = l;
+//      // gdiplusrect.Width = r-l;
+      if(m_pbrush)
+      {
+         _set_brush(m_pbrush);
+         m_pcgcontext->fill_ellipse(rectangle);
+         
+      }
+      if(m_ppen)
+      {
+         _set_pen(m_ppen);
+         m_pcgcontext->draw_ellipse(rectangle);
+      }
+//      m_pdevicecontext->m_pgraphics->FillEllipse(m_pbrush->m_pbrush, gdiplusrect);
+//      m_pdevicecontext->m_pgraphics->DrawEllipse(m_ppen->m_ppen, gdiplusrect);
    }
 
    void Graphics::rectangle(const ::i32_rectangle & rectangle)
    {
       //Rectangle(m_pdevicecontext->m_hdc, l, t, r, b);
-      Gdiplus::Rect gdiplusrect;
+//      Gdiplus::Rect gdiplusrect;
 
-      ::copy(gdiplusrect, rectangle);
+  //    ::copy(gdiplusrect, rectangle);
       // gdiplusrect.X = t;
       // gdiplusrect.Y = l;
       // gdiplusrect.Width = r-l;
-      m_pdevicecontext->m_pgraphics->FillRectangle(m_pbrush->m_pbrush, gdiplusrect);
-      m_pdevicecontext->m_pgraphics->DrawRectangle(m_ppen->m_ppen, gdiplusrect);
+      if(m_pbrush)
+      {
+         _set_brush(m_pbrush);
+         m_pcgcontext->fill_rect(rectangle);
+      }
+      //m_pdevicecontext->m_pgraphics->FillRectangle(m_pbrush->m_pbrush, gdiplusrect);
+      if(m_ppen)
+      {
+         _set_pen(m_ppen);
+         //m_pdevicecontext->m_pgraphics->DrawRectangle(m_ppen->m_ppen, gdiplusrect);
+         m_pcgcontext->draw_ellipse(rectangle);
+      }
 
    }
 
    void Graphics::drawBitmap(::innate_subsystem::BitmapInterface *pbitmap, const ::i32_rectangle & rectangle)
    {
 
-      auto pbitmapWin32 = pbitmap->impl<::innate_subsystem_macos::Bitmap>();
+      auto pbitmapMacos = pbitmap->impl<::innate_subsystem_macos::Bitmap>();
       //DeviceContext memDC;
 
       //memDC.initialize_device_context(m_pdevicecontext);
 
-      Gdiplus::Rect gdiplusrect;
+      //Gdiplus::Rect gdiplusrect;
 
-      ::copy(gdiplusrect, rectangle);
+      //::copy(gdiplusrect, rectangle);
 
-
+      m_pcgcontext->draw_image(pbitmapMacos->m_pcgimage, rectangle);
       //auto pobjOld = memDC.selectObject(pbitmap);
-      m_pdevicecontext->m_pgraphics->DrawImage(pbitmapWin32->m_pbitmap, gdiplusrect);
+      //m_pdevicecontext->m_pgraphics->DrawImage(pbitmapWin32->m_pbitmap, gdiplusrect);
 
       //BitBlt(m_pdevicecontext->m_hdc, x, y, w, h, memDC.m_hdc, 0, 0, SRCCOPY);
 
@@ -289,13 +356,15 @@ m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect)
    void Graphics::drawBitmap(::innate_subsystem::BitmapInterface *pbitmap, const ::i32_point & point, const ::i32_rectangle & rectangle)
    {
 
-      auto pbitmapWin32 = pbitmap->impl<::innate_subsystem_macos::Bitmap>();
+      auto pbitmapMacos = pbitmap->impl<::innate_subsystem_macos::Bitmap>();
+      
+      m_pcgcontext->draw_image(pbitmapMacos->m_pcgimage, point, rectangle);
 
-      m_pdevicecontext->m_pgraphics->DrawImage(pbitmapWin32->m_pbitmap,
-         point.x, point.y,
-         rectangle.left, rectangle.top,
-         rectangle.width(), rectangle.height(),
-         Gdiplus::UnitPixel);
+//      m_pdevicecontext->m_pgraphics->DrawImage(pbitmapWin32->m_pbitmap,
+//         point.x, point.y,
+//         rectangle.left, rectangle.top,
+//         rectangle.width(), rectangle.height(),
+//         Gdiplus::UnitPixel);
 
    }
 
@@ -320,8 +389,10 @@ m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect)
          }
          auto color = m_colorText;
          m_colorBrushText = color;
-         Gdiplus::Color gdipluscolor(color.byte_opacity(), color.byte_red(), color.byte_green(), color.byte_blue());
-         m_pbrushText = new Gdiplus::SolidBrush(gdipluscolor);
+         
+         m_pbrushText = InnateSubsystem().createSolidBrush(color);
+        // Gdiplus::Color gdipluscolor(color.byte_opacity(), color.byte_red(), color.byte_green(), color.byte_blue());
+         //m_pbrushText = new Gdiplus::SolidBrush(gdipluscolor);
 
       }
 
@@ -345,56 +416,56 @@ m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect)
 
       }
 
-      ::wstring wstr(str);
-
-      Gdiplus::RectF gdiplusrect;
-
-      ::copy(gdiplusrect, rectangle);
-
-      _defer_text_tools();
-
-      // Create string format
-     Gdiplus:: StringFormat stringFormat(Gdiplus::StringFormat::GenericTypographic());
-
-      if (ealign & e_align_right)
-      {
-         stringFormat.SetAlignment(Gdiplus::StringAlignmentFar);
-      }
-      else if (ealign & e_align_horizontal_center)
-      {
-         // Horizontal alignment (center)
-         stringFormat.SetAlignment(Gdiplus::StringAlignmentCenter);
-      }
-      else
-      {
-         stringFormat.SetAlignment(Gdiplus::StringAlignmentNear);
-
-      }
-      if (ealign & e_align_bottom)
-      {
-         stringFormat.SetLineAlignment(Gdiplus::StringAlignmentFar);
-      }
-      else if (ealign & e_align_vertical_center)
-      {
-         // Vertical alignment (center)
-         stringFormat.SetLineAlignment(Gdiplus::StringAlignmentCenter);
-      }
-      else
-      {
-         stringFormat.SetLineAlignment(Gdiplus::StringAlignmentNear);
-
-      }
-
-
-      // Optional: prevent wrapping
-      stringFormat.SetFormatFlags(Gdiplus::StringFormatFlagsNoWrap);
-
-      stringFormat.SetFormatFlags(Gdiplus::StringFormatFlagsNoClip);
-      //
-      // RECT rc;
-      // ::copy(rc, rect);
-      // DrawText(m_pdevicecontext->m_hdc, wstr, wstr.length(), &rc, format);
-      m_pdevicecontext->m_pgraphics->DrawString(wstr, wstr.length(), m_pfont->m_pfont, gdiplusrect, &stringFormat, m_pbrushText);
+//      ::wstring wstr(str);
+//
+//      Gdiplus::RectF gdiplusrect;
+//
+//      ::copy(gdiplusrect, rectangle);
+//
+//      _defer_text_tools();
+//
+//      // Create string format
+//     Gdiplus:: StringFormat stringFormat(Gdiplus::StringFormat::GenericTypographic());
+//
+//      if (ealign & e_align_right)
+//      {
+//         stringFormat.SetAlignment(Gdiplus::StringAlignmentFar);
+//      }
+//      else if (ealign & e_align_horizontal_center)
+//      {
+//         // Horizontal alignment (center)
+//         stringFormat.SetAlignment(Gdiplus::StringAlignmentCenter);
+//      }
+//      else
+//      {
+//         stringFormat.SetAlignment(Gdiplus::StringAlignmentNear);
+//
+//      }
+//      if (ealign & e_align_bottom)
+//      {
+//         stringFormat.SetLineAlignment(Gdiplus::StringAlignmentFar);
+//      }
+//      else if (ealign & e_align_vertical_center)
+//      {
+//         // Vertical alignment (center)
+//         stringFormat.SetLineAlignment(Gdiplus::StringAlignmentCenter);
+//      }
+//      else
+//      {
+//         stringFormat.SetLineAlignment(Gdiplus::StringAlignmentNear);
+//
+//      }
+//
+//
+//      // Optional: prevent wrapping
+//      stringFormat.SetFormatFlags(Gdiplus::StringFormatFlagsNoWrap);
+//
+//      stringFormat.SetFormatFlags(Gdiplus::StringFormatFlagsNoClip);
+//      //
+//      // RECT rc;
+//      // ::copy(rc, rect);
+//      // DrawText(m_pdevicecontext->m_hdc, wstr, wstr.length(), &rc, format);
+//      m_pdevicecontext->m_pgraphics->DrawString(wstr, wstr.length(), m_pfont->m_pfont, gdiplusrect, &stringFormat, m_pbrushText);
    }
 
    

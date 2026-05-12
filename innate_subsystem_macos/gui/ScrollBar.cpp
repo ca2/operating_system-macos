@@ -87,18 +87,19 @@ namespace innate_subsystem_macos
 
    bool ScrollBar::_showVertScroll(bool show)
    {
-      LONG style = GetWindowLong((HWND) _HWND(), GWL_STYLE);
-      if (show) {
-         style |= WS_VSCROLL;
-      } else {
-         style &= ~WS_VSCROLL;
-      }
-      bool result = !!ShowScrollBar((HWND) _HWND(), SB_VERT, show ? TRUE : FALSE);
-      if (result) {
-         SetWindowLongPtr((HWND) _HWND(), GWL_STYLE, style);
-         m_isVert = show;
-      }
-      return result;
+//      LONG style = GetWindowLong((HWND) _HWND(), GWL_STYLE);
+//      if (show) {
+//         style |= WS_VSCROLL;
+//      } else {
+//         style &= ~WS_VSCROLL;
+//      }
+//      bool result = !!ShowScrollBar((HWND) _HWND(), SB_VERT, show ? TRUE : FALSE);
+//      if (result) {
+//         SetWindowLongPtr((HWND) _HWND(), GWL_STYLE, style);
+//         m_isVert = show;
+//      }
+//      return result;
+      return true;
    }
 
    bool ScrollBar::showHorzScroll(bool show)
@@ -113,18 +114,19 @@ namespace innate_subsystem_macos
 
    bool ScrollBar::_showHorzScroll(bool show)
    {
-      LONG style = GetWindowLong((HWND) _HWND(), GWL_STYLE);
-      if (show) {
-         style |=  WS_HSCROLL;
-      } else {
-         style &= ~WS_HSCROLL;
-      }
-      bool result = !!ShowScrollBar((HWND) _HWND(), SB_HORZ, show ? TRUE : FALSE);
-      if (result) {
-         SetWindowLong((HWND) _HWND(), GWL_STYLE, style);
-         m_isHorz = show;
-      }
-      return result;
+//      LONG style = GetWindowLong((HWND) _HWND(), GWL_STYLE);
+//      if (show) {
+//         style |=  WS_HSCROLL;
+//      } else {
+//         style &= ~WS_HSCROLL;
+//      }
+//      bool result = !!ShowScrollBar((HWND) _HWND(), SB_HORZ, show ? TRUE : FALSE);
+//      if (result) {
+//         SetWindowLong((HWND) _HWND(), GWL_STYLE, style);
+//         m_isHorz = show;
+//      }
+//      return result;
+      return true;
    }
 
    void ScrollBar::setHorzRange(int imin, int imax, int istep)
@@ -134,15 +136,15 @@ namespace innate_subsystem_macos
       m_hStep = istep;
 
       if (!m_isVirtualScroll) {
-         SCROLLINFO si;
-
-         ZeroMemory(&si, sizeof(SCROLLINFO));
-         si.cbSize = sizeof(SCROLLINFO);
-         si.nMin   = imin;
-         si.nMax   = imax;
-         si.fMask  = SIF_RANGE | SIF_PAGE;
-         si.nPage  = istep;
-         SetScrollInfo((HWND) _HWND(), SB_HORZ, &si, TRUE);
+//         SCROLLINFO si;
+//
+//         ZeroMemory(&si, sizeof(SCROLLINFO));
+//         si.cbSize = sizeof(SCROLLINFO);
+//         si.nMin   = imin;
+//         si.nMax   = imax;
+//         si.fMask  = SIF_RANGE | SIF_PAGE;
+//         si.nPage  = istep;
+//         SetScrollInfo((HWND) _HWND(), SB_HORZ, &si, TRUE);
       }
    }
 
@@ -152,27 +154,27 @@ namespace innate_subsystem_macos
       m_vStep = istep;
 
       if (!m_isVirtualScroll) {
-         SCROLLINFO si;
-
-         ZeroMemory(&si, sizeof(SCROLLINFO));
-         si.cbSize = sizeof(SCROLLINFO);
-         si.nMin   = imin;
-         si.nMax   = imax;
-         si.fMask  = SIF_RANGE | SIF_PAGE;
-         si.nPage  = istep;
-         SetScrollInfo((HWND) _HWND(), SB_VERT, &si, TRUE);
+//         SCROLLINFO si;
+//
+//         ZeroMemory(&si, sizeof(SCROLLINFO));
+//         si.cbSize = sizeof(SCROLLINFO);
+//         si.nMin   = imin;
+//         si.nMax   = imax;
+//         si.fMask  = SIF_RANGE | SIF_PAGE;
+//         si.nPage  = istep;
+//         SetScrollInfo((HWND) _HWND(), SB_VERT, &si, TRUE);
       }
    }
 
    void ScrollBar::setVertPos(int iPos) {
       if (!m_isVirtualScroll) {
-         SCROLLINFO si;
-
-         ZeroMemory(&si, sizeof(SCROLLINFO));
-         si.cbSize = sizeof(SCROLLINFO);
-         si.fMask  = SIF_POS;
-         si.nPos   = iPos;
-         m_vPos    = SetScrollInfo((HWND) _HWND(), SB_VERT, &si, TRUE);
+//         SCROLLINFO si;
+//
+//         ZeroMemory(&si, sizeof(SCROLLINFO));
+//         si.cbSize = sizeof(SCROLLINFO);
+//         si.fMask  = SIF_POS;
+//         si.nPos   = iPos;
+//         m_vPos    = SetScrollInfo((HWND) _HWND(), SB_VERT, &si, TRUE);
       } else {
          m_vPos    = iPos;
       }
@@ -180,13 +182,13 @@ namespace innate_subsystem_macos
 
    void ScrollBar::setHorzPos(int iPos) {
       if (!m_isVirtualScroll) {
-         SCROLLINFO si;
-
-         ZeroMemory(&si, sizeof(SCROLLINFO));
-         si.cbSize = sizeof(SCROLLINFO);
-         si.fMask  = SIF_POS;
-         si.nPos   = iPos;
-         m_hPos    = SetScrollInfo((HWND) _HWND(), SB_HORZ, &si, TRUE);
+//         SCROLLINFO si;
+//
+//         ZeroMemory(&si, sizeof(SCROLLINFO));
+//         si.cbSize = sizeof(SCROLLINFO);
+//         si.fMask  = SIF_POS;
+//         si.nPos   = iPos;
+//         m_hPos    = SetScrollInfo((HWND) _HWND(), SB_HORZ, &si, TRUE);
       } else {
          m_hPos    = iPos;
       }
@@ -270,12 +272,14 @@ namespace innate_subsystem_macos
 
    int ScrollBar::getVerticalSize()
    {
-      return GetSystemMetrics(SM_CXVSCROLL);
+      //return GetSystemMetrics(SM_CXVSCROLL);
+      return 25;
    }
 
    int ScrollBar::getHorizontalSize()
    {
-      return GetSystemMetrics(SM_CXHSCROLL);
+      //return GetSystemMetrics(SM_CXHSCROLL);
+      return 25;
    }
 } // namespace innate_subsystem_macos
 //} // namespace macos

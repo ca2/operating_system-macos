@@ -55,8 +55,8 @@ namespace innate_subsystem_macos
    // {
    // }
 
-   Bitmap::Bitmap() :
-   m_pbitmap(nullptr), m_hbitmap(nullptr)
+   Bitmap::Bitmap()
+//:   m_pbitmap(nullptr), m_hbitmap(nullptr)
    {
 
 
@@ -74,30 +74,30 @@ namespace innate_subsystem_macos
    void Bitmap::initialize_bitmap(const ::i32_size & size)
    {
       destroyGraphicsObject();
-      // //;mm_bitmap(NULL)
-      // // Prepare buffer
-       int bpp = 32;
-       size_t s = size.area() * (bpp / 8);
-       ::memory bits;
-       bits.set_size(s);
-       if (size > 0)
-       {
-          memset(bits.data(), 0, bits.size());
-          // Create bitmap handle
-          m_hbitmap = CreateBitmap(size.cx, size.cy, 1, bpp, bits.data());
-       }
-      
-      //m_pbitmap= new  Gdiplus::Bitmap(size.cx, size.cy, PixelFormat32bppARGB);
-       m_pbitmap = new Gdiplus::Bitmap(m_hbitmap, nullptr);
+//      // //;mm_bitmap(NULL)
+//      // // Prepare buffer
+//       int bpp = 32;
+//       size_t s = size.area() * (bpp / 8);
+//       ::memory bits;
+//       bits.set_size(s);
+//       if (size > 0)
+//       {
+//          memset(bits.data(), 0, bits.size());
+//          // Create bitmap handle
+//          m_hbitmap = CreateBitmap(size.cx, size.cy, 1, bpp, bits.data());
+//       }
+//      
+//      //m_pbitmap= new  Gdiplus::Bitmap(size.cx, size.cy, PixelFormat32bppARGB);
+//       m_pbitmap = new Gdiplus::Bitmap(m_hbitmap, nullptr);
    }
 
    void Bitmap::initialize_bitmap(::innate_subsystem::DeviceContextInterface * pdevicecontext, const ::i32_size & size)
    {
       destroyGraphicsObject();
       auto pdevicecontextWin32 = pdevicecontext->impl<::innate_subsystem_macos::DeviceContext>();
-      m_hbitmap = CreateCompatibleBitmap(pdevicecontextWin32->m_hdc2, size.cx, size.cy);
-      //m_pbitmap = new Gdiplus::Bitmap(size.cx, size.cy, pdevicecontextWin32->m_pgraphics);
-      m_pbitmap = new Gdiplus::Bitmap(m_hbitmap, nullptr);
+//      m_hbitmap = CreateCompatibleBitmap(pdevicecontextWin32->m_hdc2, size.cx, size.cy);
+//      //m_pbitmap = new Gdiplus::Bitmap(size.cx, size.cy, pdevicecontextWin32->m_pgraphics);
+//      m_pbitmap = new Gdiplus::Bitmap(m_hbitmap, nullptr);
    }
 
    void Bitmap::initialize_bitmap(::innate_subsystem::BitmapInterface * pbitmap)
@@ -105,34 +105,35 @@ namespace innate_subsystem_macos
    {
 
       destroyGraphicsObject();
-      auto ppbitmapWin32 = pbitmap->impl<::innate_subsystem_macos::DeviceContext>();
-      auto pbitmapWin32 = pbitmap->impl < ::innate_subsystem_macos::Bitmap>();
-      m_hbitmap = pbitmapWin32->m_hbitmap;
-      m_pbitmap = new Gdiplus::Bitmap(m_hbitmap, nullptr);
-      // pbitmapWin32->m_pbitmap->GetWidth(), pbitmapWin32->m_pbitmap->GetHeight(),
-      // PixelFormat32bppARGB);
-      //m_pbitmap = pbitmapWin32->m_pbitmap->Clone(0, 0,
-        // pbitmapWin32->m_pbitmap->GetWidth(), pbitmapWin32->m_pbitmap->GetHeight(),
-         //PixelFormat32bppARGB);
+//      auto ppbitmapWin32 = pbitmap->impl<::innate_subsystem_macos::DeviceContext>();
+//      auto pbitmapWin32 = pbitmap->impl < ::innate_subsystem_macos::Bitmap>();
+//      m_hbitmap = pbitmapWin32->m_hbitmap;
+//      m_pbitmap = new Gdiplus::Bitmap(m_hbitmap, nullptr);
+//      // pbitmapWin32->m_pbitmap->GetWidth(), pbitmapWin32->m_pbitmap->GetHeight(),
+//      // PixelFormat32bppARGB);
+//      //m_pbitmap = pbitmapWin32->m_pbitmap->Clone(0, 0,
+//        // pbitmapWin32->m_pbitmap->GetWidth(), pbitmapWin32->m_pbitmap->GetHeight(),
+//         //PixelFormat32bppARGB);
 
    }
 
 
-   void Bitmap::_initialize_bitmap(HBITMAP hbitmap, HPALETTE hpalette)
+   void Bitmap::_initialize_bitmap(void * pbitmap)
    {
 
       destroyGraphicsObject();
-      m_pbitmap = new Gdiplus::Bitmap(hbitmap, hpalette);
+//      m_pbitmap = new Gdiplus::Bitmap(hbitmap, hpalette);
 
    }
 
    ::i32_size Bitmap::getSize() const
    {
 
-      auto w = m_pbitmap->GetWidth();
-      auto h = m_pbitmap->GetHeight();
+//      auto w = m_pbitmap->GetWidth();
+//      auto h = m_pbitmap->GetHeight();
 
-      return {w, h};
+      //return {w, h};
+      return {};
       // BITMAP bitmap;
       // if (GetObject(m_hbitmap, sizeof(BITMAP), &bitmap) == 0) {
       //    return 0;
@@ -151,14 +152,15 @@ namespace innate_subsystem_macos
    void Bitmap::destroyGraphicsObject()
    {
 
-      if (m_pbitmap)
-      {
-
-         delete m_pbitmap;
-
-         m_pbitmap = nullptr;
-
-      }
+      m_pcgimage.release();
+//      if (m_pbitmap)
+//      {
+//
+//         //delete m_pbitmap;
+//
+//         m_pbitmap = nullptr;
+//
+//      }
 
    }
 } // namespace innate_subsystem_macos

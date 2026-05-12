@@ -61,7 +61,7 @@ namespace innate_subsystem_macos
       //    //
       int m_sortColumnIndex;
 
-      LPARAM m_lparamSort;
+      ::lparam m_lparamSort;
       //
       //    //
       //    // This pointer to compareFunction. By default is 0.
@@ -207,7 +207,7 @@ namespace innate_subsystem_macos
       //typedef int (CALLBACK *PFNLVCOMPARE)(LPARAM, LPARAM, LPARAM);
 
 
-      static int CALLBACK s_FNLVCOMPARE(LPARAM lparam1, LPARAM lparam2, LPARAM lparamSort);
+      static int s_FNLVCOMPARE(::lparam lparam1, ::lparam lparam2, ::lparam lparamSort);
       //
       // This method sort list of item by column m_sortColumIndex.
       // After add and removing elements, list may be not sorted.

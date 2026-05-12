@@ -51,7 +51,7 @@ namespace innate_subsystem_macos
       void setText(char *text) override;
       void setErrorBalloonTip(innate_subsystem::TooltipInterface *tip) override;
       void setStringFilter(::innate_subsystem::StringFilter *filter) override;
-      LRESULT makeCheck() override;
+      ::lresult makeCheck() override;
 
    //protected:
       bool isStringValid(const char *string) override;
@@ -62,7 +62,7 @@ namespace innate_subsystem_macos
       virtual bool window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam);
 
    //protected:
-      WNDPROC  m_wndprocOld;
+      //WNDPROC  m_wndprocOld;
       ::string  m_strText;
       ::pointer < ::innate_subsystem::TooltipInterface > m_ptooltip;
       ::pointer < ::innate_subsystem::StringFilter >m_pstringfilter;

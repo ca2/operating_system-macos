@@ -63,7 +63,7 @@ namespace innate_subsystem_macos
       //HWND m_window;
       ///::pointer < WindowProcHolder  > m_pwindowprocholder;
 
-      const int WM_USER_TASKBAR;
+      //const int WM_USER_TASKBAR;
 
       NotifyIconWindow();
        ~NotifyIconWindow() override;
