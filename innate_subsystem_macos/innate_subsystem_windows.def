@@ -1,0 +1,5 @@
+LIBRARY "innate_subsystem_windows"
+
+EXPORTS
+;acme_windows_factory
+

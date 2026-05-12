@@ -1,0 +1,116 @@
+// Copyright (C) 2012 GlavSoft LLC.
+// All rights reserved.
+//
+//-------------------------------------------------------------------------
+// This file is part of the TightVNC software.  Please visit our Web site:
+//
+//                       http://www.tightvnc.com/
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License along
+// with this program; if not, w_rite to the Free Software Foundation, Inc.,
+// 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+//-------------------------------------------------------------------------
+//
+#include "framework.h"
+#include "File.h"
+
+
+
+
+   namespace subsystem_macos
+   {
+
+      File::File()
+      {
+         m_handle=INVALID_HANDLE_VALUE;
+         m_bOwned = false;
+      }
+
+      File::~File()
+      {
+
+         if (m_bOwned && m_handle != nullptr && m_handle != INVALID_HANDLE_VALUE)
+         {
+
+            auto bOk = ::CloseHandle(m_handle);
+
+            if (!bOk)
+            {
+
+               error("windows::subsystem::File Close Handle failed");
+
+            }
+
+
+
+         }
+      }
+
+
+      void *File::_HANDLE()
+      {
+
+         return m_handle;
+
+      }
+
+
+   } // namespace subsystem_macos
+
+
+CLASS_DECL_SUBSYSTEM_MACOS HANDLE as_HANDLE(::subsystem::FileInterface * pfile)
+{
+
+   ::cast < ::subsystem_macos::File > pwindowssubsystemfile = pfile;
+
+   auto handle = pwindowssubsystemfile->m_handle;
+
+   return handle;
+
+}
+
+CLASS_DECL_SUBSYSTEM_MACOS bool is_ok(const ::subsystem_macos::File * pfile)
+{
+
+   if (!::is_set(pfile))
+   {
+
+      return false;
+
+   }
+
+   if (pfile->m_handle == nullptr)
+   {
+
+      return false;
+
+   }
+
+   if (pfile->m_handle == INVALID_HANDLE_VALUE)
+   {
+
+      return false;
+
+   }
+
+   return true;
+
+}
+
+
+CLASS_DECL_SUBSYSTEM_MACOS bool is_ok(const ::pointer < ::subsystem_macos::File > & pfile)
+{
+
+   return ::is_ok(pfile.m_p);
+
+}

@@ -1,0 +1,86 @@
+// Copyright (C) 2009,2010,2011,2012 GlavSoft LLC.
+// All rights reserved.
+//
+//-------------------------------------------------------------------------
+// This file is part of the TightVNC software.  Please visit our Web site:
+//
+//                       http://www.tightvnc.com/
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License along
+// with this program; if not, write to the Free Software Foundation, Inc.,
+// 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+//-------------------------------------------------------------------------
+//
+// Adapted by camilo on beginning of 2026-April <3ThomasBorregaardSorensen!!
+//
+#pragma once
+//#define _TAB_CONTROL_H_
+
+//#include "Control.h"
+//#include "Tab.h"
+//#include "TabContainer.h"
+
+#include "innate_subsystem/gui/TabControl.h"
+#include "innate_subsystem_windows/_common_header.h"
+#include "innate_subsystem_windows/gui/Control.h"
+
+
+namespace innate_subsystem_windows
+{
+
+   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS TabControl :
+    public window_implementation<innate_subsystem::TabControlInterface, Control>
+   {
+   public:
+      TabControl();
+      ~TabControl() override;
+
+      //
+      // Tab access members
+      //
+
+      innate_subsystem::TabContainer &getTabs() override;
+      int getTabCount() override;
+      ::innate_subsystem::TabInterface *getTab(int index) override;
+      void addTab(innate_subsystem::WindowInterface *pwindow, const char *caption) override;
+      void showTab(int index) override;
+      void showTab(innate_subsystem::WindowInterface *pwindow) override;
+      void deleteAllTabs() override;
+      void removeTab(int index) override;
+
+
+      void moveWindowToTabControl(innate_subsystem::WindowInterface *pwindow) override;
+
+      //
+      // Return selected tab number
+      //
+
+      int getSelectedTabIndex() override;
+
+      //
+      // Tab work rect methods
+      //
+      bool on_window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam) override;
+
+      bool onTabNotification(windows_reflect_notify_t & notify) override;
+
+      void _000OnNotifyReflect(windows_reflect_notify_t & notify) override;
+
+      //void _000OnNotify(windows_reflect_notify_t & notify) override;
+
+      void adjustRect(::int_rectangle &rect) override;
+
+   //protected:
+      ::innate_subsystem::TabContainer m_tabContainer;
+   };
+} // namespace innate_subsystem_windows

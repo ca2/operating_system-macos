@@ -1,0 +1,95 @@
+// Copyright (C) 2009,2010,2011,2012 GlavSoft LLC.
+// All rights reserved.
+//
+//-------------------------------------------------------------------------
+// This file is part of the TightVNC software.  Please visit our Web site:
+//
+//                       http://www.tightvnc.com/
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License along
+// with this program; if not, write to the Free Software Foundation, Inc.,
+// 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+//-------------------------------------------------------------------------
+//
+// Adapted by camilo on beginning of 2026-April <3ThomasBorregaardSorensen!!
+//
+#pragma once
+//#define _SPIN_CONTROL_H_
+
+#include "innate_subsystem/gui/SpinControl.h"
+#include "innate_subsystem_windows/_common_header.h"
+#include "innate_subsystem_windows/gui/Control.h"
+
+#include <commctrl.h>
+
+namespace innate_subsystem_windows
+{
+
+class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS SpinControl :
+    virtual public window_implementation<innate_subsystem::SpinControlInterface, Control>
+    //,    virtual public Control
+{
+public:
+
+
+
+   // protected:
+   ::pointer < ::innate_subsystem::ControlInterface> m_pcontrolBuddy;
+   //
+   //   //
+   //   // Members needed for auto acceleration
+   //   //
+   //
+   bool m_isAutoAccelerationEnabled;
+   int_array m_limitters;
+   int_array m_deltas;
+   int m_maxDelta;
+
+
+
+  SpinControl();
+  ~SpinControl() override;
+
+  void setBuddy(ControlInterface *buddyControl) override;
+  void setRange(short lower, short upper) override;
+  void setRange32(int lower, int upper) override;
+  void setAccel(unsigned int nSec, unsigned int nInc) override;
+
+  //
+  // Auto acceleration methods
+  //
+
+  //
+  // Handler, call it on UDN_DELTAPOS notification
+  //
+
+  //virtual void autoAccelerationHandler(LPNMUPDOWN message);
+   void autoAccelerationHandler(int & iPos, int & iDelta) override;
+  void enableAutoAcceleration(bool enabled) override;
+  void setAutoAccelerationParams(const int_array & limitters,
+                                 const int_array & deltas,
+                                 int maxDelta) override;
+
+
+
+
+   void _000OnNotify(windows_reflect_notify_t & notify) override;
+
+
+   };
+
+} // namespace innate_subsystem_windows
+
+//#endif
+
+

@@ -1,0 +1,104 @@
+// Copyright (C) 2009,2010,2011,2012 GlavSoft LLC.
+// All rights reserved.
+//
+//-------------------------------------------------------------------------
+// This file is part of the TightVNC software.  Please visit our Web site:
+//
+//                       http://www.tightvnc.com/
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License along
+// with this program; if not, write to the Free Software Foundation, Inc.,
+// 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+//-------------------------------------------------------------------------
+//
+// Adapted by camilo on beginning of 2026-April <3ThomasBorregaardSorensen!!
+//
+#pragma once
+
+
+#include "innate_subsystem_windows/_common_header.h"
+
+#include <uxtheme.h>
+#include <vssym32.h>
+
+#include "acme/prototype/prototype/memory.h"
+
+//
+// Define type for api functions
+//
+
+namespace innate_subsystem_windows
+{
+   typedef HRESULT (__stdcall *PFNCLOSETHEMEDATA)(HTHEME hTheme);
+
+   typedef HRESULT (__stdcall *PFNDRAWTHEMEBACKGROUND)(HTHEME hTheme, HDC hdc,
+                                                       int iPartId, int iStateId,
+                                                       const RECT *pRect,
+                                                       const RECT *pClipRect);
+
+   typedef HTHEME (__stdcall *PFNOPENTHEMEDATA)(HWND hwnd, LPCWSTR pszClassList);
+
+   typedef HRESULT (__stdcall *PFNDRAWTHEMETEXT)(HTHEME hTheme, HDC hdc, int iPartId,
+                                                 int iStateId, LPCWSTR pszText,
+                                                 int iCharCount, DWORD dwTextFlags,
+                                                 DWORD dwTextFlags2, const RECT *pRect);
+
+   typedef HRESULT (__stdcall *PFNGETTHEMEBACKGROUNDCONTENTRECT)(HTHEME hTheme,  HDC hdc,
+                                                                 int iPartId, int iStateId,
+                                                                 const RECT *pBoundingRect,
+                                                                 RECT *pContentRect);
+
+   class CLASS_DECL_INNATE_SUBSYSTEM_WINDOWS ThemeLib :
+   virtual public ::particle
+   {
+   public:
+      ThemeLib();
+      ~ThemeLib();
+
+      static bool initialize();
+      static void deinitialize();
+
+      static bool isLoaded();
+
+      static HRESULT CloseThemeData(HTHEME hTheme);
+
+      static HRESULT DrawThemeBackground(HTHEME hTheme, HDC hdc,
+                                         int iPartId, int iStateId,
+                                         RECT * pRect,
+                                         const RECT * pClipRect);
+
+      static HTHEME OpenThemeData(HWND hwnd, LPCWSTR pszClassList);
+
+      static HRESULT DrawThemeText(HTHEME hTheme, HDC hdc, int iPartId,
+                                   int iStateId, LPCWSTR pszText,
+                                   int iCharCount, DWORD dwTextFlags,
+                                   DWORD dwTextFlags2, const RECT * pRect);
+
+      static HRESULT GetThemeBackgroundContentRect(HTHEME hTheme,  HDC hdc,
+                                                   int iPartId, int iStateId,
+                                                   const RECT * pBoundingRect,
+                                                   RECT * pContentRect);
+
+
+      static bool s_isThemeLibLoaded;
+      static HMODULE s_lib;
+
+      static PFNOPENTHEMEDATA s_OpenThemeData;
+      static PFNDRAWTHEMEBACKGROUND s_DrawThemeBackground;
+      static PFNCLOSETHEMEDATA s_CloseThemeData;
+      static PFNDRAWTHEMETEXT s_DrawThemeText;
+      static PFNGETTHEMEBACKGROUNDCONTENTRECT s_GetThemeBackgroundContentRect;
+   };
+
+
+} // namespace innate_subsystem_windows

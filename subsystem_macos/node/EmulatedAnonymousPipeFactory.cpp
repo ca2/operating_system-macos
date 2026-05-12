@@ -1,0 +1,94 @@
+// Copyright (C) 2010,2011,2012 GlavSoft LLC.
+// All rights reserved.
+//
+//-------------------------------------------------------------------------
+// This file is part of the TightVNC software.  Please visit our Web site:
+//
+//                       http://www.tightvnc.com/
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License along
+// with this program; if not, w_rite to the Free Software Foundation, Inc.,
+// 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+//-------------------------------------------------------------------------
+//
+#include "framework.h"
+#include "subsystem_macos/_common_header.h"
+#include "EmulatedAnonymousPipeFactory.h"
+#include "security/SecurityAttributes.h"
+#include "File.h"
+#include "PipeServer.h"
+#include "PipeClient.h"
+#include <time.h>
+
+
+namespace subsystem_macos
+{
+   // EmulatedAnonymousPipeFactory::EmulatedAnonymousPipeFactory(unsigned int bufferSize, LogWriter *log)
+   // : m_bufferSize(bufferSize),
+   //   m_log(log)
+   // {
+   // }
+    EmulatedAnonymousPipeFactory::EmulatedAnonymousPipeFactory()
+    : m_bufferSize(0)
+    {
+    }
+   EmulatedAnonymousPipeFactory::~EmulatedAnonymousPipeFactory()
+   {
+   }
+
+   void EmulatedAnonymousPipeFactory::initialize_emulated_anonymous_pipe_factory(unsigned int bufferSize, ::subsystem::LogWriter *log)
+   {
+      m_bufferSize = bufferSize;
+        m_log = log;
+   }
+
+   void EmulatedAnonymousPipeFactory::generatePipes(::pointer < ::subsystem::NamedPipeInterface > & serverPipe, bool serverInheritable,
+                                                    ::pointer < ::subsystem::NamedPipeInterface > & clientPipe, bool clientInheritable)
+   {
+      SecurityAttributes secAttr;
+      secAttr.setInheritable();
+
+      ::string randomName;
+      randomName = getUniqPipeName();
+      PipeServer pipeServer;
+       pipeServer.initialize_pipe_server(randomName, m_bufferSize, 0, 1000);
+      clientPipe = MainSubsystem().PipeClient().connect(randomName, m_bufferSize);
+      serverPipe = pipeServer.accept();
+
+      HANDLE hThisSideWrite = serverPipe->getFile()->_HANDLE();
+      HANDLE hOtherSideRead = clientPipe->getFile()->_HANDLE();
+
+      if (!serverInheritable) {
+         if (SetHandleInformation(hThisSideWrite, HANDLE_FLAG_INHERIT, 0) == 0) {
+            ::string strErrorMessage1 = "Cannot disable inheritance for named pipe(1)";
+            throw ::subsystem::SystemException(strErrorMessage1);
+         }
+      }
+      if (!clientInheritable) {
+         if (SetHandleInformation(hOtherSideRead, HANDLE_FLAG_INHERIT, 0) == 0) {
+            ::string strErrorMessage2 = "Cannot disable inheritance for named pipe(2)";
+            throw ::subsystem::SystemException(strErrorMessage2);
+         }
+      }
+   }
+
+   ::string EmulatedAnonymousPipeFactory::getUniqPipeName()
+   {
+      ::string result;
+      srand((unsigned)::time(0));
+      for (int i = 0; i < 20; i++) {
+         result += (char) ('a' + rand() % ('z' - 'a'));
+      }
+      return result;
+   }
+} // namespace subsystem_macos
