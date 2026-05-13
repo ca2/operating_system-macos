@@ -6,20 +6,20 @@
 //  Camilo Sasuke Thomas Borregaard Sørensen on 2026-05-12 04:53 <3ThomasBorregaardSørensen!!
 //
 #include <AppKit/AppKit.h>
+#include "_mm.h"
 
-
-void ns_window_release(void * & pNS)
+void ns_window_release(ns_window_t & nswindow)
 {
  
-   if(!pNS)
+   if(nswindow.is_null())
    {
       
       return;
       
    }
    
-   NSWindow * pns = (__bridge_transfer NSWindow *) pNS;
+   NSWindow * pns = (__bridge_transfer NSWindow *) nswindow.m_p;
    
-   pNS = nullptr;
+   nswindow.clear();
       
 }

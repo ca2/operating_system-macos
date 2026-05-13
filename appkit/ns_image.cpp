@@ -8,15 +8,15 @@
 #include "framework.h"
 #include "ns_image.h"
 #include "acme/prototype/geometry2d/size.h"
+#include "_mm.h"
 
-
-namespace core_graphics
+namespace appkit
 {
 
    ns_image::ns_image()
    {
    
-      m_pNS = nullptr;
+      //m_pNS = nullptr;
       
    }
 
@@ -24,7 +24,7 @@ namespace core_graphics
    ns_image::~ns_image()
    {
    
-      ns_image_release(m_pNS);
+      ns_image_release(m_nsimage);
    
    }
 
@@ -32,12 +32,11 @@ namespace core_graphics
    ::i32_size ns_image::get_size()
    {
    
-      ::i32 w = 0;
-      ::i32 h = 0;
+      auto cgimage = ns_image_get_cg_image(m_nsimage);
       
-      ns_image_get_size(m_pNS, w, h);
+      auto cgsize = cg_image_get_size(cgimage);
       
-      return {w, h};
+      return {cgsize.w, cgsize.h};
       
    }
 

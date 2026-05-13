@@ -8,11 +8,11 @@
 #pragma once
 
 
-namespace core_graphics
+namespace appkit
 {
 
 
-   class CLASS_DECL_CORE_GRAPHICS ns_image :
+   class CLASS_DECL_APPKIT ns_image :
       virtual public ::particle
    {
    public:
@@ -31,7 +31,7 @@ namespace core_graphics
       
    };
 
-} // namespace core_graphics
+} // namespace appkit
 
 
 

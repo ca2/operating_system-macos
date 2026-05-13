@@ -30,12 +30,30 @@ namespace appkit
    }
 
 
+appkit::~appkit()
+{
+   
+   
+}
+
+
+
+   ::pointer < ns_image > appkit::load_icon(enum_cursor ecursor)
+{
+      
+      return {};
+      
+   }
+   
+
+
+
 } // namespace appkit
 
 
 
 
-CLASS_DECL_APPKIT ::appkit::appkit AppKit()
+CLASS_DECL_APPKIT ::appkit::appkit & AppKit()
 {
    
    if(!g_pappkit)

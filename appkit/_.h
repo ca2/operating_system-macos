@@ -23,4 +23,5 @@ namespace appkit
 } // namespace core_graphics
 
 
+#include "operating_system-macos/appkit/_struct.h"
 

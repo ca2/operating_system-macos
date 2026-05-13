@@ -4,6 +4,7 @@
 #include <sys/msg.h>
 #include "acme/_operating_system.h"
 #include "acme/operating_system/ansi/_pthread.h"
+#include "acme/operating_system/apple/_.h"
 
 ::string ns_bundle_seed_id();
 

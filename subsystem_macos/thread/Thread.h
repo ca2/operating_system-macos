@@ -37,7 +37,7 @@ namespace subsystem_macos
 {
 
 class Thread :
-virtual public ::subsystem::Thread
+virtual public Implementation<::subsystem::ThreadInterface>
 
 {
 public:

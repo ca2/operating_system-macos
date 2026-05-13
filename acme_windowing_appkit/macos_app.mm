@@ -7,6 +7,7 @@
 //
 #include "framework.h"
 #include "macos_app.h"
+#include "ns_acme_form_impact_controller.h"
 #include "acme/constant/id.h"
 #include "acme/operating_system/argcargv.h"
 #include "acme/platform/application_menu.h"
@@ -111,7 +112,9 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
    return self;
 }
 
-
+- (BOOL)applicationSupportsSecureRestorableState:(NSApplication *)app {
+    return YES;
+}
 
 //- (id)init
 //{
@@ -182,6 +185,98 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
    [ m_windowcontrollera addObject : pwindowcontroller ];
    
    return pwindowcontroller;
+   
+}
+
+
+-(void) addDialog:(NSWindowController*)pwindowcontrollerDialog
+{
+   
+   [self.activeDialogs addObject:pwindowcontrollerDialog];
+   
+}
+-(void) removeDialog:(NSWindowController*)pwindowcontrollerDialog
+{
+   
+   [self.activeDialogs removeObject:pwindowcontrollerDialog];
+   
+}
+ 
+ 
+ 
+
+-(::uptr)showDialog:(NSString *)strDialogName
+{
+   
+   
+   // 1. Load the storyboard (named "Main.storyboard")
+   NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+   
+   // 2. Instantiate a Window Controller using its Storyboard ID
+   // Note: In macOS, you usually instantiate the Window Controller first
+   NSWindowController *myWindowController = [storyboard instantiateControllerWithIdentifier:strDialogName];
+   
+   if (myWindowController) {
+      
+      NSWindow *window = [myWindowController window];
+                
+                // 2. Extract the generic View Controller that storyboard auto-created
+                NSViewController *pgenericimpactcontroller = window.contentViewController;
+                
+                // 3. Programmatically instantiate your Custom View Controller class
+                // Pass nil for nibName to prevent it from looking for a standalone XIB file
+                ns_acme_form_impact_controller *pformimpactcontroller = [[ns_acme_form_impact_controller alloc] initWithNibName:nil bundle:nil];
+                
+                if (pgenericimpactcontroller && pformimpactcontroller) {
+                    // 4. CRITICAL: Transfer the designed layout view from the generic VC to your custom VC
+                   pformimpactcontroller.view = pgenericimpactcontroller.view;
+                    
+                    // 5. Programmatically assign your custom class instance as the window's controller
+                    window.contentViewController = pformimpactcontroller;
+                    
+                    // Triggers viewDidLoad inside your custom class immediately
+                    [pformimpactcontroller viewDidLoad];
+                }
+                
+       // 4. CRITICAL: Save the reference globally so the window stays open!
+       [self addDialog:myWindowController];
+      NSView *contentView = [window contentView];
+      
+      // 1. Tell the view it must use a CoreAnimation layer backing
+      [contentView setWantsLayer:YES];
+      
+      // 2. Set your custom color (Example: Light grey color background)
+      // Replace [NSColor lightGrayColor] with your preferred system color
+      contentView.layer.backgroundColor = [NSColor lightGrayColor].CGColor;
+      // --- BACKGROUND COLOR UPDATE CODE END ---
+      
+
+       // 5. Show the window and bring it to the front layer
+       [myWindowController showWindow:nil];
+       [[myWindowController window] makeKeyAndOrderFront:nil];
+       
+       // 6. Optional: Remove from array when closed to prevent memory leaks
+       // This ensures that when the user clicks 'X', memory is reclaimed.
+       [[NSNotificationCenter defaultCenter] addObserverForName:NSWindowWillCloseNotification
+                                                        object:[myWindowController window]
+                                                         queue:[NSOperationQueue mainQueue]
+                                                    usingBlock:^(NSNotification * _Nonnull note) {
+           [self removeDialog:myWindowController];
+       }];
+      return window.windowNumber;
+   } else {
+       NSLog(@"Error: Could not find Storyboard ID: %@", strDialogName);
+   }
+   return 0;
+}
+
+
+-(void) addWindowController:(NSWindowController*)pwindowcontroller
+{
+   
+
+   
+   [ m_windowcontrollera addObject : pwindowcontroller ];
    
 }
 
@@ -1744,5 +1839,139 @@ void ns_application_handle(long long l, void * p)
       [papp application_handle: l withPointer:p];
 
    });
+   
+}
+
+
+
+::uptr ns_show_dialog(const char * pszDialog)
+{
+   
+   // 1. Get the delegate and cast it to your custom class
+     macos_app *pmacosapp = (macos_app *)[NSApp delegate];
+   
+   NSString * strName = [[NSString alloc]initWithUTF8String:pszDialog];
+   
+   auto u = [pmacosapp showDialog:strName];
+   
+   return u;
+}
+
+NSWindow *ns_window_from_cg_window_id(CGWindowID windowID)
+{
+    for (NSWindow *window in NSApp.windows)
+    {
+        if ((CGWindowID)window.windowNumber == windowID)
+        {
+            return window;
+        }
+    }
+
+    return nil;
+}
+
+NSView *ns_window_get_impact_by_tag(NSWindow * pnswindow, int iTag)
+{
+   if (pnswindow == nil)
+       {
+           return nil;
+       }
+
+       return [pnswindow.contentView viewWithTag:iTag];
+}
+
+//
+//::uptr ns_get_dlg_item(::uptr u, int iDlgItem)
+//{
+//   
+//   NSWindow * pwindowDialog = ns_window_from_cg_window_id(u);
+//   
+//   if(pwindowDialog == nil)
+//   {
+//      
+//      NSLog(@"ns_get_dlg_item: window not found");
+//      
+//      return 0;
+//      
+//   }
+//   
+//   
+//   
+//}
+
+NSString * ns_get_impact_text(NSView * pnsview)
+{
+    if (pnsview == nil)
+    {
+        return nil;
+    }
+
+    if ([pnsview isKindOfClass:[NSTextField class]])
+    {
+        return [(NSTextField *) pnsview stringValue];
+    }
+
+    if ([pnsview isKindOfClass:[NSTextView class]])
+    {
+        return [(NSTextView *) pnsview string];
+    }
+   
+   if ([pnsview isKindOfClass:[NSComboBox class]])
+   {
+       return [(NSComboBox *) pnsview stringValue];
+   }
+
+    return nil;
+}
+char * ns_get_impact_text(::uptr u, ::uptr uChild)
+{
+   
+   auto cgwindowid = (CGWindowID) u;
+   auto pnswindow = ns_window_from_cg_window_id(cgwindowid);
+   
+   if(pnswindow == nil)
+   {
+      
+      return nullptr;
+      
+   }
+   
+   auto iTag = (int)uChild;
+   
+   auto pnsimpact = ns_window_get_impact_by_tag(pnswindow, iTag);
+   
+   if(pnsimpact == nil)
+   {
+      
+      return nullptr;
+      
+   }
+   
+   auto str = ns_get_impact_text(pnsimpact);
+   
+   if(str == nil)
+   {
+      return nullptr;
+      
+   }
+   
+   auto p = ::strdup([str UTF8String]);
+   
+   return p;
+
+}
+char * ns_get_window_text(::uptr u)
+{
+   auto cgwindowid = (CGWindowID) u;
+   auto pnswindow = ns_window_from_cg_window_id(cgwindowid);
+   
+   if(pnswindow == nil)
+   {
+      
+      return nullptr;
+      
+   }
+   auto p = ::strdup([ pnswindow.title UTF8String]);
+   return p;
    
 }

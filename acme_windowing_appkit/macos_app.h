@@ -42,8 +42,16 @@ class command_handler;
 
 }
 
+// A mutable array to manage and retain your active form dialogs
+@property (nonatomic, strong) NSMutableArray<NSWindowController *> *activeDialogs;
+
+
 //-(void)application_menu_update;
 -(NSWindowController *) addWindow:(NSWindow*)window;
+-(::uptr) showDialog:(NSString*)strDialogName;
+-(void) addDialog:(NSWindowController*)pwindowcontrollerDialog;
+-(void) removeDialog:(NSWindowController*)pwindowcontrollerDialog;
+-(void) addWindowController:(NSWindowController*)pwindowcontroller;
 -(void) removeWindowController:(NSWindowController*)pwindowcontroller;
 -(void) continueInitialization;
 -(void) show_about_box;

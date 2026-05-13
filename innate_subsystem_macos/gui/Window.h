@@ -27,7 +27,7 @@
 
 #include "acme/operating_system/macos/window.h"
 #include "innate_subsystem/gui/Window.h"
-#include "operating_system-macos/appkit/ns_window.h"
+#include "operating_system-macos/acme_windowing_appkit/window.h"
 
 #define WM_REFLECT_NOTIFY_EX (105 + 0x2000 + WM_NOTIFY)
 
@@ -97,7 +97,7 @@ namespace innate_subsystem_macos
 
    class CLASS_DECL_INNATE_SUBSYSTEM_MACOS Window :
       virtual public Implementation< ::innate_subsystem::WindowCallback >,
-      virtual public ::appkit::ns_window,
+      virtual public ::appkit::acme::windowing::window,
       virtual public notification_handler
    {
    public:
@@ -161,6 +161,9 @@ namespace innate_subsystem_macos
       };
 
       ::i32_map < notification > m_mapControlNotification;
+      
+      ::string m_strResourceName;
+      ::u32    m_uResourceId;
 
       Window();
 
@@ -204,7 +207,16 @@ namespace innate_subsystem_macos
       //void setClass(const ::scoped_string  & scopedstrWindowClassName) override;
       void setClass(::innate_subsystem::enum_window_class ewindowclass) override;
 
-
+      
+      // Set resource name for the window
+      void setResourceName(const ::scoped_string & scopedstr)  override;
+      // Set resource id for the window
+      void setResourceId(::u32 uId)  override;
+      // Get resource name for the window
+      ::string getResourceName()  override;
+      // Get resource id for the window
+      ::u32 getResourceId()  override;
+      void post_message(::user::enum_message eusermessage, ::wparam wparam, ::lparam lparam) override;
       void setCursor(enum_cursor ecursor) override;
       enum_cursor getCursor() override;
 
@@ -363,7 +375,8 @@ namespace innate_subsystem_macos
       // Here is stub function, always returned false.
       virtual bool _onWmCommand(::wparam wparam, ::lparam lparam);
       virtual bool onCommand(unsigned int controlID, unsigned int notificationID) override;
-      virtual bool onSysCommand(::wparam wparam, ::lparam lparam) override;
+      //virtual bool onSysCommand(::wparam wparam, ::lparam lparam) override;
+      virtual bool on_user_system_command(::user::enum_system_command esystemcommand) override;
       virtual bool onMessage(unsigned int message, ::wparam wparam, ::lparam lparam) override;
       virtual bool onMouseEx(unsigned int uMessage, int iButtonMask, unsigned short wheelSpeed,
                              const ::i32_point &point, bool &bDoDefaultProcessing) override;
@@ -373,7 +386,8 @@ namespace innate_subsystem_macos
 
       virtual bool on_window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam) override;
 
-
+      lresult message_call(::user::enum_message eusermessage, ::wparam wparam, ::lparam lparam, const ::i32_point & point) override;
+      
       virtual void _defer_update_double_buffering();
 
 

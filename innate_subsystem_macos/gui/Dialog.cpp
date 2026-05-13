@@ -32,13 +32,17 @@
 #include "Window.h"
 #include "acme/windowing/windowing.h"
 #include "operating_system-macos/appkit/windowing.h"
+#include "operating_system-macos/acme_windowing_appkit/windowing.h"
+
+::uptr ns_show_dialog(const char * psz);
 
 namespace innate_subsystem_macos
 {
 
    Dialog::Dialog()
 //   : m_ctrlParent(NULL), m_resourceName(0), m_resourceId(0), m_hicon(0)
-   : m_resourceName(0), m_resourceId(0), m_hicon(0)
+   //: m_resourceName(0), m_resourceId(0), m_hicon(0)
+:  m_hicon(0)
    {
    }
 
@@ -67,7 +71,9 @@ namespace innate_subsystem_macos
    //: m_ctrlParent(NULL), m_resourceName(0), m_resourceId(resourceId), m_hicon(0)
    {
 
-      m_resourceId = resourceId;
+      setResourceId(resourceId);
+      
+      ///m_resourceName = m_papplication->getResourceName(resourceId);
    }
 void
    Dialog::initialize_dialog(const char *resourceName)
@@ -76,20 +82,20 @@ void
       setResourceName(resourceName);
    }
 
-
-   void Dialog::setResourceName(const char * resourceName)
-   {
-      if (m_resourceName != 0) {
-         free(m_resourceName);
-      }
-
-      m_resourceName = _strdup(resourceName);
-   }
-
-   void Dialog::setResourceId(unsigned int id)
-   {
-      m_resourceId = id;
-   }
+//
+//   void Dialog::setResourceName(const char * resourceName)
+//   {
+////      if (m_resourceName != 0) {
+////         free(m_resourceName);
+////      }
+//
+//      //m_resourceName = _strdup(resourceName);
+//   }
+//
+//   void Dialog::setResourceId(unsigned int id)
+//   {
+//      m_resourceId = id;
+//   }
 
    void Dialog::setDefaultPushButton(unsigned int buttonId)
    {
@@ -103,12 +109,12 @@ void
 
    void Dialog::show()
    {
-//      if ((HWND) _HWND() == NULL) {
-//         create();
-//      } else {
-//         ShowWindow((HWND) _HWND(), SW_SHOW);
-//         setForeground();
-//      }
+      if (!isWindow()) {
+         create();
+      } else {
+         Window::show();
+         setForeground();
+      }
 //      //return 0;
    }
 
@@ -131,9 +137,18 @@ void
 
    void Dialog::create()
    {
-//
-//      ::system()->acme_windowing()->send([&]()
-//      {
+
+      ::system()->acme_windowing()->send([&]()
+      {
+         
+         auto u = ns_show_dialog(m_strResourceName);
+         
+         ::cast < ::appkit::acme::windowing::windowing> pwindowing =        ::system()->acme_windowing();
+         ::cast < ::acme::windowing::window > pwindow = this;
+         pwindowing->m_windowmap[(void*)u] = pwindow;
+         m_macoswindow.m_eoperatingambient = ::windowing::e_operating_ambient_macos;
+         m_macoswindow.m_opaque.m_ulla[0] = u;
+         pwindow->send_message(::user::e_message_initialize_dialog);
 //         HWND window, parentWindow = NULL;
 //
 //         auto pwindow = this->impl<Window>();
@@ -151,7 +166,7 @@ void
 //         m_isModal = false;
 //
 //         ASSERT(window != NULL);
-//      });
+     });
    }
 
    int Dialog::showModal()
@@ -216,8 +231,24 @@ void
 //
 //   }
 
+   bool Dialog::on_window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam)
+{
+      
+      switch (message) {
+         case ::user::e_message_initialize_dialog:
+            lresult = onInitDialog();
+            break;
+         default:
+            break;
+      }
+      return Window::on_window_procedure(lresult, message, wparam, lparam);
+      
+   }
+
    void Dialog::onMessageReceived(unsigned int uMsg, ::wparam wparam, ::lparam lparam)
    {
+
+
    }
 
 //   INT_PTR CALLBACK Dialog::dialogProc(HWND hwnd, unsigned int uMsg, WPARAM wparam, LPARAM lparam)
@@ -296,14 +327,14 @@ void
 //      
 //      return 1;
 //   }
-
-   char *Dialog::getResouceName()
-   {
-//      if (m_resourceId != 0) {
-//         return (char *)MAKEINTRESOURCE(m_resourceId);
-//      }
-      return m_resourceName;
-   }
+//
+//   char *Dialog::getResouceName()
+//   {
+////      if (m_resourceId != 0) {
+////         return (char *)MAKEINTRESOURCE(m_resourceId);
+////      }
+//      return m_resourceName;
+//   }
 
    // void Dialog::subControlById(ControlInterface *control, unsigned int id)
    // {

@@ -129,6 +129,43 @@ void windowing::initialize_windowing()
 }
 
 
+
+void windowing::post(const ::procedure & procedure)
+{
+   
+   return main_post(procedure);
+
+//   if (!procedure)
+//   {
+//
+//      return;
+//
+//   }
+//
+//   //if (is_current_task())
+//   //{
+//
+//   //   procedure();
+//
+//   //   return;
+//
+//   //}
+//
+//   {
+//
+//      _synchronous_lock synchronouslock(this->synchronization(), DEFAULT_SYNCHRONOUS_LOCK_SUFFIX);
+//
+//      m_procedurea2.add(procedure);
+//
+//      new_main_loop_happening()->set_happening();
+//
+//      //update_new_main_loop_happening();
+//
+//   }
+
+}
+
+
 void windowing::main_send(const ::procedure & procedure)
 {
     
@@ -175,11 +212,29 @@ void windowing::main_send(const ::procedure & procedure)
 }
 
 
-void windowing::windowing_application_main_loop()
+//void windowing::windowing_application_main_loop()
+//{
+//   
+//   main();
+//   
+//}
+
+
+void windowing::each_window(const ::function < void(::acme::windowing::window*) > & function)
 {
-   
-   main();
-   
+
+   for(auto & pacmewindowingwindow:m_windowmap.payloads())
+   {
+      
+      if(pacmewindowingwindow)
+      {
+         
+         function(pacmewindowingwindow);
+         
+      }
+      
+   }
+ 
 }
 
 
@@ -203,6 +258,8 @@ bool windowing::handle_messages()
 
 void  windowing::run()
 {
+   
+   system()->prepare_application();
    
    //apple_defer_nano_application_create(system());
    
@@ -365,6 +422,54 @@ void windowing::set_dark_mode(bool bDarkMode)
    
 }
 
+void windowing::on_user_command(::uptr u,       ::uptr uControl)
+{
+   
+   ::operating_system::macos_window macoswindow((CGWindowID)u);
+   
+   if(macoswindow.is_null())
+   {
+      
+      information("on user command : operating system window is not set");
+      return;
+      
+   }
+   
+   auto pacmewindowingwindow = m_windowmap[(void *)(::uptr)macoswindow.as_CGWindowID()];
+   
+   if(::is_null(pacmewindowingwindow))
+   {
+    
+      information("didn't find acme windowing window with this operating system window : " + ::as_string((::uptr)u) );
+      
+      return;
+      
+   }
+   pacmewindowingwindow->post_message(::user::e_message_command, uControl & 0xffffu);
+   
+}
+
+
+::operating_system::window windowing::__cross_windows__get_dlg_item(const ::operating_system::window & operatingsystemwindow, int iDlgItem)
+{
+   
+//   auto u = ::as_u64(operatingsystemwindow);
+//   
+//   auto pacmewindowingwindow = m_windowmap[(void *)(::uptr)u];
+//   
+//   if(::is_null(pacmewindowingwindow))
+//   {
+//    
+//      information("didn't find acme windowing window with this operating system window : " + ::as_string((::uptr)u) );
+//      
+//      return;
+//      
+//   }
+//   
+//   pacmewindowingwindow->post_message(::user::e_message_command, uControl & 0xffffu);
+   return {};
+}
+
 
 } // namespace windowing
 
@@ -376,8 +481,83 @@ void windowing::set_dark_mode(bool bDarkMode)
 
 
 
+::uptr ns_get_dlg_item(::uptr u, int iDlgItem);
+char * ns_get_impact_text(::uptr u, ::uptr uChild);
+char * ns_get_window_text(::uptr u);
 
 
 
+namespace cross_windows
+{
 
 
+   ::operating_system::window get_dlg_item(const ::operating_system::window & operatingsystemwindow, int iDlgItem)
+   {
+      
+      auto u = ::as_u64(operatingsystemwindow);
+      
+      if(u == 0)
+      {
+         
+         ::information("operating system window is not a window");
+         
+         return {};
+         
+      }
+      
+      //auto uChild = ns_get_dlg_item(u, iDlgItem);
+      
+      return {::windowing::e_operating_ambient_macos_impact, u, (::uptr) iDlgItem};
+      
+//      ::cast < ::appkit::acme::windowing::windowing > pwindowing = ::system()->acme_windowing();
+//   
+//      return pwindowing->__cross_windows__get_dlg_item(operatingsystemwindow, iDlgItem);
+      
+   }
+
+
+::string get_window_text(const ::operating_system::window & operatingsystemwindow)
+{
+   
+   ::string str;
+   
+   if(operatingsystemwindow.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact)
+   {
+      
+      auto p = ns_get_impact_text(operatingsystemwindow.m_opaque.m_ulla[0], operatingsystemwindow.m_opaque.m_ulla[1]);
+      
+      if(!p)
+      {
+         
+         return {};
+         
+      }
+      
+      str = p;
+      
+      ::free(p);
+      
+   }
+   else if(operatingsystemwindow.m_eoperatingambient == ::windowing::e_operating_ambient_macos)
+   {
+      
+      auto p = ns_get_window_text(operatingsystemwindow.m_opaque.m_ulla[0]);
+      
+      if(!p)
+      {
+         
+         return {};
+         
+      }
+      
+      str = p;
+      
+      ::free(p);
+
+   }
+   
+   return str;
+
+}
+
+} // namespace cross_windows

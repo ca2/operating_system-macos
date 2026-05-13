@@ -3,6 +3,7 @@
 
 #include "innate_subsystem/_.h"
 #include "subsystem_macos/_.h"
+#include "acme_windowing_appkit/_.h"
 
 
 #ifndef ACME_OPERATING_SYSTEM

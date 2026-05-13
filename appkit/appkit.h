@@ -33,4 +33,4 @@ namespace appkit
 } // namespace appkit
 
 
-CLASS_DECL_CORE_GRAPHICS ::appkit::appkit & AppKit();
+CLASS_DECL_APPKIT ::appkit::appkit & AppKit();

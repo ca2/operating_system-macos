@@ -42,6 +42,7 @@
 //
 //} // namespace operating_system
 //
+#include "operating_system-macos/appkit/ns_window.h"
 
 namespace appkit
 {
@@ -58,7 +59,7 @@ class acme_window_bridge;
 
 
    class CLASS_DECL_ACME_WINDOWING_APPKIT window :
-      virtual public ::acme::windowing::window
+      virtual public ::appkit::ns_window
    {
    public:
 
@@ -67,7 +68,7 @@ class acme_window_bridge;
       //Display *                        m_pdisplay;
       //Window                           m_window;
       //cairo_surface_t *                m_psurface;
-      ::operating_system::macos_window          m_macoswindow;
+      //::operating_system::macos_window          m_macoswindow;
       ::pointer<::appkit::acme_window_bridge>   m_pacmewindowbridge;
       ::pointer<::nano::graphics::device>       m_pnanodevice;
       //::pointer<::nano::graphics::font>         m_pfont;

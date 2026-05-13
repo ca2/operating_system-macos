@@ -12,6 +12,7 @@
 #include "acme/platform/application.h"
 #include "acme/platform/system.h"
 #include "acme/user/user/key_state.h"
+#include "acme/windowing/windowing.h"
 
 #include <unistd.h>
 #include <signal.h>
@@ -1068,7 +1069,11 @@ void node::shell_open(const ::file::path & path, const ::scoped_string & scopeds
 
       // psystem->request(prequest);
 
-      psystem->post_application_start();
+      //psystem->post_application_start();
+      
+      //psystem->m_papplication->
+      
+      psystem->acme_windowing()->on_activate();
       
    }
 
@@ -1117,7 +1122,7 @@ void node::shell_open(const ::file::path & path, const ::scoped_string & scopeds
 
       // psystem->request(prequest);
 
-      psystem->post_application_started();
+      psystem->acme_windowing()->on_activate();
       
    }
 
@@ -1137,28 +1142,28 @@ void node::shell_open(const ::file::path & path, const ::scoped_string & scopeds
       
    }
 
-::pointer < ::operating_system::application > node::application_predicate(const ::function < bool(::operating_system::application * papplication) > & function)
-{
-
-   auto processesidentifiers = this->processes_identifiers();
-   
-   for(auto & processidentifier : processesidentifiers)
-   {
-      
-      auto papplication = process_identifier_application(processidentifier);
-      
-      if(function(papplication))
-      {
-       
-         return papplication;
-         
-      }
-      
-   }
-
-   return nullptr;
-
-}
+//::pointer < ::operating_system::application > node::application_predicate(const ::function < bool(::operating_system::application * papplication) > & function)
+//{
+//
+//   auto processesidentifiers = this->processes_identifiers();
+//   
+//   for(auto & processidentifier : processesidentifiers)
+//   {
+//      
+//      auto papplication = process_identifier_application(processidentifier);
+//      
+//      if(function(papplication))
+//      {
+//       
+//         return papplication;
+//         
+//      }
+//      
+//   }
+//
+//   return nullptr;
+//
+//}
 
 
 bool node::is_application_running_good_effort(const ::scoped_string & scopedstrRepos, const ::scoped_string & scopedstrApp)

@@ -84,12 +84,6 @@ namespace innate_subsystem_macos
       //void setParent(::innate_subsystem::ControlInterface *ctrlParent) override;
 
 
-      // Set resource name for dialog
-      void setResourceName(const char *resourceName) override;
-
-
-      // Set resource id for dialog.
-      void setResourceId(unsigned int id) override;
 
 
       // Return
@@ -149,7 +143,7 @@ namespace innate_subsystem_macos
 
       //virtual bool _onDrawItem(::wparam controlID, LPDRAWITEMSTRUCT pdrawitem);
 
-
+      bool on_window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam) override;
       //#endif
       void onMessageReceived(unsigned int uMsg, ::wparam wparam, ::lparam lparam) override;
 
@@ -164,13 +158,13 @@ namespace innate_subsystem_macos
 
 
       //private:
-      char *getResouceName() override;
+      //::string getResouceName() override;
 
 
       //protected:
 
-      char *m_resourceName; // Name of dialog resource
-      DWORD m_resourceId; // Id of dialog resouce
+      //::string m_strResourceName; // Name of dialog resource
+      //::u32 m_uResourceId; // Id of dialog resouce
       //Control m_ctrlThis;           // This dialog control
       //::pointer<::innate_subsystem_macos::Control> m_pcontrolParent; // Parent dialog or NULL if no parent
 

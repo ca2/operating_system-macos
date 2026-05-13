@@ -198,8 +198,8 @@ namespace innate_subsystem_macos
 ////       pBmi->bmiHeader.biHeight = -dim.cy;
 //    }
 
-//    void DibSection::_openDIBSection(const ::innate_subsystem::PixelFormat & pf, const ::i32_size & dim, HWND compatibleWin)
-//    {
+    void DibSection::_openDIBSection(const ::innate_subsystem::PixelFormat & pf, const ::i32_size & dim, const ::operating_system::window & operatingsystemwindow)
+    {
 ////       m_targetDC = GetDC(compatibleWin);
 ////       m_isOwnTargetDC = true;
 ////       if (m_targetDC == 0) {
@@ -237,7 +237,7 @@ namespace innate_subsystem_macos
 ////       }
 ////   
 ////       m_hbmOld = (HBITMAP)SelectObject(m_memDC, m_hbmDIB);
-//    }
+    }
 
    void DibSection::closeDIBSection()
    {

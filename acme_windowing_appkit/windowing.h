@@ -23,14 +23,14 @@ namespace windowing
 class CLASS_DECL_ACME_WINDOWING_APPKIT windowing :
 virtual public ::acme::windowing::windowing
 {
-protected:
+public:
    
    
    /// map NSWindow * (bridge casted to void *) to a ::acme::windowing::window *
   map < void *, ::pointer < ::acme::windowing::window > > m_windowmap;
 
 
-public:
+//public:
     
     
     windowing();
@@ -41,9 +41,10 @@ public:
     ::acme::windowing::display * acme_display() override;
     void main_send(const ::procedure & procedure) override;
     void main_post(const ::procedure & procedure) override;
+   void post(const ::procedure & procedure) override;
     void display_error_trap_push(int i) override;
     void display_error_trap_pop_ignored(int i) override;
-    
+   void on_user_command(::uptr u, ::uptr uControl) override;
     //   ::e_status x11_initialize() override;
     //   void * x11_get_display() override;
     //   void x11_sync(const ::procedure & procedure) override;
@@ -52,7 +53,7 @@ public:
     //   void x11_display_error_trap_pop_ignored(int i) override;
    
    
-   void windowing_application_main_loop() override;
+   //void windowing_application_main_loop() override;
    void run() override;
    void windowing_post_quit() override;
    
@@ -67,6 +68,10 @@ public:
    
    bool dark_mode() override;
    void set_dark_mode(bool bDarkMode) override;
+   
+   void each_window(const ::function < void(::acme::windowing::window*) > & function) override;
+   
+   virtual ::operating_system::window __cross_windows__get_dlg_item(const ::operating_system::window & operatingsystemwindow, int iDlgItem);
     
 };
 
@@ -80,4 +85,9 @@ public:
 } // namespace appkit
 
 
+namespace cross_windows
+{
 
+   ::operating_system::window get_dlg_item(const ::operating_system::window & operatingsystemwindow, int iDlgItem);
+   ::string get_window_text(const ::operating_system::window & operatingsystemwindow);
+} // namespace cross_windows

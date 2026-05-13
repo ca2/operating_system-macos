@@ -1,4 +1,2 @@
 default_apex
-operating_system-macos/acme_windowing_win32
-operating_system-macos/nano_graphics_gdi
 

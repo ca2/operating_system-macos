@@ -23,9 +23,6 @@
 		9A412456266C40A400C3FF0E /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78630A2650483C0034A0E1 /* libacme.dylib */; };
 		9A412457266C40AE00C3FF0E /* libacme_posix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78630C2650483C0034A0E1 /* libacme_posix.dylib */; };
 		9A6543FE2666F2A400F8A254 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6543FD2666F2A400F8A254 /* image.cpp */; };
-		9A7724FF2A259DC700B9A835 /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB812432A0200570032F4C8 /* application.cpp */; };
-		9A7725002A259DEA00B9A835 /* axuielement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB812472A025C7A0032F4C8 /* axuielement.cpp */; };
-		9A7725022A259E3B00B9A835 /* main_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB812362A01F3D40032F4C8 /* main_window.cpp */; };
 		9A787BE8264BD7AF003DF8A0 /* mmos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A787BE4264BD7AE003DF8A0 /* mmos.mm */; };
 		9A787C66264BD87E003DF8A0 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A787C63264BD87E003DF8A0 /* node.cpp */; };
 		9A787C67264BD87E003DF8A0 /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787C64264BD87E003DF8A0 /* node.h */; };
@@ -51,12 +48,6 @@
 		9AA3F9562A9495D6004283CA /* file_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3F93E2A948611004283CA /* file_context.cpp */; };
 		9AA3F95A2A9495E4004283CA /* watcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3F9442A948629004283CA /* watcher.cpp */; };
 		9AA3F95B2A9495E5004283CA /* watcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3F9442A948629004283CA /* watcher.cpp */; };
-		9AB812382A01F3D40032F4C8 /* main_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB812362A01F3D40032F4C8 /* main_window.cpp */; };
-		9AB812392A01F3D40032F4C8 /* main_window.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AB812372A01F3D40032F4C8 /* main_window.h */; };
-		9AB812452A0200580032F4C8 /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB812432A0200570032F4C8 /* application.cpp */; };
-		9AB812462A0200580032F4C8 /* application.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AB812442A0200580032F4C8 /* application.h */; };
-		9AB812492A025C7A0032F4C8 /* axuielement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB812472A025C7A0032F4C8 /* axuielement.cpp */; };
-		9AB8124A2A025C7A0032F4C8 /* axuielement.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AB812482A025C7A0032F4C8 /* axuielement.h */; };
 		9AC14D2C297B3488006D9BD3 /* directory_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A92314B27EAE30D00B5A78D /* directory_system.h */; };
 		9AC14D2D297B3488006D9BD3 /* mmos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A787C65264BD87E003DF8A0 /* mmos.h */; };
 		9AC14D2F297B3488006D9BD3 /* file_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A239CB526CDEF9300F98012 /* file_system.h */; };
@@ -185,12 +176,6 @@
 		9AA3F9442A948629004283CA /* watcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = watcher.cpp; sourceTree = "<group>"; };
 		9AA3F95C2A9497BC004283CA /* file copy.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "file copy.mm"; sourceTree = "<group>"; };
 		9AB5F929264B020100C4F2A3 /* _c_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _c_mm.h; sourceTree = "<group>"; };
-		9AB812362A01F3D40032F4C8 /* main_window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main_window.cpp; sourceTree = "<group>"; };
-		9AB812372A01F3D40032F4C8 /* main_window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main_window.h; sourceTree = "<group>"; };
-		9AB812432A0200570032F4C8 /* application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = application.cpp; sourceTree = "<group>"; };
-		9AB812442A0200580032F4C8 /* application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = application.h; sourceTree = "<group>"; };
-		9AB812472A025C7A0032F4C8 /* axuielement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = axuielement.cpp; sourceTree = "<group>"; };
-		9AB812482A025C7A0032F4C8 /* axuielement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = axuielement.h; sourceTree = "<group>"; };
 		9AC14D56297B3488006D9BD3 /* libstatic_acme_macos.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libstatic_acme_macos.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = list_serial_ports.cpp; sourceTree = "<group>"; };
 		9AC2D0582653EBF000CC8096 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -260,10 +245,6 @@
 				9A7ECABF2651963500D5BA45 /* path_system.h */,
 				9A78F44028E7D7F0007F62C0 /* address_to_line.cpp */,
 				9A78F44128E7D7F0007F62C0 /* address_to_line.h */,
-				9AB812432A0200570032F4C8 /* application.cpp */,
-				9AB812442A0200580032F4C8 /* application.h */,
-				9AB812472A025C7A0032F4C8 /* axuielement.cpp */,
-				9AB812482A025C7A0032F4C8 /* axuielement.h */,
 				9AA3F93B2A948611004283CA /* directory_context.cpp */,
 				9AA3F93A2A948610004283CA /* directory_context.h */,
 				9AA3F9412A948612004283CA /* aaa_dir_system.cpp */,
@@ -281,8 +262,6 @@
 				9A818F662A721D51008F470C /* integration_context.cpp */,
 				9A818F642A721D51008F470C /* integration_context.h */,
 				9AC2CB3B26531C6200CC8096 /* list_serial_ports.cpp */,
-				9AB812362A01F3D40032F4C8 /* main_window.cpp */,
-				9AB812372A01F3D40032F4C8 /* main_window.h */,
 				9A15A61D264B56760080670E /* main.cpp */,
 				9A787E8D264E901E003DF8A0 /* mm.mm */,
 				9A787C65264BD87E003DF8A0 /* mmos.h */,
@@ -345,9 +324,6 @@
 				9A78F43F28E7D6A3007F62C0 /* _001address_to_line.hpp in Headers */,
 				9A15A625264B56770080670E /* _.h in Headers */,
 				9A7ECAC32651963500D5BA45 /* path_system.h in Headers */,
-				9AB812392A01F3D40032F4C8 /* main_window.h in Headers */,
-				9AB812462A0200580032F4C8 /* application.h in Headers */,
-				9AB8124A2A025C7A0032F4C8 /* axuielement.h in Headers */,
 				9A15A622264B56770080670E /* _library.h in Headers */,
 				9A787C67264BD87E003DF8A0 /* node.h in Headers */,
 				9A78F44328E7D7F0007F62C0 /* address_to_line.h in Headers */,
@@ -513,19 +489,16 @@
 				9A787BE8264BD7AF003DF8A0 /* mmos.mm in Sources */,
 				9A787E91264E9276003DF8A0 /* process.cpp in Sources */,
 				9A818F672A721D69008F470C /* integration_context.cpp in Sources */,
-				9AB812452A0200580032F4C8 /* application.cpp in Sources */,
 				9A239CB626CDEF9300F98012 /* file_system.cpp in Sources */,
 				9A15A62F264B56770080670E /* main.cpp in Sources */,
 				9A7ECAC02651963500D5BA45 /* path_system.cpp in Sources */,
 				9AE382A428B16F14007EA867 /* quit.cpp in Sources */,
 				9A787E8E264E901E003DF8A0 /* mm.mm in Sources */,
 				9AC2CB3D26531C6200CC8096 /* list_serial_ports.cpp in Sources */,
-				9AB812492A025C7A0032F4C8 /* axuielement.cpp in Sources */,
 				9AA3F9532A9495CF004283CA /* directory_context.cpp in Sources */,
 				9A6543FE2666F2A400F8A254 /* image.cpp in Sources */,
 				9A92314C27EAE30D00B5A78D /* directory_system.cpp in Sources */,
 				9AA3F95A2A9495E4004283CA /* watcher.cpp in Sources */,
-				9AB812382A01F3D40032F4C8 /* main_window.cpp in Sources */,
 				9A23A71F26CEC02A00F98012 /* file.mm in Sources */,
 				9AA3F9552A9495D5004283CA /* file_context.cpp in Sources */,
 				9A15A624264B56770080670E /* _factory.cpp in Sources */,
@@ -550,16 +523,13 @@
 				9A2049F42D2CCB4000C43F75 /* file.mm in Sources */,
 				9AC14D44297B3488006D9BD3 /* mm.mm in Sources */,
 				9AC14D45297B3488006D9BD3 /* list_serial_ports.cpp in Sources */,
-				9A7725022A259E3B00B9A835 /* main_window.cpp in Sources */,
 				9AC14D46297B3488006D9BD3 /* image.cpp in Sources */,
 				9AA3F9542A9495D0004283CA /* directory_context.cpp in Sources */,
 				9AC14D47297B3488006D9BD3 /* directory_system.cpp in Sources */,
-				9A7724FF2A259DC700B9A835 /* application.cpp in Sources */,
 				9AA3F95B2A9495E5004283CA /* watcher.cpp in Sources */,
 				9AC14D49297B3488006D9BD3 /* _factory.cpp in Sources */,
 				9AA3F9562A9495D6004283CA /* file_context.cpp in Sources */,
 				9AC14D4A297B3488006D9BD3 /* node.cpp in Sources */,
-				9A7725002A259DEA00B9A835 /* axuielement.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,11 +591,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/$(CONFIGURATION)/framework",
-				);
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -635,6 +600,11 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				EXCLUDED_ARCHS = "";
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/$(CONFIGURATION)/framework",
+				);
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
@@ -658,7 +628,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path @loader_path";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path",
+					"@loader_path",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/$(CONFIGURATION)/library",
@@ -740,11 +713,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/$(CONFIGURATION)/framework",
-				);
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -754,6 +722,11 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				EXCLUDED_ARCHS = "";
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/$(CONFIGURATION)/framework",
+				);
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
@@ -775,7 +748,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_FUNCTION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path @loader_path";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path",
+					"@loader_path",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(WorkspaceDir)/../operating_system/storage-$(PLATFORM_MODIFIER)/$(CONFIGURATION)/library",

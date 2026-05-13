@@ -5,8 +5,8 @@
 #include "directory_context.h"
 #include "file_context.h"
 #include "file_system.h"
-#include "main_window.h"
-#include "application.h"
+//#include "main_window.h"
+//#include "application.h"
 #include <libunwind.h>
 //#include "address_to_line.h"
 #include "acme_posix/pipe.h"
@@ -65,8 +65,8 @@ __FACTORY_EXPORT void acme_macos_factory(::factory::factory * pfactory)
 
    pfactory->add_factory_item < ::acme_macos::node, ::platform::node > ();
 
-   pfactory->add_factory_item < ::acme_macos::main_window, ::operating_system::main_window > ();
-   pfactory->add_factory_item < ::acme_macos::application, ::operating_system::application > ();
+//   pfactory->add_factory_item < ::acme_macos::main_window, ::operating_system::main_window > ();
+  // pfactory->add_factory_item < ::acme_macos::application, ::operating_system::application > ();
 
    //pfactory->add_factory_item < ::acme_macos::address_to_line, ::acme_posix::address_to_line > ();
 

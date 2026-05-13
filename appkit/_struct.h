@@ -43,8 +43,8 @@ namespace appkit
    };
 
 
-   struct ns_window_t : public ::appkit_type {};
-   struct ns_image_t : public ::appkit_type {};
+   struct ns_window_t : public appkit_type {};
+   struct ns_image_t : public appkit_type {};
 
 
 

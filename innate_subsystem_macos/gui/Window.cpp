@@ -36,6 +36,7 @@
 #include "drawing/Graphics.h"
 #include "acme/windowing/windowing.h"
 #include "operating_system-macos/appkit/windowing.h"
+#include "operating_system-macos/acme_windowing_appkit/windowing.h"
 //#include <commctrl.h>
 // namespace macos
 // {
@@ -376,11 +377,12 @@ namespace innate_subsystem_macos
    ::operating_system::window Window::dialog_item_operating_system_window(int iDlgItem)
    {
 
-//      ASSERT(m_macoswindow.as_HWND() != 0);
-//      auto hwndChild = ::GetDlgItem(m_macoswindow.as_HWND(), iDlgItem);
-//      return ::as_operating_system_window(hwndChild);
+      ASSERT(m_macoswindow.is_set());
+
+      auto operatingsystemwindowChild = ::cross_windows::get_dlg_item(m_macoswindow.as_operating_system_window(), iDlgItem);
       
-      return {};
+      return operatingsystemwindowChild;
+      
    }
 
    void Window::subclassControlById(::Particle * pWindowControl, unsigned int id)
@@ -477,6 +479,38 @@ namespace innate_subsystem_macos
 //
 
    }
+
+
+// Set resource name for the window
+void Window::setResourceName(const ::scoped_string & scopedstr)
+{
+   
+   m_strResourceName = scopedstr;
+   m_uResourceId = m_papplication->getResourceId(m_strResourceName);
+   
+}
+// Set resource id for the window
+void Window::setResourceId(::u32 uId)
+{
+   
+   m_uResourceId = uId;
+   m_strResourceName = m_papplication->getResourceName(uId);
+   
+}
+// Get resource name for the window
+::string Window::getResourceName()
+{
+   
+   return m_strResourceName;
+   
+}
+// Get resource id for the window
+::u32 Window::getResourceId()
+{
+   
+   return m_uResourceId;
+
+}
 
 
    void Window::setClassStyle(unsigned int style)
@@ -631,8 +665,8 @@ namespace innate_subsystem_macos
    bool Window::_onWmCommand(::wparam wparam, ::lparam lparam)
    {
 
-      //return onCommand(LOWORD(wparam), HIWORD(wparam));
-      return false;
+    return onCommand(wparam.loword(), wparam.loword());
+    //  return false;
      
 
    }
@@ -658,7 +692,8 @@ namespace innate_subsystem_macos
    //    return false;
    // }
    //
-   bool Window::onSysCommand(::wparam wparam, ::lparam lparam)
+   //bool Window::onSysCommand(::wparam wparam, ::lparam lparam)
+bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
    {
       return false;
    }
@@ -805,10 +840,10 @@ namespace innate_subsystem_macos
 
    bool Window::isWindow()
    {
-//      return (m_macoswindow.as_HWND() != nullptr)
+      return (m_macoswindow.as_CGWindowID()!= 0);
 //      && (m_macoswindow.as_HWND() != INVALID_HANDLE_VALUE)
 //      && (::IsWindow(m_macoswindow.as_HWND()) != FALSE);
-      return true;
+//      return true;
    }
 
    bool Window::isIconic()
@@ -834,15 +869,19 @@ namespace innate_subsystem_macos
 
    ::string Window::getText()
    {
+      ASSERT(m_macoswindow.is_set());
 
-//      int length = (int)SendMessage(m_macoswindow.as_HWND(), WM_GETTEXTLENGTH, 0, 0);
-//
-//      ::wstring wstr;
-//
-//      GetWindowText(m_macoswindow.as_HWND(), wstr.auto_release_buffer(length), length + 1);
-//
-//      return wstr;
-      return {};
+      //int length = (int)::cross_windows::send_message(m_macoswindow, ::user::e_message_get_text_length, 0, 0);
+
+      //::wstring wstr;
+      
+      auto str = ::cross_windows::get_window_text(m_macoswindow.as_operating_system_window());
+
+      //GetWindowText(m_macoswindow.as_HWND(), wstr.auto_release_buffer(length), length + 1);
+
+      return str;
+      //return {};
+      
    }
 
 
@@ -1380,8 +1419,8 @@ namespace innate_subsystem_macos
 //
 //      }
 //
-//      switch (message)
-//      {
+      switch (message)
+      {
 //         case WM_SIZING:
 //            m_sizeIsChanged = true;
 //            return false;
@@ -1523,8 +1562,8 @@ namespace innate_subsystem_macos
 //                lresult = 0;
 //
 //                break;
-//      case WM_COMMAND:
-//        return  _onWmCommand(wparam, lparam);
+         case ::user::e_message_command:
+        return  _onWmCommand(wparam, lparam);
 //         
 //      case WM_NOTIFY:
 //      {
@@ -1649,9 +1688,22 @@ namespace innate_subsystem_macos
 //
 //m_macoswindow = nullptr;
 //      }break;
-//      }
+         default:
+            break;
+      }
       return onMessage(message, wparam, lparam);
    }
+
+lresult Window::message_call(::user::enum_message eusermessage, ::wparam wparam, ::lparam lparam, const ::i32_point & point)
+{
+   
+   ::lresult lresult = 0;
+   
+   on_window_procedure(lresult, eusermessage, wparam, lparam);
+
+   return lresult;
+
+}
 
 
    bool notification_handler::_000OnNotify(::lresult &lresult, wparam wparam, lparam lparam)
@@ -1860,6 +1912,21 @@ namespace innate_subsystem_macos
       return m_pwindowCallback->onSize();
 
    }
+
+
+void Window::post_message(::user::enum_message eusermessage, ::wparam wparam, ::lparam lparam)
+{
+
+   ::system()->acme_windowing()->post([this, eusermessage, wparam, lparam]()
+      {
+                                      ::lresult lresult = 0;
+      this->on_window_procedure(lresult
+                          , eusermessage,  wparam,  lparam);
+      
+   });
+
+}
+
 
 } // namespace innate_subsystem_macos
 // } // namespace macos
