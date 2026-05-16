@@ -24,6 +24,7 @@
 // From Pen.cpp by camilo on 2026-04-11 04:21 <3ThomasBorregaardSørensen!!
 #include "framework.h"
 #include "Font.h"
+#include "operating_system-apple/core_graphics/ct_font.h"
 
 //#include <crtdbg.h>
 
@@ -56,6 +57,9 @@ Font::~Font()
    {
 destroyGraphicsObject();
 
+      construct_newø(m_pctfont);
+      
+      m_pctfont->create_font_with_name(pszFamily, iPixelHeight, iFontWeight, bItalic);
 //
 //      Gdiplus::REAL fontSize =(Gdiplus::REAL) iPixelHeight;
 //      m_pfont = new Gdiplus::Font(::wstring(pszFamily), fontSize,

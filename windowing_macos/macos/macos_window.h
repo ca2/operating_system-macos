@@ -40,8 +40,6 @@ public:
    virtual void macos_window_mouse_dragged(double xHost, double yHost, double xAbsolute, double yAbsolute, unsigned long ulAppleMouseButton) = 0;
    virtual void macos_window_mouse_wheel(double deltaY, double xHost, double yHost, double xAbsolute, double yAbsolute) = 0;
    virtual void macos_window_double_click(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute) = 0;
-   virtual bool macos_window_key_down(::u32 vk, ::u32 scan, const char * pszUtf8) = 0;
-   virtual bool macos_window_key_up(::u32 vk, ::u32 scan) = 0;
    //virtual bool macos_window_key_down(::u32 uiKeyCode) = 0;
    //virtual bool macos_window_key_up(::u32 uiKeyCode) = 0;
    

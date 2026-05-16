@@ -3,7 +3,6 @@
 
 #include "acme/_.h"
 
-
 #if defined(_appkit_project)
 #define CLASS_DECL_APPKIT  CLASS_DECL_EXPORT
 #else

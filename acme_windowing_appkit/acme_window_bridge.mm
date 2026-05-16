@@ -14,6 +14,8 @@
 #include "ns_acme_impact.h"
 #import "macos_app.h"
 
+NSCursor* CreateInvisibleCursor();
+
 
 void ns_main_post(dispatch_block_t block);
 
@@ -40,19 +42,21 @@ acme_window_bridge::acme_window_bridge()
 acme_window_bridge::~acme_window_bridge()
 {
    
-   auto pnsacmewindow =  (__bridge ns_acme_window *) m_pnsacmewindow;
-   
-   pnsacmewindow->m_pacmewindowbridge = nullptr;
-   
-   pnsacmewindow->m_pnsacmeimpact->m_pnsacmewindow = nil;
-   
-   ns_main_post(^{
+   if(m_pnsacmewindow)
+   {
+      auto pnsacmewindow =  (__bridge ns_acme_window *) m_pnsacmewindow;
       
-      [ pnsacmewindow close];
+      pnsacmewindow->m_pacmewindowbridge = nullptr;
       
-   });;
-   
-   
+      pnsacmewindow->m_pnsacmeimpact->m_pacmewindowbridgeImpact = nullptr;
+      
+      ns_main_post(^{
+         
+         [ pnsacmewindow close];
+         
+      });;
+      
+   }
    
 }
 
@@ -66,6 +70,55 @@ acme_window_bridge::~acme_window_bridge()
    
 }
 
+
+//void acme_window_bridge::on_set_cursor_rectangles()
+//{
+//   
+//   
+//}
+//
+//
+//void acme_window_bridge::invalidate_cursor_rectangles()
+//{
+//   
+//   auto pnsacmewindow =  (__bridge ns_acme_window *) m_pnsacmewindow;
+//
+//   auto pimpact = [pnsacmewindow contentView];
+//   
+//   if(pimpact)
+//   {
+//      
+//      [pnsacmewindow invalidateCursorRectsForView:pimpact];
+//      
+//   }
+//
+//}
+//
+//
+//void acme_window_bridge::discard_all_cursor_rectangles()
+//{
+//   
+//   auto pnsacmewindow =  (__bridge ns_acme_window *) m_pnsacmewindow;
+//
+//   auto pimpact = [pnsacmewindow contentView];
+//   
+//   if(pimpact)
+//   {
+//      
+//      [pimpact discardCursorRects];
+//      
+//   }
+//
+//   
+//}
+//
+//
+//void acme_window_bridge::add_cursor_rectangle(const ::i32_rectangle & r, ::enum_cursor ecursor)
+//{
+//   
+//   
+//}
+
 void acme_window_bridge::create_ns_acme_window(CGRect cgrect)
 {
    
@@ -73,7 +126,7 @@ void acme_window_bridge::create_ns_acme_window(CGRect cgrect)
                 {
       
       auto pnsacmewindow=[ [ ns_acme_window alloc ] initWithContentRect: cgrect
-                          styleMask : 0 backing:NSBackingStoreBuffered  defer:YES];
+                          styleMask : 0 backing:NSBackingStoreBuffered  defer:YES moreNative:false];
       
       m_pnsacmewindow = (__bridge_retained CFTypeRef) pnsacmewindow;
       

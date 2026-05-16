@@ -24,7 +24,7 @@
 // Adapted by camilo on beginning of 2026-April <3ThomasBorregaardSorensen!!
 #include "framework.h"
 #include "ComboBox.h"
-
+#include "operating_system-macos/acme_windowing_appkit/_interoperability.h"
 //#include <Windowsx.h>
 
 
@@ -57,8 +57,11 @@
 
       void ComboBox::insertItem(int index, const char *text)
       {
-//         auto hwnd = ::as_HWND(operating_system_window());
-//         ComboBox_InsertString(hwnd, index, text);
+         
+         auto operatingsystemwindows = operating_system_window();
+         
+         ::cross_windows::combo_box_insert_string(operatingsystemwindows, index, text);
+         
       }
 
       void ComboBox::insertItem(int index, const char *text, void *tag)
@@ -71,19 +74,36 @@
       {
 //         auto hwnd = ::as_HWND(operating_system_window());
 //         return ComboBox_GetCount(hwnd);
-         return 0;
+         
+         auto operatingsystemwindows = operating_system_window();
+         
+         auto iCount = ::cross_windows::combo_box_get_count(operatingsystemwindows);
+
+         return iCount;
       }
 
       void ComboBox::setItemData(int index, void *tag)
       {
 //         auto hwnd = ::as_HWND(operating_system_window());
 //         ComboBox_SetItemData(hwnd, index, (::lparam)tag);
+         
+         auto operatingsystemwindows = operating_system_window();
+         
+         ::cross_windows::combo_box_set_item_data(operatingsystemwindows, index, tag);
+
       }
 
       void *ComboBox::getItemData(int index)
       {
 //         auto hwnd = ::as_HWND(operating_system_window());
 //         return (void *)ComboBox_GetItemData(hwnd, index);
+         
+         auto operatingsystemwindows = operating_system_window();
+         
+         auto p = ::cross_windows::combo_box_get_item_data(operatingsystemwindows, index);
+
+         return p;
+         
       }
 
       ::string ComboBox::getItemText(int index)
@@ -99,7 +119,11 @@
 //
 //         return wstr;
          
-         return {};
+         auto operatingsystemwindows = operating_system_window();
+         
+         auto str = ::cross_windows::combo_box_get_lb_text(operatingsystemwindows, index);
+         
+         return str;
 
       }
 
@@ -110,22 +134,43 @@
 //         auto hwnd = ::as_HWND(operating_system_window());
 //
 //         return ComboBox_GetCurSel((HWND) _HWND());
-         return 0;
+         //return 0;
+         auto operatingsystemwindows = operating_system_window();
+         
+         auto iCurSel = ::cross_windows::combo_box_get_cur_sel(operatingsystemwindows);
+         
+         return iCurSel;
+
       }
+   
 
       void ComboBox::setSelectedItem(int index)
       {
          //ComboBox_SetCurSel((HWND) _HWND(), index);
+         
+         auto operatingsystemwindows = operating_system_window();
+         
+         ::cross_windows::combo_box_set_cur_sel(operatingsystemwindows, index);
+
       }
 
       void ComboBox::deleteItem(int index)
       {
          //ComboBox_DeleteString((HWND) _HWND(), index);
+         auto operatingsystemwindows = operating_system_window();
+         
+         ::cross_windows::combo_box_delete_string(operatingsystemwindows, index);
+
       }
 
       void ComboBox::removeAllItems()
       {
          //ComboBox_ResetContent((HWND) _HWND());
+         
+         auto operatingsystemwindows = operating_system_window();
+         
+         ::cross_windows::combo_box_reset_content(operatingsystemwindows);
+
       }
    } // namespace subsystem
 //

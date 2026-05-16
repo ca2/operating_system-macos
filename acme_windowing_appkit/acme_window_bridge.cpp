@@ -12,6 +12,7 @@
 #include "acme/user/micro/elemental.h"
 #include "acme/user/user/frame_interaction.h"
 #include "acme/user/user/mouse.h"
+#include "operating_system-apple/core_graphics/cg_context.h"
 #include <CoreGraphics/CoreGraphics.h>
 
 void ns_main_post(dispatch_block_t block);
@@ -35,13 +36,13 @@ namespace appkit
 //void acme_window_bridge::on_left_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute)
 //{
 //
-//   auto pmouse = m_pwindow->create_newø <::user::mouse>();
+//   auto pmouse = m_pappkitacmewindowingwindow->create_newø <::user::mouse>();
 //
 //   pmouse->m_pointHost = {xHost, yHost};
 //
 //   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
 //
-//   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
+//   ::cast < ::micro::elemental > pelemental = m_pappkitacmewindowingwindow->m_pacmeuserinteraction;
 //
 //   pelemental->on_left_button_up(pmouse);
 //
@@ -51,13 +52,13 @@ namespace appkit
 //void acme_window_bridge::on_left_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute)
 //{
 //
-//   auto pmouse = m_pwindow->create_newø <::user::mouse>();
+//   auto pmouse = m_pappkitacmewindowingwindow->create_newø <::user::mouse>();
 //
 //   pmouse->m_pointHost = {xHost, yHost};
 //
 //   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
 //
-//   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
+//   ::cast < ::micro::elemental > pelemental = m_pappkitacmewindowingwindow->m_pacmeuserinteraction;
 //
 //   pelemental->on_left_button_down(pmouse);
 //
@@ -67,13 +68,13 @@ namespace appkit
 //void acme_window_bridge::on_right_button_up(int xHost, int yHost, int xAbsolute, int yAbsolute)
 //{
 //
-//   auto pmouse = m_pwindow->create_newø <::user::mouse>();
+//   auto pmouse = m_pappkitacmewindowingwindow->create_newø <::user::mouse>();
 //
 //   pmouse->m_pointHost = {xHost, yHost};
 //
 //   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
 //
-//   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
+//   ::cast < ::micro::elemental > pelemental = m_pappkitacmewindowingwindow->m_pacmeuserinteraction;
 //
 //   pelemental->on_right_button_up(pmouse);
 //
@@ -83,13 +84,13 @@ namespace appkit
 //void acme_window_bridge::on_right_button_down(int xHost, int yHost, int xAbsolute, int yAbsolute)
 //{
 //
-//   auto pmouse = m_pwindow->create_newø <::user::mouse>();
+//   auto pmouse = m_pappkitacmewindowingwindow->create_newø <::user::mouse>();
 //
 //   pmouse->m_pointHost = {xHost, yHost};
 //
 //   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
 //
-//   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
+//   ::cast < ::micro::elemental > pelemental = m_pappkitacmewindowingwindow->m_pacmeuserinteraction;
 //
 //   pelemental->on_right_button_down(pmouse);
 //
@@ -99,13 +100,13 @@ namespace appkit
 //void acme_window_bridge::on_mouse_move(int xHost, int yHost, int xAbsolute, int yAbsolute)
 //{
 //
-//   auto pmouse = m_pwindow->create_newø <::user::mouse>();
+//   auto pmouse = m_pappkitacmewindowingwindow->create_newø <::user::mouse>();
 //
 //   pmouse->m_pointHost = {xHost, yHost};
 //
 //   pmouse->m_pointAbsolute = {xAbsolute, yAbsolute};
 //
-//   ::cast < ::micro::elemental > pelemental = m_pwindow->m_pacmeuserinteraction;
+//   ::cast < ::micro::elemental > pelemental = m_pappkitacmewindowingwindow->m_pacmeuserinteraction;
 //
 //   pelemental->on_mouse_move(pmouse);
 //
@@ -115,17 +116,25 @@ namespace appkit
 void acme_window_bridge::on_char(int iChar)
 {
    
-   //m_pwindow->on_char(iChar);
+   //m_pappkitacmewindowingwindow->on_char(iChar);
    
 }
 
 
-void acme_window_bridge::_on_draw_frame(CGContextRef cg, CGSize sizeFrame)
+void acme_window_bridge::_on_draw_frame(CGContextRef cg, CGRect rect)
 {
    
    //::pointer<quartz2d::nano::graphics::device>pnanodevice = ::place(new quartz2d::nano::graphics::device(cg));
    
-   m_pwindow->_draw(cg);
+   ::i32_rectangle rectangle;
+   
+   ::copy(rectangle, rect);
+   
+   defer_construct_newø(m_pcgcontext);
+   
+   m_pcgcontext->m_cgcontext.m_u = (::uptr) cg;
+   
+   m_pappkitacmewindowingwindow->_draw(m_pcgcontext, rectangle);
    
 }
 
@@ -134,15 +143,15 @@ void acme_window_bridge::_on_draw_frame(CGContextRef cg, CGSize sizeFrame)
 void acme_window_bridge::on_layout(int x, int y, int w, int h)
 {
    
-   m_pwindow->_on_layout(x, y, w, h);
+   m_pappkitacmewindowingwindow->_on_layout(x, y, w, h);
    
 }
 
 
-void acme_window_bridge::set_cg_window_id(CGWindowID cgwindowid)
+void acme_window_bridge::set_ns_window_uptr(::uptr u)
 {
    
-   m_pwindow->m_macoswindow = cgwindowid;
+   m_pappkitacmewindowingwindow->m_macoswindow = u;
    
 }
 
@@ -150,9 +159,9 @@ void acme_window_bridge::set_cg_window_id(CGWindowID cgwindowid)
 bool acme_window_bridge::_is_top_most() const
 {
    
-   //   return m_pwindow->m_pacmeuserinteraction->m_bTopMost;
+   //   return m_pappkitacmewindowingwindow->m_pacmeuserinteraction->m_bTopMost;
    
-   ::cast<::acme::user::frame_interaction> pelemental = m_pwindow->m_pacmeuserinteraction;
+   ::cast<::acme::user::frame_interaction> pelemental = m_pappkitacmewindowingwindow->m_pacmeuserinteraction;
    
    if(!pelemental)
    {
@@ -169,7 +178,7 @@ bool acme_window_bridge::_is_top_most() const
 bool acme_window_bridge::_is_popup_window() const
 {
    
-   return m_pwindow->m_pacmeuserinteraction->is_popup_window();
+   return m_pappkitacmewindowingwindow->m_pacmeuserinteraction->is_popup_window();
    
 }
 
@@ -177,7 +186,7 @@ bool acme_window_bridge::_is_popup_window() const
 void acme_window_bridge::macos_window_become_main()
 {
    
-   return m_pwindow->macos_window_become_main();
+   return m_pappkitacmewindowingwindow->macos_window_become_main();
    
 }
 
@@ -185,7 +194,7 @@ void acme_window_bridge::macos_window_become_main()
 void acme_window_bridge::macos_window_resign_main()
 {
    
-   return m_pwindow->macos_window_resign_main();
+   return m_pappkitacmewindowingwindow->macos_window_resign_main();
    
 }
 
@@ -194,7 +203,7 @@ void acme_window_bridge::macos_window_become_key()
 {
    
    m_bIsActiveCached = true;
-   return m_pwindow->macos_window_become_key();
+   return m_pappkitacmewindowingwindow->macos_window_become_key();
    
 }
 
@@ -202,7 +211,14 @@ void acme_window_bridge::macos_window_become_key()
 void acme_window_bridge::macos_window_resign_key()
 {
    m_bIsActiveCached = false;
-   return m_pwindow->macos_window_resign_key();
+   return m_pappkitacmewindowingwindow->macos_window_resign_key();
+   
+}
+
+
+void acme_window_bridge::toggle_fullscreen()
+{
+   
    
 }
 
@@ -218,7 +234,7 @@ void acme_window_bridge::do_tasks()
 ::acme::windowing::window * acme_window_bridge::acme_windowing_window()
 {
  
-   return m_pwindow;
+   return m_pappkitacmewindowingwindow;
    
 }
 
@@ -271,7 +287,7 @@ void acme_window_bridge::on_control_box_zoom()
    bool acme_window_bridge::should_use_desktop_ambient_like_control_box() const
    {
    
-      auto pwindow = m_pwindow;
+      auto pwindow = m_pappkitacmewindowingwindow;
    
       if(::is_set(pwindow))
       {

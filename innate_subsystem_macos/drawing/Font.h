@@ -59,6 +59,7 @@ virtual public Implementation<::innate_subsystem::FontInterface>
       //
       //    friend class Graphics;
       //Gdiplus::Font * m_pfont;
+      ::pointer < ::core_text::ct_font > m_pctfont;
       ::string m_strFamily;
       int m_iPixelHeight;
       int m_iFontWeight;

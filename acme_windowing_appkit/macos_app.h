@@ -25,6 +25,16 @@
 #include "acme_notification_callback.h"
 class command_handler;
 
+namespace appkit
+{
+
+class acme_window_bridge;
+
+} // namespace appkit
+
+@class ns_acme_window;
+
+
 @interface macos_app : NSObject < NSApplicationDelegate >
 {
 @public
@@ -45,10 +55,11 @@ class command_handler;
 // A mutable array to manage and retain your active form dialogs
 @property (nonatomic, strong) NSMutableArray<NSWindowController *> *activeDialogs;
 
-
+-(ns_acme_window *) createMainFrame :(NSRect) r styleMask : (NSUInteger) style withAcmeWindowingWindow:(::acme::windowing::window *) pacmewindowingwindow withAcmeWindowBridge:(::appkit::acme_window_bridge*)pacmewindowbridge;
 //-(void)application_menu_update;
 -(NSWindowController *) addWindow:(NSWindow*)window;
--(::uptr) showDialog:(NSString*)strDialogName;
+-(::uptr) showDialog:(NSString*)strDialogName withAcmeWindowingWindow:(::acme::windowing::window*)pacmewindowingwindow;
+-(int)doModalDialog:(NSString *)strDialogName withAcmeWindowingWindow:(::acme::windowing::window*)pacmewindowingwindow;
 -(void) addDialog:(NSWindowController*)pwindowcontrollerDialog;
 -(void) removeDialog:(NSWindowController*)pwindowcontrollerDialog;
 -(void) addWindowController:(NSWindowController*)pwindowcontroller;

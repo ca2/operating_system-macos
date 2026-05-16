@@ -379,14 +379,16 @@ void windowing::set_osdata_acme_windowing_window(void * posdata, ::acme::windowi
    
    if(::is_null(pacmewindowingwindow))
    {
-      
-      m_windowmap.erase(posdata);
+      ::appkit::ns_window_t nswindow;
+      nswindow.m_p = posdata;
+      m_windowmap.erase(nswindow);
       
    }
    else
    {
-    
-      m_windowmap.set_at(posdata, pacmewindowingwindow);
+      ::appkit::ns_window_t nswindow;
+      nswindow.m_p = posdata;
+      m_windowmap.set_at(nswindow, pacmewindowingwindow);
       
    }
       
@@ -397,8 +399,10 @@ void windowing::set_osdata_acme_windowing_window(void * posdata, ::acme::windowi
 {
    
    _synchronous_lock synchronouslock(this->synchronization());
+   ::appkit::ns_window_t nswindow;
+   nswindow.m_p = posdata;
 
-   return m_windowmap[posdata];
+   return m_windowmap[nswindow];
    
 }
 
@@ -422,7 +426,7 @@ void windowing::set_dark_mode(bool bDarkMode)
    
 }
 
-void windowing::on_user_command(::uptr u,       ::uptr uControl)
+void windowing::on_user_command(::uptr u,::lightui::enum_notification enotification,       ::uptr uControl)
 {
    
    ::operating_system::macos_window macoswindow((CGWindowID)u);
@@ -435,7 +439,10 @@ void windowing::on_user_command(::uptr u,       ::uptr uControl)
       
    }
    
-   auto pacmewindowingwindow = m_windowmap[(void *)(::uptr)macoswindow.as_CGWindowID()];
+   ::appkit::ns_window_t nswindow;
+   nswindow.m_p = (void *) u;
+   
+   auto pacmewindowingwindow = m_windowmap[nswindow];
    
    if(::is_null(pacmewindowingwindow))
    {
@@ -445,7 +452,9 @@ void windowing::on_user_command(::uptr u,       ::uptr uControl)
       return;
       
    }
-   pacmewindowingwindow->post_message(::user::e_message_command, uControl & 0xffffu);
+   ::wparam wparam;
+   wparam = make_unsigned_int(uControl, enotification);
+   pacmewindowingwindow->send_message(::user::e_message_command, wparam);
    
 }
 
@@ -480,84 +489,40 @@ void windowing::on_user_command(::uptr u,       ::uptr uControl)
 } // namespace windowing_appkit
 
 
-
-::uptr ns_get_dlg_item(::uptr u, int iDlgItem);
-char * ns_get_impact_text(::uptr u, ::uptr uChild);
-char * ns_get_window_text(::uptr u);
-
-
-
-namespace cross_windows
-{
-
-
-   ::operating_system::window get_dlg_item(const ::operating_system::window & operatingsystemwindow, int iDlgItem)
-   {
-      
-      auto u = ::as_u64(operatingsystemwindow);
-      
-      if(u == 0)
-      {
-         
-         ::information("operating system window is not a window");
-         
-         return {};
-         
-      }
-      
-      //auto uChild = ns_get_dlg_item(u, iDlgItem);
-      
-      return {::windowing::e_operating_ambient_macos_impact, u, (::uptr) iDlgItem};
-      
-//      ::cast < ::appkit::acme::windowing::windowing > pwindowing = ::system()->acme_windowing();
-//   
-//      return pwindowing->__cross_windows__get_dlg_item(operatingsystemwindow, iDlgItem);
-      
-   }
-
-
-::string get_window_text(const ::operating_system::window & operatingsystemwindow)
+void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessage, ::uptr wparam, ::uptr lparam)
 {
    
-   ::string str;
+   ::cast < ::appkit::acme::windowing::windowing > pwindowing = ::system()->acme_windowing();
    
-   if(operatingsystemwindow.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact)
+   auto pacmewindowingwindow = pwindowing->m_windowmap[nswindow];
+   
+   if(::is_null(pacmewindowingwindow))
    {
+    
+      information("didn't find acme windowing window with this operating system window : " + ::as_string((::uptr)nswindow.m_p) );
       
-      auto p = ns_get_impact_text(operatingsystemwindow.m_opaque.m_ulla[0], operatingsystemwindow.m_opaque.m_ulla[1]);
-      
-      if(!p)
-      {
-         
-         return {};
-         
-      }
-      
-      str = p;
-      
-      ::free(p);
+      return;
       
    }
-   else if(operatingsystemwindow.m_eoperatingambient == ::windowing::e_operating_ambient_macos)
-   {
-      
-      auto p = ns_get_window_text(operatingsystemwindow.m_opaque.m_ulla[0]);
-      
-      if(!p)
-      {
-         
-         return {};
-         
-      }
-      
-      str = p;
-      
-      ::free(p);
-
-   }
    
-   return str;
-
+   pacmewindowingwindow->send_message(emessage, wparam, lparam);
+   
 }
 
-} // namespace cross_windows
+
+void set_acme_windowing_window_ns_window_uptr(::acme::windowing::window * pacmewindowingwindow, ::uptr u)
+{
+   
+   ::cast < ::appkit::acme::windowing::windowing > pwindowing = ::system()->acme_windowing();
+   ::cast < ::appkit::acme::windowing::window > pwindow =  pacmewindowingwindow;
+   ::appkit::ns_window_t nswindow;
+   nswindow.m_p = (void *) u;
+
+   pwindow->m_nswindow = nswindow;
+   
+   pwindow->m_macoswindow = u;
+   
+   pwindowing->m_windowmap[nswindow] = pacmewindowingwindow;
+   
+   
+}

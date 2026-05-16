@@ -43,7 +43,7 @@
 //} // namespace operating_system
 //
 #include "operating_system-macos/appkit/ns_window.h"
-
+#include "operating_system-macos/acme_windowing_appkit/acme_window_bridge.h"
 namespace appkit
 {
 
@@ -59,7 +59,8 @@ class acme_window_bridge;
 
 
    class CLASS_DECL_ACME_WINDOWING_APPKIT window :
-      virtual public ::appkit::ns_window
+      virtual public ::appkit::ns_window,
+      virtual public appkit::acme_window_bridge
    {
    public:
 
@@ -122,7 +123,7 @@ class acme_window_bridge;
 
       virtual bool message_loop_step();
 
-      virtual void _draw(CGContextRef cgcontextref);
+      virtual void _draw(::core_graphics::cg_context * pcgcontext, const ::i32_rectangle & rectangle);
 
       //virtual void on_draw(::nano::graphics::device * pnanodevice);
 

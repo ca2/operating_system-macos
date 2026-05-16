@@ -25,19 +25,27 @@
 #include "ns_acme_impact.h"
 #include "acme/operating_system/macos/keyboard.h"
 #include "acme/operating_system/winpr_input.h"
+#include "acme/constant/user_key.h"
 #include <Carbon/Carbon.h>
 
+
+NSCursor * e_cursor_to_ns_cursor(::enum_cursor ecursor);
+
+::user::enum_key key_code_to_user_key(unsigned int keyCode);
+::user::e_button_state ns_pressed_buttons_to_e_button_state(unsigned int pressedButtons);
 
 @implementation ns_acme_impact
 
 
-- (id) initWithFrame: (NSRect) frame andWindow: (ns_acme_window *) pnsacmewindow
+- (id) initWithFrame: (NSRect) frame andBridge: (::appkit::acme_window_bridge *) pacmewindowbridge
 {
+   
+   m_pnscursorImpact    = nil;
 
    self                 = [super initWithFrame:frame];
    
    
-   m_pnsacmewindow      = pnsacmewindow;
+   m_pacmewindowbridgeImpact  = pacmewindowbridge;
    
    m_bLShift            = false;
    m_bRShift            = false;
@@ -47,6 +55,9 @@
    m_bRAlt              = false;
    m_bLCommand          = false;
    m_bRCommand          = false;
+   m_bOnCreate          = false;
+   
+   m_pnscursorImpact = [ NSCursor arrowCursor ];
    
    if (self)
    {
@@ -131,7 +142,7 @@
 - (void) mouseUp: (NSEvent *) event
 {
 
-   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pacmewindowbridgeImpact;
    
    if(p == NULL)
    {
@@ -151,16 +162,43 @@
    int xAbsolute = pointAbsolute.x;
    
    int yAbsolute = pointAbsolute.y;
+   
+   auto pressedButtons = [ NSEvent pressedMouseButtons ];
+   
+   auto ebuttonstate = ns_pressed_buttons_to_e_button_state(pressedButtons);
  
-   p->on_left_button_up(xHost, yHost, xAbsolute, yAbsolute);
+   p->on_left_button_up(ebuttonstate, xHost, yHost, xAbsolute, yAbsolute);
    
 }
 
 
+//- (void)resetCursorRects
+//{
+//   
+//   [super resetCursorRects];
+//   
+//   ::appkit::acme_window_bridge * p = m_pacmewindowbridgeImpact;
+//   
+//   if(p == NULL)
+//   {
+//      
+//      return;
+//      
+//   }
+//   
+//   p->on_set_cursor_rectangles();
+//
+////   auto invisibleCursor =CreateInvisibleCursor();
+////   
+////   
+////    [self addCursorRect:self.bounds
+////                 cursor: invisibleCursor];
+//}
+
 - (void) mouseMoved: (NSEvent *) event
 {
 
-   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pacmewindowbridgeImpact;
    
    if(p == NULL)
    {
@@ -174,16 +212,39 @@
    int xHost = pointHost.x;
    
    int yHost = pointHost.y;
+   
+   NSLog(@"mouse move %d, %d", xHost, yHost);
 
    NSPoint pointAbsolute = [self screenLocationEx: event];
    
    int xAbsolute = pointAbsolute.x;
    
    int yAbsolute = pointAbsolute.y;
+   
+   auto pressedButtons = [ NSEvent pressedMouseButtons ];
+   
+   auto ebuttonstate = ns_pressed_buttons_to_e_button_state(pressedButtons);
 
-   p->on_mouse_move(xHost, yHost, xAbsolute, yAbsolute);
+   p->on_mouse_move(ebuttonstate, xHost, yHost, xAbsolute, yAbsolute);
+   
+   if(m_pnscursorImpact)
+   {
+      
+      [ m_pnscursorImpact set ];
+      
+   }
    
    return;
+   
+}
+
+
+- (void) setMouseCursor : (::enum_cursor) ecursor
+{
+   
+   auto pnscursor = e_cursor_to_ns_cursor(ecursor);
+   
+   m_pnscursorImpact = pnscursor;
    
 }
 
@@ -191,7 +252,7 @@
 - (void) mouseDragged: (NSEvent *) event
 {
 
-   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pacmewindowbridgeImpact;
    
    if(p == NULL)
    {
@@ -212,7 +273,11 @@
    
    int yAbsolute = pointAbsolute.y;
 
-   p->on_mouse_move(xHost, yHost, xAbsolute, yAbsolute);
+   auto pressedButtons = [ NSEvent pressedMouseButtons ];
+   
+   auto ebuttonstate = ns_pressed_buttons_to_e_button_state(pressedButtons);
+
+   p->on_mouse_move(ebuttonstate, xHost, yHost, xAbsolute, yAbsolute);
    
 }
 
@@ -220,7 +285,7 @@
 - (void) mouseDown: (NSEvent *) event
 {
    
-   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pacmewindowbridgeImpact;
    
    if(p == NULL)
    {
@@ -240,8 +305,15 @@
    int xAbsolute = pointAbsolute.x;
    
    int yAbsolute = pointAbsolute.y;
+   
+   NSUInteger buttons =
+       [NSEvent pressedMouseButtons];
+   
+   auto pressedButtons = [ NSEvent pressedMouseButtons ];
+   
+   auto ebuttonstate = ns_pressed_buttons_to_e_button_state(pressedButtons);
 
-   p->on_left_button_down(xHost, yHost, xAbsolute, yAbsolute);
+   p->on_left_button_down(ebuttonstate, xHost, yHost, xAbsolute, yAbsolute);
    
 }
 
@@ -249,7 +321,7 @@
 - (void) rightMouseUp: (NSEvent *) event
 {
 
-   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pacmewindowbridgeImpact;
    
    if(p == NULL)
    {
@@ -270,7 +342,11 @@
    
    int yAbsolute = pointAbsolute.y;
 
-   p->on_right_button_up(xHost, yHost, xAbsolute, yAbsolute);
+   auto pressedButtons = [ NSEvent pressedMouseButtons ];
+   
+   auto ebuttonstate = ns_pressed_buttons_to_e_button_state(pressedButtons);
+
+   p->on_right_button_up(ebuttonstate, xHost, yHost, xAbsolute, yAbsolute);
    
 }
 
@@ -278,7 +354,7 @@
 - (void) rightMouseDown: (NSEvent *) event
 {
    
-   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pacmewindowbridgeImpact;
    
    if(p == NULL)
    {
@@ -299,7 +375,11 @@
    
    int yAbsolute = pointAbsolute.y;
 
-   p->on_right_button_down(xHost, yHost, xAbsolute, yAbsolute);
+   auto pressedButtons = [ NSEvent pressedMouseButtons ];
+   
+   auto ebuttonstate = ns_pressed_buttons_to_e_button_state(pressedButtons);
+
+   p->on_right_button_down(ebuttonstate, xHost, yHost, xAbsolute, yAbsolute);
    
 }
 
@@ -325,13 +405,14 @@
 
 #define REDRAW_HINTING
 #undef REDRAW_HINTING
-//#define REDRAW_HINTING
+//#define REDRAW_HINTING1
+//#define REDRAW_HINTING2
 
 
 - (void) drawRect: (NSRect) rect
 {
 
-   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pacmewindowbridgeImpact;
    
    if(p == NULL)
    {
@@ -342,8 +423,28 @@
    
    CGContextRef cgc = (CGContextRef) [[NSGraphicsContext currentContext] graphicsPort];
 
-#ifdef REDRAW_HINTING
+#ifdef REDRAW_HINTING1
    
+   {
+      
+      CGContextSetBlendMode(cgc, kCGBlendModeCopy);
+      
+      CGContextSetRGBFillColor(cgc, 10.f / 255.0f, 160.f / 255.0f, 255.f / 255.0f, 255.f / 255.0f);
+      
+      auto rectArtifact1 = rect;
+      
+      //rectArtifact1.size.width /= 4;
+      
+      //rectArtifact1.size.height /= 4;
+      
+      CGContextFillRect(cgc, rectArtifact1);
+      
+   }
+   
+#endif
+   
+#ifdef REDRAW_HINTING
+
    {
       
       CGContextSetBlendMode(cgc, kCGBlendModeCopy);
@@ -362,9 +463,10 @@
    
 #endif
    
-   auto rectFrame = [self frame];
+   //auto rectFrame = [self frame];
    
-   p->_on_draw_frame(cgc, rectFrame.size);
+   //p->_on_draw_frame(cgc, rectFrame.size);
+   p->_on_draw_frame(cgc, rect);
    
 #ifdef REDRAW_HINTING
    
@@ -389,6 +491,27 @@
    }
    
 #endif
+   
+#ifdef REDRAW_HINTING2
+   
+   {
+      
+      CGContextSetBlendMode(cgc, kCGBlendModeCopy);
+      
+      CGContextSetRGBFillColor(cgc, 10.f / 255.0f, 255.f / 255.0f, 160.f / 255.0f, 155.f / 255.0f);
+      
+      auto rectArtifact1 = rect;
+      
+      //rectArtifact1.size.width /= 4;
+      
+      //rectArtifact1.size.height /= 4;
+      
+      CGContextFillRect(cgc, rectArtifact1);
+      
+   }
+   
+#endif
+
    
 }
 
@@ -450,7 +573,7 @@ m_f = true; \
 - (void)keyDown:(NSEvent *)event
 {
 
-   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pacmewindowbridgeImpact;
      
    if(p == NULL)
    {
@@ -466,64 +589,114 @@ m_f = true; \
       
    }
    
-   DWORD keyCode;
+   const char * pszUtf8 = nullptr;
    
-   DWORD keyFlags = 0;
+   if([[event characters] length ] > 0)
+   {
    
-   DWORD vkcode;
+      pszUtf8 = [[event characters] UTF8String];
    
-   DWORD scancode;
+   }
    
-   keyCode = [event keyCode];
-   
-   vkcode = keyCode;
-      
-   scancode = GetVirtualScanCodeFromVirtualKeyCode(vkcode, 4);
+   NSEventModifierFlags flags =
+           [event modifierFlags];
 
-   keyFlags |= (scancode & KBDEXT) ? KBDEXT : 0;
-   
-   char * pszUtf8 = nullptr;
-   
-   if(!apple_is_action_key(keyCode) && !(kbdModFlags &(NSControlKeyMask | NSCommandKeyMask|NSAlternateKeyMask)))
-   {
-   
-      if([[event characters] length ] > 0)
-      {
-      
-         pszUtf8 = strdup([[event characters] UTF8String]);
-      
-      }
-      else if(keyCode == kVK_Space)
-      {
-       
-         pszUtf8=strdup(" ");
-         
-      }
-      
-   }
-   else if(keyCode == kVK_Tab)
-   {
-    
-      pszUtf8 = strdup("\t");
-      
-   }
-   else if(keyCode == kVK_Return)
-   {
-    
-      pszUtf8 = strdup("\r");
-      
-   }
-   
-   if(pszUtf8)
-   {
+       bool ctrl =
+           (flags & NSEventModifierFlagControl) != 0;
 
-      int iUni = *pszUtf8;
-      
-      p->on_char(iUni);
-      
-      free(pszUtf8);
-      
-   }
+       bool alt =
+           (flags & NSEventModifierFlagOption) != 0;
+
+       bool shift =
+           (flags & NSEventModifierFlagShift) != 0;
+
+       bool fKey =
+           (event.keyCode == kVK_ANSI_F);
+
+       if (ctrl && alt && shift && fKey)
+   //if (fKey)
+       {
+          p->toggle_fullscreen();
+       }
+   
+   auto keyCode = [event keyCode];
+   
+   auto euserkey = key_code_to_user_key(keyCode);
+
+//   if(keyCode == 0 && pszUtf8)
+//   {
+//      if(pszUtf8[0] >= 'a' && pszUtf8[0] <= 'z')
+//      {
+//         euserkey = (::user::enum_key) (::user::e_key_a + (pszUtf8[0] - 'a'));
+//      }
+//      else if(pszUtf8[0] >= '0' && pszUtf8[0] <= '9')
+//      {
+//         euserkey = (::user::enum_key) (::user::e_key_0 + (pszUtf8[0] - '0'));
+//      }
+//   }
+   
+   p->on_key_down(euserkey);
+   
+//
+//   
+//   DWORD keyCode;
+//   
+//   DWORD keyFlags = 0;
+//   
+//   DWORD vkcode;
+//   
+//   DWORD scancode;
+   
+//   keyCode = [event keyCode];
+//   
+//   vkcode = keyCode;
+//      
+//   scancode = GetVirtualScanCodeFromVirtualKeyCode(vkcode, 4);
+//
+//   keyFlags |= (scancode & KBDEXT) ? KBDEXT : 0;
+//   
+//   char * pszUtf8 = nullptr;
+//   
+//   if(!apple_is_action_key(keyCode) && !(kbdModFlags &(NSControlKeyMask | NSCommandKeyMask|NSAlternateKeyMask)))
+//   {
+//   
+//      if([[event characters] length ] > 0)
+//      {
+//      
+//         pszUtf8 = strdup([[event characters] UTF8String]);
+//      
+//      }
+//      else if(keyCode == kVK_Space)
+//      {
+//       
+//         pszUtf8=strdup(" ");
+//         
+//      }
+//      
+//   }
+//   else if(keyCode == kVK_Tab)
+//   {
+//    
+//      pszUtf8 = strdup("\t");
+//      
+//   }
+//   else if(keyCode == kVK_Return)
+//   {
+//    
+//      pszUtf8 = strdup("\r");
+//      
+//   }
+//   
+//   if(pszUtf8)
+//   {
+//
+//      int iUni = *pszUtf8;
+//      
+//      p->on_char(iUni);
+//      
+//      free(pszUtf8);
+//      
+//   }
    
 }
 
@@ -531,17 +704,17 @@ m_f = true; \
 - (void)keyUp:(NSEvent *)event
 {
    
-   DWORD keyCode;
+//   DWORD keyCode;
+//   
+//   DWORD keyFlags = 0;
+//   
+//   DWORD vkcode;
+//   
+//   DWORD scancode;
+//   
+//   NSString * characters;
    
-   DWORD keyFlags = 0;
-   
-   DWORD vkcode;
-   
-   DWORD scancode;
-   
-   NSString * characters;
-   
-   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pacmewindowbridgeImpact;
    
    if(p == NULL)
    {
@@ -550,15 +723,41 @@ m_f = true; \
       
    }
    
-   keyCode = [event keyCode];
+   //keyCode = [event keyCode];
    
-   characters = [event charactersIgnoringModifiers];
+   const char * pszUtf8 = nullptr;
+   
+   if([[event characters] length ] > 0)
+   {
+   
+      pszUtf8 = [[event characters] UTF8String];
+   
+   }
 
-   vkcode = keyCode;
+   auto keyCode = [event keyCode];
+   ::user::enum_key euserkey = ::user::e_key_none;
+   
+   if(keyCode == 0 && pszUtf8)
+   {
+      if(pszUtf8[0] >= 'a' && pszUtf8[0] <= 'z')
+      {
+         euserkey = (::user::enum_key) (::user::e_key_a + (pszUtf8[0] - 'a'));
+      }
+      else if(pszUtf8[0] >= '0' && pszUtf8[0] <= '9')
+      {
+         euserkey = (::user::enum_key) (::user::e_key_0 + (pszUtf8[0] - '0'));
+      }
+   }
+   p->on_key_up(euserkey);
 
-   scancode = GetVirtualScanCodeFromVirtualKeyCode(vkcode, 4);
-
-   keyFlags |= (scancode & KBDEXT) ? KBDEXT : 0;
+   
+//   characters = [event charactersIgnoringModifiers];
+//
+//   vkcode = keyCode;
+//
+//   scancode = GetVirtualScanCodeFromVirtualKeyCode(vkcode, 4);
+//
+//   keyFlags |= (scancode & KBDEXT) ? KBDEXT : 0;
    
 }
 
@@ -566,7 +765,7 @@ m_f = true; \
 - (void)flagsChanged:(NSEvent *)event
 {
 
-   ::appkit::acme_window_bridge * p = m_pnsacmewindow->m_pacmewindowbridge;
+   ::appkit::acme_window_bridge * p = m_pacmewindowbridgeImpact;
    
    if(p == NULL)
    {
@@ -635,6 +834,25 @@ m_f = true; \
 
 - (void)viewWillMoveToWindow:(NSWindow *)newWindow
 {
+   
+   if(!m_bOnCreate)
+   {
+      
+      m_bOnCreate =true;
+      
+      ::appkit::acme_window_bridge * p = m_pacmewindowbridgeImpact;
+        
+      if(p == NULL)
+      {
+         
+         return;
+         
+      }
+      
+      p->on_create();
+
+      
+   }
    
    NSTrackingArea *const trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:(NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveAlways | NSTrackingInVisibleRect) owner:self userInfo:nil];
    
@@ -729,6 +947,382 @@ unsigned int event_key_code(NSEvent * event)
    unsigned int uiKeyCode = [event keyCode];
  
    return uiKeyCode;
+   
+}
+
+
+
+::user::enum_key key_code_to_user_key(unsigned int keyCode)
+{
+   
+   ::user::enum_key euserkey = ::user::e_key_none;
+
+   if(keyCode == kVK_ANSI_A)
+   {
+      
+      euserkey = ::user::e_key_a;
+      
+   }
+   else if(keyCode == kVK_ANSI_B)
+   {
+      
+      euserkey = ::user::e_key_b;
+      
+   }
+   else if(keyCode == kVK_ANSI_C)
+   {
+      
+      euserkey = ::user::e_key_c;
+      
+   }
+   else if(keyCode == kVK_ANSI_D)
+   {
+      
+      euserkey = ::user::e_key_d;
+      
+   }
+   else if(keyCode == kVK_ANSI_E)
+   {
+      
+      euserkey = ::user::e_key_e;
+      
+   }
+   else if(keyCode == kVK_ANSI_F)
+   {
+      
+      euserkey = ::user::e_key_f;
+      
+   }
+   else if(keyCode == kVK_ANSI_G)
+   {
+      
+      euserkey = ::user::e_key_g;
+      
+   }
+   else if(keyCode == kVK_ANSI_H)
+   {
+      
+      euserkey = ::user::e_key_h;
+      
+   }
+   else if(keyCode == kVK_ANSI_I)
+   {
+      
+      euserkey = ::user::e_key_i;
+      
+   }
+   else if(keyCode == kVK_ANSI_J)
+   {
+      
+      euserkey = ::user::e_key_j;
+      
+   }
+   else if(keyCode == kVK_ANSI_K)
+   {
+      
+      euserkey = ::user::e_key_k;
+      
+   }
+   else if(keyCode == kVK_ANSI_L)
+   {
+      
+      euserkey = ::user::e_key_l;
+      
+   }
+   else if(keyCode == kVK_ANSI_M)
+   {
+      
+      euserkey = ::user::e_key_m;
+      
+   }
+   else if(keyCode == kVK_ANSI_N)
+   {
+      
+      euserkey = ::user::e_key_n;
+      
+   }
+   else if(keyCode == kVK_ANSI_O)
+   {
+      
+      euserkey = ::user::e_key_o;
+      
+   }
+   else if(keyCode == kVK_ANSI_P)
+   {
+      
+      euserkey = ::user::e_key_p;
+      
+   }
+   else if(keyCode == kVK_ANSI_Q)
+   {
+      
+      euserkey = ::user::e_key_q;
+      
+   }
+   else if(keyCode == kVK_ANSI_R)
+   {
+      
+      euserkey = ::user::e_key_r;
+      
+   }
+   else if(keyCode == kVK_ANSI_S)
+   {
+      
+      euserkey = ::user::e_key_s;
+      
+   }
+   else if(keyCode == kVK_ANSI_T)
+   {
+      
+      euserkey = ::user::e_key_t;
+      
+   }
+   else if(keyCode == kVK_ANSI_U)
+   {
+      
+      euserkey = ::user::e_key_u;
+      
+   }
+   else if(keyCode == kVK_ANSI_V)
+   {
+      
+      euserkey = ::user::e_key_v;
+      
+   }
+   else if(keyCode == kVK_ANSI_W)
+   {
+      
+      euserkey = ::user::e_key_w;
+      
+   }
+   else if(keyCode == kVK_ANSI_X)
+   {
+      
+      euserkey = ::user::e_key_x;
+      
+   }
+   else if(keyCode == kVK_ANSI_Y)
+   {
+      
+      euserkey = ::user::e_key_y;
+      
+   }
+   else if(keyCode == kVK_ANSI_Z)
+   {
+      
+      euserkey = ::user::e_key_z;
+      
+   }
+   else if(keyCode == kVK_ANSI_0)
+   {
+      
+      euserkey = ::user::e_key_0;
+      
+   }
+   else if(keyCode == kVK_ANSI_1)
+   {
+      
+      euserkey = ::user::e_key_1;
+      
+   }
+   else if(keyCode == kVK_ANSI_2)
+   {
+      
+      euserkey = ::user::e_key_2;
+      
+   }
+   else if(keyCode == kVK_ANSI_3)
+   {
+      
+      euserkey = ::user::e_key_3;
+      
+   }
+   else if(keyCode == kVK_ANSI_4)
+   {
+      
+      euserkey = ::user::e_key_4;
+      
+   }
+   else if(keyCode == kVK_ANSI_5)
+   {
+      
+      euserkey = ::user::e_key_5;
+      
+   }
+   else if(keyCode == kVK_ANSI_6)
+   {
+      
+      euserkey = ::user::e_key_6;
+      
+   }
+   else if(keyCode == kVK_ANSI_7)
+   {
+      
+      euserkey = ::user::e_key_7;
+      
+   }
+   else if(keyCode == kVK_ANSI_8)
+   {
+      
+      euserkey = ::user::e_key_8;
+      
+   }
+   else if(keyCode == kVK_ANSI_9)
+   {
+      
+      euserkey = ::user::e_key_9;
+      
+   }
+   else if(keyCode == kVK_ANSI_Equal)
+   {
+      
+      euserkey = ::user::e_key_equal;
+      
+   }
+   else if(keyCode == kVK_ANSI_Minus)
+   {
+      
+      euserkey = ::user::e_key_hyphen;
+      
+   }
+   else if(keyCode == kVK_ANSI_RightBracket)
+   {
+      
+      euserkey = ::user::e_key_right_bracket;
+      
+   }
+   else if(keyCode == kVK_ANSI_LeftBracket)
+   {
+      
+      euserkey = ::user::e_key_left_bracket;
+      
+   }
+   else if(keyCode == kVK_ANSI_Quote)
+   {
+      
+      euserkey = ::user::e_key_apostrophe;
+      
+   }
+   else if(keyCode == kVK_ANSI_Semicolon)
+   {
+      
+      euserkey = ::user::e_key_semicolon;
+      
+   }
+   else if(keyCode == kVK_ANSI_Backslash)
+   {
+      
+      euserkey = ::user::e_key_backslash;
+      
+   }
+   else if(keyCode == kVK_ANSI_Comma)
+   {
+      
+      euserkey = ::user::e_key_comma;
+      
+   }
+   else if(keyCode == kVK_ANSI_Slash)
+   {
+      
+      euserkey = ::user::e_key_slash;
+      
+   }
+   else if(keyCode == kVK_ANSI_Period)
+   {
+      
+      euserkey = ::user::e_key_slash;
+      
+   }
+   else if(keyCode == kVK_ANSI_Slash)
+   {
+      
+      euserkey = ::user::e_key_slash;
+      
+   }
+   else if(keyCode == kVK_ANSI_Period)
+   {
+      
+      euserkey = ::user::e_key_dot;
+      
+   }
+   else if(keyCode == kVK_ANSI_Grave)
+   {
+      
+      euserkey = ::user::e_key_grave;
+      
+   }
+   else if(keyCode == kVK_Delete)
+   {
+      
+      euserkey = ::user::e_key_back;
+      
+   }
+   else if(keyCode == kVK_Return)
+   {
+      
+      euserkey = ::user::e_key_return;
+      
+   }
+   else if(keyCode == kVK_Escape)
+   {
+      
+      euserkey = ::user::e_key_escape;
+      
+   }
+   else
+   {
+    
+      throw ::exception(error_unexpected_situation);
+      
+   }
+
+   return euserkey;
+   
+}
+
+
+NSCursor* CreateInvisibleCursor()
+{
+    NSImage* image =
+        [[NSImage alloc]
+            initWithSize:NSMakeSize(16, 16)];
+
+    return [[NSCursor alloc]
+        initWithImage:image
+              hotSpot:NSZeroPoint];
+}
+
+
+NSCursor * g_pnscursorInvisible = nil;
+
+NSCursor * e_cursor_to_ns_cursor(::enum_cursor ecursor)
+{
+   
+   if(ecursor == e_cursor_none)
+   {
+      
+      if(g_pnscursorInvisible == nil)
+      {
+         
+         g_pnscursorInvisible = CreateInvisibleCursor();
+         
+      }
+      
+      return g_pnscursorInvisible;
+      
+   }
+   else if(ecursor == e_cursor_arrow)
+   {
+    
+      return [ NSCursor arrowCursor ];
+      
+   }
+   else
+   {
+    
+      return nil;
+      
+   }
    
 }
 

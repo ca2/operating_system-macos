@@ -43,7 +43,8 @@ struct mf_context
 //   mf_context* mfc;
    //APPLE_KEYBOARD_TYPE appleKeyboardType;
    //ns_nano_window * m_pnanowindow;
-   ns_acme_window * m_pnsacmewindow;
+   ::appkit::acme_window_bridge *      m_pacmewindowbridgeImpact;
+   //ns_acme_window * m_pnsacmewindow;
    NSTrackingArea * m_ptrackingarea;
    bool m_bLShift;
    bool m_bRShift;
@@ -53,10 +54,11 @@ struct mf_context
    bool m_bRAlt;
    bool m_bLCommand; // In Windows, the Windows Key
    bool m_bRCommand; // In Windows, the Windows Key
+   bool m_bOnCreate;
    ::u32 kbdModFlags;
-   
+   NSCursor * m_pnscursorImpact;
 }
-
-- (id)initWithFrame:(NSRect)frame andWindow:(ns_acme_window*)pnsacmewindow;
-
+@property NSInteger tag;
+- (id)initWithFrame:(NSRect)frame andBridge:(::appkit::acme_window_bridge*)pacmewindowbridge;
+- (void) setMouseCursor: (::enum_cursor) ecursor;
 @end

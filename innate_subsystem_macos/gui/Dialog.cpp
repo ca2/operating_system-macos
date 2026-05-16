@@ -34,8 +34,10 @@
 #include "operating_system-macos/appkit/windowing.h"
 #include "operating_system-macos/acme_windowing_appkit/windowing.h"
 
-::uptr ns_show_dialog(const char * psz);
-
+::uptr ns_show_dialog(const char * psz, ::acme::windowing::window * pacmewindowingwindow);
+void ns_end_dialog(::appkit::ns_window_t nswindow, int iDialogResult);
+int ns_do_modal_dialog(const char * psz, ::acme::windowing::window * pacmewindowingwindow);
+::appkit::ns_window_t as_ns_window_t(const ::operating_system::window & operatingsystemwindow);
 namespace innate_subsystem_macos
 {
 
@@ -126,11 +128,12 @@ void
    void Dialog::closeDialog(int code)
    {
 //      // Destroy dialog
-//      if (!m_isModal) {
+      if (!m_isModal) {
 //         DestroyWindow((HWND) _HWND());
-//      } else {
+      } else {
+         ns_end_dialog(::as_ns_window_t(operating_system_window()), code);
 //         EndDialog((HWND) _HWND(), code);
-//      }
+      }
 //      // We have no valid hwnd, so forse set hwnd to NULL
 //      _setHWND(NULL);
    }
@@ -140,15 +143,15 @@ void
 
       ::system()->acme_windowing()->send([&]()
       {
+         ::cast < ::acme::windowing::window > pacmewindowingwindow = this;
+         auto u = ns_show_dialog(m_strResourceName, pacmewindowingwindow);
          
-         auto u = ns_show_dialog(m_strResourceName);
-         
-         ::cast < ::appkit::acme::windowing::windowing> pwindowing =        ::system()->acme_windowing();
-         ::cast < ::acme::windowing::window > pwindow = this;
-         pwindowing->m_windowmap[(void*)u] = pwindow;
-         m_macoswindow.m_eoperatingambient = ::windowing::e_operating_ambient_macos;
-         m_macoswindow.m_opaque.m_ulla[0] = u;
-         pwindow->send_message(::user::e_message_initialize_dialog);
+//         ::cast < ::appkit::acme::windowing::windowing> pwindowing =        ::system()->acme_windowing();
+//         ::cast < ::acme::windowing::window > pwindow = this;
+//         pwindowing->m_windowmap[(void*)u] = pwindow;
+//         m_macoswindow.m_eoperatingambient = ::windowing::e_operating_ambient_macos;
+//         m_macoswindow.m_opaque.m_ulla[0] = u;
+//         pwindow->send_message(::user::e_message_initialize_dialog);
 //         HWND window, parentWindow = NULL;
 //
 //         auto pwindow = this->impl<Window>();
@@ -171,13 +174,15 @@ void
 
    int Dialog::showModal()
    {
-//
-//      int result = 0;
-//      if ((HWND) _HWND() == NULL) {
-//
-//         ::system()->acme_windowing()->send([&]()
-//         {
-//            m_isModal = true;
+
+      int result = 0;
+      if (!isWindow()) {
+
+         ::system()->acme_windowing()->send([&]()
+         {
+            m_isModal = true;
+            ::cast < ::acme::windowing::window > pacmewindowingwindow = this;
+            result = ns_do_modal_dialog(m_strResourceName, pacmewindowingwindow);
 //            auto pwindow = this->impl<Window>();
 //
 //            HWND parentWindow = (pwindow->m_pwindowDeferredParent != NULL)
@@ -189,19 +194,19 @@ void
 //                                         dialogProc,(::lparam) (::uptr)(::innate_subsystem_macos::Dialog * )this);
 //
 //            information("Dialog box result is {}", result);
-//         });
-//
-//      } 
-//      else
-//      {
-//         
-//         setVisible(true);
-//         
-//         setForeground();
-//
-//      }
+         });
 
-      //return result;
+      } 
+      else
+      {
+         
+         setVisible(true);
+         
+         setForeground();
+
+      }
+
+      return result;
       return 0;
 
    }

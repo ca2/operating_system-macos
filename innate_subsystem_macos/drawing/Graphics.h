@@ -59,7 +59,7 @@ namespace innate_subsystem_macos
       ::pointer < ::innate_subsystem::Brush > m_pbrushText;
       ::color::color m_colorBrushText;
 
-      ::pointer < ::core_graphics::cg_context > m_pcgcontext;
+      //::pointer < ::core_graphics::cg_context > m_pcgcontext;
 
       // Creates graphics object with specified device context.
       //Graphics(DeviceContext *dc);
@@ -115,7 +115,7 @@ namespace innate_subsystem_macos
       void drawBitmap(::innate_subsystem::BitmapInterface * pbitmap, const ::i32_rectangle & rectangle) override;
       void drawBitmap(::innate_subsystem::BitmapInterface *bitmap, const ::i32_point & point, const ::i32_rectangle & rectangle) override;
       // Draws text.
-      void drawText(const char *text, int cchText, ::i32_rectangle &rect, unsigned int format, enum_align ealign) override;
+      void drawText(const ::scoped_string & scopedstr, ::i32_rectangle &rect, unsigned int format, enum_align ealign) override;
 
    ///protected:
 

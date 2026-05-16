@@ -68,3 +68,12 @@ CLASS_DECL_APPKIT ::appkit::appkit & AppKit()
    return *g_pappkit;
    
 }
+
+
+
+::appkit::ns_window_t as_ns_window_t(const ::operating_system::window & operatingsystemwindow)
+{
+   
+   return {(void *) ::as_u64(operatingsystemwindow)};
+   
+}

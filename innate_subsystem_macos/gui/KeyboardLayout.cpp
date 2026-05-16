@@ -21,6 +21,23 @@ namespace innate_subsystem_macos
    bool KeyboardLayout::vkCodeToString(unsigned short virtKey, bool down, ::wstring *res, 
                                        ::innate_subsystem::keyboard_state_t *pkeyboardstate)
    {
+      
+      ::string str;
+      
+      if(virtKey >= ::user::e_key_a && virtKey <= ::user::e_key_z)
+      {
+         
+         str = (char)('a' + (virtKey - ::user::e_key_a));
+         
+      }
+      else if(virtKey >= ::user::e_key_0 && virtKey <= ::user::e_key_9)
+      {
+         
+         str = (char) ('0' + (virtKey - ::user::e_key_0));
+         
+      }
+      
+      *res = str;
 
 //             bool needReleaseModifiers = false;
 //      wchar_t outBuff[20];

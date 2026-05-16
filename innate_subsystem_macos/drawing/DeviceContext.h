@@ -61,6 +61,7 @@ namespace innate_subsystem_macos
       void initialize_device_context(DeviceContextInterface* compatibleDevice) override;
       virtual void initialize_device_context(::innate_subsystem::BitmapInterface * pbitmap);
       virtual void _initialize_device_context(HDC hdc);
+      virtual void _initialize_device_context(::core_graphics::cg_context * pcgcontext);
       void _attachHDC(void * pHDC) override;
       //private:
       // Initialize class from PaintWindow
@@ -75,7 +76,8 @@ namespace innate_subsystem_macos
       // protected:
       //HDC m_hdc2;
       //::Gdiplus::Graphics * m_pgraphics;
-      void * m_pgraphics;
+      //void * m_pgraphics;
+      ::pointer < ::core_graphics::cg_context > m_pcgcontext;
       //HWND m_hwnd;
       bool m_bHasOwnDC;
 

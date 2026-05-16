@@ -25,10 +25,12 @@
 #include "subsystem_macos/_common_header.h"
 #include "DibSection.h"
 #include "innate_subsystem_macos/drawing/DeviceContext.h"
+#include "innate_subsystem_macos/drawing/Graphics.h"
 #include "subsystem_macos/node/Screen.h"
 #include "subsystem/node/SystemException.h"
 #include "subsystem/node/Screen.h"
 #include "drawing/Bitmap.h"
+#include "operating_system-apple/core_graphics/cg_dib.h"
 
 
 namespace innate_subsystem_macos
@@ -72,10 +74,12 @@ namespace innate_subsystem_macos
    }
 
 
-   void DibSection::initialize_dib_section(const ::innate_subsystem::PixelFormat& pf, const i32_size& dim, const operating_system::window& operatingsystemwindowCompatible)
+   void DibSection::initialize_dib_section(const ::innate_subsystem::PixelFormat& pf, const i32_size& dim, bool bOpaque, const operating_system::window& operatingsystemwindowCompatible)
    {
 
       //m_pparticleThis->initialize_dib_section(pf, dim, operatingsystemwindowCompatible);
+      construct_newø(m_pbitmapDib);
+      m_pbitmapDib->initialize_bitmap(dim, bOpaque);
       //construct_newø(m_pbitmapDib);
       //m_pbitmapDib->initialize_bitmap(dim);
 
@@ -93,15 +97,15 @@ namespace innate_subsystem_macos
     void DibSection::setTargetDeviceContext(::innate_subsystem::DeviceContextInterface * pdevicecontextTarget)
     {
        releaseTargetDC();
-//       m_isOwnTargetDC = false;
-//       m_pdevicecontextTarget = pdevicecontextTarget;
+       m_isOwnTargetDC = false;
+       m_pdevicecontextTarget = pdevicecontextTarget;
 //       m_targetDC = m_pdevicecontextTarget->m_hdc2;
 //       ASSERT(m_targetDC != nullptr);
     }
 
    void *DibSection::getBuffer()
    {
-      return m_buffer;
+      return m_pbitmapDib->m_pcgdib->get_buffer();
       //return m_pparticleThis->getBuffer();
    }
 
@@ -148,6 +152,12 @@ namespace innate_subsystem_macos
 //                 m_memDC, rect.left, rect.top, flags) == 0) {
 //          throw ::subsystem::Exception("Can't blit from DIB section.");
 //                 }
+      ::innate_subsystem_macos::Graphics g;
+      g.m_pdevicecontext = m_pdevicecontextTarget;
+      g.setBlendModeOn(false);
+      g.drawBitmap(m_pbitmapDib,{rect.left + m_srcOffsetX, rect.top + m_srcOffsetY},
+                                    rect);
+      g.m_pdevicecontext.release();
    }
 
    void DibSection::stretchFromDibSection(const ::i32_rectangle &  srcRect,const ::i32_rectangle & rectangleTarget, unsigned int flags)

@@ -14,6 +14,7 @@
 #include "ns_acme_impact.h"
 #import "macos_app.h"
 
+NSCursor* CreateInvisibleCursor();
 
 void ns_main_post(dispatch_block_t block);
 
@@ -33,9 +34,11 @@ void ns_main_send(dispatch_block_t block);
 // and grows bigger from bottom as farther from bottom of screen.
 
 
-- (id)initWithContentRect: (NSRect) rectangle styleMask: (NSUInteger) windowStyle backing:(NSBackingStoreType) bufferingType defer: (BOOL) deferCreation
+- (id)initWithContentRect: (NSRect) rectangle styleMask: (NSUInteger) windowStyle backing:(NSBackingStoreType) bufferingType defer: (BOOL) deferCreation moreNative:(bool)bMoreNative
 
 {
+   
+   m_bSavedFullscreen = false;
    
    self = [ super
       initWithContentRect : rectangle
@@ -50,9 +53,14 @@ void ns_main_send(dispatch_block_t block);
       
    }
    
-   [ self setOpaque : NO ];
-   
-   [ self setBackgroundColor: [ NSColor clearColor ] ];
+   if(!bMoreNative)
+   {
+      
+      [ self setOpaque : NO ];
+      
+      [ self setBackgroundColor: [ NSColor clearColor ] ];
+      
+   }
       
    [ self setAcceptsMouseMovedEvents : YES ];
    
@@ -78,7 +86,7 @@ void ns_main_send(dispatch_block_t block);
    
    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(windowDidResignKey:) name: NSWindowDidResignKeyNotification object: self];
 
-   [ self create_impact ];
+   //[ self create_impact ];
    
    return self;
    
@@ -90,12 +98,12 @@ void ns_main_send(dispatch_block_t block);
    m_pacmewindowbridge = pacmewindowbridge;
    
    // Get the window number (NSInteger) from the NSWindow object.
-   NSInteger windowNumber = [self windowNumber];
+   NSWindow * pnswindow = self;
 
    // Cast the NSInteger to CGWindowID.
-   CGWindowID cgwindowid = (CGWindowID)windowNumber;
+   auto p = (__bridge void *) pnswindow;
    
-   m_pacmewindowbridge->set_cg_window_id(cgwindowid);
+   m_pacmewindowbridge->set_ns_window_uptr((::uptr) p);
    
 }
 
@@ -248,7 +256,7 @@ void ns_main_send(dispatch_block_t block);
    
    bounds.origin = NSZeroPoint;
 
-   m_pnsacmeimpact = [ [ ns_acme_impact alloc ] initWithFrame: bounds andWindow:self ];
+   m_pnsacmeimpact = [ [ ns_acme_impact alloc ] initWithFrame: bounds andBridge:m_pacmewindowbridge ];
    
    //m_pimpactChild = pimpact;
    
@@ -269,6 +277,134 @@ void ns_main_send(dispatch_block_t block);
    return -1;
    
 }
+
+-(void) enterImmersiveFullscreen
+{
+   
+   if(m_bSavedFullscreen)
+   {
+    
+      return;
+      
+   }
+   m_bSavedFullscreen = true;
+   m_savedStyleMask = [self styleMask];
+   m_savedFrame = [self frame];
+   m_savedLevel = [self level];
+   
+   NSRect screenRect =
+       [[NSScreen mainScreen] frame];
+   //screenRect.size.width /=2;
+   //screenRect.size.height /=2;
+
+   [self setStyleMask:
+       NSWindowStyleMaskBorderless];
+
+   [self setFrame:screenRect
+            display:YES];
+
+   //[self setLevel:NSMainMenuWindowLevel + 1];
+   [self setLevel:NSNormalWindowLevel];
+   
+//#if !_DEBUG
+   [NSApp setPresentationOptions:
+       NSApplicationPresentationHideDock |
+       NSApplicationPresentationHideMenuBar];
+///#endif
+
+   
+}
+
+-(void) exitImmersiveFullscreen
+{
+   
+   if(!m_bSavedFullscreen)
+   {
+    
+      return;
+      
+   }
+   m_bSavedFullscreen = false;
+   [self setStyleMask:
+       m_savedStyleMask];
+
+   [self setLevel:
+       m_savedLevel];
+
+   [self setFrame:
+       m_savedFrame
+            display:YES];
+   [NSApp setPresentationOptions:
+       NSApplicationPresentationDefault];
+   
+
+}
+-(bool) isInImmersiveFullscreen
+{
+   
+   return m_bSavedFullscreen;
+   
+}
+
+-(void) toggleImmersiveFullscreen
+{
+   
+   if(m_bSavedFullscreen)
+   {
+      
+      [self exitImmersiveFullscreen];
+      
+   }
+   else
+   {
+    
+      [ self enterImmersiveFullscreen];
+      
+   
+   }
+   
+}
+
+//-(void) add_cursor_rectangle:(NSRect)rect withCursor:(enum_cursor)ecursor
+//{
+//   
+//   auto pimpact = [self contentView];
+//   
+//   if(pimpact)
+//   {
+//      
+//      NSCursor * pnscursor = nil;
+//      
+//      if(ecursor == ::e_cursor_none)
+//      {
+//      
+//         pnscursor = CreateInvisibleCursor();
+//      
+//      }
+//      else if(ecursor == ::e_cursor_arrow)
+//      {
+//         
+//         pnscursor = [NSCursor arrowCursor];
+//         
+//      }
+//      
+//      if(pnscursor)
+//      {
+//         
+////         NSRect nsrect;
+////         
+////         nsrect.origin.x = cgrect.left;
+////         nsrect.origin.y = r.top;
+////         nsrect.size.width = r.width();
+////         nsrect.size.height = r.height();
+//         
+//         [pimpact addCursorRect:rect cursor: pnscursor];
+//         
+//      }
+//      
+//   }
+//
+//}
 
 @end
 

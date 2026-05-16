@@ -27,7 +27,7 @@
 #include "DeviceContext.h"
 
 #include "innate_subsystem/drawing/DeviceContext.h"
-
+#include "operating_system-apple/core_graphics/cg_dib.h"
 
 namespace innate_subsystem_macos
 {
@@ -71,9 +71,13 @@ namespace innate_subsystem_macos
       // }
    }
 
-   void Bitmap::initialize_bitmap(const ::i32_size & size)
+   void Bitmap::initialize_bitmap(const ::i32_size & size, bool bOpaque)
    {
       destroyGraphicsObject();
+      
+      construct_newø(m_pcgdib);
+      m_pcgdib->initialize_dib(size, bOpaque);
+
 //      // //;mm_bitmap(NULL)
 //      // // Prepare buffer
 //       int bpp = 32;
@@ -133,7 +137,7 @@ namespace innate_subsystem_macos
 //      auto h = m_pbitmap->GetHeight();
 
       //return {w, h};
-      return {};
+      return m_pcgdib->get_size();
       // BITMAP bitmap;
       // if (GetObject(m_hbitmap, sizeof(BITMAP), &bitmap) == 0) {
       //    return 0;
@@ -152,7 +156,8 @@ namespace innate_subsystem_macos
    void Bitmap::destroyGraphicsObject()
    {
 
-      m_pcgimage.release();
+      m_pcgdib.release();
+//      m_pcgimage.release();
 //      if (m_pbitmap)
 //      {
 //

@@ -242,12 +242,14 @@ void Thread::onTerminate()
 
 void Thread::execute()
 {
-    if(m_procedureCallback)
-    {
-     
-       m_procedureCallback();
-       
-    }
+   m_pthreadCallback->execute();
+//   ::subsystem::Thread::execute();
+//    if(m_procedureCallback)
+//    {
+//     
+//       m_procedureCallback();
+//       
+//    }
 }
 
 }

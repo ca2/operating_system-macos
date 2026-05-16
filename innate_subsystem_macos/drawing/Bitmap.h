@@ -48,7 +48,9 @@ namespace innate_subsystem_macos
       
       //void * m_pbitmap;
       
-      ::pointer < ::core_graphics::cg_image > m_pcgimage;
+      //::pointer < ::core_graphics::cg_image > m_pcgimage;
+      
+      ::pointer < ::core_graphics::cg_dib > m_pcgdib;
 
       ///Gdiplus::Bitmap * m_pbitmap;
 
@@ -58,7 +60,7 @@ namespace innate_subsystem_macos
 
 
       // Creates empty bitmap with specified size.
-      void initialize_bitmap(const i32_size& size) override;
+      void initialize_bitmap(const i32_size& size, bool bOpaque) override;
       // Creates compatible with dc bitmap with specified size.
       void initialize_bitmap(innate_subsystem::DeviceContextInterface* pdevicecontext, const i32_size& size) override;
       // Creates bitmap from HBITMAP object.

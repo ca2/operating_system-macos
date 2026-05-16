@@ -32,7 +32,7 @@ bool platform_application_is_swap_chain(::platform::application * papplication);
 //
 // Init method for the object.
 //
-- (id)initWithContentRect: (NSRect) contentRect styleMask: (NSUInteger) windowStyle backing:(NSBackingStoreType) bufferingType defer: (BOOL) deferCreation
+- (id)initWithContentRect: (NSRect) contentRect styleMask: (NSUInteger) windowStyle backing:(NSBackingStoreType) bufferingType defer: (BOOL) deferCreation moreNative:(bool)bMoreNative
 {
    
    
@@ -43,6 +43,7 @@ bool platform_application_is_swap_chain(::platform::application * papplication);
       styleMask: windowStyle
       backing: bufferingType
       defer: deferCreation
+            moreNative:bMoreNative
       ];
 
    if(self == NULL)
@@ -59,7 +60,7 @@ bool platform_application_is_swap_chain(::platform::application * papplication);
    [self setTitlebarAppearsTransparent:TRUE];
    //	[self setOpaque:YES];
 
-   [self setBackgroundColor:[NSColor clearColor]];
+//   [self setBackgroundColor:[NSColor clearColor]];
 		
    //	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mainWindowChanged:) name:NSWindowDidBecomeMainNotification object:self];
 		

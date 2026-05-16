@@ -32,6 +32,13 @@
 		9A7E178C2C9DFDA300EE8CA6 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17862C9DFC8F00EE8CA6 /* _factory.cpp */; };
 		9A7E178D2C9DFDA300EE8CA6 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17882C9DFCA000EE8CA6 /* framework.cpp */; };
 		9A7E178E2C9DFDA300EE8CA6 /* windowing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17832C9DFC6E00EE8CA6 /* windowing.cpp */; };
+		9A8536882FB4C94200267545 /* _interoperability.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8536872FB4C94200267545 /* _interoperability.h */; };
+		9A85368A2FB4D57B00267545 /* interoperability.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8536892FB4D57B00267545 /* interoperability.h */; };
+		9A85368C2FB4D62C00267545 /* interoperability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A85368B2FB4D60400267545 /* interoperability.cpp */; };
+		9A85368E2FB4D65B00267545 /* interoperability.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A85368D2FB4D64800267545 /* interoperability.mm */; };
+		9A8536902FB4EA4000267545 /* interoperability_ns.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A85368F2FB4EA2F00267545 /* interoperability_ns.h */; };
+		9A8536922FB50B9500267545 /* _constant.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8536912FB50B7600267545 /* _constant.h */; };
+		9A8536A82FB6ACDA00267545 /* libcore_graphics.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8536A72FB6ACDA00267545 /* libcore_graphics.dylib */; };
 		9A9564C72FB434DE0001D319 /* ns_acme_form_impact_controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A9564BE2FB434C90001D319 /* ns_acme_form_impact_controller.h */; };
 		9A9564C92FB434E80001D319 /* ns_acme_form_impact_controller.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A9564C82FB434E30001D319 /* ns_acme_form_impact_controller.mm */; };
 		9AEC3FEF2D1ABF9800F9E621 /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEC3FEE2D1ABF9800F9E621 /* libacme.dylib */; };
@@ -110,6 +117,13 @@
 		9A7E17882C9DFCA000EE8CA6 /* framework.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9A7E17892C9DFCD900EE8CA6 /* _____debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "_____debug.xcconfig"; sourceTree = "<group>"; };
 		9A7E178A2C9DFCD900EE8CA6 /* _____release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "_____release.xcconfig"; sourceTree = "<group>"; };
+		9A8536872FB4C94200267545 /* _interoperability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _interoperability.h; sourceTree = "<group>"; };
+		9A8536892FB4D57B00267545 /* interoperability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = interoperability.h; sourceTree = "<group>"; };
+		9A85368B2FB4D60400267545 /* interoperability.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = interoperability.cpp; sourceTree = "<group>"; };
+		9A85368D2FB4D64800267545 /* interoperability.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = interoperability.mm; sourceTree = "<group>"; };
+		9A85368F2FB4EA2F00267545 /* interoperability_ns.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = interoperability_ns.h; sourceTree = "<group>"; };
+		9A8536912FB50B7600267545 /* _constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _constant.h; sourceTree = "<group>"; };
+		9A8536A72FB6ACDA00267545 /* libcore_graphics.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libcore_graphics.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A9564BE2FB434C90001D319 /* ns_acme_form_impact_controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ns_acme_form_impact_controller.h; sourceTree = "<group>"; };
 		9A9564C82FB434E30001D319 /* ns_acme_form_impact_controller.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ns_acme_form_impact_controller.mm; sourceTree = "<group>"; };
 		9A9564CA2FB453DA0001D319 /* appkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = appkit.xcodeproj; path = ../appkit/appkit.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -122,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A8536A82FB6ACDA00267545 /* libcore_graphics.dylib in Frameworks */,
 				9AF8D4BA2FB4563800B2D702 /* libappkit.dylib in Frameworks */,
 				9AEC3FFA2D1ABFCB00F9E621 /* libacme_windowing_kit.dylib in Frameworks */,
 				9AEC3FEF2D1ABF9800F9E621 /* libacme.dylib in Frameworks */,
@@ -154,12 +169,41 @@
 				9A1CC3FC2CF2DBBE004A00CB /* acme_macos.xcodeproj */,
 				9AA03ECA2D1A4B320079C423 /* acme_windowing_kit.xcodeproj */,
 				9A9564CA2FB453DA0001D319 /* appkit.xcodeproj */,
+				9A85367E2FB4C8F400267545 /* acme_windowing_appkit */,
 				9A7E17682C9DFBB600EE8CA6 /* Products */,
+				9A7E17A02C9DFE6200EE8CA6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9A7E17682C9DFBB600EE8CA6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A7E17672C9DFBB600EE8CA6 /* libacme_windowing_appkit.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A7E17A02C9DFE6200EE8CA6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A8536A72FB6ACDA00267545 /* libcore_graphics.dylib */,
+				9AEC3FEE2D1ABF9800F9E621 /* libacme.dylib */,
+				9A1CC40A2CF2DBE5004A00CB /* libacme_apple.dylib */,
+				9A5243472CD4AA59006ED868 /* AppKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A85367E2FB4C8F400267545 /* acme_windowing_appkit */ = {
+			isa = PBXGroup;
+			children = (
+				9A8536912FB50B7600267545 /* _constant.h */,
 				9A7E17892C9DFCD900EE8CA6 /* _____debug.xcconfig */,
 				9A7E178A2C9DFCD900EE8CA6 /* _____release.xcconfig */,
 				9A7E17842C9DFC8F00EE8CA6 /* _.h */,
 				9A7E17852C9DFC8F00EE8CA6 /* _.cpp */,
 				9A7E17862C9DFC8F00EE8CA6 /* _factory.cpp */,
+				9A8536872FB4C94200267545 /* _interoperability.h */,
 				9A523E1F2CD3A619006ED868 /* acme_notification_callback.h */,
 				9A523E202CD3A619006ED868 /* acme_notification_callback.mm */,
 				9A5244222CD6C69A006ED868 /* acme_window_bridge.cpp */,
@@ -169,6 +213,10 @@
 				9A52437C2CD4C63E006ED868 /* display.cpp */,
 				9A7E17872C9DFCA000EE8CA6 /* framework.h */,
 				9A7E17882C9DFCA000EE8CA6 /* framework.cpp */,
+				9A8536892FB4D57B00267545 /* interoperability.h */,
+				9A85368F2FB4EA2F00267545 /* interoperability_ns.h */,
+				9A85368B2FB4D60400267545 /* interoperability.cpp */,
+				9A85368D2FB4D64800267545 /* interoperability.mm */,
 				9A52441E2CD6204E006ED868 /* macos_app.h */,
 				9A52434B2CD4AB84006ED868 /* macos_app.cpp */,
 				9A5243492CD4AAD5006ED868 /* macos_app.mm */,
@@ -185,26 +233,8 @@
 				9A7E17822C9DFC6E00EE8CA6 /* windowing.h */,
 				9A7E17832C9DFC6E00EE8CA6 /* windowing.cpp */,
 				9A039BEE2D73E0B0008E9D7D /* windowing.mm */,
-				9A7E17A02C9DFE6200EE8CA6 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		9A7E17682C9DFBB600EE8CA6 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9A7E17672C9DFBB600EE8CA6 /* libacme_windowing_appkit.dylib */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9A7E17A02C9DFE6200EE8CA6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9AEC3FEE2D1ABF9800F9E621 /* libacme.dylib */,
-				9A1CC40A2CF2DBE5004A00CB /* libacme_apple.dylib */,
-				9A5243472CD4AA59006ED868 /* AppKit.framework */,
-			);
-			name = Frameworks;
+			name = acme_windowing_appkit;
 			sourceTree = "<group>";
 		};
 		9AF8D4AB2FB4540000B2D702 /* Products */ = {
@@ -224,12 +254,16 @@
 			files = (
 				9A523E282CD3A619006ED868 /* ns_acme_impact.h in Headers */,
 				9A523E292CD3A619006ED868 /* ProcedureCaller.h in Headers */,
+				9A8536922FB50B9500267545 /* _constant.h in Headers */,
 				9A523E2A2CD3A619006ED868 /* acme_window_bridge.h in Headers */,
 				9A52437D2CD4C63E006ED868 /* display.h in Headers */,
 				9A52441F2CD6204E006ED868 /* macos_app.h in Headers */,
 				9A523E2B2CD3A619006ED868 /* ns_acme_window.h in Headers */,
 				9A523E2C2CD3A619006ED868 /* acme_notification_callback.h in Headers */,
 				9A523E0E2CD3A5E5006ED868 /* window.h in Headers */,
+				9A8536882FB4C94200267545 /* _interoperability.h in Headers */,
+				9A8536902FB4EA4000267545 /* interoperability_ns.h in Headers */,
+				9A85368A2FB4D57B00267545 /* interoperability.h in Headers */,
 				9A9564C72FB434DE0001D319 /* ns_acme_form_impact_controller.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,6 +394,8 @@
 				9A523E2D2CD3A619006ED868 /* ns_acme_impact.mm in Sources */,
 				9A523E2E2CD3A619006ED868 /* ns_acme_window.mm in Sources */,
 				9A9564C92FB434E80001D319 /* ns_acme_form_impact_controller.mm in Sources */,
+				9A85368C2FB4D62C00267545 /* interoperability.cpp in Sources */,
+				9A85368E2FB4D65B00267545 /* interoperability.mm in Sources */,
 				9A5244212CD6C28A006ED868 /* acme_window_bridge.mm in Sources */,
 				9A523E2F2CD3A619006ED868 /* ProcedureCaller.mm in Sources */,
 				9A523E302CD3A619006ED868 /* acme_notification_callback.mm in Sources */,

@@ -6,6 +6,7 @@
 
 
 #include "operating_system-posix/acme_posix/_.h"
+#include "operating_system-apple/core_graphics/_.h"
 #include "operating_system-macos/appkit/_.h"
 
 

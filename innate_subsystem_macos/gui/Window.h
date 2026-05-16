@@ -139,7 +139,8 @@ namespace innate_subsystem_macos
       //HBITMAP m_hbitmapOld = nullptr;
       //HBITMAP m_hbitmapBuffer = nullptr;
       ::pointer < ::innate_subsystem_macos::Bitmap > m_pbitmapBuffer;
-      ::pointer < ::innate_subsystem_macos::DeviceContext > m_pdevicecontextBuffer;
+      //::pointer < ::innate_subsystem_macos::DeviceContext > m_pdevicecontextBuffer;
+      ::pointer < ::innate_subsystem_macos::Graphics > m_pgraphicsBuffer;
 
       bool m_bIsDraw;
       //PAINTSTRUCT m_paintStruct;
@@ -151,7 +152,7 @@ namespace innate_subsystem_macos
       unsigned int m_uEraseStyleExOffline = 0xffffffffu;
       //HDC m_hdc;
 
-      ::pointer < ::innate_subsystem_macos::DeviceContext > m_pdevicecontext;
+      //::pointer < ::innate_subsystem_macos::DeviceContext > m_pdevicecontextBuffer;
 
 
       struct notification
@@ -354,6 +355,8 @@ namespace innate_subsystem_macos
       void doFullScreen() override;
       void doUnFullScreen() override;
       void adjustWindowSize() override;
+      
+      void setMouseCursor(::enum_cursor ecursor) override;
 
       virtual void _doRestoreFromFullScreen();
       virtual void _setSizeFullScreenWindow();
@@ -377,11 +380,11 @@ namespace innate_subsystem_macos
       virtual bool onCommand(unsigned int controlID, unsigned int notificationID) override;
       //virtual bool onSysCommand(::wparam wparam, ::lparam lparam) override;
       virtual bool on_user_system_command(::user::enum_system_command esystemcommand) override;
-      virtual bool onMessage(unsigned int message, ::wparam wparam, ::lparam lparam) override;
+      virtual bool onMessage(::user::enum_message emessage, ::wparam wparam, ::lparam lparam) override;
       virtual bool onMouseEx(unsigned int uMessage, int iButtonMask, unsigned short wheelSpeed,
                              const ::i32_point &point, bool &bDoDefaultProcessing) override;
       virtual bool onMouse(unsigned char mouseButtons, unsigned short wheelSpeed, const ::i32_point & position) override;
-
+      virtual bool onKey(::user::enum_message emessage, ::user::enum_key euserkey) override;
       virtual bool onCreate(void * pCreateStruct) override;
 
       virtual bool on_window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam) override;
@@ -393,8 +396,11 @@ namespace innate_subsystem_macos
 
       void onDraw(::innate_subsystem::GraphicsInterface * pgraphics, const ::i32_rectangle & rectangle) override;
 
+      //virtual void _defer_update_double_buffering();
 
       virtual void _doPaint(HDC hdc);
+      //void _draw(CGContextRef cgcontextref, const ::i32_rectangle & rectangle) override;
+      void _draw(::core_graphics::cg_context * pcgcontext, const ::i32_rectangle & rectangle) override;
       void onBeforeFullScreen(bool bRestore) override;
       void onAfterFullScreen(bool bRestore) override;
       void onBeforeUnFullScreen(bool bMinimizing) override;
@@ -403,6 +409,12 @@ namespace innate_subsystem_macos
       bool onCalculateDefaultSize(i32_rectangle &rectangleDefaultSize) override;
       void onAdjustWindowSize() override;
       void onSize() override;
+//      void on_set_cursor_rectangles() override;
+//      void invalidate_cursor_rectangles() override;
+//      void add_cursor_rectangle(const ::i32_rectangle & rectangle, ::enum_cursor ecursor) override;
+      
+      void toggle_fullscreen() override;
+      //void back_on_mouse_move(::user::mouse * pmouse) override;
 
    };
 

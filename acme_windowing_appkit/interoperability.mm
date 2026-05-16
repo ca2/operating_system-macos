@@ -7,17 +7,364 @@
 //
 #include "framework.h"
 #include "macos_app.h"
+#include "ns_acme_impact.h"
+#include "ns_acme_window.h"
 #include "ns_acme_form_impact_controller.h"
-#include "ns_interoperability.h"
+#include "interoperability.h"
 #include "acme/constant/id.h"
 #include "acme/operating_system/argcargv.h"
 #include "acme/platform/application_menu.h"
 #include "acme/handler/command_handler.h"
 #include <Foundation/Foundation.h>
+#include "interoperability_ns.h"
+#include "operating_system-apple/core_graphics/_struct.h"
+
+#define WINDOW_WIDTH_USE_DEFAULT       ((int)0x80000000)
+
+
+::uptr as_ns_window_uptr(NSWindow * pnswindow);
+NSView *ns_window_get_impact_by_tag(NSWindow * pnswindow, int iTag);
+
+NSInteger ns_view_find_free_tag(
+    NSView * prootview,
+    NSInteger minimumTag)
+{
+    NSInteger tag = minimumTag;
+
+    for(;;)
+    {
+        NSView * pfound =
+            [prootview viewWithTag:tag];
+
+        if(pfound == nil)
+        {
+            return tag;
+        }
+
+        tag++;
+    }
+}
+
+NSInteger ns_window_find_free_tag(
+    NSWindow * pwindow,
+    NSInteger minimumTag)
+{
+    if(pwindow == nil)
+    {
+        return minimumTag;
+    }
+
+    return ns_view_find_free_tag(
+        pwindow.contentView,
+        minimumTag);
+}
+
+namespace cross_windows
+{
+
+::operating_system::window create_window(::i32 xPos, ::i32 yPos, ::i32 width, ::i32 height, const ::operating_system::window & hwndParent, ::acme::windowing::window * pacmewindowingwindow,
+                                         ::appkit::acme_window_bridge * pacmewindowbridge)
+{
+   
+   ::operating_system::window operatingsystemwindow{};
+   
+   NSRect r;
+   
+   r.origin.x = xPos == WINDOW_WIDTH_USE_DEFAULT ? 200 : xPos;
+   r.origin.y = yPos == WINDOW_WIDTH_USE_DEFAULT ? 200 : yPos;
+   r.size.width = width == WINDOW_WIDTH_USE_DEFAULT ? 1024 : width;
+   r.size.height = height == WINDOW_WIDTH_USE_DEFAULT ? 768 : height;
+   
+   if(hwndParent.is_null())
+   {
+      
+      macos_app *pmacosapp = (macos_app *)[NSApp delegate];
+
+      auto pnsacmewindow = [ pmacosapp createMainFrame : r styleMask : 0 withAcmeWindowingWindow:pacmewindowingwindow withAcmeWindowBridge:pacmewindowbridge];
+      
+      NSWindow * pnswindow = pnsacmewindow;
+      
+      operatingsystemwindow = ::as_operating_system_window(::as_ns_window_uptr(pnswindow));
+      
+   }
+   else
+   {
+      
+      NSWindow * pnswindow = (__bridge NSWindow *)(void *) hwndParent.m_window.m_ulla[0];
+      
+      NSView * pnsimpactParent = nullptr;
+      
+      if(hwndParent.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact)
+      {
+         
+         pnsimpactParent = ns_window_get_impact_by_tag(pnswindow, hwndParent.m_window.m_ulla[1]);
+         
+      }
+      
+      NSView * pnsimpactChild = nullptr;
+      
+      if(pnsimpactParent)
+      {
+         
+         throw "";
+         
+      }
+      else
+      {
+         
+         ns_acme_window * pnsacmewindow = pnswindow;
+         
+         NSRect bounds = [ pnswindow frame ];
+         
+         bounds.origin = NSZeroPoint;
+         
+         auto pnsacmeimpact = [ [ ns_acme_impact alloc ] initWithFrame: bounds andBridge: pacmewindowbridge ];
+         
+         pnsimpactChild = pnsacmeimpact;
+         
+         [ pnsacmewindow setContentView: pnsimpactChild ];
+         
+         [ pnsimpactChild setFrame: bounds ];
+         
+         [ pnsimpactChild setAutoresizingMask: 0 ];
+         
+//         int uMinimumTag = 2000;
+//         
+//         auto uTagNew = ns_view_find_free_tag(pnsimpactChild, uMinimumTag);
+//         
+//         pnsacmeimpact.tag = uTagNew;
+         
+         operatingsystemwindow = ::operating_system::window(
+                                                            ::windowing::e_operating_ambient_macos_impact, ::as_ns_window_uptr(pnswindow), 0);
+         
+         //return operatingsystemwindow;
+         
+      }
+      
+   }
+   
+   return operatingsystemwindow;
+   
+}
+
+} // namespace cross_windows
+
+
+NSWindow *ns_window_from_ns_window_t(::appkit::ns_window_t nswindow)
+{
+   auto pnswindow = (__bridge NSWindow *)nswindow.m_p;
+
+    return pnswindow;
+}
+
+
+void ns_window_show(::appkit::ns_window_t nswindow)
+{
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+   
+   [[pnswindow windowController] showWindow:nil];
+   [pnswindow makeKeyAndOrderFront:nil];
+   
+}
+void ns_window_hide(::appkit::ns_window_t nswindow)
+{
+   
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+   
+   [pnswindow orderOut:nil];
+
+}
+
+
+int ns_window_redraw(::appkit::ns_window_t nswindow, ::core_graphics::cg_rect * pcgrect, bool bErase)
+{
+   
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+   
+   if(pnswindow == nil)
+   {
+      
+      return 0;
+      
+   }
+   
+   if(!pcgrect)
+   {
+      
+      [[pnswindow contentView] setNeedsDisplay:(BOOL)true];
+      
+   }
+   else{
+      
+      NSRect r;
+      r.origin.x = pcgrect->origin.x;
+      r.origin.y = pcgrect->origin.y;
+      r.size.width = pcgrect->size.w;
+      r.size.height = pcgrect->size.h;
+      [[pnswindow contentView] setNeedsDisplayInRect:r];
+      
+   }
+
+   return 1;
+   
+}
+
+
+void ns_window_get_client_rect(::appkit::ns_window_t nswindow, ::core_graphics::cg_rect * pcgrect)
+{
+   
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+   
+   auto rBounds = [ [ pnswindow contentView ] bounds ];
+   
+   pcgrect->origin.x = rBounds.origin.x;
+   pcgrect->origin.y = rBounds.origin.y;
+   pcgrect->size.w = rBounds.size.width;
+   pcgrect->size.h = rBounds.size.height;
+   
+}
+
+
+int ns_window_set_window_pos(::appkit::ns_window_t nswindow,
+                              ::appkit::ns_window_t nswindowOther,
+                    int x, int y, int w, int h, int flags)
+{
+   
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+   
+   if(pnswindow == nil)
+   {
+      
+      return 0;
+      
+   }
+   
+   if(!(flags & ::lightui::SWP_NOMOVE))
+   {
+      
+      if(!(flags & ::lightui::SWP_NOSIZE))
+      {
+       
+         NSRect r = NSMakeRect(x, y, w, h);
+         
+         [pnswindow setFrame:r display:YES];
+         
+      }
+      else
+      {
+         
+         NSRect f = pnswindow.frame;
+         f.size = NSMakeSize(w, h);
+         [pnswindow setFrame:f display:YES];
+         
+      }
+      
+   }
+   else if(!(flags & ::lightui::SWP_NOSIZE))
+   {
+      
+      [pnswindow setFrameTopLeftPoint:NSMakePoint(x, y)];
+      //NSRect f = pnswindow.frame;
+      //f.origin = NSMakePoint(x, y);
+      //[pnswindow setFrameOrigin:f.origin];
+   }
+   
+   // bring front
+   // [window orderFront:nil];
+   
+   // send back
+   // [window orderBack:nil];
+   
+   // hide
+   // [window orderOut:nil];
+   
+   // without activating app
+   // [window orderFront:nil];
+   
+   // activate app + window
+   // [window makeKeyAndOrderFront:nil];
+   // [NSApp activateIgnoringOtherApps:YES];
+   
+   return 1;
+   
+}
 
 
 
-::uptr ns_show_dialog(const char * pszDialog)
+::core_graphics::cg_rect ns_window_monitor_rect(::appkit::ns_window_t nswindow)
+{
+   auto window = ns_window_from_ns_window_t(nswindow);
+   
+       NSScreen* screen = nil;
+
+       if (window != nil)
+       {
+           screen = [window screen];
+       }
+
+       // Fallback
+       if (screen == nil)
+       {
+           screen = [NSScreen mainScreen];
+       }
+
+       if (screen == nil)
+       {
+           return {};
+       }
+
+       NSRect frame = [screen frame];
+
+       core_graphics::cg_rect rectangle;
+
+       rectangle.origin.x   = (int)frame.origin.x;
+       rectangle.origin.y    = (int)frame.origin.y;
+       rectangle.size.w  = frame.size.width;
+       rectangle.size.h =frame.size.height;
+
+       return rectangle;
+   //}
+}
+
+
+void ns_window_enter_immersive_fullscreen(::appkit::ns_window_t nswindow)
+{
+   
+   auto window = ns_window_from_ns_window_t(nswindow);
+   
+   ns_acme_window * pnsacmewindow = window;
+   
+   if(pnsacmewindow != nil)
+   {
+      
+      [pnsacmewindow enterImmersiveFullscreen];
+      
+   }
+
+   
+
+}
+
+
+void ns_window_exit_immersive_fullscreen(::appkit::ns_window_t nswindow)
+{
+   
+   auto window = ns_window_from_ns_window_t(nswindow);
+   
+   ns_acme_window * pnsacmewindow = window;
+   
+   if(pnsacmewindow != nil)
+   {
+      
+      [pnsacmewindow exitImmersiveFullscreen];
+      
+   }
+   
+}
+
+
+
+::uptr ns_show_dialog(const char * pszDialog, ::acme::windowing::window * pacmewindowingwindow)
 {
    
    // 1. Get the delegate and cast it to your custom class
@@ -25,9 +372,22 @@
    
    NSString * strName = [[NSString alloc]initWithUTF8String:pszDialog];
    
-   auto u = [pmacosapp showDialog:strName];
+   auto u = [pmacosapp showDialog:strName withAcmeWindowingWindow: pacmewindowingwindow];
    
    return u;
+}
+
+int ns_do_modal_dialog(const char * pszDialog, ::acme::windowing::window * pacmewindowingwindow)
+{
+   
+   // 1. Get the delegate and cast it to your custom class
+     macos_app *pmacosapp = (macos_app *)[NSApp delegate];
+   
+   NSString * strName = [[NSString alloc]initWithUTF8String:pszDialog];
+   
+   auto i = [pmacosapp doModalDialog:strName withAcmeWindowingWindow: pacmewindowingwindow];
+   
+   return i;
 }
 
 NSWindow *ns_window_from_cg_window_id(CGWindowID windowID)
@@ -43,6 +403,37 @@ NSWindow *ns_window_from_cg_window_id(CGWindowID windowID)
     return nil;
 }
 
+
+
+
+ns_acme_form_impact_controller *ns_form_controllerø(NSWindow * pnswindow)
+{
+   if(pnswindow == nil)
+   {
+      return nil;
+   }
+   auto pnsimpactcontrol = [pnswindow contentViewController];
+   if(pnsimpactcontrol == nil)
+   {
+      return nil;
+   }
+   auto pformcontroller = (ns_acme_form_impact_controller *) pnsimpactcontrol;
+   if(pformcontroller == nil)
+   {
+      return nil;
+   }
+   return pformcontroller;
+
+}
+
+ns_acme_form_impact_controller *ns_form_controllerø(::appkit::ns_window_t nswindow)
+{
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+   return ns_form_controllerø(pnswindow);
+}
+
+
+
 NSView *ns_window_get_impact_by_tag(NSWindow * pnswindow, int iTag)
 {
    if (pnswindow == nil)
@@ -50,29 +441,152 @@ NSView *ns_window_get_impact_by_tag(NSWindow * pnswindow, int iTag)
            return nil;
        }
 
-       return [pnswindow.contentView viewWithTag:iTag];
+       auto pnsimpact = [pnswindow.contentView viewWithTag:iTag];
+   
+   if(pnsimpact != nil)
+   {
+      
+      return pnsimpact;
+      
+   }
+   
+   if(iTag == 0 || iTag == 2000)
+   {
+      
+      pnsimpact = pnswindow.contentView;
+      
+   }
+   
+   if(pnsimpact != nil)
+   {
+      
+      return pnsimpact;
+      
+   }
+   
+   return nil;
 }
 
 
-NSView *ns_get_impact(::uptr u, ::uptr uChild)
+NSView * ns_get_impact(::appkit::ns_impact_t nsimpact)
 {
    
-   auto cgwindowid = (CGWindowID) u;
-   
-   auto pnswindow = ns_window_from_cg_window_id(cgwindowid);
+   auto pnswindow = ns_window_from_ns_window_t(nsimpact.ns_window());
 
-   auto pnsimpact = ns_window_get_impact_by_tag(pnswindow, uChild);
+   auto pnsimpact = ns_window_get_impact_by_tag(pnswindow, nsimpact.m_uTag);
+   
+   return pnsimpact;
+   
+}
+
+NSView *ns_get_impact(ns_acme_form_impact_controller * pformcontroller, ::uptr uTag)
+{
+   
+   auto pnswindow = pformcontroller.view.window;
+
+   auto pnsimpact = ns_window_get_impact_by_tag(pnswindow, uTag);
    
    return pnsimpact;
    
 }
 
 
-template < typename NS_CLASS >
-NS_CLASS * ns_typed_impact(::uptr u, ::uptr uChild)
+void ns_impact_get_client_rect(::appkit::ns_impact_t nsimpact, ::core_graphics::cg_rect * pcgrect)
 {
    
-   auto pnsimpact = ns_get_impact(u, uChild);
+   auto pnsimpact = ns_get_impact(nsimpact);
+   
+   auto rBounds = [ pnsimpact bounds ];
+   
+   pcgrect->origin.x = rBounds.origin.x;
+   pcgrect->origin.y = rBounds.origin.y;
+   pcgrect->size.w = rBounds.size.width;
+   pcgrect->size.h = rBounds.size.height;
+   
+}
+
+
+int ns_impact_set_window_pos(::appkit::ns_impact_t nsimpact,
+                              ::appkit::ns_impact_t nsimpactOther,
+                    int x, int y, int w, int h, int flags)
+{
+ 
+   auto pnsimpact = ns_get_impact(nsimpact);
+   
+   if(pnsimpact == nil)
+   {
+      
+      return 0;
+      
+   }
+   
+   if(!(flags & ::lightui::SWP_NOMOVE))
+   {
+      
+      if(!(flags & ::lightui::SWP_NOSIZE))
+      {
+       
+         NSRect r = NSMakeRect(x, y, w, h);
+         
+         [pnsimpact setFrame:r];
+         
+      }
+      else
+      {
+         
+         NSRect f = pnsimpact.frame;
+         f.size = NSMakeSize(w, h);
+         [pnsimpact setFrame:f];
+         
+      }
+      
+   }
+   else if(!(flags & ::lightui::SWP_NOSIZE))
+   {
+      
+      //[pnsimpact setFrameTopLeftPoint:NSMakePoint(x, y)];
+      NSRect f = pnsimpact.frame;
+      f.origin = NSMakePoint(x, y);
+      [pnsimpact setFrame:f];
+   }
+   
+   // bring to front
+   // [[view superview] addSubview:view positioned:NSWindowAbove relativeTo:nil];
+   
+   // send behind
+   // [[view superview] addSubview:view positioned:NSWindowBelow relativeTo:nil];
+   // or
+   // [view removeFromSuperview];
+   // [parent addSubview:view];
+   
+   return 1;
+   
+}
+
+
+template < typename NS_CLASS >
+NS_CLASS * _ns_typed_impact(::appkit::ns_impact_t nsimpact)
+{
+   
+   auto pnsimpact = ns_get_impact(nsimpact);
+   
+   if (![pnsimpact isKindOfClass:[NS_CLASS class]])
+   {
+      
+      return nil;
+      
+   }
+
+   auto p = (NS_CLASS *) pnsimpact;
+   
+   return p;
+
+}
+template < typename NS_CLASS >
+NS_CLASS * _ns_typed_impact(ns_acme_form_impact_controller * pformcontroller, ::uptr uChild)
+{
+   
+   auto pnsimpact = ns_get_impact(pformcontroller, uChild);
    
    if (![pnsimpact isKindOfClass:[NS_CLASS class]])
    {
@@ -87,6 +601,38 @@ NS_CLASS * ns_typed_impact(::uptr u, ::uptr uChild)
 
 }
 
+template < typename NS_CLASS >
+NS_CLASS * ns_impactø(::appkit::ns_impact_t nsimpact)
+{
+   
+   auto p = _ns_typed_impact<NS_CLASS>(nsimpact);
+   
+   if (p == nil)
+   {
+      
+      throw_wrong_ns_type();
+      
+   }
+
+   return p;
+
+}
+template < typename NS_CLASS >
+NS_CLASS * ns_impactø(ns_acme_form_impact_controller * pformcontroller, ::uptr uChild)
+{
+   
+   auto p = _ns_typed_impact<NS_CLASS>(pformcontroller, uChild);
+   
+   if (p == nil)
+   {
+      
+      throw_wrong_ns_type();
+      
+   }
+
+   return p;
+
+}
 //
 //::uptr ns_get_dlg_item(::uptr u, int iDlgItem)
 //{
@@ -106,43 +652,82 @@ NS_CLASS * ns_typed_impact(::uptr u, ::uptr uChild)
 //
 //}
 
-NSString * ns_get_impact_text(NSView * pnsview)
+
+void ns_end_dialog(::appkit::ns_window_t nswindow, int iDialogResult)
 {
-    if (pnsview == nil)
+   
+   [NSApp stopModalWithCode:iDialogResult];
+}
+
+NSString * ns_get_impact_text(NSView * pnsimpact)
+{
+    if (pnsimpact == nil)
     {
         return nil;
     }
 
-    if ([pnsview isKindOfClass:[NSTextField class]])
+    if ([pnsimpact isKindOfClass:[NSTextField class]])
     {
-        return [(NSTextField *) pnsview stringValue];
+        return [(NSTextField *) pnsimpact stringValue];
     }
+else
+    if ([pnsimpact isKindOfClass:[NSTextView class]])
+    {
+        return [(NSTextView *) pnsimpact string];
+    }
+    else
+        if ([pnsimpact isKindOfClass:[NSComboBox class]])
+        {
+            return [(NSComboBox *) pnsimpact stringValue];
+        }
 
-    if ([pnsview isKindOfClass:[NSTextView class]])
-    {
-        return [(NSTextView *) pnsview string];
-    }
-   
    
 
     return nil;
 }
-char * ns_get_impact_text(::uptr u, ::uptr uChild)
+
+void ns_set_impact_text(NSView * pnsimpact, const char * pszText)
 {
+    if (pnsimpact == nil)
+    {
+        return nil;
+    }
    
-   auto cgwindowid = (CGWindowID) u;
-   auto pnswindow = ns_window_from_cg_window_id(cgwindowid);
+   auto str = [NSString alloc];
    
-   if(pnswindow == nil)
+   if(::is_empty(pszText))
    {
       
-      return nullptr;
+      str = [str init];
       
    }
+   else
+   {
+    
+      str = [str initWithUTF8String:pszText];
+      
+   }
+
+    if ([pnsimpact isKindOfClass:[NSTextField class]])
+    {
+        [(NSTextField *) pnsimpact setStringValue:str];
+    }
+    else
+    if ([pnsimpact isKindOfClass:[NSTextView class]])
+    {
+        [(NSTextView *) pnsimpact setString:str];
+    }
+else if ([pnsimpact isKindOfClass:[NSComboBox class]])
+{
+    [(NSComboBox *) pnsimpact setStringValue:str];
+}
+
    
-   auto iTag = (int)uChild;
+}
+char * ns_get_impact_text(::appkit::ns_impact_t nsimpact)
+{
    
-   auto pnsimpact = ns_window_get_impact_by_tag(pnswindow, iTag);
+   auto pnsimpact = ns_get_impact(nsimpact);
    
    if(pnsimpact == nil)
    {
@@ -155,6 +740,7 @@ char * ns_get_impact_text(::uptr u, ::uptr uChild)
    
    if(str == nil)
    {
+      
       return nullptr;
       
    }
@@ -164,6 +750,26 @@ char * ns_get_impact_text(::uptr u, ::uptr uChild)
    return p;
 
 }
+
+
+
+void ns_set_impact_text(::appkit::ns_impact_t nsimpact, const char * pszText)
+{
+   
+   auto pnsimpact = ns_get_impact(nsimpact);
+   
+   if(pnsimpact == nil)
+   {
+      
+      return nullptr;
+      
+   }
+   
+   ns_set_impact_text(pnsimpact, pszText);
+
+}
+
+
 char * ns_get_window_text(::uptr u)
 {
    auto cgwindowid = (CGWindowID) u;
@@ -179,35 +785,281 @@ char * ns_get_window_text(::uptr u)
    return p;
    
 }
-
-::collection::index ns_combo_box_insert_string(::uptr u, ::uptr uChild, ::collection::index i, const char * psz)
+void ns_set_window_text(::uptr u, const char * pszText)
 {
+   auto cgwindowid = (CGWindowID) u;
+   auto pnswindow = ns_window_from_cg_window_id(cgwindowid);
    
-   auto pcombobox = ns_typed_impact<NSComboBox>(u, uChild);
-   
-   if(!pcombobox)
+   if(pnswindow == nil)
    {
       
-      throw_wrong_ns_type();
+      return nullptr;
       
    }
+   auto str = [[NSString alloc] initWithUTF8String:pszText];
+   pnswindow.title = str;
+   
+   
+}
+
+
+
+
+// NSComboBox
+
+@implementation ComboItem
+
+- (instancetype)initWithTitle:(NSString *)title
+                        payload:(uint64_t)value
+{
+    self = [super init];
+
+    if (self)
+    {
+        _title = [title copy];
+        _payload = value;
+    }
+
+    return self;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    ComboItem *copy =
+        [[[self class] allocWithZone:zone]
+            initWithTitle:self.title
+                    payload:self.payload];
+
+    return copy;
+}
+
+- (NSString *)description
+{
+    return self.title;
+}
+
+@end
+
+
+::collection::index ns_combo_box_insert_string(::appkit::ns_impact_t nsimpact, ::collection::index i, const char * psz)
+{
+   
+   auto pcombobox = ns_impactø<NSComboBox>(nsimpact);
+   
    auto str = [[NSString alloc] initWithUTF8String:psz];
-   [pcombobox insertItemWithObjectValue:str atIndex:i];
+   auto pitem = [[ComboItem alloc] initWithTitle:str
+                                  payload:0];
+   [pcombobox insertItemWithObjectValue:pitem atIndex:i];
 }
 
-void ns_combo_box_reset_content(::uptr u, ::uptr uChild)
+void ns_combo_box_reset_content(::appkit::ns_impact_t nsimpact)
 {
    
-   auto pcombobox = ns_typed_impact<NSComboBox>(u, uChild);
+   [ ns_impactø<NSComboBox>(nsimpact) removeAllItems];
    
-   if(!pcombobox)
-   {
-      
-      throw_wrong_ns_type();
-      
-   }
-   [pcombobox removeAllItems];
 }
 
+
+::collection::count ns_combo_box_get_count(::appkit::ns_impact_t nsimpact)
+{
+   
+   return [ ns_impactø<NSComboBox>(nsimpact) numberOfItems] ;
+   
+}
+
+
+::collection::index ns_combo_box_get_cur_sel(::appkit::ns_impact_t nsimpact)
+   {
+   
+   return [ ns_impactø<NSComboBox>(nsimpact) indexOfSelectedItem];
+   
+}
+
+
+void ns_combo_box_set_cur_sel(::appkit::ns_impact_t nsimpact, ::collection::index i)
+{
+   
+   auto pformcontroller = ns_form_controllerø(nsimpact.ns_window());
+   
+   ::lightui::block_control_notification blockcontrolnotification(pformcontroller, nsimpact.m_uTag, ::lightui::CBN_SELENDOK);
+   
+   auto pcombo = ns_impactø<NSComboBox>(pformcontroller, nsimpact.m_uTag);
+
+   [ pcombo selectItemAtIndex: i ];
+   
+}
+
+
+void ns_combo_box_set_item_data(::appkit::ns_impact_t nsimpact, ::collection::index i, void * p)
+{
+  
+   ComboItem * pitem = [ ns_impactø<NSComboBox>(nsimpact) itemObjectValueAtIndex:i];
+   
+   if(pitem == nil)
+   {
+      auto str = [[NSString alloc] init];
+      pitem = [[ComboItem alloc] initWithTitle:str
+                                     payload:(::uptr)p];
+      
+      [ns_impactø<NSComboBox>(nsimpact) insertItemWithObjectValue:pitem atIndex:i];
+      
+   }
+   else
+   {
+      
+      pitem.payload = (::uptr)p;
+      
+   }
+}
+
+
+void * ns_combo_box_get_item_data(::appkit::ns_impact_t nsimpact, ::collection::index i)
+            {
+   ComboItem * pitem = [ ns_impactø<NSComboBox>(nsimpact) itemObjectValueAtIndex:i];
+   
+   if(pitem == nil)
+   {
+      return nullptr;
+   }
+   
+   
+   return (void *) (::uptr) [ pitem payload];
+
+   
+}
+
+
+::string ns_combo_box_get_lb_text(::appkit::ns_impact_t nsimpact, ::collection::index i)
+               {
+   
+   ComboItem * pitem = [ ns_impactø<NSComboBox>(nsimpact) itemObjectValueAtIndex:i];
+   
+   if(pitem == nil)
+   {
+      return {};
+   }
+   return [[pitem title] UTF8String];
+}
+
+
+void ns_combo_box_delete_string(::appkit::ns_impact_t nsimpact, ::collection::index i)
+                  {
+   
+   [ns_impactø<NSComboBox>(nsimpact) removeItemAtIndex:i];
+}
+
+
+
+bool ns_window_is_in_immersive_fullscreen(::appkit::ns_window_t nswindow)
+{
+   
+   auto window = ns_window_from_ns_window_t(nswindow);
+   
+   ns_acme_window * pnsacmewindow = window;
+   
+   if(pnsacmewindow != nil)
+   {
+      
+      return [pnsacmewindow isInImmersiveFullscreen];
+      
+   }
+
+   return false;
+
+}
+
+void ns_window_toggle_immersive_fullscreen(::appkit::ns_window_t nswindow)
+{
+   
+   auto window = ns_window_from_ns_window_t(nswindow);
+   
+   ns_acme_window * pnsacmewindow = window;
+   
+   if(pnsacmewindow != nil)
+   {
+      
+      [pnsacmewindow toggleImmersiveFullscreen];
+      
+   }
+  
+
+}
+
+void ns_window_set_mouse_cursor(::appkit::ns_window_t nswindow, ::enum_cursor ecursor)
+{
+   
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+   
+   ns_acme_window * pnsacmewindow = pnswindow;
+   
+   if(pnsacmewindow == nil)
+   {
+      
+      return;
+      
+   }
+      
+   ns_acme_impact * pnsacmeimpact = pnsacmewindow->m_pnsacmeimpact;
+   
+   if(pnsacmeimpact == nil)
+   {
+      
+      return;
+      
+   }
+         
+   [ pnsacmeimpact setMouseCursor : ecursor ];
+   
+}
+
+
+void ns_impact_set_mouse_cursor(::appkit::ns_impact_t nsimpact, ::enum_cursor ecursor)
+{
+   
+   auto pnsimpact = ns_get_impact(nsimpact);
+   
+   if(pnsimpact == nil)
+   {
+    
+      return;
+      
+   }
+   
+   ns_acme_impact * pnsacmeimpact = pnsimpact;
+   
+   if(pnsacmeimpact == nil)
+   {
+      
+      return;
+      
+   }
+      
+   [ pnsacmeimpact setMouseCursor : ecursor ];
+   
+}
+
+
+//void ns_window_add_cursor_rectangle(::appkit::ns_window_t nswindow, ::core_graphics::cg_rect cgrect, ::enum_cursor ecursor)
+//{
+//   
+//   auto window = ns_window_from_ns_window_t(nswindow);
+//   
+//   ns_acme_window * pnsacmewindow = window;
+//   
+//   if(pnsacmewindow != nil)
+//   {
+//      
+//      NSRect r;
+//      r.origin.x = cgrect.origin.x;
+//      r.origin.y = cgrect.origin.y;
+//      r.size.width = cgrect.size.w;
+//      r.size.height = cgrect.size.h;
+//      
+//      [pnsacmewindow add_cursor_rectangle:r withCursor:ecursor];
+//      
+//   }
+//   
+//
+//}
 
 

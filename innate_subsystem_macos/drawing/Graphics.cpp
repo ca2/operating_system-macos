@@ -33,6 +33,7 @@
 #include "innate_subsystem/platform/subsystem.h"
 #include "operating_system-apple/core_graphics/core_graphics.h"
 #include "operating_system-apple/core_graphics/cg_context.h"
+#include "operating_system-apple/core_graphics/cg_dib.h"
 //#define WIN32_TRANSPARENT 0
 
 namespace innate_subsystem_macos
@@ -53,18 +54,18 @@ namespace innate_subsystem_macos
    Graphics::~Graphics()
    {
 
-      if (m_pfont)
-      {
-
-         delete m_pfont;
-         m_pfont = nullptr;
-      }
-      if (m_pbrushText)
-      {
-
-         delete m_pbrushText;
-         m_pbrushText = nullptr;
-      }
+//      if (m_pfont)
+//      {
+//
+//         delete m_pfont;
+//         m_pfont = nullptr;
+//      }
+//      if (m_pbrushText)
+//      {
+//
+//         delete m_pbrushText;
+//         m_pbrushText = nullptr;
+//      }
    }
 
 
@@ -104,7 +105,7 @@ return m_pdevicecontext;
    void Graphics::setBlendModeOn(bool bSet)
    {
       
-      m_pcgcontext->set_blend_mode_on(bSet);
+      m_pdevicecontext->m_pcgcontext->set_blend_mode_on(bSet);
 
 //      if (bSet)
 //      {
@@ -125,12 +126,12 @@ return m_pdevicecontext;
       if (bOn)
       {
          
-         m_pcgcontext->set_anti_alias_on(true);       //m_pdevicecontext->m_pgraphics->SetSmoothingMode//(Gdiplus::SmoothingModeAntiAlias);
+         m_pdevicecontext->m_pcgcontext->set_anti_alias_on(true);       //m_pdevicecontext->m_pgraphics->SetSmoothingMode//(Gdiplus::SmoothingModeAntiAlias);
 
       }
       else
       {
-         m_pcgcontext->set_anti_alias_on(false);
+         m_pdevicecontext->m_pcgcontext->set_anti_alias_on(false);
          //m_pdevicecontext->m_pgraphics->SetSmoothingMode(Gdiplus::SmoothingModeNone);
 
       }
@@ -180,8 +181,8 @@ return m_pdevicecontext;
       //m_pdevicecontext->selectObject(ppen);
       m_ppen = ppen;
       
-      m_pcgcontext->set_line_width(m_ppen->m_iWidth);
-      m_pcgcontext->set_stroke_color(m_ppen->m_pcgcolor);
+      //m_pdevicecontext->m_pcgcontext->set_line_width(m_ppen->m_iWidth);
+      //m_pdevicecontext->m_pcgcontext->set_stroke_color(m_ppen->m_pcgcolor);
 
    }
 
@@ -208,8 +209,8 @@ return m_pdevicecontext;
    void Graphics::lineTo(const ::i32_point & point)
    {
       
-      //set_pen(m_ppen);
-      m_pcgcontext->draw_line(m_pointCurrent, point);
+      _set_pen(m_ppen);
+      m_pdevicecontext->m_pcgcontext->draw_line(m_pointCurrent, point);
       m_pointCurrent = point;
 //      //LineTo(m_pdevicecontext->m_hdc, x, y);
 //      m_pdevicecontext->m_pgraphics->DrawLine(m_ppen->m_ppen, m_pointCurrent.x, m_pointCurrent.y, point.x, point.y);
@@ -224,15 +225,15 @@ return m_pdevicecontext;
 //
 //      ::copy(gdiplusrect, rectangle);
 //
-      auto pbrushMacos = pbrush->impl<::innate_subsystem_macos::Brush>();
+      //auto pbrushMacos = pbrush->impl<::innate_subsystem_macos::Brush>();
 //      
       //set
       
-      m_pcgcontext->set_fill_color(pbrushMacos->m_pcgcolor);
+      //m_pdevicecontext->m_pcgcontext->set_fill_color(pbrushMacos->m_pcgcolor);
 
       //auto hbrush = (HBRUSH) pbrush->_HGDIOBJ();
-      
-      m_pcgcontext->fill_rect(rectangle);
+      _set_brush(pbrush);
+      m_pdevicecontext->m_pcgcontext->fill_rect(rectangle);
 
 //m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect);
       //FillRect(m_pdevicecontext->m_hdc, &rect, hbrush);
@@ -244,7 +245,7 @@ void Graphics::_set_brush(::innate_subsystem::BrushInterface * pbrush)
 {
    
    auto pbrushMacos = pbrush->impl<::innate_subsystem_macos::Brush>();
-   m_pcgcontext->set_fill_color(pbrushMacos->m_pcgcolor);
+   m_pdevicecontext->m_pcgcontext->set_fill_color(pbrushMacos->m_pcgcolor);
    
 }
 // Sets current pen to the device context.
@@ -253,8 +254,8 @@ void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
    
    
    auto ppenMacos = ppen->impl<::innate_subsystem_macos::Pen>();
-   m_pcgcontext->set_line_width(ppenMacos->m_iWidth);
-   m_pcgcontext->set_stroke_color(ppenMacos->m_pcgcolor);
+   m_pdevicecontext->m_pcgcontext->set_line_width(ppenMacos->m_iWidth);
+   m_pdevicecontext->m_pcgcontext->set_stroke_color(ppenMacos->m_pcgcolor);
 }
 
 
@@ -272,12 +273,12 @@ void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
       //Gdiplus::Color gdipluscolor(color.byte_opacity(), color.byte_red(), color.byte_green(), color.byte_blue());
       //Gdiplus::SolidBrush solidbrush(gdipluscolor);
       
-      m_pcgcontext->set_fill_color(pcgcolor);
+      m_pdevicecontext->m_pcgcontext->set_fill_color(pcgcolor);
       
 
       //auto hbrush = (HBRUSH) pbrush->_HGDIOBJ();
 
-      m_pcgcontext->fill_rect(rectangle);
+      m_pdevicecontext->m_pcgcontext->fill_rect(rectangle);
       //m_pdevicecontext->m_pgraphics->FillRectangle(&solidbrush, gdiplusrect);
       //FillRect(m_pdevicecontext->m_hdc, &rect, hbrush);
 
@@ -295,13 +296,13 @@ void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
       if(m_pbrush)
       {
          _set_brush(m_pbrush);
-         m_pcgcontext->fill_ellipse(rectangle);
+         m_pdevicecontext->m_pcgcontext->fill_ellipse(rectangle);
          
       }
       if(m_ppen)
       {
          _set_pen(m_ppen);
-         m_pcgcontext->draw_ellipse(rectangle);
+         m_pdevicecontext->m_pcgcontext->draw_ellipse(rectangle);
       }
 //      m_pdevicecontext->m_pgraphics->FillEllipse(m_pbrush->m_pbrush, gdiplusrect);
 //      m_pdevicecontext->m_pgraphics->DrawEllipse(m_ppen->m_ppen, gdiplusrect);
@@ -319,14 +320,14 @@ void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
       if(m_pbrush)
       {
          _set_brush(m_pbrush);
-         m_pcgcontext->fill_rect(rectangle);
+         m_pdevicecontext->m_pcgcontext->fill_rect(rectangle);
       }
       //m_pdevicecontext->m_pgraphics->FillRectangle(m_pbrush->m_pbrush, gdiplusrect);
       if(m_ppen)
       {
          _set_pen(m_ppen);
          //m_pdevicecontext->m_pgraphics->DrawRectangle(m_ppen->m_ppen, gdiplusrect);
-         m_pcgcontext->draw_ellipse(rectangle);
+         m_pdevicecontext->m_pcgcontext->draw_ellipse(rectangle);
       }
 
    }
@@ -343,7 +344,7 @@ void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
 
       //::copy(gdiplusrect, rectangle);
 
-      m_pcgcontext->draw_image(pbitmapMacos->m_pcgimage, rectangle);
+      m_pdevicecontext->m_pcgcontext->draw_image(pbitmapMacos->m_pcgdib->m_cgdib.m_pcgimage, rectangle);
       //auto pobjOld = memDC.selectObject(pbitmap);
       //m_pdevicecontext->m_pgraphics->DrawImage(pbitmapWin32->m_pbitmap, gdiplusrect);
 
@@ -355,10 +356,21 @@ void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
 
    void Graphics::drawBitmap(::innate_subsystem::BitmapInterface *pbitmap, const ::i32_point & point, const ::i32_rectangle & rectangle)
    {
-
-      auto pbitmapMacos = pbitmap->impl<::innate_subsystem_macos::Bitmap>();
       
-      m_pcgcontext->draw_image(pbitmapMacos->m_pcgimage, point, rectangle);
+      ::cast <::innate_subsystem_macos::Bitmap> pbitmapMacos = pbitmap;
+      
+      if(!pbitmapMacos)
+      {
+         
+         pbitmapMacos = pbitmap->impl<::innate_subsystem_macos::Bitmap>();
+         
+      }
+      
+      pbitmapMacos->m_pcgdib->update_image();
+      
+      auto pcgimage = pbitmapMacos->m_pcgdib->m_cgdib.m_pcgimage;
+      
+      m_pdevicecontext->m_pcgcontext->draw_image(pcgimage, point, rectangle);
 
 //      m_pdevicecontext->m_pgraphics->DrawImage(pbitmapWin32->m_pbitmap,
 //         point.x, point.y,
@@ -398,23 +410,34 @@ void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
 
    }
 
-   void Graphics::drawText(const char *text, int cchText, ::i32_rectangle &rectangle, unsigned int format, enum_align ealign)
+   void Graphics::drawText(const ::scoped_string & scopedstr, ::i32_rectangle &rectangle, unsigned int format, enum_align ealign)
    {
 
-      ::string str;
+//      ::string str;
+//
+//      if (cchText >= 0)
+//      {
+//
+//         str.assign(text, cchText);
+//
+//      }
+//      else
+//      {
+//
+//         str = text;
+//
+//      }
+      
+      
+      auto pcgcolor = CoreGraphics().create_color(m_colorText);
 
-      if (cchText >= 0)
-      {
-
-         str.assign(text, cchText);
-
-      }
-      else
-      {
-
-         str = text;
-
-      }
+      auto pfontMacos = m_pfont->impl<::innate_subsystem_macos::Font>();
+      
+      m_pdevicecontext->m_pcgcontext->draw_text(scopedstr, rectangle,
+                                                pcgcolor,
+                                                pfontMacos->m_pctfont,
+                                                format,
+                                                ealign);
 
 //      ::wstring wstr(str);
 //

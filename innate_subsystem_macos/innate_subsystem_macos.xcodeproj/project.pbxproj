@@ -113,6 +113,7 @@
 		9A19092E2FB29C2D00A3C985 /* _.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A1909222FB29C2D00A3C985 /* _.cpp */; };
 		9A6A2C152FB3E3CF004C0ACF /* libcore_graphics.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6A2C142FB3E3CF004C0ACF /* libcore_graphics.dylib */; };
 		9A85367D2FB460AD00267545 /* libappkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A85367C2FB460AD00267545 /* libappkit.dylib */; };
+		9A8536A62FB5D4B200267545 /* libacme_windowing_kit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8536A52FB5D4B200267545 /* libacme_windowing_kit.dylib */; };
 		9A9564BD2FB427360001D319 /* libacme_windowing_appkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9564BC2FB427360001D319 /* libacme_windowing_appkit.dylib */; };
 /* End PBXBuildFile section */
 
@@ -264,6 +265,7 @@
 		9A612CEE2FB29D0F0025E0AA /* subsystem_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = subsystem_macos.xcodeproj; path = ../subsystem_macos/subsystem_macos.xcodeproj; sourceTree = SOURCE_ROOT; };
 		9A6A2C142FB3E3CF004C0ACF /* libcore_graphics.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libcore_graphics.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A85367C2FB460AD00267545 /* libappkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libappkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A8536A52FB5D4B200267545 /* libacme_windowing_kit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_windowing_kit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A9564BC2FB427360001D319 /* libacme_windowing_appkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_windowing_appkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF8D4BB2FB4604E00B2D702 /* acme_windowing_appkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_windowing_appkit.xcodeproj; path = ../acme_windowing_appkit/acme_windowing_appkit.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -273,6 +275,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A8536A62FB5D4B200267545 /* libacme_windowing_kit.dylib in Frameworks */,
 				9A85367D2FB460AD00267545 /* libappkit.dylib in Frameworks */,
 				9A9564BD2FB427360001D319 /* libacme_windowing_appkit.dylib in Frameworks */,
 				9A6A2C152FB3E3CF004C0ACF /* libcore_graphics.dylib in Frameworks */,
@@ -290,6 +293,7 @@
 		9A09CDF52FB3865B00E22155 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A8536A52FB5D4B200267545 /* libacme_windowing_kit.dylib */,
 				9A85367C2FB460AD00267545 /* libappkit.dylib */,
 				9A9564BC2FB427360001D319 /* libacme_windowing_appkit.dylib */,
 				9A6A2C142FB3E3CF004C0ACF /* libcore_graphics.dylib */,

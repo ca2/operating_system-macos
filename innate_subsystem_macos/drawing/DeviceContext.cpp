@@ -29,6 +29,8 @@
 #include "Bitmap.h"
 //#include "../gui/PaintWindow.h"
 #include "innate_subsystem/drawing/GraphicsObject.h"
+#include "operating_system-apple/core_graphics/cg_context.h"
+#include "operating_system-apple/core_graphics/cg_dib.h"
 
 
 namespace innate_subsystem_macos
@@ -145,7 +147,15 @@ namespace innate_subsystem_macos
    void DeviceContext::initialize_device_context(::innate_subsystem::BitmapInterface * pbitmap)
    {
       destroyDeviceContext();
-//      m_bHasOwnDC = false;
+      
+      ::cast < ::innate_subsystem_macos::Bitmap > pbitmapMacos = pbitmap;
+      m_bHasOwnDC = false;
+      
+      auto pcgdib = pbitmapMacos->m_pcgdib;
+      
+      auto pcgcontext = pcgdib->m_cgdib.m_pcgcontext.m_p;
+      
+      m_pcgcontext = pcgcontext;
 //      ::cast < ::innate_subsystem_macos::Bitmap > pbitmapWin32 = pbitmap;
 //      m_hwnd = nullptr;
 //      m_hdc2 = nullptr;
@@ -161,6 +171,15 @@ namespace innate_subsystem_macos
 //      m_hdc2 = ::CreateCompatibleDC(hdc);
 //      m_pgraphics = new ::Gdiplus::Graphics(m_hdc2);
    }
+void DeviceContext::_initialize_device_context(::core_graphics::cg_context * pcgcontext)
+{
+   destroyDeviceContext();
+   m_bHasOwnDC = true;
+   m_pcgcontext = pcgcontext;
+//      m_hwnd = nullptr;
+//      m_hdc2 = ::CreateCompatibleDC(hdc);
+//      m_pgraphics = new ::Gdiplus::Graphics(m_hdc2);
+}
 
    void DeviceContext::_attachHDC(void * pHDC)
    {

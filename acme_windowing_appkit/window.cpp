@@ -12,6 +12,7 @@
 #include "acme/user/micro/elemental.h"
 #include "acme/user/user/mouse.h"
 #include "acme/windowing/windowing.h"
+#include "operating_system-apple/core_graphics/cg_context.h"
 #include <CoreGraphics/CoreGraphics.h>
 
 void ns_main_post(dispatch_block_t block);
@@ -107,7 +108,7 @@ namespace appkit
       //   }
       
       
-      void window::_draw(CGContextRef cgcontextref)
+      void window::_draw(::core_graphics::cg_context * pcgcontext, const ::i32_rectangle & rectangle)
       {
          
          {
@@ -116,7 +117,7 @@ namespace appkit
             
             constructø(m_pnanodevice);
             
-            m_pnanodevice->attach(cgcontextref, m_sizeWindow);
+            m_pnanodevice->attach((CGContextRef) pcgcontext->m_cgcontext.m_u, m_sizeWindow);
             
             ::pointer < ::micro::elemental > pelemental;
             
@@ -202,7 +203,7 @@ namespace appkit
          
          screen_coordinates_aware_copy(cgrect, rectangle);
          
-         m_pacmewindowbridge->m_pwindow = this;
+         m_pacmewindowbridge->m_pappkitacmewindowingwindow = this;
          
          m_pacmewindowbridge->create_ns_acme_window(cgrect);
          

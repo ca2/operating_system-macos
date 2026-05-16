@@ -37,7 +37,7 @@ namespace subsystem_macos
 {
 
 class Thread :
-virtual public Implementation<::subsystem::ThreadInterface>
+virtual public Implementation<::subsystem::ThreadCallback>
 
 {
 public:
@@ -93,7 +93,7 @@ protected:
 
     // your callback object
     //decltype(m_pthreadCallback) m_pthreadCallback;
-   ::procedure m_procedureCallback;
+   //::procedure m_procedureCallback;
 };
 
 } //namespace subsystem_macos

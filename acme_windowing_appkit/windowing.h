@@ -5,7 +5,7 @@
 
 
 #include "acme/windowing/windowing.h"
-
+#include "acme/constant/lightui.h"
 
 class command_handler;
 
@@ -27,7 +27,7 @@ public:
    
    
    /// map NSWindow * (bridge casted to void *) to a ::acme::windowing::window *
-  map < void *, ::pointer < ::acme::windowing::window > > m_windowmap;
+  map < ::appkit::ns_window_t, ::pointer < ::acme::windowing::window > > m_windowmap;
 
 
 //public:
@@ -44,7 +44,7 @@ public:
    void post(const ::procedure & procedure) override;
     void display_error_trap_push(int i) override;
     void display_error_trap_pop_ignored(int i) override;
-   void on_user_command(::uptr u, ::uptr uControl) override;
+   void on_user_command(::uptr u, ::lightui::enum_notification enotification, ::uptr uControl) override;
     //   ::e_status x11_initialize() override;
     //   void * x11_get_display() override;
     //   void x11_sync(const ::procedure & procedure) override;

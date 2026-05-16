@@ -9,8 +9,8 @@
 #pragma once
 
 
-#include "acme_windowing_kit/acme_window_bridge.h"
-
+#include "operating_system-apple/acme_windowing_kit/acme_window_bridge.h"
+#include "acme/constant/cursor.h"
 
 namespace macos
 {
@@ -45,7 +45,8 @@ public:
    bool                             m_bIsActiveCached;
 
    bool m_bRunningAppMainLoop;
-   ::appkit::acme::windowing::window *     m_pwindow;
+   ::appkit::acme::windowing::window *     m_pappkitacmewindowingwindow;
+   ::pointer < ::core_graphics::cg_context > m_pcgcontext;
    CFTypeRef                  m_pnsacmewindow;
    
    
@@ -54,7 +55,7 @@ public:
    
    void create_ns_acme_window(CGRect cgrect);
    
-   void set_cg_window_id(CGWindowID cgwindowid);
+   void set_ns_window_uptr(::uptr u);
    
    void display() override;
    
@@ -62,6 +63,12 @@ public:
    
    void do_tasks() override;
    
+//   virtual void discard_all_cursor_rectangles();
+//   virtual void add_cursor_rectangle(const ::i32_rectangle & r, ::enum_cursor ecursor);
+//   virtual void on_set_cursor_rectangles();
+//   virtual void invalidate_cursor_rectangles();
+   
+
    virtual int control_box_right_when_at_left() const;
    
    virtual void on_control_box_close();
@@ -80,7 +87,7 @@ public:
    
    virtual void on_char(int iChar);
    
-   virtual void _on_draw_frame(CGContextRef cg, CGSize sizeFrame);
+   virtual void _on_draw_frame(CGContextRef cg, CGRect rectFrame);
    
    void redraw() override;
    
@@ -99,6 +106,8 @@ public:
    virtual void macos_window_become_key();
    
    virtual void macos_window_resign_key();
+   
+   virtual void toggle_fullscreen();
    
    CGRect get_frame() override;
    

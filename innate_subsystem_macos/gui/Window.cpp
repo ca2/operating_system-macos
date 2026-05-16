@@ -27,6 +27,7 @@
 #include "drawing/Cursor.h"
 #include "drawing/Icon.h"
 #include "Menu.h"
+#include "acme/user/user/mouse.h"
 #include "subsystem/node/SystemInformation.h"
 #include "subsystem/platform/subsystem.h"
 #include "innate_subsystem/drawing/Brush.h"
@@ -35,8 +36,12 @@
 #include "drawing/DeviceContext.h"
 #include "drawing/Graphics.h"
 #include "acme/windowing/windowing.h"
+#include "operating_system-apple/core_graphics/cg_color.h"
+#include "operating_system-apple/core_graphics/cg_context.h"
+#include "operating_system-apple/core_graphics/cg_dib.h"
 #include "operating_system-macos/appkit/windowing.h"
 #include "operating_system-macos/acme_windowing_appkit/windowing.h"
+#include "operating_system-macos/acme_windowing_appkit/_interoperability.h"
 //#include <commctrl.h>
 // namespace macos
 // {
@@ -65,7 +70,7 @@ namespace innate_subsystem_macos
    operating_ambient_window_t Window::operating_ambient_window() const
 {
    
-   return {(::uptr)m_macoswindow.as_CGWindowID()};
+   return {(::uptr)m_macoswindow.as_uptr()};
 
    }
 
@@ -212,7 +217,23 @@ namespace innate_subsystem_macos
       ::system()->acme_windowing()->send([&]()
          {
       m_strWindowName = scopedstrWindowName;
-      auto hwndParent = ::as_u64(operatingsystemwindowParent);
+      //auto hwndParent = ::as_u64(operatingsystemwindowParent);
+         
+         m_pappkitacmewindowingwindow = this;
+         
+         m_pacmeuserinteraction = m_pwindowCallback;
+         
+         m_pacmewindowbridge = this;
+         
+         auto pacmeuserinteraction = m_pacmeuserinteraction.m_p;
+         
+         pacmeuserinteraction->m_pacmewindowingwindow = this;
+         
+         auto pacmewindowingwindow = pacmeuserinteraction->m_pacmewindowingwindow.m_p;
+         
+         auto operatingsystemwindow = ::cross_windows::create_window(xPos, yPos, width, height, operatingsystemwindowParent, this, this);
+         
+         set_operating_system_window(operatingsystemwindow);
 //      HWND hwnd = CreateWindow(::wstring(m_strClassName),
 //                            ::wstring(m_strWindowName),
 //                            style,
@@ -318,6 +339,11 @@ namespace innate_subsystem_macos
    {
 //      ASSERT(m_macoswindow.as_HWND() != 0);
 //      ShowWindow(m_macoswindow.as_HWND(), SW_SHOW);
+      
+      auto operatingsystemwindow = operating_system_window();
+      
+      ::cross_windows::show_window_show(operatingsystemwindow);
+      
    }
 
    void Window::hide()
@@ -326,32 +352,46 @@ namespace innate_subsystem_macos
 //      {
 //         ShowWindow(m_macoswindow.as_HWND(), SW_HIDE);
 //      }
+      
+      auto operatingsystemwindow = operating_system_window();
+      
+      if(operatingsystemwindow.is_set())
+      {
+         
+         ::cross_windows::show_window_hide(operatingsystemwindow);
+         
+      }
+
+      
    }
 
    bool Window::setSize(const ::i32_size & size)
    {
-//      ASSERT(m_macoswindow.as_HWND() != 0);
-//      return !!SetWindowPos(m_macoswindow.as_HWND(), 0, 0, 0, size.cx, size.cy,
-//                            SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
-      return false;
+      ASSERT(isWindow());
+      auto operatingsystemwindow = operating_system_window();
+      return !!::cross_windows::set_window_pos(operatingsystemwindow, 0, 0, 0, size.cx, size.cy,
+                            ::lightui::SWP_NOMOVE | ::lightui::SWP_NOZORDER | ::lightui::SWP_NOACTIVATE);
+//      return false;
    }
 
    bool Window::setPosition(const ::i32_point & point)
    {
-//      ASSERT(m_macoswindow.as_HWND() != 0);
-//      return !!SetWindowPos(m_macoswindow.as_HWND(), 0, point.x, point.y, 0, 0,
-//                            SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
-      return false;
+      ASSERT(isWindow());
+      auto operatingsystemwindow = operating_system_window();
+      return !!::cross_windows::set_window_pos(operatingsystemwindow, 0, point.x, point.y, 0, 0,
+                            ::lightui::SWP_NOSIZE | ::lightui::SWP_NOZORDER | ::lightui::SWP_NOACTIVATE);
+      //return false;
    }
 
    bool Window::setPlacement(const ::i32_rectangle & rectangle)
    {
-//      ASSERT(m_macoswindow.as_HWND() != 0);
-//      return !!SetWindowPos(m_macoswindow.as_HWND(), 0,
-//         rectangle.left, rectangle.top,
-//         rectangle.width(), rectangle.height(),
-//                            SWP_NOZORDER | SWP_NOACTIVATE);
-      return false;
+      ASSERT(isWindow());
+      auto operatingsystemwindow = operating_system_window();
+      return !!::cross_windows::set_window_pos(operatingsystemwindow, 0,
+         rectangle.left, rectangle.top,
+         rectangle.width(), rectangle.height(),
+                            ::lightui::SWP_NOZORDER | ::lightui::SWP_NOACTIVATE);
+    ////  return false;
    }
 
    void Window::setParent(::innate_subsystem::WindowInterface * pwindow)
@@ -665,7 +705,7 @@ void Window::setResourceId(::u32 uId)
    bool Window::_onWmCommand(::wparam wparam, ::lparam lparam)
    {
 
-    return onCommand(wparam.loword(), wparam.loword());
+    return onCommand(wparam.loword(), wparam.hiword());
     //  return false;
      
 
@@ -698,13 +738,13 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
       return false;
    }
 
-   bool Window::onMessage(unsigned int message, ::wparam wparam, ::lparam lparam)
+   bool Window::onMessage(::user::enum_message emessage, ::wparam wparam, ::lparam lparam)
    {
 
        if (m_pwindowCallback)
        {
 
-           if (m_pwindowCallback->onMessage(message, wparam, lparam))
+           if (m_pwindowCallback->onMessage(emessage, wparam, lparam))
            {
 
                return true;
@@ -756,20 +796,29 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
 //      ASSERT(m_macoswindow.as_CGWindowID()() != 0);
 //
 //      SetWindowText(m_macoswindow.as_CGWindowID()(), wstr);
+      
+      auto operatingsystemwindows = operating_system_window();
+      
+      ::cross_windows::set_window_text(operatingsystemwindows, scopedstr);
+
    }
 
    void Window::redraw(const ::i32_rectangle &rcArea)
    {
-//      ASSERT(m_macoswindow.as_HWND() != 0);
-//
-//      if (rcArea == 0) {
-//         InvalidateRect(m_macoswindow.as_HWND(), NULL, TRUE);
-//      } else {
-//
-//         RECT rc;
-//         ::copy(rc, rcArea);
-//         InvalidateRect(m_macoswindow.as_HWND(), &rc, FALSE);
-//      }
+      auto r = rcArea;
+      post([this, r]()
+           {
+         ASSERT(isWindow());
+         auto operatingsystemwindow = operating_system_window();
+         if (r.is_empty()) {
+            ::cross_windows::invalidate_rect(operatingsystemwindow, NULL, TRUE);
+         } else {
+            
+            //RECT rc;
+            //::copy(rc, rcArea);
+            ::cross_windows::invalidate_rect(operatingsystemwindow, &r, FALSE);
+         }
+      });
    }
 
    bool Window::onMouseEx(unsigned int uMessage, int mouseButtons, unsigned short wspeed, const ::i32_point &point,
@@ -800,6 +849,23 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
        }
       return false;
    }
+
+   bool Window::onKey(::user::enum_message emessage, ::user::enum_key euserkey)
+{
+      
+      if (m_pwindowCallback)
+      {
+         if (m_pwindowCallback->onKey(emessage, euserkey))
+          {
+
+              return true;
+
+         }
+
+      }
+     return false;
+   }
+
 
    void Window::setForegroundWindow()
    {
@@ -840,7 +906,7 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
 
    bool Window::isWindow()
    {
-      return (m_macoswindow.as_CGWindowID()!= 0);
+      return (m_macoswindow.as_uptr()!= 0);
 //      && (m_macoswindow.as_HWND() != INVALID_HANDLE_VALUE)
 //      && (::IsWindow(m_macoswindow.as_HWND()) != FALSE);
 //      return true;
@@ -899,6 +965,7 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
    {
 //
 //       postMessage(WM_APP + 876, 0, procedure);
+      ::system()->acme_windowing()->post(procedure);
 
    }
 
@@ -906,25 +973,53 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
    ::i32_rectangle Window::getClientRect()
    {
 
-//      ASSERT(m_macoswindow.as_HWND() != 0);
-//
-//      RECT rect{};
-//
-//      GetClientRect(m_macoswindow.as_HWND(), &rect);
-//
-//      ::i32_rectangle rectangle;
-//
-//      ::copy(rectangle, rect);
-//
-//      return rectangle;
-      return {};
+      ASSERT(isWindow());
+
+      ::i32_rectangle rectangle;
+      
+      auto operatingsystemwindow = operating_system_window();
+
+      ::cross_windows::get_client_rect(operatingsystemwindow, &rectangle);
+
+
+      //::copy(rectangle, rect);
+
+      return rectangle;
+      //return {};
 
    }
+
+   
+   void Window::toggle_fullscreen()
+   {
+      
+//      if (m_isFullScr)
+//      {
+//         
+//         doUnFullScreen();
+//         
+//      }
+//      else
+//      {
+//         
+//         doFullScreen();
+//         
+//      }
+      
+      auto operatingsystemwindow = operating_system_window();
+
+      ::cross_ns::toggle_immersive_fullscreen(operatingsystemwindow);
+      
+   }
+   
 
 
    ::i32_rectangle Window::getFullScreenRect()
    {
 
+      auto operatingsystemwindow = this->operating_system_window();
+      
+      auto rectangleFullscreen = ::cross_windows::get_window_monitor_rect(operatingsystemwindow);
 
 //      // Get size of desktop.
 //      HMONITOR hmon = MonitorFromWindow(m_macoswindow.as_HWND(), MONITOR_DEFAULTTONEAREST);
@@ -944,7 +1039,7 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
 //
 //
 //      return fullScreenRect;
-      return {};
+      return rectangleFullscreen;
    }
 
 
@@ -979,21 +1074,33 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
 //      // Save position of window.
 //      GetWindowPlacement(m_macoswindow.as_HWND(), &m_windowplacementWorkArea);
 //
-//      auto fullScreenRect = getFullScreenRect();
+      //auto fullScreenRect = getFullScreenRect();
 //
 //      setStyle((getStyle() | WS_MAXIMIZE) & ~(WS_CAPTION | WS_BORDER | WS_THICKFRAME  | WS_MAXIMIZEBOX));
 //      setExStyle(getExStyle() | WS_EX_TOPMOST);
 //
-//      SetWindowPos(m_macoswindow.as_HWND(), 0,
-//                   fullScreenRect.left, fullScreenRect.top,
-//                   fullScreenRect.width(), fullScreenRect.height(),
-//                   SWP_SHOWWINDOW);
+      
+      
+      auto operatingsystemwindow = operating_system_window();
+
+      ::cross_ns::enter_immersive_fullscreen(operatingsystemwindow);
+      
+      //::cross_windows::set_window_pos(operatingsystemwindow,
+        /*           0,
+                   fullScreenRect.left, fullScreenRect.top,
+                   fullScreenRect.width(), fullScreenRect.height(),
+                   0);*/
       
    }
 
 
    void Window::_doRestoreFromFullScreen()
    {
+      
+      auto operatingsystemwindow = operating_system_window();
+
+      ::cross_ns::exit_immersive_fullscreen(operatingsystemwindow);
+
 //      // Restore position, style and exstyle of windowed window.
 //      setStyle(getStyle() | WS_CAPTION | WS_BORDER | WS_THICKFRAME | WS_MAXIMIZEBOX);
 //      setExStyle(getExStyle() & ~WS_EX_TOPMOST);
@@ -1102,6 +1209,16 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
          onAdjustWindowSize();
       }
    }
+
+
+void Window::setMouseCursor(::enum_cursor ecursor)
+{
+   
+   auto operatingsystemwindow = this->operating_system_window();
+   
+   ::cross_ns::set_mouse_cursor(operatingsystemwindow, ecursor);
+   
+}
 
 
     void Window::_doMinimizeFromFullScreen()
@@ -1269,23 +1386,45 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
          return;
 
       }
+      
+      m_clientArea = getClientRect();
+      
+      auto sizeClientArea = m_clientArea.size();
+      
+      ::i32_size sizeBuffer{};
+      
+      if(m_pbitmapBuffer && m_pbitmapBuffer->m_pcgdib)
+      {
+         
+         sizeBuffer = m_pbitmapBuffer->m_pcgdib->get_size();
+         
+      }
 
-//      if (m_pdevicecontextBuffer && m_sizeBuffer == m_clientArea.size())
-//      {
-//
-//          return;
-//      }
-//
-//      if (m_pdevicecontextBuffer && m_pdevicecontextBuffer->m_pgraphics)
-//      {
-//         m_pdevicecontextBuffer->destroyDeviceContext();
+      if (m_pgraphicsBuffer
+          && m_pgraphicsBuffer->m_pdevicecontext && m_pbitmapBuffer
+          && m_pbitmapBuffer->m_pcgdib && sizeBuffer == sizeClientArea)
+      {
+
+          return;
+         
+      }
+
+      if (m_pgraphicsBuffer
+          && m_pgraphicsBuffer->m_pdevicecontext && m_pgraphicsBuffer->m_pdevicecontext->m_pcgcontext)
+      {
+         m_pgraphicsBuffer->m_pdevicecontext->destroyDeviceContext();
 //          if (m_hbitmapOld)
 //          {
 //              SelectObject(m_hdcBuffer, m_hbitmapOld);
 //          }
 //          ::DeleteDC(m_hdcBuffer);
-//      }
-//
+      }
+      
+      defer_construct_newø(m_pbitmapBuffer);
+      defer_construct_newø(m_pbitmapBuffer->m_pcgdib);
+      
+      m_pbitmapBuffer->m_pcgdib->initialize_dib(sizeClientArea, false);
+
 //      m_sizeBuffer = m_clientArea.size();
 //
 //      m_hdcBuffer = CreateCompatibleDC(m_paintStruct.hdc);
@@ -1305,14 +1444,17 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
 //      // 1️⃣ Create memory DC
 //      defer_construct_newø(m_pbitmapBuffer);
 //      m_pbitmapBuffer->_initialize_bitmap(m_hbitmapBuffer, nullptr);
-//
-//      defer_construct_newø(m_pdevicecontextBuffer);
-//      m_pdevicecontextBuffer->initialize_device_context(m_pbitmapBuffer);
-//      auto p = m_pdevicecontextBuffer->impl<::innate_subsystem_macos::DeviceContext>();
-//      p->m_hdc2 = m_hdcBuffer;
-//      p->m_pgraphics = new Gdiplus::Graphics(p->m_hdc2);
-//      // 3️⃣ Clear buffer (transparent black)
-//    //  ZeroMemory(pBits, m_sizeBuffer.area() * 4);
+
+      defer_construct_newø(m_pgraphicsBuffer);
+      defer_construct_newø(m_pgraphicsBuffer->m_pdevicecontext);
+      m_pgraphicsBuffer->m_pdevicecontext->initialize_device_context(m_pbitmapBuffer);
+      //auto p =
+      //m_pgraphicsBuffer->m_pdevicecontext->impl<::innate_subsystem_macos::DeviceContext>();
+      //m_pgraphicsBuffer->m_pdevicecontext->m_pcgcontext = m_pbitmapBuffer->m_pcgdib->m_cgdib.m_pcgcontext;
+      //p->m_hdc2 = m_hdcBuffer;
+      //p->m_pgraphics = new Gdiplus::Graphics(p->m_hdc2);
+      // 3️⃣ Clear buffer (transparent black)
+    //  ZeroMemory(pBits, m_sizeBuffer.area() * 4);
    }
 
 
@@ -1363,7 +1505,7 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
 //      _defer_update_double_buffering();
 //
 //
-//      if (m_pdevicecontextBuffer)
+//      if (m_pgraphicsBuffer->m_pdevicecontext)
 //      {
 //         // onDraw(m_hdcBuffer, m_paintStruct.rcPaint);
 //
@@ -1373,9 +1515,9 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
 //
 //         ::innate_subsystem_macos::Graphics g;
 //
-//         // defer_construct_newø(m_pdevicecontextBuffer);
+//         // defer_construct_newø(m_pgraphicsBuffer->m_pdevicecontext);
 //
-//         g.initialize_graphics(m_pdevicecontextBuffer);
+//         g.initialize_graphics(m_pgraphicsBuffer->m_pdevicecontext);
 //
 //
 //         // g.m_pdevicecontext->_attachHDC(hdc);
@@ -1401,6 +1543,38 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
       
    }
 
+
+void Window::_draw(::core_graphics::cg_context * pcgcontext, const ::i32_rectangle & rectangle)
+{
+   
+   _defer_update_double_buffering();
+   
+//   auto pcgcolorYellow = create_newø<::core_graphics::cg_color>();
+//   
+//   pcgcolorYellow->create_color(::color::yellow);
+//   
+//   pcgcontext->set_fill_color(pcgcolorYellow);
+//   
+//   ::i32_rectangle r;
+//   
+//   r.left = 23;
+//   r.top = 23;
+//   r.right = 1024 - 23;
+//   r.bottom = 768 - 23;
+//   
+//   pcgcontext->fill_rect(r);
+
+   onDraw(m_pgraphicsBuffer, rectangle);
+   
+   //m_pgraphicsBuffer->setBlendModeOn(true);
+   //m_pgraphicsBuffer->fillRect({0, 0, 1024, 768}, argb(160, 100, 160, 255));
+
+   //pcgcontext->set_blend_mode_on(false);
+   
+   pcgcontext->draw_dib(m_pbitmapBuffer->m_pcgdib);
+   
+   
+}
 
 
    //bool Window::on_window_procedure(LRESULT & lresult, HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
@@ -1691,7 +1865,7 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
          default:
             break;
       }
-      return onMessage(message, wparam, lparam);
+      return onMessage((::user::enum_message)message, wparam, lparam);
    }
 
 lresult Window::message_call(::user::enum_message eusermessage, ::wparam wparam, ::lparam lparam, const ::i32_point & point)
@@ -1914,6 +2088,33 @@ lresult Window::message_call(::user::enum_message eusermessage, ::wparam wparam,
    }
 
 
+//void Window::on_set_cursor_rectangles()
+//{
+//   
+//   
+//   m_pwindowCallback->on_set_cursor_rectangles();
+//   
+//}
+//
+//void Window::invalidate_cursor_rectangles()
+//{
+//   
+//   
+//   ::appkit::acme::windowing::window::invalidate_cursor_rectangles();
+//   
+//}
+//
+//void Window::add_cursor_rectangle(const ::i32_rectangle &rectangle, ::enum_cursor ecursor)
+//{
+//   
+//   auto operatingsystemwindow = operating_system_window();
+//
+//   ::cross_ns::add_cursor_rectangle(operatingsystemwindow, rectangle, ecursor);
+//
+//   
+//}
+
+
 void Window::post_message(::user::enum_message eusermessage, ::wparam wparam, ::lparam lparam)
 {
 
@@ -1926,6 +2127,8 @@ void Window::post_message(::user::enum_message eusermessage, ::wparam wparam, ::
    });
 
 }
+
+   
 
 
 } // namespace innate_subsystem_macos

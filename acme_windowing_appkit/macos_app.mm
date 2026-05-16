@@ -8,16 +8,18 @@
 #include "framework.h"
 #include "macos_app.h"
 #include "ns_acme_form_impact_controller.h"
+#include "ns_acme_window.h"
+#include "acme_window_bridge.h"
 #include "acme/constant/id.h"
 #include "acme/operating_system/argcargv.h"
 #include "acme/platform/application_menu.h"
 #include "acme/handler/command_handler.h"
 #include <Foundation/Foundation.h>
 
-
+::uptr as_ns_window_uptr(NSWindow * pnswindow);
 NSString * __nsstring(const char * psz);
 
-
+void set_acme_windowing_window_ns_window_uptr(::acme::windowing::window * pacmewindowingwindow, ::uptr u);
 void ns_main_send(dispatch_block_t block);
 void ns_main_post(dispatch_block_t block);
 
@@ -175,7 +177,22 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
    }
 }
 
-
+-(ns_acme_window *)createMainFrame:(NSRect)r styleMask:(NSUInteger)style withAcmeWindowingWindow:(::acme::windowing::window *) pacmewindowingwindow withAcmeWindowBridge:(::appkit::acme_window_bridge*)pacmewindowbridge
+{
+   
+   auto pnsacmewindow = [ [ ns_acme_window alloc ] initWithContentRect: r styleMask: 0 backing: NSBackingStoreBuffered defer: YES moreNative:true];
+   
+   set_acme_windowing_window_ns_window_uptr(pacmewindowingwindow, ::as_ns_window_uptr(pnsacmewindow));
+   
+   [ pnsacmewindow setBridge : pacmewindowbridge ];
+   
+   pacmewindowbridge->m_pnsacmewindow = (__bridge CFTypeRef) pnsacmewindow;
+   
+   auto pwindowcontroller = [ self addWindow: pnsacmewindow];
+   
+   return pnsacmewindow;
+   
+}
 
 -(NSWindowController *) addWindow:(NSWindow*)window
 {
@@ -205,7 +222,7 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
  
  
 
--(::uptr)showDialog:(NSString *)strDialogName
+-(::uptr)showDialog:(NSString *)strDialogName withAcmeWindowingWindow:(::acme::windowing::window*)pacmewindowingwindow
 {
    
    
@@ -219,7 +236,9 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
    if (myWindowController) {
       
       NSWindow *window = [myWindowController window];
-                
+      auto p = (__bridge  void *)window;
+      set_acme_windowing_window_ns_window_uptr(pacmewindowingwindow, (::uptr)p);
+
                 // 2. Extract the generic View Controller that storyboard auto-created
                 NSViewController *pgenericimpactcontroller = window.contentViewController;
                 
@@ -237,7 +256,6 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
                     // Triggers viewDidLoad inside your custom class immediately
                     [pformimpactcontroller viewDidLoad];
                 }
-                
        // 4. CRITICAL: Save the reference globally so the window stays open!
        [self addDialog:myWindowController];
       NSView *contentView = [window contentView];
@@ -245,10 +263,10 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
       // 1. Tell the view it must use a CoreAnimation layer backing
       [contentView setWantsLayer:YES];
       
-      // 2. Set your custom color (Example: Light grey color background)
-      // Replace [NSColor lightGrayColor] with your preferred system color
-      contentView.layer.backgroundColor = [NSColor lightGrayColor].CGColor;
-      // --- BACKGROUND COLOR UPDATE CODE END ---
+//      // 2. Set your custom color (Example: Light grey color background)
+//      // Replace [NSColor lightGrayColor] with your preferred system color
+//      contentView.layer.backgroundColor = [NSColor lightGrayColor].CGColor;
+//      // --- BACKGROUND COLOR UPDATE CODE END ---
       
 
        // 5. Show the window and bring it to the front layer
@@ -269,7 +287,63 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
    }
    return 0;
 }
+-(int)doModalDialog:(NSString *)strDialogName withAcmeWindowingWindow:(::acme::windowing::window*)pacmewindowingwindow
+{
+   NSStoryboard * storyboard =
+      [NSStoryboard storyboardWithName:@"Storyboard"
+                                bundle:nil];
 
+   NSWindowController * myWindowController =
+      [storyboard instantiateControllerWithIdentifier:strDialogName];
+
+   if(!myWindowController)
+   {
+      NSLog(@"Error: Could not find Storyboard ID: %@",
+            strDialogName);
+
+      return NSModalResponseCancel;
+   }
+
+   NSWindow * window = [myWindowController window];
+   auto p = (__bridge void *)window;
+   set_acme_windowing_window_ns_window_uptr(pacmewindowingwindow, (::uptr) p);
+   NSViewController * pgenericimpactcontroller =
+      window.contentViewController;
+
+   ns_acme_form_impact_controller * pformimpactcontroller =
+      [[ns_acme_form_impact_controller alloc]
+         initWithNibName:nil
+                  bundle:nil];
+
+   if(pgenericimpactcontroller && pformimpactcontroller)
+   {
+      pformimpactcontroller.view =
+         pgenericimpactcontroller.view;
+
+      window.contentViewController =
+         pformimpactcontroller;
+
+      [pformimpactcontroller viewDidLoad];
+   }
+
+   [self addDialog:myWindowController];
+
+   [[NSNotificationCenter defaultCenter]
+      addObserverForName:NSWindowWillCloseNotification
+                  object:window
+                   queue:[NSOperationQueue mainQueue]
+              usingBlock:^(NSNotification * _Nonnull note)
+   {
+      [self removeDialog:myWindowController];
+   }];
+
+   [myWindowController showWindow:nil];
+
+   NSInteger result =
+      [NSApp runModalForWindow:window];
+
+   return result;
+}
 
 -(void) addWindowController:(NSWindowController*)pwindowcontroller
 {
@@ -1843,135 +1917,3 @@ void ns_application_handle(long long l, void * p)
 }
 
 
-
-::uptr ns_show_dialog(const char * pszDialog)
-{
-   
-   // 1. Get the delegate and cast it to your custom class
-     macos_app *pmacosapp = (macos_app *)[NSApp delegate];
-   
-   NSString * strName = [[NSString alloc]initWithUTF8String:pszDialog];
-   
-   auto u = [pmacosapp showDialog:strName];
-   
-   return u;
-}
-
-NSWindow *ns_window_from_cg_window_id(CGWindowID windowID)
-{
-    for (NSWindow *window in NSApp.windows)
-    {
-        if ((CGWindowID)window.windowNumber == windowID)
-        {
-            return window;
-        }
-    }
-
-    return nil;
-}
-
-NSView *ns_window_get_impact_by_tag(NSWindow * pnswindow, int iTag)
-{
-   if (pnswindow == nil)
-       {
-           return nil;
-       }
-
-       return [pnswindow.contentView viewWithTag:iTag];
-}
-
-//
-//::uptr ns_get_dlg_item(::uptr u, int iDlgItem)
-//{
-//   
-//   NSWindow * pwindowDialog = ns_window_from_cg_window_id(u);
-//   
-//   if(pwindowDialog == nil)
-//   {
-//      
-//      NSLog(@"ns_get_dlg_item: window not found");
-//      
-//      return 0;
-//      
-//   }
-//   
-//   
-//   
-//}
-
-NSString * ns_get_impact_text(NSView * pnsview)
-{
-    if (pnsview == nil)
-    {
-        return nil;
-    }
-
-    if ([pnsview isKindOfClass:[NSTextField class]])
-    {
-        return [(NSTextField *) pnsview stringValue];
-    }
-
-    if ([pnsview isKindOfClass:[NSTextView class]])
-    {
-        return [(NSTextView *) pnsview string];
-    }
-   
-   if ([pnsview isKindOfClass:[NSComboBox class]])
-   {
-       return [(NSComboBox *) pnsview stringValue];
-   }
-
-    return nil;
-}
-char * ns_get_impact_text(::uptr u, ::uptr uChild)
-{
-   
-   auto cgwindowid = (CGWindowID) u;
-   auto pnswindow = ns_window_from_cg_window_id(cgwindowid);
-   
-   if(pnswindow == nil)
-   {
-      
-      return nullptr;
-      
-   }
-   
-   auto iTag = (int)uChild;
-   
-   auto pnsimpact = ns_window_get_impact_by_tag(pnswindow, iTag);
-   
-   if(pnsimpact == nil)
-   {
-      
-      return nullptr;
-      
-   }
-   
-   auto str = ns_get_impact_text(pnsimpact);
-   
-   if(str == nil)
-   {
-      return nullptr;
-      
-   }
-   
-   auto p = ::strdup([str UTF8String]);
-   
-   return p;
-
-}
-char * ns_get_window_text(::uptr u)
-{
-   auto cgwindowid = (CGWindowID) u;
-   auto pnswindow = ns_window_from_cg_window_id(cgwindowid);
-   
-   if(pnswindow == nil)
-   {
-      
-      return nullptr;
-      
-   }
-   auto p = ::strdup([ pnswindow.title UTF8String]);
-   return p;
-   
-}

@@ -96,7 +96,7 @@ namespace innate_subsystem_macos
       //m_hicon = nullptr;
 
       Bitmap mask;
-      mask.initialize_bitmap(pbitmap->getSize());
+      mask.initialize_bitmap(pbitmap->getSize(), false);
       fromBitmap(pbitmap, &mask);
    }
 
