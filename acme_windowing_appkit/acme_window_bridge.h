@@ -97,7 +97,11 @@ public:
    
    void set_position(int x, int y) override;
    
-   virtual void on_layout(int x, int y, int w, int h);
+   virtual void on_move(int x, int y);
+   
+   virtual void on_size(int w, int h);
+
+   //virtual void on_layout(int x, int y, int w, int h);
    
    virtual void macos_window_become_main();
    

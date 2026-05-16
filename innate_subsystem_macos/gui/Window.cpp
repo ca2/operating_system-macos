@@ -1457,6 +1457,22 @@ void Window::setMouseCursor(::enum_cursor ecursor)
     //  ZeroMemory(pBits, m_sizeBuffer.area() * 4);
    }
 
+   
+   void Window::on_move(int x, int y)
+   {
+      
+      
+   }
+
+
+   void Window::on_size(int x, int y)
+   {
+      
+      onSize();
+
+   }
+
+
 
    void Window::onDraw(::innate_subsystem::GraphicsInterface * pgraphics, const ::i32_rectangle & rectangle)
    {

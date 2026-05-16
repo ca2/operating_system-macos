@@ -132,11 +132,13 @@ void ns_main_send(dispatch_block_t block);
    
    int y = (int) [[NSScreen mainScreen] frame].size.height - rectFrame.origin.y - rectFrame.size.height;
    
-   int w = rectFrame.size.width;
+   //int w = rectFrame.size.width;
    
-   int h = rectFrame.size.height;
+   //int h = rectFrame.size.height;
    
-   m_pacmewindowbridge->on_layout(x, y, w, h);
+   //m_pacmewindowbridge->on_layout(x, y, w, h);
+   
+   m_pacmewindowbridge->on_move(x, y);
    
 }
 
@@ -146,15 +148,17 @@ void ns_main_send(dispatch_block_t block);
    
    NSRect rectFrame = [ self frame ];
    
-   int x = rectFrame.origin.x;
+   //int x = rectFrame.origin.x;
    
-   int y = (int) [[NSScreen mainScreen] frame].size.height - rectFrame.origin.y - rectFrame.size.height;
+   //int y = (int) [[NSScreen mainScreen] frame].size.height - rectFrame.origin.y - rectFrame.size.height;
    
    int w = rectFrame.size.width;
    
    int h = rectFrame.size.height;
    
-   m_pacmewindowbridge->on_layout(x, y, w, h);
+   //m_pacmewindowbridge->on_layout(x, y, w, h);
+   
+   m_pacmewindowbridge->on_size(w, h);
    
 }
 

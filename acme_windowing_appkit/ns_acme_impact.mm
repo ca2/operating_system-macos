@@ -69,10 +69,25 @@ NSCursor * e_cursor_to_ns_cursor(::enum_cursor ecursor);
       
    }
    
+   
+   // Step 1: Enable notifications on the target view
+   [self setPostsFrameChangedNotifications:YES];
+
+   // Step 2: Register for the notification
+   [[NSNotificationCenter defaultCenter] addObserver:self
+                                            selector:@selector(viewDidResizeNotification:)
+                                                name:NSViewFrameDidChangeNotification
+                                              object:self];
+
+
    return self;
    
 }
 
+// Step 4: Don't forget to unregister in dealloc
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (NSRect) resizeRect
 {
@@ -91,6 +106,23 @@ NSCursor * e_cursor_to_ns_cursor(::enum_cursor ecursor);
    
    return resizeRect;
    
+}
+
+
+
+// Step 3: Handle the notification
+- (void)viewDidResizeNotification:(NSNotification *)notification {
+    NSView *view = (NSView *)notification.object;
+    NSSize newSize = view.frame.size;
+    NSLog(@"View frame changed: %f x %f", newSize.width, newSize.height);
+   
+   
+   if(m_pacmewindowbridgeImpact)
+   {
+      
+      m_pacmewindowbridgeImpact->on_size(newSize.width, newSize.height);
+      
+   }
 }
 
 
@@ -1267,6 +1299,12 @@ unsigned int event_key_code(NSEvent * event)
    {
       
       euserkey = ::user::e_key_escape;
+      
+   }
+   else if(keyCode == kVK_Tab)
+   {
+      
+      euserkey = ::user::e_key_tab;
       
    }
    else

@@ -132,7 +132,11 @@ void acme_window_bridge::create_ns_acme_window(CGRect cgrect)
       
       [ pnsacmewindow setBridge:this ];
       
-      on_layout(cgrect.origin.x, cgrect.origin.y, cgrect.size.width, cgrect.size.height);
+      on_move(cgrect.origin.x, cgrect.origin.y);
+      
+      on_size(cgrect.size.width, cgrect.size.height);
+      
+      //on_layout(cgrect.origin.x, cgrect.origin.y, cgrect.size.width, cgrect.size.height);
       
    });
    
@@ -348,7 +352,9 @@ void acme_window_bridge::set_position(int x, int y)
    
    [ pnsacmewindow setFrameOrigin:point ];
    
-   on_layout(x, y, w, h);
+   //on_layout(x, y, w, h);
+   
+   on_move(x, y);
    
 }
 

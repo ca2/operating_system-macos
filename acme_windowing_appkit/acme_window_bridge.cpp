@@ -139,13 +139,34 @@ void acme_window_bridge::_on_draw_frame(CGContextRef cg, CGRect rect)
 }
 
 
-
-void acme_window_bridge::on_layout(int x, int y, int w, int h)
+void acme_window_bridge::on_move(int x, int y)
 {
    
-   m_pappkitacmewindowingwindow->_on_layout(x, y, w, h);
+   //m_pappkitacmewindowingwindow->_on_layout(x, y, w, h);
+   
+   m_pappkitacmewindowingwindow->on_move(x, y);
    
 }
+
+
+void acme_window_bridge::on_size(int w, int h)
+{
+   
+   //m_pappkitacmewindowingwindow->_on_layout(x, y, w, h);
+   
+   m_pappkitacmewindowingwindow->on_size(w, h);
+   
+}
+
+
+
+
+//void acme_window_bridge::on_layout(int x, int y, int w, int h)
+//{
+//   
+//   m_pappkitacmewindowingwindow->_on_layout(x, y, w, h);
+//   
+//}
 
 
 void acme_window_bridge::set_ns_window_uptr(::uptr u)

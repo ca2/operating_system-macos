@@ -392,6 +392,9 @@ namespace innate_subsystem_macos
       lresult message_call(::user::enum_message eusermessage, ::wparam wparam, ::lparam lparam, const ::i32_point & point) override;
       
       virtual void _defer_update_double_buffering();
+      
+      void on_move(int x, int y) override;
+      void on_size(int x, int y) override;
 
 
       void onDraw(::innate_subsystem::GraphicsInterface * pgraphics, const ::i32_rectangle & rectangle) override;

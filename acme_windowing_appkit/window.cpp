@@ -563,6 +563,12 @@ namespace appkit
       }
       
       
+      void window::on_size(int w, int h)
+      {
+         
+      }
+      
+      
       void window::_on_layout(int x, int y, int w, int h)
       {
          
