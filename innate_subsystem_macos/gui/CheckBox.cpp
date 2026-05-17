@@ -25,21 +25,40 @@
 #include "framework.h"
 #include "CheckBox.h"
 #include "Window.h"
-
+#include "operating_system-macos/acme_windowing_appkit/_interoperability.h"
 
 namespace innate_subsystem_macos
 {
-  bool CheckBox::isChecked()
-  {
+
+   bool CheckBox::isChecked()
+   {
+      
 //      auto hwnd = ::as_HWND(operating_system_window());
 //
 //     return (SendMessage(hwnd, BM_GETCHECK, NULL, NULL) != 0);
-     return false;
+
+     auto operatingsystemwindow = this->operating_system_window();
+
+     auto bIsChecked = ::cross_ns::check_box_is_checked(operatingsystemwindow);
+
+     return bIsChecked;
+     
   }
+
 
   void CheckBox::setChecked(bool checked)
   {
+     
+     
 //     auto hwnd = ::as_HWND(operating_system_window());
 //     SendMessage(hwnd, BM_SETCHECK, (checked) ? 1 : 0, NULL);
+     
+     auto operatingsystemwindow = this->operating_system_window();
+
+     ::cross_ns::check_box_set_checked(operatingsystemwindow, checked);
+
+     
   }
+
+
 } // namespace innate_subsystem_macos

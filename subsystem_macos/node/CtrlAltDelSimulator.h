@@ -39,9 +39,11 @@ namespace subsystem_macos
       public:
          CtrlAltDelSimulator();
          ~CtrlAltDelSimulator() override;
+         
+         void destroy() override;
 
          //protected:
-         void execute() override;
+         void onThreadMain() override;
       };
 
       //// __CTRLALTDELSIMULATOR_H__

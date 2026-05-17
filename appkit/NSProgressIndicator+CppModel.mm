@@ -9,7 +9,7 @@
 #import <objc/runtime.h>
 
 static const char *CppModelPointerKey = "CppModelPointerKey";
-static const char *CustomTagKey = "CustomTagKey";
+static const char *CustomTagKey = "tag";
 
 @implementation NSProgressIndicator (CppModel)
 
@@ -26,11 +26,11 @@ static const char *CustomTagKey = "CustomTagKey";
 }
 
 // Integer Tag Getter/Setter
-- (void)setCustomTag:(NSInteger)tag {
+- (void)setTag:(NSInteger)tag {
     objc_setAssociatedObject(self, CustomTagKey, @(tag), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSInteger)customTag {
+- (NSInteger)tag {
     NSNumber *tagNumber = objc_getAssociatedObject(self, CustomTagKey);
     return tagNumber ? [tagNumber integerValue] : -1;
 }

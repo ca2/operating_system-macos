@@ -41,11 +41,12 @@ namespace subsystem_macos
       SessionChangesWatcher();
       ~SessionChangesWatcher() override;
 
+      void destroy() override;
 
       void start_SessionChangesWatcher(const ::procedure &procedureSessionChanged, ::subsystem::LogWriter *plogwriter) override;
 
       //   protected:
-      virtual void execute();
+      virtual void onThreadMain();
 
 
 

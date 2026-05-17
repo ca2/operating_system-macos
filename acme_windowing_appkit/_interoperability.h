@@ -11,6 +11,7 @@ namespace cross_windows
 
    ::operating_system::window create_window(::i32 xPos, ::i32 yPos, ::i32 width, ::i32 height, const ::operating_system::window & hwndParent, ::acme::windowing::window * pacmewindowingwindow,
                                             ::appkit::acme_window_bridge * pacmewindowbridge);
+void destroy_window(const ::operating_system::window & operatingsystemwindow);
 void get_client_rect(const ::operating_system::window & operatingsystemwindow, ::i32_rectangle * prectangle);
 void show_window_show(const ::operating_system::window & operatingsystemwindow);
 void show_window_hide(const ::operating_system::window & operatingsystemwindow);
@@ -40,10 +41,15 @@ void combo_box_delete_string(const ::operating_system::window & operatingsystemw
 
 namespace cross_ns {
 
+void minimize_window(const ::operating_system::window & operatingsystemwindow);
 void enter_immersive_fullscreen(const ::operating_system::window & operatingsystemwindow);
 void exit_immersive_fullscreen(const ::operating_system::window & operatingsystemwindow);
 bool is_in_immersive_fullscreen(const ::operating_system::window & operatingsystemwindow);
 void toggle_immersive_fullscreen(const ::operating_system::window & operatingsystemwindow);
 void set_mouse_cursor(const ::operating_system::window & operatingsystemwindow, ::enum_cursor ecursor);
+void set_progress_bar_range(const ::operating_system::window & operatingsystemwindow, int iMinimum, int iMaximum);
+void set_progress_bar_position(const ::operating_system::window & operatingsystemwindow, int iPosition);
+bool check_box_is_checked(const ::operating_system::window & operatingsystemwindow);
+void check_box_set_checked(const ::operating_system::window & operatingsystemwindow, bool checked);
 //void add_cursor_rectangle(const ::operating_system::window & operatingsystemwindow, const ::i32_rectangle & rectangle, ::enum_cursor ecursor);
 } // namespace cross_ns

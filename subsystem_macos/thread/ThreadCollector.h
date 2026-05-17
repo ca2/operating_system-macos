@@ -48,10 +48,12 @@ namespace subsystem_macos
    {
    public:
       ThreadCollector();
-      virtual ~ThreadCollector();
+       ~ThreadCollector() override;
+      
+      void destroy() override;
 
       // Adds thread to a self ::list_base.
-      virtual void addThread(::subsystem::ThreadInterface *thread);
+      virtual void addThread(::subsystem::Thread * pthread);
 
       // Forces terminates all threads, waits until they dies and than
       // delete them from memory and thread ::list_base.
@@ -60,13 +62,13 @@ namespace subsystem_macos
       const memsize Size() override;
 
    ///protected:
-      virtual void execute();
+       void onThreadMain() override;
 
       // Deletes all dead threads from memory and removes them from self ::list_base.
-      void deleteDeadThreads();
+      void deleteDeadThreads() override;
 
    //protected:
-      ::pointer_array < ::subsystem::ThreadInterface >  m_threada;
+      ::pointer_array < ::subsystem::Thread >  m_threada;
       critical_section m_lockObj;
 
       ::happening m_timer;

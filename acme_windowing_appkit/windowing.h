@@ -72,6 +72,8 @@ public:
    void each_window(const ::function < void(::acme::windowing::window*) > & function) override;
    
    virtual ::operating_system::window __cross_windows__get_dlg_item(const ::operating_system::window & operatingsystemwindow, int iDlgItem);
+   
+   void hide_application() override;
     
 };
 

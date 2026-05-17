@@ -40,7 +40,7 @@ IMPLEMENT_FACTORY(subsystem_macos)
    subsystem_bsd_sockets_factory(pfactory);
 
    pfactory->add_factory_item<::subsystem_macos::GlobalMutex, ::subsystem::GlobalMutexInterface>();
-   pfactory->add_factory_item<::subsystem_macos::Thread, ::subsystem::ThreadInterface>();
+   //pfactory->add_factory_item<::subsystem_macos::Thread, ::subsystem::ThreadInterface>();
    pfactory->add_factory_item<::subsystem_macos::Shell, ::subsystem::Shell>();
 //   pfactory->add_factory_item<::subsystem_macos::SecurityAttributes, ::subsystem::SecurityAttributesInterface>();
    pfactory->add_factory_item<::subsystem_macos::PipeServer, ::subsystem::PipeServer>();

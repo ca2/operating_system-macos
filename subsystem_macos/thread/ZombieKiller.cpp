@@ -59,7 +59,7 @@ namespace subsystem_macos
    //   killAllZombies();
    // }
    //
-   // void ZombieKiller::execute()
+   // void ZombieKiller::onThreadMain()
    // {
    //   while (!isTerminating()) {
    //     deleteDeadZombies();
@@ -100,7 +100,7 @@ namespace subsystem_macos
 
      //ThreadList::iterator iter;
      for (auto iter = m_zombies.begin(); iter != m_zombies.end(); iter++) {
-       (*iter)->terminate();
+       (*iter)->setThreadToFinish();
      }
      for (auto iter = m_zombies.begin(); iter != m_zombies.end(); iter++) {
        (*iter)->wait();

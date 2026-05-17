@@ -46,10 +46,19 @@ namespace subsystem_macos
 
    SessionChangesWatcher::~SessionChangesWatcher()
    {
-      terminate();
-      wait();
    }
 
+
+void SessionChangesWatcher::destroy()
+{
+
+   ::subsystem::Thread::destroy();
+   
+//   terminateThread();
+//   wait();
+
+   
+}
 
      void SessionChangesWatcher::start_SessionChangesWatcher(const ::procedure &procedureSessionChanged,
                                                 ::subsystem::LogWriter *plogwriter) 
@@ -57,11 +66,11 @@ namespace subsystem_macos
         m_procedureSessionChanged = procedureSessionChanged;
       m_plogwriter = plogwriter;
       //ProcessIdToSessionId(GetCurrentProcessId(), &m_baseSessionId);
-      resume();
+      resumeThread();
    }
 
 
-   void SessionChangesWatcher::execute()
+   void SessionChangesWatcher::onThreadMain()
    {
 //      DWORD prevSession = m_baseSessionId;
 //      bool isRdp = WindowsSubsystem().WTS().SessionIsRdpSession(prevSession, m_plogwriter);

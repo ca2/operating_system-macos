@@ -38,8 +38,17 @@ namespace subsystem_macos
 
    PipeImpersonatedThread::~PipeImpersonatedThread()
    {
-      terminate();
-      wait();
+   }
+
+   void PipeImpersonatedThread::destroy()
+{
+      
+      ::subsystem::Thread::destroy();
+//      
+//      terminateThread();
+//      wait();
+//
+//      
    }
 
    void PipeImpersonatedThread::initialize_pipe_impersonated_thread(::subsystem::FileInterface* pfilePipe)
@@ -49,7 +58,7 @@ namespace subsystem_macos
 
    }
 
-   void PipeImpersonatedThread::onTerminate()
+   void PipeImpersonatedThread::onTermThread()
    {
       m_threadSleeper.set_happening();
    }
@@ -69,7 +78,7 @@ namespace subsystem_macos
       return m_faultReason;
    }
 
-   void PipeImpersonatedThread::execute()
+   void PipeImpersonatedThread::onThreadMain()
    {
 //      auto handle = ::as_fd(m_pfilePipe);
 //

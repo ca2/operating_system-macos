@@ -26,25 +26,25 @@
 
 
 #include "subsystem_macos/thread/Thread.h"
-
-
-namespace subsystem_macos
-{
-   class CLASS_DECL_SUBSYSTEM_MACOS GuiThread : public Thread
-   {
-   public:
-      GuiThread();
-      virtual ~GuiThread();
-   ///private:
-      // Replacing the base function.
-      //static DWORD WINAPI threadProc(LPVOID pThread);
-
-      virtual void initByDerived();
-
-      // Desktop for current thread.
-      //HDESK m_hDesk;
-      ::subsystem::desk_t m_desk;
-   };
-
-   //// __GUITHREAD_H__
-} // namespace subsystem_macos
+//
+//
+//namespace subsystem_macos
+//{
+//   class CLASS_DECL_SUBSYSTEM_MACOS GuiThread : public Thread
+//   {
+//   public:
+//      GuiThread();
+//      virtual ~GuiThread();
+//   ///private:
+//      // Replacing the base function.
+//      //static DWORD WINAPI threadProc(LPVOID pThread);
+//
+//      void onInitThread() override;
+//
+//      // Desktop for current thread.
+//      //HDESK m_hDesk;
+//      ::subsystem::desk_t m_desk;
+//   };
+//
+//   //// __GUITHREAD_H__
+//} // namespace subsystem_macos

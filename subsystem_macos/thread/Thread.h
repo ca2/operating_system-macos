@@ -24,78 +24,78 @@
 
 #pragma once
 
-#include "subsystem/thread/Thread.h"
-#include "subsystem_macos/_common_header.h"
-//#include "critical_section.h"
-//#include "DesktopSelector.h"
-//#pragma once
-
-#include <pthread.h>
-#include <atomic>
-
-namespace subsystem_macos
-{
-
-class Thread :
-virtual public Implementation<::subsystem::ThreadCallback>
-
-{
-public:
-
-    Thread();
-    ~Thread() override;
-
-    ::e_status wait() override;
-
-    bool suspend() override;
-    bool resume() override;
-
-    void terminate() override;
-
-   bool isActive() const override;
-
-    ::iptr getThreadId() const override;
-
-    bool setPriority(
-        ::subsystem::THREAD_PRIORITY value) override;
-
-    void sleep(
-        const class ::time& time) override;
-
-    void yield() override;
-
-    bool isTerminating() override;
-
-protected:
-
-    virtual void initByDerived() override;
-    virtual void onTerminate() override;
-    virtual void execute() override;
-
-private:
-
-    static void* threadProc(void* pThread);
-
-    void waitIfSuspended();
-
-protected:
-
-    pthread_t m_thread {};
-
-    pthread_mutex_t m_suspendMutex {};
-    pthread_cond_t  m_suspendCond {};
-
-    std::atomic<bool> m_terminated { false };
-    std::atomic<bool> m_active { false };
-    std::atomic<bool> m_suspended { true };
-
-    ::iptr m_threadID {};
-
-    // your callback object
-    //decltype(m_pthreadCallback) m_pthreadCallback;
-   //::procedure m_procedureCallback;
-};
-
-} //namespace subsystem_macos
-
-
+//#include "subsystem/thread/Thread.h"
+//#include "subsystem_macos/_common_header.h"
+////#include "critical_section.h"
+////#include "DesktopSelector.h"
+////#pragma once
+//
+//#include <pthread.h>
+//#include <atomic>
+//
+//namespace subsystem_macos
+//{
+//
+//class Thread :
+//virtual public Implementation<::subsystem::ThreadCallback>
+//
+//{
+//public:
+//
+//    Thread();
+//    ~Thread() override;
+//
+//    ::e_status wait() override;
+//
+//    bool suspendThread() override;
+//    bool resumeThread() override;
+//
+//    void terminateThread() override;
+//
+//   bool isThreadActive() const override;
+//
+//    ::iptr getThreadId() const override;
+//
+//    bool setThreadPriority(
+//        ::subsystem::THREAD_PRIORITY value) override;
+//
+//    void threadSleep(
+//        const class ::time& time) override;
+//
+//    void threadYield() override;
+//
+//    bool isThreadTerminating() override;
+//
+//protected:
+//
+//    void onInitThread() override;
+//    virtual void onTermThread() override;
+//    virtual void onThreadMain() override;
+//
+//private:
+//
+//    static void* threadProc(void* pThread);
+//
+//    void waitIfSuspended();
+//
+//protected:
+//
+//    pthread_t m_thread {};
+//
+//    pthread_mutex_t m_suspendMutex {};
+//    pthread_cond_t  m_suspendCond {};
+//
+//    std::atomic<bool> m_terminated { false };
+//    std::atomic<bool> m_active { false };
+//    std::atomic<bool> m_suspended { true };
+//
+//    ::iptr m_threadID {};
+//
+//    // your callback object
+//    //decltype(m_pthreadCallback) m_pthreadCallback;
+//   //::procedure m_procedureCallback;
+//};
+//
+//} //namespace subsystem_macos
+//
+//

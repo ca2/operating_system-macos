@@ -6,7 +6,7 @@
 
 #include "operating_system-apple/core_graphics/_struct.h"
 
-
+void ns_window_destroy_window(::appkit::ns_window_t nswindow);
 void ns_window_show(::appkit::ns_window_t nswindow);
 void ns_window_hide(::appkit::ns_window_t nswindow);
 char * ns_get_window_text(::uptr u);
@@ -20,6 +20,7 @@ int ns_impact_set_window_pos(::appkit::ns_impact_t nswindow,
                               ::appkit::ns_impact_t nswindowOther,
                     int x, int y, int w, int h, int flags);
 ::core_graphics::cg_rect ns_window_monitor_rect(::appkit::ns_window_t nswindow);
+void ns_window_minimize(::appkit::ns_window_t nswindow);
 void ns_window_enter_immersive_fullscreen(::appkit::ns_window_t nswindow);
 void ns_window_exit_immersive_fullscreen(::appkit::ns_window_t nswindow);
 bool ns_window_is_in_immersive_fullscreen(::appkit::ns_window_t nswindow);
@@ -28,10 +29,16 @@ void ns_window_toggle_immersive_fullscreen(::appkit::ns_window_t nswindow);
 void ns_window_set_mouse_cursor(::appkit::ns_window_t nswindow, ::enum_cursor ecursor);
 
 ::uptr ns_get_dlg_item(::uptr u, int iDlgItem);
+
+void ns_impact_destroy_window(::appkit::ns_impact_t nsimpact);
 char * ns_get_impact_text(::appkit::ns_impact_t nsimpact);
 void ns_set_impact_text(::appkit::ns_impact_t nsimpact, const char * pszText);
 void ns_impact_get_client_rect(::appkit::ns_impact_t nsimpact, ::core_graphics::cg_rect * pcgrect);
 void ns_impact_set_mouse_cursor(::appkit::ns_impact_t nsimpact, ::enum_cursor ecursor);
+void ns_progress_bar_set_range(::appkit::ns_impact_t nsimpact, int iMinimum, int iMaximum);
+void ns_progress_bar_set_position(::appkit::ns_impact_t nsimpact, int iPosition);
+bool ns_check_box_is_checked(::appkit::ns_impact_t nsimpact);
+void ns_check_box_set_checked(::appkit::ns_impact_t nsimpact, bool checked);
 
 // NSComboBox
 ::collection::index ns_combo_box_insert_string(::appkit::ns_impact_t nsimpact, ::collection::index i, const char * psz);

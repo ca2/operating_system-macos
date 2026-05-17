@@ -72,12 +72,12 @@ void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessa
        }
        else if([psubimpact isKindOfClass:[NSProgressIndicator class]])
        {
-          
-          NSProgressIndicator *progress = [[NSProgressIndicator alloc] init];
+          NSProgressIndicator *progress = psubimpact;
+//          NSProgressIndicator *progress = [[NSProgressIndicator alloc] init];
           //progress.customTag = 101;                // Solution 1: Identify in loops
           //progress.cppModelPointer = (void *)task;  // Solution 2: Map to C++ model
-          NSLog(@"NSProgressIndicator customTag %d", (int) progress.customTag);
-          [parentView addSubview:progress];
+          NSLog(@"NSProgressIndicator customTag %d", (int) progress.tag);
+          //[parentView addSubview:progress];
           
        }
 

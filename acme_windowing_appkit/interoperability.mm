@@ -59,10 +59,31 @@ NSInteger ns_window_find_free_tag(
         minimumTag);
 }
 
+
+NSWindow * as_ns_window(const ::operating_system::window & operatingsystemwindow)
+{
+   
+   if(operatingsystemwindow.m_eoperatingambient != ::windowing::e_operating_ambient_macos
+      && operatingsystemwindow.m_eoperatingambient != ::windowing::e_operating_ambient_macos_impact)
+   {
+      
+      return nil;
+      
+   }
+   
+   auto pnswindow = (__bridge NSWindow *)(void *) operatingsystemwindow.m_window.m_ulla[0];
+   
+   return pnswindow;
+   
+}
+
+
 namespace cross_windows
 {
 
-::operating_system::window create_window(::i32 xPos, ::i32 yPos, ::i32 width, ::i32 height, const ::operating_system::window & hwndParent, ::acme::windowing::window * pacmewindowingwindow,
+
+::operating_system::window create_window(::i32 xPos, ::i32 yPos, ::i32 width, ::i32 height, const ::operating_system::window & operatingsystemwindowParent,
+                                         ::acme::windowing::window * pacmewindowingwindow,
                                          ::appkit::acme_window_bridge * pacmewindowbridge)
 {
    
@@ -75,7 +96,7 @@ namespace cross_windows
    r.size.width = width == WINDOW_WIDTH_USE_DEFAULT ? 1024 : width;
    r.size.height = height == WINDOW_WIDTH_USE_DEFAULT ? 768 : height;
    
-   if(hwndParent.is_null())
+   if(operatingsystemwindowParent.is_null())
    {
       
       macos_app *pmacosapp = (macos_app *)[NSApp delegate];
@@ -90,14 +111,14 @@ namespace cross_windows
    else
    {
       
-      NSWindow * pnswindow = (__bridge NSWindow *)(void *) hwndParent.m_window.m_ulla[0];
+      NSWindow * pnswindow = ::as_ns_window(operatingsystemwindowParent);
       
       NSView * pnsimpactParent = nullptr;
       
-      if(hwndParent.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact)
+      if(operatingsystemwindowParent.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact)
       {
          
-         pnsimpactParent = ns_window_get_impact_by_tag(pnswindow, hwndParent.m_window.m_ulla[1]);
+         pnsimpactParent = ns_window_get_impact_by_tag(pnswindow, operatingsystemwindowParent.m_window.m_ulla[1]);
          
       }
       
@@ -147,6 +168,7 @@ namespace cross_windows
    
 }
 
+
 } // namespace cross_windows
 
 
@@ -155,6 +177,17 @@ NSWindow *ns_window_from_ns_window_t(::appkit::ns_window_t nswindow)
    auto pnswindow = (__bridge NSWindow *)nswindow.m_p;
 
     return pnswindow;
+}
+
+
+void ns_window_destroy_window(::appkit::ns_window_t nswindow)
+{
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+   
+   [pnswindow orderOut:nil];
+   
+   [pnswindow close];
+   
 }
 
 
@@ -327,6 +360,48 @@ int ns_window_set_window_pos(::appkit::ns_window_t nswindow,
 }
 
 
+void ns_window_minimize(::appkit::ns_window_t nswindow)
+{
+   
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+   
+   if(pnswindow == nil)
+   {
+      
+      return;
+      
+   }
+      
+   ns_acme_window * pnsacmewindow = pnswindow;
+      
+   if(pnsacmewindow != nil)
+   {
+      
+      if (pnsacmewindow.styleMask & NSWindowStyleMaskMiniaturizable) {
+         
+         [pnsacmewindow minimizeWindowInstantly];
+      } else {
+          NSLog(@"This window is not configured to allow minimization.");
+      }
+
+      
+   }
+   else
+   {
+      
+      if (pnswindow.styleMask & NSWindowStyleMaskMiniaturizable) {
+         [pnswindow miniaturize:nil];
+      } else {
+          NSLog(@"This window is not configured to allow minimization.");
+      }
+      
+      
+   }
+   
+
+}
+
+
 void ns_window_enter_immersive_fullscreen(::appkit::ns_window_t nswindow)
 {
    
@@ -389,6 +464,24 @@ int ns_do_modal_dialog(const char * pszDialog, ::acme::windowing::window * pacme
    
    return i;
 }
+
+void ns_do_attached_modal_dialog(const char * pszResourceName,
+                                 ::acme::windowing::window * pacmewindowingwindow,
+                            const ::operating_system::window & operatingsystemwindowParent,
+                                 const ::function < void(int) > & callback)
+{
+   
+   macos_app *pmacosapp = (macos_app *)[NSApp delegate];
+   
+   auto pnswindowParent = ::as_ns_window(operatingsystemwindowParent);
+ 
+   NSString * strName = [[NSString alloc]initWithUTF8String:pszResourceName];
+ 
+   [ pmacosapp doAttachedModalDialog:strName withAcmeWindowingWindow: pacmewindowingwindow
+ parentWindow: pnswindowParent andCallback: callback];
+   
+}
+
 
 NSWindow *ns_window_from_cg_window_id(CGWindowID windowID)
 {
@@ -658,6 +751,14 @@ void ns_end_dialog(::appkit::ns_window_t nswindow, int iDialogResult)
    
    [NSApp stopModalWithCode:iDialogResult];
 }
+void ns_end_attached_modal(::appkit::ns_window_t nswindow, int iDialogResult)
+{
+   
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+   
+   [ NSApp endSheet:pnswindow returnCode: iDialogResult];
+   
+}
 
 NSString * ns_get_impact_text(NSView * pnsimpact)
 {
@@ -724,6 +825,24 @@ else if ([pnsimpact isKindOfClass:[NSComboBox class]])
 
    
 }
+
+
+void ns_impact_destroy_window(::appkit::ns_impact_t nsimpact)
+{
+   
+   auto pnsimpact = ns_get_impact(nsimpact);
+   
+   if(pnsimpact == nil)
+   {
+      
+      return nullptr;
+      
+   }
+   
+   [pnsimpact removeFromSuperview];
+   
+}
+
 char * ns_get_impact_text(::appkit::ns_impact_t nsimpact)
 {
    
@@ -1037,6 +1156,135 @@ void ns_impact_set_mouse_cursor(::appkit::ns_impact_t nsimpact, ::enum_cursor ec
    [ pnsacmeimpact setMouseCursor : ecursor ];
    
 }
+
+void ns_progress_bar_set_range(::appkit::ns_impact_t nsimpact, int iMinimum, int iMaximum)
+{
+   
+   auto pnsimpact = ns_get_impact(nsimpact);
+   
+   if(pnsimpact == nil)
+   {
+    
+      return;
+      
+   }
+   
+   NSProgressIndicator * pnsprogressindicator = pnsimpact;
+   
+   if(pnsprogressindicator == nil)
+   {
+      
+      return;
+      
+   }
+   
+   [ pnsprogressindicator setIndeterminate: NO ];
+   [ pnsprogressindicator setMinValue: iMinimum ];
+   [ pnsprogressindicator setMaxValue: iMaximum ];
+   
+}
+
+
+void ns_progress_bar_set_position(::appkit::ns_impact_t nsimpact, int iPosition)
+{
+   
+   auto pnsimpact = ns_get_impact(nsimpact);
+   
+   if(pnsimpact == nil)
+   {
+    
+      return;
+      
+   }
+   
+   NSProgressIndicator * pnsprogressindicator = pnsimpact;
+   
+   if(pnsprogressindicator == nil)
+   {
+      
+      return;
+      
+   }
+      
+   [ pnsprogressindicator setDoubleValue: iPosition ];
+   
+}
+
+
+bool ns_check_box_is_checked(::appkit::ns_impact_t nsimpact)
+{
+   
+   
+   auto pnsimpact = ns_get_impact(nsimpact);
+   
+   if(pnsimpact == nil)
+   {
+    
+      return;
+      
+   }
+   
+   NSButton * pnsbutton = pnsimpact;
+   
+   if(pnsbutton == nil)
+   {
+      
+      return;
+      
+   }
+
+   if (pnsbutton.state == NSControlStateValueOn)
+   {
+      
+      return true;
+      
+   }
+   else
+   {
+      
+      return false;
+      
+   }
+   
+}
+
+
+void ns_check_box_set_checked(::appkit::ns_impact_t nsimpact, bool checked)
+{
+   
+   auto pnsimpact = ns_get_impact(nsimpact);
+   
+   if(pnsimpact == nil)
+   {
+    
+      return;
+      
+   }
+   
+   NSButton * pnsbutton = pnsimpact;
+   
+   if(pnsbutton == nil)
+   {
+      
+      return;
+      
+   }
+   
+   if(checked)
+   {
+      
+      [ pnsbutton setState : NSControlStateValueOn ];
+      
+   }
+   else
+   {
+      
+      [ pnsbutton setState : NSControlStateValueOff ];
+      
+   }
+   
+}
+
 
 
 //void ns_window_add_cursor_rectangle(::appkit::ns_window_t nswindow, ::core_graphics::cg_rect cgrect, ::enum_cursor ecursor)

@@ -22,234 +22,243 @@
 //-------------------------------------------------------------------------
 //
 #include "framework.h"
-#include "Thread.h"
-#include "Thread.h"
-
-#include <unistd.h>
-#include <sched.h>
-
-namespace subsystem_macos
-{
-
-Thread::Thread()
-{
-    pthread_mutex_init(
-        &m_suspendMutex,
-        nullptr);
-
-    pthread_cond_init(
-        &m_suspendCond,
-        nullptr);
-
-    pthread_create(
-        &m_thread,
-        nullptr,
-        &Thread::threadProc,
-        this);
-
-    m_threadID =
-        (::iptr)m_thread;
-}
-
-
-Thread::~Thread()
-{
-    pthread_mutex_destroy(
-        &m_suspendMutex);
-
-    pthread_cond_destroy(
-        &m_suspendCond);
-}
-
-
-void* Thread::threadProc(void* pThread)
-{
-    Thread* _this =
-        (Thread*)pThread;
-
-    _this->m_active = true;
-
-    // start suspended
-    _this->waitIfSuspended();
-
-    try
-    {
-        _this->initByDerived();
-        _this->execute();
-    }
-    catch (...)
-    {
-    }
-
-    _this->m_active = false;
-
-    return nullptr;
-}
-
-
-void Thread::waitIfSuspended()
-{
-    pthread_mutex_lock(
-        &m_suspendMutex);
-
-    while (m_suspended &&
-           !m_terminated)
-    {
-        pthread_cond_wait(
-            &m_suspendCond,
-            &m_suspendMutex);
-    }
-
-    pthread_mutex_unlock(
-        &m_suspendMutex);
-}
-
-
-void Thread::initByDerived()
-{
-}
-
-
-::e_status Thread::wait()
-{
-    if (m_active)
-    {
-        return pthread_join(
-            m_thread,
-            nullptr) == 0
-                ? ::success
-                : error_failed;
-    }
-
-    return ::success;
-}
-
-
-bool Thread::suspend()
-{
-    m_suspended = true;
-    return true;
-}
-
-
-bool Thread::resume()
-{
-    pthread_mutex_lock(
-        &m_suspendMutex);
-
-    m_suspended = false;
-
-    pthread_cond_signal(
-        &m_suspendCond);
-
-    pthread_mutex_unlock(
-        &m_suspendMutex);
-
-    return true;
-}
-
-
-void Thread::terminate()
-{
-    m_terminated = true;
-
-    resume();
-
-    onTerminate();
-}
-
-
-bool Thread::isActive() const
-{
-    return m_active;
-}
-
-
-::iptr Thread::getThreadId() const
-{
-    return m_threadID;
-}
-
-
-bool Thread::setPriority(
-    ::subsystem::THREAD_PRIORITY value)
-{
-    int policy;
-    sched_param param;
-
-    pthread_getschedparam(
-        m_thread,
-        &policy,
-        &param);
-
-    int minPriority =
-        sched_get_priority_min(policy);
-
-    int maxPriority =
-        sched_get_priority_max(policy);
-
-    int priority =
-        (minPriority + maxPriority) / 2;
-
-    switch (value)
-    {
-    case ::subsystem::PRIORITY_IDLE:
-        priority = minPriority;
-        break;
-
-    case ::subsystem::PRIORITY_TIME_CRITICAL:
-        priority = maxPriority;
-        break;
-
-    default:
-        break;
-    }
-
-    param.sched_priority = priority;
-
-    return pthread_setschedparam(
-        m_thread,
-        policy,
-        &param) == 0;
-}
-
-
-void Thread::sleep(
-    const class ::time& time)
-{
-    usleep(
-        (useconds_t)
-        time.integral_microsecond());
-}
-
-
-void Thread::yield()
-{
-    sched_yield();
-}
-
-
-bool Thread::isTerminating()
-{
-    return m_terminated;
-}
-
-
-void Thread::onTerminate()
-{
-}
-
-
-void Thread::execute()
-{
-   m_pthreadCallback->execute();
-//   ::subsystem::Thread::execute();
-//    if(m_procedureCallback)
+//#include "Thread.h"
+//#include "Thread.h"
+//
+//#include <unistd.h>
+//#include <sched.h>
+//
+//namespace subsystem_macos
+//{
+//
+//Thread::Thread()
+//{
+//   
+//   ::get_task()->add_task(this);
+//   
+//   
+//    pthread_mutex_init(
+//        &m_suspendMutex,
+//        nullptr);
+//
+//    pthread_cond_init(
+//        &m_suspendCond,
+//        nullptr);
+//
+//    pthread_create(
+//        &m_thread,
+//        nullptr,
+//        &Thread::threadProc,
+//        this);
+//
+//    m_threadID =
+//        (::iptr)m_thread;
+//}
+//
+//
+//Thread::~Thread()
+//{
+//    pthread_mutex_destroy(
+//        &m_suspendMutex);
+//
+//    pthread_cond_destroy(
+//        &m_suspendCond);
+//}
+//
+//
+//void* Thread::threadProc(void* pThread)
+//{
+//    Thread* _this =
+//        (Thread*)pThread;
+//   
+//   
+//   
+//
+//    _this->m_active = true;
+//
+//    // start suspended
+//    _this->waitIfSuspended();
+//
+//    try
 //    {
-//     
-//       m_procedureCallback();
-//       
+//        _this->initByDerived();
+//        _this->onThreadMain();
 //    }
-}
-
-}
+//    catch (...)
+//    {
+//    }
+//
+//    _this->m_active = false;
+//   _this->m_pobjectParentTask->erase_task_and_set_task_new_parent(_this, nullptr);
+//   
+//
+//    return nullptr;
+//}
+//
+//
+//void Thread::waitIfSuspended()
+//{
+//    pthread_mutex_lock(
+//        &m_suspendMutex);
+//
+//    while (m_suspended &&
+//           !m_terminated)
+//    {
+//        pthread_cond_wait(
+//            &m_suspendCond,
+//            &m_suspendMutex);
+//    }
+//
+//    pthread_mutex_unlock(
+//        &m_suspendMutex);
+//}
+//
+//
+//void Thread::initByDerived()
+//{
+//}
+//
+//
+//::e_status Thread::wait()
+//{
+//    if (m_active)
+//    {
+//        return pthread_join(
+//            m_thread,
+//            nullptr) == 0
+//                ? ::success
+//                : error_failed;
+//    }
+//
+//    return ::success;
+//}
+//
+//
+//bool Thread::suspendThread()
+//{
+//    m_suspended = true;
+//    return true;
+//}
+//
+//
+//bool Thread::resumeThread()
+//{
+//    pthread_mutex_lock(
+//        &m_suspendMutex);
+//
+//    m_suspended = false;
+//
+//    pthread_cond_signal(
+//        &m_suspendCond);
+//
+//    pthread_mutex_unlock(
+//        &m_suspendMutex);
+//
+//    return true;
+//}
+//
+//
+//void Thread::terminateThread()
+//{
+//    m_terminated = true;
+//
+//    resumeThread();
+//
+//    onTermThread();
+//}
+//
+//
+//bool Thread::isThreadActive() const
+//{
+//    return m_active;
+//}
+//
+//
+//::iptr Thread::getThreadId() const
+//{
+//    return m_threadID;
+//}
+//
+//
+//bool Thread::setThreadPriority(
+//    ::subsystem::THREAD_PRIORITY value)
+//{
+//    int policy;
+//    sched_param param;
+//
+//    pthread_getschedparam(
+//        m_thread,
+//        &policy,
+//        &param);
+//
+//    int minPriority =
+//        sched_get_priority_min(policy);
+//
+//    int maxPriority =
+//        sched_get_priority_max(policy);
+//
+//    int priority =
+//        (minPriority + maxPriority) / 2;
+//
+//    switch (value)
+//    {
+//    case ::subsystem::PRIORITY_IDLE:
+//        priority = minPriority;
+//        break;
+//
+//    case ::subsystem::PRIORITY_TIME_CRITICAL:
+//        priority = maxPriority;
+//        break;
+//
+//    default:
+//        break;
+//    }
+//
+//    param.sched_priority = priority;
+//
+//    return pthread_setschedparam(
+//        m_thread,
+//        policy,
+//        &param) == 0;
+//}
+//
+//
+//void Thread::threadSleep(
+//    const class ::time& time)
+//{
+//    usleep(
+//        (useconds_t)
+//        time.integral_microsecond());
+//}
+//
+//
+//void Thread::threadYield()
+//{
+//    sched_yield();
+//}
+//
+//
+//bool Thread::isThreadTerminating()
+//{
+//    return m_terminated;
+//}
+//
+//
+//void Thread::onTermThread()
+//{
+//}
+//
+//
+//void Thread::onThreadMain()
+//{
+//   m_pthreadCallback->onThreadMain();
+////   ::subsystem::Thread::onThreadMain();
+////    if(m_procedureCallback)
+////    {
+////     
+////       m_procedureCallback();
+////       
+////    }
+//}
+//
+//}

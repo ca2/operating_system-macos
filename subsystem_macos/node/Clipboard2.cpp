@@ -51,10 +51,18 @@ namespace subsystem_macos
 
    Clipboard2::~Clipboard2()
    {
-      terminate();
-      wait();
    }
 
+
+void Clipboard2::destroy()
+{
+   
+   ::subsystem::Thread::destroy();
+   
+   // terminateThread();
+   // wait();
+
+}
 
    void Clipboard2::initialize_clipboard2(::subsystem::ClipboardListener *clipboardListener, ::subsystem::LogWriter * plogwriter)
    {
@@ -65,7 +73,7 @@ namespace subsystem_macos
       m_clipboardListener = clipboardListener;
       m_plogwriter = plogwriter;
 
-      resume();
+      resumeThread();
 
    }
 
@@ -134,7 +142,7 @@ namespace subsystem_macos
 
 
 //
-//   void Clipboard2::onTerminate()
+//   void Clipboard2::onTermThread()
 //   {
 //
 //

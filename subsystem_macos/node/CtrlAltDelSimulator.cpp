@@ -30,15 +30,27 @@
 namespace subsystem_macos
 {
 
-   CtrlAltDelSimulator::CtrlAltDelSimulator() { resume(); }
+   CtrlAltDelSimulator::CtrlAltDelSimulator()
+   {
+      resumeThread();
+   }
 
    CtrlAltDelSimulator::~CtrlAltDelSimulator()
    {
-      terminate();
-      wait();
    }
 
-   void CtrlAltDelSimulator::execute()
+void CtrlAltDelSimulator::destroy()
+{
+   
+   ::subsystem::Thread::destroy();
+   
+   // terminateThread();
+   // wait();
+
+   
+}
+
+   void CtrlAltDelSimulator::onThreadMain()
    {
 //      // Switch thread desktop to "Winlogon".
 //      if (WindowsSubsystem().DesktopSelector().selectDesktop("Winlogon"))

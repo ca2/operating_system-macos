@@ -292,6 +292,10 @@ namespace innate_subsystem_macos
    bool Window::destroyWindow()
    {
       //if (m_macoswindow.as_CGWindowID()) {
+      
+      auto operatingsystemwindow = this->operating_system_window();
+      
+      ::cross_windows::destroy_window(operatingsystemwindow);
 //         DestroyWindow(m_macoswindow.as_CGWindowID());
 //         return true;
 //      }
@@ -396,13 +400,13 @@ namespace innate_subsystem_macos
 
    void Window::setParent(::innate_subsystem::WindowInterface * pwindow)
    {
-//       if (m_macoswindow.as_HWND() == nullptr)
-//       {
-//
-//           m_pwindowDeferredParent = pwindow;
-//      }
-//       else
-//       {
+       if (!isWindow())
+       {
+
+           m_pwindowDeferredParent = pwindow;
+      }
+       else
+       {
 //          if (::is_null(pwindow))
 //             SetParent(m_macoswindow.as_HWND(), nullptr);
 //          else
@@ -410,7 +414,7 @@ namespace innate_subsystem_macos
 //             auto hwndParent = (HWND)pwindow->_HWND();
 //             SetParent(m_macoswindow.as_HWND(), hwndParent);
 //          }
-//       }
+       }
    }
 
 
@@ -964,6 +968,12 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
 //      ASSERT(m_macoswindow.as_HWND() != 0);
 //
 //      PostMessage(m_macoswindow.as_HWND(), Msg, wparam, lparam);
+      
+      ::system()->acme_windowing()->post([this, Msg, wparam, lparam]()
+                                         {
+         
+         message_call((::user::enum_message)Msg, wparam, lparam,  {});
+      });
 
    }
 
@@ -1260,6 +1270,9 @@ void Window::setMouseCursor(::enum_cursor ecursor)
        //setExStyle(getExStyle() & ~WS_EX_TOPMOST);
        
        
+       doUnFullScreen();
+       
+       //mini
        
         //::i32_rectangle workArea;
         //workArea = m_workArea.rcNormalPosition;
@@ -1295,7 +1308,10 @@ void Window::setMouseCursor(::enum_cursor ecursor)
          _doMinimizeFromFullScreen();
 
       }
-      //::ShowWindow(m_macoswindow.as_HWND(), SW_MINIMIZE);
+      
+      auto operatingsystemwindow = this->operating_system_window();
+      
+      ::cross_ns::minimize_window(operatingsystemwindow);
 
 
    }

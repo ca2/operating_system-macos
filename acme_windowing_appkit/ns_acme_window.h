@@ -41,6 +41,7 @@ class acme_window_bridge;
 -(void) exitImmersiveFullscreen;
 -(bool) isInImmersiveFullscreen;
 -(void) toggleImmersiveFullscreen;
+- (void)minimizeWindowInstantly;
 //-(void) add_cursor_rectangle:(NSRect) rect withCursor: (enum_cursor) ecursor;
 @end
  

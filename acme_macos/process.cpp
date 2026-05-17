@@ -7,7 +7,7 @@
 #include "framework.h"
 #include "acme/filesystem/filesystem/directory_system.h"
 #include "acme/platform/system.h"
-#include "acme/operating_system/shared_posix/c_error_number.h"
+#include "acme/operating_system/shared_posix/c_errno.h"
 #include <spawn.h>
 
 
@@ -78,9 +78,9 @@ namespace acme_macos
 
       int status = posix_spawn(&pid, argv[0], nullptr, nullptr, argv, envp);
 
-      c_error_number cerrornumber = c_error_number();
+      c_errno cerrno = c_errno();
 
-      auto strError = cerrornumber.get_error_description();
+      auto strError = cerrno.get_error_description();
       
       errorf(strError);
 

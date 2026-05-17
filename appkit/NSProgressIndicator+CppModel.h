@@ -11,5 +11,5 @@
 // A raw pointer to your C++ class, struct, or data model
 @property (nonatomic, assign) void *cppModelPointer;
 // A standard integer tag for classic identification
-@property (nonatomic, assign) NSInteger customTag;
+@property (nonatomic, assign) NSInteger tag;
 @end

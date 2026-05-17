@@ -57,6 +57,8 @@ namespace innate_subsystem_macos
       // Method creates non modal window but not shows it
       void create() override;
 
+      
+      void doAttachedModal(const ::function < void(int) > & callback) override;
 
       //
       // Methods creates macos and show it in nonmodal/modal mode
@@ -169,6 +171,7 @@ namespace innate_subsystem_macos
       //::pointer<::innate_subsystem_macos::Control> m_pcontrolParent; // Parent dialog or NULL if no parent
 
       bool m_isModal;
+      bool m_isAttachedModal;
       bool m_isCreated;
 
       //HICON m_hicon;

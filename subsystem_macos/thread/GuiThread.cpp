@@ -24,32 +24,32 @@
 #include "framework.h"
 #include "GuiThread.h"
 #include "DesktopSelector.h"
-
-namespace subsystem_macos
-{
-   GuiThread::GuiThread()
-   : m_desk(0)
-   {
-      m_desk = MainSubsystem().DesktopSelector().getInputDesktop();
-   }
-
-   GuiThread::~GuiThread()
-   {
-      if (m_desk.m_u) {
-         MainSubsystem().DesktopSelector().closeDesktop(m_desk);
-      }
-   }
-
-   void GuiThread::initByDerived()
-   {
-      MainSubsystem().DesktopSelector().setDesktopToCurrentThread(m_desk);
-      // If unsuccessful, desktop will be closed in destructor
-      if (MainSubsystem().DesktopSelector().closeDesktop(m_desk))
-      {
-         m_desk = 0;
-      }
-   }
-} // namespace subsystem_macos
-
-
-
+//
+//namespace subsystem_macos
+//{
+//   GuiThread::GuiThread()
+//   : m_desk(0)
+//   {
+//      m_desk = MainSubsystem().DesktopSelector().getInputDesktop();
+//   }
+//
+//   GuiThread::~GuiThread()
+//   {
+//      if (m_desk.m_u) {
+//         MainSubsystem().DesktopSelector().closeDesktop(m_desk);
+//      }
+//   }
+//
+//   void GuiThread::onInitThread()
+//   {
+//      MainSubsystem().DesktopSelector().setDesktopToCurrentThread(m_desk);
+//      // If unsuccessful, desktop will be closed in destructor
+//      if (MainSubsystem().DesktopSelector().closeDesktop(m_desk))
+//      {
+//         m_desk = 0;
+//      }
+//   }
+//} // namespace subsystem_macos
+//
+//
+//

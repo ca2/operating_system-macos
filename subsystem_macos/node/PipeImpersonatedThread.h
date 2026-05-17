@@ -35,14 +35,15 @@ namespace subsystem_macos
 
    class CLASS_DECL_SUBSYSTEM_MACOS PipeImpersonatedThread :
 
-      virtual public Implementation<::subsystem::PipeImpersonatedThreadInterface, Thread >
-      //virtual public ::subsystem::Thread
+      virtual public Implementation<::subsystem::PipeImpersonatedThreadInterface >,
+      virtual public ::subsystem::Thread
    {
    public:
       //PipeImpersonatedThread(HANDLE pipeHandle);
       PipeImpersonatedThread();
       ~PipeImpersonatedThread() override;
 
+void destroy() override;
 
       void initialize_pipe_impersonated_thread(::subsystem::FileInterface* pfilePipe) override;
 
@@ -51,8 +52,8 @@ namespace subsystem_macos
       ::string getFaultReason() override;
 
       //private:
-      void execute() override;
-      void onTerminate() override;
+      void onThreadMain() override;
+      void onTermThread() override;
 
       ::pointer < ::subsystem::FileInterface > m_pfilePipe;
       bool m_success;

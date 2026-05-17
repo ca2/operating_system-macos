@@ -77,3 +77,17 @@ bool ns_get_dark_mode()
 
 
 
+
+
+void ns_app_hide()
+{
+   
+   ns_main_post(^()
+                {
+      
+      
+      [NSApp hide:nil];
+      
+   });
+   
+}

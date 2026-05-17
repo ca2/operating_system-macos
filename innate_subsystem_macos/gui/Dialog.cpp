@@ -36,7 +36,12 @@
 
 ::uptr ns_show_dialog(const char * psz, ::acme::windowing::window * pacmewindowingwindow);
 void ns_end_dialog(::appkit::ns_window_t nswindow, int iDialogResult);
+void ns_end_attached_modal(::appkit::ns_window_t nswindow, int iDialogResult);
 int ns_do_modal_dialog(const char * psz, ::acme::windowing::window * pacmewindowingwindow);
+void ns_do_attached_modal_dialog(const char * pszResourceName,
+                                 ::acme::windowing::window * pacmewindowingwindow,
+                            const ::operating_system::window & operatingsystemwindowParent,
+                                 const ::function < void(int) > & callback);
 ::appkit::ns_window_t as_ns_window_t(const ::operating_system::window & operatingsystemwindow);
 namespace innate_subsystem_macos
 {
@@ -44,7 +49,10 @@ namespace innate_subsystem_macos
    Dialog::Dialog()
 //   : m_ctrlParent(NULL), m_resourceName(0), m_resourceId(0), m_hicon(0)
    //: m_resourceName(0), m_resourceId(0), m_hicon(0)
-:  m_hicon(0)
+:  m_hicon(0),
+m_isAttachedModal(false),
+m_isModal(false),
+m_isCreated(false)
    {
    }
 
@@ -128,7 +136,13 @@ void
    void Dialog::closeDialog(int code)
    {
 //      // Destroy dialog
-      if (!m_isModal) {
+      if(m_isAttachedModal)
+      {
+         
+         ns_end_attached_modal(::as_ns_window_t(operating_system_window()), code);
+         
+      }
+      else if (!m_isModal) {
 //         DestroyWindow((HWND) _HWND());
       } else {
          ns_end_dialog(::as_ns_window_t(operating_system_window()), code);
@@ -182,7 +196,24 @@ void
          {
             m_isModal = true;
             ::cast < ::acme::windowing::window > pacmewindowingwindow = this;
-            result = ns_do_modal_dialog(m_strResourceName, pacmewindowingwindow);
+//            if(m_pwindowDeferredParent)
+//            {
+//               
+//               auto operatingsystemwindow = m_pwindowDeferredParent->operating_system_window();
+//               
+//               [parentWindow beginSheet:sheetWindow
+//                      completionHandler:^(NSModalResponse returnCode)
+//               {
+//                   // finished
+//               }];
+//               
+//            }
+//            else
+            {
+             
+               result = ns_do_modal_dialog(m_strResourceName, pacmewindowingwindow);
+               
+            }
 //            auto pwindow = this->impl<Window>();
 //
 //            HWND parentWindow = (pwindow->m_pwindowDeferredParent != NULL)
@@ -210,6 +241,66 @@ void
       return 0;
 
    }
+
+
+void Dialog::doAttachedModal(const ::function < void(int) > & callback){
+
+   //int result = 0;
+   if (!isWindow()) {
+
+      //::system()->acme_windowing()->send([&]()
+      //{
+         m_isAttachedModal = true;
+         ::cast < ::acme::windowing::window > pacmewindowingwindow = this;
+      ASSERT(m_pwindowDeferredParent);
+//            {
+               
+      auto operatingsystemwindowParent = m_pwindowDeferredParent->operating_system_window();
+
+      //
+      ns_do_attached_modal_dialog(m_strResourceName, pacmewindowingwindow,
+                                  operatingsystemwindowParent, callback);
+//       [parentWindow beginSheet:sheetWindow
+//                      completionHandler:^(NSModalResponse returnCode)
+//               {
+//                   // finished
+//               }];
+//
+//            }
+//            else
+//         {
+          
+    //        result = ns_do_modal_dialog(m_strResourceName, pacmewindowingwindow);
+            
+  //       }
+//            auto pwindow = this->impl<Window>();
+//
+//            HWND parentWindow = (pwindow->m_pwindowDeferredParent != NULL)
+//                                   ? (HWND)pwindow->m_pwindowDeferredParent->_HWND()
+//                                   : (HWND) nullptr;
+//            //result = (int)DialogBoxParam(GetModuleHandle(NULL),
+//            result = (int)DialogBoxParam((HINSTANCE) MainSubsystem().m_hinstanceResource,
+//                                         (LPCWSTR) getResouceName(), parentWindow,
+//                                         dialogProc,(::lparam) (::uptr)(::innate_subsystem_macos::Dialog * )this);
+//
+//            information("Dialog box result is {}", result);
+//      });
+
+   }
+   else
+   {
+      
+      setVisible(true);
+      
+      setForeground();
+
+   }
+
+   //return result;
+   //return 0;
+
+}
+
 
    bool Dialog::isCreated()
    {

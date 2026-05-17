@@ -60,6 +60,9 @@ class acme_window_bridge;
 -(NSWindowController *) addWindow:(NSWindow*)window;
 -(::uptr) showDialog:(NSString*)strDialogName withAcmeWindowingWindow:(::acme::windowing::window*)pacmewindowingwindow;
 -(int)doModalDialog:(NSString *)strDialogName withAcmeWindowingWindow:(::acme::windowing::window*)pacmewindowingwindow;
+-(void)doAttachedModalDialog:(NSString *)strDialogName
+     withAcmeWindowingWindow: (::acme::windowing::window*)pacmewindowingwindow
+parentWindow: (NSWindow *) pnswindowParent andCallback: (const ::function< void(int) > &) callback;
 -(void) addDialog:(NSWindowController*)pwindowcontrollerDialog;
 -(void) removeDialog:(NSWindowController*)pwindowcontrollerDialog;
 -(void) addWindowController:(NSWindowController*)pwindowcontroller;

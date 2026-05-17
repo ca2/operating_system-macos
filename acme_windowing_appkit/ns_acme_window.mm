@@ -61,6 +61,8 @@ void ns_main_send(dispatch_block_t block);
       [ self setBackgroundColor: [ NSColor clearColor ] ];
       
    }
+   
+   self.styleMask |= NSWindowStyleMaskMiniaturizable;
       
    [ self setAcceptsMouseMovedEvents : YES ];
    
@@ -409,6 +411,24 @@ void ns_main_send(dispatch_block_t block);
 //   }
 //
 //}
+
+- (void)minimizeWindowInstantly{
+   
+   NSWindow * window = self;
+//    // 1. Store the original animation behavior configuration
+//    NSWindowAnimationBehavior originalBehavior = window.animationBehavior;
+//    
+//    // 2. Kill the animations for this window
+//    window.animationBehavior = NSWindowAnimationBehaviorNone;
+    
+    // 3. Minimize the window to the Dock instantly
+    //[window orderOut:nil];
+   [NSApp hide:nil];
+    
+    // 4. Restore original animation behavior for future window restorations
+    //window.animationBehavior = originalBehavior;
+}
+
 
 @end
 

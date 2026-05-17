@@ -24,6 +24,7 @@
 // Adapted by camilo on beginning of 2026-April <3ThomasBorregaardSorensen!!
 #include "framework.h"
 #include "ProgressBar.h"
+#include "operating_system-macos/acme_windowing_appkit/_interoperability.h"
 
 //#include <commctrl.h>
 namespace innate_subsystem_macos
@@ -41,10 +42,17 @@ namespace innate_subsystem_macos
    void ProgressBar::setRange(WORD min, WORD max)
    {
       //SendMessage((HWND) _HWND(), PBM_SETRANGE, 0, MAKELPARAM(min, max));
+      
+      auto operatingsystemwindow = this->operating_system_window();
+      
+      ::cross_ns::set_progress_bar_range(operatingsystemwindow, min, max);
    }
 
    void ProgressBar::setPos(WORD pos)
    {
+      auto operatingsystemwindow = this->operating_system_window();
+      
+      ::cross_ns::set_progress_bar_position(operatingsystemwindow, pos);
       //SendMessage((HWND) _HWND(), PBM_SETPOS, (::wparam)pos, 0);
    }
 } // namespace innate_subsystem_macos

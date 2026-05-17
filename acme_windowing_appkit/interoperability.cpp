@@ -15,6 +15,25 @@ namespace cross_windows
 {
 
 
+void destroy_window(const ::operating_system::window & operatingsystemwindow)
+{
+   
+   if(operatingsystemwindow.is_impact())
+   {
+      ::appkit::ns_impact_t nsimpact(operatingsystemwindow);
+      return ns_impact_destroy_window(nsimpact);
+      
+   }
+   else
+   {
+      ::appkit::ns_window_t nswindow(operatingsystemwindow);
+      return ns_window_destroy_window(nswindow);
+      
+   }
+   
+}
+
+
 void show_window_show(const ::operating_system::window & operatingsystemwindow)
 {
    
@@ -268,6 +287,13 @@ void throw_wrong_ns_type()
 
 namespace cross_ns {
 
+void minimize_window(const ::operating_system::window & operatingsystemwindow)
+{
+      ::appkit::ns_window_t nswindow(operatingsystemwindow);
+      ns_window_minimize(nswindow);
+   
+}
+
 void enter_immersive_fullscreen(const ::operating_system::window & operatingsystemwindow)
 {
    ::appkit::ns_window_t nswindow(operatingsystemwindow);
@@ -317,5 +343,37 @@ void set_mouse_cursor(const ::operating_system::window & operatingsystemwindow, 
 //   cgrect.size.h = rectangle.height();
 //   ns_window_add_cursor_rectangle(nswindow, cgrect, ecursor);
 //}
+
+void set_progress_bar_range(const ::operating_system::window & operatingsystemwindow, int iMinimum, int iMaximum)
+{
+   
+   ::appkit::ns_impact_t nsimpact(operatingsystemwindow);
+   return ns_progress_bar_set_range(nsimpact, iMinimum, iMaximum);
+
+}
+
+void set_progress_bar_position(const ::operating_system::window & operatingsystemwindow, int iPosition)
+{
+   
+   ::appkit::ns_impact_t nsimpact(operatingsystemwindow);
+   return ns_progress_bar_set_position(nsimpact, iPosition);
+
+}
+
+bool check_box_is_checked(const ::operating_system::window & operatingsystemwindow)
+{
+   
+   ::appkit::ns_impact_t nsimpact(operatingsystemwindow);
+   return ns_check_box_is_checked(nsimpact);
+
+}
+void check_box_set_checked(const ::operating_system::window & operatingsystemwindow, bool checked)
+{
+   
+   ::appkit::ns_impact_t nsimpact(operatingsystemwindow);
+   ns_check_box_set_checked(nsimpact, checked);
+
+}
+
 
 } // namespace cross_ns

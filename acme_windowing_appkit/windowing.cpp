@@ -18,6 +18,7 @@
 //#include <X11/Xutil.h>
 #include <Carbon/Carbon.h>
 
+void ns_app_hide();
 void ns_app_run();
 void ns_app_do_tasks();
 void ns_app_post_quit();
@@ -423,6 +424,13 @@ void windowing::set_dark_mode(bool bDarkMode)
 {
 
    ns_set_dark_mode(bDarkMode);
+   
+}
+
+void windowing::hide_application()
+{
+   
+   ns_app_hide();
    
 }
 

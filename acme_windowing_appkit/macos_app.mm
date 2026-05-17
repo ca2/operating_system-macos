@@ -345,6 +345,84 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
    return result;
 }
 
+-(void)doAttachedModalDialog:(NSString *)strDialogName
+     withAcmeWindowingWindow: (::acme::windowing::window*)pacmewindowingwindow
+parentWindow: (NSWindow *) pnswindowParent andCallback: (const ::function< void(int) > &) callback
+{
+
+   NSStoryboard * storyboard =
+      [NSStoryboard storyboardWithName:@"Storyboard"
+                                bundle:nil];
+
+   NSWindowController * myWindowController =
+      [storyboard instantiateControllerWithIdentifier:strDialogName];
+
+   if(!myWindowController)
+   {
+      NSLog(@"Error: Could not find Storyboard ID: %@",
+            strDialogName);
+
+      return NSModalResponseCancel;
+   }
+
+   NSWindow * window = [myWindowController window];
+   auto p = (__bridge void *)window;
+   set_acme_windowing_window_ns_window_uptr(pacmewindowingwindow, (::uptr) p);
+   NSViewController * pgenericimpactcontroller =
+      window.contentViewController;
+
+   ns_acme_form_impact_controller * pformimpactcontroller =
+      [[ns_acme_form_impact_controller alloc]
+         initWithNibName:nil
+                  bundle:nil];
+
+   if(pgenericimpactcontroller && pformimpactcontroller)
+   {
+      pformimpactcontroller.view =
+         pgenericimpactcontroller.view;
+
+      window.contentViewController =
+         pformimpactcontroller;
+
+      [pformimpactcontroller viewDidLoad];
+   }
+
+   [self addDialog:myWindowController];
+
+   [[NSNotificationCenter defaultCenter]
+      addObserverForName:NSWindowWillCloseNotification
+                  object:window
+                   queue:[NSOperationQueue mainQueue]
+              usingBlock:^(NSNotification * _Nonnull note)
+   {
+      [self removeDialog:myWindowController];
+   }];
+
+   //[myWindowController showWindow:nil];
+
+   auto callbackHold = callback;
+   
+   [pnswindowParent beginSheet:window
+                  completionHandler:^(NSModalResponse returnCode)
+           {
+      NSInteger result =returnCode;
+      int iResult = result;
+      if(callbackHold)
+      {
+         callbackHold(iResult);
+         
+      }
+           }];
+   //NSInteger result =
+     // [NSApp runModalForWindow:window];
+
+   //return result;return i;
+
+
+//     }
+
+}
+
 -(void) addWindowController:(NSWindowController*)pwindowcontroller
 {
    
