@@ -8,6 +8,7 @@
 
 #import "ns_acme_form_impact_controller.h"
 #include "acme/constant/lightui.h"
+#include "operating_system-macos/appkit/NSProgressIndicator+CppModel.h"
 
 ::appkit::ns_window_t as_ns_window_t(NSWindow * pnswindow)
 {
@@ -68,6 +69,16 @@ void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessa
 
            combo.delegate = self;
 
+       }
+       else if([psubimpact isKindOfClass:[NSProgressIndicator class]])
+       {
+          
+          NSProgressIndicator *progress = [[NSProgressIndicator alloc] init];
+          //progress.customTag = 101;                // Solution 1: Identify in loops
+          //progress.cppModelPointer = (void *)task;  // Solution 2: Map to C++ model
+          NSLog(@"NSProgressIndicator customTag %d", (int) progress.customTag);
+          [parentView addSubview:progress];
+          
        }
 
         // 2. Recursively crawl psubimpacts (in case buttons are inside box wrappers or stack views)

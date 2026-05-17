@@ -36,6 +36,8 @@ namespace innate_subsystem_macos
    {
    }
 
+
+
    void ProgressBar::setRange(WORD min, WORD max)
    {
       //SendMessage((HWND) _HWND(), PBM_SETRANGE, 0, MAKELPARAM(min, max));

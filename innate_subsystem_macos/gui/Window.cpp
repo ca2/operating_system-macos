@@ -427,6 +427,13 @@ namespace innate_subsystem_macos
 
    void Window::subclassControlById(::Particle * pWindowControl, unsigned int id)
    {
+      
+      auto operatingsystemwindow = dialog_item_operating_system_window(id);
+      
+      auto pimpl = pWindowControl->impl < ::innate_subsystem::WindowInterface >();
+
+      pimpl->set_operating_system_window(operatingsystemwindow);
+
 
 //       auto pwindow = pWindowControl->impl<innate_subsystem_macos::Window>();
 //

@@ -21,6 +21,8 @@
 		9A0B957D2FB3139100EEAAE1 /* ns_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B95792FB3139100EEAAE1 /* ns_window.cpp */; };
 		9A6A2C092FB3D2B4004C0ACF /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6A2C082FB3D2B4004C0ACF /* libacme.dylib */; };
 		9A9564BB2FB421FA0001D319 /* appkit.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A9564B82FB421F40001D319 /* appkit.mm */; };
+		9A96BEC62FB93F08006EFDF1 /* NSProgressIndicator+CppModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A96BEC52FB93EFC006EFDF1 /* NSProgressIndicator+CppModel.h */; };
+		9A96BEC82FB93F25006EFDF1 /* NSProgressIndicator+CppModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A96BEC72FB93F20006EFDF1 /* NSProgressIndicator+CppModel.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		9A0B957A2FB3139100EEAAE1 /* ns_window.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ns_window.mm; sourceTree = "<group>"; };
 		9A6A2C082FB3D2B4004C0ACF /* libacme.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A9564B82FB421F40001D319 /* appkit.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = appkit.mm; sourceTree = "<group>"; };
+		9A96BEC52FB93EFC006EFDF1 /* NSProgressIndicator+CppModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSProgressIndicator+CppModel.h"; sourceTree = "<group>"; };
+		9A96BEC72FB93F20006EFDF1 /* NSProgressIndicator+CppModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSProgressIndicator+CppModel.mm"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 		9A0B95702FB3131F00EEAAE1 /* appkit */ = {
 			isa = PBXGroup;
 			children = (
+				9A96BEC72FB93F20006EFDF1 /* NSProgressIndicator+CppModel.mm */,
+				9A96BEC52FB93EFC006EFDF1 /* NSProgressIndicator+CppModel.h */,
 				9A9564B82FB421F40001D319 /* appkit.mm */,
 				9A0B95732FB3134900EEAAE1 /* _____debug.xcconfig */,
 				9A0B95742FB3134900EEAAE1 /* _____release.xcconfig */,
@@ -146,6 +152,7 @@
 				9A0B957B2FB3139100EEAAE1 /* ns_window.h in Headers */,
 				9A09CE0B2FB3CC4B00E22155 /* ns_image.h in Headers */,
 				9A09CD7A2FB334E000E22155 /* appkit.h in Headers */,
+				9A96BEC62FB93F08006EFDF1 /* NSProgressIndicator+CppModel.h in Headers */,
 				9A09CE072FB38EC000E22155 /* _struct.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A96BEC82FB93F25006EFDF1 /* NSProgressIndicator+CppModel.mm in Sources */,
 				9A0B957C2FB3139100EEAAE1 /* ns_window.mm in Sources */,
 				9A09CD7B2FB334E000E22155 /* appkit.cpp in Sources */,
 				9A09CE0C2FB3CC4B00E22155 /* ns_image.mm in Sources */,
