@@ -177,13 +177,22 @@ void subsystem::_parse_macos_command_line_arguments(
    pointer<::subsystem::CommandLineArguments> subsystem::getCurrentProcessCommandLineArguments()
    {
 
-      ::string strCommandLine;
+      //::string strCommandLine;
 
       //strCommandLine = ::GetCommandLineW();
 
-      strCommandLine =::system()->command_line();
+      //strCommandLine =::system()->command_line();
+      
+      auto pcommandlinearguments = create_newø<::subsystem::CommandLineArguments>();
 
-      auto pcommandlinearguments = getCommandLineArguments(strCommandLine);
+      for(int i = 0; i < ::system()->m_argc; i++)
+      {
+         
+         pcommandlinearguments->m_args.add(::system()->m_args[i]);
+         
+      }
+
+//      auto pcommandlinearguments = getCommandLineArguments(strCommandLine);
 
       return pcommandlinearguments;
 

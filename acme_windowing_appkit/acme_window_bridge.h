@@ -12,6 +12,7 @@
 #include "operating_system-apple/acme_windowing_kit/acme_window_bridge.h"
 #include "acme/constant/cursor.h"
 
+
 namespace macos
 {
 

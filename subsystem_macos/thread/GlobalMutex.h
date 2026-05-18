@@ -39,7 +39,7 @@ namespace subsystem_macos
 
 
 class GlobalMutex :
-virtual public ::subsystem::GlobalMutex
+virtual public Implementation<::subsystem::GlobalMutexInterface>
 {
 public:
 
