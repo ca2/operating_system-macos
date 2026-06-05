@@ -70,7 +70,7 @@ namespace subsystem_macos
           * @remark really it creates main window and starts windows scopedstrMessage loop.
           * @return application exit code.
           */
-         void run() override;
+         void onOperatingSystemApplicationMain() override;
 
          /**
           * Posts close and destroy scopedstrMessage to main window.

@@ -53,7 +53,7 @@ namespace subsystem_macos
 
       // Use the init() function after default constructor calling to load
       // a library before the getProcAddress() function calling.
-      void init(const ::scoped_string & scopedstrFilename) override;
+      void openLibrary(const ::scoped_string & scopedstrFilename) override;
 
       /**
       Gets procedure address.

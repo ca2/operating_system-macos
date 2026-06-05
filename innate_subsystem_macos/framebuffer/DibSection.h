@@ -55,7 +55,7 @@ namespace innate_subsystem_macos
       ~DibSection() override;
 
 
-      virtual void initialize_dib_section(const ::innate_subsystem::PixelFormat & pf, const ::i32_size & dim, bool bOpaque, const ::operating_system::window & operatingsystemwindow = {}) override;
+      virtual void initialize_dib_section(const ::innate_subsystem::PixelFormat & pf, const ::i32_size & dim, const ::operating_system::window & operatingsystemwindow = {}) override;
 
       // This function changes the target DC. In default target DC is a DC that has been
       // got from a compatible window on object creation. This function can be call many times.

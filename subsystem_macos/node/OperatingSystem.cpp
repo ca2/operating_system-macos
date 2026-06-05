@@ -438,8 +438,8 @@ bool OperatingSystem::_tryOpenFile(const ::file::path & path, int flags)
       ::memory memory;
       memory.set_size(size);
       ::shared_memory shMem;
-      shMem.Create(scopedstrShareMemoryName, size);
-   unsigned long long *mem = (unsigned long long *)shMem.Data();
+      shMem.CreateSharedMemory(scopedstrShareMemoryName, size);
+   unsigned long long *mem = (unsigned long long *)shMem.data();
 
    class ::time timeStart = ::time::now();
 

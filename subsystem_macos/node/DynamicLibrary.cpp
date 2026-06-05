@@ -52,10 +52,10 @@ namespace subsystem_macos
    void DynamicLibrary::initialize_dynamic_library(const ::scoped_string & scopedstrFilename)
 ///: m_module(0)
    {
-      init(scopedstrFilename);
+      openLibrary(scopedstrFilename);
    }
 
-   void DynamicLibrary::init(const ::scoped_string & scopedstrFilename)
+   void DynamicLibrary::openLibrary(const ::scoped_string & scopedstrFilename)
    {
       m_module = ::dlopen(scopedstrFilename, 0);
 

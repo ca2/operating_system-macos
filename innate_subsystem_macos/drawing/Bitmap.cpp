@@ -71,12 +71,12 @@ namespace innate_subsystem_macos
       // }
    }
 
-   void Bitmap::initialize_bitmap(const ::i32_size & size, bool bOpaque)
+   void Bitmap::initialize_bitmap(const ::i32_size & size)
    {
       destroyGraphicsObject();
       
       construct_newø(m_pcgdib);
-      m_pcgdib->initialize_dib(size, bOpaque);
+      m_pcgdib->initialize_dib(size);
 
 //      // //;mm_bitmap(NULL)
 //      // // Prepare buffer

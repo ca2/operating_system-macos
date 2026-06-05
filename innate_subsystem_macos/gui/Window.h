@@ -171,8 +171,8 @@ namespace innate_subsystem_macos
       ~Window() override;
 
 
-      operating_ambient_window_t operating_ambient_window() const override;
-      void set_operating_ambient_window(operating_ambient_window_t  operatingambientwindow) override;
+//      ::operating_system::window operating_system_window() const override;
+//      void set_operating_system_window(const operating_system::window & operatingambientwindow) override;
 
 
       void * _WNDPROC_default() const override;

@@ -126,7 +126,7 @@ void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessa
    
    auto tag =combo.tag;
    
-   if([self isNotificationBlockedForTag: tag andID: ::lightui::CBN_SELENDOK ])
+   if([self isNotificationBlockedForTag: tag andID: ::lightui::e_CBN_SELENDOK ])
    {
       
       return;
@@ -135,7 +135,7 @@ void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessa
 
     NSLog(@"Selection changed %@", combo);
    auto pnswindow = self.view.window;
-   user_on_command(::as_ns_window_uptr(pnswindow),::lightui::CBN_SELENDOK,tag);
+   user_on_command(::as_ns_window_uptr(pnswindow),::lightui::e_CBN_SELENDOK,tag);
    
 }
 
@@ -147,7 +147,7 @@ void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessa
 
     NSLog(@"Popup opened %@", combo);
    auto pnswindow = self.view.window;
-   user_on_command(::as_ns_window_uptr(pnswindow),::lightui::CBN_DROPDOWN,combo.tag);
+   user_on_command(::as_ns_window_uptr(pnswindow),::lightui::e_CBN_DROPDOWN,combo.tag);
 }
 
 

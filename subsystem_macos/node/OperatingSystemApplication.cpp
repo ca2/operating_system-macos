@@ -88,10 +88,11 @@ namespace subsystem_macos
    }
 
 
-   void OperatingSystemApplication::run()
-   {
+   void OperatingSystemApplication::onOperatingSystemApplicationMain()
+{
 
-::get_task()->run();
+      doDefaultMainLoop();
+//::get_task()->run();
        //WNDCLASS wndClass;
        ///registerWindowClass(&wndClass);
        //createWindow(wndClass.lpszClassName);

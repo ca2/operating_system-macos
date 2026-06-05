@@ -65,23 +65,23 @@ namespace innate_subsystem_macos
       //    DeleteObject(m_hicon);
       // }
    }
-
-
-   operating_ambient_window_t Window::operating_ambient_window() const
-{
-   
-   return {(::uptr)m_macoswindow.as_uptr()};
-
-   }
-
-
-   void Window::set_operating_ambient_window(operating_ambient_window_t operatingambientwindow)
-   {
-
-      m_macoswindow.m_eoperatingambient = ::windowing::e_operating_ambient_macos;
-      m_macoswindow.m_opaque.m_ulla[0] = operatingambientwindow.m_u;
-
-   }
+//
+//
+//   operating_ambient_window_t Window::operating_ambient_window() const
+//{
+//   
+//   return {(::uptr)m_macoswindow.as_uptr()};
+//
+//   }
+//
+//
+//   void Window::set_operating_ambient_window(operating_ambient_window_t operatingambientwindow)
+//   {
+//
+//      m_macoswindow.m_eoperatingambient = ::windowing::e_operating_ambient_macos;
+//      m_macoswindow.m_opaque.m_ulla[0] = operatingambientwindow.m_u;
+//
+//   }
 
 
    void *Window::_WNDPROC_default() const
@@ -374,7 +374,7 @@ namespace innate_subsystem_macos
       ASSERT(isWindow());
       auto operatingsystemwindow = operating_system_window();
       return !!::cross_windows::set_window_pos(operatingsystemwindow, 0, 0, 0, size.cx, size.cy,
-                            ::lightui::SWP_NOMOVE | ::lightui::SWP_NOZORDER | ::lightui::SWP_NOACTIVATE);
+                            ::lightui::e_SWP_NOMOVE | ::lightui::e_SWP_NOZORDER | ::lightui::e_SWP_NOACTIVATE);
 //      return false;
    }
 
@@ -383,7 +383,7 @@ namespace innate_subsystem_macos
       ASSERT(isWindow());
       auto operatingsystemwindow = operating_system_window();
       return !!::cross_windows::set_window_pos(operatingsystemwindow, 0, point.x, point.y, 0, 0,
-                            ::lightui::SWP_NOSIZE | ::lightui::SWP_NOZORDER | ::lightui::SWP_NOACTIVATE);
+                            ::lightui::e_SWP_NOSIZE | ::lightui::e_SWP_NOZORDER | ::lightui::e_SWP_NOACTIVATE);
       //return false;
    }
 
@@ -394,7 +394,7 @@ namespace innate_subsystem_macos
       return !!::cross_windows::set_window_pos(operatingsystemwindow, 0,
          rectangle.left, rectangle.top,
          rectangle.width(), rectangle.height(),
-                            ::lightui::SWP_NOZORDER | ::lightui::SWP_NOACTIVATE);
+                            ::lightui::e_SWP_NOZORDER | ::lightui::e_SWP_NOACTIVATE);
     ////  return false;
    }
 
@@ -1446,7 +1446,7 @@ void Window::setMouseCursor(::enum_cursor ecursor)
       defer_construct_newø(m_pbitmapBuffer);
       defer_construct_newø(m_pbitmapBuffer->m_pcgdib);
       
-      m_pbitmapBuffer->m_pcgdib->initialize_dib(sizeClientArea, false);
+      m_pbitmapBuffer->m_pcgdib->initialize_dib(sizeClientArea);
 
 //      m_sizeBuffer = m_clientArea.size();
 //

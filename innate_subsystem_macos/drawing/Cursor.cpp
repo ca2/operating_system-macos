@@ -104,7 +104,7 @@ namespace innate_subsystem_macos
       m_hcursor = nullptr;
 
       Bitmap mask;
-      mask.initialize_bitmap(pbitmap->getSize(), false);
+      mask.initialize_bitmap(pbitmap->getSize());
       fromBitmap(pbitmap, &mask);
    }
 

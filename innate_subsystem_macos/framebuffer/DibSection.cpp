@@ -74,12 +74,12 @@ namespace innate_subsystem_macos
    }
 
 
-   void DibSection::initialize_dib_section(const ::innate_subsystem::PixelFormat& pf, const i32_size& dim, bool bOpaque, const operating_system::window& operatingsystemwindowCompatible)
+   void DibSection::initialize_dib_section(const ::innate_subsystem::PixelFormat& pf, const i32_size& dim, const operating_system::window& operatingsystemwindowCompatible)
    {
 
       //m_pparticleThis->initialize_dib_section(pf, dim, operatingsystemwindowCompatible);
       construct_newø(m_pbitmapDib);
-      m_pbitmapDib->initialize_bitmap(dim, bOpaque);
+      m_pbitmapDib->initialize_bitmap(dim);
       //construct_newø(m_pbitmapDib);
       //m_pbitmapDib->initialize_bitmap(dim);
 
