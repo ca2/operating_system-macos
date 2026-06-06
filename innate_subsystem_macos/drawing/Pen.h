@@ -43,6 +43,20 @@ namespace innate_subsystem_macos
       //
    //public:
       ///Pen(int type, int width, COLORREF color);
+      
+      // protected:
+          //HPEN m_hpen;
+         //Gdiplus::Pen * m_ppen;
+         //::nano::graphics::enum_pen m_epen;
+         //int m_iWidth;
+         //::color::color m_color;
+      //::nano::graphics::enum_line_cap m_elinecapStart;
+      //::innate_subsystem::enum_line_cap m_elinecapEnd;
+        // ::pointer < ::core_graphics::cg_color > m_pcgcolor;
+      
+      ::pointer < ::nano::graphics::pen > m_ppen;
+      //
+      //    friend class Graphics;
       Pen();
       ~Pen() override;
 
@@ -50,21 +64,15 @@ namespace innate_subsystem_macos
       //void * _HGDIOBJ() override;
 
 
-      void initialize_pen(innate_subsystem::enum_pen epen, int width, const color::color& color) override;
+      void initialize_pen(::nano::graphics::enum_pen epen, ::f64 width, const color::color& color) override;
 
+
+      void setStartCap(::nano::graphics::enum_line_cap elinecap) override;
+      void setEndCap(::nano::graphics::enum_line_cap elinecap) override;
 
       void destroyGraphicsObject() override;
 
-   // protected:
-       //HPEN m_hpen;
-      //Gdiplus::Pen * m_ppen;
-      ::innate_subsystem::enum_pen m_epen;
-      int m_iWidth;
-      //::color::color m_color;
-      
-      ::pointer < ::core_graphics::cg_color > m_pcgcolor;
-   //
-   //    friend class Graphics;
+  
    };
 
 //#endi

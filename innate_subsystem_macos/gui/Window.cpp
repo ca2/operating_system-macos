@@ -861,7 +861,7 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
       return false;
    }
 
-   bool Window::onKey(::user::enum_message emessage, ::user::enum_key euserkey)
+   bool Window::onKey(::user::enum_message emessage, const ::user::e_key & euserkey)
 {
       
       if (m_pwindowCallback)
@@ -877,6 +877,12 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
      return false;
    }
 
+::f32 Window::getWindowScale()
+{
+   
+   return 1.0f;
+   
+}
 
    void Window::setForegroundWindow()
    {
@@ -1183,6 +1189,68 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
       return true;
    }
 
+
+bool Window::on_key_down(::user::e_key  euserkey)
+{
+   
+   bool bRet= onKey(::user::e_message_key_down, euserkey);
+   
+   if(bRet)
+   {
+      
+      return true;
+      
+   }
+   
+   return false;
+   
+//   auto pacmewindowingwindow = acme_windowing_window();
+//   
+//   auto pkey = pacmewindowingwindow->create_newø <::user::key>();
+//   
+//   //::user::enum_key ekey = ::user::e_key_none;
+//   
+//   pkey->m_eusermessage = ::user::e_message_key_down;
+//   
+//   pkey->m_ekey = euserkey;
+//   //throw "todo";
+//   
+//   ::cast < ::micro::elemental > pelemental = pacmewindowingwindow->m_pacmeuserinteraction;
+//   
+//   pelemental->on_key_down(pkey);
+
+   
+}
+
+
+ bool Window::on_key_up(::user::e_key euserkey)
+{
+   
+    bool bRet = onKey(::user::e_message_key_up, euserkey);
+    
+    if(bRet)
+    {
+       
+       return true;
+       
+    }
+    
+    return false;
+//   auto pacmewindowingwindow = acme_windowing_window();
+//   
+//   auto pkey = pacmewindowingwindow->create_newø <::user::key>();
+//    
+//    //throw "todo";
+//    pkey->m_ekey = euserkey;
+//    
+//    pkey->m_eusermessage = ::user::e_message_key_up;
+//   
+//   ::cast < ::micro::elemental > pelemental = pacmewindowingwindow->m_pacmeuserinteraction;
+//   
+//   pelemental->on_key_up(pkey);
+   
+}
+
    void Window::doUnFullScreen()
     {
         if (!m_isFullScr) {
@@ -1433,7 +1501,7 @@ void Window::setMouseCursor(::enum_cursor ecursor)
       }
 
       if (m_pgraphicsBuffer
-          && m_pgraphicsBuffer->m_pdevicecontext && m_pgraphicsBuffer->m_pdevicecontext->m_pcgcontext)
+          && m_pgraphicsBuffer->m_pdevicecontext && m_pgraphicsBuffer->m_pdevicecontext->m_pcontext)
       {
          m_pgraphicsBuffer->m_pdevicecontext->destroyDeviceContext();
 //          if (m_hbitmapOld)

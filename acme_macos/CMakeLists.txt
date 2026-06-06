@@ -7,20 +7,26 @@ project(acme_macos CXX OBJCXX)
 
 list(APPEND library_source
         _.h
-        _acme_macos.h
+        #_acme_macos.h
         _c_mm.h
         _mm.h
-        acme_dir.cpp
-        acme_dir.h
-        acme_path.cpp
-        acme_path.h
-        application.cpp
-        application.h
+        directory_context.cpp
+        directory_context.h
+   directory_system.cpp
+   directory_system.h
+        file_context.cpp
+   file_context.h
+   file_system.cpp
+   file_system.h
+        path_system.cpp
+   path_system.h
+        #application.cpp
+        #application.h
         _factory.cpp
-        factory_exchange.h
-        file.cpp
-        file.h
+        #factory_exchange.h
         file.mm
+        #file.h
+        #file.mm
         framework.cpp
         framework.h
         image.cpp
@@ -34,13 +40,13 @@ list(APPEND library_source
         node.h
         process.cpp
         process_pid.cpp
-        stdio_file.cpp
-        stdio_file.h
-        thread.cpp
-        thread.h
-        trace.cpp
-        user.h
-        util.cpp
+        #stdio_file.cpp
+        #stdio_file.h
+        #thread.cpp
+        #thread.h
+        #trace.cpp
+        #user.h
+        #util.cpp
 )
 
 list(APPEND library_references

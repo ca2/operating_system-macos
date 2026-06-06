@@ -97,10 +97,10 @@ namespace innate_subsystem_macos
 
 
     ::enum_dialog_result subsystem::message_box(
-                    const ::user_interaction_sink & userinteractionsink,
-                    const ::scoped_string & scopedstrMessage,
-                    const ::scoped_string & scopedstrCaption,
-                    ::user::enum_message_box emessagebox)
+                                                const ::user_interaction_sink & userinteractionsink,
+                                                  const ::scoped_string & scopedstrMessage,
+                                                  const ::scoped_string & scopedstrCaption,
+                                                  const ::user::e_message_box & emessagebox)
     {
 
         auto operatingsystemwindow = userinteractionsink.best_effort_operating_system_window();

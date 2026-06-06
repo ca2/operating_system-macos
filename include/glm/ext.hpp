@@ -61,7 +61,7 @@
 #include "./ext/quaternion_relational.hpp"
 
 #include "./ext/scalar_constants.hpp"
-#include "./ext/scalar_int_sized.hpp"
+#include "./ext/scalar_i32_sized.hpp"
 #include "./ext/scalar_relational.hpp"
 
 #include "./ext/vector_bool1.hpp"

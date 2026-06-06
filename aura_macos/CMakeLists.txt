@@ -7,16 +7,16 @@ project(aura_macos CXX)
 
 list(APPEND library_source
         _.h
-        _aura_macos.h
-        _c_mm.h
+        #_aura_macos.h
+        #_c_mm.h
         _mm.h
         _factory.cpp
-        factory_exchange.h
+        #factory_exchange.h
         framework.cpp
         framework.h
-        image.cpp
-        interaction_impl.cpp
-        interaction_impl.h
+        #image.cpp
+        #interaction_impl.cpp
+        #interaction_impl.h
         node.cpp
         node.h
 )

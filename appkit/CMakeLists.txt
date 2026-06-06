@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.17)
-project(innate_ui_appkit CXX)
+project(appkit CXX)
 
 
 list(APPEND library_source

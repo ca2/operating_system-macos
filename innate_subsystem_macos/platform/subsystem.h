@@ -31,7 +31,7 @@ namespace innate_subsystem_macos
        const ::user_interaction_sink & userinteractionsink,
          const ::scoped_string & scopedstrMessage,
          const ::scoped_string & scopedstrCaption,
-         ::user::enum_message_box emessagebox) override;
+         const ::user::e_message_box & emessagebox) override;
 #ifdef WINDOWS
         ::user::enum_key virtual_key_code_to_user_key(int iVirtualKeyCode) override;
 #endif

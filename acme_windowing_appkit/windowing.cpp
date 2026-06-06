@@ -461,7 +461,7 @@ void windowing::on_user_command(::uptr u,::lightui::enum_notification enotificat
       
    }
    ::wparam wparam;
-   wparam = make_unsigned_int(uControl, enotification);
+   wparam = make_u32(uControl, enotification);
    pacmewindowingwindow->send_message(::user::e_message_command, wparam);
    
 }

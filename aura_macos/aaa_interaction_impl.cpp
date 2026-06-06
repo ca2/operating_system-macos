@@ -389,7 +389,7 @@ namespace aura_macos
 //
 //      hook_window_create(m_puserinteraction);
 //
-//      CGRect int_rectangle;
+//      CGRect i32_rectangle;
 //
 //      INT_RECTANGLE rectParam;
 //
@@ -426,7 +426,7 @@ namespace aura_macos
 //
 //         m_puserinteraction->layout().window() = ::top_left(rectParam);
 //
-//         m_puserinteraction->layout().window() = ::int_size(rectParam);
+//         m_puserinteraction->layout().window() = ::i32_size(rectParam);
 //
 //         __refer(m_puserinteraction->m_pthreadUserInteraction, ::get_task());
 //
@@ -500,7 +500,7 @@ namespace aura_macos
 //   }
 //
 
-//   bool interaction_impl::create_window(::user::interaction * pinteraction, const char * lpszClassName,const char * lpszWindowName,unsigned int uStyle, const ::int_rectangle & rectangle,::user::interaction * puiParent,id id, ::create * pcreate)
+//   bool interaction_impl::create_window(::user::interaction * pinteraction, const char * lpszClassName,const char * lpszWindowName,unsigned int uStyle, const ::i32_rectangle & rectangle,::user::interaction * puiParent,id id, ::create * pcreate)
 //   {
 //
 //      // can't use for desktop or pop-up windows (use CreateEx instead)
@@ -840,11 +840,11 @@ namespace aura_macos
 //      //      ::GetClassName(get_handle(), szBuf, _countof(szBuf));
 //      //    dumpcontext << "\nclass name = \"" << szBuf << "\"";
 //
-//      ::int_rectangle rectangle;
+//      ::i32_rectangle rectangle;
 //
 //      ((::user::interaction_impl *) this)->m_puserinteraction->window_rectangle(rectangle);
 //
-////      dumpcontext << "\nrect = " << int_rectangle;
+////      dumpcontext << "\nrect = " << i32_rectangle;
 //      dumpcontext << "\nparent ::user::interaction * = " << (void *)((::user::interaction_impl *) this)->get_parent();
 //
 //      //      dumpcontext << "\nstyle = " << (void *)(dword_ptr)::GetWindowLong(get_handle(), GWL_STYLE);
@@ -1133,7 +1133,7 @@ namespace aura_macos
 //   }
 //
 //
-//   void interaction_impl::InvalidateRect(const ::int_rectangle & rectangle, bool bErase)
+//   void interaction_impl::InvalidateRect(const ::i32_rectangle & rectangle, bool bErase)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1149,7 +1149,7 @@ namespace aura_macos
 //   }
 //
 //
-//   void interaction_impl::ValidateRect(const ::int_rectangle & rectangle)
+//   void interaction_impl::ValidateRect(const ::i32_rectangle & rectangle)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1431,7 +1431,7 @@ namespace aura_macos
 //   }
 
 
-//   bool interaction_impl::DrawCaption(::draw2d::graphics_pointer & pgraphics, const ::int_rectangle & rectangle, unsigned int uFlags)
+//   bool interaction_impl::DrawCaption(::draw2d::graphics_pointer & pgraphics, const ::i32_rectangle & rectangle, unsigned int uFlags)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1695,7 +1695,7 @@ namespace aura_macos
 //   }
 //
 //
-//   ::user::interaction *  interaction_impl::ChildWindowFromPoint(const ::int_point & point)
+//   ::user::interaction *  interaction_impl::ChildWindowFromPoint(const ::i32_point & point)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1703,7 +1703,7 @@ namespace aura_macos
 //   }
 //
 //
-//   ::user::interaction *  interaction_impl::ChildWindowFromPoint(const ::int_point & point, unsigned int nFlags)
+//   ::user::interaction *  interaction_impl::ChildWindowFromPoint(const ::i32_point & point, unsigned int nFlags)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1774,7 +1774,7 @@ namespace aura_macos
 //   }
 //
 //
-//   ::user::interaction * PASCAL interaction_impl::oswindowFromPoint(INT_POINT int_point)
+//   ::user::interaction * PASCAL interaction_impl::oswindowFromPoint(INT_POINT i32_point)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1844,16 +1844,16 @@ namespace aura_macos
 //
 //
 //
-//   int_point PASCAL interaction_impl::GetCaretPos()
+//   i32_point PASCAL interaction_impl::GetCaretPos()
 //   {
 //
 //      throw ::exception(error_not_implemented);;
-//      //      ::int_point point;
+//      //      ::i32_point point;
 //      //      ::GetCaretPos((INT_POINT *)&point); return point;
 //
 //   }
 //
-//   void PASCAL interaction_impl::SetCaretPos(INT_POINT int_point)
+//   void PASCAL interaction_impl::SetCaretPos(INT_POINT i32_point)
 //   {
 //
 //      throw ::exception(error_not_implemented);;
@@ -1963,7 +1963,7 @@ namespace aura_macos
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnContextMenu(::user::interaction *, int_point)
+//   void interaction_impl::OnContextMenu(::user::interaction *, i32_point)
 //   {
 //      Default();
 //   }
@@ -2107,31 +2107,31 @@ namespace aura_macos
 //   {
 //      return Default();
 //   }
-//   void interaction_impl::OnNcLButtonDblClk(unsigned int, int_point)
+//   void interaction_impl::OnNcLButtonDblClk(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnNcLButtonDown(unsigned int, int_point)
+//   void interaction_impl::OnNcLButtonDown(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnNcLButtonUp(unsigned int, int_point)
+//   void interaction_impl::OnNcLButtonUp(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnNcMButtonDblClk(unsigned int, int_point)
+//   void interaction_impl::OnNcMButtonDblClk(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnNcMButtonDown(unsigned int, int_point)
+//   void interaction_impl::OnNcMButtonDown(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnNcMButtonUp(unsigned int, int_point)
+//   void interaction_impl::OnNcMButtonUp(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnNcMouseMove(unsigned int, int_point)
+//   void interaction_impl::OnNcMouseMove(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
@@ -2139,15 +2139,15 @@ namespace aura_macos
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnNcRButtonDblClk(unsigned int, int_point)
+//   void interaction_impl::OnNcRButtonDblClk(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnNcRButtonDown(unsigned int, int_point)
+//   void interaction_impl::OnNcRButtonDown(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnNcRButtonUp(unsigned int, int_point)
+//   void interaction_impl::OnNcRButtonUp(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
@@ -2207,27 +2207,27 @@ namespace aura_macos
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnLButtonDblClk(unsigned int, int_point)
+//   void interaction_impl::OnLButtonDblClk(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnLButtonDown(unsigned int, int_point)
+//   void interaction_impl::OnLButtonDown(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnLButtonUp(unsigned int, int_point)
+//   void interaction_impl::OnLButtonUp(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnMButtonDblClk(unsigned int, int_point)
+//   void interaction_impl::OnMButtonDblClk(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnMButtonDown(unsigned int, int_point)
+//   void interaction_impl::OnMButtonDown(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnMButtonUp(unsigned int, int_point)
+//   void interaction_impl::OnMButtonUp(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
@@ -2235,12 +2235,12 @@ namespace aura_macos
 //   {
 //      return (int)Default();
 //   }
-//   void interaction_impl::OnMouseMove(unsigned int, int_point)
+//   void interaction_impl::OnMouseMove(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
 //
-//   bool interaction_impl::OnMouseWheel(unsigned int, short, int_point)
+//   bool interaction_impl::OnMouseWheel(unsigned int, short, i32_point)
 //   {
 //
 //      return Default() != false;
@@ -2251,15 +2251,15 @@ namespace aura_macos
 //   {
 //      return Default();
 //   }
-//   void interaction_impl::OnRButtonDblClk(unsigned int, int_point)
+//   void interaction_impl::OnRButtonDblClk(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnRButtonDown(unsigned int, int_point)
+//   void interaction_impl::OnRButtonDown(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
-//   void interaction_impl::OnRButtonUp(unsigned int, int_point)
+//   void interaction_impl::OnRButtonUp(unsigned int, i32_point)
 //   {
 //      Default();
 //   }
@@ -2490,9 +2490,9 @@ namespace aura_macos
 
 #ifdef EXTRALOG
 
-   ::int_rectangle rectLast;
+   ::i32_rectangle rectLast;
 
-   ::int_size sizeLast;
+   ::i32_size sizeLast;
 
 #endif
 
@@ -2590,7 +2590,7 @@ namespace aura_macos
 //      //      case WM_INITDIALOG:
 //      //         {
 //      //            unsigned int uStyle;
-//      //            ::int_rectangle rectOld;
+//      //            ::i32_rectangle rectOld;
 //      //            ::user::interaction * pWnd = ::macos::interaction_impl::from_handle(hWnd);
 //      //            __pre_init_dialog(pWnd, &rectOld, &uStyle);
 //      //            bCallDefault = false;
@@ -2651,7 +2651,7 @@ namespace aura_macos
 
       // graphics will be already set its view port to the user::interaction for linux - cairo with xlib
 
-      pgraphics->set_origin(::int_point());
+      pgraphics->set_origin(::i32_point());
 
    }
 

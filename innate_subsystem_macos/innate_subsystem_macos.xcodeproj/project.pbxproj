@@ -115,6 +115,8 @@
 		9A85367D2FB460AD00267545 /* libappkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A85367C2FB460AD00267545 /* libappkit.dylib */; };
 		9A8536A62FB5D4B200267545 /* libacme_windowing_kit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8536A52FB5D4B200267545 /* libacme_windowing_kit.dylib */; };
 		9A9564BD2FB427360001D319 /* libacme_windowing_appkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9564BC2FB427360001D319 /* libacme_windowing_appkit.dylib */; };
+		9AE47A9B2FD35C2E003088D6 /* Path.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE47A992FD35C2E003088D6 /* Path.h */; };
+		9AE47A9C2FD35C2E003088D6 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AE47A9A2FD35C2E003088D6 /* Path.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -267,6 +269,8 @@
 		9A85367C2FB460AD00267545 /* libappkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libappkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A8536A52FB5D4B200267545 /* libacme_windowing_kit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_windowing_kit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A9564BC2FB427360001D319 /* libacme_windowing_appkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme_windowing_appkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AE47A992FD35C2E003088D6 /* Path.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
+		9AE47A9A2FD35C2E003088D6 /* Path.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
 		9AF8D4BB2FB4604E00B2D702 /* acme_windowing_appkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_windowing_appkit.xcodeproj; path = ../acme_windowing_appkit/acme_windowing_appkit.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -363,6 +367,8 @@
 				9A19084F2FB29C1900A3C985 /* Graphics.cpp */,
 				9A1908502FB29C1900A3C985 /* Icon.h */,
 				9A1908512FB29C1900A3C985 /* Icon.cpp */,
+				9AE47A992FD35C2E003088D6 /* Path.h */,
+				9AE47A9A2FD35C2E003088D6 /* Path.cpp */,
 				9A1908522FB29C1900A3C985 /* Pen.h */,
 				9A1908532FB29C1900A3C985 /* Pen.cpp */,
 				9A1908542FB29C1900A3C985 /* SolidBrush.h */,
@@ -507,6 +513,7 @@
 				9A1908F52FB29C1900A3C985 /* WindowMessageHandler.h in Headers */,
 				9A1908F72FB29C1900A3C985 /* WindowFinder.h in Headers */,
 				9A1908F82FB29C1900A3C985 /* Graphics.h in Headers */,
+				9AE47A9B2FD35C2E003088D6 /* Path.h in Headers */,
 				9A1908F92FB29C1900A3C985 /* NotifyIconWindow.h in Headers */,
 				9A1908FA2FB29C1900A3C985 /* Dialog.h in Headers */,
 				9A1908FB2FB29C1900A3C985 /* DeviceContext.h in Headers */,
@@ -673,6 +680,7 @@
 				9A1908D22FB29C1900A3C985 /* Tab.cpp in Sources */,
 				9A1908D32FB29C1900A3C985 /* Toolbar.cpp in Sources */,
 				9A1908D42FB29C1900A3C985 /* Pen.cpp in Sources */,
+				9AE47A9C2FD35C2E003088D6 /* Path.cpp in Sources */,
 				9A1908D52FB29C1900A3C985 /* DeviceContext.cpp in Sources */,
 				9A1908D62FB29C1900A3C985 /* Trackbar.cpp in Sources */,
 				9A1908D72FB29C1900A3C985 /* Font.cpp in Sources */,

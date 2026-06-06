@@ -25,7 +25,7 @@
 #pragma once
 
 
-//#include "remoting/remoting/region/::int_point.h"
+//#include "remoting/remoting/region/::i32_point.h"
 #include "subsystem/node/Cursor.h"
 #include "subsystem_macos/_common_header.h"
 
@@ -48,7 +48,7 @@ namespace subsystem_macos
       //    Cursor();
       //    ~Cursor() override;
       //
-      //    ::int_point getCursorPos() const override;
+      //    ::i32_point getCursorPos() const override;
       // };
 
 

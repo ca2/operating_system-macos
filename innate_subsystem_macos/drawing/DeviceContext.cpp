@@ -28,7 +28,10 @@
 
 #include "Bitmap.h"
 //#include "../gui/PaintWindow.h"
+#include "operating_system-apple/nano_graphics_quartz2d/_.h"
+#include "operating_system-apple/nano_graphics_quartz2d/context.h"
 #include "innate_subsystem/drawing/GraphicsObject.h"
+#include "operating_system-apple/core_graphics/_internal.h"
 #include "operating_system-apple/core_graphics/cg_context.h"
 #include "operating_system-apple/core_graphics/cg_dib.h"
 
@@ -153,9 +156,13 @@ namespace innate_subsystem_macos
       
       auto pcgdib = pbitmapMacos->m_pcgdib;
       
-      auto pcgcontext = pcgdib->m_cgdib.m_pcgcontext.m_p;
+      auto uContext = pcgdib->m_cgdib.m_pcgcontext->m_cgcontext.m_u;
       
-      m_pcgcontext = pcgcontext;
+      ::cast < ::quartz2d::nano::graphics::context > pcontextThis = m_pcontext;
+      
+      pcontextThis->m_pcgcontext->m_cgcontext.m_u = uContext;
+      
+      //m_pcontext = pcontext;
 //      ::cast < ::innate_subsystem_macos::Bitmap > pbitmapWin32 = pbitmap;
 //      m_hwnd = nullptr;
 //      m_hdc2 = nullptr;
@@ -175,7 +182,11 @@ void DeviceContext::_initialize_device_context(::core_graphics::cg_context * pcg
 {
    destroyDeviceContext();
    m_bHasOwnDC = true;
-   m_pcgcontext = pcgcontext;
+   constructø(m_pcontext);
+   
+   ::cast < ::quartz2d::nano::graphics::context > pcontextThis = m_pcontext;
+   
+   pcontextThis->m_pcgcontext = pcgcontext;
 //      m_hwnd = nullptr;
 //      m_hdc2 = ::CreateCompatibleDC(hdc);
 //      m_pgraphics = new ::Gdiplus::Graphics(m_hdc2);

@@ -40,7 +40,9 @@ namespace innate_subsystem_macos
    public:
       
       
-      ::pointer < ::core_graphics::cg_color > m_pcgcolor;
+      //::pointer < ::core_graphics::cg_color > m_pcgcolor;
+      
+      ::pointer < ::nano::graphics::brush > m_pbrush;
 
       Brush();
       ~Brush() override;

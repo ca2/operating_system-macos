@@ -634,10 +634,10 @@ void mm_init_workspace_rect();
 
 
 // front first
-int_rectangle_array cg_get_window_rect_list_above(CGWindowID windowid)
+i32_rectangle_array cg_get_window_rect_list_above(CGWindowID windowid)
 {
    
-   int_rectangle_array recta;
+   i32_rectangle_array recta;
    
    CFArrayRef windowa = CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenAboveWindow, windowid);
 
@@ -761,7 +761,7 @@ string MYCFStringCopyUTF8String(CFStringRef aString)
 #undef FUNCTION_TRACE
 
 
-int_rectangle_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
+i32_rectangle_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
 {
    
    bool bFound = false;
@@ -776,7 +776,7 @@ int_rectangle_array cg_get_window_rect_list_intersect_above(CGWindowID windowid)
 
 #endif
    
-   int_rectangle_array recta;
+   i32_rectangle_array recta;
    
    CFArrayRef windowa = CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly, kCGNullWindowID);
 
@@ -1030,7 +1030,7 @@ end1:
 #undef FUNCTION_TRACE
 
 
-void cg_get_window_rect_list(int_rectangle_array & recta, array < CGWindowID > & windowida)
+void cg_get_window_rect_list(i32_rectangle_array & recta, array < CGWindowID > & windowida)
 {
 
    //bool bFound = false;
@@ -1250,7 +1250,7 @@ end1:;
 
    }
 
-   int_rectangle_array recta = cg_get_window_rect_list_intersect_above(windowid);
+   i32_rectangle_array recta = cg_get_window_rect_list_intersect_above(windowid);
 
 
    if(recta.is_empty())
@@ -1287,14 +1287,14 @@ end1:;
 
 }
 
-void cg_get_window_rect_list(int_rectangle_array & recta, array < CGWindowID > & windowida);
+void cg_get_window_rect_list(i32_rectangle_array & recta, array < CGWindowID > & windowida);
 
 ::i32_bool point_is_window_origin(::i32_point pointHitTest, CGWindowID windowidExclude, int iMargin)
 {
    
    //CGWindowID windowidExclude = get_os_window_window_number(oswindowExclude);
    
-   int_rectangle_array recta;
+   i32_rectangle_array recta;
    
    array < CGWindowID > windowida;
    

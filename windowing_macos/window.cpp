@@ -33,7 +33,7 @@
 #include <CoreGraphics/CoreGraphics.h>
 
 
-int_rectangle_array cg_get_window_rect_list_intersect_above(CGWindowID windowid);
+i32_rectangle_array cg_get_window_rect_list_intersect_above(CGWindowID windowid);
 CGWindowID ns_get_window_id(void * pnswindow);
 
 
@@ -2747,7 +2747,7 @@ void window::frame_toggle_restore(::user::activation_token * puseractivationtoke
    }
 
 
-   void window::non_top_most_upper_window_rects(::int_rectangle_array_base & recta)
+   void window::non_top_most_upper_window_rects(::i32_rectangle_array_base & recta)
    {
       
       auto osdata = __nsacmewindow_osdata(m_pnsacmewindow);

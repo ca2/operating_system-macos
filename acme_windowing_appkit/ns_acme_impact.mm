@@ -32,7 +32,7 @@
 NSCursor * e_cursor_to_ns_cursor(::enum_cursor ecursor);
 
 ::user::enum_key key_code_to_user_key(unsigned int keyCode);
-::user::e_button_state ns_pressed_buttons_to_e_button_state(unsigned int pressedButtons);
+::user::e_key_state ns_pressed_buttons_to_e_button_state(unsigned int pressedButtons);
 
 @implementation ns_acme_impact
 
@@ -767,17 +767,17 @@ m_f = true; \
    }
 
    auto keyCode = [event keyCode];
-   ::user::enum_key euserkey = ::user::e_key_none;
+   ::user::e_key euserkey = ::user::e_key_none;
    
    if(keyCode == 0 && pszUtf8)
    {
       if(pszUtf8[0] >= 'a' && pszUtf8[0] <= 'z')
       {
-         euserkey = (::user::enum_key) (::user::e_key_a + (pszUtf8[0] - 'a'));
+         euserkey = (::user::e_key_a + (pszUtf8[0] - 'a'));
       }
       else if(pszUtf8[0] >= '0' && pszUtf8[0] <= '9')
       {
-         euserkey = (::user::enum_key) (::user::e_key_0 + (pszUtf8[0] - '0'));
+         euserkey = (::user::e_key_0 + (pszUtf8[0] - '0'));
       }
    }
    p->on_key_up(euserkey);

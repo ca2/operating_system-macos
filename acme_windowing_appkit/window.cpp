@@ -4,7 +4,7 @@
 #include "framework.h"
 #include "window.h"
 #include "acme_window_bridge.h"
-#include "acme/nano/graphics/device.h"
+#include "acme/nano/graphics/context.h"
 #include "acme/constant/id.h"
 #include "acme/handler/topic.h"
 #include "acme/platform/application.h"
@@ -57,7 +57,7 @@ namespace appkit
          
          //delete_drawing_objects();
          
-         m_pnanodevice.release();
+         m_pnanographicscontext.release();
          
       }
       
@@ -115,9 +115,9 @@ namespace appkit
             
             //nano()->graphics();
             
-            constructø(m_pnanodevice);
+            constructø(m_pnanographicscontext);
             
-            m_pnanodevice->attach((CGContextRef) pcgcontext->m_cgcontext.m_u, m_sizeWindow);
+            m_pnanographicscontext->attach((CGContextRef) pcgcontext->m_cgcontext.m_u, m_sizeWindow, 0);
             
             ::pointer < ::micro::elemental > pelemental;
             
@@ -126,9 +126,9 @@ namespace appkit
             if (pelemental)
             {
                
-               pelemental->draw_background(m_pnanodevice);
+               pelemental->draw_background(m_pnanographicscontext);
                
-               pelemental->draw_foreground(m_pnanodevice);
+               pelemental->draw_foreground(m_pnanographicscontext);
                
             }
             
@@ -287,24 +287,35 @@ namespace appkit
       //   }
       
       
-      void window::show_window()
+      void window::show_window(::i32 iShow)
       {
          
-         set_active_window();
-         
-         m_pacmewindowbridge->display();
+         if(iShow == ::lightui::e_SW_HIDE)
+         {
+            
+            m_pacmewindowbridge->hide();
+            
+         }
+         else
+         {
+            
+            set_active_window();
+            
+            m_pacmewindowbridge->display();
+            
+         }
          
       }
       
-      
-      void window::hide_window()
-      {
-         
-         m_pacmewindowbridge->hide();
-         
-      }
-      
-      
+//      
+//      void window::hide_window()
+//      {
+//         
+//         
+//         
+//      }
+//      
+//      
       void window::set_active_window()
       {
          

@@ -4,16 +4,16 @@ project(windowing_macos CXX)
 
 list(APPEND library_source
         _.h
-        _c_mm.h
+        #_c_mm.h
         _mm.h
-        _windowing_macos.h
-        clipboard.cpp
+        #_windowing_macos.h
+        #clipboard.cpp
         copydesk.cpp
         copydesk.h
         copydesk.mm
         cursor.cpp
         cursor.h
-        cursor.mm
+        #cursor.mm
         display.cpp
         display.h
         _factory.cpp
@@ -25,20 +25,20 @@ list(APPEND library_source
         imm_client.h
         keyboard.cpp
         keyboard.h
-        mm_oswindow.h
+        #mm_oswindow.h
         monitor.cpp
         monitor.h
         monitor.mm
-        node.cpp
-        node.h
+        #node.cpp
+        #node.h
         notify_icon.cpp
         notify_icon.h
         notify_icon.mm
         notify_icon_mm.h
         notify_icon_mm_bridge.h
         notify_icon_mm_bridge.mm
-        oswindow_data.cpp
-        oswindow_data.h
+        #oswindow_data.cpp
+        #oswindow_data.h
         window.cpp
         window.h
         window_impl.h
@@ -47,7 +47,7 @@ list(APPEND library_source
         windowing_c.h
         windowing_keyboard.cpp
         windowing_keyboard.h
-        windowing_keyboard.mm
+        #windowing_keyboard.mm
         windowing_macos.cpp
 )
 

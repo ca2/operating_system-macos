@@ -24,6 +24,7 @@
 #include "framework.h"
 #include "subsystem_macos/_common_header.h"
 #include "DibSection.h"
+#include "acme/nano/graphics/image.h"
 #include "innate_subsystem_macos/drawing/DeviceContext.h"
 #include "innate_subsystem_macos/drawing/Graphics.h"
 #include "subsystem_macos/node/Screen.h"
@@ -105,7 +106,7 @@ namespace innate_subsystem_macos
 
    void *DibSection::getBuffer()
    {
-      return m_pbitmapDib->m_pcgdib->get_buffer();
+      return m_pbitmapDib->m_pimage->get_buffer();
       //return m_pparticleThis->getBuffer();
    }
 

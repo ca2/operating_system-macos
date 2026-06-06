@@ -4,7 +4,7 @@
 #include "framework.h"
 #include "window.h"
 #include "acme_window_bridge.h"
-#include "acme/nano/graphics/device.h"
+#include "acme/nano/graphics/context.h"
 #include "acme/constant/id.h"
 #include "acme/handler/topic.h"
 //#include "acme/platform/sequencer.h"

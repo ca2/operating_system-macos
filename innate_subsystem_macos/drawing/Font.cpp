@@ -24,6 +24,8 @@
 // From Pen.cpp by camilo on 2026-04-11 04:21 <3ThomasBorregaardSørensen!!
 #include "framework.h"
 #include "Font.h"
+#include "acme/nano/graphics/font.h"
+#include "acme/nano/graphics/font_family.h"
 #include "operating_system-apple/core_graphics/ct_font.h"
 
 //#include <crtdbg.h>
@@ -53,13 +55,17 @@ Font::~Font()
    // }
 
 
-   void Font::initialize_font(const char *pszFamily, int iPixelHeight, int iFontWeight, bool bItalic)
+void Font::initialize_pixel_font(const_char_pointer pszFamily, ::f64 fPixelHeight, ::i32 iFontWeight, bool bItalic, bool bUnderline)
    {
 destroyGraphicsObject();
 
-      construct_newø(m_pctfont);
+      construct_newø(m_pfont);
+   
+   auto pfontfamily = createø<::nano::graphics::font_family>();
+   
+   pfontfamily->create_font_family_with_name(pszFamily);
       
-      m_pctfont->create_font_with_name(pszFamily, iPixelHeight, iFontWeight, bItalic);
+      m_pfont->create_pixel_font(pfontfamily, fPixelHeight, iFontWeight >= 600, bItalic, bUnderline);
 //
 //      Gdiplus::REAL fontSize =(Gdiplus::REAL) iPixelHeight;
 //      m_pfont = new Gdiplus::Font(::wstring(pszFamily), fontSize,
@@ -67,6 +73,28 @@ destroyGraphicsObject();
 //         (bItalic ? Gdiplus::FontStyleItalic : Gdiplus::FontStyleRegular));
 
    }
+
+void Font::initialize_point_font(const_char_pointer pszFamily, ::f64 fPointHeight, ::i32 iFontWeight,
+                                   bool bItalic, bool bUnderline)
+{
+destroyGraphicsObject();
+
+   construct_newø(m_pfont);
+   
+   auto pfontfamily = createø<::nano::graphics::font_family>();
+   
+   pfontfamily->create_font_family_with_name(pszFamily);
+      
+   m_pfont->create_point_font(pfontfamily, fPointHeight,  iFontWeight >= 600,  bItalic, bUnderline);
+//
+   //m_pctfont->create_font_with_name(pszFamily, iPixelHeight, iFontWeight, bItalic);
+//
+//      Gdiplus::REAL fontSize =(Gdiplus::REAL) iPixelHeight;
+//      m_pfont = new Gdiplus::Font(::wstring(pszFamily), fontSize,
+//         iFontWeight >= 500 ? (bItalic ? Gdiplus::FontStyleBoldItalic : Gdiplus::FontStyleBold) :
+//         (bItalic ? Gdiplus::FontStyleItalic : Gdiplus::FontStyleRegular));
+
+}
 
 
    void Font::destroyGraphicsObject()

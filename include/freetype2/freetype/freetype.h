@@ -4103,7 +4103,7 @@ FT_BEGIN_HEADER
    *   face ::
    *     A handle to a source face object.
    *
-   *   point_size ::
+   *   poi32_size ::
    *     The point size in 16.16 fractional points.
    *
    *   degree ::
@@ -4129,7 +4129,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_Track_Kerning( FT_Face    face,
-                        FT_Fixed   point_size,
+                        FT_Fixed   poi32_size,
                         FT_Int     degree,
                         FT_Fixed*  akerning );
 

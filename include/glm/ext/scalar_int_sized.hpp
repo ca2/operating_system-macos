@@ -1,21 +1,21 @@
-/// @ref ext_scalar_int_sized
-/// @file glm/ext/scalar_int_sized.hpp
+/// @ref ext_scalar_i32_sized
+/// @file glm/ext/scalar_i32_sized.hpp
 ///
-/// @defgroup ext_scalar_int_sized GLM_EXT_scalar_int_sized
+/// @defgroup ext_scalar_i32_sized GLM_EXT_scalar_i32_sized
 /// @ingroup ext
 ///
 /// Exposes sized signed integer scalar types.
 ///
-/// Include <glm/ext/scalar_int_sized.hpp> to use the features of this extension.
+/// Include <glm/ext/scalar_i32_sized.hpp> to use the features of this extension.
 ///
-/// @see ext_scalar_uint_sized
+/// @see ext_scalar_ui32_sized
 
 #pragma once
 
 #include "../detail/setup.hpp"
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
-#	pragma message("GLM: GLM_EXT_scalar_int_sized extension included")
+#	pragma message("GLM: GLM_EXT_scalar_i32_sized extension included")
 #endif
 
 namespace glm{
@@ -51,7 +51,7 @@ namespace detail
 }//namespace detail
 
 
-	/// @addtogroup ext_scalar_int_sized
+	/// @addtogroup ext_scalar_i32_sized
 	/// @{
 
 	/// 8 bit signed integer type.

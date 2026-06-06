@@ -25,6 +25,7 @@
 //
 #include "framework.h"
 #include "Pen.h"
+#include "acme/nano/graphics/pen.h"
 #include "operating_system-apple/core_graphics/core_graphics.h"
 //#include <crtdbg.h>
 
@@ -45,7 +46,9 @@ namespace innate_subsystem_macos
 //   m_hpen(nullptr)
    //m_ppen(nullptr)
    {
-
+      //m_elinecapStart = ::nano::graphics::e_line_cap_none;
+      //m_elinecapEnd = ::nano::graphics::e_line_cap_none;
+      
    }
 
 
@@ -64,14 +67,18 @@ namespace innate_subsystem_macos
    //
    // }
 
-   void Pen::initialize_pen(innate_subsystem::enum_pen epen, int width, const color::color& color)
+   void Pen::initialize_pen(::nano::graphics::enum_pen epen, ::f64 fWidth, const color::color& color)
    {
 
       destroyGraphicsObject();
       
-      m_iWidth = width;
+      defer_constructø(m_ppen);
       
-      m_pcgcolor = CoreGraphics().create_color(color);
+      m_ppen->create_pen(epen, fWidth, color);
+      
+      //m_iWidth = width;
+      
+      //m_pcgcolor = CoreGraphics().create_color(color);
 
       //m_hpen = CreatePen((int) epen, width, RGB(color.byte_red(), color.byte_green(), color.byte_blue()));
 //
@@ -87,6 +94,22 @@ namespace innate_subsystem_macos
 //      }
 
    }
+
+
+void Pen::setStartCap(::nano::graphics::enum_line_cap elinecap)
+{
+   
+   m_ppen->set_start_cap(elinecap);
+   //m_elinecapStart = elinecap;
+   
+}
+void Pen::setEndCap(::nano::graphics::enum_line_cap elinecap)
+{
+   
+   m_ppen->set_end_cap(elinecap);
+   //m_elinecapEnd = elinecap;
+   
+}
 
 
    void Pen::destroyGraphicsObject()

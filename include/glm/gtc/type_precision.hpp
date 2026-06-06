@@ -16,8 +16,8 @@
 // Dependency:
 #include "../gtc/quaternion.hpp"
 #include "../gtc/vec1.hpp"
-#include "../ext/scalar_int_sized.hpp"
-#include "../ext/scalar_uint_sized.hpp"
+#include "../ext/scalar_i32_sized.hpp"
+#include "../ext/scalar_ui32_sized.hpp"
 #include "../detail/type_vec2.hpp"
 #include "../detail/type_vec3.hpp"
 #include "../detail/type_vec4.hpp"

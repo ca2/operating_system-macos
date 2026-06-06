@@ -26,6 +26,7 @@
 #include "framework.h"
 #include "SolidBrush.h"
 #include "Brush.h"
+#include "acme/nano/graphics/brush.h"
 #include "operating_system-apple/core_graphics/core_graphics.h"
 
 
@@ -45,11 +46,15 @@ namespace innate_subsystem_macos
    {
 
       destroyGraphicsObject();
+      
+      constructø(m_pbrush);
+      
+      m_pbrush->create_solid_brush(color);
 
-      auto pbrushWin32 =    this->impl < ::innate_subsystem_macos::Brush >();
+  //    auto pbrushWin32 =    this->impl < ::innate_subsystem_macos::Brush >();
       //pbrushWin32->m_hbrush = CreateSolidBrush(RGB(color.byte_red(), color.byte_green(), color.byte_blue()));
 
-      m_pcgcolor = CoreGraphics().create_color(color);
+//      m_pcgcolor = CoreGraphics().create_color(color);
 //      Gdiplus::Color gdipluscolor(color.byte_opacity(), color.byte_red(), color.byte_green(), color.byte_blue());
 //      pbrushWin32->m_pbrush = new Gdiplus::SolidBrush(gdipluscolor);
 

@@ -224,6 +224,8 @@ namespace innate_subsystem_macos
       void setDoubleBuffering(bool bDoubleBuffering) override;
       bool isDoubleBuffering() override;
 
+      ::f32 getWindowScale() override;
+      
       // basic window manipulation procedures
       void show() override;
       void hide() override;
@@ -363,7 +365,13 @@ namespace innate_subsystem_macos
       virtual void _doMinimizeFromFullScreen();
       virtual void _doRestoreToFullScreen();
       virtual bool _applyScreenChanges(int fullscreen);
+      
+      
+      bool on_key_down(::user::e_key  euserkey) override;
 
+      bool on_key_up(::user::e_key euserkey) override;
+
+      
       //static LRESULT CALLBACK s_window_procedure(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam);
       //virtual bool on_window_procedure(LRESULT &lresult, UINT message, WPARAM wparam, LPARAM lparam) override;
 
@@ -384,7 +392,7 @@ namespace innate_subsystem_macos
       virtual bool onMouseEx(unsigned int uMessage, int iButtonMask, unsigned short wheelSpeed,
                              const ::i32_point &point, bool &bDoDefaultProcessing) override;
       virtual bool onMouse(unsigned char mouseButtons, unsigned short wheelSpeed, const ::i32_point & position) override;
-      virtual bool onKey(::user::enum_message emessage, ::user::enum_key euserkey) override;
+      virtual bool onKey(::user::enum_message emessage, const ::user::e_key & euserkey) override;
       virtual bool onCreate(void * pCreateStruct) override;
 
       virtual bool on_window_procedure(::lresult & lresult, unsigned int message, ::wparam wparam, ::lparam lparam) override;

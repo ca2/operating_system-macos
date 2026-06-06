@@ -18,22 +18,22 @@ namespace innate_subsystem_macos
 
 
 
-   bool KeyboardLayout::vkCodeToString(unsigned short virtKey, bool down, ::wstring *res, 
+   bool KeyboardLayout::vkCodeToString(const ::user::e_key & ekey, bool down, ::wstring *res,
                                        ::innate_subsystem::keyboard_state_t *pkeyboardstate)
    {
       
       ::string str;
       
-      if(virtKey >= ::user::e_key_a && virtKey <= ::user::e_key_z)
+      if(ekey >= ::user::e_key_a && ekey <= ::user::e_key_z)
       {
          
-         str = (char)('a' + (virtKey - ::user::e_key_a));
+         str = (char)('a' + (ekey - ::user::e_key_a));
          
       }
-      else if(virtKey >= ::user::e_key_0 && virtKey <= ::user::e_key_9)
+      else if(ekey >= ::user::e_key_0 && ekey <= ::user::e_key_9)
       {
          
-         str = (char) ('0' + (virtKey - ::user::e_key_0));
+         str = (char) ('0' + (ekey - ::user::e_key_0));
          
       }
       
@@ -44,7 +44,7 @@ namespace innate_subsystem_macos
 //
 //       HKL currentLayout = GetKeyboardLayout(0);
 //      
-//       int count = ToUnicodeEx(virtKey, 0, pkeyboardstate->m_viewerKeyState, outBuff,
+//       int count = ToUnicodeEx(ekey, 0, pkeyboardstate->m_viewerKeyState, outBuff,
 //           sizeof(outBuff) / sizeof(WCHAR),
 //           0, currentLayout);
 //      
@@ -64,7 +64,7 @@ namespace innate_subsystem_macos
 //             pkeyboardstate->m_allowProcessDoubleChar = true;
 //             pkeyboardstate->m_allowProcessCharEvent = true;
 //             pkeyboardstate->m_doubleDeadCatched = true;
-//             count = ToUnicodeEx(virtKey, 0, pkeyboardstate->m_viewerKeyState, outBuff,
+//             count = ToUnicodeEx(ekey, 0, pkeyboardstate->m_viewerKeyState, outBuff,
 //                 sizeof(outBuff) / sizeof(WCHAR),
 //                 0, currentLayout);
 //             if (count > 0) {
@@ -85,7 +85,7 @@ namespace innate_subsystem_macos
 //       }
 //      
 //       if (count > 0) {
-//          count = ToUnicodeEx(virtKey, 0, pkeyboardstate->m_viewerKeyState, outBuff,
+//          count = ToUnicodeEx(ekey, 0, pkeyboardstate->m_viewerKeyState, outBuff,
 //                sizeof(outBuff) / sizeof(WCHAR), 0, currentLayout);
 //       }
 //       if (count > 0) {
@@ -108,7 +108,7 @@ namespace innate_subsystem_macos
 //          needReleaseModifiers = true;
 //       } else if (count == 0) {
 //          WCHAR unicodeChar;
-//          if (_tryTranslateNotPrintableToUnicode(virtKey, currentLayout, &unicodeChar, pkeyboardstate))
+//          if (_tryTranslateNotPrintableToUnicode(ekey, currentLayout, &unicodeChar, pkeyboardstate))
 //          {
 //             res->add(unicodeChar);
 //          }
@@ -121,7 +121,7 @@ namespace innate_subsystem_macos
    }
 
 //
-//       bool KeyboardLayout::_tryTranslateNotPrintableToUnicode(unsigned short virtKey, HKL currentLayout,
+//       bool KeyboardLayout::_tryTranslateNotPrintableToUnicode(unsigned short ekey, HKL currentLayout,
 //                                                           WCHAR *unicodeChar,
 //                                                           ::innate_subsystem::keyboard_state_t *pkeyboardstate)
 //    {
@@ -138,7 +138,7 @@ namespace innate_subsystem_macos
 ////       withoutCtrlAltKbdState[VK_LMENU] = 0;
 ////       withoutCtrlAltKbdState[VK_RMENU] = 0;
 ////       withoutCtrlAltKbdState[VK_MENU] = 0;
-////       int count = ToUnicodeEx(virtKey, 0, withoutCtrlAltKbdState, outBuff,
+////       int count = ToUnicodeEx(ekey, 0, withoutCtrlAltKbdState, outBuff,
 ////         sizeof(outBuff) / sizeof(WCHAR),
 ////         0, currentLayout);
 ////       if (count > 0) {

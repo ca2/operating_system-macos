@@ -71,7 +71,7 @@ class acme_window_bridge;
       //cairo_surface_t *                m_psurface;
       //::operating_system::macos_window          m_macoswindow;
       ::pointer<::appkit::acme_window_bridge>   m_pacmewindowbridge;
-      ::pointer<::nano::graphics::device>       m_pnanodevice;
+      ::pointer<::nano::graphics::context>       m_pnanographicscontext;
       //::pointer<::nano::graphics::font>         m_pfont;
       //color32_t                     m_colorText;
       //color32_t                     m_colorFocus;
@@ -109,9 +109,11 @@ class acme_window_bridge;
 
       void destroy_window() override;
 
-      void show_window() override;
+      //void show_window() override;
       
-      void hide_window() override;
+      //void hide_window() override;
+      
+      void show_window(::i32 iShow) override;
 
       //virtual void _on_event(XEvent *pevent);
       

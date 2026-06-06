@@ -14,8 +14,8 @@
 #pragma once
 
 // Dependency:
-#include "../ext/scalar_int_sized.hpp"
-#include "../ext/scalar_uint_sized.hpp"
+#include "../ext/scalar_i32_sized.hpp"
+#include "../ext/scalar_ui32_sized.hpp"
 #include "../detail/qualifier.hpp"
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)

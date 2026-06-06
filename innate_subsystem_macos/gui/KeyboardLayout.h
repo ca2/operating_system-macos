@@ -19,7 +19,7 @@ namespace innate_subsystem_macos
 
        ~KeyboardLayout() override;
 
-      bool vkCodeToString(unsigned short virtKey, bool down, ::wstring *res, ::innate_subsystem::keyboard_state_t * pkeyboarstate) override;
+      bool vkCodeToString(const ::user::e_key & ekey, bool down, ::wstring *res, ::innate_subsystem::keyboard_state_t * pkeyboarstate) override;
 
 //      virtual bool _tryTranslateNotPrintableToUnicode(unsigned short virtKey, HKL currentLayout, char *unicodeChar,
 //                                                      ::innate_subsystem::keyboard_state_t *pkeyboarstate);

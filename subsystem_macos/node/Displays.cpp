@@ -42,7 +42,7 @@ namespace subsystem_macos
 //                                                  LPARAM dwData)
 //   {
 //      Displays *_this = (Displays *)dwData;
-//      ::int_rectangle rect(lprcMonitor->left - _this->m_xVirtualScreen,
+//      ::i32_rectangle rect(lprcMonitor->left - _this->m_xVirtualScreen,
 //                lprcMonitor->top - _this->m_yVirtualScreen,
 //                lprcMonitor->right - _this->m_xVirtualScreen,
 //                lprcMonitor->bottom - _this->m_yVirtualScreen);
@@ -81,7 +81,7 @@ namespace subsystem_macos
       }
    }
 
-   ::int_rectangle_array_base Displays::getDisplaysCoords()
+   ::i32_rectangle_array_base Displays::getDisplaysCoords()
    {
       //return m_pparticleThis->getDisplaysCoords();
        critical_section_lock al(&m_displayRectsMutex);
@@ -99,7 +99,7 @@ namespace subsystem_macos
        }
    }
 
-   ::int_rectangle_array_base Displays::getDisplays()
+   ::i32_rectangle_array_base Displays::getDisplays()
    {
       //return m_pparticleThis->getDisplaysCoords();
        update();

@@ -40,6 +40,18 @@ namespace innate_subsystem_macos
       virtual public Implementation<::innate_subsystem::DeviceContextInterface>
    {
    public:
+      
+      
+      // protected:
+      //HDC m_hdc2;
+      //::Gdiplus::Graphics * m_pgraphics;
+      //void * m_pgraphics;
+      ::pointer < ::nano::graphics::context > m_pcontext;
+      //HWND m_hwnd;
+      bool m_bHasOwnDC;
+
+      // friend class Graphics;
+      // friend class BitmapGraphics;
       // // Create device context linked to window DC.
       // DeviceContext(const ::operating_system::window & window);
       // // Create device context complatible with other DC.
@@ -73,16 +85,6 @@ namespace innate_subsystem_macos
 
       void destroyDeviceContext() override;
 
-      // protected:
-      //HDC m_hdc2;
-      //::Gdiplus::Graphics * m_pgraphics;
-      //void * m_pgraphics;
-      ::pointer < ::core_graphics::cg_context > m_pcgcontext;
-      //HWND m_hwnd;
-      bool m_bHasOwnDC;
-
-      // friend class Graphics;
-      // friend class BitmapGraphics;
    };
 
 } // namespace innate_subsystem_macos

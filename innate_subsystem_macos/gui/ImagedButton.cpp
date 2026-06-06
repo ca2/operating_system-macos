@@ -241,7 +241,7 @@ namespace innate_subsystem_macos
 //      }
    }
 
-   void ImagedButton::drawIcon(core_graphics::cg_context * pcgcontext, ::i32_rectangle* imageRect, bool isPressed, bool isDisabled)
+   void ImagedButton::drawIcon(::core_graphics::cg_context * pcgcontext, ::i32_rectangle* imageRect, bool isPressed, bool isDisabled)
    {
 //      DrawState(*dc, NULL, NULL, (::lparam)m_picon->m_hicon, 0,
 //                imageRect->left, imageRect->top,

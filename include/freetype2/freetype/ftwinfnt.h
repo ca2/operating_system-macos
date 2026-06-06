@@ -186,7 +186,7 @@ FT_BEGIN_HEADER
     FT_ULong   file_size;
     FT_Byte    copyright[60];
     FT_UShort  file_type;
-    FT_UShort  nominal_point_size;
+    FT_UShort  nominal_poi32_size;
     FT_UShort  vertical_resolution;
     FT_UShort  horizontal_resolution;
     FT_UShort  ascent;

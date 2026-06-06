@@ -10,6 +10,7 @@
 #include "acme/filesystem/filesystem/folder_dialog.h"
 #include "acme/handler/request.h"
 #include "acme/platform/application.h"
+#include "acme/platform/session.h"
 #include "acme/platform/system.h"
 #include "acme/user/user/key_state.h"
 #include "acme/windowing/windowing.h"
@@ -1194,28 +1195,28 @@ bool node::__ns_is_application_running(const ::scoped_string & scopedstrRepos, c
 //      system()->on_branch_system_from_main_thread_startup();
 //      
 //   }
-::enum_id node::key_command(::user::enum_key ekey, ::user::key_state* pkeystate)
+::enum_id node::key_command(const ::user::e_key & ekey)
    {
 
-      if (ekey == ::user::e_key_a && pkeystate->is_key_pressed(::user::e_key_command))
+      if (ekey == ::user::e_key_a && session()->is_key_pressed(::user::e_key_command))
       {
 
          return ::id_edit_select_all;
 
       }
-      else if (ekey == ::user::e_key_c && pkeystate->is_key_pressed(::user::e_key_command))
+      else if (ekey == ::user::e_key_c && session()->is_key_pressed(::user::e_key_command))
       {
 
          return ::id_edit_copy;
 
       }
-      else if (ekey == ::user::e_key_v && pkeystate->is_key_pressed(::user::e_key_command))
+      else if (ekey == ::user::e_key_v && session()->is_key_pressed(::user::e_key_command))
       {
 
          return ::id_edit_paste;
 
       }
-      else if (ekey == ::user::e_key_x && pkeystate->is_key_pressed(::user::e_key_command))
+      else if (ekey == ::user::e_key_x && session()->is_key_pressed(::user::e_key_command))
       {
 
          return ::id_edit_cut;

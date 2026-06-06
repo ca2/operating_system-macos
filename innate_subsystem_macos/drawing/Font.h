@@ -42,6 +42,18 @@ virtual public Implementation<::innate_subsystem::FontInterface>
    {
    public:
 
+    
+      ::pointer < ::nano::graphics::font > m_pfont;
+      // protected:
+      //    HPEN m_pen;
+      //
+      //    friend class Graphics;
+      //Gdiplus::Font * m_pfont;
+  //    ::pointer < ::core_text::ct_font > m_pctfont;
+//      ::string m_strFamily;
+//      int m_iPixelHeight;
+//      int m_iFontWeight;
+//      bool m_bItalice;
       //public:
       //Pen(int type, int width, const ::color::color & color);
       Font();
@@ -49,21 +61,13 @@ virtual public Implementation<::innate_subsystem::FontInterface>
 
 
       //void * _HGDIOBJ() override;
-
-      virtual void initialize_font(const char * pszFamily, int iPixelHeight, int iFontWeight = 400, bool bItalic = false) override;
+      virtual void initialize_pixel_font(const_char_pointer pszFamily, ::f64 fPixelHeight, ::i32 iFontWeight = 400, bool bItalic = false, bool bUnderline = false) override;
+      virtual void initialize_point_font(const_char_pointer pszFamily, ::f64 fPointHeight, ::i32 iFontWeight = 400,
+                                         bool bItalic = false, bool bUnderline = false) override;
 
       void destroyGraphicsObject() override;
 
-      // protected:
-      //    HPEN m_pen;
-      //
-      //    friend class Graphics;
-      //Gdiplus::Font * m_pfont;
-      ::pointer < ::core_text::ct_font > m_pctfont;
-      ::string m_strFamily;
-      int m_iPixelHeight;
-      int m_iFontWeight;
-      bool m_bItalice;
+      
    };
 
 

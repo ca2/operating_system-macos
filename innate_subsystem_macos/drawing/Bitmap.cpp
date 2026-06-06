@@ -75,8 +75,8 @@ namespace innate_subsystem_macos
    {
       destroyGraphicsObject();
       
-      construct_newø(m_pcgdib);
-      m_pcgdib->initialize_dib(size);
+      construct_newø(m_pimage);
+      m_pimage->create_image(size);
 
 //      // //;mm_bitmap(NULL)
 //      // // Prepare buffer
