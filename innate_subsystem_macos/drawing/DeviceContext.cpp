@@ -25,15 +25,14 @@
 //
 #include "framework.h"
 #include "DeviceContext.h"
-
 #include "Bitmap.h"
-//#include "../gui/PaintWindow.h"
+#include "acme/nano/graphics/dib.h"
 #include "operating_system-apple/nano_graphics_quartz2d/_.h"
 #include "operating_system-apple/nano_graphics_quartz2d/context.h"
 #include "innate_subsystem/drawing/GraphicsObject.h"
 #include "operating_system-apple/core_graphics/_internal.h"
 #include "operating_system-apple/core_graphics/cg_context.h"
-#include "operating_system-apple/core_graphics/cg_dib.h"
+//#include "operating_system-apple/core_graphics/cg_dib.h"
 
 
 namespace innate_subsystem_macos
@@ -154,13 +153,15 @@ namespace innate_subsystem_macos
       ::cast < ::innate_subsystem_macos::Bitmap > pbitmapMacos = pbitmap;
       m_bHasOwnDC = false;
       
-      auto pcgdib = pbitmapMacos->m_pcgdib;
+      //auto pimage = pbitmapMacos->m_pdib->get_image();
       
-      auto uContext = pcgdib->m_cgdib.m_pcgcontext->m_cgcontext.m_u;
+      //;;;auto uContext = pcgdib->m_cgdib.m_pcgcontext->m_cgcontext.m_u;
       
-      ::cast < ::quartz2d::nano::graphics::context > pcontextThis = m_pcontext;
+      //::cast < ::quartz2d::nano::graphics::context > pcontextThis = pbitmapMacos->m_pdib->get_context();
       
-      pcontextThis->m_pcgcontext->m_cgcontext.m_u = uContext;
+      //pcontextThis->m_pcgcontext = pcontextThis->m_pcgcontext;
+      
+      m_pcontext = pbitmapMacos->m_pdib->get_context();
       
       //m_pcontext = pcontext;
 //      ::cast < ::innate_subsystem_macos::Bitmap > pbitmapWin32 = pbitmap;

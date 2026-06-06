@@ -14,9 +14,10 @@ namespace innate_subsystem_macos
    {
    public:
 
-      ::pointer < ::core_graphics::cg_path > m_pcgpath;
+      //::pointer < ::core_graphics::cg_path > m_pcgpath;
+      ::pointer < ::nano::graphics::path > m_ppath;
       
-      CGMutablePathRef m_ppath;
+      //CGMutablePathRef m_ppath;
       
       Path();
       ~Path();

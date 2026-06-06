@@ -5,6 +5,7 @@
 #include "platform/subsystem.h"
 #include "drawing/Cursor.h"
 #include "drawing/Icon.h"
+#include "drawing/Path.h"
 #include "drawing/Pen.h"
 #include "drawing/SolidBrush.h"
 #include "drawing/Font.h"
@@ -41,9 +42,13 @@
 
 DECLARE_FACTORY(subsystem_macos);
 
+DECLARE_FACTORY(nano_graphics_quartz2d);
+
 
 IMPLEMENT_FACTORY(innate_subsystem_macos)
 {
+   
+   nano_graphics_quartz2d_factory(pfactory);
 
    subsystem_macos_factory(pfactory);
 
@@ -94,6 +99,8 @@ IMPLEMENT_FACTORY(innate_subsystem_macos)
    pfactory->add_factory_item<::innate_subsystem_macos::Cursor, ::innate_subsystem::CursorInterface>();
 
    pfactory->add_factory_item<::innate_subsystem_macos::Pen, ::innate_subsystem::PenInterface>();
+
+   pfactory->add_factory_item<::innate_subsystem_macos::Path, ::innate_subsystem::PathInterface>();
 
    pfactory->add_factory_item<::innate_subsystem_macos::SolidBrush, ::innate_subsystem::SolidBrushInterface>();
 

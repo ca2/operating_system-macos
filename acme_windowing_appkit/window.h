@@ -135,6 +135,8 @@ class acme_window_bridge;
 
       void set_active_window() override;
       
+      
+      void on_move(int x, int y) override;
       void on_size(int w, int h) override;
 
       ///virtual void draw_children(::nano::graphics::device * pnanodevice);

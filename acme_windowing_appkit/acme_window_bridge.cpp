@@ -144,7 +144,7 @@ void acme_window_bridge::on_move(int x, int y)
    
    //m_pappkitacmewindowingwindow->_on_layout(x, y, w, h);
    
-   m_pappkitacmewindowingwindow->on_move(x, y);
+   //m_pappkitacmewindowingwindow->on_move(x, y);
    
 }
 
@@ -154,7 +154,7 @@ void acme_window_bridge::on_size(int w, int h)
    
    //m_pappkitacmewindowingwindow->_on_layout(x, y, w, h);
    
-   m_pappkitacmewindowingwindow->on_size(w, h);
+   //m_pappkitacmewindowingwindow->on_size(w, h);
    
 }
 

@@ -27,6 +27,7 @@
 #include "drawing/Cursor.h"
 #include "drawing/Icon.h"
 #include "Menu.h"
+#include "acme/nano/graphics/dib.h"
 #include "acme/user/user/mouse.h"
 #include "subsystem/node/SystemInformation.h"
 #include "subsystem/platform/subsystem.h"
@@ -38,7 +39,10 @@
 #include "acme/windowing/windowing.h"
 #include "operating_system-apple/core_graphics/cg_color.h"
 #include "operating_system-apple/core_graphics/cg_context.h"
-#include "operating_system-apple/core_graphics/cg_dib.h"
+#include "operating_system-apple/core_graphics/cg_image.h"
+#include "operating_system-apple/nano_graphics_quartz2d/_.h"
+#include "operating_system-apple/nano_graphics_quartz2d/image.h"
+//#include "operating_system-apple/core_graphics/cg_dib.h"
 #include "operating_system-macos/appkit/windowing.h"
 #include "operating_system-macos/acme_windowing_appkit/windowing.h"
 #include "operating_system-macos/acme_windowing_appkit/_interoperability.h"
@@ -1484,16 +1488,16 @@ void Window::setMouseCursor(::enum_cursor ecursor)
       
       ::i32_size sizeBuffer{};
       
-      if(m_pbitmapBuffer && m_pbitmapBuffer->m_pcgdib)
+      if(m_pbitmapBuffer && m_pbitmapBuffer->m_pdib)
       {
          
-         sizeBuffer = m_pbitmapBuffer->m_pcgdib->get_size();
+         sizeBuffer = m_pbitmapBuffer->m_pdib->size();
          
       }
 
       if (m_pgraphicsBuffer
           && m_pgraphicsBuffer->m_pdevicecontext && m_pbitmapBuffer
-          && m_pbitmapBuffer->m_pcgdib && sizeBuffer == sizeClientArea)
+          && m_pbitmapBuffer->m_pdib && sizeBuffer == sizeClientArea)
       {
 
           return;
@@ -1512,9 +1516,9 @@ void Window::setMouseCursor(::enum_cursor ecursor)
       }
       
       defer_construct_newø(m_pbitmapBuffer);
-      defer_construct_newø(m_pbitmapBuffer->m_pcgdib);
+      defer_constructø(m_pbitmapBuffer->m_pdib);
       
-      m_pbitmapBuffer->m_pcgdib->initialize_dib(sizeClientArea);
+      m_pbitmapBuffer->m_pdib->create_image(sizeClientArea);
 
 //      m_sizeBuffer = m_clientArea.size();
 //
@@ -1552,12 +1556,15 @@ void Window::setMouseCursor(::enum_cursor ecursor)
    void Window::on_move(int x, int y)
    {
       
+      ::appkit::acme::windowing::window::on_move(x, y);
       
    }
 
 
-   void Window::on_size(int x, int y)
+   void Window::on_size(int w, int h)
    {
+      
+      ::appkit::acme::windowing::window::on_size(w, h);
       
       onSize();
 
@@ -1678,8 +1685,11 @@ void Window::_draw(::core_graphics::cg_context * pcgcontext, const ::i32_rectang
 
    //pcgcontext->set_blend_mode_on(false);
    
-   pcgcontext->draw_dib(m_pbitmapBuffer->m_pcgdib);
+   auto r = get_rectangle();
    
+   ::cast < ::quartz2d::nano::graphics::image > pimageQuartz2d = m_pbitmapBuffer->m_pdib->fetch_image();
+   
+   pcgcontext->draw_image(r, pimageQuartz2d->m_pcgimage);
    
 }
 

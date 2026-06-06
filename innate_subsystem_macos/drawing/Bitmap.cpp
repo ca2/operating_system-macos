@@ -25,9 +25,10 @@
 #include "framework.h"
 #include "Bitmap.h"
 #include "DeviceContext.h"
-
+#include "acme/nano/graphics/dib.h"
+#include "acme/nano/graphics/image.h"
 #include "innate_subsystem/drawing/DeviceContext.h"
-#include "operating_system-apple/core_graphics/cg_dib.h"
+//#include "operating_system-apple/core_graphics/cg_dib.h"
 
 namespace innate_subsystem_macos
 {
@@ -71,12 +72,14 @@ namespace innate_subsystem_macos
       // }
    }
 
+
    void Bitmap::initialize_bitmap(const ::i32_size & size)
    {
+      
       destroyGraphicsObject();
       
-      construct_newø(m_pimage);
-      m_pimage->create_image(size);
+      constructø(m_pdib);
+      m_pdib->create_image(size);
 
 //      // //;mm_bitmap(NULL)
 //      // // Prepare buffer
@@ -137,7 +140,7 @@ namespace innate_subsystem_macos
 //      auto h = m_pbitmap->GetHeight();
 
       //return {w, h};
-      return m_pcgdib->get_size();
+      return m_pdib->size();
       // BITMAP bitmap;
       // if (GetObject(m_hbitmap, sizeof(BITMAP), &bitmap) == 0) {
       //    return 0;
@@ -156,7 +159,7 @@ namespace innate_subsystem_macos
    void Bitmap::destroyGraphicsObject()
    {
 
-      m_pcgdib.release();
+      m_pdib.release();
 //      m_pcgimage.release();
 //      if (m_pbitmap)
 //      {

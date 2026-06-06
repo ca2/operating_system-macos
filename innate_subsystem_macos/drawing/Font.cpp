@@ -59,7 +59,7 @@ void Font::initialize_pixel_font(const_char_pointer pszFamily, ::f64 fPixelHeigh
    {
 destroyGraphicsObject();
 
-      construct_newø(m_pfont);
+      constructø(m_pfont);
    
    auto pfontfamily = createø<::nano::graphics::font_family>();
    

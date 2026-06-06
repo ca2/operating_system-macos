@@ -574,8 +574,22 @@ namespace appkit
       }
       
       
+      void window::on_move(int x, int y)
+      {
+         
+         m_rectangle.set_top_left(x, y);
+         
+         ::appkit::acme_window_bridge::on_move(x, y);
+         
+      }
+      
+      
       void window::on_size(int w, int h)
       {
+         
+         m_rectangle.set_size(w, h);
+         
+         ::appkit::acme_window_bridge::on_size(w, h);
          
       }
       

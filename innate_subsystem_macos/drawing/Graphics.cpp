@@ -29,15 +29,17 @@
 #include "Bitmap.h"
 #include "SolidBrush.h"
 #include "Font.h"
+#include "Path.h"
 #include "Pen.h"
 #include "acme/nano/graphics/context.h"
+#include "acme/nano/graphics/dib.h"
 #include "acme/nano/graphics/graphics.h"
 #include "acme/nano/graphics/pen.h"
 #include "acme/nano/nano.h"
 #include "innate_subsystem/platform/subsystem.h"
 #include "operating_system-apple/core_graphics/core_graphics.h"
 #include "operating_system-apple/core_graphics/cg_context.h"
-#include "operating_system-apple/core_graphics/cg_dib.h"
+//#include "operating_system-apple/core_graphics/cg_dib.h"
 //#define WIN32_TRANSPARENT 0
 
 namespace innate_subsystem_macos
@@ -224,7 +226,7 @@ return m_pdevicecontext;
    void Graphics::lineTo(const ::f64_point & point)
    {
       
-      _set_pen(m_ppen);
+      m_pdevicecontext->m_pcontext->set_pen(m_ppen->m_ppen);
       m_pdevicecontext->m_pcontext->line(m_pointCurrent, point);
       m_pointCurrent = point;
 //      //LineTo(m_pdevicecontext->m_hdc, x, y);
@@ -247,8 +249,11 @@ return m_pdevicecontext;
       //m_pdevicecontext->m_pcontext->set_fill_color(pbrushMacos->m_pcgcolor);
 
       //auto hbrush = (HBRUSH) pbrush->_HGDIOBJ();
-      _set_brush(pbrush);
-      _set_pen(nullptr);
+      
+      ::cast < ::innate_subsystem_macos::Brush > pbrushMacos = pbrush;
+      
+      m_pdevicecontext->m_pcontext->set_brush(pbrushMacos->m_pbrush);
+      m_pdevicecontext->m_pcontext->set_pen(nullptr);
       m_pdevicecontext->m_pcontext->rectangle(rectangle);
 
 //m_pdevicecontext->m_pgraphics->FillRectangle(pbrushWin32->m_pbrush, gdiplusrect);
@@ -256,25 +261,25 @@ return m_pdevicecontext;
 
    }
 
-// Sets current brush to the device context.
-void Graphics::_set_brush(::innate_subsystem::BrushInterface * pbrush)
-{
-   
-   auto pbrushMacos = pbrush->impl<::innate_subsystem_macos::Brush>();
-   m_pdevicecontext->m_pcontext->set_brush(pbrushMacos->m_pbrush);
-   
-}
-// Sets current pen to the device context.
-void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
-{
-   
-   
-   auto ppenMacos = ppen->impl<::innate_subsystem_macos::Pen>();
-   m_pdevicecontext->m_pcontext->set_pen(ppenMacos->m_ppen);
-   //m_pdevicecontext->m_pcontext->set_line_width(ppenMacos->m_iWidth);
-   //m_pdevicecontext->m_pcontext->set_stroke_color(ppenMacos->m_pcgcolor);
-}
-
+//// Sets current brush to the device context.
+//void Graphics::_set_brush(::innate_subsystem::BrushInterface * pbrush)
+//{
+//   
+//   auto pbrushMacos = pbrush->impl<::innate_subsystem_macos::Brush>();
+//   m_pdevicecontext->m_pcontext->set_brush(pbrushMacos->m_pbrush);
+//   
+//}
+//// Sets current pen to the device context.
+//void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
+//{
+//   
+//   
+//   auto ppenMacos = ppen->impl<::innate_subsystem_macos::Pen>();
+//   m_pdevicecontext->m_pcontext->set_pen(ppenMacos->m_ppen);
+//   //m_pdevicecontext->m_pcontext->set_line_width(ppenMacos->m_iWidth);
+//   //m_pdevicecontext->m_pcontext->set_stroke_color(ppenMacos->m_pcgcolor);
+//}
+//
 
 
    void Graphics::fillRect(const ::f64_rectangle & rectangle, const ::color::color & color)
@@ -422,7 +427,7 @@ void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
 
       //::copy(gdiplusrect, rectangle);
 
-      m_pdevicecontext->m_pcontext->draw_image(pbitmapMacos->m_pimage, rectangle);
+      m_pdevicecontext->m_pcontext->draw_image(rectangle, pbitmapMacos->m_pdib->fetch_image());
       //auto pobjOld = memDC.selectObject(pbitmap);
       //m_pdevicecontext->m_pgraphics->DrawImage(pbitmapWin32->m_pbitmap, gdiplusrect);
 
@@ -448,7 +453,7 @@ void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
       
       //auto pcgimage = pbitmapMacos->m_pcgdib->m_cgdib.m_pcgimage;
       
-      m_pdevicecontext->m_pcontext->draw_image(pbitmapMacos->m_pimage, point, rectangle);
+      m_pdevicecontext->m_pcontext->draw_image(point, rectangle, pbitmapMacos->m_pdib->fetch_image());
 
 //      m_pdevicecontext->m_pgraphics->DrawImage(pbitmapWin32->m_pbitmap,
 //         point.x, point.y,
@@ -488,7 +493,7 @@ void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
 
    }
 
-   void Graphics::drawText(const ::scoped_string & scopedstr, ::f64_rectangle &rectangle, unsigned int format, enum_align ealign)
+   void Graphics::drawText(const ::scoped_string & scopedstr, ::f64_rectangle &rectangle, const ::e_draw_text & edrawtext, enum_align ealign)
    {
 
 //      ::string str;
@@ -509,13 +514,17 @@ void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
       
       auto pcgcolor = CoreGraphics().create_color(m_colorText);
 
-      auto pfontMacos = m_pfont->impl<::innate_subsystem_macos::Font>();
+      //auto pfontMacos = m_pfont->impl<::innate_subsystem_macos::Font>();
       
-      m_pdevicecontext->m_pcontext->draw_text(scopedstr, rectangle,
-                                                pcgcolor,
-                                                pfontMacos->m_pctfont,
-                                                format,
-                                                ealign);
+      m_pdevicecontext->m_pcontext->set_font(m_pfont->m_pfont);
+      
+      m_pdevicecontext->m_pcontext->set_brush(m_pbrush->m_pbrush);
+      
+      m_pdevicecontext->m_pcontext->draw_text123(scopedstr,
+                                                 rectangle,
+                                                 edrawtext,
+                                                 ealign
+                                                );
 
 //      ::wstring wstr(str);
 //
@@ -569,10 +578,44 @@ void Graphics::_set_pen(::innate_subsystem::PenInterface * ppen)
 //      m_pdevicecontext->m_pgraphics->DrawString(wstr, wstr.length(), m_pfont->m_pfont, gdiplusrect, &stringFormat, m_pbrushText);
    }
 
-void Graphics::doPath(::innate_subsystem::PathInterface *ppath, ::innate_subsystem::BrushInterface *pbrush,::innate_subsystem::PenInterface *ppen) 
+void Graphics::doPath(::innate_subsystem::PathInterface *ppath)
 {
    
    
+   bool bDraw = false;
+   if(m_pbrush && m_pbrush->m_pbrush)
+   {
+      m_pdevicecontext->m_pcontext->set_brush(m_pbrush->m_pbrush);
+      
+      bDraw = true;
+   }
+   else
+   {
+    
+      m_pdevicecontext->m_pcontext->set_brush(nullptr);
+   }
+      
+   if(m_ppen && m_ppen->m_ppen && m_ppen->m_ppen->m_fWidth > 0)
+   {
+      
+      m_pdevicecontext->m_pcontext->set_pen(m_ppen->m_ppen);
+      
+   }
+   else
+   {
+   
+      m_pdevicecontext->m_pcontext->set_pen(nullptr);
+      
+   }
+   
+   if(bDraw)
+   {
+      
+      ::cast < ::innate_subsystem_macos::Path > ppathMacos = ppath;
+      
+      m_pdevicecontext->m_pcontext->do_path(ppathMacos->m_ppath);
+      
+   }
    
 }
 

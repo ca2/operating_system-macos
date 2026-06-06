@@ -40,14 +40,15 @@
 
 namespace innate_subsystem_macos
 {
+
    class Graphics :
-   virtual public Implementation<::innate_subsystem::GraphicsInterface>
+      virtual public Implementation<::innate_subsystem::GraphicsInterface>
    {
    public:
 
 
-      ::pointer < ::innate_subsystem_macos::DeviceContext > m_pdevicecontext;
-      ::pointer<::innate_subsystem_macos::Brush > m_pbrush;
+      ::pointer<::innate_subsystem_macos::DeviceContext> m_pdevicecontext;
+      ::pointer<::innate_subsystem_macos::Brush> m_pbrush;
       ::pointer<::innate_subsystem_macos::Pen>m_ppen;
       ::pointer<::innate_subsystem_macos::Font>m_pfont;
       int m_iBkMode;
@@ -115,18 +116,18 @@ namespace innate_subsystem_macos
       void drawBitmap(::innate_subsystem::BitmapInterface * pbitmap, const ::i32_rectangle & rectangle) override;
       void drawBitmap(::innate_subsystem::BitmapInterface *bitmap, const ::i32_point & point, const ::i32_rectangle & rectangle) override;
       // Draws text.
-      void drawText(const ::scoped_string & scopedstr, ::f64_rectangle &rect, unsigned int format, enum_align ealign) override;
+      void drawText(const ::scoped_string & scopedstr, ::f64_rectangle &rect, const ::e_draw_text & edrawtext, enum_align ealign) override;
 
    ///protected:
 
       // Sets current brush to the device context.
-      virtual void _set_brush(::innate_subsystem::BrushInterface * pbrush);
+      //virtual void _set_brush(::innate_subsystem::BrushInterface * pbrush);
       // Sets current pen to the device context.
-      virtual void _set_pen(::innate_subsystem::PenInterface * ppen);
+      //virtual void _set_pen(::innate_subsystem::PenInterface * ppen);
       // Sets current font.
       //void _set_font(::innate_subsystem::FontInterface * pfont) override;
 
-      void doPath(::innate_subsystem::PathInterface *ppath, ::innate_subsystem::BrushInterface *pbrush,::innate_subsystem::PenInterface *ppen) override;
+      void doPath(::innate_subsystem::PathInterface *ppath) override;
       
    };
 

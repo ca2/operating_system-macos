@@ -1,7 +1,8 @@
 // Created by camilo on 2026-06-04 19:27 <3ThomasBorregaardSørensen!! Mummi!! Bilbo!!
 #include "framework.h"
 #include "Path.h"
-
+#include "operating_system-apple/core_graphics/cg_affine_transform.h"
+#include "operating_system-apple/core_graphics/cg_path.h"
 
 
 namespace innate_subsystem_macos
@@ -9,19 +10,20 @@ namespace innate_subsystem_macos
 
 Path::Path()
 {
-   m_ppath = CGPathCreateMutable();
+   //m_ppath = CGPathCreateMutable();
    
+      
 }
 
 Path::~Path()
 {
    
-   if(m_ppath)
-   {
-      
-      CGPathRelease(m_ppath);
-      
-   }
+//   if(m_ppath)
+//   {
+//      
+//      CGPathRelease(m_ppath);
+//      
+//   }
    
 }
 
@@ -29,39 +31,42 @@ void Path::addArc(::f64 x, ::f64 y, ::f64 w, ::f64 h, const ::f64_angle &angleSt
        const ::f64_angle &angleSweep)
 {
    
-   CGRect rect = CGRectMake(x, y, w, h);
-
-   CGFloat cx = rect.origin.x + rect.size.width  / 2.0;
-   CGFloat cy = rect.origin.y + rect.size.height / 2.0;
-
-   CGFloat rx = rect.size.width  / 2.0;
-   CGFloat ry = rect.size.height / 2.0;
-
-   CGAffineTransform t =
-       CGAffineTransformTranslate(
-           CGAffineTransformIdentity,
-           cx,
-           cy);
-
-   t = CGAffineTransformScale(t, rx, ry);
-
-   auto angleEnd = angleStart + angleSweep;
    
-   auto fStartRad = angleStart.radians();
+   defer_constructø(m_ppath);
    
-   auto fEndRad = angleEnd.radians();
+   m_ppath->add_arc(x, y, w, h, angleStart, angleSweep);
    
-   bool clockwise = angleSweep > 0.;
-
-   CGPathAddArc(
-       m_ppath,
-       &t,
-       0.0,
-       0.0,
-       1.0,
-       fStartRad,
-       fEndRad,
-       clockwise);
+//   auto paffinetransform = create_newø<cg_affine_transform >();
+//   
+//   auto rectangle = ::f64_rectangle_dimension(x, y, w, h);
+//   
+//   auto pointCenter = rectangle.center();
+//
+//   auto sizeRadius = rectangle.radius();
+//   
+//   paffinetransform->translate(pointCenter);
+//
+//   paffinetransform->scale(sizeRadius);
+//
+//   auto angleEnd = angleStart + angleSweep;
+//   
+//   auto fStartRad = angleStart.radians();
+//   
+//   auto fEndRad = angleEnd.radians();
+//   
+//   bool clockwise = angleSweep > 0.;
+//
+////   CGPathAddArc(
+////       m_ppath,
+////       &t,
+////       0.0,
+////       0.0,
+////       1.0,
+////       fStartRad,
+////       fEndRad,
+////       clockwise);
+//   
+//   m_ppath->add_arc(paffinetransform, 0., 0., 1., fStartRad, fEndRad, clockwise);
    
 }
 
@@ -69,7 +74,7 @@ void Path::addArc(::f64 x, ::f64 y, ::f64 w, ::f64 h, const ::f64_angle &angleSt
 void Path::closeFigure()
 {
    
-   CGPathCloseSubpath(m_ppath);
+   m_ppath->close_figure();
    
 }
 

@@ -348,7 +348,7 @@ int ns_window_set_window_pos(::appkit::ns_window_t nswindow,
 
        NSRect frame = [screen frame];
 
-       core_graphics::cg_rect rectangle;
+       ::core_graphics::cg_rect rectangle;
 
        rectangle.origin.x   = (int)frame.origin.x;
        rectangle.origin.y    = (int)frame.origin.y;

@@ -48,7 +48,7 @@ namespace innate_subsystem_macos
       
       //void * m_pbitmap;
       
-      ::pointer < ::nano::graphics::image > m_pimage;
+      ::pointer < ::nano::graphics::dib > m_pdib;
       
       //::pointer < ::core_graphics::cg_image > m_pcgimage;
       
