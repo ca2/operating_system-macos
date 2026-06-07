@@ -53,6 +53,7 @@ namespace innate_subsystem_macos
       int getTabCount() override;
       ::innate_subsystem::TabInterface *getTab(int index) override;
       void addTab(innate_subsystem::WindowInterface *pwindow, const char *caption) override;
+      //void addTab(const char *caption) override;
       void showTab(int index) override;
       void showTab(innate_subsystem::WindowInterface *pwindow) override;
       void deleteAllTabs() override;
@@ -82,5 +83,6 @@ namespace innate_subsystem_macos
 
    //protected:
       ::innate_subsystem::TabContainer m_tabContainer;
+      int m_iSelectedTab = -1;
    };
 } // namespace innate_subsystem_macos

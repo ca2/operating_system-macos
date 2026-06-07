@@ -26,6 +26,8 @@
 		9A1908BC2FB29C1900A3C985 /* SpinControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A1908832FB29C1900A3C985 /* SpinControl.cpp */; };
 		9A1908BE2FB29C1900A3C985 /* ProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A19087F2FB29C1900A3C985 /* ProgressBar.cpp */; };
 		9A1908BF2FB29C1900A3C985 /* NotifyIcon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A19087B2FB29C1900A3C985 /* NotifyIcon.cpp */; };
+		9ABE0B012FD45000007181A0 /* NotifyIcon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE0B002FD45000007181A0 /* NotifyIcon.mm */; };
+		9ABE0B032FD45000007181A0 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ABE0B022FD45000007181A0 /* AppKit.framework */; };
 		9A1908C02FB29C1900A3C985 /* Control.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A1908692FB29C1900A3C985 /* Control.cpp */; };
 		9A1908C12FB29C1900A3C985 /* NotifyIconWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A19087D2FB29C1900A3C985 /* NotifyIconWindow.cpp */; };
 		9A1908C22FB29C1900A3C985 /* ComboBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A1908652FB29C1900A3C985 /* ComboBox.cpp */; };
@@ -213,6 +215,8 @@
 		9A1908792FB29C1900A3C985 /* Menu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
 		9A19087A2FB29C1900A3C985 /* NotifyIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyIcon.h; sourceTree = "<group>"; };
 		9A19087B2FB29C1900A3C985 /* NotifyIcon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NotifyIcon.cpp; sourceTree = "<group>"; };
+		9ABE0B002FD45000007181A0 /* NotifyIcon.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NotifyIcon.mm; sourceTree = "<group>"; };
+		9ABE0B022FD45000007181A0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		9A19087C2FB29C1900A3C985 /* NotifyIconWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyIconWindow.h; sourceTree = "<group>"; };
 		9A19087D2FB29C1900A3C985 /* NotifyIconWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NotifyIconWindow.cpp; sourceTree = "<group>"; };
 		9A19087E2FB29C1900A3C985 /* ProgressBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressBar.h; sourceTree = "<group>"; };
@@ -281,6 +285,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ABE0B032FD45000007181A0 /* AppKit.framework in Frameworks */,
 				9AF57E762FD3E7D000728206 /* libnano_graphics_quartz2d.dylib in Frameworks */,
 				9A8536A62FB5D4B200267545 /* libacme_windowing_kit.dylib in Frameworks */,
 				9A85367D2FB460AD00267545 /* libappkit.dylib in Frameworks */,
@@ -300,6 +305,7 @@
 		9A09CDF52FB3865B00E22155 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9ABE0B022FD45000007181A0 /* AppKit.framework */,
 				9AF57E752FD3E7D000728206 /* libnano_graphics_quartz2d.dylib */,
 				9A8536A52FB5D4B200267545 /* libacme_windowing_kit.dylib */,
 				9A85367C2FB460AD00267545 /* libappkit.dylib */,
@@ -419,6 +425,7 @@
 				9A1908792FB29C1900A3C985 /* Menu.cpp */,
 				9A19087A2FB29C1900A3C985 /* NotifyIcon.h */,
 				9A19087B2FB29C1900A3C985 /* NotifyIcon.cpp */,
+				9ABE0B002FD45000007181A0 /* NotifyIcon.mm */,
 				9A19087C2FB29C1900A3C985 /* NotifyIconWindow.h */,
 				9A19087D2FB29C1900A3C985 /* NotifyIconWindow.cpp */,
 				9A19087E2FB29C1900A3C985 /* ProgressBar.h */,
@@ -667,6 +674,7 @@
 				9A1908BC2FB29C1900A3C985 /* SpinControl.cpp in Sources */,
 				9A1908BE2FB29C1900A3C985 /* ProgressBar.cpp in Sources */,
 				9A1908BF2FB29C1900A3C985 /* NotifyIcon.cpp in Sources */,
+				9ABE0B012FD45000007181A0 /* NotifyIcon.mm in Sources */,
 				9A1908C02FB29C1900A3C985 /* Control.cpp in Sources */,
 				9A1908C12FB29C1900A3C985 /* NotifyIconWindow.cpp in Sources */,
 				9A1908C22FB29C1900A3C985 /* ComboBox.cpp in Sources */,

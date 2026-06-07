@@ -35,7 +35,7 @@
 //#include "util/UnicodeStringStorage.h"
 
 // #include aaa_<crtdbg.h>
-
+char * ns_localized_strdup(const char *p);
 namespace innate_subsystem_macos
 {
 
@@ -121,7 +121,15 @@ namespace innate_subsystem_macos
    bool ResourceLoader::loadString(unsigned int id, ::string & str)
    {
       //ASSERT(string != 0);
-      str = "(Undef)";
+      //str = "(Undef)";
+      
+      ::string strResourceId = system()->m_papplication->getResourceName(id);
+      
+      auto p = ns_localized_strdup(strResourceId);
+      
+      str = p;
+      
+      free(p);
 
       //
       // Format of string table:

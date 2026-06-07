@@ -16,14 +16,30 @@
    return {(__bridge void *) pnswindow};
    
 }
+::appkit::ns_impact_t as_ns_impact_t(NSView * pnsimpact)
+{
+   
+   ::operating_system::window operatingsystemwindow{::windowing::e_operating_ambient_macos_impact2, (::uptr)(__bridge void *) pnsimpact};
+   
+   return operatingsystemwindow;
+   
+}
 ::uptr as_ns_window_uptr(NSWindow * pnswindow)
 {
    
    return (::uptr)((__bridge void *) pnswindow);
    
 }
-void user_on_command(::uptr u, ::lightui::enum_notification enotification, ::uptr uControl);
+::uptr as_ns_impact_uptr(NSView * pnsimpact)
+{
+   
+   return (::uptr)((__bridge void *) pnsimpact);
+   
+}
+void ns_on_user_command(::appkit::ns_window_t nswindow, ::lightui::enum_notification enotification, ::uptr uControl);
+void ns_on_user_command(::appkit::ns_impact_t nswindow, ::lightui::enum_notification enotification, ::uptr uControl);
 void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessage, ::uptr wparam = 0, ::uptr lparam = 0);
+void ns_send_message(::appkit::ns_impact_t nswindow, ::user::enum_message emessage, ::uptr wparam = 0, ::uptr lparam = 0);
 
 
 @implementation ns_acme_form_impact_controller
@@ -37,7 +53,7 @@ void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessa
     [self attachCentralActionToSubImpactsInImpact:self.view];
    
    
-   ns_send_message(::as_ns_window_t(self.view.window), ::user::e_message_initialize_dialog);
+   ns_send_message(::as_ns_impact_t(self.view), ::user::e_message_initialize_dialog);
    
 }
 
@@ -48,18 +64,9 @@ void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessa
         // 1. Check if the element is an NSButton
         if ([psubimpact isKindOfClass:[NSButton class]]) {
             NSButton *button = (NSButton *)psubimpact;
-            
-           NSString *cellClassName = NSStringFromClass([[button cell] class]);
 
-           // Filter out internal system-level Checkbox and Radio implementations
-           if (![cellClassName containsString:@"CheckBox"] &&
-               ![cellClassName containsString:@"Radio"] &&
-               button.isBordered == YES) {
-                
-                // 3. Point the button's action targeting mechanism to this view controller
-                button.target = self;
-                button.action = @selector(anyButtonWasPressed:);
-            }
+            button.target = self;
+            button.action = @selector(anyButtonWasPressed:);
         }
        else if([psubimpact isKindOfClass:[NSComboBox class]])
        {
@@ -88,26 +95,41 @@ void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessa
     }
 }
 
+
 // The Central Catch-All Interceptor Method
-- (void)anyButtonWasPressed:(id)sender {
-    NSButton *clickedButton = (NSButton *)sender;
+- (void)anyButtonWasPressed:(id)sender
+{
+
+   NSButton *clickedButton = (NSButton *)sender;
     
-    // Identify which button was pressed using its Title string or its assigned tag ID number
-    NSString *buttonTitle = clickedButton.title;
-    NSInteger buttonTag = clickedButton.tag;
+   // Identify which button was pressed using its Title string or its assigned tag ID number
+   NSString *buttonTitle = clickedButton.title;
+   NSInteger buttonTag = clickedButton.tag;
     
-    NSLog(@"[Central Hook] Button Pressed! Title: '%@' | Tag ID: %ld", buttonTitle, (long)buttonTag);
+   NSLog(@"[Central Hook] Button Pressed! Title: '%@' | Tag ID: %ld", buttonTitle, (long)buttonTag);
     
-   NSWindow *myWindow = self.view.window;
-   user_on_command(::as_ns_window_uptr(myWindow), ::lightui::e_notification_default, buttonTag);
-    // Route logic based on title or tag
-    if ([buttonTitle isEqualToString:@"Submit"]) {
-        NSLog(@"Processing form submission data...");
-    } else if ([buttonTitle isEqualToString:@"Cancel"]) {
-        NSLog(@"Closing the dialog window.");
-        [self.view.window close];
-    }
+   NSView * pnsimpact = clickedButton.superview;
+   
+   ns_on_user_command(::as_ns_impact_t(pnsimpact), ::lightui::e_notification_default, buttonTag);
+   
+//   // Route logic based on title or tag
+//   if ([buttonTitle isEqualToString:@"Submit"])
+//   {
+//      
+//      NSLog(@"Processing form submission data...");
+//      
+//   }
+//   else if ([buttonTitle isEqualToString:@"Cancel"])
+//   {
+//      
+//      NSLog(@"Closing the dialog window.");
+//      
+//      [self.view.window close];
+//      
+//   }
+   
 }
+
 
 -(bool)isNotificationBlockedForTag:(::uptr)tag andID:(::lightui::enum_notification)enotification
 {
@@ -134,8 +156,8 @@ void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessa
    }
 
     NSLog(@"Selection changed %@", combo);
-   auto pnswindow = self.view.window;
-   user_on_command(::as_ns_window_uptr(pnswindow),::lightui::e_CBN_SELENDOK,tag);
+   auto pnsimpact = self.view;
+   ns_on_user_command(::as_ns_impact_t(pnsimpact),::lightui::e_CBN_SELENDOK,tag);
    
 }
 
@@ -146,8 +168,8 @@ void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessa
     NSComboBox * combo = notification.object;
 
     NSLog(@"Popup opened %@", combo);
-   auto pnswindow = self.view.window;
-   user_on_command(::as_ns_window_uptr(pnswindow),::lightui::e_CBN_DROPDOWN,combo.tag);
+   auto pnsimpact = self.view;
+   ns_on_user_command(::as_ns_impact_t(pnsimpact),::lightui::e_CBN_DROPDOWN,combo.tag);
 }
 
 

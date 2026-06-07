@@ -35,6 +35,9 @@
 		9A7E17AF2C9E257E00EE8CA6 /* icon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17AE2C9E257400EE8CA6 /* icon.mm */; };
 		9A7E17B12C9E3B3000EE8CA6 /* ProcedureCaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A7E17B02C9E3B2700EE8CA6 /* ProcedureCaller.h */; };
 		9A7E17B32C9E3D4700EE8CA6 /* ProcedureCaller.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E17B22C9E3B8800EE8CA6 /* ProcedureCaller.mm */; };
+		9ABE0A872FD43B5C007181A0 /* menu.h in Headers */ = {isa = PBXBuildFile; fileRef = 9ABE0A832FD43B5A007181A0 /* menu.h */; };
+		9ABE0A892FD43B63007181A0 /* menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE0A882FD43B62007181A0 /* menu.cpp */; };
+		9ABE0A8B2FD43B63007181A0 /* menu.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE0A8A2FD43B62007181A0 /* menu.mm */; };
 		9AEC3FED2D1ABDD700F9E621 /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A70C50E2D1A3E59003B16FA /* libapex.dylib */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +142,9 @@
 		9A7E17AE2C9E257400EE8CA6 /* icon.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = icon.mm; sourceTree = "<group>"; };
 		9A7E17B02C9E3B2700EE8CA6 /* ProcedureCaller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProcedureCaller.h; sourceTree = "<group>"; };
 		9A7E17B22C9E3B8800EE8CA6 /* ProcedureCaller.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ProcedureCaller.mm; sourceTree = "<group>"; };
+		9ABE0A832FD43B5A007181A0 /* menu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = menu.h; sourceTree = "<group>"; };
+		9ABE0A882FD43B62007181A0 /* menu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = menu.cpp; sourceTree = "<group>"; };
+		9ABE0A8A2FD43B62007181A0 /* menu.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = menu.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +223,9 @@
 				9A7E17AE2C9E257400EE8CA6 /* icon.mm */,
 				9A2FCFB32C9D3BA7000CF701 /* innate_ui.h */,
 				9A2FCFB42C9D3BA7000CF701 /* innate_ui.cpp */,
+				9ABE0A832FD43B5A007181A0 /* menu.h */,
+				9ABE0A882FD43B62007181A0 /* menu.cpp */,
+				9ABE0A8A2FD43B62007181A0 /* menu.mm */,
 				9A7E17B02C9E3B2700EE8CA6 /* ProcedureCaller.h */,
 				9A7E17B22C9E3B8800EE8CA6 /* ProcedureCaller.mm */,
 				9A2FCFBB2C9D3C0A000CF701 /* still.h */,
@@ -263,6 +272,7 @@
 				9A7E17A92C9E086400EE8CA6 /* __impact.h in Headers */,
 				9A2FCFD22C9D3C3F000CF701 /* framework.h in Headers */,
 				9A7E17B12C9E3B3000EE8CA6 /* ProcedureCaller.h in Headers */,
+				9ABE0A872FD43B5C007181A0 /* menu.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +431,8 @@
 				9A2FCFC02C9D3C0A000CF701 /* still.cpp in Sources */,
 				9A7E17AB2C9E0A3200EE8CA6 /* __impact.cpp in Sources */,
 				9A2FCFCB2C9D3C27000CF701 /* _.cpp in Sources */,
+				9ABE0A892FD43B63007181A0 /* menu.cpp in Sources */,
+				9ABE0A8B2FD43B63007181A0 /* menu.mm in Sources */,
 				9A2FCFCC2C9D3C27000CF701 /* _factory.cpp in Sources */,
 				9A2FCFD02C9D3C3F000CF701 /* dialog.cpp in Sources */,
 				9A2FCFD12C9D3C3F000CF701 /* button.cpp in Sources */,

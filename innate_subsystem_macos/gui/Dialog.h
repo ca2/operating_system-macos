@@ -55,7 +55,7 @@ namespace innate_subsystem_macos
 
 
       // Method creates non modal window but not shows it
-      void create() override;
+      void create(bool bChild) override;
 
       
       void doAttachedModal(const ::function < void(int) > & callback) override;

@@ -927,7 +927,7 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
 
    bool Window::isWindow()
    {
-      return (m_macoswindow.as_uptr()!= 0);
+      return (m_macoswindow.window_uptr()!= 0 || m_macoswindow.impact_uptr() != 0);
 //      && (m_macoswindow.as_HWND() != INVALID_HANDLE_VALUE)
 //      && (::IsWindow(m_macoswindow.as_HWND()) != FALSE);
 //      return true;

@@ -45,6 +45,7 @@ namespace innate_subsystem_macos
 
    void Tab::setWindow(::innate_subsystem::WindowInterface  *pwindow) { m_pwindow = pwindow; }
    ::innate_subsystem::WindowInterface *Tab::getWindow() { return m_pwindow; }
+//::innate_subsystem::WindowInterface *Tab::getPane() { return this; }
 
    //
    // Method return true if tab has dialog

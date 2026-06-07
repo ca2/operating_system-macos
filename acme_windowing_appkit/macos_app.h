@@ -59,6 +59,7 @@ class acme_window_bridge;
 //-(void)application_menu_update;
 -(NSWindowController *) addWindow:(NSWindow*)window;
 -(::uptr) showDialog:(NSString*)strDialogName withAcmeWindowingWindow:(::acme::windowing::window*)pacmewindowingwindow;
+-(::uptr) createOffscreenChildDialog:(NSString*)strDialogName withAcmeWindowingWindow:(::acme::windowing::window*)pacmewindowingwindow;
 -(int)doModalDialog:(NSString *)strDialogName withAcmeWindowingWindow:(::acme::windowing::window*)pacmewindowingwindow;
 -(void)doAttachedModalDialog:(NSString *)strDialogName
      withAcmeWindowingWindow: (::acme::windowing::window*)pacmewindowingwindow

@@ -5,6 +5,7 @@
 #include "button.h"
 #include "still.h"
 #include "innate_ui.h"
+#include "menu.h"
 
 
 
@@ -20,6 +21,7 @@ IMPLEMENT_FACTORY(innate_ui_appkit)
 
 
    pfactory->add_factory_item < ::innate_ui_appkit::icon, ::innate_ui::icon >();
+   pfactory->add_factory_item < ::innate_ui_appkit::menu, ::innate_ui::menu >();
 
 
    pfactory->add_factory_item < ::innate_ui_appkit::innate_ui, ::innate_ui::innate_ui >();

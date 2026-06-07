@@ -25,6 +25,7 @@
 #include "framework.h"
 #include "TabControl.h"
 #include "innate_subsystem/gui/Tab.h"
+#include "operating_system-macos/acme_windowing_appkit/_interoperability.h"
 //#include <commctrl.h>
 
 namespace innate_subsystem_macos
@@ -64,6 +65,23 @@ namespace innate_subsystem_macos
       auto ptab = createø<::innate_subsystem::TabInterface>();
       ptab->initialize_tab(pwindow, caption);
       m_tabContainer.add(ptab);
+
+      //if(pwindow)
+      {
+
+         //::cross_windows::tab_control_set_page_caption(
+           // operating_system_window(),
+            //pwindow->operating_system_window(),
+         //caption);
+         //::cast < ::innate_subsystem::WindowInterface > pwindowTab = ptab;
+         
+         
+         ::cross_windows::tab_control_add_page(
+            operating_system_window(),
+            pwindow->operating_system_window(),
+            caption);
+
+      }
 //      TCITEM tcitem = {0};
 //      tcitem.mask = TCIF_TEXT;
 //      TCHAR fixedCaption[255];
@@ -78,15 +96,70 @@ namespace innate_subsystem_macos
 //      }
    }
 
+//void TabControl::addTab( const char *caption)
+//{
+//   auto ptab = createø<::innate_subsystem::TabInterface>();
+//   ptab->initialize_tab(pwindow, caption);
+//   m_tabContainer.add(ptab);
+//
+//   if(pwindow)
+//   {
+//
+//      //::cross_windows::tab_control_set_page_caption(
+//        // operating_system_window(),
+//         //pwindow->operating_system_window(),
+//      //caption);
+//      ptab->set_operating_system_window(::cross_windows::tab_control_add_page(
+//         operating_system_window(),
+//      caption));
+//
+//   }
+////      TCITEM tcitem = {0};
+////      tcitem.mask = TCIF_TEXT;
+////      TCHAR fixedCaption[255];
+////      ::wstring wstr(ptab->getCaption());
+////      _tcscpy(&fixedCaption[0], wstr.c_str());
+////      tcitem.pszText = fixedCaption;
+////      if (TabCtrl_InsertItem((HWND) _HWND(), m_tabContainer.size() - 1, &tcitem) == FALSE) {
+////         //
+////         // Handle error
+////         // ...
+////         //
+////      }
+//}
+
+
    void TabControl::showTab(int index)
    {
-      int selectedIndex = getSelectedTabIndex();
-      if (selectedIndex >= 0) {
-         getTab(selectedIndex)->setVisible(false);
+
+      auto ptab = getTab(index);
+
+      if (!ptab)
+      {
+      
+         return;
+         
       }
-//      TabCtrl_SetCurSel((HWND) _HWND(), index);
-      getTab(index)->setVisible(true);
+
+      auto iSelectedTab = getSelectedTabIndex();
+      
+      auto ptabSelected = getTab(iSelectedTab);
+
+      if (ptabSelected && ptabSelected != ptab)
+      {
+      
+         ptabSelected->setVisible(false);
+         
+      }
+      
+      ::cross_windows::tab_control_select_item(operating_system_window(), index);
+      
+      ptab->setVisible(true);
+      
+      m_iSelectedTab = index;
+      
    }
+
 
    void TabControl::showTab(innate_subsystem::WindowInterface *pwindow)
    {
@@ -103,7 +176,28 @@ namespace innate_subsystem_macos
    void TabControl::moveWindowToTabControl(innate_subsystem::WindowInterface *pwindow)
    {
 
-      ::i32_rectangle rectangle;
+      if(!pwindow)
+      {
+
+         return;
+
+      }
+
+      auto operatingsystemwindowTabControl = operating_system_window();
+      auto operatingsystemwindowPage = pwindow->operating_system_window();
+
+      if(!operatingsystemwindowTabControl.is_set()
+         || !operatingsystemwindowPage.is_set())
+      {
+
+         return;
+
+      }
+
+      ::cross_windows::move_window_to_tab_control(
+         operatingsystemwindowTabControl,
+         operatingsystemwindowPage);
+
 //      POINT first, last;
 //
 //      this->adjustRect(rectangle);
@@ -132,16 +226,33 @@ namespace innate_subsystem_macos
       //    delete tab;
       // }
       m_tabContainer.clear();
+      m_iSelectedTab = -1;
       //TabCtrl_DeleteAllItems((HWND) _HWND());
    }
 
    void TabControl::removeTab(int index)
    {
+            auto ptab = getTab(index);
+
+            if(ptab && ptab->getWindow())
+            {
+
+               ::cross_windows::tab_control_erase_page(
+                  operating_system_window(),
+                  ptab->getWindow()->operating_system_window());
+
+            }
+
       //int i = 0;
       //for (TabContainer::iterator it = m_tabContainer.begin(); it != m_tabContainer.end(); it++) {
         // if (i == index) {
             //delete *it;
             m_tabContainer.erase_at(index);
+            if (m_iSelectedTab == index) {
+               m_iSelectedTab = -1;
+            } else if (m_iSelectedTab > index) {
+               --m_iSelectedTab;
+            }
             //TabCtrl_DeleteItem((HWND) _HWND(), index);
         //    break;
          //}
@@ -153,7 +264,10 @@ namespace innate_subsystem_macos
    {
       //int page = TabCtrl_GetCurSel((HWND) _HWND());
       //return page;
-      return 0;
+      auto iSelectedTab =
+         ::cross_windows::tab_control_get_selected_item(operating_system_window());
+
+      return iSelectedTab >= 0 ? iSelectedTab : m_iSelectedTab;
    }
 
    void TabControl::adjustRect(::i32_rectangle &rect)

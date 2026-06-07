@@ -15,6 +15,18 @@ void destroy_window(const ::operating_system::window & operatingsystemwindow);
 void get_client_rect(const ::operating_system::window & operatingsystemwindow, ::i32_rectangle * prectangle);
 void show_window_show(const ::operating_system::window & operatingsystemwindow);
 void show_window_hide(const ::operating_system::window & operatingsystemwindow);
+bool move_window_to_tab_control(const ::operating_system::window & operatingsystemwindowTabControl,
+                                const ::operating_system::window & operatingsystemwindowPage);
+bool tab_control_set_page_caption(const ::operating_system::window & operatingsystemwindowTabControl,
+                                  const ::operating_system::window & operatingsystemwindowPage,
+                                  const ::scoped_string & scopedstrCaption);
+void tab_control_add_page(const ::operating_system::window & operatingsystemwindowTabControl,
+                          const ::operating_system::window & operatingsystemwindowTab,
+                                  const ::scoped_string & scopedstrCaption);
+bool tab_control_select_item(const ::operating_system::window & operatingsystemwindowTabControl, int iItem);
+int tab_control_get_selected_item(const ::operating_system::window & operatingsystemwindowTabControl);
+void tab_control_erase_page(const ::operating_system::window & operatingsystemwindowTabControl,
+                             const ::operating_system::window & operatingsystemwindowPage);
 void invalidate_rect(const ::operating_system::window & operatingsystemwindow,
                      const ::i32_rectangle * prectangle, bool bErase);
 int set_window_pos(const ::operating_system::window & operatingsystemwindow,

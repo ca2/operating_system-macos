@@ -433,38 +433,38 @@ void windowing::hide_application()
    ns_app_hide();
    
 }
-
-void windowing::on_user_command(::uptr u,::lightui::enum_notification enotification,       ::uptr uControl)
-{
-   
-   ::operating_system::macos_window macoswindow((CGWindowID)u);
-   
-   if(macoswindow.is_null())
-   {
-      
-      information("on user command : operating system window is not set");
-      return;
-      
-   }
-   
-   ::appkit::ns_window_t nswindow;
-   nswindow.m_p = (void *) u;
-   
-   auto pacmewindowingwindow = m_windowmap[nswindow];
-   
-   if(::is_null(pacmewindowingwindow))
-   {
-    
-      information("didn't find acme windowing window with this operating system window : " + ::as_string((::uptr)u) );
-      
-      return;
-      
-   }
-   ::wparam wparam;
-   wparam = make_u32(uControl, enotification);
-   pacmewindowingwindow->send_message(::user::e_message_command, wparam);
-   
-}
+//
+//void windowing::on_user_command(::uptr u,::lightui::enum_notification enotification,       ::uptr uControl)
+//{
+//   
+//   ::operating_system::macos_window macoswindow((CGWindowID)u, ::windowing::e_operating_ambient_macos);
+//   
+//   if(macoswindow.is_null())
+//   {
+//      
+//      information("on user command : operating system window is not set");
+//      return;
+//      
+//   }
+//   
+//   ::appkit::ns_window_t nswindow;
+//   nswindow.m_p = (void *) u;
+//   
+//   auto pacmewindowingwindow = m_windowmap[nswindow];
+//   
+//   if(::is_null(pacmewindowingwindow))
+//   {
+//    
+//      information("didn't find acme windowing window with this operating system window : " + ::as_string((::uptr)u) );
+//      
+//      return;
+//      
+//   }
+//   ::wparam wparam;
+//   wparam = make_u32(uControl, enotification);
+//   pacmewindowingwindow->send_message(::user::e_message_command, wparam);
+//   
+//}
 
 
 ::operating_system::window windowing::__cross_windows__get_dlg_item(const ::operating_system::window & operatingsystemwindow, int iDlgItem)
@@ -518,6 +518,78 @@ void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessa
 }
 
 
+void ns_send_message(::appkit::ns_impact_t nsimpact, ::user::enum_message emessage, ::uptr wparam, ::uptr lparam)
+{
+   
+   ::cast < ::appkit::acme::windowing::windowing > pwindowing = ::system()->acme_windowing();
+   
+   auto pacmewindowingwindow = pwindowing->m_impactmap[nsimpact];
+   
+   if(::is_null(pacmewindowingwindow))
+   {
+    
+      information("didn't find acme windowing window with this nsipact : " + ::as_string((::uptr)nsimpact.m_pNSImpact) );
+      
+      return;
+      
+   }
+   
+   pacmewindowingwindow->send_message(emessage, wparam, lparam);
+   
+}
+
+
+void ns_on_user_command(::appkit::ns_window_t nswindow, ::lightui::enum_notification enotification, ::uptr uControl)
+{
+   
+   ::cast < ::appkit::acme::windowing::windowing > pwindowing = ::system()->acme_windowing();
+   
+   auto pacmewindowingwindow = pwindowing->m_windowmap[nswindow];
+   
+   if(::is_null(pacmewindowingwindow))
+   {
+    
+      information("didn't find acme windowing window with this operating system window : " + ::as_string((::uptr)nswindow.m_p) );
+      
+      return;
+      
+   }
+
+   ::wparam wparam;
+   
+   wparam = make_u32(uControl, enotification);
+   
+   pacmewindowingwindow->send_message(::user::e_message_command, wparam);
+
+}
+
+
+void ns_on_user_command(::appkit::ns_impact_t nsimpact, ::lightui::enum_notification enotification, ::uptr uControl)
+{
+   
+   ::cast < ::appkit::acme::windowing::windowing > pwindowing = ::system()->acme_windowing();
+   
+   auto pacmewindowingwindow = pwindowing->m_impactmap[nsimpact];
+   
+   if(::is_null(pacmewindowingwindow))
+   {
+    
+      information("didn't find acme windowing window with this nsipact : " + ::as_string((::uptr)nsimpact.m_pNSImpact) );
+      
+      return;
+      
+   }
+   
+   ::wparam wparam;
+   
+   wparam = make_u32(uControl, enotification);
+   
+   pacmewindowingwindow->send_message(::user::e_message_command, wparam);
+
+}
+
+
+
 void set_acme_windowing_window_ns_window_uptr(::acme::windowing::window * pacmewindowingwindow, ::uptr u)
 {
    
@@ -534,3 +606,56 @@ void set_acme_windowing_window_ns_window_uptr(::acme::windowing::window * pacmew
    
    
 }
+
+
+void set_acme_windowing_window_ns_impact_uptr(::acme::windowing::window * pacmewindowingwindow, ::uptr u)
+{
+   
+   ::cast < ::appkit::acme::windowing::windowing > pwindowing = ::system()->acme_windowing();
+
+   ::cast < ::appkit::acme::windowing::window > pwindow =  pacmewindowingwindow;
+
+   ::appkit::ns_impact_t nsimpact;
+   
+   nsimpact.m_pNSImpact = (void *) u;
+   
+   if(!pwindow->m_nswindow.m_p && !pwindow->m_macoswindow.is_set())
+   {
+      
+      pwindow->m_macoswindow.m_opaque.m_ulla[0] = u;
+      
+      pwindow->m_macoswindow.m_eoperatingambient = ::windowing::e_operating_ambient_macos_impact2;
+      
+   }
+   
+   auto & pacmewindowingwindowMap = pwindowing->m_impactmap[nsimpact];
+   
+   if(pacmewindowingwindowMap)
+   {
+      
+      ::information("Overwriting acme windowing window impact map?!?!?");
+      
+   }
+   
+   pacmewindowingwindowMap = pacmewindowingwindow;
+   
+}
+
+
+void acme_windowing_window_set_impact_retained(::acme::windowing::window * pacmewindowingwindow)
+{
+   
+   pacmewindowingwindow->payload("impact_retained") = true;
+   
+}
+
+
+void acme_windowing_window_set_impact_controller_retained(::acme::windowing::window * pacmewindowingwindow)
+{
+   
+   pacmewindowingwindow->payload("impact_controller_retained") = true;
+   
+}
+
+
+

@@ -35,6 +35,7 @@
 #include "operating_system-macos/acme_windowing_appkit/windowing.h"
 
 ::uptr ns_show_dialog(const char * psz, ::acme::windowing::window * pacmewindowingwindow);
+::uptr ns_create_offscreen_child_dialog(const char * psz, ::acme::windowing::window * pacmewindowingwindow);
 void ns_end_dialog(::appkit::ns_window_t nswindow, int iDialogResult);
 void ns_end_attached_modal(::appkit::ns_window_t nswindow, int iDialogResult);
 int ns_do_modal_dialog(const char * psz, ::acme::windowing::window * pacmewindowingwindow);
@@ -119,8 +120,16 @@ void
 
    void Dialog::show()
    {
+      
       if (!isWindow()) {
-         create();
+         if(getParent())
+         {
+            create(true);
+         }
+         else
+         {
+            create(false);
+         }
       } else {
          Window::show();
          setForeground();
@@ -152,13 +161,22 @@ void
 //      _setHWND(NULL);
    }
 
-   void Dialog::create()
+   void Dialog::create(bool bChild)
    {
 
       ::system()->acme_windowing()->send([&]()
       {
-         ::cast < ::acme::windowing::window > pacmewindowingwindow = this;
-         auto u = ns_show_dialog(m_strResourceName, pacmewindowingwindow);
+         if(bChild)
+         {
+            ::cast < ::acme::windowing::window > pacmewindowingwindow = this;
+            auto u = ns_create_offscreen_child_dialog(m_strResourceName, pacmewindowingwindow);
+         }
+         else
+         {
+            ::cast < ::acme::windowing::window > pacmewindowingwindow = this;
+            auto u = ns_show_dialog(m_strResourceName, pacmewindowingwindow);
+
+         }
          
 //         ::cast < ::appkit::acme::windowing::windowing> pwindowing =        ::system()->acme_windowing();
 //         ::cast < ::acme::windowing::window > pwindow = this;

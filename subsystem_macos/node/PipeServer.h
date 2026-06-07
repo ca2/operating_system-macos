@@ -71,6 +71,7 @@ namespace subsystem_macos
       ::pointer < ::subsystem_macos::File > m_pfileServerPipe;
       //HANDLE m_serverPipe;
       unsigned int m_bufferSize;
+      bool m_bUnlinkPipeName;
 
       /**
        * Creates new pipe server ready to accept connections.

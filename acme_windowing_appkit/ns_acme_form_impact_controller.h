@@ -42,6 +42,7 @@ namespace lightui
    
    
 }
+
 -(bool)isNotificationBlockedForTag:(::uptr)tag andID:(::lightui::enum_notification) enotification;
 // Your button interception logic goes here
 @end

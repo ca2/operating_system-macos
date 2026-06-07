@@ -30,6 +30,51 @@
 #include "subsystem/platform/Exception.h"
 //#include "Environment.h"
 
+#include <cerrno>
+#include <cctype>
+#include <cstring>
+#include <poll.h>
+#include <string>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/un.h>
+#include <unistd.h>
+
+namespace
+{
+
+   ::string macos_pipe_path(const ::scoped_string & scopedstrName)
+   {
+      ::string strName(scopedstrName);
+      std::string name(strName.c_str());
+
+      if (!name.empty() && name[0] == '/')
+      {
+         return strName;
+      }
+
+      for (auto & ch : name)
+      {
+         if (!(isalnum((unsigned char) ch) || ch == '_' || ch == '-' || ch == '.'))
+         {
+            ch = '_';
+         }
+      }
+
+      ::string strPath;
+      strPath.format("/tmp/subsystem_macos_{}.sock", name.c_str());
+      return strPath;
+   }
+
+   void throw_errno(const char * pszWhat)
+   {
+      ::string strMessage;
+      strMessage.format("{} failed, errno = {} ({})", pszWhat, errno, strerror(errno));
+      throw ::subsystem::Exception(strMessage);
+   }
+
+} // namespace
+
 namespace subsystem_macos
 {
 //   pointer < ::subsystem_macos::DynamicLibrary> PipeServer::s_pdynamiclibraryKernel32;
@@ -40,7 +85,8 @@ namespace subsystem_macos
    PipeServer::PipeServer()
    : //m_milliseconds(0),
      //m_serverPipe(INVALID_HANDLE_VALUE),
-     m_bufferSize(0)
+     m_bufferSize(0),
+     m_bUnlinkPipeName(false)
    {
 
 
@@ -65,118 +111,145 @@ namespace subsystem_macos
 //         s_initialize();
 //      }
 
-      m_pipeName.format("\\\\.\\pipe\\{}", scopedstrName);
+      m_pipeName = macos_pipe_path(scopedstrName);
 
       createServerPipe();
    }
 
    void PipeServer::createServerPipe()
    {
-//      DWORD openMode = PIPE_ACCESS_DUPLEX |         // read/write access
-//                       FILE_FLAG_OVERLAPPED;        // overlapped mode
-//
-//      DWORD pipeMode = PIPE_TYPE_BYTE |             // scopedstrMessage type pipe
-//                       PIPE_READMODE_BYTE |         // scopedstrMessage-read mode
-//                       PIPE_WAIT;                   // blocking mode
-//      if (::system()->node()->_windows_isVistaOrLater()) {
-//         pipeMode |= PIPE_REJECT_REMOTE_CLIENTS;     // local only
-//      }
-//      construct_newø(m_pfileServerPipe);
-//      m_pfileServerPipe->m_handle = CreateNamedPipe(::wstring(m_pipeName),   // pipe name
-//                                     openMode,
-//                                     pipeMode,
-//                                     PIPE_UNLIMITED_INSTANCES, // max. instances
-//                                     m_bufferSize,             // output buffer size
-//                                     m_bufferSize,             // input buffer size
-//                                     0,                        // client time-out
-//                                     m_psecurityattributes != 0 ?          // security attributes
-//                                     m_psecurityattributes->_getSecurityAttributes() : 0
-//                                     );
-//      if (m_pfileServerPipe->m_handle == INVALID_HANDLE_VALUE) {
-//         ::string errMess;
-//         errMess.formatf("CreateNamedPipe failed, error code = {}", GetLastError());
-//         throw ::subsystem::Exception(errMess);
-//      }
+      if (m_pfileServerPipe && ::is_ok(m_pfileServerPipe))
+      {
+         return;
+      }
+
+      if (m_pipeName.is_empty())
+      {
+         throw ::subsystem::Exception("Cannot create pipe server without a pipe name");
+      }
+
+      sockaddr_un address;
+      memset(&address, 0, sizeof(address));
+      address.sun_family = AF_UNIX;
+
+      if (m_pipeName.length() >= sizeof(address.sun_path))
+      {
+         ::string strMessage;
+         strMessage.format("Pipe socket path is too long: {}", m_pipeName);
+         throw ::subsystem::Exception(strMessage);
+      }
+
+      int fd = ::socket(AF_UNIX, SOCK_STREAM, 0);
+      if (fd < 0)
+      {
+         throw_errno("socket");
+      }
+
+      try
+      {
+         strncpy(address.sun_path, m_pipeName.c_str(), sizeof(address.sun_path) - 1);
+         ::unlink(address.sun_path);
+
+         if (::bind(fd, (sockaddr *) &address, sizeof(address)) < 0)
+         {
+            throw_errno("bind");
+         }
+
+         m_bUnlinkPipeName = true;
+         ::chmod(address.sun_path, 0600);
+
+         if (::listen(fd, SOMAXCONN) < 0)
+         {
+            throw_errno("listen");
+         }
+
+         construct_newø(m_pfileServerPipe);
+         m_pfileServerPipe->m_iFd = fd;
+         m_pfileServerPipe->m_bOwned = true;
+      }
+      catch (...)
+      {
+         ::close(fd);
+         throw;
+      }
    }
 
    ::pointer < ::subsystem::NamedPipeInterface > PipeServer::accept()
    {
-//      if (!m_pfileServerPipe || m_pfileServerPipe->m_handle == INVALID_HANDLE_VALUE) {
-//         createServerPipe();
-//      }
-//
-//      OVERLAPPED overlapped;
-//      memset(&overlapped, 0, sizeof(OVERLAPPED));
-//      overlapped.hEvent = m_happening.m_handle;
-//
-//      if (::ConnectNamedPipe(m_pfileServerPipe->m_handle, &overlapped)) {
-//         // In success the overlapped ConnectNamedPipe() function must
-//         // return zero.
-//         int errCode = GetLastError();
-//         ::string errMess;
-//         errMess.formatf("ConnectNamedPipe failed, error code = {}", errCode);
-//         throw ::subsystem::Exception(errMess);
-//      } else {
-//         int errCode = GetLastError();
-//         switch(errCode) {
-//            case ERROR_PIPE_CONNECTED:
-//               break;
-//            case ERROR_IO_PENDING:
-//            {
-//               if (m_milliseconds == INFINITE)
-//               {
-//                  m_happening._wait();
-//               }
-//               else
-//               {
-//                  m_happening._wait(m_milliseconds * 1_ms);
-//               }
-//               DWORD cbRet = 0; // Fake
-//               auto h = m_pfileServerPipe->m_handle;
-//               if (!GetOverlappedResult(h, &overlapped, &cbRet, FALSE)) {
-//                  int errCode = GetLastError();
-//                  ::string errMess;
-//                  errMess.formatf("GetOverlappedResult() failed after the "
-//                                 "ConnectNamedPipe() call, error code = {}", errCode);
-//                  throw ::subsystem::Exception(errMess);
-//               }
-//            }
-//               break;
-//            default:
-//               ::string errMess;
-//               errMess.formatf("ConnectNamedPipe failed, error code = {}", errCode);
-//               throw ::subsystem::Exception(errMess);
-//         }
-//      }
-//
-//      if (!checkOtherSideBinaryName(m_pfileServerPipe)) {
-//         throw ::subsystem::Exception("Pipe client process filename differs from current process");
-//      }
-//
-//      // delete is inside ~NamedPipeTransport()
-//      auto pnamedpipe = createø < ::subsystem::NamedPipeInterface>();
-//
-//      pnamedpipe->initialize_named_pipe(m_pfileServerPipe, m_bufferSize, true);
-//
-//      m_pfileServerPipe.release();
-//
-//      return pnamedpipe;
-      
-      return {};
+      if (!m_pfileServerPipe || !::is_ok(m_pfileServerPipe)) {
+         createServerPipe();
+      }
+
+      int iTimeout = -1;
+      if (!m_time.is_infinite())
+      {
+         iTimeout = (int) m_time.integral_millisecond();
+      }
+
+      pollfd pollfd;
+      pollfd.fd = m_pfileServerPipe->m_iFd;
+      pollfd.events = POLLIN;
+      pollfd.revents = 0;
+
+      int iPoll = 0;
+      do
+      {
+         iPoll = ::poll(&pollfd, 1, iTimeout);
+      }
+      while (iPoll < 0 && errno == EINTR);
+
+      if (iPoll == 0)
+      {
+         return {};
+      }
+
+      if (iPoll < 0)
+      {
+         throw_errno("poll");
+      }
+
+      int fd = -1;
+      do
+      {
+         fd = ::accept(m_pfileServerPipe->m_iFd, nullptr, nullptr);
+      }
+      while (fd < 0 && errno == EINTR);
+
+      if (fd < 0)
+      {
+         throw_errno("accept");
+      }
+
+      ::pointer < ::subsystem_macos::File > pfilePipe;
+      construct_newø(pfilePipe);
+      pfilePipe->m_iFd = fd;
+      pfilePipe->m_bOwned = true;
+
+      if (!checkOtherSideBinaryName(pfilePipe)) {
+         throw ::subsystem::Exception("Pipe client process filename differs from current process");
+      }
+
+      // delete is inside ~NamedPipeTransport()
+      auto pnamedpipe = createø < ::subsystem::NamedPipeInterface>();
+
+      pnamedpipe->initialize_named_pipe(pfilePipe, m_bufferSize, true);
+
+      return pnamedpipe;
    }
 
    void PipeServer::close()
    {
-      /*if (m_isConnected) {
-        if (DisconnectNamedPipe(hPipe)) {
-          m_isConnected = false;
-        } else {
-          int errCode = GetLastError();
-          ::string errMess;
-          errMess.formatf("DisconnectNamedPipe failed, error code = {}", errCode);
-          throw ::subsystem::Exception(errMess);
-        }
-      }*/
+      if (m_pfileServerPipe)
+      {
+         m_pfileServerPipe.release();
+      }
+
+      if (m_bUnlinkPipeName && m_pipeName.has_character())
+      {
+         ::unlink(m_pipeName.c_str());
+         m_bUnlinkPipeName = false;
+      }
+
       m_happening.set_happening();
    }
 
@@ -195,62 +268,12 @@ namespace subsystem_macos
 
    void PipeServer::s_initialize()
    {
-      if (!::system()->node()->_windows_isVistaOrLater()) {
-         return;
-      }
-//      try {
-//         ::system()->m_papplication->construct_newø(s_pdynamiclibraryKernel32);
-//         s_pdynamiclibraryKernel32->initialize_dynamic_library("Kernel32.dll");
-//         s_GetNamedPipeClientProcessId = (pGetNamedPipeClientProcessId)s_pdynamiclibraryKernel32->getProcAddress("GetNamedPipeClientProcessId");
-//      }
-//      catch (...) {
-//         return;
-//      }
-      //s_bInitialized = true;
    }
 
    bool PipeServer::checkOtherSideBinaryName(::subsystem::FileInterface * pfilePipe)
    {
-//      if (!s_bInitialized)
-//         return true;
-
-      //ULONG pid;
-
-      auto pfilePipeWin32 = pfilePipe->impl<::subsystem_macos::File>();
-
-//      // Vista or higher
-//      if (!s_GetNamedPipeClientProcessId(pfilePipeWin32->m_handle, &pid)) {
-//         return true;
-//      }
-
-//      WCHAR clientName[MAX_PATH] = {};
-//      WCHAR serverName[MAX_PATH] = {};
-//
-//      HANDLE client = OpenProcess(PROCESS_QUERY_INFORMATION, false, pid);
-//      if (0 == client) {
-//         return true;
-//      }
-//
-//      if (0 == GetProcessImageFileNameW(client, clientName, sizeof(clientName))) {
-//         CloseHandle(client);
-//         return true;
-//      }
-//      CloseHandle(client);
-//
-//      HANDLE server = GetCurrentProcess();
-//      if (0 == server) {
-//         return true;
-//      }
-//      if (0 == GetProcessImageFileNameW(server, serverName, sizeof(serverName))) {
-//         CloseHandle(server);
-//         return true;
-//      }
-//      CloseHandle(server);
-//
-//      if (std::equal(serverName, serverName + MAX_PATH, clientName)) {
-//         return true;
-//      }
-      return false;
+      auto pfilePipeMacos = pfilePipe->impl<::subsystem_macos::File>();
+      return pfilePipeMacos && pfilePipeMacos->m_iFd >= 0;
    }
 } // namespace subsystem_macos
 

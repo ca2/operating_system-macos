@@ -60,9 +60,19 @@ namespace innate_subsystem_macos
       void show() override;
       void hide() override;
 
-//   protected:
-      //NOTIFYICONDATA m_nid;
-      ::pointer < ::innate_subsystem_macos::Icon > m_picon;
+      void on_native_left_button_down();
+      void on_native_right_button_up();
+
+      void __create_status_item();
+      void __destroy_status_item();
+      void __set_icon();
+      void __set_text(const ::scoped_string & scopedstrText);
+      void __show_balloon(const ::scoped_string & scopedstrMessage, const ::scoped_string & scopedstrCaption);
+
+      ::pointer < ::innate_subsystem::IconInterface > m_picon;
+      ::string m_strText;
+      void * m_pStatusItem;
+      void * m_pStatusItemTarget;
       bool m_visible;
 
 

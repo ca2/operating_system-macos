@@ -33,8 +33,9 @@
 namespace innate_subsystem_macos
 {
    NotifyIcon::NotifyIcon()
-   //: NotifyIconWindow(), m_icon(0), m_visible(false)
-   : m_visible(false)
+   : m_pStatusItem(nullptr),
+     m_pStatusItemTarget(nullptr),
+     m_visible(false)
    {
 //      memset(&m_nid, 0, sizeof(NOTIFYICONDATA));
 //
@@ -50,43 +51,38 @@ namespace innate_subsystem_macos
 
    NotifyIcon::~NotifyIcon()
    {
-//      if (m_nid.hIcon != 0) {
-//         setIcon(NULL);
-//      }
+      main_send([this]()
+      {
+         __destroy_status_item();
+      });
    }
 
 
    void NotifyIcon::initialize_notify_icon(bool showAfterCreation)
 //: NotifyIconWindow(), m_icon(0), m_visible(showAfterCreation)
    {
-//      m_visible = showAfterCreation;
-//      memset(&m_nid, 0, sizeof(NOTIFYICONDATA));
-//
-//#if (WINVER > 0x0500)
-//      m_nid.cbSize = NOTIFYICONDATA_V2_SIZE;
-//#else
-//      m_nid.cbSize = NOTIFYICONDATA_V1_SIZE;
-//#endif
-//      if (showAfterCreation) {
-//         show();
-//      }
+      if (showAfterCreation)
+      {
+         show();
+      }
    }
 
    void NotifyIcon::show()
    {
-//      m_nid.uFlags = NIF_MESSAGE;
-//      m_nid.hWnd = (HWND)_HWND();
-//      m_nid.uCallbackMessage = WM_USER + 1;
-//      Shell_NotifyIcon(NIM_ADD, &m_nid);
-      m_visible = true;
+      main_send([this]()
+      {
+         __create_status_item();
+         m_visible = true;
+      });
    }
 
    void NotifyIcon::hide()
    {
-      //m_nid.uFlags = NIF_ICON;
-//      Shell_NotifyIcon(NIM_DELETE, &m_nid);
-//      m_nid.hIcon = 0;
-      m_visible = false;
+      main_send([this]()
+      {
+         __destroy_status_item();
+         m_visible = false;
+      });
    }
 
    // const IconI *NotifyIcon::getIcon() const
@@ -101,16 +97,18 @@ namespace innate_subsystem_macos
 
    void NotifyIcon::setIcon(::innate_subsystem::IconInterface *picon)
    {
-//      m_nid.uFlags = NIF_ICON;
-//      if (picon != 0) {
-//         m_nid.hIcon = (HICON) picon->_HICON();
-//         Shell_NotifyIcon(NIM_MODIFY, &m_nid);
-//      } else {
-//         hide();
-//      }
-//      construct_newø(m_picon);
-//
-//      m_picon->m_hicon = (HICON) picon->_HICON();
+      m_picon = picon;
+
+      if (!picon)
+      {
+         hide();
+         return;
+      }
+
+      main_send([this]()
+      {
+         __set_icon();
+      });
    }
 
 
@@ -124,24 +122,37 @@ namespace innate_subsystem_macos
 
    void NotifyIcon::setText(const char *text)
    {
-//      m_nid.uFlags = NIF_TIP;
-//
-//      const size_t BUFFER_SIZE_TCHARS = sizeof(m_nid.szTip) / sizeof(TCHAR);
-//      _tcsncpy_s(m_nid.szTip, BUFFER_SIZE_TCHARS, ::wstring(text), _TRUNCATE);
-//
-//      Shell_NotifyIcon(NIM_MODIFY, &m_nid);
+      m_strText = text;
+
+      main_send([this]()
+      {
+         __set_text(m_strText);
+      });
    }
 
    void
    NotifyIcon::showBalloon(const char *message, const char *caption,
                          unsigned int timeoutMillis)
    {
-      //m_nid.uFlags = NIF_INFO;
-//      _tcsncpy_s(m_nid.szInfo, 255, ::wstring(message), _TRUNCATE);
-//      _tcsncpy_s(m_nid.szInfoTitle, 63, ::wstring(caption), _TRUNCATE);
-//      m_nid.dwInfoFlags = NIIF_INFO;
-//      m_nid.uTimeout = timeoutMillis;
-//      Shell_NotifyIcon(NIM_MODIFY, &m_nid);
+      ::string strMessage(message);
+      ::string strCaption(caption);
+
+      main_send([this, strMessage, strCaption]()
+      {
+         __show_balloon(strMessage, strCaption);
+      });
+   }
+
+
+   void NotifyIcon::on_native_left_button_down()
+   {
+      onNotifyIconLeftButtonDown();
+   }
+
+
+   void NotifyIcon::on_native_right_button_up()
+   {
+      onNotifyIconRightButtonUp();
    }
 } // namespace innate_subsystem_macos
 //} // namespace macos

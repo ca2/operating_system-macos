@@ -15,11 +15,89 @@
 #include "acme/platform/application_menu.h"
 #include "acme/handler/command_handler.h"
 #include <Foundation/Foundation.h>
+#import <objc/runtime.h>
+
+void * impact_controller_association_id();
+
+
+void acme_windowing_window_set_impact_retained(::acme::windowing::window * pacmewindowingwindow);
+void acme_windowing_window_set_impact_controller_retained(::acme::windowing::window * pacmewindowingwindow);
+
+
+@interface ns_acme_offscreen_dialog_impact : NSView
+
+@property(nonatomic, strong) NSWindowController *storyboardWindowController;
+@property(nonatomic, strong) NSViewController *contentViewController;
+
+- (instancetype)initWithStoryboardName:(NSString *)storyboardName
+                     controllerIdentifier:(NSString *)identifier;
+
+@end
+
+
+@implementation ns_acme_offscreen_dialog_impact
+
+- (instancetype)initWithStoryboardName:(NSString *)storyboardName
+                     controllerIdentifier:(NSString *)identifier
+{
+   self = [super initWithFrame:NSMakeRect(0.0, 0.0, 1.0, 1.0)];
+
+   if (!self)
+      return nil;
+
+   NSStoryboard *storyboard =
+      [NSStoryboard storyboardWithName:storyboardName bundle:nil];
+
+   id controller =
+      [storyboard instantiateControllerWithIdentifier:identifier];
+
+   NSViewController *viewController = nil;
+
+   if ([controller isKindOfClass:[NSWindowController class]])
+   {
+      self.storyboardWindowController = controller;
+
+      NSWindow *window = self.storyboardWindowController.window;
+      viewController = window.contentViewController;
+
+      // Detach the storyboard content from its window.
+      [viewController.view removeFromSuperview];
+      window.contentViewController = nil;
+   }
+   else if ([controller isKindOfClass:[NSViewController class]])
+   {
+      viewController = controller;
+   }
+
+   if (!viewController)
+      return nil;
+
+   self.contentViewController = viewController;
+
+   NSView *contentView = viewController.view;
+   NSSize contentSize = contentView.frame.size;
+
+   self.frame = NSMakeRect(0.0, 0.0, contentSize.width, contentSize.height);
+
+   contentView.frame = self.bounds;
+   contentView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+
+   [self addSubview:contentView];
+
+   self.wantsLayer = YES;
+
+   return self;
+}
+
+
+
+@end
 
 ::uptr as_ns_window_uptr(NSWindow * pnswindow);
 NSString * __nsstring(const char * psz);
 
 void set_acme_windowing_window_ns_window_uptr(::acme::windowing::window * pacmewindowingwindow, ::uptr u);
+void set_acme_windowing_window_ns_impact_uptr(::acme::windowing::window * pacmewindowingwindow, ::uptr u);
 void ns_main_send(dispatch_block_t block);
 void ns_main_post(dispatch_block_t block);
 
@@ -246,16 +324,24 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
                 // Pass nil for nibName to prevent it from looking for a standalone XIB file
                 ns_acme_form_impact_controller *pformimpactcontroller = [[ns_acme_form_impact_controller alloc] initWithNibName:nil bundle:nil];
                 
-                if (pgenericimpactcontroller && pformimpactcontroller) {
-                    // 4. CRITICAL: Transfer the designed layout view from the generic VC to your custom VC
+                if (pgenericimpactcontroller && pformimpactcontroller)
+                {
+                   
+                   // 4. CRITICAL: Transfer the designed layout view from the generic VC to your custom VC
                    pformimpactcontroller.view = pgenericimpactcontroller.view;
+
                     
-                    // 5. Programmatically assign your custom class instance as the window's controller
-                    window.contentViewController = pformimpactcontroller;
-                    
-                    // Triggers viewDidLoad inside your custom class immediately
-                    [pformimpactcontroller viewDidLoad];
+                   // 5. Programmatically assign your custom class instance as the window's controller
+                   window.contentViewController = pformimpactcontroller;
+                   
+                   auto p2 = (__bridge void *)(NSView*) pformimpactcontroller.view;
+                   set_acme_windowing_window_ns_impact_uptr(pacmewindowingwindow, (::uptr)p2);
+
+                   // Triggers viewDidLoad inside your custom class immediately
+                   [pformimpactcontroller viewDidLoad];
+                   
                 }
+      
        // 4. CRITICAL: Save the reference globally so the window stays open!
        [self addDialog:myWindowController];
       NSView *contentView = [window contentView];
@@ -287,6 +373,93 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
    }
    return 0;
 }
+
+
+-(::uptr)createOffscreenChildDialog:(NSString *)strDialogName
+            withAcmeWindowingWindow:
+               (::acme::windowing::window *)pacmewindowingwindow
+{
+
+   NSAssert([NSThread isMainThread], @"AppKit must run on the main thread");
+
+   // 1. Load the storyboard (named "Main.storyboard")
+   NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+      
+   // 2. Instantiate a Window Controller using its Storyboard ID
+   // Note: In macOS, you usually instantiate the Window Controller first
+   NSWindowController *myWindowController = [storyboard instantiateControllerWithIdentifier:strDialogName];
+      
+   if (!myWindowController)
+   {
+      
+      NSLog(@"Error: Could not find Storyboard ID: %@", strDialogName);
+      
+      return -1;
+      
+   }
+         
+   NSWindow *window = [myWindowController window];
+   
+   // 2. Extract the generic View Controller that storyboard auto-created
+   NSViewController *pgenericimpactcontroller = window.contentViewController;
+   
+   // Detach the storyboard content from its window.
+   [pgenericimpactcontroller.view removeFromSuperview];
+   
+   window.contentViewController = nil;
+
+   // 3. Programmatically instantiate your Custom View Controller class
+   // Pass nil for nibName to prevent it from looking for a standalone XIB file
+   ns_acme_form_impact_controller *pformimpactcontroller = [[ns_acme_form_impact_controller alloc] initWithNibName:nil bundle:nil];
+                   
+   if (!pgenericimpactcontroller || !pformimpactcontroller)
+   {
+      
+      NSLog(@"Error: Could not find Storyboard ID: %@", strDialogName);
+      
+      return -2;
+      
+   }
+
+   pformimpactcontroller.view = pgenericimpactcontroller.view;
+
+   auto p2 = (__bridge  void *)(NSView*) pformimpactcontroller.view;
+
+   set_acme_windowing_window_ns_impact_uptr(pacmewindowingwindow, (::uptr)p2);
+
+   [pformimpactcontroller viewDidLoad];
+
+   [pformimpactcontroller.view setWantsLayer:YES];
+   
+//   NSViewController * rootController = pnstabview.window.contentViewController;
+//
+//   NSViewController * tabController = [[MyTabViewController alloc] initWithNibName:nil bundle:nil];
+//
+//   NSTabViewItem *tabItem = [tabView tabViewItemAtIndex:index];
+//
+//   // Establish controller ownership/lifecycle.
+//   [rootController addChildViewController:tabController];
+//
+   
+   CFBridgingRetain(pformimpactcontroller.view);
+         
+   acme_windowing_window_set_impact_retained(pacmewindowingwindow);
+   
+   CFBridgingRetain(pformimpactcontroller);
+   
+   acme_windowing_window_set_impact_controller_retained(pacmewindowingwindow);
+   
+   objc_setAssociatedObject(
+                            (NSView*) pformimpactcontroller.view,
+                            impact_controller_association_id(),
+                            (NSViewController*)pformimpactcontroller,
+                            OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+   
+   return 0;
+
+}
+
+
 -(int)doModalDialog:(NSString *)strDialogName withAcmeWindowingWindow:(::acme::windowing::window*)pacmewindowingwindow
 {
    NSStoryboard * storyboard =
@@ -323,7 +496,11 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
       window.contentViewController =
          pformimpactcontroller;
 
+      auto p2 = (__bridge void *)(NSView*) pformimpactcontroller.view;
+      set_acme_windowing_window_ns_impact_uptr(pacmewindowingwindow, (::uptr)p2);
+      
       [pformimpactcontroller viewDidLoad];
+      
    }
 
    [self addDialog:myWindowController];
@@ -341,9 +518,20 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
 
    NSInteger result =
       [NSApp runModalForWindow:window];
+   
+   // runModalForWindow has now returned, but the window remains visible.
+   //[window orderOut:nil];
+   [myWindowController close];
+
+   //[self removeDialog:myWindowController];
 
    return result;
+   
 }
+
+//Release the returned view when finished:
+//
+//CFBridgingRelease((void *)offscreenDialogHandle);
 
 -(void)doAttachedModalDialog:(NSString *)strDialogName
      withAcmeWindowingWindow: (::acme::windowing::window*)pacmewindowingwindow

@@ -18,12 +18,33 @@
 #include <Foundation/Foundation.h>
 #include "interoperability_ns.h"
 #include "operating_system-apple/core_graphics/_struct.h"
+#import <objc/runtime.h>
+
+char * øget_resource_name_strdup(int iResource);
 
 #define WINDOW_WIDTH_USE_DEFAULT       ((int)0x80000000)
 
+//static char g_nsEmbeddedPageAssociationKey;
+//static char g_nsEmbeddedTabItemAssociationKey;
+static char g_nsEmbeddedTabItemImpact;
+static char g_nsEmbeddedImpactTabItem;
+static char g_nsEmbeddedImpactController2;
+
+
+void * impact_controller_association_id()
+{
+   
+   return &g_nsEmbeddedImpactController2;
+   
+}
+
 
 ::uptr as_ns_window_uptr(NSWindow * pnswindow);
+::uptr as_ns_impact_uptr(NSView * pnsview);
 NSView *ns_window_get_impact_by_tag(NSWindow * pnswindow, int iTag);
+NSView *ns_get_impact(::appkit::ns_impact_t nsimpact);
+
+
 
 NSInteger ns_view_find_free_tag(
     NSView * prootview,
@@ -62,9 +83,19 @@ NSInteger ns_window_find_free_tag(
 
 NSWindow * as_ns_window(const ::operating_system::window & operatingsystemwindow)
 {
-   
-   if(operatingsystemwindow.m_eoperatingambient != ::windowing::e_operating_ambient_macos
-      && operatingsystemwindow.m_eoperatingambient != ::windowing::e_operating_ambient_macos_impact)
+
+   if(operatingsystemwindow.m_eoperatingambient != ::windowing::e_operating_ambient_macos_impact2)
+      {
+         
+         auto pnsimpact = (__bridge NSView *)(void *) operatingsystemwindow.m_window.m_ulla[0];
+         
+         
+         return [pnsimpact window];
+
+         
+      }
+   else if(operatingsystemwindow.m_eoperatingambient != ::windowing::e_operating_ambient_macos
+      && operatingsystemwindow.m_eoperatingambient != ::windowing::e_operating_ambient_macos_impact_by_tag)
    {
       
       return nil;
@@ -115,13 +146,19 @@ namespace cross_windows
       
       NSView * pnsimpactParent = nullptr;
       
-      if(operatingsystemwindowParent.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact)
+      if(operatingsystemwindowParent.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact_by_tag)
       {
          
          pnsimpactParent = ns_window_get_impact_by_tag(pnswindow, operatingsystemwindowParent.m_window.m_ulla[1]);
          
       }
-      
+      else if(operatingsystemwindowParent.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact2)
+      {
+         
+         pnsimpactParent = ns_window_get_impact_by_tag(pnswindow, operatingsystemwindowParent.m_window.m_ulla[1]);
+         
+      }
+
       NSView * pnsimpactChild = nullptr;
       
       if(pnsimpactParent)
@@ -156,7 +193,7 @@ namespace cross_windows
 //         pnsacmeimpact.tag = uTagNew;
          
          operatingsystemwindow = ::operating_system::window(
-                                                            ::windowing::e_operating_ambient_macos_impact, ::as_ns_window_uptr(pnswindow), 0);
+                                                            ::windowing::e_operating_ambient_macos_impact2, ::as_ns_impact_uptr(pnsimpactChild), 0);
          
          //return operatingsystemwindow;
          
@@ -194,7 +231,28 @@ void ns_window_destroy_window(::appkit::ns_window_t nswindow)
 void ns_window_show(::appkit::ns_window_t nswindow)
 {
    auto pnswindow = ns_window_from_ns_window_t(nswindow);
-   
+
+//   NSTabViewItem * pnstabviewitem =
+//      objc_getAssociatedObject(pnswindow, &g_nsEmbeddedTabItemAssociationKey);
+//
+//   if(pnstabviewitem != nil)
+//   {
+//
+//      return;
+//
+//   }
+//
+//   NSView * pnsimpactEmbedded =
+//      objc_getAssociatedObject(pnswindow, &g_nsEmbeddedPageAssociationKey);
+//
+//   if(pnsimpactEmbedded != nil)
+//   {
+//
+//      [pnsimpactEmbedded setHidden:NO];
+//      return;
+//
+//   }
+//   
    [[pnswindow windowController] showWindow:nil];
    [pnswindow makeKeyAndOrderFront:nil];
    
@@ -203,8 +261,266 @@ void ns_window_hide(::appkit::ns_window_t nswindow)
 {
    
    auto pnswindow = ns_window_from_ns_window_t(nswindow);
+
+//   NSTabViewItem * pnstabviewitem =
+//      objc_getAssociatedObject(pnswindow, &g_nsEmbeddedTabItemAssociationKey);
+//
+//   if(pnstabviewitem != nil)
+//   {
+//
+//      return;
+//
+//   }
+//
+//   NSView * pnsimpactEmbedded =
+//      objc_getAssociatedObject(pnswindow, &g_nsEmbeddedPageAssociationKey);
+//
+//   if(pnsimpactEmbedded != nil)
+//   {
+//
+//      [pnsimpactEmbedded setHidden:YES];
+//      return;
+//
+//   }
    
    [pnswindow orderOut:nil];
+
+}
+
+
+bool ns_move_window_to_tab_control(::appkit::ns_impact_t nsimpactTabControl,
+                                   ::appkit::ns_window_t nswindowPage)
+{
+
+   NSView * pnsimpactTabControl = ns_get_impact(nsimpactTabControl);
+   NSWindow * pnswindowPage = ns_window_from_ns_window_t(nswindowPage);
+
+   if(pnsimpactTabControl == nil || pnswindowPage == nil)
+   {
+
+      return false;
+
+   }
+
+   NSView * pnsimpactContainer = pnsimpactTabControl;
+   NSTabViewItem * pnstabviewitem = nil;
+
+   if([pnsimpactTabControl isKindOfClass:[NSTabView class]])
+   {
+
+      pnstabviewitem = [[NSTabViewItem alloc] initWithIdentifier:nil];
+      [(NSTabView *) pnsimpactTabControl addTabViewItem:pnstabviewitem];
+
+   }
+   else if([pnsimpactTabControl isKindOfClass:[NSBox class]])
+   {
+
+      pnsimpactContainer = [(NSBox *) pnsimpactTabControl contentView];
+
+   }
+
+   NSView * pnsimpactPage = [pnswindowPage contentView];
+
+   if(pnsimpactContainer == nil || pnsimpactPage == nil)
+   {
+
+      return false;
+
+   }
+
+   [pnswindowPage orderOut:nil];
+   [pnsimpactPage removeFromSuperview];
+   [pnsimpactPage setTranslatesAutoresizingMaskIntoConstraints:YES];
+   [pnsimpactPage setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+   if(pnstabviewitem != nil)
+   {
+
+      [pnstabviewitem setView:pnsimpactPage];
+
+   }
+   else
+   {
+
+      [pnsimpactPage setFrame:[pnsimpactContainer bounds]];
+      [pnsimpactPage setHidden:YES];
+      [pnsimpactContainer addSubview:pnsimpactPage];
+
+   }
+
+   return true;
+
+}
+
+
+bool ns_tab_control_set_page_caption(::appkit::ns_impact_t nsimpactTabControl,
+                                     ::appkit::ns_window_t nswindowPage,
+                                     const char * pszCaption)
+{
+
+   NSView * pnsimpactTabControl = ns_get_impact(nsimpactTabControl);
+   
+   NSWindow * pnswindowPage = ns_window_from_ns_window_t(nswindowPage);
+   
+   NSTabViewItem * pnstabviewitem = objc_getAssociatedObject(pnswindowPage, &g_nsEmbeddedImpactTabItem);
+
+   if(![pnsimpactTabControl isKindOfClass:[NSTabView class]] || pnstabviewitem == nil)
+   {
+
+      return false;
+
+   }
+
+   pnstabviewitem.label = [NSString stringWithUTF8String:pszCaption ? pszCaption : ""];
+   
+   return true;
+
+}
+
+
+void ns_tab_control_add_page(::appkit::ns_impact_t nsimpactTabControl,
+                             ::appkit::ns_impact_t nsimpactTab,
+                                     const char * pszCaption)
+{
+
+   NSView * pnsimpactTabControl = ns_get_impact(nsimpactTabControl);
+   
+   NSView * pnsimpactTab = ns_get_impact(nsimpactTab);
+   
+   if(![pnsimpactTabControl isKindOfClass:[NSTabView class]])
+   {
+      
+      throw "ns_tab_control_add_page failed";
+      
+   }
+   
+   NSTabView * pnstabview = pnsimpactTabControl;
+   
+   NSTabViewItem * pnstabviewitem = [[NSTabViewItem alloc] initWithIdentifier:nil];
+
+   if([pnsimpactTab isKindOfClass:[NSView class]])
+   {
+      
+      objc_setAssociatedObject(
+                               pnstabviewitem,
+                               &g_nsEmbeddedTabItemImpact,
+                               pnsimpactTab,
+                               OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+      
+      objc_setAssociatedObject(
+                               pnsimpactTab,
+                               &g_nsEmbeddedImpactTabItem,
+                               pnstabviewitem,
+                               OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+      
+      [pnstabviewitem setView:pnsimpactTab];
+      
+   }
+
+   pnstabviewitem.label = [NSString stringWithUTF8String:pszCaption ? pszCaption : ""];
+   
+   [pnstabview addTabViewItem:pnstabviewitem];
+   
+}
+
+
+bool ns_tab_control_select_item(::appkit::ns_impact_t nsimpactTabControl, int iItem)
+{
+
+   NSView * pnsimpactTabControl = ns_get_impact(nsimpactTabControl);
+
+   if(![pnsimpactTabControl isKindOfClass:[NSTabView class]])
+   {
+
+      return false;
+
+   }
+
+   NSTabView * pnstabview = (NSTabView *) pnsimpactTabControl;
+
+   if(iItem < 0 || iItem >= pnstabview.numberOfTabViewItems)
+   {
+
+      return false;
+
+   }
+   
+   auto pnstabviewitem = [ pnstabview tabViewItemAtIndex: iItem ];
+   
+   if(pnstabviewitem)
+   {
+      
+      NSView * pnsimpactTab = objc_getAssociatedObject(
+                               pnstabviewitem,
+                               &g_nsEmbeddedTabItemImpact);
+
+      if(pnsimpactTab)
+      {
+         
+         //[ pnstabview addSubview: pnsimpactTab ];
+         
+         NSViewController * pimpactcontroller = objc_getAssociatedObject(
+                                  (NSView*) pnsimpactTab,
+                                  impact_controller_association_id());
+         
+         [ pnstabview.window.contentViewController addChildViewController: pimpactcontroller ];
+         
+      }
+      
+   }
+
+   [ pnstabview selectTabViewItemAtIndex:iItem ];
+   
+   return true;
+
+}
+
+
+int ns_tab_control_get_selected_item(::appkit::ns_impact_t nsimpactTabControl)
+{
+
+   NSView * pnsimpactTabControl = ns_get_impact(nsimpactTabControl);
+
+   if(![pnsimpactTabControl isKindOfClass:[NSTabView class]])
+   {
+
+      return -1;
+
+   }
+
+   NSTabView * pnstabview = (NSTabView *) pnsimpactTabControl;
+   NSTabViewItem * pnstabviewitem = pnstabview.selectedTabViewItem;
+
+   if(pnstabviewitem == nil)
+   {
+
+      return -1;
+
+   }
+
+   return (int) [pnstabview indexOfTabViewItem:pnstabviewitem];
+
+}
+
+
+void ns_tab_control_erase_page(::appkit::ns_impact_t nsimpactTabControl,
+                                ::appkit::ns_impact_t nsimpactTab)
+{
+
+   NSView * pnsimpactTabControl = ns_get_impact(nsimpactTabControl);
+   NSView * pnsimpactTab = ns_get_impact(nsimpactTab);
+   NSTabViewItem * pnstabviewitem =
+      objc_getAssociatedObject(pnsimpactTab, &g_nsEmbeddedImpactTabItem);
+
+   if(![pnsimpactTabControl isKindOfClass:[NSTabView class]] || pnstabviewitem == nil)
+   {
+
+      throw "ns_tab_control_erase_page bad argument";
+
+   }
+
+   [(NSTabView *) pnsimpactTabControl removeTabViewItem:pnstabviewitem];
+   
+   
 
 }
 
@@ -452,6 +768,22 @@ void ns_window_exit_immersive_fullscreen(::appkit::ns_window_t nswindow)
    return u;
 }
 
+
+::uptr ns_create_offscreen_child_dialog(const char * pszDialog, ::acme::windowing::window * pacmewindowingwindow)
+{
+   
+   // 1. Get the delegate and cast it to your custom class
+   macos_app *pmacosapp = (macos_app *)[NSApp delegate];
+   
+   NSString * strName = [[NSString alloc]initWithUTF8String:pszDialog];
+   
+   auto u = [pmacosapp createOffscreenChildDialog:strName withAcmeWindowingWindow: pacmewindowingwindow];
+   
+   return u;
+   
+}
+
+
 int ns_do_modal_dialog(const char * pszDialog, ::acme::windowing::window * pacmewindowingwindow)
 {
    
@@ -526,15 +858,41 @@ ns_acme_form_impact_controller *ns_form_controllerø(::appkit::ns_window_t nswin
 }
 
 
+NSView * ns_impact_get_impact_by_tag(NSView * pnsimpactRoot, int iTag)
+{
+   
+   if(pnsimpactRoot == nil)
+   {
+      
+      return nil;;
+      
+   }
+
+   auto pnsimpact = [ pnsimpactRoot viewWithTag: iTag ];
+
+   if(pnsimpact == nil)
+   {
+
+      return nil;
+
+   }
+
+   return pnsimpact;
+
+}
+
 
 NSView *ns_window_get_impact_by_tag(NSWindow * pnswindow, int iTag)
 {
+   
    if (pnswindow == nil)
-       {
-           return nil;
-       }
-
-       auto pnsimpact = [pnswindow.contentView viewWithTag:iTag];
+   {
+      
+      return nil;
+      
+   }
+   
+   auto pnsimpact = ns_impact_get_impact_by_tag([pnswindow contentView], iTag);
    
    if(pnsimpact != nil)
    {
@@ -545,32 +903,171 @@ NSView *ns_window_get_impact_by_tag(NSWindow * pnswindow, int iTag)
    
    if(iTag == 0 || iTag == 2000)
    {
-      
+
       pnsimpact = pnswindow.contentView;
-      
+
    }
-   
+
    if(pnsimpact != nil)
    {
-      
+    
       return pnsimpact;
       
    }
    
+   return pnsimpact;
+
+}
+
+
+static NSView *FindViewWithIdentifier(NSView *rootView, NSString *identifier)
+{
+   if ([rootView.identifier isEqualToString:identifier])
+      return rootView;
+
+   for (NSView *subview in rootView.subviews)
+   {
+      NSView *found = FindViewWithIdentifier(subview, identifier);
+
+      if (found)
+         return found;
+   }
+
    return nil;
+}
+
+::operating_system::window ns_get_impact_operating_system_window_by_tag(const ::operating_system::window & operatingsystemwindow, int iDialogItem)
+{
+   
+   if(operatingsystemwindow.m_eoperatingambient == ::windowing::e_operating_ambient_macos)
+   {
+      
+      return ns_get_impact_operating_system_window_by_tag_from_window(operatingsystemwindow, iDialogItem);
+      
+   }
+   else
+   {
+      
+      return ns_get_impact_operating_system_window_by_tag_from_impact(operatingsystemwindow, iDialogItem);
+      
+   }
+   
+}
+
+
+::operating_system::window ns_get_impact_operating_system_window_by_tag_from_window(::appkit::ns_window_t nswindow, int iDialogItem)
+{
+   
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+  
+   auto pnsimpact = ns_window_get_impact_by_tag(pnswindow, iDialogItem);
+   
+   if(pnsimpact)
+   {
+      
+      return {::windowing::e_operating_ambient_macos_impact2, (::uptr)(__bridge void *) pnsimpact};
+      
+   }
+
+   auto p = øget_resource_name_strdup(iDialogItem);
+   
+   if(p)
+   {
+      
+      NSString * strId = [[NSString alloc] initWithUTF8String:p];
+      
+      if(strId)
+      {
+         
+         pnsimpact =FindViewWithIdentifier([pnswindow contentView], strId);
+         
+      }
+      
+      free(p);
+      
+   }
+   
+   if(pnsimpact)
+   {
+      
+      return {::windowing::e_operating_ambient_macos_impact2, (::uptr)(__bridge void *) pnsimpact};
+   }
+   
+   return {};
+   
+}
+
+::operating_system::window ns_get_impact_operating_system_window_by_tag_from_impact(::appkit::ns_impact_t nsimpact, int iDialogItem)
+{
+   
+   auto pnsimpactRoot = ns_get_impact(nsimpact);
+
+   auto pnsimpact = ns_impact_get_impact_by_tag(pnsimpactRoot, iDialogItem);
+   
+   if(pnsimpact)
+   {
+      
+      return {::windowing::e_operating_ambient_macos_impact2, (::uptr)(__bridge void *) pnsimpact};
+      
+   }
+
+   auto p = øget_resource_name_strdup(iDialogItem);
+   
+   if(p)
+   {
+      
+      NSString * strId = [[NSString alloc] initWithUTF8String:p];
+      
+      if(strId)
+      {
+         
+         pnsimpact = FindViewWithIdentifier(pnsimpactRoot, strId);
+         
+      }
+      
+      free(p);
+      
+   }
+   
+   if(pnsimpact)
+   {
+      
+      return {::windowing::e_operating_ambient_macos_impact2, (::uptr)(__bridge void *) pnsimpact};
+   }
+   
+   return {};
+   
 }
 
 
 NSView * ns_get_impact(::appkit::ns_impact_t nsimpact)
 {
    
-   auto pnswindow = ns_window_from_ns_window_t(nsimpact.ns_window());
-
-   auto pnsimpact = ns_window_get_impact_by_tag(pnswindow, nsimpact.m_uTag);
-   
-   return pnsimpact;
+   if(nsimpact.m_pNSWindow)
+   {
+      
+      auto pnswindow = ns_window_from_ns_window_t(nsimpact.ns_window());
+      
+      auto pnsimpact = ns_window_get_impact_by_tag(pnswindow, nsimpact.m_uTag);
+      
+      return pnsimpact;
+      
+   }
+   else if(nsimpact.m_pNSImpact)
+   {
+      
+      return (__bridge NSView *) nsimpact.m_pNSImpact;
+      
+   }
+   else
+   {
+    
+      return nullptr;
+      
+   }
    
 }
+
 
 NSView *ns_get_impact(ns_acme_form_impact_controller * pformcontroller, ::uptr uTag)
 {
@@ -749,7 +1246,16 @@ NS_CLASS * ns_impactø(ns_acme_form_impact_controller * pformcontroller, ::uptr 
 void ns_end_dialog(::appkit::ns_window_t nswindow, int iDialogResult)
 {
    
-   [NSApp stopModalWithCode:iDialogResult];
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+
+   if (NSApp.modalWindow == pnswindow)
+   {
+
+      [NSApp stopModalWithCode:iDialogResult];
+
+   }
+
+
 }
 void ns_end_attached_modal(::appkit::ns_window_t nswindow, int iDialogResult)
 {
@@ -1309,5 +1815,3 @@ void ns_check_box_set_checked(::appkit::ns_impact_t nsimpact, bool checked)
 //   
 //
 //}
-
-

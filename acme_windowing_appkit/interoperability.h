@@ -9,6 +9,18 @@
 void ns_window_destroy_window(::appkit::ns_window_t nswindow);
 void ns_window_show(::appkit::ns_window_t nswindow);
 void ns_window_hide(::appkit::ns_window_t nswindow);
+bool ns_move_window_to_tab_control(::appkit::ns_impact_t nsimpactTabControl,
+                                   ::appkit::ns_window_t nswindowPage);
+bool ns_tab_control_set_page_caption(::appkit::ns_impact_t nsimpactTabControl,
+                                     ::appkit::ns_window_t nswindowPage,
+                                     const char * pszCaption);
+void ns_tab_control_add_page(::appkit::ns_impact_t nsimpactTabControl,
+                             ::appkit::ns_impact_t nsimpactTab,
+                                     const char * pszCaption);
+bool ns_tab_control_select_item(::appkit::ns_impact_t nsimpactTabControl, int iItem);
+int ns_tab_control_get_selected_item(::appkit::ns_impact_t nsimpactTabControl);
+void ns_tab_control_erase_page(::appkit::ns_impact_t nsimpactTabControl,
+                                ::appkit::ns_impact_t nsimpactPage);
 char * ns_get_window_text(::uptr u);
 void ns_set_window_text(::uptr u, const char * pszText);
 int ns_window_redraw(::appkit::ns_window_t nswindow, ::core_graphics::cg_rect * pcgrect, bool bErase);
@@ -32,6 +44,9 @@ void ns_window_set_mouse_cursor(::appkit::ns_window_t nswindow, ::enum_cursor ec
 
 void ns_impact_destroy_window(::appkit::ns_impact_t nsimpact);
 char * ns_get_impact_text(::appkit::ns_impact_t nsimpact);
+::operating_system::window ns_get_impact_operating_system_window_by_tag(const ::operating_system::window & operatingsystemwindow, int iDialogItem);
+::operating_system::window ns_get_impact_operating_system_window_by_tag_from_window(::appkit::ns_window_t nswindow, int iDialogItem);
+::operating_system::window ns_get_impact_operating_system_window_by_tag_from_impact(::appkit::ns_impact_t nsimpact, int iDialogItem);
 void ns_set_impact_text(::appkit::ns_impact_t nsimpact, const char * pszText);
 void ns_impact_get_client_rect(::appkit::ns_impact_t nsimpact, ::core_graphics::cg_rect * pcgrect);
 void ns_impact_set_mouse_cursor(::appkit::ns_impact_t nsimpact, ::enum_cursor ecursor);

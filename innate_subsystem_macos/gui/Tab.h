@@ -26,7 +26,7 @@
 #pragma once
 
 #include "innate_subsystem/gui/Tab.h"
-//#include "Control.h"
+#include "innate_subsystem_macos/gui/Control.h"
 //#include "util/StringStorage.h"
 
 namespace innate_subsystem_macos
@@ -35,6 +35,12 @@ namespace innate_subsystem_macos
    virtual public ::Implementation<::innate_subsystem::TabInterface>
    {
    public:
+      
+      //protected:
+
+         ::pointer < ::innate_subsystem::WindowInterface > m_pwindow;
+         ::string m_caption;
+
       Tab();
       void initialize_tab(::innate_subsystem::WindowInterface *dialog, const char *caption) override;
 
@@ -48,23 +54,21 @@ namespace innate_subsystem_macos
 
       void setWindow(::innate_subsystem::WindowInterface  *pdialog) override;
       ::innate_subsystem::WindowInterface *getWindow() override;
-
+      //::innate_subsystem::WindowInterface * getPane() override;
       //
       // Method return true if tab has dialog
       //
 
-      bool isOk();
+      bool isOk() override;
 
       //
       // Changes visible state of dialog donates by this tab
       //
 
-      void setVisible(bool visible);
+      void setVisible(bool visible) override;
+      
+      
 
-   //protected:
-
-      ::pointer < ::innate_subsystem::WindowInterface > m_pwindow;
-      ::string m_caption;
    };
 
 

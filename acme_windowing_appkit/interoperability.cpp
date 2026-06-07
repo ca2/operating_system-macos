@@ -48,6 +48,78 @@ void show_window_hide(const ::operating_system::window & operatingsystemwindow)
 
 }
 
+
+bool move_window_to_tab_control(const ::operating_system::window & operatingsystemwindowTabControl,
+                                const ::operating_system::window & operatingsystemwindowPage)
+{
+
+   if(!operatingsystemwindowTabControl.is_impact()
+      || operatingsystemwindowPage.is_impact())
+   {
+
+      return false;
+
+   }
+
+   return ns_move_window_to_tab_control(
+      ::appkit::ns_impact_t(operatingsystemwindowTabControl),
+      ::appkit::ns_window_t(operatingsystemwindowPage));
+
+}
+
+
+bool tab_control_set_page_caption(const ::operating_system::window & operatingsystemwindowTabControl,
+                                  const ::operating_system::window & operatingsystemwindowPage,
+                                  const ::scoped_string & scopedstrCaption)
+{
+
+   return ns_tab_control_set_page_caption(
+      ::appkit::ns_impact_t(operatingsystemwindowTabControl),
+      ::appkit::ns_window_t(operatingsystemwindowPage),
+      scopedstrCaption);
+
+}
+
+void tab_control_add_page(const ::operating_system::window & operatingsystemwindowTabControl,
+                          const ::operating_system::window & operatingsystemwindowTab,
+                                  const ::scoped_string & scopedstrCaption)
+{
+
+   ns_tab_control_add_page(
+      ::appkit::ns_impact_t(operatingsystemwindowTabControl),
+                                  ::appkit::ns_impact_t(operatingsystemwindowTab),
+      scopedstrCaption);
+
+}
+
+
+bool tab_control_select_item(const ::operating_system::window & operatingsystemwindowTabControl, int iItem)
+{
+
+   return ns_tab_control_select_item(::appkit::ns_impact_t(operatingsystemwindowTabControl), iItem);
+
+}
+
+
+int tab_control_get_selected_item(const ::operating_system::window & operatingsystemwindowTabControl)
+{
+
+   return ns_tab_control_get_selected_item(::appkit::ns_impact_t(operatingsystemwindowTabControl));
+
+}
+
+
+void tab_control_erase_page(const ::operating_system::window & operatingsystemwindowTabControl,
+                             const ::operating_system::window & operatingsystemwindowPage)
+{
+
+   ns_tab_control_erase_page(
+      ::appkit::ns_impact_t(operatingsystemwindowTabControl),
+      ::appkit::ns_impact_t(operatingsystemwindowPage));
+
+}
+
+
 void get_client_rect(const ::operating_system::window & operatingsystemwindow, ::i32_rectangle * prectangle)
 {
    
@@ -150,9 +222,9 @@ int set_window_pos(const ::operating_system::window & operatingsystemwindow,
          
       }
       
-      //auto uChild = ns_get_dlg_item(u, iDlgItem);
+      return ns_get_impact_operating_system_window_by_tag(operatingsystemwindow, iDlgItem);
       
-      return {::windowing::e_operating_ambient_macos_impact, u, (::uptr) iDlgItem};
+//      return {::windowing::e_operating_ambient_macos_impact_by_tag, u, (::uptr) iDlgItem};
       
 //      ::cast < ::appkit::acme::windowing::windowing > pwindowing = ::system()->acme_windowing();
 //
@@ -166,7 +238,8 @@ int set_window_pos(const ::operating_system::window & operatingsystemwindow,
    
    ::string str;
    
-   if(operatingsystemwindow.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact)
+   if(operatingsystemwindow.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact_by_tag
+      || operatingsystemwindow.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact2)
    {
       
       auto p = ns_get_impact_text(operatingsystemwindow);
@@ -210,7 +283,8 @@ void set_window_text(const ::operating_system::window & operatingsystemwindow, c
    
    ::string str(scopedstr);
    
-   if(operatingsystemwindow.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact)
+   if(operatingsystemwindow.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact2 ||
+      operatingsystemwindow.m_eoperatingambient == ::windowing::e_operating_ambient_macos_impact_by_tag)
    {
       
       ns_set_impact_text(operatingsystemwindow, str);
