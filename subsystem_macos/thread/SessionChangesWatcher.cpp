@@ -38,7 +38,8 @@ namespace subsystem_macos
    //  resume();
    //}
 
-   SessionChangesWatcher::SessionChangesWatcher()
+   SessionChangesWatcher::SessionChangesWatcher():
+GuiThread("sesChngWatch")
    {
 
 

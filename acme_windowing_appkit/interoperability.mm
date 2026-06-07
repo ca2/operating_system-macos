@@ -302,13 +302,21 @@ void ns_window_enable_window(::appkit::ns_window_t nswindow, bool bEnable)
    
 }
 
-void ns_window_is_this_window_enabled(::appkit::ns_window_t nswindow)
+
+bool ns_window_is_this_window_enabled(::appkit::ns_window_t nswindow)
 {
    
+   return true;
    
 }
-void ns_window_is_window_enabled(::appkit::ns_window_t nswindow);
 
+
+bool ns_window_is_window_enabled(::appkit::ns_window_t nswindow)
+{
+   
+   return true;
+   
+}
 
 
 bool ns_move_window_to_tab_control(::appkit::ns_impact_t nsimpactTabControl,
@@ -1393,6 +1401,42 @@ void ns_impact_enable_window(::appkit::ns_impact_t nsimpact, bool bEnable)
       [ pnscontrol setEnabled:bEnable ];
       
    }
+   
+}
+
+
+bool ns_impact_is_this_window_enabled(::appkit::ns_impact_t nsimpact)
+{
+   
+   return ns_impact_is_window_enabled(nsimpact);
+   
+}
+
+
+bool ns_impact_is_window_enabled(::appkit::ns_impact_t nsimpact)
+{
+   
+   auto pnsimpact = ns_get_impact(nsimpact);
+   
+   if(pnsimpact == nil)
+   {
+      
+      return true;
+      
+   }
+   
+   if([pnsimpact isKindOfClass:[NSControl class]])
+   {
+      
+      NSControl * pnscontrol = pnsimpact;
+      
+      bool bEnabled = [ pnscontrol isEnabled ] != FALSE;
+      
+      return bEnabled;
+      
+   }
+   
+   return true;
    
 }
 

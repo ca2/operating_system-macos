@@ -28,7 +28,8 @@
 
 namespace subsystem_macos
 {
-   ThreadCollector::ThreadCollector()
+   ThreadCollector::ThreadCollector():
+Thread("thrdCollectr")
    {
       resumeThread();
    }

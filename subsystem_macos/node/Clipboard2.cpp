@@ -36,7 +36,7 @@ namespace subsystem_macos
 
 
    Clipboard2::Clipboard2() :
-
+GuiThread("Clpbrd2"),
       //m_hwndNextViewer(0),
        m_clipboardListener(nullptr), m_plogwriter(nullptr)
    {

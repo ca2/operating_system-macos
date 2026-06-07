@@ -31,7 +31,7 @@ namespace subsystem_macos
 {
 
    PipeImpersonatedThread::PipeImpersonatedThread()
-   : m_pfilePipe(nullptr),
+   :Thread("ppImpersThrd"), m_pfilePipe(nullptr),
      m_success(false)
    {
    }

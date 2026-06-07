@@ -30,8 +30,8 @@
 namespace subsystem_macos
 {
 
-   CtrlAltDelSimulator::CtrlAltDelSimulator()
-   {
+   CtrlAltDelSimulator::CtrlAltDelSimulator():
+Thread("CtrlAltDelSim"){
       resumeThread();
    }
 
