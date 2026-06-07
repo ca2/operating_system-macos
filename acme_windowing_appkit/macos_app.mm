@@ -520,8 +520,8 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
       [NSApp runModalForWindow:window];
    
    // runModalForWindow has now returned, but the window remains visible.
-   //[window orderOut:nil];
-   [myWindowController close];
+   [window orderOut:nil];
+   //[myWindowController close];
 
    //[self removeDialog:myWindowController];
 

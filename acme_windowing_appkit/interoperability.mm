@@ -288,6 +288,29 @@ void ns_window_hide(::appkit::ns_window_t nswindow)
 }
 
 
+void ns_window_enable_window(::appkit::ns_window_t nswindow, bool bEnable)
+{
+   
+   auto pnswindow = ns_window_from_ns_window_t(nswindow);
+   
+   if(pnswindow == nil)
+   {
+      
+      return;
+      
+   }
+   
+}
+
+void ns_window_is_this_window_enabled(::appkit::ns_window_t nswindow)
+{
+   
+   
+}
+void ns_window_is_window_enabled(::appkit::ns_window_t nswindow);
+
+
+
 bool ns_move_window_to_tab_control(::appkit::ns_impact_t nsimpactTabControl,
                                    ::appkit::ns_window_t nswindowPage)
 {
@@ -1348,6 +1371,31 @@ void ns_impact_destroy_window(::appkit::ns_impact_t nsimpact)
    [pnsimpact removeFromSuperview];
    
 }
+
+
+void ns_impact_enable_window(::appkit::ns_impact_t nsimpact, bool bEnable)
+{
+   
+   auto pnsimpact = ns_get_impact(nsimpact);
+   
+   if(pnsimpact == nil)
+   {
+      
+      return nullptr;
+      
+   }
+   
+   if([pnsimpact isKindOfClass:[NSControl class]])
+   {
+      
+      NSControl * pnscontrol = pnsimpact;
+      
+      [ pnscontrol setEnabled:bEnable ];
+      
+   }
+   
+}
+
 
 char * ns_get_impact_text(::appkit::ns_impact_t nsimpact)
 {

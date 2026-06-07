@@ -15,6 +15,9 @@ void destroy_window(const ::operating_system::window & operatingsystemwindow);
 void get_client_rect(const ::operating_system::window & operatingsystemwindow, ::i32_rectangle * prectangle);
 void show_window_show(const ::operating_system::window & operatingsystemwindow);
 void show_window_hide(const ::operating_system::window & operatingsystemwindow);
+void enable_window(const ::operating_system::window & operatingsystemwindow, bool bEnable);
+bool is_this_window_enabled(const ::operating_system::window & operatingsystemwindow);
+bool is_window_enabled(const ::operating_system::window & operatingsystemwindow);
 bool move_window_to_tab_control(const ::operating_system::window & operatingsystemwindowTabControl,
                                 const ::operating_system::window & operatingsystemwindowPage);
 bool tab_control_set_page_caption(const ::operating_system::window & operatingsystemwindowTabControl,

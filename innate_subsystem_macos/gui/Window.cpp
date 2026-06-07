@@ -271,11 +271,16 @@ namespace innate_subsystem_macos
 //      }
    }
 
+
    void Window::enableWindow(bool bEnable)
    {
-//      ASSERT(m_macoswindow.as_HWND() != 0);
-//      EnableWindow(m_macoswindow.as_HWND(), bEnable);
+      
+      auto operatingsystemwindows = operating_system_window();
+      
+      ::cross_windows::enable_window(operatingsystemwindows, bEnable);
+      
    }
+
 
    void Window::setEnabled(bool enabled)
    {
@@ -913,11 +918,18 @@ bool Window::on_user_system_command(::user::enum_system_command esystemcommand)
       return true;
    }
 
+
    bool Window::isEnabled()
    {
-      //return (!isStyleEnabled(WS_DISABLED));
-      return true;
+   
+      auto operatingsystemwindows = operating_system_window();
+      
+      //return ::cross_windows::is_this_window_enabled(operatingsystemwindows);
+      
+      return ::cross_windows::is_window_enabled(operatingsystemwindows);
+
    }
+
 
    bool Window::isVisible()
    {

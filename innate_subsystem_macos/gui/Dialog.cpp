@@ -151,8 +151,12 @@ void
          ns_end_attached_modal(::as_ns_window_t(operating_system_window()), code);
          
       }
-      else if (!m_isModal) {
-//         DestroyWindow((HWND) _HWND());
+      else if (!m_isModal)
+      {
+
+         hide();
+         //         DestroyWindow((HWND) _HWND());
+         
       } else {
          ns_end_dialog(::as_ns_window_t(operating_system_window()), code);
 //         EndDialog((HWND) _HWND(), code);

@@ -49,6 +49,74 @@ void show_window_hide(const ::operating_system::window & operatingsystemwindow)
 }
 
 
+void enable_window(const ::operating_system::window & operatingsystemwindow, bool bEnable)
+{
+
+   if(operatingsystemwindow.is_impact())
+   {
+      
+      ::appkit::ns_impact_t nsimpact(operatingsystemwindow);
+      
+      return ns_impact_enable_window(nsimpact, bEnable);
+      
+   }
+   else
+   {
+      
+      ::appkit::ns_window_t nswindow(operatingsystemwindow);
+
+      return ns_window_enable_window(nswindow, bEnable);
+      
+   }
+
+}
+
+bool is_this_window_enabled(const ::operating_system::window & operatingsystemwindow)
+{
+
+   if(operatingsystemwindow.is_impact())
+   {
+      
+      ::appkit::ns_impact_t nsimpact(operatingsystemwindow);
+      
+      return ns_impact_is_this_window_enabled(nsimpact);
+      
+   }
+   else
+   {
+      
+      ::appkit::ns_window_t nswindow(operatingsystemwindow);
+
+      return ns_window_is_this_window_enabled(nswindow);
+      
+   }
+
+}
+
+
+bool is_window_enabled(const ::operating_system::window & operatingsystemwindow)
+{
+
+   if(operatingsystemwindow.is_impact())
+   {
+      
+      ::appkit::ns_impact_t nsimpact(operatingsystemwindow);
+      
+      return ns_impact_is_window_enabled(nsimpact);
+      
+   }
+   else
+   {
+      
+      ::appkit::ns_window_t nswindow(operatingsystemwindow);
+
+      return ns_window_is_window_enabled(nswindow);
+      
+   }
+
+}
+
+
 bool move_window_to_tab_control(const ::operating_system::window & operatingsystemwindowTabControl,
                                 const ::operating_system::window & operatingsystemwindowPage)
 {
@@ -165,7 +233,6 @@ void invalidate_rect(const ::operating_system::window & operatingsystemwindow,
    }
 
 }
-
 
 
 int set_window_pos(const ::operating_system::window & operatingsystemwindow,

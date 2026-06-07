@@ -9,6 +9,9 @@
 void ns_window_destroy_window(::appkit::ns_window_t nswindow);
 void ns_window_show(::appkit::ns_window_t nswindow);
 void ns_window_hide(::appkit::ns_window_t nswindow);
+void ns_window_enable_window(::appkit::ns_window_t nswindow, bool bEnable);
+bool ns_window_is_this_window_enabled(::appkit::ns_window_t nswindow);
+bool ns_window_is_window_enabled(::appkit::ns_window_t nswindow);
 bool ns_move_window_to_tab_control(::appkit::ns_impact_t nsimpactTabControl,
                                    ::appkit::ns_window_t nswindowPage);
 bool ns_tab_control_set_page_caption(::appkit::ns_impact_t nsimpactTabControl,
@@ -43,6 +46,9 @@ void ns_window_set_mouse_cursor(::appkit::ns_window_t nswindow, ::enum_cursor ec
 ::uptr ns_get_dlg_item(::uptr u, int iDlgItem);
 
 void ns_impact_destroy_window(::appkit::ns_impact_t nsimpact);
+void ns_impact_enable_window(::appkit::ns_impact_t nsimpact, bool bEnable);
+bool ns_impact_is_this_window_enabled(::appkit::ns_window_t nswindow);
+bool ns_impact_is_window_enabled(::appkit::ns_window_t nswindow);
 char * ns_get_impact_text(::appkit::ns_impact_t nsimpact);
 ::operating_system::window ns_get_impact_operating_system_window_by_tag(const ::operating_system::window & operatingsystemwindow, int iDialogItem);
 ::operating_system::window ns_get_impact_operating_system_window_by_tag_from_window(::appkit::ns_window_t nswindow, int iDialogItem);
