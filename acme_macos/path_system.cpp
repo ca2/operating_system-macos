@@ -2,7 +2,7 @@
 // Recreated on 2021-05-16 15:07 <3ThomasBS_ // for macOS
 #include "framework.h"
 #include "path_system.h"
-
+#include "directory_context.h"
 //enum
 //{
 //   e_anonymouse_enum,
@@ -49,6 +49,17 @@ namespace acme_macos
 
    void path_system::create_symbolic_link(const ::scoped_string & scopedstrLink, const ::scoped_string & scopedstrSource)
    {
+      
+      ::file::path path = scopedstrLink;
+      
+      ::file::path pathFolder = path.folder();
+      
+      if(!directory()->is(pathFolder))
+      {
+         
+         directory()->create(pathFolder);
+         
+      }
       
       ns_create_alias(scopedstrLink, scopedstrSource);
 //      if(!)
