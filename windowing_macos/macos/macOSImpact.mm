@@ -34,11 +34,11 @@ NSImage * ns_image_from_file(const char * pszMatter);
    NSTimer*         m_nstimer;
 }
 
-- (id) initWithFrame: (NSRect) frame andWindow: (ns_acme_window *) pnsacmewindow
+- (id) initWithFrame: (NSRect) frame andBridge:(::appkit::acme_window_bridge *)pacmewindowbridge
 {
    m_pmacoscontrolbox = nullptr;
    m_ptrackingarea = nullptr;
-   self                 = [super initWithFrame:frame andWindow:pnsacmewindow];
+   self                 = [super initWithFrame:frame andBridge: pacmewindowbridge];
    
    //[self setWantsLayer : YES];
    //[self setLayerContentsRedrawPolicy: NSViewLayerContentsRedrawOnSetNeedsDisplay];
@@ -63,7 +63,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
 //   }
 //
    
-   if(pnsacmewindow->m_pacmewindowbridge->should_use_desktop_ambient_like_control_box())
+   if(pacmewindowbridge->should_use_desktop_ambient_like_control_box())
    {
       
       m_pmacoscontrolbox = [macOSControlBox alloc];
@@ -71,8 +71,8 @@ NSImage * ns_image_from_file(const char * pszMatter);
       [m_pmacoscontrolbox init: self];
       
    }
-   macOSWindow * pwindow = (macOSWindow*) m_pnsacmewindow;
-   if(platform_application_is_swap_chain(pwindow->m_pmacoswindow->m_papplication))
+   //macOSWindow * pwindow = (macOSWindow*) m_pnsacmewindow;
+   if(platform_application_is_swap_chain(pacmewindowbridge->m_papplication))
    {
       
       NSOpenGLPixelFormatAttribute attrs[] =
@@ -146,7 +146,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
    
    int h = (int)backing.size.height;
 
-   macOSWindow * pwindow = (macOSWindow*) m_pnsacmewindow;
+   macOSWindow * pwindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
    
    auto pmacoswindow = pwindow->m_pmacoswindow;
    
@@ -260,7 +260,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
 - (void) mouseUp: (NSEvent *) event
 {
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
 
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
@@ -316,7 +316,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
 - (void) mouseMoved: (NSEvent *) event
 {
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
 
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
@@ -347,7 +347,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
 - (void) mouseDragged: (NSEvent *) event
 {
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
 
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
@@ -388,7 +388,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
 - (void) mouseDown: (NSEvent *) event
 {
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
    
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
@@ -420,7 +420,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
 - (void)rightMouseUp:(NSEvent *)event
 {
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
    
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
@@ -453,7 +453,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
 - (void)rightMouseDown:(NSEvent *)event
 {
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
    
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
@@ -485,7 +485,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
 - (void)scrollWheel:(NSEvent *)event
 {
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
    
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
@@ -648,7 +648,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
 {
    
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
 
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
@@ -778,7 +778,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
       
    }
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
    
    if(![pnsmacoswindow isKeyWindow])
    {
@@ -872,7 +872,7 @@ m_f = true; \
 - (void)keyDown:(NSEvent *)event
 {
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
 
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
      
@@ -985,7 +985,7 @@ m_f = true; \
    
    NSString * characters;
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
    
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
@@ -1042,7 +1042,7 @@ m_f = true; \
 - (void)flagsChanged:(NSEvent *)event
 {
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
 
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
    
@@ -1184,7 +1184,7 @@ m_f = true; \
    
    NSCursor * pcursor = nullptr;
    
-   auto pnsmacoswindow = (macOSWindow *) m_pnsacmewindow;
+   macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
    
    if(pnsmacoswindow)
    {

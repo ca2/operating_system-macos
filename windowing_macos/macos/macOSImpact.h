@@ -51,7 +51,8 @@
 }
 - (NSOpenGLContext*)openGLContext;
 - (void)present;
-- (id)initWithFrame:(NSRect)frame andWindow:(ns_acme_window*)pnsacmewindow;
+//- (id)initWithFrame:(NSRect)frame andWindow:(ns_acme_window*)pnsacmewindow;
+- (id)initWithFrame:(NSRect)frame andBridge:(::appkit::acme_window_bridge*)pacmewindowbridge;
 -(int) control_box_right_when_at_left;
 -(macOSControlBox*)control_box;
 -(void)window_did_become_key :(macOSWindow *) pmacoswindow withNotification:(NSNotification*) notification;

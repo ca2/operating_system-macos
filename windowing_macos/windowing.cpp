@@ -110,10 +110,10 @@ namespace windowing_macos
    }
 
 
-   void windowing::windowing_application_main_loop()
+   void windowing::run()
    {
     
-      ::appkit::acme::windowing::windowing::windowing_application_main_loop();
+      ::appkit::acme::windowing::windowing::run();
       
    }
 

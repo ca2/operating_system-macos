@@ -7,6 +7,8 @@
 #include "acme/nano/graphics/context.h"
 #include "acme/constant/id.h"
 #include "acme/handler/topic.h"
+#include "acme/nano/graphics/graphics.h"
+#include "acme/nano/nano.h"
 #include "acme/platform/application.h"
 #include "acme/platform/node.h"
 #include "acme/user/micro/elemental.h"
@@ -96,6 +98,8 @@ namespace appkit
       {
          
          ::acme::windowing::window::on_initialize_particle();
+         
+         nano()->graphics();
          
       }
       

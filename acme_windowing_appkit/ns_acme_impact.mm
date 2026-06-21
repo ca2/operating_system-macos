@@ -435,9 +435,9 @@ NSCursor * e_cursor_to_ns_cursor(::enum_cursor ecursor);
 
 #define WINDOW_FRAME_PADDING 32
 
-#define REDRAW_HINTING
+//#define REDRAW_HINTING
 //#undef REDRAW_HINTING
-#define REDRAW_HINTING1
+//#define REDRAW_HINTING1
 //#define REDRAW_HINTING2
 
 

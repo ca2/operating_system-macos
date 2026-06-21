@@ -117,7 +117,8 @@ virtual public ::appkit::acme::windowing::windowing
       void defer_create_windowing_application_delegate(::platform::application * papplication, ::application_menu * papplicationmenu, ::command_handler * pcommandhandler) override;
       
       
-      void windowing_application_main_loop() override;
+      //void windowing_application_main_loop() override;
+      void run() override;
       void windowing_post_quit() override;
       
       void set_dark_mode(bool bDarkMode) override;

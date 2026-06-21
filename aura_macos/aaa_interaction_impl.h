@@ -168,7 +168,7 @@ namespace aura_macos
 //      using ::user::interaction_impl::client_rectangle;
 //      virtual bool client_rectangle(RECTANGLE_I64 * lpRect) override;
 
-      //virtual double_point client_screen_top_left() override;
+      //virtual f64_point client_screen_top_left() override;
 //        virtual bool _001ClientToScreen(INT_RECTANGLE * lprect) override;
 //        virtual bool _001ClientToScreen(INT_POINT * lppoint) override;
 //        virtual bool _001ClientToScreen(RECTANGLE_I64 * lprect) override;

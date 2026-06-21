@@ -1,4 +1,5 @@
-default_aura_platform1
-default_aura_platform2
-default_aura_platform3
+default_acme_platform1
+default_acme_platform2
+default_acme_platform3
 operating_system-apple/acme_windowing_kit
+operating_system-macos/appkit

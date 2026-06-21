@@ -556,7 +556,10 @@ void macos_window::macos_window_redraw()
                     
                        [proundwindow->m_pnsacmeimpact setNeedsDisplay:TRUE];
                        
+                       proundwindow->m_pmacoswindow->set_last_present_time();
+                       
                     }
+      
    
                  });
       

@@ -219,7 +219,7 @@
 - (void) on_control_box_close:(id)sender
 {
    
-   auto pnsmacoswindow = (macOSWindow *) m_pmacosimpact->m_pnsacmewindow;
+   auto pnsmacoswindow = (__bridge macOSWindow *) m_pmacosimpact->m_pacmewindowbridgeImpact->m_pnsacmewindow;
 
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
      
@@ -238,7 +238,7 @@
 - (void) on_control_box_minimize:(id)sender
 {
    
-   auto pnsmacoswindow = (macOSWindow *) m_pmacosimpact->m_pnsacmewindow;
+   auto pnsmacoswindow = (__bridge macOSWindow *) m_pmacosimpact->m_pacmewindowbridgeImpact->m_pnsacmewindow;
 
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
      
@@ -257,7 +257,7 @@
 - (void) on_control_box_zoom:(id)sender
 {
    
-   auto pnsmacoswindow = (macOSWindow *) m_pmacosimpact->m_pnsacmewindow;
+   auto pnsmacoswindow = (__bridge macOSWindow *) m_pmacosimpact->m_pacmewindowbridgeImpact->m_pnsacmewindow;
 
    macos_window * p = pnsmacoswindow->m_pmacoswindow;
      

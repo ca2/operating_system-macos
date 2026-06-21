@@ -10,6 +10,7 @@
 #include "acme_windowing_appkit/_.h"
 #include "aura_macos/_.h"
 #include "acme/_operating_system.h"
+#include "core_graphics/_.h"
 
 
 #if defined(_WINDOWING_MACOS_LIBRARY)

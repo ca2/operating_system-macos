@@ -60,7 +60,7 @@ namespace windowing_macos
    window::window()
    {
       m_pacmewindowbridge = this;
-      m_pwindow = this;
+      m_pappkitacmewindowingwindow = this;
       m_bIsActiveCached = false;
       int iMouseMoveTriggerDistance = 10;
       m_mouserepositionthrottling.m_iMouseMoveSkipSquareDistance = iMouseMoveTriggerDistance * iMouseMoveTriggerDistance;
@@ -352,7 +352,7 @@ void window::main_post(const ::procedure & procedure)
       else
       {
       
-         rectangle = m_pwindow->m_pacmeuserinteraction->get_rectangle();
+         rectangle = m_pappkitacmewindowingwindow->m_pacmeuserinteraction->get_rectangle();
          
       }
    
@@ -716,7 +716,8 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
             
             macos_window_show();
             
-            if(activation.m_eactivation & ::user::e_activation_set_foreground)
+            //if(activation.m_eactivation & ::user::e_activation_set_foreground)
+            if(activation.is_activation_request())
             {
                
                macos_window_make_key_window_and_order_front();
@@ -984,7 +985,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
 
          //configure_window_unlocked();
          
-         if(m_pgraphicsthread->get_message_queue()->m_eflagElement & (1ll<<36))
+         if(m_pgraphicsthread->get_message_queue()->m_eflagElement & e_flag_debug0)
          {
             
             m_bTest123 = true;
@@ -1194,11 +1195,11 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
 
       ::i32_size sizeMin = imageBuffer2->size().minimum(sizeWindow);
       
-      ::double_rectangle rectangleSource(sizeMin);
+      ::f64_rectangle rectangleSource(sizeMin);
       
       ::image::image_source imagesource(imageBuffer2, rectangleSource);
       
-      ::double_rectangle rectangleTarget(sizeMin);
+      ::f64_rectangle rectangleTarget(sizeMin);
       
       ::image::image_drawing_options imagedrawingoptions(rectangleTarget);
        
@@ -1396,11 +1397,11 @@ pmessage->m_eusermessage = emessage
          
          if(iButton == 1)
          {
-            on_right_button_down( xHost, yHost, xAbsolute, yAbsolute);
+            on_right_button_down(::user::e_key_state_right_button,  xHost, yHost, xAbsolute, yAbsolute);
          }
          else
          {
-            on_left_button_down( xHost, yHost, xAbsolute, yAbsolute);
+            on_left_button_down(::user::e_key_state_left_button,  xHost, yHost, xAbsolute, yAbsolute);
 
          }
             
@@ -1428,7 +1429,7 @@ pmessage->m_eusermessage = emessage
 
                _NEW_MESSAGE(pactivate, ::message::activate, ::user::e_message_activate);
 
-               pactivate->m_wparam = make_unsigned_int(e_activate_click_active, 0);
+               pactivate->m_wparam = make_u32(e_activate_click_active, 0);
                pactivate->m_lparam = 0;
 
                //post_message(pactivate);
@@ -1501,11 +1502,11 @@ pmessage->m_eusermessage = emessage
          
          if(iButton == 1)
          {
-            on_right_button_up( xHost, yHost, xAbsolute, yAbsolute);
+            on_right_button_up( {}, xHost, yHost, xAbsolute, yAbsolute);
          }
          else
          {
-            on_left_button_up( xHost, yHost, xAbsolute, yAbsolute);
+            on_left_button_up({},  xHost, yHost, xAbsolute, yAbsolute);
 
          }
             
@@ -1617,7 +1618,7 @@ pmessage->m_eusermessage = emessage
       if(!puserinteraction)
       {
          
-         on_mouse_move( xHost, yHost, xAbsolute, yAbsolute);
+         on_mouse_move({}, xHost, yHost, xAbsolute, yAbsolute);
             
          return;
          
@@ -1739,14 +1740,14 @@ pmessage->m_eusermessage = emessage
       if(ulAppleMouseButton & 1)
       {
 
-         pmouse->m_ebuttonstate |= ::user::e_button_state_left;
+         pmouse->m_keystate.m_ekeystate |= ::user::e_key_state_left_button;
 
       }
 
       if(ulAppleMouseButton & 2)
       {
 
-         pmouse->m_ebuttonstate |= ::user::e_button_state_right;
+         pmouse->m_keystate.m_ekeystate |= ::user::e_key_state_right_button;
 
       }
       
@@ -1780,14 +1781,14 @@ pmessage->m_eusermessage = emessage
       if(ulAppleMouseButton & 1)
       {
 
-         pmouse->m_ebuttonstate |= ::user::e_button_state_left;
+         pmouse->m_keystate.m_ekeystate |= ::user::e_key_state_left_button;
 
       }
 
       if(ulAppleMouseButton & 2)
       {
 
-         pmouse->m_ebuttonstate |= ::user::e_button_state_right;
+         pmouse->m_keystate.m_ekeystate |= ::user::e_key_state_right_button;
 
       }
 //
@@ -2659,7 +2660,7 @@ pmessage->m_eusermessage = emessage
       if(puserinteraction->const_layout().window().is_screen_visible())
       {
 
-         puserinteraction->hide();
+         puserinteraction->display(e_display_none, {});
 
       }
       

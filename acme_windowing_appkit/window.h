@@ -194,11 +194,11 @@ class acme_window_bridge;
       
       void handle(::topic* ptopic, ::handler_context* pcontext) override;
       
-      virtual void macos_window_become_main();
-      virtual void macos_window_resign_main();
+      virtual void macos_window_become_main() override;
+      virtual void macos_window_resign_main() override;
       
-      virtual void macos_window_become_key();
-      virtual void macos_window_resign_key();
+      virtual void macos_window_become_key() override;
+      virtual void macos_window_resign_key() override;
 
       
       virtual void _on_layout(int x, int y, int w, int h);

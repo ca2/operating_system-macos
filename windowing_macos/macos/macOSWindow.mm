@@ -238,7 +238,7 @@ bool platform_application_is_swap_chain(::platform::application * papplication);
 	
    bounds.origin = NSZeroPoint;
 
-	macOSImpact * pnsmacosimpact = [[macOSImpact alloc] initWithFrame: bounds andWindow: self];
+	macOSImpact * pnsmacosimpact = [[macOSImpact alloc] initWithFrame: bounds andBridge: m_pacmewindowbridge];
    
    m_pnsacmeimpact = (ns_acme_impact *)pnsmacosimpact;
    
@@ -507,7 +507,7 @@ bool platform_application_is_swap_chain(::platform::application * papplication);
 
 
 
-int_bool EnableWindow(CGWindowID windowid, int_bool bEnable)
+i32_bool EnableWindow(CGWindowID windowid, i32_bool bEnable)
 {
    
    if(windowid == 0)
