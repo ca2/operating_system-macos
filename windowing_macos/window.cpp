@@ -313,7 +313,7 @@ void window::main_post(const ::procedure & procedure)
       auto puserinteraction = user_interaction();
       
 
-      if (puserinteraction->is_graphical())
+      if (puserinteraction && puserinteraction->is_graphical())
       {
 
          if (m_papplication->m_bGpu)
@@ -379,7 +379,7 @@ void window::main_post(const ::procedure & procedure)
       }
       
       
-      if (puserinteraction->is_graphical())
+      if (puserinteraction && puserinteraction->is_graphical())
       {
 
          if (m_papplication->m_bGpu)

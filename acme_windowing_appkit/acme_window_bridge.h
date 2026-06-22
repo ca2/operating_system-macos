@@ -38,8 +38,9 @@ class window;
 namespace appkit
 {
 
-class acme_window_bridge :
-virtual public ::apple_kit::acme_window_bridge
+   
+   class acme_window_bridge :
+      virtual public ::apple_kit::acme_window_bridge
 {
 public:
    
@@ -59,11 +60,13 @@ public:
    
    void set_ns_window_uptr(::uptr u);
    
-   void display() override;
+   void ns_show() override;
    
-   void hide() override;
+   void ns_hide() override;
    
    void do_tasks() override;
+   
+   void ns_redraw() override;
    
 //   virtual void discard_all_cursor_rectangles();
 //   virtual void add_cursor_rectangle(const ::i32_rectangle & r, ::enum_cursor ecursor);

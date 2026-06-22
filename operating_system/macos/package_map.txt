@@ -22,4 +22,4 @@ port/base/iconv=none
 audio-user/audio_mixer_user_base=none
 audio-user/audio_mixer_user=none
 operating_system-windows/nano_speech_sapi=none
-app-core/text_to_speech_sapi=none
+audio-text_to_speech/text_to_speech_sapi=none

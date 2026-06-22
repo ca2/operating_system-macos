@@ -203,13 +203,15 @@ namespace appkit
          
          CGRect cgrect;
          
-         auto rectangle = m_pacmeuserinteraction->get_rectangle();
+         auto rectangle = m_pacmeuserinteraction->initial_frame_rectangle();
          
          screen_coordinates_aware_copy(cgrect, rectangle);
          
          m_pacmewindowbridge->m_pappkitacmewindowingwindow = this;
          
          m_pacmewindowbridge->create_ns_acme_window(cgrect);
+         
+         m_pacmeuserinteraction->m_bWindowCreated = true;
          
          //nano_window_on_create();
          
@@ -297,7 +299,7 @@ namespace appkit
          if(iShow == ::lightui::e_SW_HIDE)
          {
             
-            m_pacmewindowbridge->hide();
+            m_pacmewindowbridge->ns_hide();
             
          }
          else
@@ -305,7 +307,27 @@ namespace appkit
             
             set_active_window();
             
-            m_pacmewindowbridge->display();
+            m_pacmewindowbridge->ns_show();
+            
+         }
+         
+      }
+      
+      void window::display(::e_display edisplay, const ::user::activation & useractivation)
+      {
+
+         if(edisplay == e_display_hide || edisplay == e_display_none)
+         {
+            
+            m_pacmewindowbridge->ns_hide();
+            
+         }
+         else
+         {
+            
+            set_active_window();
+            
+            m_pacmewindowbridge->ns_show();
             
          }
          
@@ -346,7 +368,7 @@ namespace appkit
             
          }
          
-         m_pacmewindowbridge->redraw();
+         m_pacmewindowbridge->ns_redraw();
          
       }
       

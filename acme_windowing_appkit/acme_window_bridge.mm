@@ -143,11 +143,11 @@ void acme_window_bridge::create_ns_acme_window(CGRect cgrect)
 }
 
 
-void acme_window_bridge::display()
+void acme_window_bridge::ns_show()
 {
    
    ns_main_post(^()
-                {
+   {
       
       auto pnsacmewindow =  (__bridge ns_acme_window *) m_pnsacmewindow;
       
@@ -203,11 +203,11 @@ void acme_window_bridge::display()
 }
 
 
-void acme_window_bridge::hide()
+void acme_window_bridge::ns_hide()
 {
    
-   ns_main_send(^()
-                {
+   ns_main_post(^()
+   {
       
       auto pnsacmewindow =  (__bridge ns_acme_window *) m_pnsacmewindow;
       
@@ -241,6 +241,28 @@ void acme_window_bridge::redraw()
    
 }
 
+
+void acme_window_bridge::ns_redraw()
+{
+   
+   if(!m_pnsacmewindow)
+   {
+      
+      return;
+      
+   }
+      
+   ns_main_post( ^()
+                {
+      
+      
+      auto pnsacmewindow =  (__bridge ns_acme_window *) m_pnsacmewindow;
+      
+      [ pnsacmewindow setViewsNeedDisplay:YES];
+      
+   });
+   
+}
 
 //void acme_window_bridge::stop()
 //{

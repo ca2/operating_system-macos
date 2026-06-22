@@ -260,7 +260,7 @@ bool windowing::handle_messages()
 void  windowing::run()
 {
    
-   system()->prepare_application();
+   //system()->prepare_application();
    
    //apple_defer_nano_application_create(system());
    
