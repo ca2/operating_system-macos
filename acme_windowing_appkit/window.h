@@ -185,7 +185,7 @@ class acme_window_bridge;
 
       //virtual void _wm_nodecorations(int iMap);
       
-      ::payload wait_for_dialog_result(const class ::time & timeTimeout = ::time::infinity()) override;
+      ::payload wait_for_dialog_response(const class ::time & timeTimeout = ::time::infinity()) override;
       
 //      ::i32_size get_main_screen_size() override;
       

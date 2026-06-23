@@ -472,7 +472,7 @@ namespace appkit
       //   }
       
       
-      ::payload window::wait_for_dialog_result(const class ::time & timeTimeout)
+      ::payload window::wait_for_dialog_response(const class ::time & timeTimeout)
       {
          
          m_pacmewindowbridge->_run_modal_loop();
@@ -484,7 +484,7 @@ namespace appkit
          if (pelemental)
          {
             
-            return pelemental->get_dialog_result();
+            return pelemental->get_dialog_response();
             
          }
          
