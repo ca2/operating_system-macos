@@ -112,16 +112,131 @@ namespace appkit
       //   }
       
       
-      void window::_draw(::core_graphics::cg_context * pcgcontext, const ::i32_rectangle & rectangle)
+      void window::macos_window_draw(CGContextRef cgc, CGRect cgrect)
       {
+
+         ::i32_rectangle rectangle;
          
-         {
+         ::copy(rectangle, cgrect);
+         
+         
+         m_sizeWindow.cx = cgrect.size.width;
+         m_sizeWindow.cy = cgrect.size.height;
+         //defer_construct_newø(m_pcgcontext);
+         
+         //m_pcgcontext->m_cgcontext.m_u = (::uptr) cgc;
+         
+//         m_pappkitacmewindowingwindow->_draw(m_pcgcontext, rectangle);
+//
+//         auto g = createø < ::draw2d::graphics >();
+//
+//         g->attach(cgc);
+//         
+//         //auto rectClient = puserinteraction->client_rectangle();
+//
+//         g->set_alpha_mode(::draw2d::e_alpha_mode_set);
+//
+//         synchronous_lock slGraphics(pbuffer->synchronization());
+//         
+//         auto pitem = pbuffer->get_screen_item();
+//         
+//         synchronous_lock sl1(pitem->m_pmutex);
+//
+//         ::image::image_pointer & imageBuffer2 = pitem->m_pimage2;
+//
+//         if (!imageBuffer2.ok())
+//         {
+//
+//            output_debug_string("NOT DRAWING? <<---- search and bp here !imageBuffer2 ");
+//
+//            return;
+//
+//         }
+//         
+//         slGraphics.unlock();
+//
+//      #ifdef EXTRALOG
+//
+//         if(strSize.has_character())
+//         {
+//
+//            s_iLastExact = -1;
+//
+//         }
+//
+//         if(s_iLastExact > 0)
+//         {
+//
+//
+//            if(s_iLastExact % 10 == 0)
+//            {
+//
+//               str = "\n.";
+//
+//            }
+//            else
+//            {
+//
+//               str = ".";
+//
+//            }
+//            
+//            strFormat.Format("%d", iAge);
+//
+//            str += strFormat;
+//            
+//            output_debug_string(str);
+//            
+//         }
+//         else
+//         {
+//            
+//            INFO(str);
+//            
+//         }
+//         
+//      #endif
+//
+//         ::i32_size sizeMin = imageBuffer2->size().minimum(sizeWindow);
+//         
+//         ::f64_rectangle rectangleSource(sizeMin);
+//         
+//         ::image::image_source imagesource(imageBuffer2, rectangleSource);
+//         
+//         ::f64_rectangle rectangleTarget(sizeMin);
+//         
+//         ::image::image_drawing_options imagedrawingoptions(rectangleTarget);
+//          
+//         if(m_dOpacity < 1.0)
+//         {
+//             
+//             imagedrawingoptions.m_opacity = m_dOpacity;
+//             
+//         }
+//         
+//         ::image::image_drawing imagedrawing(imagedrawingoptions, imagesource);
+//          
+//          g->set_alpha_mode(draw2d::e_alpha_mode_set);
+//
+//         g->draw(imagedrawing);
+//         
+//         m_bPendingRedraw = false;
+//         
+//         m_timeLastRedraw.Now();
+//
+//      }
+//
+//      
+//      void window::_draw(::core_graphics::cg_context * pcgcontext, const ::i32_rectangle & rectangle)
+//      {
+//         
+//         {
             
             //nano()->graphics();
             
             constructø(m_pnanographicscontext);
             
-            m_pnanographicscontext->attach((CGContextRef) pcgcontext->m_cgcontext.m_u, m_sizeWindow, 0);
+            m_pnanographicscontext->attach(cgc, m_sizeWindow, 0);
             
             ::pointer < ::micro::elemental > pelemental;
             
@@ -136,7 +251,7 @@ namespace appkit
                
             }
             
-         }
+         //}
          //m_pinterface->draw(pnanodevice);
          
       }
@@ -209,7 +324,11 @@ namespace appkit
          
          m_pacmewindowbridge->m_pappkitacmewindowingwindow = this;
          
-         m_pacmewindowbridge->create_ns_acme_window(cgrect);
+         m_pacmewindowbridge->m_papplekitacmewindowingwindow = this;
+         
+         bool bMoreNative = true;
+         
+         m_pacmewindowbridge->create_ns_acme_window(cgrect, bMoreNative);
          
          m_pacmeuserinteraction->m_bWindowCreated = true;
          
@@ -573,7 +692,8 @@ namespace appkit
       void window::macos_window_become_main()
       {
          
-         application()->application_menu_update();
+         // The application delegate owns NSApp.mainMenu. Replacing it from
+         // windowDidBecomeMain can race AppKit's menu population.
          
       }
       
@@ -683,6 +803,5 @@ namespace appkit
 
 
 } // namespace appkit
-
 
 

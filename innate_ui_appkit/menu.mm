@@ -133,6 +133,22 @@ namespace innate_ui_appkit
    void menu::__track_popup_menu()
    {
       NSMenu * menu = (__bridge NSMenu *) m_pNSMenu;
+
+      if (!menu)
+      {
+         return;
+      }
+
+      // AppKit does not permit the menu-bar root to be populated or tracked as
+      // a popup menu. Keep this boundary explicit because a popup requested
+      // while a temporary ca2 window is closing can otherwise reach this path
+      // with the currently installed main-menu object.
+      if (menu == NSApp.mainMenu)
+      {
+         NSLog(@"Ignoring an attempt to track NSApp.mainMenu as a popup menu.");
+         return;
+      }
+
       NSPoint point = [NSEvent mouseLocation];
       [menu popUpMenuPositioningItem:nil atLocation:point inView:nil];
    }

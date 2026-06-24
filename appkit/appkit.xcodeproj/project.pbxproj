@@ -19,6 +19,7 @@
 		9A0B957B2FB3139100EEAAE1 /* ns_window.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A0B95782FB3139100EEAAE1 /* ns_window.h */; };
 		9A0B957C2FB3139100EEAAE1 /* ns_window.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B957A2FB3139100EEAAE1 /* ns_window.mm */; };
 		9A0B957D2FB3139100EEAAE1 /* ns_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B95792FB3139100EEAAE1 /* ns_window.cpp */; };
+		9A6828342FEB153D005AC814 /* libacme_windowing_kit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A68282D2FEB1501005AC814 /* libacme_windowing_kit.dylib */; };
 		9A6A2C092FB3D2B4004C0ACF /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6A2C082FB3D2B4004C0ACF /* libacme.dylib */; };
 		9A9564BB2FB421FA0001D319 /* appkit.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A9564B82FB421F40001D319 /* appkit.mm */; };
 		9A96BEC62FB93F08006EFDF1 /* NSProgressIndicator+CppModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A96BEC52FB93EFC006EFDF1 /* NSProgressIndicator+CppModel.h */; };
@@ -26,6 +27,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9A68282C2FEB1501005AC814 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A05434B2FEB14E200234DB9 /* acme_windowing_kit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9AC3F2A42CF81EBF0061DCC0;
+			remoteInfo = acme_windowing_kit;
+		};
+		9A6828322FEB1516005AC814 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A05434B2FEB14E200234DB9 /* acme_windowing_kit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AC3F2A32CF81EBF0061DCC0;
+			remoteInfo = acme_windowing_kit;
+		};
 		9A6A2C062FB3D2A9004C0ACF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A09CE132FB3D23F00E22155 /* core_graphics.xcodeproj */;
@@ -36,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A05434B2FEB14E200234DB9 /* acme_windowing_kit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = acme_windowing_kit.xcodeproj; path = "../../operating_system-apple/acme_windowing_kit/acme_windowing_kit.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		9A09CD712FB3214D00E22155 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		9A09CD732FB324F500E22155 /* windowing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = windowing.h; sourceTree = "<group>"; };
 		9A09CD782FB334E000E22155 /* appkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = appkit.h; sourceTree = "<group>"; };
@@ -69,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A6828342FEB153D005AC814 /* libacme_windowing_kit.dylib in Frameworks */,
 				9A6A2C092FB3D2B4004C0ACF /* libacme.dylib in Frameworks */,
 				9A09CE0F2FB3D1EC00E22155 /* libcore_graphics.dylib in Frameworks */,
 				9A09CD722FB3214D00E22155 /* AppKit.framework in Frameworks */,
@@ -91,6 +108,7 @@
 		9A0B95582FB310D900EEAAE1 = {
 			isa = PBXGroup;
 			children = (
+				9A05434B2FEB14E200234DB9 /* acme_windowing_kit.xcodeproj */,
 				9A09CE132FB3D23F00E22155 /* core_graphics.xcodeproj */,
 				9A0B95702FB3131F00EEAAE1 /* appkit */,
 				9A09CD6D2FB3212800E22155 /* Frameworks */,
@@ -134,6 +152,14 @@
 			name = appkit;
 			sourceTree = "<group>";
 		};
+		9A6828282FEB14FF005AC814 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A68282D2FEB1501005AC814 /* libacme_windowing_kit.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9A6A2C012FB3D2A1004C0ACF /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +198,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9A6828332FEB1516005AC814 /* PBXTargetDependency */,
 				9A6A2C072FB3D2A9004C0ACF /* PBXTargetDependency */,
 			);
 			name = appkit;
@@ -209,6 +236,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 9A6828282FEB14FF005AC814 /* Products */;
+					ProjectRef = 9A05434B2FEB14E200234DB9 /* acme_windowing_kit.xcodeproj */;
+				},
+				{
 					ProductGroup = 9A6A2C012FB3D2A1004C0ACF /* Products */;
 					ProjectRef = 9A09CE132FB3D23F00E22155 /* core_graphics.xcodeproj */;
 				},
@@ -219,6 +250,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9A68282D2FEB1501005AC814 /* libacme_windowing_kit.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libacme_windowing_kit.dylib;
+			remoteRef = 9A68282C2FEB1501005AC814 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		9A3388002FE5169000C0ED37 /* ShellScript */ = {
@@ -261,6 +302,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9A6828332FEB1516005AC814 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = acme_windowing_kit;
+			targetProxy = 9A6828322FEB1516005AC814 /* PBXContainerItemProxy */;
+		};
 		9A6A2C072FB3D2A9004C0ACF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = core_graphics;

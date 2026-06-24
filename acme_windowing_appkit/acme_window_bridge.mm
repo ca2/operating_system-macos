@@ -119,18 +119,29 @@ acme_window_bridge::~acme_window_bridge()
 //   
 //}
 
-void acme_window_bridge::create_ns_acme_window(CGRect cgrect)
+void acme_window_bridge::create_ns_acme_window(CGRect cgrect, bool bMoreNative)
 {
    
    ns_main_send(^()
                 {
       
       auto pnsacmewindow=[ [ ns_acme_window alloc ] initWithContentRect: cgrect
-                          styleMask : 0 backing:NSBackingStoreBuffered  defer:YES moreNative:false];
+                          styleMask : 0 backing:NSBackingStoreBuffered  defer:YES moreNative:bMoreNative];
       
       m_pnsacmewindow = (__bridge_retained CFTypeRef) pnsacmewindow;
       
       [ pnsacmewindow setBridge:this ];
+      
+      [ pnsacmewindow create_impact ];
+      
+//      if(!m_bOnCreate)
+//      {
+//         
+//         m_bOnCreate = true;
+//         
+//         on_create();
+//         
+//      }
       
       on_move(cgrect.origin.x, cgrect.origin.y);
       
@@ -229,15 +240,8 @@ void acme_window_bridge::ns_hide()
 
 void acme_window_bridge::redraw()
 {
-   
-   if(m_pnsacmewindow)
-   {
-      
-      auto pnsacmewindow =  (__bridge ns_acme_window *) m_pnsacmewindow;
-      
-      [ pnsacmewindow setViewsNeedDisplay:YES];
-      
-   }
+
+   ns_redraw();
    
 }
 
@@ -255,10 +259,25 @@ void acme_window_bridge::ns_redraw()
    ns_main_post( ^()
                 {
       
-      
       auto pnsacmewindow =  (__bridge ns_acme_window *) m_pnsacmewindow;
+
+      if(!pnsacmewindow)
+      {
+
+         return;
+
+      }
+
+      NSView * pnsimpact = [pnsacmewindow contentView];
+
+      if(!pnsimpact)
+      {
+
+         return;
+
+      }
       
-      [ pnsacmewindow setViewsNeedDisplay:YES];
+      [pnsimpact setNeedsDisplay:YES];
       
    });
    
@@ -560,4 +579,3 @@ bool apple_is_action_key(int i)
    return false;
 
 }
-

@@ -245,7 +245,7 @@ NSCursor * e_cursor_to_ns_cursor(::enum_cursor ecursor);
    
    int yHost = pointHost.y;
    
-   NSLog(@"mouse move %d, %d", xHost, yHost);
+   //NSLog(@"mouse move %d, %d", xHost, yHost);
 
    NSPoint pointAbsolute = [self screenLocationEx: event];
    
@@ -498,7 +498,7 @@ NSCursor * e_cursor_to_ns_cursor(::enum_cursor ecursor);
    //auto rectFrame = [self frame];
    
    //p->_on_draw_frame(cgc, rectFrame.size);
-   p->_on_draw_frame(cgc, rect);
+   p->macos_window_draw(cgc, rect);
    
 #ifdef REDRAW_HINTING
    
@@ -866,6 +866,7 @@ m_f = true; \
 
 - (void)viewWillMoveToWindow:(NSWindow *)newWindow
 {
+   
    
    if(!m_bOnCreate)
    {

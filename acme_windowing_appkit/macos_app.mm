@@ -149,18 +149,38 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
 - (id)initWithApplicationMenu:(::application_menu *) papplicationmenu andCommandHandler:(::command_handler *)pcommandhandler
 {
 
+   self = [super init];
+   
+   if(!self)
+   {
+      
+      return nil;
+      
+   }
+   
    [NSApplication sharedApplication];
 
-   //self = [super init];
-   
-
-   
    m_windowcontrollera = [ [ NSMutableArray alloc ] init ];
+   m_bApplicationMenuUpdatePending = NO;
+   m_bApplicationDidFinishLaunching = NO;
+   m_iMenuTrackingCount = 0;
    
    [[[NSWorkspace sharedWorkspace] notificationCenter]
        addObserver:self
        selector:@selector(applicationActivity:)
        name:NSWorkspaceActiveSpaceDidChangeNotification
+       object:nil];
+   
+   [[NSNotificationCenter defaultCenter]
+       addObserver:self
+       selector:@selector(applicationMenuDidBeginTracking:)
+       name:NSMenuDidBeginTrackingNotification
+       object:nil];
+   
+   [[NSNotificationCenter defaultCenter]
+       addObserver:self
+       selector:@selector(applicationMenuDidEndTracking:)
+       name:NSMenuDidEndTrackingNotification
        object:nil];
 
    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
@@ -175,8 +195,6 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
    m_papplicationmenu = papplicationmenu;
    
    m_pcommandhandler = pcommandhandler;
-   
-   [self application_menu_update];
 
    
    //[ self application_menu_update ];
@@ -231,6 +249,8 @@ void acme_defer_create_windowing_application_delegate(::platform::application * 
 -(void)dealloc
 {
    
+   [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self];
+   [[NSNotificationCenter defaultCenter] removeObserver:self];
    
 }
 
@@ -848,8 +868,12 @@ parentWindow: (NSWindow *) pnswindowParent andCallback: (const ::function< void(
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
    
-   //[self application_menu_update];
+   m_bApplicationDidFinishLaunching = YES;
+   m_bApplicationMenuUpdatePending = NO;
    
+   // The complete main menu is installed synchronously before -run. Do not
+   // replace it from this callback because AppKit may still be unwinding its
+   // initial menu population.
    node_did_finish_launching(application_system(m_papplication));
 
    
@@ -1143,7 +1167,7 @@ parentWindow: (NSWindow *) pnswindowParent andCallback: (const ::function< void(
    if(l == id_application_menu_update)
    {
       
-      [self application_menu_update ];
+      [self setApplicationMenuNeedsUpdate];
       
    }
    
@@ -1151,18 +1175,155 @@ parentWindow: (NSWindow *) pnswindowParent andCallback: (const ::function< void(
 
 
 
+-(void)setApplicationMenuNeedsUpdate
+{
+   
+   if(![NSThread isMainThread])
+   {
+      
+      dispatch_async(dispatch_get_main_queue(), ^{
+         
+         [self setApplicationMenuNeedsUpdate];
+         
+      });
+      
+      return;
+      
+   }
+   
+   if(![NSApp isRunning])
+   {
+      
+      m_bApplicationMenuUpdatePending = YES;
+      
+      return;
+      
+   }
+   
+   if(m_bApplicationMenuUpdatePending)
+   {
+      
+      return;
+      
+   }
+   
+   m_bApplicationMenuUpdatePending = YES;
+   
+   dispatch_async(dispatch_get_main_queue(), ^{
+      
+      if(!m_bApplicationMenuUpdatePending || ![NSApp isRunning])
+      {
+         
+         return;
+         
+      }
+      
+      if(m_iMenuTrackingCount > 0)
+      {
+         
+         return;
+         
+      }
+      
+      m_bApplicationMenuUpdatePending = NO;
+      
+      [self application_menu_update];
+      
+   });
+   
+}
+
+
+-(void)applicationMenuDidBeginTracking:(NSNotification *)notification
+{
+   
+   m_iMenuTrackingCount++;
+   
+}
+
+
+-(void)applicationMenuDidEndTracking:(NSNotification *)notification
+{
+   
+   if(m_iMenuTrackingCount > 0)
+   {
+      
+      m_iMenuTrackingCount--;
+      
+   }
+   
+   if(m_iMenuTrackingCount == 0 && m_bApplicationMenuUpdatePending)
+   {
+      
+      m_bApplicationMenuUpdatePending = NO;
+      
+      [self setApplicationMenuNeedsUpdate];
+      
+   }
+   
+}
+
+
 -(void)application_menu_update
 {
    
-   //m_menu = [ NSApp mainMenu ];
-   
-   auto m = [[NSMenu alloc] init];
-   
-   [ m removeAllItems ];
-   
-   ns_create_menu(m, m_papplicationmenu, true);
+   if(!m_bApplicationDidFinishLaunching)
+   {
       
-   [ NSApp setMainMenu: m];
+      m_bApplicationMenuUpdatePending = YES;
+      
+      return;
+      
+   }
+   
+   if(![NSThread isMainThread])
+   {
+      
+      [self setApplicationMenuNeedsUpdate];
+      
+      return;
+      
+   }
+   
+   if(![NSApp isRunning])
+   {
+      
+      m_bApplicationMenuUpdatePending = YES;
+      
+      return;
+      
+   }
+   
+   if(m_iMenuTrackingCount > 0)
+   {
+      
+      m_bApplicationMenuUpdatePending = YES;
+      
+      return;
+      
+   }
+   
+   if(m_papplicationmenu == nullptr)
+   {
+      
+      return;
+      
+   }
+   
+   if(m_papplicationmenu->is_empty())
+   {
+      
+      return;
+      
+   }
+   
+   NSMenu * menuReplacement = [[NSMenu alloc] initWithTitle:@""];
+   
+   ns_create_menu(menuReplacement, m_papplicationmenu, true);
+   
+   m_menu = menuReplacement;
+   
+   [NSApp setMainMenu:menuReplacement];
    
 //   m_menu = [[NSMenu alloc] initWithTitle:@"menubar_menu"];
 //   m_menuitema = [[NSMutableArray alloc] init];
@@ -1970,9 +2131,28 @@ bool ns_app_is_running()
 void ns_app_run()
 {
    
+   NSApplication * application = [NSApplication sharedApplication];
+   
+   // This application has no main nib or storyboard. Install the complete menu
+   // synchronously before entering -run. Replacing it from a launch callback can
+   // collide with AppKit's initial menu population.
+   macos_app * delegate = (macos_app *)application.delegate;
+   
+   if(delegate != nil &&
+      delegate->m_papplicationmenu != nullptr &&
+      delegate->m_papplicationmenu->has_element())
+   {
+      
+      NSMenu * mainMenu = ns_create_menu(delegate->m_papplicationmenu, true);
+      delegate->m_menu = mainMenu;
+      delegate->m_bApplicationMenuUpdatePending = NO;
+      [application setMainMenu:mainMenu];
+      
+   }
+   
    ns_app_set_running(true);
    
-   [ [ NSApplication sharedApplication ] run ];
+   [application run];
    
    ns_app_set_running(false);
    
@@ -2041,6 +2221,13 @@ void ns_app_do_tasks()
 NSMenu * ns_create_menu(::application_menu * papplicationmenu, bool bMainMenu)
 {
    
+   if(papplicationmenu == nullptr)
+   {
+      
+      return nil;
+      
+   }
+   
    NSMenu * menu = nil;
    
    if(papplicationmenu->m_strName.has_character())
@@ -2052,7 +2239,7 @@ NSMenu * ns_create_menu(::application_menu * papplicationmenu, bool bMainMenu)
    else
    {
       
-      menu = [ NSMenu alloc ];
+      menu = [[NSMenu alloc] initWithTitle:@""];
       
    }
    
@@ -2066,6 +2253,13 @@ NSMenu * ns_create_menu(::application_menu * papplicationmenu, bool bMainMenu)
 void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool bMainMenu)
 {
    
+   if(menu == nil || papplicationmenu == nullptr)
+   {
+      
+      return;
+      
+   }
+   
 //   if(bMainMenu)
 //   {
 //
@@ -2076,18 +2270,25 @@ void ns_create_menu(NSMenu * menu, ::application_menu * papplicationmenu, bool b
    for(auto pitem : *papplicationmenu)
    {
       
+      if(!pitem)
+      {
+         
+         continue;
+         
+      }
+      
       NSMenuItem * menuitem = nil;
       
       if(pitem->is_popup())
       {
          
-         menuitem = [ NSMenuItem alloc ];
+         menuitem = [[NSMenuItem alloc] initWithTitle:__nsstring(pitem->m_strName)
+                                                action:nil
+                                         keyEquivalent:@""];
          
          id menuSub = ns_create_menu(pitem, false);
        
-         [ menuSub setDelegate: [ [NSApplication sharedApplication] delegate ] ];
-         
-         [ menuitem setSubmenu: menuSub];
+         [menuitem setSubmenu:menuSub];
 
       }
       else if(pitem->is_separator())
@@ -2181,5 +2382,3 @@ void ns_application_handle(long long l, void * p)
    });
    
 }
-
-

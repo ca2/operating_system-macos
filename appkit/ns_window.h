@@ -9,7 +9,7 @@
 #pragma once
 
 
-#include "acme/windowing/window.h"
+#include "operating_system-apple/acme_windowing_kit/window.h"
 #include "acme/operating_system/macos/window.h"
 
 
@@ -20,7 +20,7 @@ namespace appkit
 
 
    class CLASS_DECL_APPKIT ns_window :
-      virtual public ::acme::windowing::window
+      virtual public ::apple_kit::acme::windowing::window
    {
    public:
       

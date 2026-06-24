@@ -125,7 +125,8 @@ class acme_window_bridge;
 
       virtual bool message_loop_step();
 
-      virtual void _draw(::core_graphics::cg_context * pcgcontext, const ::i32_rectangle & rectangle);
+      //virtual void _draw(::core_graphics::cg_context * pcgcontext, const ::i32_rectangle & rectangle);
+      void macos_window_draw(CGContextRef cgcontextref, CGRect cgrect) override;
 
       //virtual void on_draw(::nano::graphics::device * pnanodevice);
 

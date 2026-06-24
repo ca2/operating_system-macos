@@ -33,7 +33,7 @@ public:
    virtual void macos_window_add_ref() = 0;
    virtual void macos_window_dec_ref() = 0;
    
-   virtual void macos_window_draw(CGContextRef cgc, CGSize sizeWindow) = 0;
+   virtual void macos_window_draw(CGContextRef cgc, CGRect rect) = 0;
    virtual void macos_window_mouse_down(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute) = 0;
    virtual void macos_window_mouse_up(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute) = 0;
    virtual void macos_window_mouse_repositioned(double xHost, double yHost, double xAbsolute, double yAbsolutey, unsigned long ulAppleMouseButton) = 0;
@@ -47,8 +47,8 @@ public:
    
    virtual void macos_window_on_create() = 0;
    
-   virtual void macos_window_resized(CGRect i32_rectangle) = 0;
-   virtual void macos_window_repositioned(CGPoint i32_point) = 0;
+   //virtual void macos_window_resized(CGRect i32_rectangle) = 0;
+   //virtual void macos_window_repositioned(CGPoint i32_point) = 0;
    
    virtual void macos_window_iconified() = 0;
    virtual void macos_window_deiconified() = 0;

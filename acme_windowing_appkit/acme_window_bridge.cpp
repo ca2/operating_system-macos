@@ -121,22 +121,22 @@ void acme_window_bridge::on_char(int iChar)
 }
 
 
-void acme_window_bridge::_on_draw_frame(CGContextRef cg, CGRect rect)
-{
-   
-   //::pointer<quartz2d::nano::graphics::device>pnanodevice = ::place(new quartz2d::nano::graphics::device(cg));
-   
-   ::i32_rectangle rectangle;
-   
-   ::copy(rectangle, rect);
-   
-   defer_construct_newø(m_pcgcontext);
-   
-   m_pcgcontext->m_cgcontext.m_u = (::uptr) cg;
-   
-   m_pappkitacmewindowingwindow->_draw(m_pcgcontext, rectangle);
-   
-}
+//void acme_window_bridge::_on_draw_frame(CGContextRef cg, CGRect rect)
+//{
+//   
+//   //::pointer<quartz2d::nano::graphics::device>pnanodevice = ::place(new quartz2d::nano::graphics::device(cg));
+//   
+//   ::i32_rectangle rectangle;
+//   
+//   ::copy(rectangle, rect);
+//   
+//   defer_construct_newø(m_pcgcontext);
+//   
+//   m_pcgcontext->m_cgcontext.m_u = (::uptr) cg;
+//   
+//   m_pappkitacmewindowingwindow->_draw(m_pcgcontext, rectangle);
+//   
+//}
 
 
 void acme_window_bridge::on_move(int x, int y)
@@ -144,7 +144,7 @@ void acme_window_bridge::on_move(int x, int y)
    
    //m_pappkitacmewindowingwindow->_on_layout(x, y, w, h);
    
-   //m_pappkitacmewindowingwindow->on_move(x, y);
+   m_pappkitacmewindowingwindow->on_window_position({x, y});
    
 }
 
@@ -154,7 +154,7 @@ void acme_window_bridge::on_size(int w, int h)
    
    //m_pappkitacmewindowingwindow->_on_layout(x, y, w, h);
    
-   //m_pappkitacmewindowingwindow->on_size(w, h);
+   m_pappkitacmewindowingwindow->on_window_size({w, h});
    
 }
 

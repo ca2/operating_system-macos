@@ -410,7 +410,10 @@ void set_apex_system_as_thread();
 -(NSMenu *) applicationDockMenu:(NSApplication*)sender
 {
 
-   return m_menu;
+   // The Dock menu must be a distinct popup menu. m_menu is NSApp.mainMenu,
+   // and returning it here makes AppKit try to populate the menu-bar root as
+   // a popup while refreshing persistent Dock UI.
+   return nil;
    
 }
 //
@@ -1071,7 +1074,6 @@ void aura_defer_create_windowing_application_delegate(::platform::application * 
 //
 //
 //
-
 
 
 

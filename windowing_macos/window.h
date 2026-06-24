@@ -135,7 +135,7 @@ namespace windowing_macos
       ::string get_window_text() override;
       
 
-      virtual void macos_window_draw(CGContextRef cgc, CGSize sizeWindow) override;
+      virtual void macos_window_draw(CGContextRef cgc, CGRect rect) override;
       virtual void macos_window_mouse_down(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute) override;
       virtual void macos_window_mouse_up(int iButton, double xHost, double yHost, double xAbsolute, double yAbsolute) override;
       virtual void macos_window_mouse_repositioned(double xHost, double yHost, double xAbsolute, double yAbsolute, unsigned long ulAppleMouseButton) override;
@@ -162,8 +162,8 @@ namespace windowing_macos
       void profiling_on_end_draw_rectangle() override;
 
       
-      virtual void macos_window_resized(CGRect i32_rectangle) override;
-      virtual void macos_window_repositioned(CGPoint i32_point) override;
+      virtual void on_size(int cx, int cy) override;
+      virtual void on_move(int x, int y) override;
       virtual void macos_window_iconified() override;
       virtual void macos_window_deiconified() override;
 

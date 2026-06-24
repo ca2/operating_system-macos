@@ -9,7 +9,8 @@
 #include "icon.h"
 #include "window.h"
 #include "still.h"
-
+#include "__image_view.h"
+#include "__text_field.h"
 //
 //
 //@interface XYZTextField: NSTextField
@@ -75,6 +76,109 @@ namespace innate_ui_appkit
    //
    // }
 
+void still::__create_icon()
+{
+
+   //createø();
+   // m_hwnd = CreateWindowW(_get_class_name(), L"", WS_DLGFRAME | WS_CAPTION | WS_POPUPWINDOW,
+   //         CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, (HINSTANCE) ::platform::get()->m_hinstanceThis,
+   //         nullptr);
+
+   // m_pgtkwidget = gtk_dialog_new_with_buttons("Custom Dialog",
+   //                                              NULL,
+   //                                              GTK_DIALOG_DESTROY_WITH_PARENT,
+   //                                              NULL);
+
+   
+//      NSRect frame = NSMakeRect(0, 0, 300, 150);
+//            NSWindow *window = [[NSWindow alloc] initWithContentRect:frame
+//                                                           styleMask:(NSWindowStyleMaskTitled | NSWindowStyleMaskClosable)
+//                                                             backing:NSBackingStoreBuffered
+//                                                               defer:NO];
+//            [window setTitle:@"Custom Dialog"];
+//
+//            // Create the label
+//            NSTextField *label = [[NSTextField alloc] initWithFrame:NSMakeRect(100, 80, 200, 24)];
+//            [label setStringValue:@"This is a custom message"];
+//            [label setBezeled:NO];
+//            [label setDrawsBackground:NO];
+//            [label setEditable:NO];
+//            [label setSelectable:NO];
+//            [[window contentView] addSubview:label];
+//
+//            // Create the button
+//            NSButton *button = [[NSButton alloc] initWithFrame:NSMakeRect(110, 20, 80, 24)];
+//            [button setTitle:@"OK"];
+//            [button setTarget:window]; // Close window when clicked
+//            [button setAction:@selector(close)];
+//            [[window contentView] addSubview:button];
+//
+//            // Add an icon
+//            NSImageView *iconView = [[NSImageView alloc] initWithFrame:NSMakeRect(20, 60, 64, 64)];
+//            NSImage *icon = [NSImage imageNamed:NSImageNameCaution]; // Change to your preferred icon
+//            [iconView setImage:icon];
+//            [[window contentView] addSubview:iconView];
+//
+//            // Center the window on the screen
+//            [window center];
+//
+//            // Show the window without blocking other UI interactions
+//            [window makeKeyAndOrderFront:nil];
+//
+//            // Ensure the application stays running while the window is open
+//            [NSApp activateIgnoringOtherApps:YES];
+//
+//      m_pqwidget = new QDialog();
+   ::pointer < ::innate_ui_appkit::window > pappkitwindowParent = m_pwindowParent;
+
+//   if(m_bIcon)
+   {
+   //   m_p
+      construct_newø(m_pimageviewOwned);
+      m_pimageviewOwned->m_pstillOwner = this;
+      m_pstillOwned = m_pimageviewOwned;
+//          NSImageView *iconView = [[NSImageView alloc] initWithFrame:NSMakeRect(20, 60, 64, 64)];
+//         m_pnsview = iconView;
+      m_pimageviewOwned->__create_icon();
+      auto pnsimageview = (__bridge  NSImageView *)m_pimageviewOwned->m_pNSImageView;
+
+      [[pappkitwindowParent->m_pnswindow contentView]addSubview:pnsimageview];
+
+   }
+//   else
+//   {
+//      construct_newø(m_ptextfield);
+////         m_pnsview = label;
+//      
+//      m_ptextfield->__create_still();
+//      
+//      auto pnstextfield = (__bridge  NSTextField *)m_ptextfield->m_pNSTextField;
+//
+//      [[pappkitwindowParent->m_pnswindow contentView]addSubview:pnstextfield];
+//
+//   }
+//   
+//   
+//  
+////
+////      if (m_pNSWindow)
+////      {
+////
+////         system()->innate_ui()->add_top_level_window(this);
+////
+////      }
+//
+//   //m_pgtkwidgetFixed = gtk_fixed_new();
+//
+//   //gtk_window_set_child(GTK_WINDOW(m_pgtkwidget), m_pgtkwidgetFixed);
+//   //gtk_widget_set_parent(m_pgtkwidget, nullptr);
+//   ///GtkWidget *content_area = gtk_dialog_get_content_area(GTK_DIALOG(m_pgtkwidget));
+//   //m_fixed = gtk_fixed_new();
+//   //gtk_box_append(content_area, m_fixed);
+
+}
+
+
    void still::__create_still()
    {
 
@@ -128,70 +232,76 @@ namespace innate_ui_appkit
 //            [NSApp activateIgnoringOtherApps:YES];
 //
 //      m_pqwidget = new QDialog();
-
-      if(m_bIcon)
-      {
-         
-          NSImageView *iconView = [[NSImageView alloc] initWithFrame:NSMakeRect(20, 60, 64, 64)];
-         m_pnsview = iconView;
-      }
-      else
-      {
-         NSTextField *label = [[NSTextField alloc] initWithFrame:NSMakeRect(100, 80, 200, 24)];
-         [label setBezeled:NO];
-         [label setDrawsBackground:NO];
-         [label setEditable:NO];
-         //[label setSelectable:NO];
-         
-         m_pnsview = label;
-         
-      }
-      
-      
       ::pointer < ::innate_ui_appkit::window > pappkitwindowParent = m_pwindowParent;
-      
-      [[pappkitwindowParent->m_pnswindow contentView]addSubview:m_pnsview];
-     
-//
-//      if (m_pNSWindow)
+
+//      if(m_bIcon)
 //      {
+      //   m_p
+//         construct_newø(m_pimageview);
+////          NSImageView *iconView = [[NSImageView alloc] initWithFrame:NSMakeRect(20, 60, 64, 64)];
+////         m_pnsview = iconView;
+//         m_pimageview->__create_icon();
+//         auto pnsimageview = (__bridge  NSImageView *)m_pimageview->m_pNSImageView;
 //
-//         system()->innate_ui()->add_top_level_window(this);
+//         [[pappkitwindowParent->m_pnswindow contentView]addSubview:pnsimageview];
+
+//      }
+//      else
+//      {
+         construct_newø(m_ptextfieldOwned);
+//         m_pnsview = label;
+      m_ptextfieldOwned->m_pstillOwner = this;
+      m_pstillOwned = m_ptextfieldOwned;
+      m_ptextfieldOwned->__create_still();
+         
+         auto pnstextfield = (__bridge  NSTextField *)m_ptextfieldOwned->m_pNSTextField;
+
+         [[pappkitwindowParent->m_pnswindow contentView]addSubview:pnstextfield];
 //
 //      }
-
-      //m_pgtkwidgetFixed = gtk_fixed_new();
-
-      //gtk_window_set_child(GTK_WINDOW(m_pgtkwidget), m_pgtkwidgetFixed);
-      //gtk_widget_set_parent(m_pgtkwidget, nullptr);
-      ///GtkWidget *content_area = gtk_dialog_get_content_area(GTK_DIALOG(m_pgtkwidget));
-      //m_fixed = gtk_fixed_new();
-      //gtk_box_append(content_area, m_fixed);
-
-   }
-
-   
-   void still::__set_text(const char * pszText)
-   {
-      
-      NSString * pstr = [[NSString alloc] initWithUTF8String:pszText];
-   
-      NSTextField * label = (NSTextField *) m_pnsview;
-      
-//      NSTextField *label = [[NSTextField alloc] initWithFrame:NSMakeRect(100, 80, 200, 24)];
-      [label setStringValue:pstr];
+//      
+//      
+//     
+////
+////      if (m_pNSWindow)
+////      {
+////
+////         system()->innate_ui()->add_top_level_window(this);
+////
+////      }
+//
+//      //m_pgtkwidgetFixed = gtk_fixed_new();
+//
+//      //gtk_window_set_child(GTK_WINDOW(m_pgtkwidget), m_pgtkwidgetFixed);
+//      //gtk_widget_set_parent(m_pgtkwidget, nullptr);
+//      ///GtkWidget *content_area = gtk_dialog_get_content_area(GTK_DIALOG(m_pgtkwidget));
+//      //m_fixed = gtk_fixed_new();
+//      //gtk_box_append(content_area, m_fixed);
 
    }
 
+   
+//   void still::__set_text(const char * pszText)
+//   {
+//      
+//      NSString * pstr = [[NSString alloc] initWithUTF8String:pszText];
+//   
+//      NSTextField * label = (NSTextField *) m_pnsview;
+//      
+////      NSTextField *label = [[NSTextField alloc] initWithFrame:NSMakeRect(100, 80, 200, 24)];
+//      [label setStringValue:pstr];
+//
+//   }
 
-void still::__set_icon(::innate_ui_appkit::icon * picon)
-{
-   
-   NSImageView * pnsimageview = (NSImageView *) m_pnsview;
-   
-   [pnsimageview setImage:(__bridge NSImage *) picon->m_pNSImage];
-   
-}
+
+//void still::__set_icon(::innate_ui_appkit::icon * picon)
+//{
+//   
+//   NSImageView * pnsimageview = (__NSImageView *) m_pnsview;
+//   
+//   [pnsimageview setImage:(__bridge NSImage *) picon->m_pNSImage];
+//   
+//}
 
 
 } // namespace innate_ui_appkit

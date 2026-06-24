@@ -346,21 +346,29 @@ void window::main_post(const ::procedure & procedure)
             
          }
 
-         rectangle = puserinteraction-> const_layout().sketch().parent_raw_rectangle();
+       //  rectangle = puserinteraction-> const_layout().sketch().parent_raw_rectangle();
 
       }
       else
       {
       
-         rectangle = m_pappkitacmewindowingwindow->m_pacmeuserinteraction->get_rectangle();
+         //rectangle = m_pappkitacmewindowingwindow->m_pacmeuserinteraction->get_rectangle();
          
       }
+      
+      rectangle.set_top_left(m_pointWindow);
+      
+      rectangle.set_size(m_sizeWindow);
    
    
       CGRect cgrect;
    
       copy(cgrect, rectangle);
    
+      m_pacmewindowbridge->m_pappkitacmewindowingwindow = this;
+      
+      m_pacmewindowbridge->m_papplekitacmewindowingwindow = this;
+
       create_macos_nswindow(this, cgrect, uStyle);
       
       auto puserinteractionOwner = owner_interaction();
@@ -1047,10 +1055,10 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
    }
 
 
-   void window::macos_window_draw(CGContextRef cgc, CGSize sizeWindowParam)
+   void window::macos_window_draw(CGContextRef cgc, CGRect cgrect)
    {
 
-      ::i32_size sizeWindow(sizeWindowParam.width, sizeWindowParam.height);
+      ::i32_size sizeWindow(cgrect.size.width, cgrect.size.height);
 
       #ifdef EXTRALOG
 
@@ -1103,6 +1111,17 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
       m_timeLastDeviceDraw = tickNow;
 
       //::user::device_draw_life_time devicedrawlifetime(this);
+      
+      auto puserinteraction = user_interaction();
+      
+      if(!puserinteraction)
+      {
+         
+         ::appkit::acme::windowing::window::macos_window_draw(cgc, cgrect);
+      
+         return;
+
+      }
 
       critical_section_lock slDisplay(cs_display());
 
@@ -1115,14 +1134,6 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
 
       }
       
-      auto puserinteraction = user_interaction();
-      
-      if(!puserinteraction)
-      {
-      
-         return;
-
-      }
          
       auto g = createø < ::draw2d::graphics >();
 
@@ -1832,44 +1843,46 @@ pmessage->m_eusermessage = emessage
    }
 
 
-   void window::macos_window_resized(CGRect rectangle)
+   void window::on_size(int cx, int cy)
    {
       
-      {
+      ::appkit::acme::windowing::window::on_size(cx, cy);
+      
+      //{
          
          auto puserinteraction = user_interaction();
          
          if(puserinteraction)
          {
             
-            auto p = puserinteraction->const_layout().window().origin();
-            
-            if(p.x != rectangle.origin.x || p.y != rectangle.origin.y)
-            {
-               
-               _NEW_MESSAGE(preposition, ::message::reposition, ::user::e_message_reposition);
-               preposition->m_point.x = rectangle.origin.x;
-               preposition->m_point.y = rectangle.origin.y;
-               
-               
-               //         atom id = e_message_reposition;
-               //
-               //         wparam wparam = 0;
-               //
-               //         lparam lparam = __MAKE_LPARAM(rectangle.origin.x, rectangle.origin.y);
-               //
-               //         auto pmove  = create_newø < ::message::reposition > ();
-               //
-               //         pmove->set(this, this, id, wparam, lparam);
-               
-               //post_message(preposition);
-               send_message(preposition);
-               
-            }
-            
-         }
-         
-      }
+//            auto p = puserinteraction->const_layout().window().origin();
+//            
+//            if(p.x != rectangle.origin.x || p.y != rectangle.origin.y)
+//            {
+//               
+//               _NEW_MESSAGE(preposition, ::message::reposition, ::user::e_message_reposition);
+//               preposition->m_point.x = rectangle.origin.x;
+//               preposition->m_point.y = rectangle.origin.y;
+//               
+//               
+//               //         atom id = e_message_reposition;
+//               //
+//               //         wparam wparam = 0;
+//               //
+//               //         lparam lparam = __MAKE_LPARAM(rectangle.origin.x, rectangle.origin.y);
+//               //
+//               //         auto pmove  = create_newø < ::message::reposition > ();
+//               //
+//               //         pmove->set(this, this, id, wparam, lparam);
+//               
+//               //post_message(preposition);
+//               send_message(preposition);
+//               
+//            }
+//            
+//         }
+//         
+//      }
       
       {
          
@@ -1878,18 +1891,18 @@ pmessage->m_eusermessage = emessage
          if(puserinteraction)
          {
             
-            puserinteraction->set_position({rectangle.origin.x, rectangle.origin.y}, ::user::e_layout_window);
+            //puserinteraction->set_position({rectangle.origin.x, rectangle.origin.y}, ::user::e_layout_window);
             
-            puserinteraction->set_size({rectangle.size.width, rectangle.size.height}, ::user::e_layout_window);
+            puserinteraction->set_size({cx, cy}, ::user::e_layout_window);
             
             auto s = puserinteraction->const_layout().window().size();
             
-            if(s.cx != rectangle.size.width || s.cy != rectangle.size.height)
+            if(s.cx != cx || s.cy != cy)
             {
                
                _NEW_MESSAGE(psize, ::message::size, ::user::e_message_size);
-               psize->m_size.cx = rectangle.size.width;
-               psize->m_size.cy = rectangle.size.height;
+               psize->m_size.cx = cx;
+               psize->m_size.cy = cy;
                
                //         atom id = e_message_size;
                //
@@ -1911,11 +1924,11 @@ pmessage->m_eusermessage = emessage
          
       }
 
-      ::i32_rectangle rectangleWindow;
+      //::i32_rectangle rectangleWindow;
       
-      rectangleWindow = rectangle;
+      //rectangleWindow = rectangle;
       
-      _on_configure_notify_unlocked(rectangleWindow);
+      //_on_configure_notify_unlocked(rectangleWindow);
       
       //return;
 
@@ -2033,12 +2046,12 @@ pmessage->m_eusermessage = emessage
    //
    //         puserinteraction->set_need_redraw();
    //
-   //      }
+         }
 
    }
 
 
-   void window::macos_window_repositioned(CGPoint point)
+   void window::on_move(int x, int y)
    {
       
       if(m_bEatMoveEvent)
@@ -2056,13 +2069,13 @@ pmessage->m_eusermessage = emessage
          
          if(puserinteraction)
          {
-            puserinteraction->set_position({point.x, point.y}, ::user::e_layout_window);
+            puserinteraction->set_position({x, y}, ::user::e_layout_window);
             
          }
 
          _NEW_MESSAGE(preposition, ::message::reposition, ::user::e_message_reposition);
-         preposition->m_point.x = point.x;
-         preposition->m_point.y = point.y;
+         preposition->m_point.x = x;
+         preposition->m_point.y = y;
 
 //         atom id = e_message_reposition;
 //
@@ -2132,7 +2145,7 @@ pmessage->m_eusermessage = emessage
    ////
    ////      puserinteraction->m_point = point;
       ///
-      _on_reposition_notify_unlocked(::i32_point(point.x, point.y))
+      _on_reposition_notify_unlocked(::i32_point(x, y))
       ;
    }
 
@@ -2989,6 +3002,7 @@ void window::frame_toggle_restore(::user::activation_token * puseractivationtoke
 
       }
 
+      ::appkit::acme::windowing::window::destroy_window();
       //return ::success;
 
    }

@@ -2,7 +2,8 @@
 #include "framework.h"
 #include "icon.h"
 #include "still.h"
-
+#include "__image_view.h"
+#include "__text_field.h"
 //#include <KF5/KIOWidgets/KIO/JobUiDelegate>
 
 //#include <QLabel>
@@ -25,7 +26,7 @@ namespace innate_ui_appkit
    }
 
 
-   void still::_create_child(window * pwindowParent)
+   void still::create_child(window * pwindowParent)
    {
 
       m_pwindowParent = pwindowParent;
@@ -43,21 +44,31 @@ namespace innate_ui_appkit
       //    (HINSTANCE)GetWindowLongPtr(pwindowParent->m_hwnd, GWLP_HINSTANCE),
       //    NULL);
 
-      // if(m_bIcon)
-      // {
+       if(m_bIcon)
+       {
+          __create_icon();
+          
+          
       //
       //    m_pqwidget = gtk_image_new();
       //
-      // }
-      // else
+       }
+       else
       {
 //         ::pointer < ::innate_ui_appkit::window > pappkitwindowParent = pwindowParent;
 //         m_pqwidget = new QLabel(pappkitwindowParent->m_pqwidget);
          //gtk_label_set_xalign(GTK_LABEL(m_pgtkwidget), 0.0);
          
          __create_still();
+         
+//         m_pwindowParent->m_childa.add(m_ptextfield);
 
       }
+      
+      m_pstillOwned->m_pwindowParent = m_pwindowParent;
+
+      m_pwindowParent->m_childa.add(m_pstillOwned);
+
 
       //gtk_widget_set_visible(m_pgtkwidget, true);
 
@@ -66,12 +77,39 @@ namespace innate_ui_appkit
    }
 
 
+void still::set_text(const ::scoped_string & scopedstr)
+{
+   
+   m_pstillOwned->set_text(scopedstr);
+   
+}
+
+
+void still::set_font_size(::f64 dSizeEm)
+{
+   
+   m_pstillOwned->set_font_size(dSizeEm);
+   
+}
+
+
+void still::set_font_weight(::i32 iWeight)
+{
+   
+   m_pstillOwned->set_font_weight(iWeight);
+   
+}
+
+
+
    void still::create_icon_still(::innate_ui::window * pwindowParent)
    {
 
       //m_iCreateStyle = WS_TABSTOP | WS_VISIBLE | WS_CHILD | SS_ICON | SS_REALSIZEIMAGE;
-m_bIcon = true;
+      m_bIcon = true;
       create_child(pwindowParent);
+      
+      
 
    }
 
@@ -100,28 +138,58 @@ m_bIcon = true;
 //   }
 
 
-   void still::set_icon(::innate_ui::icon * piconParam)
+void still::set_position(const ::i32_point & point)
+{
+   
+   m_pstillOwned->set_position(point);
+   
+}
+void still::set_size(const ::i32_size & size)
+{
+   
+   m_pstillOwned->set_size(size);
+   
+}
+
+
+::i32 still::layout_width()
+{
+   
+   return m_pstillOwned->layout_width();
+   
+}
+
+
+::i32 still::layout_height()
+{
+   
+   return m_pstillOwned->layout_height();
+   
+}
+
+
+   void still::set_icon(::innate_ui::icon * picon)
    {
 
-      m_picon = piconParam;
+      m_pstillOwned->set_icon(picon);
 
-      main_send([this]()
-      {
-
-         //gtk_image_set_from_paintable(GTK_IMAGE(m_pqgtkwidget), picon->m_pgdkpaintable);
-         //::SendMessage(m_hwnd, STM_SETICON, (WPARAM) picon->m_hicon, 0);
-         __set_icon(m_picon);
-//         auto plabel = dynamic_cast<QLabel*>(m_pqwidget);
+//      main_send([this]()
+//      {
 //
-//         if(plabel)
-//         {
+//         //gtk_image_set_from_paintable(GTK_IMAGE(m_pqgtkwidget), picon->m_pgdkpaintable);
+//         //::SendMessage(m_hwnd, STM_SETICON, (WPARAM) picon->m_hicon, 0);
+//         __set_icon(m_picon);
+////         auto plabel = dynamic_cast<QLabel*>(m_pqwidget);
+////
+////         if(plabel)
+////         {
+////
+////            plabel->setPixmap(*picon->m_pqpixmap);
+////
+////         }
 //
-//            plabel->setPixmap(*picon->m_pqpixmap);
-//
-//         }
-
-         
-      });
+//         
+//      });
 
    }
 

@@ -340,7 +340,7 @@ bool platform_application_is_swap_chain(::platform::application * papplication);
       
       point.y = [[NSScreen mainScreen] frame].size.height - (rect.origin.y + rect.size.height);
       
-      m_pmacoswindow->macos_window_repositioned(point);
+      m_pmacoswindow->on_move(point.x, point.y);
       
    }
    catch (...)
@@ -375,9 +375,9 @@ bool platform_application_is_swap_chain(::platform::application * papplication);
       
       NSRect rect = [self frame];
       
-      ns_screen_translate(&rect);
+      //ns_screen_translate(&rect);
       
-      m_pmacoswindow->macos_window_resized(rect);
+      m_pmacoswindow->on_size(rect.size.width, rect.size.height);
       
    }
    catch (...)

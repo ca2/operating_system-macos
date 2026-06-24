@@ -155,15 +155,32 @@
 
 
 
-namespace acme_windows
+namespace innate_ui_appkit
 {
 
 
-   class directory_context;
-   class directory_system;
+   //class directory_context;
+   //class directory_system;
 
-   class file_context;
-   class file_system;
+   //class file_context;
+   //class file_system;
+
+class innate_ui;
+
+class dialog;
+
+class menu;
+
+class icon;
+class still;
+class window;
+class button;
+
+
+class __impact;
+class __text_field;
+class __image_view;
+
 
 
 } // namespace apex_windows

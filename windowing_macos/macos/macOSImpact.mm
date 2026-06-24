@@ -705,7 +705,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
       
       auto rectFrame = [self frame];
       
-      p->macos_window_draw(cgc, rectFrame.size);
+      p->macos_window_draw(cgc, rectFrame);
 
    
    p->profiling_on_end_draw_rectangle();
@@ -1159,20 +1159,22 @@ m_f = true; \
 - (void)viewWillMoveToWindow:(NSWindow *)newWindow
 {
    
-   if(m_ptrackingarea)
-   {
-      
-      [ self removeTrackingArea : m_ptrackingarea ];
-      
-      m_ptrackingarea = nil;
-      
-   }
+   [super viewWillMoveToWindow:newWindow];
    
-   m_ptrackingarea = [ [NSTrackingArea alloc] initWithRect:NSZeroRect options:(NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveAlways | NSTrackingInVisibleRect) owner:self userInfo:nil];
-   
-   [ self addTrackingArea : m_ptrackingarea ];
-   
-   [ self.window invalidateCursorRectsForView : self ];
+//   if(m_ptrackingarea)
+//   {
+//      
+//      [ self removeTrackingArea : m_ptrackingarea ];
+//      
+//      m_ptrackingarea = nil;
+//      
+//   }
+//   
+//   m_ptrackingarea = [ [NSTrackingArea alloc] initWithRect:NSZeroRect options:(NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveAlways | NSTrackingInVisibleRect) owner:self userInfo:nil];
+//   
+//   [ self addTrackingArea : m_ptrackingarea ];
+//   
+//   [ self.window invalidateCursorRectsForView : self ];
    
 }
 

@@ -34,6 +34,7 @@ class acme_window_bridge;
 - (id)initWithContentRect: (NSRect) rectangle styleMask: (NSUInteger) windowStyle backing:(NSBackingStoreType) bufferingType defer: (BOOL) deferCreation moreNative:(bool) bMoreNative;
 
 -(void)setBridge:(::appkit::acme_window_bridge *) pacmewindowbridge;
+- (void)create_impact;
 - (void)windowDidBecomeKey:(NSNotification *)aNotification;
 - (void)windowDidResignKey:(NSNotification *)aNotification;
 -(int) control_box_right_when_at_left ;

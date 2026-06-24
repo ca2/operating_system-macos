@@ -56,7 +56,7 @@ public:
    acme_window_bridge();
    ~acme_window_bridge() override;
    
-   void create_ns_acme_window(CGRect cgrect);
+   void create_ns_acme_window(CGRect cgrect, bool bMoreNative);
    
    void set_ns_window_uptr(::uptr u);
    
@@ -92,7 +92,7 @@ public:
    
    virtual void on_char(int iChar);
    
-   virtual void _on_draw_frame(CGContextRef cg, CGRect rectFrame);
+   //virtual void _on_draw_frame(CGContextRef cg, CGRect rectFrame);
    
    void redraw() override;
    

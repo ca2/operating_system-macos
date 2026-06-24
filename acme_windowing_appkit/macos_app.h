@@ -49,6 +49,9 @@ class acme_window_bridge;
    acme_notification_callback *           m_pacmenotificationcallback;
    ::application_menu *                   m_papplicationmenu;
    ::command_handler *                    m_pcommandhandler;
+   BOOL                                   m_bApplicationMenuUpdatePending;
+   BOOL                                   m_bApplicationDidFinishLaunching;
+   NSInteger                              m_iMenuTrackingCount;
 
 }
 
@@ -72,6 +75,7 @@ parentWindow: (NSWindow *) pnswindowParent andCallback: (const ::function< void(
 -(void) show_about_box;
 -(void) try_close_application;
 -(id) initWithApplicationMenu:(::application_menu *) papplicationmenu andCommandHandler: (::command_handler *) pcommandhandler;
+-(void) setApplicationMenuNeedsUpdate;
 -(void) application_menu_update;
 -(void) application_handle: (::i64) l withPointer :(void *) p;
 
