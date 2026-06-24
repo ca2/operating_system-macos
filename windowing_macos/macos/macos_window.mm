@@ -543,6 +543,8 @@ void macos_window::macos_window_redraw()
    
    auto proundwindow = pnsmacoswindow;
    
+   set_last_present_request_time();
+   
    if(proundwindow)
    {
 
@@ -555,13 +557,6 @@ void macos_window::macos_window_redraw()
                     {
                     
                        [proundwindow->m_pnsacmeimpact setNeedsDisplay:TRUE];
-                       
-                       if(proundwindow->m_pmacoswindow)
-                       {
-                          
-                          proundwindow->m_pmacoswindow->set_last_present_time();
-                          
-                       }
                        
                     }
       
