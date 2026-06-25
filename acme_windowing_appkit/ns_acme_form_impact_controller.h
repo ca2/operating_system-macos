@@ -9,23 +9,23 @@
 
 
 #include "acme/prototype/collection/map.h"
-#include "acme/constant/lightui.h"
-namespace lightui
+#include "acme/constant/user_interface.h"
+namespace user_interface
 {
    class control_helper
       
    {
       public:
-      ::comparable_array_base < ::lightui::enum_notification > m_enotificationaBlocked;
-      void unblock_notification(::lightui::enum_notification enotification)
+      ::comparable_array_base < ::user_interface::enum_notification > m_enotificationaBlocked;
+      void unblock_notification(::user_interface::enum_notification enotification)
       {
          m_enotificationaBlocked.erase(enotification);
       }
-      bool is_notification_blocked(::lightui::enum_notification enotification) const
+      bool is_notification_blocked(::user_interface::enum_notification enotification) const
       {
          return m_enotificationaBlocked.contains(enotification);
       }
-      void block_notification(::lightui::enum_notification enotification)
+      void block_notification(::user_interface::enum_notification enotification)
       {
          m_enotificationaBlocked.add_unique(enotification);
       }
@@ -38,25 +38,25 @@ namespace lightui
 @interface ns_acme_form_impact_controller : NSViewController<NSComboBoxDelegate>
 {
    @public
-   map_base < ::uptr, ::lightui::control_helper > m_mapControlHelper;
+   map_base < ::uptr, ::user_interface::control_helper > m_mapControlHelper;
    
    
 }
 
--(bool)isNotificationBlockedForTag:(::uptr)tag andID:(::lightui::enum_notification) enotification;
+-(bool)isNotificationBlockedForTag:(::uptr)tag andID:(::user_interface::enum_notification) enotification;
 // Your button interception logic goes here
 @end
 
 
-namespace lightui
+namespace user_interface
 {
   
 class block_control_notification
 {
 public:
-   ::lightui::control_helper * m_pcontrolhelper;
-   ::lightui::enum_notification m_enotificationBlocked;
-   block_control_notification(ns_acme_form_impact_controller * pcontroller, ::uptr uTag, ::lightui::enum_notification enotification):
+   ::user_interface::control_helper * m_pcontrolhelper;
+   ::user_interface::enum_notification m_enotificationBlocked;
+   block_control_notification(ns_acme_form_impact_controller * pcontroller, ::uptr uTag, ::user_interface::enum_notification enotification):
    m_enotificationBlocked(enotification)
    
    {

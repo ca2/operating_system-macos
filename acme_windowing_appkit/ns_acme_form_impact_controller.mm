@@ -7,7 +7,7 @@
 //
 
 #import "ns_acme_form_impact_controller.h"
-#include "acme/constant/lightui.h"
+#include "acme/constant/user_interface.h"
 #include "operating_system-macos/appkit/NSProgressIndicator+CppModel.h"
 
 ::appkit::ns_window_t as_ns_window_t(NSWindow * pnswindow)
@@ -36,8 +36,8 @@
    return (::uptr)((__bridge void *) pnsimpact);
    
 }
-void ns_on_user_command(::appkit::ns_window_t nswindow, ::lightui::enum_notification enotification, ::uptr uControl);
-void ns_on_user_command(::appkit::ns_impact_t nswindow, ::lightui::enum_notification enotification, ::uptr uControl);
+void ns_on_user_command(::appkit::ns_window_t nswindow, ::user_interface::enum_notification enotification, ::uptr uControl);
+void ns_on_user_command(::appkit::ns_impact_t nswindow, ::user_interface::enum_notification enotification, ::uptr uControl);
 void ns_send_message(::appkit::ns_window_t nswindow, ::user::enum_message emessage, ::uptr wparam = 0, ::uptr lparam = 0);
 void ns_send_message(::appkit::ns_impact_t nswindow, ::user::enum_message emessage, ::uptr wparam = 0, ::uptr lparam = 0);
 
@@ -110,7 +110,7 @@ void ns_send_message(::appkit::ns_impact_t nswindow, ::user::enum_message emessa
     
    NSView * pnsimpact = clickedButton.superview;
    
-   ns_on_user_command(::as_ns_impact_t(pnsimpact), ::lightui::e_notification_default, buttonTag);
+   ns_on_user_command(::as_ns_impact_t(pnsimpact), ::user_interface::e_notification_default, buttonTag);
    
 //   // Route logic based on title or tag
 //   if ([buttonTitle isEqualToString:@"Submit"])
@@ -131,7 +131,7 @@ void ns_send_message(::appkit::ns_impact_t nswindow, ::user::enum_message emessa
 }
 
 
--(bool)isNotificationBlockedForTag:(::uptr)tag andID:(::lightui::enum_notification)enotification
+-(bool)isNotificationBlockedForTag:(::uptr)tag andID:(::user_interface::enum_notification)enotification
 {
    auto & controlhelper = self->m_mapControlHelper[tag];
    
@@ -148,7 +148,7 @@ void ns_send_message(::appkit::ns_impact_t nswindow, ::user::enum_message emessa
    
    auto tag =combo.tag;
    
-   if([self isNotificationBlockedForTag: tag andID: ::lightui::e_CBN_SELENDOK ])
+   if([self isNotificationBlockedForTag: tag andID: ::user_interface::e_CBN_SELENDOK ])
    {
       
       return;
@@ -157,7 +157,7 @@ void ns_send_message(::appkit::ns_impact_t nswindow, ::user::enum_message emessa
 
     NSLog(@"Selection changed %@", combo);
    auto pnsimpact = self.view;
-   ns_on_user_command(::as_ns_impact_t(pnsimpact),::lightui::e_CBN_SELENDOK,tag);
+   ns_on_user_command(::as_ns_impact_t(pnsimpact),::user_interface::e_CBN_SELENDOK,tag);
    
 }
 
@@ -169,7 +169,7 @@ void ns_send_message(::appkit::ns_impact_t nswindow, ::user::enum_message emessa
 
     NSLog(@"Popup opened %@", combo);
    auto pnsimpact = self.view;
-   ns_on_user_command(::as_ns_impact_t(pnsimpact),::lightui::e_CBN_DROPDOWN,combo.tag);
+   ns_on_user_command(::as_ns_impact_t(pnsimpact),::user_interface::e_CBN_DROPDOWN,combo.tag);
 }
 
 

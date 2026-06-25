@@ -7,38 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07FDD4DB1C9CEB6800DB2A99 /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FDD4DA1C9CEB6800DB2A99 /* libaura.dylib */; };
-		07FDD4DD1C9CEB6F00DB2A99 /* libaxis.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FDD4DC1C9CEB6F00DB2A99 /* libaxis.dylib */; };
-		07FDD4DF1C9CEB7500DB2A99 /* libberg.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FDD4DE1C9CEB7500DB2A99 /* libberg.dylib */; };
-		07FDD4E01C9CEB8600DB2A99 /* libcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FDD4D31C9CEB5100DB2A99 /* libcore.dylib */; };
-		07FDD4E21C9CEC9900DB2A99 /* mac_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FDD4E11C9CEC9900DB2A99 /* mac_main.cpp */; };
+		D7F3658D6C7CBEB3DEB43C33 /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC7BFDEF1D4858A5854D32A /* libaura.dylib */; };
+		4BF73272F0B268A33CE19501 /* libaxis.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D183EC21E9DC62765F5DF4D /* libaxis.dylib */; };
+		C30DB3D2121CC9628C9CE0C3 /* libberg.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C00EBD7DB51C6F5BE071A5D4 /* libberg.dylib */; };
+		45141117D8AFA87C402315E0 /* libcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9F2A0988B8F1BFCCAD3138 /* libcore.dylib */; };
+		2EE31A0B599FC45FEA82CF74 /* mac_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D826CD9F54A96E29415E89BB /* mac_main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		07FDD4D21C9CEB5100DB2A99 /* PBXContainerItemProxy */ = {
+		B95AE4A64A9B2B45326F6494 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 07FDD4CC1C9CEB5100DB2A99 /* core.xcodeproj */;
+			containerPortal = 3929FCA29987553C1094113E /* core.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 9A19A1A519C6F50B0018DF7D;
 			remoteInfo = core;
 		};
-		07FDD4D41C9CEB5100DB2A99 /* PBXContainerItemProxy */ = {
+		7CD88E68912BE5099F3B7E96 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 07FDD4CC1C9CEB5100DB2A99 /* core.xcodeproj */;
+			containerPortal = 3929FCA29987553C1094113E /* core.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 9AE24DDC1904CF6E001AEFFB;
 			remoteInfo = ios_core;
 		};
-		07FDD4D61C9CEB5100DB2A99 /* PBXContainerItemProxy */ = {
+		B26DA3368F130BE2A34C7F63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 07FDD4CC1C9CEB5100DB2A99 /* core.xcodeproj */;
+			containerPortal = 3929FCA29987553C1094113E /* core.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 9AE24DEB1904CF6E001AEFFB;
 			remoteInfo = core_iosTests;
 		};
-		07FDD4D81C9CEB5C00DB2A99 /* PBXContainerItemProxy */ = {
+		80EE232DAFA373D28C30C520 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 07FDD4CC1C9CEB5100DB2A99 /* core.xcodeproj */;
+			containerPortal = 3929FCA29987553C1094113E /* core.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 9A19A1A419C6F50B0018DF7D;
 			remoteInfo = core;
@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		07FDD48D1C9CEA6A00DB2A99 /* CopyFiles */ = {
+		9D89A62D315E355BD712FC50 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -58,63 +58,63 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		07FDD48F1C9CEA6A00DB2A99 /* app */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = app; sourceTree = BUILT_PRODUCTS_DIR; };
-		07FDD4CC1C9CEB5100DB2A99 /* core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = core.xcodeproj; path = ../../app/core/core.xcodeproj; sourceTree = SOURCE_ROOT; };
-		07FDD4DA1C9CEB6800DB2A99 /* libaura.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaura.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libaura.dylib"; sourceTree = "<group>"; };
-		07FDD4DC1C9CEB6F00DB2A99 /* libaxis.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaxis.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libaxis.dylib"; sourceTree = "<group>"; };
-		07FDD4DE1C9CEB7500DB2A99 /* libberg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libberg.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libberg.dylib"; sourceTree = "<group>"; };
-		07FDD4E11C9CEC9900DB2A99 /* mac_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mac_main.cpp; sourceTree = SOURCE_ROOT; };
+		BBCFFC0BFFF32C1588C93146 /* app */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3929FCA29987553C1094113E /* core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = core.xcodeproj; path = ../../app/core/core.xcodeproj; sourceTree = SOURCE_ROOT; };
+		4CC7BFDEF1D4858A5854D32A /* libaura.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaura.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libaura.dylib"; sourceTree = "<group>"; };
+		5D183EC21E9DC62765F5DF4D /* libaxis.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaxis.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libaxis.dylib"; sourceTree = "<group>"; };
+		C00EBD7DB51C6F5BE071A5D4 /* libberg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libberg.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/multimedia-mac-dlhimcllfwsmuxbwqdpurpzxadzp/Build/Products/Release/libberg.dylib"; sourceTree = "<group>"; };
+		D826CD9F54A96E29415E89BB /* mac_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mac_main.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		07FDD48C1C9CEA6A00DB2A99 /* Frameworks */ = {
+		0E1FF338FC529C8C33D78DA6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07FDD4E01C9CEB8600DB2A99 /* libcore.dylib in Frameworks */,
-				07FDD4DF1C9CEB7500DB2A99 /* libberg.dylib in Frameworks */,
-				07FDD4DD1C9CEB6F00DB2A99 /* libaxis.dylib in Frameworks */,
-				07FDD4DB1C9CEB6800DB2A99 /* libaura.dylib in Frameworks */,
+				45141117D8AFA87C402315E0 /* libcore.dylib in Frameworks */,
+				C30DB3D2121CC9628C9CE0C3 /* libberg.dylib in Frameworks */,
+				4BF73272F0B268A33CE19501 /* libaxis.dylib in Frameworks */,
+				D7F3658D6C7CBEB3DEB43C33 /* libaura.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07FDD4861C9CEA6A00DB2A99 = {
+		750A338C788555F599DE3359 = {
 			isa = PBXGroup;
 			children = (
-				07FDD4DE1C9CEB7500DB2A99 /* libberg.dylib */,
-				07FDD4DC1C9CEB6F00DB2A99 /* libaxis.dylib */,
-				07FDD4DA1C9CEB6800DB2A99 /* libaura.dylib */,
-				07FDD4CC1C9CEB5100DB2A99 /* core.xcodeproj */,
-				07FDD4911C9CEA6A00DB2A99 /* app */,
-				07FDD4901C9CEA6A00DB2A99 /* Products */,
+				C00EBD7DB51C6F5BE071A5D4 /* libberg.dylib */,
+				5D183EC21E9DC62765F5DF4D /* libaxis.dylib */,
+				4CC7BFDEF1D4858A5854D32A /* libaura.dylib */,
+				3929FCA29987553C1094113E /* core.xcodeproj */,
+				3C67E32E476E970B0D28B94A /* app */,
+				0E049CF7BE192E534EBCD2AE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		07FDD4901C9CEA6A00DB2A99 /* Products */ = {
+		0E049CF7BE192E534EBCD2AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				07FDD48F1C9CEA6A00DB2A99 /* app */,
+				BBCFFC0BFFF32C1588C93146 /* app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		07FDD4911C9CEA6A00DB2A99 /* app */ = {
+		3C67E32E476E970B0D28B94A /* app */ = {
 			isa = PBXGroup;
 			children = (
-				07FDD4E11C9CEC9900DB2A99 /* mac_main.cpp */,
+				D826CD9F54A96E29415E89BB /* mac_main.cpp */,
 			);
 			path = app;
 			sourceTree = "<group>";
 		};
-		07FDD4CD1C9CEB5100DB2A99 /* Products */ = {
+		D4120B334B3132E48BC7BDD1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				07FDD4D31C9CEB5100DB2A99 /* libcore.dylib */,
-				07FDD4D51C9CEB5100DB2A99 /* libios_core.a */,
-				07FDD4D71C9CEB5100DB2A99 /* core_iosTests.xctest */,
+				8F9F2A0988B8F1BFCCAD3138 /* libcore.dylib */,
+				CB59D81E05C183D2198B159F /* libios_core.a */,
+				4FA140E7C3DB743DC7B78514 /* core_iosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,39 +122,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		07FDD48E1C9CEA6A00DB2A99 /* app */ = {
+		4D8831CCFEE90E45B863AD2F /* app */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 07FDD4961C9CEA6A00DB2A99 /* Build configuration list for PBXNativeTarget "app" */;
+			buildConfigurationList = 805CBF54C38977818572419E /* Build configuration list for PBXNativeTarget "app" */;
 			buildPhases = (
-				07FDD48B1C9CEA6A00DB2A99 /* Sources */,
-				07FDD48C1C9CEA6A00DB2A99 /* Frameworks */,
-				07FDD48D1C9CEA6A00DB2A99 /* CopyFiles */,
+				32664B24949DE7BA00A3440C /* Sources */,
+				0E1FF338FC529C8C33D78DA6 /* Frameworks */,
+				9D89A62D315E355BD712FC50 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				07FDD4D91C9CEB5C00DB2A99 /* PBXTargetDependency */,
+				F808622A0F69D202EC352DA6 /* PBXTargetDependency */,
 			);
 			name = app;
 			productName = app;
-			productReference = 07FDD48F1C9CEA6A00DB2A99 /* app */;
+			productReference = BBCFFC0BFFF32C1588C93146 /* app */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		07FDD4871C9CEA6A00DB2A99 /* Project object */ = {
+		3F15FBD44D223509380DEE02 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "ca2 Desenvolvimento de Software Ltda.";
 				TargetAttributes = {
-					07FDD48E1C9CEA6A00DB2A99 = {
+					4D8831CCFEE90E45B863AD2F = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
 				};
 			};
-			buildConfigurationList = 07FDD48A1C9CEA6A00DB2A99 /* Build configuration list for PBXProject "app" */;
+			buildConfigurationList = 69DAD44F61C8A9E195921C89 /* Build configuration list for PBXProject "app" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -162,67 +162,67 @@
 				en,
 				Base,
 			);
-			mainGroup = 07FDD4861C9CEA6A00DB2A99;
-			productRefGroup = 07FDD4901C9CEA6A00DB2A99 /* Products */;
+			mainGroup = 750A338C788555F599DE3359;
+			productRefGroup = 0E049CF7BE192E534EBCD2AE /* Products */;
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 07FDD4CD1C9CEB5100DB2A99 /* Products */;
-					ProjectRef = 07FDD4CC1C9CEB5100DB2A99 /* core.xcodeproj */;
+					ProductGroup = D4120B334B3132E48BC7BDD1 /* Products */;
+					ProjectRef = 3929FCA29987553C1094113E /* core.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				07FDD48E1C9CEA6A00DB2A99 /* app */,
+				4D8831CCFEE90E45B863AD2F /* app */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		07FDD4D31C9CEB5100DB2A99 /* libcore.dylib */ = {
+		8F9F2A0988B8F1BFCCAD3138 /* libcore.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
 			path = libcore.dylib;
-			remoteRef = 07FDD4D21C9CEB5100DB2A99 /* PBXContainerItemProxy */;
+			remoteRef = B95AE4A64A9B2B45326F6494 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		07FDD4D51C9CEB5100DB2A99 /* libios_core.a */ = {
+		CB59D81E05C183D2198B159F /* libios_core.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libios_core.a;
-			remoteRef = 07FDD4D41C9CEB5100DB2A99 /* PBXContainerItemProxy */;
+			remoteRef = 7CD88E68912BE5099F3B7E96 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		07FDD4D71C9CEB5100DB2A99 /* core_iosTests.xctest */ = {
+		4FA140E7C3DB743DC7B78514 /* core_iosTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = core_iosTests.xctest;
-			remoteRef = 07FDD4D61C9CEB5100DB2A99 /* PBXContainerItemProxy */;
+			remoteRef = B26DA3368F130BE2A34C7F63 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
-		07FDD48B1C9CEA6A00DB2A99 /* Sources */ = {
+		32664B24949DE7BA00A3440C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07FDD4E21C9CEC9900DB2A99 /* mac_main.cpp in Sources */,
+				2EE31A0B599FC45FEA82CF74 /* mac_main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		07FDD4D91C9CEB5C00DB2A99 /* PBXTargetDependency */ = {
+		F808622A0F69D202EC352DA6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = core;
-			targetProxy = 07FDD4D81C9CEB5C00DB2A99 /* PBXContainerItemProxy */;
+			targetProxy = 80EE232DAFA373D28C30C520 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		07FDD4941C9CEA6A00DB2A99 /* Debug */ = {
+		4B6EDA98888AD1CAE39D0B2B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
@@ -281,7 +281,7 @@
 			};
 			name = Debug;
 		};
-		07FDD4951C9CEA6A00DB2A99 /* Release */ = {
+		2E4B53D3584BB191FFEB71B7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
@@ -334,14 +334,14 @@
 			};
 			name = Release;
 		};
-		07FDD4971C9CEA6A00DB2A99 /* Debug */ = {
+		7B8EC3E9600653F821CA2536 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		07FDD4981C9CEA6A00DB2A99 /* Release */ = {
+		AB06A761B17A82FBDC33C36C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -351,25 +351,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		07FDD48A1C9CEA6A00DB2A99 /* Build configuration list for PBXProject "app" */ = {
+		69DAD44F61C8A9E195921C89 /* Build configuration list for PBXProject "app" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				07FDD4941C9CEA6A00DB2A99 /* Debug */,
-				07FDD4951C9CEA6A00DB2A99 /* Release */,
+				4B6EDA98888AD1CAE39D0B2B /* Debug */,
+				2E4B53D3584BB191FFEB71B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07FDD4961C9CEA6A00DB2A99 /* Build configuration list for PBXNativeTarget "app" */ = {
+		805CBF54C38977818572419E /* Build configuration list for PBXNativeTarget "app" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				07FDD4971C9CEA6A00DB2A99 /* Debug */,
-				07FDD4981C9CEA6A00DB2A99 /* Release */,
+				7B8EC3E9600653F821CA2536 /* Debug */,
+				AB06A761B17A82FBDC33C36C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 07FDD4871C9CEA6A00DB2A99 /* Project object */;
+	rootObject = 3F15FBD44D223509380DEE02 /* Project object */;
 }

@@ -7,195 +7,195 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A0D1C7B2B787B5E00E4B572 /* media_macos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A20ED2E2B771E50008A08A2 /* media_macos.cpp */; };
-		9A20ECB42B7715BD008A08A2 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A20EC8C2B7715BD008A08A2 /* framework.cpp */; };
-		9A20ECBE2B7715BD008A08A2 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A20ECA42B7715BD008A08A2 /* framework.h */; };
-		9A20ECC22B7715BD008A08A2 /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A20ECA82B7715BD008A08A2 /* _factory.cpp */; };
-		9A20ECC32B7715BD008A08A2 /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A20ECAD2B7715BD008A08A2 /* _.h */; };
-		9A20ED2C2B7719A9008A08A2 /* macosMediaPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A20ED2A2B7719A8008A08A2 /* macosMediaPickerViewController.h */; };
-		9A20ED2D2B7719A9008A08A2 /* macosMediaPickerViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A20ED2B2B7719A8008A08A2 /* macosMediaPickerViewController.mm */; };
-		9A20ED312B771E50008A08A2 /* media_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A20ED2F2B771E50008A08A2 /* media_macos.h */; };
-		9A20ED342B772398008A08A2 /* media_picker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A20ED322B772398008A08A2 /* media_picker.cpp */; };
-		9A20ED352B772398008A08A2 /* media_picker.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A20ED332B772398008A08A2 /* media_picker.h */; };
-		9A4DDE1B2B7734D300477878 /* macos_media_picker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DDE182B7734D200477878 /* macos_media_picker.mm */; };
-		9A4DE8532B798FCF00477878 /* libmedia_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8F51862B7774C4007EDC5C /* libmedia_apple.dylib */; };
-		9A869F372B79B01600937A3C /* media_player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A869F332B79B01500937A3C /* media_player.cpp */; };
-		9A869F382B79B01600937A3C /* media_player.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A869F362B79B01600937A3C /* media_player.h */; };
-		9A869F3A2B79B0B100937A3C /* media.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A869F392B79B0B000937A3C /* media.mm */; };
-		9A86A0922B79B23E00937A3C /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86A0912B79B23E00937A3C /* libacme.dylib */; };
-		9A86A0942B79B24A00937A3C /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86A0932B79B24A00937A3C /* libapex.dylib */; };
-		9A86A0962B79B25200937A3C /* libaqua.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86A0952B79B25200937A3C /* libaqua.dylib */; };
-		9A86A0982B79B25B00937A3C /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86A0972B79B25B00937A3C /* libaura.dylib */; };
-		9A86A09C2B79B35200937A3C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86A09B2B79B35200937A3C /* AudioToolbox.framework */; };
-		9A86A0A22B79B3D200937A3C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86A0A12B79B3D200937A3C /* AppKit.framework */; };
-		9A86A0A32B79B40400937A3C /* libwindowing_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4DE84C2B7972C200477878 /* libwindowing_macos.dylib */; };
+		01AD1B34B3022C549A11D91E /* media_macos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C806CE3DDE7D0342372FCBCB /* media_macos.cpp */; };
+		30EA2EF0BA390FF0F2C1624D /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E239D1072F1FFFDBC023D563 /* framework.cpp */; };
+		C96A7CDF13CAD2B220A5D672 /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 25EF095CC678750BD16D13F6 /* framework.h */; };
+		7BEB6FC79D6B9DD42FE78FAB /* _factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 391D5552C7F03FD685697356 /* _factory.cpp */; };
+		36969F9B5B814632620843CE /* _.h in Headers */ = {isa = PBXBuildFile; fileRef = CB975509915E4A1E1DD656FE /* _.h */; };
+		9307AF1B22240BA74853268A /* macosMediaPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A6AD52C63C6C57E0611A353 /* macosMediaPickerViewController.h */; };
+		E6E9E05E4CD5C5E5AA9A77A9 /* macosMediaPickerViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27359F6BB034627CDAF04AEB /* macosMediaPickerViewController.mm */; };
+		14FB77B2A795A7B8D9C0A86B /* media_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 4035ABBD7E6B1F37760CC29F /* media_macos.h */; };
+		89282009CE2F905014258714 /* media_picker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E840AEBFAE94F6777CEC9FC8 /* media_picker.cpp */; };
+		89711ACED6A355F9DA0588A0 /* media_picker.h in Headers */ = {isa = PBXBuildFile; fileRef = 00B0BFFF317FE2EE9441ED14 /* media_picker.h */; };
+		1F0595C946E97525706D79CC /* macos_media_picker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 781AE6174662D3B1EFA985EB /* macos_media_picker.mm */; };
+		82EC27F1FBCBD5102444E7E9 /* libmedia_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEC4F0AF7AEE75D195737303 /* libmedia_apple.dylib */; };
+		4E52E2944F5604F7487C3437 /* media_player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE18EF0E3C3454F212BFBC9D /* media_player.cpp */; };
+		EF05C49494DF96270E19CD53 /* media_player.h in Headers */ = {isa = PBXBuildFile; fileRef = 44BCF423F1AF9F6D18466F28 /* media_player.h */; };
+		AF86C21A4406B7F34588532E /* media.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6EEBB913C3B7D3D5DC2E559B /* media.mm */; };
+		A351F35257A9AA29F62BA4C0 /* libacme.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6571C5617415E92B7174953C /* libacme.dylib */; };
+		01A41D1986D3CBEB24302068 /* libapex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB1AED9B7B5FB45FCB02F9AD /* libapex.dylib */; };
+		295C1CD34A560C1E591E6861 /* libaqua.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 134A741213F23B036BDBAFBC /* libaqua.dylib */; };
+		925F13A756C77DF954C025CB /* libaura.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B5F84B5324074F13906982 /* libaura.dylib */; };
+		45386B080A19BAE109B62A45 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EEB4A9366C8F6CA661FF19 /* AudioToolbox.framework */; };
+		B800E064FF686C5BF01E13FE /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0023C9F19BBA04CEDA185EDF /* AppKit.framework */; };
+		7CD7D721841A345968A20B99 /* libwindowing_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF0B12BA0A07433D0C1517E /* libwindowing_macos.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9A20EC802B7715A9008A08A2 /* PBXContainerItemProxy */ = {
+		425035CA8B32E1562D6A4770 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A20EC7C2B7715A9008A08A2 /* media_apple.xcodeproj */;
+			containerPortal = 27EBCD4467578F7FBCE352F5 /* media_apple.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 9A20EBE92B771090008A08A2;
+			remoteGlobalIDString = C7D3FDCEF3003137F4A95B4D;
 			remoteInfo = media_apple;
 		};
-		9A4DE84B2B7972C200477878 /* PBXContainerItemProxy */ = {
+		C203C1FD29C40F880BE5FF51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A4DE8462B7972C200477878 /* windowing_macos.xcodeproj */;
+			containerPortal = 58B0788FF3ABC9EA0F5D1B7F /* windowing_macos.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 9A9E4AD62751A3F40094A04C;
+			remoteGlobalIDString = 46363F8E0E84B3421613D321;
 			remoteInfo = windowing_macos;
 		};
-		9A4DE84D2B79732000477878 /* PBXContainerItemProxy */ = {
+		BEF702A2D28712295550B5BF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A20EC7C2B7715A9008A08A2 /* media_apple.xcodeproj */;
+			containerPortal = 27EBCD4467578F7FBCE352F5 /* media_apple.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 9A4DDE6A2B775A1E00477878;
+			remoteGlobalIDString = 17C38728F500AC2C147D7D17;
 			remoteInfo = media_apple;
 		};
-		9A651A842B8DA3920052C31B /* PBXContainerItemProxy */ = {
+		EC7D362D28E3C8FF3913DFE0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A4DE8462B7972C200477878 /* windowing_macos.xcodeproj */;
+			containerPortal = 58B0788FF3ABC9EA0F5D1B7F /* windowing_macos.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 9A9E4AD52751A3F40094A04C;
+			remoteGlobalIDString = 3BA5490D62D9E6DF5AE03D52;
 			remoteInfo = windowing_macos;
 		};
-		9A8F51852B7774C4007EDC5C /* PBXContainerItemProxy */ = {
+		5CA455F066F5AE39EB869B93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A20EC7C2B7715A9008A08A2 /* media_apple.xcodeproj */;
+			containerPortal = 27EBCD4467578F7FBCE352F5 /* media_apple.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 9A4DDE7B2B775A1E00477878;
+			remoteGlobalIDString = 9FA786DBE06314086A97646D;
 			remoteInfo = media_apple;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9A20EC642B77153F008A08A2 /* libmedia_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libmedia_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A20EC7C2B7715A9008A08A2 /* media_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = media_apple.xcodeproj; path = "../../operating_system-apple/media_apple/media_apple.xcodeproj"; sourceTree = SOURCE_ROOT; };
-		9A20EC8B2B7715BD008A08A2 /* _____debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "_____debug.xcconfig"; sourceTree = "<group>"; };
-		9A20EC8C2B7715BD008A08A2 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
-		9A20ECA42B7715BD008A08A2 /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
-		9A20ECA82B7715BD008A08A2 /* _factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
-		9A20ECAB2B7715BD008A08A2 /* _____release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "_____release.xcconfig"; sourceTree = "<group>"; };
-		9A20ECAD2B7715BD008A08A2 /* _.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
-		9A20ECFF2B771897008A08A2 /* aaa_iosAudioPickerViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = aaa_iosAudioPickerViewController.mm; sourceTree = "<group>"; };
-		9A20ED092B771897008A08A2 /* aaa_iosAudioPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aaa_iosAudioPickerViewController.h; sourceTree = "<group>"; };
-		9A20ED2A2B7719A8008A08A2 /* macosMediaPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macosMediaPickerViewController.h; sourceTree = "<group>"; };
-		9A20ED2B2B7719A8008A08A2 /* macosMediaPickerViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = macosMediaPickerViewController.mm; sourceTree = "<group>"; };
-		9A20ED2E2B771E50008A08A2 /* media_macos.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = media_macos.cpp; sourceTree = "<group>"; };
-		9A20ED2F2B771E50008A08A2 /* media_macos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = media_macos.h; sourceTree = "<group>"; };
-		9A20ED322B772398008A08A2 /* media_picker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = media_picker.cpp; sourceTree = "<group>"; };
-		9A20ED332B772398008A08A2 /* media_picker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = media_picker.h; sourceTree = "<group>"; };
-		9A20ED362B772E0E008A08A2 /* macos_media_picker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macos_media_picker.h; sourceTree = "<group>"; };
-		9A4DDE182B7734D200477878 /* macos_media_picker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = macos_media_picker.mm; sourceTree = "<group>"; };
-		9A4DE8462B7972C200477878 /* windowing_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = windowing_macos.xcodeproj; path = ../windowing_macos/windowing_macos.xcodeproj; sourceTree = SOURCE_ROOT; };
-		9A869F332B79B01500937A3C /* media_player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = media_player.cpp; sourceTree = "<group>"; };
-		9A869F362B79B01600937A3C /* media_player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = media_player.h; sourceTree = "<group>"; };
-		9A869F392B79B0B000937A3C /* media.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = media.mm; sourceTree = "<group>"; };
-		9A86A0912B79B23E00937A3C /* libacme.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A86A0932B79B24A00937A3C /* libapex.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A86A0952B79B25200937A3C /* libaqua.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaqua.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A86A0972B79B25B00937A3C /* libaura.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A86A0992B79B2F800937A3C /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
-		9A86A09B2B79B35200937A3C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
-		9A86A09D2B79B38100937A3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		9A86A09F2B79B3A600937A3C /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
-		9A86A0A12B79B3D200937A3C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
+		EF15E63AB47650E75AE41EAB /* libmedia_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libmedia_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		27EBCD4467578F7FBCE352F5 /* media_apple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = media_apple.xcodeproj; path = "../../operating_system-apple/media_apple/media_apple.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		E507FFFE9BCCBA192EA0EADB /* _____debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "_____debug.xcconfig"; sourceTree = "<group>"; };
+		E239D1072F1FFFDBC023D563 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
+		25EF095CC678750BD16D13F6 /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
+		391D5552C7F03FD685697356 /* _factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _factory.cpp; sourceTree = "<group>"; };
+		B317562EBC943E2A16036B50 /* _____release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "_____release.xcconfig"; sourceTree = "<group>"; };
+		CB975509915E4A1E1DD656FE /* _.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _.h; sourceTree = "<group>"; };
+		1CA7A911BDE5CA5E76CC8C43 /* aaa_iosAudioPickerViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = aaa_iosAudioPickerViewController.mm; sourceTree = "<group>"; };
+		90263A2E976B1F05CF79BEBE /* aaa_iosAudioPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aaa_iosAudioPickerViewController.h; sourceTree = "<group>"; };
+		9A6AD52C63C6C57E0611A353 /* macosMediaPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macosMediaPickerViewController.h; sourceTree = "<group>"; };
+		27359F6BB034627CDAF04AEB /* macosMediaPickerViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = macosMediaPickerViewController.mm; sourceTree = "<group>"; };
+		C806CE3DDE7D0342372FCBCB /* media_macos.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = media_macos.cpp; sourceTree = "<group>"; };
+		4035ABBD7E6B1F37760CC29F /* media_macos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = media_macos.h; sourceTree = "<group>"; };
+		E840AEBFAE94F6777CEC9FC8 /* media_picker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = media_picker.cpp; sourceTree = "<group>"; };
+		00B0BFFF317FE2EE9441ED14 /* media_picker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = media_picker.h; sourceTree = "<group>"; };
+		300A9F9CB26E8127A2347409 /* macos_media_picker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macos_media_picker.h; sourceTree = "<group>"; };
+		781AE6174662D3B1EFA985EB /* macos_media_picker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = macos_media_picker.mm; sourceTree = "<group>"; };
+		58B0788FF3ABC9EA0F5D1B7F /* windowing_macos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = windowing_macos.xcodeproj; path = ../windowing_macos/windowing_macos.xcodeproj; sourceTree = SOURCE_ROOT; };
+		CE18EF0E3C3454F212BFBC9D /* media_player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = media_player.cpp; sourceTree = "<group>"; };
+		44BCF423F1AF9F6D18466F28 /* media_player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = media_player.h; sourceTree = "<group>"; };
+		6EEBB913C3B7D3D5DC2E559B /* media.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = media.mm; sourceTree = "<group>"; };
+		6571C5617415E92B7174953C /* libacme.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libacme.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB1AED9B7B5FB45FCB02F9AD /* libapex.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libapex.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		134A741213F23B036BDBAFBC /* libaqua.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaqua.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		87B5F84B5324074F13906982 /* libaura.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libaura.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8F0F4B3E7AF5C7B4A53B3CB /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
+		D7EEB4A9366C8F6CA661FF19 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		FE12B36E236F432AAE1872BB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		68DA8DB194D9FA87A4E5F5E1 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		0023C9F19BBA04CEDA185EDF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9A20EC622B77153F008A08A2 /* Frameworks */ = {
+		61ABC03358F477944EA3E4C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A86A0A32B79B40400937A3C /* libwindowing_macos.dylib in Frameworks */,
-				9A86A0A22B79B3D200937A3C /* AppKit.framework in Frameworks */,
-				9A86A09C2B79B35200937A3C /* AudioToolbox.framework in Frameworks */,
-				9A86A0982B79B25B00937A3C /* libaura.dylib in Frameworks */,
-				9A86A0962B79B25200937A3C /* libaqua.dylib in Frameworks */,
-				9A86A0942B79B24A00937A3C /* libapex.dylib in Frameworks */,
-				9A86A0922B79B23E00937A3C /* libacme.dylib in Frameworks */,
-				9A4DE8532B798FCF00477878 /* libmedia_apple.dylib in Frameworks */,
+				7CD7D721841A345968A20B99 /* libwindowing_macos.dylib in Frameworks */,
+				B800E064FF686C5BF01E13FE /* AppKit.framework in Frameworks */,
+				45386B080A19BAE109B62A45 /* AudioToolbox.framework in Frameworks */,
+				925F13A756C77DF954C025CB /* libaura.dylib in Frameworks */,
+				295C1CD34A560C1E591E6861 /* libaqua.dylib in Frameworks */,
+				01A41D1986D3CBEB24302068 /* libapex.dylib in Frameworks */,
+				A351F35257A9AA29F62BA4C0 /* libacme.dylib in Frameworks */,
+				82EC27F1FBCBD5102444E7E9 /* libmedia_apple.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9A20EC5B2B77153F008A08A2 = {
+		3ACB9973CBF00CCA891A8D90 = {
 			isa = PBXGroup;
 			children = (
-				9A4DE8462B7972C200477878 /* windowing_macos.xcodeproj */,
-				9A20EC7C2B7715A9008A08A2 /* media_apple.xcodeproj */,
-				9A20EC822B7715BD008A08A2 /* media_macos */,
-				9A20EC652B77153F008A08A2 /* Products */,
-				9A4DE8522B798FCF00477878 /* Frameworks */,
+				58B0788FF3ABC9EA0F5D1B7F /* windowing_macos.xcodeproj */,
+				27EBCD4467578F7FBCE352F5 /* media_apple.xcodeproj */,
+				60D3ED8FC57BA0D96160ED5F /* media_macos */,
+				622677029B7498CF24AF29BB /* Products */,
+				B7D9554698EBBAD9499960A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		9A20EC652B77153F008A08A2 /* Products */ = {
+		622677029B7498CF24AF29BB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A20EC642B77153F008A08A2 /* libmedia_macos.dylib */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9A20EC7D2B7715A9008A08A2 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9A8F51862B7774C4007EDC5C /* libmedia_apple.dylib */,
-				9A20EC812B7715A9008A08A2 /* libios_media_apple.a */,
+				EF15E63AB47650E75AE41EAB /* libmedia_macos.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9A20EC822B7715BD008A08A2 /* media_macos */ = {
+		1534CD77B1625A7E05976969 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A869F392B79B0B000937A3C /* media.mm */,
-				9A20EC8B2B7715BD008A08A2 /* _____debug.xcconfig */,
-				9A20ECAB2B7715BD008A08A2 /* _____release.xcconfig */,
-				9A20ECAD2B7715BD008A08A2 /* _.h */,
-				9A20ED092B771897008A08A2 /* aaa_iosAudioPickerViewController.h */,
-				9A20ECFF2B771897008A08A2 /* aaa_iosAudioPickerViewController.mm */,
-				9A20ECA82B7715BD008A08A2 /* _factory.cpp */,
-				9A20EC8C2B7715BD008A08A2 /* framework.cpp */,
-				9A20ECA42B7715BD008A08A2 /* framework.h */,
-				9A20ED362B772E0E008A08A2 /* macos_media_picker.h */,
-				9A4DDE182B7734D200477878 /* macos_media_picker.mm */,
-				9A20ED2A2B7719A8008A08A2 /* macosMediaPickerViewController.h */,
-				9A20ED2B2B7719A8008A08A2 /* macosMediaPickerViewController.mm */,
-				9A20ED2E2B771E50008A08A2 /* media_macos.cpp */,
-				9A20ED2F2B771E50008A08A2 /* media_macos.h */,
-				9A20ED322B772398008A08A2 /* media_picker.cpp */,
-				9A20ED332B772398008A08A2 /* media_picker.h */,
-				9A869F332B79B01500937A3C /* media_player.cpp */,
-				9A869F362B79B01600937A3C /* media_player.h */,
+				AEC4F0AF7AEE75D195737303 /* libmedia_apple.dylib */,
+				A49394DEE4CF288DE5AFC2F8 /* libios_media_apple.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		60D3ED8FC57BA0D96160ED5F /* media_macos */ = {
+			isa = PBXGroup;
+			children = (
+				6EEBB913C3B7D3D5DC2E559B /* media.mm */,
+				E507FFFE9BCCBA192EA0EADB /* _____debug.xcconfig */,
+				B317562EBC943E2A16036B50 /* _____release.xcconfig */,
+				CB975509915E4A1E1DD656FE /* _.h */,
+				90263A2E976B1F05CF79BEBE /* aaa_iosAudioPickerViewController.h */,
+				1CA7A911BDE5CA5E76CC8C43 /* aaa_iosAudioPickerViewController.mm */,
+				391D5552C7F03FD685697356 /* _factory.cpp */,
+				E239D1072F1FFFDBC023D563 /* framework.cpp */,
+				25EF095CC678750BD16D13F6 /* framework.h */,
+				300A9F9CB26E8127A2347409 /* macos_media_picker.h */,
+				781AE6174662D3B1EFA985EB /* macos_media_picker.mm */,
+				9A6AD52C63C6C57E0611A353 /* macosMediaPickerViewController.h */,
+				27359F6BB034627CDAF04AEB /* macosMediaPickerViewController.mm */,
+				C806CE3DDE7D0342372FCBCB /* media_macos.cpp */,
+				4035ABBD7E6B1F37760CC29F /* media_macos.h */,
+				E840AEBFAE94F6777CEC9FC8 /* media_picker.cpp */,
+				00B0BFFF317FE2EE9441ED14 /* media_picker.h */,
+				CE18EF0E3C3454F212BFBC9D /* media_player.cpp */,
+				44BCF423F1AF9F6D18466F28 /* media_player.h */,
 			);
 			name = media_macos;
 			sourceTree = "<group>";
 		};
-		9A4DE8472B7972C200477878 /* Products */ = {
+		BA9ED39DCC7EB5B2774C312D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A4DE84C2B7972C200477878 /* libwindowing_macos.dylib */,
+				ABF0B12BA0A07433D0C1517E /* libwindowing_macos.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9A4DE8522B798FCF00477878 /* Frameworks */ = {
+		B7D9554698EBBAD9499960A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9A86A0A12B79B3D200937A3C /* AppKit.framework */,
-				9A86A09F2B79B3A600937A3C /* CoreFoundation.framework */,
-				9A86A09D2B79B38100937A3C /* Foundation.framework */,
-				9A86A09B2B79B35200937A3C /* AudioToolbox.framework */,
-				9A86A0992B79B2F800937A3C /* CoreAudio.framework */,
-				9A86A0972B79B25B00937A3C /* libaura.dylib */,
-				9A86A0952B79B25200937A3C /* libaqua.dylib */,
-				9A86A0932B79B24A00937A3C /* libapex.dylib */,
-				9A86A0912B79B23E00937A3C /* libacme.dylib */,
+				0023C9F19BBA04CEDA185EDF /* AppKit.framework */,
+				68DA8DB194D9FA87A4E5F5E1 /* CoreFoundation.framework */,
+				FE12B36E236F432AAE1872BB /* Foundation.framework */,
+				D7EEB4A9366C8F6CA661FF19 /* AudioToolbox.framework */,
+				A8F0F4B3E7AF5C7B4A53B3CB /* CoreAudio.framework */,
+				87B5F84B5324074F13906982 /* libaura.dylib */,
+				134A741213F23B036BDBAFBC /* libaqua.dylib */,
+				CB1AED9B7B5FB45FCB02F9AD /* libapex.dylib */,
+				6571C5617415E92B7174953C /* libacme.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -203,58 +203,58 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		9A20EC602B77153F008A08A2 /* Headers */ = {
+		5F590AF9C644AE9A3E4CF8C9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A20ED352B772398008A08A2 /* media_picker.h in Headers */,
-				9A20ED2C2B7719A9008A08A2 /* macosMediaPickerViewController.h in Headers */,
-				9A869F382B79B01600937A3C /* media_player.h in Headers */,
-				9A20ED312B771E50008A08A2 /* media_macos.h in Headers */,
-				9A20ECC32B7715BD008A08A2 /* _.h in Headers */,
-				9A20ECBE2B7715BD008A08A2 /* framework.h in Headers */,
+				89711ACED6A355F9DA0588A0 /* media_picker.h in Headers */,
+				9307AF1B22240BA74853268A /* macosMediaPickerViewController.h in Headers */,
+				EF05C49494DF96270E19CD53 /* media_player.h in Headers */,
+				14FB77B2A795A7B8D9C0A86B /* media_macos.h in Headers */,
+				36969F9B5B814632620843CE /* _.h in Headers */,
+				C96A7CDF13CAD2B220A5D672 /* framework.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		9A20EC632B77153F008A08A2 /* media_macos */ = {
+		82BDD208182BADFFB4EEAB7F /* media_macos */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A20EC6D2B77153F008A08A2 /* Build configuration list for PBXNativeTarget "media_macos" */;
+			buildConfigurationList = E04B2B97EC4B88BECBED2377 /* Build configuration list for PBXNativeTarget "media_macos" */;
 			buildPhases = (
-				9A20EC602B77153F008A08A2 /* Headers */,
-				9A20EC612B77153F008A08A2 /* Sources */,
-				9A20EC622B77153F008A08A2 /* Frameworks */,
-				9AB9DE0B2D6E8DB800B3AF0E /* ShellScript */,
+				5F590AF9C644AE9A3E4CF8C9 /* Headers */,
+				7F0315F187169F4B9A39CE8E /* Sources */,
+				61ABC03358F477944EA3E4C9 /* Frameworks */,
+				931A641198CBDE6B6F286F67 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9A651A852B8DA3920052C31B /* PBXTargetDependency */,
-				9A4DE84E2B79732000477878 /* PBXTargetDependency */,
+				71299651B6C057ECF6A33E85 /* PBXTargetDependency */,
+				DD090AE5B7BE5ED08E386AF4 /* PBXTargetDependency */,
 			);
 			name = media_macos;
 			productName = media_ios;
-			productReference = 9A20EC642B77153F008A08A2 /* libmedia_macos.dylib */;
+			productReference = EF15E63AB47650E75AE41EAB /* libmedia_macos.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9A20EC5C2B77153F008A08A2 /* Project object */ = {
+		BA0B584A143E89948B1CEEB7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1540;
 				ORGANIZATIONNAME = "ca2 Software Development";
 				TargetAttributes = {
-					9A20EC632B77153F008A08A2 = {
+					82BDD208182BADFFB4EEAB7F = {
 						CreatedOnToolsVersion = 15.2;
 					};
 				};
 			};
-			buildConfigurationList = 9A20EC5F2B77153F008A08A2 /* Build configuration list for PBXProject "media_macos" */;
+			buildConfigurationList = 628D3928ED52D36F91134B86 /* Build configuration list for PBXProject "media_macos" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -262,52 +262,52 @@
 				en,
 				Base,
 			);
-			mainGroup = 9A20EC5B2B77153F008A08A2;
-			productRefGroup = 9A20EC652B77153F008A08A2 /* Products */;
+			mainGroup = 3ACB9973CBF00CCA891A8D90;
+			productRefGroup = 622677029B7498CF24AF29BB /* Products */;
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 9A20EC7D2B7715A9008A08A2 /* Products */;
-					ProjectRef = 9A20EC7C2B7715A9008A08A2 /* media_apple.xcodeproj */;
+					ProductGroup = 1534CD77B1625A7E05976969 /* Products */;
+					ProjectRef = 27EBCD4467578F7FBCE352F5 /* media_apple.xcodeproj */;
 				},
 				{
-					ProductGroup = 9A4DE8472B7972C200477878 /* Products */;
-					ProjectRef = 9A4DE8462B7972C200477878 /* windowing_macos.xcodeproj */;
+					ProductGroup = BA9ED39DCC7EB5B2774C312D /* Products */;
+					ProjectRef = 58B0788FF3ABC9EA0F5D1B7F /* windowing_macos.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				9A20EC632B77153F008A08A2 /* media_macos */,
+				82BDD208182BADFFB4EEAB7F /* media_macos */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		9A20EC812B7715A9008A08A2 /* libios_media_apple.a */ = {
+		A49394DEE4CF288DE5AFC2F8 /* libios_media_apple.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
 			path = libios_media_apple.a;
-			remoteRef = 9A20EC802B7715A9008A08A2 /* PBXContainerItemProxy */;
+			remoteRef = 425035CA8B32E1562D6A4770 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9A4DE84C2B7972C200477878 /* libwindowing_macos.dylib */ = {
+		ABF0B12BA0A07433D0C1517E /* libwindowing_macos.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
 			path = libwindowing_macos.dylib;
-			remoteRef = 9A4DE84B2B7972C200477878 /* PBXContainerItemProxy */;
+			remoteRef = C203C1FD29C40F880BE5FF51 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9A8F51862B7774C4007EDC5C /* libmedia_apple.dylib */ = {
+		AEC4F0AF7AEE75D195737303 /* libmedia_apple.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
 			path = libmedia_apple.dylib;
-			remoteRef = 9A8F51852B7774C4007EDC5C /* PBXContainerItemProxy */;
+			remoteRef = 5CA455F066F5AE39EB869B93 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9AB9DE0B2D6E8DB800B3AF0E /* ShellScript */ = {
+		931A641198CBDE6B6F286F67 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -330,40 +330,40 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9A20EC612B77153F008A08A2 /* Sources */ = {
+		7F0315F187169F4B9A39CE8E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A869F3A2B79B0B100937A3C /* media.mm in Sources */,
-				9A4DDE1B2B7734D300477878 /* macos_media_picker.mm in Sources */,
-				9A20ED342B772398008A08A2 /* media_picker.cpp in Sources */,
-				9A20ED2D2B7719A9008A08A2 /* macosMediaPickerViewController.mm in Sources */,
-				9A20ECB42B7715BD008A08A2 /* framework.cpp in Sources */,
-				9A869F372B79B01600937A3C /* media_player.cpp in Sources */,
-				9A0D1C7B2B787B5E00E4B572 /* media_macos.cpp in Sources */,
-				9A20ECC22B7715BD008A08A2 /* _factory.cpp in Sources */,
+				AF86C21A4406B7F34588532E /* media.mm in Sources */,
+				1F0595C946E97525706D79CC /* macos_media_picker.mm in Sources */,
+				89282009CE2F905014258714 /* media_picker.cpp in Sources */,
+				E6E9E05E4CD5C5E5AA9A77A9 /* macosMediaPickerViewController.mm in Sources */,
+				30EA2EF0BA390FF0F2C1624D /* framework.cpp in Sources */,
+				4E52E2944F5604F7487C3437 /* media_player.cpp in Sources */,
+				01AD1B34B3022C549A11D91E /* media_macos.cpp in Sources */,
+				7BEB6FC79D6B9DD42FE78FAB /* _factory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9A4DE84E2B79732000477878 /* PBXTargetDependency */ = {
+		DD090AE5B7BE5ED08E386AF4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = media_apple;
-			targetProxy = 9A4DE84D2B79732000477878 /* PBXContainerItemProxy */;
+			targetProxy = BEF702A2D28712295550B5BF /* PBXContainerItemProxy */;
 		};
-		9A651A852B8DA3920052C31B /* PBXTargetDependency */ = {
+		71299651B6C057ECF6A33E85 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = windowing_macos;
-			targetProxy = 9A651A842B8DA3920052C31B /* PBXContainerItemProxy */;
+			targetProxy = EC7D362D28E3C8FF3913DFE0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		9A20EC6B2B77153F008A08A2 /* Debug */ = {
+		3172F367C9F8F4D6D1238B19 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A20EC8B2B7715BD008A08A2 /* _____debug.xcconfig */;
+			baseConfigurationReference = E507FFFE9BCCBA192EA0EADB /* _____debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -457,9 +457,9 @@
 			};
 			name = Debug;
 		};
-		9A20EC6C2B77153F008A08A2 /* Release */ = {
+		065E551DEF04FF6C7052E012 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A20ECAB2B7715BD008A08A2 /* _____release.xcconfig */;
+			baseConfigurationReference = B317562EBC943E2A16036B50 /* _____release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -546,7 +546,7 @@
 			};
 			name = Release;
 		};
-		9A20EC6E2B77153F008A08A2 /* Debug */ = {
+		641C31F08DE15EA39F0B3BA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -560,7 +560,7 @@
 			};
 			name = Debug;
 		};
-		9A20EC6F2B77153F008A08A2 /* Release */ = {
+		0345A792E0913DC01ACCD257 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -577,25 +577,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9A20EC5F2B77153F008A08A2 /* Build configuration list for PBXProject "media_macos" */ = {
+		628D3928ED52D36F91134B86 /* Build configuration list for PBXProject "media_macos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9A20EC6B2B77153F008A08A2 /* Debug */,
-				9A20EC6C2B77153F008A08A2 /* Release */,
+				3172F367C9F8F4D6D1238B19 /* Debug */,
+				065E551DEF04FF6C7052E012 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A20EC6D2B77153F008A08A2 /* Build configuration list for PBXNativeTarget "media_macos" */ = {
+		E04B2B97EC4B88BECBED2377 /* Build configuration list for PBXNativeTarget "media_macos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9A20EC6E2B77153F008A08A2 /* Debug */,
-				9A20EC6F2B77153F008A08A2 /* Release */,
+				641C31F08DE15EA39F0B3BA8 /* Debug */,
+				0345A792E0913DC01ACCD257 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9A20EC5C2B77153F008A08A2 /* Project object */;
+	rootObject = BA0B584A143E89948B1CEEB7 /* Project object */;
 }

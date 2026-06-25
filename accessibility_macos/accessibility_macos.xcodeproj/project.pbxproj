@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		9ABD52BC2FB407FE006D4DE1 /* libaccessibility_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libaccessibility_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB193F30B7049810E33B118C /* libaccessibility_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libaccessibility_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9ABD52BA2FB407FE006D4DE1 /* Frameworks */ = {
+		02AD0E7134BA731213388B3C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -21,17 +21,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9ABD52B32FB407FE006D4DE1 = {
+		1ABA90EDF4E00DF48F498612 = {
 			isa = PBXGroup;
 			children = (
-				9ABD52BD2FB407FE006D4DE1 /* Products */,
+				A0ECD3ADB6492B3FD32E3D08 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9ABD52BD2FB407FE006D4DE1 /* Products */ = {
+		A0ECD3ADB6492B3FD32E3D08 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9ABD52BC2FB407FE006D4DE1 /* libaccessibility_macos.dylib */,
+				FB193F30B7049810E33B118C /* libaccessibility_macos.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -39,7 +39,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		9ABD52B82FB407FE006D4DE1 /* Headers */ = {
+		74198D8F5915B0779CBAEF3B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -49,13 +49,13 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		9ABD52BB2FB407FE006D4DE1 /* accessibility_macos */ = {
+		9CDF7729C7450CBE263F68E2 /* accessibility_macos */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9ABD52C02FB407FE006D4DE1 /* Build configuration list for PBXNativeTarget "accessibility_macos" */;
+			buildConfigurationList = 2045A50D89525C3E04339051 /* Build configuration list for PBXNativeTarget "accessibility_macos" */;
 			buildPhases = (
-				9ABD52B82FB407FE006D4DE1 /* Headers */,
-				9ABD52B92FB407FE006D4DE1 /* Sources */,
-				9ABD52BA2FB407FE006D4DE1 /* Frameworks */,
+				74198D8F5915B0779CBAEF3B /* Headers */,
+				D51052C61799DF1EF7ACDF93 /* Sources */,
+				02AD0E7134BA731213388B3C /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -65,44 +65,44 @@
 			packageProductDependencies = (
 			);
 			productName = accessibility_macos;
-			productReference = 9ABD52BC2FB407FE006D4DE1 /* libaccessibility_macos.dylib */;
+			productReference = FB193F30B7049810E33B118C /* libaccessibility_macos.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9ABD52B42FB407FE006D4DE1 /* Project object */ = {
+		4219AEA4586281FD16D9BE02 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 2640;
 				TargetAttributes = {
-					9ABD52BB2FB407FE006D4DE1 = {
+					9CDF7729C7450CBE263F68E2 = {
 						CreatedOnToolsVersion = 26.4.1;
 					};
 				};
 			};
-			buildConfigurationList = 9ABD52B72FB407FE006D4DE1 /* Build configuration list for PBXProject "accessibility_macos" */;
+			buildConfigurationList = DCFA20F16F056E99941A0BFA /* Build configuration list for PBXProject "accessibility_macos" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 9ABD52B32FB407FE006D4DE1;
+			mainGroup = 1ABA90EDF4E00DF48F498612;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 9ABD52BD2FB407FE006D4DE1 /* Products */;
+			productRefGroup = A0ECD3ADB6492B3FD32E3D08 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9ABD52BB2FB407FE006D4DE1 /* accessibility_macos */,
+				9CDF7729C7450CBE263F68E2 /* accessibility_macos */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9ABD52B92FB407FE006D4DE1 /* Sources */ = {
+		D51052C61799DF1EF7ACDF93 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -112,7 +112,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		9ABD52BE2FB407FE006D4DE1 /* Debug */ = {
+		8CA07D3238CF274EF8AD8610 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -174,7 +174,7 @@
 			};
 			name = Debug;
 		};
-		9ABD52BF2FB407FE006D4DE1 /* Release */ = {
+		63F5A979EE57587A766DA1ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -229,7 +229,7 @@
 			};
 			name = Release;
 		};
-		9ABD52C12FB407FE006D4DE1 /* Debug */ = {
+		C131A158519C1E153AB0FAC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -242,7 +242,7 @@
 			};
 			name = Debug;
 		};
-		9ABD52C22FB407FE006D4DE1 /* Release */ = {
+		A0A11ABD14FE720DE0644028 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -258,25 +258,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9ABD52B72FB407FE006D4DE1 /* Build configuration list for PBXProject "accessibility_macos" */ = {
+		DCFA20F16F056E99941A0BFA /* Build configuration list for PBXProject "accessibility_macos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9ABD52BE2FB407FE006D4DE1 /* Debug */,
-				9ABD52BF2FB407FE006D4DE1 /* Release */,
+				8CA07D3238CF274EF8AD8610 /* Debug */,
+				63F5A979EE57587A766DA1ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9ABD52C02FB407FE006D4DE1 /* Build configuration list for PBXNativeTarget "accessibility_macos" */ = {
+		2045A50D89525C3E04339051 /* Build configuration list for PBXNativeTarget "accessibility_macos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9ABD52C12FB407FE006D4DE1 /* Debug */,
-				9ABD52C22FB407FE006D4DE1 /* Release */,
+				C131A158519C1E153AB0FAC8 /* Debug */,
+				A0A11ABD14FE720DE0644028 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9ABD52B42FB407FE006D4DE1 /* Project object */;
+	rootObject = 4219AEA4586281FD16D9BE02 /* Project object */;
 }

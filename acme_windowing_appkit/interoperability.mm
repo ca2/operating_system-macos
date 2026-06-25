@@ -619,10 +619,10 @@ int ns_window_set_window_pos(::appkit::ns_window_t nswindow,
       
    }
    
-   if(!(flags & ::lightui::e_SWP_NOMOVE))
+   if(!(flags & ::user_interface::e_SWP_NOMOVE))
    {
       
-      if(!(flags & ::lightui::e_SWP_NOSIZE))
+      if(!(flags & ::user_interface::e_SWP_NOSIZE))
       {
        
          NSRect r = NSMakeRect(x, y, w, h);
@@ -640,7 +640,7 @@ int ns_window_set_window_pos(::appkit::ns_window_t nswindow,
       }
       
    }
-   else if(!(flags & ::lightui::e_SWP_NOSIZE))
+   else if(!(flags & ::user_interface::e_SWP_NOSIZE))
    {
       
       [pnswindow setFrameTopLeftPoint:NSMakePoint(x, y)];
@@ -1141,10 +1141,10 @@ int ns_impact_set_window_pos(::appkit::ns_impact_t nsimpact,
       
    }
    
-   if(!(flags & ::lightui::e_SWP_NOMOVE))
+   if(!(flags & ::user_interface::e_SWP_NOMOVE))
    {
       
-      if(!(flags & ::lightui::e_SWP_NOSIZE))
+      if(!(flags & ::user_interface::e_SWP_NOSIZE))
       {
        
          NSRect r = NSMakeRect(x, y, w, h);
@@ -1162,7 +1162,7 @@ int ns_impact_set_window_pos(::appkit::ns_impact_t nsimpact,
       }
       
    }
-   else if(!(flags & ::lightui::e_SWP_NOSIZE))
+   else if(!(flags & ::user_interface::e_SWP_NOSIZE))
    {
       
       //[pnsimpact setFrameTopLeftPoint:NSMakePoint(x, y)];
@@ -1598,7 +1598,7 @@ void ns_combo_box_set_cur_sel(::appkit::ns_impact_t nsimpact, ::collection::inde
    
    auto pformcontroller = ns_form_controllerø(nsimpact.ns_window());
    
-   ::lightui::block_control_notification blockcontrolnotification(pformcontroller, nsimpact.m_uTag, ::lightui::e_CBN_SELENDOK);
+   ::user_interface::block_control_notification blockcontrolnotification(pformcontroller, nsimpact.m_uTag, ::user_interface::e_CBN_SELENDOK);
    
    auto pcombo = ns_impactø<NSComboBox>(pformcontroller, nsimpact.m_uTag);
 

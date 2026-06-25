@@ -9,7 +9,7 @@
 #pragma once
 
 //
-//namespace lightui
+//namespace user_interface
 //{
 //
 //enum enum_notification

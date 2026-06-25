@@ -383,7 +383,7 @@ namespace innate_subsystem_macos
       ASSERT(isWindow());
       auto operatingsystemwindow = operating_system_window();
       return !!::cross_windows::set_window_pos(operatingsystemwindow, 0, 0, 0, size.cx, size.cy,
-                            ::lightui::e_SWP_NOMOVE | ::lightui::e_SWP_NOZORDER | ::lightui::e_SWP_NOACTIVATE);
+                            ::user_interface::e_SWP_NOMOVE | ::user_interface::e_SWP_NOZORDER | ::user_interface::e_SWP_NOACTIVATE);
 //      return false;
    }
 
@@ -392,7 +392,7 @@ namespace innate_subsystem_macos
       ASSERT(isWindow());
       auto operatingsystemwindow = operating_system_window();
       return !!::cross_windows::set_window_pos(operatingsystemwindow, 0, point.x, point.y, 0, 0,
-                            ::lightui::e_SWP_NOSIZE | ::lightui::e_SWP_NOZORDER | ::lightui::e_SWP_NOACTIVATE);
+                            ::user_interface::e_SWP_NOSIZE | ::user_interface::e_SWP_NOZORDER | ::user_interface::e_SWP_NOACTIVATE);
       //return false;
    }
 
@@ -403,7 +403,7 @@ namespace innate_subsystem_macos
       return !!::cross_windows::set_window_pos(operatingsystemwindow, 0,
          rectangle.left, rectangle.top,
          rectangle.width(), rectangle.height(),
-                            ::lightui::e_SWP_NOZORDER | ::lightui::e_SWP_NOACTIVATE);
+                            ::user_interface::e_SWP_NOZORDER | ::user_interface::e_SWP_NOACTIVATE);
     ////  return false;
    }
 

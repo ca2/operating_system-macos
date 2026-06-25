@@ -415,7 +415,7 @@ namespace appkit
       void window::show_window(::i32 iShow)
       {
          
-         if(iShow == ::lightui::e_SW_HIDE)
+         if(iShow == ::user_interface::e_SW_HIDE)
          {
             
             m_pacmewindowbridge->ns_hide();

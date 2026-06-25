@@ -434,7 +434,7 @@ void windowing::hide_application()
    
 }
 //
-//void windowing::on_user_command(::uptr u,::lightui::enum_notification enotification,       ::uptr uControl)
+//void windowing::on_user_command(::uptr u,::user_interface::enum_notification enotification,       ::uptr uControl)
 //{
 //   
 //   ::operating_system::macos_window macoswindow((CGWindowID)u, ::windowing::e_operating_ambient_macos);
@@ -539,7 +539,7 @@ void ns_send_message(::appkit::ns_impact_t nsimpact, ::user::enum_message emessa
 }
 
 
-void ns_on_user_command(::appkit::ns_window_t nswindow, ::lightui::enum_notification enotification, ::uptr uControl)
+void ns_on_user_command(::appkit::ns_window_t nswindow, ::user_interface::enum_notification enotification, ::uptr uControl)
 {
    
    ::cast < ::appkit::acme::windowing::windowing > pwindowing = ::system()->acme_windowing();
@@ -564,7 +564,7 @@ void ns_on_user_command(::appkit::ns_window_t nswindow, ::lightui::enum_notifica
 }
 
 
-void ns_on_user_command(::appkit::ns_impact_t nsimpact, ::lightui::enum_notification enotification, ::uptr uControl)
+void ns_on_user_command(::appkit::ns_impact_t nsimpact, ::user_interface::enum_notification enotification, ::uptr uControl)
 {
    
    ::cast < ::appkit::acme::windowing::windowing > pwindowing = ::system()->acme_windowing();
