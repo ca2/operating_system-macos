@@ -1074,7 +1074,7 @@ void node::shell_open(const ::file::path & path, const ::scoped_string & scopeds
       
       //psystem->m_papplication->
       
-      psystem->acme_windowing()->on_activate();
+      psystem->m_papplication->post_request(nullptr);
       
    }
 
@@ -1123,7 +1123,7 @@ void node::shell_open(const ::file::path & path, const ::scoped_string & scopeds
 
       // psystem->request(prequest);
 
-      psystem->acme_windowing()->on_activate();
+      psystem->m_papplication->post_request(nullptr);
       
    }
 

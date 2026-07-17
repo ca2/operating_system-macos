@@ -113,7 +113,7 @@ class acme_window_bridge;
       
       //void hide_window() override;
       
-      void show_window(::i32 iShow) override;
+      void show_window(::user_interface::enum_show_window eshowwindow) override;
       void display(::e_display edisplay, const ::user::activation & useractivation) override;
       //virtual void _on_event(XEvent *pevent);
       

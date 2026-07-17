@@ -412,10 +412,10 @@ namespace appkit
       //   }
       
       
-      void window::show_window(::i32 iShow)
+      void window::show_window(::user_interface::enum_show_window eshowwindow)
       {
          
-         if(iShow == ::user_interface::e_SW_HIDE)
+         if(eshowwindow == ::user_interface::e_show_window_hide)
          {
             
             m_pacmewindowbridge->ns_hide();
