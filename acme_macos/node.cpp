@@ -1043,7 +1043,7 @@ void node::shell_open(const ::file::path & path, const ::scoped_string & scopeds
          
          //psystem->branch_synchronously();
          
-         psystem->branch();
+         psystem->branch_asynchronously();
 
    //         if(!estatus)
    //         {
