@@ -41,7 +41,9 @@ void ns_set_cursor(::windowing::cursor * pcursorParam)
          
          _synchronous_lock lock(pcursor->system()->synchronization());
          
-         auto pNSCursor = pcursor->get_os_data();
+         ::cast < ::windowing_macos::cursor > pwindowingmacoscursor = pcursor;
+         
+         auto pNSCursor = pwindowingmacoscursor->m_pNSCursor;
          
          if(is_null(pNSCursor))
          {

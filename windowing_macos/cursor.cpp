@@ -89,7 +89,7 @@ namespace windowing_macos
          
       }
       
-      set_os_data(m_pNSCursor);
+      //set_os_data(m_pNSCursor);
 
    }
 

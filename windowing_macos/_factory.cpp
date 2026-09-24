@@ -37,7 +37,7 @@ void windowing_macos_factory(::factory::factory * pfactory)
    pfactory->add_factory_item < windowing_macos::window, ::acme::windowing::window > ();
 
 //   pfactory->add_factory_item < windowing_macos::node, ::platform::node > ();
-   pfactory->add_factory_item < graphics::double_buffer, ::graphics::graphics > ();
+   pfactory->add_factory_item < graphics::double_buffer_graphics, ::graphics::graphics > ();
    pfactory->add_factory_item < windowing_macos::display, ::acme::windowing::display > ();
    pfactory->add_factory_item < windowing_macos::monitor, ::windowing::monitor > ();
    pfactory->add_factory_item < windowing_macos::cursor, ::windowing::cursor > ();

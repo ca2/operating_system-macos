@@ -23,6 +23,7 @@
 //#include "aura_macos/interaction_impl.h"
 #include "acme/parallelization/message_queue.h"
 #include "aura/graphics/draw2d/graphics.h"
+#include "aura/graphics/graphics/buffer_item.h"
 #include "aura/graphics/graphics/graphics.h"
 #include "aura/graphics/image/drawing.h"
 #include "aura/graphics/image/image.h"
@@ -507,7 +508,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
       
 //      auto pwindowing = (::windowing_macos::windowing *) m_pwindowing->m_pWindowing4;
       
-      if(m_pacmeuserinteraction == get_app()->m_pacmeuserinteractionMain)
+      if(m_pacmeuserinteraction == get_app()->main_acme_user_interaction())
       {
          macos_windowing()->_defer_dock_application(!bSet);
          
@@ -730,7 +731,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
                
                macos_window_make_key_window_and_order_front();
                
-               if(m_pacmeuserinteraction == get_app()->m_pacmeuserinteractionMain)
+               if(m_pacmeuserinteraction == get_app()->main_acme_user_interaction())
                {
                   
                   macos_window_make_main_window();
@@ -1145,13 +1146,13 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
 
       synchronous_lock slGraphics(pbuffer->synchronization());
       
-      auto pitem = pbuffer->get_screen_item();
+      auto pbufferitem = pbuffer->get_screen_item();
       
-      synchronous_lock sl1(pitem->m_pmutex);
+      synchronous_lock sl1(pbufferitem->m_pmutex);
 
-      ::image::image_pointer & imageBuffer2 = pitem->m_pimage2;
+      auto pimageBufferItem = pbufferitem->m_pimageBufferItem;
 
-      if (!imageBuffer2.ok())
+      if (!pimageBufferItem.ok())
       {
 
          output_debug_string("NOT DRAWING? <<---- search and bp here !imageBuffer2 ");
@@ -1204,11 +1205,11 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
       
    #endif
 
-      ::i32_size sizeMin = imageBuffer2->size().minimum(sizeWindow);
+      ::i32_size sizeMin = pimageBufferItem->size().minimum(sizeWindow);
       
-      ::f64_rectangle rectangleSource(sizeMin);
+      ::f64_rectangle rectangleSource(pbufferitem->m_pointBufferItem, sizeMin);
       
-      ::image::image_source imagesource(imageBuffer2, rectangleSource);
+      ::image::image_source imagesource(pimageBufferItem, rectangleSource);
       
       ::f64_rectangle rectangleTarget(sizeMin);
       
@@ -1223,7 +1224,7 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
       
       ::image::image_drawing imagedrawing(imagedrawingoptions, imagesource);
        
-       g->set_alpha_mode(draw2d::e_alpha_mode_set);
+      g->set_alpha_mode(draw2d::e_alpha_mode_set);
 
       g->draw(imagedrawing);
       
@@ -2309,16 +2310,18 @@ pmessage->m_eusermessage = emessage
          
       }
       
-      auto poscursor = m_pcursor->get_os_data();
+      ::cast < ::windowing_macos::cursor > pcursor = m_pcursor;
       
-      if(::is_null(poscursor))
+      auto pNSCursor = pcursor->m_pNSCursor;
+      
+      if(::is_null(pNSCursor))
       {
        
          return nullptr;
          
       }
       
-      return poscursor;
+      return pNSCursor;
       
    }
 

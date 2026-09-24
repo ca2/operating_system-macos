@@ -647,7 +647,6 @@ NSImage * ns_image_from_file(const char * pszMatter);
 - (void) drawRect: (NSRect) rect
 {
    
-   
    macOSWindow * pnsmacoswindow = (__bridge macOSWindow*) m_pacmewindowbridgeImpact->m_pnsacmewindow;
 
    macos_window * p = pnsmacoswindow->m_pmacoswindow;

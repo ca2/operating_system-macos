@@ -249,14 +249,14 @@ namespace windowing_macos
 
       }
       
-      pimage->create({w, h});
+      pimage->create_as_descriptor({w, h});
       
-      pimage->map();
+      auto ppixmapImage = pimage->map();
       
-      if(pimage->image32() != nullptr)
+      if(ppixmapImage->data())
       {
-      
-         pimage->image32()->_001ProperCopyColorref(w, h, pimage->scan_size(), pcolorref, iScan);
+         
+         ppixmapImage->copy({w, h}, pcolorref, iScan);
          
       }
 //      else if(pimage->m_pframea->is_set())
@@ -281,12 +281,14 @@ namespace windowing_macos
 
    bool copydesk::_image_to_desk(const ::image::image * pimage)
    {
+      
+      auto ppixmapImage = ((::image::image *)pimage)->map();
 
       bool bOk = macos_clipboard_set_image(
-                                        pimage->get_data(),
-                                        pimage->width(),
-                                        pimage->height(),
-                                        pimage->scan_size());
+                                           ppixmapImage->data(),
+                                           ppixmapImage->width(),
+                                           ppixmapImage->height(),
+                                           ppixmapImage->scan_size());
 
       if(bOk)
       {
