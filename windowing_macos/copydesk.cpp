@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "copydesk.h"
+#include "aura/graphics/draw2d/draw2d.h"
 #include "aura/graphics/image/image.h"
-
 
 
 bool macos_clipboard_has_changed(long & lTicket);
@@ -249,7 +249,7 @@ namespace windowing_macos
 
       }
       
-      pimage->create_as_descriptor({w, h});
+      pimage->create_as_descriptor({w, h}, draw2d()->main_draw2d_domain());
       
       auto ppixmapImage = pimage->map();
       
