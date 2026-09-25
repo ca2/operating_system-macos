@@ -1058,8 +1058,18 @@ void window::on_keyboard_layout_change(const char *pszKeyboardLayoutId)
 
    void window::macos_window_draw(CGContextRef cgc, CGRect cgrect)
    {
+      
+      ::i32_rectangle rectangle{};
+      
+      screen_coordinates_aware_copy(rectangle, cgrect);
+      
+      auto pointWindow = rectangle.origin();
+      
+      auto sizeWindow = rectangle.size();
 
-      ::i32_size sizeWindow(cgrect.size.width, cgrect.size.height);
+      m_pointWindow = pointWindow;
+      
+      m_sizeWindow = sizeWindow;
 
       #ifdef EXTRALOG
 

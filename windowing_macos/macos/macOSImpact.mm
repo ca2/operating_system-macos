@@ -702,7 +702,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
       
 #endif
       
-      auto rectFrame = [self frame];
+      auto rectFrame = [[self window] frame];
       
       p->macos_window_draw(cgc, rectFrame);
 
@@ -752,7 +752,7 @@ NSImage * ns_image_from_file(const char * pszMatter);
 
 #endif
    
-   [ super drawRect : rect ];
+   //[ super drawRect : rect ];
    
 }
 
