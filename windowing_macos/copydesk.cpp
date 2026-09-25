@@ -256,7 +256,7 @@ namespace windowing_macos
       if(ppixmapImage->data())
       {
          
-         ppixmapImage->copy({w, h}, pcolorref, iScan);
+         ppixmapImage->copy({w, h}, pcolorref, iScan, true);
          
       }
 //      else if(pimage->m_pframea->is_set())
