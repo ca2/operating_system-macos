@@ -32,27 +32,33 @@ NSAppleScript * ns_get_lite_mode_script()
 
 bool ns_set_dark_mode(bool bDark)
 {
-   
-   NSAppleScript * pscript = nil;
-   
-   if(bDark)
+
+   __block bool bSucceeded = false;
+
+   // Ambient applies its effects on worker threads. NSAppleScript must run
+   // on the main thread, including script creation and compilation.
+   ns_main_send(^()
    {
-      
-      pscript = ns_get_dark_mode_script();
-      
-   }
-   else
-   {
-    
-      pscript = ns_get_lite_mode_script();
-      
-   }
-   
-   NSDictionary *error = nil;
-   
-   [pscript executeAndReturnError:&error];
-   
-   return error == nil;
+
+      NSAppleScript * pscript = bDark ? ns_get_dark_mode_script() : ns_get_lite_mode_script();
+
+      NSDictionary *error = nil;
+
+      NSAppleEventDescriptor * presult = [pscript executeAndReturnError:&error];
+
+      bSucceeded = presult != nil && error == nil;
+
+      if (!bSucceeded)
+      {
+
+         NSLog(@"Unable to set macOS appearance to %@: %@",
+               bDark ? @"dark" : @"light", error);
+
+      }
+
+   });
+
+   return bSucceeded;
    
 }
 
