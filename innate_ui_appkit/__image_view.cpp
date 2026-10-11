@@ -52,20 +52,25 @@ void __image_view::set_icon(::innate_ui::icon * picon)
 
    m_picon = picon;
    
-
-   //::string str(scopedstr);
+   auto piconPost = m_picon;
    
-   main_post([this]
-   ()
-      {
+   if(piconPost)
+   {
+      //::string str(scopedstr);
       
-      //::cast < ::innate_ui_appkit::icon > pappkiticon = picon;
-
-      __set_icon(m_picon);
-      //::string str;
+      main_post([this, piconPost]
+                ()
+                {
+         
+         //::cast < ::innate_ui_appkit::icon > pappkiticon = picon;
+         
+         __set_icon(piconPost);
+         //::string str;
          //gtk_window_set_title(GTK_WINDOW(m_pgtkwidget), str);
-
-   });
+         
+      });
+      
+   }
 
 }
 

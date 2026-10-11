@@ -9,29 +9,29 @@
 /* #undef AUFILE_SUPPORT */
 
 /* whether or not we are supporting CoreAudio */
-/* #undef COREAUDIO_SUPPORT */
-/* #undef COREAUDIO_SUPPORT_HAL */
+#define COREAUDIO_SUPPORT 1
+#define COREAUDIO_SUPPORT_HAL 1
 
 /* whether or not we are supporting CoreMIDI */
-/* #undef COREMIDI_SUPPORT */
+#define COREMIDI_SUPPORT 1
 
 /* whether or not we are supporting DART */
 /* #undef DART_SUPPORT */
 
 /* Define if building for Mac OS X Darwin */
-/* #undef DARWIN */
+#define DARWIN 1
 
 /* Define if D-Bus support is enabled */
 /* #undef DBUS_SUPPORT */
 
-/* Soundfont to load automatically in some use cases */
-#define DEFAULT_SOUNDFONT "C:\\ProgramData\\soundfonts\\default.sf2"
+/* Set to an installed .sf2 path to load a default soundfont automatically. */
+/* #undef DEFAULT_SOUNDFONT */
 
 /* Define to enable FPE checks */
 /* #undef FPE_CHECK */
 
 /* Define to 1 if you have the <arpa/inet.h> header file. */
-/* #undef HAVE_ARPA_INET_H */
+#define HAVE_ARPA_INET_H 1
 
 /* Define to 1 if you have the <errno.h> header file. */
 #define HAVE_ERRNO_H 1
@@ -40,10 +40,10 @@
 #define HAVE_FCNTL_H 1
 
 /* Define to 1 if you have the <inttypes.h> header file. */
-/* #undef HAVE_INTTYPES_H */
+#define HAVE_INTTYPES_H 1
 
 /* Define to 1 if you have the <io.h> header file. */
-#define HAVE_IO_H 1
+/* #undef HAVE_IO_H */
 
 /* Define if systemd support is enabled */
 /* #undef SYSTEMD_SUPPORT */
@@ -61,10 +61,10 @@
 #define HAVE_MATH_H 1
 
 /* Define to 1 if you have the <netinet/in.h> header file. */
-/* #undef HAVE_NETINET_IN_H */
+#define HAVE_NETINET_IN_H 1
 
 /* Define to 1 if you have the <netinet/tcp.h> header file. */
-/* #undef HAVE_NETINET_TCP_H */
+#define HAVE_NETINET_TCP_H 1
 
 /* Define if compiling the mixer with multi-thread support */
 #define ENABLE_MIXER_THREADS 1
@@ -73,7 +73,7 @@
 /* #undef HAVE_OPENMP */
 
 /* Define to 1 if you have the <pthread.h> header file. */
-/* #undef HAVE_PTHREAD_H */
+#define HAVE_PTHREAD_H 1
 
 /* Define to 1 if you have the <signal.h> header file. */
 #define HAVE_SIGNAL_H 1
@@ -91,16 +91,16 @@
 #define HAVE_STDLIB_H 1
 
 /* Define to 1 if you have the <strings.h> header file. */
-/* #undef HAVE_STRINGS_H */
+#define HAVE_STRINGS_H 1
 
 /* Define to 1 if you have the <string.h> header file. */
 #define HAVE_STRING_H 1
 
 /* Define to 1 if you have the <sys/mman.h> header file. */
-/* #undef HAVE_SYS_MMAN_H */
+#define HAVE_SYS_MMAN_H 1
 
 /* Define to 1 if you have the <sys/socket.h> header file. */
-/* #undef HAVE_SYS_SOCKET_H */
+#define HAVE_SYS_SOCKET_H 1
 
 /* Define to 1 if you have the <sys/soundcard.h> header file. */
 /* #undef HAVE_SYS_SOUNDCARD_H */
@@ -109,19 +109,19 @@
 #define HAVE_SYS_STAT_H 1
 
 /* Define to 1 if you have the <sys/time.h> header file. */
-/* #undef HAVE_SYS_TIME_H */
+#define HAVE_SYS_TIME_H 1
 
 /* Define to 1 if you have the <sys/types.h> header file. */
 #define HAVE_SYS_TYPES_H 1
 
 /* Define to 1 if you have the <unistd.h> header file. */
-/* #undef HAVE_UNISTD_H */
+#define HAVE_UNISTD_H 1
 
 /* Define to 1 if you have the <windows.h> header file. */
-#define HAVE_WINDOWS_H 1
+/* #undef HAVE_WINDOWS_H */
 
 /* Define to 1 if you have the <getopt.h> header file. */
-/* #undef HAVE_GETOPT_H */
+#define HAVE_GETOPT_H 1
 
 /* Define to 1 if you have the inet_ntop() function. */
 #define HAVE_INETNTOP 1
@@ -199,40 +199,41 @@
 /* #undef PULSE_SUPPORT */
 
 /* Define to enable DirectSound driver */
-#define DSOUND_SUPPORT 1
+/* #undef DSOUND_SUPPORT */
 
 /* Define to enable Windows WASAPI driver */
-#define WASAPI_SUPPORT 1
+/* #undef WASAPI_SUPPORT */
 
 /* Define to enable Windows WaveOut driver */
-#define WAVEOUT_SUPPORT 1
+/* #undef WAVEOUT_SUPPORT */
 
 /* Define to enable Windows MIDI driver */
-#define WINMIDI_SUPPORT 1
+/* #undef WINMIDI_SUPPORT */
 
 /* Define to enable SDL3 audio driver */
 /* #undef SDL3_SUPPORT */
 
 /* Define to 1 if you have the ANSI C header files. */
-/* #undef STDC_HEADERS */
+#define STDC_HEADERS 1
 
+/* Test paths are relative to the FluidSynth source/build root. */
 /* Soundfont to load for unit testing */
-#define TEST_SOUNDFONT "C:/Users/camilo/code/fluidsynth/fluidsynth/sf2/VintageDreamsWaves-v2.sf2"
+#define TEST_SOUNDFONT "sf2/VintageDreamsWaves-v2.sf2"
 
 /* DLS to load for unit testing */
-#define TEST_DLS "C:/Users/camilo/code/fluidsynth/fluidsynth/sf2/VintageDreamsWaves-v2.dls"
+#define TEST_DLS "sf2/VintageDreamsWaves-v2.dls"
 
 /* Soundfont to load for UTF-8 unit testing */
-#define TEST_SOUNDFONT_UTF8_1 "C:/Users/camilo/code/fluidsynth/fluidsynth/sf2/\xE2\x96\xA0VintageDreamsWaves-v2\xE2\x96\xA0.sf2"
-#define TEST_SOUNDFONT_UTF8_2 "C:/Users/camilo/code/fluidsynth/fluidsynth/sf2/VìntàgèDrèàmsWàvès-v2.sf2"
-#define TEST_MIDI_UTF8 "C:/Users/camilo/code/fluidsynth/fluidsynth/test/ⓉⒺⓈⓉ.mid"
-#define TEST_WAV_UTF8 "C:/Users/camilo/code/fluidsynth/test/ⓉⒺⓈⓉ.wav"
+#define TEST_SOUNDFONT_UTF8_1 "sf2/\xE2\x96\xA0VintageDreamsWaves-v2\xE2\x96\xA0.sf2"
+#define TEST_SOUNDFONT_UTF8_2 "sf2/VìntàgèDrèàmsWàvès-v2.sf2"
+#define TEST_MIDI_UTF8 "test/ⓉⒺⓈⓉ.mid"
+#define TEST_WAV_UTF8 "test/ⓉⒺⓈⓉ.wav"
 
 /* SF3 Soundfont to load for unit testing */
-#define TEST_SOUNDFONT_SF3 "C:/Users/camilo/code/fluidsynth/fluidsynth/sf2/VintageDreamsWaves-v2.sf3"
+#define TEST_SOUNDFONT_SF3 "sf2/VintageDreamsWaves-v2.sf3"
 
 /* Command lines to use for shell parse unit testing */
-#define TEST_COMMAND_LINES "C:/Users/camilo/code/fluidsynth/fluidsynth/test/command-lines.txt"
+#define TEST_COMMAND_LINES "test/command-lines.txt"
 
 /* Define to enable SIGFPE assertions */
 /* #undef TRAP_ON_FPE */
@@ -247,7 +248,7 @@
 /* #undef READLINE_SUPPORT */
 
 /* Define if the compiler supports VLA */
-/* #undef SUPPORTS_VLA */
+#define SUPPORTS_VLA 1
 
 /* Define to 1 if your processor stores words with the most significant byte
    first (like Motorola and SPARC, unlike Intel and VAX). */
