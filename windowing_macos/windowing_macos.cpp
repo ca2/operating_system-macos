@@ -21,7 +21,7 @@
 
 //oswindow_dataptra * g_poswindowdataptra = nullptr;
 //
-//::mutex * g_pmutexOsWindowData = nullptr;
+//::parallelization::mutex * g_pmutexOsWindowData = nullptr;
 //
 //void ns_main_post(dispatch_block_t block);
 //
@@ -612,7 +612,7 @@ void mm_init_workspace_rect();
 //
 ////   set_DispatchMessage(&axis_DispatchMessage);
 //
-//   g_pmutexOsWindowData = new ::mutex();
+//   g_pmutexOsWindowData = new ::parallelization::mutex();
 //
 //   g_poswindowdataptra = new oswindow_dataptra;
 //

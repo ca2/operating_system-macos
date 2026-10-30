@@ -11,7 +11,7 @@
 #include "acme/platform/application.h"
 #include "acme/parallelization/synchronous_lock.h"
 
-//::mutex  g_mutexCursor;
+//::parallelization::mutex  g_mutexCursor;
 bool     g_bCursorHidden;
 ::pointer < ::windowing::cursor >   g_pwindowingcursor;
 
