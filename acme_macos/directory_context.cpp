@@ -1343,14 +1343,10 @@ namespace acme_macos
 
    ::file::path directory_context::appdata(const ::scoped_string & scopedstrAppId)
    {
-      
-      return system()->directory_system()->m_pathAppData / scopedstrAppId;
-      
-//      auto psystem = m_psystem;
-//
-//      auto pdirectorysystem = psystem->directory_system();
-//
-//      return pdirectorysystem->appdata();
+
+      // Resolve the lazy application-data path instead of reading its cache
+      // before it has been initialized.
+      return ::directory_context::appdata(scopedstrAppId);
 
    }
 

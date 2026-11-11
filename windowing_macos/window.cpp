@@ -216,10 +216,10 @@ void window::main_post(const ::procedure & procedure)
    }
 
 
-   void window::create_window()
+   void window::create_window(::enum_parallelization eparallelization)
    {
       
-      ::windowing::window::create_window();
+      ::windowing::window::create_window(eparallelization);
       
    }
 
@@ -317,7 +317,7 @@ void window::main_post(const ::procedure & procedure)
       if (puserinteraction && puserinteraction->is_graphical())
       {
 
-         if (m_papplication->m_bGpu)
+         if (m_papplication->m_bGpu2)
          {
 
             auto pgpuapproach = m_papplication->get_gpu_approach();
@@ -391,7 +391,7 @@ void window::main_post(const ::procedure & procedure)
       if (puserinteraction && puserinteraction->is_graphical())
       {
 
-         if (m_papplication->m_bGpu)
+         if (m_papplication->m_bGpu2)
          {
 
             auto pgpuapproach = m_papplication->get_gpu_approach();

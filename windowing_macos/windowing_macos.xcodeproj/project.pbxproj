@@ -41,7 +41,6 @@
 		5BFE7E600F6E38C09CE81762 /* copydesk.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B10C08CA527D60902670780 /* copydesk.h */; };
 		604902A66AD860303E66A52A /* KeyboardLayoutObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = D0847FA363A08EF9CE887E53 /* KeyboardLayoutObserver.h */; };
 		60775278C2B0DA56E4C7314A /* monitor.h in Headers */ = {isa = PBXBuildFile; fileRef = AC6318BF303ADAD4726EB641 /* monitor.h */; };
-		6372DE0259066C5E278EB95C /* libappkit.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 5906BC9619D8DC9B85A1B18A /* libappkit.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		6A2EA7F30B9DFCED923DDA4C /* libapex_apple.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD442046F39188A3F4670C6 /* libapex_apple.dylib */; };
 		6AA886F7E641F45C85BAE8E3 /* notify_icon.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B095B08EDAAD0928900BE0 /* notify_icon.h */; };
 		6B21C44001081FA27DAE21AC /* macOSWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = 252B94BB7F879A14BEBF14FE /* macOSWindow.mm */; };
@@ -104,17 +103,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FA31498A8FC777217A232A6D /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				6372DE0259066C5E278EB95C /* libappkit.dylib in Embed Libraries */,
-			);
-			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -411,7 +399,6 @@
 				FFBCEDB6D95FCAC44E29A63D /* Sources */,
 				8CF01DDFCC551A9A191D0692 /* Frameworks */,
 				ABBF4414DFDE13115D7F138E /* ShellScript */,
-				FA31498A8FC777217A232A6D /* Embed Libraries */,
 			);
 			buildRules = (
 			);
