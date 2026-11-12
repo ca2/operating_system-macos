@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "directory_context.h"
+#include "directory_system.h"
 #include "file_system.h"
 #include "acme/filesystem/filesystem/directory_system.h"
 #include "acme/filesystem/filesystem/listing.h"
@@ -68,7 +69,8 @@ namespace acme_macos
       
       //estatus =
       
-      m_pfilesystem = psystem->m_pfilesystem;
+      m_pdirsystem = psystem->directory_system();
+      m_pfilesystem = psystem->file_system();
 //      
 //      if(!estatus)
 //      {
@@ -1095,7 +1097,7 @@ namespace acme_macos
    ::file::path directory_context::time()
    {
       
-      return system()->directory_system()->m_pathAppData / "time";
+      return directory_system()->app_data_path() / "time";
       
    }
 
@@ -1120,7 +1122,7 @@ namespace acme_macos
    ::file::path directory_context::netseed()
    {
       
-      return system()->directory_system()->m_pathHome / "netnodenet/net/seed";
+      return directory_system()->home_path() / "netnodenet/net/seed";
       
    }
 
@@ -1354,7 +1356,7 @@ namespace acme_macos
    ::file::path directory_context::commonappdata_root()
    {
 
-      return system()->directory_system()->m_pathAppData;
+      return directory_system()->app_data_path();
 
    }
 
@@ -1362,7 +1364,7 @@ namespace acme_macos
    ::file::path directory_context::commonappdata()
    {
 
-      return system()->directory_system()->m_pathAppData;
+      return directory_system()->app_data_path();
 
    }
 
@@ -1425,7 +1427,7 @@ namespace acme_macos
    ::file::path directory_context::userquicklaunch()
    {
 
-      return system()->directory_system()->m_pathAppData / "Microsoft\\Internet Explorer\\Quick Launch";
+      return directory_system()->app_data_path() / "Microsoft\\Internet Explorer\\Quick Launch";
 
    }
 
@@ -1433,7 +1435,7 @@ namespace acme_macos
    ::file::path directory_context::userprograms()
    {
 
-      return system()->directory_system()->m_pathAppData;
+      return directory_system()->app_data_path();
 
    }
 
@@ -1441,7 +1443,7 @@ namespace acme_macos
    ::file::path directory_context::commonprograms()
    {
 
-      return system()->directory_system()->m_pathAppData;
+      return directory_system()->app_data_path();
 
    }
 
@@ -1533,7 +1535,7 @@ namespace acme_macos
    ::file::path directory_context::home()
    {
 
-      return system()->directory_system()->m_pathHome;
+      return directory_system()->home_path();
 
    }
 
