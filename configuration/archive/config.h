@@ -9,6 +9,8 @@
 
 #include "common/config.h"
 
+#define HAVE_SIGNAL_H 1
+
 #ifdef MACOS_MONTEREY
 #undef HAVE_LINKAT
 #endif
