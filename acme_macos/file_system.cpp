@@ -92,9 +92,17 @@ void file_system::init_system()
    ::file::path file_system::module()
    {
 
-      ::file::path path = apple_app_module_path();
+      critical_section_lock lock(&m_criticalsectionModule);
 
-      return path;
+      if (m_pathExecutable.is_empty())
+      {
+
+         m_pathExecutable = apple_app_module_path();
+         m_pathModule = m_pathExecutable;
+
+      }
+
+      return m_pathExecutable;
 
    }
 

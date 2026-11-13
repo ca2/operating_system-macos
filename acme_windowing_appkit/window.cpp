@@ -298,10 +298,10 @@ namespace appkit
       //   }
       
       
-      void window::create_window()
+      void window::create_window(::enum_parallelization eparallelization)
       {
          
-         main_send([this]()
+         main_call(eparallelization, [this]()
                    {
             
             _create_window();
@@ -414,44 +414,48 @@ namespace appkit
       
       void window::show_window(::user_interface::enum_show_window eshowwindow)
       {
-         
-         if(eshowwindow == ::user_interface::e_show_window_hide)
-         {
-            
-            m_pacmewindowbridge->ns_hide();
-            
-         }
-         else
-         {
-            
-            set_active_window();
-            
-            m_pacmewindowbridge->ns_show();
-            
-         }
-         
+
+         display(eshowwindow == ::user_interface::e_show_window_hide
+            ? e_display_hide : e_display_normal, {});
+
       }
-      
+
+
       void window::display(::e_display edisplay, const ::user::activation & useractivation)
       {
 
-         if(edisplay == e_display_hide || edisplay == e_display_none)
+         ::pointer < window > pwindow = this;
+
+         // Native creation is queued on the main thread. Queue visibility after it
+         // and retain the window until the visibility request has been processed.
+         main_post([pwindow, edisplay]()
          {
-            
-            m_pacmewindowbridge->ns_hide();
-            
-         }
-         else
-         {
-            
-            set_active_window();
-            
-            m_pacmewindowbridge->ns_show();
-            
-         }
-         
+
+            if(!pwindow->m_pacmewindowbridge)
+            {
+
+               return;
+
+            }
+
+            if(edisplay == e_display_hide || edisplay == e_display_none)
+            {
+
+               pwindow->m_pacmewindowbridge->ns_hide();
+
+            }
+            else
+            {
+
+               pwindow->set_active_window();
+               pwindow->m_pacmewindowbridge->ns_show();
+
+            }
+
+         });
+
       }
-      
+
 //      
 //      void window::hide_window()
 //      {

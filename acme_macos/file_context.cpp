@@ -92,7 +92,7 @@ namespace acme_macos
 //      }
       
       //estatus =
-      m_pfilesystem = psystem->m_pfilesystem;
+      m_pfilesystem = psystem->file_system();
       
 //      if(!estatus)
 //      {

@@ -103,7 +103,7 @@ class acme_window_bridge;
 
       void on_initialize_particle() override;
 
-      void create_window() override;
+      void create_window(::enum_parallelization eparallelization) override;
       
       void _create_window() override;
 
